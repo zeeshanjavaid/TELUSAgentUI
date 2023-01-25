@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="DmpS3FileService" class="com.fico.dmp.dmps3fileservice.DmpS3FileService" type="JavaService" springFile="DmpS3FileService.spring.xml"/>

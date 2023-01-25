@@ -1,0 +1,163 @@
+.fi-panel {
+    padding: 20px !important;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 5px;
+    border: none;
+}
+
+.dl-width {
+    width: auto !important;
+}
+
+button.btn.btn-xs.btn-primary {
+    right: 5px;
+}
+
+button.btn.btn-xs.btn-default {
+    right: 5px;
+}
+
+.queue-rank {
+    /* left: -90px;
+    max-width: 330px;*/
+    /*left: -12%;*/
+    /* max-width: 70%;*/
+    max-width: 58%;
+}
+
+.queue-name {
+    /*min-width: 850px;*/
+    min-width: 98%;
+    bottom: -5px;
+}
+
+.linecontainer {
+    border-top: solid;
+    border-color: #dddddd;
+    border-width: 1px;
+    margin-top: 2em;
+    margin-left: 17px;
+    margin-right: 2%;
+}
+
+.queue-discription {
+    min-width: 98%;
+}
+
+.queue-assign-group {
+    /*min-width: 90%;*/
+    min-width: 98%;
+}
+
+.queue-action {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    float: right;
+    /*right: 6.5em; */
+    right: 1.5%;
+}
+
+.add-queue-lebel {
+    font-weight: 400;
+}
+
+.wm-app app-partial-addrolepartial button.btn.app-button.btn-default.Deletebutton:hover {
+    background: #5b0000 !important;
+}
+
+
+/*p.alert.app-message.alert-danger {
+    right: 0%;
+    margin-right: 10%;
+}*/
+
+p.alert.app-message.alert-success.successmessage {
+    margin-right: 1%;
+}
+
+p.alert.app-message.alert-danger.errormessage {
+    margin-right: 1%;
+}
+
+p.alert.app-message.alert-danger.error-query {
+    margin-right: 10%;
+}
+
+.form-container-height {
+    height: calc(100% - 95px);
+}
+
+.app-grid-column.dual-list-btn-group.col-sm-4 {
+    top: 7em;
+}
+
+.wm-app .btn.btn-default:hover {
+    background-color: #00609c;
+    border-color: #00609c;
+    color: white;
+}
+
+.container7-add-permission {
+    border: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 4px;
+    margin-right: 2%;
+}
+
+.dl-width {
+    width: 130%;
+    /* overflow-x: scroll;*/
+}
+
+
+/*button.btn.app-button.btn-default.Deletebutton:hover {
+    background: #b30000 !important;
+}*/
+
+button.btn.app-button.btn-default.cancelbutton:hover {
+    background-color: #dadfe4 !important;
+    border-color: #dadfe4 !important;
+    /*color: white;*/
+}
+
+button.btn.app-button.btn-default.Deletebutton:hover {
+    /*background: #b30000 !important;*/
+    background: #eaeff1 !important;
+    border-color: #eaeff1 !important;
+}
+
+.role-name {
+    width: 100% !important;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.linecontainer {
+    border-top: solid;
+    border-color: #dddddd;
+    border-width: 1px;
+    margin-top: 2em;
+    margin-left: 17px;
+    margin-right: 2%;
+}
+
+.text-clip {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+}
+
+.rolename-row {
+    margin-bottom: 2px;
+}
+
+select.app-select.form-control.no-padding.dualList-select.ng-valid.ng-dirty.ng-touched {
+    overflow-x: scroll;
+}
+
+select.app-select.form-control.no-padding.dualList-select.ng-untouched.ng-pristine.ng-valid {
+    overflow-x: scroll;
+}

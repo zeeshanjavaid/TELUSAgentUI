@@ -1,0 +1,191 @@
+<wm-page pagetitle="Application Search" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-container name="mainWrapper_container" width="100%" class="colflex-center-sb flexCol width-full">
+            <wm-container name="contentWrapper" class="inner-wrapper colflex-center-sb flexCol jc-sb">
+                <wm-container name="container48" width="100%" margin="5px unset unset unset">
+                    <wm-message name="message1" type="error" show="bind:showErrorMsg" caption="bind:errorMsg" on-close="message1Close($event, widget)"></wm-message>
+                </wm-container>
+                <wm-layoutgrid name="page_mainGrid" width="100%" columns="1">
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                            <wm-container name="searchHeader_container" class="inflex-center-sb width-full" height="80px">
+                                <wm-label padding="unset 0.5em" name="label1" width="100%" caption="Search Application" class="header-label"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                            <wm-container name="searchFilters_container" class="inflex-center-sb width-full jc-sb" height="60px">
+                                <wm-container name="referenceNumber_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                    <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                        <wm-label name="label2" width="40%" caption="Reference number" class="control-label"></wm-label>
+                                        <wm-container name="container7" width="60%">
+                                            <wm-text name="text1" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.referenceNumber" width="100%" class="searchInput"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-container>
+                                <wm-container name="fName_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                    <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                        <wm-label name="label2" width="40%" caption="First name" class="control-label"></wm-label>
+                                        <wm-container name="container7" width="60%">
+                                            <wm-text name="text3" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.firstName" width="100%" class="searchInput" required="false" on-change="text3Change($event, widget, newVal, oldVal)" backgroundcolor="#fffff"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-container>
+                                <wm-container name="lName_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                    <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                        <wm-label name="label2" width="40%" caption="Last name" class="control-label"></wm-label>
+                                        <wm-container name="container7" width="60%">
+                                            <wm-text name="text4" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.lastName" width="100%" class="searchInput" type="text"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-container>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4_1">
+                        <wm-container name="phoneNumber_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                <wm-label name="label2" width="40%" caption="Phone number" class="control-label"></wm-label>
+                                <wm-container name="container7" width="60%">
+                                    <wm-text name="text5" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.phoneNumber" width="100%" class="searchInput" type="text"></wm-text>
+                                </wm-container>
+                            </wm-composite>
+                        </wm-container>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Advanced" name="advancedFilters_Panel" expanded="false" collapsible="true" closable="false" class="panel-section" on-expand="advancedFilters_PanelExpand($event, widget)" on-collapse="advancedFilters_PanelCollapse($event, widget)">
+                                <wm-container name="panelBody-wrapper" class="inflex-center-sb flexCol jc-center width-full">
+                                    <wm-container class="inflex-center-sb jc-sb" width="98%" height="60px" name="container11" margin="10px unset unset unset">
+                                        <wm-container name="socialNumber_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Personal Id" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-text name="text6" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.personIdNumber" width="100%" class="searchInput"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="dob_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Date of birth" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-date name="applicantDOB_input" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.dateOfBirth" maxdate="CURRENT_DATE" datepattern="yyyy-MM-dd" outputformat="yyyy-MM-dd"
+                                                        on-blur="applicantDOB_inputBlur($event, widget)" class="searchInput"></wm-date>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="AppStatus_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Application status" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-select name="appStatus_input" dataset="bind:Variables.sv_getApplicationStatusDV.dataSet" datafield="id" displayfield="description" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.applicationStatus"
+                                                        placeholder="SELECT" class="searchInput"></wm-select>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                    </wm-container>
+                                    <wm-container class="inflex-center-sb jc-sb" width="98%" height="60px" name="container11" margin="10px unset unset unset">
+                                        <wm-container name="email_Container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Email" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-text name="text8" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.email" width="100%" class="searchInput"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="channel_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Channel" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-select name="appStatus_input" dataset="bind:Variables.sv_getChannel.dataSet" datafield="id" displayfield="description" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.channel" placeholder="SELECT"
+                                                        class="searchInput"></wm-select>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="createdOnStart_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Created date start" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-datetime name="createdStart_input" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.createdOnStart" maxdate="CURRENT_DATE" outputformat="timestamp" class="searchInput"></wm-datetime>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                    </wm-container>
+                                    <wm-container class="inflex-center-sb jc-sb" width="98%" height="60px" name="container11" margin="10px unset unset unset">
+                                        <wm-container name="createdOnEnd_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label name="label2" width="40%" caption="Created date end" class="control-label"></wm-label>
+                                                <wm-container name="container7" width="60%">
+                                                    <wm-datetime name="createdEnd_input" placeholder="" datavalue="bind:Variables.mv_searchFilters.dataSet.advancedFilters.createdOnEnd" maxdate="CURRENT_DATE" dataentrymode="default" class="searchInput" outputformat="timestamp"></wm-datetime>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                    </wm-container>
+                                </wm-container>
+                                <wm-panel-footer name="panel_footer1"></wm-panel-footer>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                            <wm-container name="searchBtnGroup_container" class="inflex-center-sb width-full" height="40px" margin="20px unset unset unset">
+                                <wm-button class="btn btn-primary" caption="SEARCH" type="button" margin="unset 0.5em unset unset" name="searchApplications_btn" on-click="searchApplications_btnClick($event, widget)"></wm-button>
+                                <wm-button class="btn btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="clearInputs_btn" on-click="clearInputs_btnClick($event, widget)"></wm-button>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-container name="searchResult_container" class="colflex-center-sb jc-sb flexCol width-full" margin="20px unset unset unset">
+                    <wm-container name="totalRecordInfo_container" class="inflex-center-sb jc-flexEnd width-full" margin="unset unset 10px unset">
+                        <wm-label name="label11" caption="bind:displayPageInfo()" fontsize="13"></wm-label>
+                    </wm-container>
+                    <wm-table name="searchResult_DataTable" title="" dataset="bind:Variables.sv_applicationSearch.dataSet.applicationList" navigation="None" on-sort="searchResult_DataTableSort($event, $data)" gridclass="table-striped table-hover table-bordered"
+                        on-headerclick="searchResult_DataTableSort($event, $data)" spacing="normal">
+                        <wm-table-column binding="applicationNumber" caption="Application Number" widget-type="anchor" width="12%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-anchor caption="bind:row.getProperty('applicationNumber')" hyperlink="bind:navigateToAppBroker(row.getProperty('applicationId'), row.getProperty('applicationStatusId'))" class="" conditionalclass="bind:{'visibility-hidden':!row.getProperty('isShow')}"></wm-anchor>
+                        </wm-table-column>
+                        <wm-table-column binding="applicationStatus" caption="Application Status" widget-type="label" width="200px" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('applicationStatus')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="channel" caption="Channel" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('channel')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="customerName" caption="Customer Name" widget-type="label" width="10%" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                            <wm-label caption="bind:setPartyDisplayName(row.getProperty('firstName'), row.getProperty('lastName'))" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="dateOfBirth" caption="Date of Birth" width="5%" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true">
+                            <wm-label caption="bind:App.fetchDate(row.getProperty('dateOfBirth'))" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" width="160px" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:validateMobilePhone(row.getProperty('phoneNumber'))" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="email" caption="Email" widget-type="label" width="100px" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('email')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="personIdNumber" caption="ID Number" edit-widget-type="text" type="string" formatpattern="maskData" show="true" maskpattern="*AAAA" readonly="false"></wm-table-column>
+                        <wm-table-column binding="applicationCreatedBy" caption="Created By" widget-type="label" width="10%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('applicationCreatedBy')" class="" conditionalclass=""></wm-label><br><label>{{App.localizeTimestampToAppTimezone(row.getProperty('applicationCreatedOn'))}}</label></wm-table-column>
+                        <wm-table-column binding="applicationUpdatedBy" caption="Updated By" widget-type="label" width="10%"
+                            edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('applicationUpdatedBy')" class="" conditionalclass=""></wm-label><br><label>{{App.localizeTimestampToAppTimezone(row.getProperty('applicationUpdatedOn'))}}</label></wm-table-column>
+                        <wm-table-column binding="lockedBy" caption="Locked By" widget-type="label" width="10%" edit-widget-type="text"
+                            type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('applicationLockedBy')" class="" conditionalclass=""></wm-label>
+                            <wm-label caption="bind:App.localizeTimestampToAppTimezone(row.getProperty('applicationLockedOn'))" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                    </wm-table>
+                    <wm-container name="appSearch_Pagination" class="width-full" content="Partial_Pagination" margin="unset unset 20px unset" show="bind:Variables.mv_totalRecords.dataSet.dataValue > 0">
+                        <wm-param name="pageSize" value="bind:Variables.mv_pageSize.dataSet.dataValue" type="integer"></wm-param>
+                        <wm-param name="totalRecords" value="bind:Variables.mv_totalRecords.dataSet.dataValue" type="integer"></wm-param>
+                        <wm-param name="parentContainerName" value="appSearch_Pagination" type="string"></wm-param>
+                    </wm-container>
+                </wm-container>
+            </wm-container>
+        </wm-container>
+        <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="sv_applicationSearch,sv_getApplicationStatusDV"></wm-spinner>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

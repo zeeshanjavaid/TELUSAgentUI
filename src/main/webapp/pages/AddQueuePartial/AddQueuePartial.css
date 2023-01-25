@@ -1,0 +1,209 @@
+.fi-panel {
+    padding: 20px !important;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 5px;
+    border: none;
+}
+
+button.btn.btn-xs.btn-primary {
+    right: 5px;
+}
+
+button.btn.btn-xs.btn-default {
+    right: 5px;
+}
+
+.queue-rank{
+   /* left: -90px;
+    max-width: 330px;*/
+    
+    /*left: -12%;*/
+   /* max-width: 70%;*/
+    max-width: 58%;
+}
+
+.queue-name{
+    /*min-width: 850px;*/
+    min-width: 98%;
+}
+
+.linecontainer{
+    border-top: solid;
+    border-color: #dddddd;
+    border-width: 1px;
+    margin-top: 2em;
+    margin-left: 17px;
+    margin-right: 2%;
+}
+
+.queue-discription{
+    min-width: 98%;
+}
+
+.queue-assign-group{
+    /*min-width: 90%;*/
+    min-width: 98%;
+}
+
+.queue-action{     
+    margin-bottom: 50px;     
+    margin-top: 10px;     
+    float: right;     
+    /*right: 6.5em; */
+    right: 1.5%; 
+    
+}
+
+.add-queue-lebel{
+    font-weight: 400;
+}
+
+button.btn.app-button.btn-default.Deletebutton:hover {
+    background: #d8d8d8 !important;
+}
+/*p.alert.app-message.alert-danger {
+    right: 0%;
+    margin-right: 10%;
+}*/
+
+/*p.alert.app-message.alert-success.successmessage {
+    margin-right: 8%;
+}
+
+p.alert.app-message.alert-danger.errormessage {
+    margin-right: 8%;
+}*/
+
+p.alert.app-message.alert-danger.error-query {
+    margin-right: 10%;
+}
+.container7-add-permission{
+    border: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 4px;
+    margin-right: 2%;
+}
+.app-grid-column.dual-list-btn-group.col-sm-4 {
+    top: 6em;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+ /* width: 60px;*/
+  height: 34px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.wm-app .form-inline label {
+     display: inherit !important; 
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+.app-container.child {
+    width: max-content;
+    background-color: #b7bbbe;
+    margin-left: 35%;
+    border-radius: 8px;
+}
+.lockimg {
+    margin-bottom: -2px;
+}
+select.app-select.form-control.no-padding.dualList-select.ng-untouched.ng-pristine.ng-valid {
+height: 156px;
+    margin-top: 5px;
+}
+.app-grid-row.row.clearfix.gridrow1 {
+    height: 33px;
+}
+
+div[name='rank'] > input {
+    width: 95% !important;
+}
+
+.events-disabled {
+    pointer-events: none !important;
+}
+
+.events-enabled {
+    pointer-events: auto;
+}
+
+.cursor-disabled {
+    cursor: not-allowed !important;
+}
+
+.cursor-enabled {
+    cursor: auto;
+}
+
+.display-block {
+    display: auto !important;
+}
+
+.display-none {
+    display: none !important;
+}
+
+div[name='sortConfigList'] {
+    min-height: 1px !important;
+}
+
+div[name='sortConfigList'] li {
+    margin: 4px 0;
+}
+
+button[name='deleteSortInfo']:hover {
+    color: #00629b !important;
+    border-color: #00629b !important;
+    background-color: #ffffff !important;
+}

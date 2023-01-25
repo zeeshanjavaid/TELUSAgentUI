@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="getRolesByGroupId">
+        <![CDATA[
+        select ROLE.id,ROLE.role,ROLE.description,ROLE.active from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `groupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.groupID = :GroupId))
+        ]]>
+    <query-param name="GroupId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRolesByGroupId__count">
+        <![CDATA[
+        select count(*) from (select ROLE.id,ROLE.role,ROLE.description,ROLE.active from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `groupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.groupID = :GroupId))) wmTempTable
+        ]]>
+    <query-param name="GroupId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="deleteGroupUser">
+        <![CDATA[
+        delete from USER_GROUP where GroupId=:GroupId
+        ]]>
+    <query-param name="GroupId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_updateUserDetails">
+        <![CDATA[
+        UPDATE USER SET lendingLimit = :lendingLimit, timeZone = :preferredTZ WHERE id = :userId
+        ]]>
+    <query-param name="lendingLimit" type="java.math.BigDecimal"/>
+    <query-param name="preferredTZ" type="java.lang.String"/>
+    <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValueWithOneParent">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 IS NULL AND ParentDVQuery.IsActive = true AND 
+CASE WHEN :dvDescription IS NULL
+THEN TRUE
+ELSE
+    ParentDVDescQuery.description LIKE :dvDescription
+END 
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="suppliedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="parent1DomainValueId" type="java.lang.Integer"/>
+    <query-param name="dvDescription" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValueWithOneParent__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 IS NULL AND ParentDVQuery.IsActive = true AND 
+CASE WHEN :dvDescription IS NULL
+THEN TRUE
+ELSE
+    ParentDVDescQuery.description LIKE :dvDescription
+END 
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="suppliedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="parent1DomainValueId" type="java.lang.Integer"/>
+    <query-param name="dvDescription" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueByCodeAndTypeCode">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueCode" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueByCodeAndTypeCode__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueCode" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_DeleteAllErrorsByApplicationId">
+        <![CDATA[
+        delete from Error where applicationId = :applicationId
+        ]]>
+    <query-param name="applicationId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="countRolePermission">
+        <![CDATA[
+        SELECT COUNT(PermissionId) FROM ROLE_PERMISSION WHERE  RoleId = :RoleId
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="countRolePermission__count">
+        <![CDATA[
+        select count(*) from (SELECT COUNT(PermissionId) FROM ROLE_PERMISSION WHERE  RoleId = :RoleId) wmTempTable
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getActiveRolesByUserName">
+        <![CDATA[
+        select distinct(r.role) from `ROLE` r
+INNER JOIN GROUP_ROLE gr on gr.roleId = r.id 
+INNER JOIN `GROUP` g on g.id = gr.groupId
+INNER JOIN USER_GROUP ug on ug.groupId = g.id
+INNER JOIN `USER` u on u.id = ug.userId
+where g.active = true and r.active = true
+and u.userId = :UserName
+order by r.role
+        ]]>
+    <query-param name="UserName" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getActiveRolesByUserName__count">
+        <![CDATA[
+        select count(*) from (select distinct(r.role) from `ROLE` r
+INNER JOIN GROUP_ROLE gr on gr.roleId = r.id 
+INNER JOIN `GROUP` g on g.id = gr.groupId
+INNER JOIN USER_GROUP ug on ug.groupId = g.id
+INNER JOIN `USER` u on u.id = ug.userId
+where g.active = true and r.active = true
+and u.userId = :UserName
+order by r.role) wmTempTable
+        ]]>
+    <query-param name="UserName" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="deleteGroupRole">
+        <![CDATA[
+        DELETE FROM GROUP_ROLE WHERE GroupId = :GroupId
+        ]]>
+    <query-param name="GroupId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getPermissionByUserId">
+        <![CDATA[
+        select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getPermissionByUserId__count">
+        <![CDATA[
+        select count(*) from (select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))) wmTempTable
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetQueuesByUserId">
+        <![CDATA[
+        SELECT DISTINCT QueueId FROM QUEUE_GROUP INNER JOIN QUEUE on QUEUE.ID = QUEUE_GROUP.QueueId WHERE groupId IN (SELECT DISTINCT groupId FROM USER_GROUP WHERE userId = :userId) ORDER BY QUEUE.`Rank` ASC
+        ]]>
+    <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="Query_GetQueuesByUserId__count">
+        <![CDATA[
+        select count(*) from (SELECT DISTINCT QueueId FROM QUEUE_GROUP INNER JOIN QUEUE on QUEUE.ID = QUEUE_GROUP.QueueId WHERE groupId IN (SELECT DISTINCT groupId FROM USER_GROUP WHERE userId = :userId) ORDER BY QUEUE.`Rank` ASC) wmTempTable
+        ]]>
+    <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getPermissionByRoleId">
+        <![CDATA[
+        select PERMISSION.Id,PERMISSION.Name,PERMISSION.Description from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId)
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getPermissionByRoleId__count">
+        <![CDATA[
+        select count(*) from (select PERMISSION.Id,PERMISSION.Name,PERMISSION.Description from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId)) wmTempTable
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueByIdWithActiveFlag">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.id = :domainValueId AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueId" type="java.lang.Integer"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueByIdWithActiveFlag__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.id = :domainValueId AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueId" type="java.lang.Integer"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="deleteRolePermission">
+        <![CDATA[
+        DELETE FROM ROLE_PERMISSION WHERE RoleId = :RoleId
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getAllRolePermission">
+        <![CDATA[
+        select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IS NOT NULL
+        ]]>
+    </sql-query>
+
+    <sql-query name="getAllRolePermission__count">
+        <![CDATA[
+        select count(*) from (select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IS NOT NULL) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="QueueUnLock">
+        <![CDATA[
+        update QUEUE set IsLocked = false,  LockedBy = null, UpdatedBy = :updatedBy, UpdatedOn = :updatedOn  where ID = :id
+        ]]>
+    <query-param name="updatedBy" type="java.lang.Integer"/>
+    <query-param name="updatedOn" type="java.sql.Timestamp"/>
+    <query-param name="id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="deleteGroupRoleByRoleId">
+        <![CDATA[
+        DELETE FROM GROUP_ROLE WHERE RoleId = :RoleId
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueById">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.id = :domainValueId
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDomainValueById__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.id = :domainValueId
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getRolesPermission">
+        <![CDATA[
+        select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId = :RoleId
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRolesPermission__count">
+        <![CDATA[
+        select count(*) from (select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId = :RoleId) wmTempTable
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValuesTwoParent">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 = :parent2DomainValueId AND ParentDVQuery.IsActive = true 
+AND 
+CASE WHEN :dvDescription IS NULL
+THEN TRUE
+ELSE
+    ParentDVDescQuery.description LIKE :dvDescription
+END 
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="suppliedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="parent1DomainValueId" type="java.lang.Integer"/>
+    <query-param name="parent2DomainValueId" type="java.lang.Integer"/>
+    <query-param name="dvDescription" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValuesTwoParent__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 = :parent2DomainValueId AND ParentDVQuery.IsActive = true 
+AND 
+CASE WHEN :dvDescription IS NULL
+THEN TRUE
+ELSE
+    ParentDVDescQuery.description LIKE :dvDescription
+END 
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="suppliedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="parent1DomainValueId" type="java.lang.Integer"/>
+    <query-param name="parent2DomainValueId" type="java.lang.Integer"/>
+    <query-param name="dvDescription" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_ActivityLog">
+        <![CDATA[
+        SELECT APPLICATION.id AS applicationId, APPLICATION.applicationNumber AS applicationNumber, ACTIVITY.id AS activityId, ActivityTypeDV.code AS activityTypeCode, ActivityTypeDesc.description AS activityTypeDesc, ACTIVITY.name AS activityName, ACTIVITY.description AS activityDesc, ACTIVITY.applicationStatus AS appStatusId, AppStatusDVDesc.description AS appStatusDesc, ACTIVITY.startTime AS activityStartTime, ACTIVITY.endTime AS activityEndTime, ACTIVITY.duration AS activityDuration, ACTIVITY.username AS activityPerformedBy, ACTIVITY_PAYLOAD.id AS activityPayloadId 
+FROM APPLICATION INNER JOIN ACTIVITY ON APPLICATION.id = ACTIVITY.applicationId LEFT JOIN ACTIVITY_PAYLOAD ON ACTIVITY_PAYLOAD.activityId = ACTIVITY.id LEFT JOIN DomainValue AS ActivityTypeDV ON ActivityTypeDV.id = ACTIVITY.type LEFT JOIN DomainValueDescription AS ActivityTypeDesc ON ActivityTypeDesc.DomainValueId = ActivityTypeDV.id LEFT JOIN DomainValue AS AppStatusDV ON AppStatusDV.id = ACTIVITY.applicationStatus LEFT JOIN DomainValueDescription AS AppStatusDVDesc ON AppStatusDVDesc.DomainValueId = AppStatusDV.id 
+WHERE 
+CASE WHEN ACTIVITY.applicationStatus IS NULL
+THEN TRUE
+ELSE
+    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.Locale = :userLocale) IS NULL 
+    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = 'en')
+    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = :userLocale)
+    END
+END AND 
+CASE WHEN ACTIVITY.type IS NULL
+THEN TRUE
+ELSE
+    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.Locale = :userLocale) IS NULL 
+    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = 'en')
+    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = :userLocale)
+    END
+END AND 
+CASE WHEN :applicationNumber IS NULL
+THEN TRUE
+ELSE
+    APPLICATION.applicationNumber = :applicationNumber
+END AND 
+CASE WHEN :activityType IS NULL
+THEN TRUE
+ELSE
+    ACTIVITY.type = :activityType
+END AND 
+CASE WHEN :activityName IS NULL
+THEN TRUE
+ELSE
+    ACTIVITY.name LIKE :activityName
+END AND 
+CASE WHEN :isAppHistory
+THEN TRUE
+ELSE
+    CASE WHEN :createdDateStart IS NULL
+    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()
+    ELSE
+        DATE_FORMAT(ACTIVITY.startTime,"%Y-%m-%d %H:%i:%S.%f") >= DATE_FORMAT(:createdDateStart,"%Y-%m-%d %H:%i:%S.%f")
+    END AND 
+    CASE WHEN :createdDateEnd IS NULL
+    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()
+    ELSE
+        DATE_FORMAT(ACTIVITY.startTime,"%Y-%m-%d %H:%i:%S.%f") <= DATE_FORMAT(:createdDateEnd,"%Y-%m-%d %H:%i:%S.%f")
+    END
+END
+        ]]>
+    <query-param name="userLocale" type="java.lang.String"/>
+    <query-param name="applicationNumber" type="java.lang.String"/>
+    <query-param name="activityType" type="java.lang.Integer"/>
+    <query-param name="activityName" type="java.lang.String"/>
+    <query-param name="isAppHistory" type="java.lang.Boolean"/>
+    <query-param name="createdDateStart" type="java.sql.Timestamp"/>
+    <query-param name="createdDateEnd" type="java.sql.Timestamp"/>
+    </sql-query>
+
+    <sql-query name="Query_ActivityLog__count">
+        <![CDATA[
+        select count(*) from (SELECT APPLICATION.id AS applicationId, APPLICATION.applicationNumber AS applicationNumber, ACTIVITY.id AS activityId, ActivityTypeDV.code AS activityTypeCode, ActivityTypeDesc.description AS activityTypeDesc, ACTIVITY.name AS activityName, ACTIVITY.description AS activityDesc, ACTIVITY.applicationStatus AS appStatusId, AppStatusDVDesc.description AS appStatusDesc, ACTIVITY.startTime AS activityStartTime, ACTIVITY.endTime AS activityEndTime, ACTIVITY.duration AS activityDuration, ACTIVITY.username AS activityPerformedBy, ACTIVITY_PAYLOAD.id AS activityPayloadId 
+FROM APPLICATION INNER JOIN ACTIVITY ON APPLICATION.id = ACTIVITY.applicationId LEFT JOIN ACTIVITY_PAYLOAD ON ACTIVITY_PAYLOAD.activityId = ACTIVITY.id LEFT JOIN DomainValue AS ActivityTypeDV ON ActivityTypeDV.id = ACTIVITY.type LEFT JOIN DomainValueDescription AS ActivityTypeDesc ON ActivityTypeDesc.DomainValueId = ActivityTypeDV.id LEFT JOIN DomainValue AS AppStatusDV ON AppStatusDV.id = ACTIVITY.applicationStatus LEFT JOIN DomainValueDescription AS AppStatusDVDesc ON AppStatusDVDesc.DomainValueId = AppStatusDV.id 
+WHERE 
+CASE WHEN ACTIVITY.applicationStatus IS NULL
+THEN TRUE
+ELSE
+    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.Locale = :userLocale) IS NULL 
+    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = 'en')
+    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = :userLocale)
+    END
+END AND 
+CASE WHEN ACTIVITY.type IS NULL
+THEN TRUE
+ELSE
+    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.Locale = :userLocale) IS NULL 
+    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = 'en')
+    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = :userLocale)
+    END
+END AND 
+CASE WHEN :applicationNumber IS NULL
+THEN TRUE
+ELSE
+    APPLICATION.applicationNumber = :applicationNumber
+END AND 
+CASE WHEN :activityType IS NULL
+THEN TRUE
+ELSE
+    ACTIVITY.type = :activityType
+END AND 
+CASE WHEN :activityName IS NULL
+THEN TRUE
+ELSE
+    ACTIVITY.name LIKE :activityName
+END AND 
+CASE WHEN :isAppHistory
+THEN TRUE
+ELSE
+    CASE WHEN :createdDateStart IS NULL
+    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()
+    ELSE
+        DATE_FORMAT(ACTIVITY.startTime,"%Y-%m-%d %H:%i:%S.%f") >= DATE_FORMAT(:createdDateStart,"%Y-%m-%d %H:%i:%S.%f")
+    END AND 
+    CASE WHEN :createdDateEnd IS NULL
+    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()
+    ELSE
+        DATE_FORMAT(ACTIVITY.startTime,"%Y-%m-%d %H:%i:%S.%f") <= DATE_FORMAT(:createdDateEnd,"%Y-%m-%d %H:%i:%S.%f")
+    END
+END) wmTempTable
+        ]]>
+    <query-param name="userLocale" type="java.lang.String"/>
+    <query-param name="applicationNumber" type="java.lang.String"/>
+    <query-param name="activityType" type="java.lang.Integer"/>
+    <query-param name="activityName" type="java.lang.String"/>
+    <query-param name="isAppHistory" type="java.lang.Boolean"/>
+    <query-param name="createdDateStart" type="java.sql.Timestamp"/>
+    <query-param name="createdDateEnd" type="java.sql.Timestamp"/>
+    </sql-query>
+
+    <sql-query name="deleteQueueGroup">
+        <![CDATA[
+        delete from QUEUE_GROUP where QueueId=:QueueId OR GroupId=:GroupId
+        ]]>
+    <query-param name="QueueId" type="java.lang.String"/>
+    <query-param name="GroupId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getGroupByUserId">
+        <![CDATA[
+        select `GROUP`.Id,`GROUP`.Name,`GROUP`.active,`GROUP`.description from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId)
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getGroupByUserId__count">
+        <![CDATA[
+        select count(*) from (select `GROUP`.Id,`GROUP`.Name,`GROUP`.active,`GROUP`.description from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId)) wmTempTable
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRoleByUserId">
+        <![CDATA[
+        select ROLE.id,ROLE.role from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRoleByUserId__count">
+        <![CDATA[
+        select count(*) from (select ROLE.id,ROLE.role from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValuesByDvTypeCode">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL AND :isAlphaSort = false) 
+    THEN ParentDVQuery.RankOrder
+END ASC,
+CASE WHEN (ParentDVQuery.IsDefault = false AND (ParentDVQuery.RankOrder IS NULL OR :isAlphaSort = true))
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="isAlphaSort" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDomainValuesByDvTypeCode__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL AND :isAlphaSort = false) 
+    THEN ParentDVQuery.RankOrder
+END ASC,
+CASE WHEN (ParentDVQuery.IsDefault = false AND (ParentDVQuery.RankOrder IS NULL OR :isAlphaSort = true))
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="isAlphaSort" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="DVSearchByCodeAndDescription">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVQuery.DomainValueType, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder, concat(CreatedByUser.firstName,' ',CreatedByUser.lastName) AS createdBy, ParentDVQuery.createdOn, concat(UpdatedByUser.firstName,' ',UpdatedByUser.lastName) AS updatedBy, ParentDVQuery.updatedOn 
+    FROM DomainValue AS ParentDVQuery LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId LEFT JOIN USER AS CreatedByUser ON ParentDVQuery.CreatedBy = CreatedByUser.id LEFT JOIN USER AS UpdatedByUser ON ParentDVQuery.UpdatedBy = UpdatedByUser.id
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.DomainValueType = :domainValueTypeId AND
+CASE
+    WHEN :showAll = true
+        THEN 
+            (ParentDVQuery.IsActive = true OR ParentDVQuery.IsActive = false)
+        ELSE
+            ParentDVQuery.IsActive = :isActiveFlag
+    END
+    AND (ParentDVQuery.Code LIKE :searchValue OR ParentDVDescQuery.Description LIKE :searchValue)
+        ]]>
+    <query-param name="defaultLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeId" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    <query-param name="searchValue" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="DVSearchByCodeAndDescription__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVQuery.DomainValueType, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder, concat(CreatedByUser.firstName,' ',CreatedByUser.lastName) AS createdBy, ParentDVQuery.createdOn, concat(UpdatedByUser.firstName,' ',UpdatedByUser.lastName) AS updatedBy, ParentDVQuery.updatedOn 
+    FROM DomainValue AS ParentDVQuery LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId LEFT JOIN USER AS CreatedByUser ON ParentDVQuery.CreatedBy = CreatedByUser.id LEFT JOIN USER AS UpdatedByUser ON ParentDVQuery.UpdatedBy = UpdatedByUser.id
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.DomainValueType = :domainValueTypeId AND
+CASE
+    WHEN :showAll = true
+        THEN 
+            (ParentDVQuery.IsActive = true OR ParentDVQuery.IsActive = false)
+        ELSE
+            ParentDVQuery.IsActive = :isActiveFlag
+    END
+    AND (ParentDVQuery.Code LIKE :searchValue OR ParentDVDescQuery.Description LIKE :searchValue)) wmTempTable
+        ]]>
+    <query-param name="defaultLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeId" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    <query-param name="searchValue" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getPermissionGroupByRoleId">
+        <![CDATA[
+        select COUNT(*) from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId) UNION select COUNT(*) from `GROUP_ROLE`where RoleId =24
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getPermissionGroupByRoleId__count">
+        <![CDATA[
+        select count(*) from (select COUNT(*) from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId) UNION select COUNT(*) from `GROUP_ROLE`where RoleId =24) wmTempTable
+        ]]>
+    <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDVsByDVTypeWithActiveFlag">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="Query_GetAllDVsByDVTypeWithActiveFlag__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND DomainValueType.Code = :domainValueTypeCode AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="getGroupsRolesByUserId">
+        <![CDATA[
+        select COUNT(*) from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId) UNION  select COUNT(*) from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getGroupsRolesByUserId__count">
+        <![CDATA[
+        select count(*) from (select COUNT(*) from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId) UNION  select COUNT(*) from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable
+        ]]>
+    <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDVByCodeAndTypeCodeWithActiveFlag">
+        <![CDATA[
+        SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueCode" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="Query_GetDVByCodeAndTypeCodeWithActiveFlag__count">
+        <![CDATA[
+        select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId
+WHERE 
+CASE WHEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL
+THEN 
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+ELSE
+(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)
+END
+AND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND
+CASE WHEN :showAll IS TRUE
+    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)
+    ELSE ParentDVQuery.isActive = :isActiveFlag 
+END
+ORDER BY 
+CASE WHEN (ParentDVQuery.isDefault = true) 
+    THEN ParentDVQuery.updatedOn
+END DESC,
+CASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) 
+    THEN ParentDVQuery.RankOrder
+    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) 
+    THEN ParentDVDescQuery.Description
+END ASC) wmTempTable
+        ]]>
+    <query-param name="selectedLocale" type="java.lang.String"/>
+    <query-param name="domainValueCode" type="java.lang.String"/>
+    <query-param name="domainValueTypeCode" type="java.lang.String"/>
+    <query-param name="showAll" type="java.lang.Boolean"/>
+    <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="QueueLock">
+        <![CDATA[
+        update QUEUE set IsLocked = true, LockedBy = :lockedBy, UpdatedBy = :updatedBy, UpdatedOn = :updatedOn    where ID = :id
+        ]]>
+    <query-param name="lockedBy" type="java.lang.String"/>
+    <query-param name="updatedBy" type="java.lang.String"/>
+    <query-param name="updatedOn" type="java.sql.Timestamp"/>
+    <query-param name="id" type="java.lang.Integer"/>
+    </sql-query>
+</hibernate-mapping>

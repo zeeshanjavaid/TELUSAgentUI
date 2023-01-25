@@ -1,0 +1,11 @@
+.wm-app .search-outer-container .app-textbox.form-control{
+     width: 0;
+}
+
+/*.wm-app .app-input-wrapper .app-textbox.form-control {
+    width: 0;
+}*/
+.wm-app .search-transition {
+    width: 100%!important;
+    padding: 5px!important;
+}

@@ -1,0 +1,172 @@
+<wm-page pagetitle="Queue Search" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-container name="msg_container" class="regularFlex flex-col" width="100%" padding="0.5em">
+            <wm-message name="error_msg" type="error" caption="bind:errorMsg" show="bind:errorMsg" width="100%"></wm-message>
+            <wm-message name="noAppsInQueueMsg" type="warning" caption="No applications are available in the queue" show="bind:noAppsInQueue" width="100%"></wm-message>
+        </wm-container>
+        <wm-container name="search_wrapper" class="wrapper regularFlex flex-col" width="100%" show="bind:!isPriorityQueue" padding="0.5em">
+            <wm-container name="QSearch_container" width="100%" class="regularFlex flex-col item-center" margin="unset unset 1.5em unset">
+                <wm-label name="QName_lbl" width="100%" fontunit="px" class="header-label" caption="bind:Variables.getQueue.dataSet.data[0] ? Variables.getQueue.dataSet.data[0].name : &quot;&quot;"></wm-label>
+                <wm-container width="100%" class="inFlex item-center jc-sb" name="container3" padding="0.5em 0">
+                    <wm-container name="inputSet_container" width="70%" class="inFlex">
+                        <wm-container name="container6" width="32%">
+                            <wm-text name="search_input" placeholder="Search" class="searchInput" datavalue="bind:searchInputValue"></wm-text>
+                        </wm-container>
+                        <wm-button class="btn-default" caption="SEARCH" type="button" margin="unset 0.5em unset 1.5em" name="search_btn" on-click="search_btnClick($event, widget)"></wm-button>
+                        <wm-button class="btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="clear_btn" on-click="clear_btnClick($event, widget)"></wm-button>
+                    </wm-container>
+                    <wm-container name="pageInformation_container" class="inFlex item-center">
+                        <wm-label padding="unset 0.5em" name="pageInfo_lbl" width="100%" caption="bind:displayPageInfo()"></wm-label>
+                    </wm-container>
+                </wm-container>
+            </wm-container>
+            <wm-container name="QResult_container" width="100%" class="regularFlex flex-col item-center" margin="unset unset 1.5em unset">
+                <wm-table name="default_SearchTable" title="" dataset="bind:Variables.sv_getQueueApplications.dataSet.queueData" navigation="None" class="searchResult_DataTable" show="bind:Variables.getQueue.dataSet.data[0].QResultPageDVCode === &quot;DEFAULT&quot;"
+                    on-headerclick="default_SearchTableHeaderclick($event, $data)" on-datarender="default_SearchTableDatarender(widget, $data)" enablesort="false">
+                    <wm-table-column binding="applicationNumber" caption="Application Number" widget-type="anchor" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-anchor caption="bind:row.getProperty('applicationNumber')" hyperlink="" class="" conditionalclass="bind:{'display-none':row.getProperty('toDisplay') === false}" on-click="navigateToAppBroker(row.getProperty('applicationId'))"></wm-anchor>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationStatus" caption="Application Status" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationStatus')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationChannel" caption="Channel" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationChannel')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="customerName" caption="Customer Name" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('customerName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="dateOfBirth" caption="Date of Birth" edit-widget-type="timestamp" type="timestamp" readonly="true" datepattern="MM/dd/yyyy" formatpattern="toDate" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue"></wm-table-column>
+                    <wm-table-column binding="postalCode" caption="Postal Code" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('postalCode')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="province" caption="Province" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('province')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:validateMobilePhone(row.getProperty('phoneNumber'))" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="mothersMaidenName" caption="Mother's Maiden Name" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('mothersMaidenName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="employerName" caption="Employer" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('employerName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="employmentJobcode" caption="Occupation" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('employmentJobcode')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="emailId" caption="Email" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('emailId')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationCreatedBy" caption="Created By" edit-widget-type="text" type="string" readonly="true" show="true"><span><label>{{row.getProperty('applicationCreatedBy')}}</label><br><label>{{displayDateFormat(row.getProperty('applicationCreatedOn'))}}</label></span></wm-table-column>
+                    <wm-table-column binding="applicationUpdatedBy" caption="Updated By"
+                        edit-widget-type="text" type="string" readonly="true" show="true"><span><label>{{row.getProperty('applicationUpdatedBy')}}</label><br><label>{{displayDateFormat(row.getProperty('applicationUpdatedOn'))}}</label></span></wm-table-column>
+                    <wm-table-column binding="applicationLockedBy" caption="Locked By"
+                        widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('applicationLockedBy')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="appCreatedSinceDays" caption="# days since create date" edit-widget-type="number" type="integer" readonly="true" sortable="false" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{formatDateInterval(row.getProperty('appCreatedSinceDays'))}}</wm-table-column>
+                    <wm-table-column binding="appOwnedSinceDays" caption="# of days since ownership" edit-widget-type="number" type="integer" readonly="true" sortable="false"
+                        show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{formatDateInterval(row.getProperty('appOwnedSinceDays'))}}</wm-table-column>
+                    <wm-table-column binding="appHoldUntil" caption="On Hold Until" edit-widget-type="timestamp" type="timestamp" readonly="true" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{displayDateFormat(row.getProperty('appHoldUntil'))}}</wm-table-column>
+                    <wm-table-column binding="appHoldReason" caption="Reasons for hold" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('appHoldReason')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                </wm-table>
+                <wm-table name="manager_SearchTable" title="" dataset="bind:Variables.sv_getQueueApplications.dataSet.queueData" navigation="None" class="searchResult_DataTable" show="bind:Variables.getQueue.dataSet.data[0].QResultPageDVCode === &quot;MANAGER&quot;"
+                    on-headerclick="manager_SearchTableHeaderclick($event, $data)" on-datarender="manager_SearchTableDatarender(widget, $data)" enablesort="false">
+                    <wm-table-column binding="applicationNumber" caption="Application Number" widget-type="anchor" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-anchor caption="bind:row.getProperty('applicationNumber')" hyperlink="" class="" conditionalclass="bind:{'display-none':row.getProperty('toDisplay') === false}" on-click="navigateToAppBroker(row.getProperty('applicationId'))"></wm-anchor>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationStatus" caption="Application Status" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationStatus')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="caseReviewType" caption="Case Review Type" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('caseReviewType')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="caseReviewLevel" caption="Case Review Level" widget-type="label" edit-widget-type="number" type="integer" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('caseReviewLevel')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationChannel" caption="Channel" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationChannel')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="customerName" caption="Customer Name" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('customerName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:validateMobilePhone(row.getProperty('phoneNumber'))" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="emailId" caption="Email" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('emailId')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationCreatedOn" caption="Created On" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true">{{displayDateFormat(row.getProperty('applicationCreatedOn'))}}</wm-table-column>
+                    <wm-table-column binding="applicationUpdatedBy" caption="Updated By" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationUpdatedBy')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationLockedBy" caption="Locked By" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationLockedBy')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                </wm-table>
+                <wm-table name="fraud_SearchTable" title="" dataset="bind:Variables.sv_getQueueApplications.dataSet.queueData" navigation="None" show="bind:Variables.getQueue.dataSet.data[0].QResultPageDVCode === &quot;FRAUD&quot;" class="searchResult_DataTable"
+                    on-headerclick="fraud_SearchTableHeaderclick($event, $data)" on-datarender="fraud_SearchTableDatarender(widget, $data)" enablesort="false">
+                    <wm-table-column binding="applicationNumber" caption="Application Number" widget-type="anchor" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-anchor caption="bind:row.getProperty('applicationNumber')" hyperlink="" class="" conditionalclass="bind:{'display-none':row.getProperty('toDisplay') === false}" on-click="navigateToAppBroker(row.getProperty('applicationId'))"></wm-anchor>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationStatus" caption="Application Status" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationStatus')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationChannel" caption="Channel" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('applicationChannel')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="customerName" caption="Customer Name" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('customerName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="dateOfBirth" caption="Date of Birth" edit-widget-type="timestamp" type="timestamp" readonly="true" datepattern="MM/dd/yyyy" formatpattern="toDate" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue"></wm-table-column>
+                    <wm-table-column binding="postalCode" caption="Postal Code" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('postalCode')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:validateMobilePhone(row.getProperty('phoneNumber'))" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="mothersMaidenName" caption="Mother's Maiden Name" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('mothersMaidenName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="employerName" caption="Employer" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('employerName')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="employmentJobcode" caption="Occupation" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('employmentJobcode')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="emailId" caption="Email" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('emailId')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="ipAddress" caption="IP Address" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-label caption="bind:row.getProperty('ipAddress')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="applicationCreatedOn" caption="Created By" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true"><span><label>{{row.getProperty('applicationCreatedBy')}}</label><br><label>{{displayDateFormat(row.getProperty('applicationCreatedOn'))}}</label></span></wm-table-column>
+                    <wm-table-column binding="applicationUpdatedBy" caption="Updated By"
+                        edit-widget-type="text" type="string" readonly="true" show="true"><span><label>{{row.getProperty('applicationUpdatedBy')}}</label><br><label>{{displayDateFormat(row.getProperty('applicationUpdatedOn'))}}</label></span></wm-table-column>
+                    <wm-table-column binding="applicationLockedBy" caption="Locked By"
+                        widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:!Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('applicationLockedBy')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="appCreatedSinceDays" caption="# days since create date" edit-widget-type="number" type="integer" readonly="true" sortable="false" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{formatDateInterval(row.getProperty('appCreatedSinceDays'))}}</wm-table-column>
+                    <wm-table-column binding="appOwnedSinceDays" caption="# of days since ownership" edit-widget-type="number" type="integer" readonly="true" sortable="false"
+                        show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{formatDateInterval(row.getProperty('appOwnedSinceDays'))}}</wm-table-column>
+                    <wm-table-column binding="appHoldUntil" caption="On Hold Until" edit-widget-type="timestamp" type="timestamp" readonly="true" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">{{displayDateFormat(row.getProperty('appHoldUntil'))}}</wm-table-column>
+                    <wm-table-column binding="appHoldReason" caption="Reasons for hold" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="bind:Variables.getQueue.dataSet.data[0].isPersonalQueue">
+                        <wm-label caption="bind:row.getProperty('appHoldReason')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                </wm-table>
+            </wm-container>
+            <wm-container name="QPagination_container" width="100%" class="inFlex item-center" content="Partial_Pagination" show="bind:totalRecords > 0" style="justify-content: flex-end;">
+                <wm-param name="parentContainerName" value="QPagination_container" type="string"></wm-param>
+                <wm-param name="pageSize" value="bind:pageSize" type="integer"></wm-param>
+                <wm-param name="totalRecords" value="bind:totalRecords" type="integer"></wm-param>
+            </wm-container>
+            <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="dvs_QueueResultPage,sv_getQueueApplications"></wm-spinner>
+        </wm-container>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

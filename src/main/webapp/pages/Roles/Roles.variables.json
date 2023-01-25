@@ -1,0 +1,100 @@
+{
+  "isExpandedGeneral" : {
+    "_id" : "wm-isExpandedGeneral-wm.Variable-1652873283395",
+    "name" : "isExpandedGeneral",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "isExpandedUM" : {
+    "_id" : "wm-isExpandedUM-wm.Variable-1652873300324",
+    "name" : "isExpandedUM",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "partialQueueMsg" : {
+    "_id" : "wm-partialQueueMsg-wm.Variable-1660820597376",
+    "name" : "partialQueueMsg",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "sectionName" : {
+    "_id" : "wm-sectionName-wm.Variable-1653630918505",
+    "name" : "sectionName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "showAdminMiddleContainer" : {
+    "_id" : "wm-showAdminMiddleContainer-wm.Variable-1652877795462",
+    "name" : "showAdminMiddleContainer",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "tempAdminVariable" : {
+    "_id" : "wm-tempVariable-wm.Variable-1655129259849",
+    "name" : "tempAdminVariable",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "tempUserMVariable" : {
+    "_id" : "wm-tempUserMVariable-wm.Variable-1655134843349",
+    "name" : "tempUserMVariable",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

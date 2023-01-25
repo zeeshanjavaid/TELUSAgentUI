@@ -1,0 +1,50 @@
+<wm-partial name="leftnav" type="leftnav">
+    <wm-container name="leftnavColumn" animation="slideInRight">
+        <wm-layoutgrid name="layoutgrid1" class="nav-grid">
+            <wm-gridrow name="gridrow1" padding="10px 0px 10px 10px" class="background-gray">
+                <wm-gridcolumn columnwidth="10" name="gridcolumn5">
+                    <wm-container name="container2">
+                        <wm-label padding="unset 0.5em" name="label1" caption="bind:appLocale.LEFT_NAV_SETUP" color="#6e6d6a" class="font-size-16px"></wm-label>
+                    </wm-container>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                    <wm-container name="hideNav" margin="unset 5px unset unset" horizontalalign="right">
+                        <wm-icon name="icon1" iconclass="fico-icon-menu fa-lg" class="text-fico-gray pull-right  display-inline-block" iconsize="14px"></wm-icon>
+                    </wm-container>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow2">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                    <wm-nav type="tabs" autoclose="disabled" name="setup" dataset="bind:Variables.SetupLeftNavData.dataSet" layout="stacked" autoopen="always" itemlabel="name" itemicon="imageLocation" itemchildren="children" itemlink="url" class="menulinks"></wm-nav>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid2" class="icons-grid collapse">
+            <wm-gridrow name="gridrow1">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                    <wm-container name="hideList" on-click="hideListClick($event, widget)" padding="10px 20px" horizontalalign="center">
+                        <wm-icon name="icon1" iconclass="fico-icon-menu fa-lg" class="text-fico-gray" iconsize="14px"></wm-icon>
+                    </wm-container>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow2">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn3" class="position-relative">
+                    <wm-list listclass="list-group" itemclass="list-group-item collapse-list padding-0px" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" datafield="All Fields" name="Nav2List1" dataset="bind:Variables.SetupLeftNavData.dataSet"
+                        navigation="None" show="true">
+                        <wm-listtemplate layout="inline" name="listtemplate1">
+                            <wm-container name="listItem" padding="10px 20px" on-mouseover="listItemMouseover($event, widget, item, currentItemWidgets)" on-mouseout="listItemMouseout($event, widget, item, currentItemWidgets)">
+                                <wm-container name="container8" class="display-inline-block" horizontalalign="center">
+                                    <wm-icon name="icon3" iconclass="bind:Variables.SetupLeftNavData.dataSet[$i].imageLocation === &quot;&quot; ? &quot;fico-icon-rearrange fa-lg&quot; : Variables.SetupLeftNavData.dataSet[$i].imageLocation" iconsize="14px"
+                                        class="text-fico-gray"></wm-icon>
+                                </wm-container>
+                                <wm-container name="navContainer" class="slide-left-nav background-gray collapse">
+                                    <wm-nav type="pills" autoclose="outsideClick" name="nav2" dataset="bind:Variables.SetupLeftNavData.dataSet[$i].children" layout="stacked" itemlabel="name" itemlink="url" orderby="order:asc"></wm-nav>
+                                </wm-container>
+                            </wm-container>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-container>
+</wm-partial>

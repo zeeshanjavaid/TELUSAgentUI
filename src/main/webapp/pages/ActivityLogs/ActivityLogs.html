@@ -1,0 +1,152 @@
+<wm-page pagetitle="Activity Logs" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full" width="100%">
+                <wm-container name="Searchcontainer" width="100%">
+                    <wm-message name="message1" type="error" show="bind:showErrorMsg" caption="bind:ErrorMsg"></wm-message>
+                    <wm-message name="statusMessage" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" class="msg" show="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus"></wm-message>
+                    <wm-label caption="Activity Log" class="header-label" width="100%" name="lbl_activitylog"></wm-label>
+                    <wm-container name="SearchFilter-wrapper" class="inflex-center-sb flexCol jc-center width-full">
+                        <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset">
+                            <wm-container name="appNum_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                <wm-composite name="composite1" class="inflex-center-sb jc-sb" width="90%" required="false">
+                                    <wm-label class="col-md-3 control-label" name="label3" caption="Application number" width="40%"></wm-label>
+                                    <wm-container class="col-md-9" name="container3" width="60%">
+                                        <wm-text name="txt_app_num" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.appnum" width="100%" required="false"></wm-text>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                            <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
+                                    <wm-label class="col-md-3 control-label" name="label5" caption="Activity type" width="40%"></wm-label>
+                                    <wm-container class="col-md-9" name="container5" width="60%">
+                                        <wm-select name="select_activity_type" placeholder="Select" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet" datafield="id"
+                                            displayfield="description"></wm-select>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                            <wm-container name="ActivityName_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                <wm-composite name="composite3" class="inflex-center-sb jc-sb" width="90%">
+                                    <wm-label class="col-md-3 control-label" name="label4" caption="Activity name" width="40%"></wm-label>
+                                    <wm-container class="col-md-9" name="container4" width="60%">
+                                        <wm-text name="txt_activity_ame" placeholder="" class="searchInput" width="75%" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activityname"></wm-text>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                        </wm-container>
+                        <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset">
+                            <wm-container name="createdOnStart_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                <wm-composite name="composite5" class="inflex-center-sb jc-sb" width="90%">
+                                    <wm-label class="col-md-3 control-label" name="label6" caption="Created date start" width="40%"></wm-label>
+                                    <wm-container name="container6" class="col-md-9" width="60%">
+                                        <wm-datetime name="activity_start_date" placeholder="" maxdate="CURRENT_DATE" outputformat="timestamp" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.startdate"></wm-datetime>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                            <wm-container name="createdOnEnd_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                <wm-composite name="composite6" class="inflex-center-sb jc-sb" width="90%">
+                                    <wm-label class="col-md-3 control-label" name="label7" caption="Created date end" width="40%"></wm-label>
+                                    <wm-container class="col-md-9" name="container7" width="60%">
+                                        <wm-datetime name="activity_end_date" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.enddate" maxdate="CURRENT_DATE" outputformat="timestamp"></wm-datetime>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                            <wm-container name="blank_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb"></wm-container>
+                        </wm-container>
+                    </wm-container>
+                </wm-container>
+                <wm-container name="Wrapper" class="inflex-center-sb flexCol jc-center width-full">
+                    <wm-layoutgrid name="layoutgrid1">
+                        <wm-gridrow name="gridrow5">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn12">
+                                <wm-button class="btn-primary" caption="SEARCH" type="button" margin="unset 0.5em unset unset" name="btn_Search" on-click="btn_SearchClick($event, widget)"></wm-button>
+                                <wm-button class="btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="btn_Clear" on-click="btn_ClearClick($event, widget)"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn13"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow6" height="30">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn14"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn15"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow10">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn18"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-container>
+                <wm-container name="ResultContainer" width="100%" class="jc-sb flexCol colflex-center-sb width-full">
+                    <wm-container name="container8" class="inflex-center-sb jc-flexEnd width-full" height="40" padding="unset 5px unset unset">
+                        <wm-button caption="" type="button" margin="unset 0.5em" name="export_activities" iconclass="fa fa-download" class="upDown" on-click="export_activitiesClick($event, widget)" hint="Export Logs"></wm-button>
+                        <wm-label padding="unset unset unset 0.5em" name="lbl_record_details" caption="bind:displayPageInfo()"></wm-label>
+                    </wm-container>
+                    <wm-table name="getActivityEventLogsTable1" title="" dataset="bind:Variables.sv_activityLogSearchResult.dataSet.activityList" navigation="None" width="100%" class="width-full" on-headerclick="getActivityEventLogsTable1Sort($event, $data)">
+                        <wm-table-column binding="applicationNumber" caption="Application Number" widget-type="label" width="10%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('applicationNumber')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="activityTypeDesc" caption="Activity Type" width="12%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-container name="tbl_activityTypeContainer">
+                                <wm-picture name="picture1" shape="thumbnail" picturesource="bind:App.mapActivityTypeToIcons(row.getProperty('activityTypeCode'))"></wm-picture>
+                                <wm-label caption="bind:row.getProperty('activityTypeDesc')"></wm-label>
+                            </wm-container>
+                        </wm-table-column>
+                        <wm-table-column binding="activityName" caption="Activity Name" widget-type="label" width="10%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('activityName')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="activityDesc" caption="Description" widget-type="label" width="12%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('activityDesc')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="appStatusDesc" caption="Application Status" widget-type="label" width="8%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('appStatusDesc')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="activityStartTime" caption="Start Date and Time" width="12%" edit-widget-type="datetime" type="datetime" readonly="true" show="true">{{App.localizeTimestampToAppTimezone(row.getProperty('activityStartTime'))}}</wm-table-column>
+                        <wm-table-column binding="activityEndTime" caption="End Date and Time" width="12%" edit-widget-type="datetime" type="datetime" readonly="true"
+                            show="true">{{App.localizeTimestampToAppTimezone(row.getProperty('activityEndTime'))}}</wm-table-column>
+                        <wm-table-column binding="activityDuration" caption="Duration (ms)" widget-type="label" width="5%" edit-widget-type="number" type="long"
+                            readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('activityDuration')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="activityPerformedBy" caption="User Name" widget-type="label" width="8%" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('activityPerformedBy')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="actions" caption="Actions" widget-type="button" width="5%" edit-widget-type="text" type="string" sortable="false" searchable="false" show="true" readonly="false">
+                            <wm-button caption="" show="bind:row.getProperty('activityPayloadId')?true:false" class="" iconclass="fico-icon-info fa-lg" on-click="getActivityEventLogsTable1_actionsAction(row)" conditionalclass=""></wm-button>
+                        </wm-table-column>
+                    </wm-table>
+                    <wm-container name="al_PaginationContainer" content="Partial_Pagination" show="bind:Variables.mv_totalRecords.dataSet.dataValue > 0" class="width-full" margin="20px unset unset unset">
+                        <wm-param name="parentContainerName" value="al_PaginationContainer" type="string"></wm-param>
+                        <wm-param name="pageSize" value="bind:Variables.mv_pageSize.dataSet.dataValue" type="integer"></wm-param>
+                        <wm-param name="totalRecords" value="bind:Variables.mv_totalRecords.dataSet.dataValue" type="integer"></wm-param>
+                    </wm-container>
+                    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="sv_activityLogSearchResult,sv_ExtractActivityLog,sv_getActivityTypeDV,sv_ProcessActivityPayloadData"></wm-spinner>
+                </wm-container>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:appLocale.VIEW_REQUEST_RESPONSE_HEADING" iconclass="" name="dialog1" class="request-response-dialog" width="700px" on-opened="dialog1Opened($event, widget)">
+        <wm-dialogactions name="dialogactions1">
+            <wm-anchor margin="unset 0.5em" name="downloadRequestResponseLink" class="btn btn-primary" caption="bind:getDownloadButtonLabel()" target="_self" on-click="downloadRequestResponseLinkClick($event, widget)" conditionalclass="bind:Variables.isDownloadAvailable.dataSet.dataValue === false?'disabled':''"></wm-anchor>
+            <wm-button class="btn-default" caption="bind:appLocale.LABEL_CLOSE" on-click="closeDialog()" name="button1"></wm-button>
+        </wm-dialogactions>
+        <wm-label padding="unset 0.5em unset 0.3em" name="activityName" caption="bind:Variables.currentActivityName.dataSet.dataValue" class="activity-name-label" margin="unset unset 10px unset"></wm-label>
+        <wm-tabs name="requestResponseTabs" class="request-response-tabs" show="true">
+            <wm-tabpane name="requestPane" title="Request" badgetype="default" on-select="requestPaneSelect($event, widget)" show="bind:Variables.isRequestStructureAvailable.dataSet.dataValue === true">
+                <pre class="request-response-text-container"><wm-html name="html1" show="true" content="bind:Variables.selectedRequestResponse.requestContent? formattedData : appLocale.MESSAGE_NO_DATA">bind:Variables.selectedRequestResponse.requestContent? formattedData : appLocale.MESSAGE_NO_DATA</wm-html></pre>
+            </wm-tabpane>
+            <wm-tabpane name="responsePane" title="Response" on-select="responsePaneSelect($event, widget)" show="bind:Variables.isResponseStructureAvailable.dataSet.dataValue === true">
+                <pre class="request-response-text-container"><wm-html name="html2" show="true" content="bind:Variables.selectedRequestResponse.responseContent ? formattedData : appLocale.MESSAGE_NO_DATA">bind:Variables.selectedRequestResponse.responseContent ? formattedData : appLocale.MESSAGE_NO_DATA</wm-html></pre>
+            </wm-tabpane>
+        </wm-tabs>
+        <style>
+            .request-response-text-container {
+                font-family: monospace;
+                font-size: 1.1em;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                line-height: 1.3;
+            }
+        </style>
+        <wm-spinner show="true" name="spinner1" servicevariabletotrack="sv_ProcessActivityPayloadData" caption=""></wm-spinner>
+    </wm-dialog>
+</wm-page>

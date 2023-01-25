@@ -1,0 +1,262 @@
+[ {
+  "name" : "ActivityLog",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ActivityLogs",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddGroupPartial",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "groupId",
+    "type" : "integer"
+  }, {
+    "name" : "groupName",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "AddQueuePartial",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "queueId",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "AddRolePartial",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "roleId",
+    "type" : "integer"
+  }, {
+    "name" : "roleName",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "ApplicationHistory",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "applicationId",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "ApplicationSearch",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Audit_AcessLogs",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Audit_Entities",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Audit_UserSession",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "DomainValue",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "domainValueTypeId",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "DomainValueCreateEdit",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "domainValueTypeId",
+    "type" : "integer"
+  }, {
+    "name" : "domainValueId",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "DomainValueTypes",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ErrorLanding",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "GroupPartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "Groups",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "LogConfiguration",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Logout",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "LookupFileCreateEdit",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "lookupFileIdentifier",
+    "type" : "string"
+  }, {
+    "name" : "lookupFileName",
+    "type" : "string"
+  }, {
+    "name" : "lookupFileDesc",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "LookupListing",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Partial_Conditions",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "applicationId",
+    "type" : "integer"
+  }, {
+    "name" : "parentContainerName",
+    "type" : "string"
+  }, {
+    "name" : "applicationStatusCode",
+    "type" : "string"
+  }, {
+    "name" : "docsParentContainerName",
+    "type" : "string"
+  }, {
+    "name" : "Role_ManageDocumentsandStipulations",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "Partial_Documents",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "applicationId",
+    "type" : "integer"
+  }, {
+    "name" : "parentContainerName",
+    "type" : "string"
+  }, {
+    "name" : "applicationStatusCode",
+    "type" : "string"
+  }, {
+    "name" : "Role_ManageDocumentsandStipulations",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "Partial_Pagination",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "pageSize",
+    "type" : "integer"
+  }, {
+    "name" : "totalRecords",
+    "type" : "integer"
+  }, {
+    "name" : "parentContainerName",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "Partial_SetupLeftNav",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "PayloadExtract",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueuePartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "QueueSearch",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "queueId",
+    "type" : "integer"
+  }, {
+    "name" : "noAppsInQueue",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "Queues",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Roles",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "RolesPartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "SetupLanding",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "SiteProperties",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "TimerSetting",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "UserManagement",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "UserPartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "Users",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "layoutgridtest",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "topMessageSection",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ {
+    "name" : "doRefresh",
+    "type" : "string"
+  } ]
+} ]

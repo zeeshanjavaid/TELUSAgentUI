@@ -1,0 +1,72 @@
+<wm-page pagetitle="Activity Log" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <!--<wm-livefilter name="ActivitylogFilter" title="Search Activity Log" dataset="bind:Variables.activityLog.dataSet" captionalign="left" captionposition="top" iconclass="fico-icon-search" on-beforeservicecall="ActivitylogFilterBeforeservicecall($data)">
+                <wm-layoutgrid columns="3" name="layoutgrid3">
+                    <wm-gridrow name="gridrow9">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn11">
+                            <wm-filter-field name="applicationId" field="applicationId" displayname="FICO ID" show="true" type="string" matchmode="exact" widget="text" inputtype="text" is-range="false" key="applicationId" placeholder="Enter value" readonly="false" autofocus="true"
+                                disabled="true"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn12">
+                            <wm-filter-field name="application.userRecordId" field="application.userRecordId" displayname="Application User Record Id" show="true" type="number" widget="text" inputtype="text" is-range="false" key="application.userRecordId" placeholder="Enter value"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn13">
+                            <wm-filter-field name="activitylogtype" field="activitylogtype" displayname="Log Type" widget="number" lookup-type="Activitylogtype" lookup-field="id" is-related="true" related-entity-name="Activitylogtype" is-range="false" type="integer" is-primary-key="false"
+                                generator="assigned" show="true" inputtype="number" key="activitylogtype" placeholder="Enter value" matchmode="startignorecase"></wm-filter-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn14">
+                            <wm-filter-field name="activitylogname" field="activitylogname" displayname="Name" widget="select" lookup-type="Activitylogname" lookup-field="id" is-related="true" related-entity-name="Activitylogname" is-range="false" type="integer" is-primary-key="false"
+                                generator="assigned" show="true" key="activitylogname" matchmode="startignorecase" filterexpressions="{&quot;condition&quot;:&quot;AND&quot;,&quot;rules&quot;:[{&quot;target&quot;:&quot;&quot;,&quot;type&quot;:&quot;string&quot;,&quot;matchMode&quot;:&quot;anywhereignorecase&quot;,&quot;value&quot;:&quot;&quot;,&quot;required&quot;:false}]}"
+                                placeholder="Select value" dataset="bind:Variables.getActivityLogName.dataSet"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn22">
+                            <wm-filter-field name="description" field="description" related-field="Description" widget="text" is-range="false" show="true" type="string" is-primary-key="false" generator="assigned" matchmode="anywhereignorecase" inputtype="text" displayname="Description"
+                                key="description" placeholder="Enter value" width="200"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn23">
+                            <wm-filter-field name="activitypayload" field="activitypayload" displayname="Request Date" widget="timestamp" lookup-type="Activitypayload" lookup-field="requestTs" is-related="true" related-entity-name="Activitypayload" is-range="true" type="integer"
+                                is-primary-key="false" generator="assigned" show="true" key="activitypayload" matchmode="startignorecase" datepattern="MMM d, yyyy h:mm:ss a" placeholder="Select date time" maxplaceholder="Select Max date time"></wm-filter-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow11">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn15">
+                            <wm-filter-field name="activitypayload.timeTakeninMilliSec" field="activitypayload.timeTakeninMilliSec" displayname="Time Taken" show="true" type="long" widget="number" inputtype="number" is-range="true" key="activitypayload.timeTakeninMilliSec" placeholder="Enter value"
+                                maxplaceholder="Enter Max value"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn1" columnwidth="4">
+                            <wm-filter-field name="activitypayload.isError" field="activitypayload.isError" displayname="Error" show="true" type="boolean" widget="checkboxset" required="false" is-range="false" key="activitypayload.isError" placeholder="" dataset="bind:Variables.booleanChoices.dataSet"
+                                datafield="dataValue" displayfield="dataValue" datavalue="true, false"></wm-filter-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn2" columnwidth="4">
+                            <wm-filter-field name="activitypayload.isTimeout" field="activitypayload.isTimeout" displayname="Timeout" show="true" type="boolean" widget="checkboxset" required="false" is-range="false" key="activitypayload.isTimeout" placeholder="" dataset="bind:Variables.booleanChoices.dataSet"
+                                datafield="dataValue" displayfield="dataValue" datavalue="true, false"></wm-filter-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-filter-action key="filter" display-name="Search" show="true" class="btn-primary" iconclass="fico-icon-search" title="Search" action="filter()" disabled="false" widget-type="button" type="button"></wm-filter-action>
+                <wm-filter-action key="clear" display-name="Clear" show="true" class="btn-secondary" iconclass="wi wi-trash" title="Clear" action="clearFilter();ActivitylogFilter_clearAction($event)" disabled="false" widget-type="button" type="button"></wm-filter-action>
+            </wm-livefilter>-->
+            <wm-livetable name="LiveTable1">
+                <wm-table gridfirstrowselect="true" name="Table1" title="" dataset="bind:Widgets.ActivitylogFilter.result" navigation="Basic" editmode="form" exportformat="EXCEL">
+                    <wm-table-column binding="applicationId" caption="FICO ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="application.userRecordId" caption="User Record Id" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitylogtype.type" caption="Log type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitylogname.name" caption="Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.isSuccess" caption="Success" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.isError" caption="Error" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.isTimeout" caption="Timeout" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.requestTs" caption="Request Time" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.responseTs" caption="Response Time" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.timeTakeninMilliSec" caption="Time Taken(ms)" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="activitypayload.externalTime" caption="External Time(ms)" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                </wm-table>
+            </wm-livetable>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

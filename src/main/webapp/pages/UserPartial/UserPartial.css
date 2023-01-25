@@ -1,0 +1,421 @@
+/*.di-width{
+    min-width: 90%;
+}*/
+
+
+/*.action-right{ 
+    right: 6%; 
+    
+}*/
+
+
+/*@media (min-width: 576px)
+.wm-app .modal-dialog {
+    max-width: 83rem;
+    max-height: 27rem;
+    margin: 1.75rem auto;
+}*/
+
+div[name='userMVTable1'] .app-grid-header table {
+    border-bottom: transparent !important;
+}
+
+div[name='userMVTable1'] .app-grid-header table tr th {
+    border: #d2e9f4 !important;
+}
+
+.table-container {
+    max-width: 100% !important;
+}
+
+.filter-row input {
+    width: 100% !important;
+}
+
+.input-group-append {
+    display: none;
+}
+
+.modal-dialog.app-dialog.modal-dialog.di-width {
+    max-width: 81.25rem;
+}
+
+
+/*.container {
+    display: grid;    
+    grid-template-columns: repeat(auto-fit, minmax(300px , 1fr));
+}*/
+
+.wm-app .app-livelist .no-padding-list .no-padding-list-item {
+    padding: 0px;
+}
+
+
+/*.wm-app .loan-illustration {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}*/
+
+.container-main {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 49em;
+}
+
+.assign-group-role {
+    /*left: -5em;*/
+    margin-left: -20px;
+}
+
+.Permissionlist-label {
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 7px 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i {
+    margin-bottom: -20px;
+    /* left: -20em; */
+    /*margin-left: -27em;
+    padding-left: -10em;
+    padding-right: 12em;*/
+    /* float: left; */
+}
+
+label.app-label.category-label {
+    padding-left: 1em;
+    /*float: left;*/
+    font-size: 14px;
+    font-weight: 400;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i.active {
+    background-color: #fff;
+    color: black;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i:focus {
+    background-color: #fff;
+    color: black;
+}
+
+.wm-app .card-header .panel-g-r {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
+}
+
+.card-body .panel-g-r {
+    top: -3em;
+}
+
+ul.app-livelist-container.card-body.clearfix.list-group.assign-group-role-g {
+    top: -15px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i {
+    /*margin-bottom: -10px;*/
+}
+
+.app-grid-layout.clearfix.layout-g-r {
+    /* bottom: -5em; */
+    /* margin-bottom: -5em;*/
+}
+
+.app-livelist.app-card.card.media-list.permission-list.None {
+    /*margin-bottom: -4em;*/
+}
+
+label.app-label.category-label-dot {
+    margin-left: -54px;
+}
+
+i.app-icon.fico-icon-circle-solid {
+    font-size: x-small;
+    padding-left: 3em;
+    vertical-align: text-top;
+    top: -3px;
+}
+
+.app-panel.app-card.card.panel-g-r {
+    border-width: 0px;
+    /*margin-bottom: -50px;*/
+}
+
+.col-auto {
+    top: 2px;
+}
+
+.card-body {
+    padding: 0rem !important;
+}
+
+.wm-app .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    border-bottom: 0px;
+}
+
+.wm-app .card .card-header .card-title {
+    min-height: 2.1875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: revert;
+    margin-bottom: -5px;
+}
+
+.app-livelist.app-card.card.media-list.admin-general-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+    margin-top: -15px;
+}
+
+.app-livelist.app-card.card.media-list.admin-um-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+    margin-top: -15px;
+}
+
+i.app-icon.panel-icon.fico-icon-arrow-bold-down.fa-lg {
+    top: -5px;
+}
+
+
+/*.wm-app .app-livelist .fi-horizontal-list {
+    display: flex !important;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+}*/
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.popover-custom.fi-horizontal-list-item.active {
+    /*width: 20rem !important;
+    line-height: 15px !important;*/
+    display: contents;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.popover-custom.fi-horizontal-list-item:hover {
+    /*width: 20rem !important;
+    line-height: 15px !important;*/
+    display: contents;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.popover-custom.fi-horizontal-list-item:focus {
+    /* width: 20rem !important;
+    line-height: 15px !important;*/
+    display: contents;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.popover-custom.fi-horizontal-list-item {
+    /*width: 20rem !important;
+    line-height: 15px !important;*/
+    float: left!important;
+    display: contents;
+}
+
+label.app-label.Permissionlist-label {
+    background-color: #90b2cd;
+}
+
+.button-addon {
+    position: absolute;
+    right: 0.5rem;
+    margin: 0;
+    padding: 0;
+    top: 1.3rem;
+}
+
+.wm-app .btn.btn-link:hover {
+    color: #003150;
+    /* text-decoration: underline; */
+    background: transparent;
+    border-color: transparent;
+}
+
+.wm-app app-partial-userpartial li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i {
+    margin-bottom: -20px;
+}
+
+.app-panel.app-card.card.panel-g-r {
+    padding-bottom: 0px !important;
+}
+
+i.app-icon.panel-icon.fico-icon-arrow-bold-right {
+    top: 2px !important;
+}
+
+
+/*.ng-untouched.ng-pristine.app-checkbox.checkbox.app-toggle.action-right {
+    float: left;
+    margin-left: -15px;
+    
+}
+
+.app-checkbox.checkbox.app-toggle.action-right.ng-dirty.ng-touched {
+    margin-left: -15px!important; 
+}*/
+
+wm-input.ng-untouched.ng-pristine.ng-valid.app-input-wrapper {
+    min-width: 100% !important;
+    width: 100% !important;
+}
+
+wm-input[class~='ng-dirty'] {
+    min-width: 100% !important;
+    width: 100% !important;
+}
+
+wm-input[class~='ng-touched'] {
+    min-width: 100% !important;
+    width: 100% !important;
+}
+
+th.app-datagrid-header-cell.grid-col-small {
+    padding-left: 12px;
+}
+
+.app-container.text {
+    display: contents;
+}
+
+label.app-label.text-label {
+    border: solid;
+    background-color: #90b2cd;
+    border-color: white;
+    border-right-width: 9px;
+    border-left-width: 0px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 12px;
+    border-width: 7.5px;
+    /* border-bottom-left-radius: 5px; */
+    /* margin-top: -5px; */
+}
+
+.app-container.serachSection {
+    margin-left: 1.8em;
+    width: 42.5%;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (min-width: 576px) {
+    .wm-app .col-username {
+        flex: 0 0 7.3333333333%;
+        max-width: 7.3333333333%;
+    }
+}
+
+.searchText {
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 10px;
+    min-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    right: 0.5%;
+    border-radius: 4px;
+}
+
+/* user dialog styles */
+div[name='dialogUserDetails'] .modal-header > h4 {
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid #d2e9f4;
+} 
+
+div[name='dialogUserDetails'] .modal-body {
+    padding: 0 15px 15px 15px;
+}
+
+.panel-g-r > .card-header > .row {
+    display: inline-flex;
+    width: 100%;
+    gap: 2px;
+}
+
+.panel-g-r > .card-header > .row > .col-auto {
+    width: fit-content;
+    padding: 0.2em 0;
+}
+
+.panel-g-r > .card-header > .row > .panel-toggle {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.panel-g-r > .card-header > .row > .panel-toggle > .card-title {
+    margin-top: 0 !important;
+}
+
+.panel-g-r > .card-header > .row > .panel-toggle > .card-subtitle {
+    display: none;
+}
+
+.panel-g-r > .card-header > .row > .card-actions > button {
+    display: none !important;
+}
+
+div[name='GroupsMVList1'] li {
+    border: transparent !important;
+    -webkit-box-shadow: 0 0 0 0 #fff !important;
+    box-shadow: 0 0 0 0 #fff !important;
+}
+
+div[name='GroupsMVList1'] .media-body {
+    display: inline-flex;
+    align-items: center;
+}
+
+div[name='GroupsMVList1'] .media-body > span {
+    display: flex;
+    align-items: center;
+}
+
+div[name='GroupsMVList1'] .media-body > span > i {
+    top: 0 !important;
+}
+
+
+div[name='RolesMVList1'] li {
+    border: transparent !important;
+    -webkit-box-shadow: 0 0 0 0 #fff !important;
+    box-shadow: 0 0 0 0 #fff !important;
+}
+
+div[name='RolesMVList1'] .media-body {
+    display: inline-flex;
+    align-items: center;
+}
+
+div[name='RolesMVList1'] .media-body > span {
+    display: flex;
+    align-items: center;
+}
+
+div[name='RolesMVList1'] .media-body > span > i {
+    top: 0 !important;
+}
+
+input[name='lendingAmount_input'] {
+    width: 100% !important;
+}
+
+/* FAWB pagination-container */
+.popover-container {
+    margin-bottom: 15em !important; 
+}
+
+.disabled {
+    cursor: not-allowed !important;
+}
+
+.no-events {
+    pointer-events: none !important;
+}

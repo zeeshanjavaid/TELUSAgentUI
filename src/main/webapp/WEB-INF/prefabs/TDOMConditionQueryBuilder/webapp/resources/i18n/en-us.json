@@ -1,0 +1,20 @@
+{
+  "messages" : {
+    "CONDITION_VALUE_INVALID_PHONE" : "condition value is not valid. Enter phonenumber with numbers and space",
+    "ENTER_VALUE" : "enter value",
+    "CONDITION_VALUE_NOT_VALID" : "condition value is not valid.",
+    "CONDITION_VALUE_INVALID_DATE_FORMAT" : "condition value is not valid. Enter a date in the format \\'mm/dd/yyyy\\'.",
+    "CONDITION_VALUE_INVALID_DATE" : "condition value is not valid. Select a date.",
+    "CONDITION_VALUE_INVALID" : "condition value is not valid. Enter a value with letters, numbers and spaces (max 100 characters).",
+    "CONDITION_FIELD_REQUIRED" : "Condition field is required. Select a field to complete the condition or delete the empty condition."
+  },
+  "formats" : {
+    "date" : "MMM d, yyyy",
+    "time" : "h:mm:ss a"
+  },
+  "files" : {
+    "angular" : "en",
+    "fullCalendar" : null,
+    "moment" : null
+  }
+}

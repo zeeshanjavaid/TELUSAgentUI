@@ -1,0 +1,41 @@
+{
+  "endpointAddress" : "https://plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com/process/{pid}",
+  "method" : "POST",
+  "headers" : { },
+  "redirectEnabled" : true,
+  "requestBody" : "[\n\t{\n\t\t\"name\": \"skipDM\",\n\t\t\"value\": \"true\"\n\t},\n\t{\n\t\t\"name\": \"inputApplication\",\n\t\t\"value\": {\n\t\t\t\"applicationDetails\": {\n\t\t\t\t\"requestedProduct\": 1,\n\t\t\t\t\"requestedAmount\": 6000,\n\t\t\t\t\"applicationid\": 123,\n\t\t\t\t\"applicationStatus\": \"test\"\n\t\t\t},\n\t\t\t\"party\": [\n\t\t\t\t{\n\t\t\t\t\t\"person\": {\n\t\t\t\t\t\t\"firstName\": \"Roger\",\n\t\t\t\t\t\t\"lastName\": \"Federer\",\n\t\t\t\t\t\t\"personalIdNumber\": \"123456789\",\n\t\t\t\t\t\t\"personFinancial\": {\n\t\t\t\t\t\t\t\"income\": [\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\"employmentId\": \"123\",\n\t\t\t\t\t\t\t\t\t\"partyId\": \"123\",\n\t\t\t\t\t\t\t\t\t\"source\": \"Tennis\",\n\t\t\t\t\t\t\t\t\t\"type\": \"\",\n\t\t\t\t\t\t\t\t\t\"frequency\": \"5\",\n\t\t\t\t\t\t\t\t\t\"amount\": 2500\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"errors\": [\n\t\t\t\t{\n\t\t\t\t\t\"Code\": \"\",\n\t\t\t\t\t\"Message\": \"\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}\n]",
+  "queryParams" : { },
+  "authDetails" : {
+    "type" : "DMPAUTH"
+  },
+  "contentType" : "application/json",
+  "multiParamInfoList" : null,
+  "sampleHttpResponseDetails" : {
+    "statusCode" : 200,
+    "headers" : {
+      "Date" : [ "Tue, 31 May 2022 02:14:54 GMT" ],
+      "Content-Type" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+      "Transfer-Encoding" : [ "chunked" ],
+      "Connection" : [ "keep-alive" ],
+      "adrum_0" : [ "g:80e6dc41-5934-4a37-bd91-fa8665b121be" ],
+      "adrum_1" : [ "n:fico-test_09ed691a-862c-41af-8d63-f4dd453d323c" ],
+      "vary" : [ "Origin,Access-Control-Request-Method,Access-Control-Request-Headers" ],
+      "adrum_2" : [ "i:1093097" ],
+      "adrum_3" : [ "s:f" ],
+      "x-content-type-options" : [ "nosniff" ],
+      "x-xss-protection" : [ "1; mode=block" ],
+      "cache-control" : [ "no-cache, no-store, max-age=0, must-revalidate" ],
+      "pragma" : [ "no-cache" ],
+      "expires" : [ "0" ],
+      "strict-transport-security" : [ "max-age=31536000 ; includeSubDomains" ],
+      "x-envoy-upstream-service-time" : [ "1666" ]
+    },
+    "responseBody" : "{\"transactionId\":\"0db04e43-ebd3-4bcf-b436-32968717bbb3\",\"content\":{\"outputVariables\":{\"outputApplication\":{\"applicationDetails\":{\"requestedProduct\":1,\"requestedAmount\":6000,\"applicationid\":123,\"applicationStatus\":\"Error\"},\"party\":[{\"person\":{\"firstName\":\"Roger\",\"lastName\":\"Federer\",\"personalIdNumber\":\"123456789\",\"personFinancial\":{\"income\":[{\"employmentId\":\"123\",\"partyId\":\"123\",\"source\":\"Tennis\",\"type\":\"\",\"frequency\":\"5\",\"amount\":2500}]}}}],\"errors\":[{\"Code\":\"DMPreBureau\",\"Message\":\"Error while making Pre Bureau check - decision call\"}]}},\"status\":\"complete\",\"startTimestamp\":\"2022-05-31T02:14:54.159+0000\",\"endTimestamp\":\"2022-05-31T02:14:54.279+0000\",\"timeTaken\":120}}",
+    "convertedResponse" : null
+  },
+  "testApi" : true,
+  "serviceId" : null,
+  "variable" : null,
+  "requestType" : "",
+  "responseType" : ""
+}

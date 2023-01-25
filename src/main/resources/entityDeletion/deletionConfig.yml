@@ -1,0 +1,60 @@
+entityRelationBuilders:
+  - packageName:  com.fico.dmp.telusagentuidb
+    rootEntityName: Application
+    dataSourceBeanName: TELUSAgentUIDBWMManagedDataSource
+    exclusionClassNames:
+      - DomainValue
+      - DomainValueType
+      - DomainValueRelation
+      - DomainValueTypeRelationship
+      - DomainValueDescription
+      - Locale
+      - User
+      - Role
+      - Group
+      - Permission
+      - Queue
+      - RolePermission
+      - GroupRole
+      - UserGroup
+      - QueueGroup
+      - QrtzBlobTriggers
+      - QrtzBlobTriggersId
+      - QrtzCalendars
+      - QrtzCalendarsId
+      - QrtzCronTriggers
+      - QrtzCronTriggersId
+      - QrtzFiredTriggers
+      - QrtzFiredTriggersId
+      - QrtzJobDetails
+      - QrtzJobDetailsId
+      - QrtzLocks
+      - QrtzLocksId
+      - QrtzPausedTriggerGrps
+      - QrtzPausedTriggerGrpsId
+      - QrtzSchedulerState
+      - QrtzSchedulerStateId
+      - QrtzSimpleTriggers
+      - QrtzSimpleTriggersId
+      - QrtzSimpropTriggers
+      - QrtzSimpropTriggersId
+      - QrtzTriggers
+      - QrtzTriggersId
+      - ApplicationSequenceNumber
+      - SchemaVersion
+      - FawbPropertySource
+      - QueueReportControl
+      - QueueReport
+      - UserSession
+      - Audit
+      - AuditSchema
+      - AccessLog
+    configuredDeleteClauses:
+      - DELETE FROM {{Note}} WHERE `NOTE`.ID IN (SELECT GROUP_CONCAT(`CaseReview`.internalNote) FROM `CaseReview` WHERE `CaseReview`.ID IN ({{CaseReview}}))
+      - DELETE FROM {{Income}} WHERE `Income`.ID IN (SELECT GROUP_CONCAT(`Income`.ID) FROM `Income` WHERE `Income`.employmentId IN ({{Employment}}))
+    entitiesWithExternalData:
+      - entityName: Document
+        mapOfServiceWithDeleteAPI:
+          com.fico.core.services.DocumentServiceBS:
+            - deleteDocument
+        

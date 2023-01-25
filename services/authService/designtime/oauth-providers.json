@@ -1,0 +1,10 @@
+[ {
+  "providerId" : "dmp",
+  "authorizationUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+  "accessTokenUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+  "clientId" : "195yniux504",
+  "clientSecret" : "Uch45BJf3Ai8^yb1k3d923vU83x8r27hFVXD",
+  "sendAccessTokenAs" : "HEADER",
+  "accessTokenParamName" : "Bearer",
+  "scopes" : [ ]
+} ]

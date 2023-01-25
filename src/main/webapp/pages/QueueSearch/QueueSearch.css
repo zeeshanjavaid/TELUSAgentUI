@@ -1,0 +1,105 @@
+/* flex styles */
+.inFlex {
+    display: inline-flex;
+}
+
+.regularFlex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.item-center {
+    align-items: center;
+}
+
+.item-end {
+    align-items: flex-end;
+}
+
+.item-start {
+    align-items: flex-start
+}
+
+/*Data table cell styles*/
+.searchResult_DataTable table th * {
+    font-weight: 600 !important;
+}
+
+.searchResult_DataTable table td * {
+    font-weight: 600 !important;
+}
+
+.searchResult_DataTable .app-grid-content > table td {
+    word-break: break-all;
+}
+
+.searchResult_DataTable table {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+}
+
+.searchResult_DataTable .table-container {
+    max-width: 100% !important;
+}
+
+.column-bottom-border {
+    border-bottom: 1px solid #ccc !important;
+}
+
+.column-right-border {
+    border-right: 1px solid #ccc !important;
+}
+
+.column-top-border {
+    border-top: 1px solid #ccc !important;
+}
+
+/* other general styles */
+.wrapper {
+    font-family: 'robotolight', 'robotoregular';
+}
+
+.header-label {
+    font-size: 36px;
+    color: #6e6d6a;
+    line-height: unset;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+    padding: 0 !important;
+    margin: 0 !important;
+    left: -1px;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+wm-input[name='search-input'] {
+    display: flex !important;
+    height: 100% !important;
+}
+
+input[name='search_input'] {
+    width: 100% !important;
+    height: 100% !important;
+}

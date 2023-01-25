@@ -1,0 +1,396 @@
+{
+  "tagRules": [ {
+    "name": "script",
+    "action": "REMOVE"
+  }, {
+    "name": "noscript",
+    "action": "REMOVE"
+  }, {
+    "name": "iframe",
+    "action": "REMOVE"
+  }, {
+    "name": "frameset",
+    "action": "REMOVE"
+  }, {
+    "name": "frame",
+    "action": "REMOVE"
+  }, {
+    "name": "noframes",
+    "action": "REMOVE"
+  }, {
+    "name": "p",
+    "action": "VALIDATE"
+  }, {
+    "name": "div",
+    "action": "VALIDATE"
+  }, {
+    "name": "i",
+    "action": "VALIDATE"
+  }, {
+    "name": "b",
+    "action": "VALIDATE"
+  }, {
+    "name": "em",
+    "action": "VALIDATE"
+  }, {
+    "name": "blockquote",
+    "action": "VALIDATE"
+  }, {
+    "name": "tt",
+    "action": "VALIDATE"
+  }, {
+    "name": "br",
+    "action": "TRUNCATE"
+  }, {
+    "name": "a",
+    "action": "VALIDATE"
+  }, {
+    "name": "ul",
+    "action": "VALIDATE"
+  }, {
+    "name": "ol",
+    "action": "VALIDATE"
+  }, {
+    "name": "li",
+    "action": "VALIDATE"
+  }, {
+    "name": "h1",
+    "action": "VALIDATE"
+  }, {
+    "name": "h2",
+    "action": "VALIDATE"
+  }, {
+    "name": "h3",
+    "action": "VALIDATE"
+  }, {
+    "name": "h4",
+    "action": "VALIDATE"
+  }, {
+    "name": "h5",
+    "action": "VALIDATE"
+  }, {
+    "name": "h6",
+    "action": "VALIDATE"
+  }, {
+    "name": "u",
+    "action": "VALIDATE"
+  }, {
+    "name": "tr",
+    "action": "VALIDATE"
+  }, {
+    "name": "td",
+    "action": "VALIDATE"
+  }, {
+    "name": "table",
+    "action": "VALIDATE"
+  }, {
+    "name": "strike",
+    "action": "VALIDATE"
+  }, {
+    "name": "sup",
+    "action": "VALIDATE"
+  }, {
+    "name": "sub",
+    "action": "VALIDATE"
+  }, {
+    "name": "img",
+    "action": "VALIDATE"
+  } ],
+  "attributes":[
+    {
+      "name":"id",
+      "description":"The 'id' of any HTML attribute should not contain anything besides letters and numbers",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"htmlId"
+          }
+        ]
+      }
+    },
+    {
+      "name":"lang",
+      "description":"The 'lang' attribute tells the browser what language the element's attribute values and content are written in",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"langCode"
+          }
+        ]
+      }
+    },
+    {
+      "name":"title",
+      "description":"The 'title' attribute provides text that shows up in a 'tooltip' when a user hovers their mouse over the element",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"htmlTitle"
+          }
+        ]
+      }
+    },
+    {
+      "name":"class",
+      "description":"The 'class' of any HTML attribute is usually a single word, but it can also be a list of class names separated by spaces",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"htmlClass"
+          }
+        ]
+      }
+    },
+    {
+      "name":"href",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"onsiteURL"
+          },
+          {
+            "name":"offsiteURL"
+          }
+        ]
+      }
+    },
+    {
+      "name":"src",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"onsiteURL"
+          },
+          {
+            "name":"offsiteURL"
+          }
+        ]
+      }
+    },
+    {
+      "name":"target",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"htmlId"
+          }
+        ]
+      }
+    },
+    {
+      "name":"border",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"cellpadding",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"cellspacing",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"colspan",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"rowspan",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"background",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"onsiteURL"
+          }
+        ]
+      }
+    },
+    {
+      "name":"bgcolor",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"colorName"
+          },
+          {
+            "name":"colorCode"
+          }
+        ]
+      }
+    },
+    {
+      "name":"width",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"numberOrPercent"
+          }
+        ]
+      }
+    },
+    {
+      "name":"height",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"numberOrPercent"
+          }
+        ]
+      }
+    },
+    {
+      "name":"align",
+      "description":"The 'align' attribute of an HTML element is a direction word, like 'left', 'right' or 'center'",
+      "literalList":{
+        "literal":[
+          {
+            "value":"center"
+          },
+          {
+            "value":"middle"
+          },
+          {
+            "value":"left"
+          },
+          {
+            "value":"right"
+          },
+          {
+            "value":"justify"
+          },
+          {
+            "value":"char"
+          }
+        ]
+      }
+    },
+    {
+      "name":"valign",
+      "description":"The 'valign' attribute of an HTML attribute is a direction word, like 'baseline','bottom','middle' or 'top'",
+      "literalList":{
+        "literal":[
+          {
+            "value":"baseline"
+          },
+          {
+            "value":"bottom"
+          },
+          {
+            "value":"middle"
+          },
+          {
+            "value":"top"
+          }
+        ]
+      }
+    },
+    {
+      "name":"size",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"autocomplete",
+      "literalList":{
+        "literal":[
+          {
+            "value":"on"
+          },
+          {
+            "value":"off"
+          }
+        ]
+      }
+    },
+    {
+      "name":"rows",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"cols",
+      "regexpList":{
+        "regexp":[
+          {
+            "name":"number"
+          }
+        ]
+      }
+    },
+    {
+      "name":"onFocus",
+      "description":"The 'onFocus' event is executed when the control associated with the tag gains focus"
+    },
+    {
+      "name":"onBlur",
+      "description":"The 'onBlur' event is executed when the control associated with the tag loses focus"
+    },
+    {
+      "name":"onClick",
+      "description":"The 'onClick' event is executed when the control associated with the tag is clicked"
+    },
+    {
+      "name":"onDblClick",
+      "description":"The 'onDblClick' event is executed when the control associated with the tag is clicked twice immediately"
+    },
+    {
+      "name":"onMouseDown",
+      "description":"The 'onMouseDown' event is executed when the control associated with the tag is clicked but not yet released"
+    },
+    {
+      "name":"onMouseUp",
+      "description":"The 'onMouseUp' event is executed when the control associated with the tag is clicked after the button is released"
+    },
+    {
+      "name":"onMouseOver",
+      "description":"The 'onMouseOver' event is executed when the user's mouse hovers over the control associated with the tag"
+    },
+    {
+      "name":"scope",
+      "description":"The 'scope' attribute defines what's covered by the header cells"
+    }
+  ],
+  "unknownTagAction" : "REMOVE"
+}

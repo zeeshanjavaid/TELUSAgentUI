@@ -1,0 +1,197 @@
+.wm-app .app-card {
+    -webkit-box-shadow: 0 10px 10px -10px #fff;
+    -moz-box-shadow: 0 10px 10px -10px #fff;
+    box-shadow: 0 #fff;
+    background: none;
+}
+
+.wm-app .app-card .heading {
+    color: rgb(51, 51, 51);
+    font-family: robotolight;
+    font-size: 28px;
+    padding: 10px 10px 20px 10px;
+    text-align: left;
+}
+
+.wm-app .app-card .card-text {
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.wm-app .app-card .background252 {
+    background-color: rgb(252, 252, 252);
+}
+
+.colorffe3e3 {
+    -webkit-box-shadow: 0 10px 10px -10px #ffe3e3 !important;
+    -moz-box-shadow: 0 10px 10px -10px #ffe3e3 !important;
+}
+
+.wm-app .app-date .input-group-append .app-icon {
+    font-size: 15pt!important;
+}
+
+.btn-time {
+    border-top: 1px solid #a9a9a9!important;
+    border-right: 1px solid #a9a9a9!important;
+    border-bottom: 1px solid #a9a9a9!important;
+    border-radius: 0!important;
+    padding: 3px 8px 0px!important;
+    height: 30px;
+}
+
+.wm-app .app-input-wrapper .app-textbox.form-control {
+    width: 0;
+}
+
+.wm-app .search-transition {
+    width: 100%!important;
+    padding: 5px!important;
+}
+
+.wm-app * {
+    outline: 0!important;
+}
+
+.wm-app .app-top-nav .nav-pills>li.activeClass {
+    cursor: not-allowed;
+}
+
+.wm-app .nav-pills>li.active>a,
+.wm-app .nav-pills>li.active>a:hover,
+.wm-app .nav-pills>li.active>a:focus {
+    border-bottom: 2px solid #fff;
+    border-radius: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.wm-app .app-datagrid-row .app-label {
+    padding: 0;
+}
+
+
+/*Submit dialog */
+
+.app-progress.circle.progress circle-progress>svg path:first-of-type {
+    stroke: #c3dfe3!important;
+}
+
+.text-capitalize {
+    text-transform: capitalize!important;
+}
+
+.arrow-pointer.primary-custom-border:before {
+    right: 0;
+}
+
+.wm-app .left-arrow {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    left: -17px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 5px solid #FFD0A1;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.wm-app .arrow-point {
+    position: relative;
+    background-color: #FFD0A1;
+    height: 20px;
+    border-radius: 2px;
+    line-height: 18px;
+    margin-left: 5px;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.wm-app .system-red-arrow {
+    background-color: transparent;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    left: -19px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 5px solid #900;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.wm-app .system-green-arrow {
+    background-color: transparent;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    left: -19px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 5px solid #063;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.wm-app .system-blue-arrow {
+    background-color: transparent;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    left: -19px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 5px solid #00629b;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.wm-app .system-amber-arrow {
+    background-color: transparent;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    position: absolute;
+    left: -19px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 5px solid #FFBF00;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.wm-app .gray-border-1px {
+    border: 1px solid #ccc;
+}
+
+.wm-app .visibility-hidden {
+    visibility: hidden;
+}
+
+.wm-app .display-block {
+    display: block;
+}
+
+.button_white {
+    border: #00629b !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    color: #00609C !important;
+}
+
+.align-center {
+    vertical-align: middle !important;
+}
+
+.wm-app .app-grid .app-datagrid .sort-buttons-container .sort-icon {
+    color: #000;
+}
+
+.wm-app .form-group .ng-touched.ng-invalid {
+    border-color: #a94442 !important;
+}

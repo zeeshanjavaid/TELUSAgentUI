@@ -1,0 +1,31 @@
+<wm-page pagetitle="Queues" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1">
+        <wm-param name="doRefresh" value="bind:queueOperation" type="string"></wm-param>
+    </wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn1">
+                        <wm-container name="adminListSection2" class="col-md-3 admin-left2-css bordered-bottom admin-list2-css-new" padding="10px unset unset unset" show="true" deferload="false" width="100%" height="100vh" style="overflow-x: hidden; overflow-y: auto !important;">
+                            <wm-container name="adminList2" class="col-md-12 list-overflow" show="true">
+                                <wm-container name="Queuecontainer" content="QueuePartial" show="true" height="100%"></wm-container>
+                            </wm-container>
+                        </wm-container>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="9" name="gridcolumn2">
+                        <wm-container name="OMConditionBuilderContainer" conditionalclass="bind:Variables.showAdminMiddleContainer.dataSet.dataValue == false ?'OMConditionBuilderContainer1':'OMConditionBuilderContainer'" class="admin-right col-md-9" width="100%"
+                            height="100vh">
+                            <wm-container name="AddQueueContainer" content="AddQueuePartial" class="AddQueueContainer" show="true">
+                                <wm-param name="queueId" value="bind:Widgets.Queuecontainer.Widgets.QueueList.selecteditem.id" type="integer"></wm-param>
+                            </wm-container>
+                        </wm-container>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

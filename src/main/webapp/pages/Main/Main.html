@@ -1,0 +1,36 @@
+<wm-page name="mainpage" pagetitle="Main">
+    <wm-header content="header" name="header" height="auto"></wm-header>
+    <wm-top-nav name="topnav" content="topnav"></wm-top-nav>
+    <wm-content name="content">
+        <wm-page-content columnwidth="12" name="mainContent" padding="unset 15px">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn2"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                        <wm-container name="container4" class="display-inline-block vertical-align-top" padding="10px unset unset unset" width="50%">
+                            <wm-list listclass="list-group dashboard-list-items multi-column" itemclass="width-50-per margin-10px-alt" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="main-page-menu-section" name="staticMenuItemsList1" dataset="bind:Variables.staticMenuItems.dataSet"
+                                navigation="None" nodatamessage="">
+                                <wm-listtemplate layout="inline" name="listtemplate2">
+                                    <wm-container name="dashboardMenuItem" class="dashboard-menu-item" margin="unset unset 10px unset" on-click="dashboardMenuItemClick($event, widget, item, currentItemWidgets)" width="97%" padding="5px" on-keydown="dashboardContainerKeydown($event, widget)">
+                                        <wm-container class="media-left align-center" name="container5">
+                                            <!--  <wm-picture width="32pt" height="32pt" name="Picture" shape="rounded" picturesource="bind:Variables.staticMenuItems.dataSet.imageLocation" class="media-object" pictureaspect="None"></wm-picture>-->
+                                            <wm-icon name="icon1" iconclass="bind:Variables.staticMenuItems.dataSet.imageLocation" class="dashboard-menu-icon"></wm-icon>
+                                        </wm-container>
+                                        <wm-container class="media-body" name="container6">
+                                            <wm-label name="Name" class="anchor-click" caption="bind:Variables.staticMenuItems.dataSet.name" fontsize="1.143" fontunit="em" color="#00629B"></wm-label>
+                                            <wm-label name="JobTitle" caption="bind:Variables.staticMenuItems.dataSet.description" class="p"></wm-label>
+                                        </wm-container>
+                                    </wm-container>
+                                </wm-listtemplate>
+                            </wm-list>
+                        </wm-container>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer name="footer" content="footer"></wm-footer>
+</wm-page>

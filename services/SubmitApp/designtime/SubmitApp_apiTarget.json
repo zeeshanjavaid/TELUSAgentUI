@@ -1,0 +1,300 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.0",
+    "x-DMP-DMP-Component" : "Process_Execution",
+    "x-FAWB-VARIABLE" : null,
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "668cba1f-f940-499b-bd5c-1cdc6d07b9aa",
+    "x-WM-SERVICE_ID" : "SubmitApp",
+    "x-FAWB-SERVICE-GROUP" : "Process_Execution",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "host" : "plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com",
+  "basePath" : "",
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/process/{pid}" : {
+      "post" : {
+        "tags" : [ "RestServiceVirtualController" ],
+        "operationId" : "SubmitApp_RestServiceVirtualController-invoke",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "RequestBody",
+          "description" : "RequestBody",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/RootRequest"
+          },
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-FULLY_QUALIFIED_TYPE" : "java.lang.Object",
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        }, {
+          "name" : "pid",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "format" : "string",
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "dmpauth" : [ ]
+        } ],
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY"
+      },
+      "x-WM-BASE_PATH" : "/process/{pid}",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "x-WM-COMPLETE_PATH" : "${SubmitApp.scheme}://${SubmitApp.host}${SubmitApp.basepath}/process/{pid}"
+    }
+  },
+  "securityDefinitions" : {
+    "dmpauth" : {
+      "type" : "dmpauth"
+    }
+  },
+  "definitions" : {
+    "partyEntryItem" : {
+      "required" : [ "person" ],
+      "properties" : {
+        "person" : {
+          "$ref" : "#/definitions/person"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.partyEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootRequestROOTEntryItem" : {
+      "required" : [ "name", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.RootRequestROOTEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "personFinancial" : {
+      "required" : [ "income" ],
+      "properties" : {
+        "income" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/incomeEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.personFinancial",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "incomeEntryItem" : {
+      "required" : [ "amount", "employmentId", "frequency", "partyId", "source", "type" ],
+      "properties" : {
+        "amount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "employmentId" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "partyId" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "frequency" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.incomeEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "content" : {
+      "required" : [ "endTimestamp", "outputVariables", "startTimestamp", "status", "timeTaken" ],
+      "properties" : {
+        "timeTaken" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "outputVariables" : {
+          "$ref" : "#/definitions/outputVariables"
+        },
+        "endTimestamp" : {
+          "type" : "string"
+        },
+        "startTimestamp" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.content",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "person" : {
+      "required" : [ "firstName", "lastName", "personFinancial", "personalIdNumber" ],
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "personalIdNumber" : {
+          "type" : "string"
+        },
+        "personFinancial" : {
+          "$ref" : "#/definitions/personFinancial"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.person",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootRequest" : {
+      "required" : [ "RootRequestROOT" ],
+      "properties" : {
+        "RootRequestROOT" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RootRequestROOTEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.RootRequest",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "applicationDetails" : {
+      "required" : [ "applicationStatus", "applicationid", "requestedAmount", "requestedProduct" ],
+      "properties" : {
+        "requestedProduct" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "applicationStatus" : {
+          "type" : "string"
+        },
+        "requestedAmount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "applicationid" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.applicationDetails",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "outputVariables" : {
+      "required" : [ "outputApplication" ],
+      "properties" : {
+        "outputApplication" : {
+          "$ref" : "#/definitions/outputApplication"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.outputVariables",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "outputApplication" : {
+      "required" : [ "applicationDetails", "errors", "party" ],
+      "properties" : {
+        "applicationDetails" : {
+          "$ref" : "#/definitions/applicationDetails"
+        },
+        "party" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/partyEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "errors" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/errorsEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.outputApplication",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "value" : {
+      "required" : [ "applicationDetails", "errors", "party" ],
+      "properties" : {
+        "applicationDetails" : {
+          "$ref" : "#/definitions/applicationDetails"
+        },
+        "party" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/partyEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "errors" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/errorsEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.value",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "errorsEntryItem" : {
+      "required" : [ "Code", "Message" ],
+      "properties" : {
+        "Message" : {
+          "type" : "string"
+        },
+        "Code" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.errorsEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponse" : {
+      "required" : [ "content", "transactionId" ],
+      "properties" : {
+        "transactionId" : {
+          "type" : "string"
+        },
+        "content" : {
+          "$ref" : "#/definitions/content"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "SubmitApp.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    }
+  }
+}

@@ -1,0 +1,205 @@
+<wm-page pagetitle="Lookup File Create Edit" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full">
+                <wm-container width="97%" name="container4">
+                    <wm-layoutgrid name="domainValueGrid" columns="1">
+                        <wm-message name="statusMessage" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" hideclose="true" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" class="msg display-none" show="true"></wm-message>
+                        <wm-gridrow name="gridrow3">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                                <wm-container name="headingContainer">
+                                    <wm-label name="label1" caption="Lookup File >" class="dv-header-label" margin="unset unset unset 0.1em" color="#333"></wm-label>
+                                    <wm-label name="label3" class="dv-header-label dvType" caption="bind:pageParams.lookupFileIdentifier? &quot;Edit&quot; : &quot;Create&quot;"></wm-label>
+                                    <wm-label name="label2" caption="bind:pageParams.lookupFileIdentifier? &quot; > &quot;+ pageParams.lookupFileName:&quot;&quot;" class="dv-header-label dvType" style="margin-left: 8px !important;"></wm-label>
+                                </wm-container>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow4">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                                <wm-anchor name="backLink" caption="Back" fontsize="1.2" fontunit="em" encodeurl="false" on-click="buttonCancelClick($event, widget)"></wm-anchor>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow5">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                                <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.mvLookupFileInfo.dataSet" captionalign="left" name="domainValueForm" formdata="bind:Variables.mvLookupFileInfo.dataSet"
+                                    margin="1em unset unset unset">
+                                    <wm-layoutgrid columns="1" name="layoutgrid2" class="fi-panel">
+                                        <wm-gridrow name="gridrow5_1">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn5_1">
+                                                <wm-form-field name="name" key="name" type="string" displayname="Name *" widget="text" show="true" inputtype="text" placeholder="" readonly="bind:pageParams.lookupFileIdentifier?true:false" required="true" defaultvalue="bind:Variables.mvLookupFileInfo.dataSet.name"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow26_1">
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn29">
+                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Description" margin="5px unset unset unset"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="9" name="gridcolumn30">
+                                                <wm-text name="desc" class="middlebox" placeholder="" required="false" regexp=".*" on-blur="descBlur($event, widget)" datavalue="bind:Variables.mvLookupFileInfo.dataSet.description"></wm-text>
+                                                <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow23" padding="20px unset unset unset">
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn25">
+                                                <wm-label padding="unset 1em unset 0.5em" name="lookupfileLabel" width="100%" caption="Lookup file *" margin="5px unset unset unset"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="9" name="gridcolumn26">
+                                                <wm-layoutgrid name="layoutgrid10_1" columns="1">
+                                                    <wm-gridrow name="gridrow26_2">
+                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn31">
+                                                            <wm-anchor margin="5px 0.5px unset 0.5px" name="lookupFileLink" caption="bind:Variables.mvLookupFileInfo.dataSet.fileName" on-click="lookupFileLinkClick($event, widget)"></wm-anchor>
+                                                        </wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                    <wm-gridrow name="gridrow27">
+                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn32_1">
+                                                            <wm-fileupload name="lookupFileUpload" caption="Select" margin="5px unset unset unset" on-select="lookupFileUploadSelect($event, widget, selectedFiles)" contenttype=".xlsx" show="true"></wm-fileupload>
+                                                        </wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                    <wm-gridrow name="gridrow28_1">
+                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn33">
+                                                            <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption=".xlsx file less than 10 MB" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>
+                                                        </wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                </wm-layoutgrid>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow9">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                                                <wm-form-field name="createdOn" key="Created" displayname="Created" show="true" type="string" widget="text" inputtype="text" placeholder="" defaultvalue="bind:Variables.mvLookupFileInfo.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mvLookupFileInfo.dataSet.createdOn, Variables.mvLookupFileInfo.dataSet.createdBy): &quot;&quot;"
+                                                    readonly="true" width="100%"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow10">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                                                <wm-form-field name="updatedOn" key="Updated" displayname="Updated" show="true" type="string" widget="text" inputtype="text" placeholder="" defaultvalue="bind:Variables.mvLookupFileInfo.dataSet.updatedOn ? displayCustomUserAndDateValues(Variables.mvLookupFileInfo.dataSet.updatedOn, Variables.mvLookupFileInfo.dataSet.updatedBy):&quot;&quot;"
+                                                    readonly="true" width="100%"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow17_1">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn18" padding="unset 1em">
+                                                <wm-layoutgrid name="relationTableGrid" columns="1" show="bind:pageParams.lookupFileIdentifier ? true : false">
+                                                    <wm-gridrow name="gridrow20" padding="1em unset">
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn23_1">
+                                                            <wm-label padding="unset 0.5em" name="label6" caption="File Definition" class="sub-heading" textalign="left"></wm-label>
+                                                        </wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                    <wm-gridrow name="gridrow21">
+                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn24">
+                                                            <wm-table editmode="inline" name="lookupFileDefTable" title="" dataset="bind:Variables.mv_sheetData.dataSet" navigation="None" enablesort="false" deletedialogtitle="bind:appLocale.MESSAGE_DELETE_RECORD"
+                                                                deleteoktext="bind:YES" deletecanceltext="bind:NO" rowngclass="{'display-none':row.getProperty('deleted')}" nodatamessage="" pagesize="100">
+                                                                <wm-table-column binding="sheetName" caption="Sheet" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                                                                    <wm-label caption="bind:row.getProperty('sheetName')" class="" conditionalclass=""></wm-label>
+                                                                </wm-table-column>
+                                                                <wm-table-column binding="columnName" caption="Field" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                                                                    <wm-label caption="bind:row.getProperty('columnName')" class="" conditionalclass=""></wm-label>
+                                                                </wm-table-column>
+                                                                <wm-table-column binding="dataType" caption="Data Type" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                                                                    <wm-label caption="bind:row.getProperty('dataType')" class="" conditionalclass=""></wm-label>
+                                                                </wm-table-column>
+                                                            </wm-table>
+                                                        </wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                </wm-layoutgrid>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-form>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow6" class="action-container">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                                <wm-button class="app-button btn-primary" caption="SAVE" type="button" margin="unset 0.5em" name="saveBtn" on-click="saveBtnClick($event, widget)"></wm-button>
+                                <wm-button class="btn-default" caption="CANCEL" type="button" margin="unset 0.5em" name="button6" on-click="buttonCancelClick($event, widget)"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-container>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Relation Details" iconclass="wi wi-file-text" name="relationDetailsDialog" on-opened="relationDetailsDialogOpened($event, widget)" on-close="relationDetailsDialogClose($event, widget)">
+        <wm-message name="relationPopupMsg" type="error" caption="bind:Variables.relationPopupMessage.dataSet.dataValue" hideclose="true"></wm-message>
+        <wm-layoutgrid name="layoutgrid5">
+            <wm-gridrow name="gridrow26">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn32">
+                    <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="relationDetailsForm" formdata="bind:Variables.relationDetails.dataSet" dataset="bind:Variables.relationDetails.dataSet"
+                        postmessage="">
+                        <wm-layoutgrid columns="1" name="layoutgrid6">
+                            <wm-gridrow name="gridrow28">
+                                <wm-gridcolumn name="gridcolumn34">
+                                    <wm-layoutgrid name="layoutgrid7">
+                                        <wm-gridrow name="gridrow29">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn35">
+                                                <wm-form-field name="dvParent1" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId1.description" key="parent1DomainValueDescription"
+                                                    type="string" show="true" widget="select" placeholder="( Select )" required="true" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId1.description + &quot; is required.&quot;"
+                                                    dataset="bind:Variables.getDVlistParent1.dataSet.pageContent" datafield="All Fields" displayfield="description" orderby="description:desc" on-change="dvParent1Change($event, widget, newVal, oldVal)"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow30">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                                                <wm-form-field name="dvParent2" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId2.description" key="parent2DomainValueDescription"
+                                                    type="string" show="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].parentDomainValueTypeId2 != null" widget="select" placeholder="( Select )" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId2.description + &quot; is required.&quot;"
+                                                    required="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].parentDomainValueTypeId2 != null" dataset="bind:Variables.getDVlistParent2.dataSet.pageContent" datafield="All Fields" displayfield="description"
+                                                    orderby="description:desc" on-change="dvParent2Change($event, widget, newVal, oldVal)"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1">
+            <wm-button class="btn-default" caption="SAVE" type="button" margin="unset 0.5em" name="saveBtnRelationDetails" on-click="saveBtnRelationDetailsClick($event, widget)"></wm-button>
+            <wm-button class="btn-primary" caption="CANCEL" on-click="Widgets.relationDetailsDialog.close()" name="button3"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Add Locale" iconclass="" name="localeDetailsDialog" on-close="localeDetailsDialogClose($event, widget)" width="700">
+        <wm-message name="localePopupMsg" type="error" caption="bind:Variables.localePopupMessage.dataSet.dataValue" hideclose="true" show="bind:showLocaleErrorMsg"></wm-message>
+        <wm-layoutgrid name="layoutgrid8" columns="1">
+            <wm-gridrow name="gridrow29_1">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36_1">
+                    <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.localeDetails.dataSet" captionalign="left" name="localeDetailsForm" formdata="bind:Variables.localeDetails.dataSet"
+                        postmessage="">
+                        <wm-layoutgrid columns="1" name="layoutgrid9">
+                            <wm-gridrow name="gridrow32">
+                                <wm-gridcolumn name="gridcolumn38">
+                                    <wm-panel title="" name="panel2">
+                                        <wm-layoutgrid name="layoutgrid10">
+                                            <wm-gridrow name="gridrow33">
+                                                <wm-gridcolumn columnwidth="12" name="gridcolumn39">
+                                                    <wm-form-field name="locale" readonly="false" displayname="Locale" key="locale" type="string" show="true" widget="select" placeholder="( Select )" dataset="bind:Variables.localesListWithoutDesc.dataSet"
+                                                        required="true" validationmessage="Locale is required" datafield="locale" disabled="bind:isEditLocale" displayfield="locale"></wm-form-field>
+                                                </wm-gridcolumn>
+                                            </wm-gridrow>
+                                            <wm-gridrow name="gridrow34">
+                                                <wm-gridcolumn columnwidth="12" name="gridcolumn40">
+                                                    <wm-form-field name="description" readonly="false" displayname="Description" key="description" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" validationmessage="Description is required"></wm-form-field>
+                                                </wm-gridcolumn>
+                                            </wm-gridrow>
+                                        </wm-layoutgrid>
+                                    </wm-panel>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow30_1">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn37"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-primary" caption="Add" type="button" margin="unset 0.5em" name="saveLocaleBtn" on-click="saveLocaleBtnClick($event, widget)"></wm-button>
+            <wm-button class="btn-link" caption="Cancel" on-click="closeDialog()" name="button7"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-confirmdialog name="exitConfirmDialog" title="bind:appLocale.EXIT_PAGE" iconclass="" canceltext="LEAVE" oktext="STAY" on-cancel="exitConfirmDialogCancel($event, widget)" message="bind:appLocale.UNSAVED_CHANGES_LOST_MSG"></wm-confirmdialog>
+    <wm-confirmdialog name="relationDelete_confirmDialog" title="" message="bind:appLocale.MESSAGE_DELETE_RECORD_CONFIRM" oktext="YES" canceltext="NO" iconclass="" modal="false" closable="false" on-cancel="Widgets.relationDelete_confirmDialog.close()"
+        on-ok="relationDelete_confirmDialogOk($event, widget)"></wm-confirmdialog>
+</wm-page>

@@ -1,0 +1,328 @@
+{
+  "conditionAcceptId" : {
+    "_id" : "wm-conditionAcceptId-wm.Variable-1661203440215",
+    "name" : "conditionAcceptId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "conditionPendingId" : {
+    "_id" : "wm-conditionPendingId-wm.Variable-1661240279032",
+    "name" : "conditionPendingId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "conditionReceivedId" : {
+    "_id" : "wm-conditionReceivedId-wm.Variable-1661238341528",
+    "name" : "conditionReceivedId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "conditionRejectId" : {
+    "_id" : "wm-conditionRejectId-wm.Variable-1661203474463",
+    "name" : "conditionRejectId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "conditionWaiveId" : {
+    "_id" : "wm-conditionWaiveId-wm.Variable-1661203493896",
+    "name" : "conditionWaiveId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "deleteCondition" : {
+    "_id" : "wm-deleteCondition-wm.ServiceVariable-1660909723213",
+    "name" : "deleteCondition",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "applicationId",
+      "value" : "bind:pageParams.applicationId",
+      "type" : "integer"
+    } ],
+    "service" : "ConditionRelatedService",
+    "operation" : "deleteCondition",
+    "operationId" : "ConditionRelatedController_deleteCondition",
+    "operationType" : "delete",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "deleteConditiononSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ConditionRelated"
+  },
+  "dvs_getConditionAction" : {
+    "_id" : "wm-dvs_getConditionAction-wm.ServiceVariable-1660727427544",
+    "name" : "dvs_getConditionAction",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CONDITION_ACTION",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    }, {
+      "target" : "isActiveFlag",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "dvs_getConditionCategoryType" : {
+    "_id" : "wm-dvs_getConditionCategoryType2-wm.ServiceVariable-1660727371860",
+    "name" : "dvs_getConditionCategoryType",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CONDITION_CATEGORY_TYPE",
+      "type" : "string"
+    }, {
+      "target" : "isActiveFlag",
+      "value" : true,
+      "type" : "boolean"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "dvs_getConditionCode" : {
+    "_id" : "wm-dvs_getConditionCode-wm.ServiceVariable-1660726586721",
+    "name" : "dvs_getConditionCode",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CONDITION_CODE",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()\n",
+      "type" : "string"
+    }, {
+      "target" : "isActiveFlag",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "dvs_getConditionCodeonSuccess(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "dvs_getConditionReason" : {
+    "_id" : "wm-dvs_getConditionReason-wm.ServiceVariable-1660727486043",
+    "name" : "dvs_getConditionReason",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CONDITION_REASON",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    }, {
+      "target" : "isActiveFlag",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "dvs_getConditionStatus" : {
+    "_id" : "wm-dvs_getConditionStatus-wm.ServiceVariable-1660727534721",
+    "name" : "dvs_getConditionStatus",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CONDITION_STATUS",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    }, {
+      "target" : "isActiveFlag",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCodeWithActiveFlag",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "dvs_getConditionStatusonSuccess(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "getAllConditions" : {
+    "_id" : "wm-getAllConditions-wm.ServiceVariable-1660725532978",
+    "name" : "getAllConditions",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "applicationId",
+      "value" : "bind:pageParams.applicationId",
+      "type" : "integer"
+    } ],
+    "service" : "ConditionRelatedService",
+    "operation" : "getAllConditions",
+    "operationId" : "ConditionRelatedController_getAllConditions",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "getAllConditionsonSuccess(variable, data, options)",
+    "onError" : "getAllConditionsonError(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ConditionRelated"
+  },
+  "sv_downloadUploadedFile" : {
+    "_id" : "wm-sv_downloadUploadedFile-wm.ServiceVariable-1661236135878",
+    "name" : "sv_downloadUploadedFile",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "service" : "DocumentRelatedBS",
+    "operation" : "downloadUploadedFile",
+    "operationId" : "DocumentRelatedBSController_downloadUploadedFile",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_downloadUploadedFileonSuccess(variable, data, options)",
+    "onError" : "sv_downloadUploadedFileonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DocumentRelatedBS"
+  }
+}

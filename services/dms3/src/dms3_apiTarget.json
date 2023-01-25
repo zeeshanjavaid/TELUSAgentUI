@@ -1,0 +1,118 @@
+{
+  "basePath" : "${dms3.basepath}",
+  "paths" : {
+    "/7be7dd1c-434c-4ba1-aa25-d146efa91980" : {
+      "x-WM-BASE_PATH" : "/7be7dd1c-434c-4ba1-aa25-d146efa91980",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "get" : {
+        "x-WM-METHOD_NAME" : "invoke",
+        "security" : [ {
+          "oauth2" : [ ]
+        } ],
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
+        "produces" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+        "operationId" : "dms3_RestServiceVirtualController-invoke",
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            },
+            "description" : "Success"
+          }
+        },
+        "parameters" : [ {
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-EDITABLE" : false,
+          "in" : "query",
+          "name" : "inputNumber",
+          "format" : "string",
+          "description" : "inputNumber",
+          "type" : "string",
+          "required" : false,
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        } ],
+        "tags" : [ "RestServiceVirtualController" ],
+        "consumes" : [ "application/json" ]
+      },
+      "x-WM-COMPLETE_PATH" : "${dms3.scheme}://${dms3.host}${dms3.basepath}/7be7dd1c-434c-4ba1-aa25-d146efa91980"
+    }
+  },
+  "host" : "${dms3.host}",
+  "schemes" : [ "${dms3.scheme}" ],
+  "securityDefinitions" : {
+    "oauth2" : {
+      "accessTokenParamName" : "Bearer",
+      "tokenUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+      "authorizationUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+      "sendAccessTokenAs" : "HEADER",
+      "type" : "oauth2",
+      "grantType" : "DMP_CLIENT_CREDENTIALS",
+      "x-WM-PROVIDER_ID" : "dmp"
+    }
+  },
+  "definitions" : {
+    "outputVariables" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.outputVariables",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "outputNumber" ],
+      "properties" : {
+        "outputNumber" : {
+          "format" : "int32",
+          "type" : "integer"
+        }
+      }
+    },
+    "content" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.content",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "endTimestamp", "outputVariables", "startTimestamp", "status", "timeTaken" ],
+      "properties" : {
+        "timeTaken" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "outputVariables" : {
+          "$ref" : "#/definitions/outputVariables"
+        },
+        "endTimestamp" : {
+          "type" : "string"
+        },
+        "startTimestamp" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RootResponse" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "content", "transactionId" ],
+      "properties" : {
+        "transactionId" : {
+          "type" : "string"
+        },
+        "content" : {
+          "$ref" : "#/definitions/content"
+        }
+      }
+    }
+  },
+  "swagger" : "2.0",
+  "info" : {
+    "x-FAWB-VARIABLE" : null,
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "2c52cfc8-165d-4c0a-b670-2b9249e5856f",
+    "x-WM-SERVICE_ID" : "dms3",
+    "version" : "2.0",
+    "x-FAWB-SERVICE-GROUP" : "dms",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ]
+}

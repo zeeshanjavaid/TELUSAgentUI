@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <import resource="classpath:ActivityLogService.spring.xml"/>
+    <import resource="classpath:AuditDataChangeService.spring.xml"/>
+    <import resource="classpath:CacheService.spring.xml"/>
+    <import resource="classpath:CodeDescriptionLookupService.spring.xml"/>
+    <import resource="classpath:DmpS3FileService.spring.xml"/>
+    <import resource="classpath:DomainValueRelatedBS.spring.xml"/>
+    <import resource="classpath:DuplicateCheckRelatedBS.spring.xml"/>
+    <import resource="classpath:Environment.spring.xml"/>
+    <import resource="classpath:FDOUtilityServices.spring.xml"/>
+    <import resource="classpath:FileRelatedBS.spring.xml"/>
+    <import resource="classpath:LookupFileBS.spring.xml"/>
+    <import resource="classpath:PropertiesService.spring.xml"/>
+    <import resource="classpath:QueueLoadService.spring.xml"/>
+    <import resource="classpath:ReportFileRelatedBS.spring.xml"/>
+    <import resource="classpath:ReportRelatedBS.spring.xml"/>
+    <import resource="classpath:SchemaService.spring.xml"/>
+    <import resource="classpath:SubmitApp.spring.xml"/>
+    <import resource="classpath:TELUSAgentUIDB.spring.xml"/>
+    <import resource="classpath:TimerService.spring.xml"/>
+    <import resource="classpath:UserManagementService.spring.xml"/>
+    <import resource="classpath:authService.spring.xml"/>
+    <import resource="classpath:dms.spring.xml"/>
+    <import resource="classpath:dms2.spring.xml"/>
+    <import resource="classpath:dms3.spring.xml"/>
+    <import resource="classpath:securityService.spring.xml"/>
+</beans>

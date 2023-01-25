@@ -1,0 +1,228 @@
+<wm-partial name="partial1" id="partial1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="container1">
+                <wm-layoutgrid name="layoutgrid1">
+                    <wm-gridrow name="gridrow1" padding="2em unset 1em unset">
+                        <wm-gridcolumn columnwidth="10" name="gridcolumn1">
+                            <wm-container name="container4">
+                                <wm-label padding="unset 0.5em" name="label2" caption="Users" class="h2"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn2">
+                            <wm-container name="container3" horizontalalign="right">
+                                <wm-menu caption="......" autoclose="always" name="AlertMenuUser" menuposition="down,right" dataset="bind:Variables.exportUserMenu.dataSet" autoopen="never" on-select="AlertMenuUserSelect($event, widget, $item)" linktarget="_self"
+                                    menuclass="button_white button-hover" itemlabel="name" orderby="name:asc" margin="unset 2em unset unset"></wm-menu>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                            <wm-container name="container4" id="message">
+                                <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" width="100%"></wm-message>
+                                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"
+                                    width="100%"></wm-message>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                            <wm-container name="container2">
+                                <wm-table name="userMVTable1" title="" dataset="bind:Variables.userMV.dataSet" navigation="Classic" filtermode="multicolumn" showheader="true" multiselect="true" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false"
+                                    showrowindex="false" enablesort="true" gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)">
+                                    <wm-table-column binding="Username" caption="Username" widget-type="anchor" width="300px" edit-widget-type="text" type="string" show="true" readonly="false" on-click="userMVTable1_UsernameOnClick($event, widget, row);Widgets.dialogUserDetails.open()">
+                                        <wm-anchor caption="bind:row.getProperty('Username')" hyperlink="" class="" on-click="gotoUserDetails(row)" conditionalclass=""></wm-anchor>
+                                    </wm-table-column>
+                                    <wm-table-column binding="Emailaddress" caption="Email Address" width="300px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="Groups" caption="Groups" widget-type="label" width="150px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                                        <wm-label caption="bind:row.getProperty('Groups')" class="" conditionalclass="" on-click="gotoUserDetailsOnLoad(row)"></wm-label>
+                                    </wm-table-column>
+                                    <wm-table-column binding="Roles" caption="Roles" width="150px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="IsActive" caption="Action" widget-type="checkbox" width="100px" textalignment="center" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"
+                                        on-click="userMVTable1_IsActiveOnClick($event, widget, row)">
+                                        <wm-checkbox type="toggle" datavalue="bind:row.getProperty('IsActive')" disabled="bind:row.getProperty('userId').toLowerCase() == Variables.loggedInUser.dataSet.id.toLowerCase()" class="action-right" conditionalclass=""
+                                            on-click="gotoIsActiveUser(row, widget)"></wm-checkbox>
+                                    </wm-table-column>
+                                </wm-table>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-dialog dialogtype="design-dialog " modal="true " title="User Details " iconclass=" " name="dialogUserDetails " on-opened="dialogUserDetailsOpened($event, widget)" class="di-width " closable="true " width="100%">
+        <wm-dialogactions name="dialogactions1
+                                            " show="bind:Variables.dialogUserId.dataSet.userId.toLowerCase() !== Variables.loggedInUser.dataSet.id.toLowerCase()">
+            <wm-button caption="CANCEL" on-click="Widgets.dialogUserDetails .close()" name="CancelAlert " class="btn-default" height="50% "></wm-button>
+            <wm-button class="btn-primary" caption="SAVE" type="button" margin="unset 0.5em" name="saveUser_btn" on-click="saveUser_btnClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+        <wm-container name="message_container" margin="unset unset 1em unset">
+            <wm-message name="userMsg" type="error" width="100%" hideclose="true" caption="bind:Variables.userLocalMsg.dataSet.dataValue" show="bind:Variables.userLocalMsg.dataSet.dataValue ? true : false"></wm-message>
+        </wm-container>
+        <wm-container name="containerMain " class="container-main
+                                            ">
+            <wm-container name="projectContainer ">
+                <wm-layoutgrid name="layoutgrid3 ">
+                    <wm-gridrow name="gridrow8 ">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn12 " padding="7px unset 14px unset
+                                            " class="col-username">
+                            <wm-container name="container7 ">
+                                <wm-label name="label3 " caption="Full name"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9 ">
+                            <wm-container name="container11
+                                            ">
+                                <wm-label name="label4 " caption="bind:Variables.dialogUserId.dataSet.Username" margin="8px unset unset unset"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14 ">
+                            <wm-container name="container20" margin="0.35em unset unset unset" style="max-width: fit-content">
+                                <wm-label name="label16" caption="Lending limit amount" margin="unset unset unset 0.5em"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn10
+                                            ">
+                            <wm-container name="container21" margin="0.35em unset unset unset" width="30%" conditionalclass="bind:{'disabled':(Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase())}">
+                                <wm-composite name="composite2" width="100%">
+                                    <wm-container name="container23" style="width: 100% !important;" conditionalclass="bind:{'no-events':(Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase())}">
+                                        <wm-number textalign="right" name="lendingAmount_input" placeholder="" datavalue="bind:Variables.dialogUserId.dataSet.lendingLimit" regexp="\d+" minvalue="0" step="0.01" readonly="bind:Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase()"></wm-number>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4 ">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5 " class="col-username">
+                            <wm-container name="container8
+                                            ">
+                                <wm-label name="label5 " caption="Email address"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn13 ">
+                            <wm-label name="label6 " caption="bind:Variables.dialogUserId.dataSet.Emailaddress" margin="2px unset unset unset"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14 ">
+                            <wm-container name="container23_1">
+                                <wm-label padding="unset 0.5em" name="label14" caption="Preferred Timezone"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn14 ">
+                            <wm-container conditionalclass="bind:{'disabled':((Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase())) &amp;&amp; false}" name="container16">
+                                <wm-composite name="composite2_1">
+                                    <wm-container name="container24" width="30%" conditionalclass="bind:{'no-events':((Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase())) &amp;&amp; false}">
+                                        <wm-select name="tz_select" placeholder="-- Select --" dataset="bind:timeZones" datafield="All Fields" datavalue="bind:Variables.dialogUserId.dataSet.timeZone" readonly="bind:(Variables.dialogUserId.dataSet.userId.toLowerCase() === Variables.loggedInUser.dataSet.id.toLowerCase()) &amp;&amp; false"
+                                            on-blur="tz_selectBlur($event, widget)"></wm-select>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5" style="margin: 1.5em 0 1em 0 !important">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn6
+                                            ">
+                            <wm-container name="container9 " show="true ">
+                                <wm-label padding="unset 0.5em " name="label7 " caption="Groups &amp; Roles " show="false "></wm-label>
+                                <wm-panel iconclass="bind:Variables.isExpandedGroup.dataSet.dataValue===false?'fico-icon-arrow-bold-right':'fico-icon-arrow-bold-down'" autoclose="outsideClick
+                                            " title="Groups &amp; Roles " name="panel1 " collapsible="true " enablefullscreen="false " closable="false" class="panel-g-r" on-expand="panel1Expand($event, widget)" on-collapse="panel1Collapse($event, widget)"
+                                    expanded="true">
+                                    <!--<wm-panel-footer name="panel_footer1 ">-->
+                                    <wm-layoutgrid name="layoutgrid3_1 " class="layout-g-r">
+                                        <wm-gridrow name="gridrow7
+                                            ">
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn14_1 ">
+                                                <wm-container name="container12_1 " class="container12_1">
+                                                    <wm-label padding="unset 0.5em 0.5em 2em" name="label9 " caption="Assigned groups " fontsize="16" margin="0em 0em 1em 0em" style="font-weight: 600;"></wm-label>
+                                                    <!--<wm-list listclass="list-group " itemclass="list-group-item
+                                            " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list " dataset="bind:Variables.getAllRoles.dataSet " navigation="Basic " name="list2 "><wm-listtemplate layout="media " name="listtemplate2
+                                            "><wm-container class="media-body " padding="unset 1.5em unset 1.25em " name="container14 "><wm-label class="pull-left " caption="bind:Variables.getAllRoles.dataSet.data[$i].role " margin="0em unset 0.5em unset " fontsize="1.143
+                                            " fontunit="em " name="label11 "></wm-label></wm-container></wm-listtemplate></wm-list>-->
+                                                    <wm-list listclass="list-group assign-group-role-g" itemclass="list-group-item assign-group-role-i" template="true
+                                            " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list" name="GroupsMVList1" dataset="bind:Variables.executeGetGroupByUserId.dataSet" navigation="None " navigationalign="left " horizontalalign="left" pagesize="20
+                                            " nodatamessage="" showrecordcount="false " show="true " iconclass="" loadingicon="fa fa-circle-o-notch">
+                                                        <wm-listtemplate layout="inline " name="listtemplate1 ">
+                                                            <!--<wm-container class="media-left" name="container17"><wm-picture width="32pt" height="32pt" name="Picture" shape="circle" class="media-object"></wm-picture></wm-container>-->
+                                                            <wm-container class="media-body " name="listItem " opacity="1
+                                            " backgroundrepeat="repeat-x " margin="unset unset unset 20px">
+                                                                <wm-icon name="icon1" iconclass="fico-icon-circle-solid"></wm-icon>
+                                                                <wm-label name="labelCategory " caption="bind:Variables.executeGetGroupByUserId.dataSet.data[$i].name" class="category-label "></wm-label>
+                                                            </wm-container>
+                                                        </wm-listtemplate>
+                                                    </wm-list>
+                                                </wm-container>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="8" name="gridcolumn15_1 ">
+                                                <wm-container name="container13 " class="container13">
+                                                    <wm-label padding="unset 0.5em 0.5em 2em" name="Assignedroles " caption="Assigned roles " fontsize="16" margin="0em 0em 1em 0em" style="font-weight: 600;"></wm-label>
+                                                    <!--<wm-list listclass="list-group " itemclass="list-group-item
+                                            " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list " dataset="bind:Variables.getAllRoles.dataSet " navigation="Basic " name="list3 "><wm-listtemplate layout="media " name="listtemplate3
+                                            "><wm-container class="media-body " padding="unset 1.5em unset 1.25em " name="container15 "><wm-label class="pull-left " caption="bind:Variables.getAllRoles.dataSet.data[$i].role " margin="0em unset 0.5em unset " fontsize="1.143
+                                            " fontunit="em " name="label12 "></wm-label></wm-container></wm-listtemplate></wm-list>-->
+                                                    <wm-list listclass="list-group assign-group-role-g" itemclass="list-group-item assign-group-role-i" template="true
+                                            " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list" name="RolesMVList1" dataset="bind:Variables.executeGetRoleByUserId.dataSet" navigation="None " navigationalign="left " pagesize="20
+                                            " nodatamessage="bind:appLocale.TABLE_NO_DATA_MESSAGE " showrecordcount="false " show="true ">
+                                                        <wm-listtemplate layout="inline " name="listtemplate1 ">
+                                                            <!--<wm-container class="media-left" name="container17"><wm-picture width="32pt" height="32pt" name="Picture" shape="circle" class="media-object"></wm-picture></wm-container>-->
+                                                            <wm-container class="media-body " name="listItem " opacity="1
+                                            " backgroundrepeat="repeat-x " margin="unset unset unset 20px">
+                                                                <wm-icon name="icon1" iconclass="fico-icon-circle-solid"></wm-icon>
+                                                                <wm-label name="labelCategory " caption="bind:Variables.executeGetRoleByUserId.dataSet[$i].role" class="category-label " on-click="CategoryClick($event, widget, item, currentItemWidgets)
+                                            " fontsize="16"></wm-label>
+                                                            </wm-container>
+                                                        </wm-listtemplate>
+                                                    </wm-list>
+                                                </wm-container>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                    <!--<wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="userTopMenuMVList1" dataset="bind:Variables.userTopMenuMV.dataSet" navigation="Classic"><wm-listtemplate layout="inline" name="listtemplate4"><wm-container class="media-left" name="container17"><wm-picture width="32pt" height="32pt" name="Picture" shape="circle" class="media-object"></wm-picture></wm-container><wm-container class="media-body" padding="unset unset unset 1.25em" name="container18"><wm-label name="Name" class="p media-heading" caption="Name" fontsize="1.143" fontunit="em"></wm-label><wm-label name="JobTitle" caption="JobTitle" class="p text-muted"></wm-label></wm-container><wm-container class="media-right media-top" name="container19"><wm-button class="btn-transparent" iconclass="wi wi-share fa-2x" name="button2"></wm-button></wm-container></wm-listtemplate></wm-list>-->
+                                    <!--</wm-panel-footer>-->
+                                </wm-panel>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6" style="margin: 0 0 1em 0 !important;">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn7 ">
+                            <wm-container name="container10 ">
+                                <wm-label padding="unset 0.5em " name="label8 " caption="Permissions " show="false
+                                            "></wm-label>
+                                <wm-panel iconclass="bind:Variables.isExpandedPermission.dataSet.dataValue === false?'fico-icon-arrow-bold-right':'fico-icon-arrow-bold-down'" autoclose="outsideClick " title="Permissions " name="panelPermission"
+                                    collapsible="true " enablefullscreen="false " closable="false" on-expand="panelPermissionExpand($event, widget)" class="panel-g-r" on-collapse="panelPermissionCollapse($event, widget)" expanded="true">
+                                    <!--<wm-panel-footer name="panel_footer1 ">-->
+                                    <!--<wm-search name="searchRole " datafield="All Fields " class="searchMargin " placeholder="Filter permission" loadingdatamsg=" "></wm-search>-->
+                                    <wm-container name="permissionSearchTextContainer" class="serachSection" padding="0.5em unset">
+                                        <wm-text name="permissionSearchText" placeholder="Filter permissions" class="searchText" on-keyup="permissionSearchTextKeyup($event, widget)" updateon="default" autocomplete="true"></wm-text>
+                                        <wm-button class="btn-link button-addon" caption="" type="button" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
+                                    </wm-container>
+                                    <wm-list listclass="list-group fi-horizontal-list " itemclass="list-group-item popover-custom fi-horizontal-list-item " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list permission-list" name="PermissionMVList1"
+                                        dataset="bind:Variables.PermissionsMV.dataSet" navigation="None " navigationalign="left " horizontalalign="center " pagesize="20 " nodatamessage="bind:appLocale.TABLE_NO_DATA_MESSAGE
+                                            " showrecordcount="false " show="true" style="margin-left: 0.85em;">
+                                        <wm-listtemplate layout="inline " name="listtemplate1 ">
+                                            <!-- <wm-container class="media-body " name="listItem " opacity="1 " backgroundrepeat="repeat-x "><wm-label name="label " caption="bind:Variables.PermissionsMV.dataSet.data[$i].name" class="Permissionlist-label"></wm-label></wm-container>-->
+                                            <wm-container name="TextC" class="text" padding="0.5em unset">
+                                                <wm-label name="text-label" caption="bind:Variables.PermissionsMV.dataSet[$i].description" class="text-label" padding="unset 10px"></wm-label>
+                                            </wm-container>
+                                        </wm-listtemplate>
+                                    </wm-list>
+                                    <!--</wm-panel-footer>-->
+                                </wm-panel>
+                                <!--<wm-panel iconclass="bind:Variables.isExpandedGroup.dataSet.dataValue===false?
+                                            'fico-icon-arrow-bold-right': 'fico-icon-arrow-bold-down' " autoclose="outsideClick " title="General " name="Generalpanel " collapsible="true " expanded="true " class="general-panel " on-expand="GeneralpanelExpand($event, widget)
+                                            " on-collapse="GeneralpanelCollapse($event, widget) "><wm-list listclass="list-group admin-general-g " itemclass="list-group-item admin-general-i
+                                            " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list admin-general-list " name="adminGeneralList " id="adminG " dataset="bind:Variables.adminGeneralMV.dataSet " navigation="None
+                                            "><wm-listtemplate layout="inline " name="listtemplate1 "><wm-container class="media-body " padding="unset unset unset 1.25em " name="adminGeneralcontainer " on-click="adminGeneralcontainerClick($event, widget, item, currentItemWidgets)
+                                            "><wm-label name="adminGeneralName " class="p media-heading admin-general " caption="bind:Variables.adminGeneralMV.dataSet[$i].name " fontsize="16 " fontunit="px " on-click="adminGeneralNameClick($event, widget, item, currentItemWidgets)
+                                            "></wm-label></wm-container><wm-container class="media-right media-top " name="container7 "></wm-container></wm-listtemplate></wm-list></wm-panel>--></wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-container>
+            <!--<wm-list listclass="list-group no-padding-list
+                                            " itemclass="list-group-item no-padding-list-item " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list " name="RoleList1 " dataset="bind:Variables.getAllRoles.dataSet " navigation="Basic
+                                            "><wm-listtemplate layout="media " name="listtemplate1 "><wm-container class="media-body " padding="unset 1.5em unset 1.25em " name="container12 "><wm-label class="pull-left " caption="bind:Variables.getAllRoles.dataSet.data[$i].role
+                                            " name="Name " margin="0em unset 0.5em unset " fontsize="1.143 " fontunit="em "></wm-label></wm-container></wm-listtemplate></wm-list>--></wm-container>
+        <wm-spinner show="true" name="spinner2" caption="" servicevariabletotrack="sv_updateUserDetails"></wm-spinner>
+    </wm-dialog>
+    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="getAllUsers,sv_bulkActivateDeactivate,sv_importUsers,sv_saveLendingLimit,updateUser"></wm-spinner>
+</wm-partial>

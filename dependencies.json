@@ -1,0 +1,21 @@
+[ {
+  "name" : "FI_Theme_Credit_Card",
+  "version" : "1.4",
+  "artifactType" : "THEME",
+  "artifactDependencyList" : null
+}, {
+  "name" : "TDConditionQueryBuilder",
+  "version" : "1.8",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
+}, {
+  "name" : "DualList_OS",
+  "version" : "1.4",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
+}, {
+  "name" : "TDOMConditionQueryBuilder",
+  "version" : "1.2",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
+} ]

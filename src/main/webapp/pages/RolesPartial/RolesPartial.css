@@ -1,0 +1,158 @@
+.searchText {
+    margin-left: 0.1rem;
+    margin-right: 7px;
+    margin-top: 10px;
+    min-width: 100% !important;;
+    width: 100% !important;
+    right: 0.5%;
+}
+
+.rowMargin {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item {
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+    padding-left: 15px;
+    padding-right: 1px;
+}
+
+.list-group-item.active {
+    font-family: "Roboto-Regular", "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #00609C;
+    text-align: left;
+    line-height: normal;
+    background-color: #DBEBFA !important;
+}
+
+.button-hover:hover {
+    color: #FFFFFF !important;
+    background-color: #004876 !important;
+}
+
+.add-button-hover:hover {
+    color: #FFFFFF !important;
+    background-color: #004876 !important;
+}
+
+.notification-error {
+    top: -20px;
+    margin-bottom: -20px;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+    color: #d0002d !important;
+}
+
+.p.alert.app-message.alert-danger.notification-error {
+    color: #d0002d !important;
+}
+
+.button-own-css {
+    float: right;
+    margin-top: 11px;
+}
+
+.app-livelist.app-card.card.media-list.lookuplist.roleList.Pager {
+    margin-left: -25px;
+    /* left: 10px; */
+    margin-right: -10px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i:hover {
+    background-color: #f2f2f2 !important;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i.active {
+    background-color: #DBEBFA !important;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i:focus {
+    background-color: #DBEBFA !important;
+}
+
+.errormessage {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.successmessage {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.rolename {
+    font-weight: 400;
+}
+
+
+/*.text-clip{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+}*/
+
+
+/*.text-clip{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 55%;
+    width: 100%;
+}*/
+
+.module {
+    width: 100%;
+    overflow: hidden;
+    /*border: 1px solid green;*/
+    /*margin: 10px;*/
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-height: 73px;
+    /* I needed this to get it to work */
+}
+
+.wm-app app-partial-rolespartial li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item {
+    border: solid !important;
+    border-color: #ddd !important;
+    border-width: 0.5px !important;
+}
+
+.wm-app .list-group-item.lookup-item {
+    margin-bottom: 0px !important;
+    padding-left: 1px;
+    padding-right: 1px;
+    border: solid !important;
+    border-color: #f2f2f2 !important;
+    border-width: 0.01px !important
+}
+
+.button-addon {
+    /*margin-left: -3em !important;*/
+    margin-top: -1.8em;
+    z-index: 100;
+    height: 22px;
+    width: 10%;
+    float: right;
+    transform: translate(0px, -12px);
+}
+
+.wm-app .btn.btn-link:hover {
+    color: #003150;
+    /* text-decoration: underline; */
+    background: transparent;
+    border-color: transparent;
+}
+
+/* FAWB pagination-container */
+.popover-container {
+    margin-bottom: 15em !important; 
+}

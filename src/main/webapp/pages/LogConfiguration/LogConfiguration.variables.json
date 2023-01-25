@@ -1,0 +1,34 @@
+{
+  "UpdateLogNameModel" : {
+    "_id" : "wm-UpdateLogNameModel-wm.Variable-1624961488984",
+    "name" : "UpdateLogNameModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "code" : "",
+      "name" : "",
+      "id" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "UpdateLogTypeModel" : {
+    "_id" : "wm-UpdateLogTypeModel-wm.Variable-1624961516659",
+    "name" : "UpdateLogTypeModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "Code" : "",
+      "Type" : "",
+      "id" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

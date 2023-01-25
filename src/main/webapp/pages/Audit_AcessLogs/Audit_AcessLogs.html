@@ -1,0 +1,69 @@
+<wm-page pagetitle="Audit" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1" class="pull-left"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow00">
+                    <wm-gridcolumn name="gridcolumn001" columnwidth="8" horizontalalign="right"></wm-gridcolumn>
+                    <wm-gridcolumn name="gridcolumn003" columnwidth="4" horizontalalign="right">
+                        <wm-label padding="unset 0.5em" name="tracing_enabled" show="bind:Variables.isTracingEnabled.dataSet.value === true" caption="Request tracing is enabled" class="text-success"></wm-label>
+                        <wm-label padding="unset 0.5em" name="tracing_disabled" caption="Request tracing is disabled" class="text-warning" show="bind:Variables.isTracingEnabled.dataSet.value != true"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow01">
+                    <wm-gridcolumn name="gridcolumn011" columnwidth="8" horizontalalign="right"></wm-gridcolumn>
+                    <wm-gridcolumn name="gridcolumn012" columnwidth="4" horizontalalign="right">
+                        <wm-label padding="unset 0.5em" name="accesslogging_enabled" show="bind:Variables.isAccesLogEnabled.dataSet.value === true" caption="Access log auditing is enabled" class="text-success"></wm-label>
+                        <wm-label padding="unset 0.5em" name="accesslogging_disabled" caption="Access log auditing is disabled" class="text-warning" show="bind:Variables.isAccesLogEnabled.dataSet.value != true"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow1" class="bordered-bottom">
+                    <wm-table name="findAccessLogsTable1" title="Access Logs" dataset="bind:Variables.findAccessLogsVar.dataSet" navigation="Basic" spacing="condensed" gridclass="table-striped table-hover table-bordered" showrecordcount="true" subheading="Latest access entries on the database">
+                        <wm-table-column binding="username" caption="Username" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('username')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="method" caption="Method" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('method')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="resultCode" caption="Result Code" widget-type="label" edit-widget-type="number" type="integer" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('resultCode')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="path" caption="Path" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('path')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="createdOn" caption="Created On" widget-type="label" edit-widget-type="timestamp" type="timestamp" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('createdOn')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="ipAddress" caption="Ip Address" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('ipAddress')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="traceId" caption="Trace Id" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('traceId')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                    </wm-table>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow4" class="bordered-bottom">
+                    <wm-table name="accessLogsTable" title="Access Logs Purged Files" dataset="bind:Variables.accessLogsFiles.dataSet" navigation="Basic" subheading="DB entries purged as files on S3">
+                        <wm-table-column binding="name" caption="Name" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('name')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="size" caption="Size" widget-type="label" edit-widget-type="number" type="long" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('size')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="path" caption="Path" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-anchor caption="Download" hyperlink="bind:row.getProperty('path')" class="" conditionalclass=""></wm-anchor>
+                        </wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-secondary" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="Variables.deleteAccessLog.invoke()" disabled="false" widget-type="button"></wm-table-row-action>
+                    </wm-table>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow5" class="bordered-bottom"></wm-gridrow>
+                <wm-gridrow name="gridrow6" class="bordered-bottom"></wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

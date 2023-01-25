@@ -1,0 +1,42 @@
+modelConfigMap:
+  defaultModelConfig:        #Default config (DO NOT change the name).
+    defaultIdAttribName: "id"
+    databaseServicePrefix: "TELUSAgentUIDB."
+    databaseServiceSuffix: "Service"
+    dataAuditEnabled: true
+    dataAuditSaveBean: "Hermes.AuditDataSave"
+    modelMapperConfig:
+      matchingStrategy: "STRICT"      #allowed values are 'STRICT', 'STANDARD' and 'LOOSE'
+    
+    domainModelSaveConfig:
+    - domainModelClassName: com.fico.ps.model.ApplicationVO
+      sequence: 1
+      saveConfig:
+        enityClassName: com.fico.dmp.telusagentuidb.Application
+    
+    # - domainModelClassName: com.fico.ps.model.TDAppProductXMLVO
+    #   sequence: 3
+    #   saveConfig:
+    #     enityClassName: com.fico.dmp.core.TdapplicationProductXml
+    #   directMapping:
+    #     fieldMappings:
+    #   entityReferenceMappings: # one-to-many and one-to-one
+    #     - entityFieldName: "id"
+    #       referencePathInDomainModel: "application.tdAppProduct.tdAppProductXML"
+    #       parentDomainClass: "com.fico.ps.model.TDAppProductVO"
+    
+    - domainModelClassName: com.fico.ps.model.NoteVO
+      sequence: 3
+      saveConfig:
+        enityClassName: com.fico.dmp.telusagentuidb.Note
+      directMapping:
+        fieldMappings:
+          - sourceField: "noteCategoryId"
+            destField: "noteCategory"
+      entityReferenceMappings:
+        - entityFieldName: "applicationId"
+          referencePathInDomainModel: "application.notes"
+          parentDomainClass: "com.fico.ps.model.ApplicationVO"
+        - entityFieldName: "partyId"
+          referencePathInDomainModel: "application.applicants.notes"
+          parentDomainClass: "com.fico.ps.model.ApplicantVO"

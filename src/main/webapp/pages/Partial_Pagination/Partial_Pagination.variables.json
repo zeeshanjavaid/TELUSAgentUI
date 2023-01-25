@@ -1,0 +1,33 @@
+{
+  "mv_pageNumber" : {
+    "_id" : "wm-mv_pageNumber-wm.Variable-1653478920503",
+    "name" : "mv_pageNumber",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "1"
+    } ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "mv_totalPages" : {
+    "_id" : "wm-mv_totalPages-wm.Variable-1653478934886",
+    "name" : "mv_totalPages",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

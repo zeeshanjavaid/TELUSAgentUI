@@ -1,0 +1,312 @@
+.app-page {
+    overflow: hidden;
+}
+
+.page-content{
+    padding : 0 !important;
+}
+
+.admin-list-css-new{
+   /* height: 100%;*/ /*check this*/
+    overflow: hidden;
+    border-right: 1px solid rgba(221, 221, 221, 1);
+    padding: 0 5px;
+    border-bottom: 0px solid rgba(0,0,0,.2);
+    margin-bottom: -11px;
+}
+
+.app-container.col-md-2.admin-left-css.bordered-bottom.admin-list-css-new{
+    margin-bottom: -11px;
+}
+
+
+.admin-list-cascading{
+    overflow: hidden;
+    height: calc(100vh - 100px);  /*check this*/
+    width:100%;
+    float: left;
+}
+
+.page-footer{
+    border-top: 1px solid rgba(0,0,0,.2);
+}
+
+.app-left-panel {
+    float: left !important;
+}
+
+.app-content-column {
+    display: contents !important;
+    float: none !important;
+}
+
+.admin-list2-css-new{
+   /* height: 100%;*/
+    overflow: hidden;
+    border-right: 1px solid rgba(221, 221, 221, 1);
+    padding: 0 5px;
+    /*border-bottom: 1px solid rgba(0,0,0,.2);*/
+    border-left: 0px solid rgba(0,0,0,.2);
+    margin-bottom: -11px;
+    border-bottom: 0px;
+   
+
+}
+
+.app-container.col-md-2.admin-left2-css.bordered-bottom.admin-list2-css-new {
+     height: calc(100vh - 90px); /*check this*/
+}
+
+
+
+.admin-list2-cascading{
+    overflow: auto;
+    height: calc(100vh - 100px) !important; /*check this*/
+    width:100%; 
+    float: left;
+}
+
+.page-footer{
+    border-top: 1px solid rgba(0,0,0,.2);
+}
+
+.app-panel.app-card.card.general-panel {
+    border-width: 0px;
+}
+
+/*.col-auto {
+    top: 5px;
+}*/
+
+.card-body {
+    padding: 0rem !important;
+}
+
+button.app-icon.wi.card-action {
+    display: none;
+}
+
+.app-livelist.app-card.card.media-list.admin-general-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+    margin-top: -15px;
+}
+
+.app-livelist.app-card.card.media-list.admin-um-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+    margin-top: -15px;
+}
+
+app-livelist.app-panel.media-list.admin-general-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+    margin-top: -15px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i {
+    border-radius: 5px;
+    padding: 5px 0px 0px 0px;
+    margin-top: -10px;
+    height: 35px;
+}
+
+.app-livelist.app-panel.media-list.admin-general-list.None {
+    top: -15px;
+    left: 5px;
+}
+
+.app-livelist.app-panel.media-list.admin-um-list.None {
+    top: -15px;
+    left: 5px;
+}
+
+ul.app-livelist-container.clearfix.list-group.admin-general-g {
+    margin-left: 10px;
+    /* width: 65%;*/
+     width: 95%;
+}
+
+
+.app-livelist.app-panel.media-list.admin-um-list.None {
+    border-width: 0px;
+    border-radius: 5px;
+    color: #00629B;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i {
+    border-radius: 5px;
+    padding: 5px 0px 0px 0px;
+     /*margin-top: -10px;*/
+     margin-top: -10px;
+    height: 35px;
+}
+
+.app-livelist.app-panel.media-list.admin-um-list.None {
+    top: -15px;
+}
+
+ul.app-livelist-container.clearfix.list-group.admin-um-g {
+    margin-left: 10px;
+    /* width: 65%;*/
+     width: 95%;
+}
+
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i.active {
+      height: 35px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i.active {
+      height: 35px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i.active:hover {
+    height: 35px;
+    background: #00629B;
+     margin-top: -10px;
+    padding: 5px 0px 0px 0px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i.active:hover {
+    height: 35px;
+    background: #00629B;
+     /*margin-top: -10px;*/
+     margin-top: -10px;
+    padding: 5px 0px 0px 0px;
+}
+
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i:hover {
+   background: #f2f2f2;
+     height: 35px;
+     margin-top: -10px;
+     padding: 5px 0px 0px 0px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i:hover {
+    background: #f2f2f2;
+    height: 35px;
+     /*margin-top: -10px;*/
+    margin-top: -10px;
+    padding: 5px 0px 0px 0px;
+
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i.active:focus {
+    height: 35px;
+    background: #00629B;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i.active:focus {
+    height: 35px;
+    background: #00629B;
+}
+
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-general-i:focus {
+   background: #f2f2f2;
+     height: 35px;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.admin-um-i:focus {
+    background: #f2f2f2;
+    height: 35px;
+
+}
+
+.wm-app .app-content-column {
+    background-color: #fff;
+    padding: 0px !important; 
+}
+
+.wm-app .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    border-bottom: 0px;
+}
+
+div#containerQueryBuilder {
+    /*width: 135%;*/
+    width: 98%;
+   /* margin-left: 50px;*/
+}
+
+div#containerQueryBuilder_group_0 {
+    width: 100%;
+    /*width: 83.25%;*/
+}
+
+i.app-icon.panel-icon.fico-icon-arrow-bold-down {
+    top: -2.5px;
+}
+
+i.app-icon.panel-icon.fico-icon-arrow-bold-right {
+    top: -2px;
+}
+
+.app-panel.app-card.card.general-panel {
+    /*margin-bottom: -20px;*/
+    margin-bottom: -50px;
+}
+
+/*.wm-app .card .card-header .card-title {
+    min-height: 2.1875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: revert;
+    margin-bottom: -5px;
+    margin-top: -2.5px;
+}*/
+
+footer.app-footer.clearfix.page-footer {
+    padding-top: 8px;
+}
+
+.app-container.OMConditionBuilderContainer {
+    width: 65%;
+}
+
+.app-container.usermenucontainer {
+    left: -75px;
+    /*top: 0px;*/
+    /*top: -268px;*/
+}
+
+.app-container.AddQueueContainer {
+    background-color: white;
+}
+
+.app-container.col-md-12.adminList2.admin-list2-cascading.list-overflow {
+  overflow: hidden;
+}
+
+.admin-right{
+    height: 60em;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.adminUMlNamecontainer{
+    cursor: pointer;
+}
+
+div[name='adminListSection2'] {
+    scrollbar-color: auto;
+}
+
+div[name='adminListSection2']::-webkit-scrollbar {
+  width: 5px;
+}
+
+div[name='adminListSection2']::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+div[name='adminListSection2']::-webkit-scrollbar-thumb {
+  background-color: #bababa;
+  border: 1px solid #bababa;
+  border-radius: 50px;
+}

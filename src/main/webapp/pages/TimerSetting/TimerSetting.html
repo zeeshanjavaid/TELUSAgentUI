@@ -1,0 +1,107 @@
+<wm-page pagetitle="Timer Setting" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1" class="pull-left"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-table name="getAllJobsInfoTable1" title="" dataset="bind:Variables.getAllJobsInfo.dataSet" navigation="Classic">
+                <wm-table-column binding="jobName" caption="Job Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="jobType" caption="Job Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="isCron" caption="Is Cron" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="cronExpression" caption="Cron Expression" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="isFrequency" caption="Is Frequency" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="frequency" caption="Frequency" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="description" caption="Description" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-action key="addNewRow" display-name="Create Job" show="true" class="btn-primary" iconclass="wi wi-plus" title="Create Job" action="Widgets.createJob.open()" shortcutkey="" disabled="false" widget-type="button"
+                    position="header"></wm-table-action>
+                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updateJob.open()" disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="Widgets.DeleteConfirm.open()" disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow" display-name="" title="Activate" value="" iconclass="fico-icon-payment-yes-active" class="btn-transparent" show="true" action="Variables.ActivateJob.invoke()" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow1" display-name="" title="DeActivate" value="" iconclass="fico-icon-pause-solid" class="btn-transparent" show="true" action="Variables.DeActivateJob.invoke()" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow2" display-name="" title="Run Now" value="" iconclass="fico-icon-play-solid" class="btn-transparent" show="true" action="Variables.RunNow.invoke()" widget-type="button"></wm-table-row-action>
+            </wm-table>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-dialog dialogtype="design-dialog" name="createJob" title="Create Job" iconclass="wi wi-file-text" modal="true">
+        <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.TimerJobModel.dataSet" captionalign="left" name="TimerJobModelCreateForm" on-submit="Variables.ScheduleJob.invoke()"
+            postmessage="">
+            <wm-layoutgrid columns="1" name="layoutgrid3">
+                <wm-gridrow name="gridrow10">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                        <wm-form-field name="JobType" type="string" displayname="Job Type" key="Job Type" show="true" widget="select" placeholder="Select value" dataset="bind:Variables.GetJobTypes.dataSet" datafield="All Fields" required="true"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn13">
+                        <wm-form-field name="JobName" readonly="false" displayname="Job Name" key="Job Name" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow12">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                        <wm-form-field name="Cron" displayname="Cron" key="Cron" type="string" show="true" widget="checkbox" placeholder=""></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                        <wm-form-field name="CronExpression" readonly="false" displayname="Cron Expression" key="Cron Expression" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                        <wm-form-field name="Frequency" displayname="Frequency" key="Frequency" type="string" show="true" widget="checkbox" placeholder=""></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                        <wm-form-field name="FrequencyMinute" readonly="false" displayname="Frequency(min)" key="Frequency(minute)" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-form-field name="Description" readonly="false" displayname="Description" key="Description" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-form>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" name="updateJob" title="Update Job" iconclass="wi wi-file-text" modal="true">
+        <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.TimerJobModel.dataSet" captionalign="left" name="TimerJobModelUpdateForm" on-submit="Variables.UpdateScheduledJob.invoke()"
+            postmessage="">
+            <wm-layoutgrid columns="1" name="layoutgrid4">
+                <wm-gridrow name="gridrow18">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18_1">
+                        <wm-form-field name="UpdateJobName" readonly="false" displayname="JobName" key="Job Name" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.jobName"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow19">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                        <wm-form-field name="Cron" displayname="UpdateCron" key="Cron" type="string" show="true" widget="checkbox" placeholder="" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.isCron"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow20">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn20">
+                        <wm-form-field name="UpdateCronExpression" readonly="false" displayname="Cron Expression" key="Cron Expression" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.cronExpression"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow21">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn21">
+                        <wm-form-field name="UpdateFrequency" displayname="Frequency" key="Frequency" type="string" show="true" widget="checkbox" placeholder="" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.isFrequency"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow22">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn22">
+                        <wm-form-field name="UpdateFrequencyMinute" readonly="false" displayname="Frequency(Min)" key="Frequency(minute)" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.frequency"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="UpdateJobType" type="string" key="Job Type" displayname="Job Type" widget="text" show="false" inputtype="text" placeholder="Enter value" defaultvalue="bind:Variables.getAllJobsInfo.dataSet[$i].jobType"></wm-form-field>
+            <wm-form-field name="UpdateDescription" key="Description" type="string" displayname="Description" widget="text" show="false" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.getAllJobsInfoTable1.selecteditem.description"></wm-form-field>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-form>
+    </wm-dialog>
+    <wm-confirmdialog name="DeleteConfirm" title="Delete Job" message="Do you really want to delete?" iconclass="fico-icon-archive" on-ok="Variables.DeleteJob.invoke()"></wm-confirmdialog>
+</wm-page>

@@ -1,0 +1,47 @@
+{
+  "endpointAddress" : "https://plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com/subprocess/7be7dd1c-434c-4ba1-aa25-d146efa91980",
+  "method" : "GET",
+  "headers" : {
+    "Authorization" : [ "Bearer null" ]
+  },
+  "redirectEnabled" : true,
+  "requestBody" : "",
+  "queryParams" : {
+    "inputNumber" : "1"
+  },
+  "authDetails" : {
+    "providerId" : "dmp",
+    "grantType" : "DMP_CLIENT_CREDENTIALS",
+    "type" : "OAUTH2"
+  },
+  "contentType" : "application/json",
+  "multiParamInfoList" : null,
+  "sampleHttpResponseDetails" : {
+    "statusCode" : 200,
+    "headers" : {
+      "Date" : [ "Fri, 27 May 2022 07:42:49 GMT" ],
+      "Content-Type" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+      "Transfer-Encoding" : [ "chunked" ],
+      "Connection" : [ "keep-alive" ],
+      "adrum_0" : [ "g:9e7431bc-98f0-4e8e-87f6-cefd9763e5c6" ],
+      "adrum_1" : [ "n:fico-test_09ed691a-862c-41af-8d63-f4dd453d323c" ],
+      "vary" : [ "Origin,Access-Control-Request-Method,Access-Control-Request-Headers" ],
+      "adrum_2" : [ "i:1090708" ],
+      "adrum_3" : [ "s:f" ],
+      "x-content-type-options" : [ "nosniff" ],
+      "x-xss-protection" : [ "1; mode=block" ],
+      "cache-control" : [ "no-cache, no-store, max-age=0, must-revalidate" ],
+      "pragma" : [ "no-cache" ],
+      "expires" : [ "0" ],
+      "strict-transport-security" : [ "max-age=31536000 ; includeSubDomains" ],
+      "x-envoy-upstream-service-time" : [ "119" ]
+    },
+    "responseBody" : "{\"transactionId\":\"4c488e13-d556-4b7c-8e34-f570b419c324\",\"content\":{\"outputVariables\":{\"outputNumber\":11},\"status\":\"complete\",\"startTimestamp\":\"2022-05-27T07:42:49.499+0000\",\"endTimestamp\":\"2022-05-27T07:42:49.545+0000\",\"timeTaken\":46}}",
+    "convertedResponse" : null
+  },
+  "testApi" : true,
+  "serviceId" : null,
+  "variable" : null,
+  "requestType" : "",
+  "responseType" : ""
+}

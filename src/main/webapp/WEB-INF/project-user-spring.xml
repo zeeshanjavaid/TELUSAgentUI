@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Local spring modifications.  This file is never altered by WaveMaker software,
+and is an ideal location for end-users to put any code they need.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.fico.pscomponent.handlers, com.fico.pscomponent.logging, com.fico.pscomponent.s3.upload, com.fico.pscomponent.cache.config, com.fico.pscomponent.util, com.fico.pscomponent.service, com.fico.pscomponent.service.logging, com.fico.pscomponent.service.property,com.fico.pscomponent.config, com.fico.pscomponent.quartz, com.fico.pscomponent.user,com.fico.core,com.fico.ps" />
+    
+    <context:component-scan base-package="com.fico.ps.service,com.fico.ps.config,com.fico.ps.core,com.fico.ps.mapper,com.fico.ps.hermes.*"/>
+    
+     <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:quartz.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- init-method="init" required to load values at startup. -->
+    <bean id="fawbPropertySource" class="com.fico.fawb.DbBasedPropertySource" init-method="init" lazy-init= "true"> 
+        <property name="databaseSourceConfiguration" ref="dbSourceConfiguration"/>
+    </bean>
+    
+     <bean id="dbSourceConfiguration" class="com.wavemaker.runtime.property.config.JdbcConfiguration">
+        <property name="connectionUrl" value="${TELUSAgentUIDB.url}"/>
+        <property name="driverClass" value="${TELUSAgentUIDB.driverClass}"/>
+        <property name="username" value="${TELUSAgentUIDB.username}"/>
+        <property name="password" value="${TELUSAgentUIDB.password}"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,82 @@
+<wm-prefab-container name="prefab_container1">
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn1">
+                <wm-layoutgrid name="layoutgrid2">
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn4" horizontalalign="left">
+                            <wm-label class="col-lg-3 control-label" name="label1" caption="bind:appLocale.AVAILABLE" textalign="left" fontweight="bold" margin="unset unset 5px unset"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow13" class="maxwidth-btn">
+                        <wm-gridcolumn columnwidth="6 " name="gridcolumn20" horizontalalign="left">
+                            <wm-container name="containerSourceFilter" show="bind:Widgets.textFilterLeft.datavalue.length > 0" margin="2px unset 5px unset" fontsize="12">
+                                <wm-label padding="unset 0.5em" name="label7" caption="bind:appLocale.FILTERED" class="label-warning"></wm-label>
+                                <wm-label padding="unset 0.5em " name="Filterlabelsource" width="70%" caption="bind:leftFilteredList.length+' '+appLocale.FROM +' '+ Variables.leftDatasetModel.getData().length" show="true" textalign="left "></wm-label>
+                            </wm-container>
+                            <wm-container show="bind:Widgets.textFilterLeft.datavalue ? 'false' : 'true'" name="container7" margin="2px unset 5px unset" fontsize="12">
+                                <wm-label padding="unset 0.5em unset unset" width="70%" caption="bind:appLocale.SHOWING_ALL+' ' + Variables.leftDatasetModel.getData().length" show="true" textalign="left " name="label8"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn21" horizontalalign="right">
+                            <wm-button class="btn-default btn-xs text-transform-none" caption="bind:appLocale.SHOW_ALL" type="button " name="btnShowAllLeft" show="bind:Widgets.textFilterLeft.datavalue ? 'true' : 'false'" on-click="btnShowAllLeftClick($event, widget)" margin="-5px unset unset unset"></wm-button>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4 ">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn8 ">
+                            <wm-text name="textFilterLeft" updateon="default " on-change="textFilterLeftChange($event, widget, newVal, oldVal)" placeholder="bind:appLocale.FILTER" fontsize="14 " textalign="left " width="100%"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5 ">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn10 ">
+                            <wm-select name="selectLeft" multiple="true " height="220 " class="no-padding dualList-select" margin="5px unset unset unset " datafield="All Fields" dataset="bind:Variables.leftDatasetModel.dataSet" autofocus="false
+                                " displayfield="bind:displayfield"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn5 " class="dual-list-btn-group" horizontalalign="center">
+                <wm-button id="addallbtn" class="btn-default btn-listctrl " caption="bind:appLocale.DUAL_LIST_PREFAB_ADD_BUTTON_ALL + ' >>'" type="button" name="buttonAddAll" on-click="buttonAddAllClick($event, widget)" disabled="bind:Variables.leftDatasetModel.dataSet.length<1"
+                    hint="bind:appLocale.DUAL_LIST_PREFAB_ADD_BUTTON_ALL"></wm-button><br>
+                <wm-button id="addbtn" class="btn-default btn-listctrl" caption="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_ADD + '>'" type="button" on-click="buttonAddItemsClick($event, widget)" name="buttonAddItems" disabled="bind:Variables.leftDatasetModel.dataSet.length<1"
+                    hint="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_ADD"></wm-button><br>
+                <wm-button id="removebtn" class="btn-default btn-listctrl" caption="bind:appLocale.REMOVE_LESS_THAN" type="button" on-click="buttonRemoveItemsClick($event, widget)" name="buttonRemoveItems" disabled="bind:Variables.rightDatasetModel.dataSet.length<1"
+                    hint="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_REMOVE"></wm-button><br>
+                <wm-button class="btn-default btn-listctrl" caption="bind:appLocale.REMOVE_ALL_LESS_THAN" type="button" name="buttonRemoveAll" on-click="buttonRemoveAllClick($event, widget)" disabled="bind:Variables.rightDatasetModel.dataSet.length<1" hint="bind:appLocale.DUAL_LIST_PREFAB_BUTTOM_REMOVE_ALL"></wm-button>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn2">
+                <wm-layoutgrid name="layoutgrid2">
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn4" horizontalalign="left">
+                            <wm-label class="col-lg-3 control-label" name="label2" caption="bind:appLocale.LABEL_SELECTED" textalign="left" margin="unset unset 5px unset" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name=" gridrow3 " class="maxwidth-btn">
+                        <wm-gridcolumn columnwidth="6 " name="gridcolumn6 " horizontalalign="left ">
+                            <wm-container name="ContainerTargetFilter" show="bind:Widgets.textFilterRight.datavalue.length > 0" margin="2px unset 5px unset" fontsize="12">
+                                <wm-label padding="unset 0.5em" name="label7" caption="bind:appLocale.FILTERED" class="label-warning"></wm-label>
+                                <wm-label padding="unset 0.5em " name="Filterlabeltarget" width="70%" caption="bind:rightFilteredList.length +' '+appLocale.FROM +' '+ Variables.rightDatasetModel.getData().length" show="true" textalign="left "></wm-label>
+                            </wm-container>
+                            <wm-container show="bind:Widgets.textFilterRight.datavalue ? 'false' : 'true'" name="container8" margin="2px unset 5px unset" fontsize="12">
+                                <wm-label padding="unset 0.5em unset unset" width="70%" caption="bind:appLocale.SHOWING_ALL+' '+ Variables.rightDatasetModel.getData().length" show="true" textalign="left " name="label10"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6 " name="gridcolumn7 " horizontalalign="right ">
+                            <wm-button class="btn-default btn-xs text-transform-none" caption="bind:appLocale.SHOW_ALL" type="button " name="btnShowAllRight" show="bind:Widgets.textFilterRight.datavalue ? 'true' : 'false'" on-click="btnShowAllRightClick($event, widget)" margin="-5px unset unset unset"></wm-button>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4 ">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn8 ">
+                            <wm-text name="textFilterRight" updateon="default " placeholder="bind:appLocale.FILTER" fontsize="14 " textalign="left " width="100%" on-change="textFilterRightChange($event, widget, newVal, oldVal)" updatedelay="1"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5 ">
+                        <wm-gridcolumn columnwidth="12 " name="gridcolumn10 ">
+                            <wm-select name="selectRight" multiple="true" dataset="bind:Variables.rightDatasetModel.dataSet" datafield="All Fields" height="220" class="no-padding dualList-select" margin="5px unset unset unset" displayfield="bind:displayfield"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+</wm-prefab-container>

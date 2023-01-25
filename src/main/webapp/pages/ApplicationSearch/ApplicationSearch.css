@@ -1,0 +1,221 @@
+:root {
+    --primaryColor: #00629b;
+    --leftMenuBGColor: #f2f2f2;
+    --defaultLabelColor: #333;
+    --displayValue: block;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.width-full {
+    width: 100% !important;
+    margin: 0;
+}
+
+.inflex-center-sb {
+    display: flex;
+    align-items: center !important;
+}
+
+.colflex-center-sb {
+    display: flex;
+    align-items: center !important;
+}
+
+.flexCol {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: space-between !important;
+}
+
+.jc-center {
+    justify-content: center !important;
+}
+
+.jc-flexEnd {
+    justify-content: flex-end;   
+}
+
+.header-label {
+    font-size: 36px;
+    color: #6e6d6a;
+    line-height: unset;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+    padding: 0 !important;
+    margin: 0 !important;
+    left: -1px;
+}
+
+.control-label {
+    font-family: 'robotolight', 'robotoregular' !important;
+    font-size: 16px !important;
+}
+
+.inner-wrapper {
+    width: 97% !important;
+    margin: 0;
+    padding: 0;
+    inset: 0 !important;
+}
+
+.inner-wrapper .form-group {
+    margin: 0 !important;
+}
+
+.inner-wrapper .form-group > label {
+    float: left !important;
+}
+
+.inner-wrapper .form-group > div {
+    float: right !important;
+}
+
+/* Panel styles */
+.panel-section {
+    border: transparent !important;
+    font-size: 20px;
+    width: 100%;
+    padding: 0 !important;
+    margin: 20px 0 0 0 !important;
+    box-shadow: none !important;
+    background-color: #f2f2f2;
+    border-radius-bottom-left: 4px;
+    border-radius-bottom-right: 4px;
+}
+
+.panel-section > .card-header {
+    padding: 0;
+    background-color: #D2E9F4;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    height: 50px;
+    border-radius: 4px
+}
+
+.panel-section > .card-body {
+    /*padding: 4px 0 !important;*/
+    margin: 0 !important;
+    position: relative;
+}
+
+.panel-section > .card-header > .row {
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.panel-section > .card-header > .row > .panel-toggle {
+    width: 100%;
+}
+
+.panel-section > .card-header > .row > .panel-toggle > h4 {
+    text-transform: capitalize;
+    line-height: unset;
+    font-weight: 300;
+    color: rgb(51, 51, 51);
+    font-family: robotolight;
+    font-size: 24px;
+}
+
+.panel-section > .card-header > .row > .col > .card-title {
+    min-height: 0;
+    padding: 20px;
+}
+
+.panel-section > .card-header > .row > .col > .card-subtitle {
+    display: none;
+}
+
+.panel-section > .card-header > .row > .card-actions {
+    margin-right: 30px;
+}
+
+.panel-section > .card-header > .row > .card-actions > .card-action > i {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/*date and date-time picker styles*/
+.inner-wrapper .form-group .app-date .input-group-append {
+    display: inline-flex !important;
+    justify-content: flex-start;
+    height: inherit !important;
+    inset: 0 !important;
+    float: right;   
+}
+
+.inner-wrapper .form-group .app-date.input-group {
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+}
+
+.inner-wrapper .form-group .app-date.input-group > input {
+    width: 100% !important;
+}
+
+.inner-wrapper .form-group .app-datetime .input-group-append {
+    display: inline-flex !important;
+    justify-content: flex-start;
+    height: inherit !important;
+    inset: 0 !important;
+    float: right;   
+}
+
+.inner-wrapper .form-group .app-datetime.input-group {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.inner-wrapper .form-group .app-datetime.input-group > div {
+    width: 100% !important;
+}
+
+.input-group-append > button {
+    padding: 0 8px !important;
+    inset: 0 !important;
+    height: auto;
+    border-top: 1px solid #a9a9a9!important;
+    border-right: 1px solid #a9a9a9!important;
+    border-bottom: 1px solid #a9a9a9!important;
+    border-radius: 0 !important;
+}
+
+.input-group-append > button > i {
+    font-size: 15pt !important;
+}
+
+/*Data table cell styles*/
+div[name='searchResult_DataTable'] .app-grid-content > table td {
+    word-break: break-all;
+}
+
+div[name='searchResult_DataTable'] table {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+}
+
+div[name='searchResult_DataTable'] .table-container {
+    max-width: 100% !important;
+}
+.abc{
+    border-color:red;
+}

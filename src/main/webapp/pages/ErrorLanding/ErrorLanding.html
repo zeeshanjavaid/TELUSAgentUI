@@ -1,0 +1,56 @@
+<wm-page pagetitle="Error Landing" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-content name="content1">
+        <!--<wm-page-content columnwidth="12" name="page_content1"></wm-page-content>-->
+        <wm-container name="container1" horizontalalign="center">
+            <wm-label name="label" iconclass="wi wi-warning" iconsize="32px" caption="bind:getErrorMessage()" fontsize="32" show="true"></wm-label>
+            <wm-anchor margin="unset 0.5em" name="anchor1" caption="Go back to Home" width="100%" fontsize="24" on-click="Actions.goToPage_Main.invoke()" show="bind:(Variables.PermissionsForLoggedInUserId.dataSet &amp;&amp; Variables.PermissionsForLoggedInUserId.dataSet.length === 0) ? false : true"></wm-anchor>
+            <wm-layoutgrid name="layoutgrid_refresh">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn001"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn002" horizontalalign="left">
+                        <wm-button class="btn-link btn-xs" caption="refresh permissions" type="button" margin="unset 0.5em" name="refreshPermissionsBtn" on-click="Variables.forceRefreshRoles.invoke()"></wm-button>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-container>
+        <wm-container name="container_welcome" show="bind:Variables.isSystemNotConfigured.dataSet.value">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="10" name="gridcolumn2">
+                        <wm-label padding="unset 0.5em" name="label2" caption=""></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn31"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn4">
+                        <wm-form errormessage="" captionposition="top" title="System not configured. Please Inform the superusers" enctype="application/x-www-form-urlencoded" method="put" dataset="bind:Variables.setupSuperusers.dataSet" captionalign="left"
+                            name="setupSuperUsersForm1" on-success="Actions.goToPage_Main.invoke()">
+                            <wm-layoutgrid columns="1" name="layoutgrid2">
+                                <wm-gridrow name="gridrow4">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                                        <wm-form-field readonly="false" name="newUsers" displayname="The userID tipically is the username used to login on the environment" key="newUsers" type="string" show="true" widget="textarea" placeholder="One per line"
+                                            defaultvalue="bind:Variables.userIDSession.dataSet.value"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
+                            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+                        </wm-form>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn42"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow3">
+                    <wm-gridcolumn columnwidth="9" name="gridcolumn5" horizontalalign="right">
+                        <wm-label padding="unset 0.5em" name="label_env" caption="Environment" class="text-muted"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn6">
+                        <wm-label padding="unset 0.5em" name="label_content_env" class="text-muted" caption="bind:Variables.whereAmIEnv.dataSet.value"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-container>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

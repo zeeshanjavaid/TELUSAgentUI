@@ -1,0 +1,39 @@
+<wm-partial name="partial1" id="partial1">
+    <wm-content name="content">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="QueuesWrapper">
+                <wm-label padding="unset 0.5em" name="label3" class="h3" caption="Queues" margin="10px unset 15px unset"></wm-label>
+                <wm-button caption="Add Queue" type="button" margin="unset 0.5em" name="AddQueueButton" show="true" on-click="AddQueueButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
+                <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
+                    <!--<wm-message name="successmessage" show="bind:Variables.roleSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message><wm-message name="errormessage" type="error" show="bind:Variables.roleErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>--></wm-container>
+                <!-- <wm-search name="searchRole" dataset="bind:Variables.allRoles.dataSet" datafield="All Fields" displaylabel="role" class="searchMargin " placeholder="Filter roles" searchkey="role" loadingdatamsg=""></wm-search>-->
+                <wm-container name="queueSearchTextContainer" class="serachSection" padding="0.5em unset">
+                    <wm-text name="queueSearchText" placeholder="Filter workflow queues" class="searchText" on-keyup="queueSearchTextKeyup($event, widget)" height="31px" updateon="default"></wm-text>
+                </wm-container>
+                <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
+                <!--<wm-search name="searchRole" dataset="bind:Variables.allQueuesUI.dataSet" datafield="All Fields" class="searchMargin " placeholder="Filter roles" loadingdatamsg="" on-blur="searchRoleBlur($event, widget)"></wm-search>-->
+                <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="lookup-item roleList-i list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist" name="QueueList" dataset="bind:Variables.allQueuesUI.dataSet"
+                    navigation="Classic" selectfirstitem="bind:!(App.Variables.QueuePageCommunication.currentQueueInFocusId)" pagesize="5" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING">
+                    <wm-listtemplate layout="inline" name="listtemplate2">
+                        <wm-container class="media-left" name="container4">
+                            <wm-picture width="1pt" height="1pt" name="Picture" shape="circle" class="media-object" show="false"></wm-picture>
+                        </wm-container>
+                        <wm-container class="media-body" padding="unset unset unset " name="container5" on-click="container5Click($event, widget, item, currentItemWidgets)">
+                            <wm-label name="Name" class="p media-heading rolename text-clip" caption="bind:Variables.allQueuesUI.dataSet[$i].name" fontsize="1.143" fontunit="em" hint="bind:Variables.allQueuesUI.dataSet[$i].role" margin="unset unset 5px unset"></wm-label>
+                            <wm-label class="p media-heading module line-clamp" caption="bind:Variables.allQueuesUI.dataSet[$i].description" fontsize="1" fontunit="em" name="label4" color="#626b73" hint="bind:Variables.allQueuesUI.dataSet[$i].description"
+                                margin="unset unset 5px unset"></wm-label>
+                            <wm-container name="container5_1" margin="unset unset 5px unset" show="true">
+                                <wm-label class="p media-heading" caption="Rank:" fontsize="1" fontunit="em" color="#626b73" name="label4_1" width="20%"></wm-label>
+                                <wm-label class="p media-heading" caption="bind:Variables.allQueuesUI.dataSet[$i].rank" fontsize="1" fontunit="em" color="#626b73" width="15%" name="label7"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                        <wm-container class="media-right media-top" name="container6">
+                            <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.allQueuesUI.dataSet[$i].isActive" disabled="true" class="width-50px"></wm-checkbox>
+                            <wm-button class="btn-transparent lockicon" iconclass="fico-icon-lock fa-2x" name="button3" show="bind:Variables.allQueuesUI.dataSet[$i].isLocked" backgroundcolor="#00609C" disabled="true">&gt;</wm-button>
+                        </wm-container>
+                    </wm-listtemplate>
+                </wm-list>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+</wm-partial>

@@ -1,0 +1,134 @@
+<wm-partial name="partial1">
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow9">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:pageParams.groupId ? pageParams.groupName : &quot;Add Group&quot; " class="h3 add-role-lebel text-clip" margin="1em unset" height="25"></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow4">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                <wm-container name="container4" margin="unset unset unset 10px" padding="unset 0.5em">
+                    <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase"></wm-message>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow2" class="rolename-row">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Name *" name="label6" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn4">
+                <wm-container name="container5">
+                    <wm-composite name="composite4">
+                        <wm-container class="col-md-9 queue-name" name="container13">
+                            <!--<wm-text name="text1" height="100" placeholder=""></wm-text>-->
+                            <wm-textarea name="NameTextarea" height="31" placeholder="" datavalue="bind:Variables.groupData.dataSet.RoleName" required="false" disabled="bind:pageParams.roleId !== undifined" show="false"></wm-textarea>
+                        </wm-container>
+                        <wm-composite name="composite4_1">
+                            <wm-container class="col-md-9 queue-name" name="container10">
+                                <wm-text name="GroupNameText" placeholder="" datavalue="bind:Variables.groupData.dataSet.GroupName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow3" padding="0.5em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Description" name="label5" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn6">
+                <wm-container name="container6">
+                    <wm-composite name="composite5">
+                        <wm-container class="col-md-9 queue-discription" name="container14">
+                            <wm-textarea name="grouptextarea1" height="73" placeholder="" datavalue="bind:Variables.groupData.dataSet.GroupDescription" maxchars="255"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow3_2" padding="0.5em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Lending limit amount" name="label5_2" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn6_2">
+                <wm-container name="container6_2">
+                    <wm-composite name="composite5_2">
+                        <wm-container class="col-md-9 queue-Lending-limit" name="container14_2">
+                            <wm-number textalign="right" name="grouptextarea2" placeholder="" required="false" datavalue="bind:Variables.groupData.dataSet.GroupLendingLimit" class="lending-limit" minvalue="1" maxvalue="999999"></wm-number>
+                        </wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <!--<wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assigned permissions" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.getAllPermission.dataSet" datafield="All Fields" displayfield="name" multiple="true" autofocus="true" required="false" height="250" datavalue="bind:Variables.groupData.dataSet.RoleAssignPermission"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
+        <wm-gridrow name="gridrow4" padding="1em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Assigned roles" name="label4" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn8">
+                <wm-container name="container7" class="container7-add-permission">
+                    <wm-composite name="composite3" class="container7-add-permission">
+                        <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
+                            <wm-prefab prefabname="DualList_OS" name="DualListRoles_TD" reducerightdataset="false" class="dualListPadding  dl-width" resetleftdataset="false" displayfield="bind:&quot;fullRoleName&quot;" leftdataset="bind:Variables.leftRolesList.dataSet"
+                                rightdataset="bind:Variables.selectedRoles.dataSet" identifier="bind:&quot;id&quot;"></wm-prefab>
+                            <!--<wm-prefab prefabname="DualList_TD" name="DualListRoles_TD" reducerightdataset="false" class="dualListPadding  dl-width" resetleftdataset="false" displayfield="bind:&quot;fullRoleName&quot;" leftdataset="bind:Variables.leftRolesList.dataSet" rightdataset="bind:Variables.selectedRoles.dataSet"
+                                identifier="bind:roleId"></wm-prefab>--></wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow4_1" padding="1em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Assigned users" name="label4" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn8">
+                <wm-container name="container7" class="container7-add-permission">
+                    <wm-composite name="composite3" class="container7-add-permission">
+                        <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
+                            <wm-prefab prefabname="DualList_OS" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width" resetleftdataset="false"
+                                displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;"></wm-prefab>
+                            <!--<wm-prefab prefabname="DualList_TD" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
+                                resetleftdataset="false" displayfield="bind:&quot;fullName&quot;" identifier="bind:userId"></wm-prefab>--></wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <!-- <wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assign permission to role" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.permissionList.dataSet" datafield="name" displayfield="name" multiple="true" autofocus="true" required="false" height="250"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
+        <wm-gridrow name="gridrow9_1">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                <wm-container name="linecontainer" class="linecontainer"></wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow8">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn15"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn14" style="margin-bottom: 2em;">
+                <wm-container name="container8">
+                    <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
+                        <wm-button class="btn-default duplicatebutton" caption="Duplicate" type="button" margin="1.5em 0.5em unset 0.5em" name="Duplicatebutton" on-click="DuplicatebuttonClick($event, widget)" show="bind:pageParams.groupId !== undefined" color="#000"></wm-button>
+                        <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" on-click="Widgets.deleteGroupDialog.open()" show="bind:pageParams.groupId !== undefined" name="button4" backgroundcolor="#d0012d"
+                            color="#ffffff"></wm-button>
+                        <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
+                        <wm-button class="btn-default cancelbutton" caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true" color="#000"></wm-button>
+                        <wm-button class="btn-primary" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)"></wm-button>
+                    </wm-container>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete Group &quot;+Variables.groupData.dataSet.GroupName" iconclass="" name="deleteGroupDialog" width="35%" on-opened="Widgets.deleteGroupDialog.open()" closable="false">
+        <wm-layoutgrid name="layoutgrid3_1">
+            <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
+            <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
+                    <wm-message name="message3" type="warning" hideclose="true" caption="Warning: Continue? Cannot be undone."></wm-message>
+                    <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?"></wm-label>--></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-secondary btn-default" caption="Cancel" on-click="Widgets.deleteGroupDialog.close()" name="deleteRoleConfirmNo" margin="unset 0.5em unset unset"></wm-button>
+            <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteGroupConfirmOk" on-click="deleteGroupConfirmOkClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="createGroup,CreateGroupRole,CreateGroupUser,deleteGroup,executeDeleteGroupRole,executeDeleteGroupUser,getAllRole,getAllUsers,getGroup,updateGroup"></wm-spinner>
+</wm-partial>

@@ -1,0 +1,58 @@
+<wm-page pagetitle="Audit" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1" class="pull-left"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow00">
+                    <wm-gridcolumn name="gridcolumn001" columnwidth="8" horizontalalign="right"></wm-gridcolumn>
+                    <wm-gridcolumn name="gridcolumn003" columnwidth="4" horizontalalign="right">
+                        <wm-label padding="unset 0.5em" name="tracing_enabled" show="bind:Variables.isUserSessionTrackingEnabled.dataSet.value === true" caption="User session auditing is enabled" class="text-success"></wm-label>
+                        <wm-label padding="unset 0.5em" name="tracing_disabled" caption="User session auditing is disabled" class="text-warning" show="bind:Variables.isUserSessionTrackingEnabled.dataSet.value != true"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2" class="bordered-bottom">
+                    <wm-table name="findUserSessionsTable1" title="Sessions" dataset="bind:Variables.findUserSessionsVar.dataSet" navigation="Basic" showrecordcount="true" spacing="condensed" gridclass="table-striped table-hover table-bordered" subheading="Latest session entries on the database">
+                        <wm-table-column binding="userName" caption="User Name" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('userName')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="authCookie" caption="Auth Cookie" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('authCookie')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="startedOn" caption="Started On" widget-type="label" edit-widget-type="timestamp" type="timestamp" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('startedOn')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="endedOn" caption="Ended On" widget-type="label" edit-widget-type="timestamp" type="timestamp" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('endedOn')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="endType" caption="End Type" widget-type="label" edit-widget-type="number" type="integer" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('endType')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                    </wm-table>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow5" class="bordered-bottom">
+                    <wm-table name="userSessionFiles" title="User Session purged Files" dataset="bind:Variables.userSessionFiles.dataSet" navigation="Basic" subheading="DB entries purged as files on S3">
+                        <wm-table-column binding="name" caption="Name" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('name')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="type" caption="Type" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('type')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="size" caption="Size" widget-type="label" edit-widget-type="number" type="long" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('size')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="path" caption="Path" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-anchor caption="Download" hyperlink="bind:row.getProperty('path')" class="" conditionalclass=""></wm-anchor>
+                        </wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-secondary" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="Variables.deleteUserSessionFile.invoke()" disabled="false"
+                            widget-type="button"></wm-table-row-action>
+                    </wm-table>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow6" class="bordered-bottom"></wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

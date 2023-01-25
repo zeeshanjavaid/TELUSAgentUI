@@ -1,0 +1,118 @@
+<project name="ProjectBuildHelper" basedir=".">
+    <description>
+        Project Build Helper
+    </description>
+    <property name="webInf" location="src/main/webapp/WEB-INF" />
+
+    <target name="copy-libs-jar">
+        <mkdir dir="${webInf}/lib"/>
+        <echo>Copying jars from ${basedir}/lib to ${webInf}/lib</echo>
+        <copy todir="${webInf}/lib" overwrite="true">
+            <fileset dir="lib">
+                <exclude name="Readme.txt" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="copy-wm-project-properties">
+        <mkdir dir="target/classes"/>
+        <echo>Copying .wmproject.properties file to target/classes(classpath)</echo>
+        <copy file=".wmproject.properties" todir="target/classes" overwrite="true" failonerror="false"/>
+    </target>
+
+    <target name="cdnUrl-replace">
+        <replaceregexp file="src/main/webapp/index.html" byline="true">
+            <regexp pattern="/studio/_static_/*.*.*.*/wmapp"/>
+            <substitution expression="_cdnUrl_/wmapp"/>
+        </replaceregexp>
+        <replaceregexp file="src/main/webapp/index.html" byline="true">
+            <regexp pattern="//.*.cloudfront.net/studio-app/.*.*.*.*/wmapp"/>
+            <substitution expression="_cdnUrl_/wmapp"/>
+        </replaceregexp>
+        <replaceregexp file="src/main/webapp/index.html" byline="true">
+            <regexp pattern="/studio/_static_/*.*.*.*/wmmobile"/>
+            <substitution expression="_cdnUrl_/wmmobile"/>
+        </replaceregexp>
+        <replaceregexp file="src/main/webapp/index.html" byline="true">
+            <regexp pattern="//.*.cloudfront.net/studio-app/.*.*.*.*/wmmobile"/>
+            <substitution expression="_cdnUrl_/wmmobile"/>
+        </replaceregexp>
+    </target>
+
+    <target name="init" depends="copy-libs-jar,copy-wm-project-properties,cdnUrl-replace"></target>
+
+    <target name="generate-jib-artifacts" >
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="jib-target"/>
+        </delete>
+
+        <mkdir dir="jib-target/generated-war/${JWS_HOME}/webapps/" />
+        <echo>Copying war file  ${project.artifactId}.war to jib-target/generated-war/${JWS_HOME}/webapps/</echo>
+        <copy tofile="jib-target/generated-war/${JWS_HOME}/webapps/ROOT.war" overwrite="true">
+            <fileset file="target/${project.artifactId}.war" />
+        </copy>
+
+        <mkdir dir="jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/"/>
+        <echo>Copying files from target/${archetype.archive.name}/DMP-INF/ to jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/</echo>
+        <copy todir="jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/" overwrite="true">
+            <fileset dir="target/${archetype.archive.name}/DMP-INF/" />
+        </copy>
+
+        <!-- copy the project source zip into DMP-INF -->
+        <mkdir dir="jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/project/source/"/>
+        <echo>Copying files from target/export to jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/project/source/</echo>
+        <copy todir="jib-target/dmp-resources/${DMP_DATA_DIR}/DMP-INF/project/source/" overwrite="true">
+            <fileset dir="target/export" />
+        </copy>
+        
+        <mkdir dir="jib-target/generated-war/${JWS_HOME}/conf/"/>
+        <copy tofile="jib-target/generated-war/${JWS_HOME}/conf/server.xml" overwrite="true">
+            <fileset file="server.xml"/>
+        </copy>
+        <copy tofile="jib-target/generated-war/${JWS_HOME}/conf/catalina.properties" overwrite="true">
+            <fileset file="catalina.properties"/>
+        </copy>        
+
+    </target>
+
+
+    <target name="generate-component-config">
+
+        <delete dir="target/${project.artifactId}-component/"/>
+
+        <copy tofile="target/${project.artifactId}-component/resources/configuration/project/source.zip"
+              overwrite="true">
+            <fileset file="target/export/${project.artifactId}.zip"/>
+        </copy>
+
+        <propertyfile file="target/${project.artifactId}-component/resources/configuration/project/metadata.properties"
+                      comment="project metadata properties">
+            <entry key="projectId" value="${projectId}"/>
+            <entry key="enterpriseName" value="${enterpriseName}"/>
+            <entry key="projectName" value="${project.artifactId}"/>
+        </propertyfile>
+
+        <copy tofile="target/${project.artifactId}-component/resources/configuration/deployment/ROOT.war"
+              overwrite="true">
+            <fileset file="target/${project.artifactId}.war"/>
+        </copy>
+
+        <copy todir="target/${project.artifactId}-component/resources/configuration/dmp/component-archetype"
+              overwrite="true">
+            <fileset dir="target/${project.artifactId}-archetype"/>
+        </copy>
+
+        <copy tofile="target/${project.artifactId}-component/resources/configuration/dmp/component-archetype.zip"
+              overwrite="true">
+            <fileset file="target/${project.artifactId}-archetype.zip"/>
+        </copy>
+
+        <zip destfile="target/${project.artifactId}-component/config/config.zip"
+             basedir="target/${project.artifactId}-component/resources"/>
+
+        <zip destfile="target/${project.artifactId}-component/import-config.zip"
+             basedir="target/${project.artifactId}-component/config/"/>
+
+    </target>
+
+</project>

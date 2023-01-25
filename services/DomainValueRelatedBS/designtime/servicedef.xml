@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="DomainValueRelatedBS" class="com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS" type="JavaService" springFile="DomainValueRelatedBS.spring.xml"/>

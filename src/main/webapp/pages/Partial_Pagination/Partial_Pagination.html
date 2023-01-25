@@ -1,0 +1,22 @@
+<wm-partial name="partial1">
+    <wm-container name="pagecontrols_container" width="100%" height="50px" class="flex-center-end">
+        <wm-container class="page-item" width="40px" height="40px" name="container2" conditionalclass="bind:{'disabled':Variables.mv_pageNumber.dataSet.dataValue === 1,'':Variables.mv_pageNumber.dataSet.dataValue > 1}">
+            <wm-anchor margin="unset 0.5em" name="firstPage_Link" caption="" iconclass="wi wi-first-page fa-lg" hyperlink="javascript:void(0)" hint="First" on-click="firstPage_LinkClick($event, widget)" conditionalclass="bind:{'no-events':Variables.mv_pageNumber.dataSet.dataValue === 1,'':Variables.mv_pageNumber.dataSet.dataValue > 1}"></wm-anchor>
+        </wm-container>
+        <wm-container class="page-item" width="40px" height="40px" name="container3" conditionalclass="bind:{'disabled':Variables.mv_pageNumber.dataSet.dataValue === 1,'':Variables.mv_pageNumber.dataSet.dataValue > 1}">
+            <wm-anchor margin="unset 0.5em" name="previousPage_Link" caption="" iconclass="wi wi-chevron-left fa-lg" hyperlink="javascript:void(0)" hint="Previous" on-click="previousPage_LinkClick($event, widget)" conditionalclass="bind:{'no-events':Variables.mv_pageNumber.dataSet.dataValue === 1,'':Variables.mv_pageNumber.dataSet.dataValue > 1}"></wm-anchor>
+        </wm-container>
+        <wm-container class="page-item current no-events" width="40px" height="40px" name="container4">
+            <wm-label padding="unset 0.5em" name="label2" caption="bind:Variables.mv_pageNumber.dataSet.dataValue"></wm-label>
+        </wm-container>
+        <wm-container class="page-item totalPage no-events" width="40px" height="40px" name="container5">
+            <wm-label padding="unset 0.5em" name="label1" caption="bind:&quot;/ &quot; + Variables.mv_totalPages.dataSet.dataValue"></wm-label>
+        </wm-container>
+        <wm-container class="page-item" width="40px" height="40px" name="container6" conditionalclass="bind:{'disabled':Variables.mv_pageNumber.dataSet.dataValue === Variables.mv_totalPages.dataSet.dataValue,'':Variables.mv_pageNumber.dataSet.dataValue < Variables.mv_totalPages.dataSet.dataValue}">
+            <wm-anchor margin="unset 0.5em" name="nextPage_Link" caption="" iconclass="wi wi-chevron-right fa-lg" hyperlink="javascript:void(0)" hint="Next" on-click="nextPage_LinkClick($event, widget)" conditionalclass="bind:{'no-events':Variables.mv_pageNumber.dataSet.dataValue === Variables.mv_totalPages.dataSet.dataValue,'':Variables.mv_pageNumber.dataSet.dataValue < Variables.mv_totalPages.dataSet.dataValue}"></wm-anchor>
+        </wm-container>
+        <wm-container class="page-item" width="40px" height="40px" name="container7" conditionalclass="bind:{'disabled':Variables.mv_pageNumber.dataSet.dataValue === Variables.mv_totalPages.dataSet.dataValue,'':Variables.mv_pageNumber.dataSet.dataValue < Variables.mv_totalPages.dataSet.dataValue}">
+            <wm-anchor margin="unset 0.5em" name="lastPage_Link" iconclass="wi wi-last-page fa-lg" caption="" hyperlink="javascript:void(0)" hint="Last" on-click="lastPage_LinkClick($event, widget)" conditionalclass="bind:{'no-events':Variables.mv_pageNumber.dataSet.dataValue === Variables.mv_totalPages.dataSet.dataValue,'':Variables.mv_pageNumber.dataSet.dataValue < Variables.mv_totalPages.dataSet.dataValue}"></wm-anchor>
+        </wm-container>
+    </wm-container>
+</wm-partial>

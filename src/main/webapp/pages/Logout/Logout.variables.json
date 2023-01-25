@@ -1,0 +1,29 @@
+{
+  "sv_unlockAppsForSessionUser" : {
+    "_id" : "wm-sv_unlockAppsForSessionUser-wm.ServiceVariable-1663066652374",
+    "name" : "sv_unlockAppsForSessionUser",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "sessionUser",
+      "value" : "bind:Variables.loggedInUser.dataSet.id",
+      "type" : "string"
+    } ],
+    "service" : "ApplicationRelatedBS",
+    "operation" : "unlockApplicationForSessionUser",
+    "operationId" : "ApplicationRelatedBSController_unlockApplicationForSessionUser",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_unlockAppsForSessionUseronSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ApplicationRelatedBS"
+  }
+}

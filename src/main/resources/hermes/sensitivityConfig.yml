@@ -1,0 +1,51 @@
+sensitivityConfig:
+  enabled: false
+  sensitivityConfigMap: 
+    creditSensitive: 
+      domainModelClassConfigs: 
+      - domainModelFQClassName: com.fico.ps.model.CreditApplicationRequestVO
+        attributes:
+        - requestedAmount
+      - domainModelFQClassName: com.fico.ps.model.AddressVO
+        attributes:
+        - yearAtAddress
+      - domainModelFQClassName: com.fico.ps.model.EmploymentVO
+        attributes:
+        - empTypeId
+      - domainModelFQClassName: com.fico.ps.model.IncomeVO
+        attributes:
+        - amount
+        - frequnceId
+      - domainModelFQClassName: com.fico.ps.model.ApplicationDetails
+        attributes:
+        - isDuplicateCheckCompleted
+        
+    processSensitive: 
+      domainModelClassConfigs: 
+#      - domainModelFQClassName: com.fico.ps.model.CreditApplicationRequestVO
+#        attributes:
+#        - applicationProductCode
+      - domainModelFQClassName: com.fico.ps.model.Person
+        attributes:
+        - personId
+        - firstName
+        - middileName
+        - lastName
+        - dateOfBirth
+#      - domainModelFQClassName: com.fico.ps.model.IdentificationVO
+#        attributes:
+#        - reference
+#        - type
+      - domainModelFQClassName: com.fico.ps.model.AddressVO
+        attributes:
+        - id
+        - addressType
+        - line1
+        - line2
+        - postalCode
+        - yearAtAddress
+        - countryId
+        - countyId
+        - stateId
+        - addressMonth
+        - city

@@ -1,0 +1,328 @@
+{
+  "ActivateJob" : {
+    "_id" : "wm-ActivateJob-wm.ServiceVariable-1625652433281",
+    "name" : "ActivateJob",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "name",
+      "value" : "bind:Widgets.getAllJobsInfoTable1.selecteditem.jobName",
+      "type" : "string"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "activateJob",
+    "operationId" : "TimerController_activateJob",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "ActivateJobonSuccess(variable, data, options);Variables.getAllJobsInfo.invoke()",
+    "onError" : "ActivateJobonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "DeActivateJob" : {
+    "_id" : "wm-DeActivateJob-wm.ServiceVariable-1625652535808",
+    "name" : "DeActivateJob",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "name",
+      "value" : "bind:Widgets.getAllJobsInfoTable1.selecteditem.jobName",
+      "type" : "string"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "deactivateJob",
+    "operationId" : "TimerController_deactivateJob",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "DeActivateJobonSuccess(variable, data, options);Variables.getAllJobsInfo.invoke()",
+    "onError" : "DeActivateJobonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "DeleteJob" : {
+    "_id" : "wm-DeleteJob-wm.ServiceVariable-1625652609898",
+    "name" : "DeleteJob",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "jobName",
+      "value" : "bind:Widgets.getAllJobsInfoTable1.selecteditem.jobName",
+      "type" : "string"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "deleteJob",
+    "operationId" : "TimerController_deleteJob",
+    "operationType" : "delete",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "DeleteJobonSuccess(variable, data, options);Variables.getAllJobsInfo.invoke()",
+    "onError" : "DeleteJobonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "getAllJobsInfo" : {
+    "_id" : "wm-GetAllJobsInfo-wm.ServiceVariable-1625735595883",
+    "name" : "getAllJobsInfo",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.pscomponent.quartz.model.JobInfo",
+    "service" : "TimerService",
+    "operation" : "getAllJobsInfo",
+    "operationId" : "TimerController_getAllJobsInfo",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "GetJobTypes" : {
+    "_id" : "wm-GetJobTypes-wm.ServiceVariable-1625652710829",
+    "name" : "GetJobTypes",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "getJobTypes",
+    "operationId" : "TimerController_getJobTypes",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "RunNow" : {
+    "_id" : "wm-RunNow-wm.ServiceVariable-1625652760234",
+    "name" : "RunNow",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "name",
+      "value" : "bind:Widgets.getAllJobsInfoTable1.selecteditem.jobName",
+      "type" : "string"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "runNow",
+    "operationId" : "TimerController_runNow",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "RunNowonSuccess(variable, data, options);Variables.getAllJobsInfo.invoke()",
+    "onError" : "RunNowonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "ScheduleJob" : {
+    "_id" : "wm-ScheduleJob-wm.ServiceVariable-1625735496897",
+    "name" : "ScheduleJob",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "isList" : false,
+      "target" : "JobDTO",
+      "value" : "bind:{     \"jobType\": Widgets.TimerJobModelCreateForm.formWidgets.JobType.datavalue,     \"jobName\": Widgets.TimerJobModelCreateForm.formWidgets.JobName.datavalue,     \"isCron\": Widgets.TimerJobModelCreateForm.formWidgets.Cron.datavalue,     \"cronExpression\": Widgets.TimerJobModelCreateForm.formWidgets.CronExpression.datavalue,     \"isFrequency\": Widgets.TimerJobModelCreateForm.formWidgets.Frequency.datavalue,     \"frequency\": Widgets.TimerJobModelCreateForm.formWidgets.FrequencyMinute.datavalue,     \"description\": Widgets.TimerJobModelCreateForm.formWidgets.Description.datavalue }",
+      "type" : "com.fico.pscomponent.quartz.model.JobDTO"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "scheduleJob",
+    "operationId" : "TimerController_scheduleJob",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "Widgets.createJob.close();ScheduleJobonSuccess(variable, data, options);Variables.getAllJobsInfo.invoke()",
+    "onError" : "ScheduleJobonError(variable, data, options);Actions.TimerFailed.invoke()",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  },
+  "TimerConfirm" : {
+    "_id" : "wm-TimerConfirm-wm.NotificationVariable-1625654484842",
+    "name" : "TimerConfirm",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "text",
+      "value" : "Do you really want to delete?",
+      "type" : "string"
+    }, {
+      "target" : "title",
+      "value" : "Delete Job",
+      "type" : "string"
+    }, {
+      "target" : "okButtonText",
+      "value" : "Ok",
+      "type" : "string"
+    }, {
+      "target" : "cancelButtonText",
+      "value" : "Cancel",
+      "type" : "string"
+    } ],
+    "operation" : "confirm",
+    "onOk" : "Variables.DeleteJob.invoke()"
+  },
+  "TimerFailed" : {
+    "_id" : "wm-TimerFailed-wm.NotificationVariable-1625654556443",
+    "name" : "TimerFailed",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "content",
+      "value" : "inline",
+      "type" : "string"
+    }, {
+      "target" : "text",
+      "value" : "TimerFailed",
+      "type" : "string"
+    }, {
+      "target" : "duration",
+      "value" : "2000",
+      "type" : "number"
+    }, {
+      "target" : "class",
+      "value" : "Error",
+      "type" : "string"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "center center",
+      "type" : "string"
+    } ],
+    "operation" : "toast"
+  },
+  "TimerJobModel" : {
+    "_id" : "wm-TimerJobModel-wm.Variable-1625652140216",
+    "name" : "TimerJobModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "Job Type" : "",
+      "Job Name" : "",
+      "Cron" : "",
+      "Cron Expression" : "",
+      "Frequency" : "",
+      "Frequency(minute)" : "",
+      "Description" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "TimerSuccess" : {
+    "_id" : "wm-TimerSuccess-wm.NotificationVariable-1625654585619",
+    "name" : "TimerSuccess",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "content",
+      "value" : "inline",
+      "type" : "string"
+    }, {
+      "target" : "text",
+      "value" : "TimerSuccess",
+      "type" : "string"
+    }, {
+      "target" : "duration",
+      "value" : "2000",
+      "type" : "number"
+    }, {
+      "target" : "class",
+      "value" : "Success",
+      "type" : "string"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "center center",
+      "type" : "string"
+    } ],
+    "operation" : "toast"
+  },
+  "UpdateScheduledJob" : {
+    "_id" : "wm-updateScheduledJob-wm.ServiceVariable-1625652316319",
+    "name" : "UpdateScheduledJob",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "isList" : false,
+      "target" : "JobDTO",
+      "value" : "bind:{\n    \"jobType\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateJobType.datavalue,\n    \"jobName\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateJobName.datavalue,\n    \"cronExpression\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateCronExpression.datavalue,\n    \"isCron\": Widgets.TimerJobModelUpdateForm.formWidgets.Cron.datavalue,\n    \"isFrequency\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateFrequency.datavalue,\n    \"frequency\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateFrequencyMinute.datavalue,\n    \"description\": Widgets.TimerJobModelUpdateForm.formWidgets.UpdateDescription.datavalue\n}",
+      "type" : "com.fico.pscomponent.quartz.model.JobDTO"
+    } ],
+    "type" : "string",
+    "service" : "TimerService",
+    "operation" : "updateScheduledJob",
+    "operationId" : "TimerController_updateScheduledJob",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "Widgets.updateJob.close();Variables.getAllJobsInfo.invoke();UpdateScheduledJobonSuccess(variable, data, options);Actions.TimerSuccess.invoke()",
+    "onError" : "UpdateScheduledJobonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Timer"
+  }
+}

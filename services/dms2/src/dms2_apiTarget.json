@@ -1,0 +1,121 @@
+{
+  "basePath" : "${dms2.basepath}",
+  "paths" : {
+    "/subprocess/{pid}" : {
+      "x-WM-BASE_PATH" : "/subprocess/{pid}",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "get" : {
+        "x-WM-METHOD_NAME" : "invoke",
+        "security" : [ {
+          "dmpauth" : [ ]
+        } ],
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY",
+        "produces" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+        "operationId" : "dms2_RestServiceVirtualController-invoke",
+        "responses" : {
+          "200" : {
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            },
+            "description" : "Success"
+          }
+        },
+        "parameters" : [ {
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-EDITABLE" : false,
+          "in" : "query",
+          "name" : "inputNumber",
+          "format" : "string",
+          "description" : "inputNumber",
+          "type" : "string",
+          "required" : false,
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        }, {
+          "x-WM-VARIABLE_KEY" : "",
+          "in" : "path",
+          "name" : "pid",
+          "format" : "string",
+          "type" : "string",
+          "required" : true,
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        } ],
+        "tags" : [ "RestServiceVirtualController" ],
+        "consumes" : [ "application/json" ]
+      },
+      "x-WM-COMPLETE_PATH" : "${dms2.scheme}://${dms2.host}${dms2.basepath}/subprocess/{pid}"
+    }
+  },
+  "host" : "${dms2.host}",
+  "schemes" : [ "${dms2.scheme}" ],
+  "securityDefinitions" : {
+    "dmpauth" : {
+      "type" : "dmpauth"
+    }
+  },
+  "definitions" : {
+    "outputVariables" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms2.outputVariables",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "outputNumber" ],
+      "properties" : {
+        "outputNumber" : {
+          "format" : "int32",
+          "type" : "integer"
+        }
+      }
+    },
+    "content" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms2.content",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "endTimestamp", "outputVariables", "startTimestamp", "status", "timeTaken" ],
+      "properties" : {
+        "timeTaken" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "outputVariables" : {
+          "$ref" : "#/definitions/outputVariables"
+        },
+        "endTimestamp" : {
+          "type" : "string"
+        },
+        "startTimestamp" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RootResponse" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms2.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ],
+      "required" : [ "content", "transactionId" ],
+      "properties" : {
+        "transactionId" : {
+          "type" : "string"
+        },
+        "content" : {
+          "$ref" : "#/definitions/content"
+        }
+      }
+    }
+  },
+  "swagger" : "2.0",
+  "info" : {
+    "x-DMP-DMP-Component" : "Process_Execution",
+    "x-FAWB-VARIABLE" : null,
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "02cff150-43e5-4e8d-b533-4cae609e9774",
+    "x-WM-SERVICE_ID" : "dms2",
+    "version" : "2.0",
+    "x-FAWB-SERVICE-GROUP" : "Process_Execution",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ]
+}

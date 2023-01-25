@@ -1,0 +1,114 @@
+<constraint-mappings xmlns="http://xmlns.jcp.org/xml/ns/validation/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/validation/mapping
+            http://xmlns.jcp.org/xml/ns/validation/mapping/validation-mapping-2.0.xsd" version="2.0">
+
+	<default-package>com.fico.ps.model</default-package>
+	<bean class="ApplicationVO" ignore-annotations="false">
+		<field name="applicationDetails">
+		    <valid/>
+			<constraint annotation="javax.validation.constraints.NotNull">
+				<message>{VAL-SAVE-APP-00001}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+				 
+			</constraint>
+		</field>
+		<field name="applicants">
+		    <valid/>
+			<constraint annotation="javax.validation.constraints.NotEmpty">
+				<message>{VAL-SAVE-APP-00002}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+			</constraint>
+		</field>
+		<!--<field name="applicationProduct">-->
+		<!--    <valid/>-->
+		<!--	<constraint annotation="javax.validation.constraints.NotEmpty">-->
+		<!--		<message>{VAL-SAVE-APP-00003}</message>-->
+		<!--		<groups>-->
+        <!--            <value>com.fico.ps.validation.group.SaveBasic</value>-->
+        <!--        </groups>-->
+		<!--	</constraint>-->
+		<!--</field>-->
+    </bean>
+	
+	<bean class="ApplicationProductVO" ignore-annotations="false">
+		<field name="productId">
+		   	<constraint annotation="com.fico.ps.validation.constraint.Product">
+				<message>{VAL-SAVE-PROD-00001}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+			</constraint>   
+		</field>
+	</bean>
+
+	
+	<bean class="ApplicantVO" ignore-annotations="false">
+		<field name="person">
+		    <valid/>
+			<constraint annotation="javax.validation.constraints.NotNull">
+				<message>{VAL-SAVE-APPL-00001}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+				 
+			</constraint>
+		</field>
+		<field name="applicationRole">
+			<constraint annotation="com.fico.ps.validation.constraint.DomainValue">
+				<message>{VAL-DOMAIN-VAL-00001}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+				 <element name="domainValueTypeCode">APPLICANT_TYPE</element>
+				 <element name="required">true</element>
+			</constraint>
+		</field>
+	</bean>
+
+    <bean class="ApplicationDetails" ignore-annotations="false">
+			<field name="channelId">
+			<constraint annotation="com.fico.ps.validation.constraint.DomainValue">
+				<message>{VAL-DOMAIN-VAL-00001}</message>
+				<groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+				 <element name="domainValueTypeCode">CHANNEL</element>
+				 <element name="required">true</element>
+			</constraint>
+		</field>
+	</bean>
+	
+	<bean class="Person" ignore-annotations="false">
+	    
+		<field name="lastName">
+			<constraint annotation="javax.validation.constraints.NotBlank">
+				<message>{VAL-SAVE-PRSN-00001}</message>
+	            <groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+			</constraint>
+	    </field>
+
+		<field name="firstName">
+			<constraint annotation="javax.validation.constraints.NotBlank">
+				<message>{VAL-SAVE-PRSN-00002}</message>
+	            <groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+			</constraint>
+    	</field>
+	
+		<field name="dateOfBirth">
+				<constraint annotation="javax.validation.constraints.Past">
+				<message>{VAL-SAVE-PRSN-00004}</message>
+	            <groups>
+                    <value>com.fico.ps.validation.group.SaveBasic</value>
+                </groups>
+			</constraint>
+    	</field>
+    	
+	</bean>
+</constraint-mappings>

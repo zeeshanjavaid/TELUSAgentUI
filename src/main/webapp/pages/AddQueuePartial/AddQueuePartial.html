@@ -1,0 +1,227 @@
+<wm-partial name="partial1">
+    <!-- <wm-prefab prefabname="TDConditionQueryBuilder" name="queueConditions" configuration="bind:Variables.queueConfigMV.dataSet.conditions"></wm-prefab><wm-button class="btn-primary" caption="Save" type="button" margin="2em 0.5em unset 3.5em" name="button1" on-click="button1Click($event, widget)"></wm-button>-->
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-container name="lockContainer" class="lockContainer" show="bind:Variables.queueData.dataSet.isLocked">
+            <wm-container name="lockContainer" with="200px" class="child">
+                <wm-icon name="lockimg" class="lockimg" iconclass="fico-icon-lock" show="bind:Variables.queueData.dataSet.isLocked"></wm-icon>
+                <wm-label name="lock" caption="bind:&quot;Locked by: &quot;+Variables.queueData.dataSet.userByLockedBy+&quot;&amp;nbsp;&quot;" class="text" show="bind:Variables.queueData.dataSet.isLocked" backgroundcolor="#b7bbbe" margin="unset unset 1px unset"></wm-label>
+                <wm-button class="btn-default lockButton" caption="Unlock Queue" type="button" margin="unset 0.5em unset unset" name="unlockButton" show="bind:Variables.queueData.dataSet.isLocked" on-click="unlockButtonClick($event, widget)"></wm-button>
+            </wm-container>
+        </wm-container>
+        <wm-gridrow name="gridrow9" class="gridrow9">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:Variables.queueMode.dataSet.dataValue" class="h2 add-queue-lebel" margin="0.25em unset"></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow4">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                <wm-container name="container4" margin="unset unset unset 10px" padding="unset 0.5em">
+                    <wm-message name="successmessage" show="bind:Variables.queueSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.queueSuccessMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
+                    <wm-message name="errormessage" type="error" show="bind:Variables.queueErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.queueErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow1" padding="unset unset unset unset" class="gridrow1">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                <wm-label padding="0.5em 0.5em unset 0.5em" caption="Enable" name="label7" margin="unset 20px unset 10px" color="#9BA0A5" width="100%" height="100%"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="8" name="gridcolumn2">
+                <wm-container name="container3">
+                    <wm-composite name="composite1">
+                        <wm-container class="col-md-9" name="container10">
+                            <wm-checkbox caption="Toggle" type="toggle" name="active" datavalue="bind:Variables.queueData.dataSet.isActive" disabled="bind:Variables.readMode.dataSet.dataValue"></wm-checkbox>
+                            <!--<wm-select name="select1" dataset="bind:Variables.queueCategoryList.dataSet" datafield="name" displayfield="name" datavalue="bind:Variables.queueData.dataSet.QueueCategory" required="false"></wm-select>--></wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+            <!--           <wm-gridcolumn columnwidth="1" name="gridcolumn1"><wm-label padding="unset 0.5em" caption="Is Active" name="label7" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn2"><wm-container name="container3"><wm-composite name="composite1"><wm-container class="col-md-9" name="container10"><wm-composite name="composite7"><wm-container class="col-md-9" name="container20"><wm-checkbox caption="Toggle" type="toggle" name="active" datavalue="bind:Variables.queueData.dataSet.isActive"></wm-checkbox></wm-container></wm-composite></wm-container></wm-composite></wm-container></wm-gridcolumn>-->
+            <wm-gridcolumn columnwidth="2" name="gridcolumn17">
+                <wm-container name="container4">
+                    <wm-composite name="composite5_1">
+                        <wm-label class="col-md-3 control-label" name="label7_1" caption="Rank" color="#9BA0A5"></wm-label>
+                        <wm-container class="col-md-9 queue-rank" name="container14_1">
+                            <wm-number textalign="right" name="rank" placeholder="" updateon="default" autofocus="true" required="false" datavalue="bind:Variables.queueData.dataSet.QueueRank" minvalue="1" maxvalue="999999" disabled="bind:Variables.readMode.dataSet.dataValue &amp;&amp; !isDuplicateQueue"></wm-number>
+                        </wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow2" padding="0.5em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+                <wm-label padding="unset 0.5em" caption="Name *" name="label6" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn4">
+                <wm-container name="container5">
+                    <wm-composite name="composite4">
+                        <wm-container class="col-md-9 queue-name" name="container13">
+                            <!--<wm-text name="text1" height="100" placeholder=""></wm-text>-->
+                            <!--<wm-textarea name="NameTextarea" height="31" placeholder="" datavalue="bind:Variables.queueData.dataSet.QueueName" required="bind:&quot;^[a-zA-Z0-9]&quot;" disabled="bind:Variables.readMode.dataSet.dataValue" maxchars="40" show="false"></wm-textarea>--></wm-container>
+                        <wm-composite name="composite4_1">
+                            <wm-container class="col-md-9 queue-name" name="container10">
+                                <wm-text name="NameTextarea" height="31" placeholder="" datavalue="bind:Variables.queueData.dataSet.QueueName" required="false" disabled="bind:Variables.readMode.dataSet.dataValue &amp;&amp; !isDuplicateQueue" class="queue-name"
+                                    maxchars="40" regexp="bind:&quot;^[a-zA-Z0-9-_ :\.]+$&quot;"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow3" padding="unset unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                <wm-label padding="unset 0.5em" caption="Description" name="label5" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn6">
+                <wm-container name="container6">
+                    <wm-composite name="composite5">
+                        <wm-container class="col-md-9 queue-discription" name="container14">
+                            <wm-textarea name="textarea1" height="75" placeholder="" datavalue="bind:Variables.queueData.dataSet.QueueDescription" disabled="bind:Variables.readMode.dataSet.dataValue" maxchars="255"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow12">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn19">
+                <wm-label padding="unset 0.5em" name="label9" bordercolor="#9BA0A5" caption="Queue execution mode *" color="#9BA0A5" margin="unset 20px unset 10px"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn20">
+                <wm-composite name="composite6">
+                    <wm-container class="col-md-9" name="container19">
+                        <wm-radioset height="auto" name="radiosetQExecutionMode" dataset="Manual, Priority" required="true" datavalue="bind:Variables.queueData.dataSet.category" disabled="bind:Variables.readMode.dataSet.dataValue"></wm-radioset>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow13">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn21">
+                <wm-label padding="unset 0.5em" name="label11" bordercolor="#9BA0A5" caption="Queue search result page *" color="#9BA0A5" margin="unset 20px unset 10px"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn22">
+                <wm-composite name="composite8">
+                    <wm-container class="col-md-9" name="container22">
+                        <wm-select name="selectQResultPage" dataset="bind:Variables.dvs_qSearchResultPage.dataSet" datafield="id" displayfield="description" required="true" datavalue="bind:Variables.queueData.dataSet.queueResultPage" disabled="bind:Variables.readMode.dataSet.dataValue"></wm-select>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow14">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn23">
+                <wm-label padding="unset 0.5em" name="label12" bordercolor="#9BA0A5" caption="Personal queue" color="#9BA0A5" margin="unset 20px unset 10px"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn24">
+                <wm-layoutgrid name="layoutgrid3">
+                    <wm-gridrow name="gridrow15">
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn25">
+                            <wm-checkbox caption="" name="checkboxPersonalQ" datavalue="bind:Variables.queueData.dataSet.isPersonalQueue" disabled="bind:Variables.readMode.dataSet.dataValue" on-change="checkboxPersonalQChange($event, widget)"></wm-checkbox>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn26">
+                            <wm-select name="selectPersonalQ" disabled="bind:!Widgets.checkboxPersonalQ.datavalue" placeholder="" dataset="bind:Variables.dvs_personalQueue.dataSet" datafield="id" displayfield="description" datavalue="bind:Variables.queueData.dataSet.personalQueueField"
+                                readonly="bind:Variables.readMode.dataSet.dataValue"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <!--   <wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assign group to queue" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.groupsList.dataSet" datafield="name" displayfield="name" multiple="true" autofocus="true" height="75" datavalue="bind:Variables.queueData.dataSet.QueueAssignGroup" required="false"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
+        <wm-gridrow name="gridrow4" padding="unset unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Assign group to queue" name="label4" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn8">
+                <wm-container name="container7" class="container7-add-permission" conditionalclass="bind:{&quot;cursor-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;cursor-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                    <wm-composite name="composite3" class="container7-add-permission">
+                        <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px" conditionalclass="bind:{&quot;events-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;events-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                            <wm-prefab prefabname="DualList_OS" name="DualListGroups_TD" reducerightdataset="false" id="addGroup" class="dualListPadding  dl-width addGroup" resetleftdataset="false" displayfield="bind:&quot;groupName&quot;" leftdataset="bind:Variables.leftGroupsList.dataSet"
+                                rightdataset="bind:Variables.selectedGroups.dataSet" identifier="bind:&quot;id&quot;"></wm-prefab>
+                        </wm-container>
+                    </wm-composite>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow6" padding="0.20em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn11">
+                <wm-label padding="unset 0.5em" name="label1" caption="Filter criteria *" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn12">
+                <wm-container name="FiltercriteriaContainer" conditionalclass="bind:{&quot;cursor-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;cursor-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                    <wm-container name="container16" conditionalclass="bind:{&quot;events-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;events-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                        <!--<wm-prefab prefabname="TDConditionQueryBuilder" name="queueConditions" configuration="bind:Variables.queueConfigMV.dataSet.conditions" id="queryBuider" class="queryBuider"></wm-prefab>-->
+                        <wm-prefab prefabname="TDOMConditionQueryBuilder" name="queueConditions" configuration="bind:Variables.queueConfigMV.dataSet.conditions" id="queryBuider" class="queryBuider"></wm-prefab>
+                    </wm-container>
+                    <!--Comment the above line -Amir-->
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow6" padding="0.20em unset unset unset">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                <wm-label padding="unset 0.5em" name="label1" caption="Sort criteria *" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn12">
+                <wm-container name="container19_1" conditionalclass="bind:{&quot;cursor-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;cursor-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                    <wm-container name="FiltercriteriaContainer" conditionalclass="bind:{&quot;events-disabled&quot;:Variables.readMode.dataSet.dataValue,&quot;events-enabled&quot;:!Variables.readMode.dataSet.dataValue}">
+                        <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="sortConfigList" dataset="bind:Variables.sortConfig.dataSet" navigation="None" nodatamessage="">
+                            <wm-listtemplate layout="inline" name="listtemplate1">
+                                <wm-container name="sort-input-ph" width="100%" style="display:inline-flex;justify-content:space-between;align-items:center">
+                                    <wm-container name="sort-inputs" width="90%" style="display:inline-flex;justify-content:space-between;">
+                                        <wm-container name="container26" width="48%">
+                                            <wm-select name="sortField" dataset="bind:Variables.queueFieldsMV.dataSet" datafield="id" displayfield="data.title" orderby="data.title:asc" datavalue="bind:Variables.sortConfig.dataSet[$i].fieldId" on-change="sortFieldChange($event, widget, item, currentItemWidgets, newVal, oldVal)"></wm-select>
+                                        </wm-container>
+                                        <wm-container name="container26" width="48%">
+                                            <wm-select name="sortOrder" dataset="bind:Variables.sortOrders.dataSet" datafield="value" displayfield="name" orderby="name:asc" datavalue="bind:Variables.sortConfig.dataSet[$i].direction"></wm-select>
+                                        </wm-container>
+                                    </wm-container>
+                                    <wm-container name="sort-inputs-action" width="8%">
+                                        <wm-button caption="" type="button" name="deleteSortInfo" iconclass="fico-icon-minus-circle fa-lg" style="display:inline-flex;border:none;background:transparent;outline:none !important;align-items:center;margin:0;padding:0;justify-content:center;"
+                                            hint="DELETE" on-click="deleteSortInfoClick($event, widget, item, currentItemWidgets)" color="#333333"></wm-button>
+                                    </wm-container>
+                                </wm-container>
+                                <wm-container width="100%" style="display:inline-flex;align-items:center;" name="duplicate-sort-highlight" class="display-none">
+                                    <wm-label style="color:#a94442;" margin="0 3px" name="label13" caption="Field has already been selected once" fontunit="pt" fontsize="9"></wm-label>
+                                </wm-container>
+                            </wm-listtemplate>
+                        </wm-list>
+                        <wm-container width="100%" style="display:flex;align-items:center;" name="container25" margin="4px unset">
+                            <wm-button name="btn_addSortConfig" caption="ADD" class="btn-default" on-click="btn_addSortConfigClick($event, widget)"></wm-button>
+                        </wm-container>
+                    </wm-container>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name=" gridrow9_1">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                <wm-container name="linecontainer" class="linecontainer"></wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <!-- <wm-gridrow name="gridrow7"><wm-gridcolumn columnwidth="2" name="gridcolumn13"><wm-label padding="unset 0.5em" caption="Select columns *" name="label8"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn14"><wm-container name="container8"></wm-container></wm-gridcolumn></wm-gridrow>-->
+        <wm-gridrow name="gridrow8">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn15"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn14" style="margin-bottom: 2em;">
+                <wm-container name="container8">
+                    <wm-container name="QueueAction" margin="10px unset 50px unset" class="queue-action">
+                        <wm-button class="btn-default" caption="Duplicate" type="button" margin="1.5em 0.5em unset 0.5em" name="Duplicatebutton" on-click="DuplicatebuttonClick($event, widget)" show="bind:pageParams.queueId !==undefined"></wm-button>
+                        <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="bind:pageParams.queueId !==undefined" backgroundcolor="#d0012d" color="#ffffff" on-click="Widgets.deleteQueueDialog .open()"></wm-button>
+                        <wm-button class="btn-default" caption="Edit Queue" type="button" margin="1.5em 0.5em unset 0.5em" name="Editbutton" on-click="EditbuttonClick($event, widget)" show="bind:Variables.readMode.dataSet.dataValue &amp;&amp;
+                                        !Variables.queueData.dataSet.isLocked"></wm-button>
+                        <wm-button class="btn-default" caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true" disabled="bind:Variables.readMode.dataSet.dataValue"></wm-button>
+                        <wm-button class="btn-default" caption="Validation" type="button" margin="1.5em 0.5em unset 0.5em" name="Validationbutton" on-click="ValidationbuttonClick($event, widget)" show="true"></wm-button>
+                        <wm-button class="btn-primary" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" disabled="bind:Variables.readMode.dataSet.dataValue"></wm-button>
+                    </wm-container>
+                </wm-container>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete Queue &quot; + Variables.queueData.dataSet.QueueName" iconclass="" name="deleteQueueDialog" width="35%" on-opened="Widgets.deleteQueueDialog.open()" closable="false">
+        <wm-layoutgrid name="layoutgrid3_1">
+            <wm-gridrow name="gridrow10" padding="unset unset unset unset"></wm-gridrow>
+            <wm-gridrow name="gridrow11" padding="unset unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
+                    <wm-message name="message3" type="warning" hideclose="true" caption="Warning: Continue? Cannot be undone."></wm-message>
+                    <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-secondary btn-default" caption="Cancel" on-click="Widgets.deleteQueueDialog.close()" name="deleteQueueConfirmNo" margin="unset 0.5em unset unset"></wm-button>
+            <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteQueueConfirmOk" on-click="deleteQueueConfirmOkClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+</wm-partial>

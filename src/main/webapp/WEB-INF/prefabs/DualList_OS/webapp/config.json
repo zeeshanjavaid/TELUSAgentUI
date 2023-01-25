@@ -1,0 +1,86 @@
+{
+  "displayName" : "DualList",
+  "group" : "",
+  "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
+  "resources" : {
+    "styles" : [ "/pages/Main/Main.css" ],
+    "scripts" : [ ]
+  },
+  "properties" : {
+    "leftdataset" : {
+      "type" : "object",
+      "displayName" : "Left DataSet",
+      "description" : "Values that can be moved from left to right",
+      "bindable" : "in-bound",
+      "isList" : true,
+      "value" : "bind:Variables.leftDatasetModel.dataSet",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "rightdataset" : {
+      "type" : "object",
+      "displayName" : "Right DataSet",
+      "description" : "Values that can be moved from right to left",
+      "bindable" : "in-out-bound",
+      "isList" : true,
+      "value" : "bind:Variables.rightDatasetModel.dataSet",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "displayfield" : {
+      "type" : "string",
+      "displayName" : "Displayfield",
+      "description" : "Field name in the bound data value of which will be used for display in select box.",
+      "bindable" : "in-bound",
+      "value" : "label",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "identifier" : {
+      "type" : "string",
+      "displayName" : "Identifier",
+      "description" : "Unique identifier for the record",
+      "bindable" : "in-bound",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "reducerightdataset" : {
+      "type" : "boolean",
+      "displayName" : "Reduce Right Dataset",
+      "description" : "Check this checkbox if you want to remove the options visible in the right data set from the left data set.",
+      "bindable" : "in-bound",
+      "value" : false,
+      "widget" : "checkbox",
+      "show" : true,
+      "disabled" : false
+    },
+    "new" : {
+      "type" : "boolean",
+      "displayName" : "New",
+      "description" : "New",
+      "bindable" : "in-bound",
+      "value" : false,
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    }
+  },
+  "events" : {
+    "onSelecteditemschange" : {
+      "description" : "Callback action which will be triggered on change of the selected values.",
+      "eventData" : ""
+    }
+  },
+  "methods" : {
+    "getSelectedItems" : {
+      "description" : "Returns the list of items selected by the user.",
+      "parameters" : [ ],
+      "returnType" : "void",
+      "example" : ""
+    }
+  }
+}

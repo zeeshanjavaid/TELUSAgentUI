@@ -1,0 +1,14 @@
+.condition-datepicker-width {
+    width: 200px !important;
+}
+ .query-builder .rule-container .rule-filter-container {
+    display: -webkit-inline-box !important;
+    margin: 0 5px 0 0 !important;
+    vertical-align: middle !important;
+    width: 30% !important;
+}
+.wm-app .form-inline .form-control {
+    display: inline-table !important;
+    /* width: auto; */
+    vertical-align: middle !important;
+}

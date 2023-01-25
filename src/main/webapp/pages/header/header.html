@@ -1,0 +1,25 @@
+<wm-partial name="header" type="header">
+    <wm-layoutgrid name="headerlayout">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                <!--<wm-picture name="picture1" padding="5px" height="39px" pictureplaceholder="resources/images/logos/logo.png"></wm-picture>-->
+                <!--<wm-label caption="FICO" class="application-name" name="label1" padding="7px unset 5px 20px" fontsize="16" margin="unset unset 0px unset"></wm-label>-->
+                <!--<wm-label caption="®" class="application-name supclass" padding="2px unset 5px unset" fontsize="12" name="label2" margin="unset unset 0px unset"></wm-label>-->
+                <wm-label caption="FICO<sup>®</sup> TELUS Agent UI" class="application-name" style="cursor:pointer" padding="7px unset 5px 20px" fontsize="16" name="label3" margin="unset unset 0px 3px" on-click="Actions.goToPage_Main.invoke()"></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:appLocale.SESSION_EXPIRE_BEFORE_TITLE" iconclass="" name="sessionExpireBeforeDialog" closable="false" on-opened="sessionExpireBeforeDialogOpened($event, widget)">
+        <wm-label padding="unset 0.5em" name="label6" caption="bind:Variables.stSessionTimeoutMinutes.dataSet.dataValue" width="100%"></wm-label>
+        <wm-dialogactions name="dialogactions">
+            <wm-button class="btn-default" caption="bind:appLocale.LABEL_CANCEL" type="button" margin="unset 0.5em" name="cancelSessionExpire" on-click="Widgets.sessionExpireBeforeDialog.close();cancelSessionExpireClick($event, widget)"></wm-button>
+            <wm-button class="btn-primary" caption="bind:appLocale.SESSION_EXPIRE_CONFIRM" type="button" margin="unset 0.5em" on-click="Widgets.sessionExpireBeforeDialog.close();stayLoggedInClick($event, widget)" name="stayLoggedIn"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:appLocale.SESSION_EXPIRE_AFTER_TITLE" iconclass="" name="sessionExpiredDialog" closable="false">
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-primary" caption="bind:appLocale.SESSION_EXPIRE_LOGIN" type="button" margin="unset 0.5em" name="btnLogin" show="bind:Variables.stSessionTimeoutMinutes.dataSet.dataValue == appLocale.SESSION_AFTER_EXPIRE" on-click="Widgets.sessionExpiredDialog.close();btnLoginClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+        <wm-label padding="unset 0.5em" name="label6" caption="bind:Variables.stSessionTimeoutMinutes.dataSet.dataValue" width="100%"></wm-label>
+    </wm-dialog>
+</wm-partial>

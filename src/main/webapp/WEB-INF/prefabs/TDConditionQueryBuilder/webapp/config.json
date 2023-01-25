@@ -1,0 +1,40 @@
+{
+  "displayName" : "OMConditionBuilder",
+  "group" : "",
+  "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
+  "resources" : {
+    "styles" : [ "/pages/Main/Main.css", "/resources/query-builder.default.min.css", "/resources/selectize.bootstrap3.css", "/resources/bootstrap-datepicker.min.css" ],
+    "scripts" : [ "/resources/query-builder.standalone.js", "/resources/bootstrap.min.js", "/resources/bootstrap-datepicker.js", "/resources/selectize.js" ]
+  },
+  "properties" : {
+    "configuration" : {
+      "type" : "object",
+      "displayName" : "Configuration",
+      "description" : "Query builder model consisting of rules and fields.",
+      "bindable" : "in-bound",
+      "value" : "bind:{\n  \"conditions\": {\n    \"fields\": [],\n    \"rules\": []\n  },\n  \"displayConfig\": {\n    \"fielddataset\": [],\n    \"savedconfig\": {\n      \"searchableFields\": [],\n      \"sortableFields\": []\n    }\n  }\n}",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "showerror" : {
+      "type" : "boolean",
+      "displayName" : "Show Error",
+      "description" : "Shows error message on top of the conditions",
+      "bindable" : "in-bound",
+      "value" : true,
+      "widget" : "checkbox",
+      "show" : true,
+      "disabled" : false
+    }
+  },
+  "events" : { },
+  "methods" : {
+    "getRules" : {
+      "description" : "Gets the rules json set in the query builder plugin.",
+      "parameters" : [ ],
+      "returnType" : "any",
+      "example" : ""
+    }
+  }
+}

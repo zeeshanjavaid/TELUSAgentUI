@@ -1,0 +1,81 @@
+<wm-page pagetitle="Application History" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="contentWrapper" class="jc-sb flexCol colflex-center-sb width-full">
+                <wm-layoutgrid name="layoutgrid1" columns="12">
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                            <wm-label name="label1_1" caption="bind:getPageTitle()" class="page-title"></wm-label>
+                            <wm-label name="label1_2" caption="bind:getPageStatus()" class="page-status"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2" padding="1em unset unset unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn2">
+                            <wm-tabs name="tabs1" class="access-history-tab">
+                                <wm-tabpane name="processingHistoryPane" title="Processing History" show="bind:App.userPermission.has('Access_ApplicationProcessingHistoryTab')" badgetype="primary">
+                                    <wm-container name="container4" content="applicationProcessingHistory" show="bind:App.userPermission.has('Access_ApplicationProcessingHistoryTab')"></wm-container>
+                                </wm-tabpane>
+                                <wm-tabpane name="dataChangePane" title="Data Change History" on-select="dataChangePaneSelect($event, widget)" show="bind:App.userPermission.has('Access_DataChangeTab')" tabindex="1" badgetype="default">
+                                    <wm-layoutgrid name="layoutgrid2" columns="1">
+                                        <wm-gridrow name="gridrow6_1">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn8_1">
+                                                <wm-container name="container8" class="inflex-center-sb jc-flexEnd width-full" height="40" padding="unset 5px unset unset" width="100">
+                                                    <wm-button class="upDown" caption="" type="button" margin="unset 0.5em" name="button2" iconclass="fa fa-download" on-click="export_dataChangeHistory($event, widget)"></wm-button>
+                                                    <wm-label padding="unset unset unset 0.5em" name="lbl_record_details" caption="bind:displayPageInfo()"></wm-label>
+                                                </wm-container>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow6">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                                                <wm-table title="" dataset="bind:Variables.sv_DataChangeHistoryList.dataSet.pageContent" navigation="None" name="dataChangeHistoryTable" on-headerclick="dataChangeHistoryTableSort($event, $data)">
+                                                    <wm-table-column binding="createdBy" caption="User Name" widget-type="label" width="60px" edit-widget-type="text" type="string" readonly="true" show="true">
+                                                        <wm-label caption="bind:userName(row.getProperty('createdBy'))" class="" conditionalclass=""></wm-label>
+                                                    </wm-table-column>
+                                                    <wm-table-column binding="createdOn" caption="Datetime" widget-type="label" width="90px" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true">
+                                                        <wm-label caption="bind:App.localizeTimestampToAppTimezone(row.getProperty('createdOn').replace(&quot;[UTC]&quot;, &quot;&quot;));" class="" conditionalclass=""></wm-label>
+                                                    </wm-table-column>
+                                                    <wm-table-column binding="action" caption="Action" widget-type="label" width="60px" edit-widget-type="text" type="string" readonly="true" show="true">
+                                                        <wm-label caption="bind:updateColumnName(row.getProperty('action'))" class="" conditionalclass=""></wm-label>
+                                                    </wm-table-column>
+                                                    <wm-table-column binding="entityName" caption="Entity" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="entityId" caption="Entity ID" width="50px" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                                                    <wm-table-column binding="changeData" caption="Updates" width="160px" edit-widget-type="text" type="string" readonly="true" sortable="false" show="true"></wm-table-column>
+                                                </wm-table>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow7">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                                                <wm-container name="dataChange_PaginationContainer" content="Partial_Pagination" show="bind:Variables.totalRecordCount.dataSet.dataValue > 0">
+                                                    <wm-param name="pageSize" value="bind:Variables.pageSize.dataSet.dataValue" type="integer"></wm-param>
+                                                    <wm-param name="totalRecords" value="bind:Variables.totalRecordCount.dataSet.dataValue" type="integer"></wm-param>
+                                                    <wm-param name="parentContainerName" value="dataChange_PaginationContainer" type="string"></wm-param>
+                                                </wm-container>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-tabpane>
+                            </wm-tabs>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6_1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                            <wm-container name="actionBtnContainer" width="100%" backgroundcolor="#ccc" padding="5px unset" class="fixed-btn-panel">
+                                <wm-button class="btn-link" caption="bind:appLocale.BACK_TO_APPLICATION" type="button" margin="unset 0.5em" name="backBtn" on-click="backBtnClick($event, widget)"></wm-button>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                            <wm-spinner show="true " name="spinner1 " servicevariabletotrack="sv_activateDeactivateDVByIds,sv_getDVListPaginated,sv_getDVTypeById
+                                    " caption=" "></wm-spinner>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-container>
+            <wm-container name="dummySpave" height="100px"></wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer " name="footer1 " class="sticky-footer z-index-0 "></wm-footer>
+</wm-page>

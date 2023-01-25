@@ -1,0 +1,118 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.0",
+    "x-FAWB-VARIABLE" : null,
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "2c52cfc8-165d-4c0a-b670-2b9249e5856f",
+    "x-WM-SERVICE_ID" : "dms3",
+    "x-FAWB-SERVICE-GROUP" : "dms",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "host" : "plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com",
+  "basePath" : "",
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/dms3/invoke/7be7dd1c-434c-4ba1-aa25-d146efa91980" : {
+      "get" : {
+        "tags" : [ "RestServiceVirtualController" ],
+        "operationId" : "dms3_RestServiceVirtualController-invoke",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/vnd.com.fico.platform.orchestration.v1_0+json" ],
+        "parameters" : [ {
+          "name" : "inputNumber",
+          "in" : "query",
+          "description" : "inputNumber",
+          "required" : false,
+          "type" : "string",
+          "format" : "string",
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-EDITABLE" : false,
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/RootResponse"
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ ]
+        } ],
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY"
+      },
+      "x-WM-BASE_PATH" : "/dms3/invoke/7be7dd1c-434c-4ba1-aa25-d146efa91980",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "x-WM-COMPLETE_PATH" : "${dms3.scheme}://${dms3.host}${dms3.basepath}/7be7dd1c-434c-4ba1-aa25-d146efa91980"
+    }
+  },
+  "securityDefinitions" : {
+    "oauth2" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+      "tokenUrl" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/registration/rest/client/token",
+      "sendAccessTokenAs" : "HEADER",
+      "accessTokenParamName" : "Bearer",
+      "grantType" : "DMP_CLIENT_CREDENTIALS",
+      "x-WM-PROVIDER_ID" : "dmp"
+    }
+  },
+  "definitions" : {
+    "outputVariables" : {
+      "required" : [ "outputNumber" ],
+      "properties" : {
+        "outputNumber" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.outputVariables",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "content" : {
+      "required" : [ "endTimestamp", "outputVariables", "startTimestamp", "status", "timeTaken" ],
+      "properties" : {
+        "timeTaken" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "outputVariables" : {
+          "$ref" : "#/definitions/outputVariables"
+        },
+        "endTimestamp" : {
+          "type" : "string"
+        },
+        "startTimestamp" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.content",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponse" : {
+      "required" : [ "content", "transactionId" ],
+      "properties" : {
+        "transactionId" : {
+          "type" : "string"
+        },
+        "content" : {
+          "$ref" : "#/definitions/content"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms3.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    }
+  }
+}

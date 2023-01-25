@@ -1,0 +1,184 @@
+<wm-page pagetitle="Log Configuration" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="container1">
+                <wm-tabs name="tabs1">
+                    <wm-tabpane name="logTypePanel" title="LOG TYPE">
+                        <wm-livetable formlayout="dialog" name="ActivitylogtypeLiveTable1"></wm-livetable>
+                        <wm-livetable formlayout="dialog" name="ActivitylogtypeLiveTable1_1">
+                            <!--<wm-table gridfirstrowselect="true" editmode="dialog" name="createlogtypeTable" title="" dataset="bind:Variables.activityLogType.dataSet" navigation="Classic">
+                                <wm-table-column binding="code" caption="CODE" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="type" caption="TYPE" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="createdBy" caption="CREATED BY" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="createdOn" caption="CREATED ON" edit-widget-type="timestamp" type="timestamp" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="updatedOn" caption="UPDATED ON" edit-widget-type="timestamp" type="timestamp" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="rowOperations" caption="ACTIONS" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="Widgets.createlogtypeDialog.open()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updatelogtypeDialog.open()" disabled="false" widget-type="button"></wm-table-row-action>
+                                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+                            </wm-table>-->
+                            <!--<wm-liveform errormessage="" title="Activitylogtype Info" formlayout="dialog" iconclass="wi wi-edit" name="ActivitylogtypeLiveForm1" dataset="bind:Variables.activityLogType.dataSet" captionalign="left" captionposition="top">
+                                <wm-layoutgrid columns="1" name="layoutgrid3">
+                                    <wm-gridrow name="gridrow12">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                                            <wm-form-field name="code" displayname="CODE" required="false" show="true" generator="assigned" primary-key="false" key="code" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow13">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn13">
+                                            <wm-form-field name="type" displayname="TYPE" required="false" show="true" generator="assigned" primary-key="false" key="type" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow14">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                                            <wm-form-field name="createdBy" displayname="CREATED BY" required="true" show="true" generator="assigned" primary-key="false" key="createdBy" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow15">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                                            <wm-form-field name="createdOn" displayname="CREATED ON" required="true" show="true" generator="assigned" primary-key="false" key="createdOn" type="timestamp" is-related="false" pc-display="true" mobile-display="true" widget="timestamp"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow16">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                                            <wm-form-field name="updatedOn" displayname="UPDATED ON" required="false" show="true" generator="assigned" primary-key="false" key="updatedOn" type="timestamp" is-related="false" pc-display="true" mobile-display="true" widget="timestamp"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="identity" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                                <wm-form-action key="cancel" class="form-cancel btn-default" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                                <wm-form-action key="save" class="form-save btn-primary" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                            </wm-liveform>-->
+                        </wm-livetable>
+                    </wm-tabpane>
+                    <wm-tabpane name="logNamePanel" title="LOG NAME">
+                        <wm-livetable formlayout="dialog" name="ActivitylognameLiveTable1">
+                            <!-- <wm-table gridfirstrowselect="true" editmode="dialog" name="createlognameTable" title="" dataset="bind:Variables.activityLogName.dataSet" navigation="Classic">
+                                <wm-table-column binding="code" caption="CODE" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="name" caption="NAME" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="createdBy" caption="CREATED BY" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="createdOn" caption="CREATED ON" edit-widget-type="timestamp" type="timestamp" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="updatedOn" caption="UPDATED ON" edit-widget-type="timestamp" type="timestamp" generator="assigned" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="rowOperations" caption="ACTIONS" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="Widgets.createlognameDialog.open()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updatelognameDialog.open()" disabled="false" widget-type="button"></wm-table-row-action>
+                                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+                            </wm-table>-->
+                            <!--<wm-liveform errormessage="" title="Activitylogname Info" formlayout="dialog" iconclass="wi wi-edit" name="ActivitylognameLiveForm1" dataset="bind:Variables.activityLogName.dataSet" captionalign="left" captionposition="top">
+                                <wm-layoutgrid columns="1" name="layoutgrid2">
+                                    <wm-gridrow name="gridrow7">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                                            <wm-form-field name="code" displayname="CODE" required="false" show="true" generator="assigned" primary-key="false" key="code" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow8">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                                            <wm-form-field name="name" displayname="NAME" required="false" show="true" generator="assigned" primary-key="false" key="name" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow9">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                                            <wm-form-field name="createdBy" displayname="CREATED BY" required="true" show="true" generator="assigned" primary-key="false" key="createdBy" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow10">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                                            <wm-form-field name="createdOn" displayname="CREATED ON" required="true" show="true" generator="assigned" primary-key="false" key="createdOn" type="timestamp" is-related="false" pc-display="true" mobile-display="true" widget="timestamp"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow11">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn11">
+                                            <wm-form-field name="updatedOn" displayname="UPDATED ON" required="false" show="true" generator="assigned" primary-key="false" key="updatedOn" type="timestamp" is-related="false" pc-display="true" mobile-display="true" widget="timestamp"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="identity" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                                <wm-form-action key="cancel" class="form-cancel btn-default" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                                <wm-form-action key="save" class="form-save btn-primary" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                            </wm-liveform>-->
+                        </wm-livetable>
+                    </wm-tabpane>
+                </wm-tabs>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <!--<wm-dialog dialogtype="design-dialog" name="updatelogtypeDialog" title="Update" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.activityLogType.dataSet" captionalign="left" captionposition="top" name="UpdatelogtypeForm" on-success="Widgets.activitylogtypeDialog.close()" formdata="bind:Widgets.createlogtypeTable.selecteditem">
+            <wm-layoutgrid columns="1" name="layoutgrid4">
+                <wm-gridrow name="gridrow15_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15_1">
+                        <wm-form-field name="code" displayname="Code" show="true" primary-key="false" generator="assigned" key="code" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16_1">
+                        <wm-form-field name="type" displayname="Type" show="true" primary-key="false" generator="assigned" key="type" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.updatelogtypeDialog.close()" shortcutkey="" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-primary" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>-->
+    <!--<wm-dialog dialogtype="design-dialog" name="createlogtypeDialog" title="Create" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.activityLogType.dataSet" captionalign="left" captionposition="top" name="createlogtypeForm" on-success="Widgets.activitylogtypeDialog.close()">
+            <wm-layoutgrid columns="1" name="layoutgrid5">
+                <wm-gridrow name="gridrow18">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                        <wm-form-field name="code" displayname="Code" show="true" primary-key="false" generator="assigned" key="code" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow19">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-form-field name="type" displayname="Type" show="true" primary-key="false" generator="assigned" key="type" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.createlogtypeDialog.close()" shortcutkey="" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-primary" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>-->
+    <!-- <wm-dialog dialogtype="design-dialog" name="createlognameDialog" title="Create" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.activityLogName.dataSet" captionalign="left" captionposition="top" name="createlognameForm" on-success="Widgets.activitylognameDialog.close()">
+            <wm-layoutgrid columns="1" name="layoutgrid6">
+                <wm-gridrow name="gridrow20">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                        <wm-form-field name="code" displayname="Code" show="true" primary-key="false" generator="assigned" key="code" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow21">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn20">
+                        <wm-form-field name="name" displayname="Name" show="true" primary-key="false" generator="assigned" key="name" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.createlognameDialog.close()" shortcutkey="" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-primary" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" name="updatelognameDialog" title="Update" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.activityLogName.dataSet" captionalign="left" captionposition="top" name="updatelognameForm" on-success="Widgets.activitylognameDialog.close()" formdata="bind:Widgets.createlognameTable.selecteditem">
+            <wm-layoutgrid columns="1" name="layoutgrid7">
+                <wm-gridrow name="gridrow22">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn21">
+                        <wm-form-field name="code" displayname="Code" show="true" primary-key="false" generator="assigned" key="code" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow23">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn22">
+                        <wm-form-field name="name" displayname="Name" show="true" primary-key="false" generator="assigned" key="name" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.updatelognameDialog.close()" shortcutkey="" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-primary" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>-->
+</wm-page>

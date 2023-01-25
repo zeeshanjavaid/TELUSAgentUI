@@ -1,0 +1,36 @@
+validatorConfig: 
+  enabled: false
+  customValidationEnabled: true
+  customValidationBean: "Hermes.CustomValidator"
+  entityValidatorConfigs: 
+  - domainModelFQClassName: com.fico.ps.model.Person
+    fieldValidatorConfigs: 
+    - name: "firstName"
+      mandatoryCheck: true
+      regularExpression: 
+      maxLength: 50
+      errorCode: "0001" 
+      errorMessage: 
+    - name: "middileName"
+      mandatoryCheck: false
+      maxLength: 10
+      errorCode: "0002"
+      errorMessage: 
+  - domainModelFQClassName: com.fico.ps.model.EmailVO
+    fieldValidatorConfigs: 
+    # - name: "email"
+    #   mandatoryCheck: false
+    #   regularExpression: "^(.+)@(.+)$"
+    #   maxLength: 50
+    #   errorCode: "0004"
+    #   errorMessage: 
+      
+  mandatoryErrorCodeFormat: "M-%s"  # Error code will be derived using String.format method, error code for corresponding check will be passed. 
+                                    # e.g. for applicationNumber if Mandatory check fails it will become M-0001
+  regularExpErrorCodeFormat: "R-%s"
+  maxLengthErrorCodeFormat: "L-%s" 
+  mandatoryErrorMessageFormat: "'%s' is mandatory."
+  regularExpErrorMessageFormat: "'%s' is invalid."
+  maxLengthErrorMessageFormat: "Maximum length allowed for '%s' is '%s'."
+  
+  

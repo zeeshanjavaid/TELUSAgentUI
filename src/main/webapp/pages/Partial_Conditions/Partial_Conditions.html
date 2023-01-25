@@ -1,0 +1,50 @@
+<wm-partial name="partial1">
+    <wm-container name="conditions_wrapper" class="regularFlex flex-col item-center">
+        <wm-container name="header" width="100%" height="50px" backgroundcolor="#f9f9f9" class="inFlex item-center" margin="unset unset 1em unset">
+            <wm-label padding="unset 0.5em" name="label1" caption="Conditions" fontsize="14" fontunit="pt"></wm-label>
+        </wm-container>
+    </wm-container>
+    <wm-table name="conditionsDataTable" title="" dataset="bind:Variables.getAllConditions.dataSet" enablesort="false" navigation="None" pagesize="10" class="scrolldown">
+        <wm-table-column binding="enitityName" caption="" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
+            <wm-label caption="bind:row.getProperty('enitityName')" class="" conditionalclass="bind:{'display-none':!row.getProperty('isShow')}"></wm-label>
+        </wm-table-column>
+        <wm-table-column binding="type" caption="Type" edit-widget-type="number" type="integer" readonly="true" show="true">{{displayConditionCategoryTypeDescription(row.getProperty('category'))}}</wm-table-column>
+        <wm-table-column binding="name" caption="Condition" widget-type="anchor" edit-widget-type="text" type="string" readonly="true" show="true">
+            <wm-anchor caption="bind:displayConditionCodeDescription(row.getProperty('code'))" class="" conditionalclass="bind:{'download-link':row.getProperty('documentId')}" on-click="documentDownload_Click(row)"></wm-anchor>
+        </wm-table-column>
+        <wm-table-column binding="code" caption="Status" edit-widget-type="text" type="string" readonly="true" show="true">{{displayConditionStatusDescription(row.getProperty('status'))}}</wm-table-column>
+        <wm-table-column binding="Requested" caption="Requested" edit-widget-type="text" type="string" readonly="true" sortable="false" searchable="false" show="true"><span>{{displayFormatLastUpdated(row.getProperty('createdOn'))}}</span><span class="by-span">&nbsp;By&nbsp;</span><span>{{row.getProperty('createdBy')}}</span></wm-table-column>
+        <wm-table-column binding="lastUpdated" caption="Last Updated" edit-widget-type="text"
+            type="string" readonly="true" sortable="false" searchable="false" show="true"><span>{{displayFormatLastUpdated(row.getProperty('updatedOn'))}}</span><span class="by-span">&nbsp;By&nbsp;</span><span>{{row.getProperty('updatedBy')}}</span></wm-table-column>
+        <wm-table-column binding="accept" caption="Actions" width="20%" textalignment="center"
+            edit-widget-type="text" type="string" sortable="false" searchable="false" show="true" readonly="false">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                <wm-gridrow name="gridrow3">
+                    <wm-container>
+                        <wm-button margin="unset 15px unset unset" caption="" show="true" class="btn app-button row-action row-action-button btn-transparent approve-unchecked" iconclass="fico-icon-check-solid" on-click="UpdateConditionStatusAccept($event, widget, row)"
+                            conditionalclass="bind:{'approve-checked':row.status===Partial.Variables.conditionAcceptId.dataSet.dataValue}" disabled="bind: (row.getProperty('status')==Partial.Variables.conditionRejectId.dataSet.dataValue ||  row.getProperty('status')==Partial.Variables.conditionWaiveId.dataSet.dataValue ) ? true:false"
+                            hint="bind:appLocale.ACTION_BTN_ACCEPT"></wm-button>
+                        <wm-button margin="unset 15px unset unset" caption="" show="true" disabled="bind:row.getProperty('status')=='Accepted' || row.getProperty('status')=='Waived' ? true:false" class="btn app-button row-action row-action-button btn-transparent reject-unchecked"
+                            iconclass="fico-icon-close" on-click="UpdateConditionStatusReject($event, widget, row)" conditionalclass="bind:{'reject-checked':row.status==='Rejected'}" hint="bind:appLocale.ACTION_BTN_REJECT"></wm-button>
+                        <wm-button margin="unset 15px unset unset" caption="" show="true" disabled="bind:row.getProperty('status')=='Accepted' || row.getProperty('status')=='Rejected' ? true:false" class="btn app-button row-action row-action-button btn-transparent waive-unchecked"
+                            iconclass="fico-icon-redo" on-click="UpdateConditionStatusWaived($event, widget, row)" conditionalclass="bind:{'waive-checked':row.status==='Waived'}" hint="bind:appLocale.ACTION_BTN_WAIVE"></wm-button>
+                        <wm-button margin="unset 15px unset unset" class="btn app-button row-action row-action-button btn-transparent" caption="" type="button" name="condDoc_uploadBtn" iconclass="fico-icon-upload fa-lg" on-click="condDoc_uploadBtnClick(row)"
+                            color="#333"></wm-button>
+                    </wm-container>
+                </wm-gridrow>
+            </wm-gridcolumn>
+        </wm-table-column>
+        <wm-table-column binding="conditionReason" caption="Condition Reason" edit-widget-type="text" type="string" validationmessage="Condition Reason is required" sortable="false" searchable="false" show="true" readonly="false" required="true">
+            <wm-composite name="compositeConReason">
+                <wm-container class="col-md-9" name="container4">
+                    <wm-select name="selectConditionReason" dataset="bind:Variables.dvs_getConditionReason.dataSet" datafield="id" displayfield="description" on-change="selectConditionReasonChange($event, widget, row, newVal, oldVal)" placeholder="(Select)"
+                        orderby="code:desc" datavalue="bind:row.getProperty('conditionReason')" required="bind:row.getProperty('status')) =='Waived'&amp;&amp; bind:row.getProperty('status')) =='Rejected'" validationmessage="Select a Condition reason"></wm-select>
+                </wm-container>
+            </wm-composite>
+        </wm-table-column>
+    </wm-table>
+    <wm-container name="docActions_container" class="inFlex item-center" width="100%" padding="0.5em unset" show="bind:pageParams.Role_ManageDocumentsandStipulations">
+        <wm-button class="btn-default" caption="ADD" type="button" margin="unset 0.5em" name="AddCondition_btn" on-click="AddCondition_btnClick($event, widget)" show="bind:pageParams.applicationStatusCode.toUpperCase() == &quot;REVIEW&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;CREDIT&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;CREDIT_RISK&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;CREDIT_RISK_MANAGER&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;CREDIT_MANAGER&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;FRAUD&quot; || pageParams.applicationStatusCode.toUpperCase() == &quot;AUTHENTICATION&quot;"></wm-button>
+    </wm-container>
+    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="deleteCondition,getAllConditions"></wm-spinner>
+</wm-partial>

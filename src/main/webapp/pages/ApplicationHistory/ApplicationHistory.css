@@ -1,0 +1,131 @@
+body {
+    box-sizing: border-box;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.icon-check-green {
+    color: green;
+}
+
+.app-left-panel {
+    float: left !important;
+}
+
+.app-content-column {
+    float: right !important;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/*.leftmenu-section {*/
+/*    background-color: var(--leftMenuBGColor) !important;*/
+/*}*/
+
+.width-full {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.access-history-tabs
+{
+    color:black;
+}
+
+.access-history-tab .nav-tabs>li.active-tab>a.active, .access-history-tab .nav-tabs>li .app-menu a.active {
+    color: #00629b !important;
+    border-bottom: solid #00629b !important;
+}
+.access-history-tab .nav-tabs>li>a, .access-history-tab .nav-tabs>li .app-menu a {
+    font-weight: bold;
+    color: #00629b;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    margin-right: 0;
+    border-color: transparent;
+}
+
+.inflex-center-sb {
+    display: flex;
+    align-items: center;
+}
+
+.colflex-center-sb {
+    display: flex;
+    align-items: center;
+}
+
+.flexCol {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.nav-tabs{
+    border-bottom:none;
+}
+
+/*Data table cell styles*/
+div[name='dataChangeHistoryTable'] .app-grid-content > table td {
+    word-break: break-all;
+}
+
+div[name='dataChangeHistoryTable'] table {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+}
+
+div[name='dataChangeHistoryTable'] .table-container {
+    max-width: 100% !important;
+}
+
+.tab-content{
+    margin-top:10px;
+}
+
+.page-title {
+    font-size: 26pt;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+}
+                                    
+.page-status {
+    font-size: 24pt;
+    color: #808080;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+    margin-left: 10px;
+}
+
+.jc-flexEnd {
+    justify-content: flex-end;   
+}
+
+.width-full {
+    width: 100% !important;
+    margin: 0;
+}
+
+.inflex-center-sb {
+    display: flex;
+    align-items: center !important;
+}

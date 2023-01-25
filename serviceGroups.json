@@ -1,0 +1,14 @@
+{
+  "dms" : {
+    "id" : "dms",
+    "type" : "WEB_SERVICE",
+    "host" : "plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com",
+    "scheme" : "https"
+  },
+  "Process_Execution" : {
+    "id" : "Process_Execution",
+    "type" : "WEB_SERVICE",
+    "host" : "plor-1968y6fy812.dms.preview.usw2.ficoanalyticcloud.com",
+    "scheme" : "https"
+  }
+}

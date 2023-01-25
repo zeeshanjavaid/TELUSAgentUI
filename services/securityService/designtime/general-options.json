@@ -1,0 +1,32 @@
+{
+  "sslConfig" : {
+    "sslPort" : 443,
+    "useSSL" : false,
+    "excludedUrls" : "/rest/dmp/**;/history"
+  },
+  "xssConfig" : {
+    "enforceXssSecurity" : true,
+    "policyFile" : null,
+    "xssFilterStrategy" : "ENCODE",
+    "policyType" : "IMPORT"
+  },
+  "corsConfig" : {
+    "enabled" : false,
+    "maxAge" : 1600,
+    "allowCredentials" : false,
+    "pathEntries" : [ {
+      "name" : "root",
+      "path" : "/**",
+      "allowedOrigins" : "*"
+    } ]
+  },
+  "sameSiteConfig": {
+    "sameSiteType": "LAX"
+  },
+  "frameOptions" : {
+    "enabled" : true,
+    "mode" : "SAMEORIGIN",
+    "allowFromUrl" : null
+  },
+  "customFilterList" : null
+}

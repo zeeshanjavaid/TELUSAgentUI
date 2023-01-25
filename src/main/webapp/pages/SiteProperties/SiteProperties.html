@@ -1,0 +1,116 @@
+<wm-page pagetitle="Site Properties" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="Partial_SetupLeftNav" name="left_panel1" class="pull-left"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1" class="float-right">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn2" horizontalalign="right">
+                        <wm-anchor margin="unset 0.5em" name="sample" caption="Download Sample" hyperlink="resources/files/sample.csv" textalign="right"></wm-anchor>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn3"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn4" horizontalalign="right">
+                        <wm-fileupload name="fileupload" on-select="Variables.loadCustomProperties.invoke();fileuploadSelect($event, widget, selectedFiles)"></wm-fileupload>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-livetable formlayout="dialog" name="FawbPropertySourceLiveTable1">
+                <wm-table gridfirstrowselect="true" editmode="dialog" name="FawbPropertySourceTable1" title="Site Properties" dataset="bind:Variables.FawbPropertySource.dataSet" navigation="Basic" exportformat="EXCEL">
+                    <wm-table-column binding="propertyKey" caption="Property Key" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="propertyValue" caption="Property Value" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                    <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="Widgets.createPropertyDialogue.open()" shortcutkey="" disabled="false" widget-type="button"
+                        position="header"></wm-table-action>
+                    <wm-table-action key="customButton" display-name="Reset" show="true" class="btn-secondary" iconclass="" title="Custom button" action="Variables.loadDefaultProperties.invoke()" shortcutkey="" disabled="false" widget-type="button"
+                        position="header"></wm-table-action>
+                    <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updatePropertyDialogue.open()" disabled="false"
+                        widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+                </wm-table>
+                <wm-liveform errormessage="" title="Fawb_property_source Info" formlayout="dialog" iconclass="wi wi-edit" name="FawbPropertySourceLiveForm1" dataset="bind:Variables.FawbPropertySource.dataSet" captionalign="left" captionposition="top">
+                    <wm-layoutgrid columns="1" name="layoutgrid2">
+                        <wm-gridrow name="gridrow3">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                                <wm-form-field name="propertyKey" displayname="Property Key" required="false" show="true" generator="assigned" primary-key="false" key="propertyKey" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                    widget="text"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow4">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                                <wm-form-field name="propertyValue" displayname="Property Value" required="false" show="true" generator="assigned" primary-key="false" key="propertyValue" type="string" is-related="false" maxchars="1024" pc-display="true" mobile-display="true"
+                                    widget="text"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow5">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                                <wm-form-field name="showMasked" displayname="Show Masked" required="false" show="true" generator="assigned" primary-key="false" key="showMasked" type="boolean" is-related="false" pc-display="true" mobile-display="true" widget="checkbox"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-form-field name="id" displayname="Id" required="true" show="false" generator="identity" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                    <wm-form-action key="cancel" class="form-cancel btn-default" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                    <wm-form-action key="save" class="form-save btn-primary" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                </wm-liveform>
+            </wm-livetable>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-dialog dialogtype="design-dialog" name="createPropertyDialogue" title="Create" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.FawbPropertySource.dataSet" captionalign="left" captionposition="top" name="createPropertySourceForm" on-success="Widgets.createPropertyDialogue.close()">
+            <wm-layoutgrid columns="1" name="layoutgrid5">
+                <wm-gridrow name="gridrow10">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                        <wm-form-field name="propertyKey" displayname="Property Key" show="true" primary-key="false" generator="assigned" key="propertyKey" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                        <wm-form-field name="propertyValue" displayname="Property Value" show="true" primary-key="false" generator="assigned" key="propertyValue" type="string" readonly="false" required="true" widget="text" maxchars="1024" inputtype="text"
+                            placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow12">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-form-field name="showMasked" displayname="Show Masked" show="true" primary-key="false" generator="assigned" key="showMasked" type="boolean" readonly="false" required="false" widget="checkbox" placeholder=""></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.createPropertyDialogue.close()" shortcutkey="" disabled="false" widget-type="button"
+                type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="custom" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" action="Variables.refreshProperties.invoke()" shortcutkey="" disabled="false" widget-type="button"
+                type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" name="updatePropertyDialogue" title="Update" iconclass="wi wi-edit" modal="true">
+        <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.FawbPropertySource.dataSet" captionalign="left" captionposition="top" name="UpdatePropertySourceForm" on-success="Widgets.updatePropertyDialogue.close()" formdata="bind:Widgets.FawbPropertySourceTable1.selecteditem">
+            <wm-layoutgrid columns="1" name="layoutgrid5_1">
+                <wm-gridrow name="gridrow12_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                        <wm-form-field name="propertyKey" displayname="Property Key" show="true" primary-key="false" generator="assigned" key="propertyKey" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                        <wm-form-field name="propertyValue" displayname="Property Value" show="true" primary-key="false" generator="assigned" key="propertyValue" type="string" readonly="false" required="true" widget="text" maxchars="1024" inputtype="text"
+                            placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16_1">
+                        <wm-form-field name="showMasked" displayname="Show Masked" show="true" primary-key="false" generator="assigned" key="showMasked" type="boolean" readonly="false" required="false" widget="checkbox" placeholder=""></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+            <wm-form-action key="cancel" display-name="Close" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Close" action="Widgets.updatePropertyDialogue.close()" shortcutkey="" disabled="false" widget-type="button"
+                type="button" update-mode="true"></wm-form-action>
+            <wm-form-action key="custom" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" action="Variables.refreshProperties.invoke();UpdatePropertySourceForm_customAction($event)" shortcutkey=""
+                disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        </wm-liveform>
+    </wm-dialog>
+</wm-page>

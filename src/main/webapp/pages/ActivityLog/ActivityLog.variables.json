@@ -1,0 +1,18 @@
+{
+  "booleanChoices" : {
+    "_id" : "wm-booleanChoices-wm.Variable-1625048815507",
+    "name" : "booleanChoices",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : true
+    }, {
+      "dataValue" : false
+    } ],
+    "type" : "boolean",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

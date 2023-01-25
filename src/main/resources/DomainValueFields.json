@@ -1,0 +1,4 @@
+[ {
+  "domainClassName" : "com.fico.ps.model.NoteVO",
+  "Fields" : [ "noteCategoryId" ]
+} ]

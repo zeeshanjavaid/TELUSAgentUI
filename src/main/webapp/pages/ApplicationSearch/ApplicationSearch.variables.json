@@ -1,0 +1,193 @@
+{
+  "getSitePropertyByName" : {
+    "_id" : "wm-getSitePropertyByName-wm.ServiceVariable-1655965091429",
+    "name" : "getSitePropertyByName",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "PropertiesService",
+    "operation" : "getPropertyValueByName",
+    "operationId" : "PropertiesController_getPropertyValueByName",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "getSitePropertyByNameonSuccess(variable, data, options)",
+    "onError" : "getSitePropertyByNameonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Properties"
+  },
+  "mv_currentPage" : {
+    "_id" : "wm-mv_currentPage-wm.Variable-1654680219077",
+    "name" : "mv_currentPage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "mv_pageSize" : {
+    "_id" : "wm-mv_pageSize-wm.Variable-1654680242169",
+    "name" : "mv_pageSize",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "mv_sortProperties" : {
+    "_id" : "wm-mv_sortProperties-wm.Variable-1654684009562",
+    "name" : "mv_sortProperties",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "sortingColumn" : "",
+      "sortingOrder" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "mv_totalRecords" : {
+    "_id" : "wm-mv_totalRecords-wm.Variable-1654680273577",
+    "name" : "mv_totalRecords",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "mv_userLocale" : {
+    "_id" : "wm-mv_userLocale-wm.Variable-1654680496803",
+    "name" : "mv_userLocale",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "sv_applicationSearch" : {
+    "_id" : "wm-sv_applicationSearch-wm.ServiceVariable-1656414885561",
+    "name" : "sv_applicationSearch",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.core.services.ApplicationFetchServiceBS.ApplicationGroupSearchResponseWrapper",
+    "service" : "ApplicationRelatedBS",
+    "operation" : "invokeApplicationGroupSearch",
+    "operationId" : "ApplicationRelatedBSController_invokeApplicationGroupSearch",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_applicationSearchonSuccess(variable, data, options)",
+    "onError" : "sv_applicationSearchonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ApplicationRelatedBS"
+  },
+  "sv_getApplicationStatusDV" : {
+    "_id" : "wm-sv_getApplicationStatusDV-wm.ServiceVariable-1654670986114",
+    "name" : "sv_getApplicationStatusDV",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "APPLICATION_STATUS",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    }, {
+      "target" : "isAlphaSort",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDomainValuesByDvTypeCodeResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCode",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCode",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "sv_getChannel" : {
+    "_id" : "wm-sv_getChannel-wm.ServiceVariable-1659511669147",
+    "name" : "sv_getChannel",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "CHANNEL",
+      "type" : "string"
+    }, {
+      "target" : "userLocale",
+      "value" : "bind:App.getCurrentLocale()",
+      "type" : "string"
+    }, {
+      "target" : "isAlphaSort",
+      "value" : false,
+      "type" : "boolean"
+    } ],
+    "type" : "com.fico.dmp.core.models.query.QueryGetAllDomainValuesByDvTypeCodeResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCode",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCode",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  }
+}

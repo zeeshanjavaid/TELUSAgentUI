@@ -1,0 +1,10 @@
+[ {
+  "providerId" : "dmp",
+  "authorizationUrl" : "${oauth2.dmp.authorizationUrl}",
+  "accessTokenUrl" : "${oauth2.dmp.accessTokenUrl}",
+  "clientId" : "${oauth2.dmp.clientId}",
+  "clientSecret" : "${oauth2.dmp.clientSecret}",
+  "sendAccessTokenAs" : null,
+  "accessTokenParamName" : null,
+  "scopes" : [ ]
+} ]

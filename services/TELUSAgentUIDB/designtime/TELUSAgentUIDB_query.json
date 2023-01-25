@@ -1,0 +1,2848 @@
+{
+  "DVSearchByCodeAndDescription" : {
+    "name" : "DVSearchByCodeAndDescription",
+    "description" : "DVSearchByCodeAndDescription",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVQuery.DomainValueType, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder, concat(CreatedByUser.firstName,' ',CreatedByUser.lastName) AS createdBy, ParentDVQuery.createdOn, concat(UpdatedByUser.firstName,' ',UpdatedByUser.lastName) AS updatedBy, ParentDVQuery.updatedOn \n    FROM DomainValue AS ParentDVQuery LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId LEFT JOIN USER AS CreatedByUser ON ParentDVQuery.CreatedBy = CreatedByUser.id LEFT JOIN USER AS UpdatedByUser ON ParentDVQuery.UpdatedBy = UpdatedByUser.id\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.DomainValueType = :domainValueTypeId AND\nCASE\n    WHEN :showAll = true\n        THEN \n            (ParentDVQuery.IsActive = true OR ParentDVQuery.IsActive = false)\n        ELSE\n            ParentDVQuery.IsActive = :isActiveFlag\n    END\n    AND (ParentDVQuery.Code LIKE :searchValue OR ParentDVDescQuery.Description LIKE :searchValue)",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVQuery.DomainValueType, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder, concat(CreatedByUser.firstName,' ',CreatedByUser.lastName) AS createdBy, ParentDVQuery.createdOn, concat(UpdatedByUser.firstName,' ',UpdatedByUser.lastName) AS updatedBy, ParentDVQuery.updatedOn \n    FROM DomainValue AS ParentDVQuery LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId LEFT JOIN USER AS CreatedByUser ON ParentDVQuery.CreatedBy = CreatedByUser.id LEFT JOIN USER AS UpdatedByUser ON ParentDVQuery.UpdatedBy = UpdatedByUser.id\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :defaultLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.DomainValueType = :domainValueTypeId AND\nCASE\n    WHEN :showAll = true\n        THEN \n            (ParentDVQuery.IsActive = true OR ParentDVQuery.IsActive = false)\n        ELSE\n            ParentDVQuery.IsActive = :isActiveFlag\n    END\n    AND (ParentDVQuery.Code LIKE :searchValue OR ParentDVDescQuery.Description LIKE :searchValue)) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "defaultLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "4",
+      "required" : true
+    }, {
+      "name" : "showAll",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : true
+    }, {
+      "name" : "isActiveFlag",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : true
+    }, {
+      "name" : "searchValue",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "%%",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.DvsearchByCodeAndDescriptionResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DomainValueType",
+        "fieldName" : "domainValueType",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsActive",
+        "fieldName" : "isActive",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "createdBy",
+        "fieldName" : "createdBy",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "createdOn",
+        "fieldName" : "createdOn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Timestamp",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "updatedBy",
+        "fieldName" : "updatedBy",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "updatedOn",
+        "fieldName" : "updatedOn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Timestamp",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_ActivityLog" : {
+    "name" : "Query_ActivityLog",
+    "description" : "Query_ActivityLog",
+    "version" : "V2",
+    "queryString" : "SELECT APPLICATION.id AS applicationId, APPLICATION.applicationNumber AS applicationNumber, ACTIVITY.id AS activityId, ActivityTypeDV.code AS activityTypeCode, ActivityTypeDesc.description AS activityTypeDesc, ACTIVITY.name AS activityName, ACTIVITY.description AS activityDesc, ACTIVITY.applicationStatus AS appStatusId, AppStatusDVDesc.description AS appStatusDesc, ACTIVITY.startTime AS activityStartTime, ACTIVITY.endTime AS activityEndTime, ACTIVITY.duration AS activityDuration, ACTIVITY.username AS activityPerformedBy, ACTIVITY_PAYLOAD.id AS activityPayloadId \r\nFROM APPLICATION INNER JOIN ACTIVITY ON APPLICATION.id = ACTIVITY.applicationId LEFT JOIN ACTIVITY_PAYLOAD ON ACTIVITY_PAYLOAD.activityId = ACTIVITY.id LEFT JOIN DomainValue AS ActivityTypeDV ON ActivityTypeDV.id = ACTIVITY.type LEFT JOIN DomainValueDescription AS ActivityTypeDesc ON ActivityTypeDesc.DomainValueId = ActivityTypeDV.id LEFT JOIN DomainValue AS AppStatusDV ON AppStatusDV.id = ACTIVITY.applicationStatus LEFT JOIN DomainValueDescription AS AppStatusDVDesc ON AppStatusDVDesc.DomainValueId = AppStatusDV.id \r\nWHERE \r\nCASE WHEN ACTIVITY.applicationStatus IS NULL\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.Locale = :userLocale) IS NULL \r\n    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = 'en')\r\n    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = :userLocale)\r\n    END\r\nEND AND \r\nCASE WHEN ACTIVITY.type IS NULL\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.Locale = :userLocale) IS NULL \r\n    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = 'en')\r\n    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = :userLocale)\r\n    END\r\nEND AND \r\nCASE WHEN :applicationNumber IS NULL\r\nTHEN TRUE\r\nELSE\r\n    APPLICATION.applicationNumber = :applicationNumber\r\nEND AND \r\nCASE WHEN :activityType IS NULL\r\nTHEN TRUE\r\nELSE\r\n    ACTIVITY.type = :activityType\r\nEND AND \r\nCASE WHEN :activityName IS NULL\r\nTHEN TRUE\r\nELSE\r\n    ACTIVITY.name LIKE :activityName\r\nEND AND \r\nCASE WHEN :isAppHistory\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN :createdDateStart IS NULL\r\n    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()\r\n    ELSE\r\n        DATE_FORMAT(ACTIVITY.startTime,\"%Y-%m-%d %H:%i:%S.%f\") >= DATE_FORMAT(:createdDateStart,\"%Y-%m-%d %H:%i:%S.%f\")\r\n    END AND \r\n    CASE WHEN :createdDateEnd IS NULL\r\n    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()\r\n    ELSE\r\n        DATE_FORMAT(ACTIVITY.startTime,\"%Y-%m-%d %H:%i:%S.%f\") <= DATE_FORMAT(:createdDateEnd,\"%Y-%m-%d %H:%i:%S.%f\")\r\n    END\r\nEND",
+    "countQueryString" : "select count(*) from (SELECT APPLICATION.id AS applicationId, APPLICATION.applicationNumber AS applicationNumber, ACTIVITY.id AS activityId, ActivityTypeDV.code AS activityTypeCode, ActivityTypeDesc.description AS activityTypeDesc, ACTIVITY.name AS activityName, ACTIVITY.description AS activityDesc, ACTIVITY.applicationStatus AS appStatusId, AppStatusDVDesc.description AS appStatusDesc, ACTIVITY.startTime AS activityStartTime, ACTIVITY.endTime AS activityEndTime, ACTIVITY.duration AS activityDuration, ACTIVITY.username AS activityPerformedBy, ACTIVITY_PAYLOAD.id AS activityPayloadId \r\nFROM APPLICATION INNER JOIN ACTIVITY ON APPLICATION.id = ACTIVITY.applicationId LEFT JOIN ACTIVITY_PAYLOAD ON ACTIVITY_PAYLOAD.activityId = ACTIVITY.id LEFT JOIN DomainValue AS ActivityTypeDV ON ActivityTypeDV.id = ACTIVITY.type LEFT JOIN DomainValueDescription AS ActivityTypeDesc ON ActivityTypeDesc.DomainValueId = ActivityTypeDV.id LEFT JOIN DomainValue AS AppStatusDV ON AppStatusDV.id = ACTIVITY.applicationStatus LEFT JOIN DomainValueDescription AS AppStatusDVDesc ON AppStatusDVDesc.DomainValueId = AppStatusDV.id \r\nWHERE \r\nCASE WHEN ACTIVITY.applicationStatus IS NULL\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.Locale = :userLocale) IS NULL \r\n    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = 'en')\r\n    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.applicationStatus AND DomainValueDescription.id = AppStatusDVDesc.id AND DomainValueDescription.Locale = :userLocale)\r\n    END\r\nEND AND \r\nCASE WHEN ACTIVITY.type IS NULL\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.Locale = :userLocale) IS NULL \r\n    THEN (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = 'en')\r\n    ELSE (SELECT DomainValue.id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.id = DomainValueDescription.DomainValueId WHERE DomainValue.id = ACTIVITY.type AND DomainValueDescription.id = ActivityTypeDesc.id AND DomainValueDescription.Locale = :userLocale)\r\n    END\r\nEND AND \r\nCASE WHEN :applicationNumber IS NULL\r\nTHEN TRUE\r\nELSE\r\n    APPLICATION.applicationNumber = :applicationNumber\r\nEND AND \r\nCASE WHEN :activityType IS NULL\r\nTHEN TRUE\r\nELSE\r\n    ACTIVITY.type = :activityType\r\nEND AND \r\nCASE WHEN :activityName IS NULL\r\nTHEN TRUE\r\nELSE\r\n    ACTIVITY.name LIKE :activityName\r\nEND AND \r\nCASE WHEN :isAppHistory\r\nTHEN TRUE\r\nELSE\r\n    CASE WHEN :createdDateStart IS NULL\r\n    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()\r\n    ELSE\r\n        DATE_FORMAT(ACTIVITY.startTime,\"%Y-%m-%d %H:%i:%S.%f\") >= DATE_FORMAT(:createdDateStart,\"%Y-%m-%d %H:%i:%S.%f\")\r\n    END AND \r\n    CASE WHEN :createdDateEnd IS NULL\r\n    THEN DATE(ACTIVITY.startTime) <= CURRENT_DATE()\r\n    ELSE\r\n        DATE_FORMAT(ACTIVITY.startTime,\"%Y-%m-%d %H:%i:%S.%f\") <= DATE_FORMAT(:createdDateEnd,\"%Y-%m-%d %H:%i:%S.%f\")\r\n    END\r\nEND) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "userLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "applicationNumber",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "activityType",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "activityName",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "isAppHistory",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "createdDateStart",
+      "type" : "timestamp",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    }, {
+      "name" : "createdDateEnd",
+      "type" : "timestamp",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryActivityLogResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "applicationId",
+        "fieldName" : "applicationId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "APPLICATION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "applicationNumber",
+        "fieldName" : "applicationNumber",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "APPLICATION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityId",
+        "fieldName" : "activityId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityTypeCode",
+        "fieldName" : "activityTypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityTypeDesc",
+        "fieldName" : "activityTypeDesc",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityName",
+        "fieldName" : "activityName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityDesc",
+        "fieldName" : "activityDesc",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "appStatusId",
+        "fieldName" : "appStatusId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "appStatusDesc",
+        "fieldName" : "appStatusDesc",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityStartTime",
+        "fieldName" : "activityStartTime",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Timestamp",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityEndTime",
+        "fieldName" : "activityEndTime",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Timestamp",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityDuration",
+        "fieldName" : "activityDuration",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityPerformedBy",
+        "fieldName" : "activityPerformedBy",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "activityPayloadId",
+        "fieldName" : "activityPayloadId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ACTIVITY_PAYLOAD",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_DeleteAllErrorsByApplicationId" : {
+    "name" : "Query_DeleteAllErrorsByApplicationId",
+    "description" : "Query_DeleteAllErrorsByApplicationId",
+    "version" : "V2",
+    "queryString" : "delete from Error where applicationId = :applicationId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "applicationId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "10",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "Query_GetAllDVsByDVTypeWithActiveFlag" : {
+    "name" : "Query_GetAllDVsByDVTypeWithActiveFlag",
+    "description" : "Query_GetAllDVsByDVTypeWithActiveFlag",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "en",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "APPLICANT_TYPE",
+      "required" : true
+    }, {
+      "name" : "showAll",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : true
+    }, {
+      "name" : "isActiveFlag",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : false,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetAllDvsByDvtypeWithActiveFlagResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsActive",
+        "fieldName" : "isActive",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetAllDomainValueWithOneParent" : {
+    "name" : "Query_GetAllDomainValueWithOneParent",
+    "description" : "Query_GetAllDomainValueWithOneParent",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 IS NULL AND ParentDVQuery.IsActive = true AND \nCASE WHEN :dvDescription IS NULL\nTHEN TRUE\nELSE\n    ParentDVDescQuery.description LIKE :dvDescription\nEND \nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 IS NULL AND ParentDVQuery.IsActive = true AND \nCASE WHEN :dvDescription IS NULL\nTHEN TRUE\nELSE\n    ParentDVDescQuery.description LIKE :dvDescription\nEND \nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "suppliedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "es",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "STATE",
+      "required" : true
+    }, {
+      "name" : "parent1DomainValueId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "483",
+      "required" : true
+    }, {
+      "name" : "dvDescription",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetAllDomainValueWithOneParentResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetAllDomainValuesByDvTypeCode" : {
+    "name" : "Query_GetAllDomainValuesByDvTypeCode",
+    "description" : "Query_GetAllDomainValuesByDvTypeCode",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\r\nWHERE \r\nCASE WHEN \r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\r\nTHEN \r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\r\nELSE\r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\r\nEND\r\nAND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true\r\nORDER BY \r\nCASE WHEN (ParentDVQuery.isDefault = true) \r\n    THEN ParentDVQuery.updatedOn\r\nEND DESC,\r\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL AND :isAlphaSort = false) \r\n    THEN ParentDVQuery.RankOrder\r\nEND ASC,\r\nCASE WHEN (ParentDVQuery.IsDefault = false AND (ParentDVQuery.RankOrder IS NULL OR :isAlphaSort = true))\r\n    THEN ParentDVDescQuery.Description\r\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\r\nWHERE \r\nCASE WHEN \r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\r\nTHEN \r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\r\nELSE\r\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\r\nEND\r\nAND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true\r\nORDER BY \r\nCASE WHEN (ParentDVQuery.isDefault = true) \r\n    THEN ParentDVQuery.updatedOn\r\nEND DESC,\r\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL AND :isAlphaSort = false) \r\n    THEN ParentDVQuery.RankOrder\r\nEND ASC,\r\nCASE WHEN (ParentDVQuery.IsDefault = false AND (ParentDVQuery.RankOrder IS NULL OR :isAlphaSort = true))\r\n    THEN ParentDVDescQuery.Description\r\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "en",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "APPLICATION_STATUS",
+      "required" : true
+    }, {
+      "name" : "isAlphaSort",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetAllDomainValuesByDvTypeCodeResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetAllDomainValuesTwoParent" : {
+    "name" : "Query_GetAllDomainValuesTwoParent",
+    "description" : "Query_GetAllDomainValuesTwoParent",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 = :parent2DomainValueId AND ParentDVQuery.IsActive = true \nAND \nCASE WHEN :dvDescription IS NULL\nTHEN TRUE\nELSE\n    ParentDVDescQuery.description LIKE :dvDescription\nEND \nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id INNER JOIN DomainValueRelation ON ParentDVQuery.id = DomainValueRelation.DomainValueId LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :suppliedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND DomainValueType.Code = :domainValueTypeCode AND DomainValueRelation.ParentDomainValueId1 = :parent1DomainValueId AND DomainValueRelation.ParentDomainValueId2 = :parent2DomainValueId AND ParentDVQuery.IsActive = true \nAND \nCASE WHEN :dvDescription IS NULL\nTHEN TRUE\nELSE\n    ParentDVDescQuery.description LIKE :dvDescription\nEND \nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "suppliedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "TEST_CHILD",
+      "required" : true
+    }, {
+      "name" : "parent1DomainValueId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "483",
+      "required" : true
+    }, {
+      "name" : "parent2DomainValueId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "484",
+      "required" : true
+    }, {
+      "name" : "dvDescription",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetAllDomainValuesTwoParentResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetDVByCodeAndTypeCodeWithActiveFlag" : {
+    "name" : "Query_GetDVByCodeAndTypeCodeWithActiveFlag",
+    "description" : "Query_GetDVByCodeAndTypeCodeWithActiveFlag",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "M",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "Gender",
+      "required" : true
+    }, {
+      "name" : "showAll",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : true
+    }, {
+      "name" : "isActiveFlag",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : false,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetDvbyCodeAndTypeCodeWithActiveFlagResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsActive",
+        "fieldName" : "isActive",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetDomainValueByCodeAndTypeCode" : {
+    "name" : "Query_GetDomainValueByCodeAndTypeCode",
+    "description" : "Query_GetDomainValueByCodeAndTypeCode",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.Code = :domainValueCode AND DomainValueType.Code = :domainValueTypeCode AND ParentDVQuery.IsActive = true\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "M",
+      "required" : true
+    }, {
+      "name" : "domainValueTypeCode",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "Gender",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetDomainValueByCodeAndTypeCodeResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "DVTypeCode",
+        "fieldName" : "dvtypeCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetDomainValueById" : {
+    "name" : "Query_GetDomainValueById",
+    "description" : "Query_GetDomainValueById",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.id = :domainValueId\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.id = :domainValueId\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "576",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetDomainValueByIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsActive",
+        "fieldName" : "isActive",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetDomainValueByIdWithActiveFlag" : {
+    "name" : "Query_GetDomainValueByIdWithActiveFlag",
+    "description" : "Query_GetDomainValueByIdWithActiveFlag",
+    "version" : "V2",
+    "queryString" : "SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.id = :domainValueId AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC",
+    "countQueryString" : "select count(*) from (SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId\nWHERE \nCASE WHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id) IS NULL\nTHEN \n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = 'en' AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nELSE\n(SELECT DomainValue.Id FROM DomainValue INNER JOIN DomainValueDescription ON DomainValue.Id = DomainValueDescription.DomainValueId WHERE DomainValueDescription.Locale = :selectedLocale AND DomainValue.id = ParentDVQuery.id AND DomainValueDescription.id = ParentDVDescQuery.id)\nEND\nAND ParentDVQuery.id = :domainValueId AND\nCASE WHEN :showAll IS TRUE\n    THEN (ParentDVQuery.isActive = true OR ParentDVQuery.isActive = false)\n    ELSE ParentDVQuery.isActive = :isActiveFlag \nEND\nORDER BY \nCASE WHEN (ParentDVQuery.isDefault = true) \n    THEN ParentDVQuery.updatedOn\nEND DESC,\nCASE WHEN (ParentDVQuery.isDefault = false AND ParentDVQuery.RankOrder IS NOT NULL) \n    THEN ParentDVQuery.RankOrder\n    WHEN (ParentDVQuery.IsDefault = false AND ParentDVQuery.RankOrder IS NULL) \n    THEN ParentDVDescQuery.Description\nEND ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "selectedLocale",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "ar",
+      "required" : true
+    }, {
+      "name" : "domainValueId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "576",
+      "required" : true
+    }, {
+      "name" : "showAll",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : false,
+      "required" : false
+    }, {
+      "name" : "isActiveFlag",
+      "type" : "boolean",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : true,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetDomainValueByIdWithActiveFlagResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueDescription",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsActive",
+        "fieldName" : "isActive",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsDefault",
+        "fieldName" : "isDefault",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RankOrder",
+        "fieldName" : "rankOrder",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "IsSelected",
+        "fieldName" : "isSelected",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_GetQueuesByUserId" : {
+    "name" : "Query_GetQueuesByUserId",
+    "description" : "Query_GetQueuesByUserId",
+    "version" : "V2",
+    "queryString" : "SELECT DISTINCT QueueId FROM QUEUE_GROUP INNER JOIN QUEUE on QUEUE.ID = QUEUE_GROUP.QueueId WHERE groupId IN (SELECT DISTINCT groupId FROM USER_GROUP WHERE userId = :userId) ORDER BY QUEUE.`Rank` ASC",
+    "countQueryString" : "select count(*) from (SELECT DISTINCT QueueId FROM QUEUE_GROUP INNER JOIN QUEUE on QUEUE.ID = QUEUE_GROUP.QueueId WHERE groupId IN (SELECT DISTINCT groupId FROM USER_GROUP WHERE userId = :userId) ORDER BY QUEUE.`Rank` ASC) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryGetQueuesByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "QueueId",
+        "fieldName" : "queueId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "QUEUE_GROUP",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "Query_updateUserDetails" : {
+    "name" : "Query_updateUserDetails",
+    "description" : "Query_updateUserDetails",
+    "version" : "V2",
+    "queryString" : "UPDATE USER SET lendingLimit = :lendingLimit, timeZone = :preferredTZ WHERE id = :userId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "UPDATE",
+    "parameters" : [ {
+      "name" : "lendingLimit",
+      "type" : "big_decimal",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "100",
+      "required" : false
+    }, {
+      "name" : "preferredTZ",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "Asia/Kolkata",
+      "required" : false
+    }, {
+      "name" : "userId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "20",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : true,
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueryUpdateUserDetailsRequest",
+      "method" : "PUT"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "QueueLock" : {
+    "name" : "QueueLock",
+    "description" : "QueueLock",
+    "version" : "V2",
+    "queryString" : "update QUEUE set IsLocked = true, LockedBy = :lockedBy, UpdatedBy = :updatedBy, UpdatedOn = :updatedOn    where ID = :id",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "UPDATE",
+    "parameters" : [ {
+      "name" : "lockedBy",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "100",
+      "required" : true
+    }, {
+      "name" : "updatedBy",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    }, {
+      "name" : "updatedOn",
+      "type" : "timestamp",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : 1672741274000,
+      "required" : true
+    }, {
+      "name" : "id",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : true,
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueueLockRequest",
+      "method" : "PUT"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "QueueUnLock" : {
+    "name" : "QueueUnLock",
+    "description" : "QueueUnLock",
+    "version" : "V2",
+    "queryString" : "update QUEUE set IsLocked = false,  LockedBy = null, UpdatedBy = :updatedBy, UpdatedOn = :updatedOn  where ID = :id",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "UPDATE",
+    "parameters" : [ {
+      "name" : "updatedBy",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    }, {
+      "name" : "updatedOn",
+      "type" : "timestamp",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : 1665483793000,
+      "required" : true
+    }, {
+      "name" : "id",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : true,
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.QueueUnLockRequest",
+      "method" : "PUT"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "countRolePermission" : {
+    "name" : "countRolePermission",
+    "description" : "countRolePermission",
+    "version" : "V2",
+    "queryString" : "SELECT COUNT(PermissionId) FROM ROLE_PERMISSION WHERE  RoleId = :RoleId",
+    "countQueryString" : "select count(*) from (SELECT COUNT(PermissionId) FROM ROLE_PERMISSION WHERE  RoleId = :RoleId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "25",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.CountRolePermissionResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "COUNT(PermissionId)",
+        "fieldName" : "count_permissionId_",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "deleteGroupRole" : {
+    "name" : "deleteGroupRole",
+    "description" : "deleteGroupRole",
+    "version" : "V2",
+    "queryString" : "DELETE FROM GROUP_ROLE WHERE GroupId = :GroupId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "GroupId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1025",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "deleteGroupRoleByRoleId" : {
+    "name" : "deleteGroupRoleByRoleId",
+    "description" : "deleteGroupRoleByRoleId",
+    "version" : "V2",
+    "queryString" : "DELETE FROM GROUP_ROLE WHERE RoleId = :RoleId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1054",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "deleteGroupUser" : {
+    "name" : "deleteGroupUser",
+    "description" : "deleteGroupUser",
+    "version" : "V2",
+    "queryString" : "delete from USER_GROUP where GroupId=:GroupId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "GroupId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1025",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "deleteQueueGroup" : {
+    "name" : "deleteQueueGroup",
+    "description" : "deleteQueueGroup",
+    "version" : "V2",
+    "queryString" : "delete from QUEUE_GROUP where QueueId=:QueueId OR GroupId=:GroupId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "QueueId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    }, {
+      "name" : "GroupId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "deleteRolePermission" : {
+    "name" : "deleteRolePermission",
+    "description" : "deleteRolePermission",
+    "version" : "V2",
+    "queryString" : "DELETE FROM ROLE_PERMISSION WHERE RoleId = :RoleId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1025",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
+  "getActiveRolesByUserName" : {
+    "name" : "getActiveRolesByUserName",
+    "description" : "getActiveRolesByUserName",
+    "version" : "V2",
+    "queryString" : "select distinct(r.role) from `ROLE` r\nINNER JOIN GROUP_ROLE gr on gr.roleId = r.id \nINNER JOIN `GROUP` g on g.id = gr.groupId\nINNER JOIN USER_GROUP ug on ug.groupId = g.id\nINNER JOIN `USER` u on u.id = ug.userId\nwhere g.active = true and r.active = true\nand u.userId = :UserName\norder by r.role",
+    "countQueryString" : "select count(*) from (select distinct(r.role) from `ROLE` r\nINNER JOIN GROUP_ROLE gr on gr.roleId = r.id \nINNER JOIN `GROUP` g on g.id = gr.groupId\nINNER JOIN USER_GROUP ug on ug.groupId = g.id\nINNER JOIN `USER` u on u.id = ug.userId\nwhere g.active = true and r.active = true\nand u.userId = :UserName\norder by r.role) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "UserName",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "sachinbalgi@fico.com",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetActiveRolesByUserNameResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getAllRolePermission" : {
+    "name" : "getAllRolePermission",
+    "description" : "getAllRolePermission",
+    "version" : "V2",
+    "queryString" : "select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IS NOT NULL",
+    "countQueryString" : "select count(*) from (select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IS NOT NULL) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetAllRolePermissionResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ID",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RoleId",
+        "fieldName" : "roleId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "PermissionId",
+        "fieldName" : "permissionId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getGroupByUserId" : {
+    "name" : "getGroupByUserId",
+    "description" : "getGroupByUserId",
+    "version" : "V2",
+    "queryString" : "select `GROUP`.Id,`GROUP`.Name,`GROUP`.active,`GROUP`.description from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId)",
+    "countQueryString" : "select count(*) from (select `GROUP`.Id,`GROUP`.Name,`GROUP`.active,`GROUP`.description from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId)) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "UserId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetGroupByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "GROUP",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Name",
+        "fieldName" : "name",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "GROUP",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "active",
+        "fieldName" : "active",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "GROUP",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "GROUP",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getGroupsRolesByUserId" : {
+    "name" : "getGroupsRolesByUserId",
+    "description" : "getGroupsRolesByUserId",
+    "version" : "V2",
+    "queryString" : "select COUNT(*) from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId) UNION  select COUNT(*) from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))",
+    "countQueryString" : "select count(*) from (select COUNT(*) from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId) UNION  select COUNT(*) from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "UserId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetGroupsRolesByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "COUNT(*)",
+        "fieldName" : "count___",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getPermissionByRoleId" : {
+    "name" : "getPermissionByRoleId",
+    "description" : "getPermissionByRoleId",
+    "version" : "V2",
+    "queryString" : "select PERMISSION.Id,PERMISSION.Name,PERMISSION.Description from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId)",
+    "countQueryString" : "select count(*) from (select PERMISSION.Id,PERMISSION.Name,PERMISSION.Description from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId)) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetPermissionByRoleIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Name",
+        "fieldName" : "name",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getPermissionByUserId" : {
+    "name" : "getPermissionByUserId",
+    "description" : "getPermissionByUserId",
+    "version" : "V2",
+    "queryString" : "select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))",
+    "countQueryString" : "select count(*) from (select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "UserId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "abc",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetPermissionByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Name",
+        "fieldName" : "name",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getPermissionGroupByRoleId" : {
+    "name" : "getPermissionGroupByRoleId",
+    "description" : "getPermissionGroupByRoleId",
+    "version" : "V2",
+    "queryString" : "select COUNT(*) from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId) UNION select COUNT(*) from `GROUP_ROLE`where RoleId =24",
+    "countQueryString" : "select count(*) from (select COUNT(*) from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId) UNION select COUNT(*) from `GROUP_ROLE`where RoleId =24) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "24",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetPermissionGroupByRoleIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "COUNT(*)",
+        "fieldName" : "count___",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getRoleByUserId" : {
+    "name" : "getRoleByUserId",
+    "description" : "getRoleByUserId",
+    "version" : "V2",
+    "queryString" : "select ROLE.id,ROLE.role from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))",
+    "countQueryString" : "select count(*) from (select ROLE.id,ROLE.role from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "UserId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "3",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetRoleByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getRolesByGroupId" : {
+    "name" : "getRolesByGroupId",
+    "description" : "getRolesByGroupId",
+    "version" : "V2",
+    "queryString" : "select ROLE.id,ROLE.role,ROLE.description,ROLE.active from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `groupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.groupID = :GroupId))",
+    "countQueryString" : "select count(*) from (select ROLE.id,ROLE.role,ROLE.description,ROLE.active from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `groupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.groupID = :GroupId))) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "GroupId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetRolesByGroupIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "active",
+        "fieldName" : "active",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Boolean",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getRolesPermission" : {
+    "name" : "getRolesPermission",
+    "description" : "getRolesPermission",
+    "version" : "V2",
+    "queryString" : "select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId = :RoleId",
+    "countQueryString" : "select count(*) from (select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId = :RoleId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "RoleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "24",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetRolesPermissionResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ID",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "RoleId",
+        "fieldName" : "roleId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "PermissionId",
+        "fieldName" : "permissionId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  }
+}
