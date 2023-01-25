@@ -34,6 +34,7 @@ import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 import com.fico.dmp.telusagentuidb.GroupRole;
 import com.fico.dmp.telusagentuidb.Role;
 import com.fico.dmp.telusagentuidb.RolePermission;
+import com.fico.dmp.telusagentuidb.UserRole;
 
 
 /**
@@ -56,6 +57,11 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     @Qualifier("TELUSAgentUIDB.RolePermissionService")
     private RolePermissionService rolePermissionService;
+
+    @Lazy
+    @Autowired
+    @Qualifier("TELUSAgentUIDB.UserRoleService")
+    private UserRoleService userRoleService;
 
     @Autowired
     @Qualifier("TELUSAgentUIDB.RoleDao")
@@ -192,6 +198,17 @@ public class RoleServiceImpl implements RoleService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
+    public Page<RolePermission> findAssociatedRolePermissions(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated rolePermissions");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("role.id = '" + id + "'");
+
+        return rolePermissionService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
     public Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated groupRoles");
 
@@ -203,13 +220,13 @@ public class RoleServiceImpl implements RoleService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<RolePermission> findAssociatedRolePermissions(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated rolePermissions");
+    public Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userRoles");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("role.id = '" + id + "'");
 
-        return rolePermissionService.findAll(queryBuilder.toString(), pageable);
+        return userRoleService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**
@@ -228,6 +245,15 @@ public class RoleServiceImpl implements RoleService {
      */
     protected void setRolePermissionService(RolePermissionService service) {
         this.rolePermissionService = service;
+    }
+
+    /**
+     * This setter method should only be used by unit tests
+     *
+     * @param service UserRoleService instance
+     */
+    protected void setUserRoleService(UserRoleService service) {
+        this.userRoleService = service;
     }
 
 }

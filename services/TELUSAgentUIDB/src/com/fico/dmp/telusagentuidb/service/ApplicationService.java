@@ -208,6 +208,18 @@ public interface ApplicationService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
+     * Returns the associated notes for given Application id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Note instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
+
+    /*
      * Returns the associated parties for given Application id.
      *
      * @param id value of id; value cannot be null
@@ -218,18 +230,6 @@ public interface ApplicationService {
      * @see Page
      */
     Page<Party> findAssociatedParties(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated auditDataChanges for given Application id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated AuditDataChange instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable);
 
     /*
      * Returns the associated documents for given Application id.
@@ -244,28 +244,16 @@ public interface ApplicationService {
     Page<Document> findAssociatedDocuments(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated notes for given Application id.
+     * Returns the associated auditDataChanges for given Application id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Note instances.
+     * @return Paginated list of associated AuditDataChange instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated errorEntities for given Application id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated ErrorEntity instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<ErrorEntity> findAssociatedErrorEntities(Integer id, Pageable pageable);
+    Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable);
 
     /*
      * Returns the associated activities for given Application id.
@@ -278,5 +266,17 @@ public interface ApplicationService {
      * @see Page
      */
     Page<Activity> findAssociatedActivities(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated errorEntities for given Application id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated ErrorEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<ErrorEntity> findAssociatedErrorEntities(Integer id, Pageable pageable);
 
 }

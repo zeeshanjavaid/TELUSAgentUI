@@ -22,46 +22,44 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.fico.dmp.telusagentuidb.GroupRole;
-import com.fico.dmp.telusagentuidb.Role;
-import com.fico.dmp.telusagentuidb.RolePermission;
-import com.fico.dmp.telusagentuidb.UserRole;
+import com.fico.dmp.telusagentuidb.Team;
+import com.fico.dmp.telusagentuidb.TeamUser;
 
 /**
- * Service object for domain model class {@link Role}.
+ * Service object for domain model class {@link Team}.
  */
-public interface RoleService {
+public interface TeamService {
 
     /**
-     * Creates a new Role. It does cascade insert for all the children in a single transaction.
+     * Creates a new Team. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on Role if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Team if any.
      *
-     * @param roleInstance Details of the Role to be created; value cannot be null.
-     * @return The newly created Role.
+     * @param team Details of the Team to be created; value cannot be null.
+     * @return The newly created Team.
      */
-    Role create(@Valid Role roleInstance);
+    Team create(@Valid Team team);
 
 
 	/**
-     * Returns Role by given id if exists.
+     * Returns Team by given id if exists.
      *
-     * @param roleId The id of the Role to get; value cannot be null.
-     * @return Role associated with the given roleId.
-	 * @throws EntityNotFoundException If no Role is found.
+     * @param teamIdInstance The id of the Team to get; value cannot be null.
+     * @return Team associated with the given teamIdInstance.
+	 * @throws EntityNotFoundException If no Team is found.
      */
-    Role getById(Integer roleId);
+    Team getById(Integer teamIdInstance);
 
     /**
-     * Find and return the Role by given id if exists, returns null otherwise.
+     * Find and return the Team by given id if exists, returns null otherwise.
      *
-     * @param roleId The id of the Role to get; value cannot be null.
-     * @return Role associated with the given roleId.
+     * @param teamIdInstance The id of the Team to get; value cannot be null.
+     * @return Team associated with the given teamIdInstance.
      */
-    Role findById(Integer roleId);
+    Team findById(Integer teamIdInstance);
 
 	/**
-     * Find and return the list of Roles by given id's.
+     * Find and return the list of Teams by given id's.
      *
      * If orderedReturn true, the return List is ordered and positional relative to the incoming ids.
      *
@@ -70,50 +68,42 @@ public interface RoleService {
      * If enabled, A null is inserted into the List at the proper position(s).
      * If disabled, the nulls are not put into the return List.
      *
-     * @param roleIds The id's of the Role to get; value cannot be null.
+     * @param teamIdInstances The id's of the Team to get; value cannot be null.
      * @param orderedReturn Should the return List be ordered and positional in relation to the incoming ids?
-     * @return Roles associated with the given roleIds.
+     * @return Teams associated with the given teamIdInstances.
      */
-    List<Role> findByMultipleIds(List<Integer> roleIds, boolean orderedReturn);
+    List<Team> findByMultipleIds(List<Integer> teamIdInstances, boolean orderedReturn);
+
 
     /**
-     * Find and return the Role for given role  if exists.
+     * Updates the details of an existing Team. It replaces all fields of the existing Team with the given team.
      *
-     * @param role value of role; value cannot be null.
-     * @return Role associated with the given inputs.
-     * @throws EntityNotFoundException if no matching Role found.
+     * This method overrides the input field values using Server side or database managed properties defined on Team if any.
+     *
+     * @param team The details of the Team to be updated; value cannot be null.
+     * @return The updated Team.
+     * @throws EntityNotFoundException if no Team is found with given input.
      */
-    Role getByRole(String role);
+    Team update(@Valid Team team);
 
     /**
-     * Updates the details of an existing Role. It replaces all fields of the existing Role with the given roleInstance.
+     * Deletes an existing Team with the given id.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on Role if any.
-     *
-     * @param roleInstance The details of the Role to be updated; value cannot be null.
-     * @return The updated Role.
-     * @throws EntityNotFoundException if no Role is found with given input.
+     * @param teamIdInstance The id of the Team to be deleted; value cannot be null.
+     * @return The deleted Team.
+     * @throws EntityNotFoundException if no Team found with the given id.
      */
-    Role update(@Valid Role roleInstance);
+    Team delete(Integer teamIdInstance);
 
     /**
-     * Deletes an existing Role with the given id.
+     * Deletes an existing Team with the given object.
      *
-     * @param roleId The id of the Role to be deleted; value cannot be null.
-     * @return The deleted Role.
-     * @throws EntityNotFoundException if no Role found with the given id.
+     * @param team The instance of the Team to be deleted; value cannot be null.
      */
-    Role delete(Integer roleId);
+    void delete(Team team);
 
     /**
-     * Deletes an existing Role with the given object.
-     *
-     * @param roleInstance The instance of the Role to be deleted; value cannot be null.
-     */
-    void delete(Role roleInstance);
-
-    /**
-     * Find all Roles matching the given QueryFilter(s).
+     * Find all Teams matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
      *
@@ -121,30 +111,30 @@ public interface RoleService {
      *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Roles.
+     * @return Paginated list of matching Teams.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
      */
     @Deprecated
-    Page<Role> findAll(QueryFilter[] queryFilters, Pageable pageable);
+    Page<Team> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-     * Find all Roles matching the given input query. This method returns Paginated results.
+     * Find all Teams matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Roles.
+     * @return Paginated list of matching Teams.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Role> findAll(String query, Pageable pageable);
+    Page<Team> findAll(String query, Pageable pageable);
 
     /**
-     * Exports all Roles matching the given input query to the given exportType format.
+     * Exports all Teams matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -159,7 +149,7 @@ public interface RoleService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
     /**
-     * Exports all Roles matching the given input query to the given exportType format.
+     * Exports all Teams matching the given input query to the given exportType format.
      *
      * @param options The export options provided by the user; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null exports all matching records.
@@ -172,7 +162,7 @@ public interface RoleService {
     void export(DataExportOptions options, Pageable pageable, OutputStream outputStream);
 
     /**
-     * Imports all Roles from the csv into the table.
+     * Imports all Teams from the csv into the table.
      *
      * @param options The export options provided by the user; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null exports all matching records.
@@ -183,11 +173,11 @@ public interface RoleService {
     void importData(MultipartFile file);
 
     /**
-     * Retrieve the count of the Roles in the repository with matching query.
+     * Retrieve the count of the Teams in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-     * @return The count of the Role.
+     * @return The count of the Team.
      */
     long count(String query);
 
@@ -205,39 +195,15 @@ public interface RoleService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated rolePermissions for given Role id.
+     * Returns the associated teamUsers for given Team id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated RolePermission instances.
+     * @return Paginated list of associated TeamUser instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<RolePermission> findAssociatedRolePermissions(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated groupRoles for given Role id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated GroupRole instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated userRoles for given Role id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated UserRole instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable);
+    Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable);
 
 }

@@ -53,11 +53,11 @@ public class Note implements Serializable {
 
     private Integer partyId;
 
+    private Application application;
+
     private DomainValue domainValue;
 
     private Party party;
-
-    private Application application;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -143,6 +143,21 @@ public class Note implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_APPLICATION_aQ4lsP`"))
+    @Fetch(FetchMode.JOIN)
+    public Application getApplication() {
+        return this.application;
+    }
+
+    public void setApplication(Application application) {
+        if(application != null) {
+            this.applicationId = application.getId();
+        }
+
+        this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`noteCategory`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_DomainValue_nvLcfG`"))
     @Fetch(FetchMode.JOIN)
     public DomainValue getDomainValue() {
@@ -170,21 +185,6 @@ public class Note implements Serializable {
         }
 
         this.party = party;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_APPLICATION_aQ4lsP`"))
-    @Fetch(FetchMode.JOIN)
-    public Application getApplication() {
-        return this.application;
-    }
-
-    public void setApplication(Application application) {
-        if(application != null) {
-            this.applicationId = application.getId();
-        }
-
-        this.application = application;
     }
 
 

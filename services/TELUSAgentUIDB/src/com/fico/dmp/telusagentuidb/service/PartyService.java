@@ -196,18 +196,6 @@ public interface PartyService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated documents for given Party id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Document instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Document> findAssociatedDocuments(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated notes for given Party id.
      *
      * @param id value of id; value cannot be null
@@ -218,5 +206,17 @@ public interface PartyService {
      * @see Page
      */
     Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated documents for given Party id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Document instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Document> findAssociatedDocuments(Integer id, Pageable pageable);
 
 }

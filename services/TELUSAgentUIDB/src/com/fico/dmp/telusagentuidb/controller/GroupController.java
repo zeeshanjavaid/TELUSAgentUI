@@ -199,13 +199,13 @@ public class GroupController {
         groupService.importData(file);
     }
 
-    @RequestMapping(value="/{id:.+}/groupRoles", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the groupRoles instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/queueGroups", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queueGroups instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<GroupRole> findAssociatedGroupRoles(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<QueueGroup> findAssociatedQueueGroups(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated groupRoles");
-        return groupService.findAssociatedGroupRoles(id, pageable);
+        LOGGER.debug("Fetching all associated queueGroups");
+        return groupService.findAssociatedQueueGroups(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/userGroups", method=RequestMethod.GET)
@@ -217,13 +217,13 @@ public class GroupController {
         return groupService.findAssociatedUserGroups(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/queueGroups", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queueGroups instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/groupRoles", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the groupRoles instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<QueueGroup> findAssociatedQueueGroups(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<GroupRole> findAssociatedGroupRoles(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated queueGroups");
-        return groupService.findAssociatedQueueGroups(id, pageable);
+        LOGGER.debug("Fetching all associated groupRoles");
+        return groupService.findAssociatedGroupRoles(id, pageable);
     }
 
     /**

@@ -29,86 +29,86 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
-import com.fico.dmp.telusagentuidb.Table1;
+import com.fico.dmp.telusagentuidb.UserRole;
 
 
 /**
- * ServiceImpl object for domain model class Table1.
+ * ServiceImpl object for domain model class UserRole.
  *
- * @see Table1
+ * @see UserRole
  */
-@Service("TELUSAgentUIDB.Table1Service")
+@Service("TELUSAgentUIDB.UserRoleService")
 @Validated
-public class Table1ServiceImpl implements Table1Service {
+public class UserRoleServiceImpl implements UserRoleService {
 
-    private static final Logger LOGGER =  FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(Table1ServiceImpl.class.getName());
+    private static final Logger LOGGER =  FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(UserRoleServiceImpl.class.getName());
 
 
     @Autowired
-    @Qualifier("TELUSAgentUIDB.Table1Dao")
-    private WMGenericDao<Table1, Integer> wmGenericDao;
+    @Qualifier("TELUSAgentUIDB.UserRoleDao")
+    private WMGenericDao<UserRole, Integer> wmGenericDao;
 
-    public void setWMGenericDao(WMGenericDao<Table1, Integer> wmGenericDao) {
+    public void setWMGenericDao(WMGenericDao<UserRole, Integer> wmGenericDao) {
         this.wmGenericDao = wmGenericDao;
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Table1 create(Table1 table1) {
-        LOGGER.debug("Creating a new Table1 with information: {}", table1);
+    public UserRole create(UserRole userRole) {
+        LOGGER.debug("Creating a new UserRole with information: {}", userRole);
 
-        Table1 table1Created = this.wmGenericDao.create(table1);
+        UserRole userRoleCreated = this.wmGenericDao.create(userRole);
         // reloading object from database to get database defined & server defined values.
-        return this.wmGenericDao.refresh(table1Created);
+        return this.wmGenericDao.refresh(userRoleCreated);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Table1 getById(Integer table1Id) {
-        LOGGER.debug("Finding Table1 by id: {}", table1Id);
-        return this.wmGenericDao.findById(table1Id);
+    public UserRole getById(Integer userroleId) {
+        LOGGER.debug("Finding UserRole by id: {}", userroleId);
+        return this.wmGenericDao.findById(userroleId);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Table1 findById(Integer table1Id) {
-        LOGGER.debug("Finding Table1 by id: {}", table1Id);
+    public UserRole findById(Integer userroleId) {
+        LOGGER.debug("Finding UserRole by id: {}", userroleId);
         try {
-            return this.wmGenericDao.findById(table1Id);
+            return this.wmGenericDao.findById(userroleId);
         } catch (EntityNotFoundException ex) {
-            LOGGER.debug("No Table1 found with id: {}", table1Id, ex);
+            LOGGER.debug("No UserRole found with id: {}", userroleId, ex);
             return null;
         }
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public List<Table1> findByMultipleIds(List<Integer> table1Ids, boolean orderedReturn) {
-        LOGGER.debug("Finding Table1s by ids: {}", table1Ids);
+    public List<UserRole> findByMultipleIds(List<Integer> userroleIds, boolean orderedReturn) {
+        LOGGER.debug("Finding UserRoles by ids: {}", userroleIds);
 
-        return this.wmGenericDao.findByMultipleIds(table1Ids, orderedReturn);
+        return this.wmGenericDao.findByMultipleIds(userroleIds, orderedReturn);
     }
 
 
     @Transactional(rollbackFor = EntityNotFoundException.class, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Table1 update(Table1 table1) {
-        LOGGER.debug("Updating Table1 with information: {}", table1);
+    public UserRole update(UserRole userRole) {
+        LOGGER.debug("Updating UserRole with information: {}", userRole);
 
-        this.wmGenericDao.update(table1);
-        this.wmGenericDao.refresh(table1);
+        this.wmGenericDao.update(userRole);
+        this.wmGenericDao.refresh(userRole);
 
-        return table1;
+        return userRole;
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Table1 delete(Integer table1Id) {
-        LOGGER.debug("Deleting Table1 with id: {}", table1Id);
-        Table1 deleted = this.wmGenericDao.findById(table1Id);
+    public UserRole delete(Integer userroleId) {
+        LOGGER.debug("Deleting UserRole with id: {}", userroleId);
+        UserRole deleted = this.wmGenericDao.findById(userroleId);
         if (deleted == null) {
-            LOGGER.debug("No Table1 found with id: {}", table1Id);
-            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Table1.class.getSimpleName(), table1Id);
+            LOGGER.debug("No UserRole found with id: {}", userroleId);
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), UserRole.class.getSimpleName(), userroleId);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -116,44 +116,44 @@ public class Table1ServiceImpl implements Table1Service {
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public void delete(Table1 table1) {
-        LOGGER.debug("Deleting Table1 with {}", table1);
-        this.wmGenericDao.delete(table1);
+    public void delete(UserRole userRole) {
+        LOGGER.debug("Deleting UserRole with {}", userRole);
+        this.wmGenericDao.delete(userRole);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Table1> findAll(QueryFilter[] queryFilters, Pageable pageable) {
-        LOGGER.debug("Finding all Table1s");
+    public Page<UserRole> findAll(QueryFilter[] queryFilters, Pageable pageable) {
+        LOGGER.debug("Finding all UserRoles");
         return this.wmGenericDao.search(queryFilters, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Table1> findAll(String query, Pageable pageable) {
-        LOGGER.debug("Finding all Table1s");
+    public Page<UserRole> findAll(String query, Pageable pageable) {
+        LOGGER.debug("Finding all UserRoles");
         return this.wmGenericDao.searchByQuery(query, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager", timeout = 300)
     @Override
     public Downloadable export(ExportType exportType, String query, Pageable pageable) {
-        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Table1 to {} format", exportType);
+        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table UserRole to {} format", exportType);
         return this.wmGenericDao.export(exportType, query, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager", timeout = 300)
     @Override
     public void export(DataExportOptions options, Pageable pageable, OutputStream outputStream) {
-        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Table1 to {} format", options.getExportType());
+        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table UserRole to {} format", options.getExportType());
         this.wmGenericDao.export(options, pageable, outputStream);
     }
 
     @Transactional(rollbackFor = EntityNotFoundException.class, value = "TELUSAgentUIDBTransactionManager")
     @Override
     public void importData(MultipartFile file) {
-        LOGGER.debug("importing data in the service TELUSAgentUIDB for table Table1");
-        this.wmGenericDao.importData(file, "TELUSAgentUIDB", "TABLE1");
+        LOGGER.debug("importing data in the service TELUSAgentUIDB for table UserRole");
+        this.wmGenericDao.importData(file, "TELUSAgentUIDB", "USER_ROLE");
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")

@@ -39,9 +39,9 @@ public class RolePermission implements Serializable {
 
     private Integer permissionId;
 
-    private Role role;
-
     private Permission permission;
+
+    private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,21 +73,6 @@ public class RolePermission implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`RoleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ROLE_PERMISSION_TO_ROH20mB`"))
-    @Fetch(FetchMode.JOIN)
-    public Role getRole() {
-        return this.role;
-    }
-
-    public void setRole(Role role) {
-        if(role != null) {
-            this.roleId = role.getId();
-        }
-
-        this.role = role;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`PermissionId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ROLE_PERMISSION_TO_PEsLD72`"))
     @Fetch(FetchMode.JOIN)
     public Permission getPermission() {
@@ -100,6 +85,21 @@ public class RolePermission implements Serializable {
         }
 
         this.permission = permission;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`RoleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ROLE_PERMISSION_TO_ROH20mB`"))
+    @Fetch(FetchMode.JOIN)
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        if(role != null) {
+            this.roleId = role.getId();
+        }
+
+        this.role = role;
     }
 
 

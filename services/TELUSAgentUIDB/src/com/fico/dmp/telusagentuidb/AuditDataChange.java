@@ -58,9 +58,9 @@ public class AuditDataChange implements Serializable {
 
     private Timestamp createdOn;
 
-    private User user;
-
     private Application application;
+
+    private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -173,21 +173,6 @@ public class AuditDataChange implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_AuditDataChange_TO_UStqOQc`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        if(user != null) {
-            this.createdBy = user.getId();
-        }
-
-        this.user = user;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_AuditDataChange_TO_AP6sJqn`"))
     @Fetch(FetchMode.JOIN)
     public Application getApplication() {
@@ -200,6 +185,21 @@ public class AuditDataChange implements Serializable {
         }
 
         this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_AuditDataChange_TO_UStqOQc`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        if(user != null) {
+            this.createdBy = user.getId();
+        }
+
+        this.user = user;
     }
 
 

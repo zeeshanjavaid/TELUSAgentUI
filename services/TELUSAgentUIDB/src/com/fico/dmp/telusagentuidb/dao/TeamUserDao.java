@@ -14,14 +14,14 @@ import org.springframework.stereotype.Repository;
 
 import com.wavemaker.runtime.data.dao.WMGenericDaoImpl;
 
-import com.fico.dmp.telusagentuidb.Table1;
+import com.fico.dmp.telusagentuidb.TeamUser;
 
 /**
- * Specifies methods used to obtain and modify Table1 related information
+ * Specifies methods used to obtain and modify TeamUser related information
  * which is stored in the database.
  */
-@Repository("TELUSAgentUIDB.Table1Dao")
-public class Table1Dao extends WMGenericDaoImpl<Table1, Integer> {
+@Repository("TELUSAgentUIDB.TeamUserDao")
+public class TeamUserDao extends WMGenericDaoImpl<TeamUser, Integer> {
 
     @Autowired
     @Qualifier("TELUSAgentUIDBTemplate")

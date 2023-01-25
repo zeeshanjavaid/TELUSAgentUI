@@ -42,6 +42,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 import com.fico.dmp.telusagentuidb.GroupRole;
 import com.fico.dmp.telusagentuidb.Role;
 import com.fico.dmp.telusagentuidb.RolePermission;
+import com.fico.dmp.telusagentuidb.UserRole;
 import com.fico.dmp.telusagentuidb.service.RoleService;
 
 
@@ -198,6 +199,15 @@ public class RoleController {
         roleService.importData(file);
     }
 
+    @RequestMapping(value="/{id:.+}/rolePermissions", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the rolePermissions instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<RolePermission> findAssociatedRolePermissions(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated rolePermissions");
+        return roleService.findAssociatedRolePermissions(id, pageable);
+    }
+
     @RequestMapping(value="/{id:.+}/groupRoles", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the groupRoles instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -207,13 +217,13 @@ public class RoleController {
         return roleService.findAssociatedGroupRoles(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/rolePermissions", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the rolePermissions instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/userRoles", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the userRoles instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<RolePermission> findAssociatedRolePermissions(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<UserRole> findAssociatedUserRoles(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated rolePermissions");
-        return roleService.findAssociatedRolePermissions(id, pageable);
+        LOGGER.debug("Fetching all associated userRoles");
+        return roleService.findAssociatedUserRoles(id, pageable);
     }
 
     /**

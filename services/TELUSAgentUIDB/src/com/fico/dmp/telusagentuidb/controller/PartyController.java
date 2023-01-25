@@ -190,15 +190,6 @@ public class PartyController {
         partyService.importData(file);
     }
 
-    @RequestMapping(value="/{id:.+}/documents", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the documents instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Document> findAssociatedDocuments(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated documents");
-        return partyService.findAssociatedDocuments(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/notes", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the notes instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -206,6 +197,15 @@ public class PartyController {
 
         LOGGER.debug("Fetching all associated notes");
         return partyService.findAssociatedNotes(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/documents", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the documents instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Document> findAssociatedDocuments(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated documents");
+        return partyService.findAssociatedDocuments(id, pageable);
     }
 
     /**

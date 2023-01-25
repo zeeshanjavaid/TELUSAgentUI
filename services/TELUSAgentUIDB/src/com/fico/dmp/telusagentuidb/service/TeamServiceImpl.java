@@ -30,97 +30,91 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
-import com.fico.dmp.telusagentuidb.Document;
-import com.fico.dmp.telusagentuidb.Note;
-import com.fico.dmp.telusagentuidb.Party;
+import com.fico.dmp.telusagentuidb.Team;
+import com.fico.dmp.telusagentuidb.TeamUser;
 
 
 /**
- * ServiceImpl object for domain model class Party.
+ * ServiceImpl object for domain model class Team.
  *
- * @see Party
+ * @see Team
  */
-@Service("TELUSAgentUIDB.PartyService")
+@Service("TELUSAgentUIDB.TeamService")
 @Validated
-public class PartyServiceImpl implements PartyService {
+public class TeamServiceImpl implements TeamService {
 
-    private static final Logger LOGGER =  FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(PartyServiceImpl.class.getName());
-
-    @Lazy
-    @Autowired
-    @Qualifier("TELUSAgentUIDB.NoteService")
-    private NoteService noteService;
+    private static final Logger LOGGER =  FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(TeamServiceImpl.class.getName());
 
     @Lazy
     @Autowired
-    @Qualifier("TELUSAgentUIDB.DocumentService")
-    private DocumentService documentService;
+    @Qualifier("TELUSAgentUIDB.TeamUserService")
+    private TeamUserService teamUserService;
 
     @Autowired
-    @Qualifier("TELUSAgentUIDB.PartyDao")
-    private WMGenericDao<Party, Integer> wmGenericDao;
+    @Qualifier("TELUSAgentUIDB.TeamDao")
+    private WMGenericDao<Team, Integer> wmGenericDao;
 
-    public void setWMGenericDao(WMGenericDao<Party, Integer> wmGenericDao) {
+    public void setWMGenericDao(WMGenericDao<Team, Integer> wmGenericDao) {
         this.wmGenericDao = wmGenericDao;
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Party create(Party party) {
-        LOGGER.debug("Creating a new Party with information: {}", party);
+    public Team create(Team team) {
+        LOGGER.debug("Creating a new Team with information: {}", team);
 
-        Party partyCreated = this.wmGenericDao.create(party);
+        Team teamCreated = this.wmGenericDao.create(team);
         // reloading object from database to get database defined & server defined values.
-        return this.wmGenericDao.refresh(partyCreated);
+        return this.wmGenericDao.refresh(teamCreated);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Party getById(Integer partyId) {
-        LOGGER.debug("Finding Party by id: {}", partyId);
-        return this.wmGenericDao.findById(partyId);
+    public Team getById(Integer teamIdInstance) {
+        LOGGER.debug("Finding Team by id: {}", teamIdInstance);
+        return this.wmGenericDao.findById(teamIdInstance);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Party findById(Integer partyId) {
-        LOGGER.debug("Finding Party by id: {}", partyId);
+    public Team findById(Integer teamIdInstance) {
+        LOGGER.debug("Finding Team by id: {}", teamIdInstance);
         try {
-            return this.wmGenericDao.findById(partyId);
+            return this.wmGenericDao.findById(teamIdInstance);
         } catch (EntityNotFoundException ex) {
-            LOGGER.debug("No Party found with id: {}", partyId, ex);
+            LOGGER.debug("No Team found with id: {}", teamIdInstance, ex);
             return null;
         }
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public List<Party> findByMultipleIds(List<Integer> partyIds, boolean orderedReturn) {
-        LOGGER.debug("Finding Parties by ids: {}", partyIds);
+    public List<Team> findByMultipleIds(List<Integer> teamIdInstances, boolean orderedReturn) {
+        LOGGER.debug("Finding Teams by ids: {}", teamIdInstances);
 
-        return this.wmGenericDao.findByMultipleIds(partyIds, orderedReturn);
+        return this.wmGenericDao.findByMultipleIds(teamIdInstances, orderedReturn);
     }
 
 
     @Transactional(rollbackFor = EntityNotFoundException.class, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Party update(Party party) {
-        LOGGER.debug("Updating Party with information: {}", party);
+    public Team update(Team team) {
+        LOGGER.debug("Updating Team with information: {}", team);
 
-        this.wmGenericDao.update(party);
-        this.wmGenericDao.refresh(party);
+        this.wmGenericDao.update(team);
+        this.wmGenericDao.refresh(team);
 
-        return party;
+        return team;
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Party delete(Integer partyId) {
-        LOGGER.debug("Deleting Party with id: {}", partyId);
-        Party deleted = this.wmGenericDao.findById(partyId);
+    public Team delete(Integer teamIdInstance) {
+        LOGGER.debug("Deleting Team with id: {}", teamIdInstance);
+        Team deleted = this.wmGenericDao.findById(teamIdInstance);
         if (deleted == null) {
-            LOGGER.debug("No Party found with id: {}", partyId);
-            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Party.class.getSimpleName(), partyId);
+            LOGGER.debug("No Team found with id: {}", teamIdInstance);
+            throw new EntityNotFoundException(MessageResource.create("com.wavemaker.runtime.entity.not.found"), Team.class.getSimpleName(), teamIdInstance);
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -128,44 +122,44 @@ public class PartyServiceImpl implements PartyService {
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public void delete(Party party) {
-        LOGGER.debug("Deleting Party with {}", party);
-        this.wmGenericDao.delete(party);
+    public void delete(Team team) {
+        LOGGER.debug("Deleting Team with {}", team);
+        this.wmGenericDao.delete(team);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Party> findAll(QueryFilter[] queryFilters, Pageable pageable) {
-        LOGGER.debug("Finding all Parties");
+    public Page<Team> findAll(QueryFilter[] queryFilters, Pageable pageable) {
+        LOGGER.debug("Finding all Teams");
         return this.wmGenericDao.search(queryFilters, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Party> findAll(String query, Pageable pageable) {
-        LOGGER.debug("Finding all Parties");
+    public Page<Team> findAll(String query, Pageable pageable) {
+        LOGGER.debug("Finding all Teams");
         return this.wmGenericDao.searchByQuery(query, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager", timeout = 300)
     @Override
     public Downloadable export(ExportType exportType, String query, Pageable pageable) {
-        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Party to {} format", exportType);
+        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Team to {} format", exportType);
         return this.wmGenericDao.export(exportType, query, pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager", timeout = 300)
     @Override
     public void export(DataExportOptions options, Pageable pageable, OutputStream outputStream) {
-        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Party to {} format", options.getExportType());
+        LOGGER.debug("exporting data in the service TELUSAgentUIDB for table Team to {} format", options.getExportType());
         this.wmGenericDao.export(options, pageable, outputStream);
     }
 
     @Transactional(rollbackFor = EntityNotFoundException.class, value = "TELUSAgentUIDBTransactionManager")
     @Override
     public void importData(MultipartFile file) {
-        LOGGER.debug("importing data in the service TELUSAgentUIDB for table Party");
-        this.wmGenericDao.importData(file, "TELUSAgentUIDB", "PARTY");
+        LOGGER.debug("importing data in the service TELUSAgentUIDB for table Team");
+        this.wmGenericDao.importData(file, "TELUSAgentUIDB", "TEAM");
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -182,42 +176,22 @@ public class PartyServiceImpl implements PartyService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Note> findAssociatedNotes(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated notes");
+    public Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated teamUsers");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("party.id = '" + id + "'");
+        queryBuilder.append("team.id = '" + id + "'");
 
-        return noteService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<Document> findAssociatedDocuments(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated documents");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("party.id = '" + id + "'");
-
-        return documentService.findAll(queryBuilder.toString(), pageable);
+        return teamUserService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**
      * This setter method should only be used by unit tests
      *
-     * @param service NoteService instance
+     * @param service TeamUserService instance
      */
-    protected void setNoteService(NoteService service) {
-        this.noteService = service;
-    }
-
-    /**
-     * This setter method should only be used by unit tests
-     *
-     * @param service DocumentService instance
-     */
-    protected void setDocumentService(DocumentService service) {
-        this.documentService = service;
+    protected void setTeamUserService(TeamUserService service) {
+        this.teamUserService = service;
     }
 
 }

@@ -64,13 +64,13 @@ public class Activity implements Serializable {
 
     private String username;
 
+    private DomainValue domainValueByApplicationStatus;
+
     private Application application;
 
     private DomainValue domainValueBySource;
 
     private DomainValue domainValueByType;
-
-    private DomainValue domainValueByApplicationStatus;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,6 +192,21 @@ public class Activity implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`applicationStatus`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValayBFN`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueByApplicationStatus() {
+        return this.domainValueByApplicationStatus;
+    }
+
+    public void setDomainValueByApplicationStatus(DomainValue domainValueByApplicationStatus) {
+        if(domainValueByApplicationStatus != null) {
+            this.applicationStatus = domainValueByApplicationStatus.getId();
+        }
+
+        this.domainValueByApplicationStatus = domainValueByApplicationStatus;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_APPLICATIGU2uG`"))
     @Fetch(FetchMode.JOIN)
     public Application getApplication() {
@@ -234,21 +249,6 @@ public class Activity implements Serializable {
         }
 
         this.domainValueByType = domainValueByType;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`applicationStatus`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValayBFN`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueByApplicationStatus() {
-        return this.domainValueByApplicationStatus;
-    }
-
-    public void setDomainValueByApplicationStatus(DomainValue domainValueByApplicationStatus) {
-        if(domainValueByApplicationStatus != null) {
-            this.applicationStatus = domainValueByApplicationStatus.getId();
-        }
-
-        this.domainValueByApplicationStatus = domainValueByApplicationStatus;
     }
 
 
