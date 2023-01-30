@@ -1,61 +1,14 @@
 <wm-partial name="partial1" id="partial1">
     <wm-content name="content1">
-        <wm-page-content columnwidth="12" name="page_content1">
-            <wm-container name="container1">
-                <wm-layoutgrid name="layoutgrid1">
-                    <wm-gridrow name="gridrow1" padding="2em unset 1em unset">
-                        <wm-gridcolumn columnwidth="10" name="gridcolumn1">
-                            <wm-container name="container4">
-                                <wm-label padding="unset 0.5em" name="label2" caption="Users" class="h2"></wm-label>
-                            </wm-container>
-                        </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="2" name="gridcolumn2">
-                            <wm-container name="container3" horizontalalign="right">
-                                <wm-menu caption="......" autoclose="always" name="AlertMenuUser" menuposition="down,right" dataset="bind:Variables.exportUserMenu.dataSet" autoopen="never" on-select="AlertMenuUserSelect($event, widget, $item)" linktarget="_self"
-                                    menuclass="button_white button-hover" itemlabel="name" orderby="name:asc" margin="unset 2em unset unset"></wm-menu>
-                            </wm-container>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-gridrow name="gridrow1">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn1">
-                            <wm-container name="container4" id="message">
-                                <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" width="100%"></wm-message>
-                                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"
-                                    width="100%"></wm-message>
-                            </wm-container>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-gridrow name="gridrow2">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn3">
-                            <wm-container name="container2">
-                                <wm-table name="userMVTable1" title="" dataset="bind:Variables.userMV.dataSet" navigation="Classic" filtermode="multicolumn" showheader="true" multiselect="true" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false"
-                                    showrowindex="false" enablesort="true" gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)">
-                                    <wm-table-column binding="Username" caption="Username" widget-type="anchor" width="300px" edit-widget-type="text" type="string" show="true" readonly="false" on-click="userMVTable1_UsernameOnClick($event, widget, row);Widgets.dialogUserDetails.open()">
-                                        <wm-anchor caption="bind:row.getProperty('Username')" hyperlink="" class="" on-click="gotoUserDetails(row)" conditionalclass=""></wm-anchor>
-                                    </wm-table-column>
-                                    <wm-table-column binding="Emailaddress" caption="Email Address" width="300px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                                    <wm-table-column binding="Groups" caption="Groups" widget-type="label" width="150px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
-                                        <wm-label caption="bind:row.getProperty('Groups')" class="" conditionalclass="" on-click="gotoUserDetailsOnLoad(row)"></wm-label>
-                                    </wm-table-column>
-                                    <wm-table-column binding="Roles" caption="Roles" width="150px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
-                                    <wm-table-column binding="IsActive" caption="Action" widget-type="checkbox" width="100px" textalignment="center" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"
-                                        on-click="userMVTable1_IsActiveOnClick($event, widget, row)">
-                                        <wm-checkbox type="toggle" datavalue="bind:row.getProperty('IsActive')" disabled="bind:row.getProperty('userId').toLowerCase() == Variables.loggedInUser.dataSet.id.toLowerCase()" class="action-right" conditionalclass=""
-                                            on-click="gotoIsActiveUser(row, widget)"></wm-checkbox>
-                                    </wm-table-column>
-                                </wm-table>
-                            </wm-container>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                </wm-layoutgrid>
-            </wm-container>
-        </wm-page-content>
+        <wm-page-content columnwidth="6" name="page_content1"></wm-page-content>
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+        <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" width="100%"></wm-message>
     </wm-content>
     <wm-dialog dialogtype="design-dialog " modal="true " title="User Details " iconclass=" " name="dialogUserDetails " on-opened="dialogUserDetailsOpened($event, widget)" class="di-width " closable="true " width="100%">
         <wm-dialogactions name="dialogactions1
                                             " show="bind:Variables.dialogUserId.dataSet.userId.toLowerCase() !== Variables.loggedInUser.dataSet.id.toLowerCase()">
             <wm-button caption="CANCEL" on-click="Widgets.dialogUserDetails .close()" name="CancelAlert " class="btn-default" height="50% "></wm-button>
-            <wm-button class="btn-primary" caption="SAVE" type="button" margin="unset 0.5em" name="saveUser_btn" on-click="saveUser_btnClick($event, widget)"></wm-button>
+            <wm-button class="btn-primary" caption="Create" type="button" margin="unset 0.5em" name="saveUser_btn" on-click="saveUser_btnClick($event, widget)"></wm-button>
         </wm-dialogactions>
         <wm-container name="message_container" margin="unset unset 1em unset">
             <wm-message name="userMsg" type="error" width="100%" hideclose="true" caption="bind:Variables.userLocalMsg.dataSet.dataValue" show="bind:Variables.userLocalMsg.dataSet.dataValue ? true : false"></wm-message>
@@ -224,5 +177,94 @@
                                             " name="Name " margin="0em unset 0.5em unset " fontsize="1.143 " fontunit="em "></wm-label></wm-container></wm-listtemplate></wm-list>--></wm-container>
         <wm-spinner show="true" name="spinner2" caption="" servicevariabletotrack="sv_updateUserDetails"></wm-spinner>
     </wm-dialog>
-    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="getAllUsers,sv_bulkActivateDeactivate,sv_importUsers,sv_saveLendingLimit,updateUser"></wm-spinner>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Users > Create" iconclass="wi wi-file-text" name="createUser">
+        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.createUser.dataSet" captionalign="center" name="createUserForm2">
+            <wm-layoutgrid columns="1" name="layoutgrid7">
+                <wm-gridrow name="gridrow21"></wm-gridrow>
+                <wm-gridrow name="gridrow22"></wm-gridrow>
+                <wm-gridrow name="gridrow23">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn31">
+                        <wm-form-field readonly="false" name="UserDTO_email" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow24">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn32">
+                        <wm-form-field readonly="false" name="UserDTO_firstName" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow25">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn33">
+                        <wm-form-field readonly="false" name="UserDTO_lastName" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow26">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                        <wm-form-field readonly="false" name="UserDTO_role" displayname="Role" key="UserDTO.role" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow27">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn35">
+                        <wm-form-field readonly="false" name="UserDTO_status" displayname="Status" key="UserDTO.status" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow28">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                        <wm-form-field readonly="false" name="UserDTO_userId" displayname="User Id" key="UserDTO.userId" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-button class="btn-primary" caption="Back to Users" on-click="Widgets.createUser.close()" name="button6_1"></wm-button>
+            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+        </wm-form>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Users > Edit" iconclass="fico-icon-pencil" name="updateUser">
+        <wm-form errormessage="" captionposition="top" title="Form" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.createUser.dataSet" captionalign="center" name="createUserForm1">
+            <wm-layoutgrid columns="1" name="layoutgrid6">
+                <wm-gridrow name="gridrow19"></wm-gridrow>
+                <wm-gridrow name="gridrow21_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn27">
+                        <wm-form-field readonly="false" name="UserDTO_email" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow22_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn28">
+                        <wm-form-field readonly="false" name="UserDTO_firstName" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow23_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn29">
+                        <wm-form-field readonly="false" name="UserDTO_lastName" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow24_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn30">
+                        <wm-form-field readonly="false" name="UserDTO_role" displayname="Role" key="UserDTO.role" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow25_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn31_1">
+                        <wm-form-field readonly="false" name="UserDTO_status" displayname="Status" key="UserDTO.status" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow26_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn32_1">
+                        <wm-form-field readonly="false" name="UserDTO_userId" displayname="User Id" key="UserDTO.userId" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button6_1"></wm-button>
+            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+        </wm-form>
+    </wm-dialog>
+    <wm-table name="userMVTable1" title="" dataset="bind:Variables.getAllUsers.dataSet" navigation="Classic" showheader="true" multiselect="true" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
+        gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)">
+        <wm-table-column binding="firstName" caption="First Name" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="lastName" caption="Last Name" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="email" caption="Email" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="active" caption="Status" primary-key="false" edit-widget-type="checkbox" type="boolean" generator="assigned" show="true" readonly="false" required="true"></wm-table-column>
+        <wm-table-column binding="Roles" caption="Roles" width="150px" edit-widget-type="text" type="string" accessroles="Authenticated" searchable="false" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updateUser.open()" disabled="false" widget-type="button"></wm-table-row-action>
+        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+    </wm-table>
 </wm-partial>

@@ -419,3 +419,11 @@ input[name='lendingAmount_input'] {
 .no-events {
     pointer-events: none !important;
 }
+.wm-app .btn.btn-xs {
+    font-size: 20px;
+    margin: 0 5px 0 0;
+    padding: 1px;
+}
+.app-grid .app-datagrid .table-container {
+    padding: 20px !important;
+}

@@ -1,0 +1,19 @@
+.wm-app .activeClass {
+    background-color: #4b286d !important;
+    color: #fff;
+}
+
+.wm-app .dashboard-menu-item .dashboard-menu-icon {
+    color: #4b286d;
+}
+
+.anchor-click{
+     color: #4b286d !important;
+}
+.wm-app .app-top-nav ul li>.dropdown .dropdown-menu a {
+    color: #4b286d;
+    
+}
+.wm-app .app-top-nav ul li>.dropdown .dropdown-menu {
+   border-bottom: none;
+}

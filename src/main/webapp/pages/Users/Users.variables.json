@@ -127,6 +127,21 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
+  "navigationAction1" : {
+    "_id" : "wm-navigationAction1-wm.NavigationVariable-1674983941654",
+    "name" : "navigationAction1",
+    "owner" : "Page",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "Users",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "StatusModel" : {
     "_id" : "wm-StatusModel-wm.Variable-1625461605017",
     "name" : "StatusModel",
@@ -142,6 +157,30 @@
     "type" : "string",
     "isList" : true,
     "saveInPhonegap" : false
+  },
+  "TELUSAgentUIDBCreateUser" : {
+    "_id" : "wm-TELUSAgentUIDBCreateUser-wm.ServiceVariable-1675053979695",
+    "name" : "TELUSAgentUIDBCreateUser",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.User",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "createUser",
+    "operationId" : "UserController_createUser",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "User"
   },
   "UpdateUser" : {
     "_id" : "wm-UpdateUser-wm.ServiceVariable-1625469102026",
