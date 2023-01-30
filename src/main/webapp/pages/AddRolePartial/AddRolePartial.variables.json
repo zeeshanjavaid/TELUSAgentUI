@@ -1106,6 +1106,61 @@
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
+        "fieldName" : "permission",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "PermissionId",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : true,
+        "relatedTableName" : "PERMISSION",
+        "relatedEntityName" : "Permission",
+        "relatedColumnName" : "permissionId",
+        "relatedFieldName" : "permission.id",
+        "isList" : false,
+        "targetTable" : "PERMISSION",
+        "scale" : 0,
+        "columns" : [ {
+          "fieldName" : "id",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "ID",
+          "isPrimaryKey" : true,
+          "notNull" : true,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "identity",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "name",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Name",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 255,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "description",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Description",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 255,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        } ]
+      }, {
         "fieldName" : "role",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -1237,61 +1292,6 @@
           "scale" : 0
         } ]
       }, {
-        "fieldName" : "permission",
-        "type" : "integer",
-        "fullyQualifiedType" : "integer",
-        "columnName" : "PermissionId",
-        "isPrimaryKey" : false,
-        "notNull" : false,
-        "length" : 0,
-        "precision" : 10,
-        "generator" : "assigned",
-        "isRelated" : true,
-        "relatedTableName" : "PERMISSION",
-        "relatedEntityName" : "Permission",
-        "relatedColumnName" : "permissionId",
-        "relatedFieldName" : "permission.id",
-        "isList" : false,
-        "targetTable" : "PERMISSION",
-        "scale" : 0,
-        "columns" : [ {
-          "fieldName" : "id",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "ID",
-          "isPrimaryKey" : true,
-          "notNull" : true,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "identity",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "name",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Name",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 255,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "description",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Description",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 255,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        } ]
-      }, {
         "fieldName" : "id",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -1311,18 +1311,18 @@
     },
     "tableName" : "ROLE_PERMISSION",
     "tableType" : "TABLE",
-    "properties" : [ "role", "permission" ],
+    "properties" : [ "permission", "role" ],
     "relatedTables" : [ {
-      "columnName" : "role",
-      "relationName" : "role",
-      "type" : "Role",
-      "watchOn" : "TELUSAgentUIDBRoleData",
-      "package" : "com.fico.dmp.telusagentuidb.RolePermission"
-    }, {
       "columnName" : "permission",
       "relationName" : "permission",
       "type" : "Permission",
       "watchOn" : "TELUSAgentUIDBPermissionData",
+      "package" : "com.fico.dmp.telusagentuidb.RolePermission"
+    }, {
+      "columnName" : "role",
+      "relationName" : "role",
+      "type" : "Role",
+      "watchOn" : "TELUSAgentUIDBRoleData",
       "package" : "com.fico.dmp.telusagentuidb.RolePermission"
     } ],
     "filterFields" : { },
@@ -2582,6 +2582,61 @@
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
+        "fieldName" : "permission",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "PermissionId",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : true,
+        "relatedTableName" : "PERMISSION",
+        "relatedEntityName" : "Permission",
+        "relatedColumnName" : "permissionId",
+        "relatedFieldName" : "permission.id",
+        "isList" : false,
+        "targetTable" : "PERMISSION",
+        "scale" : 0,
+        "columns" : [ {
+          "fieldName" : "id",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "ID",
+          "isPrimaryKey" : true,
+          "notNull" : true,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "identity",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "name",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Name",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 255,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "description",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Description",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 255,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        } ]
+      }, {
         "fieldName" : "role",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -2713,61 +2768,6 @@
           "scale" : 0
         } ]
       }, {
-        "fieldName" : "permission",
-        "type" : "integer",
-        "fullyQualifiedType" : "integer",
-        "columnName" : "PermissionId",
-        "isPrimaryKey" : false,
-        "notNull" : false,
-        "length" : 0,
-        "precision" : 10,
-        "generator" : "assigned",
-        "isRelated" : true,
-        "relatedTableName" : "PERMISSION",
-        "relatedEntityName" : "Permission",
-        "relatedColumnName" : "permissionId",
-        "relatedFieldName" : "permission.id",
-        "isList" : false,
-        "targetTable" : "PERMISSION",
-        "scale" : 0,
-        "columns" : [ {
-          "fieldName" : "id",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "ID",
-          "isPrimaryKey" : true,
-          "notNull" : true,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "identity",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "name",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Name",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 255,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "description",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Description",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 255,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        } ]
-      }, {
         "fieldName" : "id",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -2787,18 +2787,18 @@
     },
     "tableName" : "ROLE_PERMISSION",
     "tableType" : "TABLE",
-    "properties" : [ "role", "permission" ],
+    "properties" : [ "permission", "role" ],
     "relatedTables" : [ {
-      "columnName" : "role",
-      "relationName" : "role",
-      "type" : "Role",
-      "watchOn" : "TELUSAgentUIDBRoleData",
-      "package" : "com.fico.dmp.telusagentuidb.RolePermission"
-    }, {
       "columnName" : "permission",
       "relationName" : "permission",
       "type" : "Permission",
       "watchOn" : "TELUSAgentUIDBPermissionData",
+      "package" : "com.fico.dmp.telusagentuidb.RolePermission"
+    }, {
+      "columnName" : "role",
+      "relationName" : "role",
+      "type" : "Role",
+      "watchOn" : "TELUSAgentUIDBRoleData",
       "package" : "com.fico.dmp.telusagentuidb.RolePermission"
     } ],
     "filterFields" : { },

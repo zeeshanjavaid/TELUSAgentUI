@@ -479,20 +479,6 @@
         "targetTable" : "DomainValue",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "UpdatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -519,6 +505,20 @@
           "isRelated" : true,
           "relatedColumnName" : "domainValueType",
           "targetTable" : "DomainValueType",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "UpdatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "updatedBy",
+          "targetTable" : "USER",
           "scale" : 0
         }, {
           "fieldName" : "id",
@@ -827,20 +827,6 @@
         "targetTable" : "DomainValue",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "UpdatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -867,6 +853,20 @@
           "isRelated" : true,
           "relatedColumnName" : "domainValueType",
           "targetTable" : "DomainValueType",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "UpdatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "updatedBy",
+          "targetTable" : "USER",
           "scale" : 0
         }, {
           "fieldName" : "id",

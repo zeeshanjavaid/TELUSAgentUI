@@ -217,6 +217,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "Teams",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "TimerSetting",
   "type" : "PAGE",
   "params" : [ ]

@@ -1,0 +1,18 @@
+{
+  "staticVariableTelus" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1675075784247",
+    "name" : "staticVariableTelus",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Users"
+    }, {
+      "dataValue" : "Roles"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
