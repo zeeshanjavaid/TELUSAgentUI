@@ -177,90 +177,57 @@
                                             " name="Name " margin="0em unset 0.5em unset " fontsize="1.143 " fontunit="em "></wm-label></wm-container></wm-listtemplate></wm-list>--></wm-container>
         <wm-spinner show="true" name="spinner2" caption="" servicevariabletotrack="sv_updateUserDetails"></wm-spinner>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Users > Create" iconclass="wi wi-file-text" name="createUser">
-        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.createUser.dataSet" captionalign="center" name="createUserForm2">
-            <wm-layoutgrid columns="1" name="layoutgrid7">
-                <wm-gridrow name="gridrow21"></wm-gridrow>
-                <wm-gridrow name="gridrow22"></wm-gridrow>
-                <wm-gridrow name="gridrow23">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn31">
-                        <wm-form-field readonly="false" name="UserDTO_email" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text"></wm-form-field>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="User > Edit" iconclass="wi wi-file-text" name="updateUser">
+        <wm-dialogactions name="dialogactions1"></wm-dialogactions>
+        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.CreateUser.dataSet" captionalign="right" name="createUserForm2">
+            <wm-layoutgrid columns="1" name="layoutgrid4">
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                        <wm-form-field name="UserDTO_email" readonly="false" displayname="First Name" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" textalign="left"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow24">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                        <wm-form-field readonly="false" name="UserDTO_firstName" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text"></wm-form-field>
+                <wm-gridrow name="gridrow12">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                        <wm-form-field name="UserDTO_firstName" readonly="false" displayname="Last Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                        <wm-form-field readonly="false" displayname="Empl ID" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" name="form_field20"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow25">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn33">
-                        <wm-form-field readonly="false" name="UserDTO_lastName" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text"></wm-form-field>
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                        <wm-form-field name="UserDTO_lastName" readonly="false" displayname="Email" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow26">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                        <wm-form-field readonly="false" name="UserDTO_role" displayname="Role" key="UserDTO.role" type="string" show="true" widget="text"></wm-form-field>
+                <wm-gridrow name="gridrow14">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                        <wm-form-field displayname="Role" widget="select" show="true" type="custom" name="form_field7" placeholder="Select Role" on-click="Variables.getRole.invoke()" on-tap="Variables.getRole.invoke()" on-keydown="Variables.getRole.invoke()"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow27">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn35">
-                        <wm-form-field readonly="false" name="UserDTO_status" displayname="Status" key="UserDTO.status" type="string" show="true" widget="text"></wm-form-field>
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <!--<wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>-->
+                        <wm-form-action key="save" display-name="Create" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+                        <wm-form-field displayname="Team ID" widget="select" show="true" type="custom" name="form_field21" placeholder="Select Team"></wm-form-field>
+                        <wm-form-field displayname="Team  Manager" widget="select" show="true" type="custom" name="form_field22" placeholder="Select Team Manager"></wm-form-field>
+                        <wm-form-field displayname="Work Category" widget="checkboxset" show="true" type="custom" name="form_field6" layout="inline"></wm-form-field>
+                        <wm-composite name="composite10_1" horizontalalign="center">
+                            <wm-label class="col-md-3 control-label" name="label13_1" caption="Status" textalign="left"></wm-label>
+                        </wm-composite>
+                        <wm-radioset height="auto" name="radioset1" dataset="Active, Inactive" layout="stacked" datafield="All Fields" class="statusCheck"></wm-radioset>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow28">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                        <wm-form-field readonly="false" name="UserDTO_userId" displayname="User Id" key="UserDTO.userId" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-            </wm-layoutgrid>
-            <wm-button class="btn-primary" caption="Back to Users" on-click="Widgets.createUser.close()" name="button6_1"></wm-button>
-            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
-        </wm-form>
-    </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Users > Edit" iconclass="fico-icon-pencil" name="updateUser">
-        <wm-form errormessage="" captionposition="top" title="Form" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.createUser.dataSet" captionalign="center" name="createUserForm1">
-            <wm-layoutgrid columns="1" name="layoutgrid6">
-                <wm-gridrow name="gridrow19"></wm-gridrow>
-                <wm-gridrow name="gridrow21_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn27">
-                        <wm-form-field readonly="false" name="UserDTO_email" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow22_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn28">
-                        <wm-form-field readonly="false" name="UserDTO_firstName" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow23_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn29">
-                        <wm-form-field readonly="false" name="UserDTO_lastName" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow24_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn30">
-                        <wm-form-field readonly="false" name="UserDTO_role" displayname="Role" key="UserDTO.role" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow25_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn31_1">
-                        <wm-form-field readonly="false" name="UserDTO_status" displayname="Status" key="UserDTO.status" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow26_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn32_1">
-                        <wm-form-field readonly="false" name="UserDTO_userId" displayname="User Id" key="UserDTO.userId" type="string" show="true" widget="text"></wm-form-field>
-                    </wm-gridcolumn>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19"></wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button6_1"></wm-button>
-            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+            <wm-button class="aaa" caption="Back to User" on-click="closeDialog()" name="button4aaa" backgroundcolor="#003f5f" color="#fff"></wm-button>
         </wm-form>
-    </wm-dialog>
-    <wm-table name="userMVTable1" title="" dataset="bind:Variables.getAllUsers.dataSet" navigation="Classic" showheader="true" multiselect="true" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
-        gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)">
+        <!--<wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>--></wm-dialog>
+    <wm-table name="userMVTable1" title="" dataset="bind:Variables.getAllUsers.dataSet" navigation="Classic" showheader="true" multiselect="true" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false"
+        enablesort="true" gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)">
         <wm-table-column binding="firstName" caption="First Name" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="lastName" caption="Last Name" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="email" caption="Email" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="customField" caption="Team ID" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="active" caption="Status" primary-key="false" edit-widget-type="checkbox" type="boolean" generator="assigned" show="true" readonly="false" required="true"></wm-table-column>
         <wm-table-column binding="Roles" caption="Roles" width="150px" edit-widget-type="text" type="string" accessroles="Authenticated" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>

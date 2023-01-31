@@ -12,10 +12,10 @@
                     <wm-icon name="icon1" iconclass="fico-icon-chevron-light-down"></wm-icon>
                     <wm-label padding="unset 0.5em" name="label9_1" caption="User administration" fontsize="18"></wm-label>
                 </wm-container>
-                <wm-container name="container1"></wm-container>
-                <wm-container name="container1"></wm-container>
-                <wm-container name="container1"></wm-container>
-                <wm-container name="container1"></wm-container>
+                <!--<wm-container name="container1"></wm-container>-->
+                <!--<wm-container name="container1"></wm-container>-->
+                <!--<wm-container name="container1"></wm-container>-->
+                <!--<wm-container name="container1"></wm-container>-->
                 <table class="table table-hover">
                     <tbody>
                         <tr>
@@ -43,6 +43,52 @@
                 <wm-container name="container1">
                     <wm-label padding="unset 0.5em" caption="Audit Log" fontsize="18" name="label14"></wm-label>
                 </wm-container>
+                <wm-dialog dialogtype="design-dialog" modal="true" title="User > Create" iconclass="wi wi-file-text" name="createUser">
+                    <wm-dialogactions name="dialogactions1"></wm-dialogactions>
+                    <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.CreateUser.dataSet" captionalign="right" name="createUserForm2">
+                        <wm-layoutgrid columns="1" name="layoutgrid4">
+                            <wm-gridrow name="gridrow11">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                                    <wm-form-field name="UserDTO_email" readonly="false" displayname="First Name" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" textalign="left"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow12">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                                    <wm-form-field name="UserDTO_firstName" readonly="false" displayname="Last Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                    <wm-form-field readonly="false" displayname="Empl ID" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" name="form_field20"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow13">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                                    <wm-form-field name="UserDTO_lastName" readonly="false" displayname="Email" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow14">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn17">
+                                    <wm-form-field displayname="Role" widget="select" show="true" type="custom" name="form_field7" placeholder="Select Role" on-click="Variables.getRole.invoke()" on-tap="Variables.getRole.invoke()" on-keydown="Variables.getRole.invoke()"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow15">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                                    <!--<wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>-->
+                                    <wm-form-action key="save" display-name="Create" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+                                    <wm-form-field displayname="Team ID" widget="select" show="true" type="custom" name="form_field21" placeholder="Select Team"></wm-form-field>
+                                    <wm-form-field displayname="Team  Manager" widget="select" show="true" type="custom" name="form_field22" placeholder="Select Team Manager"></wm-form-field>
+                                    <wm-form-field displayname="Work Category" widget="checkboxset" show="true" type="custom" name="form_field6" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                                        layout="inline"></wm-form-field>
+                                    <wm-composite name="composite10_1" horizontalalign="center">
+                                        <wm-label class="col-md-3 control-label" name="label13_1" caption="Status" textalign="left"></wm-label>
+                                    </wm-composite>
+                                    <wm-radioset height="auto" name="radioset1" dataset="Active, Inactive" layout="stacked" datafield="All Fields" class="statusCheck"></wm-radioset>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow16">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn19"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-button class="aaa" caption="Back to User" on-click="closeDialog()" name="button4aaa" backgroundcolor="#003f5f" color="#fff"></wm-button>
+                    </wm-form>
+                    <!--<wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>--></wm-dialog>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="9" name="gridcolumn12">
                 <wm-content name="content1">
@@ -117,48 +163,6 @@
                                         <wm-button class="btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="btn_Clear" on-click="btn_ClearClick($event, widget)" width="14.2%"></wm-button>
                                     </wm-container>
                                 </wm-container>
-                                <wm-dialog dialogtype="design-dialog" modal="true" title="User > Create" iconclass="wi wi-file-text" name="createUser">
-                                    <wm-dialogactions name="dialogactions1"></wm-dialogactions>
-                                    <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.CreateUser.dataSet" captionalign="right" name="createUserForm2">
-                                        <wm-layoutgrid columns="1" name="layoutgrid4">
-                                            <wm-gridrow name="gridrow14">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn12_1">
-                                                    <wm-form-field name="UserDTO_email" readonly="false" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                            <wm-gridrow name="gridrow15">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn13_1">
-                                                    <wm-form-field name="UserDTO_firstName" readonly="false" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                            <wm-gridrow name="gridrow16">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn14">
-                                                    <wm-form-field name="UserDTO_lastName" readonly="false" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                            <wm-gridrow name="gridrow17">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn15">
-                                                    <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                            <wm-gridrow name="gridrow18">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
-                                                    <wm-form-field name="UserDTO_status" readonly="false" displayname="Status" key="UserDTO.status" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                                                </wm-gridcolumn>
-                                                <wm-container name="container30"></wm-container>
-                                                <!--<wm-form-action key="save" display-name="Create" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true">-->
-                                                <!--</wm-form-action>-->
-                                            </wm-gridrow>
-                                            <wm-gridrow name="gridrow19">
-                                                <wm-gridcolumn columnwidth="12" name="gridcolumn15">
-                                                    <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
-                                                    <wm-form-action key="save" display-name="Create" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                        </wm-layoutgrid>
-                                        <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>
-                                    </wm-form>
-                                    <!--<wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>--></wm-dialog>
                             </wm-container>
                         </wm-container>
                     </wm-page-content>
