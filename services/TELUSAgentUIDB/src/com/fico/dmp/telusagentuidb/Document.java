@@ -64,8 +64,6 @@ public class Document implements Serializable {
 
     private String externalId;
 
-    private Application application;
-
     private User userByCreatedBy;
 
     private DomainValue domainValueByType;
@@ -75,6 +73,8 @@ public class Document implements Serializable {
     private Party party;
 
     private DomainValue domainValueByDocumentLabel;
+
+    private Application application;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -196,21 +196,6 @@ public class Document implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_APPLICATIGwesA`"))
-    @Fetch(FetchMode.JOIN)
-    public Application getApplication() {
-        return this.application;
-    }
-
-    public void setApplication(Application application) {
-        if(application != null) {
-            this.applicationId = application.getId();
-        }
-
-        this.application = application;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_USER_crealc0nH`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByCreatedBy() {
@@ -283,6 +268,21 @@ public class Document implements Serializable {
         }
 
         this.domainValueByDocumentLabel = domainValueByDocumentLabel;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_APPLICATIGwesA`"))
+    @Fetch(FetchMode.JOIN)
+    public Application getApplication() {
+        return this.application;
+    }
+
+    public void setApplication(Application application) {
+        if(application != null) {
+            this.applicationId = application.getId();
+        }
+
+        this.application = application;
     }
 
 

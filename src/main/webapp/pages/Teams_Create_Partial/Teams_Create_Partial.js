@@ -10,24 +10,14 @@
  */
 
 /* perform any action on widgets/variables within this block */
-Page.onReady = function() {
+Partial.onReady = function () {
     /*
-     * variables can be accessed through 'Page.Variables' property here
+     * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
-     * Page.Variables.loggedInUser.getData()
+     * Partial.Variables.loggedInUser.getData()
      *
-     * widgets can be accessed through 'Page.Widgets' property here
+     * widgets can be accessed through 'Partial.Widgets' property here
      * e.g. to get value of text widget named 'username' use following script
-     * 'Page.Widgets.username.datavalue'
+     * 'Partial.Widgets.username.datavalue'
      */
-
-
-};
-
-
-Page.SaveTeamonSuccess = function(variable, data) {
-    Page.Variable.SaveManager.setData({
-        "MangerId": Page.Widgets.Team_teamManager.value
-    });
-    Page.Variable.SaveManager.invoke();
 };

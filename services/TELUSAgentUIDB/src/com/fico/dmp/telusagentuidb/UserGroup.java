@@ -51,13 +51,13 @@ public class UserGroup implements Serializable {
 
     private Integer userId;
 
+    private User userByUserId;
+
     private User userByUpdatedBy;
 
     private User userByCreatedBy;
 
     private Group _group;
-
-    private User userByUserId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,6 +125,21 @@ public class UserGroup implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKcv4isf8wxxg8dc6fnbo4t546x`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByUserId() {
+        return this.userByUserId;
+    }
+
+    public void setUserByUserId(User userByUserId) {
+        if(userByUserId != null) {
+            this.userId = userByUserId.getId();
+        }
+
+        this.userByUserId = userByUserId;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKqwtwube0wer96mu8cqmb7rur7`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByUpdatedBy() {
@@ -167,21 +182,6 @@ public class UserGroup implements Serializable {
         }
 
         this._group = _group;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKcv4isf8wxxg8dc6fnbo4t546x`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByUserId() {
-        return this.userByUserId;
-    }
-
-    public void setUserByUserId(User userByUserId) {
-        if(userByUserId != null) {
-            this.userId = userByUserId.getId();
-        }
-
-        this.userByUserId = userByUserId;
     }
 
 

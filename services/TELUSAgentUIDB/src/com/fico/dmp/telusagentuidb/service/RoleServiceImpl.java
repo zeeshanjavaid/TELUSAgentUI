@@ -198,6 +198,17 @@ public class RoleServiceImpl implements RoleService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
+    public Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userRoles");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("role.id = '" + id + "'");
+
+        return userRoleService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
     public Page<RolePermission> findAssociatedRolePermissions(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated rolePermissions");
 
@@ -216,17 +227,6 @@ public class RoleServiceImpl implements RoleService {
         queryBuilder.append("role.id = '" + id + "'");
 
         return groupRoleService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userRoles");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("role.id = '" + id + "'");
-
-        return userRoleService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**

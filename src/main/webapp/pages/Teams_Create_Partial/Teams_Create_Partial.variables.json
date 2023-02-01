@@ -1,0 +1,26 @@
+{
+  "TELUSAgentUIDBCreateTeam" : {
+    "_id" : "wm-TELUSAgentUIDBCreateTeam-wm.ServiceVariable-1675246015412",
+    "name" : "TELUSAgentUIDBCreateTeam",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.Team",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "createTeam",
+    "operationId" : "TeamController_createTeam",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "Team"
+  }
+}

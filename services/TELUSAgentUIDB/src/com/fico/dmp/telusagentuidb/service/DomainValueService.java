@@ -201,16 +201,16 @@ public interface DomainValueService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated domainValueDescriptions for given DomainValue id.
+     * Returns the associated notes for given DomainValue id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated DomainValueDescription instances.
+     * @return Paginated list of associated Note instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<DomainValueDescription> findAssociatedDomainValueDescriptions(Integer id, Pageable pageable);
+    Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
 
     /*
      * Returns the associated domainValueRelationsForDomainValueId for given DomainValue id.
@@ -249,76 +249,16 @@ public interface DomainValueService {
     Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated queuesForQueueResultPage for given DomainValue id.
+     * Returns the associated domainValueDescriptions for given DomainValue id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Queue instances.
+     * @return Paginated list of associated DomainValueDescription instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated queuesForPersonalQueueField for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Queue instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated notes for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Note instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated parties for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Party instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Party> findAssociatedParties(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated documentsForType for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Document instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Document> findAssociatedDocumentsForType(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated documentsForDocumentLabel for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Document instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Document> findAssociatedDocumentsForDocumentLabel(Integer id, Pageable pageable);
+    Page<DomainValueDescription> findAssociatedDomainValueDescriptions(Integer id, Pageable pageable);
 
     /*
      * Returns the associated activitiesForApplicationStatus for given DomainValue id.
@@ -355,5 +295,65 @@ public interface DomainValueService {
      * @see Page
      */
     Page<Activity> findAssociatedActivitiesForType(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated documentsForType for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Document instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Document> findAssociatedDocumentsForType(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated documentsForDocumentLabel for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Document instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Document> findAssociatedDocumentsForDocumentLabel(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated queuesForPersonalQueueField for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Queue instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated queuesForQueueResultPage for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Queue instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated parties for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Party instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Party> findAssociatedParties(Integer id, Pageable pageable);
 
 }

@@ -75,15 +75,15 @@ public class Queue implements Serializable {
 
     private Timestamp updatedOn;
 
+    private User userByCreatedBy;
+
+    private DomainValue domainValueByPersonalQueueField;
+
     private User userByLockedBy;
 
     private User userByUpdatedBy;
 
     private DomainValue domainValueByQueueResultPage;
-
-    private User userByCreatedBy;
-
-    private DomainValue domainValueByPersonalQueueField;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -259,6 +259,36 @@ public class Queue implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`CreatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_TO_USER_CreatedBy_id`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByCreatedBy() {
+        return this.userByCreatedBy;
+    }
+
+    public void setUserByCreatedBy(User userByCreatedBy) {
+        if(userByCreatedBy != null) {
+            this.createdBy = userByCreatedBy.getId();
+        }
+
+        this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`PersonalQueueField`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_TO_DomainValue_ZOr0f`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueByPersonalQueueField() {
+        return this.domainValueByPersonalQueueField;
+    }
+
+    public void setDomainValueByPersonalQueueField(DomainValue domainValueByPersonalQueueField) {
+        if(domainValueByPersonalQueueField != null) {
+            this.personalQueueField = domainValueByPersonalQueueField.getId();
+        }
+
+        this.domainValueByPersonalQueueField = domainValueByPersonalQueueField;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`LockedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_TO_USER_LockedBy_id`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByLockedBy() {
@@ -301,36 +331,6 @@ public class Queue implements Serializable {
         }
 
         this.domainValueByQueueResultPage = domainValueByQueueResultPage;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`CreatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_TO_USER_CreatedBy_id`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByCreatedBy() {
-        return this.userByCreatedBy;
-    }
-
-    public void setUserByCreatedBy(User userByCreatedBy) {
-        if(userByCreatedBy != null) {
-            this.createdBy = userByCreatedBy.getId();
-        }
-
-        this.userByCreatedBy = userByCreatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`PersonalQueueField`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_TO_DomainValue_ZOr0f`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueByPersonalQueueField() {
-        return this.domainValueByPersonalQueueField;
-    }
-
-    public void setDomainValueByPersonalQueueField(DomainValue domainValueByPersonalQueueField) {
-        if(domainValueByPersonalQueueField != null) {
-            this.personalQueueField = domainValueByPersonalQueueField.getId();
-        }
-
-        this.domainValueByPersonalQueueField = domainValueByPersonalQueueField;
     }
 
 

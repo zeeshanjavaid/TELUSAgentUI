@@ -199,6 +199,15 @@ public class RoleController {
         roleService.importData(file);
     }
 
+    @RequestMapping(value="/{id:.+}/userRoles", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the userRoles instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<UserRole> findAssociatedUserRoles(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated userRoles");
+        return roleService.findAssociatedUserRoles(id, pageable);
+    }
+
     @RequestMapping(value="/{id:.+}/rolePermissions", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the rolePermissions instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -215,15 +224,6 @@ public class RoleController {
 
         LOGGER.debug("Fetching all associated groupRoles");
         return roleService.findAssociatedGroupRoles(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/userRoles", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the userRoles instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<UserRole> findAssociatedUserRoles(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated userRoles");
-        return roleService.findAssociatedUserRoles(id, pageable);
     }
 
     /**

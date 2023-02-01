@@ -51,6 +51,9 @@
     "table" : "QRTZ_FIRED_TRIGGERS",
     "schema" : null
   }, {
+    "table" : "TEAM_USER",
+    "schema" : null
+  }, {
     "table" : "GROUP_ROLE",
     "schema" : null
   }, {
@@ -58,6 +61,9 @@
     "schema" : null
   }, {
     "table" : "QRTZ_SIMPLE_TRIGGERS",
+    "schema" : null
+  }, {
+    "table" : "TEAM",
     "schema" : null
   }, {
     "table" : "QRTZ_BLOB_TRIGGERS",
@@ -133,12 +139,6 @@
     "schema" : null
   }, {
     "table" : "schema_version",
-    "schema" : null
-  }, {
-    "table" : "TEAM_USER",
-    "schema" : null
-  }, {
-    "table" : "TEAM",
     "schema" : null
   } ],
   "schemaFilter" : [ ],

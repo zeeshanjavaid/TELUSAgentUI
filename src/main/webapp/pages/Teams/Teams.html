@@ -3,6 +3,83 @@
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
         <wm-page-content columnwidth="12" name="page_content1"></wm-page-content>
+        <wm-layoutgrid name="layoutgrid1" columns="2">
+            <wm-gridrow name="gridrow23" padding="unset unset unset 5px">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn46">
+                    <wm-composite name="composite2">
+                        <wm-label class="col-md-3 control-label" name="label2" caption="Team Name" fontweight="bold"></wm-label>
+                        <wm-container class="col-md-9" name="container2">
+                            <wm-text name="text2" width="50%"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn45">
+                    <wm-composite name="composite1">
+                        <wm-label class="col-md-3 control-label" name="label1" caption="Team ID" fontweight="bold"></wm-label>
+                        <wm-container class="col-md-9" name="container1">
+                            <wm-text name="text1" width="50%"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow24" padding="unset unset unset 5px">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn47">
+                    <wm-composite name="composite3">
+                        <wm-label class="col-md-3 control-label" name="label3" caption="Team Manager" fontweight="bold"></wm-label>
+                        <wm-container class="col-md-9" name="container3">
+                            <wm-select name="select1" width="50%" datafield="All Fields"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn48"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid2" columns="1">
+            <wm-gridrow name="gridrow4" padding="unset unset unset 5px">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                    <wm-composite name="composite4">
+                        <wm-label class="col-md-3 control-label" name="label4" caption="Description" fontweight="bold"></wm-label>
+                        <wm-container class="col-md-9" name="container4">
+                            <wm-textarea name="textarea1" width="75%"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="button1"></wm-button>
+        <wm-button class="btn-default" caption="Save" type="button" margin="unset 0.5em" name="button2"></wm-button>
+        <wm-form errormessage="" captionposition="left" title="Form" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.TELUSAgentUIDBCreateTeam.dataSet" captionalign="left" name="createTeamForm1">
+            <wm-layoutgrid columns="1" name="layoutgrid3">
+                <wm-gridrow name="gridrow4_1"></wm-gridrow>
+                <wm-gridrow name="gridrow5">
+                    <wm-composite name="composite5">
+                        <wm-label class="h4 control-label" caption="Team Details" name="label5"></wm-label>
+                    </wm-composite>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow6">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn6">
+                        <wm-form-field readonly="false" name="Team_description" displayname="Description" key="Team.description" type="string" show="true" widget="textarea"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
+                        <wm-form-field readonly="false" name="Team_teamId" displayname="Team Id" key="Team.teamId" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow8">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                        <wm-form-field readonly="false" name="Team_teamName" displayname="Team Name" key="Team.teamName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow9">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                        <wm-form-field readonly="false" name="Team_teamManager" displayname="Team Manager" key="Team.teamManager" type="string" show="true" widget="select"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
+            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+        </wm-form>
     </wm-content>
     <wm-footer content="footer" name="footer1"></wm-footer>
 </wm-page>

@@ -1,0 +1,31 @@
+<wm-partial name="partial1">
+    <wm-container name="container1">
+        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.TELUSAgentUIDBCreateTeam.dataSet" captionalign="left" name="createTeamForm1">
+            <wm-layoutgrid columns="1" name="layoutgrid1">
+                <wm-gridrow name="gridrow1"></wm-gridrow>
+                <wm-gridrow name="gridrow2">
+                    <wm-composite name="composite1">
+                        <wm-label class="h4 control-label" caption="Create Team" name="label1"></wm-label>
+                    </wm-composite>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow4">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn2">
+                        <wm-form-field readonly="false" name="Team_teamId" displayname="Team Id" key="Team.teamId" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow5">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                        <wm-form-field readonly="false" name="Team_teamName" displayname="Team Name" key="Team.teamName" type="string" show="true" widget="text"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow3">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                        <wm-form-field readonly="false" name="Team_description" displayname="Description" key="Team.description" type="string" show="true" widget="textarea"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" display-name="Reset" type="reset"></wm-form-action>
+            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" type="submit"></wm-form-action>
+        </wm-form>
+    </wm-container>
+</wm-partial>
