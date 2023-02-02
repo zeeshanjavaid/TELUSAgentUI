@@ -22,5 +22,29 @@
     "saveInPhonegap" : false,
     "isDefault" : true,
     "controller" : "Team"
+  },
+  "TELUSAgentUIDBCreateTeam1" : {
+    "_id" : "wm-TELUSAgentUIDBCreateTeam1-wm.ServiceVariable-1675262248399",
+    "name" : "TELUSAgentUIDBCreateTeam1",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.Team",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "createTeam",
+    "operationId" : "TeamController_createTeam",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "Team"
   }
 }

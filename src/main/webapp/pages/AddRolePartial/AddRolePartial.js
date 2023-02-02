@@ -20,6 +20,9 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+    Partial.pageParams.roleId
+
     Partial.Variables.roleData.dataSet = [];
     Partial.Variables.uploadRole.dataSet = [];
     Partial.Variables.uploadRoleItem.dataSet = [];
@@ -37,7 +40,7 @@ Partial.onReady = function() {
 };
 
 Partial.SaveButtonClick = function($event, widget) {
-    debugger;
+
     Partial.isDelete = false;
     Partial.roleexists = false;
     Partial.Widgets.NameText.required = false;
@@ -66,7 +69,7 @@ Partial.SaveButtonClick = function($event, widget) {
         //Partial.Variables.createRole.setInput("updatedOn", new Date());
         //Partial.Variables.createRole.setInput("description", Partial.Variables.roleData.dataSet.RoleDescription);
         //Partial.Variables.createRole.setInput("isActive", true);
-        debugger;
+        //debugger;
         if (Partial.pageParams.roleId) {} else {
 
 
@@ -120,7 +123,7 @@ Partial.SaveButtonClick = function($event, widget) {
 };
 
 Partial.CancelbuttonClick = function($event, widget) {
-    debugger;
+    // debugger;
     Partial.isDelete = false;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;

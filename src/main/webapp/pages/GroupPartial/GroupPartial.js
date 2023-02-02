@@ -500,7 +500,7 @@ Partial.groupSearchTextKeyup = function($event, widget) {
 };
 
 Partial.containerGroupsClick = function($event, widget, item, currentItemWidgets) {
-
+    debugger;
 };
 
 App.refreshAllGroups = function() {

@@ -1,7 +1,7 @@
 {
-  "StaticListVariableLeftNav" : {
-    "_id" : "wm-StaticListVariableLeftNav-wm.Variable-1675253403143",
-    "name" : "StaticListVariableLeftNav",
+  "LeftNavAdminMenuList" : {
+    "_id" : "wm-LeftNavAdminMenuList-wm.Variable-1675331239446",
+    "name" : "LeftNavAdminMenuList",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
@@ -9,9 +9,11 @@
     "dataSet" : [ {
       "dataValue" : "Users"
     }, {
-      "dataValue" : "Role"
+      "dataValue" : "Roles"
     }, {
-      "dataValue" : "Team"
+      "dataValue" : "Teams"
+    }, {
+      "dataValue" : "Groups"
     } ],
     "type" : "string",
     "isList" : true,

@@ -34,6 +34,10 @@
     "type" : "string"
   } ]
 }, {
+  "name" : "Admin",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "ApplicationHistory",
   "type" : "PAGE",
   "params" : [ {
@@ -58,6 +62,10 @@
   "params" : [ ]
 }, {
   "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "CreateTeamsPartial",
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
@@ -221,10 +229,6 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "Teams_Create_Partial",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "TimerSetting",
   "type" : "PAGE",
   "params" : [ ]
@@ -255,6 +259,10 @@
 }, {
   "name" : "leftnav",
   "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "sample",
+  "type" : "PAGE",
   "params" : [ ]
 }, {
   "name" : "topMessageSection",

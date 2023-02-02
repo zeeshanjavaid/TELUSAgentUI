@@ -1,0 +1,31 @@
+.panel1 {
+    width: 10%;
+}
+
+.container100 {
+    display: flex;
+}
+
+.panel2 {
+    width: 25%;
+}
+
+.panel3 {
+    width: 65%;
+}
+
+.panel4 {
+    width: 25%;
+}
+
+.panel5 {
+    width: 65%;
+}
+
+.panel6 {
+    width: 65%;
+}
+
+.panel7 {
+    width: 65%;
+}

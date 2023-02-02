@@ -563,7 +563,7 @@ Partial.getAllRolesPartialonSuccess = async function(variable, data) {
         await Partial.Variables.RolePermission.invoke();
         await Partial.Variables.RoleGroups.invoke();
 
-        debugger;
+
         Partial.roleUI.permission = (Partial.Variables.RolePermission.dataSet && Partial.Variables.RolePermission.dataSet.length > 0) ?
             Partial.Variables.RolePermission.dataSet : null;
         Partial.roleUI.PermissionCount = (Partial.Variables.RolePermission.dataSet && Partial.Variables.RolePermission.dataSet.length > 0) ?
@@ -587,7 +587,7 @@ Partial.getAllRolesPartialonSuccess = async function(variable, data) {
             //addGroupCount(Partial.allRolesUITemp);
             // }
         }
-        debugger;
+
 
 
         // setTimeout(function() {
@@ -751,7 +751,7 @@ Partial.sv_downloadRolesonError = function(variable, data) {
 };
 Partial.RoleListRender = function(widget, $data) {
 
-    debugger;
+
     // widget.selectItem(2);
 
 };

@@ -20,7 +20,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-
+    debugger;
     Partial.Variables.groupData.dataSet = [];
     Partial.Variables.uploadGroup.dataSet = [];
     Partial.Variables.uploadGroupItem.dataSet = [];

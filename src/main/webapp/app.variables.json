@@ -1579,6 +1579,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_Admin" : {
+    "_id" : "wm-goToPage_Admin-wm.NavigationVariable-1675331142591",
+    "name" : "goToPage_Admin",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Admin",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_ApplicationHistory" : {
     "_id" : "wm-goToPage_ApplicationHistory-wm.NavigationVariable-1657285772494",
     "name" : "goToPage_ApplicationHistory",
@@ -1861,6 +1873,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_sample" : {
+    "_id" : "wm-goToPage_sample-wm.NavigationVariable-1675337577714",
+    "name" : "goToPage_sample",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "sample",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_SetupLanding" : {
     "_id" : "wm-goToPage_SetupLanding-wm.NavigationVariable-1653461243896",
     "name" : "goToPage_SetupLanding",
@@ -1886,7 +1910,7 @@
     "pageTransitions" : "none"
   },
   "goToPage_Teams" : {
-    "_id" : "wm-goToPage_Teams-wm.NavigationVariable-1675074345856",
+    "_id" : "wm-goToPage_Teams-wm.NavigationVariable-1675253255195",
     "name" : "goToPage_Teams",
     "owner" : "App",
     "category" : "wm.NavigationVariable",
