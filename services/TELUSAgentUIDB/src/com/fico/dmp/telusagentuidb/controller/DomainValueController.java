@@ -195,6 +195,15 @@ public class DomainValueController {
         domainValueService.importData(file);
     }
 
+    @RequestMapping(value="/{id:.+}/parties", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the parties instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Party> findAssociatedParties(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated parties");
+        return domainValueService.findAssociatedParties(id, pageable);
+    }
+
     @RequestMapping(value="/{id:.+}/notes", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the notes instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -202,6 +211,60 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated notes");
         return domainValueService.findAssociatedNotes(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/queuesForQueueResultPage", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queuesForQueueResultPage instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Queue> findAssociatedQueuesForQueueResultPage(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
+        return domainValueService.findAssociatedQueuesForQueueResultPage(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/queuesForPersonalQueueField", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queuesForPersonalQueueField instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Queue> findAssociatedQueuesForPersonalQueueField(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
+        return domainValueService.findAssociatedQueuesForPersonalQueueField(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/documentsForType", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the documentsForType instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Document> findAssociatedDocumentsForType(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated documentsForType");
+        return domainValueService.findAssociatedDocumentsForType(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/documentsForDocumentLabel", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the documentsForDocumentLabel instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Document> findAssociatedDocumentsForDocumentLabel(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated documentsForDocumentLabel");
+        return domainValueService.findAssociatedDocumentsForDocumentLabel(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/domainValueDescriptions", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueDescriptions instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<DomainValueDescription> findAssociatedDomainValueDescriptions(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated domainValueDescriptions");
+        return domainValueService.findAssociatedDomainValueDescriptions(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
+        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/domainValueRelationsForDomainValueId", method=RequestMethod.GET)
@@ -220,24 +283,6 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId2");
         return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId2(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
-        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/domainValueDescriptions", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueDescriptions instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueDescription> findAssociatedDomainValueDescriptions(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValueDescriptions");
-        return domainValueService.findAssociatedDomainValueDescriptions(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/activitiesForApplicationStatus", method=RequestMethod.GET)
@@ -265,51 +310,6 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated activitiesForType");
         return domainValueService.findAssociatedActivitiesForType(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/documentsForType", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the documentsForType instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Document> findAssociatedDocumentsForType(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated documentsForType");
-        return domainValueService.findAssociatedDocumentsForType(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/documentsForDocumentLabel", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the documentsForDocumentLabel instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Document> findAssociatedDocumentsForDocumentLabel(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated documentsForDocumentLabel");
-        return domainValueService.findAssociatedDocumentsForDocumentLabel(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/queuesForPersonalQueueField", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queuesForPersonalQueueField instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Queue> findAssociatedQueuesForPersonalQueueField(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
-        return domainValueService.findAssociatedQueuesForPersonalQueueField(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/queuesForQueueResultPage", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queuesForQueueResultPage instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Queue> findAssociatedQueuesForQueueResultPage(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
-        return domainValueService.findAssociatedQueuesForQueueResultPage(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/parties", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the parties instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Party> findAssociatedParties(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated parties");
-        return domainValueService.findAssociatedParties(id, pageable);
     }
 
     /**

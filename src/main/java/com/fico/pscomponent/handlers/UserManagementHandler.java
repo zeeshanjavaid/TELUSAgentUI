@@ -29,6 +29,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fico.dmp.telusagentuidb.Role;
 import com.fico.dmp.telusagentuidb.User;
+import com.fico.dmp.telusagentuidb.UserRole;
+import com.fico.dmp.telusagentuidb.service.UserRoleService;
+
+
 import com.fico.dmp.telusagentuidb.service.RoleService;
 import com.fico.dmp.telusagentuidb.service.UserService;
 import com.fico.pscomponent.constant.PSComponentConstants;
@@ -49,6 +53,9 @@ public class UserManagementHandler {
 
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private UserRoleService userRoleService;
 
 	@Autowired
 	private UserValidationService userValidatorService;
@@ -66,7 +73,7 @@ public class UserManagementHandler {
 	public ResponseEntity<String> createUser(UserDTO userDTO) {
 		try {
 		    //logger.info("In handler createUser :::::::::::::::::::::");
-			userValidatorService.validateUserBody(userDTO);
+		userValidatorService.validateUserBody(userDTO);
 		} catch (ConstraintViolationException e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
@@ -86,6 +93,8 @@ public class UserManagementHandler {
 
 		}
 		//logger.info("In handler before object assigning :::::::::::::::::::::");
+		
+	   System.out.println(" Team ID================================" +userDTO.getRole());
 
 		User user = new User();
 		user.setFirstName(userDTO.getFirstName());
@@ -96,10 +105,25 @@ public class UserManagementHandler {
 		user.setCreatedOn(new Timestamp(System.currentTimeMillis()));
 
 		try {
+		    
+		    	// Only Super user has permission to upgrade a role to super user
+			if (!isAllowedToUpgradeToSuperUser(userDTO.getRole())) {
+				return new ResponseEntity<String>("User does not have permission", HttpStatus.BAD_REQUEST);
+			}
+
+			// Get the assigned roles from FRAUDROLE table
+			Role role = roleService.getByRole(userDTO.getRole());
 
 
 			// Create user entry
 			user = userService.create(user);
+			
+			// Create a user and role relationship
+			UserRole userRole = new UserRole();
+			userRole.setUser(user);
+			userRole.setRole(role);
+            logger.info("In handler before create userrole :::::::::::::::::::::");
+			userRoleService.create(userRole);
 
 			return new ResponseEntity<String>("User created successfully", HttpStatus.OK);
 		} catch (Exception e) {
@@ -120,7 +144,7 @@ public class UserManagementHandler {
 				return new ResponseEntity<String>("User does not have permission", HttpStatus.BAD_REQUEST);
 			}
 
-			User dbUser = userService.getByUserId(userDTO.getUserId());
+			User dbUser = userService.getByUserId(userDTO.getEmail());
 
 			// Check if details really changed
 			if (!userDTO.getFirstName().equals(dbUser.getFirstName())) {
@@ -142,6 +166,30 @@ public class UserManagementHandler {
 			dbUser.setUpdatedOn(new Timestamp(System.currentTimeMillis()));
 
 			dbUser = userService.update(dbUser);
+			
+				Pageable pageable = PageRequest.of(0, 1);
+			UserRole userRole = null;
+			Page<UserRole> userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
+			if (userRolePage.hasContent()) {
+				List<UserRole> userRoleList = userRolePage.getContent();
+				if (!userRoleList.isEmpty()) {
+					userRole = userRoleList.get(0);
+				}
+			}
+
+			if (!Objects.isNull(userRole)) {
+				if (!userRole.getRole().getRole().equals(userDTO.getRole())) {
+					Role role = roleService.getByRole(userDTO.getRole());
+					userRole.setRole(role);
+					userRoleService.update(userRole);
+				}
+			} else {
+				userRole = new UserRole();
+				Role role = roleService.getByRole(userDTO.getRole());
+				userRole.setRole(role);
+				userRole.setUser(dbUser);
+				userRoleService.create(userRole);
+			}
 
 		} catch (Exception e) {
 			logger.error("Exception updating user: ", e);

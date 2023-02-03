@@ -216,13 +216,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated auditDataChanges");
+    public Page<Party> findAssociatedParties(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated parties");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("application.id = '" + id + "'");
 
-        return auditDataChangeService.findAll(queryBuilder.toString(), pageable);
+        return partyService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -238,17 +238,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Activity> findAssociatedActivities(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated activities");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("application.id = '" + id + "'");
-
-        return activityService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
     public Page<Document> findAssociatedDocuments(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated documents");
 
@@ -256,6 +245,17 @@ public class ApplicationServiceImpl implements ApplicationService {
         queryBuilder.append("application.id = '" + id + "'");
 
         return documentService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated auditDataChanges");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("application.id = '" + id + "'");
+
+        return auditDataChangeService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -271,13 +271,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Party> findAssociatedParties(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated parties");
+    public Page<Activity> findAssociatedActivities(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated activities");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("application.id = '" + id + "'");
 
-        return partyService.findAll(queryBuilder.toString(), pageable);
+        return activityService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**

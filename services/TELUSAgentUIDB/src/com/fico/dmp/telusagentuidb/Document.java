@@ -64,8 +64,6 @@ public class Document implements Serializable {
 
     private String externalId;
 
-    private User userByCreatedBy;
-
     private DomainValue domainValueByType;
 
     private User userByUpdatedBy;
@@ -75,6 +73,8 @@ public class Document implements Serializable {
     private DomainValue domainValueByDocumentLabel;
 
     private Application application;
+
+    private User userByCreatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -196,21 +196,6 @@ public class Document implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_USER_crealc0nH`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByCreatedBy() {
-        return this.userByCreatedBy;
-    }
-
-    public void setUserByCreatedBy(User userByCreatedBy) {
-        if(userByCreatedBy != null) {
-            this.createdBy = userByCreatedBy.getId();
-        }
-
-        this.userByCreatedBy = userByCreatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`type`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_DomainValLmV6F`"))
     @Fetch(FetchMode.JOIN)
     public DomainValue getDomainValueByType() {
@@ -283,6 +268,21 @@ public class Document implements Serializable {
         }
 
         this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_USER_crealc0nH`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByCreatedBy() {
+        return this.userByCreatedBy;
+    }
+
+    public void setUserByCreatedBy(User userByCreatedBy) {
+        if(userByCreatedBy != null) {
+            this.createdBy = userByCreatedBy.getId();
+        }
+
+        this.userByCreatedBy = userByCreatedBy;
     }
 
 

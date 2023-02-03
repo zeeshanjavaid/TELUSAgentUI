@@ -23,10 +23,10 @@
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
-        "fieldName" : "userByUpdatedBy",
+        "fieldName" : "userByCreatedBy",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
-        "columnName" : "updatedBy",
+        "columnName" : "createdBy",
         "isPrimaryKey" : false,
         "notNull" : false,
         "length" : 0,
@@ -35,28 +35,12 @@
         "isRelated" : true,
         "relatedTableName" : "USER",
         "relatedEntityName" : "User",
-        "relatedColumnName" : "updatedBy",
-        "relatedFieldName" : "userByUpdatedBy.id",
+        "relatedColumnName" : "createdBy",
+        "relatedFieldName" : "userByCreatedBy.id",
         "isList" : false,
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedTableName" : "USER",
-          "relatedEntityName" : "User",
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -70,6 +54,22 @@
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
           "relatedColumnName" : "createdBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "updatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedTableName" : "USER",
+          "relatedEntityName" : "User",
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -228,12 +228,25 @@
           "generator" : "assigned",
           "isRelated" : false,
           "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
         } ]
       }, {
-        "fieldName" : "userByCreatedBy",
+        "fieldName" : "userByUpdatedBy",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
-        "columnName" : "createdBy",
+        "columnName" : "updatedBy",
         "isPrimaryKey" : false,
         "notNull" : false,
         "length" : 0,
@@ -242,16 +255,16 @@
         "isRelated" : true,
         "relatedTableName" : "USER",
         "relatedEntityName" : "User",
-        "relatedColumnName" : "createdBy",
-        "relatedFieldName" : "userByCreatedBy.id",
+        "relatedColumnName" : "updatedBy",
+        "relatedFieldName" : "userByUpdatedBy.id",
         "isList" : false,
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
+          "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
+          "columnName" : "createdBy",
           "isPrimaryKey" : false,
           "notNull" : false,
           "length" : 0,
@@ -260,28 +273,12 @@
           "isRelated" : true,
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
-          "relatedColumnName" : "updatedBy",
-          "relatedFieldName" : "userByUpdatedBy.id",
+          "relatedColumnName" : "createdBy",
+          "relatedFieldName" : "userByCreatedBy.id",
           "isList" : false,
           "targetTable" : "USER",
           "scale" : 0,
           "columns" : [ {
-            "fieldName" : "userByUpdatedBy",
-            "type" : "integer",
-            "fullyQualifiedType" : "integer",
-            "columnName" : "updatedBy",
-            "isPrimaryKey" : false,
-            "notNull" : false,
-            "length" : 0,
-            "precision" : 10,
-            "generator" : "assigned",
-            "isRelated" : true,
-            "relatedTableName" : "USER",
-            "relatedEntityName" : "User",
-            "relatedColumnName" : "updatedBy",
-            "targetTable" : "USER",
-            "scale" : 0
-          }, {
             "fieldName" : "userByCreatedBy",
             "type" : "integer",
             "fullyQualifiedType" : "integer",
@@ -295,6 +292,22 @@
             "relatedTableName" : "USER",
             "relatedEntityName" : "User",
             "relatedColumnName" : "createdBy",
+            "targetTable" : "USER",
+            "scale" : 0
+          }, {
+            "fieldName" : "userByUpdatedBy",
+            "type" : "integer",
+            "fullyQualifiedType" : "integer",
+            "columnName" : "updatedBy",
+            "isPrimaryKey" : false,
+            "notNull" : false,
+            "length" : 0,
+            "precision" : 10,
+            "generator" : "assigned",
+            "isRelated" : true,
+            "relatedTableName" : "USER",
+            "relatedEntityName" : "User",
+            "relatedColumnName" : "updatedBy",
             "targetTable" : "USER",
             "scale" : 0
           }, {
@@ -453,12 +466,25 @@
             "generator" : "assigned",
             "isRelated" : false,
             "scale" : 0
+          }, {
+            "fieldName" : "emplId",
+            "type" : "string",
+            "fullyQualifiedType" : "string",
+            "columnName" : "emplId",
+            "isPrimaryKey" : false,
+            "notNull" : false,
+            "length" : 16,
+            "precision" : 0,
+            "generator" : "assigned",
+            "isRelated" : false,
+            "defaultValue" : "",
+            "scale" : 0
           } ]
         }, {
-          "fieldName" : "userByCreatedBy",
+          "fieldName" : "userByUpdatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
-          "columnName" : "createdBy",
+          "columnName" : "updatedBy",
           "isPrimaryKey" : false,
           "notNull" : false,
           "length" : 0,
@@ -467,7 +493,7 @@
           "isRelated" : true,
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
-          "relatedColumnName" : "createdBy",
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -625,6 +651,19 @@
           "precision" : 0,
           "generator" : "assigned",
           "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
           "scale" : 0
         } ]
       }, {
@@ -783,6 +822,19 @@
         "generator" : "assigned",
         "isRelated" : false,
         "scale" : 0
+      }, {
+        "fieldName" : "emplId",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "emplId",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 16,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
       } ],
       "entityName" : "User",
       "fullyQualifiedName" : "com.fico.dmp.telusagentuidb.User",
@@ -791,16 +843,16 @@
     },
     "tableName" : "USER",
     "tableType" : "TABLE",
-    "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
+    "properties" : [ "userByCreatedBy", "userByUpdatedBy" ],
     "relatedTables" : [ {
-      "columnName" : "userByUpdatedBy",
-      "relationName" : "userByUpdatedBy",
+      "columnName" : "userByCreatedBy",
+      "relationName" : "userByCreatedBy",
       "type" : "User",
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
     }, {
-      "columnName" : "userByCreatedBy",
-      "relationName" : "userByCreatedBy",
+      "columnName" : "userByUpdatedBy",
+      "relationName" : "userByUpdatedBy",
       "type" : "User",
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
@@ -901,20 +953,6 @@
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -926,6 +964,20 @@
           "generator" : "assigned",
           "isRelated" : true,
           "relatedColumnName" : "createdBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "updatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -1083,6 +1135,19 @@
           "precision" : 0,
           "generator" : "assigned",
           "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
           "scale" : 0
         } ]
       }, {
@@ -1104,20 +1169,6 @@
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -1129,6 +1180,20 @@
           "generator" : "assigned",
           "isRelated" : true,
           "relatedColumnName" : "createdBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "updatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -1286,6 +1351,19 @@
           "precision" : 0,
           "generator" : "assigned",
           "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
           "scale" : 0
         } ]
       }, {
@@ -1410,113 +1488,6 @@
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
-        "fieldName" : "domainValueTypeByParentDomainValueTypeId1",
-        "type" : "integer",
-        "fullyQualifiedType" : "integer",
-        "columnName" : "ParentDomainValueTypeId1",
-        "isPrimaryKey" : false,
-        "notNull" : false,
-        "length" : 0,
-        "precision" : 10,
-        "generator" : "assigned",
-        "isRelated" : true,
-        "relatedTableName" : "DomainValueType",
-        "relatedEntityName" : "DomainValueType",
-        "relatedColumnName" : "parentDomainValueTypeId1",
-        "relatedFieldName" : "domainValueTypeByParentDomainValueTypeId1.id",
-        "isList" : false,
-        "targetTable" : "DomainValueType",
-        "scale" : 0,
-        "columns" : [ {
-          "fieldName" : "userByCreatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "CreatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "createdBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "UpdatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
-          "fieldName" : "id",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "ID",
-          "isPrimaryKey" : true,
-          "notNull" : true,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "identity",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "code",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Code",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 50,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "description",
-          "type" : "string",
-          "fullyQualifiedType" : "string",
-          "columnName" : "Description",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 100,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "createdOn",
-          "type" : "timestamp",
-          "fullyQualifiedType" : "timestamp",
-          "columnName" : "CreatedOn",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        }, {
-          "fieldName" : "updatedOn",
-          "type" : "timestamp",
-          "fullyQualifiedType" : "timestamp",
-          "columnName" : "UpdatedOn",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 0,
-          "generator" : "assigned",
-          "isRelated" : false,
-          "scale" : 0
-        } ]
-      }, {
         "fieldName" : "domainValueTypeByDomainValueTypeId",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -1731,6 +1702,113 @@
           "scale" : 0
         } ]
       }, {
+        "fieldName" : "domainValueTypeByParentDomainValueTypeId1",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "ParentDomainValueTypeId1",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : true,
+        "relatedTableName" : "DomainValueType",
+        "relatedEntityName" : "DomainValueType",
+        "relatedColumnName" : "parentDomainValueTypeId1",
+        "relatedFieldName" : "domainValueTypeByParentDomainValueTypeId1.id",
+        "isList" : false,
+        "targetTable" : "DomainValueType",
+        "scale" : 0,
+        "columns" : [ {
+          "fieldName" : "userByCreatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "CreatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "createdBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "UpdatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedColumnName" : "updatedBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "id",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "ID",
+          "isPrimaryKey" : true,
+          "notNull" : true,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "identity",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "code",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Code",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 50,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "description",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "Description",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 100,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "createdOn",
+          "type" : "timestamp",
+          "fullyQualifiedType" : "timestamp",
+          "columnName" : "CreatedOn",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "updatedOn",
+          "type" : "timestamp",
+          "fullyQualifiedType" : "timestamp",
+          "columnName" : "UpdatedOn",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "scale" : 0
+        } ]
+      }, {
         "fieldName" : "id",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
@@ -1750,14 +1828,8 @@
     },
     "tableName" : "DomainValueTypeRelationship",
     "tableType" : "TABLE",
-    "properties" : [ "domainValueTypeByParentDomainValueTypeId1", "domainValueTypeByDomainValueTypeId", "domainValueTypeByParentDomainValueTypeId2" ],
+    "properties" : [ "domainValueTypeByDomainValueTypeId", "domainValueTypeByParentDomainValueTypeId2", "domainValueTypeByParentDomainValueTypeId1" ],
     "relatedTables" : [ {
-      "columnName" : "domainValueTypeByParentDomainValueTypeId1",
-      "relationName" : "domainValueTypeByParentDomainValueTypeId1",
-      "type" : "DomainValueType",
-      "watchOn" : "TELUSAgentUIDBDomainValueTypeData",
-      "package" : "com.fico.dmp.telusagentuidb.DomainValueTypeRelationship"
-    }, {
       "columnName" : "domainValueTypeByDomainValueTypeId",
       "relationName" : "domainValueTypeByDomainValueTypeId",
       "type" : "DomainValueType",
@@ -1766,6 +1838,12 @@
     }, {
       "columnName" : "domainValueTypeByParentDomainValueTypeId2",
       "relationName" : "domainValueTypeByParentDomainValueTypeId2",
+      "type" : "DomainValueType",
+      "watchOn" : "TELUSAgentUIDBDomainValueTypeData",
+      "package" : "com.fico.dmp.telusagentuidb.DomainValueTypeRelationship"
+    }, {
+      "columnName" : "domainValueTypeByParentDomainValueTypeId1",
+      "relationName" : "domainValueTypeByParentDomainValueTypeId1",
       "type" : "DomainValueType",
       "watchOn" : "TELUSAgentUIDBDomainValueTypeData",
       "package" : "com.fico.dmp.telusagentuidb.DomainValueTypeRelationship"

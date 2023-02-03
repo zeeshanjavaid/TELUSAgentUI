@@ -211,6 +211,25 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "FormUserModel" : {
+    "_id" : "wm-FormUserModel-wm.Variable-1675423663159",
+    "name" : "FormUserModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "firstName" : "",
+      "lastName" : "",
+      "userId" : "",
+      "email" : "",
+      "status" : "",
+      "role" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getAllUsers" : {
     "_id" : "wm-getAllUsers1-wm.LiveVariable-1674568554858",
     "name" : "getAllUsers",
@@ -1150,6 +1169,22 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "StatusModel" : {
+    "_id" : "wm-StatusModel-wm.Variable-1675423438730",
+    "name" : "StatusModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Active"
+    }, {
+      "dataValue" : "Inactive"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "sv_bulkActivateDeactivate" : {
     "_id" : "wm-sv_bulkActivateDeactivate-wm.ServiceVariable-1662983073301",
     "name" : "sv_bulkActivateDeactivate",
@@ -1258,30 +1293,6 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
-  },
-  "TELUSAgentUIDBGetUser" : {
-    "_id" : "wm-TELUSAgentUIDBGetUser-wm.ServiceVariable-1674732339960",
-    "name" : "TELUSAgentUIDBGetUser",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "com.fico.dmp.telusagentuidb.User",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "getUser",
-    "operationId" : "UserController_getUser",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "isDefault" : true,
-    "controller" : "User"
   },
   "updateUser" : {
     "_id" : "wm-updateUser1-wm.LiveVariable-1674568936405",
@@ -2161,6 +2172,54 @@
     "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "UserManagementServiceCreateUser" : {
+    "_id" : "wm-UserManagementServiceCreateUser-wm.ServiceVariable-1675403268358",
+    "name" : "UserManagementServiceCreateUser",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "UserManagementService",
+    "operation" : "createUser",
+    "operationId" : "UserManagementController_createUser",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "UserManagement"
+  },
+  "UserManagementServiceUpdateUser" : {
+    "_id" : "wm-UserManagementServiceUpdateUser-wm.ServiceVariable-1675407786991",
+    "name" : "UserManagementServiceUpdateUser",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "UserManagementService",
+    "operation" : "updateUser",
+    "operationId" : "UserManagementController_updateUser",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "UserManagement"
   },
   "userMV" : {
     "_id" : "wm-userMV-wm.Variable-1655205848240",

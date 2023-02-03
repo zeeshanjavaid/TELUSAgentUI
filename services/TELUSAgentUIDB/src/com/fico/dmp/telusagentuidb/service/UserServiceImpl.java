@@ -65,13 +65,13 @@ public class UserServiceImpl implements UserService {
 
     @Lazy
     @Autowired
-    @Qualifier("TELUSAgentUIDB.UserGroupService")
-    private UserGroupService userGroupService;
+    @Qualifier("TELUSAgentUIDB.AuditDataChangeService")
+    private AuditDataChangeService auditDataChangeService;
 
     @Lazy
     @Autowired
-    @Qualifier("TELUSAgentUIDB.AuditDataChangeService")
-    private AuditDataChangeService auditDataChangeService;
+    @Qualifier("TELUSAgentUIDB.UserGroupService")
+    private UserGroupService userGroupService;
 
     @Lazy
     @Autowired
@@ -95,13 +95,13 @@ public class UserServiceImpl implements UserService {
 
     @Lazy
     @Autowired
-    @Qualifier("TELUSAgentUIDB.GroupService")
-    private GroupService groupService;
+    @Qualifier("TELUSAgentUIDB.DomainValueTypeService")
+    private DomainValueTypeService domainValueTypeService;
 
     @Lazy
     @Autowired
-    @Qualifier("TELUSAgentUIDB.DomainValueTypeService")
-    private DomainValueTypeService domainValueTypeService;
+    @Qualifier("TELUSAgentUIDB.GroupService")
+    private GroupService groupService;
 
     @Lazy
     @Autowired
@@ -268,68 +268,24 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<UserGroup> findAssociatedUserGroupsForUserId(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userGroupsForUserId");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUserId.id = '" + id + "'");
-
-        return userGroupService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<UserGroup> findAssociatedUserGroupsForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userGroupsForUpdatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
-
-        return userGroupService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<UserGroup> findAssociatedUserGroupsForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userGroupsForCreatedBy");
+    public Page<Party> findAssociatedPartiesForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated partiesForCreatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
-        return userGroupService.findAll(queryBuilder.toString(), pageable);
+        return partyService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
+    public Page<Party> findAssociatedPartiesForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated partiesForUpdatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
-        return groupService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated _groupsForCreatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
-
-        return groupService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated auditDataChanges");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("user.id = '" + id + "'");
-
-        return auditDataChangeService.findAll(queryBuilder.toString(), pageable);
+        return partyService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -356,24 +312,13 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userRoles");
+    public Page<DomainValue> findAssociatedDomainValuesForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValuesForCreatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("user.id = '" + id + "'");
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
-        return userRoleService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated teamUsers");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("user.id = '" + id + "'");
-
-        return teamUserService.findAll(queryBuilder.toString(), pageable);
+        return domainValueService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -383,17 +328,6 @@ public class UserServiceImpl implements UserService {
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
-
-        return domainValueService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<DomainValue> findAssociatedDomainValuesForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValuesForCreatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
         return domainValueService.findAll(queryBuilder.toString(), pageable);
     }
@@ -422,68 +356,24 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<User> findAssociatedUsersForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated usersForCreatedBy");
+    public Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userRoles");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+        queryBuilder.append("user.id = '" + id + "'");
 
-        return findAll(queryBuilder.toString(), pageable);
+        return userRoleService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<User> findAssociatedUsersForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated usersForUpdatedBy");
+    public Page<Queue> findAssociatedQueuesForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated queuesForUpdatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
-        return findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValueTypesForCreatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
-
-        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValueTypesForUpdatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
-
-        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<Document> findAssociatedDocumentsForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated documentsForCreatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
-
-        return documentService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<Document> findAssociatedDocumentsForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated documentsForUpdatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
-
-        return documentService.findAll(queryBuilder.toString(), pageable);
+        return queueService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -510,13 +400,46 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Queue> findAssociatedQueuesForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated queuesForUpdatedBy");
+    public Page<Document> findAssociatedDocumentsForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated documentsForUpdatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
-        return queueService.findAll(queryBuilder.toString(), pageable);
+        return documentService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<Document> findAssociatedDocumentsForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated documentsForCreatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+
+        return documentService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<AuditDataChange> findAssociatedAuditDataChanges(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated auditDataChanges");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("user.id = '" + id + "'");
+
+        return auditDataChangeService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated teamUsers");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("user.id = '" + id + "'");
+
+        return teamUserService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -543,24 +466,101 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Party> findAssociatedPartiesForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated partiesForUpdatedBy");
+    public Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValueTypesForUpdatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
-        return partyService.findAll(queryBuilder.toString(), pageable);
+        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Party> findAssociatedPartiesForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated partiesForCreatedBy");
+    public Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValueTypesForCreatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
-        return partyService.findAll(queryBuilder.toString(), pageable);
+        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<User> findAssociatedUsersForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated usersForCreatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+
+        return findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<User> findAssociatedUsersForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated usersForUpdatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
+
+        return findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
+
+        return groupService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _groupsForCreatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+
+        return groupService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<UserGroup> findAssociatedUserGroupsForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userGroupsForCreatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+
+        return userGroupService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<UserGroup> findAssociatedUserGroupsForUserId(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userGroupsForUserId");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByUserId.id = '" + id + "'");
+
+        return userGroupService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<UserGroup> findAssociatedUserGroupsForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userGroupsForUpdatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
+
+        return userGroupService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**
@@ -575,19 +575,19 @@ public class UserServiceImpl implements UserService {
     /**
      * This setter method should only be used by unit tests
      *
-     * @param service UserGroupService instance
+     * @param service AuditDataChangeService instance
      */
-    protected void setUserGroupService(UserGroupService service) {
-        this.userGroupService = service;
+    protected void setAuditDataChangeService(AuditDataChangeService service) {
+        this.auditDataChangeService = service;
     }
 
     /**
      * This setter method should only be used by unit tests
      *
-     * @param service AuditDataChangeService instance
+     * @param service UserGroupService instance
      */
-    protected void setAuditDataChangeService(AuditDataChangeService service) {
-        this.auditDataChangeService = service;
+    protected void setUserGroupService(UserGroupService service) {
+        this.userGroupService = service;
     }
 
     /**
@@ -629,19 +629,19 @@ public class UserServiceImpl implements UserService {
     /**
      * This setter method should only be used by unit tests
      *
-     * @param service GroupService instance
+     * @param service DomainValueTypeService instance
      */
-    protected void setGroupService(GroupService service) {
-        this.groupService = service;
+    protected void setDomainValueTypeService(DomainValueTypeService service) {
+        this.domainValueTypeService = service;
     }
 
     /**
      * This setter method should only be used by unit tests
      *
-     * @param service DomainValueTypeService instance
+     * @param service GroupService instance
      */
-    protected void setDomainValueTypeService(DomainValueTypeService service) {
-        this.domainValueTypeService = service;
+    protected void setGroupService(GroupService service) {
+        this.groupService = service;
     }
 
     /**

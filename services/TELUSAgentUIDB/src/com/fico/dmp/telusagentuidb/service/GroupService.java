@@ -205,16 +205,16 @@ public interface GroupService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated userGroups for given Group id.
+     * Returns the associated groupRoles for given Group id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated UserGroup instances.
+     * @return Paginated list of associated GroupRole instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<UserGroup> findAssociatedUserGroups(Integer id, Pageable pageable);
+    Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable);
 
     /*
      * Returns the associated queueGroups for given Group id.
@@ -229,15 +229,15 @@ public interface GroupService {
     Page<QueueGroup> findAssociatedQueueGroups(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated groupRoles for given Group id.
+     * Returns the associated userGroups for given Group id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated GroupRole instances.
+     * @return Paginated list of associated UserGroup instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable);
+    Page<UserGroup> findAssociatedUserGroups(Integer id, Pageable pageable);
 
 }

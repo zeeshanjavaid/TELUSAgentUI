@@ -42,11 +42,11 @@ public class DomainValueTypeRelationship implements Serializable {
 
     private Integer parentDomainValueTypeId2;
 
-    private DomainValueType domainValueTypeByDomainValueTypeId;
-
     private DomainValueType domainValueTypeByParentDomainValueTypeId2;
 
     private DomainValueType domainValueTypeByParentDomainValueTypeId1;
+
+    private DomainValueType domainValueTypeByDomainValueTypeId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,21 +87,6 @@ public class DomainValueTypeRelationship implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`DomainValueTypeId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelaticKovn`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValueType getDomainValueTypeByDomainValueTypeId() {
-        return this.domainValueTypeByDomainValueTypeId;
-    }
-
-    public void setDomainValueTypeByDomainValueTypeId(DomainValueType domainValueTypeByDomainValueTypeId) {
-        if(domainValueTypeByDomainValueTypeId != null) {
-            this.domainValueTypeId = domainValueTypeByDomainValueTypeId.getId();
-        }
-
-        this.domainValueTypeByDomainValueTypeId = domainValueTypeByDomainValueTypeId;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`ParentDomainValueTypeId2`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelatiY1y2v`"))
     @Fetch(FetchMode.JOIN)
     public DomainValueType getDomainValueTypeByParentDomainValueTypeId2() {
@@ -129,6 +114,21 @@ public class DomainValueTypeRelationship implements Serializable {
         }
 
         this.domainValueTypeByParentDomainValueTypeId1 = domainValueTypeByParentDomainValueTypeId1;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`DomainValueTypeId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelaticKovn`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValueType getDomainValueTypeByDomainValueTypeId() {
+        return this.domainValueTypeByDomainValueTypeId;
+    }
+
+    public void setDomainValueTypeByDomainValueTypeId(DomainValueType domainValueTypeByDomainValueTypeId) {
+        if(domainValueTypeByDomainValueTypeId != null) {
+            this.domainValueTypeId = domainValueTypeByDomainValueTypeId.getId();
+        }
+
+        this.domainValueTypeByDomainValueTypeId = domainValueTypeByDomainValueTypeId;
     }
 
 

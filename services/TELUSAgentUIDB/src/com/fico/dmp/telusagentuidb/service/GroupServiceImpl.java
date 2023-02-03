@@ -198,13 +198,13 @@ public class GroupServiceImpl implements GroupService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<UserGroup> findAssociatedUserGroups(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated userGroups");
+    public Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated groupRoles");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("_group.id = '" + id + "'");
 
-        return userGroupService.findAll(queryBuilder.toString(), pageable);
+        return groupRoleService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -220,13 +220,13 @@ public class GroupServiceImpl implements GroupService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated groupRoles");
+    public Page<UserGroup> findAssociatedUserGroups(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated userGroups");
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("_group.id = '" + id + "'");
 
-        return groupRoleService.findAll(queryBuilder.toString(), pageable);
+        return userGroupService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**

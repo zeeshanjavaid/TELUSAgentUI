@@ -8,7 +8,7 @@ public class UserDTO {
 	private String firstName;
 	@NotNull(message = "Last name is missing")
 	private String lastName;
-	@NotNull(message = "UserId is missing")
+	//@NotNull(message = "UserId is missing")
 	private String userId;
 	@NotNull(message = "Email is missing")
 	private String email;
@@ -16,7 +16,6 @@ public class UserDTO {
 	private String status;
 	@NotNull(message = "Role is missing")
 	private String role;
-
 	private boolean isActive;
 	
 	public String getFirstName() {
@@ -75,4 +74,5 @@ public class UserDTO {
 		this.isActive = isActive;
 	}
 	
+
 }

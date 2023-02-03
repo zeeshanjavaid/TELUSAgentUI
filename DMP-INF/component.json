@@ -249,15 +249,6 @@
       "LCM_PROD_MIN_REPLICAS" : "${lcmProductionReplicasMin}"
     },
     "kubespec" : "DMP-INF/manifest/production/deployment.yaml"
-  }, {
-    "kind" : "service",
-    "name" : "TELUSAgentUIDB",
-    "type" : "MySQL",
-    "id" : "TELUSAgentUIDB",
-    "env" : [ "design", "staging", "production" ],
-    "dbVendor" : "mysql",
-    "scope" : "solution",
-    "serviceId" : "TELUSAgentUIDB"
   } ],
   "license" : "public/license.txt",
   "documentation" : "public/readme.html",

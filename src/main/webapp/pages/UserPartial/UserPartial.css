@@ -16,6 +16,12 @@
     margin: 1.75rem auto;
 }*/
 
+.aaa{
+    left: 20em;
+    margin-top: 0px;
+    top: 2.7em
+}
+
 div[name='userMVTable1'] .app-grid-header table {
     border-bottom: transparent !important;
 }
@@ -426,4 +432,252 @@ input[name='lendingAmount_input'] {
 }
 .app-grid .app-datagrid .table-container {
     padding: 20px !important;
+}
+
+
+
+
+
+
+
+:root {
+    --primaryColor: #00629b;
+    --leftMenuBGColor: #f2f2f2;
+    --defaultLabelColor: #333;
+    --displayValue: block;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.width-full {
+    width: 100% !important;
+    margin: 0;
+}
+
+.inflex-center-sb {
+    display: flex;
+    align-items: center !important;
+}
+
+.colflex-center-sb {
+    display: flex;
+    align-items: center !important;
+}
+
+.flexCol {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: none !important;
+        
+}
+
+.jc-center {
+    justify-content: center !important;
+}
+
+.jc-flexEnd {
+    justify-content: flex-end;   
+}
+
+.header-label {
+    font-size: 36px;
+    color: #333;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+    left: -1px;
+}
+
+.control-label {
+    font-family: 'robotolight', 'robotoregular' !important;
+    font-size: 16px !important;
+}
+
+.inner-wrapper {
+    width: 97% !important;
+    margin: 0;
+    padding: 0;
+    inset: 0 !important;
+}
+
+.inner-wrapper .form-group {
+    margin: 0 !important;
+}
+
+.inner-wrapper .form-group > label {
+    float: left !important;
+}
+
+.inner-wrapper .form-group > div {
+    float: right !important;
+}
+
+/*date-time picker styles*/
+.input-group-append > button {
+    padding: 0 8px !important;
+    inset: 0 !important;
+    height: 30px;
+    border-top: 1px solid #a9a9a9!important;
+    border-right: 1px solid #a9a9a9!important;
+    border-bottom: 1px solid #a9a9a9!important;
+    border-radius: 0 !important;
+}
+
+.input-group-append > button > i {
+    font-size: 15pt !important;
+}
+
+.app-datetime .input-group-append {
+    display: inline-flex !important;
+    justify-content: flex-start;
+    height: inherit !important;
+    inset: 0 !important;
+    float: right;   
+}
+
+.app-date.input-group > input {
+    width: 100% !important;
+}
+
+.app-datetime.input-group > div {
+    width: 100% !important;
+}
+
+.custom-font-color-red{
+    color:#a94442!important;
+}
+
+.upDown {
+    cursor: pointer !important;
+    color: var(--defaultLabelColor) !important;
+    background: transparent !important;
+    outline: none !important;
+    border: transparent !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    padding: 0 !important;
+}
+
+ .upDown > i{
+    font-size: 30px !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    inset: 0 !important;
+}
+
+.msg {
+    margin-bottom: 20px !important;
+}
+
+/* Data-table styles */
+div[name='getActivityEventLogsTable1'] .app-grid-content > table td {
+    word-break: break-word;
+    vertical-align: middle;
+}
+
+div[name='getActivityEventLogsTable1'] table {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+}
+
+div[name='getActivityEventLogsTable1'] .table-container {
+    max-width: 100% !important;
+}
+
+div[name='getActivityEventLogsTable1'] img {
+    width: 40px !important;
+    height: 40px !important;
+    background: transparent !important;
+    border: transparent !important;
+    
+}
+
+div[data-col-identifier='activityTypeDesc'] > div {
+    display: inline-flex !important;
+    width: fit-content !important;
+    align-items: center;
+}
+
+div[name='getActivityEventLogsTable1'] div[data-col-identifier='actions'] > button {
+    background: transparent !important;
+}
+
+.request-response-tabs .nav-item.active-tab{
+    text-decoration: underline;
+}
+
+.app-datetime.input-group{
+    max-width: 100%!important;
+    width: 100% !important;
+}
+.app-content-column{
+    display: block !important;
+    padding: 10px 20px 0px !important;
+}
+.app-content {
+    height: auto !important;
+}
+
+.wm-app .form-group {
+    margin-bottom: 0px !important;
+}
+table {
+  border-collapse: collapse;
+  width: 100% !important;
+  border: none !important;
+}
+
+td, th {
+   border-top: none !important;
+  text-align: left;
+  padding: 8px;
+}
+.right_icon {
+    float: right !important;
+}
+.left_nav {
+    padding: 20px 0 0 20px !important;
+}
+.wm-app .table>tbody>tr>th{
+    padding: 10px 10px 10px 40px !important;
+    border-top: none !important;
+}
+.create_user_btn {
+    float: right !important;
+}
+.box_border {
+    border: 1px solid !important;
+    padding: 20px !important;
+}
+.wm-app .app-form .form-group.caption-top .form-control-static+.app-input-wrapper>.form-control {
+    width: 85% !important;
+}
+.wm-app .app-form.align-right .caption-top .form-control {
+    float: left !important;
+}
+
+.aaa{
+    left: 20em;
+    margin-top: 0px;
+    top: 2.7em
+}
+
+
+.closeButton{
+    left: 20em;
+    margin-top: 0px;
+    top: 2.7em
 }

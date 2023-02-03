@@ -202,13 +202,13 @@ public class ApplicationController {
         applicationService.importData(file);
     }
 
-    @RequestMapping(value="/{id:.+}/auditDataChanges", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the auditDataChanges instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/parties", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the parties instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<AuditDataChange> findAssociatedAuditDataChanges(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<Party> findAssociatedParties(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated auditDataChanges");
-        return applicationService.findAssociatedAuditDataChanges(id, pageable);
+        LOGGER.debug("Fetching all associated parties");
+        return applicationService.findAssociatedParties(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/notes", method=RequestMethod.GET)
@@ -220,15 +220,6 @@ public class ApplicationController {
         return applicationService.findAssociatedNotes(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/activities", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the activities instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Activity> findAssociatedActivities(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated activities");
-        return applicationService.findAssociatedActivities(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/documents", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the documents instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -236,6 +227,15 @@ public class ApplicationController {
 
         LOGGER.debug("Fetching all associated documents");
         return applicationService.findAssociatedDocuments(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/auditDataChanges", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the auditDataChanges instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<AuditDataChange> findAssociatedAuditDataChanges(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated auditDataChanges");
+        return applicationService.findAssociatedAuditDataChanges(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/errorEntities", method=RequestMethod.GET)
@@ -247,13 +247,13 @@ public class ApplicationController {
         return applicationService.findAssociatedErrorEntities(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/parties", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the parties instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/activities", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the activities instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Party> findAssociatedParties(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<Activity> findAssociatedActivities(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated parties");
-        return applicationService.findAssociatedParties(id, pageable);
+        LOGGER.debug("Fetching all associated activities");
+        return applicationService.findAssociatedActivities(id, pageable);
     }
 
     /**
