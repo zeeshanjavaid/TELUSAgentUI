@@ -8,11 +8,11 @@ public class UserDTO {
 	private String firstName;
 	@NotNull(message = "Last name is missing")
 	private String lastName;
-	//@NotNull(message = "UserId is missing")
+	@NotNull(message = "UserId is missing")
 	private String userId;
 	@NotNull(message = "Email is missing")
 	private String email;
-	@NotNull(message = "Status is missing")
+	//@NotNull(message = "Status is missing")
 	private String status;
 	@NotNull(message = "Role is missing")
 	private String role;

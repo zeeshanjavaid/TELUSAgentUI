@@ -279,11 +279,6 @@
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
         <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.UserManagementServiceCreateUser.dataSet" captionalign="left" name="createUserForm1">
             <wm-layoutgrid columns="1" name="layoutgrid6">
-                <wm-gridrow name="gridrow17">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                        <wm-form-field name="UserDTO_email" readonly="false" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
                 <wm-gridrow name="gridrow18">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn25">
                         <wm-form-field name="UserDTO_firstName" readonly="false" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
@@ -294,14 +289,24 @@
                         <wm-form-field name="UserDTO_lastName" readonly="false" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
+                <wm-gridrow name="gridrow17">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn24">
+                        <wm-form-field name="UserDTO_email" readonly="false" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                        <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" displayname="User Id" widget="text" show="true" inputtype="text" placeholder="Enter value"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
                 <wm-gridrow name="gridrow20">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27">
                         <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow22">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn29">
-                        <wm-form-field name="UserDTO_status" key="UserDTO.status" type="string" displayname="Status" widget="radioset" show="true" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:&quot;Active&quot;"></wm-form-field>
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Active" widget="checkbox" show="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>

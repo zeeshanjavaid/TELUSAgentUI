@@ -1175,13 +1175,16 @@
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Active"
-    }, {
-      "dataValue" : "Inactive"
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Active"
     } ],
-    "type" : "string",
+    "dataSet" : [ {
+      "dataValue" : true
+    }, {
+      "dataValue" : false
+    } ],
+    "type" : "boolean",
     "isList" : true,
     "saveInPhonegap" : false
   },

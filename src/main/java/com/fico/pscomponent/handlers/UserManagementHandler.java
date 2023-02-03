@@ -144,7 +144,7 @@ public class UserManagementHandler {
 				return new ResponseEntity<String>("User does not have permission", HttpStatus.BAD_REQUEST);
 			}
 
-			User dbUser = userService.getByUserId(userDTO.getEmail());
+			User dbUser = userService.getByUserId(userDTO.getUserId());
 
 			// Check if details really changed
 			if (!userDTO.getFirstName().equals(dbUser.getFirstName())) {
@@ -236,6 +236,18 @@ public class UserManagementHandler {
 			 * (!Objects.isNull(alert.getUser())) { alert.setUser(null);
 			 * alert.setUserId(null); alertService.update(alert); } });
 			 */
+			 
+			 	Pageable pageable = PageRequest.of(0, 100);
+			List<UserRole> userRoleList = new ArrayList<UserRole>();
+			Page<UserRole> userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
+			while (!userRolePage.isEmpty()) {
+				pageable = pageable.next();
+				userRoleList.addAll(userRolePage.getContent());
+				userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
+			}
+			if (!userRoleList.isEmpty()) {
+				userRoleList.stream().forEach(userRole -> userRoleService.delete(userRole));
+			}
 
 			userService.delete(dbUser);
 		} catch (Exception e) {
