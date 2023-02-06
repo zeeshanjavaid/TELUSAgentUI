@@ -69,7 +69,8 @@
                                             <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
                                                 <wm-label class="col-md-3 control-label" name="label5" caption="Team Manager" width="40%"></wm-label>
                                                 <wm-container class="col-md-9" name="container5" width="60%">
-                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet" datafield="id" displayfield="description"></wm-select>
+                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
+                                                        datafield="id" displayfield="description"></wm-select>
                                                 </wm-container>
                                             </wm-composite>
                                         </wm-container>
@@ -225,16 +226,16 @@
                             <wm-container name="container10 ">
                                 <wm-label padding="unset 0.5em " name="label8 " caption="Permissions " show="false
                                             "></wm-label>
-                                <wm-panel iconclass="bind:Variables.isExpandedPermission.dataSet.dataValue === false?'fico-icon-arrow-bold-right':'fico-icon-arrow-bold-down'" autoclose="outsideClick " title="Permissions " name="panelPermission" collapsible="true " enablefullscreen="false "
-                                    closable="false" on-expand="panelPermissionExpand($event, widget)" class="panel-g-r" on-collapse="panelPermissionCollapse($event, widget)" expanded="true">
+                                <wm-panel iconclass="bind:Variables.isExpandedPermission.dataSet.dataValue === false?'fico-icon-arrow-bold-right':'fico-icon-arrow-bold-down'" autoclose="outsideClick " title="Permissions " name="panelPermission"
+                                    collapsible="true " enablefullscreen="false " closable="false" on-expand="panelPermissionExpand($event, widget)" class="panel-g-r" on-collapse="panelPermissionCollapse($event, widget)" expanded="true">
                                     <!--<wm-panel-footer name="panel_footer1 ">-->
                                     <!--<wm-search name="searchRole " datafield="All Fields " class="searchMargin " placeholder="Filter permission" loadingdatamsg=" "></wm-search>-->
                                     <wm-container name="permissionSearchTextContainer" class="serachSection" padding="0.5em unset">
                                         <wm-text name="permissionSearchText" placeholder="Filter permissions" class="searchText" on-keyup="permissionSearchTextKeyup($event, widget)" updateon="default" autocomplete="true"></wm-text>
                                         <wm-button class="btn-link button-addon" caption="" type="button" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
                                     </wm-container>
-                                    <wm-list listclass="list-group fi-horizontal-list " itemclass="list-group-item popover-custom fi-horizontal-list-item " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list permission-list" name="PermissionMVList1" dataset="bind:Variables.PermissionsMV.dataSet"
-                                        navigation="None " navigationalign="left " horizontalalign="center " pagesize="20 " nodatamessage="bind:appLocale.TABLE_NO_DATA_MESSAGE
+                                    <wm-list listclass="list-group fi-horizontal-list " itemclass="list-group-item popover-custom fi-horizontal-list-item " template="true " itemsperrow="xs-1 sm-1 md-1 lg-1 " class="media-list permission-list" name="PermissionMVList1"
+                                        dataset="bind:Variables.PermissionsMV.dataSet" navigation="None " navigationalign="left " horizontalalign="center " pagesize="20 " nodatamessage="bind:appLocale.TABLE_NO_DATA_MESSAGE
                                             " showrecordcount="false " show="true" style="margin-left: 0.85em;">
                                         <wm-listtemplate layout="inline " name="listtemplate1 ">
                                             <!-- <wm-container class="media-body " name="listItem " opacity="1 " backgroundrepeat="repeat-x "><wm-label name="label " caption="bind:Variables.PermissionsMV.dataSet.data[$i].name" class="Permissionlist-label"></wm-label></wm-container>-->
@@ -274,7 +275,6 @@
         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updateUser.open()" disabled="false" widget-type="button"></wm-table-row-action>
         <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
     </wm-table>
-
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create>User" iconclass="wi wi-file-text" name="createUserPage">
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
         <hr>
@@ -302,19 +302,20 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" layout="inline"
-                            required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
+                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                            layout="inline" required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="All Fields" displayfield="dataValue" layout="inline"
-                            class="ds_grid" readonly="false"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="dataValue"
+                            layout="inline" class="ds_grid" readonly="false"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
@@ -350,8 +351,8 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow28">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn35">
-                        <wm-form-field name="UserDTO_status" readonly="false" displayname="Status" key="UserDTO.status" type="string" show="true" widget="radioset" inputtype="text" placeholder="Enter value" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="dataValue"
-                            datavalue="bind:&quot;Active&quot;"></wm-form-field>
+                        <wm-form-field name="UserDTO_status" readonly="false" displayname="Status" key="UserDTO.status" type="string" show="true" widget="radioset" inputtype="text" placeholder="Enter value" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue"
+                            displayfield="dataValue" datavalue="bind:&quot;Active&quot;"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
