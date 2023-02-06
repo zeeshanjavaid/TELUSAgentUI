@@ -52,13 +52,13 @@ public class Party implements Serializable {
 
     private Integer applicationRole;
 
+    private User userByUpdatedBy;
+
     private User userByCreatedBy;
 
     private Application application;
 
     private DomainValue domainValue;
-
-    private User userByUpdatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -135,6 +135,21 @@ public class Party implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK3ge8qx045mlshses9gi4yslsl`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByUpdatedBy() {
+        return this.userByUpdatedBy;
+    }
+
+    public void setUserByUpdatedBy(User userByUpdatedBy) {
+        if(userByUpdatedBy != null) {
+            this.updatedBy = userByUpdatedBy.getId();
+        }
+
+        this.userByUpdatedBy = userByUpdatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKl2i1vjbwn6mbfagrn8c1ox66x`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByCreatedBy() {
@@ -177,21 +192,6 @@ public class Party implements Serializable {
         }
 
         this.domainValue = domainValue;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK3ge8qx045mlshses9gi4yslsl`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByUpdatedBy() {
-        return this.userByUpdatedBy;
-    }
-
-    public void setUserByUpdatedBy(User userByUpdatedBy) {
-        if(userByUpdatedBy != null) {
-            this.updatedBy = userByUpdatedBy.getId();
-        }
-
-        this.userByUpdatedBy = userByUpdatedBy;
     }
 
 

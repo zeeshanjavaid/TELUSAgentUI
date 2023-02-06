@@ -213,15 +213,6 @@ public class DomainValueController {
         return domainValueService.findAssociatedNotes(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/queuesForQueueResultPage", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queuesForQueueResultPage instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Queue> findAssociatedQueuesForQueueResultPage(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
-        return domainValueService.findAssociatedQueuesForQueueResultPage(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/queuesForPersonalQueueField", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the queuesForPersonalQueueField instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -231,13 +222,13 @@ public class DomainValueController {
         return domainValueService.findAssociatedQueuesForPersonalQueueField(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/documentsForType", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the documentsForType instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/queuesForQueueResultPage", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queuesForQueueResultPage instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Document> findAssociatedDocumentsForType(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<Queue> findAssociatedQueuesForQueueResultPage(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated documentsForType");
-        return domainValueService.findAssociatedDocumentsForType(id, pageable);
+        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
+        return domainValueService.findAssociatedQueuesForQueueResultPage(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/documentsForDocumentLabel", method=RequestMethod.GET)
@@ -249,6 +240,15 @@ public class DomainValueController {
         return domainValueService.findAssociatedDocumentsForDocumentLabel(id, pageable);
     }
 
+    @RequestMapping(value="/{id:.+}/documentsForType", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the documentsForType instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Document> findAssociatedDocumentsForType(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated documentsForType");
+        return domainValueService.findAssociatedDocumentsForType(id, pageable);
+    }
+
     @RequestMapping(value="/{id:.+}/domainValueDescriptions", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the domainValueDescriptions instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -256,15 +256,6 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated domainValueDescriptions");
         return domainValueService.findAssociatedDomainValueDescriptions(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
-        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/domainValueRelationsForDomainValueId", method=RequestMethod.GET)
@@ -285,13 +276,13 @@ public class DomainValueController {
         return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId2(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/activitiesForApplicationStatus", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the activitiesForApplicationStatus instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Activity> findAssociatedActivitiesForApplicationStatus(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated activitiesForApplicationStatus");
-        return domainValueService.findAssociatedActivitiesForApplicationStatus(id, pageable);
+        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
+        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/activitiesForSource", method=RequestMethod.GET)
@@ -310,6 +301,15 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated activitiesForType");
         return domainValueService.findAssociatedActivitiesForType(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/activitiesForApplicationStatus", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the activitiesForApplicationStatus instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Activity> findAssociatedActivitiesForApplicationStatus(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated activitiesForApplicationStatus");
+        return domainValueService.findAssociatedActivitiesForApplicationStatus(id, pageable);
     }
 
     /**

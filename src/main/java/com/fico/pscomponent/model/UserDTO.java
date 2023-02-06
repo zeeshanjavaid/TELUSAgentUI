@@ -1,6 +1,8 @@
 package com.fico.pscomponent.model;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
+
 
 public class UserDTO {
 
@@ -17,6 +19,9 @@ public class UserDTO {
 	@NotNull(message = "Role is missing")
 	private String role;
 	private boolean isActive;
+	
+	@NotNull(message = "Work Category is missing")
+	private List<String> workCategory;
 	
 	public String getFirstName() {
 		return firstName;
@@ -72,6 +77,14 @@ public class UserDTO {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+	
+	public List<String> getWorkCategory() {
+		return workCategory;
+	}
+
+	public void setWorkCategory(List<String> workCategory) {
+		this.workCategory = workCategory;
 	}
 	
 

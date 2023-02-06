@@ -193,17 +193,6 @@ public class DomainValueTypeServiceImpl implements DomainValueTypeService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForParentDomainValueTypeId2");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueTypeByParentDomainValueTypeId2.id = '" + id + "'");
-
-        return domainValueTypeRelationshipService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
     public Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId1(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForParentDomainValueTypeId1");
 
@@ -220,6 +209,17 @@ public class DomainValueTypeServiceImpl implements DomainValueTypeService {
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("domainValueTypeByDomainValueTypeId.id = '" + id + "'");
+
+        return domainValueTypeRelationshipService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForParentDomainValueTypeId2");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("domainValueTypeByParentDomainValueTypeId2.id = '" + id + "'");
 
         return domainValueTypeRelationshipService.findAll(queryBuilder.toString(), pageable);
     }

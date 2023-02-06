@@ -51,13 +51,13 @@ public class UserGroup implements Serializable {
 
     private Integer userId;
 
-    private User userByCreatedBy;
-
-    private Group _group;
-
     private User userByUserId;
 
     private User userByUpdatedBy;
+
+    private User userByCreatedBy;
+
+    private Group _group;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,36 +125,6 @@ public class UserGroup implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKf0m5kxg6yilupsilw35i8dmnt`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByCreatedBy() {
-        return this.userByCreatedBy;
-    }
-
-    public void setUserByCreatedBy(User userByCreatedBy) {
-        if(userByCreatedBy != null) {
-            this.createdBy = userByCreatedBy.getId();
-        }
-
-        this.userByCreatedBy = userByCreatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`groupId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKesfn3dt9bkqcd4fl90c4c94wb`"))
-    @Fetch(FetchMode.JOIN)
-    public Group get_group() {
-        return this._group;
-    }
-
-    public void set_group(Group _group) {
-        if(_group != null) {
-            this.groupId = _group.getId();
-        }
-
-        this._group = _group;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKcv4isf8wxxg8dc6fnbo4t546x`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByUserId() {
@@ -182,6 +152,36 @@ public class UserGroup implements Serializable {
         }
 
         this.userByUpdatedBy = userByUpdatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKf0m5kxg6yilupsilw35i8dmnt`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByCreatedBy() {
+        return this.userByCreatedBy;
+    }
+
+    public void setUserByCreatedBy(User userByCreatedBy) {
+        if(userByCreatedBy != null) {
+            this.createdBy = userByCreatedBy.getId();
+        }
+
+        this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`groupId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKesfn3dt9bkqcd4fl90c4c94wb`"))
+    @Fetch(FetchMode.JOIN)
+    public Group get_group() {
+        return this._group;
+    }
+
+    public void set_group(Group _group) {
+        if(_group != null) {
+            this.groupId = _group.getId();
+        }
+
+        this._group = _group;
     }
 
 

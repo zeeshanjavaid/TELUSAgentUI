@@ -1,0 +1,8 @@
+-- MIGRATION SCRIPT
+-- Database Type: DBType{type='mysql', urlScheme='jdbc:', dialect='org.hibernate.dialect.MySQLDialect', driverClass='org.mariadb.jdbc.Driver'}
+-- App Name: TELUSAgentUI
+-- Database: TELUSAgentUIDB
+-- Created At: 06-Feb-2023 06:22:50.UTC
+-- Script Version: 6.1
+-- -----------------------------------------------------------------
+-- USER SQL SCRIPT

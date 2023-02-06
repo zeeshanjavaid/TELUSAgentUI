@@ -234,17 +234,6 @@ public class DomainValueServiceImpl implements DomainValueService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByQueueResultPage.id = '" + id + "'");
-
-        return queueService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
     public Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
 
@@ -256,13 +245,13 @@ public class DomainValueServiceImpl implements DomainValueService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Document> findAssociatedDocumentsForType(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated documentsForType");
+    public Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByType.id = '" + id + "'");
+        queryBuilder.append("domainValueByQueueResultPage.id = '" + id + "'");
 
-        return documentService.findAll(queryBuilder.toString(), pageable);
+        return queueService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -278,6 +267,17 @@ public class DomainValueServiceImpl implements DomainValueService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
+    public Page<Document> findAssociatedDocumentsForType(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated documentsForType");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("domainValueByType.id = '" + id + "'");
+
+        return documentService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
     public Page<DomainValueDescription> findAssociatedDomainValueDescriptions(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated domainValueDescriptions");
 
@@ -285,17 +285,6 @@ public class DomainValueServiceImpl implements DomainValueService {
         queryBuilder.append("domainValue.id = '" + id + "'");
 
         return domainValueDescriptionService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByParentDomainValueId1.id = '" + id + "'");
-
-        return domainValueRelationService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -322,13 +311,13 @@ public class DomainValueServiceImpl implements DomainValueService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Activity> findAssociatedActivitiesForApplicationStatus(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated activitiesForApplicationStatus");
+    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByApplicationStatus.id = '" + id + "'");
+        queryBuilder.append("domainValueByParentDomainValueId1.id = '" + id + "'");
 
-        return activityService.findAll(queryBuilder.toString(), pageable);
+        return domainValueRelationService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -349,6 +338,17 @@ public class DomainValueServiceImpl implements DomainValueService {
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("domainValueByType.id = '" + id + "'");
+
+        return activityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<Activity> findAssociatedActivitiesForApplicationStatus(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated activitiesForApplicationStatus");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("domainValueByApplicationStatus.id = '" + id + "'");
 
         return activityService.findAll(queryBuilder.toString(), pageable);
     }

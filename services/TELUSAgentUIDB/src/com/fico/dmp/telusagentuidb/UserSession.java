@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "`USER_SESSION`", indexes = {
             @Index(name = "`INDEX_USER_SESSION_startedOn`", columnList = "`startedOn`"),
-            @Index(name = "`INDEX_USER_SESSION_authCvEwFf`", columnList = "`authCookie`, `userName`")})
+            @Index(name = "`INDEX_USER_SESSION_authCvEwFf`", columnList = "`userName`, `authCookie`")})
 public class UserSession implements Serializable {
 
 

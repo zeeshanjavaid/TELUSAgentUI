@@ -8,6 +8,74 @@
                     <wm-page-content columnwidth="12" name="page_content1">
                         <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full" width="100%">
                             <wm-container name="Searchcontainer" width="100%">
+                                <wm-message name="statusMessage" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" class="msg" show="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus"></wm-message>
+                                <wm-message name="message1" type="error" show="bind:showErrorMsg" caption="bind:ErrorMsg"></wm-message>
+                                <wm-container name="container21" width="100%" horizontalalign="left">
+                                    <wm-label caption="Users" class="header-label" name="lbl_activitylog"></wm-label>
+                                    <wm-container name="container22" class="create_user_btn">
+                                        <wm-button class="btn-default" caption="Create user" type="button" margin="unset 0.5em" name="button3" backgroundposition="top,right" on-click="Widgets.createUser.open()" iconposition="left" textalign="right"></wm-button>
+                                    </wm-container>
+                                </wm-container>
+                                <wm-container name="SearchFilter-wrapper" class="inflex-center-sb flexCol jc-center width-full box_border">
+                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset">
+                                        <wm-container name="appNum_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite1" class="inflex-center-sb jc-sb" width="90%" required="false">
+                                                <wm-composite name="composite8">
+                                                    <wm-label class="col-md-3 control-label" name="label9" caption="TeamID"></wm-label>
+                                                    <wm-container class="col-md-9" name="container23">
+                                                        <wm-select name="select4"></wm-select>
+                                                    </wm-container>
+                                                </wm-composite>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label class="col-md-3 control-label" name="label5" caption="Work Category" width="40%"></wm-label>
+                                                <wm-container class="col-md-9" name="container5" width="60%">
+                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.getWorkCategoriesByCode.dataSet"
+                                                        datafield="code" displayfield="code"></wm-select>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="ActivityName_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite3" class="inflex-center-sb jc-sb" width="90%">
+                                                <wm-container class="col-md-9" name="container4" width="100%">
+                                                    <wm-text name="txt_activity_ame" placeholder="" class="searchInput" width="100%" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activityname"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                    </wm-container>
+                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container12" margin="10px unset unset unset">
+                                        <wm-container name="createdOnStart_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite5" class="inflex-center-sb jc-sb" width="90%">
+                                                <wm-composite name="composite9">
+                                                    <wm-container class="col-md-9" name="container24"></wm-container>
+                                                </wm-composite>
+                                                <wm-composite name="composite10">
+                                                    <wm-container class="col-md-9" name="container25"></wm-container>
+                                                </wm-composite>
+                                                <wm-composite name="composite13">
+                                                    <wm-label class="col-md-3 control-label" name="label8_1" caption="Role"></wm-label>
+                                                    <wm-container class="col-md-9" name="container25_1">
+                                                        <wm-select name="select7_1" dataset="bind:Variables.GetAllRoles.dataSet" datafield="All Fields" displayexpression="bind:Variables.GetAllRoles.dataSet.value" datavalue="bind:Variables.GetAllRoles.dataSet.value"></wm-select>
+                                                    </wm-container>
+                                                </wm-composite>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-container name="container27_1"></wm-container>
+                                        <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
+                                            <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
+                                                <wm-label class="col-md-3 control-label" name="label5" caption="Team Manager" width="40%"></wm-label>
+                                                <wm-container class="col-md-9" name="container5" width="60%">
+                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
+                                                        datafield="id" displayfield="description"></wm-select>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-container>
+                                        <wm-button class="btn-primary" caption="SEARCH" type="button" margin="unset 0.5em unset unset" name="btn_Search" on-click="btn_SearchClick($event, widget)" width="14.2%"></wm-button>
+                                        <wm-button class="btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="btn_Clear" on-click="btn_ClearClick($event, widget)" width="14.2%"></wm-button>
+                                    </wm-container>
+                                </wm-container>
                                 <wm-dialog dialogtype="design-dialog" modal="true" title="User > Create" iconclass="wi wi-file-text" name="createUser">
                                     <wm-dialogactions name="dialogactions1"></wm-dialogactions>
                                     <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.CreateUser.dataSet" captionalign="right" name="createUserForm2">
@@ -54,74 +122,6 @@
                                         <wm-button class="aaa" caption="Back to User" on-click="closeDialog()" name="button4aaa" backgroundcolor="#003f5f" color="#fff"></wm-button>
                                     </wm-form>
                                     <!--<wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>--></wm-dialog>
-                                <wm-message name="statusMessage" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" class="msg" show="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus"></wm-message>
-                                <wm-message name="message1" type="error" show="bind:showErrorMsg" caption="bind:ErrorMsg"></wm-message>
-                                <wm-container name="container21" width="100%" horizontalalign="left">
-                                    <wm-label caption="Users" class="header-label" name="lbl_activitylog"></wm-label>
-                                    <wm-container name="container22" class="create_user_btn">
-                                        <wm-button class="btn-default" caption="Create user" type="button" margin="unset 0.5em" name="button3" backgroundposition="top,right" on-click="Widgets.createUser.open()" iconposition="left" textalign="right"></wm-button>
-                                    </wm-container>
-                                </wm-container>
-                                <wm-container name="SearchFilter-wrapper" class="inflex-center-sb flexCol jc-center width-full box_border">
-                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset">
-                                        <wm-container name="appNum_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
-                                            <wm-composite name="composite1" class="inflex-center-sb jc-sb" width="90%" required="false">
-                                                <wm-composite name="composite8">
-                                                    <wm-label class="col-md-3 control-label" name="label9" caption="TeamID"></wm-label>
-                                                    <wm-container class="col-md-9" name="container23">
-                                                        <wm-select name="select4"></wm-select>
-                                                    </wm-container>
-                                                </wm-composite>
-                                            </wm-composite>
-                                        </wm-container>
-                                        <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
-                                            <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
-                                                <wm-label class="col-md-3 control-label" name="label5" caption="Work Category" width="40%"></wm-label>
-                                                <wm-container class="col-md-9" name="container5" width="60%">
-                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
-                                                        datafield="id" displayfield="description"></wm-select>
-                                                </wm-container>
-                                            </wm-composite>
-                                        </wm-container>
-                                        <wm-container name="ActivityName_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
-                                            <wm-composite name="composite3" class="inflex-center-sb jc-sb" width="90%">
-                                                <wm-container class="col-md-9" name="container4" width="100%">
-                                                    <wm-text name="txt_activity_ame" placeholder="" class="searchInput" width="100%" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activityname"></wm-text>
-                                                </wm-container>
-                                            </wm-composite>
-                                        </wm-container>
-                                    </wm-container>
-                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container12" margin="10px unset unset unset">
-                                        <wm-container name="createdOnStart_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
-                                            <wm-composite name="composite5" class="inflex-center-sb jc-sb" width="90%">
-                                                <wm-composite name="composite9">
-                                                    <wm-container class="col-md-9" name="container24"></wm-container>
-                                                </wm-composite>
-                                                <wm-composite name="composite10">
-                                                    <wm-container class="col-md-9" name="container25"></wm-container>
-                                                </wm-composite>
-                                                <wm-composite name="composite13">
-                                                    <wm-label class="col-md-3 control-label" name="label8_1" caption="Role"></wm-label>
-                                                    <wm-container class="col-md-9" name="container25_1">
-                                                        <wm-select name="select7_1" dataset="bind:Variables.GetAllRoles.dataSet" datafield="All Fields" displayexpression="bind:Variables.GetAllRoles.dataSet.value" datavalue="bind:Variables.GetAllRoles.dataSet.value"></wm-select>
-                                                    </wm-container>
-                                                </wm-composite>
-                                            </wm-composite>
-                                        </wm-container>
-                                        <wm-container name="container27_1"></wm-container>
-                                        <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
-                                            <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
-                                                <wm-label class="col-md-3 control-label" name="label5" caption="Team Manager" width="40%"></wm-label>
-                                                <wm-container class="col-md-9" name="container5" width="60%">
-                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
-                                                        datafield="id" displayfield="description"></wm-select>
-                                                </wm-container>
-                                            </wm-composite>
-                                        </wm-container>
-                                        <wm-button class="btn-primary" caption="SEARCH" type="button" margin="unset 0.5em unset unset" name="btn_Search" on-click="btn_SearchClick($event, widget)" width="14.2%"></wm-button>
-                                        <wm-button class="btn-default" caption="CLEAR" type="button" margin="unset 0.5em" name="btn_Clear" on-click="btn_ClearClick($event, widget)" width="14.2%"></wm-button>
-                                    </wm-container>
-                                </wm-container>
                             </wm-container>
                         </wm-container>
                     </wm-page-content>

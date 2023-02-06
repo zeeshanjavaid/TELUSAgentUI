@@ -199,15 +199,6 @@ public class DomainValueTypeController {
         return domainValueTypeService.findAssociatedDomainValues(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/domainValueTypeRelationshipsForParentDomainValueTypeId2", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueTypeRelationshipsForParentDomainValueTypeId2 instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForParentDomainValueTypeId2");
-        return domainValueTypeService.findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/domainValueTypeRelationshipsForParentDomainValueTypeId1", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the domainValueTypeRelationshipsForParentDomainValueTypeId1 instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -224,6 +215,15 @@ public class DomainValueTypeController {
 
         LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForDomainValueTypeId");
         return domainValueTypeService.findAssociatedDomainValueTypeRelationshipsForDomainValueTypeId(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/domainValueTypeRelationshipsForParentDomainValueTypeId2", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueTypeRelationshipsForParentDomainValueTypeId2 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated domainValueTypeRelationshipsForParentDomainValueTypeId2");
+        return domainValueTypeService.findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(id, pageable);
     }
 
     /**

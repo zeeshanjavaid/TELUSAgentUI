@@ -78,6 +78,10 @@ public class UserManagementHandler {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
+	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
+	userDTO.getWorkCategory().forEach(a-> System.out.println(a));
+
+
 		// Check if user id and email id already exists
 		try {
 			userService.getByUserId(userDTO.getUserId());
@@ -163,7 +167,14 @@ public class UserManagementHandler {
 				}
 			}
 
-			dbUser.setUpdatedOn(new Timestamp(System.currentTimeMillis()));
+// 				if (!userDTO.getStatus().equals(dbUser.getStatus())) {
+// 				dbUser.setStatus(userDTO.getStatus());
+// 			}
+			
+			
+// 			dbUser.setUpdatedOn(new Timestamp(System.currentTimeMillis()));
+// 			dbUser.setUpdatedBy(securityService.getUserName());
+
 
 			dbUser = userService.update(dbUser);
 			
@@ -237,7 +248,7 @@ public class UserManagementHandler {
 			 * alert.setUserId(null); alertService.update(alert); } });
 			 */
 			 
-			 	Pageable pageable = PageRequest.of(0, 100);
+			 Pageable pageable = PageRequest.of(0, 100);
 			List<UserRole> userRoleList = new ArrayList<UserRole>();
 			Page<UserRole> userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
 			while (!userRolePage.isEmpty()) {
