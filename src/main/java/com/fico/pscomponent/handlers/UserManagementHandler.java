@@ -40,6 +40,8 @@ import com.fico.pscomponent.model.UserDTO;
 import com.fico.pscomponent.service.user.UserValidationService;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.security.SecurityService;
+import com.fico.dmp.telusagentuidb.WorkcategoryUser;
+import com.fico.dmp.telusagentuidb.service.WorkcategoryUserService;
 
 @Service
 public class UserManagementHandler {
@@ -65,6 +67,9 @@ public class UserManagementHandler {
 
 	@Autowired
 	private RoleManagementHandler roleMangementHandler;
+	
+	@Autowired
+	private WorkcategoryUserService workcategoryUserService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserManagementHandler.class);
 
@@ -128,6 +133,16 @@ public class UserManagementHandler {
 			userRole.setRole(role);
             logger.info("In handler before create userrole :::::::::::::::::::::");
 			userRoleService.create(userRole);
+			
+			//Create a user and work category relationship
+			for(String cat:userDTO.getWorkCategory())
+			{
+				WorkcategoryUser workcategoryUser=new WorkcategoryUser();
+				workcategoryUser.setUser(user);
+				workcategoryUser.setWorkCategory(cat);
+				logger.info("In handler before create workcategory user :::::::::::::::::::::");
+				workcategoryUserService.create(workcategoryUser);
+			}
 
 			return new ResponseEntity<String>("User created successfully", HttpStatus.OK);
 		} catch (Exception e) {
