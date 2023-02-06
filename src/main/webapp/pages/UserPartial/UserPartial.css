@@ -677,12 +677,12 @@ td, th {
 
 
 .closeButton{
-    left: 15em;
+    left: 21em;
     margin-top: 0px;
     top: 2.7em
 }
 .wm-app .modal-dialog .modal-body {
-    padding: 15px 80px 15px 25px !important;
+    padding: 3px 80px 15px 25px !important;
 }
 .m_10 {
     margin: 10px 0;
@@ -690,4 +690,14 @@ td, th {
 .save_btn {
     position: absolute;
     right: -4rem;
+}
+.ds_grid{
+    display:grid !important;
+}
+.wm-app hr {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    border: 0;
+    width: 465px;
+    border-top: 1px solid #000;
 }
