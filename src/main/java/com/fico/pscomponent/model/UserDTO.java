@@ -23,6 +23,9 @@ public class UserDTO {
 	@NotNull(message = "Work Category is missing")
 	private List<String> workCategory;
 	
+	@NotNull(message = "EmplID is missing")
+	private String emplId;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -85,6 +88,14 @@ public class UserDTO {
 
 	public void setWorkCategory(List<String> workCategory) {
 		this.workCategory = workCategory;
+	}
+	
+	public String getEmplId() {
+		return emplId;
+	}
+
+	public void setEmplId(String emplId) {
+		this.emplId = emplId;
 	}
 	
 

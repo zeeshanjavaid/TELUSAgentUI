@@ -51,7 +51,7 @@ Partial.onReady = function() {
 
 };
 
-Partial.userCreateMVTable1_UsernameOnClick = function($event, widget, row) {
+Partial.userCreateMVTable1_firstNameOnClick = function($event, widget, row) {
 
 };
 
@@ -592,6 +592,7 @@ Partial.sv_updateUserDetailsonSuccess = function(variable, data) {
 };
 
 Partial.dialogUserDetailsOpened = function($event, widget) {
+
     Partial.Variables.userLocalMsg.dataSet.dataValue = null;
 };
 
@@ -637,6 +638,10 @@ Partial.tz_selectBlur = function($event, widget) {
     Partial.saveUser_btnClick($event, Partial.Widgets.saveUser_btnClick);
 };
 
-Partial.executeGetGroupByUserId1onSuccess = function(variable, data){
-	
+Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
+
 };
+
+Partial.dialogUserDetails = function(row) {
+    Partial.Widgets.dialogUserDetails.open();
+}

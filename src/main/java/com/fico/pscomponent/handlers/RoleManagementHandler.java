@@ -1,8 +1,12 @@
 package com.fico.pscomponent.handlers;
 
 import com.fico.dmp.telusagentuidb.Role;
+import com.fico.dmp.telusagentuidb.UserRole;
+
 import com.fico.dmp.telusagentuidb.models.query.GetActiveRolesByUserNameResponse;
 import com.fico.dmp.telusagentuidb.service.RoleService;
+import com.fico.dmp.telusagentuidb.service.UserRoleService;
+
 import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorServiceImpl;
 import com.wavemaker.commons.model.security.RolesConfig;
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
@@ -26,6 +30,9 @@ public class RoleManagementHandler {
 
     @Autowired
     private RoleService roleService;
+    
+    @Autowired
+	private UserRoleService userRoleService;
 
     @Autowired
     private WMAppSecurityConfig wmAppSecurityConfig;
@@ -75,7 +82,7 @@ public class RoleManagementHandler {
 
     public List<String> getUserRoleByUserId(int userId) {
         List<String> roles = new ArrayList<String>();
-		/*Pageable pageable = PageRequest.of(0, 100);
+		Pageable pageable = PageRequest.of(0, 100);
 		List<UserRole> userRoleList = new ArrayList<UserRole>();
 		Page<UserRole> userRolePage = userRoleService.findAll(USERID + userId, pageable);
 		while (!userRolePage.isEmpty()) {
@@ -86,7 +93,7 @@ public class RoleManagementHandler {
 		if (!userRoleList.isEmpty()) {
 			roles.addAll(userRoleList.stream().map(userRole -> userRole.getRole().getRole())
 					.collect(Collectors.toList()));
-		}*/
+		}
         return roles;
     }
 

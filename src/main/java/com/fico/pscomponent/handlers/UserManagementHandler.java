@@ -108,6 +108,7 @@ public class UserManagementHandler {
 		User user = new User();
 		user.setFirstName(userDTO.getFirstName());
 		user.setLastName(userDTO.getLastName());
+		user.setEmplId(userDTO.getEmplId());
 		user.setUserId(userDTO.getUserId());
 		user.setEmail(userDTO.getEmail());
 		user.setActive(userDTO.isActive());
@@ -135,12 +136,12 @@ public class UserManagementHandler {
 			userRoleService.create(userRole);
 			
 			//Create a user and work category relationship
+			logger.info("In handler before create workcategory user :::::::::::::::::::::");
 			for(String cat:userDTO.getWorkCategory())
 			{
 				WorkcategoryUser workcategoryUser=new WorkcategoryUser();
 				workcategoryUser.setUser(user);
 				workcategoryUser.setWorkCategory(cat);
-				logger.info("In handler before create workcategory user :::::::::::::::::::::");
 				workcategoryUserService.create(workcategoryUser);
 			}
 
@@ -298,6 +299,7 @@ public class UserManagementHandler {
 		List<String> roles = new ArrayList<String>();
 		try {
 			User user = userService.getByUserId(userId);
+			 roles.addAll(roleMangementHandler.getUserRoleByUserId(user.getId()));
 		} catch (Exception e) {
 			logger.error("Error fetching roles of logged in user: ", e);
 		}
@@ -327,19 +329,27 @@ public class UserManagementHandler {
 	}
 	
 	public List<UserDTO> getAllUsers() throws Exception {
-		//logger.info("----Inside method 'getAllUsers'");
+		logger.info("----Inside method 'getAllUsers'");
 		List<UserDTO> userDTOs = new ArrayList<UserDTO>();
 	    List<User> usersList = userService.findAll("" , PageRequest.of(0, Integer.MAX_VALUE)).toList();
 	    	if(usersList == null || usersList.isEmpty());
 	    	else{
 	    	    usersList.forEach((user) -> {
 					try {
+					    logger.info("----Inside method 'getRoleByID'");
+					    List<String> userRolesByUserId = getUserRolesByUserId(user.getUserId());
+                        System.out.println(userRolesByUserId);
+					 //  UserRole roleById = userRoleService.getById(2);
 					    UserDTO userDTO = new UserDTO();
 					    userDTO.setFirstName(user.getFirstName());
 					    userDTO.setLastName(user.getLastName());
                 		userDTO.setUserId(user.getUserId());
                 		userDTO.setEmail(user.getEmail());
                 		userDTO.setActive(user.isActive());
+                		 if (!userRolesByUserId.isEmpty()) {
+                        userDTO.setRole(userRolesByUserId.get(0));
+                    }
+
                 		if(userDTO != null)
 							userDTOs.add(userDTO);
 					} catch (Exception e) {
