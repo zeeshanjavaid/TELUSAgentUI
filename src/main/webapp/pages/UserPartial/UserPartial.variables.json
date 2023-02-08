@@ -13,6 +13,29 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "deletUser" : {
+    "_id" : "wm-deletUser-wm.ServiceVariable-1675847782964",
+    "name" : "deletUser",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "UserManagementService",
+    "operation" : "deletUser",
+    "operationId" : "UserManagementController_deletUser",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "UserManagement"
+  },
   "dialogUserId" : {
     "_id" : "wm-dialogUserId-wm.Variable-1655373268226",
     "name" : "dialogUserId",
@@ -21,8 +44,8 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : {
-      "name" : "name0",
-      "dataValue" : "dataValue0"
+      "name" : "",
+      "dataValue" : ""
     },
     "type" : "entry",
     "isList" : false,

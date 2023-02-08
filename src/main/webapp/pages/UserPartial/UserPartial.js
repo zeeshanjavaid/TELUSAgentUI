@@ -643,5 +643,30 @@ Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
 };
 
 Partial.dialogUserDetails = function(row) {
+    debugger;
+    Partial.Variables.dialogUserId.dataSet = {};
+    debugger;
+    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+    debugger;
+    Partial.Variables.executeGetRoleByUserId.setInput({
+        'UserId': row.id
+    });
+    debugger;
+    Partial.Variables.executeGetRoleByUserId.invoke();
+    // Partial.Variables.executeGetPermissionByUserId.setInput({
+    //     'UserId': row.id
+    // });
+    // Partial.Variables.executeGetPermissionByUserId.invoke();
+    debugger;
+    Partial.Variables.executeGetGroupByUserId.setInput({
+        'UserId': row.id
+    });
+    Partial.Variables.executeGetGroupByUserId.invoke();
     Partial.Widgets.dialogUserDetails.open();
 }
+Partial.userMVTable1_customRowAction = function($event, row) {
+    Partial.Variables.deletUser.setInput({
+        'userId': row.email
+    });
+    Partial.Variables.deletUser.invoke();
+};

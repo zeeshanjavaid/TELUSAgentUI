@@ -247,36 +247,40 @@ public class UserManagementHandler {
 		return true;
 	}
 
-	public ResponseEntity<String> deleteUser(String userId) {
+	public ResponseEntity<String> deleteUser(String emailId) {
 		try {
-			User dbUser = userService.getByUserId(userId);
+            User dbUser = userService.getByEmail(emailId);
 
-			// Only Super user has permission to delete Super User
-			if (!isUserAllowedToDeleteSuperUser(dbUser.getUserId())) {
-				return new ResponseEntity<String>("User does not have permission", HttpStatus.BAD_REQUEST);
-			}
+// 			// Only Super user has permission to delete Super User
+// 			if (!isUserAllowedToDeleteSuperUser(dbUser.getUserId())) {
+// 				return new ResponseEntity<String>("User does not have permission", HttpStatus.BAD_REQUEST);
+// 			}
 
-			// Check if links to user are present
-			// If present delete that link
-			/*
-			 * getAllAlerts().stream().forEach(alert -> { if
-			 * (!Objects.isNull(alert.getUser())) { alert.setUser(null);
-			 * alert.setUserId(null); alertService.update(alert); } });
-			 */
+// 			// Check if links to user are present
+// 			// If present delete that link
+// 			/*
+// 			 * getAllAlerts().stream().forEach(alert -> { if
+// 			 * (!Objects.isNull(alert.getUser())) { alert.setUser(null);
+// 			 * alert.setUserId(null); alertService.update(alert); } });
+// 			 */
 			 
-			 Pageable pageable = PageRequest.of(0, 100);
-			List<UserRole> userRoleList = new ArrayList<UserRole>();
-			Page<UserRole> userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
-			while (!userRolePage.isEmpty()) {
-				pageable = pageable.next();
-				userRoleList.addAll(userRolePage.getContent());
-				userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
-			}
-			if (!userRoleList.isEmpty()) {
-				userRoleList.stream().forEach(userRole -> userRoleService.delete(userRole));
-			}
+// 			 Pageable pageable = PageRequest.of(0, 100);
+// 			List<UserRole> userRoleList = new ArrayList<UserRole>();
+// 			Page<UserRole> userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
+// 			while (!userRolePage.isEmpty()) {
+// 				pageable = pageable.next();
+// 				userRoleList.addAll(userRolePage.getContent());
+// 				userRolePage = userRoleService.findAll(USERID + dbUser.getId(), pageable);
+// 			}
+// 			if (!userRoleList.isEmpty()) {
+// 				userRoleList.stream().forEach(userRole -> userRoleService.delete(userRole));
+// 			}
 
-			userService.delete(dbUser);
+// 			userService.delete(dbUser);
+
+           //Soft delete
+            dbUser.setActive(false);
+            userService.update(dbUser);
 		} catch (Exception e) {
 			logger.error("Exception delete user: ", e);
 			return new ResponseEntity<String>("Failed to delete User", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -444,6 +448,8 @@ public class UserManagementHandler {
 			}
 		} //check on the supplied contents
 	}
+	
+	
 	
 	/*
 	 * private List<Alert> getAllAlerts() { Pageable pageable = PageRequest.of(0,
