@@ -30,7 +30,10 @@
                 <wm-param name="roleName" value="bind:Widgets.panel4.Widgets.RoleList.selecteditem.role" type="string"></wm-param>
             </wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel6" content="UserPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Users&quot;" class="panel6"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel7" content="CreateTeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7"></wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel71" content="TeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel71"></wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" content="CreateTeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7" name="panel9">
+                <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.id" type="string"></wm-param>
+            </wm-panel>
         </wm-container>
     </wm-content>
     <wm-footer content="footer" name="footer1"></wm-footer>

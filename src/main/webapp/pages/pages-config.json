@@ -67,7 +67,10 @@
 }, {
   "name" : "CreateTeamsPartial",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "teamId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "DomainValue",
   "type" : "PAGE",
@@ -227,6 +230,10 @@
 }, {
   "name" : "Teams",
   "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "TeamsPartial",
+  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "TimerSetting",
