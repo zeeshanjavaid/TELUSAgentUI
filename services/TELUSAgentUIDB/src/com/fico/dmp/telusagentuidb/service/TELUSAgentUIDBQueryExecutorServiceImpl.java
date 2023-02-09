@@ -186,6 +186,34 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<SearchUsersResponse> executeSearchUsers(String userCriteria, String teamId, String role, String workCategory, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("userCriteria", userCriteria);
+        params.put("TeamID", teamId);
+        params.put("role", role);
+        params.put("work_category", workCategory);
+
+        return queryExecutor.executeNamedQuery("searchUsers", params, SearchUsersResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportSearchUsers(String userCriteria, String teamId, String role, String workCategory, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("userCriteria", userCriteria);
+        params.put("TeamID", teamId);
+        params.put("role", role);
+        params.put("work_category", workCategory);
+
+        QueryProcedureInput<SearchUsersResponse> queryInput = new QueryProcedureInput<>("searchUsers", params, SearchUsersResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeDeleteGroupRole(String groupId) {

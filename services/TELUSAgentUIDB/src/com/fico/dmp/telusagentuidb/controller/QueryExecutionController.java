@@ -222,6 +222,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/searchUsers", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Search Users")
+    public Page<SearchUsersResponse> executeSearchUsers(@RequestParam(value = "userCriteria", required = false) String userCriteria, @RequestParam(value = "TeamID", required = false) String teamId, @RequestParam(value = "role", required = false) String role, @RequestParam(value = "work_category", required = false) String workCategory, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: searchUsers");
+        Page<SearchUsersResponse> _result = queryService.executeSearchUsers(userCriteria, teamId, role, workCategory, pageable);
+        LOGGER.debug("got the result for named query: searchUsers, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query searchUsers")
+    @RequestMapping(value = "/queries/searchUsers/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportSearchUsers(@RequestParam(value = "userCriteria", required = false) String userCriteria, @RequestParam(value = "TeamID", required = false) String teamId, @RequestParam(value = "role", required = false) String role, @RequestParam(value = "work_category", required = false) String workCategory, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: searchUsers");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "searchUsers";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportSearchUsers(userCriteria, teamId, role, workCategory,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/deleteGroupRole", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "deleteGroupRole")
