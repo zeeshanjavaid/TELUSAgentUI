@@ -8,6 +8,9 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
+import java.util.stream.Collectors;
+
+
 import javax.validation.ConstraintViolationException;
 
 import org.slf4j.Logger;
@@ -342,7 +345,11 @@ public class UserManagementHandler {
 					try {
 					    logger.info("----Inside method 'getRoleByID'");
 					    List<String> userRolesByUserId = getUserRolesByUserId(user.getUserId());
-                        System.out.println(userRolesByUserId);
+
+					     List<WorkcategoryUser> workcategoryUsers = workcategoryUserService.findAll(USERID + user.getId(), PageRequest.of(0, Integer.MAX_VALUE)).toList();
+                                       workcategoryUsers.forEach(a->a.getWorkCategory());
+
+
 					 //  UserRole roleById = userRoleService.getById(2);
 					    UserDTO userDTO = new UserDTO();
 					    userDTO.setFirstName(user.getFirstName());
@@ -350,6 +357,9 @@ public class UserManagementHandler {
                 		userDTO.setUserId(user.getUserId());
                 		userDTO.setEmail(user.getEmail());
                 		userDTO.setActive(user.isActive());
+                		 userDTO.setWorkCategory(workcategoryUsers.stream()
+                            .map(WorkcategoryUser::getWorkCategory)
+                            .collect(Collectors.toList()));
                 		 if (!userRolesByUserId.isEmpty()) {
                         userDTO.setRole(userRolesByUserId.get(0));
                     }

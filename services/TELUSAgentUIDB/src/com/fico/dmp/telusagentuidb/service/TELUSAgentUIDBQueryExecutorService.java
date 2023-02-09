@@ -123,4 +123,8 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     Integer executeQueueLock(QueueLockRequest queueLockRequest);
 
+    Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable);
+
+    void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
 }

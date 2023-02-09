@@ -69,7 +69,8 @@
                                             <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
                                                 <wm-label class="col-md-3 control-label" name="label5" caption="Team Manager" width="40%"></wm-label>
                                                 <wm-container class="col-md-9" name="container5" width="60%">
-                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet" datafield="id" displayfield="description"></wm-select>
+                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
+                                                        datafield="id" displayfield="description"></wm-select>
                                                 </wm-container>
                                             </wm-composite>
                                         </wm-container>
@@ -95,12 +96,15 @@
         </wm-container>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow19_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn21">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
+                    <wm-icon name="icon1" iconclass="fico-icon-user" iconsize="50px"></wm-icon>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn21">
                     <wm-label padding="unset 0.5em" name="label12" caption="First Name"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn22">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn22">
                     <wm-label padding="unset 0.5em" name="label13" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label14" caption="bind:Variables.dialogUserId.dataSet[$i].dataValue"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label14" caption="bind:Variables.dialogUserId.dataSet.firstName"></wm-label>
                     <wm-label padding="unset 0.5em" name="label9_1" caption=""></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -108,9 +112,69 @@
                 <wm-gridcolumn columnwidth="6" name="gridcolumn23">
                     <wm-label padding="unset 0.5em" name="label11" caption="Last Name"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn24_1">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn24_1">
                     <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.dataValue.lastName"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.lastName"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-label padding="unset 0.5em" name="label11" caption="Email"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.email"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-label padding="unset 0.5em" name="label11" caption="Role"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.role"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-label padding="unset 0.5em" name="label11" caption="Empl ID"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.emplId"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-label padding="unset 0.5em" name="label11" caption="Team ID"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="Team ID"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-label padding="unset 0.5em" name="label11" caption="Team Manager"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption="Team Manager"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                    <wm-composite name="composite10_1">
+                        <wm-label class="col-md-3 control-label" name="label32" caption="Work Category"></wm-label>
+                        <wm-container class="col-md-9" name="container23_1">
+                            <wm-checkboxset height="auto" name="checkboxset1" dataset="bind:Variables.dialogUserId.dataSet.workCategory" datafield="All Fields" usekeys="false" readonly="false" show="true"></wm-checkboxset>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label12_1" caption=""></wm-label>
+                    <wm-label padding="unset 0.5em" name="label31" caption=""></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -127,7 +191,7 @@
         <wm-table-column binding="role" caption="Role" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rowOperations" caption="Actions" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
         <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="Widgets.updateUser.open()" disabled="false" widget-type="button"></wm-table-row-action>
-        <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-trash" title="Delete" action="deleteRow($event);userMVTable1_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+        <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-trash" title="Delete" action="Widgets.deleteConfirm.open()" disabled="false" widget-type="button"></wm-table-row-action>
     </wm-table>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create>User" iconclass="wi wi-file-text" name="createUserPage">
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
@@ -161,19 +225,20 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" layout="inline"
-                            required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
+                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                            layout="inline" required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="name" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="name" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
@@ -187,7 +252,8 @@
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">
                 <wm-gridrow name="gridrow18" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn25">
-                        <wm-form-field name="UserDTO_firstName" readonly="false" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_firstName" readonly="false" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="bind:Variables.dialogUserId.dataSet.firstName" required="true"
+                            updateon="blur" updatedelay="0"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow19" class="m_10">
@@ -207,19 +273,20 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" layout="inline"
-                            required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
+                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                            layout="inline" required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
@@ -227,4 +294,5 @@
             <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
+    <wm-confirmdialog name="deleteConfirm"></wm-confirmdialog>
 </wm-partial>

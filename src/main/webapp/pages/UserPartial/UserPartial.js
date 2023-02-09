@@ -670,3 +670,12 @@ Partial.userMVTable1_customRowAction = function($event, row) {
     });
     Partial.Variables.deletUser.invoke();
 };
+Partial.deleteConfirmOk = function($event, row) {
+    debugger;
+    Partial.Variables.deletUser.setInput({
+        'userId': row.email
+    });
+    debugger;
+    Partial.Variables.deletUser.invoke();
+
+};

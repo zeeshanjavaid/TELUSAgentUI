@@ -2844,5 +2844,51 @@
         }
       } ]
     }
+  },
+  "getWorkCategoryByUserId" : {
+    "name" : "getWorkCategoryByUserId",
+    "description" : "getting work category by Id for user profile page",
+    "version" : "V2",
+    "queryString" : "select work_category from WORKCATEGORY_USER where userid=:userId",
+    "countQueryString" : "select count(*) from (select work_category from WORKCATEGORY_USER where userid=:userId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "54",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoryByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "work_category",
+        "fieldName" : "workCategory",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "WORKCATEGORY_USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
   }
 }

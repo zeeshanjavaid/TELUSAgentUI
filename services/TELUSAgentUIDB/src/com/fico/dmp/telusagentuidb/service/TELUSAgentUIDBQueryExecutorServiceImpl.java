@@ -678,4 +678,26 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         return queryExecutor.executeNamedQueryForUpdate("QueueLock", params);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        return queryExecutor.executeNamedQuery("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        QueryProcedureInput<GetWorkCategoryByUserIdResponse> queryInput = new QueryProcedureInput<>("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
 }

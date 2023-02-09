@@ -922,4 +922,18 @@ END ASC) wmTempTable
     <query-param name="updatedOn" type="java.sql.Timestamp"/>
     <query-param name="id" type="java.lang.Integer"/>
     </sql-query>
+
+    <sql-query name="getWorkCategoryByUserId">
+        <![CDATA[
+        select work_category from WORKCATEGORY_USER where userid=:userId
+        ]]>
+    <query-param name="userId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getWorkCategoryByUserId__count">
+        <![CDATA[
+        select count(*) from (select work_category from WORKCATEGORY_USER where userid=:userId) wmTempTable
+        ]]>
+    <query-param name="userId" type="java.lang.String"/>
+    </sql-query>
 </hibernate-mapping>

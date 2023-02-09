@@ -775,4 +775,33 @@ public class QueryExecutionController {
         return new IntegerWrapper(_result);
     }
 
+    @RequestMapping(value = "/queries/getWorkCategoryByUserId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getting work category by Id for user profile page")
+    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getWorkCategoryByUserId");
+        Page<GetWorkCategoryByUserIdResponse> _result = queryService.executeGetWorkCategoryByUserId(userId, pageable);
+        LOGGER.debug("got the result for named query: getWorkCategoryByUserId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getWorkCategoryByUserId")
+    @RequestMapping(value = "/queries/getWorkCategoryByUserId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getWorkCategoryByUserId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getWorkCategoryByUserId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetWorkCategoryByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
 }
