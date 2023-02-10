@@ -12,6 +12,7 @@
 Partial.timeZones = [];
 
 Partial.onReady = function() {
+    debugger
     /*
     
      * variables can be accessed through 'Partial.Variables' property here
@@ -645,24 +646,29 @@ Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
 Partial.dialogUserDetails = function(row) {
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
-    debugger;
+
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
-    debugger;
-    Partial.Variables.executeGetRoleByUserId.setInput({
-        'UserId': row.id
-    });
-    debugger;
-    Partial.Variables.executeGetRoleByUserId.invoke();
-    // Partial.Variables.executeGetPermissionByUserId.setInput({
+
+    // Partial.Variables.executeGetRoleByUserId.setInput({
     //     'UserId': row.id
     // });
-    // Partial.Variables.executeGetPermissionByUserId.invoke();
-    debugger;
-    Partial.Variables.executeGetGroupByUserId.setInput({
-        'UserId': row.id
-    });
-    Partial.Variables.executeGetGroupByUserId.invoke();
+
+    //  Partial.Variables.executeGetRoleByUserId.invoke();
+
+
+    // Partial.Variables.executeGetGroupByUserId.setInput({
+    //     'UserId': row.id
+    // });
+    // Partial.Variables.executeGetGroupByUserId.invoke();
     Partial.Widgets.dialogUserDetails.open();
+}
+
+Partial.dialogUpdateUserDetailsAction = function($event, row) {
+    debugger;
+    Partial.Variables.dialogUserId.dataSet = {};
+    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+
+    Partial.Widgets.updateUser.open();
 }
 Partial.userMVTable1_customRowAction = function($event, row) {
     Partial.Variables.deletUser.setInput({
@@ -670,12 +676,12 @@ Partial.userMVTable1_customRowAction = function($event, row) {
     });
     Partial.Variables.deletUser.invoke();
 };
-Partial.deleteConfirmOk = function($event, row) {
+
+Partial.userMVTable1_customRow1Action = function($event, row) {
     debugger;
-    Partial.Variables.deletUser.setInput({
-        'userId': row.email
-    });
-    debugger;
-    Partial.Variables.deletUser.invoke();
+    Partial.Variables.dialogUserId.dataSet = {};
+    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+
+    Partial.Widgets.updateUser.open();
 
 };

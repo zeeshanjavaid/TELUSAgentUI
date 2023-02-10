@@ -43,12 +43,12 @@
     "category" : "wm.Variable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "dataSet" : [ {
+    "dataSet" : {
       "name" : "name0",
       "dataValue" : "dataValue0"
-    } ],
+    },
     "type" : "entry",
-    "isList" : true,
+    "isList" : false,
     "saveInPhonegap" : false
   },
   "executeGetGroupByUserId" : {
@@ -241,16 +241,16 @@
     "category" : "wm.Variable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "dataSet" : {
+    "dataSet" : [ {
       "firstName" : "",
       "lastName" : "",
       "userId" : "",
       "email" : "",
       "status" : "",
       "role" : ""
-    },
+    } ],
     "type" : "entry",
-    "isList" : false,
+    "isList" : true,
     "saveInPhonegap" : false
   },
   "getAllUsers" : {
@@ -2300,11 +2300,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "userId",
-      "value" : "54",
-      "type" : "string"
-    } ],
+    "dataBinding" : [ ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoryByUserIdResponse",
     "service" : "TELUSAgentUIDB",
     "operation" : "executeGetWorkCategoryByUserId",
@@ -4505,5 +4501,19 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
+  },
+  "workCatCheckValue" : {
+    "_id" : "wm-workCatCheckValue-wm.Variable-1676021620512",
+    "name" : "workCatCheckValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "code" : "WLN LARGE"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
   }
 }

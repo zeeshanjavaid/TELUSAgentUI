@@ -17,6 +17,9 @@ public class SearchUsersResponse implements Serializable {
     @ColumnAlias("firstName")
     private String firstName;
 
+    @ColumnAlias("userId")
+    private String userId;
+
     @ColumnAlias("lastName")
     private String lastName;
 
@@ -41,6 +44,14 @@ public class SearchUsersResponse implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getLastName() {
@@ -97,6 +108,7 @@ public class SearchUsersResponse implements Serializable {
         if (!(o instanceof SearchUsersResponse)) return false;
         final SearchUsersResponse searchUsersResponse = (SearchUsersResponse) o;
         return Objects.equals(getFirstName(), searchUsersResponse.getFirstName()) &&
+                Objects.equals(getUserId(), searchUsersResponse.getUserId()) &&
                 Objects.equals(getLastName(), searchUsersResponse.getLastName()) &&
                 Objects.equals(getEmail(), searchUsersResponse.getEmail()) &&
                 Objects.equals(getActive(), searchUsersResponse.getActive()) &&
@@ -108,6 +120,7 @@ public class SearchUsersResponse implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(getFirstName(),
+                getUserId(),
                 getLastName(),
                 getEmail(),
                 getActive(),
