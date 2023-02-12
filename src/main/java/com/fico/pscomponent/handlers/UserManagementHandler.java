@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 
 
 import javax.validation.ConstraintViolationException;
+import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -195,6 +197,7 @@ public class UserManagementHandler {
 // 			dbUser.setUpdatedBy(securityService.getUserName());
 
 
+            dbUser.setActive(userDTO.isActive());
 			dbUser = userService.update(dbUser);
 			
 				Pageable pageable = PageRequest.of(0, 1);
@@ -220,6 +223,61 @@ public class UserManagementHandler {
 				userRole.setUser(dbUser);
 				userRoleService.create(userRole);
 			}
+			
+            List<WorkcategoryUser> workCategoryUserList=new ArrayList<>();
+            Page<WorkcategoryUser> workcategoryUsers = workcategoryUserService.findAll(USERID + dbUser.getId(), PageRequest.of(0, Integer.MAX_VALUE));
+            if (userRolePage.hasContent()) {
+                 workCategoryUserList = workcategoryUsers.getContent();
+                 
+            }
+            
+            if(!CollectionUtils.isEmpty(workCategoryUserList))
+            {
+                
+                  List<String> existingWorkCat = workCategoryUserList.stream()
+                        .map(WorkcategoryUser::getWorkCategory)
+                        .collect(Collectors.toList());
+
+                List<String> workCategory = userDTO.getWorkCategory();
+                
+                 if (existingWorkCat.size() > workCategory.size()) {
+                    for (WorkcategoryUser workCar : workCategoryUserList) {
+                        logger.info("In handler before update workcategory user :::::::::::::::::::::");
+                        if (!workCategory.contains(workCar.getWorkCategory())) {
+                            workcategoryUserService.delete(workCar);
+                            logger.info("Updated workcategory for user :::::::::::::::::::::");
+
+
+                        }
+                    }
+                }
+
+
+                 System.out.println("Check both size   " +existingWorkCat.size()+"===================="+ workCategory.size());
+                 for (String workCar : workCategory) {
+                    logger.info("In handler before update workcategory user :::::::::::::::::::::");
+                    if (!existingWorkCat.contains(workCar.trim())) {
+                        WorkcategoryUser workcategoryUser = new WorkcategoryUser();
+                        workcategoryUser.setUser(dbUser);
+                        workcategoryUser.setWorkCategory(workCar);
+                        workcategoryUserService.create(workcategoryUser);
+                        logger.info("Updated workcategory for user :::::::::::::::::::::");
+
+
+                    }
+                }
+
+
+
+            }else if (userDTO.getWorkCategory().size() > 0) {
+
+                for (String workCar : userDTO.getWorkCategory()) {
+                    WorkcategoryUser workcategoryUser = new WorkcategoryUser();
+                    workcategoryUser.setUser(dbUser);
+                    workcategoryUser.setWorkCategory(workCar);
+                    workcategoryUserService.create(workcategoryUser);
+                }
+            }
 
 		} catch (Exception e) {
 			logger.error("Exception updating user: ", e);
