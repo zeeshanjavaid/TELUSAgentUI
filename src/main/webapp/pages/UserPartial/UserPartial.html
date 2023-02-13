@@ -26,7 +26,7 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog " modal="true " title="User Details " iconclass=" " name="dialogUserDetails " on-opened="dialogUserDetailsOpened($event, widget)" class="di-width " closable="true " width="100%">
+    <wm-dialog dialogtype="design-dialog " modal="true " title="User Details " iconclass=" " name="dialogUserDetails " on-opened="dialogUserDetailsOpened($event, widget)" class="di-width " closable="true " width="50%">
         <wm-container name="message_container" margin="unset unset 1em unset">
             <wm-message name="userMsg" type="error" width="100%" hideclose="true" caption="bind:Variables.userLocalMsg.dataSet.dataValue" show="bind:Variables.userLocalMsg.dataSet.dataValue ? true : false"></wm-message>
         </wm-container>
@@ -94,7 +94,7 @@
                     <wm-composite name="composite10_1">
                         <wm-label class="col-md-3 control-label" name="label32" caption="Work Category"></wm-label>
                         <wm-container class="col-md-9" name="container23_1">
-                            <wm-label padding="unset 0.5em" name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -131,7 +131,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
-        <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="fico-icon-search" title="Search" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
+        <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="fico-icon-search" title="Search" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
     <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="true" gridfirstrowselect="false" showrowindex="false" enablesort="true"
         gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal">
@@ -142,7 +142,7 @@
         <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="customField" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="Team Id" caption="Team Id" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="active" caption="Active" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="active" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="role" caption="Role" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rowOperations" caption="Actions" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
         <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="userMVTable1_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
@@ -193,12 +193,13 @@
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
                         <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
-                            layout="inline" class="ds_grid" readonly="false"></wm-form-field>
+                            layout="inline" class="ds_grid" readonly="false" datavalue="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton"></wm-button>
-            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="bind:true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit"
+                update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="User>Edit" iconclass="wi wi-file-text" name="updateUser">
@@ -217,7 +218,7 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow17" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="false"></wm-form-field>
+                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">
@@ -254,5 +255,5 @@
             <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-confirmdialog name="deleteConfirm" message="Are you sure you want to inactive userName?" oktext="delete" title="" iconclass="fico-icon-trash" modal="false" on-ok="deleteConfirmOk($event, widget)"></wm-confirmdialog>
+    <wm-confirmdialog name="deleteConfirm" message="Are you sure you want to inactive userName?" oktext="delete" title="" iconclass="fico-icon-trash" modal="false" on-ok="Variables.deletUser.invoke()"></wm-confirmdialog>
 </wm-partial>

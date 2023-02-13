@@ -19,7 +19,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "userId",
+      "value" : "bind:Variables.dialogUserId.dataSet.email",
+      "type" : "string"
+    } ],
     "type" : "string",
     "service" : "UserManagementService",
     "operation" : "deletUser",
@@ -29,6 +33,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "Variables.searchUsers.invoke()",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

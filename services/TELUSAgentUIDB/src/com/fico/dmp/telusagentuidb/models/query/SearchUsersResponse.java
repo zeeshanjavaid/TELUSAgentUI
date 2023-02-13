@@ -29,6 +29,9 @@ public class SearchUsersResponse implements Serializable {
     @ColumnAlias("active")
     private Boolean active;
 
+    @ColumnAlias("emplId")
+    private String emplId;
+
     @ColumnAlias("role")
     private String role;
 
@@ -78,6 +81,14 @@ public class SearchUsersResponse implements Serializable {
         this.active = active;
     }
 
+    public String getEmplId() {
+        return this.emplId;
+    }
+
+    public void setEmplId(String emplId) {
+        this.emplId = emplId;
+    }
+
     public String getRole() {
         return this.role;
     }
@@ -112,6 +123,7 @@ public class SearchUsersResponse implements Serializable {
                 Objects.equals(getLastName(), searchUsersResponse.getLastName()) &&
                 Objects.equals(getEmail(), searchUsersResponse.getEmail()) &&
                 Objects.equals(getActive(), searchUsersResponse.getActive()) &&
+                Objects.equals(getEmplId(), searchUsersResponse.getEmplId()) &&
                 Objects.equals(getRole(), searchUsersResponse.getRole()) &&
                 Objects.equals(getWorkCategory(), searchUsersResponse.getWorkCategory()) &&
                 Objects.equals(getTeamId(), searchUsersResponse.getTeamId());
@@ -124,6 +136,7 @@ public class SearchUsersResponse implements Serializable {
                 getLastName(),
                 getEmail(),
                 getActive(),
+                getEmplId(),
                 getRole(),
                 getWorkCategory(),
                 getTeamId());

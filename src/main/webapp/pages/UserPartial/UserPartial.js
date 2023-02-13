@@ -649,17 +649,6 @@ Partial.dialogUserDetails = function(row) {
 
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
-    // Partial.Variables.executeGetRoleByUserId.setInput({
-    //     'UserId': row.id
-    // });
-
-    //  Partial.Variables.executeGetRoleByUserId.invoke();
-
-
-    // Partial.Variables.executeGetGroupByUserId.setInput({
-    //     'UserId': row.id
-    // });
-    // Partial.Variables.executeGetGroupByUserId.invoke();
     Partial.Widgets.dialogUserDetails.open();
 }
 
@@ -671,17 +660,32 @@ Partial.dialogUpdateUserDetailsAction = function($event, row) {
     Partial.Widgets.updateUser.open();
 }
 Partial.userMVTable1_customRowAction = function($event, row) {
-    Partial.Variables.deletUser.setInput({
-        'userId': row.email
-    });
-    Partial.Variables.deletUser.invoke();
-};
-
-Partial.userMVTable1_customRow1Action = function($event, row) {
+    // Partial.Variables.deletUser.setInput({
+    //     'userId': row.email
+    // });
+    // Partial.Variables.deletUser.invoke();
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
+    Partial.Widgets.deleteConfirm.open();
+};
+
+Partial.userMVTable1_customRow1Action = function($event, row) {
+
+    Partial.Variables.dialogUserId.dataSet = {};
+    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+
     Partial.Widgets.updateUser.open();
+
+};
+Partial.executeSearchUsersForm1_resetAction = function($event) {
+
+    debugger;
+    Partial.Variables.dialogUserId.dataSet = {};
+
+    Partial.Variables.searchUsers.invoke();
+
+
 
 };
