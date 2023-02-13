@@ -739,3 +739,9 @@ td, th {
 .mt-20{
     margin-top: 16px;
 }
+.user_icon {
+    margin-top: -20px;
+}
+.ml-4 {
+    margin-left: 4rem;
+}

@@ -33,76 +33,125 @@
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow19_1">
                 <wm-gridcolumn columnwidth="2" name="gridcolumn33">
-                    <wm-icon name="icon1" iconclass="fico-icon-user" iconsize="50px"></wm-icon>
+                    <wm-icon name="icon1" iconclass="fico-icon-user" iconsize="40px" class="user_icon"></wm-icon>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn21">
-                    <wm-label padding="unset 0.5em" name="label12" caption="Full Name"></wm-label>
+                    <wm-label name="label12" caption="Full Name"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn22">
-                    <wm-label padding="unset 0.5em" name="label13" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label14" caption="bind:Variables.dialogUserId.dataSet.firstName+&quot; &quot;+Variables.dialogUserId.dataSet.lastName"></wm-label>
-                    <wm-label padding="unset 0.5em" name="label9_1" caption=""></wm-label>
+                    <wm-label name="label13" caption=""></wm-label>
+                    <wm-label name="label14" caption="bind:Variables.dialogUserId.dataSet.firstName+&quot; &quot;+Variables.dialogUserId.dataSet.lastName"></wm-label>
+                    <wm-label name="label9_1" caption=""></wm-label>
+                </wm-gridcolumn>
+
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25" class="ml-4">
+                    <wm-label name="label11" caption="Email"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
+                    <wm-label name="label10" caption=""></wm-label>
+                    <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.email"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
+            <!--<wm-gridrow name="gridrow20_1">-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25">-->
+            <!--        <wm-label name="label11" caption="Email"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">-->
+            <!--        <wm-label name="label10" caption=""></wm-label>-->
+            <!--        <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.email"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--</wm-gridrow>-->
             <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                    <wm-label padding="unset 0.5em" name="label11" caption="Email"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
+
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.email"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25">
+                    <wm-label name="label11" caption="Role"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
+                    <wm-label name="label10" caption=""></wm-label>
+                    <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.role"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25" class="ml-4">
+                    <wm-label name="label11" caption="Empl ID"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
+                    <wm-label name="label10" caption=""></wm-label>
+                    <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.emplId"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                    <wm-label padding="unset 0.5em" name="label11" caption="Role"></wm-label>
+            <!--<wm-gridrow name="gridrow20_1">-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25">-->
+            <!--        <wm-label name="label11" caption="Empl ID"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">-->
+            <!--        <wm-label name="label10" caption=""></wm-label>-->
+            <!--        <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.emplId"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--</wm-gridrow>-->
+            <wm-gridrow name="gridrow20_1" class="mt-20">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
+
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.role"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25">
+                    <wm-label name="label11" caption="Team ID"></wm-label>
                 </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                    <wm-label padding="unset 0.5em" name="label11" caption="Empl ID"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
+                    <wm-label name="label10" caption=""></wm-label>
+                    <wm-label name="label12_1" caption="Team ID"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="bind:Variables.dialogUserId.dataSet.emplId"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25" class="ml-4">
+                    <wm-label name="label11" caption="Team Manager"></wm-label>
                 </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                    <wm-label padding="unset 0.5em" name="label11" caption="Team ID"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="Team ID"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                    <wm-label padding="unset 0.5em" name="label11" caption="Team Manager"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption="Team Manager"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
+                    <wm-label name="label10" caption=""></wm-label>
+                    <wm-label name="label12_1" caption="Team Manager"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
+            <!--<wm-gridrow name="gridrow20_1">-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25">-->
+            <!--        <wm-label padding="unset 0.5em" name="label11" caption="Team Manager"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--    <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">-->
+            <!--        <wm-label name="label10" caption=""></wm-label>-->
+            <!--        <wm-label name="label12_1" caption="Team Manager"></wm-label>-->
+            <!--    </wm-gridcolumn>-->
+            <!--</wm-gridrow>-->
             <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn25">
                     <wm-composite name="composite10_1">
-                        <wm-label class="col-md-3 control-label" name="label32" caption="Work Category"></wm-label>
-                        <wm-container class="col-md-9" name="container23_1">
-                            <wm-label padding="unset 0.5em" name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>
-                        </wm-container>
+                        <wm-label class="col-md-3 control-label mt-20" name="label32" caption="Work Category"></wm-label>
+                        <!--<wm-container class="col-md-9" name="container23_1">-->
+                        <!--    <wm-label name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>-->
+                        <!--</wm-container>-->
                     </wm-composite>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
-                    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label12_1" caption=""></wm-label>
-                    <wm-label padding="unset 0.5em" name="label31" caption=""></wm-label>
-                </wm-gridcolumn>
+                <!--<wm-gridcolumn columnwidth="6" name="gridcolumn25_1">-->
+                <!--    <wm-label padding="unset 0.5em" name="label10" caption=""></wm-label>-->
+                <!--    <wm-label padding="unset 0.5em" name="label12_1" caption=""></wm-label>-->
+                <!--    <wm-label padding="unset 0.5em" name="label31" caption=""></wm-label>-->
+                <!--</wm-gridcolumn>-->
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20_2">
+                <wm-composite name="composite10_1">
+                    <!--<wm-label class="col-md-3 control-label" name="label32" caption="Work Category"></wm-label>-->
+                    <wm-container class="col-md-12" name="container23_1">
+                        <wm-label name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>
+                    </wm-container>
+                </wm-composite>
+                <ul>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn25_1">
+                        <li>
+                            <wm-label name="label10" caption=""></wm-label>
+                        </li>
+                        <li>
+                            <wm-label name="label12_1" caption=""></wm-label>
+                        </li>
+                        <li>
+                            <wm-label name="label31" caption=""></wm-label>
+                        </li>
+                    </wm-gridcolumn>
+                </ul>
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
@@ -251,5 +300,5 @@
             <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-confirmdialog name="deleteConfirm" message="Are you sure you want to inactive userName?" oktext="delete" title="" iconclass="fico-icon-trash" modal="false" on-ok="Variables.deletUser.invoke()"></wm-confirmdialog>
+    <wm-confirmdialog name="deleteConfirm" message="Are you sure you want to inactive userName?" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="false" on-ok="Variables.deletUser.invoke()" class="del_box"></wm-confirmdialog>
 </wm-partial>
