@@ -43,7 +43,6 @@
                     <wm-label name="label14" caption="bind:Variables.dialogUserId.dataSet.firstName+&quot; &quot;+Variables.dialogUserId.dataSet.lastName"></wm-label>
                     <wm-label name="label9_1" caption=""></wm-label>
                 </wm-gridcolumn>
-
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25" class="ml-4">
                     <wm-label name="label11" caption="Email"></wm-label>
                 </wm-gridcolumn>
@@ -62,9 +61,7 @@
             <!--    </wm-gridcolumn>-->
             <!--</wm-gridrow>-->
             <wm-gridrow name="gridrow20_1">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
-
-                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn33"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25">
                     <wm-label name="label11" caption="Role"></wm-label>
                 </wm-gridcolumn>
@@ -90,9 +87,7 @@
             <!--    </wm-gridcolumn>-->
             <!--</wm-gridrow>-->
             <wm-gridrow name="gridrow20_1" class="mt-20">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
-
-                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn33"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25">
                     <wm-label name="label11" caption="Team ID"></wm-label>
                 </wm-gridcolumn>
@@ -162,7 +157,7 @@
                     <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn2" columnwidth="4">
-                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false"></wm-form-field>
+                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn3" columnwidth="4">
                     <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="Enter value" class="search "></wm-form-field>
@@ -170,7 +165,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow2" class="pl-20">
                 <wm-gridcolumn name="gridcolumn4" columnwidth="4">
-                    <wm-form-field name="role" key="role" type="string" displayname="Role" widget="select" show="true" mobile-display="false"></wm-form-field>
+                    <wm-form-field name="role" key="role" type="string" displayname="Role" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4">
                     <wm-form-field name="Team" key="Team Manager" displayname="Team Manager" show="true" type="string" widget="select"></wm-form-field>
@@ -227,24 +222,26 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" layout="inline"
-                            required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
+                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                            layout="inline" required="false" placeholder="" tabindex="24" class="ds_grid"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false" datavalue="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false" datavalue="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton"></wm-button>
-            <wm-form-action key="save" display-name="Save" show="bind:true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="bind:true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit"
+                update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="User>Edit" iconclass="wi wi-file-text" name="updateUser">
@@ -278,21 +275,21 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"
-                            defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" layout="inline" required="false"
-                            placeholder="" tabindex="24" class="ds_grid" on-change="Variables.getWorkCategoryByUserId.listRecords()" displayfield="code" datavalue="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;)
+                        <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" widget="checkboxset" show="true" type="custom" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" layout="inline"
+                            required="false" placeholder="" tabindex="24" class="ds_grid" on-change="Variables.getWorkCategoryByUserId.listRecords()" displayfield="code" datavalue="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;)
 "></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
