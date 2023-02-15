@@ -3,8 +3,8 @@
         <wm-page-content columnwidth="12" name="page_content1">
             <wm-label padding="unset 0.5em" name="label3" class="h3" caption="Roles" margin="10px unset 15px unset"></wm-label>
             <wm-button caption="Add Role" type="button" margin="unset 0.5em" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
-            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name"
-                linktarget="_self" menuclass="button_white button-hover"></wm-menu>
+            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name" linktarget="_self" menuclass="button_white button-hover"
+                show="false"></wm-menu>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.roleSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
                 <wm-message name="errormessage" type="error" show="bind:Variables.roleErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
@@ -45,8 +45,7 @@
                     </wm-container>
                     <wm-container class="media-body" padding="unset unset unset " name="container5" on-click="container5Click($event, widget, item, currentItemWidgets)">
                         <wm-label name="Name" class="searchText" caption="bind:Variables.allRolesUI.dataSet[$i].role" fontsize="1.143" fontunit="em" hint="bind:Variables.allRolesUI.dataSet[$i].role" margin="unset unset 5px unset"></wm-label>
-                        <wm-label class="p media-heading module line-clamp" caption="bind:Variables.allRolesUI.dataSet[$i].description" fontsize="1" fontunit="em" name="label4" color="#626b73" hint="bind:Variables.allRolesUI.dataSet[$i].description"
-                            margin="unset unset 5px unset"></wm-label>
+                        <wm-label class="p media-heading module line-clamp" caption="bind:Variables.allRolesUI.dataSet[$i].description" fontsize="1" fontunit="em" name="label4" color="#626b73" hint="bind:Variables.allRolesUI.dataSet[$i].description" margin="unset unset 5px unset"></wm-label>
                         <wm-container name="container5_1" margin="unset unset 5px unset" show="true">
                             <wm-label class="p media-heading" caption="Groups:" fontsize="1" fontunit="em" color="#626b73" name="label4_1" width="25%"></wm-label>
                             <wm-label class="p media-heading" caption="bind:Variables.allRolesUI.dataSet[$i].GroupCount" fontsize="1" fontunit="em" color="#626b73" width="15%" name="label7"></wm-label>

@@ -34,6 +34,19 @@
     "type" : "string"
   } ]
 }, {
+  "name" : "AddTeamPartial",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "groupId",
+    "type" : "integer"
+  }, {
+    "name" : "groupName",
+    "type" : "string"
+  }, {
+    "name" : "teamId",
+    "type" : "string"
+  } ]
+}, {
   "name" : "Admin",
   "type" : "PAGE",
   "params" : [ ]

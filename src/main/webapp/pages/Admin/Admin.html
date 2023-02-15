@@ -31,8 +31,10 @@
             </wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel6" content="UserPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Users&quot;" class="panel6"></wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel71" content="TeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel71"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" content="CreateTeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7" name="panel9">
-                <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.id" type="string"></wm-param>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" content="AddTeamPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7" name="panel9">
+                <wm-param name="groupId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.id" type="integer"></wm-param>
+                <wm-param name="groupName" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.name" type="string"></wm-param>
+                <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.teamId" type="string"></wm-param>
             </wm-panel>
         </wm-container>
     </wm-content>

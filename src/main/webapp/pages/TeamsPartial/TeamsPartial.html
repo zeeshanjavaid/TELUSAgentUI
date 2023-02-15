@@ -2,7 +2,7 @@
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="page_content2">
             <wm-label padding="unset 0.5em" name="label3" class="h3" caption="Teams" margin="10px unset 15px unset"></wm-label>
-            <wm-button caption="Add Team" type="button" margin="unset 0.5em" name="AddGroupButton" show="true" on-click="AddGroupButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
+            <wm-button caption="Add Team" type="button" margin="unset 0.5em" name="AddTeamButton" show="true" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.groupSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.groupSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
                 <wm-message name="errormessage" type="error" show="bind:Variables.groupErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.groupErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>

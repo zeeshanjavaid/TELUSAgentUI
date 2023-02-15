@@ -510,6 +510,13 @@ App.refreshAllGroups = function() {
 
 }
 
+App.refreshAllTeams = function() {
+
+
+    Partial.Variables.getAllTeams.invoke();
+
+}
+
 App.groupsPageReload = function() {
 
     Partial.Variables.getAllGroups.invoke();
@@ -622,4 +629,7 @@ Partial.teamSearchTextKeyup = function($event, widget) {
         Object.assign(Partial.Variables.allTeamsUI.dataSet, Partial.allTeamUITemp);
     }
 
+};
+Partial.AddTeamButtonClick = function($event, widget) {
+    App.addTeams();
 };
