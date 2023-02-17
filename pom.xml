@@ -214,14 +214,14 @@
                                         <versionRange>[1.7,)</versionRange>
                                         <goals>
                                             <goal>run</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
+                    </goals>
+                  </pluginExecutionFilter>
                                     <action>
                                         <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -238,7 +238,7 @@
                 <configuration>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>jks</nonFilteredFileExtension>
-                    </nonFilteredFileExtensions>
+          </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
             <plugin>
@@ -254,14 +254,14 @@
                     <filesets>
                         <fileset>
                             <directory>${basedir}/src/main/webapp/WEB-INF/lib</directory>
-                        </fileset>
+            </fileset>
                         <fileset>
                             <directory>${basedir}/src/main/webapp/WEB-INF/classes</directory>
-                        </fileset>
+            </fileset>
                         <fileset>
                             <directory>${basedir}/jib-target</directory>
-                        </fileset>
-                    </filesets>
+            </fileset>
+          </filesets>
                 </configuration>
             </plugin>
             <plugin>
@@ -320,7 +320,7 @@
                         <configuration>
                             <target>
                                 <ant antfile="${basedir}/build.xml" target="init"/>
-                            </target>
+              </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -354,8 +354,8 @@
                                     <version>${wavemaker.studio.version}</version>
                                     <classifier>wmapp</classifier>
                                     <type>zip</type>
-                                </artifactItem>
-                            </artifactItems>
+                </artifactItem>
+              </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
@@ -429,7 +429,7 @@
                                 <configuration>
                                     <target>
                                         <ant antfile="${basedir}/build.xml" target="generate-component-config"/>
-                                    </target>
+                  </target>
                                 </configuration>
                             </execution>
                         </executions>
@@ -447,7 +447,7 @@
                         <configuration>
                             <descriptors>
                                 <descriptor>src/assembly/bin.xml</descriptor>
-                            </descriptors>
+              </descriptors>
                             <finalName>${project.artifactId}-archetype</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
@@ -478,7 +478,7 @@
                                 <configuration>
                                     <target>
                                         <ant antfile="${basedir}/build.xml" target="generate-jib-artifacts"/>
-                                    </target>
+                  </target>
                                 </configuration>
                             </execution>
                         </executions>
@@ -501,51 +501,51 @@
                                 <auth>
                                     <username>${docker.username}</username>
                                     <password>${docker.password}</password>
-                                </auth>
-                            </from>
+                </auth>
+              </from>
                             <to>
                                 <image>${docker.registry}/${dockerImageName}:${image.tag}</image>
                                 <auth>
                                     <username>${docker.username}</username>
                                     <password>${docker.password}</password>
-                                </auth>
-                            </to>
+                </auth>
+              </to>
                             <extraDirectories>
                                 <paths>
                                     <path>${basedir}/jib-target/generated-war/</path>
                                     <path>${basedir}/jib-target/dmp-resources/</path>
-                                </paths>
+                </paths>
                                 <permissions>
                                     <permission>
-                                        <file>/app-root/</file>
+                                        <file>/app-root/**</file>
                                         <mode>777</mode>
-                                    </permission>
-                                </permissions>
-                            </extraDirectories>
+                  </permission>
+                                    <permission>
+                                        <file>/opt/webserver/**</file>
+                                        <mode>777</mode>
+                  </permission>
+                </permissions>
+              </extraDirectories>
                             <container>
                                 <jvmFlags>
                                     <jvmFlag>-Xms512m</jvmFlag>
                                     <jvmFlag>-Xdebug</jvmFlag>
                                     <jvmFlag>-Xmy:flag=jib-rules</jvmFlag>
                                     <jvmFlag>-Dspring.profiles.active=dmp</jvmFlag>
-                                </jvmFlags>
+                </jvmFlags>
                                 <ports>
                                     <port>8000</port>
-                                </ports>
+                </ports>
                                 <environment>
                                     <DMP_DATA_DIR>${DMP_DATA_DIR}</DMP_DATA_DIR>
                                     <DMP_REPO_DIR>/app-root/runtime/repo</DMP_REPO_DIR>
                                     <DMP_TMP_DIR>/tmp</DMP_TMP_DIR>
                                     <DMP_LOG_DIR>/opt/webserver/logs</DMP_LOG_DIR>
                                     <FAWB_HOST_PREFIX>${fawb.host.prefix}</FAWB_HOST_PREFIX>
-                                    <GC_MAX_METASPACE_SIZE>512</GC_MAX_METASPACE_SIZE>
-                                    <JAVA_TOOL_OPTIONS>-Dspring.profiles.active=dmp
-                                        -Ddmp.context.strategy=MODE_INHERITABLETHREADLOCAL
-                                    </JAVA_TOOL_OPTIONS>
                                     <dmp.context.strategy>MODE_INHERITABLETHREADLOCAL</dmp.context.strategy>
-                                    <JAVA_OPTIONS>-XX:MaxMetaspaceSize=512m</JAVA_OPTIONS>
                                     <FAWB_API_VERSION>${fawb.platform.api.version}</FAWB_API_VERSION>
-                                </environment>
+                                    <JAVA_TOOL_OPTIONS>-XX:MaxMetaspaceSize=512m -Dspring.profiles.active=dmp -Ddmp.context.strategy=MODE_INHERITABLETHREADLOCAL</JAVA_TOOL_OPTIONS>
+                </environment>
                                 <labels>
                                     <project.owner.name>${project.owner.name}</project.owner.name>
                                     <project.owner.email>${project.owner.email}</project.owner.email>
@@ -554,10 +554,9 @@
                                     <created.by>${created.by}</created.by>
                                     <created.at>${created.at}</created.at>
                                     <maintainer>paulwehlage@fico.com</maintainer>
-                                </labels>
-                                <user>root</user>
+                </labels>
                                 <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-                            </container>
+              </container>
                             <allowInsecureRegistries>true</allowInsecureRegistries>
                         </configuration>
                     </plugin>
@@ -574,7 +573,7 @@
                         <configuration>
                             <descriptors>
                                 <descriptor>src/assembly/bin.xml</descriptor>
-                            </descriptors>
+              </descriptors>
                             <finalName>${archetype.archive.name}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
@@ -761,7 +760,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <wavemaker.studio.version>3.0.3</wavemaker.studio.version>
+        <wavemaker.studio.version>3.0.4</wavemaker.studio.version>
         <spring.security.version>5.5.1</spring.security.version>
         <profile.props.file>development.properties</profile.props.file>
         <DMP_DATA_DIR>/app-root/runtime/data</DMP_DATA_DIR>

@@ -17,20 +17,20 @@
                                     </wm-container>
                                 </wm-container>
                                 <wm-container name="SearchFilter-wrapper" class="inflex-center-sb flexCol jc-center width-full box_border">
-                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset">
+                                    <wm-container class="inflex-center-sb jc-sb" width="100%" height="60px" name="container11" margin="10px unset unset unset" text-indent="70px">
                                         <wm-container name="appNum_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
                                             <wm-composite name="composite1" class="inflex-center-sb jc-sb" width="90%" required="false">
                                                 <wm-composite name="composite8">
-                                                    <wm-label class="col-md-3 control-label" name="label9" caption="TeamID"></wm-label>
+                                                    <wm-label class="col-md-3 control-label" name="label9" caption="TeamID" textalign="left"></wm-label>
                                                     <wm-container class="col-md-9" name="container23">
-                                                        <wm-select name="select4"></wm-select>
+                                                        <wm-select name="select4" margin="unset 70px unset 45px"></wm-select>
                                                     </wm-container>
                                                 </wm-composite>
                                             </wm-composite>
                                         </wm-container>
                                         <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
                                             <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
-                                                <wm-label class="col-md-3 control-label" name="label5" caption="Work Category" width="40%"></wm-label>
+                                                <wm-label class="col-md-3 control-label" name="label5" caption="WorkCategory" width="40%" fontsize="7"></wm-label>
                                                 <wm-container class="col-md-9" name="container5" width="60%">
                                                     <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.getWorkCategoriesByCode.dataSet"
                                                         datafield="code" displayfield="code"></wm-select>
@@ -57,7 +57,8 @@
                                                 <wm-composite name="composite13">
                                                     <wm-label class="col-md-3 control-label" name="label8_1" caption="Role"></wm-label>
                                                     <wm-container class="col-md-9" name="container25_1">
-                                                        <wm-select name="select7_1" dataset="bind:Variables.GetAllRoles.dataSet" datafield="All Fields" displayexpression="bind:Variables.GetAllRoles.dataSet.value" datavalue="bind:Variables.GetAllRoles.dataSet.value"></wm-select>
+                                                        <wm-select name="select7_1" dataset="bind:Variables.GetAllRoles.dataSet" datafield="All Fields" displayexpression="bind:Variables.GetAllRoles.dataSet.value" datavalue="bind:Variables.GetAllRoles.dataSet.value"
+                                                            margin="unset 80px unset 45px"></wm-select>
                                                     </wm-container>
                                                 </wm-composite>
                                             </wm-composite>
@@ -65,7 +66,7 @@
                                         <wm-container name="container27_1"></wm-container>
                                         <wm-container name="activityType_container" width="33.3%" height="100%" class="inflex-center-sb jc-sb">
                                             <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
-                                                <wm-label class="col-md-3 control-label" name="label5" caption="Team Manager" width="40%"></wm-label>
+                                                <wm-label class="col-md-3 control-label" name="label5" caption="TeamManager" width="40%"></wm-label>
                                                 <wm-container class="col-md-9" name="container5" width="60%">
                                                     <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
                                                         datafield="id" displayfield="description"></wm-select>

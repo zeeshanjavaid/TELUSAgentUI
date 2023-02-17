@@ -130,25 +130,23 @@
             <wm-gridrow name="gridrow20_2">
                 <wm-composite name="composite10_1">
                     <!--<wm-label class="col-md-3 control-label" name="label32" caption="Work Category"></wm-label>-->
-                    <wm-container class="col-md-12" name="container23_1">
-                        <wm-label name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>
-                    </wm-container>
+                    <wm-container class="col-md-12" name="container23_1"></wm-container>
                 </wm-composite>
-                <ul>
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn25_1">
-                        <li>
-                            <wm-label name="label10" caption=""></wm-label>
-                        </li>
-                        <li>
-                            <wm-label name="label12_1" caption=""></wm-label>
-                        </li>
-                        <li>
-                            <wm-label name="label31" caption=""></wm-label>
-                        </li>
-                    </wm-gridcolumn>
-                </ul>
+                <ul></ul>
             </wm-gridrow>
         </wm-layoutgrid>
+        <wm-list listclass="list-group  work-cat-list" itemclass="list-group-item  work-cat-itemMain" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list  work-cat" datafield="All Fields" name="WorkcategoryUserList1" dataset="bind:Variables.getWorkCategoryByUserId.dataSet"
+            navigation="None" nodatamessage="">
+            <wm-listtemplate layout="inline" name="listtemplate3">
+                <wm-container class="media-left" name="container12" padding="5px unset unset unset">
+                    <wm-picture width="5pt" height="5pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" show="true"></wm-picture>
+                </wm-container>
+                <wm-container class="media-body" name="container13">
+                    <!--<wm-layoutgrid name="layoutgrid6_1"><wm-gridrow name="gridrow25"><wm-gridcolumn columnwidth="12" name="gridcolumn43">-->
+                    <wm-label class="p media-heading work-cat-item" name="Name" caption="bind:Variables.getWorkCategoryByUserId.dataSet.data[$i].workCategory" fontunit="em" padding="unset unset unset 1.25em"></wm-label>
+                    <!-- </wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow26"></wm-gridrow></wm-layoutgrid>--></wm-container>
+            </wm-listtemplate>
+        </wm-list>
     </wm-dialog>
     <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="get" dataset="bind:Variables.searchUsers.dataSet" captionalign="left" name="executeSearchUsersForm1" class="form-body1">
         <wm-layoutgrid columns="3" name="layoutgrid5_1" class="mt-20">

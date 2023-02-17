@@ -1101,7 +1101,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 0,
+    "bindCount" : 1,
     "tableName" : "USER",
     "tableType" : "TABLE",
     "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
@@ -2014,10 +2014,11 @@
     "type" : "WorkcategoryUser",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 20,
-    "designMaxResults" : 10,
+    "maxResults" : 200,
+    "designMaxResults" : 100,
+    "onSuccess" : "getWorkCategoryByUserIdonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
@@ -2274,7 +2275,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 0,
+    "bindCount" : 2,
     "tableName" : "WORKCATEGORY_USER",
     "tableType" : "TABLE",
     "properties" : [ "user" ],
@@ -2289,12 +2290,13 @@
     "filterExpressions" : {
       "condition" : "AND",
       "rules" : [ {
-        "target" : "",
+        "target" : "user.email",
         "type" : "string",
-        "matchMode" : "anywhereignorecase",
+        "matchMode" : "exact",
         "value" : "",
         "required" : false,
-        "secondvalue" : ""
+        "secondvalue" : "",
+        "isFirst" : true
       } ]
     },
     "package" : "com.fico.dmp.telusagentuidb.WorkcategoryUser"
@@ -2404,6 +2406,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "searchUsersonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

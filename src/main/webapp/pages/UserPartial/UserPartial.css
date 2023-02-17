@@ -16,6 +16,12 @@
     margin: 1.75rem auto;
 }*/
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
 .aaa{
     left: 20em;
     margin-top: 0px;
@@ -113,7 +119,7 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: #fff;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
+     /*border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
 .card-body .panel-g-r {
@@ -149,7 +155,7 @@ i.app-icon.fico-icon-circle-solid {
 }
 
 .app-panel.app-card.card.panel-g-r {
-    border-width: 0px;
+    border-width: 5px;
     /*margin-bottom: -50px;*/
 }
 
@@ -744,4 +750,24 @@ td, th {
 }
 .ml-4 {
     margin-left: 4rem;
+}
+
+li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.work-cat-itemMain{
+    padding: 0px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+    border-radius: 0px;
+    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.11764706);
+    -webkit-box-shadow: 0px 1px 3px rgb(0 0 0 / 12%);
+    box-shadow: 0px 1px 3px #fff;
+}
+
+ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
+    /*display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;*/
+  columns: 3;
 }

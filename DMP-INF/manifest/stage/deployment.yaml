@@ -22,7 +22,7 @@ spec:
   template:
     metadata:
       annotations: {sidecar.istio.io/inject: '${istio.param}'}
-      labels: {app: 'fawb-app-{{instanceId}}'}
+      labels: {app: 'fawb-app-{{instanceId}}', com.fico.dmp/enable-opa: 'true'}
     spec:
       containers:
       - image: ${dockerImageName}:${image.tag}
@@ -62,11 +62,30 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - {mountPath: /app-root/runtime/data/design, name: pvc-fawb-dmp-inf}
+        securityContext:
+          capabilities:
+            drop: [ALL]
+          runAsGroup: 185
+          runAsUser: 185
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       volumes:
       - name: pvc-fawb-dmp-inf
         persistentVolumeClaim: {claimName: 'fawb-app-{{instanceId}}-pvc-fawb-dmp-inf'}
+      topologySpreadConstraints:
+      - labelSelector:
+          matchLabels: {app: 'fawb-app-{{instanceId}}'}
+        maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: ScheduleAnyway
+      - labelSelector:
+          matchLabels: {app: 'fawb-app-{{instanceId}}'}
+        maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+      securityContext:
+        fsGroup: 2000
+        supplementalGroups: [2000]
 ---
 apiVersion: v1
 kind: Service
@@ -80,7 +99,7 @@ spec:
   - {name: http, protocol: TCP, port: 8080, targetPort: 8080}
   - {name: hazelcast, protocol: TCP, port: 5701, targetPort: 5701}
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: fawb-app-{{instanceId}}
@@ -91,7 +110,11 @@ spec:
   - host: fawb-app-{{instanceId}}.{{deploymentZone}}
     http:
       paths:
-      - backend: {serviceName: 'fawb-app-{{instanceId}}', servicePort: 8080}
+      - backend:
+          service:
+            name: fawb-app-{{instanceId}}
+            port: {number: 8080}
+        pathType: ImplementationSpecific
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
