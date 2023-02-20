@@ -152,10 +152,11 @@
         <wm-layoutgrid columns="3" name="layoutgrid5_1" class="mt-20">
             <wm-gridrow name="gridrow1" class="pl-20">
                 <wm-gridcolumn name="gridcolumn1" columnwidth="4">
-                    <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false"></wm-form-field>
+                    <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn2" columnwidth="4">
-                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"></wm-form-field>
+                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
+                        placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn3" columnwidth="4">
                     <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="Enter value" class="search "></wm-form-field>
@@ -163,14 +164,14 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow2" class="pl-20">
                 <wm-gridcolumn name="gridcolumn4" columnwidth="4">
-                    <wm-form-field name="role" key="role" type="string" displayname="Role" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"></wm-form-field>
+                    <wm-form-field name="role" key="role" type="string" displayname="Role" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4">
-                    <wm-form-field name="Team" key="Team Manager" displayname="Team Manager" show="true" type="string" widget="select"></wm-form-field>
+                    <wm-form-field name="Team" key="Team Manager" displayname="Team Manager" show="true" type="string" widget="select" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
+        <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
         <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="fico-icon-search" title="Search" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
     <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="true" gridfirstrowselect="false" showrowindex="false" enablesort="true"
@@ -258,7 +259,8 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow17" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true"
+                            inputtype="text"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">

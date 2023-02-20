@@ -1,18 +1,4 @@
 {
-  "currenRowId" : {
-    "_id" : "wm-currenRowId-wm.Variable-1655455673601",
-    "name" : "currenRowId",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : {
-      "dataValue" : ""
-    },
-    "type" : "string",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
   "deletUser" : {
     "_id" : "wm-deletUser-wm.ServiceVariable-1675847782964",
     "name" : "deletUser",
@@ -2389,6 +2375,42 @@
     "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false
+  },
+  "ResetPREValue" : {
+    "_id" : "wm-currenRowId-wm.Variable-1655455673601",
+    "name" : "ResetPREValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "resetTableData" : {
+    "_id" : "wm-ResetTableData-wm.ServiceVariable-1676872606538",
+    "name" : "resetTableData",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.SearchUsersResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeSearchUsers",
+    "operationId" : "QueryExecutionController_executeSearchUsers",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "resetTableDataonSuccess(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "searchUsers" : {
     "_id" : "wm-searchUsers-wm.ServiceVariable-1675938950255",

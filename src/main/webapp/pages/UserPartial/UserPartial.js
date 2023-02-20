@@ -705,15 +705,12 @@ Partial.executeSearchUsersForm1_resetAction = function($event) {
 
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
-
-    Partial.Variables.searchUsers.invoke();
-
+    Partial.Variables.searchUsers.dataSet = [];
+    Partial.Variables.searchUsers.dataSet = Partial.Variables.ResetPREValue.dataSet;
 
 
 };
 
-
-
-Partial.searchUsersonSuccess = function(variable, data) {
-    debugger;
+Partial.resetTableDataonSuccess = function(variable, data) {
+    Partial.Variables.ResetPREValue.dataSet = data;
 };
