@@ -5,7 +5,7 @@ Local spring modifications.  This file is never altered by WaveMaker software,
 and is an ideal location for end-users to put any code they need.
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	    xmlns:context="http://www.springframework.org/schema/context"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">

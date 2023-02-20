@@ -100,7 +100,9 @@
     <security:http pattern="/services/application/wmProperties.js" security="none"/>
     <security:http auto-config="false" use-expressions="true" security-context-repository-ref="securityContextRepository" entry-point-ref="appAuthenticationEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager">
         <security:intercept-url pattern="/j_spring_security_logout" access="permitAll"/>
+        <security:intercept-url pattern="/pages/Admin/**" access="hasAnyRole('ROLE_AR TM Onshore','ROLE_OD TM','ROLE_Support','ROLE_AR TM Offshore')"/>
         <security:intercept-url pattern="/pages/Login/**" access="permitAll"/>
+        <security:intercept-url pattern="/pages/Main/**" access="hasAnyRole('ROLE_AR TM Offshore','ROLE_AR TM Onshore','ROLE_OD TM','ROLE_Support','ROLE_AR Agent Offshore')"/>
         <security:intercept-url pattern="/services/application/i18n/**" access="permitAll"/>
         <security:intercept-url pattern="/services/prefabs/**/servicedefs" access="permitAll"/>
         <security:intercept-url pattern="/services/security/**" access="permitAll"/>
@@ -335,6 +337,41 @@
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
+                <entry key="AR Agent Onshore">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="AR Agent Offshore">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="AR TM Onshore">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="AR TM Offshore">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="Support">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="OD Agent">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="OD TM">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
             </map>
         </property>
     </bean>
@@ -364,7 +401,9 @@
 			 
 			 
 			 
-			
+			 
+			ROLE_AR Agent Onshore &gt; ROLE_AR Agent Offshore &gt; ROLE_AR TM Onshore &gt; ROLE_AR TM Offshore &gt; ROLE_Support 
+			ROLE_OD Agent &gt; ROLE_OD TM
 			</value>
         </property>
     </bean>

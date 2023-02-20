@@ -90,6 +90,8 @@ function loadDashboardMenus() {
             console.log('Permissions loaded...');
             document.getElementsByTagName("html")[0].style.visibility = "visible";
 
+
+
             var dashboard = [];
             Page.Variables.staticMenuItems.dataSet.forEach(function(m) {
                 // if (m.path === '#/ApplicationCreateEdit' && App.IsUserHasAccess('Access_CreateApplication'))
@@ -99,13 +101,15 @@ function loadDashboardMenus() {
                 // else
                 if (m.path === '#/SetupLanding' && App.IsUserHasAccess('Setup_Menu'))
                     dashboard.push(m);
-                else if (m.path === '#/Users' && App.IsUserHasAccess('Security_Users'))
+                else if (m.path === '#/Users' && App.IsUserHasAccess('Support'))
                     dashboard.push(m);
                 else if (m.path === '#/Groups' && App.IsUserHasAccess('Security_Groups'))
                     dashboard.push(m);
                 else if (m.path === '#/Roles' && App.IsUserHasAccess('Security_Roles'))
                     dashboard.push(m);
             });
+
+
 
             Page.Variables.staticMenuItems.dataSet = dashboard;
             Page.Widgets.staticMenuItemsList1.dataset = [];

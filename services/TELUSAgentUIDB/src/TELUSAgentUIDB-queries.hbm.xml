@@ -176,11 +176,9 @@ END ASC) wmTempTable
     <sql-query name="getActiveRolesByUserName">
         <![CDATA[
         select distinct(r.role) from `ROLE` r
-INNER JOIN GROUP_ROLE gr on gr.roleId = r.id 
-INNER JOIN `GROUP` g on g.id = gr.groupId
-INNER JOIN USER_GROUP ug on ug.groupId = g.id
-INNER JOIN `USER` u on u.id = ug.userId
-where g.active = true and r.active = true
+INNER JOIN `USER_ROLE` ur on ur.roleId = r.Id
+INNER JOIN USER u on u.id=ur.userId
+where u.active = true
 and u.userId = :UserName
 order by r.role
         ]]>
@@ -190,11 +188,9 @@ order by r.role
     <sql-query name="getActiveRolesByUserName__count">
         <![CDATA[
         select count(*) from (select distinct(r.role) from `ROLE` r
-INNER JOIN GROUP_ROLE gr on gr.roleId = r.id 
-INNER JOIN `GROUP` g on g.id = gr.groupId
-INNER JOIN USER_GROUP ug on ug.groupId = g.id
-INNER JOIN `USER` u on u.id = ug.userId
-where g.active = true and r.active = true
+INNER JOIN `USER_ROLE` ur on ur.roleId = r.Id
+INNER JOIN USER u on u.id=ur.userId
+where u.active = true
 and u.userId = :UserName
 order by r.role) wmTempTable
         ]]>
@@ -230,14 +226,14 @@ order by r.role) wmTempTable
 
     <sql-query name="getPermissionByUserId">
         <![CDATA[
-        select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))
+        select Distinct Name from PERMISSION p join ROLE_PERMISSION rp on rp.PermissionId = p.Id left join ROLE r on r.Id = rp.RoleId left join USER_ROLE ur on ur.RoleId = r.Id left join USER u on u.Id = ur.UserId where u.userId = :UserId
         ]]>
     <query-param name="UserId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getPermissionByUserId__count">
         <![CDATA[
-        select count(*) from (select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))) wmTempTable
+        select count(*) from (select Distinct Name from PERMISSION p join ROLE_PERMISSION rp on rp.PermissionId = p.Id left join ROLE r on r.Id = rp.RoleId left join USER_ROLE ur on ur.RoleId = r.Id left join USER u on u.Id = ur.UserId where u.userId = :UserId) wmTempTable
         ]]>
     <query-param name="UserId" type="java.lang.String"/>
     </sql-query>

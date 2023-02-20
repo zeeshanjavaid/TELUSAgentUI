@@ -2216,8 +2216,8 @@
     "name" : "getActiveRolesByUserName",
     "description" : "getActiveRolesByUserName",
     "version" : "V2",
-    "queryString" : "select distinct(r.role) from `ROLE` r\nINNER JOIN GROUP_ROLE gr on gr.roleId = r.id \nINNER JOIN `GROUP` g on g.id = gr.groupId\nINNER JOIN USER_GROUP ug on ug.groupId = g.id\nINNER JOIN `USER` u on u.id = ug.userId\nwhere g.active = true and r.active = true\nand u.userId = :UserName\norder by r.role",
-    "countQueryString" : "select count(*) from (select distinct(r.role) from `ROLE` r\nINNER JOIN GROUP_ROLE gr on gr.roleId = r.id \nINNER JOIN `GROUP` g on g.id = gr.groupId\nINNER JOIN USER_GROUP ug on ug.groupId = g.id\nINNER JOIN `USER` u on u.id = ug.userId\nwhere g.active = true and r.active = true\nand u.userId = :UserName\norder by r.role) wmTempTable",
+    "queryString" : "select distinct(r.role) from `ROLE` r\nINNER JOIN `USER_ROLE` ur on ur.roleId = r.Id\nINNER JOIN USER u on u.id=ur.userId\nwhere u.active = true\nand u.userId = :UserName\norder by r.role",
+    "countQueryString" : "select count(*) from (select distinct(r.role) from `ROLE` r\nINNER JOIN `USER_ROLE` ur on ur.roleId = r.Id\nINNER JOIN USER u on u.id=ur.userId\nwhere u.active = true\nand u.userId = :UserName\norder by r.role) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2228,7 +2228,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "sachinbalgi@fico.com",
+      "testValue" : "ravik_telus@fico.com",
       "required" : true
     } ],
     "request" : {
@@ -2535,8 +2535,8 @@
     "name" : "getPermissionByUserId",
     "description" : "getPermissionByUserId",
     "version" : "V2",
-    "queryString" : "select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))",
-    "countQueryString" : "select count(*) from (select Distinct Name from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId IN(select ROLE.Id from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER.userId = :UserId))))) wmTempTable",
+    "queryString" : "select Distinct Name from PERMISSION p join ROLE_PERMISSION rp on rp.PermissionId = p.Id left join ROLE r on r.Id = rp.RoleId left join USER_ROLE ur on ur.RoleId = r.Id left join USER u on u.Id = ur.UserId where u.userId = :UserId",
+    "countQueryString" : "select count(*) from (select Distinct Name from PERMISSION p join ROLE_PERMISSION rp on rp.PermissionId = p.Id left join ROLE r on r.Id = rp.RoleId left join USER_ROLE ur on ur.RoleId = r.Id left join USER u on u.Id = ur.UserId where u.userId = :UserId) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2547,7 +2547,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "abc",
+      "testValue" : "ravik_telus@fico.com",
       "required" : true
     } ],
     "request" : {

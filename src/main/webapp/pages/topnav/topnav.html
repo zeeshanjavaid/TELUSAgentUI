@@ -1,17 +1,9 @@
 <wm-partial name="menuPartial">
     <wm-container class="header-row" name="maincontainer">
         <wm-container name="leftcontainer" class="left">
-            <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" dataset="bind:Variables.leftTopMenuMV.dataSet" on-select="menuSelect($event, widget, $item)" itemlabel="name" itemchildren="children" itemlink="url">
-            </wm-nav>
+            <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" dataset="bind:Variables.leftTopMenuMV.dataSet" on-select="menuSelect($event, widget, $item)" itemlabel="name" itemchildren="children" itemlink="url" accessroles="Everyone"></wm-nav>
         </wm-container>
         <wm-container name="rightcontainer" class="right">
-            <wm-container name="containerSearch " class="search-outer-container display-inline-block " show="true">
-                <wm-text name="textSearch " on-keyup="textSearchKeyup($event, widget)" updatedelay="0 " placeholder=" " class="form-control search-input" on-change="textSearchChange($event, widget, newVal, oldVal)" on-blur="textSearchBlur($event, widget)" updateon="default "
-                    autocomplete="false " maxchars="100 " tabindex="-1 "></wm-text>
-                <wm-container name="containerSearchIcon " class="global-search-icon input-group-addon search-icon " fontsize="21 " on-click="containerSearchIconClick($event, widget)" show="true">
-                    <wm-icon name="icon1 " iconclass="fico-icon-search " iconsize="15px "></wm-icon>
-                </wm-container>
-            </wm-container>
             <wm-container name="container5 " class="text-right display-inline-block ">
                 <wm-nav type="pills" autoclose="outsideClick" name="rightMenu" class="display-inline-block session-nav" dataset="bind:Variables.rightTopMenuMV.dataSet" itemlabel="name" itemlink="url" itemchildren="children" on-select="menuSelect($event, widget, $item)"
                     autoopen="never"></wm-nav>

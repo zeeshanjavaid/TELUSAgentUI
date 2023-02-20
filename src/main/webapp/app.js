@@ -663,8 +663,8 @@ App.loadAppPermissions = async function() {
             }).catch((err) => {
                 throw err;
             });
-
-            //when no permissions assigned to user/user is inactive
+            debugger;
+            //  when no permissions assigned to user / user is inactive
             if (App.Variables.PermissionsForLoggedInUserId.dataSet.length === 0) {
                 App.permissionsLoaded = false;
                 window.location.href = '#/ErrorLanding';
@@ -677,6 +677,7 @@ App.loadAppPermissions = async function() {
                     App.userPermission.set(source.name, 1);
                 });
                 App.permissionsLoaded = true;
+                debugger;
             }
 
         } else {

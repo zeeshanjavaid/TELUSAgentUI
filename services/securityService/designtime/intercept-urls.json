@@ -1,7 +1,17 @@
 [ {
+  "urlPattern" : "/pages/Admin/**",
+  "permission" : "Role",
+  "roles" : [ "AR TM Onshore", "OD TM", "Support", "AR TM Offshore" ],
+  "httpMethod" : null
+}, {
   "urlPattern" : "/pages/Login/**",
   "permission" : "PermitAll",
   "roles" : [ ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/Main/**",
+  "permission" : "Role",
+  "roles" : [ "AR TM Offshore", "AR TM Onshore", "OD TM", "Support", "AR Agent Offshore" ],
   "httpMethod" : null
 }, {
   "urlPattern" : "/**",

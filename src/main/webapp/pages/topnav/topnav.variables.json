@@ -153,7 +153,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 1,
-      "roles" : [ "fdaa1c10-b2fb-43bf-a095-242a5b3f0a57" ],
+      "roles" : [ ],
       "deleted" : false
     }, {
       "name" : "System Administration",
@@ -163,7 +163,7 @@
       "createdBy" : "sachinbalgi_telus@fico.com",
       "updatedBy" : "sachinbalgi_telus@fico.com",
       "status" : "Active",
-      "code" : "ActivityLogs",
+      "code" : "SystemAdministration",
       "categoryType" : "top/Admin",
       "isExternalURL" : false,
       "path" : "#/Admin",
@@ -173,7 +173,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 1,
-      "roles" : [ "fdaa1c10-b2fb-43bf-a095-242a5b3f0a57" ],
+      "roles" : [ ],
       "deleted" : false
     } ],
     "type" : "entry",

@@ -214,6 +214,8 @@ async function loadAppMetadata() {
 
         if (m.code === 'CreateApplication' && App.IsUserHasAccess('Access_CreateApplication')) {
             Partial.UserAssignedMenus.push(m);
+        } else if (m.code === 'SystemAdministration' && App.IsUserHasAccess('System Administration')) {
+            Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'SearchApplication' && App.IsUserHasAccess('Access_ApplicationSearch')) {
             Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'Setup' && App.IsUserHasAccess('Setup_Menu')) {
@@ -235,7 +237,7 @@ async function loadAppMetadata() {
         } else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog')) { //else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog'))
             Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'Reports' && App.IsUserHasAccess('Report_Menu')) {
-            // Partial.UserAssignedMenus.push(m);
+            Partial.UserAssignedMenus.push(m);
             var childrens = [];
             m.children.forEach(function(c) {
                 if (c.code === 'ApplicationDashboardReport' && App.IsUserHasAccess('Report_ApplicationDashboardReport'))
@@ -250,11 +252,16 @@ async function loadAppMetadata() {
             m.children = childrens;
             Partial.UserAssignedMenus.push(m);
         }
+        //    Partial.UserAssignedMenus.push(m);
 
     });
 
+
+
     // Overriding the previous menus with newly filtered Permissions
     Partial.Variables.leftTopMenuMV.dataSet = Partial.UserAssignedMenus;
+
+    debugger;
 
     // for Queue related
     if (App.IsUserHasAccess('Access_QueueMenu'))

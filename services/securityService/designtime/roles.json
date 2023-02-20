@@ -142,4 +142,46 @@
   "roleConfig" : {
     "landingPage" : "Main"
   }
+}, {
+  "name" : "AR Agent Onshore",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "AR Agent Offshore",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "AR TM Onshore",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "AR TM Offshore",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Support",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "OD Agent",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "OD TM",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
 } ]
