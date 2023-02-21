@@ -47,7 +47,8 @@ function initPage() {
             clearInterval(intervalId);
             console.log('Permissions loaded...');
 
-            if (!App.IsUserHasAccess('Setup_DomainValues')) {
+            //  if (!App.IsUserHasAccess('Setup_DomainValues')) {
+            if (!App.IsUserHasAccess('System Administration')) {
                 window.location.href = '#/ErrorLanding';
             } else {
                 document.getElementsByTagName("html")[0].style.visibility = "visible";

@@ -32,9 +32,8 @@ public class EntityApiController {
 
     @Autowired
     private SecurityService securityService;
-    
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -56,11 +55,9 @@ public class EntityApiController {
         logger.debug("Returning {}", result);
         return result;
     }
-     
-    public Object getCollectionEntity(String name, HttpServletRequest request) throws Exception {
-            //  return objectMapper.readValue("{\"empty\": false}", CollectionEntity.class);
-    return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"characteristics\":[{\"id\":1,\"name\":\"string\",\"value\":\"string\",\"@type\":\"Characteristic\"}],\"collectionStatuses\":[{\"id\":1,\"code\":\"PRECOLL\",\"@type\":\"CollectionStatus\"}],\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"manualTreatmentIndicator\":false,\"name\":\"string\",\"notTouchListIndicator\":false,\"relatedEntity\":{\"id\":1,\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]", objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
-    
-    }
 
+    public Object getCollectionEntity(String name, HttpServletRequest request) throws Exception {
+        // return objectMapper.readValue("{\"empty\": false}", CollectionEntity.class);
+        return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"characteristics\":[{\"id\":1,\"name\":\"string\",\"value\":\"string\",\"@type\":\"Characteristic\"}],\"collectionStatuses\":[{\"id\":1,\"code\":\"PRECOLL\",\"@type\":\"CollectionStatus\"}],\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"manualTreatmentIndicator\":false,\"name\":\"string\",\"notTouchListIndicator\":false,\"relatedEntity\":{\"id\":1,\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]", objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
+    }
 }

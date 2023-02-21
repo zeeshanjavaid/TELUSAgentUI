@@ -203,7 +203,7 @@ Partial.IsUserHasAccess = function(e) {
 }
 
 async function loadAppMetadata() {
-    App.initializeQueueFilterFields();
+    //App.initializeQueueFilterFields();
     await App.getUserTimeZone();
     await App.loadAppPermissions();
 
@@ -218,41 +218,40 @@ async function loadAppMetadata() {
             Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'SearchApplication' && App.IsUserHasAccess('Access_ApplicationSearch')) {
             Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Setup' && App.IsUserHasAccess('Setup_Menu')) {
+        } else if (m.code === 'Setup' && App.IsUserHasAccess('System Administration')) {
             Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Security' && App.IsUserHasAccess('Security_Menu')) {
+        } else if (m.code === 'Security' && App.IsUserHasAccess('System Administration')) {
             var childrens = [];
             m.children.forEach(function(c) {
-                if (c.code === 'Users' && App.IsUserHasAccess('Security_Users'))
+                if (c.code === 'Users' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
-                else if (c.code === 'Groups' && App.IsUserHasAccess('Security_Groups'))
+                else if (c.code === 'Groups' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
-                else if (c.code === 'Roles' && App.IsUserHasAccess('Security_Roles'))
+                else if (c.code === 'Roles' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
                 else if (c.code === 'LockedApplications' && App.IsUserHasAccess('Security_LockedApplications'))
                     childrens.push(c);
             });
             m.children = childrens;
             Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog')) { //else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog'))
+        } else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('System Administration')) { //else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog'))
             Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Reports' && App.IsUserHasAccess('Report_Menu')) {
+        } else if (m.code === 'Reports' && App.IsUserHasAccess('System Administration')) {
             Partial.UserAssignedMenus.push(m);
             var childrens = [];
             m.children.forEach(function(c) {
-                if (c.code === 'ApplicationDashboardReport' && App.IsUserHasAccess('Report_ApplicationDashboardReport'))
+                if (c.code === 'ApplicationDashboardReport' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
-                else if (c.code === 'ManualReviewDashboardReport' && App.IsUserHasAccess('Report_ManualSummaryReport'))
+                else if (c.code === 'ManualReviewDashboardReport' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
-                else if (c.code === 'ReportOperatorPerformance' && App.IsUserHasAccess('Report_OperatorPerformanceReport'))
+                else if (c.code === 'ReportOperatorPerformance' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
-                else if (c.code === 'QueueSummaryDashboardReport' && App.IsUserHasAccess('Report_QueueSummaryReport'))
+                else if (c.code === 'QueueSummaryDashboardReport' && App.IsUserHasAccess('System Administration'))
                     childrens.push(c);
             });
             m.children = childrens;
             Partial.UserAssignedMenus.push(m);
         }
-        //    Partial.UserAssignedMenus.push(m);
 
     });
 

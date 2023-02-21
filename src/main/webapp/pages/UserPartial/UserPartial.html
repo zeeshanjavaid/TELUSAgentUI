@@ -93,7 +93,7 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
                     <wm-label name="label10" caption=""></wm-label>
-                    <wm-label name="label12_1" caption="Team ID"></wm-label>
+                    <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.teamId"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25" class="ml-4">
                     <wm-label name="label11" caption="Team Manager"></wm-label>
@@ -152,7 +152,7 @@
         <wm-layoutgrid columns="3" name="layoutgrid5_1" class="mt-20">
             <wm-gridrow name="gridrow1" class="pl-20">
                 <wm-gridcolumn name="gridcolumn1" columnwidth="4">
-                    <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false" placeholder="Select value"></wm-form-field>
+                    <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false" placeholder="Select value" dataset="bind:Variables.getTeam.dataSet" datafield="teamId" displayfield="teamId"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn2" columnwidth="4">
                     <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code"
@@ -182,7 +182,7 @@
         <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="customField" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="Team Id" caption="Team Id" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="teamId" caption="Team Id" type="string" mobiledisplay="false" searchable="false" show="true" readonly="undefined"></wm-table-column>
         <wm-table-column binding="active" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="role" caption="Role" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rowOperations" caption="Actions" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>

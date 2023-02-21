@@ -37,60 +37,26 @@ function initPage() {
             clearInterval(intervalId);
             console.log('Permissions loaded...');
 
-            if (!App.IsUserHasAccess('Setup_DomainValues')) {
-                window.location.href = '#/ErrorLanding';
-            } else {
-                document.getElementsByTagName("html")[0].style.visibility = "visible";
+            //Removed Permission for Domain Value aka Work Category
 
-                //listening to search inputs key-up events
+            // if (!App.IsUserHasAccess('System Administration')) {
+            //     window.location.href = '#/ErrorLanding';
+            // } else {
+            document.getElementsByTagName("html")[0].style.visibility = "visible";
 
-                //debugger;
-                $(".searchInput").on("keyup", (ev) => {
-                    //if 'ENTER' is keyed -> invoke search
-                    if (ev.keyCode && ev.keyCode === 13)
-                        Page.searchDV_ButtonClick(ev, Page.Widgets.searchDV_Button);
-                });
+            //listening to search inputs key-up events
 
-                //listening to pagination events from partial
-                let paginationContainer = document.querySelector("div[name='dv_PaginationContainer']");
-                paginationContainer.addEventListener(paginationEventName, (ev) => {
-                    // console.log(ev.detail.pageNumber);
+            //debugger;
+            $(".searchInput").on("keyup", (ev) => {
+                //if 'ENTER' is keyed -> invoke search
+                if (ev.keyCode && ev.keyCode === 13)
+                    Page.searchDV_ButtonClick(ev, Page.Widgets.searchDV_Button);
+            });
 
-                    //search/fetch service invocation below
-                    let dvFetchSV = Page.Variables.sv_getDVListPaginated;
-                    dvFetchSV.setInput({
-                        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
-                        "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
-                        "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-                        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-                        "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
-                        "currentPage": ev.detail.pageNumber,
-                        "pageSize": Page.Variables.pageSize.getValue('dataValue'),
-                        "sortOrders": Page.Variables.sortProperties.getValue('dataValue')
-                    });
-
-                    dvFetchSV.invoke();
-                });
-
-                //DV fetch service level params
-                Page.Variables.defaultLocale.setValue('dataValue', (App.getCurrentLocale() ? App.getCurrentLocale() : 'en'));
-                Page.Variables.totalRecordCount.setValue('dataValue', 0);
-                Page.Variables.currentPage.setValue('dataValue', 0);
-                Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
-                Page.Variables.sortProperties.setValue('dataValue',
-                    (Page.Variables.sortProperties.getValue('dataValue') ?
-                        Page.Variables.sortProperties.getValue('dataValue') : 'code ASC')); //-> default sort criteria
-
-
-                Page.Variables.showAllDVs.setValue('dataValue', false);
-                Page.Variables.showActiveDVs.setValue('dataValue', true);
-                Page.Variables.showInactiveDVs.setValue('dataValue', false);
-
-                Page.Widgets.activate_Button.disabled = true;
-                Page.Widgets.deactivate_Button.disabled = true;
-                // Page.Widgets.showActive_Link.display = false;
-                // Page.Widgets.showInactive_Link.display = true;
-                // Page.Widgets.showAll_Link.display = true;
+            //listening to pagination events from partial
+            let paginationContainer = document.querySelector("div[name='dv_PaginationContainer']");
+            paginationContainer.addEventListener(paginationEventName, (ev) => {
+                // console.log(ev.detail.pageNumber);
 
                 //search/fetch service invocation below
                 let dvFetchSV = Page.Variables.sv_getDVListPaginated;
@@ -100,26 +66,62 @@ function initPage() {
                     "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
                     "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
                     "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
-                    "currentPage": Page.Variables.currentPage.getValue('dataValue'),
+                    "currentPage": ev.detail.pageNumber,
                     "pageSize": Page.Variables.pageSize.getValue('dataValue'),
                     "sortOrders": Page.Variables.sortProperties.getValue('dataValue')
                 });
 
                 dvFetchSV.invoke();
-            }
+            });
+
+            //DV fetch service level params
+            Page.Variables.defaultLocale.setValue('dataValue', (App.getCurrentLocale() ? App.getCurrentLocale() : 'en'));
+            Page.Variables.totalRecordCount.setValue('dataValue', 0);
+            Page.Variables.currentPage.setValue('dataValue', 0);
+            Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
+            Page.Variables.sortProperties.setValue('dataValue',
+                (Page.Variables.sortProperties.getValue('dataValue') ?
+                    Page.Variables.sortProperties.getValue('dataValue') : 'code ASC')); //-> default sort criteria
+
+
+            Page.Variables.showAllDVs.setValue('dataValue', false);
+            Page.Variables.showActiveDVs.setValue('dataValue', true);
+            Page.Variables.showInactiveDVs.setValue('dataValue', false);
+
+            Page.Widgets.activate_Button.disabled = true;
+            Page.Widgets.deactivate_Button.disabled = true;
+            // Page.Widgets.showActive_Link.display = false;
+            // Page.Widgets.showInactive_Link.display = true;
+            // Page.Widgets.showAll_Link.display = true;
+
+            //search/fetch service invocation below
+            let dvFetchSV = Page.Variables.sv_getDVListPaginated;
+            dvFetchSV.setInput({
+                "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
+                "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
+                "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
+                "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+                "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
+                "currentPage": Page.Variables.currentPage.getValue('dataValue'),
+                "pageSize": Page.Variables.pageSize.getValue('dataValue'),
+                "sortOrders": Page.Variables.sortProperties.getValue('dataValue')
+            });
+
+            dvFetchSV.invoke();
+            //   }
         } else {
             //determining the time elapsed since App started in minutes
             const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
 
-            if (timeElapsedSinceAppStart < 1)
-                console.log('Waiting to load permissions...');
-            else {
-                clearInterval(intervalId);
+            // if (timeElapsedSinceAppStart < 1)
+            //     console.log('Waiting to load permissions...');
+            // else {
+            //     clearInterval(intervalId);
 
-                //if the active page is not 'ErrorLanding'
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
-            }
+            //     //if the active page is not 'ErrorLanding'
+            //     if (window.location.hash !== '#/ErrorLanding')
+            //         window.location.href = '#/ErrorLanding';
+            // }
         }
     }, 10);
 }

@@ -129,7 +129,7 @@ function loadSetupMenus() {
                         delete parentMenuItem.children;
                         parentMenuItem.children = [];
                         m.children.forEach((child) => {
-                            if (child.code === 'SiteProperties' && App.IsUserHasAccess('Setup_SiteProperties'))
+                            if (child.code === 'SiteProperties' && App.IsUserHasAccess('System Administration'))
                                 parentMenuItem.children.push(child);
                             else if (child.code === 'Organizations')
                                 parentMenuItem.children.push(child);
@@ -148,7 +148,8 @@ function loadSetupMenus() {
                         delete parentMenuItem.children;
                         parentMenuItem.children = [];
                         m.children.forEach((child) => {
-                            if (child.code === 'DomainValues' && App.IsUserHasAccess('Setup_DomainValues'))
+                            // if (child.code === 'DomainValues' && App.IsUserHasAccess('Setup_DomainValues'))
+                            if (child.code === 'DomainValues' && App.IsUserHasAccess('System Administration'))
                                 parentMenuItem.children.push(child);
                             else if (child.code === 'Queues' && App.IsUserHasAccess('Setup_Queues'))
                                 parentMenuItem.children.push(child);

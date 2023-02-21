@@ -133,7 +133,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 3,
-      "roles" : [ "7e1d0ffd-9670-43ea-a647-b45b0ebfff42", "e96c23d7-c8e6-445f-a503-50b475d7c76e", "62dea141-9b72-46e1-8101-fdf11757e8b7", "3a82c367-ae9e-437f-87ce-97446c5dbca1", "471f444e-6595-4783-a17c-9e3f2437daf5", "4fbac974-ae93-452b-82d5-04433dc9a2db", "850e553d-de24-4275-87fd-58b42be461ef", "e4aa48c5-83c8-4e11-9a61-b5d8b9fd9214", "fdaa1c10-b2fb-43bf-a095-242a5b3f0a57", "1192a4f4-c64c-4690-9098-464a42888ece", "cb2bfc10-af06-42ab-a2c7-12f3c1151a25", "93e1f11a-74cf-449b-8be7-2f045ad0e9b1" ],
+      "roles" : [ ],
       "deleted" : false
     }, {
       "name" : "Audit",
