@@ -7,6 +7,7 @@
     <import resource="classpath:DmpS3FileService.spring.xml"/>
     <import resource="classpath:DomainValueRelatedBS.spring.xml"/>
     <import resource="classpath:DuplicateCheckRelatedBS.spring.xml"/>
+    <import resource="classpath:EntityApiController.spring.xml"/>
     <import resource="classpath:Environment.spring.xml"/>
     <import resource="classpath:FDOUtilityServices.spring.xml"/>
     <import resource="classpath:FileRelatedBS.spring.xml"/>
