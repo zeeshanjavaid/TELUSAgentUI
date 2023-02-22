@@ -53,12 +53,12 @@ Partial.SaveButtonClick = function($event, widget) {
     App.Variables.GroupPageCommunication.currentGroupInFocusId = Partial.pageParams.groupId;
     //if ((Partial.Widgets.GroupNameText.datavalue == undefined ? Partial.Widgets.GroupNameText.datavalue == undefined : Partial.Widgets.GroupNameText.datavalue == "")) {
     if (Partial.Widgets.GroupNameText.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.GROUP_NAME_MANDATORY;
+        App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAM_NAME_MANDATORY;
         Partial.scrollToTop();
         Partial.Widgets.GroupNameText.required = true;
 
     } else if (Partial.Widgets.GroupNameText.datavalue.match(pattern) == null) {
-        App.Variables.errorMsg.dataSet.dataValue = "Group name is invalid.";
+        App.Variables.errorMsg.dataSet.dataValue = "Team name is invalid.";
         Partial.scrollToTop();
     } else {
 
@@ -90,7 +90,7 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
                     'updatedOn': new Date()
                 });
-
+                debugger;
                 Partial.Variables.updateTeam.update();
             } else {
                 debugger;
@@ -108,11 +108,11 @@ Partial.SaveButtonClick = function($event, widget) {
 
 
         } else if (Partial.groupExists) {
-            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.GROUP_ALREADY_EXIST;
+            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAM_ALREADY_EXIST;
             Partial.scrollToTop();
 
         } else {
-            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.GROUPNAME_ALREADY_EXIST;
+            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAMNAME_ALREADY_EXIST;
             Partial.scrollToTop();
         }
 
@@ -186,7 +186,7 @@ App.addTeams = function() {
     Partial.Variables.selectedRoles.dataSet = [];
     Partial.Variables.selectedUsers.dataSet = [];
     /*Partial.Variables.getAllRole.invoke(); */
-    // Partial.Variables.getAllUsers.invoke();
+    Partial.Variables.getAllUsers.invoke();
 
     if (Partial.Widgets.DualListUsers_TD !== undefined) {
         Partial.Widgets.DualListUsers_TD.rightdataset = [];
@@ -326,7 +326,7 @@ Partial.getAllUsersonSuccess = function(variable, data) {
     /* if (Partial.Widgets.DualListUsers_TD !== undefined) {
          Partial.Widgets.DualListUsers_TD.leftdataset = [];
      }*/
-    //Partial.Variables.leftUserList.dataSet = data;
+    Partial.Variables.leftUserList.dataSet = data;
     debugger;
     data.forEach(function(u) {
         u.fullName = App.htmlEncode(u.userId);
@@ -818,7 +818,7 @@ Partial.createTeamonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = null;
 
     if (!Partial.Variables.uploadGroup.dataSet.length > 0) {
-        Partial.Variables.successMessage.dataSet.dataValue = Partial.appLocale.GROUP_CREATED_SUCCESSFULLY;
+        Partial.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
         Partial.scrollToTop();
 
 
@@ -846,15 +846,91 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
         App.Variables.groupErrorMessage.dataSet.dataValue = "";
         App.Variables.groupSuccessMessage.dataSet.dataValue = "";
 
-        Partial.Variables.groupSuccessMessage.dataSet.dataValue = Partial.appLocale.GROUPS_IMPORTED_SUCCESSFULLY;
+        Partial.Variables.groupSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAMS_IMPORTED_SUCCESSFULLY;
     } else {
-        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.GROUP_CREATED_SUCCESSFULLY;
+        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
         Partial.scrollToTop();
     }
 
     //removing the cached app level permissions, so that they are loaded again on navigation
     // cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
 
-    //App.refreshAllGroups();
+    App.refreshAllTeams();
+
+};
+
+Partial.updateTeamonSuccess = function(variable, data) {
+
+    Partial.Variables.executeDeleteTeamUser.setInput({
+        'teamId': Partial.pageParams.groupId
+    });
+    Partial.Variables.executeDeleteTeamUser.invoke();
+
+};
+
+Partial.deleteTeamConfirmOkClick = function($event, widget) {
+
+    Partial.isDeleteTeam = true;
+
+    Partial.Widgets.deleteTeamDialog.close();
+    Partial.Variables.executeDeleteTeamUser.setInput({
+        'teamId': Partial.pageParams.groupId
+    });
+    Partial.Variables.executeDeleteTeamUser.invoke();
+
+
+};
+
+Partial.deleteTeamonSuccess = function(variable, data) {
+
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    App.Variables.successMessage.dataSet.dataValue = null;
+    App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_DELETED_SUCCESSFULLY;
+    App.refreshAllTeams();
+
+};
+
+Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
+
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    App.Variables.successMessage.dataSet.dataValue = null;
+    if (Partial.isDeleteGroup !== true) {
+        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
+        /*Partial.Widgets.DualListRoles_TD.rightdataset.forEach(function(role) {
+            Partial.Variables.CreateGroupRole.setInput({
+                'groupId': Partial.pageParams.groupId,
+                'roleId': role.id
+            });
+            Partial.Variables.CreateGroupRole.invoke();
+        });
+
+        Partial.Widgets.DualListUsers_TD.rightdataset.forEach(function(user) {
+            Partial.Variables.CreateGroupUser.setInput({
+                'groupId': Partial.pageParams.groupId,
+                'userId': user.id
+            });
+            Partial.Variables.CreateGroupUser.invoke();
+        });*/
+
+        Partial.Widgets.DualListUsers_TD.rightdataset.forEach(function(user) {
+            Partial.Variables.CreateTeamUser.setInput({
+                'teamId': Partial.pageParams.groupId,
+                'userId': user.id
+            });
+            Partial.Variables.CreateTeamUser.invoke();
+        })
+
+
+        // Updating the Group List
+        App.refreshAllTeams();
+
+    } else {
+
+        Partial.Variables.deleteTeam.setInput({
+            'id': Partial.pageParams.groupId
+        });
+
+        Partial.Variables.deleteTeam.invoke();
+    }
 
 };

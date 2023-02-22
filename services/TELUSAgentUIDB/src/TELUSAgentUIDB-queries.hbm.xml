@@ -952,4 +952,11 @@ END ASC) wmTempTable
         ]]>
     <query-param name="userId" type="java.lang.String"/>
     </sql-query>
+
+    <sql-query name="deleteTeamUser">
+        <![CDATA[
+        delete from TEAM_USER where teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.Integer"/>
+    </sql-query>
 </hibernate-mapping>

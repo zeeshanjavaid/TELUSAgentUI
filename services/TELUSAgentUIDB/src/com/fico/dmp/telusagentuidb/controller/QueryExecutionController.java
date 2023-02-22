@@ -833,4 +833,14 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/deleteTeamUser", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "deleteTeamUser")
+    public IntegerWrapper executeDeleteTeamUser(@RequestParam(value = "teamId") Integer teamId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: deleteTeamUser");
+        Integer _result = queryService.executeDeleteTeamUser(teamId);
+        LOGGER.debug("got the result for named query: deleteTeamUser, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
 }

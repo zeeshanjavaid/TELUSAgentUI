@@ -259,7 +259,14 @@
     "LEFT_NAV_SETUP" : "SETUP",
     "APP_CONTINUE_MSG" : "Meanwhile you can go ahead and continue working with other applications.",
     "APP_BEING_ANALYSED" : "We are analyzing the information provided with the application and calculating processing parameters. Based on organizational policies the application might need a manual review before a decision can be made.",
-    "APP_BEING_SUBMITTED" : "Your application is being submitted."
+    "APP_BEING_SUBMITTED" : "Your application is being submitted.",
+    "TEAM_NAME_MANDATORY" : "Team name is mandatory",
+    "TEAM_ALREADY_EXIST" : "Team already exists",
+    "TEAMNAME_ALREADY_EXIST" : "Team Name is already in use, please change it and try again",
+    "TEAM_CREATED_SUCCESSFULLY" : "Team created successfully",
+    "TEAMS_IMPORTED_SUCCESSFULLY" : "Teams imported successfully",
+    "TEAM_DELETED_SUCCESSFULLY" : "Team deleted successfully",
+    "TEAM_UPDATED_SUCCESSFULLY" : "Team updated successfully"
   },
   "formats" : {
     "date" : "d MMM yyyy",

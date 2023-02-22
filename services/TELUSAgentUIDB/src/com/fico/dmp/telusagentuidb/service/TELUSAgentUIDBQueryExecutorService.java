@@ -131,4 +131,6 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Integer executeDeleteTeamUser(Integer teamId);
+
 }

@@ -566,13 +566,13 @@ Partial.GroupListSetrecord = function(widget, $data) {
 
 };
 
-Partial.getAllTeamsonSuccess = function(variable, data) {
+Partial.getAllTeamsonSuccess = async function(variable, data) {
     debugger;
     Partial.allTeamUITemp = [];
     Partial.Variables.allTeamsUI.dataSet = [];
     Partial.Variables.teamCopy.dataSet = [];
     for (let r of data) {
-        Partial.Variables.roleId.dataSet.dataValue = r.id;
+        //Partial.Variables.roleId.dataSet.dataValue = r.id;
 
         Partial.TeamUI = {
             "createdBy": r.createdBy,
@@ -583,35 +583,35 @@ Partial.getAllTeamsonSuccess = function(variable, data) {
             "name": r.teamName,
             "updatedBy": r.updatedBy,
             "updatedOn": r.updatedOn,
-            "userCount": 0,
+            "userCount": 0
         };
 
         Partial.Variables.getTeamUser.filterExpressions.rules[0].value = r.id;
-        Partial.Variables.getTeamUser.invoke();
-
-        Partial.TeamUI.userCount = (Partial.Variables.getTeamUser.dataSet && Partial.Variables.getTeamUser.dataSet.length > 0) ?
-            Partial.Variables.getTeamUser.dataSet.length : 0;
+        await Partial.Variables.getTeamUser.invoke();
+        Partial.TeamUI.userCount = (Partial.Variables.getTeamUser.dataSet && Partial.Variables.getTeamUser.dataSet.length > 0) ? Partial.Variables.getTeamUser.dataSet.length : 0;
 
         let d = Partial.allTeamUITemp.find((element) => {
             return element.name === Partial.TeamUI.name
         });
 
+
         if (!d) {
             Partial.allTeamUITemp.push(Partial.TeamUI);
             Partial.Variables.allTeamsUI.dataSet.push(Partial.TeamUI);
+            debugger;
             Partial.Variables.teamCopy.dataSet.push(Partial.TeamUI);
         }
     }
 
-    if (App.Variables.GroupPageCommunication.currentGroupInFocusId) {
+    /*  if (App.Variables.GroupPageCommunication.currentGroupInFocusId) {
 
-        let selectedItem = App.getGroupIndex(App.Variables.GroupPageCommunication.currentGroupInFocusId);
-        let pageSize = App.Variables.GroupPageCommunication.currentPageSize;
-        console.log("Selected item index:" + selectedItem + " pageSize :" + pageSize);
-        App.navigateToPageNo(selectedItem, pageSize);
-        App.clickListItemByIndex('GroupList', (selectedItem) % pageSize);
+          let selectedItem = App.getGroupIndex(App.Variables.GroupPageCommunication.currentGroupInFocusId);
+          let pageSize = App.Variables.GroupPageCommunication.currentPageSize;
+          console.log("Selected item index:" + selectedItem + " pageSize :" + pageSize);
+          App.navigateToPageNo(selectedItem, pageSize);
+          App.clickListItemByIndex('GroupList', (selectedItem) % pageSize);
 
-    }
+      } */
 
 
 };

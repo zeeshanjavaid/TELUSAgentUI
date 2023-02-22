@@ -728,4 +728,14 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeDeleteTeamUser(Integer teamId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQueryForUpdate("deleteTeamUser", params);
+    }
+
 }

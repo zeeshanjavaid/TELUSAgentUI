@@ -1350,9 +1350,9 @@
     "maxResults" : 2000,
     "designMaxResults" : 1000,
     "onSuccess" : "getAllTeamsonSuccess(variable, data, options)",
-    "inFlightBehavior" : "executeAll",
+    "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
     "ignoreCase" : true,
@@ -1475,11 +1475,11 @@
     "relatedTables" : [ ],
     "filterFields" : { },
     "filterExpressions" : {
-      "condition" : "AND",
+      "condition" : "OR",
       "rules" : [ {
-        "target" : "",
+        "target" : "teamId",
         "type" : "string",
-        "matchMode" : "anywhereignorecase",
+        "matchMode" : "isnotempty",
         "value" : "",
         "required" : false,
         "secondvalue" : ""
@@ -3648,12 +3648,12 @@
     } ],
     "filterFields" : { },
     "filterExpressions" : {
-      "condition" : "OR",
+      "condition" : "AND",
       "rules" : [ {
-        "target" : "1",
-        "type" : "string",
-        "matchMode" : "notequals",
-        "value" : "rer",
+        "target" : "teamId",
+        "type" : "integer",
+        "matchMode" : "exact",
+        "value" : "",
         "required" : false,
         "secondvalue" : ""
       } ]

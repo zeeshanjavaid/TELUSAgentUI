@@ -226,6 +226,8 @@ Partial.createRoleonSuccess = function(variable, data) {
     //   Partial.Variables.CreateRolePermission.invoke();
     //})
     //}
+
+    App.refreshAllRoles();
 };
 
 Partial.getRoleonSuccess = function(variable, data) {

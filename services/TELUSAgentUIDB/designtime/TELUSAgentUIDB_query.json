@@ -2212,6 +2212,37 @@
       "responseType" : "SINGLE"
     }
   },
+  "deleteTeamUser" : {
+    "name" : "deleteTeamUser",
+    "description" : "deleteTeamUser",
+    "version" : "V2",
+    "queryString" : "delete from TEAM_USER where teamId=:teamId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "100",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
   "getActiveRolesByUserName" : {
     "name" : "getActiveRolesByUserName",
     "description" : "getActiveRolesByUserName",
