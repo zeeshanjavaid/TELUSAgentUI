@@ -178,10 +178,11 @@
 }
 
 .button_white {
-    border: #00629b !important;
-    border-style: solid !important;
+    border: 1px solid green !important;
+    /*border-style: solid !important;*/
     border-width: 1px !important;
-    color: #00609C !important;
+    color: #fff !important;
+    background-color: green;
 }
 
 .align-center {
@@ -193,5 +194,5 @@
 }
 
 .wm-app .form-group .ng-touched.ng-invalid {
-    border-color: #a94442 !important;
+    border-color: #4B286D !important;
 }

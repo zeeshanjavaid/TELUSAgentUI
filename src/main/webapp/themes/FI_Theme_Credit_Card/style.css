@@ -1468,13 +1468,13 @@
 }
 
 .wm-app a {
-    color: #00629b;
+    color: #800080;
     text-decoration: none;
 }
 
 .wm-app a:hover,
 .wm-app a:focus {
-    color: #00324e;
+    color: #800080;
     text-decoration: none;
 }
 
@@ -3199,10 +3199,10 @@ a.wm-app .bg-danger:focus {
     padding: 8px 5px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333333;
+    color: #333;
     background-color: transparent;
     background-image: none;
-    border: 1px solid #a9a9a9;
+    border: 1.5px solid #4B286D !important;
     border-radius: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -3217,7 +3217,7 @@ a.wm-app .bg-danger:focus {
 }
 
 .wm-app .form-control:focus {
-    border-color: #aeaeae;
+    border-color: #4B286D;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(174, 174, 174, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(174, 174, 174, 0.6);
@@ -3789,7 +3789,7 @@ select[multiple].wm-app .input-lg {
 .wm-app .btn:hover,
 .wm-app .btn:focus,
 .wm-app .btn.focus {
-    color: #00629b;
+    color: #008000;
     text-decoration: none;
 }
 
@@ -3843,6 +3843,7 @@ fieldset[disabled] a.wm-app .btn {
     color: #00629b;
     background-color: #e6e6e6;
     border-color: #003b5e;
+    ;
 }
 
 .wm-app .btn-default:active,
@@ -6491,8 +6492,8 @@ a.wm-app .thumbnail.active {
 .wm-app .list-group-item.active:focus {
     z-index: 2;
     color: #fff;
-    background-color: #00629b;
-    border-color: #00629b;
+    background-color: #4B286D;
+    border-color: #4B286D;
 }
 
 .wm-app .list-group-item.active .list-group-item-heading,
@@ -8725,8 +8726,8 @@ button.wm-app .close {
 
 .wm-app .btn.btn-secondary,
 .wm-app .btn.btn-default {
-    color: #00629b;
-    border-color: #00629b;
+    color: #4B286D;
+    border-color: #4B286D;
     background-color: #ffffff;
 }
 
@@ -8737,8 +8738,8 @@ button.wm-app .close {
 .wm-app .btn.btn-secondary:active,
 .wm-app .btn.btn-default:active {
     color: #ffffff;
-    background-color: #00629b;
-    border-color: #00629b;
+    background-color: #4B286D;
+    border-color: #4B286D;
 }
 
 .wm-app .btn.btn-secondary.disabled,
@@ -8769,8 +8770,8 @@ button.wm-app .close {
 .wm-app .btn.btn-primary:focus,
 .wm-app .btn.btn-primary:active {
     color: #ffffff;
-    background-color: #00629b;
-    border-color: #00629b;
+    background-color: #003f5f;
+    border-color: #003f5f;
 }
 
 .wm-app .btn.btn-primary.disabled,
@@ -9068,7 +9069,7 @@ button.wm-app .close {
 
 .wm-app .app-header,
 .wm-app .app-mobile-header {
-    background-color: #00629b;
+    background-color: #4B286D;
     color: #fff;
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
@@ -9130,7 +9131,7 @@ button.wm-app .close {
 .wm-app .app-top-nav {
     border-radius: 0;
     color: #ffffff;
-    background-color: #00629b;
+    background-color: #4B286D;
     padding: 0px 15px 0px 10px;
 }
 
@@ -9842,6 +9843,7 @@ button.wm-app .close {
 
 .wm-app .form-group .ng-touched.ng-invalid {
     border-color: #a9a9a9;
+    ;
     background-image: none;
     outline: none;
 }
@@ -9865,12 +9867,12 @@ button.wm-app .close {
 }
 
 .wm-app .live-field.form-group .ng-touched.ng-invalid .form-control {
-    border-color: #a94442;
+    border-color: #4B286D;
 }
 
 .wm-app .form-control,
 .wm-app .form-group+.form-control {
-    border: 1px solid #a9a9a9;
+    border: 1px solid #4B286D;
     padding: 5px;
     height: 30px;
     -webkit-background-size: 0 2px, 100% 1px;
@@ -10136,7 +10138,7 @@ button.wm-app .close {
 .wm-app .app-liveform .control-label.text-danger,
 .wm-app .app-form .app-label.text-danger,
 .wm-app .app-liveform .app-label.text-danger {
-    color: #a94442;
+    color: #000;
 }
 
 .wm-app .app-form .form-group.caption-top,
@@ -10160,6 +10162,7 @@ button.wm-app .close {
 .wm-app .app-liveform .form-group.caption-top .form-control-static+wm-select>.form-control {
     width: 100%;
     max-width: unset;
+    right: 1.4em;
 }
 
 .wm-app .app-form .form-group.caption-top .checkbox .caption,
@@ -10177,6 +10180,9 @@ button.wm-app .close {
 .wm-app .app-liveform .form-action .btn {
     margin: 0 0.333em;
     border-radius: 4px;
+    /*border: 1px solid green;*/
+    /*color: #fff;*/
+    /*background-color: green;*/
 }
 
 .wm-app .app-form .help-block,
@@ -10760,11 +10766,12 @@ button.wm-app .close {
 }
 
 .wm-app .app-livelist .app-list-item.active.list-group-item .app-label {
-    color: #000;
+    /*color: #000;*/
+    color: #fff;
 }
 
 .wm-app .app-livelist .app-list-item.active.list-group-item .app-anchor {
-    color: #00629b;
+    color: #4B286D;
 }
 
 .wm-app a {
@@ -14672,4 +14679,16 @@ button.wm-app .close {
         background: rgba(169, 68, 66, 0.7);
         box-shadow: 0 0 0 0 rgba(169, 68, 66, 0);
     }
+}
+
+
+/**/
+
+.wm-app app-partial-userpartial .table>thead>tr th {
+    font-weight: normal;
+    background-color: #ece6ff;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 0px;
+    position: relative;
 }

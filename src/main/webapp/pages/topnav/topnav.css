@@ -9,3 +9,8 @@
     width: 100%!important;
     padding: 5px!important;
 }
+
+.app-label.hello-loggedUser{
+    right:5em;
+    font-size:17px;
+}

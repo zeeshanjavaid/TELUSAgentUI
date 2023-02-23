@@ -32,12 +32,13 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-
 
 .button-hover:hover {
     color: #FFFFFF !important;
-    background-color: #004876 !important;
+    background-color: #008000 !important;
+  
 }
 
 .add-button-hover:hover {
     color: #FFFFFF !important;
-    background-color: #004876 !important;
+    background-color: #00609C !important;
 }
 
 .notification-error {
@@ -68,11 +69,11 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-
 }
 
 li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i.active {
-    background-color: #DBEBFA !important;
+    background-color: #ece6ff !important;
 }
 
 li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i:focus {
-    background-color: #DBEBFA !important;
+    background-color: #ece6ff !important;
 }
 
 .errormessage {

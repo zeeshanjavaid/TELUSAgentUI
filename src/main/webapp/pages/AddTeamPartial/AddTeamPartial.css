@@ -97,8 +97,8 @@ p.alert.app-message.alert-danger.error-query {
 }
 
 .wm-app .btn.btn-default:hover {
-    background-color: #00609c;
-    border-color: #00609c;
+    background-color: #4B286D;
+    border-color: #4B286D;
     color: white;
 }
 
@@ -163,4 +163,26 @@ button.btn.app-button.btn-default.cancelbutton:hover {
     background-color: #dadfe4 !important;
     border-color: #dadfe4 !important;
     color: white;
+}
+/*for save buuton*/
+.btn.app-button.btn-saveTeamsButton{
+    border: 1px solid green;
+    color: #fff;
+    background-color: green;
+}
+.btn.app-button.btn-saveTeamsButton:hover{
+  border: 1px solid green;
+    color: green;
+    background-color: #fff;
+}
+/*for cancel buuton*/
+.btn.app-button.btn-cancelTeamsButton{
+     border: 1px solid green;
+    color: #fff;
+    background-color: green;
+}
+.btn.app-button.btn-cancelTeamsButton:hover{
+    border: 1px solid green;
+    color: green;
+    background-color: #fff;
 }
