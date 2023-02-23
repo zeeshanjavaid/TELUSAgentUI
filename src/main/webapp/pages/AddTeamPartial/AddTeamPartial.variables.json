@@ -11947,6 +11947,33 @@
     },
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
+  "getTeamManagerNameByRole" : {
+    "_id" : "wm-getTeamManagerNameByRole-wm.ServiceVariable-1677152086077",
+    "name" : "getTeamManagerNameByRole",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "roles",
+      "value" : "Support",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamManagerName",
+    "operationId" : "QueryExecutionController_executeGetTeamManagerName",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "groupData" : {
     "_id" : "wm-groupData-wm.Variable-1662623601071",
     "name" : "groupData",

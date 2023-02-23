@@ -53,6 +53,14 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetPermissionByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetTeamManagerNameResponse> executeGetTeamManagerName(String roles, Pageable pageable);
+
+    void exportGetTeamManagerName(String roles, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetWorkCtegoryByCodeResponse> executeGetWorkCtegoryByCode(String workCategory, Pageable pageable);
+
+    void exportGetWorkCtegoryByCode(String workCategory, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<QueryGetQueuesByUserIdResponse> executeQuery_GetQueuesByUserId(Integer userId, Pageable pageable);
 
     void exportQuery_GetQueuesByUserId(Integer userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);

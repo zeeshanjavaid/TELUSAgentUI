@@ -2876,6 +2876,52 @@
       } ]
     }
   },
+  "getTeamManagerName" : {
+    "name" : "getTeamManagerName",
+    "description" : "getTeamManagerName",
+    "version" : "V2",
+    "queryString" : "select u.firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)",
+    "countQueryString" : "select count(*) from (select u.firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "roles",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "AR Agent Onshore,AR Agent Offshore,AR TM Offshore,AR TM Onshore",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "firstName",
+        "fieldName" : "firstName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getWorkCategoryByUserId" : {
     "name" : "getWorkCategoryByUserId",
     "description" : "getting work category by Id for user profile page",
@@ -2915,6 +2961,52 @@
           "list" : false
         },
         "tableName" : "WORKCATEGORY_USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getWorkCtegoryByCode" : {
+    "name" : "getWorkCtegoryByCode",
+    "description" : "Sql query to get code from DomainValue as Work Category",
+    "version" : "V2",
+    "queryString" : "select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory",
+    "countQueryString" : "select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "workCategory",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "WORKCATEGORY",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValue",
         "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false

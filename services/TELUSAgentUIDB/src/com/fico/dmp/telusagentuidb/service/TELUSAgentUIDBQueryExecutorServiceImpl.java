@@ -248,6 +248,50 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetTeamManagerNameResponse> executeGetTeamManagerName(String roles, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roles", roles);
+
+        return queryExecutor.executeNamedQuery("getTeamManagerName", params, GetTeamManagerNameResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamManagerName(String roles, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roles", roles);
+
+        QueryProcedureInput<GetTeamManagerNameResponse> queryInput = new QueryProcedureInput<>("getTeamManagerName", params, GetTeamManagerNameResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetWorkCtegoryByCodeResponse> executeGetWorkCtegoryByCode(String workCategory, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("workCategory", workCategory);
+
+        return queryExecutor.executeNamedQuery("getWorkCtegoryByCode", params, GetWorkCtegoryByCodeResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetWorkCtegoryByCode(String workCategory, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("workCategory", workCategory);
+
+        QueryProcedureInput<GetWorkCtegoryByCodeResponse> queryInput = new QueryProcedureInput<>("getWorkCtegoryByCode", params, GetWorkCtegoryByCodeResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<QueryGetQueuesByUserIdResponse> executeQuery_GetQueuesByUserId(Integer userId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 

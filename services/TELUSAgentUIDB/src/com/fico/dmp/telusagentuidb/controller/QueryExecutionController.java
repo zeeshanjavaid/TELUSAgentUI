@@ -290,6 +290,64 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getTeamManagerName", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamManagerName")
+    public Page<GetTeamManagerNameResponse> executeGetTeamManagerName(@RequestParam(value = "roles") String roles, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamManagerName");
+        Page<GetTeamManagerNameResponse> _result = queryService.executeGetTeamManagerName(roles, pageable);
+        LOGGER.debug("got the result for named query: getTeamManagerName, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamManagerName")
+    @RequestMapping(value = "/queries/getTeamManagerName/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamManagerName(@RequestParam(value = "roles") String roles, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamManagerName");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamManagerName";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamManagerName(roles,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getWorkCtegoryByCode", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Sql query to get code from DomainValue as Work Category")
+    public Page<GetWorkCtegoryByCodeResponse> executeGetWorkCtegoryByCode(@RequestParam(value = "workCategory") String workCategory, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getWorkCtegoryByCode");
+        Page<GetWorkCtegoryByCodeResponse> _result = queryService.executeGetWorkCtegoryByCode(workCategory, pageable);
+        LOGGER.debug("got the result for named query: getWorkCtegoryByCode, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getWorkCtegoryByCode")
+    @RequestMapping(value = "/queries/getWorkCtegoryByCode/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetWorkCtegoryByCode(@RequestParam(value = "workCategory") String workCategory, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getWorkCtegoryByCode");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getWorkCtegoryByCode";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetWorkCtegoryByCode(workCategory,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_GetQueuesByUserId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_GetQueuesByUserId")
