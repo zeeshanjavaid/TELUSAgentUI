@@ -196,3 +196,7 @@
 .wm-app .form-group .ng-touched.ng-invalid {
     border-color: #4B286D !important;
 }
+
+.wm-app app-page-admin .panel7 {
+    width: 60% !important;
+}
