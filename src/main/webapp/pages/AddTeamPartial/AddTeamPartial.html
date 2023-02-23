@@ -14,10 +14,10 @@
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow100" class="rolename-row">
-            <wm-gridcolumn columnwidth="3" name="gridcolumn100">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn100">
                 <wm-label padding="0.75em 0.5em unset 0.5em" caption="Team ID *" name="label100" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="5" name="gridcolumn101">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn101">
                 <wm-container name="container100">
                     <wm-composite name="composite100_1">
                         <wm-container class="col-md-9 queue-name" name="container101" padding="unset unset unset 5px">
@@ -26,14 +26,14 @@
                     </wm-composite>
                 </wm-container>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn15_1">
-                <wm-label padding="unset 0.5em" name="label6_1" caption="Team  Manager"></wm-label>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn15_1">
+                <wm-label padding="0.75em 0.5em unset 0.5em" name="label6_1" caption="Team  Manager" margin="unset unset unset 57px" color="#6e6c6a"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn16_1">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn16_1" horizontalalign="left">
                 <wm-composite name="composite5_1">
                     <wm-label class="col-md-3 control-label" name="label8" caption=""></wm-label>
                     <wm-container class="col-md-9" name="container13">
-                        <wm-text name="text3" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName"></wm-text>
+                        <wm-text name="text3" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName" height="35"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -97,8 +97,8 @@
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" on-click="Widgets.deleteTeamDialog.open()" show="bind:pageParams.groupId !== undefined" name="button4" backgroundcolor="#d0012d"
                             color="#ffffff"></wm-button>
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
-                        <wm-button class="btn-default cancelbutton" caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true" color="#000"></wm-button>
-                        <wm-button class="btn-primary" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)"></wm-button>
+                        <wm-button class="btn-cancelTeamsButton" caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true"></wm-button>
+                        <wm-button class="btn-saveTeamsButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>

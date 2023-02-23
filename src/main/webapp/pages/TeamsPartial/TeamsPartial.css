@@ -72,11 +72,11 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-
 }
 
 li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i.active {
-    background-color: #DBEBFA !important;
+    background-color: #ece6ff !important;
 }
 
 li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.lookup-item.roleList-i:focus {
-    background-color: #DBEBFA !important;
+    background-color: #ece6ff !important;
 }
 
 .errormessage {
