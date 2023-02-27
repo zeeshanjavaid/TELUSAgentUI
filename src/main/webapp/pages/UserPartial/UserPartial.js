@@ -15,14 +15,14 @@ Partial.onReady = function() {
     debugger
     /*
     
-     * variables can be accessed through 'Partial.Variables' property here
-     * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
-     * Partial.Variables.loggedInUser.getData()
-     *
-     * widgets can be accessed through 'Partial.Widgets' property here
-     * e.g. to get value of text widget named 'username' use following script
-     * 'Partial.Widgets.username.datavalue'
-     */
+             * variables can be accessed through 'Partial.Variables' property here
+             * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
+             * Partial.Variables.loggedInUser.getData()
+             *
+             * widgets can be accessed through 'Partial.Widgets' property here
+             * e.g. to get value of text widget named 'username' use following script
+             * 'Partial.Widgets.username.datavalue'
+             */
     //Partial.usersPartial = [];
     //Partial.Variables.userCreateMV.dataSet = [];
     Partial.timeZones = Intl.supportedValuesOf('timeZone');
@@ -49,6 +49,31 @@ Partial.onReady = function() {
          });
          App.allUsers();
      }*/
+
+
+    Partial.statusData = [{
+        id: 'New',
+        title: 'New'
+    }, {
+        id: 'Open',
+        title: 'Open'
+    }, {
+        id: 'Active',
+        title: 'Active'
+    }, {
+        id: 'Closed',
+        title: 'Closed'
+    }];
+
+
+    subComboBox = $('#subStatusInputBox').comboTree({
+        source: Partial.statusData,
+        isMultiple: true,
+        cascadeSelect: true,
+        collapse: true
+    });
+
+
 
 };
 
@@ -702,7 +727,6 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
 
 };
 Partial.executeSearchUsersForm1_resetAction = function($event) {
-
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
     Partial.Variables.searchUsers.dataSet = [];
@@ -713,4 +737,35 @@ Partial.executeSearchUsersForm1_resetAction = function($event) {
 
 Partial.resetTableDataonSuccess = function(variable, data) {
     Partial.Variables.ResetPREValue.dataSet = data;
+};
+Partial.button3Click = function($event, widget) {
+
+
+    Partial.Widgets.createUserPage.open();
+    debugger;
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
+
+
+    Partial.statusData = [];
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
+        Partial.statusData.push({
+            id: item.code.replace(/\s/g, ''),
+            title: item.code
+        });
+    });
+
+
+    setTimeout(function() {
+        debugger;
+        subComboBox = $('#subStatusInputBox').comboTree({
+            source: Partial.statusData,
+            isMultiple: true,
+            cascadeSelect: true,
+            collapse: true
+        });
+    }, 50);
+
+};
+Partial.createUserForm1_saveAction = function($event) {
+    debugger;
 };

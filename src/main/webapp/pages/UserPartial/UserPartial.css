@@ -809,3 +809,12 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
     color: #800080;
     background-color: #fff;   
 }
+
+.mutli-select {
+    margin-top: -3px;
+}
+
+.comboTreeDropDownContainer{
+        height: 125px;
+
+}
