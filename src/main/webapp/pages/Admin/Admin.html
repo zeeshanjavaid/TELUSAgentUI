@@ -5,11 +5,7 @@
         <!-- <wm-page-content columnwidth="12" name="page_content1"></wm-page-content>  -->
         <wm-container name="container100" class="container100">
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel1" class="panel1">
-                <wm-panel-footer name="panel_footer1">
-                    <wm-label padding="unset 0.5em" class="text-muted" caption="" name="label1"></wm-label>
-                </wm-panel-footer>
-                <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="LeftNavAdminMenuListList1" dataset="bind:Variables.LeftNavAdminMenuList.dataSet" navigation="Pager"
-                    selectfirstitem="true">
+                <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="LeftNavAdminMenuListList1" dataset="bind:Variables.LeftNavAdminMenuList.dataSet" navigation="Pager" selectfirstitem="true">
                     <wm-listtemplate layout="inline" name="listtemplate1">
                         <wm-container class="media-left" name="container1"></wm-container>
                         <wm-container class="media-body" padding="unset unset unset 1.25em" name="container2">
@@ -18,11 +14,6 @@
                         <wm-container class="media-right media-top" name="container3"></wm-container>
                     </wm-listtemplate>
                 </wm-list>
-            </wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel2" content="GroupPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Groups&quot;" class="panel2"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel3" content="AddGroupPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Groups&quot;" class="panel3">
-                <wm-param name="groupId" value="bind:App.activePage.Widgets.panel2.Widgets.GroupList.selecteditem.id" type="integer"></wm-param>
-                <wm-param name="groupName" value="bind:App.activePage.Widgets.panel2.Widgets.GroupList.selecteditem.name" type="string"></wm-param>
             </wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel4" content="RolesPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel4"></wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel5" content="AddRolePartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel5">
@@ -36,6 +27,7 @@
                 <wm-param name="groupName" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.name" type="string"></wm-param>
                 <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.teamId" type="string"></wm-param>
             </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel81" content="DomainValue" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;WorkCategory&quot;" class="panel81"></wm-panel>
         </wm-container>
     </wm-content>
     <wm-footer content="footer" name="footer1"></wm-footer>

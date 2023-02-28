@@ -251,6 +251,19 @@
           "generator" : "assigned",
           "isRelated" : false,
           "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
         } ]
       }, {
         "fieldName" : "userByCreatedBy",
@@ -453,6 +466,19 @@
           "precision" : 0,
           "generator" : "assigned",
           "isRelated" : false,
+          "scale" : 0
+        }, {
+          "fieldName" : "emplId",
+          "type" : "string",
+          "fullyQualifiedType" : "string",
+          "columnName" : "emplId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 16,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
           "scale" : 0
         } ]
       }, {

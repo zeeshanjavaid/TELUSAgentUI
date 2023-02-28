@@ -153,6 +153,8 @@ Page.navigateURLBuilder = function(domainValueId) {
 /* UI level functions */
 Page.sv_getDVListPaginatedonSuccess = function(variable, data) {
     //de-select all DV table rows and redraw table
+
+    debugger;
     Page.Widgets.DomainValueList_Table.selecteditem = [];
 
     //set pagination values
@@ -213,7 +215,7 @@ Page.sv_activateDeactivateDVByIdsonError = function(variable, data) {
     //search/fetch service invocation below
     let dvFetchSV = Page.Variables.sv_getDVListPaginated;
     dvFetchSV.setInput({
-        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
+        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : 4, //Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
         "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
@@ -440,6 +442,8 @@ Page.searchDV_ButtonClick = function($event, widget) {
 };
 
 Page.createDV_ButtonClick = function($event, widget) {
+
+    alert("Create Domain");
     Page.Actions.goToPage_DomainValueCreateEdit.invoke({
         data: {
             'domainValueTypeId': Page.pageParams.domainValueTypeId

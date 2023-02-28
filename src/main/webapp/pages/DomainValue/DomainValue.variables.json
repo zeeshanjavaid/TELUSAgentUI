@@ -153,7 +153,7 @@
     "maxResults" : 20,
     "onSuccess" : "sv_getDVListPaginatedonSuccess(variable, data, options)",
     "onError" : "sv_getDVListPaginatedonError(variable, data, options)",
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
@@ -168,7 +168,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "id",
-      "value" : "bind:(!pageParams.domainValueTypeId) ? 0 : pageParams.domainValueTypeId",
+      "value" : "bind:(!pageParams.domainValueTypeId) ? 4 : pageParams.domainValueTypeId",
       "type" : "integer"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.DomainValueType",

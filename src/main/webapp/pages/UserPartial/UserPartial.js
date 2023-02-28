@@ -756,16 +756,24 @@ Partial.button3Click = function($event, widget) {
 
 
     setTimeout(function() {
-        debugger;
         subComboBox = $('#subStatusInputBox').comboTree({
             source: Partial.statusData,
             isMultiple: true,
             cascadeSelect: true,
             collapse: true
         });
+        subComboBox.onChange(function() {
+            console.log(String(subComboBox.getSelectedIds()));
+            alert(subComboBox.getSelectedIds());
+        });
+
     }, 50);
 
+
 };
+
+
+
 Partial.createUserForm1_saveAction = function($event) {
     debugger;
 };

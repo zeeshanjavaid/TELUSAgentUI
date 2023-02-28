@@ -4552,7 +4552,10 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "UserDTO.workCategory",
+      "value" : "bind:Widgets.WorkcategoryUserList1.selecteditem.workCategory"
+    } ],
     "type" : "string",
     "service" : "UserManagementService",
     "operation" : "createUser",
@@ -5573,6 +5576,21 @@
     "dataBinding" : [ ],
     "dataSet" : [ {
       "code" : "WLN LARGE"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "workCategoryModel" : {
+    "_id" : "wm-workCategoryModel-wm.Variable-1677504012670",
+    "name" : "workCategoryModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
     } ],
     "type" : "entry",
     "isList" : true,
