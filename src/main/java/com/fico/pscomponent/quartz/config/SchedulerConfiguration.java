@@ -27,14 +27,14 @@ public class SchedulerConfiguration {
 
 	@Autowired
 	@Qualifier("TELUSAgentUIDBWMManagedDataSource")
-	private HikariDataSource psComponentTimerWMManagedDataSource;
+	private HikariDataSource telusAgentUIDBWMManagedDataSource;
 
  	@Bean
  	public Scheduler scheduler() throws Exception {
  		SchedulerFactoryBean factory = new SchedulerFactoryBean();
  		factory.setApplicationContext(applicationContext);
  		factory.setQuartzProperties(quartzProperties());
- 		factory.setDataSource(psComponentTimerWMManagedDataSource);
+ 		factory.setDataSource(telusAgentUIDBWMManagedDataSource);
  		factory.setJobFactory(springBeanJobFactory());
  		factory.afterPropertiesSet();
 
