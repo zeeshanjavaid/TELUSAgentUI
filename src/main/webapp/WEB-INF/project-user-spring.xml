@@ -23,7 +23,9 @@ and is an ideal location for end-users to put any code they need.
     </bean>
     
     <!-- init-method="init" required to load values at startup. -->
-    <bean id="fawbPropertySource" class="com.fico.fawb.DbBasedPropertySource" init-method="init" lazy-init= "true"> 
+    <!--<bean id="fawbPropertySource" class="com.fico.fawb.DbBasedPropertySource" init-method="init" lazy-init= "true"> -->
+    <bean id="fawbPropertySource" class="com.fico.fawb.DbBasedPropertySource" lazy-init= "true"> 
+
         <property name="databaseSourceConfiguration" ref="dbSourceConfiguration"/>
     </bean>
     
