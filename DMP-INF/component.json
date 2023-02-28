@@ -184,6 +184,15 @@
     "maxOccurs" : 1,
     "defaultValue" : "2"
   }, {
+    "kind" : "service",
+    "name" : "TELUSAgentUIDB",
+    "type" : "MySQL",
+    "id" : "TELUSAgentUIDB",
+    "env" : [ "design", "staging", "production" ],
+    "dbVendor" : "mysql",
+    "scope" : "solution",
+    "serviceId" : "TELUSAgentUIDB"
+  }, {
     "kind" : "engine",
     "type" : "kubernetes",
     "name" : "Tomcat container",
