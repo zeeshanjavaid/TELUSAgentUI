@@ -41,6 +41,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/CollectionEntity/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/DmpS3FileService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -56,13 +63,6 @@
             <resource>
                 <filtering>true</filtering>
                 <directory>services/DuplicateCheckRelatedBS/src</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <filtering>true</filtering>
-                <directory>services/EntityApiController/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
@@ -288,10 +288,10 @@
                                 <source>services/AuditDataChangeService/src</source>
                                 <source>services/CacheService/src</source>
                                 <source>services/CodeDescriptionLookupService/src</source>
+                                <source>services/CollectionEntity/src</source>
                                 <source>services/DmpS3FileService/src</source>
                                 <source>services/DomainValueRelatedBS/src</source>
                                 <source>services/DuplicateCheckRelatedBS/src</source>
-                                <source>services/EntityApiController/src</source>
                                 <source>services/Environment/src</source>
                                 <source>services/FDOUtilityServices/src</source>
                                 <source>services/FileRelatedBS/src</source>
@@ -721,6 +721,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.threeten</groupId>
+            <artifactId>threetenbp</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
             <groupId>DefaultTermLibrary</groupId>
             <artifactId>DefaultTermLibrary</artifactId>
             <version>1.0</version>
@@ -742,11 +751,11 @@
             <systemPath>${project.lib.directory}/modelmapper-3.1.0.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>swaggerStub</groupId>
-            <artifactId>swaggerStub</artifactId>
+            <groupId>swagger</groupId>
+            <artifactId>swagger</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.lib.directory}/swaggerStub.jar</systemPath>
+            <systemPath>${project.lib.directory}/swagger.jar</systemPath>
         </dependency>
     </dependencies>
     <dependencyManagement>

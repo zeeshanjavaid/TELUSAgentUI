@@ -620,6 +620,32 @@
       } ]
     } ]
   }, {
+    "serviceId" : "CollectionEntity",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.collectionentity.CollectionEntity",
+      "description" : "com.fico.dmp.collectionentity.CollectionEntity",
+      "name" : "com.fico.dmp.collectionentity.CollectionEntity",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 68,
+        "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
+        "name" : "sampleJavaOperation",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 82,
+        "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
+        "name" : "getPaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "ReportRelatedBS",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -1144,32 +1170,6 @@
         "line" : 64,
         "path" : "/services/FileRelatedBS/src/com/fico/dmp/filerelatedbs/FileRelatedBS.java",
         "name" : "uploadDomainValueTypeAndRelations",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "EntityApiController",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.entityapicontroller.EntityApiController",
-      "description" : "com.fico.dmp.entityapicontroller.EntityApiController",
-      "name" : "com.fico.dmp.entityapicontroller.EntityApiController",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 49,
-        "path" : "/services/EntityApiController/src/com/fico/dmp/entityapicontroller/EntityApiController.java",
-        "name" : "sampleJavaOperation",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 62,
-        "path" : "/services/EntityApiController/src/com/fico/dmp/entityapicontroller/EntityApiController.java",
-        "name" : "getCollectionEntity",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
