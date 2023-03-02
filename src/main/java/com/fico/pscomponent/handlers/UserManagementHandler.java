@@ -89,8 +89,6 @@ public class UserManagementHandler {
 		}
 
 	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
-	userDTO.getWorkCategory().forEach(a-> System.out.println(a));
-
 
 		// Check if user id and email id already exists
 		try {
@@ -142,12 +140,15 @@ public class UserManagementHandler {
 			
 			//Create a user and work category relationship
 			logger.info("In handler before create workcategory user :::::::::::::::::::::");
-			for(String cat:userDTO.getWorkCategory())
+			if (userDTO.getWorkCategory() != null) {
+			    
+			    for(String cat:userDTO.getWorkCategory())
 			{
 				WorkcategoryUser workcategoryUser=new WorkcategoryUser();
 				workcategoryUser.setUser(user);
 				workcategoryUser.setWorkCategory(cat);
 				workcategoryUserService.create(workcategoryUser);
+			}
 			}
 
 			return new ResponseEntity<String>("User created successfully", HttpStatus.OK);

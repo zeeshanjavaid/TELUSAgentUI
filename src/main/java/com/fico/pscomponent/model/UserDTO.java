@@ -19,8 +19,7 @@ public class UserDTO {
 	@NotNull(message = "Role is missing")
 	private String role;
 	private boolean isActive;
-	
-	@NotNull(message = "Work Category is missing")
+
 	private List<String> workCategory;
 	
 	@NotNull(message = "EmplID is missing")

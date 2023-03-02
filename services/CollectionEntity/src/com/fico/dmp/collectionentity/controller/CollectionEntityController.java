@@ -6,7 +6,8 @@ package com.fico.dmp.collectionentity.controller;
 import com.fico.dmp.collectionentity.CollectionEntity;
 import java.lang.String;
 import java.lang.Exception;
-import java.lang.Object;
+import io.swagger.client.model.CollectionPaymentArrangement;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -24,8 +25,10 @@ public class CollectionEntityController {
     @Autowired
     private CollectionEntity collectionEntity;
 
-    @RequestMapping(value = "/paymentArrangement", produces = "application/json", method = RequestMethod.GET)
-    public Object getPaymentArrangement(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+    @RequestMapping(value = "/paymentArrangement", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionPaymentArrangement> getPaymentArrangement(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
         return collectionEntity.getPaymentArrangement(entityId);
     }
 
