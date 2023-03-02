@@ -629,17 +629,33 @@
       "name" : "com.fico.dmp.collectionentity.CollectionEntity",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 70,
+        "line" : 89,
         "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
-        "name" : "sampleJavaOperation",
+        "name" : "addPaymentArrangement",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
       }, {
         "info" : null,
-        "line" : 85,
+        "line" : 97,
+        "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
+        "name" : "updatePaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 83,
         "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
         "name" : "getPaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 73,
+        "path" : "/services/CollectionEntity/src/com/fico/dmp/collectionentity/CollectionEntity.java",
+        "name" : "getPaymentArrangements",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
