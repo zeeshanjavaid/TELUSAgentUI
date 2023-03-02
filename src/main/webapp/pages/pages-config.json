@@ -106,6 +106,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "EntityProfile",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "ErrorLanding",
   "type" : "PAGE",
   "params" : [ ]
@@ -149,6 +153,14 @@
 }, {
   "name" : "Main",
   "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Parr",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ParrList",
+  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "Partial_Conditions",

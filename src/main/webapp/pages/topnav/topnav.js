@@ -216,6 +216,8 @@ async function loadAppMetadata() {
             Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'SystemAdministration' && App.IsUserHasAccess('System Administration')) {
             Partial.UserAssignedMenus.push(m);
+        } else if (m.code === 'LookUp' && App.IsUserHasAccess('System Administration')) {
+            Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'SearchApplication' && App.IsUserHasAccess('Access_ApplicationSearch')) {
             Partial.UserAssignedMenus.push(m);
         } else if (m.code === 'Setup' && App.IsUserHasAccess('System Administration')) {

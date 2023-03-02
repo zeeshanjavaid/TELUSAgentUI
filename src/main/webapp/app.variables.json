@@ -1815,6 +1815,18 @@
     "operation" : "gotoPage",
     "pageName" : "Main"
   },
+  "goToPage_Parr" : {
+    "_id" : "wm-goToPage_PARR-wm.NavigationVariable-1677577906319",
+    "name" : "goToPage_Parr",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Parr",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_PayloadExtract" : {
     "_id" : "wm-goToPage_PayloadExtract-wm.NavigationVariable-1657547841285",
     "name" : "goToPage_PayloadExtract",

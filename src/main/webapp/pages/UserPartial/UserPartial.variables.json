@@ -2521,6 +2521,21 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "LookUpSummary" : {
+    "_id" : "wm-LookUpSummary-wm.Variable-1677649978214",
+    "name" : "LookUpSummary",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "permissionCopy" : {
     "_id" : "wm-permissionCopy-wm.Variable-1655447802628",
     "name" : "permissionCopy",

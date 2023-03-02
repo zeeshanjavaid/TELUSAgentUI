@@ -1,0 +1,17 @@
+{
+  "LookUpSummary" : {
+    "_id" : "wm-LookUpSummary-wm.Variable-1677651795236",
+    "name" : "LookUpSummary",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

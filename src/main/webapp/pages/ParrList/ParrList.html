@@ -1,0 +1,20 @@
+<wm-partial name="partial1">
+    <wm-button class="btn-default" caption="Create Parr" type="button" margin="2em 0em unset 83em" name="button2"></wm-button>
+    <wm-container name="container1">
+        <wm-table editmode="inline" name="UserTable1" title="User List" dataset="bind:Variables.TELUSAgentUIDBUserData.dataSet" navigation="Classic">
+            <wm-table-column binding="id" caption="Id" generator="identity" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" readonly="true"></wm-table-column>
+            <wm-table-column binding="email" caption="Email" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="userId" caption="User Id" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="active" caption="Active" generator="assigned" pcdisplay="true" mobiledisplay="true" type="boolean" required="true"></wm-table-column>
+            <wm-table-column binding="firstName" caption="First Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="createdOn" caption="Created On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+            <wm-table-column binding="updatedOn" caption="Updated On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+            <wm-table-column binding="lastName" caption="Last Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="phoneNumber" caption="Phone Number" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="timeZone" caption="Time Zone" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-action widget-type="button" key="addNewRow" display-name="New" iconclass="wi wi-plus" show="true" class="btn-primary" action="addNewRow()" position="footer" shortcutkey=""></wm-table-action>
+            <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil fico fico-icon-pencil" show="true" class="btn-primary btn-xs" action="editRow($event)"></wm-table-row-action>
+            <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash fico fico-icon-trash" show="true" class="btn-default btn-xs" action="deleteRow($event)"></wm-table-row-action>
+        </wm-table>
+    </wm-container>
+</wm-partial>
