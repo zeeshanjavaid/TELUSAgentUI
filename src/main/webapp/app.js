@@ -665,6 +665,7 @@ App.loadAppPermissions = async function() {
             });
             debugger;
             //  when no permissions assigned to user / user is inactive
+            // if (App.Variables.PermissionsForLoggedInUserId.dataSet.length === 0) {
             if (App.Variables.PermissionsForLoggedInUserId.dataSet.length === 0) {
                 App.permissionsLoaded = false;
                 window.location.href = '#/ErrorLanding';

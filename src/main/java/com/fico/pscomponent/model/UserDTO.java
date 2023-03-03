@@ -19,11 +19,18 @@ public class UserDTO {
 	@NotNull(message = "Role is missing")
 	private String role;
 	private boolean isActive;
-
+	
+//	@NotNull(message = "Work Category is missing")
 	private List<String> workCategory;
 	
 	@NotNull(message = "EmplID is missing")
 	private String emplId;
+	
+	//@NotNull(message = "TeamId is missing")
+	private String teamId;
+
+//@NotNull(message = "TeamManager is missing")
+	private Integer teamManagerId;
 	
 	public String getFirstName() {
 		return firstName;
@@ -95,6 +102,22 @@ public class UserDTO {
 
 	public void setEmplId(String emplId) {
 		this.emplId = emplId;
+	}
+	
+	public String getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
+
+	public Integer getTeamManagerId() {
+		return teamManagerId;
+	}
+
+	public void setTeamManagerId(Integer teamManagerId) {
+		this.teamManagerId = teamManagerId;
 	}
 	
 

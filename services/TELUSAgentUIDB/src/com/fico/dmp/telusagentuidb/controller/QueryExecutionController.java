@@ -47,6 +47,35 @@ public class QueryExecutionController {
     @Autowired
 	private ExportedFileManager exportedFileManager;
 
+    @RequestMapping(value = "/queries/getTeamManagerByRoleId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamManagerByRoleId")
+    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamManagerByRoleId");
+        Page<GetTeamManagerByRoleIdResponse> _result = queryService.executeGetTeamManagerByRoleId(roleId, pageable);
+        LOGGER.debug("got the result for named query: getTeamManagerByRoleId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamManagerByRoleId")
+    @RequestMapping(value = "/queries/getTeamManagerByRoleId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamManagerByRoleId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamManagerByRoleId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamManagerByRoleId(roleId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/getRolesByGroupId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getRolesByGroupId")
@@ -150,6 +179,35 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportQuery_GetDomainValueByCodeAndTypeCode(selectedLocale, domainValueCode, domainValueTypeCode,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getTeamManagersByTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamManagersByTeamId")
+    public Page<GetTeamManagersByTeamIdResponse> executeGetTeamManagersByTeamId(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamManagersByTeamId");
+        Page<GetTeamManagersByTeamIdResponse> _result = queryService.executeGetTeamManagersByTeamId(teamId, pageable);
+        LOGGER.debug("got the result for named query: getTeamManagersByTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamManagersByTeamId")
+    @RequestMapping(value = "/queries/getTeamManagersByTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamManagersByTeamId(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamManagersByTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamManagersByTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamManagersByTeamId(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -548,6 +606,35 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportGetRolesPermission(roleId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getManagerBasedOnTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getManagerBasedOnTeamId")
+    public Page<GetManagerBasedOnTeamIdResponse> executeGetManagerBasedOnTeamId(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getManagerBasedOnTeamId");
+        Page<GetManagerBasedOnTeamIdResponse> _result = queryService.executeGetManagerBasedOnTeamId(teamId, pageable);
+        LOGGER.debug("got the result for named query: getManagerBasedOnTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getManagerBasedOnTeamId")
+    @RequestMapping(value = "/queries/getManagerBasedOnTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetManagerBasedOnTeamId(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getManagerBasedOnTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getManagerBasedOnTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetManagerBasedOnTeamId(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }

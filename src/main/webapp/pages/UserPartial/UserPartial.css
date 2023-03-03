@@ -710,9 +710,9 @@ td, th {
     position: absolute;
     right: -4rem;
 }
-.ds_grid{
-    display:grid !important;
-}
+/*.ds_grid{*/
+/*    display:grid !important;*/
+/*}*/
 .wm-app hr {
     margin-top: 3px;
     margin-bottom: 0px;

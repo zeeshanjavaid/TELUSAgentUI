@@ -48,9 +48,9 @@ public class TeamUser implements Serializable {
 
     private Integer updatedBy;
 
-    private User user;
-
     private Team team;
+
+    private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -118,21 +118,6 @@ public class TeamUser implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_USER_TO_TEAM_USER_id_QG7Mv`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        if(user != null) {
-            this.userId = user.getId();
-        }
-
-        this.user = user;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`teamId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_TEAM_TO_TEAM_USER_ID_p9oeO`"))
     @Fetch(FetchMode.JOIN)
     public Team getTeam() {
@@ -145,6 +130,21 @@ public class TeamUser implements Serializable {
         }
 
         this.team = team;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_USER_TO_TEAM_USER_id_QG7Mv`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        if(user != null) {
+            this.userId = user.getId();
+        }
+
+        this.user = user;
     }
 
 

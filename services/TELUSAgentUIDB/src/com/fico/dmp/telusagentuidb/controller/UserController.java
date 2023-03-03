@@ -236,15 +236,6 @@ public class UserController {
         return userService.findAssociatedPartiesForCreatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/rolesForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the rolesForUpdatedBy instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Role> findAssociatedRolesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated rolesForUpdatedBy");
-        return userService.findAssociatedRolesForUpdatedBy(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/rolesForCreatedBy", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the rolesForCreatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -252,6 +243,15 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated rolesForCreatedBy");
         return userService.findAssociatedRolesForCreatedBy(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/rolesForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the rolesForUpdatedBy instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Role> findAssociatedRolesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated rolesForUpdatedBy");
+        return userService.findAssociatedRolesForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/workcategoryUsers", method=RequestMethod.GET)
@@ -263,15 +263,6 @@ public class UserController {
         return userService.findAssociatedWorkcategoryUsers(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/domainValuesForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValuesForUpdatedBy instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValue> findAssociatedDomainValuesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValuesForUpdatedBy");
-        return userService.findAssociatedDomainValuesForUpdatedBy(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/domainValuesForCreatedBy", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the domainValuesForCreatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -281,13 +272,13 @@ public class UserController {
         return userService.findAssociatedDomainValuesForCreatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/groupRolesForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the groupRolesForUpdatedBy instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/domainValuesForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValuesForUpdatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<GroupRole> findAssociatedGroupRolesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<DomainValue> findAssociatedDomainValuesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated groupRolesForUpdatedBy");
-        return userService.findAssociatedGroupRolesForUpdatedBy(id, pageable);
+        LOGGER.debug("Fetching all associated domainValuesForUpdatedBy");
+        return userService.findAssociatedDomainValuesForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/groupRolesForCreatedBy", method=RequestMethod.GET)
@@ -299,6 +290,15 @@ public class UserController {
         return userService.findAssociatedGroupRolesForCreatedBy(id, pageable);
     }
 
+    @RequestMapping(value="/{id:.+}/groupRolesForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the groupRolesForUpdatedBy instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<GroupRole> findAssociatedGroupRolesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated groupRolesForUpdatedBy");
+        return userService.findAssociatedGroupRolesForUpdatedBy(id, pageable);
+    }
+
     @RequestMapping(value="/{id:.+}/userRoles", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the userRoles instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -306,6 +306,15 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated userRoles");
         return userService.findAssociatedUserRoles(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/queuesForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queuesForUpdatedBy instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Queue> findAssociatedQueuesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated queuesForUpdatedBy");
+        return userService.findAssociatedQueuesForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/queuesForCreatedBy", method=RequestMethod.GET)
@@ -326,13 +335,13 @@ public class UserController {
         return userService.findAssociatedQueuesForLockedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/queuesForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queuesForUpdatedBy instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/documentsForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the documentsForUpdatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Queue> findAssociatedQueuesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<Document> findAssociatedDocumentsForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated queuesForUpdatedBy");
-        return userService.findAssociatedQueuesForUpdatedBy(id, pageable);
+        LOGGER.debug("Fetching all associated documentsForUpdatedBy");
+        return userService.findAssociatedDocumentsForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/documentsForCreatedBy", method=RequestMethod.GET)
@@ -342,15 +351,6 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated documentsForCreatedBy");
         return userService.findAssociatedDocumentsForCreatedBy(id, pageable);
-    }
-
-    @RequestMapping(value="/{id:.+}/documentsForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the documentsForUpdatedBy instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Document> findAssociatedDocumentsForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated documentsForUpdatedBy");
-        return userService.findAssociatedDocumentsForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/auditDataChanges", method=RequestMethod.GET)
@@ -371,15 +371,6 @@ public class UserController {
         return userService.findAssociatedTeamUsers(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/fawbPropertySourcesForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the fawbPropertySourcesForUpdatedBy instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<FawbPropertySource> findAssociatedFawbPropertySourcesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated fawbPropertySourcesForUpdatedBy");
-        return userService.findAssociatedFawbPropertySourcesForUpdatedBy(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/fawbPropertySourcesForCreatedBy", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the fawbPropertySourcesForCreatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -389,13 +380,13 @@ public class UserController {
         return userService.findAssociatedFawbPropertySourcesForCreatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/domainValueTypesForCreatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueTypesForCreatedBy instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/fawbPropertySourcesForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the fawbPropertySourcesForUpdatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<FawbPropertySource> findAssociatedFawbPropertySourcesForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated domainValueTypesForCreatedBy");
-        return userService.findAssociatedDomainValueTypesForCreatedBy(id, pageable);
+        LOGGER.debug("Fetching all associated fawbPropertySourcesForUpdatedBy");
+        return userService.findAssociatedFawbPropertySourcesForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/domainValueTypesForUpdatedBy", method=RequestMethod.GET)
@@ -407,13 +398,13 @@ public class UserController {
         return userService.findAssociatedDomainValueTypesForUpdatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/usersForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the usersForUpdatedBy instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/domainValueTypesForCreatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueTypesForCreatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<User> findAssociatedUsersForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated usersForUpdatedBy");
-        return userService.findAssociatedUsersForUpdatedBy(id, pageable);
+        LOGGER.debug("Fetching all associated domainValueTypesForCreatedBy");
+        return userService.findAssociatedDomainValueTypesForCreatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/usersForCreatedBy", method=RequestMethod.GET)
@@ -425,13 +416,13 @@ public class UserController {
         return userService.findAssociatedUsersForCreatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/_groupsForUpdatedBy", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the _groupsForUpdatedBy instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/usersForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the usersForUpdatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Group> findAssociated_groupsForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<User> findAssociatedUsersForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
-        return userService.findAssociated_groupsForUpdatedBy(id, pageable);
+        LOGGER.debug("Fetching all associated usersForUpdatedBy");
+        return userService.findAssociatedUsersForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/_groupsForCreatedBy", method=RequestMethod.GET)
@@ -443,13 +434,13 @@ public class UserController {
         return userService.findAssociated_groupsForCreatedBy(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/userGroupsForUserId", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the userGroupsForUserId instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/_groupsForUpdatedBy", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the _groupsForUpdatedBy instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<UserGroup> findAssociatedUserGroupsForUserId(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<Group> findAssociated_groupsForUpdatedBy(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated userGroupsForUserId");
-        return userService.findAssociatedUserGroupsForUserId(id, pageable);
+        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
+        return userService.findAssociated_groupsForUpdatedBy(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/userGroupsForUpdatedBy", method=RequestMethod.GET)
@@ -468,6 +459,15 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated userGroupsForCreatedBy");
         return userService.findAssociatedUserGroupsForCreatedBy(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/userGroupsForUserId", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the userGroupsForUserId instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<UserGroup> findAssociatedUserGroupsForUserId(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated userGroupsForUserId");
+        return userService.findAssociatedUserGroupsForUserId(id, pageable);
     }
 
     /**

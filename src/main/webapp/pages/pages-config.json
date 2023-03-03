@@ -277,6 +277,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "WorkCategory",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "footer",
   "type" : "FOOTER",
   "params" : [ ]

@@ -17,6 +17,10 @@ import com.fico.dmp.telusagentuidb.models.query.*;
 
 public interface TELUSAgentUIDBQueryExecutorService {
 
+    Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable);
+
+    void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable);
 
     void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
@@ -32,6 +36,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<QueryGetDomainValueByCodeAndTypeCodeResponse> executeQuery_GetDomainValueByCodeAndTypeCode(String selectedLocale, String domainValueCode, String domainValueTypeCode, Pageable pageable);
 
     void exportQuery_GetDomainValueByCodeAndTypeCode(String selectedLocale, String domainValueCode, String domainValueTypeCode, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetTeamManagersByTeamIdResponse> executeGetTeamManagersByTeamId(String teamId, Pageable pageable);
+
+    void exportGetTeamManagersByTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId);
 
@@ -90,6 +98,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<GetRolesPermissionResponse> executeGetRolesPermission(String roleId, Pageable pageable);
 
     void exportGetRolesPermission(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetManagerBasedOnTeamIdResponse> executeGetManagerBasedOnTeamId(String teamId, Pageable pageable);
+
+    void exportGetManagerBasedOnTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<QueryGetAllDomainValuesTwoParentResponse> executeQuery_GetAllDomainValuesTwoParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, Integer parent2domainValueId, String dvDescription, Pageable pageable);
 

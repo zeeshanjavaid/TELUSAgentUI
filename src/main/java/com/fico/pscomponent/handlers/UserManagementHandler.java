@@ -13,7 +13,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.ConstraintViolationException;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
-
+import com.fico.dmp.telusagentuidb.*;
+import com.fico.dmp.telusagentuidb.service.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,12 @@ public class UserManagementHandler {
 	
 	@Autowired
 	private UserRoleService userRoleService;
+	
+	@Autowired
+    private	TeamUserService teamUserService;
+    
+    @Autowired
+	private TeamService teamService;
 
 	@Autowired
 	private UserValidationService userValidatorService;
@@ -89,6 +96,8 @@ public class UserManagementHandler {
 		}
 
 	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
+	userDTO.getWorkCategory().forEach(a-> System.out.println(a));
+
 
 		// Check if user id and email id already exists
 		try {
@@ -115,6 +124,7 @@ public class UserManagementHandler {
 		user.setUserId(userDTO.getUserId());
 		user.setEmail(userDTO.getEmail());
 		user.setActive(userDTO.isActive());
+		user.setManagerId(userDTO.getTeamManagerId());
 		user.setCreatedOn(new Timestamp(System.currentTimeMillis()));
 
 		try {
@@ -140,16 +150,25 @@ public class UserManagementHandler {
 			
 			//Create a user and work category relationship
 			logger.info("In handler before create workcategory user :::::::::::::::::::::");
-			if (userDTO.getWorkCategory() != null) {
-			    
-			    for(String cat:userDTO.getWorkCategory())
+			for(String cat:userDTO.getWorkCategory())
 			{
 				WorkcategoryUser workcategoryUser=new WorkcategoryUser();
 				workcategoryUser.setUser(user);
 				workcategoryUser.setWorkCategory(cat);
 				workcategoryUserService.create(workcategoryUser);
 			}
-			}
+			
+			
+			//Create user and TeamUser relationship
+	
+		logger.info("In handler before create Team user :::::::::::::::::::::");
+
+		  Team team=teamService.getById(Integer.valueOf(userDTO.getTeamId()));
+			TeamUser teamUser=new TeamUser();
+			teamUser.setTeam(team);
+			teamUser.setUser(user);
+			teamUser.setCreatedOn(new Timestamp(System.currentTimeMillis()));
+			teamUserService.create(teamUser);
 
 			return new ResponseEntity<String>("User created successfully", HttpStatus.OK);
 		} catch (Exception e) {

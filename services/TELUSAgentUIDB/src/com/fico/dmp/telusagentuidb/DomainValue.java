@@ -55,11 +55,11 @@ public class DomainValue implements Serializable {
 
     private Timestamp updatedOn;
 
+    private User userByCreatedBy;
+
     private DomainValueType domainValueTypeByDomainValueType;
 
     private User userByUpdatedBy;
-
-    private User userByCreatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -154,6 +154,21 @@ public class DomainValue implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`CreatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValue_TO_USER_Cy1BDb`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByCreatedBy() {
+        return this.userByCreatedBy;
+    }
+
+    public void setUserByCreatedBy(User userByCreatedBy) {
+        if(userByCreatedBy != null) {
+            this.createdBy = userByCreatedBy.getId();
+        }
+
+        this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`DomainValueType`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValue_TO_DomainpAvGp`"))
     @Fetch(FetchMode.JOIN)
     public DomainValueType getDomainValueTypeByDomainValueType() {
@@ -181,21 +196,6 @@ public class DomainValue implements Serializable {
         }
 
         this.userByUpdatedBy = userByUpdatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`CreatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValue_TO_USER_Cy1BDb`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByCreatedBy() {
-        return this.userByCreatedBy;
-    }
-
-    public void setUserByCreatedBy(User userByCreatedBy) {
-        if(userByCreatedBy != null) {
-            this.createdBy = userByCreatedBy.getId();
-        }
-
-        this.userByCreatedBy = userByCreatedBy;
     }
 
 

@@ -26,6 +26,7 @@ Page.onReady = function() {
 
 function initPage() {
     const intervalId = setInterval(function() {
+        debugger;
         if (App.permissionsLoaded) {
             clearInterval(intervalId);
             console.log('Permissions loaded...');

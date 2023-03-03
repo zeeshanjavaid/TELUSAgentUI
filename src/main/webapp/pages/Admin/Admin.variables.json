@@ -13,7 +13,7 @@
     }, {
       "dataValue" : "Teams"
     }, {
-      "dataValue" : "WorkCategory"
+      "dataValue" : "Work Category"
     } ],
     "type" : "string",
     "isList" : true,

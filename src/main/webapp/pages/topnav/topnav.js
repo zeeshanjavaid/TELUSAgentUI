@@ -262,6 +262,8 @@ async function loadAppMetadata() {
     // Overriding the previous menus with newly filtered Permissions
     Partial.Variables.leftTopMenuMV.dataSet = Partial.UserAssignedMenus;
 
+
+
     debugger;
 
     // for Queue related

@@ -30,6 +30,9 @@
     "table" : "QRTZ_FIRED_TRIGGERS",
     "schema" : null
   }, {
+    "table" : "WORKCATEGORY_USER",
+    "schema" : null
+  }, {
     "table" : "DomainValue",
     "schema" : null
   }, {
@@ -139,9 +142,6 @@
     "schema" : null
   }, {
     "table" : "ACTIVITY_PAYLOAD",
-    "schema" : null
-  }, {
-    "table" : "WORKCATEGORY_USER",
     "schema" : null
   } ],
   "schemaFilter" : [ ],

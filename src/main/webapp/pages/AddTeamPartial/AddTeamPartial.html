@@ -31,9 +31,12 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn16_1" horizontalalign="left">
                 <wm-composite name="composite5_1">
+                    <wm-select name="select1" dataset="bind:Variables.getTeamManagerNameByRole.dataSet" datafield="firstName" displayfield="firstName" placeholder="" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName"></wm-select>
                     <wm-label class="col-md-3 control-label" name="label8" caption=""></wm-label>
                     <wm-container class="col-md-9" name="container13">
-                        <wm-text name="text3" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName" height="35" margin="unset unset unset -18px"></wm-text>
+                        <wm-composite name="composite6">
+                            <wm-container class="col-md-9" name="container14_1"></wm-container>
+                        </wm-composite>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>

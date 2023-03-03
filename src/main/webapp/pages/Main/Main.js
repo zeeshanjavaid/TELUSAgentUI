@@ -99,7 +99,7 @@ function loadDashboardMenus() {
                 // else if (m.path === '#/ApplicationSearch' && App.IsUserHasAccess('Access_ApplicationSearch'))
                 //     dashboard.push(m);
                 // else
-                if (m.path === '#/SetupLanding' && App.IsUserHasAccess('Setup_Menu'))
+                if (m.path === '#/SetupLanding' && App.IsUserHasAccess('System Administration'))
                     dashboard.push(m);
                 else if (m.path === '#/Users' && App.IsUserHasAccess('Support'))
                     dashboard.push(m);

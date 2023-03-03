@@ -12,7 +12,7 @@
 Partial.timeZones = [];
 
 Partial.onReady = function() {
-    debugger
+
     /*
     
              * variables can be accessed through 'Partial.Variables' property here
@@ -32,6 +32,7 @@ Partial.onReady = function() {
     Partial.Variables.userMVPre.dataSet = [];
     Partial.Variables.PermissionsMV.dataSet = [];
     Partial.Variables.permissionCopy.dataSet = [];
+    var selectedIds = [];
 
     /* if (App.Variables.appUsersMV.dataSet && App.Variables.appUsersMV.dataSet.length < 1) {
          App.Variables.getTenantUsersSV.invoke();
@@ -705,6 +706,29 @@ Partial.dialogUpdateUserDetailsAction = function($event, row) {
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
     Partial.Widgets.updateUser.open();
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
+
+
+    Partial.statusData = [];
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
+        Partial.statusData.push({
+            id: item.code.replace(/\s/g, ''),
+            title: item.code
+        });
+    });
+
+
+    setTimeout(function() {
+        subComboBox = $('#subStatusInputBox').comboTree({
+            source: Partial.statusData,
+            isMultiple: true,
+            cascadeSelect: true,
+            collapse: true
+        });
+
+
+    }, 50);
+
 }
 Partial.userMVTable1_customRowAction = function($event, row) {
     // Partial.Variables.deletUser.setInput({
@@ -718,14 +742,7 @@ Partial.userMVTable1_customRowAction = function($event, row) {
     Partial.Widgets.deleteConfirm.open();
 };
 
-Partial.userMVTable1_customRow1Action = function($event, row) {
 
-    Partial.Variables.dialogUserId.dataSet = {};
-    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
-
-    Partial.Widgets.updateUser.open();
-
-};
 Partial.executeSearchUsersForm1_resetAction = function($event) {
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
@@ -738,6 +755,7 @@ Partial.executeSearchUsersForm1_resetAction = function($event) {
 Partial.resetTableDataonSuccess = function(variable, data) {
     Partial.Variables.ResetPREValue.dataSet = data;
 };
+
 Partial.button3Click = function($event, widget) {
 
 
@@ -762,13 +780,9 @@ Partial.button3Click = function($event, widget) {
             cascadeSelect: true,
             collapse: true
         });
-        subComboBox.onChange(function() {
-            console.log(String(subComboBox.getSelectedIds()));
-            alert(subComboBox.getSelectedIds());
-        });
+
 
     }, 50);
-
 
 };
 
@@ -776,4 +790,79 @@ Partial.button3Click = function($event, widget) {
 
 Partial.createUserForm1_saveAction = function($event) {
     debugger;
+
+    Partial.Widgets.createUserForm1.dataoutput.UserDTO;
+    //Partial.Widgets.createUserForm1.dataoutput.UserDTO.workCategory = subComboBox.getSelectedIds();
+    Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
+    //dataBinding
+    Partial.Variables.UserManagementServiceCreateUser.invoke({
+
+        },
+        function(data) {
+            debugger;
+            // Success Callback
+            console.log("success", data);
+        },
+        function(error) {
+            debugger;
+            // Error Callback
+            console.log("error", error)
+        });
+
+};
+
+
+Partial.userMVTable1_customRow1Action = function($event, row) {
+    debugger;
+    Partial.Variables.dialogUserId.dataSet = {};
+    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+
+    Partial.Widgets.updateUser.open();
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
+
+
+    Partial.statusData = [];
+    Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
+        Partial.statusData.push({
+            id: item.code.replace(/\s/g, ''),
+            title: item.code
+        });
+    });
+
+
+    setTimeout(function() {
+        subComboBox1 = $('#updateUserInputBox').comboTree({
+            source: Partial.statusData,
+            isMultiple: true,
+            cascadeSelect: true,
+            collapse: true
+        });
+
+
+    }, 50);
+
+};
+Partial.updateUserForm1_saveAction = function($event) {
+
+    debugger;
+
+    Partial.Widgets.updateUserForm1.dataoutput.UserDTO;
+    Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
+    debugger;
+    //dataBinding
+    Partial.Variables.UserManagementServiceUpdateUser.invoke({
+
+        },
+        function(data) {
+            debugger;
+            // Success Callback
+            console.log("success", data);
+        },
+        function(error) {
+            debugger;
+            // Error Callback
+            console.log("error", error)
+        });
+
+
 };

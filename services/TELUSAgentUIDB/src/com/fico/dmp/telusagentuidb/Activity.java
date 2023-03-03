@@ -64,13 +64,13 @@ public class Activity implements Serializable {
 
     private String username;
 
-    private Application application;
-
-    private DomainValue domainValueBySource;
-
     private DomainValue domainValueByType;
 
     private DomainValue domainValueByApplicationStatus;
+
+    private Application application;
+
+    private DomainValue domainValueBySource;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,36 +192,6 @@ public class Activity implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_APPLICATIGU2uG`"))
-    @Fetch(FetchMode.JOIN)
-    public Application getApplication() {
-        return this.application;
-    }
-
-    public void setApplication(Application application) {
-        if(application != null) {
-            this.applicationId = application.getId();
-        }
-
-        this.application = application;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`source`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainVal6OQPf`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueBySource() {
-        return this.domainValueBySource;
-    }
-
-    public void setDomainValueBySource(DomainValue domainValueBySource) {
-        if(domainValueBySource != null) {
-            this.source = domainValueBySource.getId();
-        }
-
-        this.domainValueBySource = domainValueBySource;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`type`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValqeU7B`"))
     @Fetch(FetchMode.JOIN)
     public DomainValue getDomainValueByType() {
@@ -249,6 +219,36 @@ public class Activity implements Serializable {
         }
 
         this.domainValueByApplicationStatus = domainValueByApplicationStatus;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_APPLICATIGU2uG`"))
+    @Fetch(FetchMode.JOIN)
+    public Application getApplication() {
+        return this.application;
+    }
+
+    public void setApplication(Application application) {
+        if(application != null) {
+            this.applicationId = application.getId();
+        }
+
+        this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`source`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainVal6OQPf`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueBySource() {
+        return this.domainValueBySource;
+    }
+
+    public void setDomainValueBySource(DomainValue domainValueBySource) {
+        if(domainValueBySource != null) {
+            this.source = domainValueBySource.getId();
+        }
+
+        this.domainValueBySource = domainValueBySource;
     }
 
 

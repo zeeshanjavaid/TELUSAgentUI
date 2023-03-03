@@ -36,6 +36,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roleId", roleId);
+
+        return queryExecutor.executeNamedQuery("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roleId", roleId);
+
+        QueryProcedureInput<GetTeamManagerByRoleIdResponse> queryInput = new QueryProcedureInput<>("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 
@@ -128,6 +150,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("domainValueTypeCode", domainValueTypeCode);
 
         QueryProcedureInput<QueryGetDomainValueByCodeAndTypeCodeResponse> queryInput = new QueryProcedureInput<>("Query_GetDomainValueByCodeAndTypeCode", params, QueryGetDomainValueByCodeAndTypeCodeResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetTeamManagersByTeamIdResponse> executeGetTeamManagersByTeamId(String teamId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQuery("getTeamManagersByTeamId", params, GetTeamManagersByTeamIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamManagersByTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        QueryProcedureInput<GetTeamManagersByTeamIdResponse> queryInput = new QueryProcedureInput<>("getTeamManagersByTeamId", params, GetTeamManagersByTeamIdResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
@@ -456,6 +500,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("RoleId", roleId);
 
         QueryProcedureInput<GetRolesPermissionResponse> queryInput = new QueryProcedureInput<>("getRolesPermission", params, GetRolesPermissionResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetManagerBasedOnTeamIdResponse> executeGetManagerBasedOnTeamId(String teamId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQuery("getManagerBasedOnTeamId", params, GetManagerBasedOnTeamIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetManagerBasedOnTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        QueryProcedureInput<GetManagerBasedOnTeamIdResponse> queryInput = new QueryProcedureInput<>("getManagerBasedOnTeamId", params, GetManagerBasedOnTeamIdResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }

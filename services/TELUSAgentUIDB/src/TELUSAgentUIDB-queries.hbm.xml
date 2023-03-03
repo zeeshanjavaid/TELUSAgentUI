@@ -2,6 +2,22 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+    <sql-query name="getTeamManagerByRoleId">
+        <![CDATA[
+        select u.* from  USER u join USER_ROLE ur on
+ur.userId=u.id  join ROLE r on ur.roleId= r.id where ur.roleId = :roleId and r.role not in ('OD TM','AR TM Onshore','AR TM Offshore')
+        ]]>
+    <query-param name="roleId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getTeamManagerByRoleId__count">
+        <![CDATA[
+        select count(*) from (select u.* from  USER u join USER_ROLE ur on
+ur.userId=u.id  join ROLE r on ur.roleId= r.id where ur.roleId = :roleId and r.role not in ('OD TM','AR TM Onshore','AR TM Offshore')) wmTempTable
+        ]]>
+    <query-param name="roleId" type="java.lang.Integer"/>
+    </sql-query>
+
     <sql-query name="getRolesByGroupId">
         <![CDATA[
         select ROLE.id,ROLE.role,ROLE.description,ROLE.active from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `groupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.groupID = :GroupId))
@@ -152,6 +168,22 @@ END ASC) wmTempTable
     <query-param name="domainValueTypeCode" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getTeamManagersByTeamId">
+        <![CDATA[
+        select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on
+ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getTeamManagersByTeamId__count">
+        <![CDATA[
+        select count(*) from (select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on
+ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="Query_DeleteAllErrorsByApplicationId">
         <![CDATA[
         delete from Error where applicationId = :applicationId
@@ -240,14 +272,14 @@ order by r.role) wmTempTable
 
     <sql-query name="getTeamManagerName">
         <![CDATA[
-        select u.firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)
+        select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)
         ]]>
     <query-param name="roles" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getTeamManagerName__count">
         <![CDATA[
-        select count(*) from (select u.firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable
+        select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable
         ]]>
     <query-param name="roles" type="java.lang.String"/>
     </sql-query>
@@ -457,6 +489,20 @@ END ASC) wmTempTable
         select count(*) from (select ROLE_PERMISSION.ID,ROLE_PERMISSION.RoleId,ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where RoleId = :RoleId) wmTempTable
         ]]>
     <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerBasedOnTeamId">
+        <![CDATA[
+        select CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.TeamID=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerBasedOnTeamId__count">
+        <![CDATA[
+        select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.TeamID=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="Query_GetAllDomainValuesTwoParent">
