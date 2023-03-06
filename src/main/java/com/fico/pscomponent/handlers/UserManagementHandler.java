@@ -218,6 +218,7 @@ public class UserManagementHandler {
 
 
             dbUser.setActive(userDTO.isActive());
+            dbUser.setManagerId(userDTO.getTeamManagerId());
 			dbUser = userService.update(dbUser);
 			
 				Pageable pageable = PageRequest.of(0, 1);
@@ -297,6 +298,21 @@ public class UserManagementHandler {
                     workcategoryUser.setWorkCategory(workCar);
                     workcategoryUserService.create(workcategoryUser);
                 }
+            }
+            
+            
+            Team team=teamService.getById(Integer.valueOf(userDTO.getTeamId()));
+			TeamUser teamUser = teamUserService.getById(team.getId());
+
+		 if (teamUser == null) {
+                teamUser = new TeamUser();
+                teamUser.setUser(dbUser);
+                teamUser.setTeam(team);
+                teamUserService.create(teamUser);
+            } else {
+                teamUser.setUser(dbUser);
+                teamUser.setTeam(team);
+                teamUserService.update(teamUser);
             }
 
 		} catch (Exception e) {

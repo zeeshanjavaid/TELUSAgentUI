@@ -100,7 +100,7 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn25_1">
                     <wm-label name="label10" caption=""></wm-label>
-                    <wm-label name="label12_1" caption="Team Manager"></wm-label>
+                    <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.teamManager"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <!--<wm-gridrow name="gridrow20_1">-->
@@ -155,11 +155,11 @@
                     <wm-form-field name="TeamID" key="TeamID" type="string" displayname="Team Id" widget="select" show="true" mobile-display="false" placeholder="Select value" dataset="bind:Variables.getTeam.dataSet" datafield="teamId" displayfield="teamId"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn2" columnwidth="4">
-                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getCodeFromDomainValueAsWorkCategory.dataSet" datafield="code" displayfield="code"
-                        placeholder="Select value"></wm-form-field>
+                    <wm-form-field name="work_category" key="work_category" type="string" displayname="Work Category" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getCodeFromDomainValueAsWorkCategory.dataSet" datafield="code"
+                        displayfield="code" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn3" columnwidth="4">
-                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="Enter value" class="search "></wm-form-field>
+                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="First Name, Last name, Email, AgentId" class="search "></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow2" class="pl-20">
@@ -167,7 +167,7 @@
                     <wm-form-field name="role" key="role" type="string" displayname="Role" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4">
-                    <wm-form-field name="Team" key="Team Manager" displayname="Team Manager" show="true" type="string" widget="select" placeholder="" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="All Fields" on-click="Variables.getManagerBasedOnTeamId.invoke()"
+                    <wm-form-field name="Team" key="managerId" displayname="Team Manager" show="true" type="string" widget="select" placeholder="" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()"
                         defaultvalue="bind:Variables.getManagerBasedOnTeamId.firstRecord" displayfield="managerName"></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -175,14 +175,14 @@
         <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
         <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="fico-icon-search" title="Search" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
-    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="true" gridfirstrowselect="false" showrowindex="false" enablesort="true"
+    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Basic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="true" gridfirstrowselect="false" showrowindex="false" enablesort="true"
         gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal">
         <wm-table-column binding="firstName" caption="First Name" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
             <wm-anchor caption="bind:row.getProperty('firstName')" on-click="dialogUserDetails(row)" class="" conditionalclass=""></wm-anchor>
         </wm-table-column>
         <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="customField" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="teamManager" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="teamId" caption="Team Id" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="active" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="role" caption="Role" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -222,25 +222,25 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow2">
                     <wm-gridcolumn name="gridcolumn2" columnwidth="12">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false" datavalue="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false" datavalue="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="TeamId" key="UserDTO.teamId" displayname="Team Id" show="true" type="string" widget="select" placeholder="Select value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId" on-change="Variables.getTeamManagersByTeamId.invoke()"
-                            on-click="Variables.getTeamManagersByTeamId.invoke()"></wm-form-field>
+                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" displayname="Team Id" show="true" type="string" widget="select" placeholder="Select value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId" on-change="Variables.getTeamManagersByTeamId.invoke()"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="Team" key="UserDTO.teamManagerId" displayname="Team Manager" show="bind:Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
-                            type="string" widget="select" placeholder="Select value" on-click="Variables.getTeamManagersByTeamId.invoke()" dataset="bind:Variables.getTeamManagersByTeamId.dataSet" datafield="id" displayfield="firstName"></wm-form-field>
+                        <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" displayname="Team Manager" show="bind:Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
+                            type="string" widget="select" placeholder="Select value" on-click="Variables.getManagerForCreateUser.invoke()" dataset="bind:Variables.getManagerForCreateUser.dataSet" datafield="id" displayfield="managerName"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
@@ -260,12 +260,13 @@
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton"></wm-button>
-            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit"
+                update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="User>Edit" iconclass="wi wi-file-text" name="updateUser" on-opened="updateUserOpened($event, widget)">
         <hr>
-        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="" dataset="bind:Variables.UserManagementServiceUpdateUser.dataSet">
+        <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="">
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">
                 <wm-gridrow name="gridrow18" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn25">
@@ -279,7 +280,8 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow17" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true" inputtype="text"></wm-form-field>
+                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true"
+                            inputtype="text"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">
@@ -294,25 +296,25 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name"
+                            layout="inline" class="ds_grid" readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"
-                            defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
+                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role"
+                            required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" displayname="Team Id" widget="select" show="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId" on-click="Variables.getTeamManagersByTeamId.invoke()"></wm-form-field>
+                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" displayname="Team Id" widget="select" show="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId" defaultvalue="bind:Variables.dialogUserId.dataSet.teamId"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12">
                         <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" type="string" displayname="Team Manager" widget="select" show="bind:Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
-                            placeholder="Enter value" dataset="bind:Variables.getTeamManagersByTeamId.dataSet" datafield="id" displayfield="firstName" on-click="Variables.getTeamManagersByTeamId.invoke()"></wm-form-field>
+                            placeholder="Enter value" dataset="bind:Variables.getmanagerForUpdateuser.dataSet" datafield="id" displayfield="managerName" on-click="Variables.getmanagerForUpdateuser.invoke()" defaultvalue="bind:Variables.dialogUserId.dataSet.teamManager"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <!--                <wm-gridrow name="gridrow2">-->
@@ -326,11 +328,14 @@
                 <wm-label padding="1.1em 0.5em unset 0.5em" name="label101" caption="Work Category" margin="unset unset 8px unset"></wm-label>
                 <wm-composite name="composite12" width="98%">
                     <wm-container class="col-md-13 mutli-select" key="UserDTO.workCategory" name="text-container"><input type="text" id="updateUserInputBox" placeholder="Select" autocomplete="off"></wm-container>
+                    <wm-container type="hidden" id="hfSalaryMapping" asp-for="selectedCategory" name="container11"></wm-container>
                 </wm-composite>
             </wm-layoutgrid>
             <wm-button caption="Close" on-click="Widgets.updateUser.close()" name="classaaa" class="closeButton"></wm-button>
-            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit"
+                update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-confirmdialog name="deleteConfirm" message="Are you sure you want to inactive userName?" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="false" on-ok="Variables.deletUser.invoke()" class="del_box"></wm-confirmdialog>
+    <wm-confirmdialog name="deleteConfirm" message="bind:'Are you sure you want to inactivate '+Variables.dialogUserId.dataSet.firstName+' ?'" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="false" on-ok="Variables.deletUser.invoke()"
+        class="del_box"></wm-confirmdialog>
 </wm-partial>

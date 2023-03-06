@@ -232,26 +232,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
-    public Page<SearchUsersResponse> executeSearchUsers(String userCriteria, String teamId, String role, String workCategory, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(4);
+    public Page<SearchUsersResponse> executeSearchUsers(String userCriteria, String teamId, String role, String workCategory, String managerId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(5);
 
         params.put("userCriteria", userCriteria);
         params.put("TeamID", teamId);
         params.put("role", role);
         params.put("work_category", workCategory);
+        params.put("managerId", managerId);
 
         return queryExecutor.executeNamedQuery("searchUsers", params, SearchUsersResponse.class, pageable);
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
     @Override
-    public void exportSearchUsers(String userCriteria, String teamId, String role, String workCategory, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(4);
+    public void exportSearchUsers(String userCriteria, String teamId, String role, String workCategory, String managerId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(5);
 
         params.put("userCriteria", userCriteria);
         params.put("TeamID", teamId);
         params.put("role", role);
         params.put("work_category", workCategory);
+        params.put("managerId", managerId);
 
         QueryProcedureInput<SearchUsersResponse> queryInput = new QueryProcedureInput<>("searchUsers", params, SearchUsersResponse.class);
 

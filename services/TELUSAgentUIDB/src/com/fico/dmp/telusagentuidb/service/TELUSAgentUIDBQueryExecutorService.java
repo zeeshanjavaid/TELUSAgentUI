@@ -51,9 +51,9 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetActiveRolesByUserName(String userName, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
-    Page<SearchUsersResponse> executeSearchUsers(String userCriteria, String teamId, String role, String workCategory, Pageable pageable);
+    Page<SearchUsersResponse> executeSearchUsers(String userCriteria, String teamId, String role, String workCategory, String managerId, Pageable pageable);
 
-    void exportSearchUsers(String userCriteria, String teamId, String role, String workCategory, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+    void exportSearchUsers(String userCriteria, String teamId, String role, String workCategory, String managerId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Integer executeDeleteGroupRole(String groupId);
 

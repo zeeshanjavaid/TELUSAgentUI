@@ -14,8 +14,30 @@ import com.wavemaker.runtime.data.annotations.ColumnAlias;
 public class GetManagerBasedOnTeamIdResponse implements Serializable {
 
 
+    @ColumnAlias("id")
+    private Long id;
+
+    @ColumnAlias("firstName")
+    private String firstName;
+
     @ColumnAlias("managerName")
     private String managerName;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public String getManagerName() {
         return this.managerName;
@@ -30,11 +52,15 @@ public class GetManagerBasedOnTeamIdResponse implements Serializable {
         if (this == o) return true;
         if (!(o instanceof GetManagerBasedOnTeamIdResponse)) return false;
         final GetManagerBasedOnTeamIdResponse getManagerBasedOnTeamIdResponse = (GetManagerBasedOnTeamIdResponse) o;
-        return Objects.equals(getManagerName(), getManagerBasedOnTeamIdResponse.getManagerName());
+        return Objects.equals(getId(), getManagerBasedOnTeamIdResponse.getId()) &&
+                Objects.equals(getFirstName(), getManagerBasedOnTeamIdResponse.getFirstName()) &&
+                Objects.equals(getManagerName(), getManagerBasedOnTeamIdResponse.getManagerName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getManagerName());
+        return Objects.hash(getId(),
+                getFirstName(),
+                getManagerName());
     }
 }

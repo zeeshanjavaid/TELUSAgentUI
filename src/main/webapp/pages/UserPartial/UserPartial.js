@@ -671,7 +671,6 @@ Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
 
 Partial.dialogUserDetails = function(row) {
     debugger;
-    row.email;
     Partial.Variables.dialogUserId.dataSet = {};
 
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
@@ -820,8 +819,13 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
     Partial.Widgets.updateUser.open();
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
 
+    // Partial.Variables.dialogUserId.dataSet.workCategory.split(",");
 
+
+    // Partial.statusData = [];
     Partial.statusData = [];
+
+    var ar = row.workCategory.split(",");
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
             id: item.code.replace(/\s/g, ''),
@@ -829,17 +833,30 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
         });
     });
 
-
+    debugger;
     setTimeout(function() {
         subComboBox1 = $('#updateUserInputBox').comboTree({
             source: Partial.statusData,
             isMultiple: true,
             cascadeSelect: true,
-            collapse: true
+            collapse: true,
+            selected: ar
         });
 
-
     }, 50);
+
+
+    //  alert(subComboBox1.getSelectedIds());
+
+    //     $('#selectedCategory').val(ar);
+    //     subComboBox1.onChange(function() {
+    //         console.log(String(subComboBox1.getSelectedIds()));
+    //         $('#selectedCategory').val(String(subComboBox1.getSelectedIds()));
+    //     });
+
+
+
+
 
 };
 Partial.updateUserForm1_saveAction = function($event) {
