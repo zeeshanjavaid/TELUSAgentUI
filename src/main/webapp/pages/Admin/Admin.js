@@ -24,11 +24,11 @@ Page.onReady = function() {
 Page.LeftNavAdminMenuListList1Click = function(widget, $data) {
 
 
-    alert(Partial.Variables.LeftNavAdminMenuList.dataSet)
+    //alert(Partial.Variables.LeftNavAdminMenuList.dataSet)
 };
-Page.container2Click = function($event, widget, item, currentItemWidgets) {
-    debugger;
-    if (item.dataValue == 'Work Category') {
-        Page.Actions.goToPage_DomainValueTypes.invoke();
-    }
-};
+// Page.container2Click = function($event, widget, item, currentItemWidgets) {
+//     debugger;
+//     if (item.dataValue == 'Work Category') {
+//         Page.Actions.goToPage_DomainValueTypes.invoke();
+//     }
+// };

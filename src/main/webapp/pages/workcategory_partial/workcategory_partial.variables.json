@@ -1,7 +1,7 @@
 {
-  "getDomainValueTypeByDesc" : {
-    "_id" : "wm-getDomainValueTypeByDesc-wm.ServiceVariable-1678106919396",
-    "name" : "getDomainValueTypeByDesc",
+  "DomainValueRelatedBSGetDomainValueTypeByDescription" : {
+    "_id" : "wm-DomainValueRelatedBSGetDomainValueTypeByDescription-wm.ServiceVariable-1678107537544",
+    "name" : "DomainValueRelatedBSGetDomainValueTypeByDescription",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
@@ -15,11 +15,12 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
+    "isDefault" : true,
     "controller" : "DomainValueRelatedBS"
   }
 }

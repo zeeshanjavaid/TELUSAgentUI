@@ -587,6 +587,7 @@ Partial.userMVTable1Click = function($event, widget, row) {
 
 App.usersPageReload = function() {
 
+
     Partial.Variables.getAllUsers.invoke();
 
 }
@@ -738,7 +739,10 @@ Partial.userMVTable1_customRowAction = function($event, row) {
     Partial.Variables.dialogUserId.dataSet = {};
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
-    Partial.Widgets.deleteConfirm.open();
+    if (row.active) {
+
+        Partial.Widgets.deleteConfirm.open();
+    }
 };
 
 

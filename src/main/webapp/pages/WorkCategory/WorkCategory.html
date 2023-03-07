@@ -1,4 +1,4 @@
-<wm-partial>
+<wm-partial name="partial1">
     <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full">
         <wm-container width="97%" name="data-container">
             <wm-container name="header-container" width="100%" margin="7px unset 20px unset">
@@ -21,10 +21,8 @@
             </wm-container>
         </wm-container>
         <wm-container name="DomainValueTypeContainer" width="97%" margin="10px unset unset unset">
-            <wm-table name="DomainValueTypeTable1" title="" dataset="bind:Variables.sv_getDVTypeByDescriptionPaginated.dataSet.pageContent" navigation="None" showrowindex="false" exportdatasize="100" showrecordcount="true" on-headerclick="DomainValueTypeTable1Sort($event, $data)">
-                <wm-table-column binding="description" caption="Domain Value Types" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
-                    <wm-anchor caption="bind:row.getProperty('description')" hyperlink="bind:navigateToDVPage(row.getProperty('id'))" class="desc" conditionalclass=""></wm-anchor>
-                </wm-table-column>
+            <wm-table name="DomainValueTypeTable1" title="" dataset="bind:Variables.getDomainValueTypeByDesc.dataSet" navigation="None" showrowindex="false" exportdatasize="100" showrecordcount="true" on-headerclick="DomainValueTypeTable1Sort($event, $data)">
+                <wm-table-column binding="pageContent[0].code" caption="Pagecontent[0] Code" edit-widget-type="text" type="string" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-container>
         <wm-container name="dvType_PaginationContainer" width="97% " content="Partial_Pagination " margin="unset unset 30px unset " show="bind:Variables.totalRecordCount.dataSet.dataValue > 0">
@@ -34,8 +32,6 @@
         </wm-container>
     </wm-container>
     <wm-spinner show="true" name="spinner1" servicevariabletotrack="sv_DVTypeUpload,sv_extractDomainValues,sv_getDVTypeByDescriptionPaginated" caption=""></wm-spinner>
-    </wm-page-content>
-    </wm-content>
     <wm-footer content="footer" name="footer1"></wm-footer>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Upload Domain Values" iconclass="" name="DVUpload_designDialog" on-close="DVUpload_designDialogClose($event, widget)" on-opened="DVUpload_designDialogOpened($event, widget)">
         <wm-spinner show="true" name="spinner2" caption="" servicevariabletotrack="sv_importDomainValues,sv_validateDVUploadFile"></wm-spinner>
@@ -44,7 +40,8 @@
             <wm-container width="85%" name="action_container" class="inflex-center-sb jc-sb">
                 <wm-label padding="unset 5px unset 50px" name="label3_1" caption="Domain Value" width="40%" height="100%"></wm-label>
                 <wm-container name="DVUploadSelect_container" width="60%" class="colflex-center-sb jc-sb flexCol">
-                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10" width="100%"></wm-fileupload>
+                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10"
+                        width="100%"></wm-fileupload>
                     <wm-label padding="unset 0.5em" name="label4" caption=".xlsx file less than 10 MB" fontsize="0.85" fontunit="em"></wm-label>
                 </wm-container>
             </wm-container>
@@ -56,5 +53,4 @@
     </wm-dialog>
     <wm-confirmdialog name="DVUpload_confirmDialog" title="" iconclass="" closable="false" message="Records from the uploaded file will overwrite existing records. Are you sure to continue?" canceltext="NO" oktext="YES" modal="true" on-cancel="Widgets.DVUpload_confirmDialog.close()"
         on-ok="DVUpload_confirmDialogOk($event, widget)"></wm-confirmdialog>
-
 </wm-partial>

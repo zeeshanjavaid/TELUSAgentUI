@@ -311,4 +311,8 @@
     "name" : "doRefresh",
     "type" : "string"
   } ]
+}, {
+  "name" : "workcategory_partial",
+  "type" : "PARTIAL",
+  "params" : [ ]
 } ]
