@@ -115,7 +115,6 @@ public class UserManagementHandler {
 		}
 		//logger.info("In handler before object assigning :::::::::::::::::::::");
 		
-	   System.out.println(" Team ID================================" +userDTO.getRole());
 
 		User user = new User();
 		user.setFirstName(userDTO.getFirstName());
@@ -276,7 +275,6 @@ public class UserManagementHandler {
                 }
 
 
-                 System.out.println("Check both size   " +existingWorkCat.size()+"===================="+ workCategory.size());
                  for (String workCar : workCategory) {
                     logger.info("In handler before update workcategory user :::::::::::::::::::::");
                     if (!existingWorkCat.contains(workCar.trim())) {
