@@ -869,6 +869,17 @@ Partial.updateUserForm1_saveAction = function($event) {
 
     Partial.Widgets.updateUserForm1.dataoutput.UserDTO;
     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
+
+    var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
+
+    if (type == 'string') {
+
+        debugger;
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null
+
+
+
+    }
     debugger;
     //dataBinding
     Partial.Variables.UserManagementServiceUpdateUser.invoke({
@@ -884,6 +895,7 @@ Partial.updateUserForm1_saveAction = function($event) {
             // Error Callback
             console.log("error", error)
         });
+
 
 
 };

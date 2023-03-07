@@ -261,6 +261,8 @@ public class UserManagementHandler {
 
                 List<String> workCategory = userDTO.getWorkCategory();
                 
+                if(workCategory!=null){
+                
                  if (existingWorkCat.size() > workCategory.size()) {
                     for (WorkcategoryUser workCar : workCategoryUserList) {
                         logger.info("In handler before update workcategory user :::::::::::::::::::::");
@@ -298,6 +300,7 @@ public class UserManagementHandler {
                     workcategoryUser.setWorkCategory(workCar);
                     workcategoryUserService.create(workcategoryUser);
                 }
+            }
             }
             
             

@@ -26,7 +26,7 @@ public class UserDTO {
 	@NotNull(message = "EmplID is missing")
 	private String emplId;
 	
-	//@NotNull(message = "TeamId is missing")
+	@NotNull(message = "TeamId is missing")
 	private String teamId;
 
 //@NotNull(message = "TeamManager is missing")
