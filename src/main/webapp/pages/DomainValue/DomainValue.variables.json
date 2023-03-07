@@ -141,11 +141,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "domainValueTypeId",
-      "value" : "4",
-      "type" : "integer"
-    } ],
+    "dataBinding" : [ ],
     "type" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS.CustomPageData_DVSearchFilters",
     "service" : "DomainValueRelatedBS",
     "operation" : "getDVListByFilters",
