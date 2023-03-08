@@ -78,6 +78,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "CreateParr",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "CreateTeamsPartial",
   "type" : "PARTIAL",
   "params" : [ {
@@ -161,6 +165,10 @@
 }, {
   "name" : "Parr",
   "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ParrDetails",
+  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "ParrList",

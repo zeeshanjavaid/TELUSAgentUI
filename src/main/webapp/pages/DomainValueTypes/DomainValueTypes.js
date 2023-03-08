@@ -21,6 +21,8 @@ let domainValueUploadFile = null;
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
+    debugger;
+    //Anvesha
     initPage();
 };
 
@@ -422,4 +424,9 @@ Page.searchDV_ButtonDblclick = function($event, widget) {
 };
 Page.button6Click = function($event, widget) {
     debugger;
+};
+
+Page.goToDomainValue = function($event, row) {
+    debugger;
+    Page.ACtions.goToPage_DomainValue.invoke();
 };

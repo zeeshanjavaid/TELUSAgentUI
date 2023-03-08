@@ -671,14 +671,14 @@ Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
 };
 
 Partial.dialogUserDetails = function(row) {
-    debugger;
+    //debugger;
     Partial.Variables.dialogUserId.dataSet = {};
 
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
 
     //Partial.Variables.getWorkCategoryByUserId.invoke();
-    debugger;
+    // debugger;
     var lv = Partial.Variables.getWorkCategoryByUserId;
     lv.listRecords({
             filterFields: {
@@ -689,7 +689,7 @@ Partial.dialogUserDetails = function(row) {
             }
         },
         function(data) {
-            debugger;
+            //debugger;
             //console.log('success', success)
             Partial.Variables.getWorkCategoryByUserId.dataSet = [];
             Partial.Variables.getWorkCategoryByUserId.dataSet = data;

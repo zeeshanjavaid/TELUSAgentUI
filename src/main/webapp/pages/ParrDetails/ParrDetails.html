@@ -1,0 +1,160 @@
+<wm-partial name="partial1">
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn1">
+                <wm-icon name="icon1" iconclass="fico-icon-arrow-left"></wm-icon>
+                <wm-label padding="unset 0.5em unset 2.5em" name="label3" caption="PARR Details" textdecoration="underline"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="9" name="gridcolumn2">
+                <wm-button class="btn-default" caption="Clear PARR" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.dialog1.open()"></wm-button>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow2">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+                <wm-composite name="composite2">
+                    <wm-label class="col-md-3 control-label" name="label5" caption="Parr ID"></wm-label>
+                    <wm-container class="col-md-9" name="container2">
+                        <wm-text name="text2"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                <wm-composite name="composite3">
+                    <wm-label class="col-md-3 control-label" name="label6" caption="Status"></wm-label>
+                    <wm-container class="col-md-9" name="container3">
+                        <wm-text name="text3"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                <wm-composite name="composite4">
+                    <wm-label class="col-md-3 control-label" name="label7" caption="Evalution"></wm-label>
+                    <wm-container class="col-md-9" name="container4">
+                        <wm-text name="text4"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn6">
+                <wm-composite name="composite5">
+                    <wm-label class="col-md-3 control-label" name="label8" caption="Parr Amt" width="50px"></wm-label>
+                    <wm-container class="col-md-9" name="container5">
+                        <wm-text name="text5"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                <wm-composite name="composite6">
+                    <wm-label class="col-md-3 control-label" name="label9" caption="CUMM PMT EXP"></wm-label>
+                    <wm-container class="col-md-9" name="container6">
+                        <wm-text name="text6"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                <wm-composite name="composite7">
+                    <wm-label class="col-md-3 control-label" name="label10" caption="CUMM PMT RCVD"></wm-label>
+                    <wm-container class="col-md-9" name="container7">
+                        <wm-text name="text7"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow4">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn17">
+                <wm-composite name="composite9">
+                    <wm-label class="col-md-3 control-label" name="label12" caption="Reccurence"></wm-label>
+                    <wm-container class="col-md-9" name="container9">
+                        <wm-text name="text9"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" name="gridcolumn18">
+                <wm-composite name="composite10">
+                    <wm-label class="col-md-3 control-label" name="label14" caption="Instalment BAN"></wm-label>
+                    <wm-container class="col-md-9" name="container10">
+                        <wm-textarea name="textarea1"></wm-textarea>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="5" name="gridcolumn19"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn20"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn21"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn22"></wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-icon name="icon2" iconclass="fico-icon-chevron-down"></wm-icon>
+    <wm-label padding="1em 0.5em unset 0.5em" name="label10_1" caption="Installment Schedule"></wm-label>
+    <wm-table editmode="quickedit" name="UserTable1" dataset="bind:Variables.TELUSAgentUIDBUserData.dataSet" navigation="None">
+        <wm-table-column binding="id" caption="Id" generator="identity" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" readonly="true"></wm-table-column>
+        <wm-table-column binding="email" caption="Email" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="userId" caption="User Id" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="active" caption="Active" generator="assigned" pcdisplay="true" mobiledisplay="true" type="boolean" required="true"></wm-table-column>
+        <wm-table-column binding="firstName" caption="First Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="createdOn" caption="Created On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+        <wm-table-column binding="updatedOn" caption="Updated On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+        <wm-table-column binding="lastName" caption="Last Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="phoneNumber" caption="Phone Number" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="timeZone" caption="Time Zone" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash fico fico-icon-trash" show="true" class="btn-default btn-xs" action="deleteRow($event)"></wm-table-row-action>
+    </wm-table>
+    <wm-icon name="icon3" iconclass="fico-icon-chevron-down"></wm-icon>
+    <wm-label padding="unset 0.5em" name="label11" caption="PARR History"></wm-label>
+    <wm-table editmode="quickedit" name="UserTable1_1" dataset="bind:Variables.TELUSAgentUIDBUserData1.dataSet" navigation="None">
+        <wm-table-column binding="id" caption="Id" generator="identity" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" readonly="true"></wm-table-column>
+        <wm-table-column binding="email" caption="Email" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="userId" caption="User Id" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="active" caption="Active" generator="assigned" pcdisplay="true" mobiledisplay="true" type="boolean" required="true"></wm-table-column>
+        <wm-table-column binding="firstName" caption="First Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="createdOn" caption="Created On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+        <wm-table-column binding="updatedOn" caption="Updated On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
+        <wm-table-column binding="lastName" caption="Last Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="phoneNumber" caption="Phone Number" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-column binding="timeZone" caption="Time Zone" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+        <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash fico fico-icon-trash" show="true" class="btn-default btn-xs" action="deleteRow($event)"></wm-table-row-action>
+    </wm-table>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="dialog1">
+        <wm-layoutgrid name="layoutgrid2">
+            <wm-gridrow name="gridrow4_1">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn15">
+                    <wm-composite name="composite9_1">
+                        <wm-label class="col-md-3 control-label" name="label20" caption="Parr ID"></wm-label>
+                        <wm-container class="col-md-9" name="container9_1">
+                            <wm-text name="text8"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                    <wm-composite name="composite10_1">
+                        <wm-label class="col-md-3 control-label" name="label21" caption="Reccurence"></wm-label>
+                        <wm-container class="col-md-9" name="container10_1">
+                            <wm-text name="text9_1"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn23">
+                    <wm-composite name="composite11">
+                        <wm-label class="col-md-3 control-label" name="label22" caption="Parr Amount"></wm-label>
+                        <wm-container class="col-md-9" name="container11">
+                            <wm-text name="text10"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow5">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn17_1">
+                    <wm-composite name="composite12">
+                        <wm-label class="col-md-3 control-label" name="label23" caption="Installment BAN"></wm-label>
+                        <wm-container class="col-md-9" name="container12">
+                            <wm-textarea name="textarea2"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-label padding="1em 0.5em unset 0.5em" name="label24" caption="Installment Schedule" textdecoration="underline"></wm-label>
+        <wm-dialogactions name="dialogactions1">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button3"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+</wm-partial>
