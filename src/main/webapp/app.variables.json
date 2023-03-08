@@ -2226,7 +2226,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "redirectTo" : "Logout",
-    "useDefaultSuccessHandler" : false
+    "useDefaultSuccessHandler" : true
   },
   "mv_searchFilters" : {
     "_id" : "wm-mv_searchFilters-wm.Variable-1654664332684",
