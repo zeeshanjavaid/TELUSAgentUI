@@ -1929,30 +1929,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_Product2" : {
-    "_id" : "wm-goToPage_Product-wm.NavigationVariable-1666080071895",
-    "name" : "goToPage_Product2",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "Product2",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
-  "goToPage_ProductCreateEdit" : {
-    "_id" : "wm-goToPage_ProductCreateEdit-wm.NavigationVariable-1667465246891",
-    "name" : "goToPage_ProductCreateEdit",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "ProductCreateEdit",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_Queues" : {
     "_id" : "wm-goToPage_Queues-wm.NavigationVariable-1661322463365",
     "name" : "goToPage_Queues",
@@ -2249,8 +2225,8 @@
     "saveInPhonegap" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
-    "redirectTo" : "Main",
-    "useDefaultSuccessHandler" : true
+    "redirectTo" : "Logout",
+    "useDefaultSuccessHandler" : false
   },
   "mv_searchFilters" : {
     "_id" : "wm-mv_searchFilters-wm.Variable-1654664332684",

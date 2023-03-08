@@ -649,6 +649,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "countTeamUsers" : {
+    "_id" : "wm-countTeamUsers-wm.ServiceVariable-1678285279358",
+    "name" : "countTeamUsers",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "q",
+      "value" : "bind:Widgets.GroupList.currentItem",
+      "type" : "string"
+    } ],
+    "type" : "integer",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "countTeamUsers",
+    "operationId" : "TeamUserController_countTeamUsers",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "TeamUser"
+  },
   "DmpS3FileServiceUploadFile" : {
     "_id" : "wm-DmpS3FileServiceUploadFile-wm.ServiceVariable-1655041207523",
     "name" : "DmpS3FileServiceUploadFile",

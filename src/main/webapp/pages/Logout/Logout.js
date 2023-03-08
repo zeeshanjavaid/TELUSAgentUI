@@ -21,9 +21,9 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
-    Page.Variables.sv_unlockAppsForSessionUser.invoke();
+    // Page.Variables.sv_unlockAppsForSessionUser.invoke();
 
-    window.location.href = "removeSession";
+    // window.location.href = "removeSession";
 
 
 };

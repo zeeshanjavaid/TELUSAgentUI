@@ -2,12 +2,15 @@
     <wm-container class="header-row" name="maincontainer">
         <wm-container name="leftcontainer" class="left">
             <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" dataset="bind:Variables.leftTopMenuMV.dataSet" on-select="menuSelect($event, widget, $item)" itemlabel="name" accessroles="Everyone" show="true"></wm-nav>
-        </wm-container>
-        <wm-container name="rightcontainer" class="right">
-            <wm-container name="container5 " class="text-right display-inline-block ">
-                <wm-nav type="pills" autoclose="outsideClick" name="rightMenu" class="display-inline-block session-nav" dataset="bind:Variables.rightTopMenuMV.dataSet" itemlabel="name" itemlink="url" itemchildren="children" on-select="menuSelect($event, widget, $item)"
-                    autoopen="never"></wm-nav>
+            <wm-container name="rightcontainer" class="right" width="25%" horizontalalign="left">
+                <wm-container name="container5 " class="text-right display-inline-block ">
+                    <wm-nav type="pills" autoclose="outsideClick" name="rightMenu" class="display-inline-block session-nav" dataset="bind:Variables.rightTopMenuMV.dataSet" itemlabel="name" itemlink="url" itemchildren="children" on-select="menuSelect($event, widget, $item)"
+                        autoopen="never" show="false"></wm-nav>
+                </wm-container>
             </wm-container>
+        </wm-container>
+        <wm-container name="container5" class="right" horizontalalign="right">
+            <wm-button class="btn-link anchor-caption" caption="Logout" type="button" margin="unset 0.5em" name="btnLogout" on-click="Actions.logoutAction.invoke()" horizontalalign="right" color="#fff"></wm-button>
         </wm-container>
     </wm-container>
 </wm-partial>

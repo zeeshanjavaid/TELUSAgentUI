@@ -1385,3 +1385,11 @@ App.getLoggedInUserDetailsonSuccess = function(variable, data) {
         App.Variables.createUser.invoke();
     }
 };
+
+/*
+App.logoutActiononSuccess = function(variable, data) {
+    // window.location.href = "removeSession";
+
+
+};
+*/
