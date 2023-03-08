@@ -290,7 +290,7 @@ public class UserManagementHandler {
 
 
 
-            }else if (userDTO.getWorkCategory().size() > 0) {
+            }else if (userDTO.getWorkCategory()!=null && userDTO.getWorkCategory().size() > 0) {
 
                 for (String workCar : userDTO.getWorkCategory()) {
                     WorkcategoryUser workcategoryUser = new WorkcategoryUser();
@@ -301,20 +301,25 @@ public class UserManagementHandler {
             }
             }
             
-            
-            Team team=teamService.getById(Integer.valueOf(userDTO.getTeamId()));
-			TeamUser teamUser = teamUserService.getById(team.getId());
+            logger.info("In handler before update team user :::::::::::::::::::::");
 
-		 if (teamUser == null) {
-                teamUser = new TeamUser();
-                teamUser.setUser(dbUser);
-                teamUser.setTeam(team);
-                teamUserService.create(teamUser);
-            } else {
-                teamUser.setUser(dbUser);
-                teamUser.setTeam(team);
-                teamUserService.update(teamUser);
+             TeamUser teamUser = null;
+            Page<TeamUser> teamUserPage = teamUserService.findAll(USERID + dbUser.getId(), pageable);
+            if (teamUserPage.hasContent()) {
+                List<TeamUser> teamUserList = teamUserPage.getContent();
+                if (!teamUserList.isEmpty()) {
+                    teamUser = teamUserList.get(0);
+                }
             }
+
+
+            Team team = teamService.getById(Integer.valueOf(userDTO.getTeamId()));
+            //TeamUser teamUser = teamUserService.findById(dbUser.getId());
+            teamUser.setUser(dbUser);
+            teamUser.setTeam(team);
+            teamUserService.update(teamUser);
+        logger.info("Updated team user for user :::::::::::::::::::::");
+
 
 		} catch (Exception e) {
 			logger.error("Exception updating user: ", e);

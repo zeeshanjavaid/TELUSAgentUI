@@ -795,9 +795,7 @@ Partial.createUserForm1_saveAction = function($event) {
     debugger;
 
     Partial.Widgets.createUserForm1.dataoutput.UserDTO;
-    //Partial.Widgets.createUserForm1.dataoutput.UserDTO.workCategory = subComboBox.getSelectedIds();
     Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
-    //dataBinding
     Partial.Variables.UserManagementServiceCreateUser.invoke({
 
         },
