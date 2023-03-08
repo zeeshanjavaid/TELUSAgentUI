@@ -185,7 +185,9 @@
         </wm-table-column>
         <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="teamManager" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="teamId" caption="Team Id" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="teamId" caption="Team Id" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+            <wm-label caption="bind:row.getProperty('teamId')" class="" conditionalclass=""></wm-label>
+        </wm-table-column>
         <wm-table-column binding="active" caption="Status" widget-type="label" edit-widget-type="text" type="string" defaultvalue="bind:Variables.StatusModel.dataSet[$i].dataValue" show="true" readonly="false">
             <!--<wm-label caption="bind:row.(getProperty('active') == "true") ? 'dd':'" class="" conditionalclass=""></wm-label>-->
             <wm-label caption="bind:row.getProperty('active') == true ? &quot;Active&quot; : &quot;Inactive&quot; " class="" conditionalclass=""></wm-label>

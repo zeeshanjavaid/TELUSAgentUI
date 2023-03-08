@@ -9,15 +9,15 @@
     "dataSet" : [ {
       "label" : "User Administration",
       "link" : "#UserManagement",
-      "roleId" : "Administrator, SuperUser"
+      "roleId" : "Support"
     }, {
       "label" : "Domain Values",
       "link" : "#DomainValues",
-      "roleId" : "Administrator, SuperUser"
+      "roleId" : "Support"
     }, {
       "label" : "Timer Setting",
       "link" : "#TimerSetting",
-      "roleId" : "Administrator, SuperUser"
+      "roleId" : "Support"
     } ],
     "type" : "entry",
     "isList" : true,
@@ -122,12 +122,12 @@
       "updatedOn" : "2022-01-12T10:09:40.556+0000",
       "createdBy" : "cwayjones_otp@fico.com",
       "updatedBy" : "chetanshettigar_otp@fico.com",
-      "status" : "Active",
+      "status" : "InActive",
       "code" : "Setup",
       "categoryType" : "top",
       "isExternalURL" : false,
       "path" : "#/SetupLanding",
-      "project" : "FicoStudioCore",
+      "project" : "TelusAgentUI",
       "url" : "#/SetupLanding",
       "isEditable" : false,
       "parent" : true,
@@ -142,12 +142,12 @@
       "updatedOn" : "2022-01-12T10:09:40.557+0000",
       "createdBy" : "cwayjones_otp@fico.com",
       "updatedBy" : "chetanshettigar_otp@fico.com",
-      "status" : "Active",
+      "status" : "InActive",
       "code" : "ActivityLogs",
       "categoryType" : "top",
       "isExternalURL" : false,
       "path" : "#/ActivityLogs",
-      "project" : "FicoStudioCore",
+      "project" : "TelusAgentUI",
       "url" : "#/ActivityLogs",
       "isEditable" : true,
       "parent" : true,
@@ -167,7 +167,7 @@
       "categoryType" : "top/Admin",
       "isExternalURL" : false,
       "path" : "#/Admin",
-      "project" : "FicoStudioCore",
+      "project" : "TelusAgentUI",
       "url" : "#/Admin",
       "isEditable" : true,
       "parent" : true,
@@ -187,7 +187,7 @@
       "categoryType" : "top/Main",
       "isExternalURL" : false,
       "path" : "#/LookUp",
-      "project" : "FicoStudioCore",
+      "project" : "TelusAgentUI",
       "url" : "#/Parr",
       "isEditable" : true,
       "parent" : true,

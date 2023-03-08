@@ -13,5 +13,5 @@
 Page.onReady = function() {
 
     // Redirection to be controled via Left Menu First entry. Hard coded will be replaced as part of later stories  
-    window.location.href = "#/DomainValueTypes";
+    window.location.href = "#/DomainValueTypes_Old";
 };

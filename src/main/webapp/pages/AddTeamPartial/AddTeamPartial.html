@@ -2,7 +2,7 @@
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow9">
             <wm-gridcolumn columnwidth="12" name="gridcolumn18">
-                <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:pageParams.groupId ? pageParams.groupName : &quot;Add Team&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" height="25"></wm-label>
+                <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:pageParams.groupId ? &quot;Edit Team&quot; : &quot;Add Team&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" height="25"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow4">
@@ -97,28 +97,29 @@
             <wm-gridcolumn columnwidth="10" name="gridcolumn14" style="margin-bottom: 2em;">
                 <wm-container name="container8">
                     <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
-                        <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" on-click="Widgets.deleteTeamDialog.open()" show="bind:pageParams.groupId !== undefined" name="button4" backgroundcolor="#d0012d"
-                            color="#ffffff"></wm-button>
+                        <wm-button caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" on-click="Widgets.deleteTeamDialog.open()" show="bind:pageParams.groupId !== undefined" name="button4" class="btn-link"></wm-button>
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
-                        <wm-button class="btn-cancelTeamsButton" caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true"></wm-button>
+                        <wm-button caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true" class="btn-link"></wm-button>
                         <wm-button class="btn-saveTeamsButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete Team &quot; + Variables.teamData.dataSet.TeamId" iconclass="" name="deleteTeamDialog" width="35%" on-opened="Widgets.deleteTeamDialog.open()" closable="false">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete Team &quot; + Variables.teamData.dataSet.TeamId" iconclass="" name="deleteTeamDialog" width="35%" on-opened="Widgets.deleteTeamDialog.open()" closable="true">
         <wm-layoutgrid name="layoutgrid3_1">
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
-                    <wm-message name="message3" type="warning" hideclose="true" caption="Warning: Continue? Cannot be undone."></wm-message>
+                    <wm-message name="message3" type="warning" hideclose="true" caption="bind:'Are you sure you want to delete ' + pageParams.teamId"></wm-message>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
-            <wm-button class="btn-secondary btn-default" caption="Cancel" on-click="Widgets.deleteTeamDialog.close()" name="deleteTeamConfirmNo" margin="unset 0.5em unset unset"></wm-button>
-            <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteTeamConfirmOk" on-click="deleteTeamConfirmOkClick($event, widget)"></wm-button>
+            <wm-container name="container15" horizontalalign="center">
+                <wm-button class="btn-link" caption="Cancel" on-click="Widgets.deleteTeamDialog.close()" name="deleteTeamConfirmNo" margin="unset 0.5em unset unset" textalign="center"></wm-button>
+                <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteTeamConfirmOk" on-click="deleteTeamConfirmOkClick($event, widget)"></wm-button>
+            </wm-container>
         </wm-dialogactions>
     </wm-dialog>
     <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="createGroup,CreateGroupRole,CreateGroupUser,deleteGroup,executeDeleteGroupRole,executeDeleteGroupUser,getAllRole,getAllUsers,getGroup,updateGroup"></wm-spinner>

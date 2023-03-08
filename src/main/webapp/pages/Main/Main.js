@@ -9,9 +9,9 @@
  * example: var utils = App.getDependency('Utils');
  */
 
-$('document').ready(() => {
-    document.getElementsByTagName("html")[0].style.visibility = "hidden";
-});
+// $('document').ready(() => {
+//     document.getElementsByTagName("html")[0].style.visibility = "hidden";
+// });
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
@@ -84,49 +84,51 @@ Page.dashboardMenuItemClick = function($event, widget, item, currentItemWidgets)
 };
 
 function loadDashboardMenus() {
-    const intervalId = setInterval(function() {
-        if (App.permissionsLoaded) {
-            clearInterval(intervalId);
-            console.log('Permissions loaded...');
-            document.getElementsByTagName("html")[0].style.visibility = "visible";
-
-
-
-            var dashboard = [];
-            Page.Variables.staticMenuItems.dataSet.forEach(function(m) {
-                // if (m.path === '#/ApplicationCreateEdit' && App.IsUserHasAccess('Access_CreateApplication'))
-                //     dashboard.push(m);
-                // else if (m.path === '#/ApplicationSearch' && App.IsUserHasAccess('Access_ApplicationSearch'))
-                //     dashboard.push(m);
-                // else
-                if (m.path === '#/SetupLanding' && App.IsUserHasAccess('System Administration'))
-                    dashboard.push(m);
-                else if (m.path === '#/Users' && App.IsUserHasAccess('Support'))
-                    dashboard.push(m);
-                else if (m.path === '#/Groups' && App.IsUserHasAccess('Security_Groups'))
-                    dashboard.push(m);
-                else if (m.path === '#/Roles' && App.IsUserHasAccess('Security_Roles'))
-                    dashboard.push(m);
-            });
-
-
-
-            Page.Variables.staticMenuItems.dataSet = dashboard;
-            Page.Widgets.staticMenuItemsList1.dataset = [];
-            Page.Widgets.staticMenuItemsList1.dataset = Page.Variables.staticMenuItems.dataSet;
-        } else {
-            //determining the time elapsed since App started in minutes
-            const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
-
-            if (timeElapsedSinceAppStart < 1) {
-                console.log('Waiting to load permissions...');
-            } else {
+    /*    const intervalId = setInterval(function() {
+            if (App.permissionsLoaded) {
                 clearInterval(intervalId);
+                console.log('Permissions loaded...');
+                document.getElementsByTagName("html")[0].style.visibility = "visible";
 
-                //if the active page is not 'ErrorLanding'
-                // if (window.location.hash !== '#/ErrorLanding')
-                //     window.location.href = '#/ErrorLanding';
+
+
+                var dashboard = [];
+                Page.Variables.staticMenuItems.dataSet.forEach(function(m) {
+                    // if (m.path === '#/ApplicationCreateEdit' && App.IsUserHasAccess('Access_CreateApplication'))
+                    //     dashboard.push(m);
+                    // else if (m.path === '#/ApplicationSearch' && App.IsUserHasAccess('Access_ApplicationSearch'))
+                    //     dashboard.push(m);
+                    // else
+                    // if (m.path === '#/SetupLanding' && App.IsUserHasAccess('Support'))
+                    //     dashboard.push(m);
+                    // else if (m.path === '#/Users' && App.IsUserHasAccess('Support'))
+                    //     dashboard.push(m);
+                    // else if (m.path === '#/Groups' && App.IsUserHasAccess('Security_Groups'))
+                    //     dashboard.push(m);
+                    // else if (m.path === '#/Roles' && App.IsUserHasAccess('Support'))
+                    //     dashboard.push(m);
+
+                    dashboard.push(m);
+                });
+
+
+
+                Page.Variables.staticMenuItems.dataSet = dashboard;
+                Page.Widgets.staticMenuItemsList1.dataset = [];
+                Page.Widgets.staticMenuItemsList1.dataset = Page.Variables.staticMenuItems.dataSet;
+            } else {
+                //determining the time elapsed since App started in minutes
+                const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
+
+                if (timeElapsedSinceAppStart < 1) {
+                    console.log('Waiting to load permissions...');
+                } else {
+                    clearInterval(intervalId);
+
+                    //if the active page is not 'ErrorLanding'
+                    // if (window.location.hash !== '#/ErrorLanding')
+                    //     window.location.href = '#/ErrorLanding';
+                }
             }
-        }
-    }, 10);
+        }, 10); */
 }

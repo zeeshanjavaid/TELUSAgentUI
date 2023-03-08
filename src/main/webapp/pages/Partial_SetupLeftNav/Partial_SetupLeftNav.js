@@ -9,7 +9,7 @@
  * example: var utils = App.getDependency('Utils');
  */
 
-Partial.MenuData = "";
+// Partial.MenuData = "";
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
     /*
@@ -21,7 +21,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    Partial.redirect = false;
+    // Partial.redirect = false;
 
     loadSetupMenus();
 };
@@ -129,7 +129,7 @@ function loadSetupMenus() {
                         delete parentMenuItem.children;
                         parentMenuItem.children = [];
                         m.children.forEach((child) => {
-                            if (child.code === 'SiteProperties' && App.IsUserHasAccess('System Administration'))
+                            if (child.code === 'SiteProperties' && App.IsUserHasAccess('Support'))
                                 parentMenuItem.children.push(child);
                             else if (child.code === 'Organizations')
                                 parentMenuItem.children.push(child);
@@ -149,7 +149,7 @@ function loadSetupMenus() {
                         parentMenuItem.children = [];
                         m.children.forEach((child) => {
                             // if (child.code === 'DomainValues' && App.IsUserHasAccess('Setup_DomainValues'))
-                            if (child.code === 'DomainValues' && App.IsUserHasAccess('System Administration'))
+                            if (child.code === 'DomainValues' && App.IsUserHasAccess('Support'))
                                 parentMenuItem.children.push(child);
                             else if (child.code === 'Queues' && App.IsUserHasAccess('Setup_Queues'))
                                 parentMenuItem.children.push(child);

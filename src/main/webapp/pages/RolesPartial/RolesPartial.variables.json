@@ -636,6 +636,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "countUsersByRole" : {
+    "_id" : "wm-countUsersByRole-wm.ServiceVariable-1678283236589",
+    "name" : "countUsersByRole",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "q",
+      "value" : "bind:roleId = Variables.roleId.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "integer",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "countUserRoles",
+    "operationId" : "UserRoleController_countUserRoles",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "UserRole"
+  },
   "executeGetPermissionGroupByRoleId" : {
     "_id" : "wm-executeGetPermissionGroupByRoleId1-wm.ServiceVariable-1674570507432",
     "name" : "executeGetPermissionGroupByRoleId",

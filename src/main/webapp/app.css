@@ -200,3 +200,7 @@
 .wm-app app-page-admin .panel7 {
     width: 60% !important;
 }
+
+.wm-app .app-livelist .app-list-item.active.list-group-item .app-label {
+    color: #222 !important;
+}

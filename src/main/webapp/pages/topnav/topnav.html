@@ -1,8 +1,7 @@
 <wm-partial name="menuPartial">
     <wm-container class="header-row" name="maincontainer">
         <wm-container name="leftcontainer" class="left">
-            <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" dataset="bind:Variables.leftTopMenuMV.dataSet" on-select="menuSelect($event, widget, $item)" itemlabel="name" itemchildren="children" itemlink="url" accessroles="Everyone"
-                itemicon="resources/images/imagelists/search-icon.png" show="true"></wm-nav>
+            <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" dataset="bind:Variables.leftTopMenuMV.dataSet" on-select="menuSelect($event, widget, $item)" itemlabel="name" accessroles="Everyone" show="true"></wm-nav>
         </wm-container>
         <wm-container name="rightcontainer" class="right">
             <wm-container name="container5 " class="text-right display-inline-block ">

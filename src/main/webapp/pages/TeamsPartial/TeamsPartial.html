@@ -2,7 +2,7 @@
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="page_content2">
             <wm-label padding="unset 0.5em" name="label3" class="h3" caption="Teams" margin="10px unset 15px unset"></wm-label>
-            <wm-button caption="Add Team" type="button" margin="unset 0.5em" name="AddTeamButton" show="true" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
+            <wm-button caption="Create Team" type="button" margin="unset 0.5em" name="AddTeamButton" show="true" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.groupSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.groupSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
                 <wm-message name="errormessage" type="error" show="bind:Variables.groupErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.groupErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
@@ -34,8 +34,9 @@
             </wm-container>
             <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
             <!--<wm-search name="searchRole" dataset="bind:Variables.allGroupsUI.dataSet" datafield="All Fields" class="searchMargin " placeholder="Filter roles" loadingdatamsg="" on-blur="searchRoleBlur($event, widget)"></wm-search>-->
-            <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="list-group-item lookup-item roleList-i" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist roleList" name="GroupList" navigation="Classic" selectfirstitem="bind:!(App.Variables.GroupPageCommunication.currentGroupInFocusId)"
-                dataset="bind:Variables.allTeamsUI.dataSet" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" pagesize="5" on-click="GroupListClick(widget, $data)" on-setrecord="GroupListSetrecord(widget, $data)">
+            <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="list-group-item lookup-item roleList-i" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist roleList" name="GroupList" navigation="Basic" selectfirstitem="bind:!(App.Variables.GroupPageCommunication.currentGroupInFocusId)"
+                dataset="bind:Variables.allTeamsUI.dataSet" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" pagesize="5" on-click="GroupListClick(widget, $data)" on-setrecord="GroupListSetrecord(widget, $data)"
+                navigationalign="right">
                 <wm-listtemplate layout="inline" name="listtemplate2">
                     <wm-container class="media-left" name="container4">
                         <wm-picture width="1pt" height="1pt" name="Picture" shape="circle" class="media-object" show="false"></wm-picture>

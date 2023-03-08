@@ -12,13 +12,13 @@
  ****************************************************************************
  **/
 Partial.QueueChildren = [];
-Partial.UserAssignedMenus = [];
+//Partial.UserAssignedMenus = [];
 Partial.isUserAutoProvisionEnabled = false;
 
 Partial.onReady = function() {
 
 
-    loadAppMetadata();
+    // loadAppMetadata();
 };
 
 
@@ -103,77 +103,9 @@ Partial.db_AllQueuesonError = function(variable, data) {
 };
 
 Partial.db_AllQueuesonSuccess = function(variable, data) {
-    Partial.QueueChildren = [];
+    // Partial.QueueChildren = [];
 
     //only add the Queue option if there are queues available
-    if (data.length > 0) {
-        for (let Q of data) {
-            let child = {
-                "name": Q.name,
-                "updatedOn": "2022-01-12T10:09:40.557+0000",
-                "updatedBy": "AnsuR_td@fico.com",
-                "status": "Active",
-                "code": Q.name,
-                "categoryType": "top/" + Q.name,
-                "isExternalURL": false,
-                "path": "#/QueueSearch",
-                "project": "FICO-Applications-Workbench-Component",
-                "url": "#/QueueSearch?queueId=" + Q.id,
-                "isEditable": true,
-                "parent": true,
-                "target": "_self",
-                "order": 1,
-                "roles": [
-                    "a7b47664-9a85-4eac-b0f2-f8162237ddb0"
-                ],
-                "deleted": false
-            };
-
-            Partial.QueueChildren.push(child);
-        }
-
-        let queueMenuPresent = true;
-        let QMenuObj = Partial.Variables.leftTopMenuMV.dataSet.find((menuObj) => {
-            return menuObj.name === Partial.appLocale.QUEUES;
-        });
-        queueMenuPresent = QMenuObj ? true : false;
-
-        if (!queueMenuPresent) {
-            let queue = {
-                "name": Partial.appLocale.QUEUES,
-                "description": "Access queues",
-                "createdOn": "2022-01-11T11:38:32.840+0000",
-                "updatedOn": "2022-01-12T10:09:40.557+0000",
-                "createdBy": "cwayjones_otp@fico.com",
-                "updatedBy": "chetanshettigar_otp@fico.com",
-                "status": "Active",
-                "code": "Queues",
-                "categoryType": "top",
-                "isExternalURL": false,
-                "path": "#/QueueSearch",
-                "project": "FICO-Applications-Workbench-Component",
-                "url": "#/QueueSearch",
-                "isEditable": true,
-                "parent": true,
-                "target": "_self",
-                "order": 1,
-                "roles": [
-                    "fba38a82-cd26-4519-a536-a401903cab6b"
-                ],
-                "children": Partial.QueueChildren,
-                "deleted": false
-            };
-
-            Partial.Variables.leftTopMenuMV.dataSet.push(queue);
-        } else {
-            QMenuObj.children = [];
-            QMenuObj.children = Partial.QueueChildren;
-        }
-    } else {
-        let menu_index = Partial.Variables.leftTopMenuMV.dataSet.findIndex(menuoption => menuoption.name === Partial.appLocale.QUEUES);
-        if (menu_index !== -1)
-            Partial.Variables.leftTopMenuMV.dataSet.splice(menu_index, 1);
-    }
 
     Partial.Widgets.leftMenu.dataset = [];
     Partial.Widgets.leftMenu.dataset = Partial.Variables.leftTopMenuMV.dataSet;
@@ -208,54 +140,52 @@ async function loadAppMetadata() {
     await App.loadAppPermissions();
 
     // Filtering the TopNav menus based on Permission the loggedIn user has
-    Partial.QueueChildren = [];
-    Partial.UserAssignedMenus = [];
-    Partial.Variables.leftTopMenuMV.dataSet.forEach(function(m) {
+    // Partial.QueueChildren = [];
+    // Partial.UserAssignedMenus = [];
+    // Partial.Variables.leftTopMenuMV.dataSet.forEach(function(m) {
 
-        if (m.code === 'CreateApplication' && App.IsUserHasAccess('Access_CreateApplication')) {
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'SystemAdministration' && App.IsUserHasAccess('System Administration')) {
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'LookUp' && App.IsUserHasAccess('System Administration')) {
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'SearchApplication' && App.IsUserHasAccess('Access_ApplicationSearch')) {
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Setup' && App.IsUserHasAccess('System Administration')) {
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Security' && App.IsUserHasAccess('System Administration')) {
-            var childrens = [];
-            m.children.forEach(function(c) {
-                if (c.code === 'Users' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'Groups' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'Roles' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'LockedApplications' && App.IsUserHasAccess('Security_LockedApplications'))
-                    childrens.push(c);
-            });
-            m.children = childrens;
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('System Administration')) { //else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog'))
-            Partial.UserAssignedMenus.push(m);
-        } else if (m.code === 'Reports' && App.IsUserHasAccess('System Administration')) {
-            Partial.UserAssignedMenus.push(m);
-            var childrens = [];
-            m.children.forEach(function(c) {
-                if (c.code === 'ApplicationDashboardReport' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'ManualReviewDashboardReport' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'ReportOperatorPerformance' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-                else if (c.code === 'QueueSummaryDashboardReport' && App.IsUserHasAccess('System Administration'))
-                    childrens.push(c);
-            });
-            m.children = childrens;
-            Partial.UserAssignedMenus.push(m);
-        }
-
-    });
+    //     if (m.code === 'SystemAdministration' && App.IsUserHasAccess('Support')) {
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'LookUp' && App.IsUserHasAccess('Support')) {
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'SearchApplication' && App.IsUserHasAccess('Access_ApplicationSearch')) {
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'Setup' && App.IsUserHasAccess('Support')) {
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'Security' && App.IsUserHasAccess('Support')) {
+    //         var childrens = [];
+    //         m.children.forEach(function(c) {
+    //             if (c.code === 'Users' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'Groups' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'Roles' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'LockedApplications' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //         });
+    //         m.children = childrens;
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Support')) { //else if (m.code === 'ActivityLogs' && App.IsUserHasAccess('Access_ActivityLog'))
+    //         Partial.UserAssignedMenus.push(m);
+    //     } else if (m.code === 'Reports' && App.IsUserHasAccess('Support')) {
+    //         Partial.UserAssignedMenus.push(m);
+    //         var childrens = [];
+    //         m.children.forEach(function(c) {
+    //             if (c.code === 'ApplicationDashboardReport' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'ManualReviewDashboardReport' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'ReportOperatorPerformance' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //             else if (c.code === 'QueueSummaryDashboardReport' && App.IsUserHasAccess('Support'))
+    //                 childrens.push(c);
+    //         });
+    //         m.children = childrens;
+    //         Partial.UserAssignedMenus.push(m);
+    //     }
+    // 
+    // });
 
 
 
