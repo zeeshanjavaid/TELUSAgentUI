@@ -31,7 +31,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "Variables.searchUsers.invoke()",
+    "onSuccess" : "Variables.searchUsers.invoke();Widgets.inactivateUserDialog.close()",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

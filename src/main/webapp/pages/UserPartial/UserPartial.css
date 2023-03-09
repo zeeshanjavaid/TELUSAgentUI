@@ -818,3 +818,11 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
         height: 125px;
 
 }
+
+
+.userprofile_icon {
+    padding: 8px !important;
+    font-size: 3rem;
+    border-radius: 60% !important;
+    border: 1px solid !important;
+}
