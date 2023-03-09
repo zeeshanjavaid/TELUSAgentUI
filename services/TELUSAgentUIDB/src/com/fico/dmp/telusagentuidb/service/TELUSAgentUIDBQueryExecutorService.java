@@ -141,6 +141,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetGroupsRolesByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable);
+
+    void exportGetManagerByTeamName(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<QueryGetDvbyCodeAndTypeCodeWithActiveFlagResponse> executeQuery_GetDVByCodeAndTypeCodeWithActiveFlag(String selectedLocale, String domainValueCode, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
 
     void exportQuery_GetDVByCodeAndTypeCodeWithActiveFlag(String selectedLocale, String domainValueCode, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);

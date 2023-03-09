@@ -939,6 +939,20 @@ END ASC) wmTempTable
     <query-param name="UserId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getManagerByTeamName">
+        <![CDATA[
+        select u.id,u.firstName,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerByTeamName__count">
+        <![CDATA[
+        select count(*) from (select u.id,u.firstName,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.teamId=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="Query_GetDVByCodeAndTypeCodeWithActiveFlag">
         <![CDATA[
         SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, DomainValueType.Code AS DVTypeCode, ParentDVQuery.IsDefault, ParentDVQuery.IsActive, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId

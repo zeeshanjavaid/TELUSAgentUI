@@ -318,14 +318,14 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" displayname="Team Id" widget="select" show="true" required="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId"
+                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" displayname="Team Id" widget="select" show="true" required="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="teamId" displayfield="teamId"
                             defaultvalue="bind:Variables.dialogUserId.dataSet.teamId"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12">
                         <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" type="string" displayname="Team Manager" widget="select" show="bind:Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
-                            placeholder="Enter value" dataset="bind:Variables.getmanagerForUpdateuser.dataSet" datafield="id" displayfield="managerName" on-click="Variables.getmanagerForUpdateuser.invoke()" defaultvalue="bind:Variables.dialogUserId.dataSet.teamManager"></wm-form-field>
+                            placeholder="Enter value" dataset="bind:Variables.getManagerByTeamName.dataSet" datafield="All Fields" displayfield="managerName" on-click="Variables.getManagerByTeamName.invoke()" defaultvalue="bind:Variables.dialogUserId.dataSet.teamManager"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <!--                <wm-gridrow name="gridrow2">-->

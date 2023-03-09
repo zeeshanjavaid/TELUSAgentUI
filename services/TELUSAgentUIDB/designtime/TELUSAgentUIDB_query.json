@@ -2562,6 +2562,80 @@
       } ]
     }
   },
+  "getManagerByTeamName" : {
+    "name" : "getManagerByTeamName",
+    "description" : "getManagerByTeamName",
+    "version" : "V2",
+    "queryString" : "select u.id,u.firstName,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.teamId=:teamId",
+    "countQueryString" : "select count(*) from (select u.id,u.firstName,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM t join TEAM_USER tu on t.ID = tu.teamId join USER u on tu.userId=u.id where t.teamId=:teamId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "TQ AR",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamNameResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "firstName",
+        "fieldName" : "firstName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "managerName",
+        "fieldName" : "managerName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getPermissionByRoleId" : {
     "name" : "getPermissionByRoleId",
     "description" : "getPermissionByRoleId",

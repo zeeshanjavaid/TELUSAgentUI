@@ -910,6 +910,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getManagerByTeamName", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getManagerByTeamName")
+    public Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getManagerByTeamName");
+        Page<GetManagerByTeamNameResponse> _result = queryService.executeGetManagerByTeamName(teamId, pageable);
+        LOGGER.debug("got the result for named query: getManagerByTeamName, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getManagerByTeamName")
+    @RequestMapping(value = "/queries/getManagerByTeamName/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getManagerByTeamName");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getManagerByTeamName";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetManagerByTeamName(teamId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_GetDVByCodeAndTypeCodeWithActiveFlag", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_GetDVByCodeAndTypeCodeWithActiveFlag")

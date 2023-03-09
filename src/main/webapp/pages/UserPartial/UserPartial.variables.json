@@ -1231,6 +1231,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "getManagerByTeamName" : {
+    "_id" : "wm-getManagerByTeamName-wm.ServiceVariable-1678352690858",
+    "name" : "getManagerByTeamName",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "teamId",
+      "value" : "bind:Widgets.updateUserForm1.formWidgets.UserDTO_teamId.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamNameResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetManagerByTeamName",
+    "operationId" : "QueryExecutionController_executeGetManagerByTeamName",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getManagerForCreateUser" : {
     "_id" : "wm-getManagerForCreateUser-wm.ServiceVariable-1678095626772",
     "name" : "getManagerForCreateUser",
@@ -1278,7 +1305,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
