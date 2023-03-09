@@ -1,10 +1,12 @@
 <wm-partial name="partial1" id="partial1">
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="page_content1">
-            <wm-label padding="unset 0.5em" name="label3" class="h3" caption="Roles" margin="10px unset 15px unset"></wm-label>
-            <wm-button caption="Create Role" type="button" margin="unset 0.5em" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
-            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name"
-                linktarget="_self" menuclass="button_white button-hover" show="false"></wm-menu>
+            <wm-container name="container11" horizontalalign="left" width="75%" class="header-label">
+                <wm-label padding="unset 0.5em" name="label3" class="h1" caption="Roles" margin="10px unset 15px unset" width="40%"></wm-label>
+                <wm-button caption="Create" type="button" margin="unset 1em 0em 1.5em" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover" horizontalalign="right"></wm-button>
+            </wm-container>
+            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name" linktarget="_self"
+                menuclass="button_white button-hover" show="false"></wm-menu>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.roleSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
                 <wm-message name="errormessage" type="error" show="bind:Variables.roleErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
@@ -32,9 +34,9 @@
                 </wm-listtemplate>
             </wm-list>
             <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset">
-                <wm-text name="roleSearchText" placeholder="Filter workflow roles" class="rolesearchText searchText" on-keyup="roleSearchTextKeyup($event, widget)" updateon="default"></wm-text>
+                <wm-text name="roleSearchText" placeholder="Filter Roles" class="rolesearchText searchText" on-keyup="roleSearchTextKeyup($event, widget)" updateon="default"></wm-text>
+                <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
             </wm-container>
-            <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
             <!--<wm-search name="searchRole" dataset="bind:Variables.allRolesUI.dataSet" datafield="All Fields" class="searchMargin " placeholder="Filter roles" loadingdatamsg="" on-blur="searchRoleBlur($event, widget)"></wm-search>-->
             <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="list-group-item lookup-item roleList-i" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist roleList" name="RoleList" dataset="bind:Variables.allRolesUI.dataSet"
                 navigation="Basic" selectfirstitem="bind:!(App.Variables.RolePageCommunication.currentRoleInFocusId)" pagesize="5" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" on-render="RoleListRender(widget, $data)"

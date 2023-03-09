@@ -2,7 +2,7 @@
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow9">
             <wm-gridcolumn columnwidth="12" name="gridcolumn18">
-                <wm-label padding="unset 0.5em" name="label2" caption="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : &quot;Edit Role&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName"
+                <wm-label padding="unset 0.5em" name="label2" caption="bind:pageParams.roleId == undefined ? &quot;Create Role&quot; : &quot;Edit Role&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName"
                     height="25"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -87,12 +87,12 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete Role &quot;+ Variables.roleData.dataSet.RoleName" iconclass="" name="deleteRoleDialog" width="35%" on-opened="Widgets.deleteRoleDialog.open()" closable="true">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete role &quot;+ Variables.roleData.dataSet.RoleName" iconclass="" name="deleteRoleDialog" width="30%" on-opened="Widgets.deleteRoleDialog.open()" closable="true">
         <wm-layoutgrid name="layoutgrid3_1">
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
-                    <wm-message name="DeleteRoleWarning" type="warning" hideclose="true" caption="bind:'Are you sure you want to delete ' + pageParams.roleName"></wm-message>
+                    <wm-label padding="unset 0.5em" name="label5_1" caption="bind:'Are you sure you want to delete role' + pageParams.roleName  + '?'"></wm-label>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
