@@ -71,8 +71,22 @@
             <wm-container name="container1">
                 <wm-tabs name="tabs1">
                     <wm-tabpane name="tabpane2" title="Entity Profile" content="EntityProfile"></wm-tabpane>
-                    <wm-tabpane name="tabpane3" title="Contacts"></wm-tabpane>
-                    <wm-tabpane name="Parrr" title="Parr" content="ParrList"></wm-tabpane>
+                    <wm-tabpane name="tabpane3" title="Contacts">
+                        <wm-container name="container3">
+                            <wm-button class="btn-default" caption="Button" type="button" margin="unset 0.5em" name="button1" show="bind:Variables.pageName.dataSet.dataValue==='PaarList'?&quot;true&quot;:&quot;false&quot;" iconposition="right"></wm-button>
+                        </wm-container>
+                    </wm-tabpane>
+                    <wm-tabpane name="Parrr" title="Parr">
+                        <wm-container name="container3_1">
+                            <wm-button class="btn-default" caption="Create" type="button" margin="unset 0.5em" name="Create" iconposition="right" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
+                                on-click="CreateClick($event, widget)"></wm-button>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrList&quot;"></wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;PaarDetail&quot;">
+                                <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
+                            </wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateParrPanel" content="CreateParr" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;CreatePaar&quot;"></wm-panel>
+                        </wm-container>
+                    </wm-tabpane>
                     <wm-tabpane name="Dispute" title="Dispute"></wm-tabpane>
                     <wm-tabpane name="tabpane6" title="Notes"></wm-tabpane>
                     <wm-tabpane name="tabpane1" title="History" padding="unset unset unset 5pt"></wm-tabpane>

@@ -188,7 +188,7 @@
       "isExternalURL" : false,
       "path" : "#/LookUp",
       "project" : "TelusAgentUI",
-      "url" : "#/Parr",
+      "url" : "#/Lookup",
       "isEditable" : true,
       "parent" : true,
       "target" : "_self",

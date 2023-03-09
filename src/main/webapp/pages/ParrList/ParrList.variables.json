@@ -5,7 +5,15 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "1",
+      "type" : "integer"
+    }, {
+      "target" : "history",
+      "value" : false,
+      "type" : "boolean"
+    } ],
     "type" : "io.swagger.client.model.CollectionPaymentArrangement",
     "service" : "CollectionEntity",
     "operation" : "getPaymentArrangement",
@@ -13,7 +21,7 @@
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
-    "isList" : true,
+    "isList" : false,
     "maxResults" : 20,
     "startUpdate" : true,
     "autoUpdate" : true,

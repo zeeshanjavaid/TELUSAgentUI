@@ -1873,6 +1873,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_Lookup" : {
+    "_id" : "wm-goToPage_PARR-wm.NavigationVariable-1677577906319",
+    "name" : "goToPage_Lookup",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Lookup",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_LookupFileCreateEdit" : {
     "_id" : "wm-goToPage_LookupFileCreateEdit-wm.NavigationVariable-1666864102901",
     "name" : "goToPage_LookupFileCreateEdit",
@@ -1904,18 +1916,6 @@
     "subCategory" : "None",
     "operation" : "gotoPage",
     "pageName" : "Main"
-  },
-  "goToPage_Parr" : {
-    "_id" : "wm-goToPage_PARR-wm.NavigationVariable-1677577906319",
-    "name" : "goToPage_Parr",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "Parr",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
   },
   "goToPage_PayloadExtract" : {
     "_id" : "wm-goToPage_PayloadExtract-wm.NavigationVariable-1657547841285",
@@ -2255,6 +2255,24 @@
       }
     },
     "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "ParrPageName" : {
+    "_id" : "wm-ParrPageName-wm.Variable-1678267778659",
+    "name" : "ParrPageName",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "ParrList",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
   },

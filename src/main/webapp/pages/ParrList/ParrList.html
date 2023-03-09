@@ -1,19 +1,21 @@
 <wm-partial name="partial1">
-    <wm-button class="btn-default" caption="Create Parr" type="button" margin="2em 0em unset 83em" name="button2"></wm-button>
     <wm-container name="container1">
         <wm-table name="getPaymentArrangementTable1" title="" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="Basic">
             <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
-                <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" conditionalclass=""></wm-anchor>
+                <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
             </wm-table-column>
             <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="evaluationResult" caption="Evaluation" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="amount" caption="PARR Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" edit-widget-type="number" type="float" mobiledisplay="false" searchable="false" show="true" readonly="false">
-                <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate')" class="" conditionalclass=""></wm-label>
+            <wm-table-column binding="amount" caption="PARR Amt" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" prefix="$" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">
+                <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" edit-widget-type="text" type="string" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
         </wm-table>
     </wm-container>
 </wm-partial>

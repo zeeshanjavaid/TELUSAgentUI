@@ -142,6 +142,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "Lookup",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "LookupFileCreateEdit",
   "type" : "PAGE",
   "params" : [ {
@@ -163,13 +167,12 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "Parr",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "ParrDetails",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "ParrId",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "ParrList",
   "type" : "PARTIAL",
