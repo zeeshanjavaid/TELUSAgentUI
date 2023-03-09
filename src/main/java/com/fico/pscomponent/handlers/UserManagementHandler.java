@@ -96,8 +96,6 @@ public class UserManagementHandler {
 		}
 
 	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
-	userDTO.getWorkCategory().forEach(a-> System.out.println(a));
-
 
 		// Check if user id and email id already exists
 		try {
@@ -148,6 +146,7 @@ public class UserManagementHandler {
 			userRoleService.create(userRole);
 			
 			//Create a user and work category relationship
+			 if(userDTO.getWorkCategory()!=null) {
 			logger.info("In handler before create workcategory user :::::::::::::::::::::");
 			for(String cat:userDTO.getWorkCategory())
 			{
@@ -156,7 +155,7 @@ public class UserManagementHandler {
 				workcategoryUser.setWorkCategory(cat);
 				workcategoryUserService.create(workcategoryUser);
 			}
-			
+			 }
 			
 			//Create user and TeamUser relationship
 	
@@ -251,14 +250,16 @@ public class UserManagementHandler {
                  
             }
             
-            if(!CollectionUtils.isEmpty(workCategoryUserList))
+            List<String> workCategory = userDTO.getWorkCategory();
+
+            
+            if(!CollectionUtils.isEmpty(workCategory))
             {
                 
                   List<String> existingWorkCat = workCategoryUserList.stream()
                         .map(WorkcategoryUser::getWorkCategory)
                         .collect(Collectors.toList());
 
-                List<String> workCategory = userDTO.getWorkCategory();
                 
                 if(workCategory!=null){
                 
@@ -274,10 +275,12 @@ public class UserManagementHandler {
                     }
                 }
 
+            System.out.println("Size of existingwork================== "+ workCategoryUserList.size());
+
 
                  for (String workCar : workCategory) {
                     logger.info("In handler before update workcategory user :::::::::::::::::::::");
-                    if (!existingWorkCat.contains(workCar.trim())) {
+                    if (existingWorkCat.isEmpty()||!existingWorkCat.contains(workCar.trim())   ) {
                         WorkcategoryUser workcategoryUser = new WorkcategoryUser();
                         workcategoryUser.setUser(dbUser);
                         workcategoryUser.setWorkCategory(workCar);
@@ -314,7 +317,7 @@ public class UserManagementHandler {
 
 
             Team team = teamService.getById(Integer.valueOf(userDTO.getTeamId()));
-            //TeamUser teamUser = teamUserService.findById(dbUser.getId());
+           // TeamUser teamUser = teamUserService.findById(dbUser.getId());
             teamUser.setUser(dbUser);
             teamUser.setTeam(team);
             teamUserService.update(teamUser);

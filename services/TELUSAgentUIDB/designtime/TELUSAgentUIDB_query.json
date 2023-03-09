@@ -3653,7 +3653,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "1",
+      "testValue" : null,
       "required" : false
     }, {
       "name" : "role",
@@ -3680,7 +3680,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "Ravi",
+      "testValue" : null,
       "required" : false
     } ],
     "request" : {

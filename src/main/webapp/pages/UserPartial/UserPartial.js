@@ -741,7 +741,7 @@ Partial.userMVTable1_customRowAction = function($event, row) {
 
     if (row.active) {
 
-        Partial.Widgets.deleteConfirm.open();
+        Partial.Widgets.inactivateUserDialog.open();
     }
 };
 
@@ -827,7 +827,10 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
     // Partial.statusData = [];
     Partial.statusData = [];
 
-    var ar = row.workCategory.split(",");
+    if (row.workCategory != null) {
+
+        var ar = row.workCategory.split(",");
+    }
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
             id: item.code.replace(/\s/g, ''),
@@ -846,19 +849,6 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
         });
 
     }, 50);
-
-
-    //  alert(subComboBox1.getSelectedIds());
-
-    //     $('#selectedCategory').val(ar);
-    //     subComboBox1.onChange(function() {
-    //         console.log(String(subComboBox1.getSelectedIds()));
-    //         $('#selectedCategory').val(String(subComboBox1.getSelectedIds()));
-    //     });
-
-
-
-
 
 };
 Partial.updateUserForm1_saveAction = function($event) {
