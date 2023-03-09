@@ -189,7 +189,7 @@ App.mapActivityTypeToIcons = function(activityTypeCode) {
  */
 App.JSONPrettify = function(JSONString) {
     if (JSONString && typeof JSONString === "string") {
-        JSONString = JSONString.replace(/^"/g, "").replace(/"$/g, "");;
+        JSONString = JSONString.replace(/^"/g, "").replace(/"$/g, "");
         JSONString = JSONString.replace(/\\n/gm, "").replace(/\\r/gm, "").replace(/\\t/gm, "").replace(/[\\\s]+/gm, "");
 
         return JSON.stringify(JSON.parse(JSONString), undefined, 4);
@@ -212,9 +212,7 @@ App.htmlEncode = function htmlEncode(value) {
 App.getCurrentLocale = function() {
     // console.log(navigator.language);
     // return navigator.language;
-    return App.i18nService.getSelectedLocale()
-
-
+    return App.i18nService.getSelectedLocale();
 }
 
 App.applicationLockedByLoggedInUseronError = function(variable, data) {

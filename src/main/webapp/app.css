@@ -51,6 +51,7 @@
 
 .wm-app * {
     outline: 0!important;
+    text-transform: none!important;
 }
 
 .wm-app .app-top-nav .nav-pills>li.activeClass {

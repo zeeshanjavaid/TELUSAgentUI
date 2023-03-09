@@ -269,7 +269,7 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton"></wm-button>
+            <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton  btn_link"></wm-button>
             <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit"
                 update-mode="true"></wm-form-action>
         </wm-form>
@@ -347,7 +347,7 @@
                 update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-confirmdialog name="deleteConfirm" message="bind:'Are you sure you want to inactivate '+Variables.dialogUserId.dataSet.firstName+' ?'" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="false" on-ok="Variables.deletUser.invoke()"
+    <wm-confirmdialog name="deleteConfirm" message="bind:'Are you sure you want to inactivate '+Variables.dialogUserId.dataSet.firstName+' ?'" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="true" on-ok="Variables.deletUser.invoke()"
         class="del_box"></wm-confirmdialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="fico-icon-trash del_icon" name="inactivateUserDialog" width="35%" closable="true" iconmargin="40%" iconwidth="100px" iconheight="50px" class="del_box">
         <wm-layoutgrid name="layoutgrid3_1">

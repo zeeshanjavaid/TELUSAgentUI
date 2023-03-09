@@ -166,6 +166,7 @@ function toggleFileUploadDisplay(isToShow, elemRef) {
 /* other UI level functions */
 
 Page.navigateToDVPage = function(domainValueTypeId) {
+    debugger;
     return "#/DomainValue?domainValueTypeId=" + (!domainValueTypeId ? 0 : domainValueTypeId);
 }
 
@@ -381,6 +382,7 @@ Page.sv_validateDVUploadFileonSuccess = function(variable, data) {
 };
 
 Page.SaveDVUpload_btnClick = function($event, widget) {
+    debugger;
     if (!domainValueUploadFile)
         showUploadStatusMsg("error", "No file selected. Please select a file first", "dvUploadMessage");
     else {
@@ -416,12 +418,15 @@ Page.DVUpload_confirmDialogOk = function($event, widget) {
 Page.DVUpload_designDialogOpened = function($event, widget) {
     $("p[name='dvUploadMessage']").removeClass("display-block").addClass("display-none");
 };
+
 Page.DomainValueTypeTable1Headerclick = function($event, $data) {
 
 };
+
 Page.searchDV_ButtonDblclick = function($event, widget) {
     debugger;
 };
+
 Page.button6Click = function($event, widget) {
     debugger;
 };
