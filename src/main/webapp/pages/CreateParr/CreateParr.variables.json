@@ -1,4 +1,21 @@
 {
+  "parrInstallmentType" : {
+    "_id" : "wm-parrInstallmentType-wm.Variable-1678321791584",
+    "name" : "parrInstallmentType",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "Installment Sequence" : 0,
+      "Date" : "dateValue",
+      "Installment Amount" : 0,
+      "Cumm Pmts" : 0
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "selectBanParr" : {
     "_id" : "wm-selectBanParr-wm.Variable-1678285325792",
     "name" : "selectBanParr",
