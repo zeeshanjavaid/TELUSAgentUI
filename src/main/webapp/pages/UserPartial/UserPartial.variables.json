@@ -2901,7 +2901,27 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "userCriteria",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "TeamID",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.TeamID.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "role",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.role.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "work_category",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.work_category.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "managerId",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.TeamManager.datavalue",
+      "type" : "string"
+    } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.SearchUsersResponse",
     "service" : "TELUSAgentUIDB",
     "operation" : "executeSearchUsers",

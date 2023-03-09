@@ -168,14 +168,13 @@
                     <wm-form-field name="role" key="role" type="string" displayname="Role:" widget="select" show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="Select value"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4">
-                    <wm-form-field name="Team" key="managerId" displayname="Team Manager:" show="true" type="string" widget="select" placeholder="" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()"
+                    <wm-form-field name="TeamManager" key="managerId" displayname="Team Manager:" show="true" type="string" widget="select" placeholder="" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()"
                         defaultvalue="bind:Variables.getManagerBasedOnTeamId.firstRecord" displayfield="managerName"></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-form-action key="reset" display-name="Clear" show="true" class="form-reset btn-secondary" iconclass="fico-icon-selection-clear" title="Reset" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset"
-            update-mode="true"></wm-form-action>
-        <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="fico-icon-search" title="Search" action="Variables.searchUsers.invoke()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+        <wm-form-action key="reset" display-name="Clear" show="true" class="btn_link" iconclass="" title="Reset" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
+        <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="" title="Search" action="Variables.searchUsers.invoke();submit()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
     <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Basic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="true" gridfirstrowselect="false" showrowindex="false" enablesort="true"
         gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" on-show="userMVTable1Show()">
@@ -269,7 +268,7 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa" class="closeButton  btn_link"></wm-button>
+            <wm-button caption="Back To User" on-click="Widgets.createUserPage.close()" name="classaaa"></wm-button>
             <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit"
                 update-mode="true"></wm-form-action>
         </wm-form>
@@ -339,12 +338,13 @@
                 <wm-label padding="1.1em 0.5em unset 0.5em" name="label101" caption="Work Category" margin="unset unset 8px unset"></wm-label>
                 <wm-composite name="composite12" width="98%">
                     <wm-container class="col-md-13 mutli-select" key="UserDTO.workCategory" name="text-container"><input type="text" id="updateUserInputBox" placeholder="Select" autocomplete="off"></wm-container>
-                    <wm-container type="hidden" id="hfSalaryMapping" asp-for="selectedCategory" name="container11"></wm-container>
+                    <wm-container type="hidden" id="hfSalaryMapping" asp-for="selectedCategory" name="container11">
+                        <wm-button caption="Close" on-click="Widgets.updateUser.close()" name="classaaa" class="closeButton"></wm-button>
+                        <wm-container name="container13_1"></wm-container>
+                    </wm-container>
                 </wm-composite>
             </wm-layoutgrid>
-            <wm-button caption="Close" on-click="Widgets.updateUser.close()" name="classaaa" class="closeButton"></wm-button>
-            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit"
-                update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success save_btn" iconclass="wi wi-save" title="Save" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
     <wm-confirmdialog name="deleteConfirm" message="bind:'Are you sure you want to inactivate '+Variables.dialogUserId.dataSet.firstName+' ?'" oktext="delete" title="" iconclass="fico-icon-trash del_icon" modal="true" on-ok="Variables.deletUser.invoke()"
