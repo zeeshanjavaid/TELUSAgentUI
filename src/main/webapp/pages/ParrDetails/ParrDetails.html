@@ -1,8 +1,8 @@
 <wm-partial name="partial1">
-    <wm-anchor margin="unset 0.5em" name="anchor" iconclass="fico-icon-arrow-left" caption="" on-click="anchorClick($event, widget)" iconurl="#/Lookup"></wm-anchor>
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="3" name="gridcolumn1">
+                <wm-anchor margin="unset 0.5em" name="anchor2" iconclass="fico-icon-arrow-left" caption="" on-click="anchor2Click($event, widget)"></wm-anchor>
                 <wm-label padding="unset 0.5em unset 2.5em" name="label3" caption="PARR Details" textdecoration="underline"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="9" name="gridcolumn2">
@@ -85,22 +85,16 @@
     </wm-layoutgrid>
     <wm-icon name="icon2" iconclass="fico-icon-chevron-down"></wm-icon>
     <wm-label padding="1em 0.5em unset 0.5em" name="label10_1" caption="Installment Schedule"></wm-label>
-    <wm-table editmode="quickedit" name="UserTable1" dataset="bind:Variables.TELUSAgentUIDBUserData.dataSet" navigation="None">
-        <wm-table-column binding="id" caption="Id" generator="identity" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" readonly="true"></wm-table-column>
-        <wm-table-column binding="email" caption="Email" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-column binding="userId" caption="User Id" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-column binding="active" caption="Active" generator="assigned" pcdisplay="true" mobiledisplay="true" type="boolean" required="true"></wm-table-column>
-        <wm-table-column binding="firstName" caption="First Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-column binding="createdOn" caption="Created On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
-        <wm-table-column binding="updatedOn" caption="Updated On" generator="assigned" pcdisplay="true" mobiledisplay="true" type="timestamp"></wm-table-column>
-        <wm-table-column binding="lastName" caption="Last Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-column binding="phoneNumber" caption="Phone Number" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-column binding="timeZone" caption="Time Zone" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash fico fico-icon-trash" show="true" class="btn-default btn-xs" action="deleteRow($event)"></wm-table-row-action>
+    <wm-table editmode="quickedit" name="InstallmentSchedule" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="None">
+        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="date.dayOfMonth" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="customField" caption="CUMM Pmts" type="string" searchable="false" show="true" readonly="undefined"></wm-table-column>
+        <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
     </wm-table>
     <wm-icon name="icon3" iconclass="fico-icon-chevron-down"></wm-icon>
     <wm-label padding="unset 0.5em" name="label11" caption="PARR History"></wm-label>
-    <wm-table editmode="quickedit" name="UserTable1_1" dataset="bind:Variables.TELUSAgentUIDBUserData1.dataSet" navigation="None">
+    <wm-table editmode="quickedit" name="UserTable1_1" dataset="bind:Variables.getPaymentArrangement.dataSet.auditInfo" navigation="None">
         <wm-table-column binding="id" caption="Id" generator="identity" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" readonly="true"></wm-table-column>
         <wm-table-column binding="email" caption="Email" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
         <wm-table-column binding="userId" caption="User Id" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>

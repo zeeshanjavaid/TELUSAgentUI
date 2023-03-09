@@ -21,7 +21,7 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 };
-Partial.anchorClick = function($event, widget) {
+Partial.anchor2Click = function($event, widget) {
 
     Partial.Variables.ParrPageName.dataSet.dataValue = 'PaarList';
 };
