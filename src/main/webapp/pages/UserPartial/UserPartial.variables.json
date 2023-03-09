@@ -1,4 +1,16 @@
 {
+  "dataTeam" : {
+    "_id" : "wm-dataTeam-wm.Variable-1678361682508",
+    "name" : "dataTeam",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "deletUser" : {
     "_id" : "wm-deletUser-wm.ServiceVariable-1675847782964",
     "name" : "deletUser",
@@ -1305,6 +1317,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "getmanagerForUpdateuseronSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
@@ -1326,6 +1339,7 @@
     "saveInPhonegap" : false,
     "maxResults" : 20,
     "designMaxResults" : 10,
+    "onSuccess" : "getTeamonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
     "autoUpdate" : true,
@@ -1451,7 +1465,17 @@
     "properties" : [ ],
     "relatedTables" : [ ],
     "filterFields" : { },
-    "filterExpressions" : { },
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ {
+        "target" : "",
+        "type" : "string",
+        "matchMode" : "anywhereignorecase",
+        "value" : "",
+        "required" : false,
+        "secondvalue" : ""
+      } ]
+    },
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
   "getTeamManagerByRoleId1" : {

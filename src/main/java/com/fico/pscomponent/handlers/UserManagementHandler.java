@@ -280,7 +280,7 @@ public class UserManagementHandler {
 
                  for (String workCar : workCategory) {
                     logger.info("In handler before update workcategory user :::::::::::::::::::::");
-                    if (existingWorkCat.isEmpty()||!existingWorkCat.contains(workCar.trim())   ) {
+                    if (!existingWorkCat.contains(workCar.trim())   ) {
                         WorkcategoryUser workcategoryUser = new WorkcategoryUser();
                         workcategoryUser.setUser(dbUser);
                         workcategoryUser.setWorkCategory(workCar);
@@ -318,9 +318,23 @@ public class UserManagementHandler {
 
             Team team = teamService.getById(Integer.valueOf(userDTO.getTeamId()));
            // TeamUser teamUser = teamUserService.findById(dbUser.getId());
-            teamUser.setUser(dbUser);
-            teamUser.setTeam(team);
-            teamUserService.update(teamUser);
+           
+           
+           if(teamUser==null){
+                teamUser=new TeamUser();
+                teamUser.setUser(dbUser);
+                teamUser.setTeam(team);
+                teamUserService.create(teamUser);
+            }else {
+                teamUser.setUser(dbUser);
+                teamUser.setTeam(team);
+                teamUserService.update(teamUser);
+            }
+
+           
+            // teamUser.setUser(dbUser);
+            // teamUser.setTeam(team);
+            // teamUserService.update(teamUser);
         logger.info("Updated team user for user :::::::::::::::::::::");
 
 

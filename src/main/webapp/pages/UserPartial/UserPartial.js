@@ -33,6 +33,8 @@ Partial.onReady = function() {
     Partial.Variables.PermissionsMV.dataSet = [];
     Partial.Variables.permissionCopy.dataSet = [];
     var selectedIds = [];
+    Partial.TestTeamId = [];
+    Partial.Variables.dataTeam.dataSet = [];
 
     /* if (App.Variables.appUsersMV.dataSet && App.Variables.appUsersMV.dataSet.length < 1) {
          App.Variables.getTenantUsersSV.invoke();
@@ -815,10 +817,12 @@ Partial.createUserForm1_saveAction = function($event) {
 
 Partial.userMVTable1_customRow1Action = function($event, row) {
     debugger;
+    //Partial.TestTeamId = row;
     Partial.Variables.dialogUserId.dataSet = {};
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
     Partial.Widgets.updateUser.open();
+    Partial.TestTeamId = row;
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
 
     // Partial.Variables.dialogUserId.dataSet.workCategory.split(",");
@@ -854,16 +858,25 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
 Partial.updateUserForm1_saveAction = function($event) {
 
     debugger;
-
     Partial.Widgets.updateUserForm1.dataoutput.UserDTO;
     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
+    if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
+        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.TestTeamId.teamId)
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
+    } else {
+        Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId
+
+        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
+    }
+
 
     var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
 
     if (type == 'string') {
 
         debugger;
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
 
 
 
@@ -886,4 +899,14 @@ Partial.updateUserForm1_saveAction = function($event) {
 
 
 
+};
+
+/*Partial.getmanagerForUpdateuseronSuccess = function(variable, data) {
+    Partial.sadsa = data;
+    debugger;
+};*/
+
+Partial.getTeamonSuccess = function(variable, data) {
+    Partial.Variables.dataTeam.dataSet = data;
+    debugger;
 };
