@@ -85,10 +85,10 @@
     </wm-layoutgrid>
     <wm-icon name="icon2" iconclass="fico-icon-chevron-down"></wm-icon>
     <wm-label padding="1em 0.5em unset 0.5em" name="label10_1" caption="Installment Schedule"></wm-label>
-    <wm-table editmode="quickedit" name="InstallmentSchedule" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="None">
-        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="date.dayOfMonth" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+    <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
+        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" type="datetime" show="true" readonly="undefined"></wm-table-column>
+        <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="customField" caption="CUMM Pmts" type="string" searchable="false" show="true" readonly="undefined"></wm-table-column>
         <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
     </wm-table>

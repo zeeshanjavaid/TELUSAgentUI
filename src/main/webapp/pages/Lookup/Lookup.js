@@ -20,13 +20,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    alert('On ready lookup');
-    if (Page.Variables.ParrPageName.dataSet.dataValue == 'ParrList') {
-        Page.PageName = 'ParrList';
-    } else {
-
-        Page.PageName = 'Entity';
-    }
+    Page.PageName = 'ParrList';
 
 };
 
