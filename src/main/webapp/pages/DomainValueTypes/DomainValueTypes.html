@@ -9,7 +9,7 @@
                 <wm-container width="97%" name="data-container">
                     <wm-container name="header-container" width="100%" margin="7px unset 20px unset">
                         <wm-message name="statusMessage" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" hideclose="true" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" class="msg"></wm-message>
-                        <wm-label padding="unset 0.5em" name="importDV_fileUpload" width="100%" class="dv-header-label" caption="Domain Values" color="#333"></wm-label>
+                        <wm-label padding="unset 0.5em" name="importDV_fileUpload" width="100%" class="dv-header-label" caption="Domain Values" color="#333" margin="0em unset"></wm-label>
                     </wm-container>
                     <wm-container name="actions-container" class="jc-sb inflex-center-sb" width="100%" margin="unset unset 20px unset">
                         <wm-container name="search-container" class="inflex-center-sb">
@@ -50,7 +50,8 @@
             <wm-container width="85%" name="action_container" class="inflex-center-sb jc-sb">
                 <wm-label padding="unset 5px unset 50px" name="label3_1" caption="Domain Value" width="40%" height="100%"></wm-label>
                 <wm-container name="DVUploadSelect_container" width="60%" class="colflex-center-sb jc-sb flexCol">
-                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10" width="100%"></wm-fileupload>
+                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10"
+                        width="100%"></wm-fileupload>
                     <wm-label padding="unset 0.5em" name="label4" caption=".xlsx file less than 10 MB" fontsize="0.85" fontunit="em"></wm-label>
                 </wm-container>
             </wm-container>

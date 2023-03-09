@@ -21,7 +21,7 @@ let domainValueUploadFile = null;
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
-    debugger;
+    // debugger;
     //Anvesha
     initPage();
 };
