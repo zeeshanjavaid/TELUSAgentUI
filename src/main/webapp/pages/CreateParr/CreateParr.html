@@ -1,6 +1,6 @@
 <wm-partial name="partial1">
     <wm-container name="container2"></wm-container>
-    <wm-panel autoclose="outsideClick" title="Create Parr" name="panel2" show="bind:Variables.isCreateParr.dataSet.dataValue == true">
+    <wm-panel autoclose="outsideClick" title="Create Parr" name="panel2" show="bind:Variables.isCreateScheduleClicked.dataSet.dataValue == true">
         <wm-panel-footer name="panel_footer2"></wm-panel-footer>
         <wm-label padding="unset 0.5em unset 1em" name="label3" caption="Adjustment Details" textdecoration="underline" textalign="left"></wm-label>
     </wm-panel>
@@ -10,7 +10,7 @@
                 <wm-composite name="composite1">
                     <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:"></wm-label>
                     <wm-container class="col-md-9" name="container3">
-                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total"></wm-text>
+                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -24,7 +24,8 @@
                 <wm-composite name="composite2">
                     <wm-label class="col-md-3 control-label" name="label5" caption="Recurrence:" fontsize="14"></wm-label>
                     <wm-container class="col-md-9" name="container4">
-                        <wm-select name="select1" placeholder="Select Value" dataset="Weekly,BI-Weekly,Monthly,Custom" datafield="All Fields" margin="unset unset unset 10px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"></wm-select>
+                        <wm-select name="RecurrenceDropdown" placeholder="Select Value" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" margin="unset unset unset 10px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"
+                            displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)"></wm-select>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -43,19 +44,21 @@
                 <wm-composite name="composite5">
                     <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:"></wm-label>
                     <wm-container class="col-md-9" name="container6" display="table-row">
-                        <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="Number of Installments:, Amount per Installment:" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"></wm-radioset>
+                        <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="bind:Variables.InstallmentOptions.dataSet" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"
+                            datafield="dataValue" displayfield="name" disabled="bind:Widgets.RecurrenceDropdown.datavalue == undefined || Widgets.ParrTotal.datavalue == undefined" readonly="false"></wm-radioset>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn14">
                 <wm-composite name="composite7">
                     <wm-container class="col-md-9" name="container8">
-                        <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"></wm-text>
+                        <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"
+                            show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"></wm-text>
                     </wm-container>
                 </wm-composite>
                 <wm-composite name="composite8">
                     <wm-container class="col-md-9" name="container9_1">
-                        <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder=""></wm-text>
+                        <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder="" disabled="bind:Widgets.InstallmentOptionRadio.datavalue != 'AmtPerInstallment'"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -86,16 +89,16 @@
         </wm-layoutgrid>
         <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 25em" name="button4"></wm-button>
     </wm-dialog>
-    <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule" textdecoration="underline"></wm-label>
-    <wm-container name="container9">
+    <wm-container name="container9" show="true">
+        <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule" textdecoration="underline"></wm-label>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
                     <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" enablesort="false">
-                        <wm-table-column binding="Installment Sequence" caption="Installment Sequence" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-                        <wm-table-column binding="Date" caption="Date" edit-widget-type="text" type="string" show="true" editinputtype="date" readonly="false"></wm-table-column>
-                        <wm-table-column binding="Installment Amount" caption="Installment Amount" edit-widget-type="text" type="string" show="true" editinputtype="number" readonly="false"></wm-table-column>
-                        <wm-table-column binding="Cumm Pmts" caption="Cumm Pmts" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="amount" caption="Installment Amount" edit-widget-type="text" type="string" formatpattern="toCurrency" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="cummPmtAmount" caption="Cumm Pmts" edit-widget-type="text" type="string" formatpattern="toCurrency" fractionsize="2" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>
@@ -116,7 +119,7 @@
                     <wm-label padding="unset 0.5em" name="amtUnderOver" caption="TBD"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
-                    <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="button8"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
                     <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button9"></wm-button>
                     <wm-button class="btn-default" caption="Create" type="button" margin="unset 0.5em" name="button10"></wm-button>
                 </wm-gridcolumn>

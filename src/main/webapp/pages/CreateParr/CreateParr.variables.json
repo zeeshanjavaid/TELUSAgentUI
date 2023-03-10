@@ -50,6 +50,24 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "InstallmentOptions" : {
+    "_id" : "wm-InstallmentOptions-wm.Variable-1678462000287",
+    "name" : "InstallmentOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "Number Of Installments",
+      "dataValue" : "NoOfInstallments"
+    }, {
+      "name" : "Amount Per Installment",
+      "dataValue" : "AmtPerInstallment"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "NoOfInstallments" : {
     "_id" : "wm-NoOfInstallments-wm.Variable-1678433155782",
     "name" : "NoOfInstallments",
@@ -76,6 +94,30 @@
       "date" : "dateValue",
       "amount" : 0,
       "cummPmtAmount" : 0
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "RecurrenceModel" : {
+    "_id" : "wm-RecurrenceModel-wm.Variable-1678458727751",
+    "name" : "RecurrenceModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "Weekly",
+      "dataValue" : "Weekly"
+    }, {
+      "name" : "Bi-Weekly",
+      "dataValue" : "Bi-Weekly"
+    }, {
+      "name" : "Monthly",
+      "dataValue" : "Monthly"
+    }, {
+      "name" : "Custom",
+      "dataValue" : "30"
     } ],
     "type" : "entry",
     "isList" : true,

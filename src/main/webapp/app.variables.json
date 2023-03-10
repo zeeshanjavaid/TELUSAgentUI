@@ -2131,9 +2131,9 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "isCreateParr" : {
+  "isCreateScheduleClicked" : {
     "_id" : "wm-isCreateParr-wm.Variable-1677759346494",
-    "name" : "isCreateParr",
+    "name" : "isCreateScheduleClicked",
     "owner" : "App",
     "category" : "wm.Variable",
     "subCategory" : "None",

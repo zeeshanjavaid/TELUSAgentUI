@@ -26,31 +26,81 @@ Partial.onReady = function() {
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
     var installmentSchedule = new Array();
-    var amount = Partial.Widgets.ParrTotal.datavalue / Partial.Variables.NoOfInstallments.dataSet.datavalue;
+    var amount = '';
+
+    var installmentSize = '';
+    //Psuedo code start
+    if ('NumberOFinstallments') {
+        installmentSize = Partial.Variables.NoOfInstallments.dataSet.datavalue;
+        amount = Partial.Widgets.ParrTotal.datavalue / Partial.Variables.NoOfInstallments.dataSet.datavalue;
+    } else {
+        installmentSize = Partial.Widgets.ParrTotal.datavalue / Variables.AmountPerInstallment.dataSet.dataValue;
+        amount = Variables.AmountPerInstallment.dataSet.dataValue;
+    }
+    // //Psuedo code End
     for (var i = 0; i < Partial.Variables.NoOfInstallments.dataSet.datavalue; i++) {
 
         var collectionPaymentInstallment = {};
-        collectionPaymentInstallment.sequenceId = i;
-        var tempDate = new Date();
-        collectionPaymentInstallment.date = new Date(tempDate.setMonth(tempDate.getMonth() + i));
+        collectionPaymentInstallment.sequenceId = i + 1;
+        var tempDate = '';
+        if (i > 0) {
+            tempDate = new Date(installmentSchedule[i - 1].date);
+        } else {
+            tempDate = new Date();
+        }
+        alert('tempDate:' + tempDate);
+        alert("Recurrence : " + Partial.Widgets.RecurrenceDropdown.datavalue);
+        if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Weekly') {
+
+            tempDate = new Date(tempDate.setDate(tempDate.getDate() + 7));
+            collectionPaymentInstallment.date = new Date(tempDate);
+            // collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
+        } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Bi-Weekly') {
+
+            tempDate = new Date(tempDate.setDate(tempDate.getDate() + 15));
+            collectionPaymentInstallment.date = new Date(tempDate);
+            //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
+        } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Monthly') {
+
+            tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
+            collectionPaymentInstallment.date = new Date(tempDate);
+            //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
+        } else {
+
+            tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
+            collectionPaymentInstallment.date = new Date(tempDate);
+            //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
+        }
+        alert("collectionPaymentInstallment.date : " + collectionPaymentInstallment.date);
+
         collectionPaymentInstallment.amount = amount;
         if (i == 0) {
             collectionPaymentInstallment.cummPmtAmount = collectionPaymentInstallment.amount;
         } else {
             collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
         }
-        alert("CummAmount : " + collectionPaymentInstallment.cummPmtAmount);
         installmentSchedule.push(collectionPaymentInstallment);
-        alert("installmentSchedule length : " +
-            installmentSchedule.length);
     }
-    alert("Schedule size :" + installmentSchedule.length);
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = true;
+    Partial.Variables.ParrInstallmentSchedule.dataSet = [];
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
-    alert("ParrInstallmentSchedule size :" + Partial.Variables.ParrInstallmentSchedule.length);
-
+    alert("ParrInstallmentSchedule size fter push:" + Partial.Variables.ParrInstallmentSchedule.dataSet.length);
 };
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
 
     Partial.Variables.NoOfInstallments.dataSet.datavalue = newVal;
+};
+
+/*Partial.CancelClick = function($event, widget) {
+
+    Partial.Variables.ParrPageName.dataSet.datavalue = 'ParrList';
+};*/
+Partial.RecurrenceDropdownChange = function($event, widget, newVal, oldVal) {
+
+    alert("new recurrence :" + Partial.Widgets.RecurrenceDropdown.datavalue);
+};
+
+Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {
+    alert("ParrTotalChange :" + Partial.Widgets.ParrTotal.datavalue);
 };
