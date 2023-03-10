@@ -45,7 +45,7 @@
                 <wm-composite name="composite5">
                     <wm-label class="col-md-3 control-label" name="label8" caption="Parr Amt" width="50px"></wm-label>
                     <wm-container class="col-md-9" name="container5">
-                        <wm-label padding="unset 0.5em" name="parrAmt" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.amount"></wm-label>
+                        <wm-label padding="unset 0.5em" name="parrAmt" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.amount | toCurrency: '$': '2'"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -53,7 +53,7 @@
                 <wm-composite name="composite6">
                     <wm-label class="col-md-3 control-label" name="label9" caption="CUMM PMT EXP"></wm-label>
                     <wm-container class="col-md-9" name="container6">
-                        <wm-label padding="unset 0.5em" name="cummPmtExp" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate"></wm-label>
+                        <wm-label padding="unset 0.5em" name="cummPmtExp" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -61,7 +61,7 @@
                 <wm-composite name="composite7">
                     <wm-label class="col-md-3 control-label" name="label10" caption="CUMM PMT RCVD"></wm-label>
                     <wm-container class="col-md-9" name="container7">
-                        <wm-label padding="unset 0.5em" name="cummPmtRcvd" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate"></wm-label>
+                        <wm-label padding="unset 0.5em" name="cummPmtRcvd" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>

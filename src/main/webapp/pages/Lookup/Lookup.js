@@ -20,11 +20,10 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    Page.PageName = 'ParrList';
 
 };
 
 Page.CreateClick = function($event, widget) {
 
-    Page.Variables.ParrPageName.dataSet.dataValue = 'CreatePaar';
+    Page.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };

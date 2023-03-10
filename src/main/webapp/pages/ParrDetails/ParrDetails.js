@@ -23,5 +23,5 @@ Partial.onReady = function() {
 };
 Partial.anchor2Click = function($event, widget) {
 
-    Partial.Variables.ParrPageName.dataSet.dataValue = 'PaarList';
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };

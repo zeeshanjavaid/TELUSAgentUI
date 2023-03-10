@@ -24,5 +24,5 @@ Partial.onReady = function() {
 
 Partial.getPaymentArrangementTable1_idOnClick = function($event, widget, row) {
 
-    Partial.Variables.ParrPageName.dataSet.dataValue = 'PaarDetail';
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrDetail';
 };

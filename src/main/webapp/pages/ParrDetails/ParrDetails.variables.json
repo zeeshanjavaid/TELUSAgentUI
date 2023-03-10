@@ -5,7 +5,15 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.ParrId",
+      "type" : "integer"
+    }, {
+      "target" : "history",
+      "value" : true,
+      "type" : "boolean"
+    } ],
     "type" : "io.swagger.client.model.CollectionPaymentArrangement",
     "service" : "CollectionEntity",
     "operation" : "getPaymentArrangement",
@@ -16,7 +24,7 @@
     "isList" : false,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
