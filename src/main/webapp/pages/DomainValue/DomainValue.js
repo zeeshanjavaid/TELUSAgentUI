@@ -19,6 +19,7 @@ Page.title = "";
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -28,6 +29,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+    Page.pageParams.domainValueTypeId = 4;
     initPage();
 };
 
@@ -43,6 +45,8 @@ function initPage() {
     //     window.location.href = '#/ErrorLanding';
     // } else {
     document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    debugger;
 
     //listening to search inputs key-up events
 
@@ -443,7 +447,6 @@ Page.searchDV_ButtonClick = function($event, widget) {
 
 Page.createDV_ButtonClick = function($event, widget) {
 
-    alert("Create Domain");
     Page.Actions.goToPage_DomainValueCreateEdit.invoke({
         data: {
             'domainValueTypeId': Page.pageParams.domainValueTypeId

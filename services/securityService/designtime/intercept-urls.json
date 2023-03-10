@@ -1,7 +1,12 @@
 [ {
   "urlPattern" : "/pages/Admin/**",
   "permission" : "Role",
-  "roles" : [ "AR TM Onshore", "OD TM", "Support", "AR TM Offshore", "SetupDomainValues" ],
+  "roles" : [ "AR TM Onshore", "OD TM", "Support", "AR TM Offshore" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/DomainValueCreateEdit/**",
+  "permission" : "Role",
+  "roles" : [ "AR TM Offshore", "AR TM Onshore", "OD TM", "Support" ],
   "httpMethod" : null
 }, {
   "urlPattern" : "/pages/DomainValueTypes/**",

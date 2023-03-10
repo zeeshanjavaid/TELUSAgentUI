@@ -16,6 +16,20 @@
     } ],
     "operation" : "toast"
   },
+  "currentPage" : {
+    "_id" : "wm-currentPage-wm.Variable-1653469611305",
+    "name" : "currentPage",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "errorMsg" : {
     "_id" : "wm-errorMsg-wm.Variable-1652712733896",
     "name" : "errorMsg",
@@ -2180,6 +2194,26 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
+  "LeftNavAdminMenuList" : {
+    "_id" : "wm-LeftNavAdminMenuList-wm.Variable-1675331239446",
+    "name" : "LeftNavAdminMenuList",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Users"
+    }, {
+      "dataValue" : "Roles"
+    }, {
+      "dataValue" : "Teams"
+    }, {
+      "dataValue" : "Work Category"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "loggedInUser" : {
     "_id" : "wm-loggedInUser-wm.Variable-1562233561625",
     "name" : "loggedInUser",
@@ -3352,6 +3386,20 @@
     "dataBinding" : [ ],
     "dataSet" : { },
     "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "RedirectPage" : {
+    "_id" : "wm-RedirectPage-wm.Variable-1678449104984",
+    "name" : "RedirectPage",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
   },

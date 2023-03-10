@@ -1,0 +1,128 @@
+:root {
+    --primaryColor: #00629b;
+    --leftMenuBGColor: #f2f2f2;
+    --defaultLabelColor: #333;
+    --displayValue: block;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.icon-check-green {
+    color: green;
+}
+
+.app-left-panel {
+    float: left !important;
+}
+
+.app-content-column {
+    float: right !important;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.leftmenu-section {
+    background-color: var(--leftMenuBGColor) !important;
+}
+
+.width-full {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.inflex-center-sb {
+    display: flex;
+    align-items: center;
+}
+
+.colflex-center-sb {
+    display: flex;
+    align-items: center;
+}
+
+.flexCol {
+    flex-direction: column;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.dv-header-label {
+    font-size: 36px;
+    color: #6e6d6a;
+    line-height: unset;
+    font-weight: 300;
+    font-family: 'robotolight', 'robotoregular';
+    padding: 0 !important;
+    margin: 0 !important;
+    left: -1px;
+}
+
+.dv-header-label.dvType {
+    color: var(--defaultLabelColor) !important;
+    margin-left: 0.5rem !important;
+}
+
+/*.dvType {*/
+/*    text-transform: capitalize;*/
+/*}*/
+
+/*.dvType:first-letter {*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+.control-links {
+    position: relative;
+    padding-right: 0.5rem;
+    margin-left: 0.7rem;
+}
+
+.control-links-clone {
+    position: relative;
+    padding-right: 0.5rem;
+    margin-left: 0.7rem;
+}
+
+
+.control-links:not(:last-child):after {
+    content: "|";
+    display: var(--displayValue);
+    color: var(--primaryColor);
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 1px 0;
+}
+
+.pageInfo-data {
+    position: absolute;
+    right: 0 !important;
+    text-overflow: clip;
+    margin-top: 5%;
+    font-size: 12px;
+}
+
+
+/* for aligining the table data*/
+.custom-font-size{
+font-size: 12px;
+word-break: break-word;
+}

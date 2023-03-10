@@ -23,9 +23,9 @@ Page.parent1DVSelected = null;
 Page.parent2DVSelected = null;
 Page.filteredLocale = null;
 
-$('document').ready(() => {
-    document.getElementsByTagName("html")[0].style.visibility = "hidden";
-});
+// $('document').ready(() => {
+//     document.getElementsByTagName("html")[0].style.visibility = "hidden";
+// });
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
@@ -43,86 +43,89 @@ Page.onReady = function() {
 
 function initPage() {
     const intervalId = setInterval(function() {
-        if (App.permissionsLoaded) {
-            clearInterval(intervalId);
-            console.log('Permissions loaded...');
+            //  if (App.permissionsLoaded) {
+            // if (true) {
+            //     clearInterval(intervalId);
+            //     console.log('Permissions loaded...');
 
-            //  if (!App.IsUserHasAccess('Setup_DomainValues')) {
-            if (!App.IsUserHasAccess('System Administration')) {
-                window.location.href = '#/ErrorLanding';
+            //     //  if (!App.IsUserHasAccess('Setup_DomainValues')) {
+            //     if (!App.IsUserHasAccess('System Administration')) {
+            //         window.location.href = '#/ErrorLanding';
+            //     } else {
+            document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+            if (Page.pageParams.domainValueId) {
+                Page.Variables.getDomainValueById.invoke();
+                Page.isEditDV = true;
             } else {
-                document.getElementsByTagName("html")[0].style.visibility = "visible";
-
-                if (Page.pageParams.domainValueId) {
-                    Page.Variables.getDomainValueById.invoke();
-                    Page.isEditDV = true;
-                } else {
-                    Page.Variables.mv_domainValue.dataSet = {
-                        "domainValueDescription": [],
-                        "domainValueRelation": [],
-                        "rankOrder": null,
-                        "domainValueType": {
-                            "description": "",
-                            "code": "",
-                            "id": 0
-                        },
-                        "domainValueTypeRelation": {
-                            "relationPresent": false,
-                            "parentDV1Type": null,
-                            "parentDV2Type": null
-                        },
-                        "createdOn": "",
-                        "updatedOn": "",
-                        "updatedBy": "",
-                        "createdBy": "",
-                        "active": false,
+                Page.Variables.mv_domainValue.dataSet = {
+                    "domainValueDescription": [],
+                    "domainValueRelation": [],
+                    "rankOrder": null,
+                    "domainValueType": {
+                        "description": "",
                         "code": "",
-                        "defaultLocale": {
-                            "deleted": false,
-                            "locale": "en",
-                            "description": ""
-                        },
-                        "default": false
-                    };
-                    // Page.initialObj = JSON.parse(JSON.stringify(Page.Widgets.domainValueForm.dataset));
-                }
-                //Converting supported locale json into list
-                let obj = Page.Variables.supportedLocale.dataSet;
-                let result = Object.keys(obj).map(e => {
-                    let ret = {};
-                    ret = {
-                        "locale": e,
-                        "localeName": obj[e]
-                    };
-                    return ret;
-                });
-                Page.Variables.localesListWithoutDesc.dataSet = result.filter(item => item.locale != "en");
-
-                if (Page.isEditDV) {
-                    Page.Widgets.code.class = 'noteditable';
-                    Page.Widgets.createdOn.class = 'noteditable';
-                    Page.Widgets.updatedOn.class = 'noteditable';
-                }
-                Page.Widgets.createdOn.class = 'noteditable';
-                Page.Widgets.updatedOn.class = 'noteditable';
-
+                        "id": 0
+                    },
+                    "domainValueTypeRelation": {
+                        "relationPresent": false,
+                        "parentDV1Type": null,
+                        "parentDV2Type": null
+                    },
+                    "createdOn": "",
+                    "updatedOn": "",
+                    "updatedBy": "",
+                    "createdBy": "",
+                    "active": false,
+                    "code": "",
+                    "defaultLocale": {
+                        "deleted": false,
+                        "locale": "en",
+                        "description": ""
+                    },
+                    "default": false
+                };
                 // Page.initialObj = JSON.parse(JSON.stringify(Page.Widgets.domainValueForm.dataset));
             }
-        } else {
-            //determining the time elapsed since App started in minutes
-            const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
+            //Converting supported locale json into list
+            let obj = Page.Variables.supportedLocale.dataSet;
+            let result = Object.keys(obj).map(e => {
+                let ret = {};
+                ret = {
+                    "locale": e,
+                    "localeName": obj[e]
+                };
+                return ret;
+            });
+            Page.Variables.localesListWithoutDesc.dataSet = result.filter(item => item.locale != "en");
 
-            if (timeElapsedSinceAppStart < 1)
-                console.log('Waiting to load permissions...');
-            else {
-                clearInterval(intervalId);
-
-                //if the active page is not 'ErrorLanding'
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+            if (Page.isEditDV) {
+                Page.Widgets.code.class = 'noteditable';
+                Page.Widgets.createdOn.class = 'noteditable';
+                Page.Widgets.updatedOn.class = 'noteditable';
             }
+            Page.Widgets.createdOn.class = 'noteditable';
+            Page.Widgets.updatedOn.class = 'noteditable';
+
+            // Page.initialObj = JSON.parse(JSON.stringify(Page.Widgets.domainValueForm.dataset));
         }
-    }, 10);
+
+        //     } else {
+        //         //determining the time elapsed since App started in minutes
+        //         const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
+
+        //         if (timeElapsedSinceAppStart < 1)
+        //             console.log('Waiting to load permissions...');
+        //         else {
+        //             clearInterval(intervalId);
+
+        //             //if the active page is not 'ErrorLanding'
+        //             if (window.location.hash !== '#/ErrorLanding')
+        //                 window.location.href = '#/ErrorLanding';
+        //         }
+        //     }
+        //  },
+    );
 }
 
 Page.getDomainValueByIdonSuccess = function(variable, data) {
