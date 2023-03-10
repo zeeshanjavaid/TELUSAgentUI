@@ -4,3 +4,8 @@
     border-color: lightgray;
     width:45%;
 }
+
+button.app-icon.wi.card-action {
+    display: none;
+}
+

@@ -14692,3 +14692,33 @@ button.wm-app .close {
     border-bottom: 0px;
     position: relative;
 }
+
+.wm-app app-partial-parrdetails div[name="installmentSchedule"] .card-title {
+    font-weight: 200;
+    transform: translate(5.3%, -47%);
+    font-size: 1rem;
+    min-height: 2.1875rem;
+    text-transform: revert;
+    margin-bottom: -5px;
+    margin-top: -2.5px;
+}
+
+.wm-app app-partial-parrdetails div[name="installmentSchedule"] .col-auto {
+    transform: translate(3%, 18%)!important;
+    color: #000;
+}
+
+.wm-app app-partial-parrdetails div[name="parrHistory"] .card-title {
+    font-weight: 200;
+    transform: translate(5.3%, -47%);
+    font-size: 1rem;
+    min-height: 2.1875rem;
+    text-transform: revert;
+    margin-bottom: -5px;
+    margin-top: -2.5px;
+}
+
+.wm-app app-partial-parrdetails div[name="parrHistory"] .col-auto {
+    transform: translate(3%, 18%)!important;
+    color: #000;
+}

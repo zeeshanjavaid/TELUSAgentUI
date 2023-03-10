@@ -65,7 +65,10 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn47"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn44"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn52"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn53"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn53"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn34_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn35_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-container name="container1">
@@ -78,9 +81,9 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parrr" title="Parr">
                         <wm-container name="container3_1" show="true">
-                            <wm-button class="btn-default" caption="Create Parr" type="button" margin="2em unset unset 97em" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
+                            <wm-button class="btn-default" caption="Create Parr" type="button" margin="0.5em unset unset 97em" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
                                 on-click="CreateClick($event, widget)" deferload="false"></wm-button>
-                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="2em unset unset unset"></wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">
                                 <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
                             </wm-panel>

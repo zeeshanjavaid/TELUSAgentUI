@@ -20,8 +20,25 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
 };
 Partial.anchor2Click = function($event, widget) {
 
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
+Partial.installmentScheduleCollapse = function($event, widget) {
+    Partial.IsExpandedIS = false;
+
+};
+
+Partial.installmentScheduleExpand = function($event, widget) {
+    Partial.IsExpandedIS = true;
+};
+
+
+Partial.parrHistoryCollapse = function($event, widget) {
+    Partial.IsExpandedIS = false;
+};
+Partial.parrHistoryExpand = function($event, widget) {
+    Partial.IsExpandedIS = true;
 };
