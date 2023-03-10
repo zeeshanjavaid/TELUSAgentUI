@@ -1,0 +1,47 @@
+{
+  "parrInstallmentType" : {
+    "_id" : "wm-parrInstallmentType-wm.Variable-1678321791584",
+    "name" : "parrInstallmentType",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "Installment Sequence" : 0,
+      "Date" : "dateValue",
+      "Installment Amount" : 0,
+      "Cumm Pmts" : 0
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "selectBanParr" : {
+    "_id" : "wm-selectBanParr-wm.Variable-1678285325792",
+    "name" : "selectBanParr",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "BAN" : "1234",
+      "BAN Name" : "banName",
+      "Total TD" : "$100",
+      "Total AR" : "$200",
+      "Status" : "TBD ",
+      "Dispute Indc" : "Active",
+      "Suppress Indc" : ""
+    }, {
+      "BAN" : "678",
+      "BAN Name" : " banName",
+      "Total TD" : "$75",
+      "Total AR" : "TBD",
+      "Status" : "TBD ",
+      "Dispute Indc" : "",
+      "Suppress Indc" : "Active"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

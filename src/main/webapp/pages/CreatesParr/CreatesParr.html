@@ -1,0 +1,120 @@
+<wm-partial name="partial1">
+    <wm-container name="container2">
+        <wm-container name="container9">
+            <wm-label padding="0.5em 0.5em 0.2em 0.5em" name="label11" caption="Create Parr" fontsize="14" margin="unset unset unset 25px" class="parrBorder" color="#7a7a7a"></wm-label>
+        </wm-container>
+        <wm-label padding="0.4em 0.5em 0.5em 0.5em" name="label13" caption="Adjustment Details" margin="unset unset unset 25px" class="adjustmentLable" fontsize="14" textalign="left"></wm-label>
+    </wm-container>
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn1" padding="unset 25px unset unset">
+                <wm-composite name="composite1">
+                    <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:" margin="unset unset unset 34px" width="90px"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label14" width="75px" caption="$1,000" textalign="right" fontweight="bold" color="#000"></wm-label>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow2"></wm-gridrow>
+    </wm-layoutgrid>
+    <wm-label padding="0.3em 0.5em 0.5em 1em" name="label3_1" caption="Installment Details" textdecoration="underline" margin="unset unset unset 23px" fontsize="14" textalign="left"></wm-label>
+    <wm-layoutgrid name="layoutgrid2">
+        <wm-gridrow name="gridrow3" height="150px">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn5">
+                <wm-composite name="composite2">
+                    <wm-composite name="composite7" width="300px">
+                        <wm-label class="col-md-3 control-label" name="label13_1" caption="Recurrence:" margin="unset unset unset 34px" padding="unset 5px unset unset" width="80px"></wm-label>
+                        <wm-select name="Select" width="150px" placeholder="Select Value" margin="unset unset unset 25px" dataset="Weekly,BI-Weekly,Monthly,Custom"></wm-select>
+                    </wm-composite>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn6">
+                <wm-composite name="composite11" height="83px">
+                    <wm-label class="col-md-3 control-label" name="label10" caption="Installment BAN's:" width="130px"></wm-label>
+                    <wm-container class="col-md-9" name="container11" width="130px">
+                        <wm-textarea name="textarea4" width="130px"></wm-textarea>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn6_1" horizontalalign="center" height="55px">
+                <wm-button class="btn-default" caption="Select BAN's" type="button" margin="unset 0.5em" name="button2_1" on-click="Widgets.dialog1.open()"></wm-button>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn7_1">
+                <wm-composite name="composite5">
+                    <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:" width="125px"></wm-label>
+                    <wm-container class="col-md-9" name="container6" display="table-row" width="195px">
+                        <wm-radioset height="auto" name="radioset2" layout="inline" dataset="Number Of Installment, Amount per Installment"></wm-radioset>
+                    </wm-container>
+                    <wm-composite name="composite8">
+                        <wm-text name="text1" width="85px"></wm-text>
+                    </wm-composite>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow4">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="unset unset unset 50px" horizontalalign="right">
+                <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button3"></wm-button>
+                <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="button5"></wm-button>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN'(s)" iconclass="wi wi-file-text" name="dialog1">
+        <wm-table name="selectBanParrTable1" title="" dataset="bind:Variables.selectBanParr.dataSet" navigation="None" radioselect="false" multiselect="true" pagesize="125" show="true">
+            <wm-table-column binding="BAN" caption="Ban" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="BAN Name" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Dispute Indc" caption="Dispute Indc" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Suppress Indc" caption="Suppress Indc" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Total AR" caption="Total Ar" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Total TD" caption="Total Td" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="isSelected" caption="Is Selected" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        </wm-table>
+        <wm-layoutgrid name="layoutgrid3">
+            <wm-gridrow name="gridrow5"></wm-gridrow>
+        </wm-layoutgrid>
+        <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 25em" name="button4"></wm-button>
+    </wm-dialog>
+    <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule" textdecoration="underline"></wm-label>
+    <wm-layoutgrid name="layoutgrid4">
+        <wm-gridrow name="gridrow6">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn8_1">
+                <wm-container name="container11_1">
+                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.parrInstallmentType.dataSet" navigation="Basic" enablesort="false">
+                        <wm-table-column binding="Installment Sequence" caption="Installment Sequence" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="Date" caption="Date" edit-widget-type="text" type="string" show="true" editinputtype="date" readonly="false"></wm-table-column>
+                        <wm-table-column binding="Installment Amount" caption="Installment Amount" edit-widget-type="text" type="string" show="true" editinputtype="number" readonly="false"></wm-table-column>
+                        <wm-table-column binding="Cumm Pmts" caption="Cumm Pmts" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    </wm-table>
+                </wm-container>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" name="gridcolumn9">
+                <wm-composite name="composite11_1">
+                    <wm-label class="col-md-3 control-label" name="createParrComment" caption="Comments:"></wm-label>
+                    <wm-container class="col-md-9" name="container15">
+                        <wm-textarea name="textarea2"></wm-textarea>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow7">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                <wm-label padding="unset 0.5em" name="staticTotalLabel" caption="Amount Over/Under PARR Total:" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn10">
+                <wm-container name="container13">
+                    <wm-label padding="unset 0.5em" name="amtUnderOver" caption="TBD"></wm-label>
+                </wm-container>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn11"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn17">
+                <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="button8"></wm-button>
+                <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button9"></wm-button>
+                <wm-button class="btn-default" caption="Create" type="button" margin="unset 0.5em" name="button10"></wm-button>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow8">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn14"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" name="gridcolumn15"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" name="gridcolumn16"></wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+</wm-partial>
