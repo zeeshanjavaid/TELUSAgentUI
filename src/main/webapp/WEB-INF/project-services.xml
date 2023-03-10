@@ -12,6 +12,7 @@
     <import resource="classpath:FDOUtilityServices.spring.xml"/>
     <import resource="classpath:FileRelatedBS.spring.xml"/>
     <import resource="classpath:LookupFileBS.spring.xml"/>
+    <import resource="classpath:PaymentArrangement.spring.xml"/>
     <import resource="classpath:PropertiesService.spring.xml"/>
     <import resource="classpath:QueueLoadService.spring.xml"/>
     <import resource="classpath:ReportFileRelatedBS.spring.xml"/>

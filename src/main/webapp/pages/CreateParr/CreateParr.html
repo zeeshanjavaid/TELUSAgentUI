@@ -10,7 +10,7 @@
                 <wm-composite name="composite1">
                     <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:"></wm-label>
                     <wm-container class="col-md-9" name="container3">
-                        <wm-text name="text1"></wm-text>
+                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -24,7 +24,7 @@
                 <wm-composite name="composite2">
                     <wm-label class="col-md-3 control-label" name="label5" caption="Recurrence:" fontsize="14"></wm-label>
                     <wm-container class="col-md-9" name="container4">
-                        <wm-select name="select1" placeholder="Select Value" dataset="Weekly,BI-Weekly,Monthly,Custom" datafield="All Fields" margin="unset unset unset 10px" textalign="left"></wm-select>
+                        <wm-select name="select1" placeholder="Select Value" dataset="Weekly,BI-Weekly,Monthly,Custom" datafield="All Fields" margin="unset unset unset 10px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"></wm-select>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -43,19 +43,19 @@
                 <wm-composite name="composite5">
                     <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:"></wm-label>
                     <wm-container class="col-md-9" name="container6" display="table-row">
-                        <wm-radioset height="auto" name="radioset2" layout="inline" dataset="Number of Installments:, Amount per Installment:"></wm-radioset>
+                        <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="Number of Installments:, Amount per Installment:" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"></wm-radioset>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn14">
                 <wm-composite name="composite7">
                     <wm-container class="col-md-9" name="container8">
-                        <wm-text name="text2"></wm-text>
+                        <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
                 <wm-composite name="composite8">
                     <wm-container class="col-md-9" name="container9_1">
-                        <wm-text name="text3"></wm-text>
+                        <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder=""></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -66,7 +66,7 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn7" horizontalalign="right">
                 <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button3" on-click="Widgets.installmentScheduleTable.clearFilter()"></wm-button>
-                <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="button5" on-click="Widgets.installmentScheduleTable.redraw()"></wm-button>
+                <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="Widgets.installmentScheduleTable.redraw();createInstalmntScheduleClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
@@ -91,7 +91,7 @@
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
-                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.parrInstallmentType.dataSet" navigation="Basic" enablesort="false">
+                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" enablesort="false">
                         <wm-table-column binding="Installment Sequence" caption="Installment Sequence" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                         <wm-table-column binding="Date" caption="Date" edit-widget-type="text" type="string" show="true" editinputtype="date" readonly="false"></wm-table-column>
                         <wm-table-column binding="Installment Amount" caption="Installment Amount" edit-widget-type="text" type="string" show="true" editinputtype="number" readonly="false"></wm-table-column>
@@ -103,7 +103,7 @@
                     <wm-composite name="composite11_1">
                         <wm-label class="col-md-3 control-label" name="createParrComment" caption="Comments:"></wm-label>
                         <wm-container class="col-md-9" name="container15">
-                            <wm-textarea name="textarea2" textalign="left"></wm-textarea>
+                            <wm-textarea name="textarea2" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment"></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

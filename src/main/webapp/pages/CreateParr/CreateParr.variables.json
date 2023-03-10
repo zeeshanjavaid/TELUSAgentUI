@@ -1,16 +1,81 @@
 {
-  "parrInstallmentType" : {
+  "AmountPerInstallment" : {
+    "_id" : "wm-AmountPerInstallment-wm.Variable-1678433016778",
+    "name" : "AmountPerInstallment",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "createPaymentArrangement" : {
+    "_id" : "wm-createPaymentArrangement-wm.ServiceVariable-1678429945032",
+    "name" : "createPaymentArrangement",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "service" : "CollectionEntity",
+    "operation" : "addPaymentArrangement",
+    "operationId" : "CollectionEntityController_addPaymentArrangement",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
+  "InstallmentOption" : {
+    "_id" : "wm-InstallmentOption-wm.Variable-1678432582955",
+    "name" : "InstallmentOption",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "NoOfInstallments" : {
+    "_id" : "wm-NoOfInstallments-wm.Variable-1678433155782",
+    "name" : "NoOfInstallments",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "ParrInstallmentSchedule" : {
     "_id" : "wm-parrInstallmentType-wm.Variable-1678321791584",
-    "name" : "parrInstallmentType",
+    "name" : "ParrInstallmentSchedule",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "Installment Sequence" : 0,
-      "Date" : "dateValue",
-      "Installment Amount" : 0,
-      "Cumm Pmts" : 0
+      "sequenceId" : 0,
+      "date" : "dateValue",
+      "amount" : 0,
+      "cummPmtAmount" : 0
     } ],
     "type" : "entry",
     "isList" : true,
