@@ -6,10 +6,11 @@ package com.fico.dmp.collectionentity.controller;
 import com.fico.dmp.collectionentity.CollectionEntity;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Exception;
-import java.lang.Integer;
-import java.lang.Boolean;
 import java.lang.String;
+import java.lang.Boolean;
+import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
+import java.lang.Integer;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,24 @@ public class CollectionEntityController {
     private CollectionEntity collectionEntity;
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.addPaymentArrangement(collectionPaymentArrangementCreate);
+    }
+
+    @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionBillingAccountRef> getBillingAccountRef(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntity.getBillingAccountRef(ban, history);
+    }
+
+    @RequestMapping(value = "/billingAccountRef/{id}", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionBillingAccountRef getBillingAccountRef_1(@PathVariable("id") Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntity.getBillingAccountRef(id, history);
     }
 
     @RequestMapping(value = "/paymentArrangement/{id}", method = RequestMethod.GET)
@@ -46,6 +63,8 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.updatePaymentArrangement(id, collectionPaymentArrangementCreate);
     }
