@@ -3,19 +3,25 @@
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="3" name="gridcolumn1">
                 <wm-anchor margin="unset 0.5em" name="anchor2" iconclass="fico-icon-arrow-left" caption="" on-click="anchor2Click($event, widget)"></wm-anchor>
-                <wm-label padding="unset 0.5em unset 2.5em" name="label3" caption="PARR Details" textdecoration="underline"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="9" name="gridcolumn2">
+            <wm-gridcolumn columnwidth="9" name="gridcolumn2" horizontalalign="right"></wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow7">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn21_1">
+                <wm-label padding="unset 0.5em unset unset" name="label3" caption="PARR Details" textdecoration="underline"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="9" name="gridcolumn22_1" horizontalalign="right">
                 <wm-button class="btn-default" caption="Clear PARR" type="button" margin="unset 0.5em" name="button1"></wm-button>
-                <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.dialog1.open()"></wm-button>
+                <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.dialog1.open()" textalign="right"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
+        <wm-gridrow name="gridrow6"></wm-gridrow>
         <wm-gridrow name="gridrow2">
             <wm-gridcolumn columnwidth="2" name="gridcolumn3">
                 <wm-composite name="composite2">
                     <wm-label class="col-md-3 control-label" name="label5" caption="Parr ID"></wm-label>
-                    <wm-container class="col-md-9" name="container2">
-                        <wm-text name="text2"></wm-text>
+                    <wm-container class="col-md-9" name="container2" padding="3px unset unset unset">
+                        <wm-label padding="unset 0.5em" name="parrID" caption="bind:Variables.getPaymentArrangement.dataSet.id"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -23,7 +29,7 @@
                 <wm-composite name="composite3">
                     <wm-label class="col-md-3 control-label" name="label6" caption="Status"></wm-label>
                     <wm-container class="col-md-9" name="container3">
-                        <wm-text name="text3"></wm-text>
+                        <wm-label padding="unset 0.5em" name="parrStatus" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.statuses[$i].status"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -31,7 +37,7 @@
                 <wm-composite name="composite4">
                     <wm-label class="col-md-3 control-label" name="label7" caption="Evalution"></wm-label>
                     <wm-container class="col-md-9" name="container4">
-                        <wm-text name="text4"></wm-text>
+                        <wm-label padding="unset 0.5em" name="evaluationResult" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.evaluationResult"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -39,7 +45,7 @@
                 <wm-composite name="composite5">
                     <wm-label class="col-md-3 control-label" name="label8" caption="Parr Amt" width="50px"></wm-label>
                     <wm-container class="col-md-9" name="container5">
-                        <wm-text name="text5"></wm-text>
+                        <wm-label padding="unset 0.5em" name="parrAmt" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.amount"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -47,7 +53,7 @@
                 <wm-composite name="composite6">
                     <wm-label class="col-md-3 control-label" name="label9" caption="CUMM PMT EXP"></wm-label>
                     <wm-container class="col-md-9" name="container6">
-                        <wm-text name="text6"></wm-text>
+                        <wm-label padding="unset 0.5em" name="cummPmtExp" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -55,7 +61,7 @@
                 <wm-composite name="composite7">
                     <wm-label class="col-md-3 control-label" name="label10" caption="CUMM PMT RCVD"></wm-label>
                     <wm-container class="col-md-9" name="container7">
-                        <wm-text name="text7"></wm-text>
+                        <wm-label padding="unset 0.5em" name="cummPmtRcvd" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -65,15 +71,15 @@
                 <wm-composite name="composite9">
                     <wm-label class="col-md-3 control-label" name="label12" caption="Reccurence"></wm-label>
                     <wm-container class="col-md-9" name="container9">
-                        <wm-text name="text9"></wm-text>
+                        <wm-label padding="unset 0.5em" name="reccurence" margin="3px unset unset unset" caption="bind:Variables.getPaymentArrangement.dataSet.recurrence"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn18">
                 <wm-composite name="composite10">
-                    <wm-label class="col-md-3 control-label" name="label14" caption="Instalment BAN"></wm-label>
+                    <wm-label class="col-md-3 control-label" name="label14" caption="Installment BAN's"></wm-label>
                     <wm-container class="col-md-9" name="container10">
-                        <wm-textarea name="textarea1"></wm-textarea>
+                        <wm-label padding="unset 0.5em" name="banLabel" margin="3px unset unset unset" caption="TBD"></wm-label>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
