@@ -21,24 +21,40 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     Partial.Variables.InstallmentOption.dataSet.datavalue = 'Number of Installments';
+    Partial.Variables.InstallmentOption.dataSet.datavalue = 'Amount Per Installment';
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
     var installmentSchedule = new Array();
     var amount = '';
-
+    var remainder = '';
     var installmentSize = '';
+
     //Psuedo code start
-    if ('NumberOFinstallments') {
+
+    //check if numOfInstallmetn is selected 
+    if (Partial.Widgets.InstallmentOptions.dataValue == 'NoOfInstallments') {
         installmentSize = Partial.Variables.NoOfInstallments.dataSet.datavalue;
         amount = Partial.Widgets.ParrTotal.datavalue / Partial.Variables.NoOfInstallments.dataSet.datavalue;
-    } else {
+
+    }
+    //check if amtPerInstallment is selected 
+    if (Partial.Widgets.InstallmentOptions.dataValue == 'AmtPerInstallment') {
+        remainder = Partial.Widgets.ParrTotal.datavalue % Variables.AmountPerInstallment.dataSet.dataValue;
         installmentSize = Partial.Widgets.ParrTotal.datavalue / Variables.AmountPerInstallment.dataSet.dataValue;
         amount = Variables.AmountPerInstallment.dataSet.dataValue;
+        if (remainder != 0) {
+            installmentSize + 1;
+            //input logic to add remainder into the last row of the collection PaymentInstallment, if it exists 
+            //
+        }
+        //ask abou installment Schedule size limitations 
     }
+
+
     // //Psuedo code End
-    for (var i = 0; i < Partial.Variables.NoOfInstallments.dataSet.datavalue; i++) {
+    for (var i = 0; i < installmentSize; i++) {
 
         var collectionPaymentInstallment = {};
         collectionPaymentInstallment.sequenceId = i + 1;
