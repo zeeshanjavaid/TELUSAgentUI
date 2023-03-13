@@ -21,7 +21,7 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    Partial.pageParams.roleId
+    // Partial.pageParams.roleId
 
     Partial.Variables.roleData.dataSet = [];
     Partial.Variables.uploadRole.dataSet = [];
@@ -35,7 +35,12 @@ Partial.onReady = function() {
     //Partial.Variables.getAllPermission.invoke();
     //console.log("onReady");
     //console.log(Partial.Variables.leftPermissionList.dataSet);
-
+    if (Partial.pageParams.roleId == undefined) {
+        Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    }
+    // else {
+    //     // Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    // }
 
 };
 
@@ -117,6 +122,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
 
     }
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
     //window.location.href = "#/Roles";
 
@@ -124,6 +130,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
 Partial.CancelbuttonClick = function($event, widget) {
     // debugger;
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
     Partial.isDelete = false;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
@@ -146,6 +153,8 @@ Partial.CancelbuttonClick = function($event, widget) {
             Partial.Widgets.DualList_TD1.leftdataset = Partial.Variables.leftPermissionList.dataSet;
         }
     }
+
+
 };
 
 App.addRoles = function() {
@@ -505,5 +514,25 @@ Partial.executeDeleteGroupRoleByRoleIdonSuccess = function(variable, data) {
         'id': Partial.pageParams.roleId
     });
     Partial.Variables.deleteRole.invoke();
+
+};
+
+Partial.renderScreenReadOnly = function() {
+
+    // Partial.Variables.roleMode.dataSet.dataValue = "View Role";
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+
+    Partial.Widgets.EditRoleButton.show = true;
+    Partial.Widgets.SaveButton.show = false;
+    Partial.Widgets.CancelButton.show = false;
+    Partial.Widgets.DeleteButton.show = false;
+}
+Partial.EditRoleButtonClick = function($event, widget) {
+    // debugger;
+
+    Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+
+};
+Partial.DeleteButtonClick = function($event, widget) {
 
 };

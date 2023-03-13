@@ -3059,6 +3059,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false
   },
+  "readOnlyMode" : {
+    "_id" : "wm-readOnlyMode-wm.Variable-1678454912621",
+    "name" : "readOnlyMode",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "roleData" : {
     "_id" : "wm-queueData-wm.Variable-1654006696739",
     "name" : "roleData",
@@ -3099,6 +3113,20 @@
     "dataSet" : [ ],
     "type" : "entry",
     "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "staticVariable1" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1678454652111",
+    "name" : "staticVariable1",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
     "saveInPhonegap" : false
   },
   "updateRole" : {

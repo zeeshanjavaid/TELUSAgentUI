@@ -20,7 +20,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    debugger;
+    //    debugger;
     Partial.Variables.groupData.dataSet = [];
     Partial.Variables.uploadGroup.dataSet = [];
     Partial.Variables.uploadGroupItem.dataSet = [];
@@ -40,7 +40,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
     // SaveButton
     // $('button[name="' + 'SaveButton' + '"]').eq(0).blur();
-    debugger;
+    // debugger;
     Partial.isDeleteGroup = false;
     Partial.groupExists = false;
     Partial.groupNameExists = false;
@@ -49,6 +49,7 @@ Partial.SaveButtonClick = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = null;
     let pattern = Partial.Widgets.GroupNameText.regexp;
 
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
     App.Variables.GroupPageCommunication.currentGroupInFocusId = Partial.pageParams.groupId;
     //if ((Partial.Widgets.GroupNameText.datavalue == undefined ? Partial.Widgets.GroupNameText.datavalue == undefined : Partial.Widgets.GroupNameText.datavalue == "")) {
@@ -62,7 +63,7 @@ Partial.SaveButtonClick = function($event, widget) {
         Partial.scrollToTop();
     } else {
 
-        debugger;
+        //    debugger;
         if (Partial.pageParams.groupId) {
             Partial.Variables.getAllTeams.dataSet.forEach(function(group) {
                 if (group.teamName.toLowerCase() == Partial.Widgets.GroupNameText.datavalue.toLowerCase() && group.id != Partial.pageParams.groupId) {
@@ -77,7 +78,7 @@ Partial.SaveButtonClick = function($event, widget) {
             });
         }
 
-        debugger;
+        //    debugger;
         if (!Partial.groupExists && !Partial.groupNameExists) {
             if (Partial.pageParams.groupId && Partial.pageParams.groupId > 0) {
                 Partial.Variables.updateTeam.setInput({
@@ -90,10 +91,10 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
                     'updatedOn': new Date()
                 });
-                debugger;
+                //    debugger;
                 Partial.Variables.updateTeam.update();
             } else {
-                debugger;
+                //    debugger;
                 Partial.Variables.createTeam.setInput({
                     'teamId': Partial.Variables.teamData.dataSet.TeamId,
                     'teamName': Partial.Variables.teamData.dataSet.TeamName,
@@ -122,6 +123,8 @@ Partial.SaveButtonClick = function($event, widget) {
 };
 
 Partial.CancelbuttonClick = function($event, widget) {
+
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
@@ -327,7 +330,7 @@ Partial.getAllUsersonSuccess = function(variable, data) {
          Partial.Widgets.DualListUsers_TD.leftdataset = [];
      }*/
     Partial.Variables.leftUserList.dataSet = data;
-    debugger;
+    //    debugger;
     data.forEach(function(u) {
         u.fullName = App.htmlEncode(u.userId);
     });
@@ -383,7 +386,7 @@ Partial.getAllGroupsonSuccess = function(variable, data) {
 
 Partial.updateGrouponSuccess = function(variable, data) {
 
-    debugger;
+    //    debugger;
     Partial.Variables.executeDeleteGroupRole.setInput({
         'GroupId': Partial.pageParams.groupId
     });
@@ -813,7 +816,7 @@ Partial.getTeamUseronSuccess = function(variable, data) {
 };
 
 Partial.createTeamonSuccess = function(variable, data) {
-    debugger;
+    //    debugger;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
 
@@ -839,7 +842,7 @@ Partial.createTeamonSuccess = function(variable, data) {
 };
 
 Partial.CreateTeamUseronSuccess = function(variable, data) {
-    debugger;
+    //    debugger;
     if (Partial.Variables.uploadGroup.dataSet.length > 0) {
         App.Variables.errorMsg.dataSet.dataValue = null;
         App.Variables.successMessage.dataSet.dataValue = null;
@@ -933,4 +936,10 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
         Partial.Variables.deleteTeam.invoke();
     }
 
+};
+Partial.EditTeamButtonClick = function($event, widget) {
+    Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+};
+Partial.DeleteButtonClick = function($event, widget) {
+    Partial.Variables.readOnlyMode.dataSet.dataValue = false;
 };

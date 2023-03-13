@@ -19,6 +19,8 @@ Partial.onReady = function() {
     Partial.allRoles = [];
     Partial.role = [];
 
+
+
 };
 
 //var fileSelector;
@@ -234,7 +236,7 @@ Partial.container5Click = function($event, widget, item, currentItemWidgets) {
     //App.getRolePermission(item.id);
 };
 Partial.AddRolesButtonClick = function($event, widget) {
-    debugger
+    // debugger
     App.addRoles();
 };
 Partial.fileupload1Select = function($event, widget, selectedFiles) {};

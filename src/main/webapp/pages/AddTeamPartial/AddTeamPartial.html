@@ -2,7 +2,20 @@
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow9">
             <wm-gridcolumn columnwidth="12" name="gridcolumn18">
-                <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:pageParams.groupId ? &quot;Edit Team&quot; : &quot;Add Team&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" height="25"></wm-label>
+                <wm-layoutgrid name="layoutgrid3">
+                    <wm-gridrow name="gridrow10_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn15_2">
+                            <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.groupId ? &quot;Edit Team&quot; : &quot;Add Team&quot;" class="h3 add-role-lebel text-clip"
+                                margin="4% unset unset unset" height="25"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn16_2" horizontalalign="right">
+                            <wm-container name="container14" margin="4% unset unset unset">
+                                <wm-button class="btn-default" caption="Delete" type="button" margin="unset 0.5em" name="DeleteButton" on-click="DeleteButtonClick($event, widget);Widgets.deleteTeamDialog.open()" show="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                                <wm-button class="btn-default" caption="Edit" type="button" margin="unset 0.5em" name="EditTeamButton" on-click="EditTeamButtonClick($event, widget)" show="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                            </wm-container>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow4">
@@ -21,7 +34,7 @@
                 <wm-container name="container100">
                     <wm-composite name="composite100_1">
                         <wm-container class="col-md-9 queue-name" name="container101" padding="unset unset unset 5px">
-                            <wm-text name="TeamIdText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamId" required="false" class="role-name1" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
+                            <wm-text name="TeamIdText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamId" required="false" class="role-name1" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
@@ -31,7 +44,7 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn16_1" horizontalalign="left">
                 <wm-composite name="composite5_1">
-                    <wm-select name="select1" dataset="bind:Variables.getTeamManagerNameByRole.dataSet" datafield="firstName" displayfield="firstName" placeholder="" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName"></wm-select>
+                    <wm-select name="select1" dataset="bind:Variables.getTeamManagerNameByRole.dataSet" datafield="firstName" displayfield="firstName" placeholder="" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-select>
                     <wm-label class="col-md-3 control-label" name="label8" caption=""></wm-label>
                     <wm-container class="col-md-9" name="container13">
                         <wm-composite name="composite6">
@@ -49,21 +62,7 @@
                 <wm-container name="container5">
                     <wm-composite name="composite4_1">
                         <wm-container class="col-md-9 queue-name" name="container10">
-                            <wm-text name="GroupNameText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
-                        </wm-container>
-                    </wm-composite>
-                </wm-container>
-            </wm-gridcolumn>
-        </wm-gridrow>
-        <wm-gridrow name="gridrow3" padding="0.5em unset unset unset">
-            <wm-gridcolumn columnwidth="2" name="gridcolumn5">
-                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Description" name="label5" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="10" name="gridcolumn6">
-                <wm-container name="container6">
-                    <wm-composite name="composite5">
-                        <wm-container class="col-md-9 queue-discription" name="container14">
-                            <wm-textarea name="grouptextarea1" height="73" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamDescription" maxchars="255"></wm-textarea>
+                            <wm-text name="GroupNameText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
@@ -97,10 +96,9 @@
             <wm-gridcolumn columnwidth="10" name="gridcolumn14" style="margin-bottom: 2em;">
                 <wm-container name="container8">
                     <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
-                        <wm-button caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" on-click="Widgets.deleteTeamDialog.open()" show="bind:pageParams.groupId !== undefined" name="button4" class="btn-link"></wm-button>
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
-                        <wm-button caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="true" class="btn-link"></wm-button>
-                        <wm-button class="btn-saveTeamsButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)"></wm-button>
+                        <wm-button caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue" class="btn-link"></wm-button>
+                        <wm-button class="btn-saveTeamsButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>
