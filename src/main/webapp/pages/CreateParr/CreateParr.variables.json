@@ -68,6 +68,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "isCreateScheduleClicked" : {
+    "_id" : "wm-isCreateParr-wm.Variable-1677759346494",
+    "name" : "isCreateScheduleClicked",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "NoOfInstallments" : {
     "_id" : "wm-NoOfInstallments-wm.Variable-1678433155782",
     "name" : "NoOfInstallments",

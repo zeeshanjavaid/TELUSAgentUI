@@ -20,52 +20,49 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    Partial.Variables.InstallmentOption.dataSet.datavalue = 'Number of Installments';
-    Partial.Variables.InstallmentOption.dataSet.datavalue = 'Amount Per Installment';
+    //Partial.Widgets.InstallmentOptions.dataValue = 'NoOfInstallments';
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
     var installmentSchedule = new Array();
     var amount = '';
-    var remainder = '';
+    var remainder = 0;
     var installmentSize = '';
 
     //Psuedo code start
-
     //check if numOfInstallmetn is selected 
-    if (Partial.Widgets.InstallmentOptions.dataValue == 'NoOfInstallments') {
+    if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments') {
         installmentSize = Partial.Variables.NoOfInstallments.dataSet.datavalue;
         amount = Partial.Widgets.ParrTotal.datavalue / Partial.Variables.NoOfInstallments.dataSet.datavalue;
-
     }
     //check if amtPerInstallment is selected 
-    if (Partial.Widgets.InstallmentOptions.dataValue == 'AmtPerInstallment') {
-        remainder = Partial.Widgets.ParrTotal.datavalue % Variables.AmountPerInstallment.dataSet.dataValue;
-        installmentSize = Partial.Widgets.ParrTotal.datavalue / Variables.AmountPerInstallment.dataSet.dataValue;
-        amount = Variables.AmountPerInstallment.dataSet.dataValue;
-        if (remainder != 0) {
-            installmentSize + 1;
+    if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'AmtPerInstallment') {
+        remainder = Partial.Widgets.ParrTotal.datavalue % Partial.Variables.AmountPerInstallment.dataSet.dataValue;
+        installmentSize = parseInt(Partial.Widgets.ParrTotal.datavalue / Partial.Variables.AmountPerInstallment.dataSet.dataValue);
+        amount = Partial.Variables.AmountPerInstallment.dataSet.dataValue;
+        var lastInstallmentAmount = 0;
+        if (remainder !== 0) {
+            installmentSize = installmentSize + 1;
+            lastInstallmentAmount = remainder;
             //input logic to add remainder into the last row of the collection PaymentInstallment, if it exists 
-            //
         }
         //ask abou installment Schedule size limitations 
     }
-
-
     // //Psuedo code End
     for (var i = 0; i < installmentSize; i++) {
 
         var collectionPaymentInstallment = {};
         collectionPaymentInstallment.sequenceId = i + 1;
         var tempDate = '';
+        if (i == installmentSize - 1 && remainder !== 0) {
+            amount = lastInstallmentAmount;
+        }
         if (i > 0) {
             tempDate = new Date(installmentSchedule[i - 1].date);
         } else {
             tempDate = new Date();
         }
-        alert('tempDate:' + tempDate);
-        alert("Recurrence : " + Partial.Widgets.RecurrenceDropdown.datavalue);
         if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Weekly') {
 
             tempDate = new Date(tempDate.setDate(tempDate.getDate() + 7));
@@ -87,20 +84,19 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
             collectionPaymentInstallment.date = new Date(tempDate);
             //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
         }
-        alert("collectionPaymentInstallment.date : " + collectionPaymentInstallment.date);
 
         collectionPaymentInstallment.amount = amount;
-        if (i == 0) {
-            collectionPaymentInstallment.cummPmtAmount = collectionPaymentInstallment.amount;
+        if (i === 0) {
+            //collectionPaymentInstallment.cummPmtAmount = collectionPaymentInstallment.amount;
         } else {
-            collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
+            //collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
         }
         installmentSchedule.push(collectionPaymentInstallment);
     }
-    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = true;
-    Partial.Variables.ParrInstallmentSchedule.dataSet = [];
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
+    Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, 1);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
-    alert("ParrInstallmentSchedule size fter push:" + Partial.Variables.ParrInstallmentSchedule.dataSet.length);
+    Variables.createPaymentArrangement.dataSet.installments.dataset.push(...installmentSchedule);
 };
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
@@ -108,15 +104,26 @@ Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
     Partial.Variables.NoOfInstallments.dataSet.datavalue = newVal;
 };
 
-/*Partial.CancelClick = function($event, widget) {
+Partial.CancelClick = function($event, widget) {
 
-    Partial.Variables.ParrPageName.dataSet.datavalue = 'ParrList';
-};*/
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
 Partial.RecurrenceDropdownChange = function($event, widget, newVal, oldVal) {
 
-    alert("new recurrence :" + Partial.Widgets.RecurrenceDropdown.datavalue);
+};
+Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {};
+
+Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) {
+
+    Partial.Variables.NoOfInstallments.dataSet.datavalue = 0;
+    Partial.Variables.AmountPerInstallment.dataSet.dataValue = 0;
+
 };
 
-Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {
-    alert("ParrTotalChange :" + Partial.Widgets.ParrTotal.datavalue);
+Partial.ClearButtonClick = function($event, widget) {
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
+};
+
+Partial.ClearScheduleClick = function($event, widget) {
+    Partial.Widgets.Comments.datavalue = '';
 };
