@@ -45,14 +45,18 @@ Partial.parrHistoryExpand = function($event, widget) {
     Partial.IsExpandedIS = true;
 };
 
-Partial.SubmitButtonClick = function($event, widget) {
-
-    alert("Update :" + Partial.Variables.getPaymentArrangement.dataSet.id);
-    //Partial.Variables.getPaymentArrangement.dataSet.comment = Partial.Widgets.Comments.datavalue;
-};
 
 Partial.updatePaymentArrangementonBeforeUpdate = function(variable, inputData, options) {
 
-    Partial;
-    debugger;
+    //Partial;
+    // debugger;
+};
+Partial.YesCancelButtonClick = function($event, widget) {
+    Partial.Variables.getPaymentArrangement.dataSet.statuses[0].status = 'Cancel';
+};
+Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
+    Partial.Variables.getPaymentArrangement.dataSet.amount = newVal;
+};
+Partial.CommentsChange = function($event, widget, newVal, oldVal) {
+    Partial.Variables.getPaymentArrangement.dataSet.comment = Partial.Widgets.Comments.datavalue;
 };

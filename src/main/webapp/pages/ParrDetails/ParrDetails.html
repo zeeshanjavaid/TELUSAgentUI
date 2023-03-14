@@ -126,9 +126,10 @@
                 <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="center">
                     <wm-container name="container24_1">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
-                            <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="amount" caption="Installment Amt" width="25%" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true"
+                                readonly="false"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" width="25%" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
                     </wm-container>
@@ -184,7 +185,7 @@
                     <wm-composite name="composite18">
                         <wm-label class="col-md-3 control-label" name="label42" caption="PARR Amt:" width="30%"></wm-label>
                         <wm-container class="col-md-9" name="container30" width="60%">
-                            <wm-number textalign="right" name="number4" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount"></wm-number>
+                            <wm-number textalign="right" name="RenegotiateParrAmount" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)"></wm-number>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -245,13 +246,13 @@
             <wm-composite name="composite14">
                 <wm-label class="col-md-3 control-label" name="label29" caption="Comments"></wm-label>
                 <wm-container class="col-md-9" name="container23">
-                    <wm-textarea name="textarea1"></wm-textarea>
+                    <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)"></wm-textarea>
                 </wm-container>
             </wm-composite>
         </wm-container>
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Clear" on-click="Widgets.renegotiatePARRdialog.close()" name="button3" margin="unset unset unset 20em"></wm-button>
-            <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 3em" name="button4" on-click="Widgets.renegotitateSubmitDialog.open()"></wm-button>
+            <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 3em" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-alertdialog name="alertdialog2" iconclass="fico-icon-check-circle fa-3x" title="" iconmargin="45%" message="Parr Successfully Renegotiated!" alerttype="success" align="center"></wm-alertdialog>
@@ -278,7 +279,7 @@
                 <wm-textarea name="textarea2" color="#ddd" class="cancelParrborder" margin="unset unset unset 3em" width="90%"></wm-textarea>
             </wm-container>
         </wm-composite>
-        <wm-button class="btn-default" caption="No,Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8"></wm-button>
-        <wm-button class="btn-default" caption="Yes,Cancel" type="button" margin="2em 0.5em 1em 2em" name="button7"></wm-button>
+        <wm-button class="btn-default" caption="No,Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+        <wm-button class="btn-default" caption="Yes,Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
     </wm-dialog>
 </wm-partial>

@@ -59,6 +59,8 @@ public class PaymentArrangement {
     public String updatePaymentArrangement(CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
        
         logger.debug("::::::::::updatePaymentArrangement::::::::::::: " + collectionPaymentArrangement.getId());
+        System.out.println(":::::::::updatePaymentArrangement amount::::::::::::: " + collectionPaymentArrangement.getAmount());
+        System.out.println(":::::::::updatePaymentArrangement: comment:::::::::::: " + collectionPaymentArrangement.getComment());
         
         String result = null;
         
