@@ -30,24 +30,6 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
-  "installmentBAN" : {
-    "_id" : "wm-installmentBAN-wm.Variable-1678439555089",
-    "name" : "installmentBAN",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "name" : "BAN ID",
-      "value" : "1234"
-    }, {
-      "name" : "BAN ID",
-      "value" : "678"
-    } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
   "TELUSAgentUIDBUserData" : {
     "_id" : "wm-TELUSAgentUIDBUserData-wm.LiveVariable-1678099971732",
     "name" : "TELUSAgentUIDBUserData",

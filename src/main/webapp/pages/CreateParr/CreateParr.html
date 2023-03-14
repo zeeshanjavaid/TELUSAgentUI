@@ -8,9 +8,9 @@
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="3" name="gridcolumn1">
                 <wm-composite name="composite1">
-                    <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:"></wm-label>
-                    <wm-container class="col-md-9" name="container3">
-                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)"></wm-text>
+                    <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:" width="90px"></wm-label>
+                    <wm-container class="col-md-9" name="container3" width="200px">
+                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="200px"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -22,28 +22,49 @@
         <wm-gridrow name="gridrow3" height="150px">
             <wm-gridcolumn columnwidth="2" name="gridcolumn5" horizontalalign="right">
                 <wm-composite name="composite2">
-                    <wm-label class="col-md-3 control-label" name="label5" caption="Recurrence:" fontsize="14"></wm-label>
-                    <wm-container class="col-md-9" name="container4">
-                        <wm-select name="RecurrenceDropdown" placeholder="Select Value" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" margin="unset unset unset 10px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"
+                    <wm-label class="col-md-3 control-label" name="label5" caption="Recurrence:" fontsize="14" width="80px"></wm-label>
+                    <wm-container class="col-md-9" name="container4" width="100px">
+                        <wm-select name="RecurrenceDropdown" placeholder="Select Value" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" margin="unset unset unset 5px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"
                             displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)" width="150px"></wm-select>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="5" name="gridcolumn6" horizontalalign="center">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn15">
+                <wm-label class="col-md-3 control-label" name="label10" caption="Installment BAN's:" width="90%" textalign="center"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn6" horizontalalign="center">
                 <wm-composite name="composite11">
-                    <wm-label class="col-md-3 control-label" name="label10" caption="Installment BAN's"></wm-label>
-                    <wm-container class="col-md-9" name="container11">
-                        <wm-label padding="unset 0.5em" name="label11" textalign="center"></wm-label>
-                    </wm-container>
+                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="selectBanParrList1" dataset="bind:Widgets.selectBanParrTable1.selecteditem" navigation="None">
+                        <wm-listtemplate layout="inline" name="listtemplate1">
+                            <wm-container class="media-left" name="container10">
+                                <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
+                            </wm-container>
+                            <wm-container class="media-body" padding="unset unset unset 1.25em" name="container11">
+                                <wm-layoutgrid name="layoutgrid5_1">
+                                    <wm-gridrow name="gridrow8">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                                            <wm-label padding="unset 0.5em" name="banName" caption="bind:Variables.installmentBAN.dataSet[$i].name"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn20_1">
+                                            <wm-label padding="unset 0.5em" name="banValue" caption="bind:Variables.installmentBAN.dataSet[$i].value"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn17"></wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-container>
+                            <wm-container class="media-right media-top" name="container12"></wm-container>
+                        </wm-listtemplate>
+                    </wm-list>
+                    <wm-container name="container12_1"></wm-container>
                 </wm-composite>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn6_1" horizontalalign="center">
+            <wm-gridcolumn columnwidth="1" name="gridcolumn19_1">
                 <wm-button class="btn-default" caption="Select BAN's" type="button" margin="unset 0.5em" name="button2_1" on-click="Widgets.dialog1.open()" textalign="center"></wm-button>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="3" name="gridcolumn7_1" horizontalalign="center">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn7_1" horizontalalign="center">
                 <wm-composite name="composite5">
-                    <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:"></wm-label>
-                    <wm-container class="col-md-9" name="container6" display="table-row">
+                    <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:" width="125px" margin="unset unset unset 20px"></wm-label>
+                    <wm-container class="col-md-9" name="container6" display="table-row" width="200" horizontalalign="center" margin="unset unset unset 50px">
                         <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="bind:Variables.InstallmentOptions.dataSet" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"
                             datafield="dataValue" displayfield="name" disabled="bind:Widgets.RecurrenceDropdown.datavalue == undefined || Widgets.ParrTotal.datavalue == undefined" readonly="false"></wm-radioset>
                     </wm-container>
@@ -95,9 +116,10 @@
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
                     <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" enablesort="false">
-                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="amount" caption="Installment Amount" edit-widget-type="text" type="string" formatpattern="toCurrency" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                        <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil fico fico-icon-pencil" show="true" class="btn-primary btn-xs" action="editRow($event)"></wm-table-row-action>
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>
