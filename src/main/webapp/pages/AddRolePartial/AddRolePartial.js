@@ -35,7 +35,7 @@ Partial.onReady = function() {
     //Partial.Variables.getAllPermission.invoke();
     //console.log("onReady");
     //console.log(Partial.Variables.leftPermissionList.dataSet);
-    if (Partial.pageParams.roleId == undefined) {
+    if (Partial.pageParams.roleId === undefined) {
         Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     }
     // else {
@@ -173,6 +173,8 @@ App.addRoles = function() {
     Partial.pageParams.roleId = undefined;
     Partial.Variables.getRole.invoke();
 
+    Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+
     //setTimeout(function() {
     //   const x = document.getElementById("roleCancel");
     //   if (x !== null) {
@@ -183,7 +185,7 @@ App.addRoles = function() {
 
 
 Partial.permissionListonSuccess = function(variable, data) {
-    debugger
+    // debugger
     //console.log("permissionListonSuccess");
     //console.log(Partial.Variables.leftPermissionList.dataSet);
     //Partial.Variables.leftPermissionList.dataSet = [];
@@ -197,7 +199,7 @@ Partial.permissionListonSuccess = function(variable, data) {
 Partial.permissionListonError = function(variable, data) {};
 
 Partial.createRoleonError = function(variable, data, xhrobject) {
-    debugger;
+    // debugger;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
 
@@ -206,7 +208,7 @@ Partial.createRoleonError = function(variable, data, xhrobject) {
 
 };
 Partial.createRoleonSuccess = function(variable, data) {
-    debugger;
+    // debugger;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
 

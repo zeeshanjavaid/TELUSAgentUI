@@ -34,6 +34,10 @@ Partial.onReady = function() {
     Partial.Variables.leftRolesList.dataSet = [];
     Partial.Variables.leftUserList.dataSet = [];
 
+    if (Partial.pageParams.roleId === undefined) {
+        Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    }
+
 };
 
 Partial.SaveButtonClick = function($event, widget) {
