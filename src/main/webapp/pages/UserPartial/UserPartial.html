@@ -176,7 +176,8 @@
         <wm-table-column binding="role" caption="Role" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rowOperations" caption="Actions" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
         <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="userMVTable1_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-        <wm-table-row-action key="customRow" display-name="" show="true" class="btn-secondary" iconclass="fico-icon-trash" title="Delete" action="userMVTable1_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+        <wm-table-row-action key="customRow" display-name="" show="bind:Widgets.userMVTable1.currentItem.active" class="btn-secondary" iconclass="fico-icon-trash" title="Inactivate" action="userMVTable1_customRowAction($event, row)"
+            disabled="false" widget-type="button"></wm-table-row-action>
     </wm-table>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create User" iconclass="wi wi-file-text" name="createUserPage">
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
@@ -241,9 +242,9 @@
                         <!--<wm-container name="container10">-->
                         <!--    <wm-form-field name="UserDTO_workCategory" displayname="Work Category" key="UserDTO.workCategory" show="true" layout="inline" required="false" on-click="text-containerClick($event, widget)"><input type="string" id="subStatusInputBox" placeholder="Select" autocomplete="off" tabindex="24" class="ds_grid"></wm-form-field>-->
                         <!--</wm-container>-->
-                        <wm-label padding="1.1em 0.5em unset 0.5em" name="label10" caption="Work Category" margin="unset unset 8px unset"></wm-label>
-                        <wm-composite name="composite11" width="98%">
-                            <wm-container class="col-md-12 mutli-select" key="UserDTO.workCategory" name="text-container"><input type="text" id="subStatusInputBox" placeholder="Select" autocomplete="off"></wm-container>
+                        <wm-label padding="1.1em 0.5em unset unset" name="label10" caption="Work Category" margin="unset unset 8px unset"></wm-label>
+                        <wm-composite name="composite11" width="100%">
+                            <wm-container class="col-md-12 mutli-select" key="UserDTO.workCategory" name="text-container" width="100%"><input type="text" id="subStatusInputBox" placeholder="Select" autocomplete="off"></wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
                 </wm-gridrow>
@@ -314,11 +315,11 @@
                 <!--"></wm-form-field>-->
                 <!--                    </wm-gridcolumn>-->
                 <!--                </wm-gridrow>-->
-                <wm-label padding="1.1em 0.5em unset 0.5em" name="label101" caption="Work Category" margin="unset unset 8px unset"></wm-label>
+                <wm-label padding="1.1em 0.5em unset unset" name="label101" caption="Work Category" margin="unset unset 8px unset"></wm-label>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12">
-                        <wm-composite name="composite12" width="98%">
-                            <wm-container class="col-md-13 mutli-select" key="UserDTO.workCategory" name="text-container"><input type="text" id="updateUserInputBox" placeholder="Select" autocomplete="off"></wm-container>
+                        <wm-composite name="composite12" width="100%">
+                            <wm-container class="col-md-13 mutli-select" key="UserDTO.workCategory" name="text-container" width="100%"><input type="text" id="updateUserInputBox" placeholder="Select" autocomplete="off"></wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
                 </wm-gridrow>

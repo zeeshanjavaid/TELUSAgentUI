@@ -2937,7 +2937,9 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
+    "controller" : "QueryExecution",
+    "spinnerContext" : "userMVTable1",
+    "spinnerMessage" : "Loading"
   },
   "StatusModel" : {
     "_id" : "wm-StatusModel-wm.Variable-1675423438730",
