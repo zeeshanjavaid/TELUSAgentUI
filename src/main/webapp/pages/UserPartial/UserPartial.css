@@ -707,8 +707,8 @@ td, th {
     margin: 10px 0;
 }
 .save_btn {
-    position: absolute;
-    right: -4rem;
+    position: relative;
+    /*right: -4rem;*/
 }
 /*.ds_grid{*/
 /*    display:grid !important;*/
