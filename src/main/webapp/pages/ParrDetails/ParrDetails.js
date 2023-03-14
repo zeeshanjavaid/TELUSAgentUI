@@ -20,6 +20,8 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    //alert("ParrId: " + Partial.Variables.getPaymentArrangement.dataSet.id);
+    //alert("Page param ParrId: " + Partial.pageParams.ParrId);
 
 };
 Partial.anchor2Click = function($event, widget) {
@@ -41,4 +43,16 @@ Partial.parrHistoryCollapse = function($event, widget) {
 };
 Partial.parrHistoryExpand = function($event, widget) {
     Partial.IsExpandedIS = true;
+};
+
+Partial.SubmitButtonClick = function($event, widget) {
+
+    alert("Update :" + Partial.Variables.getPaymentArrangement.dataSet.id);
+    //Partial.Variables.getPaymentArrangement.dataSet.comment = Partial.Widgets.Comments.datavalue;
+};
+
+Partial.updatePaymentArrangementonBeforeUpdate = function(variable, inputData, options) {
+
+    Partial;
+    debugger;
 };

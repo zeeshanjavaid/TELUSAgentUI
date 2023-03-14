@@ -29,7 +29,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
     var amount = '';
     var remainder = 0;
     var installmentSize = '';
-
+    var totalInstallmentAmt = 0;
     //Psuedo code start
     //check if numOfInstallmetn is selected 
     if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments') {
@@ -91,10 +91,12 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         } else {
             //collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
         }
+        totalInstallmentAmt = totalInstallmentAmt + amount;
         installmentSchedule.push(collectionPaymentInstallment);
     }
+    Partial.Variables.AmtOverUnderParrTotal = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
-    Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, 1);
+    Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
     Variables.createPaymentArrangement.dataSet.installments.dataset.push(...installmentSchedule);
 };
@@ -106,6 +108,13 @@ Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
 
 Partial.CancelClick = function($event, widget) {
 
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
+    Partial.Widgets.noOfInstlmnt.datavalue = 0;
+    Partial.Widgets.amountPerInstlmnt.datavalue = 0;
+    Partial.Widgets.RecurrenceDropdown.datavalue = '';
+    Partial.Widgets.ParrTotal.datavalue = '';
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    Partial.Widgets.InstallmentOptionRadio.datavalue = '';
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };
 Partial.RecurrenceDropdownChange = function($event, widget, newVal, oldVal) {
@@ -115,13 +124,19 @@ Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {};
 
 Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) {
 
-    Partial.Variables.NoOfInstallments.dataSet.datavalue = 0;
-    Partial.Variables.AmountPerInstallment.dataSet.dataValue = 0;
-
+    Partial.Widgets.noOfInstlmnt.datavalue = 0;
+    Partial.Widgets.amountPerInstlmnt.datavalue = 0;
 };
 
 Partial.ClearButtonClick = function($event, widget) {
+
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
+    Partial.Widgets.noOfInstlmnt.datavalue = 0;
+    Partial.Widgets.amountPerInstlmnt.datavalue = 0;
+    Partial.Widgets.RecurrenceDropdown.datavalue = '';
+    Partial.Widgets.ParrTotal.datavalue = '';
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    Partial.Widgets.InstallmentOptionRadio.datavalue = '';
 };
 
 Partial.ClearScheduleClick = function($event, widget) {
@@ -145,7 +160,7 @@ Partial.ClearScheduleClick = function($event, widget) {
     Partial.Widgets.dialog1.close();
 };*/
 Partial.SubmitBanClick = function($event, widget) {
-    debugger;
+
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     //BANName
     /*Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {

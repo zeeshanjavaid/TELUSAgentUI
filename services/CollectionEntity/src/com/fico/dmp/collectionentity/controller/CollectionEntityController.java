@@ -6,11 +6,11 @@ package com.fico.dmp.collectionentity.controller;
 import com.fico.dmp.collectionentity.CollectionEntity;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Exception;
-import java.lang.String;
+import java.lang.Integer;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionBillingAccountRef;
+import java.lang.String;
 import java.util.List;
-import java.lang.Integer;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +35,15 @@ public class CollectionEntityController {
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionBillingAccountRef> getBillingAccountRef(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntity.getBillingAccountRef(ban, history);
+    public CollectionBillingAccountRef getBillingAccountRef(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntity.getBillingAccountRef(id, history);
     }
 
-    @RequestMapping(value = "/billingAccountRef/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/billingAccountRef_1", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionBillingAccountRef getBillingAccountRef_1(@PathVariable("id") Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntity.getBillingAccountRef(id, history);
+    public List<CollectionBillingAccountRef> getBillingAccountRef_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntity.getBillingAccountRef(ban, history);
     }
 
     @RequestMapping(value = "/paymentArrangement/{id}", method = RequestMethod.GET)

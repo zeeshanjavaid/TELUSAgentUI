@@ -13,13 +13,158 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "AmtOverUnderParrTotal" : {
+    "_id" : "wm-AmtOverUnderParrTotal-wm.Variable-1678800694701",
+    "name" : "AmtOverUnderParrTotal",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "createParrModel" : {
+    "_id" : "wm-createParrModel-wm.Variable-1678780494720",
+    "name" : "createParrModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "amount",
+      "value" : "bind:Widgets.ParrTotal.datavalue"
+    }, {
+      "target" : "comment",
+      "value" : "bind:Widgets.Comments.datavalue"
+    }, {
+      "target" : "installments",
+      "value" : "bind:Variables.ParrInstallmentSchedule.dataSet"
+    }, {
+      "target" : "recurrence",
+      "value" : "bind:Widgets.RecurrenceDropdown.datavalue"
+    } ],
+    "dataSet" : {
+      "id" : 1,
+      "href" : "BASE_URL/paymentArrangement/1",
+      "allBillingAccountIncludedIndicator" : true,
+      "amount" : 100,
+      "auditInfo" : {
+        "createdBy" : "t123456",
+        "createdDateTime" : "2023-01-01T09:00:00.001Z",
+        "dataSource" : "fico-app-123",
+        "lastUpdatedBy" : "t123456",
+        "lastUpdatedDateTime" : "2023-01-01T09:00:00.001Z",
+        "@type" : "AuditInfo"
+      },
+      "billingAccountMaps" : [ {
+        "id" : 1,
+        "auditInfo" : {
+          "createdBy" : "t123456",
+          "createdDateTime" : "2023-01-01T09:00:00.001Z",
+          "dataSource" : "fico-app-123",
+          "lastUpdatedBy" : "t123456",
+          "lastUpdatedDateTime" : "2023-01-01T09:00:00.001Z",
+          "@type" : "AuditInfo"
+        },
+        "billingAccountRef" : {
+          "id" : 1,
+          "href" : "BASE_URL/billingAccountRef/1",
+          "auditInfo" : {
+            "createdBy" : "t123456",
+            "createdDateTime" : "2023-01-01T09:00:00.001Z",
+            "dataSource" : "fico-app-123",
+            "lastUpdatedBy" : "t123456",
+            "lastUpdatedDateTime" : "2023-01-01T09:00:00.001Z",
+            "@type" : "AuditInfo"
+          },
+          "billingAccount" : {
+            "id" : "12345",
+            "accountGroupId" : 1,
+            "accountType" : "B",
+            "accountSubType" : "I",
+            "name" : "A Company",
+            "state" : "O",
+            "@type" : "BillingAccount"
+          },
+          "billingSystemId" : 10,
+          "billingSystemName" : "CES9",
+          "closingCycle" : 6,
+          "collectionStatus" : "INCOLL",
+          "fraudIndicator" : false,
+          "involuntaryCeasedIndicator" : false,
+          "writeOffIndicator" : false,
+          "@type" : "CollectionBillingAccountRef"
+        },
+        "validityIndicator" : true,
+        "@type" : "CollectionPaymentArrangementBillingAccountMap"
+      } ],
+      "collectionEntity" : {
+        "id" : 1,
+        "href" : "BASE_URL/entity/1",
+        "@referredType" : "CollectionEntity",
+        "@type" : "EntityRef"
+      },
+      "comment" : "string",
+      "evaluationResult" : "string",
+      "expectedPaymentAmountToDate" : 100,
+      "installments" : [ {
+        "id" : 1,
+        "amount" : 100,
+        "sequenceId" : 1,
+        "auditInfo" : {
+          "createdBy" : "t123456",
+          "createdDateTime" : "2023-01-01T09:00:00.001Z",
+          "dataSource" : "fico-app-123",
+          "lastUpdatedBy" : "t123456",
+          "lastUpdatedDateTime" : "2023-01-01T09:00:00.001Z",
+          "@type" : "AuditInfo"
+        },
+        "date" : "2023-01-01",
+        "evaluationResult" : "string",
+        "evaluationTimestamp" : "2023-01-01T09:00:00.001Z",
+        "validityIndicator" : true,
+        "@type" : "CollectionPaymentInstallment"
+      } ],
+      "receivedPaymentAmountToDate" : 0,
+      "recurrence" : "MONTHLY",
+      "statuses" : [ {
+        "id" : 1,
+        "auditInfo" : {
+          "createdBy" : "t123456",
+          "createdDateTime" : "2023-01-01T09:00:00.001Z",
+          "dataSource" : "fico-app-123",
+          "lastUpdatedBy" : "t123456",
+          "lastUpdatedDateTime" : "2023-01-01T09:00:00.001Z",
+          "@type" : "AuditInfo"
+        },
+        "reason" : "string",
+        "status" : "string",
+        "validFor" : {
+          "startDateTime" : "2023-01-01T09:00:00.001Z"
+        },
+        "@type" : "CollectionPaymentArrangementStatus"
+      } ],
+      "@type" : "CollectionPaymentArrangement"
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "createPaymentArrangement" : {
     "_id" : "wm-createPaymentArrangement-wm.ServiceVariable-1678429945032",
     "name" : "createPaymentArrangement",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "isList" : false,
+      "target" : "CollectionPaymentArrangement",
+      "value" : "bind:Variables.createParrModel.dataSet",
+      "type" : "io.swagger.client.model.CollectionPaymentArrangement"
+    } ],
     "type" : "io.swagger.client.model.CollectionPaymentArrangement",
     "service" : "CollectionEntity",
     "operation" : "addPaymentArrangement",
@@ -30,7 +175,7 @@
     "isList" : false,
     "maxResults" : 20,
     "startUpdate" : false,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

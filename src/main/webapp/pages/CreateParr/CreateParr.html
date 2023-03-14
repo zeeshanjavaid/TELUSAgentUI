@@ -1,9 +1,9 @@
 <wm-partial name="partial1">
-    <wm-container name="container2">
-        <wm-container name="container9">
-            <wm-label padding="0.5em 0.5em 0.2em 0.5em" name="label11" caption="Create Parr" fontsize="14" margin="unset unset unset 25px" class="parrBorder" color="#7a7a7a"></wm-label>
+    <wm-container name="CreateParrContainer" on-load="CreateParrContainerLoad(widget)">
+        <wm-container name="container9" on-load="container9Load(widget)">
+            <wm-label padding="0.5em 0.5em 0.2em 0.5em" name="label11" caption="Create PARR" fontsize="14" margin="unset unset unset 25px" class="parrBorder" color="#7a7a7a"></wm-label>
         </wm-container>
-        <wm-label padding="0.4em 0.5em 0.5em 0.5em" name="label13" caption="Adjustment Details" margin="unset unset unset 25px" class="adjustmentLable" fontsize="14" textalign="left"></wm-label>
+        <wm-label padding="0.4em 0.5em 0.5em 0.5em" name="label13" caption="Adjustment Details:" margin="unset unset unset 25px" class="adjustmentLable" fontsize="14" textalign="left"></wm-label>
     </wm-container>
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow1">
@@ -11,21 +11,22 @@
                 <wm-composite name="composite1" margin="unset unset unset 5px">
                     <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:" width="90px" margin="unset unset unset 2em"></wm-label>
                     <wm-container class="col-md-9" name="container3" width="170px">
-                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="150px"></wm-text>
+                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)"
+                            width="150px"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow2"></wm-gridrow>
     </wm-layoutgrid>
-    <wm-label padding="unset 0.5em 1em unset" name="label3_1" caption="Installment Details" margin="unset unset unset 33px"></wm-label>
+    <wm-label padding="unset 0.5em 1em unset" name="label3_1" caption="Installment Details:" margin="unset unset unset 33px"></wm-label>
     <wm-container name="container11" margin="unset unset unset 2em">
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow3" height="150px">
                 <wm-gridcolumn columnwidth="2" name="gridcolumn5" horizontalalign="right">
                     <wm-composite name="composite2">
                         <wm-label class="col-md-3 control-label" name="label5" caption="Recurrence:" fontsize="14" width="80px"></wm-label>
-                        <wm-container class="col-md-9" name="container4" width="100px">
+                        <wm-container class="col-md-9" name="container4" width="110px">
                             <wm-select name="RecurrenceDropdown" placeholder="Select Value" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" margin="unset unset unset 5px" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.recurrence"
                                 displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)" width="155px"></wm-select>
                         </wm-container>
@@ -65,8 +66,8 @@
                         <wm-container class="col-md-9" name="container6" display="table-row" width="250" horizontalalign="center" margin="unset unset unset 50px"></wm-container>
                         <wm-layoutgrid name="layoutgrid5_2">
                             <wm-gridrow name="gridrow8_1">
-                                <wm-gridcolumn columnwidth="5" name="gridcolumn18_1">
-                                    <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:" width="125px" margin="unset unset unset 20px"></wm-label>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn18_1">
+                                    <wm-label class="col-md-3 control-label" name="label8" caption="Installment type:" width="110px" margin="unset unset unset 25px"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="7" name="gridcolumn19_2">
                                     <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="bind:Variables.InstallmentOptions.dataSet" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"
@@ -97,7 +98,7 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="4" name="gridcolumn7" horizontalalign="right">
                     <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true"></wm-button>
+                    <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -116,7 +117,7 @@
         <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 35em" name="SubmitBan" on-click="SubmitBanClick($event, widget)"></wm-button>
     </wm-dialog>
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 5px">
-        <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule" textdecoration="underline" margin="unset unset unset 2em"></wm-label>
+        <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule:" margin="unset unset unset 2em"></wm-label>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right" padding="unset unset unset 2px">
@@ -143,7 +144,7 @@
                     <wm-label padding="unset 0.5em" name="staticTotalLabel" caption="Amount Over/Under PARR Total:" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="7" name="gridcolumn21">
-                    <wm-label padding="unset 0.5em" name="amtUnderOver" caption="TBD"></wm-label>
+                    <wm-label padding="unset 0.5em" name="amtUnderOver" caption="bind:Variables.AmtOverUnderParrTotal.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
                     <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>

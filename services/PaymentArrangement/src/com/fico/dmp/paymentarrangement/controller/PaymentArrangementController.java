@@ -27,4 +27,9 @@ public class PaymentArrangementController {
     public String createPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
         return paymentArrangement.createPaymentArrangement(collectionPaymentArrangement, request);
     }
+
+    @RequestMapping(value = "/paymentArrangement", produces = "application/json", method = RequestMethod.PUT)
+    public String updatePaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
+        return paymentArrangement.updatePaymentArrangement(collectionPaymentArrangement, request);
+    }
 }

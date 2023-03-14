@@ -56,5 +56,13 @@ public class PaymentArrangement {
         
         return result;
     }
+    public String updatePaymentArrangement(CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
+       
+        logger.debug("::::::::::updatePaymentArrangement::::::::::::: " + collectionPaymentArrangement.getId());
+        
+        String result = null;
+        
+        return result;
+    }
 
 }
