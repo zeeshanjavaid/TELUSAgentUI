@@ -34,9 +34,9 @@ Partial.onReady = function() {
     Partial.Variables.leftRolesList.dataSet = [];
     Partial.Variables.leftUserList.dataSet = [];
 
-    if (Partial.pageParams.roleId === undefined) {
-        Partial.Variables.readOnlyMode.dataSet.dataValue = false;
-    }
+    // if (Partial.pageParams.roleId === undefined) {
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    // }
 
 };
 
@@ -946,4 +946,8 @@ Partial.EditTeamButtonClick = function($event, widget) {
 };
 Partial.DeleteButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+};
+Partial.deleteTeamConfirmNoClick = function($event, widget) {
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+
 };

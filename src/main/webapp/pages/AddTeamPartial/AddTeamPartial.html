@@ -109,13 +109,15 @@
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
-                    <wm-message name="message3" type="warning" hideclose="true" caption="bind:'Are you sure you want to delete ' + pageParams.teamId"></wm-message>
+                    <wm-container name="container15_1">
+                        <wm-label padding="unset 0.5em" name="label7" caption="bind:'Are you sure you want to delete Team <b> ' + pageParams.teamId + '</b> ?'"></wm-label>
+                    </wm-container>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
             <wm-container name="container15" horizontalalign="center">
-                <wm-button class="btn-link" caption="Cancel" on-click="Widgets.deleteTeamDialog.close()" name="deleteTeamConfirmNo" margin="unset 0.5em unset unset" textalign="center"></wm-button>
+                <wm-button class="btn-link" caption="Cancel" on-click="Widgets.deleteTeamDialog.close();deleteTeamConfirmNoClick($event, widget)" name="deleteTeamConfirmNo" margin="unset 0.5em unset unset" textalign="center"></wm-button>
                 <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteTeamConfirmOk" on-click="deleteTeamConfirmOkClick($event, widget)"></wm-button>
             </wm-container>
         </wm-dialogactions>
