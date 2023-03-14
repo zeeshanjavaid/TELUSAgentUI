@@ -2,21 +2,21 @@
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow7">
             <wm-gridcolumn columnwidth="3" name="gridcolumn21_1">
-                <wm-container name="container13" margin="1em unset unset 3em">
+                <wm-container name="container13" margin="1em unset unset 1em">
                     <wm-anchor margin="unset 0.5em" name="anchor2" iconclass="fico-icon-arrow-left" caption="" on-click="anchor2Click($event, widget)"></wm-anchor>
-                    <wm-label padding="unset 0.5em unset unset" name="label3" caption="PARR Details" margin="unset unset unset 6px" fontunit="px"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" name="label3" caption="PARR Details" margin="unset unset unset 8.2px" fontunit="px"></wm-label>
                 </wm-container>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="9" name="gridcolumn22_1" horizontalalign="right">
                 <wm-container name="container14" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em" name="button1"></wm-button>
-                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.dialog1.open()" textalign="right"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.cancelPARRConfirmationdialog.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow6"></wm-gridrow>
         <wm-gridrow name="gridrow2">
-            <wm-container name="container15" margin="1em unset unset 9em">
+            <wm-container name="container15" margin="1em unset unset 7em">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn3">
                     <wm-composite name="composite2" width="165px">
                         <wm-label class="col-md-3 control-label" name="label5" caption="Parr ID" width="30%"></wm-label>
@@ -68,7 +68,7 @@
             </wm-container>
         </wm-gridrow>
         <wm-gridrow name="gridrow4">
-            <wm-container name="container16" margin="1em unset unset 9em">
+            <wm-container name="container16" margin="1em unset unset 7em">
                 <wm-gridcolumn columnwidth="2" name="gridcolumn17">
                     <wm-composite name="composite9" width="100%">
                         <wm-label class="col-md-3 control-label" name="label12" caption="Reccurence" width="38%"></wm-label>
@@ -88,13 +88,13 @@
                                     <wm-label class="col-md-3 control-label" name="label14" caption="Installment BAN's" width="90%" margin="3px unset unset unset"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="10" name="gridcolumn17_3">
-                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list SSS" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
+                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
                                         <wm-listtemplate layout="inline" name="listtemplate3">
                                             <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
                                                 <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
                                             </wm-container>
                                             <wm-container class="media-body" padding="unset unset unset 1.25em" name="container25">
-                                                <wm-layoutgrid name="layoutgrid3" width="50%">
+                                                <wm-layoutgrid name="layoutgrid3" width="70%">
                                                     <wm-gridrow name="gridrow7_1">
                                                         <wm-gridcolumn columnwidth="4" name="gridcolumn16_1">
                                                             <wm-label name="Name" class="p media-heading" caption="bind:Variables.installmentBAN.dataSet.name" fontsize="1.143" fontunit="em" width="280%"></wm-label>
@@ -119,7 +119,7 @@
     </wm-layoutgrid>
     <!--<wm-label padding="1em 0.5em unset 0.5em" name="label10_1" caption="Installment Schedule"></wm-label>-->
     <wm-panel iconclass="bind:IsExpandedIS === false ? 'fico-icon-chevron-light-right':'fico-icon-chevron-light-down'" autoclose="outsideClick" title="Installment Schedule" name="installmentSchedule" on-expand="installmentScheduleExpand($event, widget)"
-        collapsible="true" on-collapse="installmentScheduleCollapse($event, widget)">
+        collapsible="true" on-collapse="installmentScheduleCollapse($event, widget)" margin="unset unset unset -1.7em">
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
@@ -138,7 +138,7 @@
         </wm-layoutgrid>
     </wm-panel>
     <wm-panel iconclass="bind:IsExpandedIS === false ? 'fico-icon-chevron-light-right':'fico-icon-chevron-light-down'" autoclose="outsideClick" title="PARR History" name="parrHistory" on-expand="parrHistoryExpand($event, widget)" on-collapse="parrHistoryCollapse($event, widget)"
-        collapsible="true">
+        collapsible="true" margin="unset unset unset -1.7em">
         <wm-layoutgrid name="layoutgrid6">
             <wm-gridrow name="gridrow13">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn32"></wm-gridcolumn>
@@ -163,7 +163,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-panel>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="dialog1" width="45%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="45%" height="100%">
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow4_1">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn15">
@@ -251,8 +251,35 @@
             </wm-composite>
         </wm-container>
         <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Clear" on-click="closeDialog()" name="button3" margin="unset unset unset 20em"></wm-button>
-            <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 3em" name="button4"></wm-button>
+            <wm-button class="btn-primary" caption="Clear" on-click="Widgets.renegotiatePARRdialog.close()" name="button3" margin="unset unset unset 20em"></wm-button>
+            <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 3em" name="button4" on-click="Widgets.renegotitateSubmitDialog.open()"></wm-button>
         </wm-dialogactions>
+    </wm-dialog>
+    <wm-alertdialog name="alertdialog2" iconclass="fico-icon-check-circle fa-3x" title="" iconmargin="45%" message="Parr Successfully Renegotiated!" alerttype="success" align="center"></wm-alertdialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="fico-icon-check-circle fa-3x" name="renegotitateSubmitDialog" iconmargin="45%" showheader="true" width="35%">
+        <wm-layoutgrid name="layoutgrid9">
+            <wm-gridrow name="gridrow14">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn31_1">
+                    <wm-label padding="unset 0.5em" caption="Parr Successfully Renegotiated!" name="label31" align="center" margin="unset unset unset 10em" width="35%" height="25%"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Cancel PARR Confirmation" iconclass="" name="cancelPARRConfirmationdialog">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label padding="unset 0.5em" caption="Are you sure you want to cancel PARR ID ?" name="label36" margin="unset unset unset 1em"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-composite name="composite14_1" margin="2em unset unset unset">
+            <wm-label class="col-md-3 control-label" name="label41" caption="Comments" width="19%" textalign="center"></wm-label>
+            <wm-container class="col-md-9" name="container27">
+                <wm-textarea name="textarea2" color="#ddd" class="cancelParrborder" margin="unset unset unset 3em" width="90%"></wm-textarea>
+            </wm-container>
+        </wm-composite>
+        <wm-button class="btn-default" caption="No,Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8"></wm-button>
+        <wm-button class="btn-default" caption="Yes,Cancel" type="button" margin="2em 0.5em 1em 2em" name="button7"></wm-button>
     </wm-dialog>
 </wm-partial>

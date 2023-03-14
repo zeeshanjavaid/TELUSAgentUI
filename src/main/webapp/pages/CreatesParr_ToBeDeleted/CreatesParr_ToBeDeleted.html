@@ -79,7 +79,6 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN'(s)" iconclass="wi wi-file-text" name="dialog1">
-        <wm-button class="btn-default" caption="Button" type="button" margin="unset 0.5em" name="button9_1"></wm-button>
         <wm-table name="selectBanParrTable1" title="" dataset="bind:Variables.selectBanParr.dataSet" navigation="None" radioselect="false" multiselect="true" pagesize="125" show="true">
             <wm-table-column binding="BAN" caption="Ban" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="BAN Name" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -94,7 +93,6 @@
             <wm-gridrow name="gridrow5"></wm-gridrow>
         </wm-layoutgrid>
         <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 25em" name="button4" on-click="button4Click($event, widget)"></wm-button>
-        <wm-button class="btn-default" caption="Button" type="button" margin="unset 0.5em" name="button8_1" on-click="button8_1Click($event, widget)"></wm-button>
     </wm-dialog>
     <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule" textdecoration="underline"></wm-label>
     <wm-layoutgrid name="layoutgrid4">

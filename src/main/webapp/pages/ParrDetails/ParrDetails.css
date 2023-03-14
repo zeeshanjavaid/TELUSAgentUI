@@ -1,4 +1,4 @@
-.SSS {
+.InstallBAN {
     border: solid;
     border-width: 0.1px;
     border-color: lightgray;
@@ -9,3 +9,6 @@ button.app-icon.wi.card-action {
     display: none;
 }
 
+.cancelParrborder{
+    border-radius: 5px;
+}

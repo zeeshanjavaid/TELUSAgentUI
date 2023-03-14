@@ -2166,10 +2166,10 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "name" : "BAN ID",
+      "name" : "BAN 1",
       "value" : "1234"
     }, {
-      "name" : "BAN ID",
+      "name" : "BAN 2",
       "value" : "678"
     } ],
     "type" : "entry",

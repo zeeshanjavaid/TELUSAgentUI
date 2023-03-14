@@ -23,16 +23,16 @@ Partial.onReady = function() {
     Partial.Variables.installmentBANCreateParr.dataSet = [];
 
 };
-Partial.button4Click = function($event, widget) {
+/*Partial.button4Click = function($event, widget) {
     debugger;
     //selectBanParrTable1
-};
-Partial.button8_1Click = function($event, widget) {
+};*/
+/*Partial.button8_1Click = function($event, widget) {
     debugger;
 };
 Partial.button10_1Click = function($event, widget) {
     debugger;
-};
+};*/
 
 Partial.button4Click = function($event, widget) {
     debugger;

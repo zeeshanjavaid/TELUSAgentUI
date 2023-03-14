@@ -127,3 +127,50 @@ Partial.ClearButtonClick = function($event, widget) {
 Partial.ClearScheduleClick = function($event, widget) {
     Partial.Widgets.Comments.datavalue = '';
 };
+
+//selectBanParrTable1
+/*Partial.button4Click = function($event, widget) {
+    debugger;
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    //BANName
+    Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {
+
+        Partial.obj = {
+            "BAN": a.BAN,
+            "BANName": a.BANName
+        }
+        Partial.Variables.installmentBANCreateParr.dataSet.push(Partial.obj);
+    })
+
+    Partial.Widgets.dialog1.close();
+};*/
+Partial.SubmitBanClick = function($event, widget) {
+    debugger;
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    //BANName
+    /*Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {
+
+        Partial.obj = {
+            "BAN": a.BAN,
+            "BANName": a.BANName
+        }
+        Partial.Variables.installmentBANCreateParr.dataSet.push(Partial.obj);
+    })*/
+    Partial.Variables.installmentBANCreateParr.dataSet = Partial.Widgets.selectBanParrTable1.selectedItems;
+
+    /*Partial.Variables.getEntityBanDetails.invoke({
+            "inputFields": {
+                "entityId": 1
+            }
+        },
+        function(data) {
+            debugger;
+            Partial.Variables.installmentBANCreateParr.dataSet = data;
+        },
+        function(error) {
+            debugger;
+            console.log("error", error)
+        });*/
+
+    Partial.Widgets.selectBANdialog.close();
+};
