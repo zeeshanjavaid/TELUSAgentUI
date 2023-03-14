@@ -87,6 +87,7 @@ public class CollectionEntity {
         
     public CollectionPaymentArrangement addPaymentArrangement( CollectionPaymentArrangement  collectionPaymentArrangementCreate) throws Exception  {
     
+        logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
         return collectionPaymentArrangementCreate;
         
     }

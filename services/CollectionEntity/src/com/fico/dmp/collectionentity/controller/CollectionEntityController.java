@@ -28,8 +28,6 @@ public class CollectionEntityController {
     private CollectionEntity collectionEntity;
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.addPaymentArrangement(collectionPaymentArrangementCreate);
     }
@@ -63,8 +61,6 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.updatePaymentArrangement(id, collectionPaymentArrangementCreate);
     }
