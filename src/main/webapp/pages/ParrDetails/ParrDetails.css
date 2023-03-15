@@ -2,13 +2,23 @@
     border: solid;
     border-width: 0.1px;
     border-color: lightgray;
-    width:45%;
+    width:28%;
 }
 
 button.app-icon.wi.card-action {
     display: none;
 }
-
+.cancelParrDialog{
+     top: 200px;
+}
 .cancelParrborder{
     border-radius: 5px;
+}
+
+.newDialogSubmit {
+    top: 200px;
+    height: 400px;
+}
+.Renegotiate{
+    top:100px;
 }

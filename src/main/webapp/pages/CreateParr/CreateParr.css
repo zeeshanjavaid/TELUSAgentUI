@@ -3,4 +3,18 @@
     border-width: 0.1px;
     border-color: lightgray;
     width:85%;
+    overflow: hidden;
+    width: 14em;
+}
+
+
+@media (min-width: 500px) {
+.summary-col-width-medium {
+flex: 0 0 9%;
+max-width: 10%;
+min-width: 7.333%;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
 }

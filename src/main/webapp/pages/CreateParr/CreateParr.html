@@ -32,12 +32,12 @@
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="2" name="gridcolumn15">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn15" class="summary-col-width-medium">
                     <wm-label class="col-md-3 control-label" name="label10" caption="Installment BAN's:" width="75%" textalign="center"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn6" horizontalalign="center">
                     <wm-composite name="composite11">
-                        <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet" navigation="None">
+                        <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet" navigation="None">
                             <wm-listtemplate layout="inline" name="listtemplate1">
                                 <wm-container class="media-left" name="container10" width="0.5%">
                                     <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
@@ -46,7 +46,7 @@
                                     <wm-layoutgrid name="layoutgrid5_1" width="115%">
                                         <wm-gridrow name="gridrow8">
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn16">
-                                                <wm-label padding="unset 0.5em" name="banName" caption="Ban ID:" width="355%" margin="-5px unset unset unset"></wm-label>
+                                                <wm-label padding="unset 0.5em" name="banName" caption="Ban ID" width="355%" margin="-5px unset unset unset"></wm-label>
                                             </wm-gridcolumn>
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn20_1">
                                                 <wm-label padding="unset 0.5em" name="banValue" caption="bind:Variables.installmentBANCreateParr.dataSet[$i].banId" margin="-5px unset unset unset"></wm-label>
@@ -149,9 +149,18 @@
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
                     <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
                     <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Create" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()"></wm-button>
+                    <wm-button class="btn-default" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-container>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" class="newDialogSubmit" iconclass="fico-icon-check-circle fa-4x" name="createParrDialog" iconmargin="40%" showheader="true" width="26%" height="145px">
+        <wm-layoutgrid name="layoutgrid9">
+            <wm-gridrow name="gridrow14">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn31_1">
+                    <wm-label padding="unset 0.5em unset unset" caption="PARR Successfully Created!" name="label31" align="center" margin="2em unset unset 7em" width="55%" height="25%"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
 </wm-partial>
