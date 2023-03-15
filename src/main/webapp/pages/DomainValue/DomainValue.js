@@ -266,8 +266,8 @@ Page.showInactive_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-        "searchValue": "%" + "%",
+        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -303,8 +303,8 @@ Page.showActive_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-        "searchValue": "%" + "%",
+        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -325,14 +325,14 @@ Page.showAll_LinkClick = function($event, widget) {
             Page.Variables.sortProperties.getValue('dataValue') : 'code ASC'));
 
 
-    Page.Variables.showAllDVs.setValue('dataValue', false);
+    Page.Variables.showAllDVs.setValue('dataValue', true);
     Page.Variables.showActiveDVs.setValue('dataValue', true);
     Page.Variables.showInactiveDVs.setValue('dataValue', true);
 
 
     // Page.Variables.showAllDVs.setValue('dataValue', true);
-    // Page.Variables.showActiveDVs.setValue('dataValue', false);
-    // Page.Variables.showInactiveDVs.setValue('dataValue', false);
+    // Page.Variables.showActiveDVs.setValue('dataValue', true);
+    // Page.Variables.showInactiveDVs.setValue('dataValue', true);
 
     Page.Widgets.activate_Button.disabled = true;
     Page.Widgets.deactivate_Button.disabled = true;
@@ -343,8 +343,8 @@ Page.showAll_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-        "searchValue": "%" + "%",
+        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -443,8 +443,8 @@ Page.searchDV_ButtonClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        //"searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-        "searchValue": "%" + "%",
+        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -466,7 +466,8 @@ Page.DomainValueList_TableHeaderclick = function($event, $data) {
 };
 Page.button5Click = function($event, widget) {
     debugger;
-    Page.Variables.searchValue.dataSet = [];
+
+    Page.Variables.searchValue.dataSet.dataValue = [];
     Page.Variables.totalRecordCount.setValue('dataValue', 0);
     Page.Variables.currentPage.setValue('dataValue', 0);
     Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -480,8 +481,7 @@ Page.button5Click = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        //"searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
-        "searchValue": "%" + "%",
+        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
