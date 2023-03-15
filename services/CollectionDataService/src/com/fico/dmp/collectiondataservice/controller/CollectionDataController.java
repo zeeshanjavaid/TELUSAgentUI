@@ -8,6 +8,7 @@ import java.lang.String;
 import java.lang.Exception;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import java.util.List;
+import io.swagger.client.model.CollectionDispute;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,12 @@ public class CollectionDataController {
     @ApiOperation(value = "")
     public List<EntityBanDetailsResponse> getEntityBanDetails(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
         return collectionDataService.getEntityBanDetails(entityId);
+    }
+
+    @RequestMapping(value = "/dispute", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionDispute> getdispute(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
+        return collectionDataService.getdispute(banRefId);
     }
 }

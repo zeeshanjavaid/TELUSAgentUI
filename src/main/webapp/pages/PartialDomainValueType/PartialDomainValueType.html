@@ -1,5 +1,4 @@
-<wm-partial>
-
+<wm-partial name="partial1">
     <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full">
         <wm-container width="97%" name="data-container">
             <wm-container name="header-container" width="100%" margin="7px unset 20px unset">
@@ -40,7 +39,8 @@
                 <wm-container width="85%" name="action_container" class="inflex-center-sb jc-sb">
                     <wm-label padding="unset 5px unset 50px" name="label3_1" caption="Domain Value" width="40%" height="100%"></wm-label>
                     <wm-container name="DVUploadSelect_container" width="60%" class="colflex-center-sb jc-sb flexCol">
-                        <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10" width="100%"></wm-fileupload>
+                        <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10"
+                            width="100%"></wm-fileupload>
                         <wm-label padding="unset 0.5em" name="label4" caption=".xlsx file less than 10 MB" fontsize="0.85" fontunit="em"></wm-label>
                     </wm-container>
                 </wm-container>
@@ -53,5 +53,4 @@
         <wm-confirmdialog name="DVUpload_confirmDialog" title="" iconclass="" closable="false" message="Records from the uploaded file will overwrite existing records. Are you sure to continue?" canceltext="NO" oktext="YES" modal="true" on-cancel="Widgets.DVUpload_confirmDialog.close()"
             on-ok="DVUpload_confirmDialogOk($event, widget)"></wm-confirmdialog>
     </wm-container>
-
 </wm-partial>
