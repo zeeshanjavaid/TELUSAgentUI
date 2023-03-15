@@ -19,7 +19,6 @@ Page.title = "";
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
-    debugger;
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -29,24 +28,19 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    Page.pageParams.domainValueTypeId = 4;
     initPage();
 };
 
 function initPage() {
     //  const intervalId = setInterval(function() {
-    //if (App.permissionsLoaded) {
-    // clearInterval(intervalId);
-    // console.log('Permissions loaded...');
+    //        if (App.permissionsLoaded) {
+    //  clearInterval(intervalId);
+    //  console.log('Permissions loaded...');
 
-    //Removed Permission for Domain Value aka Work Category
-
-    // if (!App.IsUserHasAccess('System Administration')) {
-    //     window.location.href = '#/ErrorLanding';
-    // } else {
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
-
-    debugger;
+    //        if (!App.IsUserHasAccess('System Administration')) {
+    //        window.location.href = '#/ErrorLanding';
+    //        } else {
+    //        document.getElementsByTagName("html")[0].style.visibility = "visible";
 
     //listening to search inputs key-up events
 
@@ -113,21 +107,21 @@ function initPage() {
 
     dvFetchSV.invoke();
     //   }
-    //  } else {
-    //determining the time elapsed since App started in minutes
-    const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
-
-    // if (timeElapsedSinceAppStart < 1)
-    //     console.log('Waiting to load permissions...');
-    // else {
-    //     clearInterval(intervalId);
-
-    //     //if the active page is not 'ErrorLanding'
-    //     if (window.location.hash !== '#/ErrorLanding')
-    //         window.location.href = '#/ErrorLanding';
-    // }
-    //   }
-    //  }, 10);
+    //        } else {
+    //        //determining the time elapsed since App started in minutes
+    //        const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
+    //
+    //        if (timeElapsedSinceAppStart < 1)
+    //        console.log('Waiting to load permissions...');
+    //        else {
+    //        clearInterval(intervalId);
+    //
+    //        //if the active page is not 'ErrorLanding'
+    //        if (window.location.hash !== '#/ErrorLanding')
+    //        window.location.href = '#/ErrorLanding';
+    //        }
+    //        }
+    //   }, 10);
 }
 
 /* Utility functions */
@@ -150,6 +144,8 @@ Page.displayPageInfo = function() {
 };
 
 Page.navigateURLBuilder = function(domainValueId) {
+
+
     let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId;
     return URI;
 };
@@ -157,8 +153,6 @@ Page.navigateURLBuilder = function(domainValueId) {
 /* UI level functions */
 Page.sv_getDVListPaginatedonSuccess = function(variable, data) {
     //de-select all DV table rows and redraw table
-
-    debugger;
     Page.Widgets.DomainValueList_Table.selecteditem = [];
 
     //set pagination values
@@ -219,7 +213,7 @@ Page.sv_activateDeactivateDVByIdsonError = function(variable, data) {
     //search/fetch service invocation below
     let dvFetchSV = Page.Variables.sv_getDVListPaginated;
     dvFetchSV.setInput({
-        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : 4, //Page.pageParams.domainValueTypeId,
+        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
         "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
@@ -272,7 +266,8 @@ Page.showInactive_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -295,6 +290,10 @@ Page.showActive_LinkClick = function($event, widget) {
     Page.Variables.showActiveDVs.setValue('dataValue', true);
     Page.Variables.showInactiveDVs.setValue('dataValue', false);
 
+    // Page.Variables.showAllDVs.setValue('dataValue', true);
+    // Page.Variables.showActiveDVs.setValue('dataValue', true);
+    // Page.Variables.showInactiveDVs.setValue('dataValue', true);
+
     Page.Widgets.activate_Button.disabled = true;
     Page.Widgets.deactivate_Button.disabled = true;
 
@@ -304,7 +303,8 @@ Page.showActive_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -315,6 +315,8 @@ Page.showActive_LinkClick = function($event, widget) {
 };
 
 Page.showAll_LinkClick = function($event, widget) {
+
+    debugger;
     Page.Variables.totalRecordCount.setValue('dataValue', 0);
     Page.Variables.currentPage.setValue('dataValue', 0);
     Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -323,9 +325,14 @@ Page.showAll_LinkClick = function($event, widget) {
             Page.Variables.sortProperties.getValue('dataValue') : 'code ASC'));
 
 
-    Page.Variables.showAllDVs.setValue('dataValue', true);
-    Page.Variables.showActiveDVs.setValue('dataValue', false);
-    Page.Variables.showInactiveDVs.setValue('dataValue', false);
+    Page.Variables.showAllDVs.setValue('dataValue', false);
+    Page.Variables.showActiveDVs.setValue('dataValue', true);
+    Page.Variables.showInactiveDVs.setValue('dataValue', true);
+
+
+    // Page.Variables.showAllDVs.setValue('dataValue', true);
+    // Page.Variables.showActiveDVs.setValue('dataValue', false);
+    // Page.Variables.showInactiveDVs.setValue('dataValue', false);
 
     Page.Widgets.activate_Button.disabled = true;
     Page.Widgets.deactivate_Button.disabled = true;
@@ -336,7 +343,8 @@ Page.showAll_LinkClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        // "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -435,7 +443,8 @@ Page.searchDV_ButtonClick = function($event, widget) {
         "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
         "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
         "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
-        "searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        //"searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        "searchValue": "%" + "%",
         "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
         "currentPage": Page.Variables.currentPage.getValue('dataValue'),
         "pageSize": Page.Variables.pageSize.getValue('dataValue'),
@@ -446,7 +455,6 @@ Page.searchDV_ButtonClick = function($event, widget) {
 };
 
 Page.createDV_ButtonClick = function($event, widget) {
-
     Page.Actions.goToPage_DomainValueCreateEdit.invoke({
         data: {
             'domainValueTypeId': Page.pageParams.domainValueTypeId
@@ -455,4 +463,30 @@ Page.createDV_ButtonClick = function($event, widget) {
 };
 Page.DomainValueList_TableHeaderclick = function($event, $data) {
 
+};
+Page.button5Click = function($event, widget) {
+    debugger;
+    Page.Variables.searchValue.dataSet = [];
+    Page.Variables.totalRecordCount.setValue('dataValue', 0);
+    Page.Variables.currentPage.setValue('dataValue', 0);
+    Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
+    Page.Variables.sortProperties.setValue('dataValue',
+        (Page.Variables.sortProperties.getValue('dataValue') ?
+            Page.Variables.sortProperties.getValue('dataValue') : 'code ASC'));
+
+    //search/fetch service invocation below
+    let dvFetchSV = Page.Variables.sv_getDVListPaginated;
+    dvFetchSV.setInput({
+        "domainValueTypeId": (!Page.pageParams.domainValueTypeId) ? 0 : Page.pageParams.domainValueTypeId,
+        "showAll": Page.Variables.showAllDVs.getValue('dataValue'),
+        "isActiveFlag": Page.Variables.showActiveDVs.getValue('dataValue'),
+        //"searchValue": "%" + Page.Variables.searchValue.getValue('dataValue') + "%",
+        "searchValue": "%" + "%",
+        "defaultLocale": Page.Variables.defaultLocale.getValue('dataValue'),
+        "currentPage": Page.Variables.currentPage.getValue('dataValue'),
+        "pageSize": Page.Variables.pageSize.getValue('dataValue'),
+        "sortOrders": Page.Variables.sortProperties.getValue('dataValue')
+    });
+
+    dvFetchSV.invoke();
 };

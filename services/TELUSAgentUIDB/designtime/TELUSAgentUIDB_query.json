@@ -2354,6 +2354,52 @@
       } ]
     }
   },
+  "getDvTypeById" : {
+    "name" : "getDvTypeById",
+    "description" : "getDvTypeById",
+    "version" : "V2",
+    "queryString" : "select dvt.Description from DomainValueType dvt where dvt.ID=:id",
+    "countQueryString" : "select count(*) from (select dvt.Description from DomainValueType dvt where dvt.ID=:id) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "4",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetDvTypeByIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "Description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "DomainValueType",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getGroupByUserId" : {
     "name" : "getGroupByUserId",
     "description" : "getGroupByUserId",
@@ -3660,8 +3706,8 @@
     "name" : "getWorkCtegoryByCode",
     "description" : "Sql query to get code from DomainValue as Work Category",
     "version" : "V2",
-    "queryString" : "select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory",
-    "countQueryString" : "select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory) wmTempTable",
+    "queryString" : "select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory",
+    "countQueryString" : "select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",

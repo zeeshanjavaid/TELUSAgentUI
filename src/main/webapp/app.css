@@ -205,3 +205,72 @@
 .wm-app .app-livelist .app-list-item.active.list-group-item .app-label {
     color: #ccc !important;
 }
+
+
+/*.btn.app-button.btn-default {
+    border: 1px solid green;
+    color: #fff;
+    background-color: green;
+}
+
+.btn.app-button.btn-default:hover {
+    border: 1px solid green;
+    color: green;
+    background-color: #fff;
+}*/
+
+.btn.primaryButton {
+    border: 1px solid green;
+    color: #fff;
+    background-color: green;
+}
+
+.btn.primaryButton:hover {
+    border: 1px solid green;
+    color: green;
+    background-color: #fff;
+}
+
+.btn.primaryButton:focus {
+    border: 1px solid green;
+    color: green;
+    background-color: #fff;
+}
+
+.btn.secondaryButton {
+    background-color: white;
+    color: purple;
+    border-bottom: 1px solid purple;
+    border-radius: unset;
+    padding: 1px 2px;
+}
+
+.btn.secondaryButton:hover {
+    background-color: white;
+    color: purple;
+    border-bottom: 1px solid purple;
+    border-radius: unset;
+}
+
+.btn.secondaryButton:focus {
+    background-color: white;
+    color: purple;
+    border-bottom: 1px solid purple;
+    border-radius: unset;
+}
+
+.btn.app-button.btn-secondary {
+    border: 1px solid green;
+    color: #fff;
+    background-color: green;
+}
+
+.btn.app-button.btn-secondary:hover {
+    border: 1px solid green;
+    color: green;
+    background-color: #fff !important;
+}
+
+.action-container {
+    background-color: white !important;
+}

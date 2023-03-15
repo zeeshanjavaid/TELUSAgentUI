@@ -1,1 +1,16 @@
-{ }
+{
+  "redirectDomainCreatePage" : {
+    "_id" : "wm-redirectDomainCreatePage-wm.Variable-1678514088530",
+    "name" : "redirectDomainCreatePage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

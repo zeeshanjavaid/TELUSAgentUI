@@ -8727,7 +8727,7 @@ button.wm-app .close {
 .wm-app .btn.btn-secondary,
 .wm-app .btn.btn-default {
     color: #4B286D;
-    border-color: #4B286D;
+    border-color: #4B286D; // this one
     background-color: #ffffff;
 }
 

@@ -157,7 +157,7 @@
         <wm-form-action key="save" display-name="Search" show="true" class="btn-secondary" iconclass="" title="Search" action="Variables.searchUsers.invoke();submit()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
     <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Basic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
-        gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" on-show="userMVTable1Show()">
+        gridclass="" showrecordcount="false" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" on-show="userMVTable1Show()" navigationalign="right">
         <wm-table-column binding="firstName" caption="First Name" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
             <wm-anchor caption="bind:row.getProperty('firstName')" on-click="dialogUserDetails(row)" class="" conditionalclass=""></wm-anchor>
         </wm-table-column>
@@ -165,8 +165,8 @@
             <wm-anchor caption="bind:row.getProperty('lastName')" on-click="dialogUserDetails(row)" class="" conditionalclass=""></wm-anchor>
         </wm-table-column>
         <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="teamManager" caption="Team Manager" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="teamId" caption="Team Id" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+        <wm-table-column binding="teamManager" caption="Team Manager" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="teamId" caption="Team Id" widget-type="label" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
             <wm-label caption="bind:row.getProperty('teamId')" class="" conditionalclass=""></wm-label>
         </wm-table-column>
         <wm-table-column binding="active" caption="Status" widget-type="label" edit-widget-type="text" type="string" defaultvalue="bind:Variables.StatusModel.dataSet[$i].dataValue" show="true" readonly="false">
@@ -271,7 +271,7 @@
                 <wm-gridrow name="gridrow17" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn24">
                         <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true"
-                            inputtype="text"></wm-form-field>
+                            inputtype="text" disabled="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">
@@ -281,7 +281,8 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" displayname="User Id" widget="text" show="true" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.userId"></wm-form-field>
+                        <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" displayname="User Id" widget="text" show="true" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.userId" readonly="true"
+                            disabled="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" class="m_10">
@@ -316,7 +317,7 @@
                 <!--"></wm-form-field>-->
                 <!--                    </wm-gridcolumn>-->
                 <!--                </wm-gridrow>-->
-                <wm-label padding="1.1em 0.5em unset unset" name="label101" caption="Work Category" margin="unset unset 8px unset"></wm-label>
+                <wm-label padding="1.1em 0.5em unset unset" name="label101" caption="Work Categories" margin="unset unset 8px unset"></wm-label>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12">
                         <wm-composite name="composite12" width="100%">

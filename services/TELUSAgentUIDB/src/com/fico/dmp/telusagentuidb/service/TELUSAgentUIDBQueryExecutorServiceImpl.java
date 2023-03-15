@@ -560,6 +560,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("id", id);
+
+        return queryExecutor.executeNamedQuery("getDvTypeById", params, GetDvTypeByIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("id", id);
+
+        QueryProcedureInput<GetDvTypeByIdResponse> queryInput = new QueryProcedureInput<>("getDvTypeById", params, GetDvTypeByIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(7);
 

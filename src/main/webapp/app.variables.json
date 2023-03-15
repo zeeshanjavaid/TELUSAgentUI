@@ -2252,8 +2252,6 @@
       "dataValue" : "Roles"
     }, {
       "dataValue" : "Teams"
-    }, {
-      "dataValue" : "Work Category"
     } ],
     "type" : "string",
     "isList" : true,

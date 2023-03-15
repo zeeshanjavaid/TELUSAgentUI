@@ -15,9 +15,9 @@ const paginationEventName = "fi-paginationEvent";
 
 let domainValueUploadFile = null;
 
-// $('document').ready(() => {
-//     document.getElementsByTagName("html")[0].style.visibility = "hidden";
-// });
+$('document').ready(() => {
+    document.getElementsByTagName("html")[0].style.visibility = "hidden";
+});
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
@@ -25,16 +25,16 @@ Page.onReady = function() {
 };
 
 function initPage() {
-    //  const intervalId = setInterval(function() {
-    //  if (App.permissionsLoaded) {
-    // clearInterval(intervalId);
-    // console.log('Permissions loaded...');
+    // const intervalId = setInterval(function() {
+    //     // if (App.permissionsLoaded) {
+    //     if (false) {
+    //         clearInterval(intervalId);
+    //         console.log('Permissions loaded...');
 
-    // if (!App.IsUserHasAccess('Setup_DomainValues')) {
-    //   if (!App.IsUserHasAccess('System Administration')) {
-    //   window.location.href = '#/ErrorLanding';
-    //   } else {
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
+    //         if (!App.IsUserHasAccess('System Administration')) {
+    //             window.location.href = '#/ErrorLanding';
+    //         } else {
+    //             document.getElementsByTagName("html")[0].style.visibility = "visible";
 
     //listening to search inputs key-up events
     $(".searchInput").on("keyup", (ev) => {
@@ -43,7 +43,6 @@ function initPage() {
             Page.searchDV_ButtonClick(ev, Page.Widgets.searchDV_Button);
     });
 
-    debugger;
     //listening to pagination events from partial
     let paginationContainer = document.querySelector("div[name='dvType_PaginationContainer']");
     paginationContainer.addEventListener(paginationEventName, (ev) => {
@@ -88,21 +87,21 @@ function initPage() {
 
     //invoke the search service
     dvTypeSV.invoke();
-    //  }
-    //        } else {
-    //        //determining the time elapsed since App started in minutes
-    //        const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
-    //
-    //        if (timeElapsedSinceAppStart < 1)
-    //        console.log('Waiting to load permissions...');
-    //        else {
-    //        clearInterval(intervalId);
-    //
-    //        //if the active page is not 'ErrorLanding'
-    //        if (window.location.hash !== '#/ErrorLanding')
-    //        window.location.href = '#/ErrorLanding';
-    //        }
-    //        }
+    // }
+    // } else {
+    //     //determining the time elapsed since App started in minutes
+    //     const timeElapsedSinceAppStart = moment(new Date()).diff(moment(App.appStartTime), 'minutes');
+
+    //     if (timeElapsedSinceAppStart < 1)
+    //         console.log('Waiting to load permissions...');
+    //     else {
+    //         clearInterval(intervalId);
+
+    //         //if the active page is not 'ErrorLanding'
+    //         if (window.location.hash !== '#/ErrorLanding')
+    //             window.location.href = '#/ErrorLanding';
+    //     }
+    // }
     // }, 10);
 }
 
@@ -294,8 +293,6 @@ Page.importDVSelect = function($event, widget, selectedFiles) {
 
 
 Page.searchDV_ButtonClick = function($event, widget) {
-
-    debugger;
     Page.Variables.totalRecordCount.setValue('dataValue', 0);
     Page.Variables.currentPage.setValue('dataValue', 0);
     Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -416,10 +413,4 @@ Page.DVUpload_designDialogOpened = function($event, widget) {
 };
 Page.DomainValueTypeTable1Headerclick = function($event, $data) {
 
-};
-Page.searchDV_ButtonDblclick = function($event, widget) {
-    debugger;
-};
-Page.button6Click = function($event, widget) {
-    debugger;
 };

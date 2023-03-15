@@ -107,6 +107,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportQuery_GetAllDomainValuesTwoParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, Integer parent2domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable);
+
+    void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable);
 
     void exportQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);

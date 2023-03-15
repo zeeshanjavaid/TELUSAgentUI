@@ -1,4 +1,4 @@
-<wm-partial name="partial1">
+<wm-partial name="partial1" id="dmValue">
     <wm-container name="content-wrapper" class="jc-sb flexCol colflex-center-sb width-full">
         <wm-container name="data-container" width="65%">
             <wm-container name="dvHeader-container" class="jc-sb inflex-center-sb" width="65%">
@@ -32,11 +32,11 @@
                     </wm-container>
                 </wm-container>
             </wm-container>
-            <wm-container name="dvData-container" width="100%" margin="20px unset" class="flexCol inflex-center-sb">
+            <wm-container name="dvData-container" width="100%" margin="20px unset" class="flexCol inflex-center-sb" on-click="dvData-containerClick($event, widget)">
                 <wm-table name="DomainValueList_Table" title="" dataset="bind:Variables.sv_getDVListPaginated.dataSet.pageContent" navigation="None" radioselect="false" multiselect="true" enablesort="true" on-select="DomainValueList_TableSelect($event, widget, row)"
-                    on-deselect="DomainValueList_TableDeselect($event, widget, row)" on-headerclick="DomainValueList_TableSort($event, $data)">
+                    on-deselect="DomainValueList_TableDeselect($event, widget, row)" on-headerclick="DomainValueList_TableHeaderclick($event, $data)" on-sort="DomainValueList_TableSort($event, $data)" on-tap="DomainValueList_TableTap($event, $data)" on-rowclick="DomainValueList_TableRowclick($event, widget, row)">
                     <wm-table-column binding="code" caption="Code" widget-type="anchor" width="15%" col-class="custom-font-size" edit-widget-type="text" type="string" readonly="true" show="true">
-                        <wm-anchor caption="bind:row.getProperty('code')" hyperlink="bind:navigateURLBuilder(row.getProperty('id'))" class="" conditionalclass=""></wm-anchor>
+                        <wm-anchor caption="bind:row.getProperty('code')" hyperlink="bind:navigateURLBuilder(row.getProperty('id'))" on-click="gotoDomainValueCreateEditPartial($event, widget, row)" class="" conditionalclass=""></wm-anchor>
                     </wm-table-column>
                     <wm-table-column binding="description" caption="Description" widget-type="label" width="25%" col-class="custom-font-size" edit-widget-type="text" type="string" readonly="true" show="true">
                         <wm-label caption="bind:row.getProperty('description')" class="" conditionalclass=""></wm-label>

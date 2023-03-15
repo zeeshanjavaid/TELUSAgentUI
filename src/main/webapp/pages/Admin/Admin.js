@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+
 Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
@@ -20,6 +21,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+    $("#create_div").css("display", "none");
 };
 Page.LeftNavAdminMenuListList1Click = function(widget, $data) {
 
@@ -32,3 +34,10 @@ Page.LeftNavAdminMenuListList1Click = function(widget, $data) {
 //         Page.Actions.goToPage_DomainValueTypes.invoke();
 //     }
 //};
+Page.panel83Actionsclick = function($event, action, widget) {
+    debugger;
+};
+Page.panel82Actionsclick = function($event, action, widget) {
+    debugger;
+
+};

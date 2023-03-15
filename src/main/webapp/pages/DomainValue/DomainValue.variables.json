@@ -1,4 +1,59 @@
 {
+  "currentPage" : {
+    "_id" : "wm-mv_currentPage-wm.Variable-1653895989544",
+    "name" : "currentPage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "defaultLocale" : {
+    "_id" : "wm-defaultLocale-wm.Variable-1653475447832",
+    "name" : "defaultLocale",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "getDvTypeById" : {
+    "_id" : "wm-getDvTypeById-wm.ServiceVariable-1678777045141",
+    "name" : "getDvTypeById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.domainValueTypeId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetDvTypeByIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetDvTypeById",
+    "operationId" : "QueryExecutionController_executeGetDvTypeById",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "gotToAdminPage" : {
     "_id" : "wm-gotToAdminPage-wm.NavigationVariable-1678429699417",
     "name" : "gotToAdminPage",
@@ -13,5 +68,197 @@
     "operation" : "gotoPage",
     "dataSet" : [ ],
     "pageTransitions" : "none"
+  },
+  "pageSize" : {
+    "_id" : "wm-pageSize-wm.Variable-1653469628337",
+    "name" : "pageSize",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "ResetPREValue" : {
+    "_id" : "wm-ResetPREValue-wm.Variable-1678856418561",
+    "name" : "ResetPREValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "",
+      "dataValue" : ""
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "searchValue" : {
+    "_id" : "wm-searchValue-wm.Variable-1653475460181",
+    "name" : "searchValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "showActiveDVs" : {
+    "_id" : "wm-showActiveDVs-wm.Variable-1653469577013",
+    "name" : "showActiveDVs",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "showAllDVs" : {
+    "_id" : "wm-showAllDVs-wm.Variable-1653469589792",
+    "name" : "showAllDVs",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "showInactiveDVs" : {
+    "_id" : "wm-showInactiveDVs-wm.Variable-1653470255883",
+    "name" : "showInactiveDVs",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "sortProperties" : {
+    "_id" : "wm-sortProperties-wm.Variable-1653469685256",
+    "name" : "sortProperties",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "sv_activateDeactivateDVByIds" : {
+    "_id" : "wm-sv_activateDeactivateDVByIds-wm.ServiceVariable-1653477072797",
+    "name" : "sv_activateDeactivateDVByIds",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "service" : "DomainValueRelatedBS",
+    "operation" : "activateDeactivateDVByIds",
+    "operationId" : "DomainValueRelatedBSController_activateDeactivateDVByIds",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_activateDeactivateDVByIdsonSuccess(variable, data, options)",
+    "onError" : "sv_activateDeactivateDVByIdsonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "sv_getDVListPaginated" : {
+    "_id" : "wm-sv_getDVListPaginated-wm.ServiceVariable-1653897061722",
+    "name" : "sv_getDVListPaginated",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS.CustomPageData_DVSearchFilters",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getDVListByFilters",
+    "operationId" : "DomainValueRelatedBSController_getDVListByFilters",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_getDVListPaginatedonSuccess(variable, data, options)",
+    "onError" : "sv_getDVListPaginatedonError(variable, data, options)",
+    "onBeforeDatasetReady" : "sv_getDVListPaginatedonBeforeDatasetReady(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
+  "sv_getDVTypeById" : {
+    "_id" : "wm-sv_getDVTypeById1-wm.ServiceVariable-1674573928761",
+    "name" : "sv_getDVTypeById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:(!pageParams.domainValueTypeId) ? 0 : pageParams.domainValueTypeId",
+      "type" : "integer"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.DomainValueType",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "getDomainValueType",
+    "operationId" : "DomainValueTypeController_getDomainValueType",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "sv_getDVTypeByIdonSuccess(variable, data, options)",
+    "onError" : "sv_getDVTypeByIdonError(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueType"
+  },
+  "totalRecordCount" : {
+    "_id" : "wm-totalRecordCount-wm.Variable-1653474152548",
+    "name" : "totalRecordCount",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }

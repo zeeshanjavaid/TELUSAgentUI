@@ -19,6 +19,11 @@ Partial.title = "";
 // });
 
 /* perform any action on widgets/variables within this block */
+//$("#create_div").hide();
+$("#create_div").css("display", "none");
+App.Variables.isCreateDomainValue.dataSet.dataValue = false;
+
+
 Partial.onReady = function() {
     debugger;
     /*
@@ -31,6 +36,11 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     //  Partial.pageParams.domainValueTypeId = 4;
+    // $("#create_div").hide();
+    $("#create_div").css("display", "none");
+
+
+
     initPage();
 };
 
@@ -45,9 +55,8 @@ function initPage() {
     // if (!App.IsUserHasAccess('System Administration')) {
     //     window.location.href = '#/ErrorLanding';
     // } else {
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
+    // document.getElementsByTagName("html")[0].style.visibility = "visible";
 
-    debugger;
 
     //listening to search inputs key-up events
 
@@ -150,10 +159,10 @@ Partial.displayPageInfo = function() {
         return "No domain values";
 };
 
-Partial.navigateURLBuilder = function(domainValueId) {
-    let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Partial.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId;
-    return URI;
-};
+// Partial.navigateURLBuilder = function(domainValueId) {
+//     let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Partial.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId;
+//     return URI;
+// };
 
 /* UI level functions */
 Partial.sv_getDVListPaginatedonSuccess = function(variable, data) {
@@ -208,6 +217,7 @@ Partial.sv_activateDeactivateDVByIdsonSuccess = function(variable, data) {
 
 Partial.sv_activateDeactivateDVByIdsonError = function(variable, data) {
     console.log(data);
+    debugger;
 
     //set defaults for DV fetch service
     Partial.Variables.totalRecordCount.setValue('dataValue', 0);
@@ -234,15 +244,26 @@ Partial.sv_activateDeactivateDVByIdsonError = function(variable, data) {
 };
 
 Partial.DomainValueList_TableSelect = function($event, widget, row) {
+
+    debugger;
+    //$("#create_div").hide();
+    //App.Variables.isCreateDomainValue.dataSet.dataValue = false;
     Partial.Widgets.activate_Button.disabled = false;
     Partial.Widgets.deactivate_Button.disabled = false;
+
 };
 
 Partial.DomainValueList_TableDeselect = function($event, widget, row) {
+    debugger;
+
+    //App.Variables.isCreateDomainValue.dataSet.dataValue = false;
+
     if (widget.selecteditem.length === 0) {
         Partial.Widgets.activate_Button.disabled = true;
         Partial.Widgets.deactivate_Button.disabled = true;
     }
+
+
 };
 
 Partial.sv_getDVTypeByIdonSuccess = function(variable, data) {
@@ -252,6 +273,8 @@ Partial.sv_getDVTypeByIdonSuccess = function(variable, data) {
 }
 
 Partial.showInactive_LinkClick = function($event, widget) {
+
+    debugger;
     Partial.Variables.totalRecordCount.setValue('dataValue', 0);
     Partial.Variables.currentPage.setValue('dataValue', 0);
     Partial.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -284,6 +307,8 @@ Partial.showInactive_LinkClick = function($event, widget) {
 };
 
 Partial.showActive_LinkClick = function($event, widget) {
+
+    debugger;
     Partial.Variables.totalRecordCount.setValue('dataValue', 0);
     Partial.Variables.currentPage.setValue('dataValue', 0);
     Partial.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -316,6 +341,7 @@ Partial.showActive_LinkClick = function($event, widget) {
 };
 
 Partial.showAll_LinkClick = function($event, widget) {
+    debugger;
     Partial.Variables.totalRecordCount.setValue('dataValue', 0);
     Partial.Variables.currentPage.setValue('dataValue', 0);
     Partial.Variables.pageSize.setValue('dataValue', fixedPageSize);
@@ -388,6 +414,8 @@ Partial.deactivate_ButtonClick = function($event, widget) {
 };
 
 Partial.DomainValueList_TableSort = function($event, $data) {
+
+    debugger;
     setTimeout(() => {
         let columnName = $($event.currentTarget).attr("data-col-field");
         let sortDirection = "DEFAULT"; //-> default direction
@@ -447,13 +475,60 @@ Partial.searchDV_ButtonClick = function($event, widget) {
 };
 
 Partial.createDV_ButtonClick = function($event, widget) {
+    debugger;
+    // Partial.Actions.goToPage_DomainValueCreateEdit.invoke({
+    //     data: {
+    //         'domainValueTypeId': Partial.pageParams.domainValueTypeId
+    //     }
+    // });
+    $("#dmValue").hide();
+    App.Variables.isCreateDomainValue.dataSet.dataValue = true;
+    // Partial.Variables.mv_domainValue.dataSet = [];
+    // $("#create_div").css("display", "block");
+    //$("#create_div").show();
+    App.addOrUpdateDomainValue();
+    //  App.createDomainValue();
 
-    Partial.Actions.goToPage_DomainValueCreateEdit.invoke({
-        data: {
-            'domainValueTypeId': Partial.pageParams.domainValueTypeId
-        }
-    });
+    //$("#create_div").hide();
+
 };
+
+
+
+Partial.gotoDomainValueCreateEditPartial = function($event, widget, row) {
+    debugger;
+    //  Partial.Variables.redirectDomainCreatePage.dataSet.dataValue = "RedirectDomainCreateEditPage";
+
+    $("#dmValue").hide();
+    App.Variables.domainValueData.dataSet = row;
+    App.Variables.isCreateDomainValue.dataSet.dataValue = true;
+    //   $("#create_div").css("display", "block");
+
+    // $("#create_div").show();
+
+
+    // document.getElementsByTagName("dmValue").style.visibility = "hidden";
+    App.addOrUpdateDomainValue();
+
+
+    //  $("#create_div").show();
+
+
+
+
+
+
+
+}
 Partial.DomainValueList_TableHeaderclick = function($event, $data) {
 
+};
+
+/*Partial.DomainValueList_TableTap = function($event, $data) {
+    $("#create_div").hide();
+};*/
+Partial.DomainValueList_TableRowclick = function($event, widget, row) {
+
+
+    $("#create_div").hide();
 };

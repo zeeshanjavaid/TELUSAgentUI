@@ -668,6 +668,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getDvTypeById", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getDvTypeById")
+    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(@RequestParam(value = "id") Integer id, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getDvTypeById");
+        Page<GetDvTypeByIdResponse> _result = queryService.executeGetDvTypeById(id, pageable);
+        LOGGER.debug("got the result for named query: getDvTypeById, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getDvTypeById")
+    @RequestMapping(value = "/queries/getDvTypeById/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetDvTypeById(@RequestParam(value = "id") Integer id, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getDvTypeById");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getDvTypeById";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetDvTypeById(id,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_ActivityLog", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_ActivityLog")

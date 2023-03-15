@@ -16,6 +16,23 @@
     margin: 1.75rem auto;
 }*/
 
+.form-action {
+    
+}
+
+.StatusLabel {
+    color: #6e6d6a;
+    font-family: 'robotolight', 'robotoregular' !important;
+    line-height: 30px;
+    font-size: 15px;
+    font-weight: 300;
+    height: 24px;
+}
+
+.saveButton {
+    margin: unset -4px unset unset !important;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -235,6 +252,10 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.popover
 
 label.app-label.Permissionlist-label {
     background-color: #90b2cd;
+}
+
+.action {
+    display: flex;
 }
 
 .button-addon {
@@ -704,7 +725,7 @@ td, th {
     /*text-align: center !important;*/
 }
 .m_10 {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .save_btn {
     position: relative;

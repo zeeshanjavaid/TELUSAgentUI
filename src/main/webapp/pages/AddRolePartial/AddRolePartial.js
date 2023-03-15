@@ -158,6 +158,8 @@ Partial.CancelbuttonClick = function($event, widget) {
 };
 
 App.addRoles = function() {
+
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.roleData.dataSet = [];

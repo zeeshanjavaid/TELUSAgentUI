@@ -5,6 +5,13 @@
     --displayValue: block;
 }
 
+.seconButton {
+    background-color: white;
+    border: red;
+    color: purple;
+    border-bottom: 1px solid black;
+}
+
 body {
     box-sizing: border-box;
 }

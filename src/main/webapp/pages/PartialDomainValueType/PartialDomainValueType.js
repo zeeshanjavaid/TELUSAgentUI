@@ -16,7 +16,10 @@ const fixedPageSize = 10;
 const paginationEventName = "fi-paginationEvent";
 
 let domainValueUploadFile = null;
+$("#create_div").css("display", "none");
 Partial.onReady = function() {
+
+    debugger;
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -26,6 +29,11 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+
+
+    //parent.document.getElementById('#create_div').style.visibility = "hidden";
+    $("#create_div").css("display", "none");
 
     initPage();
 };
@@ -55,7 +63,7 @@ function initPage() {
     //   if (!App.IsUserHasAccess('System Administration')) {
     //   window.location.href = '#/ErrorLanding';
     //   } else {
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
+    //document.getElementsByTagName("html")[0].style.visibility = "visible";
 
     //listening to search inputs key-up events
     $(".searchInput").on("keyup", (ev) => {
@@ -457,6 +465,9 @@ Partial.goToDomainValue = function($event, row) {
 
 Partial.gotoDomainValuePartial = function($event, widget, row) {
     debugger;
+    //  $("#create_div").css("display", "none");
+
+    $("#create_div").hide();
     Partial.Variables.RedirectPage.dataSet.dataValue = "RedirectDomainPage";
 }
 

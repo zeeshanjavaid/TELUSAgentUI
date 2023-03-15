@@ -956,7 +956,7 @@
     "maxResults" : 20,
     "onSuccess" : "getDomainValueByIdonSuccess(variable, data, options)",
     "startUpdate" : false,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
@@ -975,7 +975,7 @@
     "isList" : false,
     "saveInPhonegap" : false,
     "maxResults" : 20,
-    "designMaxResults" : 1,
+    "designMaxResults" : 10,
     "onSuccess" : "getDomainValueTypeonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
@@ -1510,6 +1510,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
+    "bindCount" : 3,
     "tableName" : "DomainValueType",
     "tableType" : "TABLE",
     "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
@@ -1933,7 +1934,7 @@
         "target" : "domainValueTypeId",
         "type" : "integer",
         "matchMode" : "exact",
-        "value" : "bind:pageParams.domainValueTypeId",
+        "value" : "bind:pageParams.domainValueId",
         "required" : false,
         "secondvalue" : "",
         "isFirst" : true
@@ -1968,7 +1969,7 @@
       "value" : "en",
       "type" : "string"
     } ],
-    "type" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS.CustomPageDataWrapper",
+    "type" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS.CustomPageData_DVSearchFilters",
     "service" : "DomainValueRelatedBS",
     "operation" : "getDVListByFilters",
     "operationId" : "DomainValueRelatedBSController_getDVListByFilters",
@@ -2070,6 +2071,33 @@
     "saveInPhonegap" : false,
     "controller" : "DomainValueRelatedBS"
   },
+  "getDvtById" : {
+    "_id" : "wm-getDvtById-wm.ServiceVariable-1678783176841",
+    "name" : "getDvtById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.domainValueTypeId",
+      "type" : "integer"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetDvTypeByIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetDvTypeById",
+    "operationId" : "QueryExecutionController_executeGetDvTypeById",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "localeDetails" : {
     "_id" : "wm-localeDetails-wm.Variable-1653650949766",
     "name" : "localeDetails",
@@ -2170,7 +2198,7 @@
         "id" : 0
       },
       "default" : false,
-      "id" : 0
+      "id" : "0"
     },
     "type" : "com.fico.ps.model.DomainValueVO",
     "isList" : false,

@@ -12,7 +12,7 @@
                             <wm-gridcolumn columnwidth="12" name="gridcolumn5">
                                 <wm-container name="headingContainer">
                                     <wm-label name="label1" caption="Domain Values >" class="dv-header-label" margin="unset unset unset 0.1em" color="#333"></wm-label>
-                                    <wm-label name="label2" caption="bind:Variables.getDomainValueType.dataSet.data[$i].description + &quot; > &quot;" class="dv-header-label dvType" style="margin-left: 8px !important;"></wm-label>
+                                    <wm-label name="label2" caption="bind:Variables.getDvtById.dataSet[$i].description" class="dv-header-label dvType" style="margin-left: 8px !important;"></wm-label>
                                     <wm-label name="label3" class="dv-header-label dvType" style="font-size:initial" caption="bind:pageParams.domainValueId ? &quot;Edit '&quot;+ Variables.mv_domainValue.dataSet.defaultLocale.description + &quot;'&quot; : &quot;Create&quot;"></wm-label>
                                 </wm-container>
                             </wm-gridcolumn>
@@ -41,6 +41,9 @@
                                                 <wm-label padding="unset 0.5em" name="label8" class="leftbox" caption="en" fontweight="bold" margin="unset 2px unset unset"></wm-label>
                                                 <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>
                                                 <wm-text name="desc" class="middlebox" placeholder="" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100"></wm-text>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn8_1" padding="10px unset unset unset">
+                                                <wm-form-field name="active" key="active" type="boolean" displayname="Status" widget="toggle" show="true" defaultvalue="true" checkedvalue="true" uncheckedvalue="false" readonly="true"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow14">
@@ -78,20 +81,19 @@
                                                 <wm-form-field name="default" readonly="false" displayname="Is Default" key="default" type="boolean" show="true" widget="toggle" placeholder="" margin="3pt unset unset unset"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
-                                        <wm-gridrow name="gridrow8">
-                                            <wm-gridcolumn columnwidth="12" name="gridcolumn8_1">
-                                                <wm-form-field name="rankOrder" readonly="false" displayname="Rank order" key="rankOrder" type="integer" show="true" widget="number" textalign="right" inputtype="number" placeholder=""></wm-form-field>
-                                            </wm-gridcolumn>
-                                        </wm-gridrow>
+                                        <!--<wm-gridrow name="gridrow8">-->
+                                        <!--    <wm-gridcolumn columnwidth="12" name="gridcolumn8_1">-->
+                                        <!--        <wm-form-field name="active" key="active" type="boolean" displayname="Active" widget="text" show="true"></wm-form-field>-->
+                                        <!--    </wm-gridcolumn>-->
+                                        <!--</wm-gridrow>-->
                                         <wm-gridrow name="gridrow9">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                                                <wm-form-field name="createdOn" displayname="Created" key="createdOn" type="date" show="true" widget="text" inputtype="text" placeholder="" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.createdOn,Variables.mv_domainValue.dataSet.createdBy) : &quot;&quot;"></wm-form-field>
+                                                <wm-form-field name="rankOrder" readonly="false" displayname="Rank order" key="rankOrder" type="integer" show="true" widget="number" textalign="right" inputtype="number" placeholder=""></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow10">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                                                <wm-form-field name="updatedOn" displayname="Updated" key="updatedOn" type="date" show="true" widget="text" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.updatedOn? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.updatedOn,Variables.mv_domainValue.dataSet.updatedBy) : &quot;&quot;
-" placeholder=""></wm-form-field>
+                                                <wm-form-field name="createdOn" displayname="Created" key="createdOn" type="date" show="true" widget="text" inputtype="text" placeholder="" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.createdOn,Variables.mv_domainValue.dataSet.createdBy) : &quot;&quot;"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow17_1">
@@ -127,14 +129,20 @@
                                                 </wm-layoutgrid>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
+                                        <wm-gridrow name="gridrow1">
+                                            <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                                                <wm-form-field name="updatedOn" displayname="Updated" key="updatedOn" type="date" show="true" widget="text" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.updatedOn? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.updatedOn,Variables.mv_domainValue.dataSet.updatedBy) : &quot;&quot;
+" placeholder="" inputtype="text"></wm-form-field>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
                                     </wm-layoutgrid>
                                 </wm-form>
                             </wm-gridcolumn>
                         </wm-gridrow>
                         <wm-gridrow name="gridrow6" class="action-container">
-                            <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                                <wm-button class="app-button btn-primary" caption="SAVE" type="button" margin="unset 0.5em" name="saveBtn" on-click="saveBtnClick($event, widget)"></wm-button>
-                                <wm-button class="btn-default" caption="CANCEL" type="button" margin="unset 0.5em" name="button6" on-click="buttonCancelClick($event, widget)"></wm-button>
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn8" horizontalalign="right">
+                                <wm-button class="secondaryButton" caption="CANCEL" type="button" margin="unset 0.5em" name="button6" on-click="buttonCancelClick($event, widget)"></wm-button>
+                                <wm-button class="primaryButton" caption="SAVE" type="button" margin="unset 0.5em" name="saveBtn" on-click="saveBtnClick($event, widget)"></wm-button>
                             </wm-gridcolumn>
                         </wm-gridrow>
                     </wm-layoutgrid>

@@ -245,6 +245,13 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "Partial_createDomainValue",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "domainValueId",
+    "type" : "integer"
+  } ]
+}, {
   "name" : "PayloadExtract",
   "type" : "PAGE",
   "params" : [ ]

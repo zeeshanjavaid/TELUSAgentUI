@@ -288,14 +288,14 @@ order by r.role) wmTempTable
 
     <sql-query name="getWorkCtegoryByCode">
         <![CDATA[
-        select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory
+        select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory
         ]]>
     <query-param name="workCategory" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getWorkCtegoryByCode__count">
         <![CDATA[
-        select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dvt.Code = :workCategory) wmTempTable
+        select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory) wmTempTable
         ]]>
     <query-param name="workCategory" type="java.lang.String"/>
     </sql-query>
@@ -575,6 +575,20 @@ END ASC) wmTempTable
     <query-param name="parent1DomainValueId" type="java.lang.Integer"/>
     <query-param name="parent2DomainValueId" type="java.lang.Integer"/>
     <query-param name="dvDescription" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getDvTypeById">
+        <![CDATA[
+        select dvt.Description from DomainValueType dvt where dvt.ID=:id
+        ]]>
+    <query-param name="id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getDvTypeById__count">
+        <![CDATA[
+        select count(*) from (select dvt.Description from DomainValueType dvt where dvt.ID=:id) wmTempTable
+        ]]>
+    <query-param name="id" type="java.lang.Integer"/>
     </sql-query>
 
     <sql-query name="Query_ActivityLog">
