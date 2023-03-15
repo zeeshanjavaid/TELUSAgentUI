@@ -507,6 +507,7 @@ App.refreshAllGroups = function() {
 
 
     Partial.Variables.getAllGroups.invoke();
+    Partial.Variables.allTeamsUI.invoke();
 
 }
 

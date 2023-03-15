@@ -236,7 +236,7 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         Map<String, Object> params = new HashMap<>(5);
 
         params.put("userCriteria", userCriteria);
-        params.put("TeamID", teamId);
+        params.put("teamID", teamId);
         params.put("role", role);
         params.put("work_category", workCategory);
         params.put("managerId", managerId);
@@ -250,7 +250,7 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         Map<String, Object> params = new HashMap<>(5);
 
         params.put("userCriteria", userCriteria);
-        params.put("TeamID", teamId);
+        params.put("teamID", teamId);
         params.put("role", role);
         params.put("work_category", workCategory);
         params.put("managerId", managerId);

@@ -5,7 +5,7 @@
                 <wm-layoutgrid name="layoutgrid3">
                     <wm-gridrow name="gridrow10_1">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn15_2">
-                            <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.groupId ? &quot;Edit Team&quot; : &quot;Add Team&quot;" class="h3 add-role-lebel text-clip"
+                            <wm-label id="title" padding="unset 0.5em unset 0.75em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.groupId ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip"
                                 margin="4% unset unset unset" height="25"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn16_2" horizontalalign="right">
@@ -28,19 +28,20 @@
         </wm-gridrow>
         <wm-gridrow name="gridrow100" class="rolename-row">
             <wm-gridcolumn columnwidth="2" name="gridcolumn100">
-                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Team ID *" name="label100" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Team ID *" name="label100" margin="unset 20px unset 10px" color="#6e6c6a" required="true"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn101">
                 <wm-container name="container100">
                     <wm-composite name="composite100_1">
                         <wm-container class="col-md-9 queue-name" name="container101" padding="unset unset unset 5px">
-                            <wm-text name="TeamIdText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamId" required="false" class="role-name1" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
+                            <wm-text name="TeamIdText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamId" required="true" class="role-name1" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"
+                                autocomplete="false"></wm-text>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn15_1">
-                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Name *" name="label6" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Team Name *" name="label6" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn16_1" horizontalalign="left">
                 <wm-composite name="composite5_1" horizontalalign="left" captionposition="left" width="100%">
@@ -94,7 +95,7 @@
                     <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
                         <wm-button caption="Cancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue" class="btn-link"></wm-button>
-                        <wm-button class="btn-saveTeamsButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                        <wm-button class="btn-saveTeamsButton" caption="Save" type="submit" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>

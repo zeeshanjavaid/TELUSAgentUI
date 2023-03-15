@@ -34,9 +34,10 @@ Partial.onReady = function() {
     Partial.Variables.leftRolesList.dataSet = [];
     Partial.Variables.leftUserList.dataSet = [];
 
-    // if (Partial.pageParams.roleId === undefined) {
-    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
-    // }
+    debugger;
+    if (Partial.pageParams.teamId === undefined) {
+        Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    }
 
 };
 
@@ -57,12 +58,23 @@ Partial.SaveButtonClick = function($event, widget) {
 
     App.Variables.GroupPageCommunication.currentGroupInFocusId = Partial.pageParams.groupId;
     //if ((Partial.Widgets.GroupNameText.datavalue == undefined ? Partial.Widgets.GroupNameText.datavalue == undefined : Partial.Widgets.GroupNameText.datavalue == "")) {
-    if (Partial.Widgets.GroupNameText.datavalue == undefined) {
+    if (Partial.Widgets.TeamIdText.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Team Id is mandatory";
+        Partial.scrollToTop();
+        Partial.Widgets.TeamIdText.required = true;
+        Partial.Variables.readOnlyMode.dataSet.dataValue = false
+        // } else if (Partial.Widgets.GroupNameText.datavalue.match(pattern) == null) {
+        //     App.Variables.errorMsg.dataSet.dataValue = "Team id is invalid.";
+        //     Partial.scrollToTop();
+        // }
+    } else if (Partial.Widgets.GroupNameText.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAM_NAME_MANDATORY;
         Partial.scrollToTop();
         Partial.Widgets.GroupNameText.required = true;
+        Partial.Variables.readOnlyMode.dataSet.dataValue = false
 
-    } else if (Partial.Widgets.GroupNameText.datavalue.match(pattern) == null) {
+    } else
+    if (Partial.Widgets.GroupNameText.datavalue.match(pattern) == null) {
         App.Variables.errorMsg.dataSet.dataValue = "Team name is invalid.";
         Partial.scrollToTop();
     } else {
@@ -208,6 +220,9 @@ App.addTeams = function() {
 
     Partial.pageParams.groupId = undefined;
     //Partial.Variables.getGroup.invoke();
+    Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+
+
 };
 
 Partial.DuplicatebuttonClick = function($event, widget) {
@@ -261,6 +276,7 @@ Partial.deleteGroupConfirmOkClick = function($event, widget) {
         'QueueId': 0
     });
     Partial.Variables.executeDeleteQueueGroup.invoke();
+
 };
 
 Partial.executeDeleteQueueGrouponSuccess = function(variable, data) {
@@ -401,7 +417,7 @@ Partial.updateGrouponSuccess = function(variable, data) {
         'id': data.id
     });
     Partial.Variables.deleteUserGroup.invoke();*/
-
+    App.refreshAllGroups();
 };
 
 Partial.createGrouponSuccess = function(variable, data) {
