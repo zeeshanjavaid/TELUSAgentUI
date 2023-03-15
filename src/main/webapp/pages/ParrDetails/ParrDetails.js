@@ -60,3 +60,11 @@ Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
 Partial.CommentsChange = function($event, widget, newVal, oldVal) {
     Partial.Variables.getPaymentArrangement.dataSet.comment = Partial.Widgets.Comments.datavalue;
 };
+Partial.ClearButtonClick = function($event, widget) {
+
+    Partial.Variables.getPaymentArrangement.dataSet.amount = 0;
+    Partial.Widgets.Comments.datavalue = '';
+    //clear values of installmentSchedule 
+
+
+};

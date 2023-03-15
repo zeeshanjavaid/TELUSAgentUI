@@ -13,20 +13,6 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "AmtOverUnderParrTotal" : {
-    "_id" : "wm-AmtOverUnderParrTotal-wm.Variable-1678800694701",
-    "name" : "AmtOverUnderParrTotal",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : {
-      "dataValue" : 0
-    },
-    "type" : "number",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
   "createParrModel" : {
     "_id" : "wm-createParrModel-wm.Variable-1678780494720",
     "name" : "createParrModel",

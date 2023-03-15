@@ -1,4 +1,18 @@
 {
+  "AmtOverUnderParrTotal" : {
+    "_id" : "wm-AmtOverUnderParrTotal-wm.Variable-1678800694701",
+    "name" : "AmtOverUnderParrTotal",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "appNotification" : {
     "_id" : "wm-appErrorHandler-wm.NotificationVariable-1454664620943",
     "name" : "appNotification",

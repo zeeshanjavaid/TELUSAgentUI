@@ -80,7 +80,7 @@
                 <wm-gridcolumn columnwidth="10" name="gridcolumn18">
                     <wm-composite name="composite10" width="100%">
                         <wm-container class="media-left" name="container19">
-                            <wm-picture width="32pt" height="32pt" name="Picture" shape="circle" picturesource="bind:Variables.installmentBAN.dataSet['BAN ID']" class="media-object" show="resources/images/imagelists/bullet.png"></wm-picture>
+                            <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" picturesource="bind:Variables.installmentBAN.dataSet['BAN ID']" class="media-object" show="resources/images/imagelists/bullet.png"></wm-picture>
                         </wm-container>
                         <wm-layoutgrid name="layoutgrid4">
                             <wm-gridrow name="gridrow9">
@@ -164,7 +164,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-panel>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="45%" height="100%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%">
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow4_1">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn15">
@@ -201,10 +201,10 @@
                                         <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
                                     </wm-container>
                                     <wm-container class="media-body" padding="unset unset unset 1.25em" name="container35">
-                                        <wm-layoutgrid name="layoutgrid12" width="50%">
+                                        <wm-layoutgrid name="layoutgrid12">
                                             <wm-gridrow name="gridrow24">
                                                 <wm-gridcolumn columnwidth="2" name="gridcolumn55">
-                                                    <wm-label padding="unset 0.5em" name="Name" caption="bind:Variables.installmentBAN.dataSet[$i].name" width="100%"></wm-label>
+                                                    <wm-label padding="unset 0.5em" name="Name" caption="BAN ID:" width="355%"></wm-label>
                                                 </wm-gridcolumn>
                                                 <wm-gridcolumn columnwidth="2" name="gridcolumn56">
                                                     <wm-label padding="unset 0.5em" name="BanValue" caption="bind:Variables.installmentBAN.dataSet[$i].value"></wm-label>
@@ -219,40 +219,50 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-label padding="1em 0.5em unset 0.5em" name="label24" caption="Installment Schedule" textdecoration="underline"></wm-label>
+        <wm-label padding="1em .5em 2em 0.5em" name="label24" caption="Installment Schedule"></wm-label>
         <wm-container name="container20">
             <wm-layoutgrid name="layoutgrid11">
-                <wm-gridrow name="gridrow22">
-                    <wm-gridcolumn columnwidth="6" name="gridcolumn50"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="6" name="gridcolumn54" height="5%"></wm-gridcolumn>
-                </wm-gridrow>
+                <wm-gridrow name="gridrow22"></wm-gridrow>
             </wm-layoutgrid>
             <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
-                <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="amount" caption="Installment Amt" width="25%" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" edit-widget-type="number" type="integer" readonly="true" datepattern="MM/dd/yyyy" formatpattern="None" show="true"></wm-table-column>
+                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false" disabled="bind:Widgets.getInstallmentScheduleTable.currentItem.evaluationResult == true"></wm-table-column>
+                <wm-table-column binding="amount" caption="Installment Amt" width="25%" edit-widget-type="number" type="double" show="true" readonly="false" disabled="bind:
+Widgets.getInstallmentScheduleTable.currentItem.evaluationResult == true"></wm-table-column>
+                <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                 <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
                 <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
             </wm-table>
         </wm-container>
         <wm-container name="container21">
-            <wm-label padding="unset 0.5em" name="label26" caption="Amt Over/Under Parr Total:"></wm-label>
-            <wm-label padding="unset 0.5em" name="label27_1"></wm-label>
-            <wm-container name="container31" width="100%"></wm-container>
+            <wm-label padding="1em 0.5em 3em unset" name="label26" caption="Amt Over/Under Parr Total:" textalign="left"></wm-label>
+            <wm-label padding="unset 0.5em" name="label27_1" caption="bind:Variables.AmtOverUnderParrTotal.dataSet.dataValue"></wm-label>
         </wm-container>
         <wm-container name="container22">
             <wm-composite name="composite14">
-                <wm-label class="col-md-3 control-label" name="label29" caption="Comments"></wm-label>
+                <wm-label class="col-md-3 control-label" name="label29" caption="Comments" textalign="left"></wm-label>
                 <wm-container class="col-md-9" name="container23">
                     <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)"></wm-textarea>
                 </wm-container>
             </wm-composite>
         </wm-container>
         <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Clear" on-click="Widgets.renegotiatePARRdialog.close()" name="button3" margin="unset unset unset 20em"></wm-button>
-            <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 3em" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"></wm-button>
+            <wm-layoutgrid name="layoutgrid11_2">
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn31_2"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn30_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn36_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn37"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn38">
+                        <wm-button class="btn-primary" caption="Clear" on-click="ClearButtonClick($event, widget)" name="ClearButton" margin="unset unset unset 43px"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn39">
+                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"
+                            iconposition="right"></wm-button>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
         </wm-dialogactions>
     </wm-dialog>
     <wm-alertdialog name="alertdialog2" iconclass="fico-icon-check-circle fa-3x" title="" iconmargin="45%" message="Parr Successfully Renegotiated!" alerttype="success" align="center"></wm-alertdialog>
@@ -279,7 +289,7 @@
                 <wm-textarea name="textarea2" color="#ddd" class="cancelParrborder" margin="unset unset unset 3em" width="90%"></wm-textarea>
             </wm-container>
         </wm-composite>
-        <wm-button class="btn-default" caption="No,Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
-        <wm-button class="btn-default" caption="Yes,Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+        <wm-button class="btn-default" caption="No, Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+        <wm-button class="btn-default" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
     </wm-dialog>
 </wm-partial>

@@ -46,7 +46,7 @@
                                     <wm-layoutgrid name="layoutgrid5_1" width="115%">
                                         <wm-gridrow name="gridrow8">
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn16">
-                                                <wm-label padding="unset 0.5em" name="banName" caption="Ban Id:" width="355%" margin="-5px unset unset unset"></wm-label>
+                                                <wm-label padding="unset 0.5em" name="banName" caption="Ban ID:" width="355%" margin="-5px unset unset unset"></wm-label>
                                             </wm-gridcolumn>
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn20_1">
                                                 <wm-label padding="unset 0.5em" name="banValue" caption="bind:Variables.installmentBANCreateParr.dataSet[$i].banId" margin="-5px unset unset unset"></wm-label>
@@ -114,15 +114,15 @@
             <wm-table-column binding="disputeFlag" caption="Dispute Indicator" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="entityId" caption="Entity Id" edit-widget-type="text" type="string" pcdisplay="false" show="true" readonly="false"></wm-table-column>
         </wm-table>
-        <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 35em" name="SubmitBan" on-click="SubmitBanClick($event, widget)"></wm-button>
+        <wm-button class="btn-default" caption="Submit" type="button" margin="1em 0.5em unset 53em" name="SubmitBan" on-click="SubmitBanClick($event, widget)" iconposition="right"></wm-button>
     </wm-dialog>
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 5px">
         <wm-label padding="2em 0.5em 2em 1em" name="label7" caption="Installment Schedule:" margin="unset unset unset 2em"></wm-label>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
-                <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right" padding="unset unset unset 2px">
+                <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right" padding="unset unset unset 35px">
                     <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" enablesort="false">
-                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false" disabled="true"></wm-table-column>
                         <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="amount" caption="Installment Amount" edit-widget-type="text" type="string" formatpattern="toCurrency" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
