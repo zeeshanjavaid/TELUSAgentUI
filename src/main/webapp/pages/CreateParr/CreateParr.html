@@ -121,10 +121,13 @@
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right" padding="unset unset unset 35px">
-                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" enablesort="false">
-                        <wm-table-column binding="sequenceId" caption="Installment Sequence" edit-widget-type="text" type="string" show="true" readonly="false" disabled="true"></wm-table-column>
-                        <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="amount" caption="Installment Amount" edit-widget-type="text" type="string" formatpattern="toCurrency" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" on-rowupdate="installmentScheduleTableRowupdate($event, widget, row)">
+                        <wm-table-column binding="sequenceId" caption="InstallmentID" widget-type="label" textalignment="right" edit-widget-type="text" type="string" readonly="true" show="true">
+                            <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2"
+                            show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                     </wm-table>

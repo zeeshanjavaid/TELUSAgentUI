@@ -214,3 +214,8 @@ Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
     Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
     alert("amtOverUnder:" + Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue);
 };
+
+window.addEventListener('click', event => {
+    console.log(event);
+
+});
