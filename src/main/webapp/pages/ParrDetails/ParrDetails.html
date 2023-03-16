@@ -96,13 +96,9 @@
                                             <wm-container class="media-body" padding="unset unset unset 1.25em" name="container25">
                                                 <wm-layoutgrid name="layoutgrid3" width="70%">
                                                     <wm-gridrow name="gridrow7_1">
-                                                        <wm-gridcolumn columnwidth="4" name="gridcolumn16_1">
-                                                            <wm-label name="Name" class="p media-heading" caption="bind:Variables.installmentBAN.dataSet.name" fontsize="1.143" fontunit="em" width="280%"></wm-label>
+                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
+                                                            <wm-label name="Value" caption="bind:Variables.installmentBAN.dataSet.banName" class="p text-muted" color="#000"></wm-label>
                                                         </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="4" name="gridcolumn17_2">
-                                                            <wm-label name="Value" caption="bind:Variables.installmentBAN.dataSet.value" class="p text-muted" color="#000"></wm-label>
-                                                        </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="4" name="gridcolumn19"></wm-gridcolumn>
                                                     </wm-gridrow>
                                                     <wm-gridrow name="gridrow8"></wm-gridrow>
                                                 </wm-layoutgrid>
@@ -123,11 +119,12 @@
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="center">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="left">
                     <wm-container name="container24_1">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
                             <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true"
+                                readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" width="25%" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
@@ -194,22 +191,14 @@
                     <wm-composite name="composite12">
                         <wm-label class="col-md-3 control-label" name="label23" caption="Installment BAN's"></wm-label>
                         <wm-container class="col-md-9" name="container12">
-                            <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" name="List1" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
-                                <wm-listtemplate layout="inline" name="listtemplate2">
-                                    <wm-container class="media-left" name="container34">
+                            <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" datafield="All Fields" name="installmentBANList1" dataset="bind:Variables.installmentBAN.dataSet"
+                                navigation="None">
+                                <wm-listtemplate layout="inline" name="listtemplate3_1">
+                                    <wm-container class="media-left" name="container27_1">
                                         <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
                                     </wm-container>
-                                    <wm-container class="media-body" padding="unset unset unset 1.25em" name="container35">
-                                        <wm-layoutgrid name="layoutgrid12">
-                                            <wm-gridrow name="gridrow24">
-                                                <wm-gridcolumn columnwidth="2" name="gridcolumn55">
-                                                    <wm-label padding="unset 0.5em" name="Name" caption="BAN ID:" width="355%"></wm-label>
-                                                </wm-gridcolumn>
-                                                <wm-gridcolumn columnwidth="2" name="gridcolumn56">
-                                                    <wm-label padding="unset 0.5em" name="BanValue" caption="bind:Variables.installmentBAN.dataSet[$i].value"></wm-label>
-                                                </wm-gridcolumn>
-                                            </wm-gridrow>
-                                        </wm-layoutgrid>
+                                    <wm-container class="media-body" name="container28">
+                                        <wm-label class="p media-heading" name="banName" caption="bind:Variables.installmentBAN.dataSet[$i].banName" fontunit="em" padding="unset unset unset 1.25em"></wm-label>
                                     </wm-container>
                                 </wm-listtemplate>
                             </wm-list>
@@ -228,8 +217,8 @@
                 <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" tabindex="8" widget-type="button" position="header"></wm-table-action>
+                <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary DDDTest" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" tabindex="8" widget-type="button" position="header"></wm-table-action>
                 <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
             </wm-table>
         </wm-container>
@@ -256,7 +245,8 @@
                         <wm-button class="btn-primary" caption="Clear" on-click="ClearButtonClick($event, widget)" name="ClearButton" margin="unset unset unset 43px"></wm-button>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" name="gridcolumn39">
-                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()" iconposition="right"></wm-button>
+                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"
+                            iconposition="right"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>

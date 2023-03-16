@@ -172,7 +172,7 @@ Partial.ClearScheduleClick = function($event, widget) {
     Partial.Widgets.dialog1.close();
 };*/
 Partial.SubmitBanClick = function($event, widget) {
-
+    debugger;
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     //BANName
     /*Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {

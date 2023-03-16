@@ -2166,11 +2166,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "name" : "BAN 1",
-      "value" : "1234"
+      "banName" : "Air Canada"
     }, {
-      "name" : "BAN 2",
-      "value" : "678"
+      "banName" : "Air Canada2"
     } ],
     "type" : "entry",
     "isList" : true,

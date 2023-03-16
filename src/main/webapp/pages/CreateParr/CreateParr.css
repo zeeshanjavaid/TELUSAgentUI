@@ -18,3 +18,14 @@ white-space: nowrap;
 overflow: hidden;
 }
 }
+
+/*.parrBorder{
+    border-bottom: 1px solid #ddd;
+    
+}*/
+.parrDetailsLable{
+  border-bottom: 1px solid #ddd;  
+}
+.InstallmentLable{
+  border-bottom: 1px solid #ddd;  
+}

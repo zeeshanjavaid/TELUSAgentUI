@@ -2,7 +2,9 @@
     border: solid;
     border-width: 0.1px;
     border-color: lightgray;
-    width:28%;
+    width:85%;
+    overflow: hidden;
+    width: 14em;
 }
 
 button.app-icon.wi.card-action {
@@ -21,4 +23,12 @@ button.app-icon.wi.card-action {
 }
 .Renegotiate{
     top:100px;
+}
+
+/*.card-actions.app-datagrid-actions.col-auto {
+    
+}*/
+
+.DDDTest{
+    float: right !important;
 }
