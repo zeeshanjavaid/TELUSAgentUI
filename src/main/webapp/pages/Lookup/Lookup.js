@@ -20,6 +20,17 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+    var sv = Page.Variables.PermissionsForLoggedInUserId;
+    sv.invoke({}, function(data) {
+            // Success Callback        
+            console.log("success", data);
+            // alert('Permission :' + Page.Variables.PermissionsForLoggedInUserId.dataSet.length);
+        },
+        function(error) {
+            // Error Callback        
+            console.log("error", error)
+        });
+
 
 };
 

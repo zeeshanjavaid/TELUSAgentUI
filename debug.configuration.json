@@ -1053,17 +1053,9 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 103,
+        "line" : 132,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "deletUser",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 111,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getLoggedInUserRoles",
+        "name" : "getLoggedInUserId",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -1077,9 +1069,49 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 132,
+        "line" : 190,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getLoggedInUserId",
+        "name" : "updateUserLimitAndTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 103,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "deletUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 283,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "isSystemOnBootstrapStatus",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 170,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "executeGetPermissionByUserId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 229,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "refreshRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 294,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "setupSuperUsers",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -1088,6 +1120,38 @@
         "line" : 136,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
         "name" : "getAllUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 111,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUserRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 211,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getUserOrDefaultTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 253,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 316,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$1",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -1109,70 +1173,6 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 170,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "executeGetPermissionByUserId",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 189,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "updateUserLimitAndTimeZone",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 210,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getUserOrDefaultTimeZone",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 228,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "refreshRoles",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 282,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "isSystemOnBootstrapStatus",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 293,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "setupSuperUsers",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 252,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 315,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "lambda$1",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
         "line" : 107,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
         "name" : "getAllRoles",
@@ -1181,17 +1181,17 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 95,
+        "line" : 99,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "createUser",
+        "name" : "updateUser",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
       }, {
         "info" : null,
-        "line" : 99,
+        "line" : 95,
         "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "updateUser",
+        "name" : "createUser",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

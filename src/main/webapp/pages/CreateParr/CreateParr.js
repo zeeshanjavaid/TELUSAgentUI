@@ -94,7 +94,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         totalInstallmentAmt = totalInstallmentAmt + amount;
         installmentSchedule.push(collectionPaymentInstallment);
     }
-    Partial.Variables.AmtOverUnderParrTotal = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
+    Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
@@ -143,6 +143,17 @@ Partial.ClearScheduleClick = function($event, widget) {
     Partial.Widgets.Comments.datavalue = '';
 };
 
+/*Partial.installmentScheduleTable_amountOnChange = function($event, widget, row) {
+
+    var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
+    var totalInstallmentAmt = 0;
+    for (var i = 0; i < size; i++) {
+
+        totalInstallmentAmt = totalInstallmentAmt + Partial.Variables.ParrInstallmentSchedule[i].amount;
+    }
+    alert("totalInstallmentAmt :" + totalInstallmentAmt);
+};*/
+
 //selectBanParrTable1
 /*Partial.button4Click = function($event, widget) {
     debugger;
@@ -188,4 +199,18 @@ Partial.SubmitBanClick = function($event, widget) {
         });*/
 
     Partial.Widgets.selectBANdialog.close();
+};
+Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
+    alert('Hi');
+    var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
+    var totalInstallmentAmt = 0;
+    for (var i = 0; i < size; i++) {
+
+        alert("amount :" + Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+
+        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+    }
+    alert("totalInstallmentAmt:" + totalInstallmentAmt);
+    Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
+    alert("amtOverUnder:" + Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue);
 };
