@@ -8,15 +8,16 @@
                 <wm-container width="97%" name="data-container">
                     <wm-container name="header-container" width="100%" margin="7px unset 20px unset">
                         <wm-message name="statusMessage" type="bind:Variables.mv_fileServiceStatus.dataSet.serviceStatus" hideclose="true" caption="bind:Variables.mv_fileServiceStatus.dataSet.message" class="msg"></wm-message>
-                        <wm-label padding="unset 0.5em" name="importDV_fileUpload" width="100%" class="dv-header-label" caption="Domain Values" color="#333"></wm-label>
+                        <wm-label padding="unset 0.5em" name="importDV_fileUpload" width="100%" class="btn-default" caption="Domain Values" color="#333"></wm-label>
                     </wm-container>
                     <wm-container name="actions-container" class="jc-sb inflex-center-sb" width="100%" margin="unset unset 20px unset">
                         <wm-container name="search-container" class="inflex-center-sb">
                             <wm-text name="dvTypeSearch_Input" width="380px" height="33.5px" margin="unset 20px unset unset" placeholder="Search by domain value type" datavalue="bind:Variables.searchValue.dataSet.dataValue" class="searchInput"></wm-text>
-                            <wm-button class="primaryButton" caption="SEARCH" type="button" margin="unset 0.5em" name="searchDV_Button" on-click="searchDV_ButtonClick($event, widget)"></wm-button>
+                            <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="button5" on-click="button5Click($event, widget)"></wm-button>
+                            <wm-button class="btn primaryButton" caption="SEARCH" type="button" margin="unset 0.5em" name="searchDV_Button" on-click="searchDV_ButtonClick($event, widget)"></wm-button>
                         </wm-container>
                         <wm-container name="upload-btn-grp" class="inflex-center-sb">
-                            <wm-fileupload name="dvTypeUpload" class="second" on-select="dvTypeUploadSelect($event, widget, selectedFiles)" margin="14px 20px unset unset" hint="Upload DV Types" contenttype=".xlsx" caption="Upload DV Type"></wm-fileupload>
+                            <wm-fileupload name="dvTypeUpload" class="secondaryButton" on-select="dvTypeUploadSelect($event, widget, selectedFiles)" margin="14px 20px unset unset" hint="Upload DV Types" contenttype=".xlsx" caption="Upload DV Type"></wm-fileupload>
                             <wm-button name="exportDV_Link" caption="" iconclass="fa fa-download" margin="4.5px 20px unset unset" hint="Download Domain Values" class="upDown" on-click="exportDV_LinkClick($event, widget)"></wm-button>
                             <wm-button name="importDV_Link" caption="" iconclass="fa fa-upload" hint="Upload Domain Values" class="upDown" on-click="Widgets.DVUpload_designDialog.open()"></wm-button>
                         </wm-container>
@@ -49,7 +50,8 @@
             <wm-container width="85%" name="action_container" class="inflex-center-sb jc-sb">
                 <wm-label padding="unset 5px unset 50px" name="label3_1" caption="Domain Value" width="40%" height="100%"></wm-label>
                 <wm-container name="DVUploadSelect_container" width="60%" class="colflex-center-sb jc-sb flexCol">
-                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10" width="100%"></wm-fileupload>
+                    <wm-fileupload name="importDV" on-select="importDVSelect($event, widget, selectedFiles)" margin="10px unset unset unset" caption="SELECT" show="true" contenttype=".xlsx" iconclass="" class="upDown" hint="Upload Domain Values" maxfilesize="10"
+                        width="100%"></wm-fileupload>
                     <wm-label padding="unset 0.5em" name="label4" caption=".xlsx file less than 10 MB" fontsize="0.85" fontunit="em"></wm-label>
                 </wm-container>
             </wm-container>

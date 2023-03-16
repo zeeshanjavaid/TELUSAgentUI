@@ -442,3 +442,28 @@ Page.goToDomainValue = function($event, row) {
 //         Page.Actions.goToPage_Users.invoke();
 //     }
 // };
+Page.button5Click = function($event, widget) {
+
+    debugger;
+
+    Page.Variables.searchValue.dataSet.dataValue = [];
+    // Page.Variables.sv_getDVTypeByDescriptionPaginated.dataSet.pageContent
+    debugger;
+    Page.Variables.totalRecordCount.setValue('dataValue', 0);
+    Page.Variables.currentPage.setValue('dataValue', 0);
+    Page.Variables.pageSize.setValue('dataValue', fixedPageSize);
+    Page.Variables.sortProperties.setValue('dataValue',
+        (Page.Variables.sortProperties.getValue('dataValue') ?
+            Page.Variables.sortProperties.getValue('dataValue') : 'description ASC'));
+
+    //search/fetch service invocation below
+    let dvTypeSV = Page.Variables.sv_getDVTypeByDescriptionPaginated;
+    dvTypeSV.setInput({
+        "description": Page.Variables.searchValue.getValue('dataValue'),
+        "currentPage": Page.Variables.currentPage.getValue('dataValue'),
+        "pageSize": Page.Variables.pageSize.getValue('dataValue'),
+        "sortOrders": Page.Variables.sortProperties.getValue('dataValue')
+    });
+
+    dvTypeSV.invoke();
+};

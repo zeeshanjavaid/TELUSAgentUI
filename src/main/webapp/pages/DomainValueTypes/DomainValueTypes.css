@@ -179,3 +179,13 @@ div[class~='app-fileupload'] .file-upload div[class~='upload-file-list'] {
     margin-top: 0 0 5px 0;
     font-size: 12px;
 }
+
+.secondaryButton .app-fileupload .app-single-file-upload .app-button-wrapper .ng-valid .app-button.btn.btn-default {
+    background-color: white;
+    color: purple;
+    border-width: 0px 0px 2px 0px;
+    border-radius: unset;
+    border-color: purple;
+    padding: 1px 6px;
+    font-size: 15px;
+}
