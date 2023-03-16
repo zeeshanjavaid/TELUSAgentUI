@@ -21,6 +21,10 @@ body {
     color: green;
 }
 
+.icon-check-red {
+    color: red;
+}
+
 .app-left-panel {
     float: left !important;
 }
