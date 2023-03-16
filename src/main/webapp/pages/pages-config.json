@@ -78,6 +78,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "CreateDispute",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "CreateParr",
   "type" : "PARTIAL",
   "params" : [ ]
