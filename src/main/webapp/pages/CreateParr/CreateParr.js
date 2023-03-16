@@ -92,9 +92,10 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
             //collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
         }
         totalInstallmentAmt = totalInstallmentAmt + amount;
+
         installmentSchedule.push(collectionPaymentInstallment);
     }
-    Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
+    Partial.AmtOverUnder = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
@@ -201,18 +202,14 @@ Partial.SubmitBanClick = function($event, widget) {
     Partial.Widgets.selectBANdialog.close();
 };
 Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
-    alert('Hi');
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        alert("amount :" + Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
-
         totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
-    alert("totalInstallmentAmt:" + totalInstallmentAmt);
-    Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
-    alert("amtOverUnder:" + Partial.Variables.AmtOverUnderParrTotal.dataSet.datavalue);
+    Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt;
+    alert("amtOverUnder:" + Partial.AmtOverUnder);
 };
 
 window.addEventListener('click', event => {

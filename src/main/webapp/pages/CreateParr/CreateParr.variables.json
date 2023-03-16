@@ -250,7 +250,8 @@
       "sequenceId" : 0,
       "date" : "dateValue",
       "amount" : 0,
-      "cummPmtAmount" : 0
+      "cummPmtAmount" : 0,
+      "amtOverUnderParrTotal" : 0
     } ],
     "type" : "entry",
     "isList" : true,
