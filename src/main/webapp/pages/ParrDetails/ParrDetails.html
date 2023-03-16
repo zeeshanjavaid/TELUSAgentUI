@@ -88,7 +88,7 @@
                                     <wm-label class="col-md-3 control-label" name="label14" caption="Installment BAN's" width="90%" margin="3px unset unset unset"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="10" name="gridcolumn17_3">
-                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
+                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None" nodatamessage="">
                                         <wm-listtemplate layout="inline" name="listtemplate3">
                                             <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
                                                 <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
@@ -123,8 +123,7 @@
                     <wm-container name="container24_1">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
                             <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true"
-                                readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" width="25%" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
@@ -187,23 +186,22 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn17_1">
-                    <wm-composite name="composite12">
-                        <wm-label class="col-md-3 control-label" name="label23" caption="Installment BAN's"></wm-label>
-                        <wm-container class="col-md-9" name="container12">
-                            <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" datafield="All Fields" name="installmentBANList1" dataset="bind:Variables.installmentBAN.dataSet"
-                                navigation="None">
-                                <wm-listtemplate layout="inline" name="listtemplate3_1">
-                                    <wm-container class="media-left" name="container27_1">
-                                        <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
-                                    </wm-container>
-                                    <wm-container class="media-body" name="container28">
-                                        <wm-label class="p media-heading" name="banName" caption="bind:Variables.installmentBAN.dataSet[$i].banName" fontunit="em" padding="unset unset unset 1.25em"></wm-label>
-                                    </wm-container>
-                                </wm-listtemplate>
-                            </wm-list>
-                        </wm-container>
-                    </wm-composite>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn17_1">
+                    <wm-label padding="unset 0.5em" name="label32" caption="Installment BAN"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="9" name="gridcolumn32_1">
+                    <wm-container name="container27_1">
+                        <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list  installmentlist" name="installmentBANList1" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
+                            <wm-listtemplate layout="inline" name="listtemplate3_1">
+                                <wm-container class="media-left" name="container28">
+                                    <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
+                                </wm-container>
+                                <wm-container class="media-body" padding="unset unset unset 1.25em" name="container29">
+                                    <wm-label name="banName" class="p media-heading" caption="bind:Variables.installmentBAN.dataSet.banName" fontsize="1.143" fontunit="em"></wm-label>
+                                </wm-container>
+                            </wm-listtemplate>
+                        </wm-list>
+                    </wm-container>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -245,8 +243,7 @@
                         <wm-button class="btn-primary" caption="Clear" on-click="ClearButtonClick($event, widget)" name="ClearButton" margin="unset unset unset 43px"></wm-button>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" name="gridcolumn39">
-                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"
-                            iconposition="right"></wm-button>
+                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()" iconposition="right"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>

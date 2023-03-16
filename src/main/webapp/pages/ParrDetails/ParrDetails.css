@@ -6,6 +6,15 @@
     overflow: hidden;
     width: 14em;
 }
+.installmentlist{
+    border: solid;
+    border-width: 0.1px;
+    border-color: lightgray;
+    width:85%;
+    overflow: hidden;
+    width: 14em;
+    
+}
 
 button.app-icon.wi.card-action {
     display: none;
@@ -29,6 +38,6 @@ button.app-icon.wi.card-action {
     
 }*/
 
-.DDDTest{
+/*.DDDTest{
     float: right !important;
-}
+}*/
