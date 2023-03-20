@@ -8,6 +8,8 @@ import java.lang.String;
 import java.lang.Exception;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import java.util.List;
+import java.lang.Integer;
+import io.swagger.client.model.EntitySearchResponseArray;
 import io.swagger.client.model.CollectionDispute;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -30,6 +32,13 @@ public class CollectionDataController {
     @ApiOperation(value = "")
     public List<EntityBanDetailsResponse> getEntityBanDetails(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
         return collectionDataService.getEntityBanDetails(entityId);
+    }
+
+    @RequestMapping(value = "/entitySearch", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public EntitySearchResponseArray getEntitySearch(@RequestParam(value = "inputType", required = false) String inputType, @RequestParam(value = "inputValue", required = false) String inputValue, @RequestParam(value = "searchMatchCriteria", required = false) String searchMatchCriteria, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionDataService.getEntitySearch(inputType, inputValue, searchMatchCriteria, billingSystem, offset, limit);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
