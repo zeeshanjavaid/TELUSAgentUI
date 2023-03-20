@@ -266,7 +266,8 @@
     "TEAM_CREATED_SUCCESSFULLY" : "Team created successfully",
     "TEAMS_IMPORTED_SUCCESSFULLY" : "Teams imported successfully",
     "TEAM_DELETED_SUCCESSFULLY" : "Team deleted successfully",
-    "TEAM_UPDATED_SUCCESSFULLY" : "Team updated successfully"
+    "TEAM_UPDATED_SUCCESSFULLY" : "Team updated successfully",
+    "MESSAGE_REQUIRED_FIELD" : "Required field."
   },
   "formats" : {
     "date" : "MM/dd/yyyy",

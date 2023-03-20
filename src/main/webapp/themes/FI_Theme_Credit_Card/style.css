@@ -5836,7 +5836,8 @@ fieldset[disabled] .wm-app .navbar-inverse .btn-link:focus {
 .wm-app .pagination>.active>span:focus {
     z-index: 3;
     color: #fff;
-    background-color: #00629b;
+    /*background-color: #00629b;*/
+    background-color: #4B286D;
     border-color: #fff;
     cursor: default;
 }
@@ -9838,7 +9839,7 @@ button.wm-app .close {
 
 .wm-app .form-group .text-danger,
 .wm-app .form-group .control-label.text-danger {
-    color: #a94442;
+    /*color: #a94442;*/
 }
 
 .wm-app .form-group .ng-touched.ng-invalid {
@@ -9857,13 +9858,15 @@ button.wm-app .close {
     margin-bottom: 0px;
 }
 
-.wm-app .live-field.form-group .help-block {
+
+/*.wm-app .live-field.form-group .help-block {
     display: inline;
     padding: 0px;
 }
+*/
 
 .wm-app .live-field.form-group .help-block.text-danger {
-    color: #6e6d6a;
+    margin-left: 0.2em;
 }
 
 .wm-app .live-field.form-group .ng-touched.ng-invalid .form-control {
@@ -10138,7 +10141,7 @@ button.wm-app .close {
 .wm-app .app-liveform .control-label.text-danger,
 .wm-app .app-form .app-label.text-danger,
 .wm-app .app-liveform .app-label.text-danger {
-    color: #000;
+    /*color: #000;*/
 }
 
 .wm-app .app-form .form-group.caption-top,
@@ -10436,7 +10439,7 @@ button.wm-app .close {
 
 .wm-app .app-grid .table thead th .sort-buttons-container .sort-icon.desc,
 .wm-app .app-grid .table thead th .sort-buttons-container .sort-icon.asc {
-    color: #fff;
+    color: #000;
 }
 
 .wm-app .app-grid .table th.info,
@@ -10545,7 +10548,7 @@ button.wm-app .close {
 .wm-app .app-datanavigator .pagination.basic li.active a:hover,
 .wm-app .app-datanavigator .pagination.basic li.active a:focus {
     color: #fff;
-    background-color: #00629b;
+    background-color: #4B286D;
     border: 0;
 }
 
@@ -10562,8 +10565,9 @@ button.wm-app .close {
 .wm-app .app-datanavigator .pagination.basic li:focus a:hover,
 .wm-app .app-datanavigator .pagination.basic li:hover a:focus,
 .wm-app .app-datanavigator .pagination.basic li:focus a:focus {
-    color: inherit;
-    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+    background-color: #4B286D;
     border: 0;
 }
 
@@ -10573,7 +10577,8 @@ button.wm-app .close {
 }
 
 .wm-app .app-datanavigator .pagination li.pagecount a {
-    background-color: #00629b;
+    /*background-color: #00629b;*/
+    background-color: #4B286D;
     border-color: #00629b;
 }
 
@@ -12341,7 +12346,7 @@ button.wm-app .close {
     border-radius: 500px;
     position: relative;
     background-color: #b6e1f6;
-    border: 1px solid #b6e1f6;
+    /*border: 1px solid #b6e1f6;*/
 }
 
 .wm-app .app-toggle.checkbox label.unchecked {
@@ -14052,7 +14057,7 @@ button.wm-app .close {
 }
 
 .wm-app .invalid-text-input {
-    border: 1px solid #dc143c !important;
+    border: 1px solid pink !important;
 }
 
 .wm-app .ac-chips-small {
@@ -14371,7 +14376,7 @@ button.wm-app .close {
 }
 
 .wm-app .app-toggle.checkbox label {
-    background: #6E7E00 !important;
+    background: #4B286D !important;
     width: 38px;
     height: 22px;
 }

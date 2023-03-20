@@ -56,9 +56,9 @@
                                                 </wm-composite>
                                                 <wm-composite name="composite13">
                                                     <wm-label class="col-md-3 control-label" name="label8_1" caption="Role"></wm-label>
-                                                    <wm-container class="col-md-9" name="container25_1">
+                                                    <wm-container class="col-md-9 role" name="container25_1">
                                                         <wm-select name="select7_1" dataset="bind:Variables.GetAllRoles.dataSet" datafield="All Fields" displayexpression="bind:Variables.GetAllRoles.dataSet.value" datavalue="bind:Variables.GetAllRoles.dataSet.value"
-                                                            margin="unset 80px unset 45px"></wm-select>
+                                                            margin="unset 80px unset 45px" required="bind:appLocale.MESSAGE_REQUIRED_FIELD"></wm-select>
                                                     </wm-container>
                                                 </wm-composite>
                                             </wm-composite>
@@ -68,7 +68,7 @@
                                             <wm-composite name="composite4" width="90%" class="inflex-center-sb jc-sb">
                                                 <wm-label class="col-md-3 control-label" name="label5" caption="TeamManager" width="40%"></wm-label>
                                                 <wm-container class="col-md-9" name="container5" width="60%">
-                                                    <wm-select name="select_activity_type" placeholder="" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
+                                                    <wm-select name="select_activity_type" placeholder="Select value" class="searchInput" datavalue="bind:Variables.mv_activityLogSearchFilter.dataSet.activitytype" dataset="bind:Variables.sv_getActivityTypeDV.dataSet"
                                                         datafield="id" displayfield="description"></wm-select>
                                                 </wm-container>
                                             </wm-composite>

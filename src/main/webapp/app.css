@@ -241,8 +241,8 @@
     background-color: white;
     color: purple;
     border-bottom: 1px solid purple;
-    border-radius: unset;
-    padding: 1px 2px;
+    border-radius: unset !important;
+    padding: 1px 2px !important;
 }
 
 .btn.secondaryButton:hover {
