@@ -1,22 +1,29 @@
 <wm-partial name="partial1">
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow7">
-            <wm-gridcolumn columnwidth="3" name="gridcolumn21_1">
-                <wm-container name="container13" margin="1em unset unset 1em">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn21_1">
+                <wm-container name="container13" margin="1em unset unset 0.5em">
                     <wm-anchor margin="unset 0.5em" name="anchor2" iconclass="fico-icon-arrow-left" caption="" on-click="anchor2Click($event, widget)"></wm-anchor>
-                    <wm-label padding="unset 0.5em unset unset" name="label3" caption="PARR Details:" margin="unset unset unset 8.2px" fontunit="px"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" name="label3" caption="View PARR :" margin="unset unset unset 8.2px" fontunit="em" fontsize="1.5"></wm-label>
                 </wm-container>
+                <wm-layoutgrid name="layoutgrid13">
+                    <wm-gridrow name="gridrow20">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn41" class="grid-col41-size">
+                            <wm-label padding="unset 0.5em" name="label33" caption=""></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label34" caption="PARR Details" margin="0.5em unset 0.1em 4.2em" class="parrDeatailsLine" width="200px"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="9" name="gridcolumn22_1" horizontalalign="right">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn22_1" horizontalalign="right">
                 <wm-container name="container14" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.cancelPARRConfirmationdialog.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em unset 1em" name="button1" on-click="Widgets.cancelPARRConfirmationdialog.open()"></wm-button>
                     <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow6"></wm-gridrow>
         <wm-gridrow name="gridrow2">
-            <wm-container name="container15" margin="1em unset unset 7em">
+            <wm-container name="container15" margin="2em unset unset 7em">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn3">
                     <wm-composite name="composite2" width="165px">
                         <wm-label class="col-md-3 control-label" name="label5" caption="PARR ID:" width="35%"></wm-label>
@@ -77,7 +84,7 @@
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="10" name="gridcolumn18">
+                <wm-gridcolumn columnwidth="10" name="gridcolumn18" class="col-sm-18grid">
                     <wm-composite name="composite10" width="100%">
                         <wm-container class="media-left" name="container19">
                             <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" picturesource="bind:Variables.installmentBAN.dataSet['BAN ID']" class="media-object" show="resources/images/imagelists/bullet.png"></wm-picture>
@@ -85,10 +92,11 @@
                         <wm-layoutgrid name="layoutgrid4">
                             <wm-gridrow name="gridrow9">
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn21">
-                                    <wm-label class="col-md-3 control-label" name="label14" caption="Installment BAN's" width="90%" margin="3px unset unset unset"></wm-label>
+                                    <wm-label class="col-md-3 control-label" name="label14" caption="Installment BAN's:" width="90%" margin="3px unset unset unset"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="10" name="gridcolumn17_3">
-                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None" nodatamessage="">
+                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList3" dataset="bind:Variables.installmentBAN.dataSet" navigation="None"
+                                        nodatamessage="">
                                         <wm-listtemplate layout="inline" name="listtemplate3">
                                             <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
                                                 <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
@@ -97,7 +105,7 @@
                                                 <wm-layoutgrid name="layoutgrid3" width="70%">
                                                     <wm-gridrow name="gridrow7_1">
                                                         <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
-                                                            <wm-label name="Value" caption="bind:Variables.installmentBAN.dataSet.banName" class="p text-muted" color="#000"></wm-label>
+                                                            <wm-label name="banValue" caption="bind:Variables.installmentBAN.dataSet.banName" class="p text-muted" color="#000"></wm-label>
                                                         </wm-gridcolumn>
                                                     </wm-gridrow>
                                                     <wm-gridrow name="gridrow8"></wm-gridrow>
@@ -117,13 +125,14 @@
     <wm-panel iconclass="bind:IsExpandedIS === false ? 'fico-icon-chevron-light-right':'fico-icon-chevron-light-down'" autoclose="outsideClick" title="Installment Schedule:" name="installmentSchedule" on-expand="installmentScheduleExpand($event, widget)"
         collapsible="true" on-collapse="installmentScheduleCollapse($event, widget)" margin="unset unset unset -1.7em">
         <wm-layoutgrid name="layoutgrid5">
-            <wm-gridrow name="gridrow10">
+            <wm-gridrow name="gridrow10" class="installScheduleLine1">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="left">
                     <wm-container name="container24_1">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
                             <wm-table-column binding="sequenceId" caption="Installment Sequence" width="25%" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" textalignment="center" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true"
+                                readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" width="25%" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
@@ -159,91 +168,109 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-panel>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" class="renegotiatteLine1" closable="true">
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow4_1">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn15">
-                    <wm-composite name="composite9_1">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn15" class="col-sm-15grid">
+                    <wm-composite name="composite9_1" margin="unset unset unset 1em">
                         <wm-container class="col-md-9" name="container9_1" width="100%">
-                            <wm-label class="col-md-3 control-label" name="label20" caption="Parr ID" width="46%" margin="5px unset unset unset"></wm-label>
-                            <wm-label padding="unset 0.5em" name="parrID" caption="bind:Variables.getPaymentArrangement.dataSet.id" margin="5px unset unset unset" width="50%"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label20" caption="Parr ID" width="42%" margin="0.3em unset unset 1.7em" color="#6e6d6a" bordercolor="#6e6d6a"></wm-label>
+                            <wm-label padding="unset 0.5em" name="parrID" caption="bind:Variables.getPaymentArrangement.dataSet.id" margin="5px unset unset unset" width="35%"></wm-label>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                <wm-gridcolumn columnwidth="5" name="gridcolumn16" class="col-sm-16grid">
                     <wm-composite name="composite10_1">
-                        <wm-label class="col-md-3 control-label" name="label21" caption="Reccurence:" width="42%"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label21" caption="Reccurence:" width="42%" margin="-1px unset unset unset"></wm-label>
                         <wm-label padding="unset 0.5em" name="reccurence" caption="bind:Variables.getPaymentArrangement.dataSet.recurrence"></wm-label>
                     </wm-composite>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="5" name="gridcolumn23">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn23" class="col-sm-23grid">
                     <wm-composite name="composite18">
-                        <wm-label class="col-md-3 control-label" name="label42" caption="PARR Amt:" width="30%"></wm-label>
-                        <wm-container class="col-md-9" name="container30" width="60%">
+                        <wm-label class="col-md-3 control-label" name="label42" caption="PARR Amt:" width="50%"></wm-label>
+                        <wm-container class="col-md-9" name="container30" width="40%">
                             <wm-number textalign="right" name="RenegotiateParrAmount" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)"></wm-number>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn17_1">
-                    <wm-label padding="unset 0.5em" name="label32" caption="Installment BAN"></wm-label>
+            <wm-gridrow name="gridrow5" class="col-sm-5grid">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn17_1">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label32" caption="Installment BAN:" margin="unset unset unset 2.2em" color="#6e6d6a"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="9" name="gridcolumn32_1">
+                <wm-gridcolumn columnwidth="8" name="gridcolumn32_1">
                     <wm-container name="container27_1">
-                        <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list  installmentlist" name="installmentBANList1" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
+                        <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media list installmentlist" name="installmentBANList1" dataset="bind:Variables.installmentBAN.dataSet" navigation="None">
                             <wm-listtemplate layout="inline" name="listtemplate3_1">
-                                <wm-container class="media-left" name="container28">
-                                    <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
-                                </wm-container>
-                                <wm-container class="media-body" padding="unset unset unset 1.25em" name="container29">
-                                    <wm-label name="banName" class="p media-heading" caption="bind:Variables.installmentBAN.dataSet.banName" fontsize="1.143" fontunit="em"></wm-label>
-                                </wm-container>
+                                <wm-layoutgrid name="layoutgrid15_1">
+                                    <wm-gridrow name="gridrow18">
+                                        <wm-gridcolumn columnwidth="1" name="gridcolumn35">
+                                            <wm-container class="media-left" name="container28">
+                                                <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png"></wm-picture>
+                                            </wm-container>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="11" name="gridcolumn36_1">
+                                            <wm-label name="banName" class="p media-heading" caption="bind:Variables.installmentBAN.dataSet.banName" fontsize="1.143" fontunit="em" margin="-1px unset unset unset"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
                             </wm-listtemplate>
                         </wm-list>
                     </wm-container>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-label padding="1em .5em 2em 0.5em" name="label24" caption="Installment Schedule"></wm-label>
+        <wm-label padding="0.5em unset 0.3em unset" name="label24" caption="Installment Schedule" margin="unset unset unset 0.2em" class="reneScheduleLine" width="97%"></wm-label>
         <wm-container name="container20">
-            <wm-layoutgrid name="layoutgrid11">
-                <wm-gridrow name="gridrow22"></wm-gridrow>
+            <wm-layoutgrid name="layoutgrid11"></wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid16">
+                <wm-gridrow name="gridrow24">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn51">
+                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Basic" class="getInstallment-reneTable">
+                            <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                            <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary DDDTest" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" tabindex="8" widget-type="button"
+                                position="header"></wm-table-action>
+                            <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+                        </wm-table>
+                    </wm-gridcolumn>
+                </wm-gridrow>
             </wm-layoutgrid>
-            <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Basic">
-                <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary DDDTest" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" tabindex="8" widget-type="button" position="header"></wm-table-action>
-                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
-            </wm-table>
         </wm-container>
         <wm-container name="container21">
-            <wm-label padding="1em 0.5em 3em unset" name="label26" caption="Amt Over/Under Parr Total:" textalign="left"></wm-label>
-            <wm-label padding="unset 0.5em" name="label27_1" caption="bind:Variables.AmtOverUnderParrTotal.dataSet.dataValue"></wm-label>
+            <wm-layoutgrid name="layoutgrid14">
+                <wm-gridrow name="gridrow20_1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn43">
+                        <wm-label padding="1em 0.5em 1.5em unset" name="label26" caption="Amt Over/Under Parr Total:" textalign="left" margin="unset unset unset 2.8em" color="#6e6d6a"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn44">
+                        <wm-label padding="1.5em 0.5em unset 0.5em" name="label27_1" caption="bind:Variables.AmtOverUnderParrTotal.dataSet.dataValue"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
         </wm-container>
         <wm-container name="container22">
-            <wm-composite name="composite14">
-                <wm-label class="col-md-3 control-label" name="label29" caption="Comments" textalign="left"></wm-label>
-                <wm-container class="col-md-9" name="container23">
-                    <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)"></wm-textarea>
-                </wm-container>
-            </wm-composite>
+            <wm-layoutgrid name="layoutgrid15">
+                <wm-gridrow name="gridrow22" class="col-22grid">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn47">
+                        <wm-label class="col-md-3 control-label" name="label29" caption="Comments:" textalign="left" margin="unset unset unset 2.7em" color="#6e6d6a"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="9" name="gridcolumn48">
+                        <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="97%" class="reneCommentBox"></wm-textarea>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
         </wm-container>
         <wm-dialogactions name="dialogactions1">
-            <wm-layoutgrid name="layoutgrid11_2">
-                <wm-gridrow name="gridrow16">
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn31_2"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn30_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn36_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn37"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn38">
-                        <wm-button class="btn-primary" caption="Clear" on-click="ClearButtonClick($event, widget)" name="ClearButton" margin="unset unset unset 43px"></wm-button>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn39">
-                        <wm-button class="btn-default" caption="Submit" type="button" margin="unset unset unset 25px" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()" iconposition="right"></wm-button>
+            <wm-layoutgrid name="layoutgrid11_2" columns="2">
+                <wm-gridrow name="gridrow26">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn56" class="col-56gridButtons" padding="unset 1.4em unset unset">
+                        <wm-button class="secondaryButton" caption="Clear" on-click="ClearButtonClick($event, widget)" name="ClearButton"></wm-button>
+                        <wm-button class="primaryButton" caption="Submit" type="button" name="SubmitButton" on-click="Variables.updatePaymentArrangement.invoke();Widgets.renegotiatePARRdialog.close();Widgets.renegotitateSubmitDialog.open()"
+                            iconposition="right"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
@@ -272,7 +299,7 @@
                 <wm-textarea name="textarea2" color="#ddd" class="cancelParrborder" margin="unset unset unset 3em" width="90%"></wm-textarea>
             </wm-container>
         </wm-composite>
-        <wm-button class="btn-default" caption="No, Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
-        <wm-button class="btn-default" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+        <wm-button class="secondaryButton" caption="No, Cancel" type="button" margin="2em 0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+        <wm-button class="primaryButton" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
     </wm-dialog>
 </wm-partial>

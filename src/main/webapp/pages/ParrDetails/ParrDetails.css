@@ -1,18 +1,25 @@
+/*managing space for parr details*/
+.col-sm-18grid{
+    width: 63.333333%
+}
+
+
 .InstallBAN {
     border: solid;
-    border-width: 0.1px;
-    border-color: lightgray;
-    width:85%;
-    overflow: hidden;
-    width: 14em;
+    border-width: 0.1px ;
+    border-color: lightgray ;
+    width:85% ;
+    overflow: hidden ;
+    width: 14em ;
 }
+
 .installmentlist{
-    border: solid;
-    border-width: 0.1px;
+    border: solid ;
+    border-width: 0.1px ;
     border-color: lightgray;
-    width:85%;
-    overflow: hidden;
-    width: 14em;
+    width:85% ;
+    overflow: hidden ;
+    width: 14em ;
     
 }
 
@@ -33,6 +40,61 @@ button.app-icon.wi.card-action {
 .Renegotiate{
     top:100px;
 }
+
+.parrDeatailsLine{
+    border-bottom: 1px solid #ddd;
+    width:400% !important;
+}
+.grid-col41-size{
+    width:190% !important;
+}
+.installScheduleLine{
+   border-bottom: 1px solid #ddd !important ;
+}
+.renegotiatteLine1{
+   border-bottom: 1px solid #ddd ; 
+  
+}
+.reneScheduleLine{
+    border-bottom: 1px solid #ddd; 
+}
+.reneCommentBox{
+    border-radius: 5px;
+}
+.rene-37gridLIne{
+    border-bottom: 1px solid #ddd;   
+}
+/* managing spaces for renegotiate dialog box */
+.col-sm-5grid{
+    width:68%;
+}
+.col-sm-15grid{
+    width:19%;
+}
+.col-sm-16grid{
+    width:27.6%;
+}
+.col-sm-23grid{
+    width:25%;
+}
+.getInstallment-reneTable{
+    width:87%; 
+    margin-left:2.9em;
+}
+.col-22grid{
+    width:80%;
+}
+.col-56gridButtons{
+text-align: right
+}
+
+.h4.app-dialog-title.modal-title
+{
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #ddd;
+}
+
 
 /*.card-actions.app-datagrid-actions.col-auto {
     
