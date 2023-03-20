@@ -19,6 +19,7 @@ import com.wavemaker.runtime.service.annotations.HideFromClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -27,6 +28,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntitySearchResponseArray;
 import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
+import io.swagger.client.model.AssignedEntitiesInClassicViewResponseArray;
+
 import io.swagger.client.model.CollectionDispute;
 import java.util.List;
 
@@ -91,10 +94,19 @@ public class CollectionDataService {
     
     ///assignedEntitiesInEntityView
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
-    public AssignedEntitiesInEntityViewResponseArray getAssignedEntitiesInEntityView(String agentId , String workCategory , Integer offset, Integer limit) throws Exception  {
+    public AssignedEntitiesInEntityViewResponseArray getAssignedEntitiesInEntityView(@RequestParam(required = true) String agentId , @RequestParam(required = true) String workCategory , Integer offset, Integer limit) throws Exception  {
 
         return objectMapper.readValue("[{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":224343,\"cbucId\":7232323,\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true},{\"entityId\":6766678,\"entityType\":\"CBUCID\",\"rcId\":224344,\"cbucId\":723223,\"entityName\":\"Air Canada2\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"reprehenderit commodo\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true}]",AssignedEntitiesInEntityViewResponseArray.class);
         // return new Object(); 
     }
+    
+        ///assignedEntitiesInEntityView
+    @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
+    public AssignedEntitiesInEntityViewResponseArray getassignedEntitiesInClassicView(@RequestParam(required = true) String agentId , @RequestParam(required = true) String workCategory , Integer offset, Integer limit) throws Exception  {
+
+        return objectMapper.readValue("[{\"banId\":256645999,\"banName\":\"NORTHLAND PROPERTIES CORPORATION\",\"cbucId\":761846,\"rcId\":392931,\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"lastPaymentDate\":\"2022-08-29T09:12:33.001Z\",\"paymentMethod\":\"Card\",\"odRemaining\":2344390.88,\"acctStatus\":\"O\",\"statusDate\":\"2022-08-29T09:12:33.001Z\",\"dispute\":2344390.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\"},{\"banId\":256645900,\"banName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"cbucId\":761846,\"rcId\":392931,\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"lastPaymentDate\":\"2022-08-29T09:12:33.001Z\",\"paymentMethod\":\"Card\",\"odRemaining\":390,\"acctStatus\":\"O\",\"statusDate\":\"2022-08-29T09:12:33.001Z\",\"dispute\":90.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\"}]",AssignedEntitiesInEntityViewResponseArray.class);
+        // return new Object(); 
+    }
+
 
 }

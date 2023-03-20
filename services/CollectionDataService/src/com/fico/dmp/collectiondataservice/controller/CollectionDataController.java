@@ -49,6 +49,13 @@ public class CollectionDataController {
         return collectionDataService.getEntitySearch(inputType, inputValue, searchMatchCriteria, billingSystem, offset, limit);
     }
 
+    @RequestMapping(value = "/assignedEntitiesInClassicView", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public AssignedEntitiesInEntityViewResponseArray getassignedEntitiesInClassicView(@RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionDataService.getassignedEntitiesInClassicView(agentId, workCategory, offset, limit);
+    }
+
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")

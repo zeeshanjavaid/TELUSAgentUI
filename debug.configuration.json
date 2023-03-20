@@ -917,7 +917,7 @@
       "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 70,
+        "line" : 73,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityBanDetails",
         "phaseSequence" : 0,
@@ -925,7 +925,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 78,
+        "line" : 81,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getdispute",
         "phaseSequence" : 0,
@@ -933,7 +933,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 96,
+        "line" : 99,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getAssignedEntitiesInEntityView",
         "phaseSequence" : 0,
@@ -941,7 +941,15 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 87,
+        "line" : 107,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getassignedEntitiesInClassicView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 90,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntitySearch",
         "phaseSequence" : 0,
