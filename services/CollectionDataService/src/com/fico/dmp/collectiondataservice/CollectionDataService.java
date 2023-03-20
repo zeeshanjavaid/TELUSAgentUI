@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntitySearchResponseArray;
+import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
 import io.swagger.client.model.CollectionDispute;
 import java.util.List;
 
@@ -86,6 +87,14 @@ public class CollectionDataService {
         return objectMapper.readValue("[{\"banId\":224434,\"banName\":\"Air Canada Toronto\",\"billingSystem\":\"CES\",\"cbucId\":1323232,\"dntlFlag\":true,\"entityId\":67666,\"entityName\":\"Air Canada Ontario\",\"entityOwner\":\"Agent123\",\"entityType\":\"RCID\",\"rcId\":323223},{\"banId\":44343,\"banName\":\"Rexdale Pharmacy\",\"billingSystem\":\"CES\",\"cbucId\":3232232,\"dntlFlag\":true,\"entityId\":676667,\"entityName\":\"Rexdale\",\"entityOwner\":\"Agent345\",\"entityType\":\"RCID\",\"rcId\":224232}]",EntitySearchResponseArray.class);
         // return new Object(); 
     }
+    
+    
+    ///assignedEntitiesInEntityView
+    @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
+    public AssignedEntitiesInEntityViewResponseArray getAssignedEntitiesInEntityView(String agentId , String workCategory , Integer offset, Integer limit) throws Exception  {
 
+        return objectMapper.readValue("[{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":224343,\"cbucId\":7232323,\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true},{\"entityId\":6766678,\"entityType\":\"CBUCID\",\"rcId\":224344,\"cbucId\":723223,\"entityName\":\"Air Canada2\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"reprehenderit commodo\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true}]",AssignedEntitiesInEntityViewResponseArray.class);
+        // return new Object(); 
+    }
 
 }
