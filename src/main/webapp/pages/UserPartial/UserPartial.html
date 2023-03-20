@@ -183,17 +183,20 @@
         <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="createUserForm1" on-error="createUserForm1Error($event, widget, $data)" validationtype="default" on-success="Variables.searchUsers.invoke()">
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">
                 <wm-gridrow name="gridrow18" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn25"><label class="app-label control-label formfield-label col-12 text-danger">First Name<span class="asterisk">*</span></label>
-                        <wm-form-field name="UserDTO_firstName" class="required-field" readonly="false" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn25">
+                        <label class="app-label control-label formfield-label col-12 text-danger">First Name<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_firstName" readonly="false" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow19" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn26"><label class="app-label control-label formfield-label col-12 text-danger">Last Name<span class="asterisk">*</span></label>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn26">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Last Name<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_lastName" readonly="false" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow11" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn12"><label class="app-label control-label formfield-label col-12 text-danger">Empl ID<span class="asterisk">*</span></label>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Empl ID<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_emplId" readonly="false" key="UserDTO.emplId" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
@@ -203,28 +206,33 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">
-                    <wm-gridcolumn name="gridcolumn1" columnwidth="12"><label class="app-label control-label formfield-label col-12 text-danger">User ID<span class="asterisk">*</span></label>
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                        <label class="app-label control-label formfield-label col-12 text-danger">User ID<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" widget="text" show="true" inputtype="text" placeholder="Enter value" required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow2">
-                    <wm-gridcolumn name="gridcolumn2" columnwidth="12"><label class="app-label control-label formfield-label col-12 text-danger">Status<span class="asterisk">*</span></label>
+                    <wm-gridcolumn name="gridcolumn2" columnwidth="12">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Status<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" widget="radioset" show="true" required="true" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="stacked" readonly="false" datavalue="true"
                             margin="-14px 0 0 -6px" usekeys="false"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
-                    <wm-gridcolumn name="gridcolumn1" columnwidth="12"><label class="app-label control-label formfield-label col-12 text-danger">Role<span class="asterisk">*</span></label>
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Role<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_role" readonly="false" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Select value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10"><label class="app-label control-label formfield-label col-12 text-danger">Team ID<span class="asterisk">*</span></label>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Team ID<span class="asterisk">*</span></label>
                         <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" show="true" required="true" type="string" widget="select" placeholder="Select value" dataset="bind:Variables.getTeam.dataSet" datafield="id" displayfield="teamId" on-change="Variables.getTeamManagersByTeamId.invoke()"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
-                    <wm-gridcolumn name="gridcolumn1" columnwidth="12"><label class="app-label control-label formfield-label col-12 text-danger">Team Manager</label>
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Team Manager</label>
                         <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" show="bind:Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.createUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
                             type="string" widget="select" placeholder="Select value" on-click="Variables.getManagerForCreateUser.invoke()" dataset="bind:Variables.getManagerForCreateUser.dataSet" datafield="id" displayfield="managerName"></wm-form-field>
                     </wm-gridcolumn>
@@ -250,55 +258,63 @@
             <wm-form-action key="save" display-name="Save" show="true" class="btn-success save" iconclass="" title="Save" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="User Edit" iconclass="wi wi-file-text" name="updateUser" on-opened="updateUserOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="User Edit" class="userEditPage" iconclass="wi wi-file-text" name="updateUser" on-opened="updateUserOpened($event, widget)">
         <hr>
         <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="" validationtype="html" on-success="Variables.searchUsers.invoke();Widgets.updateUser.close()">
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">
                 <wm-gridrow name="gridrow18" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn25">
-                        <wm-form-field name="UserDTO_firstName" readonly="false" displayname="First Name" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" updateon="blur" updatedelay="0" defaultvalue="bind:Variables.dialogUserId.dataSet.firstName"></wm-form-field>
+                        <label class="app-label control-label formfield-label col-12 text-danger">First Name<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_firstName" readonly="false" key="UserDTO.firstName" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" updateon="blur" updatedelay="0" defaultvalue="bind:Variables.dialogUserId.dataSet.firstName"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow19" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn26">
-                        <wm-form-field name="UserDTO_lastName" readonly="false" displayname="Last Name" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.lastName"></wm-form-field>
+                        <label class="app-label control-label formfield-label col-12 text-danger">Last Name<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_lastName" readonly="false" key="UserDTO.lastName" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.lastName"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow17" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" displayname="Empl Id" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true" inputtype="text" disabled="true"></wm-form-field>
+                        <label class="app-label control-label formfield-label col-12 text-danger">Empl ID<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_emplId" key="UserDTO.emplId" type="string" widget="text" show="true" mobile-display="false" defaultvalue="bind:Variables.dialogUserId.dataSet.emplId" placeholder="" readonly="true" inputtype="text" disabled="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_email" readonly="false" displayname="Email" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.email"></wm-form-field>
+                        <label class="app-label control-label formfield-label col-12 text-danger">Email<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_email" readonly="false" key="UserDTO.email" type="string" show="true" widget="text" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.email"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn27" class="m_10">
-                        <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" displayname="User Id" widget="text" show="true" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.userId" readonly="true" disabled="true"></wm-form-field>
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn27">
+                        <label class="app-label control-label formfield-label col-12 text-danger">User ID<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_userId" key="UserDTO.userId" type="string" widget="text" show="true" inputtype="text" placeholder="" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.userId" readonly="true" disabled="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow21" class="m_10">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn28" class="m_10">
-                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" displayname="Status" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline"
-                            class="ds_grid" readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow1">
-                    <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_role" readonly="false" displayname="Role" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true"
-                            defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
+                <wm-gridrow name="gridrow21">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn28">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Status<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_active" key="UserDTO.active" type="boolean" widget="radioset" show="true" required="true" placeholder="" dataset="bind:Variables.StatusModel.dataSet" datafield="dataValue" displayfield="name" layout="inline" class="ds_grid"
+                            readonly="false" datavalue="bind:Variables.dialogUserId.dataSet.active"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" displayname="Team Id" widget="select" show="true" required="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="teamId" displayfield="teamId" defaultvalue="bind:TestTeamId.teamId"></wm-form-field>
+                        <label class="app-label control-label formfield-label col-12 text-danger">Role<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_role" readonly="false" key="UserDTO.role" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" required="true" defaultvalue="bind:Variables.dialogUserId.dataSet.role"></wm-form-field>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow1" class="m_10">
+                    <wm-gridcolumn name="gridcolumn1" columnwidth="12" class="m_10">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Team ID<span class="asterisk">*</span></label>
+                        <wm-form-field name="UserDTO_teamId" key="UserDTO.teamId" type="string" widget="select" show="true" required="true" placeholder="Enter value" dataset="bind:Variables.getTeam.dataSet" datafield="teamId" displayfield="teamId" defaultvalue="bind:TestTeamId.teamId"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12">
-                        <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" type="string" displayname="Team Manager" widget="select" show="bind:Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
+                        <label class="app-label control-label formfield-label col-12 text-danger">Team Manager</label>
+                        <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" type="string" widget="select" show="bind:Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='OD TM' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Onshore' &amp;&amp; Widgets.updateUserForm1.formWidgets.UserDTO_role.datavalue !=='AR TM Offshore'"
                             placeholder="Enter value" dataset="bind:Variables.getManagerByTeamName.dataSet" datafield="id" displayfield="managerName" on-click="Variables.getManagerByTeamName.invoke()" defaultvalue="bind:Variables.dialogUserId.dataSet.managerName"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
@@ -310,9 +326,10 @@
                 <!--"></wm-form-field>-->
                 <!--                    </wm-gridcolumn>-->
                 <!--                </wm-gridrow>-->
-                <wm-label padding="1.1em 0.5em unset unset" name="label101" caption="Work Categories" margin="unset unset 8px unset"></wm-label>
-                <wm-gridrow name="gridrow1">
-                    <wm-gridcolumn name="gridcolumn10" columnwidth="12">
+                <!--<wm-label padding="1.1em 0.5em unset unset" name="label101" caption="Work Categories" margin="unset unset 8px unset"></wm-label>-->
+                <wm-gridrow name="gridrow1" class="m_10">
+                    <wm-gridcolumn name="gridcolumn10" columnwidth="12" class="m_10">
+                        <label class="app-label control-label formfield-label col-12 text-danger">Work Categories</label>
                         <wm-composite name="composite12" width="100%">
                             <wm-container class="col-md-13 mutli-select" key="UserDTO.workCategory" name="text-container" width="100%"><input type="text" id="updateUserInputBox" placeholder="Select" autocomplete="off"></wm-container>
                         </wm-composite>
@@ -320,7 +337,7 @@
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-form-action key="reset" display-name="Back to User" show="true" class="form-reset btn-secondary" iconclass="" title="Back to User" action="Widgets.updateUser.close()" shortcutkey="" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
-            <wm-form-action key="save" display-name="Save" show="true" class="btn-success save_btn" iconclass="" title="Save" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Update" show="true" class="btn-success save_btn save" iconclass="" title="Update" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
     <wm-confirmdialog name="deleteConfirm" message="bind:'Are you sure you want to inactivate user <b>'+ Variables.dialogUserId.dataSet.firstName + '</b> ?'" oktext="Delete" title="" iconclass="" modal="true" on-ok="Variables.deletUser.invoke()" class="del_box"

@@ -852,6 +852,10 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
     margin: 5px 2px 2px -17px !important;
 }
 
+.userEditPage p.help-block.text-danger {
+    margin: 5px 2px 2px -17px !important;
+}
+
 .createUserPage {
     overflow: auto;
 }
