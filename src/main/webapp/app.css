@@ -275,15 +275,10 @@
     background-color: white !important;
 }
 
-
-/*.wm-app app-partial-addteampartial app-grid-column dual-list-btn-group col-sm-4  {*/
-
-
-/*    margin-top: 10px !important;*/
-
-
-/*}*/
-
 .wm-app app-partial-addteampartial .app-grid-column.dual-list-btn-group.col-sm-4 .btn {
     margin-top: 10px !important;
+}
+
+.asterisk {
+    color: red;
 }

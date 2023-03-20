@@ -847,3 +847,15 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
     border-radius: 60% !important;
     border: 1px solid !important;
 }
+
+.createUserPage p.help-block.text-danger {
+    margin: 5px 2px 2px -17px !important;
+}
+
+.createUserPage {
+    overflow: auto;
+}
+
+.save {
+    margin-right: -7px !important;
+}
