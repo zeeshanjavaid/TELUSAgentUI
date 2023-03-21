@@ -97,6 +97,14 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "DisputeDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "DisputeList",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "DomainValue",
   "type" : "PAGE",
   "params" : [ {

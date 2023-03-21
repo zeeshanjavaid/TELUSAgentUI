@@ -38,3 +38,6 @@ Page.CreateClick = function($event, widget) {
 
     Page.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };
+Page.CreateDisputeClick = function($event, widget) {
+    Page.Variables.DisputePageName.dataSet.dataValue = 'CreateDispute';
+};

@@ -1,4 +1,22 @@
 {
+  "DisputePageName" : {
+    "_id" : "wm-DisputePageName-wm.Variable-1679434081932",
+    "name" : "DisputePageName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "DisputeList",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getPaymentArrangement" : {
     "_id" : "wm-getPaymentArrangement-wm.ServiceVariable-1678378294213",
     "name" : "getPaymentArrangement",
