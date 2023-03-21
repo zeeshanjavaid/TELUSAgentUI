@@ -795,25 +795,21 @@ Partial.button3Click = function($event, widget) {
 
 Partial.createUserForm1_saveAction = function($event) {
     debugger;
-
     Partial.Widgets.createUserForm1.dataoutput.UserDTO;
     Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
-    Partial.Variables.UserManagementServiceCreateUser.invoke({
-
-        },
-        function(data) {
-            debugger;
-            // Success Callback
-            console.log("success", data);
-        },
-        function(error) {
-            debugger;
-            // Error Callback
-            console.log("error", error)
-        });
-
+    if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
+        Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
+        Partial.Variables.UserManagementServiceCreateUser.invoke({},
+            function(data) {
+                debugger; // Success Callback
+                console.log("success", data);
+            },
+            function(error) {
+                debugger; // Error Callback
+                console.log("error", error)
+            });
+    }
 };
-
 
 Partial.userMVTable1_customRow1Action = function($event, row) {
     debugger;
@@ -883,22 +879,15 @@ Partial.updateUserForm1_saveAction = function($event) {
     }
     debugger;
     //dataBinding
-    Partial.Variables.UserManagementServiceUpdateUser.invoke({
-
-        },
-        function(data) {
-            debugger;
-            // Success Callback
+    if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
+        Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
+            debugger; // Success Callback
             console.log("success", data);
-        },
-        function(error) {
-            debugger;
-            // Error Callback
+        }, function(error) {
+            debugger; // Error Callback
             console.log("error", error)
         });
-
-
-
+    }
 };
 
 /*Partial.getmanagerForUpdateuseronSuccess = function(variable, data) {

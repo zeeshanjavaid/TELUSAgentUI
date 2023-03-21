@@ -886,3 +886,7 @@ input#updateUserInputBox {
 .createUserPage.app-dialog-body.modal-body {
     padding: 3px 40px 15px 40px;
 }
+
+button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
+    color: unset;
+}

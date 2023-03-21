@@ -65,6 +65,18 @@
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
+        <wm-gridrow name="gridrow100" class="rolename-row">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn100">
+                <wm-label padding="0.75em 0.5em unset 0.5em" caption="Description" name="label100" margin="unset 20px unset 10px" color="#6e6c6a" required="true"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn101">
+                <wm-composite name="composite11">
+                    <wm-container class="col-md-9" name="container29">
+                        <wm-textarea datavalue="bind:Variables.teamData.dataSet.TeamDescription" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" name="textarea1"></wm-textarea>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+        </wm-gridrow>
         <!--<wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assigned permissions" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.getAllPermission.dataSet" datafield="All Fields" displayfield="name" multiple="true" autofocus="true" required="false" height="250" datavalue="bind:Variables.groupData.dataSet.RoleAssignPermission"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
         <wm-gridrow name="gridrow4_1" padding="1em unset unset unset">
             <wm-gridcolumn columnwidth="2" name="gridcolumn7">
