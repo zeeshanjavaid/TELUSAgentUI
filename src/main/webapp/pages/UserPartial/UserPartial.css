@@ -863,3 +863,26 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
 .save {
     margin-right: -7px !important;
 }
+
+input#subStatusInputBox {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}
+
+input#updateUserInputBox {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}
+
+.comboTreeArrowBtn {
+    border-radius: unset;
+    background: none;
+    border-left: 0;
+    border-color: #4B286D;
+}
+
+.createUserPage.app-dialog-body.modal-body {
+    padding: 3px 40px 15px 40px;
+}

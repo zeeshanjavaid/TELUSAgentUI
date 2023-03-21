@@ -289,6 +289,7 @@ where ( (
         or :managerId is null
     )
 group by usr.id
+ORDER BY usr.firstName asc
         ]]>
     <query-param name="userCriteria" type="java.lang.String"/>
     <query-param name="teamID" type="java.lang.String"/>
@@ -356,7 +357,8 @@ where ( (
         mngrUsr.firstname =:managerId
         or :managerId is null
     )
-group by usr.id) wmTempTable
+group by usr.id
+ORDER BY usr.firstName asc) wmTempTable
         ]]>
     <query-param name="userCriteria" type="java.lang.String"/>
     <query-param name="teamID" type="java.lang.String"/>
