@@ -890,3 +890,7 @@ input#updateUserInputBox {
 button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
     color: unset;
 }
+
+.inactivateUserDialog {
+    top: 300px;
+}
