@@ -64,6 +64,23 @@ button.app-icon.wi.card-action {
 .rene-37gridLIne{
     border-bottom: 1px solid #ddd;   
 }
+.renegoLine-18con{
+ border-bottom: 1px solid #ddd; 
+}
+.cancelLine-19_1con{
+   border-bottom: 1px solid #ddd;  
+}
+
+.installScheduleLine1-20_1con{
+   border-bottom: 1px solid #ddd ; 
+   margin-left: 5.7em;
+   margin-right: 1.1em;
+}
+.parrHistoryLine-21_1con{
+   border-bottom: 1px solid #ddd ; 
+   margin-left: 5.7em;
+   margin-right: 1.1em;
+}
 /* managing spaces for renegotiate dialog box */
 .col-sm-5grid{
     width:68%;
@@ -88,18 +105,29 @@ button.app-icon.wi.card-action {
 text-align: right
 }
 
-.h4.app-dialog-title.modal-title
-{
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: #ddd;
+.wm-app .modal-dialog .modal-header .modal-title {
+    color: #333;
+    font-size: 22px;
+    text-transform: none;
+    background-color: #fff;
+    padding-bottom: -28em;
+    margin-bottom: -14px;
+}
+.wm-app app-partial-parrdetails .modal-dialog .modal-header .modal-title {
+    color: #333;
+    font-size: 22px;
+    text-transform: none;
+    background-color: #fff;
+    padding-bottom: -28em;
+    margin-bottom: -24px;
+}
+/*creating global class to set dialog table alignment*/
+.card-actions.app-datagrid-actions.col-auto {
+    float: right !important;
 }
 
-
-/*.card-actions.app-datagrid-actions.col-auto {
+.wm-app .modal-dialog .modal-body .app-livelist .app-list-item{
     
-}*/
-
-/*.DDDTest{
-    float: right !important;
-}*/
+    borde: none !important;
+    
+}
