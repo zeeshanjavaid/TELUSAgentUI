@@ -4,7 +4,7 @@
             <wm-gridcolumn columnwidth="6" name="gridcolumn36">
                 <wm-container name="container3">
                     <wm-anchor margin="unset 0.5em" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="anchor3Click($event, widget)"></wm-anchor>
-                    <wm-label padding="unset 0.5em" name="label4" caption="View Dispute:" fontunit="em" fontsize="1.5"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label4" caption="Dispute Details:" fontunit="em" fontsize="1.5"></wm-label>
                 </wm-container>
                 <wm-layoutgrid name="layoutgrid8">
                     <wm-gridrow name="gridrow26">
@@ -13,19 +13,157 @@
                 </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
-                <wm-container name="container4">
-                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                <wm-container name="container4" horizontalalign="right">
+                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="button1"></wm-button>
                     <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="button2"></wm-button>
-                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3"></wm-button>
+                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3" textalign="right"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow28">
-            <wm-gridcolumn columnwidth="2" name="gridcolumn46" padding="1em 7em unset 7.2em"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn48"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn49"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn47"></wm-gridcolumn>
+        <wm-gridrow name="gridrow28" padding="1em 7em unset 7.2em">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                <wm-layoutgrid name="layoutgrid3">
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn15">
+                            <wm-label padding="unset 0.5em" name="label2" caption="Dispute ID:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn16">
+                            <wm-label padding="unset 0.5em" name="disputeID" caption="disputeID"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn23"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn10">
+                <wm-layoutgrid name="layoutgrid4">
+                    <wm-gridrow name="gridrow6">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn19">
+                            <wm-label padding="unset 0.5em" name="label4_1" caption="Status:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn20">
+                            <wm-label padding="unset 0.5em" name="disputeStatus" caption="disputeStatus"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn12"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn24">
+                <wm-layoutgrid name="layoutgrid5">
+                    <wm-gridrow name="gridrow8">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                            <wm-label padding="unset 0.5em" name="label6" caption="Selected BAN:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn26"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn13"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn30">
+                <wm-layoutgrid name="layoutgrid6">
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn32">
+                            <wm-label padding="unset 0.5em" name="label7" caption="Exlcusion:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn33">
+                            <wm-label padding="unset 0.5em" name="label8" caption="exclusionType"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow12" padding="unset 7em unset 7.4em">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn37_1">
+                <wm-layoutgrid name="layoutgrid7_1">
+                    <wm-gridrow name="gridrow13">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn47">
+                            <wm-label padding="unset 0.5em" name="label9" caption="Dispute Amount:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn48">
+                            <wm-label padding="unset 0.5em" name="disputeAmt" caption="disputeAmt"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn39"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn40_1">
+                <wm-layoutgrid name="layoutgrid8_1">
+                    <wm-gridrow name="gridrow15">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn51">
+                            <wm-label padding="unset 0.5em" name="label11" caption="Charge Type:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn52">
+                            <wm-label padding="unset 0.5em" name="chargeType" caption="chargeType"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn44"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn45">
+                <wm-layoutgrid name="layoutgrid9">
+                    <wm-gridrow name="gridrow17">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn55">
+                            <wm-label padding="unset 0.5em" name="label13" caption="Reason:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn56">
+                            <wm-label padding="unset 0.5em" name="reasonType" caption="reasonType"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn46"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="3" name="gridcolumn59">
+                <wm-layoutgrid name="layoutgrid10">
+                    <wm-gridrow name="gridrow19">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn60">
+                            <wm-label padding="unset 0.5em" name="label15" caption="Product &amp; Srv:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn61">
+                            <wm-label padding="unset 0.5em" name="productType" caption="productType"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow21" padding="unset 7em unset 7.4em">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn65">
+                <wm-layoutgrid name="layoutgrid11">
+                    <wm-gridrow name="gridrow22">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn71">
+                            <wm-label padding="unset 0.5em" name="label17" caption="Adustment(s) to Date:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn72">
+                            <wm-label padding="unset 0.5em" name="label18" caption="adjustmentValue"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn66"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn67">
+                <wm-layoutgrid name="layoutgrid12">
+                    <wm-gridrow name="gridrow24_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn75">
+                            <wm-label padding="unset 0.5em" name="label19" caption="Customer Email:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn76">
+                            <wm-label padding="unset 0.5em" name="customerEmailValue" caption="customerEmailValue"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn70"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn83">
+                <wm-layoutgrid name="layoutgrid14">
+                    <wm-gridrow name="gridrow28_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn85">
+                            <wm-label padding="unset 0.5em" name="label22" caption="Assigned Dispute Prime:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn86">
+                            <wm-label padding="unset 0.5em" name="disputePrimeEmailValue" caption="disputePrimeEmailValue"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn84"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
 </wm-partial>
