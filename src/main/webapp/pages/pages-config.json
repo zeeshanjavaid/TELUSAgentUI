@@ -194,10 +194,6 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
-  "name" : "PartialDomainValueType",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "Partial_Conditions",
   "type" : "PARTIAL",
   "params" : [ {
@@ -233,13 +229,6 @@
     "type" : "boolean"
   } ]
 }, {
-  "name" : "Partial_DomainValue",
-  "type" : "PARTIAL",
-  "params" : [ {
-    "name" : "domainValueTypeId",
-    "type" : "integer"
-  } ]
-}, {
   "name" : "Partial_Pagination",
   "type" : "PARTIAL",
   "params" : [ {
@@ -256,13 +245,6 @@
   "name" : "Partial_SetupLeftNav",
   "type" : "PARTIAL",
   "params" : [ ]
-}, {
-  "name" : "Partial_createDomainValue",
-  "type" : "PARTIAL",
-  "params" : [ {
-    "name" : "domainValueId",
-    "type" : "integer"
-  } ]
 }, {
   "name" : "PayloadExtract",
   "type" : "PAGE",

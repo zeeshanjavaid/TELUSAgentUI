@@ -133,7 +133,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 3,
-      "roles" : [ ],
+      "roles" : "AR TM Onshore,AR TM Offshore, Support, OD TM",
       "deleted" : false
     }, {
       "name" : "Audit",
@@ -153,7 +153,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 1,
-      "roles" : [ ],
+      "roles" : "AR TM Onshore,AR TM Offshore, Support, OD TM",
       "deleted" : false
     }, {
       "name" : "System Administration",
@@ -173,7 +173,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : 1,
-      "roles" : [ ],
+      "roles" : "AR TM Onshore,AR TM Offshore, Support, OD TM",
       "deleted" : false
     }, {
       "name" : "Look Up",
@@ -193,7 +193,7 @@
       "parent" : true,
       "target" : "_self",
       "order" : "3",
-      "roles" : [ ],
+      "roles" : "",
       "deleted" : false
     } ],
     "type" : "entry",

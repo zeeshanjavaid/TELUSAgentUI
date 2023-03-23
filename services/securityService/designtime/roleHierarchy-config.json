@@ -73,24 +73,24 @@
     "roleHierarchy" : null
   }, {
     "roleName" : "AR Agent Onshore",
-    "roleHierarchy" : [ {
-      "roleName" : "AR Agent Offshore",
-      "roleHierarchy" : [ {
-        "roleName" : "AR TM Onshore",
-        "roleHierarchy" : [ {
-          "roleName" : "AR TM Offshore",
-          "roleHierarchy" : [ {
-            "roleName" : "Support",
-            "roleHierarchy" : null
-          } ]
-        } ]
-      } ]
-    } ]
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "AR Agent Offshore",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "AR TM Onshore",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "AR TM Offshore",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Support",
+    "roleHierarchy" : null
   }, {
     "roleName" : "OD Agent",
-    "roleHierarchy" : [ {
-      "roleName" : "OD TM",
-      "roleHierarchy" : null
-    } ]
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "OD TM",
+    "roleHierarchy" : null
   } ]
 }

@@ -200,7 +200,7 @@
                 <property name="pageName" value=""/>
                 <property name="timeoutValue" value="${general.session.timeout}"/>
                 <property name="type">
-                    <value type="com.wavemaker.commons.model.security.LoginType">DIALOG</value>
+                    <value type="com.wavemaker.commons.model.security.LoginType">PAGE</value>
                 </property>
             </bean>
         </property>
@@ -401,8 +401,13 @@
 			 
 			 
 			 
-			ROLE_AR Agent Onshore &gt; ROLE_AR Agent Offshore &gt; ROLE_AR TM Onshore &gt; ROLE_AR TM Offshore &gt; ROLE_Support 
-			ROLE_OD Agent &gt; ROLE_OD TM
+			 
+			 
+			 
+			 
+			 
+			 
+			
 			</value>
         </property>
     </bean>
