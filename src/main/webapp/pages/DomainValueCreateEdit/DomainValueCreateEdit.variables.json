@@ -2204,6 +2204,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "readOnlyMode" : {
+    "_id" : "wm-readOnlyMode-wm.Variable-1679555249366",
+    "name" : "readOnlyMode",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "relationDetails" : {
     "_id" : "wm-relationDetails-wm.Variable-1653833868510",
     "name" : "relationDetails",

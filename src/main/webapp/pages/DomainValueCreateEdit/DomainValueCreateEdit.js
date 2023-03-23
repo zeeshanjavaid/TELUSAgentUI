@@ -30,7 +30,12 @@ Page.filteredLocale = null;
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
 
-    debugger;
+    // debugger;
+    //Render in read-only if not for Create Domain Value action
+    if (Page.pageParams.domainValueId === undefined) {
+        Page.Variables.readOnlyMode.dataSet.dataValue = false;
+    }
+
     initPage();
     Page.filteredLocale = JSON.parse(JSON.stringify(App.Variables.supportedLocale.dataSet), (key, value) => {
         if (key === 'en') {
@@ -379,12 +384,12 @@ Page.domainValueRelationTable_updaterowAction = function($event, row) {
 };
 
 Page.saveBtnClick = function($event, widget) {
-    debugger;
+    // debugger;
     console.log(Page.Variables.mv_domainValue.getData().code);
     console.log(Page.Variables.getDVlistByDomainValueTypeId.getData());
     // To check unique domain value code
 
-    debugger;
+    // debugger;
     let isUniqueDV = true;
 
     if (Page.pageParams.domainValueId === undefined || Page.pageParams.domainValueId === 0) {
@@ -451,6 +456,8 @@ Page.saveBtnClick = function($event, widget) {
         Page.Variables.saveDomainValue.setInput('DomainValueVO', Page.Variables.mv_domainValue.dataSet);
         Page.Variables.saveDomainValue.invoke();
     }
+
+    Page.Variables.readOnlyMode.dataSet.dataValue = true;
 };
 
 Page.saveDomainValueonSuccess = function(variable, data) {
@@ -546,6 +553,8 @@ Page.buttonCancelClick = function($event, widget) {
     } else {
         Page.Widgets.exitConfirmDialog.open();
     }
+
+    Page.Variables.readOnlyMode.dataSet.dataValue = true;
 };
 
 /* these two added for select input workaround on relationdetails form 
@@ -587,4 +596,8 @@ Page.getUserName = function(id) {
     let user = Page.Variables.db_getallusers.dataSet.find(user => user.id === id);
     return user.firstName + " " + user.lastName;
 
+};
+Page.EditButtonClick = function($event, widget) {
+
+    Page.Variables.readOnlyMode.dataSet.dataValue = false;
 };
