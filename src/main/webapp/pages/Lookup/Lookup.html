@@ -91,8 +91,9 @@
                         </wm-container>
                     </wm-tabpane>
                     <wm-tabpane name="Dispute" title="Dispute">
-                        <wm-label padding="unset 0.5em" name="label11" caption="Dispute"></wm-label>
-                        <wm-button class="btn-default" caption="Create Dispute" type="button" margin=".5em unset unset 97em" name="CreateDispute" iconposition="top" on-click="CreateDisputeClick($event, widget)"></wm-button>
+                        <wm-container name="container4">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel5" content="DisputeList"></wm-panel>
+                        </wm-container>
                     </wm-tabpane>
                     <wm-tabpane name="tabpane6" title="Notes">
                         <wm-label padding="unset 0.5em" name="label12" caption="Notes"></wm-label>

@@ -1,1 +1,29 @@
-{ }
+{
+  "getAllDisputes" : {
+    "_id" : "wm-getAllDisputes-wm.ServiceVariable-1679551552194",
+    "name" : "getAllDisputes",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "banRefId",
+      "value" : "1",
+      "type" : "string"
+    } ],
+    "type" : "io.swagger.client.model.CollectionDispute",
+    "service" : "CollectionDataService",
+    "operation" : "getdispute",
+    "operationId" : "CollectionDataController_getdispute",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  }
+}

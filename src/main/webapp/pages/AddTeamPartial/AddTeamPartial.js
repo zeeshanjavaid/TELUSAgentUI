@@ -917,7 +917,7 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
-    if (Partial.isDeleteGroup !== true) {
+    if (Partial.isDeleteTeam !== true) {
         App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
         /*Partial.Widgets.DualListRoles_TD.rightdataset.forEach(function(role) {
             Partial.Variables.CreateGroupRole.setInput({
