@@ -1,0 +1,26 @@
+.lookup-container {
+    margin-bottom: 15px;
+    border-bottom: 0.1em solid #a9a9a9;
+    border-width: 0.1em;
+}
+
+#selectBox {
+    width: 150px;
+}
+
+.labelOR {
+    color: white;
+    border: 1px solid purple;
+    top: 30px;
+    padding: 15px 15px !important;
+    border-radius: 29px;
+    background-color: #4B286D;
+}
+
+h3 {
+    margin-left: 8px;
+}
+
+.borderGrid {
+    border-right: 1px solid #a9a9a9;
+}

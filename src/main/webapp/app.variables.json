@@ -1926,6 +1926,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_lookupEntity" : {
+    "_id" : "wm-goToPage_lookupEntity-wm.NavigationVariable-1679380231309",
+    "name" : "goToPage_lookupEntity",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "lookupEntity",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_LookupFileCreateEdit" : {
     "_id" : "wm-goToPage_LookupFileCreateEdit-wm.NavigationVariable-1666864102901",
     "name" : "goToPage_LookupFileCreateEdit",

@@ -346,6 +346,14 @@
   "type" : "LEFTNAV",
   "params" : [ ]
 }, {
+  "name" : "lookupEntity",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "partial_searchentity",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "sample",
   "type" : "PAGE",
   "params" : [ ]

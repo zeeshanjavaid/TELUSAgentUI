@@ -186,7 +186,7 @@
       "code" : "LookUp",
       "categoryType" : "top/Main",
       "isExternalURL" : false,
-      "path" : "#/LookUp",
+      "path" : "#/Lookup",
       "project" : "TelusAgentUI",
       "url" : "#/Lookup",
       "isEditable" : true,
