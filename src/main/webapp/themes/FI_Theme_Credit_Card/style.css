@@ -4218,7 +4218,8 @@ fieldset[disabled] .wm-app .btn-danger.focus {
 }
 
 .wm-app .btn-link {
-    color: #00629b;
+    /*color: #00629b;*/
+    color: #4B286D;
     font-weight: normal;
     border-radius: 0;
 }
@@ -10767,7 +10768,8 @@ button.wm-app .close {
 
 .wm-app .app-list .app-list-item.active select option,
 .wm-app .app-livelist .app-list-item.active select option {
-    color: #333333;
+    /*color: #333333;*/
+    color: red !important;
 }
 
 .wm-app .app-livelist .app-list-item.active.list-group-item .app-label {

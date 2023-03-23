@@ -181,3 +181,23 @@ select.app-select.form-control.no-padding.dualList-select.ng-untouched.ng-pristi
     color: green;
     background-color: #fff !important; 
 }
+
+button#addallbtn {
+    margin:3px;
+}
+
+button#addbtn {
+    margin:3px;
+}
+
+button#removebtn {
+    margin:3px;
+}
+
+button.btn.app-button.btn-default.btn-listctrl {
+    margin:3px;
+}
+
+.delRoleDialog {
+    top: 300px;
+}

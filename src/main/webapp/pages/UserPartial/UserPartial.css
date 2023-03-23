@@ -909,3 +909,7 @@ select {
     color: #a9a9a9 !important;
 }
 
+select:invalid,
+select option[value=""] {
+  color: green !important;
+}

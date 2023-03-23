@@ -6,8 +6,8 @@
                     <wm-layoutgrid name="layoutgrid3" width="100%">
                         <wm-gridrow name="gridrow10_1">
                             <wm-gridcolumn columnwidth="6" name="gridcolumn13_1">
-                                <wm-label padding="unset 0.5em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId == undefined ? &quot;Create Role&quot; : &quot;Edit Role&quot;" class="h3 add-role-lebel text-clip"
-                                    margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName" height="25" width="50%"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId == undefined ? &quot;Create Role&quot; : &quot;Edit Role&quot;" class="h3 add-role-lebel text-clip" margin="1em unset"
+                                    hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName" height="25" width="50%"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="6" name="gridcolumn14_1">
                                 <wm-container name="container14_1" horizontalalign="right" margin="5% unset unset unset" width="98%">
@@ -41,8 +41,7 @@
                         </wm-container>
                         <wm-composite name="composite4_1">
                             <wm-container class="col-md-9 queue-name" name="container10">
-                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;"
-                                    height="35"></wm-text>
+                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
                             </wm-container>
                         </wm-composite>
                     </wm-composite>
@@ -59,8 +58,8 @@
                     <wm-composite name="composite3" class="container7-add-permission">
                         <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
                             <!--<wm-prefab prefabname="DualList_OM" name="DualList_OM2"></wm-prefab> -->
-                            <wm-prefab prefabname="DualList_OS" name="DualList_TD1" leftdataset="bind:Variables.leftPermissionList.dataSet" rightdataset="bind:Variables.selectedpermissions.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
-                                resetleftdataset="true" displayfield="bind:&quot;fullPermissionName&quot;" identifier="bind:&quot;id&quot;"></wm-prefab>
+                            <wm-prefab prefabname="DualList_OS" name="DualList_TD1" leftdataset="bind:Variables.leftPermissionList.dataSet" rightdataset="bind:Variables.selectedpermissions.dataSet" reducerightdataset="false" class="dualListPadding  dl-width" resetleftdataset="true"
+                                displayfield="bind:&quot;fullPermissionName&quot;" identifier="bind:&quot;id&quot;"></wm-prefab>
                             <!--<wm-prefab prefabname="DualList_TD" name="DualList_TD1" leftdataset="bind:Variables.leftPermissionList.dataSet" rightdataset="bind:Variables.selectedpermissions.dataSet" reducerightdataset="true" class="dualListPadding  dl-width"
                                 resetleftdataset="true" displayfield="bind:&quot;fullName&quot;" on-load="Variables.permissionList.invoke()"></wm-prefab>--></wm-container>
                     </wm-composite>
@@ -79,26 +78,26 @@
                 <wm-container name="container8">
                     <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
-                        <wm-button caption="Cancel" id="roleCancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue" class="btn-link"></wm-button>
-                        <wm-button class="btn-saveRole" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                        <wm-button caption="Cancel" id="roleCancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue" class="btn-default"></wm-button>
+                        <wm-button class="btn-default" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Delete role &quot;+ Variables.roleData.dataSet.RoleName" iconclass="" name="deleteRoleDialog" width="30%" on-opened="Widgets.deleteRoleDialog.open()" closable="true">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" class="delRoleDialog" iconclass="" name="deleteRoleDialog" width="30%" on-opened="Widgets.deleteRoleDialog.open()" closable="true">
         <wm-layoutgrid name="layoutgrid3_1">
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset" style="text-align: center;">
                     <wm-label padding="unset 0.5em" name="label5_1" caption="bind:'Are you sure you want to delete role <b>' + pageParams.roleName  + ' </b> ?'"></wm-label>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
-            <wm-container name="container12_1" horizontalalign="center">
-                <wm-button class="btn-link" caption="Cancel" on-click="Widgets.deleteRoleDialog.close()" name="deleteRoleConfirmNo" margin="unset 0.5em unset unset"></wm-button>
-                <wm-button class="btn-primary" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteRoleConfirmOk" on-click="deleteRoleConfirmOkClick($event, widget)"></wm-button>
+            <wm-container name="container12_1" horizontalalign="right">
+                <wm-button class="secondaryButton" caption="Cancel" on-click="Widgets.deleteRoleDialog.close()" name="deleteRoleConfirmNo" margin="unset 0.5em unset unset"></wm-button>
+                <wm-button class="primaryButton" caption="Delete" type="button" margin="unset unset unset 0.5em" name="deleteRoleConfirmOk" on-click="deleteRoleConfirmOkClick($event, widget)"></wm-button>
             </wm-container>
         </wm-dialogactions>
     </wm-dialog>
