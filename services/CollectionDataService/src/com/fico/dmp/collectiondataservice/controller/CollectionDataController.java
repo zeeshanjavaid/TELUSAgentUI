@@ -4,14 +4,14 @@
 package com.fico.dmp.collectiondataservice.controller;
 
 import com.fico.dmp.collectiondataservice.CollectionDataService;
+import io.swagger.client.model.CollectionDispute;
+import java.lang.Exception;
 import java.lang.String;
 import java.lang.Integer;
-import java.lang.Exception;
 import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import java.util.List;
 import io.swagger.client.model.EntitySearchResponseArray;
-import io.swagger.client.model.CollectionDispute;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,11 @@ public class CollectionDataController {
 
     @Autowired
     private CollectionDataService collectionDataService;
+
+    @RequestMapping(value = "/dispute", method = RequestMethod.POST)
+    public CollectionDispute addDispute(@RequestBody CollectionDispute collectionDispute) throws Exception {
+        return collectionDataService.addDispute(collectionDispute);
+    }
 
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)

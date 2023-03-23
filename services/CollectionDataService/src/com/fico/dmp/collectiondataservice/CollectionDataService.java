@@ -107,6 +107,17 @@ public class CollectionDataService {
         return objectMapper.readValue("[{\"banId\":256645999,\"banName\":\"NORTHLAND PROPERTIES CORPORATION\",\"cbucId\":761846,\"rcId\":392931,\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"lastPaymentDate\":\"2022-08-29T09:12:33.001Z\",\"paymentMethod\":\"Card\",\"odRemaining\":2344390.88,\"acctStatus\":\"O\",\"statusDate\":\"2022-08-29T09:12:33.001Z\",\"dispute\":2344390.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\"},{\"banId\":256645900,\"banName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"cbucId\":761846,\"rcId\":392931,\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"totalAr\":400,\"totalOverDue\":390,\"lastPaymentDate\":\"2022-08-29T09:12:33.001Z\",\"paymentMethod\":\"Card\",\"odRemaining\":390,\"acctStatus\":\"O\",\"statusDate\":\"2022-08-29T09:12:33.001Z\",\"dispute\":90.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\"}]",AssignedEntitiesInEntityViewResponseArray.class);
         // return new Object(); 
     }
+    
+     public CollectionDispute addDispute( CollectionDispute  collectionDispute) throws Exception  {
+    
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments());
+        // if (collectionPaymentArrangementCreate.getInstallments() != null) {
+        //     logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments().get(0).getAmount());
+        // }
+        return collectionDispute;
+        
+    }
 
 
 }
