@@ -5,7 +5,7 @@
                 <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
             </wm-table-column>
             <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="installments[0].date" caption="Start" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="installments[0].date" caption="Start" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="customField1" caption="Expiry" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
                 <wm-label caption="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet.installments[Variables.Variables.CollectionEntityGetPaymentArrangement.dataSet.installments.length-1].date'" class="" conditionalclass=""></wm-label>
             </wm-table-column>
