@@ -71,22 +71,25 @@ Partial.ClearButtonClick = function($event, widget) {
 
 Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
 
-    var size = Partial.Variables.getPaymentArrangement.dataSet.installments.length;
+    var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.getPaymentArrangement.dataSet.installments[i].amount);
+        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
     Partial.AmtOverUnder = parseInt(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
-
 };
+
 Partial.renegotiatePARRdialogOpened = function($event, widget) {
 
-    var size = Partial.Variables.getPaymentArrangement.dataSet.installments.length;
+    Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
+    Partial.Variables.ParrInstallmentSchedule.dataSet.push(...Partial.Variables.getPaymentArrangement.dataSet.installments);
+    var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
+    alert(size);
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.getPaymentArrangement.dataSet.installments[i].amount);
+        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
     Partial.AmtOverUnder = parseInt(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
 };

@@ -48,6 +48,23 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "ParrInstallmentSchedule" : {
+    "_id" : "wm-ParrInstallmentSchedule-wm.Variable-1679576077612",
+    "name" : "ParrInstallmentSchedule",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "sequenceId" : 0,
+      "date" : "dateValue",
+      "amount" : 0,
+      "evaluationResult" : "String"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "TELUSAgentUIDBUserData" : {
     "_id" : "wm-TELUSAgentUIDBUserData-wm.LiveVariable-1678099971732",
     "name" : "TELUSAgentUIDBUserData",
