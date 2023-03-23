@@ -68,3 +68,25 @@ Partial.ClearButtonClick = function($event, widget) {
 
 
 };
+
+Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
+
+    var size = Partial.Variables.getPaymentArrangement.dataSet.installments.length;
+    var totalInstallmentAmt = 0;
+    for (var i = 0; i < size; i++) {
+
+        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.getPaymentArrangement.dataSet.installments[i].amount);
+    }
+    Partial.AmtOverUnder = parseInt(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
+
+};
+Partial.renegotiatePARRdialogOpened = function($event, widget) {
+
+    var size = Partial.Variables.getPaymentArrangement.dataSet.installments.length;
+    var totalInstallmentAmt = 0;
+    for (var i = 0; i < size; i++) {
+
+        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.getPaymentArrangement.dataSet.installments[i].amount);
+    }
+    Partial.AmtOverUnder = parseInt(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
+};

@@ -11,8 +11,7 @@
                 <wm-composite name="composite1" margin="unset unset unset 5px">
                     <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:" width="90px" margin="unset unset unset 2em"></wm-label>
                     <wm-container class="col-md-9" name="container3" width="170px">
-                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)"
-                            width="150px"></wm-text>
+                        <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="150px"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -78,8 +77,7 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn14">
                     <wm-composite name="composite7">
                         <wm-container class="col-md-9" name="container8">
-                            <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"
-                                show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"></wm-text>
+                            <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)" show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"></wm-text>
                         </wm-container>
                     </wm-composite>
                     <wm-composite name="composite8">
@@ -122,9 +120,9 @@
                         <wm-table-column binding="sequenceId" caption="InstallmentID" widget-type="label" textalignment="right" edit-widget-type="text" type="string" readonly="true" show="true">
                             <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2"
-                            show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy"
+                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                     </wm-table>
@@ -141,7 +139,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="2" name="gridcolumn19">
-                    <wm-label padding="unset 0.5em" name="AmtOverUnderTotalLabel" caption="Amount Over/Under PARR Total:" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
+                    <wm-label padding="unset 0.5em" name="AmtOverUnderTotalLabel" caption="Amt Over/Under PARR Total:" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="7" name="gridcolumn21">
                     <wm-label padding="unset 0.5em" name="AmtOverUnderParrTotalValue" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
@@ -149,7 +147,7 @@
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
                     <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
                     <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()" disabled="bind:Widgets.AmtOverUnderParrTotalValue.caption != 0"></wm-button>
+                    <wm-button class="btn-default" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()" disabled="bind:AmtOverUnder != 0"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

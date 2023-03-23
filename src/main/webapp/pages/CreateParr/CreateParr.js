@@ -172,7 +172,7 @@ Partial.ClearScheduleClick = function($event, widget) {
     Partial.Widgets.dialog1.close();
 };*/
 Partial.SubmitBanClick = function($event, widget) {
-    debugger;
+
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     //BANName
     /*Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {
@@ -209,10 +209,5 @@ Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
         totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
     Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt;
-    alert("amtOverUnder:" + Partial.AmtOverUnder);
+
 };
-
-window.addEventListener('click', event => {
-    console.log(event);
-
-});

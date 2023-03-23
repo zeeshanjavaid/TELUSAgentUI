@@ -198,7 +198,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-panel>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" class="renegotiatteLine1" closable="true">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" class="renegotiatteLine1" closable="true" on-opened="renegotiatePARRdialogOpened($event, widget)">
         <wm-container name="container18" margin="-1em unset unset unset" class="renegoLine-18con"></wm-container>
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow4_1" padding="1.5em unset unset unset">
@@ -257,7 +257,7 @@
             <wm-layoutgrid name="layoutgrid16">
                 <wm-gridrow name="gridrow24">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn51">
-                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Basic" class="getInstallment-reneTable">
+                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Basic" class="getInstallment-reneTable" on-rowupdate="getInstallmentScheduleTableRowupdate($event, widget, row)">
                             <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -274,11 +274,11 @@
         <wm-container name="container21">
             <wm-layoutgrid name="layoutgrid14">
                 <wm-gridrow name="gridrow20_1">
-                    <wm-gridcolumn columnwidth="6" name="gridcolumn43">
-                        <wm-label padding="1em 0.5em 1.5em unset" name="label26" caption="Amt Over/Under Parr Total:" textalign="left" margin="unset unset unset 2.8em" color="#6e6d6a"></wm-label>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn43">
+                        <wm-label padding="1em 0.5em 1.5em unset" name="label26" caption="Amt Over/Under Parr Total:" textalign="left" margin="unset unset unset 2.8em"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="6" name="gridcolumn44">
-                        <wm-label padding="1.5em 0.5em unset 0.5em" name="label27_1" caption="bind:Variables.AmtOverUnderParrTotal.dataSet.dataValue"></wm-label>
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn44">
+                        <wm-label padding="1em 0.5em 1.5em unset" name="AmountOverUnder" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
