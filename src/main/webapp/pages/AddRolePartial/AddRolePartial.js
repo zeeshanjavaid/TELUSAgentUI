@@ -240,7 +240,7 @@ Partial.createRoleonSuccess = function(variable, data) {
     //})
     //}
 
-    App.refreshAllRoles();
+    //App.refreshAllRoles();
 };
 
 Partial.getRoleonSuccess = function(variable, data) {
@@ -299,7 +299,7 @@ Partial.updateRoleonSuccess = async function(variable, data) {
         'RoleId': data.id
     });
     await Partial.Variables.deleteRolePermission.invoke();
-    App.refreshAllRoles();
+    //App.refreshAllRoles();
 };
 
 Partial.getRolePermissiononError = function(variable, data) {

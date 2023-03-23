@@ -1,20 +1,16 @@
 <wm-partial name="partial1">
     <wm-container name="container1">
-        <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic">
-            <wm-table-column binding="amount" caption="Dispute Amount" pcdisplay="true" mobiledisplay="true" type="double"></wm-table-column>
-            <wm-table-column binding="product" caption="Product" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="chargeType" caption="Charge Type" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" pcdisplay="true" mobiledisplay="true" type="boolean"></wm-table-column>
-            <wm-table-column binding="disputeReason" caption="Dispute Reason" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="comment" caption="Comment" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="id" widget-type="anchor" caption="Dispute ID" pcdisplay="true" mobiledisplay="true" type="integer">
+        <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Basic">
+            <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                 <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" conditionalclass=""></wm-anchor>
             </wm-table-column>
-            <wm-table-column binding="auditInfo.createdDateTime" caption="Created Date" pcdisplay="true" mobiledisplay="true" type="datetime"></wm-table-column>
-            <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated by User" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated Date" pcdisplay="true" mobiledisplay="true" type="datetime"></wm-table-column>
-            <wm-table-column binding="auditInfo.createdBy" caption="Created by User" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="statuses[0].status" caption="Status" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            <wm-table-column binding="amount" caption="Dispute $" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated by" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
         </wm-table>
     </wm-container>
 </wm-partial>
