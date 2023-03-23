@@ -26,22 +26,22 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn3">
                 <wm-layoutgrid name="layoutgrid17">
                     <wm-gridrow name="gridrow21">
-                        <wm-gridcolumn columnwidth="5" name="gridcolumn37_1">
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn37_1" class="summary-col-width-mediumparrID">
                             <wm-label class="col-md-3 control-label" name="label5" caption="PARR ID:" width="95%" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="7" name="gridcolumn38">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn38">
                             <wm-label padding="unset 0.5em" name="parrID" caption="bind:Variables.getPaymentArrangement.dataSet.id"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn4">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn4">
                 <wm-layoutgrid name="layoutgrid18">
                     <wm-gridrow name="gridrow23">
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn41_1">
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn41_1" class="summary-col-width-mediumStatus">
                             <wm-label class="col-md-3 control-label" name="label6" caption="Status:" width="35%" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn42">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn42">
                             <wm-label padding="unset 0.5em" name="parrStatus" caption="bind:Variables.getPaymentArrangement.dataSet.statuses[$i].status"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -50,10 +50,10 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn5">
                 <wm-layoutgrid name="layoutgrid19">
                     <wm-gridrow name="gridrow25">
-                        <wm-gridcolumn columnwidth="4" name="gridcolumn45">
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn45" class="summary-col-width-mediumEvaluation">
                             <wm-label class="col-md-3 control-label" name="label7" caption="Evalution:" width="35%" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="8" name="gridcolumn46">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn46">
                             <wm-label padding="unset 0.5em" name="evaluationResult" caption="bind:Variables.getPaymentArrangement.dataSet.evaluationResult"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -62,23 +62,23 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn6">
                 <wm-layoutgrid name="layoutgrid20">
                     <wm-gridrow name="gridrow27">
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn49">
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn49" class="summary-col-width-mediumparrAmt">
                             <wm-label class="col-md-3 control-label" name="label8" caption="PARR Amt:" width="95%" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn50">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                             <wm-label padding="unset 0.5em" name="parrAmt" caption="bind:Variables.getPaymentArrangement.dataSet.amount | toCurrency: '$': '2'"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="3" name="gridcolumn7">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn7">
                 <wm-composite name="composite6" width="300px">
                     <wm-layoutgrid name="layoutgrid21">
                         <wm-gridrow name="gridrow29">
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn53">
+                            <wm-gridcolumn columnwidth="7" name="gridcolumn53" class="summary-col-width-mediumcumm_P_EXP">
                                 <wm-label class="col-md-3 control-label" name="label9" caption="CUMM PMT EXP:" width="97%" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn54">
+                            <wm-gridcolumn columnwidth="5" name="gridcolumn54">
                                 <wm-label padding="unset 0.5em" name="cummPmtExp" caption="bind:Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
                             </wm-gridcolumn>
                         </wm-gridrow>
@@ -88,17 +88,17 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn8">
                 <wm-layoutgrid name="layoutgrid22">
                     <wm-gridrow name="gridrow31">
-                        <wm-gridcolumn columnwidth="9" name="gridcolumn57">
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn57" class="summary-col-width-mediumcumm_P_RCVD">
                             <wm-label class="col-md-3 control-label" name="label10" caption="CUMM PMT RCVD:" width="250px" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="3" name="gridcolumn58">
-                            <wm-label padding="unset 0.5em" name="cummPmtRcvd" caption="bind:Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate | toCurrency: '$': '2'" width="100%"></wm-label>
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn58">
+                            <wm-label padding="unset 0.5em" name="cummPmtRcvd" caption="bind:Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow4" padding="unset 7em unset 7.4em">
+        <wm-gridrow name="gridrow4" padding="1em 7em unset 7.2em">
             <!--<wm-container name="container16" margin="1em unset unset 7em">-->
             <wm-gridcolumn columnwidth="2" name="gridcolumn17">
                 <wm-layoutgrid name="layoutgrid23">
@@ -319,7 +319,7 @@
         <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36" padding="0.5em unset unset unset">
                     <wm-label padding="unset 0.5em" caption="Are you sure you want to cancel PARR ID ?" name="label36" margin="unset unset unset 1em"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>

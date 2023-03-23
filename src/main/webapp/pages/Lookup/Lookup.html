@@ -81,7 +81,7 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true">
                         <wm-container name="container3_1" show="true" class="rrr">
-                            <wm-button class="primaryButton" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
+                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
                                 backgroundposition="right, top" on-click="CreateClick($event, widget)" deferload="false"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">

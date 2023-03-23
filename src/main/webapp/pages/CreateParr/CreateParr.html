@@ -111,8 +111,8 @@
                     <wm-gridrow name="gridrow19" padding="unset unset 1em unset">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn40"></wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn41" horizontalalign="right">
-                            <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
-                            <wm-button class="btn-default" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
+                            <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
+                            <wm-button class="primaryButton" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -171,9 +171,9 @@
                     <wm-label padding="unset 0.5em" name="AmtOverUnderParrTotalValue" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
-                    <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()" disabled="bind:AmtOverUnder != 0"></wm-button>
+                    <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
+                    <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>
+                    <wm-button class="primaryButton" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()" disabled="bind:AmtOverUnder != 0"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
