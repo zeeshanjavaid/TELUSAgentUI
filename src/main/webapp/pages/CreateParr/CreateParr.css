@@ -7,22 +7,29 @@
     width: 14em;
 }
 
-
 @media (min-width: 500px) {
-.summary-col-width-medium {
+.summary-col-width-mediuminstallBAN {
 flex: 0 0 9%;
 max-width: 10%;
-min-width: 7.333%;
+min-width: 12.333%;
 text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 }
 }
-
-/*.parrBorder{
+/* for lines*/
+.parrDeatailsLine{
+   border-bottom: 1px solid #ddd; 
+   width:96%;
+}
+.installmentDetailsLine{
     border-bottom: 1px solid #ddd;
-    
-}*/
+     width:96%;
+}
+.installmentScheduleLine-9_2con{
+      border-bottom: 1px solid #ddd;
+      width:98.5%;
+}
 .parrDetailsLable{
   border-bottom: 1px solid #ddd;  
 }
