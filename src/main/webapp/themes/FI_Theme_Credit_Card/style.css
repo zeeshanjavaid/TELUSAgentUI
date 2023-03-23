@@ -11617,7 +11617,7 @@ button.wm-app .close {
 .wm-app input:-moz-placeholder,
 .wm-app textarea:-moz-placeholder {
     /* Firefox 18- */
-    font-style: italic;
+    font-style: non-italic;
     font-size: 12px;
     padding: 2px;
 }
@@ -11964,6 +11964,7 @@ button.wm-app .close {
     background: #ffffff;
     height: 40px;
     font-style: normal;
+    color: red;
 }
 
 .wm-app .sign-in-help {

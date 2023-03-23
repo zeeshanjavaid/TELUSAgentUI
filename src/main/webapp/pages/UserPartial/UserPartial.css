@@ -894,3 +894,18 @@ button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
 .inactivateUserDialog {
     top: 300px;
 }
+
+/*style added for work category select box[input]*/
+.wm-app input::-webkit-input-placeholder,
+.wm-app textarea::-webkit-input-placeholder {
+    font-style: normal;
+    font-size: 14px;
+    color: #a9a9a9;
+}
+
+/*style added for select boxes[input]*/
+select {
+    font-style: normal;
+    color: #a9a9a9 !important;
+}
+
