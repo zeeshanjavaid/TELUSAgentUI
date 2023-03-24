@@ -551,7 +551,8 @@ Page.buttonCancelClick = function($event, widget) {
     } else if (_.isEqual(Page.initialObj, Page.Widgets.domainValueForm.dataset)) {
         Page.exitConfirmDialogCancel();
     } else {
-        Page.Widgets.exitConfirmDialog.open();
+        // Page.Widgets.exitConfirmDialog.open();
+        Page.exitConfirmDialogCancel();
     }
 
     Page.Variables.readOnlyMode.dataSet.dataValue = true;
