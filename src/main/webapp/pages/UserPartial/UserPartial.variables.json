@@ -2929,7 +2929,7 @@
     "maxResults" : 10,
     "onSuccess" : "searchUsersonSuccess(variable, data, options)",
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

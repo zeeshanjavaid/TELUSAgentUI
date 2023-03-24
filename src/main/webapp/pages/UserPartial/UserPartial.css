@@ -902,13 +902,11 @@ button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
     font-size: 14px;
     color: #a9a9a9;
 }
-
 /*style added for select boxes[input]*/
 select {
-    font-style: normal;
-    color: #a9a9a9 !important;
+    /*font-style: normal;
+    color: #a9a9a9 !important;*/
 }
-
 select:invalid,
 select option[value=""] {
   color: green !important;
