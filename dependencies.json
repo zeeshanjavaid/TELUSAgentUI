@@ -18,4 +18,9 @@
   "version" : "1.2",
   "artifactType" : "PREFAB",
   "artifactDependencyList" : null
+}, {
+  "name" : "DualList",
+  "version" : "1.0",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
 } ]
