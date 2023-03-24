@@ -193,3 +193,26 @@ button.btn.app-button.btn-default.cancelbutton:hover {
 .delTeamDialog {
     top: 300px;
 }
+
+button#addallbtn {
+    margin:3px;
+}
+
+button#addbtn {
+    margin:3px;
+}
+
+button#removebtn {
+    margin:3px;
+}
+
+button#removeAll {
+    margin:3px;
+}
+
+
+
+button.btn.app-button.btn-default.btn-listctrl {
+    margin:3px;
+
+}

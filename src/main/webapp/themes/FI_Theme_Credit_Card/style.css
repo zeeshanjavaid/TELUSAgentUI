@@ -11770,32 +11770,32 @@ button.wm-app .close {
 .wm-app app-prefab-duallist .app-prefab-container .btn-listctrl {
     height: 30px;
     width: 130px;
-    color: #00629b;
+    color: #4B286D;
     font-size: 14px;
     font-weight: 400;
     background-color: #ffffff;
     box-sizing: border-box;
-    border: 1px solid #00629b;
+    border: 1px solid #4B286D;
     border-radius: 3px;
     padding: 2px;
 }
 
 .wm-app app-prefab-duallist .app-prefab-container .btn-listctrl[disabled] {
-    color: #00629b;
+    color: #4B286D;
     font-size: 14px;
     font-weight: 400;
     background-color: #ffffff;
     box-sizing: border-box;
-    border: 1px solid #00629b;
+    border: 1px solid #4B286D;
 }
 
 .wm-app app-prefab-duallist .app-prefab-container .btn-listctrl:hover {
-    background-color: #00629b;
+    background-color: #4B286D;
     color: #fff;
 }
 
 .wm-app app-prefab-duallist .app-prefab-container .btn-listctrl:hover[disabled] {
-    background-color: #00629b;
+    background-color: #4B286D;
     color: #fff;
 }
 

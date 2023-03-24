@@ -194,8 +194,15 @@ button#removebtn {
     margin:3px;
 }
 
+button#removeAll {
+    margin:3px;
+}
+
+
+
 button.btn.app-button.btn-default.btn-listctrl {
     margin:3px;
+
 }
 
 .delRoleDialog {
