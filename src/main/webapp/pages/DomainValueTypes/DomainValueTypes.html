@@ -14,7 +14,7 @@
                         <wm-container name="search-container" class="inflex-center-sb">
                             <wm-text name="dvTypeSearch_Input" width="380px" height="33.5px" margin="unset 20px unset unset" placeholder="Search by domain value type" datavalue="bind:Variables.searchValue.dataSet.dataValue" class="searchInput"></wm-text>
                             <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="button5" on-click="button5Click($event, widget)"></wm-button>
-                            <wm-button class="btn primaryButton" caption="SEARCH" type="button" margin="unset 0.5em" name="searchDV_Button" on-click="searchDV_ButtonClick($event, widget)"></wm-button>
+                            <wm-button class="btn primaryButton" caption="Search" type="button" margin="unset 0.5em" name="searchDV_Button" on-click="searchDV_ButtonClick($event, widget)"></wm-button>
                         </wm-container>
                         <wm-container name="upload-btn-grp" class="inflex-center-sb">
                             <wm-fileupload name="dvTypeUpload" class="secondaryButton" on-select="dvTypeUploadSelect($event, widget, selectedFiles)" margin="14px 20px unset unset" hint="Upload DV Types" contenttype=".xlsx" caption="Upload DV Type"></wm-fileupload>

@@ -21,19 +21,13 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    $("#create_div").css("display", "none");
 };
 Page.LeftNavAdminMenuListList1Click = function(widget, $data) {
 
 
     //alert(Partial.Variables.LeftNavAdminMenuList.dataSet)
 };
-// Page.container2Click = function($event, widget, item, currentItemWidgets) {
-//     debugger;
-//     if (item.dataValue == 'Work Category') {
-//         Page.Actions.goToPage_DomainValueTypes.invoke();
-//     }
-//};
+
 Page.panel83Actionsclick = function($event, action, widget) {
     debugger;
 };
