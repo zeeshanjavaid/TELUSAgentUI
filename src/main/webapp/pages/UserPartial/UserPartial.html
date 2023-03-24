@@ -158,7 +158,7 @@
         <wm-form-action key="reset" display-name="Clear" show="true" class="btn-default" iconclass="" title="Clear" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
         <wm-form-action key="save" display-name="Search" show="true" class="btn-default" iconclass="" title="Search" action="Variables.searchUsers.invoke();submit()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
-    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
+    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Basic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
         gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" navigationalign="right" on-rowupdate="Widgets.userMVTable1.refreshData()">
         <wm-table-column binding="firstName" caption="First Name" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
             <wm-anchor caption="bind:row.getProperty('firstName')" on-click="dialogUserDetails(row)" class="" conditionalclass=""></wm-anchor>
