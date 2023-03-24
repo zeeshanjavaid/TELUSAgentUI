@@ -39,7 +39,7 @@
             <wm-gridcolumn columnwidth="4" name="gridcolumn5 " class="dual-list-btn-group" horizontalalign="center">
                 <wm-button id="addallbtn" class="btn-default btn-listctrl " caption="bind:appLocale.DUAL_LIST_PREFAB_ADD_BUTTON_ALL + ' >>'" type="button" name="buttonAddAll" on-click="buttonAddAllClick($event, widget)" disabled="bind:isreadonly ? isreadonly : Variables.leftDatasetModel.dataSet.length<1"
                     hint="bind:appLocale.DUAL_LIST_PREFAB_ADD_BUTTON_ALL"></wm-button><br>
-                <wm-button id="addbtn" class="btn-default btn-listctrl" caption="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_ADD + '>'" type="button" on-click="buttonAddItemsClick($event, widget)" name="buttonAddItems" disabled="bind:isreadonly ? isreadonly : Variables.leftDatasetModel.dataSet.length<1"
+                <wm-button id="addbtn" class="btn-default btn-listctrl" caption="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_ADD + ' >'" type="button" on-click="buttonAddItemsClick($event, widget)" name="buttonAddItems" disabled="bind:isreadonly ? isreadonly : Variables.leftDatasetModel.dataSet.length<1"
                     hint="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_ADD"></wm-button><br>
                 <wm-button id="removebtn" class="btn-default btn-listctrl" caption="bind:appLocale.REMOVE_LESS_THAN" type="button" on-click="buttonRemoveItemsClick($event, widget)" name="buttonRemoveItems" disabled="bind:isreadonly ? isreadonly : Variables.rightDatasetModel.dataSet.length<1"
                     hint="bind:appLocale.DUAL_LIST_PREFAB_BUTTON_REMOVE"></wm-button><br>

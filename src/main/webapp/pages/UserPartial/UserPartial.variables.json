@@ -2926,7 +2926,7 @@
     "serviceType" : "DataService",
     "dataSet" : [ ],
     "isList" : true,
-    "maxResults" : 20,
+    "maxResults" : 10,
     "onSuccess" : "searchUsersonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
