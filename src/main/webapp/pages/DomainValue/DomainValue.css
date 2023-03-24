@@ -97,12 +97,14 @@ body {
     position: relative;
     padding-right: 0.5rem;
     margin-left: 0.7rem;
+    color: #800080;
 }
 
 .control-links-clone {
     position: relative;
     padding-right: 0.5rem;
     margin-left: 0.7rem;
+    color: grey;
 }
 
 

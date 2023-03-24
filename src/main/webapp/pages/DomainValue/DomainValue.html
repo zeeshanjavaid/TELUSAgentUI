@@ -24,13 +24,10 @@
                         </wm-container>
                         <wm-container name="dvBtnCtrl-container" width="100%" height="30px" class="jc-sb inflex-center-sb" margin="20px unset unset unset">
                             <wm-container name="controls">
-                                <wm-button class="btn btn-default" caption="ACTIVATE" type="button" margin="unset 0.5em unset unset" name="activate_Button" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showInactiveDVs.dataSet.dataValue === true"
-                                    on-click="activate_ButtonClick($event, widget)"></wm-button>
-                                <wm-button class="btn btn-default" caption="DEACTIVATE" type="button" margin="unset 0.5em" name="deactivate_Button" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showActiveDVs.dataSet.dataValue === true"
-                                    on-click="deactivate_ButtonClick($event, widget)"></wm-button>
-                                <wm-anchor name="showActive_Link" caption="Active Records" class="control-links" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showInactiveDVs.dataSet.dataValue === true" on-click="showActive_LinkClick($event, widget)"></wm-anchor>
-                                <wm-anchor name="showInactive_Link" caption="Inactive Records" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showActiveDVs.dataSet.dataValue === true" on-click="showInactive_LinkClick($event, widget)"
-                                    conditionalclass="bind:{'control-links-clone':Variables.showAllDVs.dataSet.dataValue === true, 'control-links':Variables.showAllDVs.dataSet.dataValue === false}"></wm-anchor>
+                                <wm-button class="btn btn-default" caption="ACTIVATE" type="button" margin="unset 0.5em unset unset" name="activate_Button" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showInactiveDVs.dataSet.dataValue === true" on-click="activate_ButtonClick($event, widget)"></wm-button>
+                                <wm-button class="btn btn-default" caption="DEACTIVATE" type="button" margin="unset 0.5em" name="deactivate_Button" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showActiveDVs.dataSet.dataValue === true" on-click="deactivate_ButtonClick($event, widget)"></wm-button>
+                                <wm-anchor name="showActive_Link" caption="Active Records" class="control-links-clone" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showInactiveDVs.dataSet.dataValue === true" on-click="showActive_LinkClick($event, widget)"></wm-anchor>
+                                <wm-anchor name="showInactive_Link" caption="Inactive Records" class="control-links-clone" show="bind:Variables.showAllDVs.dataSet.dataValue === true || Variables.showActiveDVs.dataSet.dataValue === true" on-click="showInactive_LinkClick($event, widget)"></wm-anchor>
                                 <wm-anchor name="showAll_Link" caption="All Records" class="control-links" show="true" on-click="showAll_LinkClick($event, widget)"></wm-anchor>
                             </wm-container>
                             <wm-container name="pageInfo" width="200px">
@@ -48,10 +45,8 @@
                                 <wm-label caption="bind:row.getProperty('description')" class="" conditionalclass=""></wm-label>
                             </wm-table-column>
                             <wm-table-column binding="createdOn" caption="Created" width="25%" col-class="custom-font-size" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true">{{displayCustomUserAndDateValues(row.getProperty('createdOn'), row.getProperty('createdBy'))}}</wm-table-column>
-                            <wm-table-column binding="updatedOn" caption="Updated" width="25%" col-class="custom-font-size" edit-widget-type="timestamp"
-                                type="timestamp" readonly="true" show="true">{{displayCustomUserAndDateValues(row.getProperty('updatedOn'), row.getProperty('updatedBy'))}}</wm-table-column>
-                            <wm-table-column binding="isActive" caption="Status" widget-type="icon" width="5%" col-class="custom-font-size"
-                                edit-widget-type="checkbox" type="boolean" readonly="true" sortable="false" show="bind:Variables.showAllDVs.dataSet.dataValue === true">
+                            <wm-table-column binding="updatedOn" caption="Updated" width="25%" col-class="custom-font-size" edit-widget-type="timestamp" type="timestamp" readonly="true" show="true">{{displayCustomUserAndDateValues(row.getProperty('updatedOn'), row.getProperty('updatedBy'))}}</wm-table-column>
+                            <wm-table-column binding="isActive" caption="Status" widget-type="icon" width="5%" col-class="custom-font-size" edit-widget-type="checkbox" type="boolean" readonly="true" sortable="false" show="bind:Variables.showAllDVs.dataSet.dataValue === true">
                                 <wm-icon caption="" iconclass="fico-icon-check" iconposition="left" class="" conditionalclass="bind:{'icon-check-green':row.getProperty( 'isActive')===true, 'display-none':row.getProperty( 'isActive')===false}"></wm-icon>
                                 <wm-icon caption="" iconclass="fico-icon-close-circle" iconposition="left" class="" conditionalclass="bind:{'icon-check-red':row.getProperty( 'isActive')===false, 'display-none':row.getProperty( 'isActive')===true}"></wm-icon>
                             </wm-table-column>
