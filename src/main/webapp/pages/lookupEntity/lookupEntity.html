@@ -51,27 +51,25 @@
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
-
                     <wm-gridcolumn columnwidth="4" name="gridcolumn15" style="margin: 20px; width: 20%">
-                        <wm-gridcolumn width="200px">
+                        <wm-gridcolumn width="200px" name="gridcolumn16">
                             <wm-label class="col-md-3 control-label" margin="10px 3px 5px 15px" name="label14" caption="Billing System" width="100%"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn margin="2px 2px 2px 15px" width="300px">
+                        <wm-gridcolumn margin="2px 2px 2px 15px" width="300px" name="gridcolumn17">
                             <wm-select name="select5" datavalue="CES" width="65%"></wm-select>
                         </wm-gridcolumn>
-                        <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px">
-                            <wm-button class="secondaryButton" caption="Clear" margin="6px 6px 3px 15px" type="button" name="button2">
-                            </wm-button>
-                            <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)">
-                            </wm-button>
+                        <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18">
+                            <wm-button class="secondaryButton" caption="Clear" margin="6px 6px 3px 15px" type="button" name="button2"></wm-button>
+                            <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
-
                 </wm-gridrow>
             </wm-layoutgrid>
             <h3><b>Lookup Results</b></h3>
             <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Basic" enablesort="false" enablecolumnselection="false">
-                <wm-table-column binding="entityId" caption="Entity Id" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="entityId" caption="Entity Id" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false">
+                    <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:navigateToEntityPage(row.getProperty('entityId'))" class="desc" conditionalclass=""></wm-anchor>
+                </wm-table-column>
                 <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>

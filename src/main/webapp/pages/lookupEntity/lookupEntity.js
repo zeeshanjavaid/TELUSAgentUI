@@ -22,6 +22,12 @@ Page.onReady = function() {
      */
 };
 
+Page.navigateToEntityPage = function(entityId) {
+    debugger;
+    return "#/Lookup?entityId=" + (!entityId ? 0 : entityId);
+}
+
+
 Page.button1Click = function($event, widget) {
 
     debugger;
