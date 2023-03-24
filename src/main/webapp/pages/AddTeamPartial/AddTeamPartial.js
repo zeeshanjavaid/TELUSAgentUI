@@ -59,7 +59,7 @@ Partial.SaveButtonClick = function($event, widget) {
     App.Variables.GroupPageCommunication.currentGroupInFocusId = Partial.pageParams.groupId;
     //if ((Partial.Widgets.GroupNameText.datavalue == undefined ? Partial.Widgets.GroupNameText.datavalue == undefined : Partial.Widgets.GroupNameText.datavalue == "")) {
     if (Partial.Widgets.TeamIdText.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Team Id is mandatory";
+        App.Variables.errorMsg.dataSet.dataValue = "Team ID is mandatory";
         Partial.scrollToTop();
         Partial.Widgets.TeamIdText.required = true;
         Partial.Variables.readOnlyMode.dataSet.dataValue = false
@@ -75,7 +75,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
     } else
     if (Partial.Widgets.GroupNameText.datavalue.match(pattern) == null) {
-        App.Variables.errorMsg.dataSet.dataValue = "Team name is invalid.";
+        App.Variables.errorMsg.dataSet.dataValue = "Team Name is invalid.";
         Partial.scrollToTop();
     } else {
 
