@@ -2906,10 +2906,6 @@
       "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue",
       "type" : "string"
     }, {
-      "target" : "TeamID",
-      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.TeamID.datavalue",
-      "type" : "string"
-    }, {
       "target" : "role",
       "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.role.datavalue",
       "type" : "string"
@@ -2934,7 +2930,7 @@
     "onSuccess" : "searchUsersonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution",

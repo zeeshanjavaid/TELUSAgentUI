@@ -287,7 +287,7 @@ Partial.CreateRolePermissiononSuccess = function(variable, data) {
     //removing the cached app level permissions, so that they are loaded again on navigation
     cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
     //App.activePage.pageRefresh();
-    // App.refreshAllRoles();
+    App.refreshAllRoles();
     //App.activePage.Variables.getAllRoles.invoke();
     //App.activePage.Variables.getAllRolesPartial.invoke();
 
