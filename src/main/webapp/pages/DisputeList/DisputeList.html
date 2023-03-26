@@ -1,6 +1,6 @@
 <wm-partial name="partial1">
     <wm-container name="container1">
-        <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Basic">
+        <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
             <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                 <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" conditionalclass=""></wm-anchor>
             </wm-table-column>

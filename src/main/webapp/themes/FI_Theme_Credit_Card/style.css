@@ -14731,3 +14731,7 @@ button.wm-app .close {
     transform: translate(3%, 18%)!important;
     color: #000;
 }
+
+.wm-app .btn.app-button.btn-default.dropdown-toggle .fa-caret-down {
+    display: none;
+}
