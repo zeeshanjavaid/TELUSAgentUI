@@ -30,6 +30,24 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "DisputePageName" : {
+    "_id" : "wm-DisputePageName-wm.Variable-1679900969661",
+    "name" : "DisputePageName",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "DisputeList",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "errorMsg" : {
     "_id" : "wm-errorMsg-wm.Variable-1652712733896",
     "name" : "errorMsg",
