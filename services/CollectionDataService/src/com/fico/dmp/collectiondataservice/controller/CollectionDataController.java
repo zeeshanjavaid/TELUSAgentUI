@@ -50,8 +50,8 @@ public class CollectionDataController {
     @RequestMapping(value = "/entitySearch", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public EntitySearchResponseArray getEntitySearch(@RequestParam(value = "inputType", required = false) String inputType, @RequestParam(value = "inputValue", required = false) String inputValue, @RequestParam(value = "searchMatchCriteria", required = false) String searchMatchCriteria, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
-        return collectionDataService.getEntitySearch(inputType, inputValue, searchMatchCriteria, billingSystem, offset, limit);
+    public EntitySearchResponseArray getEntitySearch(@RequestParam(value = "inputType", required = false) String inputType, @RequestParam(value = "inputValue", required = false) String inputValue, @RequestParam(value = "level", required = false) String level, @RequestParam(value = "searchMatchCriteria", required = false) String searchMatchCriteria, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionDataService.getEntitySearch(inputType, inputValue, level, searchMatchCriteria, billingSystem, offset, limit);
     }
 
     @RequestMapping(value = "/assignedEntitiesInClassicView", method = RequestMethod.GET)
