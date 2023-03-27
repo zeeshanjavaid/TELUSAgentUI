@@ -900,14 +900,18 @@ button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
 .wm-app textarea::-webkit-input-placeholder {
     font-style: normal;
     font-size: 14px;
-    color: #a9a9a9;
+    color: black;
 }
 /*style added for select boxes[input]*/
 select {
-    /*font-style: normal;
-    color: #a9a9a9 !important;*/
+    font-style: normal;
+    color: black !important;
 }
 select:invalid,
 select option[value=""] {
-  color: green !important;
+  color: black !important;
+}
+
+::placeholder {
+    color: balck !important;
 }

@@ -3238,7 +3238,8 @@ a.wm-app .bg-danger:focus {
 }
 
 .wm-app .form-control::-webkit-input-placeholder {
-    color: #999;
+    /*color: #999;*/
+    color: black;
 }
 
 .wm-app .form-control::-ms-expand {
@@ -11587,7 +11588,7 @@ button.wm-app .close {
 
 .wm-app input::placeholder,
 .wm-app textarea::placeholder {
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: 12px;
     padding: 2px;
 }
@@ -11595,7 +11596,7 @@ button.wm-app .close {
 .wm-app input::-webkit-input-placeholder,
 .wm-app textarea::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: 12px;
     padding: 2px;
 }
@@ -11603,7 +11604,7 @@ button.wm-app .close {
 .wm-app input::-moz-placeholder,
 .wm-app textarea::-moz-placeholder {
     /* Firefox 19+ */
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: 12px;
     padding: 2px;
 }
@@ -11611,7 +11612,7 @@ button.wm-app .close {
 .wm-app :-ms-input-placeholder,
 .wm-app textarea:-ms-input-placeholder {
     /* IE 10+ */
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: 12px;
     padding: 5px;
 }
@@ -11619,7 +11620,7 @@ button.wm-app .close {
 .wm-app input:-moz-placeholder,
 .wm-app textarea:-moz-placeholder {
     /* Firefox 18- */
-    font-style: non-italic;
+    /*font-style: non-italic;*/
     font-size: 12px;
     padding: 2px;
 }
