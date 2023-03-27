@@ -54,9 +54,13 @@
                                                 <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>
                                                 <wm-text name="desc" class="middlebox" placeholder="" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
                                             </wm-gridcolumn>
-                                            <wm-gridcolumn columnwidth="12" name="gridcolumn8_1" padding="10px unset unset unset" class="dummy">
-                                                <wm-label padding="unset 0.5em" name="label9_1" caption="Status"></wm-label>
-                                                <wm-label padding="unset 0.5em" color="black" name="label8_1" caption="bind:Variables.mv_domainValue.dataSet.active ? 'Active' : 'Inactive'"></wm-label>
+                                        </wm-gridrow>
+                                        <wm-gridrow margin="12px unset unset unset">
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn31">
+                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Status" margin="5px unset unset unset"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="9" margin="5px 0 0 -14px" style="color: grey;">
+                                                <wm-label color="black" name="label8_1" caption="bind:Variables.mv_domainValue.dataSet.active ? 'Active' : 'Inactive'"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow14">
