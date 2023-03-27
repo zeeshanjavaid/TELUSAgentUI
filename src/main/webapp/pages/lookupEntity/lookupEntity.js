@@ -35,3 +35,19 @@ Page.button1Click = function($event, widget) {
     Page.Variables.searchEntity.invoke();
 
 };
+Page.button2Click = function($event, widget) {
+
+    Page.Widgets.select1.datavalue = 'Select';
+    Page.Widgets.select3.datavalue = 'Select';
+    Page.Widgets.select4.datavalue = 'Select';
+    Page.Widgets.select5.datavalue = 'Select';
+    Page.Widgets.text3._datavalue = '';
+    Page.Widgets.text4._datavalue = '';
+    Page.Widgets.text5._datavalue = '';
+
+    Page.Variables.searchEntity.invoke();
+
+
+
+    debugger;
+};

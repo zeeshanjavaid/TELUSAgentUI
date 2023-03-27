@@ -17,20 +17,21 @@
                             <wm-label class="col-md-3 control-label" name="label4" caption="*Level" margin="10px 3px 5px 15px"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px">
-                            <wm-select name="select1" margin="5px unset unset unset"></wm-select>
+                            <wm-select name="select1" margin="5px unset unset unset" dataset="CBUCID, RCID, Entity, BAN" datafield="All Fields" placeholder="Select"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn5_1">
-                            <wm-label padding="0.5em 0.5em unset unset" name="label10_1" caption="BAN Phone Number"></wm-label>
+                            <wm-container name="container3" show="bind:Widgets.select1.datavalue==='BAN'">
+                                <wm-label padding="0.5em 0.5em unset unset" name="label10_1" caption="BAN Phone Number"></wm-label>
+                                <wm-text name="text3"></wm-text>
+                            </wm-container>
                         </wm-gridcolumn>
-                        <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1">
-                            <wm-text name="text3"></wm-text>
-                        </wm-gridcolumn>
+                        <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 50%" class="borderGrid">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px; width: 300px;" name="gridcolumn5">
                             <wm-gridcolumn style="display: flex; margin: 4px;" name="gridcolumn6">
                                 <!--<wm-radioset height="auto" name="radioset2"></wm-radioset>--><input type="radio" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;">Name</label>
-                                <wm-select name="select3" id="selectBox"></wm-select>
+                                <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="Select"></wm-select>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 206px;" name="gridcolumn7">
                                 <wm-text name="text4"></wm-text>
@@ -44,7 +45,8 @@
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px; width: 300px;" name="gridcolumn9">
                             <wm-gridcolumn style="display: flex; margin: 4px;" name="gridcolumn10">
                                 <!--<wm-radioset height="auto" name="radioset1" dataset="Number/ID"></wm-radioset>--><input type="radio" id="numID" value="numID"><label for="name" style="margin: 9px 3px 2px 2px;">Number/ID</label>
-                                <wm-select name="select4" id="selectBox"></wm-select>
+                                <wm-select name="select4" id="selectBox" dataset="Exact match, Begins with, Ends with" datafield="All Fields"
+                                    placeholder="Select"></wm-select>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 237px;" name="gridcolumn11">
                                 <wm-text name="text5"></wm-text>
@@ -56,10 +58,10 @@
                             <wm-label class="col-md-3 control-label" margin="10px 3px 5px 15px" name="label14" caption="Billing System" width="100%"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="300px" name="gridcolumn17">
-                            <wm-select name="select5" datavalue="CES" width="65%"></wm-select>
+                            <wm-select name="select5" datavalue="CES" width="65%" dataset="CES" datafield="All Fields" placeholder="Select"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18">
-                            <wm-button class="secondaryButton" caption="Clear" margin="6px 6px 3px 15px" type="button" name="button2"></wm-button>
+                            <wm-button class="secondaryButton" caption="Clear" margin="6px 6px 3px 15px" type="button" name="button2" on-click="button2Click($event, widget)"></wm-button>
                             <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridcolumn>

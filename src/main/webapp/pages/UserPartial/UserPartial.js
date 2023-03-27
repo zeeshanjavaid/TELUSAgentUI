@@ -799,6 +799,8 @@ Partial.createUserForm1_saveAction = function($event) {
     Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
     if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
         Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
+
+
         Partial.Variables.UserManagementServiceCreateUser.invoke({},
             function(data) {
                 debugger; // Success Callback
@@ -806,9 +808,10 @@ Partial.createUserForm1_saveAction = function($event) {
             },
             function(error) {
                 debugger; // Error Callback
-                console.log("error", error)
+
             });
     }
+
 };
 
 Partial.userMVTable1_customRow1Action = function($event, row) {
@@ -890,5 +893,8 @@ Partial.updateUserForm1_saveAction = function($event) {
 
 Partial.getTeamonSuccess = function(variable, data) {
     Partial.Variables.dataTeam.dataSet = data;
+    debugger;
+};
+Partial.createUserForm1Error = function($event, widget, $data) {
     debugger;
 };
