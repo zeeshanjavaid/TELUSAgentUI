@@ -171,3 +171,9 @@ span.actions-column > button {
     font-family: robotolight !important;
     padding-left:0px !important;
 }
+.dummy {
+         position: relative;
+   text-align: center;
+		  padding-top: 10px;
+		   right: 22rem;
+}

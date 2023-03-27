@@ -2189,7 +2189,7 @@
       "updatedOn" : "",
       "updatedBy" : "",
       "createdBy" : "",
-      "active" : false,
+      "active" : "",
       "code" : "",
       "defaultLocale" : {
         "deleted" : false,
@@ -2197,7 +2197,7 @@
         "description" : "",
         "id" : 0
       },
-      "default" : false,
+      "default" : "",
       "id" : "0"
     },
     "type" : "com.fico.ps.model.DomainValueVO",
