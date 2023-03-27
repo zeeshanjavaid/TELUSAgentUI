@@ -14,9 +14,9 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
                 <wm-container name="container4" horizontalalign="right">
-                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="button1"></wm-button>
-                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="button2"></wm-button>
-                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3" textalign="right"></wm-button>
+                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="button1" on-click="Widgets.closeDisputeDialog.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.cancelDisputeConfirmation.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3" textalign="right" on-click="Widgets.updateDisputeConfirmation.open()"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -166,15 +166,15 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn84"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Cancel Dispute Confirmation" iconclass="" name="cancelDisputeConfirmation">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Cancel Dispute Confirmation" iconclass="" name="cancelDisputeConfirmation" class="cancelDisputeLine">
         <wm-container name="container8"></wm-container>
         <wm-layoutgrid name="layoutgrid14_1">
             <wm-gridrow name="gridrow18">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn48_1">
                     <wm-composite name="composite3">
-                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason:"></wm-label>
-                        <wm-container class="col-md-9" name="container9">
-                            <wm-select name="cancelledReasonValue" placeholder="Select Value"></wm-select>
+                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason:" width="27%"></wm-label>
+                        <wm-container class="col-md-9" name="container9" width="72%">
+                            <wm-select name="cancelledReasonValue" placeholder="Select Value" width="100%"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -182,19 +182,24 @@
             <wm-gridrow name="gridrow29">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn66_1">
                     <wm-composite name="composite4">
-                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments:"></wm-label>
-                        <wm-container class="col-md-9" name="container10">
+                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments:" width="27%"></wm-label>
+                        <wm-container class="col-md-9" name="container10" width="72%">
                             <wm-textarea name="textarea2"></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>
-        </wm-dialogactions>
+        <wm-layoutgrid name="layoutgrid18">
+            <wm-gridrow name="gridrow25_1" padding="1em unset unset unset">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn57_1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn58" horizontalalign="right">
+                    <wm-button class="primaryButton" caption="Submit" type="button" margin="unset 0.5em" name="button7"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Dispute" iconclass="" name="closeDisputeDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Dispute" iconclass="" name="closeDisputeDialog" class="closeDisputeLine">
         <wm-container name="container5"></wm-container>
         <wm-layoutgrid name="layoutgrid15">
             <wm-gridrow name="gridrow25">
@@ -219,38 +224,152 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid17">
-            <wm-gridrow name="gridrow27">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn62" horizontalalign="right" height="-10%">
-                    <wm-button class="btn-default" caption="No, Cancel" type="button" margin="2em -0.5em 1em 15em" name="button7"></wm-button>
-                    <wm-button class="btn-default" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="button8" iconposition="right"></wm-button>
+            <wm-gridrow name="gridrow27" padding="1em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn62" horizontalalign="right" class="primaryButton">
+                    <wm-button class="primaryButton" caption="Submit" type="button" name="button8" iconposition="right"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions2">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button5"></wm-button>
-        </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation">
+    <!--<wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%">-->
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%" class="updateDisputeLine1" closable="true">
+        <wm-container name="container18" margin="-1em unset unset unset" class="renegoLine-18con"></wm-container>
         <wm-layoutgrid name="layoutgrid16">
             <wm-gridrow name="gridrow21_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn54">
-                    <wm-label padding="unset 0.5em" caption="Name" name="label31"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn55_1">
-                    <wm-label padding="unset 0.5em" caption="Eric" name="label32"></wm-label>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn54">
+                    <wm-layoutgrid name="layoutgrid19">
+                        <wm-gridrow name="gridrow25_2">
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn57_2">
+                                <wm-label padding="unset 0.5em" name="label31" caption="Dispute ID:"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label34_1"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn61_2">
+                                <wm-label padding="unset 0.5em" name="label32" caption="Selected BAN:"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label35"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn58_1">
+                                <wm-label padding="unset 0.5em" name="label33_1" caption=""></wm-label>
+                                <wm-composite name="composite7" margin="-1.5em unset unset unset">
+                                    <wm-label class="col-md-3 control-label" name="label38" caption="Exclusion:"></wm-label>
+                                    <wm-container class="col-md-9" name="container12">
+                                        <wm-select name="select5" placeholder=""></wm-select>
+                                    </wm-container>
+                                </wm-composite>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow22_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn56_1">
-                    <wm-label padding="unset 0.5em" caption="Title" name="label33"></wm-label>
+            <wm-gridrow name="gridrow22_1" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn56_1">
+                    <wm-label padding="unset 0.5em" caption="Dispute Amount:" name="label33"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn57">
-                    <wm-label padding="unset 0.5em" caption="Engineer" name="label34"></wm-label>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn57">
+                    <wm-composite name="composite8">
+                        <wm-container class="col-md-9" name="container13">
+                            <wm-number textalign="right" name="number1" placeholder="" width="35%"></wm-number>
+                        </wm-container>
+                    </wm-composite>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions3">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button6"></wm-button>
-        </wm-dialogactions>
+        <wm-layoutgrid name="layoutgrid20">
+            <wm-gridrow name="gridrow28_2" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn64">
+                    <wm-label padding="unset 0.5em" caption="Adjustment(s) to Data:" name="label42"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn65_1">
+                    <wm-composite name="composite9" horizontalalign="left">
+                        <wm-container class="col-md-9" name="container14">
+                            <wm-number textalign="right" name="number2" placeholder="" width="35%"></wm-number>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow27_1" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn62_1">
+                    <wm-label padding="unset 0.5em" caption="Charge Type:" name="label43"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn63">
+                    <wm-composite name="composite10" width="65%">
+                        <wm-container class="col-md-9" name="container15">
+                            <wm-select name="select6"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid22">
+            <wm-gridrow name="gridrow31" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn70_1">
+                    <wm-label padding="unset 0.5em" caption="Reason:" name="label44"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn71_1">
+                    <wm-composite name="composite11" width="65%">
+                        <wm-container class="col-md-9" name="container16">
+                            <wm-select name="select7"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow32" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn72_1">
+                    <wm-label padding="unset 0.5em" caption="Product &amp; Srv:" name="label45"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn73">
+                    <wm-composite name="composite12" width="65%">
+                        <wm-container class="col-md-9" name="container17">
+                            <wm-select name="select8"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid23">
+            <wm-gridrow name="gridrow33" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn74">
+                    <wm-label padding="unset 0.5em" caption="Customer Email:" name="label46"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn75_1">
+                    <wm-composite name="composite13" width="65%">
+                        <wm-container class="col-md-9" name="container18_1">
+                            <wm-select name="select9"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow34" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn76_1">
+                    <wm-label padding="unset 0.5em" caption="Assigned Dispute Prime:" name="label47"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn77">
+                    <wm-composite name="composite14" width="65%">
+                        <wm-container class="col-md-9" name="container19">
+                            <wm-text name="text1"></wm-text>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid24">
+            <wm-gridrow name="gridrow35" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="4" name="gridcolumn78">
+                    <wm-label padding="unset 0.5em" caption="Comments:" name="label48"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="8" name="gridcolumn79">
+                    <wm-composite name="composite15" width="100%">
+                        <wm-container class="col-md-9" name="container20">
+                            <wm-textarea name="textarea3"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow36" padding="0.5em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn81" horizontalalign="right">
+                    <wm-button class="secondaryButton" caption="Button" type="button" margin="unset 0.5em" name="button7_1"></wm-button>
+                    <wm-button class="primaryButton" caption="Submit" type="button" margin="unset 0.5em" name="button8_1"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
     </wm-dialog>
 </wm-partial>

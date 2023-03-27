@@ -14,8 +14,7 @@
                             <wm-label class="col-md-3 control-label" name="label2" caption="PARR Total:" width="90px" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn22">
-                            <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)"
-                                width="150px"></wm-text>
+                            <wm-text name="ParrTotal" datavalue="bind:Variables.createPaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="Enter Parr Total" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="150px"></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -45,8 +44,7 @@
                             <wm-label class="col-md-3 control-label" name="label10" caption="Installment BAN's:" width="62%" textalign="left" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="2" name="gridcolumn39">
-                            <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet"
-                                navigation="None">
+                            <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet" navigation="None">
                                 <wm-listtemplate layout="inline" name="listtemplate1">
                                     <wm-container class="media-left" name="container10" width="0.5%">
                                         <wm-layoutgrid name="layoutgrid10">
@@ -94,12 +92,11 @@
                                             <wm-container class="col-md-9" name="container9_1">
                                                 <wm-composite name="composite7">
                                                     <wm-container class="col-md-9" name="container8">
-                                                        <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"
-                                                            show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'" width="95%"></wm-text>
+                                                        <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)" show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"
+                                                            width="95%"></wm-text>
                                                     </wm-container>
                                                 </wm-composite>
-                                                <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder="" disabled="bind:Widgets.InstallmentOptionRadio.datavalue != 'AmtPerInstallment'"
-                                                    width="70%"></wm-text>
+                                                <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder="" disabled="bind:Widgets.InstallmentOptionRadio.datavalue != 'AmtPerInstallment'" width="70%"></wm-text>
                                             </wm-container>
                                         </wm-composite>
                                     </wm-gridcolumn>
@@ -112,7 +109,7 @@
                         <wm-gridcolumn columnwidth="6" name="gridcolumn40"></wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn41" horizontalalign="right">
                             <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
-                            <wm-button class="primaryButton" caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
+                            <wm-button caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -145,10 +142,9 @@
                         <wm-table-column binding="sequenceId" caption="InstallmentID" widget-type="label" textalignment="right" edit-widget-type="text" type="string" readonly="true" show="true">
                             <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date"
-                            show="true" editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
-                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2"
-                            show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy"
+                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                     </wm-table>
