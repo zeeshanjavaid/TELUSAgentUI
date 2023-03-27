@@ -203,7 +203,15 @@
 }
 
 .wm-app .app-livelist .app-list-item.active.list-group-item .app-label {
-    color: #ccc !important;
+    color: #ccc;
+}
+
+.wm-app app-partial-rolespartial .app-livelist .app-list-item.active.list-group-item .app-label {
+    color: black;
+}
+
+.wm-app app-partial-teamspartial .app-livelist .app-list-item.active.list-group-item .app-label {
+    color: black;
 }
 
 

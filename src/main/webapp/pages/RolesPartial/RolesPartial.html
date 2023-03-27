@@ -2,11 +2,11 @@
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="page_content1">
             <wm-container name="container11" horizontalalign="left" class="header-label">
-                <wm-label padding="unset 0.5em" name="label3" class="h1" caption="Roles" margin="10px unset 15px unset" width="75%"></wm-label>
-                <wm-button caption="Create" type="button" margin="unset 1em 1em -1.5em" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover" horizontalalign="right"></wm-button>
+                <wm-label name="label3" class="h1" caption="Roles" margin="10px unset 15px 2px" width="75%"></wm-label>
+                <wm-button caption="Create" type="button" margin="10px 5px 10px 2px" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover" horizontalalign="right" style="float: right;"></wm-button>
             </wm-container>
-            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name" linktarget="_self"
-                menuclass="button_white button-hover" show="false"></wm-menu>
+            <wm-menu caption="......" autoclose="always" name="AlertMenu" menuposition="down,right" dataset="bind:Variables.importExportMenu.dataSet" autoopen="never" on-select="ImportExportMenuSelect($event, widget, $item)" itemlabel="name" linktarget="_self" menuclass="button_white button-hover"
+                show="false"></wm-menu>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.roleSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
                 <wm-message name="errormessage" type="error" show="bind:Variables.roleErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
@@ -33,7 +33,7 @@
                     </wm-container>
                 </wm-listtemplate>
             </wm-list>
-            <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset">
+            <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset" margin="0 4px 0 5px">
                 <wm-text name="roleSearchText" placeholder="Filter Roles" class="rolesearchText searchText" on-keyup="roleSearchTextKeyup($event, widget)" updateon="default"></wm-text>
                 <!--<wm-button class="btn-link button-addon" caption="" type="button" margin="0.5em 0.5em unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true" iconposition="top"></wm-button>-->
                 <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true" iconmargin="10px"></wm-button>
@@ -48,8 +48,7 @@
                     </wm-container>
                     <wm-container padding="unset unset unset " name="container5" on-click="container5Click($event, widget, item, currentItemWidgets)">
                         <wm-label name="Name" class="searchText" caption="bind:Variables.allRolesUI.dataSet[$i].role" fontsize="1.143" fontunit="em" hint="bind:Variables.allRolesUI.dataSet[$i].role" margin="unset unset 5px unset"></wm-label>
-                        <wm-label class="p media-heading module line-clamp" caption="bind:Variables.allRolesUI.dataSet[$i].description" fontsize="1" fontunit="em" name="label4" color="#626b73" hint="bind:Variables.allRolesUI.dataSet[$i].description"
-                            margin="unset unset 5px unset"></wm-label>
+                        <wm-label class="p media-heading module line-clamp" caption="bind:Variables.allRolesUI.dataSet[$i].description" fontsize="1" fontunit="em" name="label4" color="#626b73" hint="bind:Variables.allRolesUI.dataSet[$i].description" margin="unset unset 5px unset"></wm-label>
                         <wm-container name="container5_1" margin="unset unset 5px unset" show="true">
                             <wm-label class="p media-heading" caption="Users Assigned:" fontsize="1" fontunit="em" color="#626b73" name="label4_1" width="35%"></wm-label>
                             <wm-label class="p media-heading" caption="bind:Variables.countUsersByRole.dataSet.value" fontsize="1" fontunit="em" color="#626b73" width="15%" name="label7"></wm-label>
