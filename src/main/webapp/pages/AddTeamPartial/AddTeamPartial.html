@@ -44,7 +44,7 @@
                 <wm-label padding="0.75em 0.5em unset 0.5em" caption="Team Name *" name="label6" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn16_1" horizontalalign="left">
-                <wm-composite name="composite5_1" horizontalalign="left" captionposition="left" width="95%">
+                <wm-composite name="composite5_1" horizontalalign="left" captionposition="left" width="82%" margin="3px unset unset 50px">
                     <wm-label class="col-md-3 control-label" name="label8" caption=""></wm-label>
                     <wm-text name="GroupNameText" placeholder="Enter Value" datavalue="bind:Variables.teamData.dataSet.TeamName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"
                         width="95%" style="top: 4px;"></wm-text>
@@ -59,8 +59,8 @@
                 <wm-container name="container5">
                     <wm-composite name="composite4_1">
                         <wm-container class="col-md-9 queue-name" name="container10" height="35" margin="-30px unset unset unset"></wm-container>
-                        <wm-select name="select1" dataset="bind:Variables.getTeamManagerNameByRole.dataSet" datafield="firstName" displayfield="firstName" placeholder="Select" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"
-                            width="39%" height="35"></wm-select>
+                        <wm-select name="select1" dataset="bind:Variables.getTeamManagerNameByRole.dataSet" datafield="firstName" displayfield="firstName" placeholder="Select value" datavalue="bind:Variables.getTeamManagerNameByRole.dataSet[$i].firstName"
+                            disabled="bind:Variables.readOnlyMode.dataSet.dataValue" width="39%" height="35"></wm-select>
                     </wm-composite>
                 </wm-container>
             </wm-gridcolumn>
@@ -88,8 +88,8 @@
                         <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
                             <!--<wm-prefab prefabname="DualList_TD" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
                                 resetleftdataset="false" displayfield="bind:&quot;fullName&quot;" identifier="bind:userId"></wm-prefab>-->
-                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;" new="bind:pageParams.teamId === undefined"
-                                isreadonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-prefab>
+                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;"
+                                new="bind:pageParams.teamId === undefined" isreadonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-prefab>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
@@ -120,7 +120,7 @@
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset">
                     <wm-container name="container15_1" style="text-align: center;">
-                        <wm-label padding="unset 0.5em" name="label7" caption="bind:'Are you sure you want to delete Team <b> ' + pageParams.teamId + '</b> ?'"></wm-label>
+                        <wm-label padding="unset 0.5em" name="label7" caption="bind:'Are you sure you want to delete Team <b> ' + pageParams.teamId + '</b>?'"></wm-label>
                     </wm-container>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
