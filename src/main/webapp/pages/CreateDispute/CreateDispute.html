@@ -170,27 +170,22 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Information" iconclass="wi wi-file-text" name="SelectDisputeBanDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
+        <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetails.dataSet" navigation="None" multiselect="false" radioselect="true">
+            <wm-table-column binding="banId" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banStatus" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="disputeFlag" caption="Dispute Indc" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="suppresionFlag" caption="Suppress Indc" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+        </wm-table>
         <wm-layoutgrid name="layoutgrid13_1">
-            <wm-gridrow name="gridrow18">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn48_1">
-                    <wm-label padding="unset 0.5em" caption="Name" name="label13_2"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn49_1">
-                    <wm-label padding="unset 0.5em" caption="Eric" name="label14_1"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
             <wm-gridrow name="gridrow19_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn50">
-                    <wm-label padding="unset 0.5em" caption="Title" name="label15"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn51">
-                    <wm-label padding="unset 0.5em" caption="Engineer" name="label16"></wm-label>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn51" horizontalalign="right">
+                    <wm-button class="primaryButton" caption="Submit" type="button" margin="unset 0.5em" name="button5_1"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button5_1"></wm-button>
-        </wm-dialogactions>
     </wm-dialog>
 </wm-partial>
