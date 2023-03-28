@@ -233,6 +233,18 @@
     background-color: green;
 }
 
+.btn.primaryButton[disabled] {
+    border-color: rgba(115, 114, 112, 0.6);
+    color: rgba(115, 114, 112, 0.6);
+    background-color: #ffffff;
+}
+
+.btn.primaryButton[disabled]:hover {
+    border-color: rgba(115, 114, 112, 0.6);
+    color: rgba(115, 114, 112, 0.6);
+    background-color: #ffffff;
+}
+
 .btn.primaryButton:hover {
     border: 1px solid green;
     color: green;

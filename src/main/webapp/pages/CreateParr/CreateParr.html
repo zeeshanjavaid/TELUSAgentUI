@@ -109,7 +109,7 @@
                         <wm-gridcolumn columnwidth="6" name="gridcolumn40"></wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn41" horizontalalign="right">
                             <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
-                            <wm-button caption="Create Installment Schedule" type="button" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
+                            <wm-button caption="Create Installment Schedule" type="button" class="primaryButton" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
