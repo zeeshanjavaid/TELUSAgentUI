@@ -302,3 +302,11 @@
 .asterisk {
     /*color: red;*/
 }
+
+textarea.form-control.app-textarea.ng-untouched.ng-pristine {
+    resize: none;
+}
+
+textarea.form-control.app-textarea.ng-pristine.ng-valid.ng-touched {
+    resize: none;
+}

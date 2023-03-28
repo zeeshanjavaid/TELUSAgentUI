@@ -362,7 +362,7 @@ label.app-label.text-label {
 /* user dialog styles */
 div[name='dialogUserDetails'] .modal-header > h4 {
     padding-bottom: 5px;
-    border-bottom: 1.5px solid #d2e9f4;
+    border-bottom: 0.2px solid #a9a9a9;
 } 
 
 div[name='dialogUserDetails'] .modal-body {
