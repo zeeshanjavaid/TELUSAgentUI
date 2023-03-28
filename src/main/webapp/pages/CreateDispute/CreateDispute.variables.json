@@ -1,1 +1,102 @@
-{ }
+{
+  "chargeTypeDropdownVar" : {
+    "_id" : "wm-chargeTypeDropdownVar-wm.Variable-1679985437032",
+    "name" : "chargeTypeDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "One-time charge"
+    }, {
+      "dataValue" : "Recurring billing @ 100%"
+    }, {
+      "dataValue" : "Recurring billing @ Partial"
+    }, {
+      "dataValue" : "Final owning as shown"
+    }, {
+      "dataValue" : "Further (non-recurring) billing pending"
+    }, {
+      "dataValue" : "LPC charges accruing"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "exclusionDropdownVar" : {
+    "_id" : "wm-exclusionDropdownVar-wm.Variable-1679982872723",
+    "name" : "exclusionDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "productsDropdownVar" : {
+    "_id" : "wm-productsDropdownVar-wm.Variable-1679986645889",
+    "name" : "productsDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Business Connect"
+    }, {
+      "dataValue" : "Copper Internet"
+    }, {
+      "dataValue" : "Fiber Internet"
+    }, {
+      "dataValue" : "SBS Wi-Fi"
+    }, {
+      "dataValue" : "TELUS Secure Business"
+    }, {
+      "dataValue" : "Equipment"
+    }, {
+      "dataValue" : "Other Products and Services"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "reasonDropdownVar" : {
+    "_id" : "wm-reasonDropdownVar-wm.Variable-1679986346289",
+    "name" : "reasonDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "BILLED CHARGES (DEEMED) INCORRECT"
+    }, {
+      "dataValue" : "PRICE / VALUE DISSATISFACTION"
+    }, {
+      "dataValue" : "OUT/TERMINATION ORDER IN PROGRESS"
+    }, {
+      "dataValue" : "PRODUCTS/SERVICES BILLED BUT NOT DELIVERED"
+    }, {
+      "dataValue" : "INVOICE INFORMATION INCORRECT"
+    }, {
+      "dataValue" : "PRODUCT/SERVICE NOT WORKING AS EXPECTED"
+    }, {
+      "dataValue" : "TLC BILLED - BEING CONTESTED/ADJUSTED"
+    }, {
+      "dataValue" : "LPC BILLED - BEING CONTESTED / ADJUSTED"
+    }, {
+      "dataValue" : "ACCOUNT NOT CANCELLED ON TIME"
+    }, {
+      "dataValue" : "PRE-BILL"
+    }, {
+      "dataValue" : "OTHER REASON"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

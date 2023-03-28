@@ -28,7 +28,7 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn13"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn7">
-                <wm-button class="btn-default" caption="Select BAN" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                <wm-button class="btn-default" caption="Select BAN" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.SelectDisputeBanDialog.open()"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn8"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn16"></wm-gridcolumn>
@@ -39,7 +39,7 @@
                             <wm-label padding="unset 0.5em" name="label14" caption="Exclusion:" class="col-md-3 control-label" whitespace="nowrap" textalign="left" color="#6e6d6a" width="150px"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="4" name="gridcolumn52" padding="unset 1em unset .7em">
-                            <wm-select name="exclusionDropdown" width="150px"></wm-select>
+                            <wm-select name="exclusionDropdown" width="150px" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="3" name="gridcolumn66"></wm-gridcolumn>
                         <wm-gridcolumn columnwidth="2" name="gridcolumn71"></wm-gridcolumn>
@@ -70,7 +70,7 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn45" padding="unset unset unset .5px">
                             <wm-composite name="composite1">
-                                <wm-select name="chargeTypeDropDown" width="150px"></wm-select>
+                                <wm-select name="chargeTypeDropDown" width="150px" placeholder="Select" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -84,7 +84,7 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn58" padding="unset unset unset 1em">
                             <wm-composite name="composite3">
-                                <wm-select name="reasonDropdown" width="150px"></wm-select>
+                                <wm-select name="reasonDropdown" width="150px" dataset="bind:Variables.reasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" placeholder="Select"></wm-select>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -98,7 +98,7 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn65">
                             <wm-composite name="composite5">
-                                <wm-select name="select5" width="150px"></wm-select>
+                                <wm-select name="productsDropdown" width="150px" placeholder="Select" dataset="bind:Variables.productsDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -170,4 +170,27 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Information" iconclass="wi wi-file-text" name="SelectDisputeBanDialog">
+        <wm-layoutgrid name="layoutgrid13_1">
+            <wm-gridrow name="gridrow18">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn48_1">
+                    <wm-label padding="unset 0.5em" caption="Name" name="label13_2"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn49_1">
+                    <wm-label padding="unset 0.5em" caption="Eric" name="label14_1"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow19_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn50">
+                    <wm-label padding="unset 0.5em" caption="Title" name="label15"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn51">
+                    <wm-label padding="unset 0.5em" caption="Engineer" name="label16"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button5_1"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-partial>
