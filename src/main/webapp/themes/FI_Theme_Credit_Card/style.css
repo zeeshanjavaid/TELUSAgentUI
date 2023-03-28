@@ -3238,8 +3238,8 @@ a.wm-app .bg-danger:focus {
 }
 
 .wm-app .form-control::-webkit-input-placeholder {
-    /*color: #999;*/
-    color: black;
+    color: #999;
+    /*color: black;*/
 }
 
 .wm-app .form-control::-ms-expand {

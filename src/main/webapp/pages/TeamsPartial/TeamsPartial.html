@@ -2,8 +2,10 @@
     <wm-content name="content">
         <wm-page-content columnwidth="12" name="page_content2">
             <wm-container name="container11" width="100%" class="header-label" horizontalalign="left">
-                <wm-label padding="unset 0.5em" name="label3" class="h1" caption="Teams" margin="10px unset 15px unset" horizontalalign="left" width="80%"></wm-label>
-                <wm-button caption="Create" type="button" margin="unset 1em 1em -1.5em" name="AddTeamButton" show="true" horizontalalign="right" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
+                <!--<wm-label padding="unset 0.5em" name="label3" class="h1" caption="Teams" margin="10px unset 15px unset" horizontalalign="left" width="80%"></wm-label>-->
+                <wm-label name="label3" class="h1" caption="Teams" margin="10px unset 15px 2px" horizontalalign="left" width="75%"></wm-label>
+                <!--<wm-button caption="Create" type="button" margin="unset 1em 1em -1.5em" name="AddTeamButton" show="true" horizontalalign="right" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>-->
+                <wm-button caption="Create" type="button" margin="5px 5px 13px 33px" name="AddTeamButton" show="true" horizontalalign="right" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="button_white button-hover"></wm-button>
             </wm-container>
             <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
                 <wm-message name="successmessage" show="bind:Variables.groupSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.groupSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
@@ -31,7 +33,7 @@
                     </wm-container>
                 </wm-listtemplate>
             </wm-list>
-            <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset">
+            <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset" margin="0 4px 0 5px">
                 <wm-text name="teamSearchText" placeholder="Filter Teams" class="searchText" on-keyup="teamSearchTextKeyup($event, widget)" updateon="default"></wm-text>
             </wm-container>
             <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
