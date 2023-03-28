@@ -178,7 +178,7 @@
         <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="userMVTable1_customRow1Action($event, row);Variables.searchUsers.invoke()" disabled="false" widget-type="button"></wm-table-row-action>
         <wm-table-row-action key="customRow" display-name="" show="true" class="inactiveUser" iconclass="fico-icon-close" title="Inactivate" action="userMVTable1_customRowAction($event, row)" disabled="bind:!Widgets.userMVTable1.currentItem.active" widget-type="button"></wm-table-row-action>
     </wm-table>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User" class="createUserPage" iconclass="wi wi-file-text" name="createUserPage">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User" class="createUserPage" iconclass="wi wi-file-text" name="createUserPage" style="overflow: scroll;">
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
         <hr>
         <wm-form errormessage="" style="left:22px;" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="createUserForm1" on-error="createUserForm1Error($event, widget, $data)" validationtype="default"
@@ -242,7 +242,7 @@
             <wm-form-action key="save" display-name="Create" show="true" class="btn-success save" iconclass="" title="Create" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit User" class="userEditPage" iconclass="wi wi-file-text" name="updateUser" on-opened="updateUserOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit User" class="userEditPage" iconclass="wi wi-file-text" name="updateUser" style="overflow: scroll;" on-opened="updateUserOpened($event, widget)">
         <hr>
         <wm-form errormessage="" style="left:22px;" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="" validationtype="html" on-success="Variables.searchUsers.invoke();Widgets.updateUser.close()">
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">

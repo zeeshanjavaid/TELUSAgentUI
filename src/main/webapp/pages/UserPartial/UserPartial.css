@@ -836,10 +836,8 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
 }
 
 .comboTreeDropDownContainer{
-        height: 125px;
-
+    height: 100px;
 }
-
 
 .userprofile_icon {
     padding: 8px !important;
@@ -881,6 +879,9 @@ input#updateUserInputBox {
     background: none;
     border-left: 0;
     border-color: #4B286D;
+    border-top: 1px solid #4B286D !important;
+    border-right: 1px solid #4B286D !important;
+    border-bottom: 1px solid #4B286D !important;
 }
 
 .createUserPage.app-dialog-body.modal-body {
