@@ -15,11 +15,16 @@
     </wm-layoutgrid>
     <wm-container name="container1"></wm-container>
     <wm-layoutgrid name="layoutgrid2">
-        <wm-gridrow name="gridrow4">
+        <wm-gridrow name="gridrow4" padding="unset unset 1em unset">
             <wm-gridcolumn columnwidth="2" name="gridcolumn15" horizontalalign="left">
-                <wm-container name="container13">
-                    <wm-label padding="unset 0.5em" name="label3" caption="Selected BAN:"></wm-label>
-                </wm-container>
+                <wm-layoutgrid name="layoutgrid14">
+                    <wm-gridrow name="gridrow31">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn80">
+                            <wm-label padding="unset 0.5em" name="label3" caption="Selected BAN:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn81"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn13"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn7">
@@ -28,83 +33,140 @@
             <wm-gridcolumn columnwidth="1" name="gridcolumn8"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn16"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn18">
-                <wm-container name="container12">
-                    <wm-label padding="unset 0.5em" name="label14" caption="Exclusion:"></wm-label>
-                    <wm-menu caption="Menu" autoclose="outsideClick" name="menu4" width="155px" margin="unset unset unset 5px"></wm-menu>
-                </wm-container>
+                <wm-layoutgrid name="layoutgrid9">
+                    <wm-gridrow name="gridrow21">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn54">
+                            <wm-label padding="unset 0.5em" name="label14" caption="Exclusion:" class="col-md-3 control-label" whitespace="nowrap" textalign="left" color="#6e6d6a" width="150px"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn52" padding="unset 1em unset .7em">
+                            <wm-select name="exclusionDropdown" width="150px"></wm-select>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn66"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn71"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn72"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow5">
             <wm-gridcolumn columnwidth="3" name="gridcolumn9">
-                <wm-composite name="composite1" padding="20px unset unset unset">
-                    <wm-label class="col-md-3 control-label" name="disputeAmtLabel" caption="Dispute Amount:" whitespace="nowrap"></wm-label>
-                    <wm-container class="col-md-9" name="container2" padding="unset 25px unset 40px">
-                        <wm-number textalign="right" name="disputeAmt" margin="unset unset unset 0px"></wm-number>
-                    </wm-container>
-                </wm-composite>
+                <wm-layoutgrid name="layoutgrid5">
+                    <wm-gridrow name="gridrow12">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn30_1">
+                            <wm-label class="col-md-3 control-label" name="disputeAmtLabel" caption="Dispute Amount:" whitespace="nowrap" color="#6e6d6a" textalign="left" padding="unset .5em"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn31">
+                            <wm-number textalign="right" name="disputeAmt" margin="unset 5em unset 0em" width="150px"></wm-number>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn59"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn20">
-                <wm-container name="container4" padding="20px unset unset unset">
-                    <wm-label padding="unset 0.5em" name="ChargeTypeLabel" caption="Charge Type:" textalign="left"></wm-label>
-                    <wm-menu caption="Menu" autoclose="outsideClick" name="ChargeTypeDropDown" width="155px" horizontalalign="center" margin="unset unset unset 5px"></wm-menu>
-                </wm-container>
+                <wm-layoutgrid name="layoutgrid7">
+                    <wm-gridrow name="gridrow17">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn44">
+                            <wm-label padding="unset 0.5em" name="ChargeTypeLabel" caption="Charge Type:" textalign="left" class="col-md-3 control-label" whitespace="nowrap" color="#6e6d6a"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn45" padding="unset unset unset .5px">
+                            <wm-composite name="composite1">
+                                <wm-select name="chargeTypeDropDown" width="150px"></wm-select>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn10">
-                <wm-container name="container5" padding="20px unset unset unset">
-                    <wm-label padding="unset 0.5em" name="ReasonLabel" caption="Reason:" textalign="left"></wm-label>
-                    <wm-menu caption="Menu" autoclose="outsideClick" name="ReasonDropDown" width="155px" margin="unset unset unset 5px"></wm-menu>
-                </wm-container>
+                <wm-layoutgrid name="layoutgrid10">
+                    <wm-gridrow name="gridrow23">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn57">
+                            <wm-label padding="unset 0.5em" name="ReasonLabel" caption="Reason:" textalign="left" class="col-md-3 control-label" whitespace="nowrap" width="150px" color="#6e6d6a"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="8" name="gridcolumn58" padding="unset unset unset 1em">
+                            <wm-composite name="composite3">
+                                <wm-select name="reasonDropdown" width="150px"></wm-select>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn24">
-                <wm-container name="container9" padding="20px unset unset unset">
-                    <wm-label padding="unset 0.5em" name="label12" caption="Product &amp; Srv:" whitespace="nowrap"></wm-label>
-                    <wm-menu caption="Menu" autoclose="outsideClick" name="menu3" margin="unset unset unset 5px" width="155px"></wm-menu>
-                </wm-container>
+                <wm-layoutgrid name="layoutgrid11">
+                    <wm-gridrow name="gridrow25">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn64">
+                            <wm-label padding="unset 0.5em" name="label12" caption="Product &amp; Srv:" whitespace="nowrap" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="8" name="gridcolumn65">
+                            <wm-composite name="composite5">
+                                <wm-select name="select5" width="150px"></wm-select>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow6">
-            <wm-gridcolumn columnwidth="3" name="gridcolumn11" height="100">
-                <wm-composite name="composite2" padding="20px unset unset unset">
-                    <wm-label class="col-md-3 control-label" name="adjustmentToDateLabel" caption="Adjustment(s) to Date:" whitespace="nowrap"></wm-label>
-                    <wm-container class="col-md-9" name="container3" padding="unset 25px unset 75px">
-                        <wm-number textalign="right" name="adjustmentNum"></wm-number>
-                    </wm-container>
-                </wm-composite>
+        <wm-gridrow name="gridrow6" padding="1em unset unset unset">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn11" height="100" padding="unset unset 1em unset">
+                <wm-layoutgrid name="layoutgrid6">
+                    <wm-gridrow name="gridrow14" padding="unset unset 7px unset" overflow="hidden">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn34_1">
+                            <wm-label padding="unset 0.5em" name="label13_1" color="#6e6d6a" caption="Adjustment'(s) to Date:" whitespace="nowrap" class="col-md-3 control-label" textalign="left"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn35">
+                            <wm-number textalign="right" name="number4" width="150px" margin="unset 10em unset unset"></wm-number>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn60"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-layoutgrid name="layoutgrid12">
+                    <wm-gridrow name="gridrow27" overflow="auto">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn69">
+                            <wm-label class="col-md-3 control-label" name="label13" caption="Assigned Dispute Prime:" whitespace="nowrap" color="#6e6d6a" padding="unset unset unset 0.5em"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn70">
+                            <wm-text name="text2" textalign="right" width="170px"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn26">
-                <wm-composite name="composite3" padding="20px unset unset unset">
-                    <wm-label class="col-md-3 control-label" name="customerEmailLabel" caption="Customer Email:" whitespace="nowrap"></wm-label>
-                    <wm-container class="col-md-9" name="container7" padding="unset 25px unset 50px">
-                        <wm-text name="custEmailText"></wm-text>
-                    </wm-container>
-                </wm-composite>
+                <wm-layoutgrid name="layoutgrid8">
+                    <wm-gridrow name="gridrow19">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn48" padding="unset unset unset .5em">
+                            <wm-label class="col-md-3 control-label" name="customerEmailLabel" caption="Customer Email:" whitespace="nowrap" color="#6e6d6a"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn49">
+                            <wm-text name="custEmailText" textalign="right" width="150px"></wm-text>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn61"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn28">
-                <wm-composite name="composite4" padding="20px unset unset unset">
-                    <wm-label class="col-md-3 control-label" name="label11" caption="Comments:"></wm-label>
-                    <wm-container class="col-md-9" name="container8">
-                        <wm-textarea name="textarea1"></wm-textarea>
-                    </wm-container>
-                </wm-composite>
+                <wm-layoutgrid name="layoutgrid13">
+                    <wm-gridrow name="gridrow29">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn75">
+                            <wm-label class="col-md-3 control-label" name="label11" caption="Comments:" color="#6e6d6a"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn77" padding="unset unset unset 1em">
+                            <wm-textarea name="textarea1"></wm-textarea>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow7">
-            <wm-gridcolumn columnwidth="4" name="gridcolumn30" padding="unset unset 20px unset">
-                <wm-composite name="composite5">
-                    <wm-label class="col-md-3 control-label" name="label13" caption="Assigned Dispute Prime:" whitespace="nowrap"></wm-label>
-                    <wm-container class="col-md-9" name="container10" padding="unset unset unset 65px">
-                        <wm-text name="text2"></wm-text>
-                    </wm-container>
-                </wm-composite>
-            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn30" padding="unset unset 20px unset"></wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow8">
-            <wm-gridcolumn columnwidth="5" name="gridcolumn33"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn34"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="5" name="gridcolumn33">
+                <wm-container class="col-md-9" name="container5"></wm-container>
+            </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn37" horizontalalign="right">
-                <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="button5"></wm-button>
-                <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button6"></wm-button>
-                <wm-button class="btn-default" caption="Create" type="button" margin="unset 0.5em" name="button7"></wm-button>
+                <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button5"></wm-button>
+                <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="button6"></wm-button>
+                <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="button7"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
