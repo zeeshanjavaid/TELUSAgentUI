@@ -26,7 +26,9 @@
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn13"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn13">
+                <wm-text name="selectedDisputeBan" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue"></wm-text>
+            </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn7">
                 <wm-button class="btn-default" caption="Select BAN" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.SelectDisputeBanDialog.open()"></wm-button>
             </wm-gridcolumn>
@@ -164,7 +166,7 @@
                 <wm-container class="col-md-9" name="container5"></wm-container>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn37" horizontalalign="right">
-                <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button5"></wm-button>
+                <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)"></wm-button>
                 <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="button6"></wm-button>
                 <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="button7"></wm-button>
             </wm-gridcolumn>

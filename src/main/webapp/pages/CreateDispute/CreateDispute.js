@@ -24,7 +24,11 @@ Partial.onReady = function() {
 
 Partial.SubmitDisputeBanClick = function($event, widget) {
 
-    alert("Hi");
-
+    Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
     Partial.Widgets.SelectDisputeBanDialog.close();
+};
+Partial.CancelDisputeClick = function($event, widget) {
+    Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+
+
 };

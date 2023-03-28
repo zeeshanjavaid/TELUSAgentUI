@@ -98,5 +98,19 @@
     "type" : "string",
     "isList" : true,
     "saveInPhonegap" : false
+  },
+  "selectedDisputeBanVar" : {
+    "_id" : "wm-selectedBanVar-wm.Variable-1680025695076",
+    "name" : "selectedDisputeBanVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }
