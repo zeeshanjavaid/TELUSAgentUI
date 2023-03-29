@@ -22,12 +22,10 @@
                                 <wm-container name="container5"></wm-container>
                                 <wm-layoutgrid name="layoutgrid11">
                                     <wm-gridrow name="gridrow26_2">
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn30_1">
-                                            <wm-anchor name="backLink" caption="Back" fontsize="1.2" fontunit="em" encodeurl="false" on-click="buttonCancelClick($event, widget)" width="20%"></wm-anchor>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn31">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn31">
                                             <wm-container name="container4_1" horizontalalign="right">
-                                                <wm-button class="btn-default" caption="Edit" type="button" margin="unset 0.5em" name="EditButton" on-click="EditButtonClick($event, widget)" show="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                                                <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="CancelButton" on-click="buttonCancelClick($event, widget)" show="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                                                <wm-button class="primaryButton" caption="Edit" type="button" margin="unset 0.5em" name="EditButton" on-click="EditButtonClick($event, widget)" show="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                                             </wm-container>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
@@ -49,17 +47,18 @@
                                             <wm-gridcolumn columnwidth="3" name="gridcolumn29">
                                                 <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Description" margin="5px unset unset unset"></wm-label>
                                             </wm-gridcolumn>
-                                            <wm-gridcolumn columnwidth="9" name="gridcolumn30">
+                                            <wm-gridcolumn columnwidth="6" name="gridcolumn30" margin="0 0 0 6px" style="display: flex; flex-direction: column;">
                                                 <wm-label padding="unset 0.5em" name="label8" class="leftbox" caption="en" fontweight="bold" margin="unset 2px unset unset" show="false"></wm-label>
-                                                <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>
-                                                <wm-text name="desc" class="middlebox" placeholder="" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
+                                                <!--<wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>-->
+                                                <wm-text name="desc" class="middlebox" placeholder="" width="90%" height="20%" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
+                                                <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset -7px" style="color: red;"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow margin="12px unset unset unset">
                                             <wm-gridcolumn columnwidth="3" name="gridcolumn31">
-                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Status" margin="5px unset unset unset"></wm-label>
+                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Status" margin="5px unset unset -1px"></wm-label>
                                             </wm-gridcolumn>
-                                            <wm-gridcolumn columnwidth="9" margin="5px 0 0 -14px" style="color: grey;">
+                                            <wm-gridcolumn columnwidth="5" margin="5px 0 0 -9px" style="color: grey;">
                                                 <wm-label color="black" name="label8_1" caption="bind:Variables.mv_domainValue.dataSet.active ? 'Active' : 'Inactive'"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
@@ -157,7 +156,7 @@
                             </wm-gridcolumn>
                         </wm-gridrow>
                         <wm-gridrow name="gridrow6" class="action-container">
-                            <wm-gridcolumn columnwidth="12" name="gridcolumn8" horizontalalign="right">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn8" horizontalalign="right" margin="0 0 0 24px">
                                 <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button6" on-click="buttonCancelClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                                 <wm-button class="primaryButton" caption="Save" type="button" margin="unset 0.5em" name="saveBtn" on-click="saveBtnClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                             </wm-gridcolumn>
