@@ -2792,6 +2792,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "isExpand" : {
+    "_id" : "wm-isExpand-wm.Variable-1680083514634",
+    "name" : "isExpand",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "isExpandedGroup" : {
     "_id" : "wm-isExpandedGeneral-wm.Variable-1655449217551",
     "name" : "isExpandedGroup",

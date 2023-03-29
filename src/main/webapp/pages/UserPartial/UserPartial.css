@@ -666,7 +666,6 @@ div[name='getActivityEventLogsTable1'] div[data-col-identifier='actions'] > butt
 table {
   border-collapse: collapse;
   width: 100% !important;
-  border: none !important;
 }
 
 td, th {
@@ -904,19 +903,10 @@ button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
     color: black;
 }
 
-/*style added for select boxes[input]*/
-/*select {
-    font-style: normal;
-    color: #a9a9a9 !important;
-}*/
+.userDetailLabel {
+    color: #6e6d6a;
+}
 
-/*.wm-app option::-webkit-input-placeholder {
-    font-style: normal;
-    font-size: 14px;
-    color: red !important;
-}*/
-
-/*select:invalid,
-select option[value=""] {
-  color: #a9a9a9 !important;
-}*/
+.wm-panel [subheading] {
+    font-size: 20px;
+}

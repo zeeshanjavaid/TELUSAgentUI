@@ -16,7 +16,7 @@
                                 <wm-container name="container21" width="100%" horizontalalign="left" padding="0px 20px 26px 0px">
                                     <wm-label caption="Users" class="header-label" name="lbl_activitylog"></wm-label>
                                     <wm-container name="container22" class="create_user_btn"></wm-container>
-                                    <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em 0.6em 1em" name="button3" backgroundposition="top,right" on-click="button3Click($event, widget)" iconposition="left" textalign="right"></wm-button>
+                                    <wm-button class="primaryButton" caption="Create" type="button" margin="unset -1.3em 0.6em 1em" name="button3" backgroundposition="top,right" on-click="button3Click($event, widget)" iconposition="left" textalign="right" style="float:right;"></wm-button>
                                 </wm-container>
                             </wm-container>
                         </wm-container>
@@ -39,7 +39,7 @@
                         <wm-layoutgrid name="layoutgrid5" columns="4">
                             <wm-gridrow name="gridrow37" padding="10px unset">
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn70">
-                                    <wm-label name="label12" caption="Full Name"></wm-label>
+                                    <wm-label name="label12" class="userDetailLabel" caption="Full Name"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn71" horizontalalign="left">
                                     <wm-label name="label13" caption=""></wm-label>
@@ -47,7 +47,7 @@
                                     <wm-label name="label9_1" caption=""></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn72">
-                                    <wm-label name="label11" caption="Email"></wm-label>
+                                    <wm-label name="label11" class="userDetailLabel" caption="Email"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn73" horizontalalign="left">
                                     <wm-label name="label10" caption=""></wm-label>
@@ -56,14 +56,14 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow38" padding="10px unset">
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn74">
-                                    <wm-label name="label11" caption="Empl ID"></wm-label>
+                                    <wm-label name="label11" class="userDetailLabel" caption="Empl ID"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn75" horizontalalign="left">
                                     <wm-label name="label10" caption=""></wm-label>
                                     <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.emplId"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn76">
-                                    <wm-label name="label11" caption="Role"></wm-label>
+                                    <wm-label name="label11" class="userDetailLabel" caption="Role"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn77" horizontalalign="left">
                                     <wm-label name="label10" caption=""></wm-label>
@@ -72,14 +72,14 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow39" padding="10px unset">
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn78">
-                                    <wm-label name="label11" caption="Team ID"></wm-label>
+                                    <wm-label name="label11" class="userDetailLabel" caption="Team ID"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn79" horizontalalign="left">
                                     <wm-label name="label10" caption=""></wm-label>
                                     <wm-label name="label12_1" caption="bind:Variables.dialogUserId.dataSet.teamId"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="2" name="gridcolumn80">
-                                    <wm-label name="label11" caption="Team Manager" whitespace="normal"></wm-label>
+                                    <wm-label name="label11" class="userDetailLabel" caption="Team Manager" whitespace="normal"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="4" name="gridcolumn81" horizontalalign="left">
                                     <wm-label name="label10" caption=""></wm-label>
@@ -93,43 +93,37 @@
         </wm-container>
         <wm-container name="container13_1" horizontal-align="left" width="100%" height="5%">
             <wm-layoutgrid name="layoutgrid8">
-                <wm-gridrow name="gridrow30_1">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn42">
-                        <wm-label class="col-md-3 control-label mt-20" name="label32" caption="Assigned Work Categories" textalign="left" whitespace="nowrap"></wm-label>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow31">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn44_1">
-                        <wm-list listclass="list-group  work-cat-list" itemclass="list-group-item  work-cat-itemMain" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list  work-cat" datafield="All Fields" name="WorkcategoryUserList1" dataset="bind:Variables.getWorkCategoryByUserId.dataSet"
-                            navigation="None" nodatamessage="">
-                            <wm-container name="container19" width="100%" margin="25px unset unset 15px">
-                                <wm-listtemplate layout="inline" name="listtemplate3">
-                                    <wm-container class="media-left" name="container12" padding="5px unset unset unset">
+
+                <wm-panel subheading="<span ><i  class=&quot;fico-icon-chevron-right hide-icon &quot;></i><i  class=&quot;fico-icon-chevron-down show-icon&quot;></i> Assigned Work Categories</span>" autoclose="outsideClick" title="" name="panel1" collapsible="true" expanded="true"
+                    on-expand="panel1Expand($event, widget)" on-collapse="panel1Collapse($event, widget)">
+                    <wm-panel-footer name="panel_footer1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn44_1">
+                            <wm-list listclass="list-group  work-cat-list" itemclass="list-group-item  work-cat-itemMain" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list  work-cat" datafield="All Fields" name="WorkcategoryUserList1" dataset="bind:Variables.getWorkCategoryByUserId.dataSet"
+                                navigation="None" nodatamessage="">
+                                <wm-container name="container19" width="100%" margin="25px unset unset 15px">
+                                    <wm-listtemplate layout="inline" name="listtemplate3">
                                         <wm-container class="media-left" name="container12" padding="5px unset unset unset">
-                                            <wm-picture width="5pt" height="5pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" show="true"></wm-picture>
+                                            <wm-container class="media-left" name="container12" padding="5px unset unset unset">
+                                                <wm-picture width="5pt" height="5pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" show="true"></wm-picture>
+                                            </wm-container>
+                                            <wm-container class="media-body" name="container13">
+                                                <wm-composite name="composite10_1"></wm-composite>
+                                                <wm-container name="container13_2">
+                                                    <wm-label class="p media-heading work-cat-item" name="Name" caption="bind:Variables.getWorkCategoryByUserId.dataSet.data[$i].workCategory" fontunit="em" padding="unset unset unset 5%"></wm-label>
+                                                </wm-container>
+                                            </wm-container>
                                         </wm-container>
-                                        <wm-container class="media-body" name="container13">
-                                            <!--<wm-layoutgrid name="layoutgrid6_1"><wm-gridrow name="gridrow25"><wm-gridcolumn columnwidth="12" name="gridcolumn43">-->
-                                            <wm-composite name="composite10_1">
-                                                <!--<wm-container class="col-md-9" name="container23_1">-->
-                                                <!--    <wm-label name="label32_1" caption="bind:Variables.dialogUserId.dataSet.workCategory.split(&quot;,&quot;);"></wm-label>-->
-                                                <!--</wm-container>-->
-                                            </wm-composite>
-                                            <wm-container name="container13_2">
-                                                <wm-label class="p media-heading work-cat-item" name="Name" caption="bind:Variables.getWorkCategoryByUserId.dataSet.data[$i].workCategory" fontunit="em" padding="unset unset unset 5%"></wm-label>
-                                                <!-- </wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow26"></wm-gridrow></wm-layoutgrid>--></wm-container>
-                                        </wm-container>
-                                    </wm-container>
-                                </wm-listtemplate>
-                            </wm-container>
-                        </wm-list>
-                    </wm-gridcolumn>
-                </wm-gridrow>
+                                    </wm-listtemplate>
+                                </wm-container>
+                            </wm-list>
+                        </wm-gridcolumn>
+                    </wm-panel-footer>
+                </wm-panel>
+
             </wm-layoutgrid>
         </wm-container>
-        <wm-container name="container16" width="100%"></wm-container>
     </wm-dialog>
-    <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="get" dataset="bind:Variables.searchUsers.dataSet" captionalign="left" name="executeSearchUsersForm1" class="form-body1" postmessage="">
+    <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="get" dataset="bind:Variables.searchUsers.dataSet" captionalign="left" name="executeSearchUsersForm1" class="form-body1" postmessage="" margin="0 22px 0 18px">
         <wm-layoutgrid columns="3" name="layoutgrid5_1" class="mt-20">
             <wm-gridrow name="gridrow1" class="pl-20">
                 <wm-gridcolumn name="gridcolumn1" columnwidth="4">
@@ -157,7 +151,8 @@
         <wm-form-action key="save" display-name="Search" show="true" class="btn-default" iconclass="" title="Search" action="Variables.searchUsers.invoke();submit()" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
     </wm-form>
     <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
-        gridclass="" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" navigationalign="right" on-rowupdate="Widgets.userMVTable1.refreshData()">
+        gridclass="table-striped table-hover" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" navigationalign="right"
+        on-rowupdate="Widgets.userMVTable1.refreshData()">
         <!-- <wm-table-row-action key="customRow" display-name="" show="true" class="inactiveUser" iconclass="fico-icon-close" title="Inactivate" action="userMVTable1_customRowAction($event, row)" disabled="bind:!Widgets.userMVTable1.currentItem.active" widget-type="button"></wm-table-row-action>-->
         <wm-table-column binding="firstName" caption="First Name" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
             <wm-anchor caption="bind:row.getProperty('firstName')" on-click="dialogUserDetails(row)" class="" conditionalclass=""></wm-anchor>

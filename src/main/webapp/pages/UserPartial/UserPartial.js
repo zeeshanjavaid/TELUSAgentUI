@@ -13,6 +13,7 @@ Partial.timeZones = [];
 
 Partial.onReady = function() {
 
+
     /*
     
              * variables can be accessed through 'Partial.Variables' property here
@@ -75,6 +76,10 @@ Partial.onReady = function() {
         cascadeSelect: true,
         collapse: true
     });
+
+
+
+
 
 
 
@@ -622,6 +627,14 @@ Partial.sv_updateUserDetailsonSuccess = function(variable, data) {
 };
 
 Partial.dialogUserDetailsOpened = function($event, widget) {
+    let showIcon = document.querySelector('.show-icon');
+    let hideIcon = document.querySelector('.hide-icon');
+    if (hideIcon) {
+        hideIcon.style.display = 'none';
+    }
+    if (showIcon) {
+        showIcon.style.display = 'inline-block';
+    }
 
     Partial.Variables.userLocalMsg.dataSet.dataValue = null;
 };
@@ -897,4 +910,29 @@ Partial.getTeamonSuccess = function(variable, data) {
 };
 Partial.createUserForm1Error = function($event, widget, $data) {
     debugger;
+};
+
+Partial.panel1Expand = function($event, widget) {
+    let showIcon = document.querySelector('.show-icon');
+    let hideIcon = document.querySelector('.hide-icon');
+    if (hideIcon) {
+        hideIcon.style.display = 'none';
+    }
+    if (showIcon) {
+        showIcon.style.display = 'inline-block';
+    }
+    Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
+};
+
+Partial.panel1Collapse = function($event, widget) {
+    let showIcon = document.querySelector('.show-icon');
+    let hideIcon = document.querySelector('.hide-icon');
+    if (hideIcon) {
+        hideIcon.style.display = 'inline-block';
+    }
+    if (showIcon) {
+        showIcon.style.display = 'none';
+    }
+    Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
+
 };
