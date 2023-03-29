@@ -14740,3 +14740,7 @@ button.wm-app .close {
 .wm-app .btn.app-button.btn-default.dropdown-toggle .fa-caret-down {
     display: none;
 }
+
+.wm-app .btn.app-button.btn-default.dropdown-toggle {
+    pointer-events: none;
+}
