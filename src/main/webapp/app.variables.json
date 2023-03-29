@@ -634,7 +634,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 4,
+    "bindCount" : 5,
     "tableName" : "ROLE",
     "tableType" : "TABLE",
     "properties" : [ "userByCreatedBy", "userByUpdatedBy" ],
