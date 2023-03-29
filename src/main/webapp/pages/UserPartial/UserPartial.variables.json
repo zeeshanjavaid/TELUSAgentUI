@@ -273,7 +273,7 @@
     "onSuccess" : "getAllUsersonSuccess(variable, data, options)",
     "onError" : "getAllUsersonError(variable, data, options)",
     "inFlightBehavior" : "executeLast",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
