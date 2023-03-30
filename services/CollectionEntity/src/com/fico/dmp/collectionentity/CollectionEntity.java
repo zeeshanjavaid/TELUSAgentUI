@@ -37,6 +37,8 @@ import java.text.SimpleDateFormat;
 
 import com.fico.core.util.ObjectMapperConfig;
 
+import io.swagger.client.model.CollectionDispute;
+
 
 //import com.fico.dmp.collectionentity.model.*;
 
@@ -127,5 +129,49 @@ public class CollectionEntity {
        return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"9\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"9\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"PRECOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false}]",CollectionBillingAccountRef.class);
     }    
 
+
+    @RequestMapping(value = "/dispute", method = {RequestMethod.GET})
+    public List<CollectionDispute> getdispute(String banRefId) throws Exception  {
+
+        return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/dispute/1\",\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"billingAdjustmentRequestId\":\"string\",\"chargeType\":\"One-time charge\",\"customerContactName\":\"John Snow\",\"collectionExclusionIndicator\":false,\"comment\":\"string\",\"disputePrime\":\"string\",\"disputeReason\":\"BILLED CHARGES (DEEMED) INCORRECT\",\"product\":\"Business Connect\",\"statuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"reason\":\"string\",\"status\":\"OPEN\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionDisputeStatus\"}],\"@type\":\"CollectionDispute\"}]",
+        objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
+        // return new Object(); 
+    }
+    
+         public CollectionDispute addDispute( CollectionDispute  collectionDispute) throws Exception  {
+    
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments());
+        // if (collectionPaymentArrangementCreate.getInstallments() != null) {
+        //     logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments().get(0).getAmount());
+        // }
+        return collectionDispute;
+        
+    }
+
+
+         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
+        // @RequestMapping(value = "/dispute", method = {RequestMethod.GET})
+            // @RequestMapping(value = "/dispute", method = {RequestMethod.GET})
+
+        @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
+        @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+        public CollectionDispute getdispute(@PathVariable("id") Integer id, String fields, Boolean history) throws Exception  {
+
+      
+       return objectMapper.readValue("{\"id\":1,\"href\":\"BASE_URL/dispute/1\",\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"billingAdjustmentRequestId\":\"string\",\"chargeType\":\"One-time charge\",\"customerEmail\":\"John.Snow@telus.com\",\"collectionExclusionIndicator\":false,\"comments\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"@type\":\"AuditInfo\"},\"text\":\"This is collection dispute comment 1\",\"@type\":\"Comment\"}],\"disputePrime\":\"string\",\"disputeReason\":\"BILLED CHARGES (DEEMED) INCORRECT\",\"product\":\"Business Connect\",\"statuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"comments\":[{\"id\":2,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"@type\":\"AuditInfo\"},\"text\":\"This is collection dispute status comment 1\",\"@type\":\"Comment\"}],\"reason\":\"string\",\"status\":\"OPEN\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionDisputeStatus\"}],\"@type\":\"CollectionDispute\"}",CollectionDispute.class);
+    }    
+
+
+         public CollectionDispute updateDispute( CollectionDispute  collectionDispute) throws Exception  {
+    
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
+        // logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments());
+        // if (collectionPaymentArrangementCreate.getInstallments() != null) {
+        //     logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments().get(0).getAmount());
+        // }
+        return collectionDispute;
+        
+    }
 
 }

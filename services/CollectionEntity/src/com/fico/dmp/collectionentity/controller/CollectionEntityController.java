@@ -4,8 +4,9 @@
 package com.fico.dmp.collectionentity.controller;
 
 import com.fico.dmp.collectionentity.CollectionEntity;
-import io.swagger.client.model.CollectionPaymentArrangement;
+import io.swagger.client.model.CollectionDispute;
 import java.lang.Exception;
+import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Integer;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionBillingAccountRef;
@@ -27,19 +28,28 @@ public class CollectionEntityController {
     @Autowired
     private CollectionEntity collectionEntity;
 
+    @RequestMapping(value = "/dispute", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionDispute addDispute(@RequestBody CollectionDispute collectionDispute) throws Exception {
+        return collectionEntity.addDispute(collectionDispute);
+    }
+
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.addPaymentArrangement(collectionPaymentArrangementCreate);
     }
 
-    @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
+    @RequestMapping(value = "/billingAccountRef/{id}", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionBillingAccountRef getBillingAccountRef(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+    public CollectionBillingAccountRef getBillingAccountRef(@PathVariable("id") Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntity.getBillingAccountRef(id, history);
     }
 
-    @RequestMapping(value = "/billingAccountRef_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
     public List<CollectionBillingAccountRef> getBillingAccountRef_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
@@ -60,7 +70,30 @@ public class CollectionEntityController {
         return collectionEntity.getPaymentArrangements(entityId);
     }
 
+    @RequestMapping(value = "/dispute", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionDispute> getdispute(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
+        return collectionEntity.getdispute(banRefId);
+    }
+
+    @RequestMapping(value = "/dispute/{id}", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionDispute getdispute_1(@PathVariable("id") Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntity.getdispute(id, fields, history);
+    }
+
+    @RequestMapping(value = "/dispute", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionDispute updateDispute(@RequestBody CollectionDispute collectionDispute) throws Exception {
+        return collectionEntity.updateDispute(collectionDispute);
+    }
+
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntity.updatePaymentArrangement(id, collectionPaymentArrangementCreate);
     }

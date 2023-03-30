@@ -4,10 +4,9 @@
 package com.fico.dmp.collectiondataservice.controller;
 
 import com.fico.dmp.collectiondataservice.CollectionDataService;
-import io.swagger.client.model.CollectionDispute;
-import java.lang.Exception;
 import java.lang.String;
 import java.lang.Integer;
+import java.lang.Exception;
 import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import java.util.List;
@@ -27,11 +26,6 @@ public class CollectionDataController {
 
     @Autowired
     private CollectionDataService collectionDataService;
-
-    @RequestMapping(value = "/dispute", method = RequestMethod.POST)
-    public CollectionDispute addDispute(@RequestBody CollectionDispute collectionDispute) throws Exception {
-        return collectionDataService.addDispute(collectionDispute);
-    }
 
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -59,12 +53,5 @@ public class CollectionDataController {
     @ApiOperation(value = "")
     public AssignedEntitiesInEntityViewResponseArray getassignedEntitiesInClassicView(@RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getassignedEntitiesInClassicView(agentId, workCategory, offset, limit);
-    }
-
-    @RequestMapping(value = "/dispute", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
-        return collectionDataService.getdispute(banRefId);
     }
 }
