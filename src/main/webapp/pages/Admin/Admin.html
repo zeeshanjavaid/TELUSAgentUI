@@ -10,7 +10,7 @@
                     <wm-listtemplate layout="inline" name="listtemplate1">
                         <wm-container class="media-left" name="container1"></wm-container>
                         <wm-container class="media-body" padding="unset unset unset 1.25em" name="container2" on-click="container2Click($event, widget, item, currentItemWidgets)">
-                            <wm-label name="Name" class="p media-heading" caption="bind:Variables.LeftNavAdminMenuList.dataSet.dataValue" fontsize="1.143" fontunit="em"></wm-label>
+                            <wm-label name="Name" class="p media-heading" caption="bind:Variables.LeftNavAdminMenuList.dataSet.dataValue" fontsize="1.143" fontunit="em" on-click="NameClick($event, widget, item, currentItemWidgets)"></wm-label>
                         </wm-container>
                         <wm-container class="media-right media-top" name="container3"></wm-container>
                     </wm-listtemplate>

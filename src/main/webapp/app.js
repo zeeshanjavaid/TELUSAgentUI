@@ -257,6 +257,7 @@ App.onBeforePageLeave = function(activePageName, activePageScope) {
     App.permissionsLoaded = false;
     App.queueFiltersLoaded = false;
 
+
     if (activePageScope.applicationId !== undefined) {
         App.Variables.unlockApplicationByApplicationId.setInput("applicationId", activePageScope.applicationId);
         App.Variables.unlockApplicationByApplicationId.invoke();

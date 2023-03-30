@@ -827,11 +827,61 @@ Partial.getTeamonSuccess = function(variable, data) {
     }
 
     //Partial.Variables.getGroupRole.invoke();
-    //Partial.Variables.getGroupUser.invoke();
+    //  Partial.Variables.getTeamUser.invoke();
 
 };
 
 Partial.getTeamUseronSuccess = function(variable, data) {
+    //if (Partial.pageParams.groupId !== undefined) {
+    debugger;
+    Partial.TeamAssignUser = [];
+
+    if (!Partial.pageParams.groupId) {
+        data = [];
+        Partial.TeamAssignUser = [];
+    }
+    data.forEach((d) => {
+        Partial.TeamAssignUser.push(d.userByUserId);
+    });
+
+    Partial.Variables.teamData.dataSet = {
+        "TeamAssignUser": Partial.TeamAssignUser,
+        "TeamId": Partial.Variables.teamData.dataSet.TeamId,
+        "TeamName": Partial.Variables.teamData.dataSet.TeamName,
+        "TeamDescription": Partial.Variables.teamData.dataSet.TeamDescription
+    }
+    //if (Partial.canceledClicked == true) {} else {
+    Partial.TeamAssignUser.forEach(function(sp) {
+        sp.fullName = App.htmlEncode(sp.userId);
+        Partial.Variables.selectedUsers.dataSet.push(sp);
+    });
+    if (Partial.Widgets.DualListUsers_TD !== undefined) {
+        Partial.Widgets.DualListUsers_TD.rightdataset = Partial.Variables.selectedUsers.dataSet;
+    }
+    // }
+
+    Partial.Variables.getAllUsers.dataSet.forEach((availableleftUser) => {
+        let count = 0;
+        data.forEach(function(i) {
+
+            if (availableleftUser.id == i.userId) {
+                count = count + 1;
+            }
+        });
+        if (count == 0) {
+            Partial.Variables.leftUserList.dataSet.push(availableleftUser);
+        }
+    });
+
+    Partial.Variables.leftUserList.dataSet.forEach(function(p) {
+        p.fullName = App.htmlEncode(p.userId);
+
+    });
+
+    if (Partial.Widgets.DualListUsers_TD !== undefined) {
+        Partial.Widgets.DualListUsers_TD.leftdataset = Partial.Variables.leftUserList.dataSet;
+    }
+    // }
 
 };
 
