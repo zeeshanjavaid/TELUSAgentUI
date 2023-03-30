@@ -22,6 +22,33 @@
     "isDefault" : true,
     "controller" : "CollectionData"
   },
+  "getPermissionByUserId" : {
+    "_id" : "wm-getPermissionByUserId-wm.ServiceVariable-1680156331314",
+    "name" : "getPermissionByUserId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "UserId",
+      "value" : "bind:Variables.getLoggedInUserId.dataSet.data[$i].userId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetPermissionByUserIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetPermissionByUserId",
+    "operationId" : "QueryExecutionController_executeGetPermissionByUserId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "searchEntity" : {
     "_id" : "wm-searchEntity-wm.ServiceVariable-1679381011818",
     "name" : "searchEntity",

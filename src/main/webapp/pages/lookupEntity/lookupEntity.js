@@ -87,64 +87,59 @@ Page.button1Click = function($event, widget) {
     var searchCriteria = "";
 
 
-    if (Page.Widgets.select1.datavalue === "BAN") {
+    // if (Page.Widgets.select1.datavalue === "BAN") {
 
-        if (Page.Widgets.text3._datavalue === undefined || Page.Widgets.text3._datavalue == "") {
+    //     if (Page.Widgets.text3._datavalue === undefined || Page.Widgets.text3._datavalue == "") {
+    //         try {
+    //             throw "Required field";
+    //         } catch (err) {
+    //             message.innerHTML = err;
+    //         }
+    //     } else {
+    //         intputType = "phoneNumber";
+    //         inputValue = Page.Widgets.text3._datavalue;
+    //     }
+
+
+
+    // } else {
+    var value = $("input:radio[name=checkAndUncheck]:checked").val();
+
+    // if (value === undefined) {
+    //     try {
+    //         throw "Plaease select Name or Number/ID"
+    //     } catch (err) {
+    //         message3.innerHTML = err;
+    //     }
+    // }
+
+    if (value == "NAME") {
+        intputType = "name";
+        searchCriteria = Page.Widgets.select3.datavalue;
+        if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
             try {
                 throw "Required field";
             } catch (err) {
-                message.innerHTML = err;
+                message1.innerHTML = err;
             }
         } else {
-            intputType = "phoneNumber";
-            inputValue = Page.Widgets.text3._datavalue;
+            inputValue = Page.Widgets.text4._datavalue;
         }
-
-
-
-    } else {
-        var value = $("input:radio[name=checkAndUncheck]:checked").val();
-
-        if (value === undefined) {
+    } else if (value == "numID") {
+        intputType = "id";
+        searchCriteria = Page.Widgets.select4.datavalue;
+        if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue == "") {
             try {
-                throw "Plaease select Name or Number/ID"
+                throw "Required field";
             } catch (err) {
-                message3.innerHTML = err;
+                message2.innerHTML = err;
             }
+        } else {
+            inputValue = Page.Widgets.text5._datavalue;
         }
-
-        if (value == "NAME") {
-            intputType = "name";
-            searchCriteria = Page.Widgets.select3.datavalue;
-            if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
-                try {
-                    throw "Required field";
-                } catch (err) {
-                    message1.innerHTML = err;
-                }
-            } else {
-                inputValue = Page.Widgets.text4._datavalue;
-            }
-        } else if (value == "numID") {
-            intputType = "id";
-            searchCriteria = Page.Widgets.select4.datavalue;
-            if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue == "") {
-                try {
-                    throw "Required field";
-                } catch (err) {
-                    message2.innerHTML = err;
-                }
-            } else {
-                inputValue = Page.Widgets.text5._datavalue;
-            }
-        }
+        //  }
     }
 
-    // } catch (err) {
-    //     message.innerHTML = err;
-    //     message1.innerHTML = err;
-    //     message2.innerHTML = err;
-    // }
 
     Page.Variables.searchEntity.setInput({
 
@@ -159,12 +154,12 @@ Page.button1Click = function($event, widget) {
     // alert("inputType--" + intputType + "  " + "inputValue--" + inputValue + "     " + "level--" + Page.Widgets.select1.datavalue + "   " + "billingSystem--" + Page.Widgets.select5.datavalue + "  " + "searchMatchCriteria--" + searchCriteria);
     Page.Variables.searchEntity.invoke();
     // Page.Widgets.select1.datavalue = 'Entity';
-    Page.Widgets.select3.datavalue = 'Exact match';
-    Page.Widgets.select4.datavalue = 'Exact match';
-    Page.Widgets.select5.datavalue = 'Select';
-    //  Page.Widgets.text3._datavalue = '';
-    Page.Widgets.text4._datavalue = '';
-    Page.Widgets.text5._datavalue = '';
+    // Page.Widgets.select3.datavalue = 'Exact match';
+    // Page.Widgets.select4.datavalue = 'Exact match';
+    // // Page.Widgets.select5.datavalue = 'Select';
+    // //  Page.Widgets.text3._datavalue = '';
+    // Page.Widgets.text4._datavalue = '';
+    // Page.Widgets.text5._datavalue = '';
 
 
 
@@ -174,7 +169,7 @@ Page.button2Click = function($event, widget) {
     Page.Widgets.select1.datavalue = 'Entity';
     Page.Widgets.select3.datavalue = 'Exact match';
     Page.Widgets.select4.datavalue = 'Exact match';
-    Page.Widgets.select5.datavalue = 'Select';
+    //Page.Widgets.select5.datavalue = 'Select';
     Page.Widgets.text3._datavalue = '';
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
@@ -188,6 +183,36 @@ Page.button2Click = function($event, widget) {
 
 Page.checkAndUncheck = function($event, widget) {
     debugger;
+}
+
+Page.goToEnityPage = function(row) {
+
+    debugger;
+
+    var id = Page.Variables.loggedInUser.dataSet.id;
+
+    if (row.dntlFlag) {
+
+        var permissionList = Page.Variables.getPermissionByUserId.dataSet;
+        var permissionName = permissionList.find(item => item.name === 'DNTL');
+        if (permissionName === undefined) {
+            // alert("User do nt have permission");
+            Page.Widgets.permissionAlert.open();
+        } else {
+            window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
+        }
+
+    } else {
+        window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
+    }
+
+
+
+
+
+
+
+
 }
 
 function resetVals() {

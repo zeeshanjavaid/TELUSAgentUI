@@ -87,7 +87,7 @@ public class CollectionDataService {
     @RequestMapping(value = "/entitySearch", method = {RequestMethod.GET})
     public EntitySearchResponseArray getEntitySearch(@RequestParam(required = true)String inputType, @RequestParam(required = true)String inputValue, @RequestParam(required = true)String level, @RequestParam(required = true)String searchMatchCriteria, @RequestParam(required = true)String billingSystem, Integer offset, Integer limit) throws Exception  {
 
-        return objectMapper.readValue("[{\"banId\":224434,\"banName\":\"Air Canada Toronto\",\"billingSystem\":\"CES\",\"cbucId\":1323232,\"dntlFlag\":true,\"entityId\":67666,\"entityName\":\"Air Canada Ontario\",\"entityOwner\":\"Agent123\",\"entityType\":\"RCID\",\"rcId\":323223},{\"banId\":44343,\"banName\":\"Rexdale Pharmacy\",\"billingSystem\":\"CES\",\"cbucId\":3232232,\"dntlFlag\":true,\"entityId\":676667,\"entityName\":\"Rexdale\",\"entityOwner\":\"Agent345\",\"entityType\":\"RCID\",\"rcId\":224232}]",EntitySearchResponseArray.class);
+        return objectMapper.readValue("[{\"banId\":224434,\"banName\":\"Air Canada Toronto\",\"billingSystem\":\"CES\",\"cbucId\":1323232,\"dntlFlag\":true,\"entityId\":67666,\"entityName\":\"Air Canada Ontario\",\"entityOwner\":\"Agent123\",\"entityType\":\"RCID\",\"rcId\":323223},{\"banId\":44343,\"banName\":\"Rexdale Pharmacy\",\"billingSystem\":\"CES\",\"cbucId\":3232232,\"dntlFlag\":false,\"entityId\":676667,\"entityName\":\"Rexdale\",\"entityOwner\":\"Agent345\",\"entityType\":\"RCID\",\"rcId\":224232}]",EntitySearchResponseArray.class);
         // return new Object(); 
     }
     

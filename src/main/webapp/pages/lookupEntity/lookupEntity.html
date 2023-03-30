@@ -31,9 +31,9 @@
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 50%" class="borderGrid">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px; width: 300px;" name="gridcolumn5">
                             <p id="p04" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME" checked=""><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
-                                <wm-select name="select3" id="selectBox" dataset="Exact match, Contains"
-                                    datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
+                            <wm-gridcolumn style="display: flex; margin: 4px;" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
+                                <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields"
+                                    placeholder="" datavalue="Exact match"></wm-select>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 206px;" name="gridcolumn7">
                                 <wm-text name="text4" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'"></wm-text>
@@ -64,6 +64,7 @@
                             <wm-select name="select5" datavalue="CES" width="65%" dataset="CES" datafield="All Fields" placeholder=""></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18">
+                            <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button2" on-click="button2Click($event, widget)"></wm-button>
                             <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
@@ -72,7 +73,7 @@
             <h3><b>Lookup Results</b></h3>
             <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="false" enablecolumnselection="false">
                 <wm-table-column binding="entityId" caption="Entity Id" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false">
-                    <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:navigateToEntityPage(row.getProperty('entityId'))" class="desc" conditionalclass=""></wm-anchor>
+                    <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
                 </wm-table-column>
                 <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
@@ -81,10 +82,13 @@
                 <wm-table-column binding="banId" caption="Ban #" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" placeholder="" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="dntlFlag" caption="DNTL" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="dntlFlag" caption="DNTL" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" sortable="false" searchable="false" show="true" readonly="false">
+                    <wm-label caption="bind:row.getProperty('dntlFlag') ? 'Y' : 'N'" class="" conditionalclass=""></wm-label>
+                </wm-table-column>
             </wm-table>
         </wm-page-content>
     </wm-content>
+    <wm-alertdialog name="permissionAlert" message="You do not have DNTL access." title="" iconclass=""></wm-alertdialog>
 </wm-page>
