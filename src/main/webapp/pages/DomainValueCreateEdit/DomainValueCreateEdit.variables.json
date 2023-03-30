@@ -2204,6 +2204,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "pageName" : {
+    "_id" : "wm-pageName-wm.Variable-1680172833682",
+    "name" : "pageName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : "View"
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "readOnlyMode" : {
     "_id" : "wm-readOnlyMode-wm.Variable-1679555249366",
     "name" : "readOnlyMode",

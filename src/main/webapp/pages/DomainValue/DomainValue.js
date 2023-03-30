@@ -146,7 +146,7 @@ Page.displayPageInfo = function() {
 Page.navigateURLBuilder = function(domainValueId) {
 
 
-    let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId;
+    let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId + "&pageName=" + 'View';
     return URI;
 };
 
@@ -457,7 +457,8 @@ Page.searchDV_ButtonClick = function($event, widget) {
 Page.createDV_ButtonClick = function($event, widget) {
     Page.Actions.goToPage_DomainValueCreateEdit.invoke({
         data: {
-            'domainValueTypeId': Page.pageParams.domainValueTypeId
+            'domainValueTypeId': Page.pageParams.domainValueTypeId,
+            'pageName': 'Create'
         }
     });
 };

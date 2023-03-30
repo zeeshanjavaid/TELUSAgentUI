@@ -120,6 +120,9 @@
   }, {
     "name" : "domainValueId",
     "type" : "integer"
+  }, {
+    "name" : "pageName",
+    "type" : "string"
   } ]
 }, {
   "name" : "DomainValueTypes",

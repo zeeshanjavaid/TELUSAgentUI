@@ -35,6 +35,7 @@ Page.onReady = function() {
     if (Page.pageParams.domainValueId === undefined) {
         Page.Variables.readOnlyMode.dataSet.dataValue = false;
     }
+    Page.Variables.pageName.dataSet.dataValue = Page.pageParams.pageName;
 
     initPage();
     Page.filteredLocale = JSON.parse(JSON.stringify(App.Variables.supportedLocale.dataSet), (key, value) => {
@@ -456,8 +457,9 @@ Page.saveBtnClick = function($event, widget) {
         Page.Variables.saveDomainValue.setInput('DomainValueVO', Page.Variables.mv_domainValue.dataSet);
         Page.Variables.saveDomainValue.invoke();
     }
-
-    Page.Variables.readOnlyMode.dataSet.dataValue = true;
+    if (!Page.ShowErrorMessage) {
+        Page.Variables.readOnlyMode.dataSet.dataValue = true;
+    }
 };
 
 Page.saveDomainValueonSuccess = function(variable, data) {
@@ -599,6 +601,12 @@ Page.getUserName = function(id) {
 
 };
 Page.EditButtonClick = function($event, widget) {
+
+    Page.Variables.pageName.dataSet.dataValue = 'Edit';
+    Page.Variables.readOnlyMode.dataSet.dataValue = false;
+
+};
+Page.EditButton1Click = function($event, widget) {
 
     Page.Variables.readOnlyMode.dataSet.dataValue = false;
 };
