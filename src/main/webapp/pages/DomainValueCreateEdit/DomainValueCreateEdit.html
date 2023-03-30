@@ -11,7 +11,7 @@
                         <wm-gridrow name="gridrow3">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn5">
                                 <wm-container name="headingContainer">
-                                    <wm-label name="label1" caption="bind:pageParams.domainValueId ?  Variables.readOnlyMode.dataSet.dataValue? &quot;View Domain Value &quot; : &quot;Edit Domain Value '&quot;+ Variables.mv_domainValue.dataSet.defaultLocale.description + &quot;'&quot; : &quot;Create Domain Value &quot;"
+                                    <wm-label name="label1" caption="bind:pageParams.domainValueId ?  Variables.readOnlyMode.dataSet.dataValue? &quot;View Domain Value &quot; : &quot;Edit Domain Value &quot;+ Variables.mv_domainValue.dataSet.defaultLocale.description + &quot;&quot; : &quot;Create Domain Value &quot;"
                                         class="dv-header-label" margin="unset unset unset 0.1em" color="#333"></wm-label>
                                     <wm-label name="label2" caption="bind:Variables.getDvtById.dataSet[$i].description" class="dv-header-label dvType" style="margin-left: 8px !important;"></wm-label>
                                 </wm-container>
@@ -39,8 +39,8 @@
                                     <wm-layoutgrid columns="1" name="layoutgrid2" class="fi-panel" style="display: flex; flex-direction: column;">
                                         <wm-gridrow name="gridrow5_1" class="codeLabel">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn5_1">
-                                                <wm-form-field name="code" readonly="bind:Variables.readOnlyMode.dataSet.dataValue" displayname="Code*" key="code" type="string" show="true" widget="text" inputtype="text" placeholder="" on-blur="codeBlur($event, widget)" required="true" validationmessage="Required field."
-                                                    disabled="bind:pageParams.domainValueId ? true : false" maxchars="50" margin="0 0 0 18px" width="28.7%" max-width="unset"></wm-form-field>
+                                                <wm-form-field name="code" readonly="bind:Variables.readOnlyMode.dataSet.dataValue" displayname="Code*" key="code" type="string" show="true" widget="text" inputtype="text" placeholder="" on-blur="codeBlur($event, widget)"
+                                                    required="true" validationmessage="Required field." disabled="bind:pageParams.domainValueId ? true : false" maxchars="50" margin="0 0 0 18px" width="28.7%" max-width="unset"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow26_1">
@@ -49,7 +49,8 @@
                                             </wm-gridcolumn>
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn30" margin="0 0 0 6px" style="display: flex; flex-direction: column;">
                                                 <wm-label padding="unset 0.5em" name="label8" class="leftbox" caption="en" fontweight="bold" margin="unset 2px unset unset" show="false"></wm-label>
-                                                <wm-text name="desc" margin="0 0 0 12px" class="middlebox" placeholder="" width="43%" height="20%" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
+                                                <wm-text name="desc" margin="0 0 0 12px" class="middlebox" placeholder="" width="43%" height="20%" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description"
+                                                    on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
                                                 <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Required field." show="bind:showDescriptionErrorMsg?true:false" margin="4px unset unset 5px" style="color: red;"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
@@ -82,18 +83,20 @@
                                                                     <wm-label caption="bind:row.getProperty('description')" class="" conditionalclass=""></wm-label>
                                                                 </wm-table-column>
                                                                 <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                                                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="domainValueDescriptionTable_updaterowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                                                                <wm-table-row-action key="deleterow" display-name="" show="bind:!isEditDV" class="btn-transparent" iconclass="fico-icon-minus-circle" title="Delete" action="domainValueDescriptionTable_deleterowAction($event, row)" disabled="false" widget-type="button"
-                                                                    icon="fico-icon-minus-circle"></wm-table-row-action>
+                                                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="domainValueDescriptionTable_updaterowAction($event, row)"
+                                                                    disabled="false" widget-type="button"></wm-table-row-action>
+                                                                <wm-table-row-action key="deleterow" display-name="" show="bind:!isEditDV" class="btn-transparent" iconclass="fico-icon-minus-circle" title="Delete" action="domainValueDescriptionTable_deleterowAction($event, row)"
+                                                                    disabled="false" widget-type="button" icon="fico-icon-minus-circle"></wm-table-row-action>
                                                             </wm-table>
                                                         </wm-gridcolumn>
                                                     </wm-gridrow>
                                                 </wm-layoutgrid>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
-                                        <wm-gridrow name="gridrow10">
+                                        <wm-gridrow name="gridrow10" margin="10px 0 0 0">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                                                <wm-form-field name="createdOn" displayname="Created" key="createdOn" type="date" show="bind:pageParams.domainValueId ? true : false" widget="text" inputtype="text" placeholder="" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.createdOn,Variables.mv_domainValue.dataSet.createdBy) : &quot;&quot;"></wm-form-field>
+                                                <wm-form-field margin="3px 4px 1px 14px" name="createdOn" displayname="Created" key="createdOn" type="date" show="bind:pageParams.domainValueId ? true : false" widget="text" inputtype="text" placeholder="" disabled="true"
+                                                    defaultvalue="bind:Variables.mv_domainValue.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.createdOn,Variables.mv_domainValue.dataSet.createdBy) : &quot;&quot;"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow17_1">
@@ -109,29 +112,31 @@
                                                     </wm-gridrow>
                                                     <wm-gridrow name="gridrow21">
                                                         <wm-gridcolumn columnwidth="12" name="gridcolumn24">
-                                                            <wm-table editmode="inline" name="domainValueRelationTable" title="" dataset="bind:Variables.mv_domainValue.dataSet.domainValueRelation" navigation="None" enablesort="false" deletedialogtitle="bind:appLocale.MESSAGE_DELETE_RECORD" deleteoktext="bind:YES"
-                                                                deletecanceltext="bind:NO" rowngclass="{'display-none':row.getProperty('deleted')}" nodatamessage="">
-                                                                <wm-table-column binding="parent1DomainValueDescription" caption="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId1.description" widget-type="label" width="45%" edit-widget-type="text" type="string"
-                                                                    show="true" readonly="false">
+                                                            <wm-table editmode="inline" name="domainValueRelationTable" title="" dataset="bind:Variables.mv_domainValue.dataSet.domainValueRelation" navigation="None" enablesort="false" deletedialogtitle="bind:appLocale.MESSAGE_DELETE_RECORD"
+                                                                deleteoktext="bind:YES" deletecanceltext="bind:NO" rowngclass="{'display-none':row.getProperty('deleted')}" nodatamessage="">
+                                                                <wm-table-column binding="parent1DomainValueDescription" caption="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId1.description" widget-type="label"
+                                                                    width="45%" edit-widget-type="text" type="string" show="true" readonly="false">
                                                                     <wm-label caption="bind:row.getProperty('parent1DomainValueDescription')" class="" conditionalclass=""></wm-label>
                                                                 </wm-table-column>
-                                                                <wm-table-column binding="parent2DomainValueDescription" caption="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId2.description" widget-type="label" width="45%" edit-widget-type="text" type="string"
-                                                                    show="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].parentDomainValueTypeId2 != null" readonly="false">
+                                                                <wm-table-column binding="parent2DomainValueDescription" caption="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId2.description"
+                                                                    widget-type="label" width="45%" edit-widget-type="text" type="string" show="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].parentDomainValueTypeId2 != null" readonly="false">
                                                                     <wm-label caption="bind:row.getProperty('parent2DomainValueDescription')" class="" conditionalclass=""></wm-label>
                                                                 </wm-table-column>
                                                                 <wm-table-column binding="deleted" caption="Deleted" edit-widget-type="text" type="string" show="false" readonly="false"></wm-table-column>
                                                                 <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                                                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="domainValueRelationTable_updaterowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                                                                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="domainValueRelationTable_deleterowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                                                                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="domainValueRelationTable_updaterowAction($event, row)"
+                                                                    disabled="false" widget-type="button"></wm-table-row-action>
+                                                                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-default btn-xs" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="domainValueRelationTable_deleterowAction($event, row)"
+                                                                    disabled="false" widget-type="button"></wm-table-row-action>
                                                             </wm-table>
                                                         </wm-gridcolumn>
                                                     </wm-gridrow>
                                                 </wm-layoutgrid>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
-                                        <wm-gridrow name="gridrow1">
+                                        <wm-gridrow name="gridrow1" margin="-8px 0 0 0">
                                             <wm-gridcolumn name="gridcolumn1" columnwidth="12">
-                                                <wm-form-field name="updatedOn" displayname="Updated" key="updatedOn" type="date" show="bind:pageParams.domainValueId ? true : false" widget="text" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.updatedOn? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.updatedOn,Variables.mv_domainValue.dataSet.updatedBy) : &quot;&quot;
+                                                <wm-form-field margin="3px 4px 1px 14px" name="updatedOn" displayname="Updated" key="updatedOn" type="date" show="bind:pageParams.domainValueId ? true : false" widget="text" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.updatedOn? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.updatedOn,Variables.mv_domainValue.dataSet.updatedBy) : &quot;&quot;
 " placeholder="" inputtype="text"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
@@ -164,15 +169,15 @@
                                     <wm-layoutgrid name="layoutgrid7">
                                         <wm-gridrow name="gridrow29">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn35">
-                                                <wm-form-field name="dvParent1" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId1.description" key="parent1DomainValueDescription" type="string" show="true" widget="select"
-                                                    placeholder="( Select )" required="true" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId1.description + &quot; is required.&quot;"
+                                                <wm-form-field name="dvParent1" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId1.description" key="parent1DomainValueDescription"
+                                                    type="string" show="true" widget="select" placeholder="( Select )" required="true" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId1.description + &quot; is required.&quot;"
                                                     dataset="bind:Variables.getDVlistParent1.dataSet.pageContent" datafield="All Fields" displayfield="description" orderby="description:desc" on-change="dvParent1Change($event, widget, newVal, oldVal)"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow30">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                                                <wm-form-field name="dvParent2" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId2.description" key="parent2DomainValueDescription" type="string" show="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].parentDomainValueTypeId2 != null"
-                                                    widget="select" placeholder="( Select )" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId2.description + &quot; is required.&quot;"
+                                                <wm-form-field name="dvParent2" readonly="false" displayname="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[$i].domainValueTypeByParentDomainValueTypeId2.description" key="parent2DomainValueDescription"
+                                                    type="string" show="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].parentDomainValueTypeId2 != null" widget="select" placeholder="( Select )" validationmessage="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].domainValueTypeByParentDomainValueTypeId2.description + &quot; is required.&quot;"
                                                     required="bind:Variables.getDomainValueTypeRelationshipById.dataSet.data[0].parentDomainValueTypeId2 != null" dataset="bind:Variables.getDVlistParent2.dataSet.pageContent" datafield="All Fields" displayfield="description"
                                                     orderby="description:desc" on-change="dvParent2Change($event, widget, newVal, oldVal)"></wm-form-field>
                                             </wm-gridcolumn>
@@ -204,8 +209,8 @@
                                         <wm-layoutgrid name="layoutgrid10">
                                             <wm-gridrow name="gridrow33">
                                                 <wm-gridcolumn columnwidth="12" name="gridcolumn39">
-                                                    <wm-form-field name="locale" readonly="false" displayname="Locale" key="locale" type="string" show="true" widget="select" placeholder="( Select )" dataset="bind:filteredLocale" required="true" validationmessage="Locale is required" datafield="locale"
-                                                        disabled="bind:isEditLocale" displayfield="locale"></wm-form-field>
+                                                    <wm-form-field name="locale" readonly="false" displayname="Locale" key="locale" type="string" show="true" widget="select" placeholder="( Select )" dataset="bind:filteredLocale" required="true" validationmessage="Locale is required"
+                                                        datafield="locale" disabled="bind:isEditLocale" displayfield="locale"></wm-form-field>
                                                 </wm-gridcolumn>
                                             </wm-gridrow>
                                             <wm-gridrow name="gridrow34">
@@ -231,5 +236,6 @@
         </wm-dialogactions>
     </wm-dialog>
     <wm-confirmdialog name="exitConfirmDialog" title="bind:appLocale.EXIT_PAGE" iconclass="" canceltext="LEAVE" oktext="STAY" on-cancel="exitConfirmDialogCancel($event, widget)" message="bind:appLocale.UNSAVED_CHANGES_LOST_MSG"></wm-confirmdialog>
-    <wm-confirmdialog name="relationDelete_confirmDialog" title="" message="bind:appLocale.MESSAGE_DELETE_RECORD_CONFIRM" oktext="YES" canceltext="NO" iconclass="" modal="false" closable="false" on-cancel="Widgets.relationDelete_confirmDialog.close()" on-ok="relationDelete_confirmDialogOk($event, widget)"></wm-confirmdialog>
+    <wm-confirmdialog name="relationDelete_confirmDialog" title="" message="bind:appLocale.MESSAGE_DELETE_RECORD_CONFIRM" oktext="YES" canceltext="NO" iconclass="" modal="false" closable="false" on-cancel="Widgets.relationDelete_confirmDialog.close()"
+        on-ok="relationDelete_confirmDialogOk($event, widget)"></wm-confirmdialog>
 </wm-page>
