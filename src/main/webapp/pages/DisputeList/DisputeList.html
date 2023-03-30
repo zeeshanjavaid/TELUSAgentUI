@@ -2,7 +2,7 @@
     <wm-container name="container1">
         <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
             <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
-                <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" conditionalclass=""></wm-anchor>
+                <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
             </wm-table-column>
             <wm-table-column binding="amount" caption="Dispute $" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
