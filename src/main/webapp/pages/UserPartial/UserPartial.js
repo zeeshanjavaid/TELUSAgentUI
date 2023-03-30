@@ -79,10 +79,6 @@ Partial.onReady = function() {
 
 
 
-
-
-
-
 };
 
 Partial.userCreateMVTable1_firstNameOnClick = function($event, widget, row) {
@@ -934,5 +930,13 @@ Partial.panel1Collapse = function($event, widget) {
         showIcon.style.display = 'none';
     }
     Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
+
+};
+Partial.executeSearchUsersForm1_saveAction = function($event) {
+    alert("HI");
+    alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);
+    if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
+        Partial.Variables.searchUsers.invoke();
+    }
 
 };
