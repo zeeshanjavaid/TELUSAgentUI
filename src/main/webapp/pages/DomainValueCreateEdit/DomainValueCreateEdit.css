@@ -146,8 +146,8 @@ span.actions-column > button {
             
 .middlebox{
                 float:left; 
-                width:40.5% !important;
-                max-width: 347px!important;
+                /*width:40.5% !important;
+                max-width: 347px!important;*/
                 /*height:280px;*/
             }
 .rightbox{
@@ -161,8 +161,8 @@ span.actions-column > button {
 .bordercol{
     border-color: #a94442;
     float:left; 
-    width:40.5% !important;
-    max-width: 347px !important;
+    /*width:40.5% !important;
+    max-width: 347px !important;*/
 }
 
 .sub-heading {
@@ -176,4 +176,8 @@ span.actions-column > button {
    text-align: center;
 		  padding-top: 10px;
 		   right: 22rem;
+}
+
+.codeLabel p.help-block.text-danger {
+    margin: 4px 0 0 1px !important;
 }

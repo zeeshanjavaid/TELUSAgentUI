@@ -36,29 +36,28 @@
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7">
                                 <wm-form errormessage="" captionposition="left" title="" enctype="application/x-www-form-urlencoded" method="post" dataset="bind:Variables.mv_domainValue.dataSet" captionalign="left" name="domainValueForm" formdata="bind:Variables.mv_domainValue.dataSet"
                                     margin="1em unset unset unset">
-                                    <wm-layoutgrid columns="1" name="layoutgrid2" class="fi-panel">
-                                        <wm-gridrow name="gridrow5_1">
+                                    <wm-layoutgrid columns="1" name="layoutgrid2" class="fi-panel" style="display: flex; flex-direction: column;">
+                                        <wm-gridrow name="gridrow5_1" class="codeLabel">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn5_1">
-                                                <wm-form-field name="code" readonly="bind:Variables.readOnlyMode.dataSet.dataValue" displayname="Code" key="code" type="string" show="true" widget="text" inputtype="text" placeholder="" on-blur="codeBlur($event, widget)" required="true" validationmessage="Code is required."
-                                                    disabled="bind:pageParams.domainValueId ? true : false" maxchars="50"></wm-form-field>
+                                                <wm-form-field name="code" readonly="bind:Variables.readOnlyMode.dataSet.dataValue" displayname="Code*" key="code" type="string" show="true" widget="text" inputtype="text" placeholder="" on-blur="codeBlur($event, widget)" required="true" validationmessage="Required field."
+                                                    disabled="bind:pageParams.domainValueId ? true : false" maxchars="50" margin="0 0 0 18px" width="28.7%" max-width="unset"></wm-form-field>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
                                         <wm-gridrow name="gridrow26_1">
                                             <wm-gridcolumn columnwidth="3" name="gridcolumn29">
-                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Description" margin="5px unset unset unset"></wm-label>
+                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Description*" margin="5px unset unset unset"></wm-label>
                                             </wm-gridcolumn>
                                             <wm-gridcolumn columnwidth="6" name="gridcolumn30" margin="0 0 0 6px" style="display: flex; flex-direction: column;">
                                                 <wm-label padding="unset 0.5em" name="label8" class="leftbox" caption="en" fontweight="bold" margin="unset 2px unset unset" show="false"></wm-label>
-                                                <!--<wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset unset"></wm-label>-->
-                                                <wm-text name="desc" class="middlebox" placeholder="" width="90%" height="20%" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
-                                                <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Descritpion is required" show="bind:showDescriptionErrorMsg?true:false" margin="5px unset unset -7px" style="color: red;"></wm-label>
+                                                <wm-text name="desc" margin="0 0 0 12px" class="middlebox" placeholder="" width="43%" height="20%" required="false" datavalue="bind:Variables.mv_domainValue.dataSet.defaultLocale.description" on-blur="descBlur($event, widget)" maxchars="100" readonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-text>
+                                                <wm-label padding="unset 0.5em" name="label9" class="rightbox" textalign="left" caption="Required field." show="bind:showDescriptionErrorMsg?true:false" margin="4px unset unset 5px" style="color: red;"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
-                                        <wm-gridrow margin="12px unset unset unset">
+                                        <wm-gridrow margin="12px unset unset unset" name="gridrow7">
                                             <wm-gridcolumn columnwidth="3" name="gridcolumn31">
-                                                <wm-label padding="unset 1em unset 0.5em" name="label10" width="100%" caption="Status" margin="5px unset unset -1px"></wm-label>
+                                                <wm-label name="label10" width="100%" caption="Status" margin="5px unset unset -1px"></wm-label>
                                             </wm-gridcolumn>
-                                            <wm-gridcolumn columnwidth="5" margin="5px 0 0 -9px" style="color: grey;">
+                                            <wm-gridcolumn columnwidth="5" margin="6px 0 0 5px" style="color: grey;" name="gridcolumn9">
                                                 <wm-label color="black" name="label8_1" caption="bind:Variables.mv_domainValue.dataSet.active ? 'Active' : 'Inactive'"></wm-label>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
@@ -92,21 +91,6 @@
                                                 </wm-layoutgrid>
                                             </wm-gridcolumn>
                                         </wm-gridrow>
-                                        <!--<wm-gridrow name="gridrow7">-->
-                                        <!--    <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">-->
-                                        <!--        <wm-form-field name="default" readonly="false" displayname="Is Default" key="default" type="boolean" show="true" widget="toggle" placeholder="" margin="3pt unset unset unset"></wm-form-field>-->
-                                        <!--    </wm-gridcolumn>-->
-                                        <!--</wm-gridrow>-->
-                                        <!--<wm-gridrow name="gridrow8">-->
-                                        <!--    <wm-gridcolumn columnwidth="12" name="gridcolumn8_1">-->
-                                        <!--        <wm-form-field name="active" key="active" type="boolean" displayname="Active" widget="text" show="true"></wm-form-field>-->
-                                        <!--    </wm-gridcolumn>-->
-                                        <!--</wm-gridrow>-->
-                                        <!--<wm-gridrow name="gridrow9">-->
-                                        <!--    <wm-gridcolumn columnwidth="12" name="gridcolumn9">-->
-                                        <!--        <wm-form-field name="rankOrder" readonly="false" displayname="Rank order" key="rankOrder" type="integer" show="true" widget="number" textalign="right" inputtype="number" placeholder=""></wm-form-field>-->
-                                        <!--    </wm-gridcolumn>-->
-                                        <!--</wm-gridrow>-->
                                         <wm-gridrow name="gridrow10">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn10">
                                                 <wm-form-field name="createdOn" displayname="Created" key="createdOn" type="date" show="bind:pageParams.domainValueId ? true : false" widget="text" inputtype="text" placeholder="" disabled="true" defaultvalue="bind:Variables.mv_domainValue.dataSet.createdOn ? displayCustomUserAndDateValues(Variables.mv_domainValue.dataSet.createdOn,Variables.mv_domainValue.dataSet.createdBy) : &quot;&quot;"></wm-form-field>
