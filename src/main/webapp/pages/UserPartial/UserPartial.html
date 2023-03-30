@@ -134,13 +134,13 @@
                         displayfield="code" placeholder="Select"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn3" columnwidth="4">
-                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="First Name, Last Name, Email,  Empl ID" class="search "></wm-form-field>
+                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="First Name, Last Name, Email, Empl ID" class="search "></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow2" class="pl-20">
                 <wm-gridcolumn name="gridcolumn4" columnwidth="4" style="display: flex;"><label style="width: 25%;" class="app-label control-label formfield-label col-12 text-danger">Role<span class="asterisk">*</span></label>
                     <wm-form-field name="role" style="width: 75%;" key="role" type="string" widget="select" show="true"
-                        mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="Select" required="true"></wm-form-field>
+                        mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="Select"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4">
                     <wm-form-field name="TeamManager" key="managerId" displayname="Team Manager" show="true" type="string" widget="select" placeholder="Select" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()"

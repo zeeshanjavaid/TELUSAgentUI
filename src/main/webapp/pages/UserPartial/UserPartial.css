@@ -108,6 +108,10 @@ div[name='userMVTable1'] .app-grid-header table tr th {
     cursor: pointer;
 }
 
+p.alert.app-message.alert-danger.errormessage {
+    margin-right: 1%;
+}
+
 li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.assign-group-role-i {
     margin-bottom: -20px;
     /* left: -20em; */

@@ -29,6 +29,7 @@ Partial.onReady = function() {
     Partial.timeZones = Intl.supportedValuesOf('timeZone');
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.userMV.dataSet = [];
     Partial.Variables.userMVPre.dataSet = [];
     Partial.Variables.PermissionsMV.dataSet = [];
@@ -823,6 +824,27 @@ Partial.createUserForm1_saveAction = function($event) {
 
 };
 
+Partial.searchUsersFinal = function($event) {
+    debugger;
+    Partial.Widgets.createUserForm1.dataoutput.UserDTO;
+    Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
+    if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
+        Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
+
+
+        Partial.Variables.UserManagementServiceCreateUser.invoke({},
+            function(data) {
+                debugger; // Success Callback
+                console.log("success", data);
+            },
+            function(error) {
+                debugger; // Error Callback
+
+            });
+    }
+
+};
+
 Partial.userMVTable1_customRow1Action = function($event, row) {
     //Partial.TestTeamId = row;
     Partial.Variables.dialogUserId.dataSet = {};
@@ -933,10 +955,12 @@ Partial.panel1Collapse = function($event, widget) {
 
 };
 Partial.executeSearchUsersForm1_saveAction = function($event) {
-    alert("HI");
-    alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);
+    /*alert("HI");
+    alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
         Partial.Variables.searchUsers.invoke();
+    } else {
+        App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
     }
 
 };
