@@ -4,8 +4,13 @@
             <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                 <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
             </wm-table-column>
+            <wm-table-column binding="billingAccountRef.id" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="billingAccountRef.name" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="Billing System" caption="Billing System" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="amount" caption="Dispute $" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                <wm-label caption="bind:row.getProperty('collectionExclusionIndicator')?&quot;Y&quot;:&quot;N&quot;" class="" conditionalclass=""></wm-label>
+            </wm-table-column>
             <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>

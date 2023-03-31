@@ -32,3 +32,12 @@ Partial.CancelDisputeClick = function($event, widget) {
 
 
 };
+Partial.CreateDisputeClick = function($event, widget) {
+
+    if (Partial.Widgets.disputeAmt.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Dispute Amount is mandatory";
+        Partial.scrollToTop();
+
+    }
+
+};

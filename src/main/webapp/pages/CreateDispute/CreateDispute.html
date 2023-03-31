@@ -13,7 +13,9 @@
             <wm-gridcolumn columnwidth="6" name="gridcolumn4"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-container name="container1"></wm-container>
+    <wm-container name="container1">
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase"></wm-message>
+    </wm-container>
     <wm-layoutgrid name="layoutgrid2">
         <wm-gridrow name="gridrow4" padding="1em unset">
             <wm-gridcolumn columnwidth="3" name="gridcolumn15" horizontalalign="left">
@@ -158,7 +160,7 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" name="gridcolumn37" horizontalalign="right">
                 <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="button7"></wm-button>
+                <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="CreateDispute" on-click="CreateDisputeClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
