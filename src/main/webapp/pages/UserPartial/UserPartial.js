@@ -959,6 +959,7 @@ Partial.executeSearchUsersForm1_saveAction = function($event) {
     alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
         Partial.Variables.searchUsers.invoke();
+        App.Variables.errorMsg.dataSet.dataValue = "";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
     }

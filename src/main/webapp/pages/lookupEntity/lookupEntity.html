@@ -64,31 +64,47 @@
                             <wm-select name="select5" datavalue="CES" width="65%" dataset="CES" datafield="All Fields" placeholder=""></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18">
-                            <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button2" on-click="button2Click($event, widget)"></wm-button>
+                            <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="button2" on-click="button2Click($event, widget)"></wm-button>
                             <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <h3><b>Lookup Results</b></h3>
-            <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false">
-                <wm-table-column binding="entityId" caption="Entity Id" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
-                    <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
-                </wm-table-column>
-                <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="banId" caption="Ban #" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" placeholder="" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="dntlFlag" caption="DNTL" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
-                    <wm-label caption="bind:row.getProperty('dntlFlag') ? 'Y' : ''" class="" conditionalclass=""></wm-label>
-                </wm-table-column>
-            </wm-table>
+            <wm-container name="container3_1" show="true" class="rrr">
+                <h3><b>Lookup Results</b></h3>
+                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false">
+                    <wm-table-column binding="entityId" caption="Entity Id" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+                        <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
+                    </wm-table-column>
+                    <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banId" caption="Ban #" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" placeholder="" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="dntlFlag" caption="DNTL" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+                        <wm-label caption="bind:row.getProperty('dntlFlag') ? 'Y' : ''" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                </wm-table>
+            </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-alertdialog name="permissionAlert" message="User does not have DNTL access." title="" iconclass=""></wm-alertdialog>
-</wm-page>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="" name="inactivateUserDialog" width="35%" closable="true" iconwidth="100px" iconheight="50px" class="del_box inactivateUserDialog">
+        <wm-layoutgrid name="layoutgrid3_1">
+            <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
+            <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset" style="text-align: center;">
+                    <wm-label padding="unset 0.5em" name="label25" caption="User does not have DNTL access."></wm-label>
+                    <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-container name="container12_1" horizontalalign="right">
+                <wm-button class="primaryButton" caption="Close" type="button" margin="unset unset unset 0.5em" name="deleteUserConfirmOk" on-click="Widgets.inactivateUserDialog.close()"></wm-button>
+            </wm-container>
+        </wm-dialogactions>
+    </wm-dialog>
+    <!--<wm-alertdialog name="permissionAlert" message="User does not have DNTL access." title="" iconclass=""></wm-alertdialog>--></wm-page>

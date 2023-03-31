@@ -197,7 +197,7 @@ Page.goToEnityPage = function(row) {
         var permissionName = permissionList.find(item => item.name === 'DNTL');
         if (permissionName === undefined) {
             // alert("User do nt have permission");
-            Page.Widgets.permissionAlert.open();
+            Page.Widgets.inactivateUserDialog.open();
         } else {
             window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
         }
