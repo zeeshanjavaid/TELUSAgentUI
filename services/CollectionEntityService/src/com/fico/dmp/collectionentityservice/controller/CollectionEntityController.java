@@ -11,17 +11,17 @@ import io.swagger.client.model.CollectionEntityCreate;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionSuppressionCreate;
-import java.lang.Integer;
+import java.lang.String;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionBillingAccountRef;
-import java.lang.String;
 import java.util.List;
+import java.lang.Integer;
 import io.swagger.client.model.CollectionContactArray;
 import io.swagger.client.model.CollectionContact;
 import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionEntityArray;
-import io.swagger.client.model.CollectionSuppression;
 import io.swagger.client.model.CollectionSuppressionArray;
+import io.swagger.client.model.CollectionSuppression;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionContactUpdate;
 import io.swagger.client.model.CollectionEntityUpdate;
@@ -43,59 +43,43 @@ public class CollectionEntityController {
     private CollectionEntityService collectionEntityService;
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionBillingAccountRefCreate addBillingAccountRef(@RequestBody CollectionBillingAccountRefCreate collectionBillingAccountRefCreate) throws Exception {
         return collectionEntityService.addBillingAccountRef(collectionBillingAccountRefCreate);
     }
 
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionContactCreate addCollectionContact(@RequestBody CollectionContactCreate collectionContactCreate) throws Exception {
         return collectionEntityService.addCollectionContact(collectionContactCreate);
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionEntityCreate addCollectionEntity(@RequestBody CollectionEntityCreate collectionEntityCreate) throws Exception {
         return collectionEntityService.addCollectionEntity(collectionEntityCreate);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionDispute addDispute(@RequestBody CollectionDispute collectionDispute) throws Exception {
         return collectionEntityService.addDispute(collectionDispute);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntityService.addPaymentArrangement(collectionPaymentArrangementCreate);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionSuppressionCreate addSuppression(@RequestBody CollectionSuppressionCreate collectionSuppressionCreate) throws Exception {
         return collectionEntityService.addSuppression(collectionSuppressionCreate);
     }
 
-    @RequestMapping(value = "/billingAccountRef/{id}", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionBillingAccountRef getBillingAccountRef(@PathVariable("id") Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getBillingAccountRef(id, history);
+    @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
+    public List<CollectionBillingAccountRef> getBillingAccountRef(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getBillingAccountRef(ban, history);
     }
 
-    @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionBillingAccountRef> getBillingAccountRef_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getBillingAccountRef(ban, history);
+    @RequestMapping(value = "/billingAccountRef_1", method = RequestMethod.GET)
+    public CollectionBillingAccountRef getBillingAccountRef_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getBillingAccountRef(id, history);
     }
 
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.GET)
@@ -140,72 +124,52 @@ public class CollectionEntityController {
         return collectionEntityService.getPaymentArrangements(entityId);
     }
 
-    @RequestMapping(value = "/suppression/{id}", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionSuppression getSuppression(@PathVariable("id") Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getSuppression(id, fields, history);
-    }
-
     @RequestMapping(value = "/suppression", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionSuppressionArray> getSuppression_1(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
+    public List<CollectionSuppressionArray> getSuppression(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
         return collectionEntityService.getSuppression(banRefId);
     }
 
-    @RequestMapping(value = "/dispute/{id}", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionDispute getdispute(@PathVariable("id") Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(id, fields, history);
+    @RequestMapping(value = "/suppression_1", method = RequestMethod.GET)
+    public CollectionSuppression getSuppression_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getSuppression(id, fields, history);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(fields, offset, limit, history);
+    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
+    }
+
+    @RequestMapping(value = "/dispute_1", method = RequestMethod.GET)
+    public CollectionDispute getdispute_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(id, fields, history);
     }
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionBillingAccountRefUpdate updateBillingAccountRef(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionBillingAccountRefUpdate collectionBillingAccountRefUpdate) throws Exception {
         return collectionEntityService.updateBillingAccountRef(id, collectionBillingAccountRefUpdate);
     }
 
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionContactUpdate updateCollectionContact(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionContactUpdate collectionContactUpdate) throws Exception {
         return collectionEntityService.updateCollectionContact(id, collectionContactUpdate);
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionEntityUpdate updateCollectionEntity(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionEntityUpdate collectionEntityUpdate) throws Exception {
         return collectionEntityService.updateCollectionEntity(id, collectionEntityUpdate);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionDispute updateDispute(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionDispute collectionDispute) throws Exception {
         return collectionEntityService.updateDispute(id, collectionDispute);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangementCreate) throws Exception {
         return collectionEntityService.updatePaymentArrangement(id, collectionPaymentArrangementCreate);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionSuppressionUpdate updateSuppression(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionSuppressionUpdate collectionSuppressionUpdate) throws Exception {
         return collectionEntityService.updateSuppression(id, collectionSuppressionUpdate);
     }

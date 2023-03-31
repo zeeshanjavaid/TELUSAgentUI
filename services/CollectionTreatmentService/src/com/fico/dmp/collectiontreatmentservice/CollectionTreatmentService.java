@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.client.model.CollectionTreatment;
+// import io.swagger.client.model.CollectionTreatment;
 
 
 
