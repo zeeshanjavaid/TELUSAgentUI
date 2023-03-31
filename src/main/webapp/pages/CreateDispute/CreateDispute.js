@@ -33,11 +33,24 @@ Partial.CancelDisputeClick = function($event, widget) {
 
 };
 Partial.CreateDisputeClick = function($event, widget) {
-
-    if (Partial.Widgets.disputeAmt.datavalue == undefined) {
+    debugger;
+    if (!Partial.Widgets.selectedDisputeBan.datavalue && !Partial.Widgets.disputeAmt.datavalue && !Partial.Widgets.exclusionDropdown.datavalue && !Partial.Widgets.chargeTypeDropDown.datavalue && !Partial.Widgets.reasonDropdown.datavalue && !Partial.Widgets.productsDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
+    } else if (!Partial.Widgets.selectedDisputeBan.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Select BAN is mandatory";
+    } else if (!Partial.Widgets.exclusionDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Exclusion is mandatory";
+    } else if (!Partial.Widgets.disputeAmt.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Dispute Amount is mandatory";
-        Partial.scrollToTop();
-
+    } else if (!Partial.Widgets.chargeTypeDropDown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Charge Type is mandatory";
+    } else if (!Partial.Widgets.reasonDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Reason is mandatory";
+    } else if (!Partial.Widgets.productsDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
+    } else {
+        App.Variables.errorMsg.dataSet.dataValue = "";
+        //Invoke Post dispute service
     }
 
 };

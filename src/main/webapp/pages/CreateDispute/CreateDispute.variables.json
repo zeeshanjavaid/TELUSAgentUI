@@ -1,4 +1,18 @@
 {
+  "boolVar" : {
+    "_id" : "wm-boolVar-wm.Variable-1680258289614",
+    "name" : "boolVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "chargeTypeDropdownVar" : {
     "_id" : "wm-chargeTypeDropdownVar-wm.Variable-1679985437032",
     "name" : "chargeTypeDropdownVar",

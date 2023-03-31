@@ -25,7 +25,7 @@
                             <wm-label padding="0.2em 0.5em unset 0.5em" name="label3" caption="Selected BAN *" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn81">
-                            <wm-text name="selectedDisputeBan" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue"></wm-text>
+                            <wm-text name="selectedDisputeBan" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="bind:Variables.boolVar.dataSet.dataValue==true"></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -58,7 +58,7 @@
                             <wm-label class="col-md-3 control-label" name="disputeAmtLabel" caption="Dispute Amount *" whitespace="nowrap" color="#6e6d6a" textalign="left" padding="0.2em .5em unset .5em"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="4" name="gridcolumn31">
-                            <wm-number textalign="right" name="disputeAmt" margin="unset 5em unset 0em" width="150px"></wm-number>
+                            <wm-number textalign="right" name="disputeAmt" margin="unset 5em unset 0em" width="150px" required="true"></wm-number>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="2" name="gridcolumn59"></wm-gridcolumn>
                     </wm-gridrow>
@@ -113,7 +113,7 @@
                     </wm-gridrow>
                 </wm-layoutgrid>
                 <wm-layoutgrid name="layoutgrid12">
-                    <wm-gridrow name="gridrow27" overflow="auto">
+                    <wm-gridrow name="gridrow27">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn69">
                             <wm-label class="col-md-3 control-label" name="label13" caption="Assigned Dispute Prime:" whitespace="nowrap" color="#6e6d6a" padding="0.2em unset unset 0.5em"></wm-label>
                         </wm-gridcolumn>
