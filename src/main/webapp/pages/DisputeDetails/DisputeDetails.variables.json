@@ -22,5 +22,36 @@
     "saveInPhonegap" : false,
     "isDefault" : true,
     "controller" : "CollectionEntity"
+  },
+  "getDisputeDetails" : {
+    "_id" : "wm-getDisputeDetails-wm.ServiceVariable-1680215034610",
+    "name" : "getDisputeDetails",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    }, {
+      "target" : "history",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "io.swagger.client.model.CollectionDispute",
+    "service" : "CollectionEntity",
+    "operation" : "getdispute_1",
+    "operationId" : "CollectionEntityController_getdispute_1",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   }
 }

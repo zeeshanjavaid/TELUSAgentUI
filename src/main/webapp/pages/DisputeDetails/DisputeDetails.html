@@ -2,18 +2,20 @@
     <wm-layoutgrid name="layoutgrid7">
         <wm-gridrow name="gridrow24">
             <wm-gridcolumn columnwidth="6" name="gridcolumn36">
-                <wm-container name="container3">
+                <wm-container name="container3" margin="1em unset unset 0.5em">
                     <wm-anchor margin="unset 0.5em" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="anchor3Click($event, widget)"></wm-anchor>
                     <wm-label padding="unset 0.5em" name="label4" caption="Dispute Details:" fontunit="em" fontsize="1.5"></wm-label>
                 </wm-container>
                 <wm-layoutgrid name="layoutgrid8">
                     <wm-gridrow name="gridrow26">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn40"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn40">
+                            <wm-label padding="unset 0.5em" name="label41" caption=""></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
-                <wm-container name="container4" horizontalalign="right">
+                <wm-container name="container4" horizontalalign="right" margin="8px unset unset unset">
                     <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="button1" on-click="Widgets.closeDisputeDialog.open()"></wm-button>
                     <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.cancelDisputeConfirmation.open()"></wm-button>
                     <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3" textalign="right" on-click="Widgets.updateDisputeConfirmation.open()"></wm-button>
@@ -28,7 +30,7 @@
                             <wm-label padding="unset 0.5em" name="label2" caption="Dispute ID:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn16">
-                            <wm-label padding="unset 0.5em" name="disputeID" caption="disputeID"></wm-label>
+                            <wm-label padding="unset 0.5em" name="disputeID" caption="bind:Variables.getDisputeDetails.dataSet.id"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -41,19 +43,22 @@
                             <wm-label padding="unset 0.5em" name="label4_1" caption="Status:" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn20">
-                            <wm-label padding="unset 0.5em" name="disputeStatus" caption="disputeStatus"></wm-label>
+                            <wm-label padding="unset 0.5em" name="disputeStatus" caption="bind:Variables.getDisputeDetails.dataSet.statuses[$i].status"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn12"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="3" name="gridcolumn24">
+            <wm-gridcolumn columnwidth="3" name="gridcolumn24" padding="unset unset unset 1px">
                 <wm-layoutgrid name="layoutgrid5">
                     <wm-gridrow name="gridrow8">
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn25">
-                            <wm-label padding="unset 0.5em" name="label6" caption="Selected BAN:" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn25"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn26">
+                            <wm-label padding="unset 0.5em" name="label6" caption="Selected BAN:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn26"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn77_1">
+                            <wm-label padding="unset 0.5em" name="selectedBan" caption="bind:Variables.getDisputeDetails.dataSet.billingAccountRef.id"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
@@ -65,13 +70,13 @@
                             <wm-label padding="unset 0.5em" name="label7" caption="Exlcusion:" color="#6e6d6a" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn33">
-                            <wm-label padding="unset 0.5em" name="label8" caption="exclusionType"></wm-label>
+                            <wm-label padding="unset 0.5em" name="exclusionType" caption="bind:Variables.getDisputeDetails.dataSet.collectionExclusionIndicator"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow12" padding="unset 7em unset 7.4em">
+        <wm-gridrow name="gridrow12" padding="1em 7em unset 7.2em">
             <wm-gridcolumn columnwidth="2" name="gridcolumn37_1">
                 <wm-layoutgrid name="layoutgrid7_1">
                     <wm-gridrow name="gridrow13">
@@ -79,7 +84,7 @@
                             <wm-label padding="unset 0.5em" name="label9" caption="Dispute Amount:" color="#6e6d6a" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn48">
-                            <wm-label padding="unset 0.5em" name="disputeAmt" caption="disputeAmt"></wm-label>
+                            <wm-label padding="unset 0.5em" name="disputeAmt" caption="bind:Variables.getDisputeDetails.dataSet.amount"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -89,10 +94,10 @@
                 <wm-layoutgrid name="layoutgrid8_1">
                     <wm-gridrow name="gridrow15">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn51">
-                            <wm-label padding="unset 0.5em" name="label11" caption="Charge Type:" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label11" caption="Charge Type:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn52">
-                            <wm-label padding="unset 0.5em" name="chargeType" caption="chargeType"></wm-label>
+                            <wm-label padding="unset 0.5em" name="chargeType" caption="bind:Variables.getDisputeDetails.dataSet.chargeType"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -105,7 +110,7 @@
                             <wm-label padding="unset 0.5em" name="label13" caption="Reason:" color="#6e6d6a" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn56">
-                            <wm-label padding="unset 0.5em" name="reasonType" caption="reasonType"></wm-label>
+                            <wm-label padding="unset 0.5em" name="reasonType" caption="bind:Variables.getDisputeDetails.dataSet.disputeReason"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -118,13 +123,13 @@
                             <wm-label padding="unset 0.5em" name="label15" caption="Product &amp; Srv:" whitespace="nowrap" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn61">
-                            <wm-label padding="unset 0.5em" name="productType" caption="productType"></wm-label>
+                            <wm-label padding="unset 0.5em" name="productType" caption="bind:Variables.getDisputeDetails.dataSet.product"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow21" padding="unset 7em unset 7.4em">
+        <wm-gridrow name="gridrow21" padding="1em 7em unset 7.2em">
             <wm-gridcolumn columnwidth="2" name="gridcolumn65">
                 <wm-layoutgrid name="layoutgrid11">
                     <wm-gridrow name="gridrow22">
@@ -132,7 +137,7 @@
                             <wm-label padding="unset 0.5em" name="label17" caption="Adustment(s) to Date:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn72">
-                            <wm-label padding="unset 0.5em" name="label18" caption="adjustmentValue"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label18" caption="bind:Variables.getDisputeDetails.dataSet.adjustmentToDate"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -142,10 +147,10 @@
                 <wm-layoutgrid name="layoutgrid12">
                     <wm-gridrow name="gridrow24_1">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn75">
-                            <wm-label padding="unset 0.5em" name="label19" caption="Customer Email:" class="col-md-3 control-label" color="#6e6d6a"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label19" caption="Customer Email:" class="col-md-3 control-label" color="#6e6d6a" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn76">
-                            <wm-label padding="unset 0.5em" name="customerEmailValue" caption="customerEmailValue"></wm-label>
+                            <wm-label padding="unset 0.5em" name="customerEmailValue" caption="bind:Variables.getDisputeDetails.dataSet.customerEmail"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -158,7 +163,7 @@
                             <wm-label padding="unset 0.5em" name="label22" caption="Assigned Dispute Prime:" color="#6e6d6a" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn86">
-                            <wm-label padding="unset 0.5em" name="disputePrimeEmailValue" caption="disputePrimeEmailValue"></wm-label>
+                            <wm-label padding="unset 0.5em" name="disputePrimeEmailValue" caption="bind:Variables.getDisputeDetails.dataSet.disputePrime"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -375,13 +380,13 @@
         </wm-layoutgrid>
     </wm-dialog>
     <wm-panel iconclass="bind:IsExpandedIS === false ? 'fico-icon-chevron-light-right':'fico-icon-chevron-light-down'" autoclose="outsideClick" title="Dispute History:" name="disputeHistory" collapsible="true" margin="unset unset unset -1.7em">
-        <wm-container name="container20_1" class="installScheduleLine1-20_1con"></wm-container>
+        <wm-container name="container20_1" class="disputeHistoryLine-21_1con"></wm-container>
         <wm-layoutgrid name="layoutgrid25">
             <wm-gridrow name="gridrow39">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn86_1"></wm-gridcolumn>
-                <wm-gridcolumn columnwidth="8" name="gridcolumn87">
-                    <wm-container name="container21">
-                        <wm-table name="addPaymentArrangementTable1" title="" dataset="bind:Variables.CollectionEntityAddPaymentArrangement.dataSet.auditInfo" navigation="None">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn87" horizontalalign="left">
+                    <wm-container name="container21" padding="1.5em unset unset unset">
+                        <wm-table name="addPaymentArrangementTable1" title="" dataset="bind:Variables.CollectionEntityAddPaymentArrangement.dataSet.auditInfo" navigation="Classic">
                             <wm-table-column binding="lastUpdatedBy" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="createdDateTime" caption="Created Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>

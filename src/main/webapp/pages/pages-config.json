@@ -99,7 +99,10 @@
 }, {
   "name" : "DisputeDetails",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "DisputeId",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "DisputeList",
   "type" : "PARTIAL",
