@@ -1,36 +1,4 @@
 {
-  "CollectionEntityGetPaymentArrangement" : {
-    "_id" : "wm-CollectionEntityGetPaymentArrangement-wm.ServiceVariable-1677741417731",
-    "name" : "CollectionEntityGetPaymentArrangement",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "id",
-      "value" : "1",
-      "type" : "integer"
-    }, {
-      "target" : "history",
-      "value" : false,
-      "type" : "boolean"
-    } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
-    "service" : "CollectionEntity",
-    "operation" : "getPaymentArrangement",
-    "operationId" : "CollectionEntityController_getPaymentArrangement",
-    "operationType" : "get",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "startUpdate" : true,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "isDefault" : true,
-    "controller" : "CollectionEntity"
-  },
   "TELUSAgentUIDBUserData" : {
     "_id" : "wm-TELUSAgentUIDBUserData-wm.LiveVariable-1677680433674",
     "name" : "TELUSAgentUIDBUserData",

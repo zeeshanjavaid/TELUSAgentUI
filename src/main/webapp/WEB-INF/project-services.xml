@@ -5,7 +5,7 @@
     <import resource="classpath:CacheService.spring.xml"/>
     <import resource="classpath:CodeDescriptionLookupService.spring.xml"/>
     <import resource="classpath:CollectionDataService.spring.xml"/>
-    <import resource="classpath:CollectionEntity.spring.xml"/>
+    <import resource="classpath:CollectionEntityService.spring.xml"/>
     <import resource="classpath:DmpS3FileService.spring.xml"/>
     <import resource="classpath:DomainValueRelatedBS.spring.xml"/>
     <import resource="classpath:DuplicateCheckRelatedBS.spring.xml"/>

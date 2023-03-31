@@ -1,28 +1,4 @@
 {
-  "CollectionEntityAddPaymentArrangement" : {
-    "_id" : "wm-CollectionEntityAddPaymentArrangement-wm.ServiceVariable-1679953424592",
-    "name" : "CollectionEntityAddPaymentArrangement",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
-    "service" : "CollectionEntity",
-    "operation" : "addPaymentArrangement",
-    "operationId" : "CollectionEntityController_addPaymentArrangement",
-    "operationType" : "post",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "isDefault" : true,
-    "controller" : "CollectionEntity"
-  },
   "getDisputeDetails" : {
     "_id" : "wm-getDisputeDetails-wm.ServiceVariable-1680215034610",
     "name" : "getDisputeDetails",

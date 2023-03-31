@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="CollectionEntity" class="com.fico.dmp.collectionentity.CollectionEntity" type="JavaService" springFile="CollectionEntity.spring.xml"/>

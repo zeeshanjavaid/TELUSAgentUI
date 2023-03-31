@@ -48,7 +48,7 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
-                <directory>services/CollectionEntity/src</directory>
+                <directory>services/CollectionEntityService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
@@ -303,7 +303,7 @@
                                 <source>services/CacheService/src</source>
                                 <source>services/CodeDescriptionLookupService/src</source>
                                 <source>services/CollectionDataService/src</source>
-                                <source>services/CollectionEntity/src</source>
+                                <source>services/CollectionEntityService/src</source>
                                 <source>services/DmpS3FileService/src</source>
                                 <source>services/DomainValueRelatedBS/src</source>
                                 <source>services/DuplicateCheckRelatedBS/src</source>
