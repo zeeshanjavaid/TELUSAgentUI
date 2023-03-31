@@ -237,6 +237,7 @@ Partial.container5Click = function($event, widget, item, currentItemWidgets) {
 };
 Partial.AddRolesButtonClick = function($event, widget) {
     // debugger
+    alert('hii there');
     App.addRoles();
 };
 Partial.fileupload1Select = function($event, widget, selectedFiles) {};

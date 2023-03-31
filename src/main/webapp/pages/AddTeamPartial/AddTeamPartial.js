@@ -894,7 +894,6 @@ Partial.createTeamonSuccess = function(variable, data) {
         Partial.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
         Partial.scrollToTop();
 
-
         Partial.Widgets.DualListUsers_TD.rightdataset.forEach(function(user) {
             Partial.Variables.CreateTeamUser.setInput({
                 'teamId': data.id,
@@ -902,17 +901,19 @@ Partial.createTeamonSuccess = function(variable, data) {
             });
             Partial.Variables.CreateTeamUser.invoke();
         })
+        if (Partial.Widgets.DualListUsers_TD.rightdataset == null || Partial.Widgets.DualListUsers_TD.rightdataset.length == 0) {
+            Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+            App.refreshAllTeams();
+        }
 
         App.Variables.GroupPageCommunication.currentGroupInFocusId = data.id;
 
-    }
 
-    //App.refreshAllGroups();
+    }
 
 };
 
 Partial.CreateTeamUseronSuccess = function(variable, data) {
-    //    debugger;
     if (Partial.Variables.uploadGroup.dataSet.length > 0) {
         App.Variables.errorMsg.dataSet.dataValue = null;
         App.Variables.successMessage.dataSet.dataValue = null;
@@ -927,7 +928,7 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
 
     //removing the cached app level permissions, so that they are loaded again on navigation
     // cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
-
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
     App.refreshAllTeams();
 
 };

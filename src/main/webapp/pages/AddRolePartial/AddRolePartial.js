@@ -122,7 +122,11 @@ Partial.SaveButtonClick = function($event, widget) {
 
 
     }
-    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    /*if (App.Variables.successMessage.dataSet.dataValue != null) {
+        Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    }*/
+
+    //Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
     //window.location.href = "#/Roles";
 
@@ -287,6 +291,7 @@ Partial.CreateRolePermissiononSuccess = function(variable, data) {
     //removing the cached app level permissions, so that they are loaded again on navigation
     cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
     //App.activePage.pageRefresh();
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
     App.refreshAllRoles();
     //App.activePage.Variables.getAllRoles.invoke();
     //App.activePage.Variables.getAllRolesPartial.invoke();

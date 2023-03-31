@@ -954,13 +954,16 @@ Partial.panel1Collapse = function($event, widget) {
     Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
 
 };
+
 Partial.executeSearchUsersForm1_saveAction = function($event) {
     /*alert("HI");
     alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
+        debugger;
         Partial.Variables.searchUsers.invoke();
         App.Variables.errorMsg.dataSet.dataValue = "";
     } else {
+        debugger;
         App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
     }
 
