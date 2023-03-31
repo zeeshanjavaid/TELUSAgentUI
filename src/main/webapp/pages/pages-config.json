@@ -93,10 +93,6 @@
     "type" : "string"
   } ]
 }, {
-  "name" : "CreatesParr_ToBeDeleted",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "DisputeDetails",
   "type" : "PARTIAL",
   "params" : [ {
