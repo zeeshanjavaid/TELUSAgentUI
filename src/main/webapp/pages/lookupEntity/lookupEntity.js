@@ -78,7 +78,7 @@ Page.button1Click = function($event, widget) {
     const message2 = document.getElementById("p03");
     const message3 = document.getElementById("p04");
 
-    message.innerHTML = "";
+    // message.innerHTML = "";
     message1.innerHTML = "";
     message2.innerHTML = "";
     message3.innerHTML = "";

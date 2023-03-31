@@ -30,7 +30,7 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5">
-                            <!--<p id="p04" style="color:red;"></p>-->
+                            <p id="p04" style="color:red;"></p>
                             <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
                                 <input type="radio" name="checkAndUncheck" id="name" value="NAME">
                                 <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
@@ -38,9 +38,9 @@
                                     <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
-                            <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 208px;" name="gridcolumn7">
+                            <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 176px;" name="gridcolumn7">
                                 <wm-text name="text4" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'"></wm-text>
-                                <!--<p id="p02" style="color:red;"></p>-->
+                                <p id="p02" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8">
@@ -56,9 +56,9 @@
                                     <wm-select name="select4" id="selectBox" dataset="Exact match, Begins with, Ends with" datafield="All Fields" placeholder="" datavalue="Exact match,"></wm-select>
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
-                            <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 239px;" name="gridcolumn11">
+                            <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 208px;" name="gridcolumn11">
                                 <wm-text name="text5" placeholder=""></wm-text>
-                                <!--<p id="p03" style="color:red;"></p>-->
+                                <p id="p03" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
@@ -79,14 +79,14 @@
             <wm-container name="container3_1" show="true" class="rrr">
                 <h3><b>Lookup Results</b></h3>
                 <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false">
-                    <wm-table-column binding="entityId" caption="Entity Id" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+                    <wm-table-column binding="entityId" caption="Entity ID" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
                         <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
                     </wm-table-column>
                     <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="banId" caption="Ban #" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" placeholder="" searchable="false" show="true" readonly="false"></wm-table-column>
