@@ -84,7 +84,7 @@
                             <wm-label padding="unset 0.5em" name="label9" caption="Dispute Amount:" color="#6e6d6a" class="col-md-3 control-label" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn48">
-                            <wm-label padding="unset 0.5em" name="disputeAmt" caption="bind:Variables.getDisputeDetails.dataSet.amount"></wm-label>
+                            <wm-label padding="unset 0.5em unset 2.5em" name="disputeAmt" caption="bind:Variables.getDisputeDetails.dataSet.amount"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -179,7 +179,7 @@
                     <wm-composite name="composite3">
                         <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason:" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container9" width="72%">
-                            <wm-select name="cancelledReasonValue" placeholder="Select Value" width="100%"></wm-select>
+                            <wm-select name="cancelledReasonValue" placeholder="Select Value" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -213,7 +213,7 @@
                     <wm-composite name="composite1">
                         <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason:" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container6">
-                            <wm-select name="closedReasonValue" placeholder="Select Value" width="97%"></wm-select>
+                            <wm-select name="closedReasonValue" placeholder="Select Value" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -410,7 +410,7 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn86_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="6" name="gridcolumn87" horizontalalign="left">
                     <wm-container name="container21" padding="1.5em unset unset unset">
-                        <wm-table name="addPaymentArrangementTable1" title="" dataset="bind:Variables.CollectionEntityAddPaymentArrangement.dataSet.auditInfo" navigation="Classic">
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic">
                             <wm-table-column binding="lastUpdatedBy" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="createdDateTime" caption="Created Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>

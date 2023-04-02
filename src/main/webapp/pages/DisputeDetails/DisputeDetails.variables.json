@@ -1,21 +1,51 @@
 {
+  "CancelReasonDropdownVar" : {
+    "_id" : "wm-CancelReasonVar-wm.Variable-1680449334798",
+    "name" : "CancelReasonDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "PAYMENT IN FULL (NO TELUS ADJUSTMENT)"
+    }, {
+      "dataValue" : "PAYMENT OF PORTION PLUS TELUS ADJUSTMENT"
+    }, {
+      "dataValue" : "TELUS ADJUSTMENT (NO PAYMENT)"
+    }, {
+      "dataValue" : "OTHER REASON"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "closedReasonDropdownVar" : {
+    "_id" : "wm-closedReasonDropdownVar-wm.Variable-1680450691220",
+    "name" : "closedReasonDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CREATED IN ERROR"
+    }, {
+      "dataValue" : "DUPLICATE TICKET"
+    }, {
+      "dataValue" : "OTHER REASON"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getDisputeDetails" : {
-    "_id" : "wm-getDisputeDetails-wm.ServiceVariable-1680215034610",
+    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1680451414447",
     "name" : "getDisputeDetails",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "id",
-      "value" : "bind:pageParams.DisputeId",
-      "type" : "integer"
-    }, {
-      "target" : "history",
-      "value" : true,
-      "type" : "boolean"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionDispute",
-    "service" : "CollectionEntity",
+    "service" : "CollectionEntityService",
     "operation" : "getdispute_1",
     "operationId" : "CollectionEntityController_getdispute_1",
     "operationType" : "get",
@@ -23,7 +53,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
