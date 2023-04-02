@@ -14,6 +14,7 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-container name="container1">
+        <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
         <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase"></wm-message>
     </wm-container>
     <wm-layoutgrid name="layoutgrid2">

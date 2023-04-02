@@ -50,6 +50,7 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
+        App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
         //Invoke Post dispute service
     }
 
