@@ -23,3 +23,13 @@
    margin-left: 5.7em;
    margin-right: 1.1em;
 }
+
+/* for dialog box header underline */
+.wm-app .modal-dialog .modal-header .modal-title {
+    color: #333;
+    font-size: 22px;
+    text-transform: none;
+    background-color: #fff;
+    padding-bottom: -14em;
+    margin-bottom: -14px;
+}    

@@ -26,3 +26,11 @@ Partial.onReady = function() {
 Partial.anchor3Click = function($event, widget) {
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
 };
+
+/* for panel expand and collapse*/
+Partial.disputeHistoryExpand = function($event, widget) {
+    Partial.IsExpandedIS = true;
+};
+Partial.disputeHistoryCollapse = function($event, widget) {
+    Partial.IsExpandedIS = false;
+};
