@@ -24,6 +24,7 @@ Partial.onReady = function() {
 
 
 Partial.getdisputeTable1_idOnClick = function($event, widget, row) {
-
+    Partial.pageParams.DisputeId = row.id;
+    debugger;
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeDetail';
 };

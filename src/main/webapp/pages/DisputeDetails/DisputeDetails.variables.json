@@ -19,6 +19,30 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "chargeTypeDropdownVar" : {
+    "_id" : "wm-chargeTypeDropdownVar-wm.Variable-1680520040490",
+    "name" : "chargeTypeDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "One-time charge"
+    }, {
+      "dataValue" : "Recurring billing @ 100%"
+    }, {
+      "dataValue" : "Recurring billing @ Partial"
+    }, {
+      "dataValue" : "Final owning as shown"
+    }, {
+      "dataValue" : "Further (non-recurring) billing pending"
+    }, {
+      "dataValue" : "LPC charges accruing"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "closedReasonDropdownVar" : {
     "_id" : "wm-closedReasonDropdownVar-wm.Variable-1680450691220",
     "name" : "closedReasonDropdownVar",
@@ -70,7 +94,15 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    }, {
+      "target" : "history",
+      "value" : true,
+      "type" : "boolean"
+    } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
     "operation" : "getdispute_1",
@@ -81,6 +113,29 @@
     "isList" : false,
     "maxResults" : 20,
     "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
+  "updateDisputeService" : {
+    "_id" : "wm-updateDisputeService-wm.ServiceVariable-1680519528340",
+    "name" : "updateDisputeService",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionDispute",
+    "service" : "CollectionEntityService",
+    "operation" : "updateDispute",
+    "operationId" : "CollectionEntityController_updateDispute",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

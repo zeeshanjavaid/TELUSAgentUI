@@ -34,3 +34,11 @@ Partial.disputeHistoryExpand = function($event, widget) {
 Partial.disputeHistoryCollapse = function($event, widget) {
     Partial.IsExpandedIS = false;
 };
+
+
+Partial.CancelDisputeSubmitClick = function($event, widget) {
+    debugger;
+    Partial.Widgets.cancelledReasonValue.datavalue;
+    Partial.Variables.getDisputeDetails.dataSet.dataValue;
+
+};

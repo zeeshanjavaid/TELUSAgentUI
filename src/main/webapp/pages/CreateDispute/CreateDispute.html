@@ -7,13 +7,13 @@
         </wm-gridrow>
         <wm-gridrow name="gridrow2">
             <wm-gridcolumn columnwidth="12" name="gridcolumn3" height="50" horizontalalign="left">
-                <wm-label padding="0.4em 0.5em 0.2em unset" name="label2" textalign="left" caption="Dispute Details:" fontsize="14" class="disputeDetailsLine" margin="unset unset unset 2.5em" color="grey"></wm-label>
+                <wm-label padding="0.4em 0.5em 0.2em unset" name="label2" textalign="left" caption="Dispute Details" fontsize="14" class="disputeDetailsLine" margin="unset unset unset 2.5em" color="grey"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-container name="container1">
-        <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
-        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase"></wm-message>
+        <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase" style="margin:5px;"></wm-message>
     </wm-container>
     <wm-layoutgrid name="layoutgrid2">
         <wm-gridrow name="gridrow4" padding="1em unset 1em 2.0em">
@@ -24,7 +24,7 @@
                             <wm-label padding="unset 0.5em" name="label3" caption="Selected BAN *" class="col-md-3 control-label" color="grey" whitespace="nowrap"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn81">
-                            <wm-text name="selectedDisputeBan" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="bind:Variables.boolVar.dataSet.dataValue==true"></wm-text>
+                            <wm-text name="selectedDisputeBan" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="true" placeholder=""></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -52,7 +52,7 @@
                             <wm-label class="col-md-3 control-label" name="disputeAmtLabel" caption="Dispute Amount *" whitespace="nowrap" color="grey" textalign="left"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="4" name="gridcolumn46">
-                            <wm-number textalign="right" name="disputeAmt" width="85%" required="true"></wm-number>
+                            <wm-number textalign="right" name="disputeAmt" width="85%" required="true" placeholder=""></wm-number>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="3" name="gridcolumn65"></wm-gridcolumn>
                     </wm-gridrow>
@@ -107,7 +107,7 @@
                             <wm-label padding="unset 0.5em" name="label13_1" color="grey" caption="Adjustment'(s) to Date" whitespace="nowrap" class="col-md-3 control-label" textalign="left"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="4" name="gridcolumn60">
-                            <wm-number textalign="right" name="number4" width="150px" margin="unset 10em unset unset"></wm-number>
+                            <wm-number textalign="right" name="AdjustmentToDate" width="150px" margin="unset 10em unset unset" placeholder=""></wm-number>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -116,10 +116,10 @@
                 <wm-layoutgrid name="layoutgrid8">
                     <wm-gridrow name="gridrow19">
                         <wm-gridcolumn columnwidth="4" name="gridcolumn48" padding="unset unset unset .5em">
-                            <wm-label class="col-md-3 control-label" name="customerEmailLabel" caption="Customer Email:" whitespace="nowrap" color="grey"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="customerEmailLabel" caption="Customer Email" whitespace="nowrap" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn61">
-                            <wm-text name="custEmailText" textalign="left" width="250px"></wm-text>
+                            <wm-text name="custEmailText" textalign="left" width="250px" placeholder=""></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -128,10 +128,10 @@
                 <wm-layoutgrid name="layoutgrid13">
                     <wm-gridrow name="gridrow29">
                         <wm-gridcolumn columnwidth="3" name="gridcolumn75">
-                            <wm-label class="col-md-3 control-label" name="label11" caption="Comments:" color="grey"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label11" caption="Comments" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="9" name="gridcolumn77">
-                            <wm-textarea name="textarea1" width="90%"></wm-textarea>
+                            <wm-textarea name="CreateCommentsDispute" width="90%" placeholder=""></wm-textarea>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -146,7 +146,7 @@
                             <wm-label class="col-md-3 control-label" name="label13" caption="Assigned Dispute Prime:" whitespace="nowrap" color="grey" padding="0.2em unset unset 0.5em"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="7" name="gridcolumn58_1">
-                            <wm-text name="text2" textalign="left"></wm-text>
+                            <wm-text name="AssignedDisputePrime" textalign="left" placeholder=""></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>

@@ -37,6 +37,23 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "CollectionDispute" : {
+    "_id" : "wm-CollectionDispute-wm.Variable-1680548044529",
+    "name" : "CollectionDispute",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "href" : null,
+      "adjustmentToDate" : null,
+      "amount" : null,
+      "chargeType" : null
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "CreateDisputeService" : {
     "_id" : "wm-CreateDisputeService1-wm.ServiceVariable-1680499981559",
     "name" : "CreateDisputeService",

@@ -20,20 +20,36 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
 };
 
 Partial.SubmitDisputeBanClick = function($event, widget) {
 
     Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
+    Partial.Widgets.selectedDisputeBan.datavalue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
     Partial.Widgets.SelectDisputeBanDialog.close();
 };
 Partial.CancelDisputeClick = function($event, widget) {
+    Partial.Widgets.selectedDisputeBan.datavalue = "";
+    Partial.Widgets.exclusionDropdown.datavalue = "";
+    Partial.Widgets.disputeAmt.datavalue = "";
+    Partial.Widgets.chargeTypeDropDown.datavalue = "";
+    Partial.Widgets.reasonDropdown.datavalue = "";
+    Partial.Widgets.productsDropdown.datavalue = "";
+    Partial.Widgets.AdjustmentToDate.datavalue = "";
+    Partial.Widgets.custEmailText.datavalue = "";
+    Partial.Widgets.CreateCommentsDispute.datavalue = "";
+    Partial.Widgets.AssignedDisputePrime.datavalue = "";
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
 
 
 };
 Partial.CreateDisputeClick = function($event, widget) {
     debugger;
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
     if (!Partial.Widgets.selectedDisputeBan.datavalue && !Partial.Widgets.disputeAmt.datavalue && !Partial.Widgets.exclusionDropdown.datavalue && !Partial.Widgets.chargeTypeDropDown.datavalue && !Partial.Widgets.reasonDropdown.datavalue && !Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
     } else if (!Partial.Widgets.selectedDisputeBan.datavalue) {
@@ -50,7 +66,18 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
+
+        Partial.Variables.CreateDisputeService.setInput({
+            'id': 10,
+            'amount': Partial.Widgets.disputeAmt.datavalue,
+            'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue
+        });
+
+        Partial.Variables.CreateDisputeService.invoke();
+
         App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
+        Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+
         //Invoke Post dispute service
     }
 

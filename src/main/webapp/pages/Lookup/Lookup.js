@@ -19,7 +19,9 @@ Page.onReady = function() {
      * widgets can be accessed through 'Page.Widgets' property here
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
+     
      */
+
     var sv = Page.Variables.PermissionsForLoggedInUserId;
     sv.invoke({}, function(data) {
             // Success Callback        
@@ -35,9 +37,20 @@ Page.onReady = function() {
 };
 
 Page.CreateClick = function($event, widget) {
-
     Page.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };
 Page.CreateDisputeClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.DisputePageName.dataSet.dataValue = 'CreateDispute';
+};
+Page.DisputeSelect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+};
+Page.DisputeDeselect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
 };

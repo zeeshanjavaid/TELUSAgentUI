@@ -81,8 +81,8 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true">
                         <wm-container name="container3_1" show="true" class="rrr">
-                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
-                                on-click="CreateClick($event, widget)" deferload="false"></wm-button>
+                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
+                                backgroundposition="right, top" on-click="CreateClick($event, widget)" deferload="false"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">
                                 <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
@@ -90,9 +90,10 @@
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateParrPanel" content="CreateParr" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;CreateParr&quot;"></wm-panel>
                         </wm-container>
                     </wm-tabpane>
-                    <wm-tabpane name="Dispute" title="Dispute">
+                    <wm-tabpane name="Dispute" title="Dispute" on-select="DisputeSelect($event, widget)" on-deselect="DisputeDeselect($event, widget)">
                         <wm-container name="container4" class="rrr">
-                            <wm-button class="btn-default" caption="Create Dispute" type="button" margin="0.5em 0.5em 0.5em 96em" name="CreateDispute" backgroundposition="right, top" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
+                            <wm-button class="btn-default" caption="Create Dispute" type="button" margin="0.5em 0.5em 0.5em 96em" name="CreateDispute" backgroundposition="right, top" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)"
+                                show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="DisputeListPanel" content="DisputeList" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDisputePanel" content="CreateDispute" show="bind:Variables.DisputePageName.dataSet.dataValue=='CreateDispute'"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ViewDisputeDetailsPanel" content="DisputeDetails" show="bind:Variables.DisputePageName.dataSet.dataValue==&quot;DisputeDetail&quot;"></wm-panel>
