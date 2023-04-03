@@ -12,11 +12,11 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow9" class="lookup-container" style="display: flex;">
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn13" style="display: flex;flex-direction: column;width: 20%;margin:20px;">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn13" class="lookup_mac" style="display: flex;flex-direction: column;width: 20%;margin:20px;">
                         <wm-gridcolumn name="gridcolumn3_1">
                             <wm-label class="col-md-3 control-label" name="label4" caption="Level*" margin="10px 3px 5px 15px" color="grey"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px">
+                        <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px" class="app-grid-column-mac">
                             <wm-select name="select1" id="mySelection" margin="5px unset unset unset" dataset="CBUCID, RCID, Entity, BAN" datafield="All Fields" placeholder="" datavalue="Entity"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn5_1">
@@ -28,8 +28,8 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid">
-                        <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
+                        <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
                             <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
                                 <input type="radio" name="checkAndUncheck" id="name" value="NAME">
@@ -39,16 +39,16 @@
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn7">
-                                <wm-text name="text4" width="61.3%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'"></wm-text>
+                                <wm-text name="text4" width="66%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac"></wm-text>
                                 <p id="p02" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
-                        <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8">
+                        <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8" class="number-mac">
                             <wm-container name="container10_1">
                                 <wm-label padding="unset 0.5em" name="label8" caption="OR" class="labelOR"></wm-label>
                             </wm-container>
                         </wm-gridcolumn>
-                        <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px -25px 5px 28px; width: 40%;" name="gridcolumn9">
+                        <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px -25px 5px 28px; width: 40%;" name="gridcolumn9" class="textbox-mac">
                             <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn10">
                                 <input type="radio" name="checkAndUncheck" id="numID" value="numID">
                                 <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Number/ID</label>
@@ -57,12 +57,12 @@
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn11">
-                                <wm-text name="text5" placeholder="" width="70.5%"></wm-text>
+                                <wm-text name="text5" placeholder="" width="78%" class="selectbox2-mac"></wm-text>
                                 <p id="p03" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
+                    <wm-gridcolumn columnwidth="4" class="billing-mac mar-20" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
                         <wm-gridcolumn width="200px" name="gridcolumn16">
                             <wm-label class="col-md-3 control-label" margin="10px 3px 5px 15px" name="label14" caption="Billing System" width="100%" color="grey"></wm-label>
                         </wm-gridcolumn>

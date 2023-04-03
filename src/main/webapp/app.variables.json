@@ -1857,18 +1857,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_DomainValueTypes_Old" : {
-    "_id" : "wm-goToPage_DomainValueTypes_Old-wm.NavigationVariable-1678254761990",
-    "name" : "goToPage_DomainValueTypes_Old",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "DomainValueTypes_Old",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_ErrorLanding" : {
     "_id" : "wm-goToPage_ErrorLanding-wm.NavigationVariable-1663317130229",
     "name" : "goToPage_ErrorLanding",

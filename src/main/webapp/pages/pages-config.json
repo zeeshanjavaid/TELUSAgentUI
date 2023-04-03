@@ -128,10 +128,6 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "DomainValueTypes_Old",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "EntityProfile",
   "type" : "PARTIAL",
   "params" : [ ]

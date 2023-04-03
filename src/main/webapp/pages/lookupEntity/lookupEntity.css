@@ -32,3 +32,35 @@ h3 {
     border: 0.1px solid #ddd;
     padding: 0 10px 20px 10px;
 }
+@media (max-width: 1024px) and (min-width: 768px){
+
+  .lookup_mac {
+    width: 16% !important;
+}
+.app-grid-column-mac {
+    width: 150px!important;
+}
+.borderGrid-mac {
+    margin: 5px 5px 5px 20px !important; 
+}
+.number-mac {
+    margin: 6px 5px 5px 0px !important;
+    width: 10% !important;
+}
+.textbox-mac {
+    margin: 5px 2px 5px 0px !important;
+    width: 40% !important;
+}
+.billing-mac {
+    width: 32% !important;
+}
+.selectbox2-mac {
+    width: 97% !important;
+}
+.selectbox1-mac {
+    width:80% !important;
+}
+.mar-20 {
+    margin: 20px 0 !important;
+}
+}
