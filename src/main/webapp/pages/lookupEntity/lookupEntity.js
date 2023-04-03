@@ -12,6 +12,8 @@
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
 
+    Page.Widgets.text4._datavalue = '';
+    Page.Widgets.text5._datavalue = '';
     // var ex1 = document.getElementById('name');
     // // var ex2 = document.getElementById('numID');
 
@@ -77,11 +79,15 @@ Page.button1Click = function($event, widget) {
     const message1 = document.getElementById("p02");
     const message2 = document.getElementById("p03");
     const message3 = document.getElementById("p04");
+    const message4 = document.getElementById("p05");
+
+    var isError = false;
 
     // message.innerHTML = "";
     message1.innerHTML = "";
     message2.innerHTML = "";
     message3.innerHTML = "";
+    message4.innerHTML = "";
     var intputType = "";
     var inputValue = "";
     var searchCriteria = "";
@@ -105,42 +111,47 @@ Page.button1Click = function($event, widget) {
     // } else {
     var value = $("input:radio[name=checkAndUncheck]:checked").val();
 
-    // if (value === undefined) {
-    //     try {
-    //         throw "Plaease select Name or Number/ID"
-    //     } catch (err) {
-    //         message3.innerHTML = err;
-    //     }
-    // }
+    if (value === undefined && Page.Widgets.text4._datavalue !== "") {
+        try {
+            isError = true;
+            throw "Please click on Name"
+        } catch (err) {
+            message3.innerHTML = err;
+        }
+    }
+    if (value === undefined && Page.Widgets.text5._datavalue !== "") {
+
+        try {
+            isError = true;
+            throw "Please click on Number/ID"
+        } catch (err) {
+            message4.innerHTML = err;
+        }
+    }
+
+
+
 
     if (value == "NAME") {
         intputType = "name";
         searchCriteria = Page.Widgets.select3.datavalue;
         if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
             try {
+                isError = true;
                 throw "Required field";
             } catch (err) {
                 message1.innerHTML = err;
             }
         } else {
             inputValue = Page.Widgets.text4._datavalue;
-            Page.Variables.searchEntity.setInput({
 
-                'inputType': intputType,
-                'inputValue': inputValue,
-                'level': Page.Widgets.select1.datavalue,
-                'billingSystem': Page.Widgets.select5.datavalue,
-                'searchMatchCriteria': searchCriteria
-
-            });
-
-            Page.Variables.searchEntity.invoke();
         }
     } else if (value == "numID") {
         intputType = "id";
         searchCriteria = Page.Widgets.select4.datavalue;
         if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue == "") {
             try {
+                isError = true;
                 throw "Required field";
             } catch (err) {
                 message2.innerHTML = err;
@@ -148,42 +159,24 @@ Page.button1Click = function($event, widget) {
         } else {
             inputValue = Page.Widgets.text5._datavalue;
 
-            Page.Variables.searchEntity.setInput({
 
-                'inputType': intputType,
-                'inputValue': inputValue,
-                'level': Page.Widgets.select1.datavalue,
-                'billingSystem': Page.Widgets.select5.datavalue,
-                'searchMatchCriteria': searchCriteria
-
-            });
-
-            Page.Variables.searchEntity.invoke();
         }
         //  }
     }
 
+    if (!isError) {
+        Page.Variables.searchEntity.setInput({
 
-    // Page.Variables.searchEntity.setInput({
+            'inputType': intputType,
+            'inputValue': inputValue,
+            'level': Page.Widgets.select1.datavalue,
+            'billingSystem': Page.Widgets.select5.datavalue,
+            'searchMatchCriteria': searchCriteria
 
-    //     'inputType': intputType,
-    //     'inputValue': inputValue,
-    //     'level': Page.Widgets.select1.datavalue,
-    //     'billingSystem': Page.Widgets.select5.datavalue,
-    //     'searchMatchCriteria': searchCriteria
+        });
 
-    // });
-
-    // alert("inputType--" + intputType + "  " + "inputValue--" + inputValue + "     " + "level--" + Page.Widgets.select1.datavalue + "   " + "billingSystem--" + Page.Widgets.select5.datavalue + "  " + "searchMatchCriteria--" + searchCriteria);
-    // Page.Variables.searchEntity.invoke();
-    // Page.Widgets.select1.datavalue = 'Entity';
-    // Page.Widgets.select3.datavalue = 'Exact match';
-    // Page.Widgets.select4.datavalue = 'Exact match';
-    // // Page.Widgets.select5.datavalue = 'Select';
-    // //  Page.Widgets.text3._datavalue = '';
-    // Page.Widgets.text4._datavalue = '';
-    // Page.Widgets.text5._datavalue = '';
-
+        Page.Variables.searchEntity.invoke();
+    }
 
 
 };
@@ -194,6 +187,7 @@ Page.button2Click = function($event, widget) {
     const message1 = document.getElementById("p02");
     const message2 = document.getElementById("p03");
     const message3 = document.getElementById("p04");
+    const message4 = document.getElementById("p05");
 
     Page.Widgets.select1.datavalue = 'Entity';
     Page.Widgets.select3.datavalue = 'Exact match';
@@ -206,6 +200,7 @@ Page.button2Click = function($event, widget) {
     message2.innerHTML = "";
     message3.innerHTML = "";
     message1.innerHTML = "";
+    message4.innerHTML = "";
 
     // console.clear();
 

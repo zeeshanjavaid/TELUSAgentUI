@@ -31,10 +31,8 @@
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
-                                <input type="radio" name="checkAndUncheck" id="name" value="NAME">
-                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
-                                <wm-gridcolumn id="selectBox">
+                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
+                                <wm-gridcolumn id="selectBox" name="gridcolumn10_1">
                                     <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
@@ -49,10 +47,9 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px -25px 5px 28px; width: 40%;" name="gridcolumn9" class="textbox-mac">
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn10">
-                                <input type="radio" name="checkAndUncheck" id="numID" value="numID">
-                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Number/ID</label>
-                                <wm-gridcolumn id="selectBox">
+                            <p id="p05" style="color:red;"></p>
+                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn10"><input type="radio" name="checkAndUncheck" id="numID" value="numID"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Number/ID</label>
+                                <wm-gridcolumn id="selectBox" name="gridcolumn15_1">
                                     <wm-select name="select4" id="selectBox" dataset="Exact match, Begins with, Ends with" datafield="All Fields" placeholder="" datavalue="Exact match,"></wm-select>
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
@@ -103,7 +100,7 @@
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset" style="text-align: center;">
-                    <wm-label padding="unset 0.5em" name="label25" caption="User does not have DNTL access."></wm-label>
+                    <wm-label padding="unset 0.5em" name="label25" caption="DNTL access required."></wm-label>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
