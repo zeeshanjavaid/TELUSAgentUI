@@ -124,6 +124,17 @@ Page.button1Click = function($event, widget) {
             }
         } else {
             inputValue = Page.Widgets.text4._datavalue;
+            Page.Variables.searchEntity.setInput({
+
+                'inputType': intputType,
+                'inputValue': inputValue,
+                'level': Page.Widgets.select1.datavalue,
+                'billingSystem': Page.Widgets.select5.datavalue,
+                'searchMatchCriteria': searchCriteria
+
+            });
+
+            Page.Variables.searchEntity.invoke();
         }
     } else if (value == "numID") {
         intputType = "id";
@@ -136,23 +147,35 @@ Page.button1Click = function($event, widget) {
             }
         } else {
             inputValue = Page.Widgets.text5._datavalue;
+
+            Page.Variables.searchEntity.setInput({
+
+                'inputType': intputType,
+                'inputValue': inputValue,
+                'level': Page.Widgets.select1.datavalue,
+                'billingSystem': Page.Widgets.select5.datavalue,
+                'searchMatchCriteria': searchCriteria
+
+            });
+
+            Page.Variables.searchEntity.invoke();
         }
         //  }
     }
 
 
-    Page.Variables.searchEntity.setInput({
+    // Page.Variables.searchEntity.setInput({
 
-        'inputType': intputType,
-        'inputValue': inputValue,
-        'level': Page.Widgets.select1.datavalue,
-        'billingSystem': Page.Widgets.select5.datavalue,
-        'searchMatchCriteria': searchCriteria
+    //     'inputType': intputType,
+    //     'inputValue': inputValue,
+    //     'level': Page.Widgets.select1.datavalue,
+    //     'billingSystem': Page.Widgets.select5.datavalue,
+    //     'searchMatchCriteria': searchCriteria
 
-    });
+    // });
 
     // alert("inputType--" + intputType + "  " + "inputValue--" + inputValue + "     " + "level--" + Page.Widgets.select1.datavalue + "   " + "billingSystem--" + Page.Widgets.select5.datavalue + "  " + "searchMatchCriteria--" + searchCriteria);
-    Page.Variables.searchEntity.invoke();
+    // Page.Variables.searchEntity.invoke();
     // Page.Widgets.select1.datavalue = 'Entity';
     // Page.Widgets.select3.datavalue = 'Exact match';
     // Page.Widgets.select4.datavalue = 'Exact match';
@@ -166,6 +189,11 @@ Page.button1Click = function($event, widget) {
 };
 Page.button2Click = function($event, widget) {
 
+    debugger;
+    const message1 = document.getElementById("p02");
+    const message2 = document.getElementById("p03");
+    const message3 = document.getElementById("p04");
+
     Page.Widgets.select1.datavalue = 'Entity';
     Page.Widgets.select3.datavalue = 'Exact match';
     Page.Widgets.select4.datavalue = 'Exact match';
@@ -173,6 +201,12 @@ Page.button2Click = function($event, widget) {
     Page.Widgets.text3._datavalue = '';
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
+
+    message2.innerHTML = "";
+    message3.innerHTML = "";
+    message1.innerHTML = "";
+
+    // console.clear();
 
     Page.Variables.searchEntity.invoke();
 
