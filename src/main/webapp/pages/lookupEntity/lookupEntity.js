@@ -190,6 +190,7 @@ Page.button1Click = function($event, widget) {
 Page.button2Click = function($event, widget) {
 
     debugger;
+    $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
     const message1 = document.getElementById("p02");
     const message2 = document.getElementById("p03");
     const message3 = document.getElementById("p04");
