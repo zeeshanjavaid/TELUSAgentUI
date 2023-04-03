@@ -179,7 +179,7 @@
                     <wm-composite name="composite3">
                         <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason:" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container9" width="72%">
-                            <wm-select name="cancelledReasonValue" placeholder="Select Value" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                            <wm-select name="cancelledReasonValue" placeholder="Select" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -189,7 +189,7 @@
                     <wm-composite name="composite4">
                         <wm-label class="col-md-3 control-label" name="label40" caption="Comments:" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container10" width="72%">
-                            <wm-textarea name="textarea2"></wm-textarea>
+                            <wm-textarea name="textarea2" required="true"></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -213,7 +213,7 @@
                     <wm-composite name="composite1">
                         <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason:" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container6">
-                            <wm-select name="closedReasonValue" placeholder="Select Value" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                            <wm-select name="closedReasonValue" placeholder="Select" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -223,7 +223,7 @@
                     <wm-composite name="composite2">
                         <wm-label class="col-md-3 control-label" name="label37" caption="Comments:" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container7">
-                            <wm-textarea name="textarea1" width="97%"></wm-textarea>
+                            <wm-textarea name="textarea1" width="97%" required="true"></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -410,12 +410,11 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn86_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="6" name="gridcolumn87" horizontalalign="left">
                     <wm-container name="container21" padding="1.5em unset unset unset">
-                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic">
-                            <wm-table-column binding="lastUpdatedBy" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="createdDateTime" caption="Created Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated Date Time" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" pcdisplay="false" show="true" readonly="false"></wm-table-column>
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.disputeHistoryVar.dataSet">
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="comments" caption="Comments" show="true" readonly="undefined"></wm-table-column>
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>

@@ -37,6 +37,33 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "disputeHistoryVar" : {
+    "_id" : "wm-disputeHistoryVar-wm.Variable-1680508939953",
+    "name" : "disputeHistoryVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "date" : "08/30/2023",
+      "user" : "John",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Smith",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Kevin",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getDisputeDetails" : {
     "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1680451414447",
     "name" : "getDisputeDetails",
