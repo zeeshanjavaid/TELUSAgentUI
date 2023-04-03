@@ -38,16 +38,16 @@
     "saveInPhonegap" : false
   },
   "CreateDisputeService" : {
-    "_id" : "wm-CreateDisputeService-wm.ServiceVariable-1680094122834",
+    "_id" : "wm-CreateDisputeService1-wm.ServiceVariable-1680499981559",
     "name" : "CreateDisputeService",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionDispute",
-    "service" : "CollectionDataService",
+    "service" : "CollectionEntityService",
     "operation" : "addDispute",
-    "operationId" : "CollectionDataController_addDispute",
+    "operationId" : "CollectionEntityController_addDispute",
     "operationType" : "post",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -58,7 +58,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionData"
+    "controller" : "CollectionEntity"
   },
   "exclusionDropdownVar" : {
     "_id" : "wm-exclusionDropdownVar-wm.Variable-1679982872723",
