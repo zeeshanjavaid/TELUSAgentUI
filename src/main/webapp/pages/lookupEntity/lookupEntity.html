@@ -26,20 +26,17 @@
                                 <p id="p01" style="color:red;"></p>
                             </wm-container>
                         </wm-gridcolumn>
-                        <!--<wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>-->
-                    </wm-gridcolumn>
+                        <!--<wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>--></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
-                                <input type="radio" name="checkAndUncheck" id="name" value="NAME">
-                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
+                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
                                 <!--<wm-gridcolumn id="selectBox" name="gridcolumn10_1">-->
                                 <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
                                 <!--</wm-gridcolumn>-->
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn7">
-                                <wm-text name="text4" width="66%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac"></wm-text>
+                                <wm-text name="text4" type="text" width="66%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
                                 <p id="p02" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
@@ -56,7 +53,7 @@
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn11">
-                                <wm-text name="text5" placeholder="" width="78%" class="selectbox2-mac"></wm-text>
+                                <wm-text name="text5" placeholder="" width="78%" class="selectbox2-mac" disabled="true"></wm-text>
                                 <p id="p03" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
@@ -97,13 +94,13 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="" name="inactivateUserDialog" width="35%" closable="true" iconwidth="100px" iconheight="50px" class="del_box inactivateUserDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="" name="inactivateUserDialog" width="35%" closable="false" iconwidth="100px" iconheight="50px" class="del_box inactivateUserDialog">
         <wm-layoutgrid name="layoutgrid3_1">
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset" style="text-align: center;">
                     <wm-label padding="unset 0.5em" name="label25" caption="DNTL access required."></wm-label>
-                    <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
+                </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
@@ -112,4 +109,4 @@
             </wm-container>
         </wm-dialogactions>
     </wm-dialog>
-    <!--<wm-alertdialog name="permissionAlert" message="User does not have DNTL access." title="" iconclass=""></wm-alertdialog>--></wm-page>
+</wm-page>

@@ -201,6 +201,8 @@ Page.button2Click = function($event, widget) {
     message3.innerHTML = "";
     message1.innerHTML = "";
     message4.innerHTML = "";
+    Page.Widgets.text5.disabled = true;
+    Page.Widgets.text4.disabled = true;
 
     // console.clear();
 
@@ -255,4 +257,29 @@ function resetVals() {
 $("#mySelection").change(function() {
     debugger;
     resetVals();
+});
+
+
+
+
+
+// Jquery to enable test area on select radio button
+$(function() {
+    $("#name, #numID").change(function() {
+        const message1 = document.getElementById("p02");
+        const message2 = document.getElementById("p03");
+
+        if ($("#name").is(":checked")) {
+            Page.Widgets.text4.disabled = false;
+            message2.innerHTML = "";
+            Page.Widgets.text5._datavalue = '';
+            Page.Widgets.text5.disabled = true;
+
+        } else if ($("#numID").is(":checked")) {
+            Page.Widgets.text5.disabled = false
+            Page.Widgets.text4._datavalue = '';
+            message1.innerHTML = "";
+            Page.Widgets.text4.disabled = true;
+        }
+    });
 });
