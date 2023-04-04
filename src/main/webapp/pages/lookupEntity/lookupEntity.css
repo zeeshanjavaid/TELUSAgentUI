@@ -32,7 +32,7 @@ h3 {
     border: 0.1px solid #ddd;
     padding: 0 10px 20px 10px;
 }
-@media (max-width: 1024px) and (min-width: 768px){
+@media (max-width: 1024px) and (min-width: 768px) {
 
   .lookup_mac {
     width: 16% !important;

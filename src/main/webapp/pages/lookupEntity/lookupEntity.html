@@ -26,15 +26,17 @@
                                 <p id="p01" style="color:red;"></p>
                             </wm-container>
                         </wm-gridcolumn>
-                        <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>
+                        <!--<wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>-->
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
-                                <wm-gridcolumn id="selectBox" name="gridcolumn10_1">
-                                    <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
-                                </wm-gridcolumn>
+                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
+                                <input type="radio" name="checkAndUncheck" id="name" value="NAME">
+                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
+                                <!--<wm-gridcolumn id="selectBox" name="gridcolumn10_1">-->
+                                <wm-select name="select3" id="selectBox" dataset="Exact match, Contains" datafield="All Fields" placeholder="" datavalue="Exact match"></wm-select>
+                                <!--</wm-gridcolumn>-->
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn7">
                                 <wm-text name="text4" width="66%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac"></wm-text>

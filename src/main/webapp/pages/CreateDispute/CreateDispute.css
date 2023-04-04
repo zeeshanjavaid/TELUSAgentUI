@@ -10,3 +10,11 @@
     border-bottom: 1px solid #ddd; 
     width: 96%
 }
+h3 {
+    padding: 8px;
+}
+h4 {
+    margin: 0 0 0 34px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%
+}
