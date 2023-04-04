@@ -35,6 +35,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 import java.util.List;
 import io.swagger.client.model.CollectionPaymentArrangement;
+import io.swagger.client.model.CollectionPaymentArrangementCreate;
+import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import io.swagger.client.model.CollectionBillingAccountRefCreate;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
@@ -50,6 +52,9 @@ import io.swagger.client.model.CollectionSuppression;
 import io.swagger.client.model.CollectionSuppressionCreate;
 import io.swagger.client.model.CollectionSuppressionUpdate;
 import io.swagger.client.model.CollectionSuppressionArray;
+import io.swagger.client.model.CollectionDispute;
+import io.swagger.client.model.CollectionDisputeUpdate;
+import io.swagger.client.model.CollectionDisputeCreate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -61,7 +66,6 @@ import java.text.SimpleDateFormat;
 
 import com.fico.core.util.ObjectMapperConfig;
 
-import io.swagger.client.model.CollectionDispute;
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -182,7 +186,7 @@ public class CollectionEntityService {
         // return new Object(); 
     }    
     
-    public CollectionPaymentArrangement addPaymentArrangement( CollectionPaymentArrangement  collectionPaymentArrangementCreate) throws Exception  {
+    public CollectionPaymentArrangementCreate addPaymentArrangement( CollectionPaymentArrangementCreate  collectionPaymentArrangementCreate) throws Exception  {
     
         logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
         logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments());
@@ -195,13 +199,13 @@ public class CollectionEntityService {
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionPaymentArrangement updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangement collectionPaymentArrangementCreate ) throws Exception  {
+    public CollectionPaymentArrangementUpdate updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate ) throws Exception  {
         
-        logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getAmount());
-        if (collectionPaymentArrangementCreate.getInstallments() != null) {
-            logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementCreate.getInstallments().get(0).getAmount());
+        logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementUpdate.getAmount());
+        if (collectionPaymentArrangementUpdate.getInstallments() != null) {
+            logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" + collectionPaymentArrangementUpdate.getInstallments().get(0).getAmount());
         }
-        return collectionPaymentArrangementCreate;
+        return collectionPaymentArrangementUpdate;
     }
     
 //dispute
@@ -214,7 +218,7 @@ public class CollectionEntityService {
         // return new Object(); 
     }
     
-    public CollectionDispute addDispute( CollectionDispute  collectionDispute) throws Exception  {
+    public CollectionDisputeCreate addDispute( CollectionDisputeCreate  collectionDispute) throws Exception  {
 
         return collectionDispute;
         
@@ -229,7 +233,7 @@ public class CollectionEntityService {
 
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionDispute updateDispute(@PathVariable("id") Integer id,  CollectionDispute  collectionDispute) throws Exception  {
+    public CollectionDisputeUpdate updateDispute(@PathVariable("id") Integer id,  CollectionDisputeUpdate  collectionDispute) throws Exception  {
     
         return collectionDispute;
         

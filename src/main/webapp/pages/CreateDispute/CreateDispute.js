@@ -70,7 +70,7 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "";
 
         Partial.Variables.CreateDisputeService.setInput({
-            "CollectionDispute": {
+            "CollectionDisputeCreate": {
                 'id': 10,
                 'amount': Partial.Widgets.disputeAmt.datavalue,
                 'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue.dataValue,

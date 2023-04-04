@@ -177,7 +177,7 @@
             <wm-gridrow name="gridrow18" padding="2em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn48_1">
                     <wm-composite name="composite3">
-                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason:" width="27%" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason *" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container9" width="72%">
                             <wm-select name="cancelledReasonValue" placeholder="Select" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
@@ -187,9 +187,9 @@
             <wm-gridrow name="gridrow29" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn66_1">
                     <wm-composite name="composite4">
-                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments:" width="27%" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments *" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container10" width="72%">
-                            <wm-textarea name="textarea2" required="true" datavalue="bind:Variables.getDisputeDetails.dataSet.comment"></wm-textarea>
+                            <wm-textarea name="CommentsCancelDispute" required="true" datavalue="bind:Variables.getDisputeDetails.dataSet.comment" placeholder=""></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -211,7 +211,7 @@
             <wm-gridrow name="gridrow25" padding="2em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn60_1">
                     <wm-composite name="composite1">
-                        <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason:" padding="unset unset unset 0.5em" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason *" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container6">
                             <wm-select name="closedReasonValue" placeholder="Select" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
@@ -221,9 +221,9 @@
             <wm-gridrow name="gridrow26_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn61_1">
                     <wm-composite name="composite2">
-                        <wm-label class="col-md-3 control-label" name="label37" caption="Comments:" padding="unset unset unset 0.5em" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label37" caption="Comments *" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container7">
-                            <wm-textarea name="textarea1" width="97%" required="true"></wm-textarea>
+                            <wm-textarea name="textarea1" width="97%" required="true" placeholder=""></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -375,7 +375,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn77">
                     <wm-composite name="composite14" width="65%">
                         <wm-container class="col-md-9" name="container19">
-                            <wm-text name="text1"></wm-text>
+                            <wm-text name="text1" placeholder=""></wm-text>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -389,7 +389,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn79">
                     <wm-composite name="composite15" width="100%">
                         <wm-container class="col-md-9" name="container20">
-                            <wm-textarea name="textarea3"></wm-textarea>
+                            <wm-textarea name="textarea3" placeholder=""></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

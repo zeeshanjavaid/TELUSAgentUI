@@ -39,6 +39,21 @@ Partial.disputeHistoryCollapse = function($event, widget) {
 Partial.CancelDisputeSubmitClick = function($event, widget) {
     debugger;
     Partial.Widgets.cancelledReasonValue.datavalue;
-    Partial.Variables.getDisputeDetails.dataSet.dataValue;
+    Partial.Widgets.CommentsCancelDispute.datavalue;
+
+
+    Partial.Variables.updateDisputeService.setInput({
+        "id": 10,
+        "CollectionDisputeUpdate": {
+            'CollectionDisputeStatus': [{
+                'reason': Partial.Widgets.cancelledReasonValue.datavalue.dataValue
+            }]
+        }
+    });
+
+
+    Partial.Variables.updateDisputeService.invoke();
+
+    Partial.Widgets.cancelDisputeConfirmation.close()
 
 };

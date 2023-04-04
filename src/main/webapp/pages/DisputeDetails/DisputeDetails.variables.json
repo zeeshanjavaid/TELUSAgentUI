@@ -125,7 +125,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
     "operation" : "updateDispute",
