@@ -42,9 +42,21 @@ Page.CreateClick = function($event, widget) {
 Page.CreateDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.chargeTypeDropDown.datavalue = ""
+    App.activePage.Widgets.CreateDisputePanel.Widgets.selectedDisputeBan.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.exclusionDropdown.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.disputeAmt.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.chargeTypeDropDown.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.reasonDropdown.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.productsDropdown.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.AdjustmentToDate.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.custEmailText.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.CreateCommentsDispute.datavalue = "";
+    App.activePage.Widgets.CreateDisputePanel.Widgets.AssignedDisputePrime.datavalue = "";
     Page.Variables.DisputePageName.dataSet.dataValue = 'CreateDispute';
 };
 Page.DisputeSelect = function($event, widget) {
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';

@@ -65,20 +65,30 @@ Partial.CreateDisputeClick = function($event, widget) {
     } else if (!Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
     } else {
+
+
         App.Variables.errorMsg.dataSet.dataValue = "";
 
         Partial.Variables.CreateDisputeService.setInput({
-            'id': 10,
-            'amount': Partial.Widgets.disputeAmt.datavalue,
-            'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue
+            "CollectionDispute": {
+                'id': 10,
+                'amount': Partial.Widgets.disputeAmt.datavalue,
+                'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue.dataValue,
+                'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
+                'disputeReason': Partial.Widgets.chargeTypeDropDown.datavalue.dataValue,
+                'product': Partial.Widgets.productsDropdown.datavalue.dataValue,
+                'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
+                'customerEmail': Partial.Widgets.custEmailText.datavalue,
+                'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
+                'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue
+            }
         });
 
+        //Invoke POST createDispute service
         Partial.Variables.CreateDisputeService.invoke();
 
         App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
         Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
-
-        //Invoke Post dispute service
     }
 
 };

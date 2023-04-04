@@ -13,7 +13,7 @@
     </wm-layoutgrid>
     <wm-container name="container1">
         <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
-        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase" style="margin:5px;"></wm-message>
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
     </wm-container>
     <wm-layoutgrid name="layoutgrid2">
         <wm-gridrow name="gridrow4" padding="1em unset 1em 2.0em">
@@ -39,7 +39,7 @@
                             <wm-label name="label14" caption="Exclusion *" class="col-md-3 control-label" whitespace="nowrap" textalign="left" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn52" horizontalalign="left">
-                            <wm-select name="exclusionDropdown" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                            <wm-select name="exclusionDropdown" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="dataValue" displayfield="name"></wm-select>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
