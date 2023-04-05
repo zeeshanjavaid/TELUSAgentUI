@@ -54,6 +54,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "ErrorMsgs" : {
+    "_id" : "wm-ErrorMsgs-wm.Variable-1680686948551",
+    "name" : "ErrorMsgs",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "executeGetGroupByUserId" : {
     "_id" : "wm-executeGetGroupByUserId1-wm.ServiceVariable-1674564874003",
     "name" : "executeGetGroupByUserId",
@@ -5022,6 +5036,7 @@
     "isList" : false,
     "maxResults" : 20,
     "onSuccess" : "Widgets.createUserPage.close();Variables.getAllUsers.listRecords()",
+    "onError" : "UserManagementServiceCreateUseronError(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

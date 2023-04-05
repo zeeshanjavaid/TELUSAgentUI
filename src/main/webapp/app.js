@@ -55,6 +55,13 @@ App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
  */
 App.onServiceError = function(source, errorMsg, xhrObj) {
 
+
+    if (source.name === 'UserManagementServiceCreateUser') {
+        App.Variables.errorMsg.dataSet.dataValue = xhrObj.error;
+    }
+
+
+
 };
 
 App.select2 = function(elementName, displayData, dataSet, dataField, displayField) {

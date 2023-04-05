@@ -813,11 +813,14 @@ Partial.createUserForm1_saveAction = function($event) {
 
         Partial.Variables.UserManagementServiceCreateUser.invoke({},
             function(data) {
-                debugger; // Success Callback
+
+                App.Variables.errorMsg.dataSet.dataValue = "";
                 console.log("success", data);
             },
             function(error) {
-                debugger; // Error Callback
+
+                console.log("success", error);
+
 
             });
     }
@@ -839,6 +842,7 @@ Partial.searchUsersFinal = function($event) {
             },
             function(error) {
                 debugger; // Error Callback
+                console.log("success", error);
 
             });
     }
@@ -913,6 +917,7 @@ Partial.updateUserForm1_saveAction = function($event) {
         }, function(error) {
             // Error Callback
             console.log("error", error)
+
         });
     }
 };
@@ -966,5 +971,15 @@ Partial.executeSearchUsersForm1_saveAction = function($event) {
         debugger;
         App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
     }
+
+};
+
+Partial.UserManagementServiceCreateUseronError = function(variable, data) {
+    debugger;
+
+};
+Partial.createUserForm1_resetAction = function($event) {
+
+    App.Variables.errorMsg.dataSet.dataValue = "";
 
 };

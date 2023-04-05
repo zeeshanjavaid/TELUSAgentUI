@@ -283,3 +283,20 @@ $(function() {
         }
     });
 });
+// Page.select1Change = function($event, widget, newVal, oldVal) {
+
+
+//     if (newVal === "Entity") {
+//         //Page.Variables.number_IdCriteria.dataSet = Page.Variables.number_IdCriteria.dataSet[0].dataValue;
+
+//         var v = new Array();
+//         v = Page.Variables.number_IdCriteria.dataSet.dataValue;
+
+//         // Page.Variables.number_IdCriteria.dataSet[0].dataValue;
+//     }
+
+//     debugger;
+
+
+//     alert("HI");
+// };
