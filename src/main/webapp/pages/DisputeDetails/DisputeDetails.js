@@ -38,22 +38,78 @@ Partial.disputeHistoryCollapse = function($event, widget) {
 
 Partial.CancelDisputeSubmitClick = function($event, widget) {
     debugger;
-    Partial.Widgets.cancelledReasonValue.datavalue;
-    Partial.Widgets.CommentsCancelDispute.datavalue;
+    if (!Partial.Widgets.cancelledReasonValue.datavalue && !Partial.Widgets.CommentsCancelDispute.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
+    } else if (!Partial.Widgets.cancelledReasonValue.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Cancelled Reason is a mandatory field";
+    } else if (!Partial.Widgets.CommentsCancelDispute.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Comments is a mandatory field";
+    } else {
+        App.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.updateDisputeService.setInput({
+            "id": 10,
+            "CollectionDisputeUpdate": {
+                'CollectionDisputeStatus': [{
+                    'reason': Partial.Widgets.cancelledReasonValue.datavalue.dataValue
+                }]
+            }
+        });
 
 
+        Partial.Variables.updateDisputeService.invoke();
+        Partial.Widgets.cancelDisputeConfirmation.close();
+    }
+
+};
+Partial.CloseDisputeSubmitClick = function($event, widget) {
+    debugger;
+    if (!Partial.Widgets.ClosedDisputeReason.datavalue && !Partial.Widgets.CloseDisputeComments.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
+    } else if (!Partial.Widgets.ClosedDisputeReason.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Closed Reason is a mandatory field";
+    } else if (!Partial.Widgets.CloseDisputeComments.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Comments is a mandatory field";
+    } else {
+        App.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.updateDisputeService.setInput({
+            "id": 10,
+            "CollectionDisputeUpdate": {
+                'CollectionDisputeStatus': [{
+                    'reason': Partial.Widgets.ClosedDisputeReason.datavalue.dataValue
+                }]
+            }
+        });
+
+
+        Partial.Variables.updateDisputeService.invoke();
+        Partial.Widgets.closeDisputeDialog.close();
+    }
+
+
+};
+Partial.UpdateDisputeSubmitClick = function($event, widget) {
+    debugger;
     Partial.Variables.updateDisputeService.setInput({
         "id": 10,
         "CollectionDisputeUpdate": {
-            'CollectionDisputeStatus': [{
-                'reason': Partial.Widgets.cancelledReasonValue.datavalue.dataValue
-            }]
+            'adjustmentToDate': Partial.Widgets.AdjustmentToDateUpdate.datavalue,
+            'amount': Partial.Widgets.diputeAmtUpdate.datavalue,
+            'collectionExclusionIndicator': Partial.Widgets.updateDisputeExclusionDropdown.datavalue,
+            'chargeType': Partial.Widgets.chargeTypeDropdownUpdate.datavalue,
+            'disputeReason': Partial.Widgets.reasonDropdownUpdate.datavalue,
+            'product': Partial.Widgets.productDropdown.datavalue,
+            'customerEmail': Partial.Widgets.customerEmailUpdate.datavalue,
+            'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
+            'comment': Partial.Widgets.commentsUpdate.datavalue
         }
     });
 
-
     Partial.Variables.updateDisputeService.invoke();
+    Partial.Widgets.updateDisputeConfirmation.close()
 
-    Partial.Widgets.cancelDisputeConfirmation.close()
-
+};
+Partial.CloseDisputeClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Partial.Widgets.closeDisputeDialog.open();
 };

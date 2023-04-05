@@ -88,6 +88,24 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "exclusionDropDownUpdateVar" : {
+    "_id" : "wm-exclusionDropDownUpdateVar-wm.Variable-1680630320329",
+    "name" : "exclusionDropDownUpdateVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "Y",
+      "dataValue" : true
+    }, {
+      "name" : "N",
+      "dataValue" : false
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getDisputeDetails" : {
     "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1680451414447",
     "name" : "getDisputeDetails",
@@ -118,6 +136,62 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "productsDropdownUpdatevar" : {
+    "_id" : "wm-productsDropdownUpdatevar-wm.Variable-1680629185398",
+    "name" : "productsDropdownUpdatevar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Copper Internet"
+    }, {
+      "dataValue" : "Fiber Internet"
+    }, {
+      "dataValue" : "Business Connect"
+    }, {
+      "dataValue" : "SBS Wi-Fi"
+    }, {
+      "dataValue" : "TELUS Secure Business"
+    }, {
+      "dataValue" : "Other Products and Services"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "reasonDropdownUpdateVar" : {
+    "_id" : "wm-reasonDropdownUpdateVar-wm.Variable-1680618673490",
+    "name" : "reasonDropdownUpdateVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "BILLED CHARGES (DEEMED) INCORRECT"
+    }, {
+      "dataValue" : "PRICE / VALUE DISSATISFACTION"
+    }, {
+      "dataValue" : "OUT/TERMINATION ORDER IN PROGRESS"
+    }, {
+      "dataValue" : "PRODUCTS/SERVICES BILLED BUT NOT DELIVERED"
+    }, {
+      "dataValue" : "INVOICE INFORMATION INCORRECT"
+    }, {
+      "dataValue" : "PRODUCT/SERVICE NOT WORKING AS EXPECTED"
+    }, {
+      "dataValue" : "TLC BILLED - BEING CONTESTED/ADJUSTED,"
+    }, {
+      "dataValue" : "LPC BILLED - BEING CONTESTED / ADJUSTED"
+    }, {
+      "dataValue" : "ACCOUNT NOT CANCELLED ON TIME"
+    }, {
+      "dataValue" : "OTHER REASON"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "updateDisputeService" : {
     "_id" : "wm-updateDisputeService-wm.ServiceVariable-1680519528340",
