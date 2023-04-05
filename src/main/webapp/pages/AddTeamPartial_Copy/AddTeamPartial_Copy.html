@@ -5,7 +5,7 @@
                 <wm-layoutgrid name="layoutgrid3">
                     <wm-gridrow name="gridrow10_1">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn15_2">
-                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.id ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip"
+                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.groupId ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip"
                                 margin="4% unset unset unset" height="25"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn16_2" horizontalalign="right">
@@ -22,7 +22,7 @@
             <wm-gridcolumn columnwidth="12" name="gridcolumn6">
                 <wm-container name="container4" margin="unset unset unset 10px" padding="unset 0.5em">
                     <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
-                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="false"></wm-message>
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="flase"></wm-message>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -46,7 +46,7 @@
             <wm-gridcolumn columnwidth="4" name="gridcolumn16_1" horizontalalign="left">
                 <wm-composite name="composite5_1" horizontalalign="left" captionposition="left" width="82%" margin="3px unset unset 50px">
                     <wm-label class="col-md-3 control-label" name="label8" caption=""></wm-label>
-                    <wm-text name="TeamNameText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"
+                    <wm-text name="GroupNameText" placeholder="" datavalue="bind:Variables.teamData.dataSet.TeamName" required="false" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35" disabled="bind:Variables.readOnlyMode.dataSet.dataValue"
                         width="95%" style="top: 4px;"></wm-text>
                 </wm-composite>
             </wm-gridcolumn>
@@ -77,6 +77,7 @@
                 </wm-composite>
             </wm-gridcolumn>
         </wm-gridrow>
+        <!--<wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assigned permissions" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.getAllPermission.dataSet" datafield="All Fields" displayfield="name" multiple="true" autofocus="true" required="false" height="250" datavalue="bind:Variables.groupData.dataSet.RoleAssignPermission"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
         <wm-gridrow name="gridrow4_1" padding="1em unset unset unset">
             <wm-gridcolumn columnwidth="2" name="gridcolumn7">
                 <wm-label padding="0.75em 0.5em unset 0.5em" caption="Users List" name="label4" margin="unset 20px unset 10px" color="#6e6c6a"></wm-label>
@@ -94,6 +95,7 @@
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
+        <!-- <wm-gridrow name="gridrow4" padding="1em unset unset unset"><wm-gridcolumn columnwidth="2" name="gridcolumn7"><wm-label padding="unset 0.5em" caption="Assign permission to role" name="label4" margin="unset 20px unset 10px" color="#9BA0A5"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="10" name="gridcolumn8"><wm-container name="container7"><wm-composite name="composite3"><wm-container class="col-md-9 queue-assign-group" name="container12"><wm-select name="select3" dataset="bind:Variables.permissionList.dataSet" datafield="name" displayfield="name" multiple="true" autofocus="true" required="false" height="250"></wm-select></wm-container></wm-composite></wm-container></wm-gridcolumn></wm-gridrow>-->
         <wm-gridrow name="gridrow9_1">
             <wm-gridcolumn columnwidth="12" name="gridcolumn16">
                 <wm-container name="linecontainer" class="linecontainer"></wm-container>

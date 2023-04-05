@@ -6,8 +6,8 @@
                     <wm-layoutgrid name="layoutgrid3" width="100%">
                         <wm-gridrow name="gridrow10_1">
                             <wm-gridcolumn columnwidth="6" name="gridcolumn13_1">
-                                <wm-label padding="unset 0.3em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId ? &quot;Edit Role&quot; : &quot;Create Role&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName"
-                                    height="25" width="50%"></wm-label>
+                                <wm-label padding="unset 0.3em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId ? &quot;Edit Role&quot; : &quot;Create Role&quot;" class="h3 add-role-lebel text-clip"
+                                    margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName" height="25" width="50%"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="6" name="gridcolumn14_1">
                                 <wm-container name="container14_1" horizontalalign="right" margin="5% unset unset unset" width="98%">
@@ -24,7 +24,7 @@
             <wm-gridcolumn columnwidth="12" name="gridcolumn6">
                 <wm-container name="container4" margin="unset unset unset 10px" padding="unset 0.5em">
                     <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true"></wm-message>
-                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="false"></wm-message>
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -41,7 +41,8 @@
                         </wm-container>
                         <wm-composite name="composite4_1">
                             <wm-container class="col-md-9 queue-name" name="container10">
-                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
+                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;"
+                                    height="35"></wm-text>
                             </wm-container>
                         </wm-composite>
                     </wm-composite>
@@ -91,7 +92,7 @@
             <wm-gridrow name="gridrow10" padding="1em unset unset unset"></wm-gridrow>
             <wm-gridrow name="gridrow11" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="0.2em unset unset unset" style="text-align: center;">
-                    <wm-label padding="unset 0.5em" name="label5_1" caption="bind:'Are you sure you want to delete role<b> ' + pageParams.roleName  + '</b>?'"></wm-label>
+                    <wm-label padding="unset 0.5em" name="DeleteConfirm" caption="bind:'Are you sure you want to delete role<b> ' + pageParams.roleName  + '</b>?'"></wm-label>
                     <!--<wm-label padding="unset 0.5em unset unset" name="label20" caption="Do you want to continue?" show="false"></wm-label>--></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

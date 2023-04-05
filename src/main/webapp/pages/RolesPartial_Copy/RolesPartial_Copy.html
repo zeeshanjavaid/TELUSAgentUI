@@ -1,0 +1,43 @@
+<wm-partial name="partial1" id="partial1">
+    <wm-content name="content">
+        <wm-page-content columnwidth="12" name="page_content1" style="display: flex; flex-direction: column;">
+            <wm-gridcolumn name="container11" horizontalalign="left" class="header-label" width="100%" max-width="100%" style="display: flex;">
+                <wm-label name="label3" class="h1" caption="Roles" margin="10px unset 15px 2px" width="75%"></wm-label>
+                <wm-button caption="Create" type="button" margin="10px 5px 10px 33px" name="AddRolesButton" show="true" on-click="AddRolesButtonClick($event, widget)" borderstyle="solid" class="primaryButton" horizontalalign="right" style="float: right;"></wm-button>
+            </wm-gridcolumn>
+            <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
+                <wm-message name="successmessage" show="bind:Variables.roleSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
+                <wm-message name="errormessage" type="error" show="bind:Variables.roleErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.roleErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
+            </wm-container>
+            <wm-container name="roleSearchTextContainer" class="serachSection" padding="0.5em unset" margin="0 4px 0 5px">
+                <wm-text name="roleSearchText" placeholder="Filter Roles" class="rolesearchText searchText" on-keyup="roleSearchTextKeyup($event, widget)" updateon="default"></wm-text>
+                <!--<wm-button class="btn-link button-addon" caption="" type="button" margin="0.5em 0.5em unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true" iconposition="top"></wm-button>-->
+                <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true" iconmargin="10px"></wm-button>
+            </wm-container>
+            <!--<wm-search name="searchRole" dataset="bind:Variables.allRolesUI.dataSet" datafield="All Fields" class="searchMargin " placeholder="Filter roles" loadingdatamsg="" on-blur="searchRoleBlur($event, widget)"></wm-search>-->
+            <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="list-group-item lookup-item roleList-i" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist roleList" name="RoleList" dataset="bind:Variables.getRolesAssociatedUsersPermissions.dataSet"
+                navigation="Classic" selectfirstitem="bind:!(App.Variables.RolePageCommunication.currentRoleInFocusId)" pagesize="5" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" on-render="RoleListRender(widget, $data)"
+                on-setrecord="RoleListSetrecord(widget, $data)" on-click="RoleListClick(widget, $data)" navigationalign="right" showrecordcount="true" orderby="roleId:desc">
+                <wm-listtemplate layout="inline" name="listtemplate2">
+                    <wm-container class="media-left" name="container4">
+                        <wm-picture width="1pt" height="1pt" name="Picture" shape="circle" class="media-object" show="false"></wm-picture>
+                    </wm-container>
+                    <wm-container padding="unset unset unset " name="container5" on-click="container5Click($event, widget, item, currentItemWidgets)">
+                        <wm-label name="Name" class="searchText" caption="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].role" fontsize="1.143" fontunit="em" hint="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].role" margin="unset unset 5px unset"></wm-label>
+                        <wm-label class="p media-heading module line-clamp" caption="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].description" fontsize="1" fontunit="em" name="Description" color="#626b73" hint="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].description"
+                            margin="unset unset 5px unset"></wm-label>
+                        <wm-container name="container5_1" margin="unset unset 5px unset" show="true">
+                            <wm-label class="p media-heading" caption="Users Assigned:" fontsize="1" fontunit="em" color="#626b73" name="label4_1" width="35%"></wm-label>
+                            <wm-label class="p media-heading" caption="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].userCount" fontsize="1" fontunit="em" color="#626b73" width="15%" name="label7"></wm-label>
+                            <wm-label class="p media-heading" caption="Permission:" fontsize="1" fontunit="em" color="#626b73" name="label5" width="35%"></wm-label>
+                            <wm-label class="p media-heading" caption="bind:Variables.getRolesAssociatedUsersPermissions.dataSet[$i].permissionCount" fontsize="1" fontunit="em" color="#626b73" width="15%" name="label6"></wm-label>
+                        </wm-container>
+                    </wm-container>
+                    <wm-container class="media-right media-top" name="container6">
+                        <wm-button class="btn-transparent" iconclass="wi wi-share fa-2x" name="button3" show="false ">&gt;</wm-button>
+                    </wm-container>
+                </wm-listtemplate>
+            </wm-list>
+        </wm-page-content>
+    </wm-content>
+    <!--   <wm-spinner show="true" name="spinner1" servicevariabletotrack="RoleGroups,RolePermission" caption=""></wm-spinner>--></wm-partial>

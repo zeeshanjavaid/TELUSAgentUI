@@ -2908,6 +2908,108 @@
       } ]
     }
   },
+  "getRolesAssociatedUsersPermissions" : {
+    "name" : "getRolesAssociatedUsersPermissions",
+    "description" : "getRolesAssociatedUsersPermissions",
+    "version" : "V2",
+    "queryString" : "select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from\r\n(\r\nselect rid as roleId,userid,role,permissionId, description from(\r\n(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or r.role = :role) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId \r\n) \r\n)b group by role order by roleId desc",
+    "countQueryString" : "select count(*) from (select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from\r\n(\r\nselect rid as roleId,userid,role,permissionId, description from(\r\n(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or r.role = :role) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId \r\n) \r\n)b group by role order by roleId desc) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "role",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetRolesAssociatedUsersPermissionsResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "roleId",
+        "fieldName" : "roleId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "description",
+        "fieldName" : "description",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "permissionCount",
+        "fieldName" : "permissionCount",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "userCount",
+        "fieldName" : "userCount",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getRolesByGroupId" : {
     "name" : "getRolesByGroupId",
     "description" : "getRolesByGroupId",
@@ -3650,6 +3752,94 @@
         },
         "tableName" : "USER",
         "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getTeamsAndAssociatedUsers" : {
+    "name" : "getTeamsAndAssociatedUsers",
+    "description" : "getTeamsAndAssociatedUsers",
+    "version" : "V2",
+    "queryString" : "select ID, TeamID, TeamName, count(distinct userid) as userCount from\r\n(\r\nselect tid as ID, TeamID, userid,TeamName from(\r\nselect t.id as tid, t.TeamID, tu.userid, t.TeamName from TEAM t left outer join TEAM_USER tu on t.ID = tu.teamID where t.teamID is null or lower(t.teamID) like lower(:teamId))a\r\n)b group by TeamID order by ID desc",
+    "countQueryString" : "select count(*) from (select ID, TeamID, TeamName, count(distinct userid) as userCount from\r\n(\r\nselect tid as ID, TeamID, userid,TeamName from(\r\nselect t.id as tid, t.TeamID, tu.userid, t.TeamName from TEAM t left outer join TEAM_USER tu on t.ID = tu.teamID where t.teamID is null or lower(t.teamID) like lower(:teamId))a\r\n)b group by TeamID order by ID desc) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "%bc%",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetTeamsAndAssociatedUsersResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ID",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "TEAM",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "TeamID",
+        "fieldName" : "teamId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "TEAM",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "TeamName",
+        "fieldName" : "teamName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "TEAM",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "userCount",
+        "fieldName" : "userCount",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
         "columnMetadataInfo" : {
           "encrypted" : false
         }

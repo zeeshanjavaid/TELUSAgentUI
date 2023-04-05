@@ -1,0 +1,47 @@
+<wm-partial name="partial2" id="partial2">
+    <wm-content name="content">
+        <wm-page-content columnwidth="12" name="page_content2">
+            <wm-gridcolumn name="container11" width="100%" class="header-label" horizontalalign="left" max-width="100%" style="display: flex;">
+                <wm-label name="label3" class="h1" caption="Teams" margin="10px unset 15px 2px" horizontalalign="left" width="75%"></wm-label>
+                <wm-button caption="Create" type="button" margin="8px 5px 13px 33px" name="AddTeamButton" show="true" horizontalalign="right" on-click="AddTeamButtonClick($event, widget)" borderstyle="solid" class="primaryButton"></wm-button>
+            </wm-gridcolumn>
+            <wm-container name="container4" id="container_message" padding="unset unset unset 0.5em">
+                <wm-message name="successmessage" show="bind:Variables.teamSuccessMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.teamSuccessMessage.dataSet.dataValue" class="successmessage" deferload="false" hideclose="true"></wm-message>
+                <wm-message name="errormessage" type="error" show="bind:Variables.teamErrorMessage.dataSet.dataValue !== &quot;&quot;" caption="bind:Variables.teamErrorMessage.dataSet.dataValue" class="errormessage" hideclose="true"></wm-message>
+            </wm-container>
+            <wm-container name="teamSearchTextContainer" class="serachSection" padding="0.5em unset" margin="0 4px 0 5px">
+                <wm-text name="teamSearchText" placeholder="Filter Teams" class="searchText" on-keyup="teamSearchTextKeyup($event, widget)" updateon="default"></wm-text>
+            </wm-container>
+            <wm-button class="btn-link button-addon" caption="" type="button" margin="unset 0.5em" name="searchAddon" iconclass="fico-icon-search" show="true"></wm-button>
+            <!--<wm-search name="searchRole" dataset="bind:Variables.allGroupsUI.dataSet" datafield="All Fields" class="searchMargin " placeholder="Filter roles" loadingdatamsg="" on-blur="searchRoleBlur($event, widget)"></wm-search>-->
+            <wm-list listclass="list-group lookup-gropu roleList-c" itemclass="list-group-item lookup-item roleList-i" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list lookuplist roleList" name="TeamList" navigation="Classic" selectfirstitem="bind:!(App.Variables.TeamPageCommunication.currentGroupInFocusId)"
+                dataset="bind:Variables.getTeamsAssociatedUsers.dataSet" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" pagesize="5" on-click="TeamListClick(widget, $data)" on-setrecord="TeamListSetrecord(widget, $data)"
+                navigationalign="right" orderby="id:desc">
+                <wm-listtemplate layout="inline" name="listtemplate2">
+                    <wm-container class="media-left" name="container4">
+                        <wm-picture width="1pt" height="1pt" name="Picture" shape="circle" class="media-object" show="false"></wm-picture>
+                    </wm-container>
+                    <wm-container class="media-body" padding="unset unset unset " name="containerTeams" on-click="containerGroupsClick($event, widget, item, currentItemWidgets)">
+                        <wm-label name="TeamCode" class="p media-heading rolename text-clip" caption="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamId" fontsize="1.143" fontunit="em" hint="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamId"></wm-label>
+                        <wm-label class="p media-heading text-clip module line-clamp" caption="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamName" fontsize="1" fontunit="em" name="TeamName" color="#626b73" hint="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamName"></wm-label>
+                        <wm-container name="container5_1">
+                            <wm-layoutgrid name="teamsUserLabelGrid">
+                                <wm-gridrow name="gridrow1">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                                        <wm-label class="p media-heading" caption="Users:" fontsize="1" fontunit="em" color="#626b73" name="label4_1" width="16%"></wm-label>
+                                        <wm-label class="p media-heading" caption="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].userCount" fontsize="1" fontunit="em" color="#626b73" name="label7" width="20%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn4"></wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow2"></wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-container>
+                    </wm-container>
+                    <wm-container class="media-right media-top" name="container6">
+                        <wm-button class="btn-transparent" iconclass="wi wi-share fa-2x" name="button3" show="false ">&gt;</wm-button>
+                    </wm-container>
+                </wm-listtemplate>
+            </wm-list>
+        </wm-page-content>
+    </wm-content>
+    <!-- <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="getAllGroups,getGroupRole"></wm-spinner>--></wm-partial>

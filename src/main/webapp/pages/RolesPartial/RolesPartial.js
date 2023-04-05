@@ -18,9 +18,6 @@ Partial.onReady = function() {
     Partial.Variables.roleSuccessMessage.dataSet.dataValue = "";
     Partial.allRoles = [];
     Partial.role = [];
-
-
-
 };
 
 //var fileSelector;
@@ -237,7 +234,6 @@ Partial.container5Click = function($event, widget, item, currentItemWidgets) {
 };
 Partial.AddRolesButtonClick = function($event, widget) {
     // debugger
-    alert('hii there');
     App.addRoles();
 };
 Partial.fileupload1Select = function($event, widget, selectedFiles) {};
@@ -563,8 +559,8 @@ Partial.getAllRolesPartialonSuccess = async function(variable, data) {
 
         Partial.Variables.RolePermission.filterExpressions.rules[0].value = r.id;
         Partial.Variables.RoleGroups.filterExpressions.rules[0].value = r.id;
-        await Partial.Variables.RolePermission.invoke();
-        await Partial.Variables.RoleGroups.invoke();
+        Partial.Variables.RolePermission.invoke();
+        Partial.Variables.RoleGroups.invoke();
 
 
         Partial.roleUI.permission = (Partial.Variables.RolePermission.dataSet && Partial.Variables.RolePermission.dataSet.length > 0) ?

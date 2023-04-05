@@ -3545,5 +3545,21 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
+  },
+  "TeamPageCommunication" : {
+    "_id" : "wm-TeamPageCommunication-wm.Variable-1680633879855",
+    "name" : "TeamPageCommunication",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "currentTeamInFocusId" : "",
+      "currentPageNo" : "",
+      "currentPageSize" : 100
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }

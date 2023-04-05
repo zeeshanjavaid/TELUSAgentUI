@@ -34,7 +34,30 @@
     "type" : "string"
   } ]
 }, {
+  "name" : "AddRolePartial_Copy",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "roleId",
+    "type" : "integer"
+  }, {
+    "name" : "roleName",
+    "type" : "string"
+  } ]
+}, {
   "name" : "AddTeamPartial",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "id",
+    "type" : "integer"
+  }, {
+    "name" : "teamName",
+    "type" : "string"
+  }, {
+    "name" : "teamId",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "AddTeamPartial_Copy",
   "type" : "PARTIAL",
   "params" : [ {
     "name" : "groupId",
@@ -274,6 +297,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "RolesPartial_Copy",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "SetupLanding",
   "type" : "PAGE",
   "params" : [ ]
@@ -287,6 +314,10 @@
   "params" : [ ]
 }, {
   "name" : "TeamsPartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "TeamsPartial_Copy",
   "type" : "PARTIAL",
   "params" : [ ]
 }, {

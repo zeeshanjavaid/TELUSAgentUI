@@ -1,0 +1,97 @@
+{
+  "getTeamsAssociatedUsers" : {
+    "_id" : "wm-getTeamsAssociatedUsers-wm.ServiceVariable-1680641024005",
+    "name" : "getTeamsAssociatedUsers",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "teamId",
+      "value" : "bind:'%'+Widgets.teamSearchText.datavalue+'%'",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamsAndAssociatedUsersResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamsAndAssociatedUsers",
+    "operationId" : "QueryExecutionController_executeGetTeamsAndAssociatedUsers",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 5,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
+  "PageErrorMsg" : {
+    "_id" : "wm-PageErrorMsg-wm.Variable-1654173172684",
+    "name" : "PageErrorMsg",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "roleId" : {
+    "_id" : "wm-roleId-wm.Variable-1654784622377",
+    "name" : "roleId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "teamCopy" : {
+    "_id" : "wm-teamCopy-wm.Variable-1675759955399",
+    "name" : "teamCopy",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "teamErrorMessage" : {
+    "_id" : "wm-teamErrorMessage-wm.Variable-1680627578665",
+    "name" : "teamErrorMessage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "teamSuccessMessage" : {
+    "_id" : "wm-teamSuccessMessage-wm.Variable-1680627592882",
+    "name" : "teamSuccessMessage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

@@ -16,17 +16,17 @@
                     </wm-listtemplate>
                 </wm-list>
             </wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel4" content="RolesPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel4"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel5" content="AddRolePartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel5">
-                <wm-param name="roleId" value="bind:Widgets.panel4.Widgets.RoleList.selecteditem.id" type="integer"></wm-param>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel4" content="RolesPartial_Copy" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel4" deferload="true"></wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel5" content="AddRolePartial_Copy" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Roles&quot;" class="panel5" deferload="true">
+                <wm-param name="roleId" value="bind:Widgets.panel4.Widgets.RoleList.selecteditem.roleId" type="integer"></wm-param>
                 <wm-param name="roleName" value="bind:Widgets.panel4.Widgets.RoleList.selecteditem.role" type="string"></wm-param>
             </wm-panel>
             <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel6" content="UserPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Users&quot;" class="panel6"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel71" content="TeamsPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel71"></wm-panel>
-            <wm-panel iconclass="" autoclose="outsideClick" title="" content="AddTeamPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7" name="panel9">
-                <wm-param name="groupId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.id" type="integer"></wm-param>
-                <wm-param name="groupName" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.name" type="string"></wm-param>
-                <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.GroupList.selecteditem.teamId" type="string"></wm-param>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel71" content="TeamsPartial_Copy" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel71" deferload="true"></wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" content="AddTeamPartial" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Teams&quot;" class="panel7" name="panel9" deferload="true">
+                <wm-param name="teamId" value="bind:Widgets.panel71.Widgets.TeamList.selecteditem.teamId" type="string"></wm-param>
+                <wm-param name="id" value="bind:Widgets.panel71.Widgets.TeamList.selecteditem.id" type="integer"></wm-param>
+                <wm-param name="teamName" value="bind:Widgets.panel71.Widgets.TeamList.selecteditem.teamName" type="string"></wm-param>
             </wm-panel>
             <!--            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel81" content="PartialDomainValueType" show="bind:Widgets.LeftNavAdminMenuListList1.selecteditem.dataValue==&quot;Work Category&quot; &amp;&amp; Variables.RedirectPage.dataSet.dataValue !== &quot;RedirectDomainPage&quot;"-->
             <!--                class="panel81"></wm-panel>-->

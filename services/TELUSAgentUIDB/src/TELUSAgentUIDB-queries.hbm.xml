@@ -205,6 +205,30 @@ ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.ro
     <query-param name="RoleId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getRolesAssociatedUsersPermissions">
+        <![CDATA[
+        select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from
+(
+select rid as roleId,userid,role,permissionId, description from(
+(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or r.role = :role) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
+) 
+)b group by role order by roleId desc
+        ]]>
+    <query-param name="role" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRolesAssociatedUsersPermissions__count">
+        <![CDATA[
+        select count(*) from (select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from
+(
+select rid as roleId,userid,role,permissionId, description from(
+(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or r.role = :role) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
+) 
+)b group by role order by roleId desc) wmTempTable
+        ]]>
+    <query-param name="role" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="getActiveRolesByUserName">
         <![CDATA[
         select distinct(r.role) from `ROLE` r
@@ -861,6 +885,28 @@ END) wmTempTable
         select count(*) from (select ROLE.id,ROLE.role from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable
         ]]>
     <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getTeamsAndAssociatedUsers">
+        <![CDATA[
+        select ID, TeamID, TeamName, count(distinct userid) as userCount from
+(
+select tid as ID, TeamID, userid,TeamName from(
+select t.id as tid, t.TeamID, tu.userid, t.TeamName from TEAM t left outer join TEAM_USER tu on t.ID = tu.teamID where t.teamID is null or lower(t.teamID) like lower(:teamId))a
+)b group by TeamID order by ID desc
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getTeamsAndAssociatedUsers__count">
+        <![CDATA[
+        select count(*) from (select ID, TeamID, TeamName, count(distinct userid) as userCount from
+(
+select tid as ID, TeamID, userid,TeamName from(
+select t.id as tid, t.TeamID, tu.userid, t.TeamName from TEAM t left outer join TEAM_USER tu on t.ID = tu.teamID where t.teamID is null or lower(t.teamID) like lower(:teamId))a
+)b group by TeamID order by ID desc) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="Query_GetAllDomainValuesByDvTypeCode">

@@ -47,6 +47,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportCountRolePermission(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetRolesAssociatedUsersPermissionsResponse> executeGetRolesAssociatedUsersPermissions(String role, Pageable pageable);
+
+    void exportGetRolesAssociatedUsersPermissions(String role, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<GetActiveRolesByUserNameResponse> executeGetActiveRolesByUserName(String userName, Pageable pageable);
 
     void exportGetActiveRolesByUserName(String userName, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
@@ -124,6 +128,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<GetRoleByUserIdResponse> executeGetRoleByUserId(String userId, Pageable pageable);
 
     void exportGetRoleByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(String teamId, Pageable pageable);
+
+    void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<QueryGetAllDomainValuesByDvTypeCodeResponse> executeQuery_GetAllDomainValuesByDvTypeCode(String selectedLocale, String domainValueTypeCode, Boolean isAlphaSort, Pageable pageable);
 
