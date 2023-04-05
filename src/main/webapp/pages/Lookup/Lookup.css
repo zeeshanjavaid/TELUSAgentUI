@@ -12,3 +12,15 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+a.nav-link.active {
+    border-bottom: 4px solid gray;
+}
+
+li.tab-header.nav-item {
+    margin-right: 45px;
+}
+
+.wm-app .nav-tabs {
+    border-bottom: none;
+}
