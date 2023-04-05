@@ -9431,7 +9431,8 @@ button.wm-app .close {
 .wm-app .app-right-panel .nav li>.dropdown.open>.dropdown-menu li a {
     padding: 8px 10px 8px 25px;
     font-size: 14px;
-    color: #00629b;
+    /*color: #00629b;*/
+    color: #6e6d6a;
     border-bottom: none;
 }
 
@@ -9490,7 +9491,8 @@ button.wm-app .close {
 
 .wm-app .app-left-panel .nav.nav-tabs,
 .wm-app .app-right-panel .nav.nav-tabs {
-    background-color: #d2e9f4;
+    /*background-color: #d2e9f4;*/
+    background-color: #ece6ff;
     border-bottom: none;
 }
 
