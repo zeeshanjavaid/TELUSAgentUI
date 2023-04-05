@@ -18,3 +18,49 @@ h4 {
     border-bottom: 1px solid #ddd; 
     width: 96%
 }
+
+/*.createDisputeLabel {
+    width: 40%;
+    text-align: right;
+}
+
+#selectBANLabel {
+    left: -11px;
+}*/
+
+.BANbutton {
+    left: -17px;
+    top: -2px;
+}
+
+.wm-app .app-input-wrapper {
+    display: contents !important;
+}
+
+input.form-control.app-textbox.app-number-input.ng-pristine.ng-invalid.ng-touched {
+    width: 70%
+}
+
+input.form-control.app-textbox.app-number-input.ng-untouched.ng-pristine.ng-invalid {
+    width: 70%;
+}
+
+input.form-control.app-textbox.app-number-input.ng-untouched.ng-pristine.ng-valid {
+    width: 70%
+}
+
+input.form-control.app-textbox.app-number-input.ng-pristine.ng-valid.ng-touched {
+    width: 70%;
+}
+
+input.form-control.app-textbox.ng-pristine.ng-valid.ng-touched {
+    width: 70%;
+}
+
+/*input.form-control.app-textbox.ng-pristine.ng-invalid.ng-touched {
+    width: 70%;
+}*/
+
+input.form-control.app-textbox.ng-untouched.ng-pristine.ng-valid {
+    width: 70%;
+}

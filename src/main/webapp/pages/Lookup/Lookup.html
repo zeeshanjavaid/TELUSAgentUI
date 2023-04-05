@@ -2,11 +2,11 @@
     <wm-header content="header" name="header1"></wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
-        <wm-page-content columnwidth="12" name="page_content1">
+        <wm-page-content columnwidth="1" name="page_content1">
             <wm-layoutgrid name="layoutgrid2" columns="12" width="100%">
                 <wm-gridrow name="gridrow4_1" height="55px">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn31_1">
-                        <wm-icon name="icon1" iconclass="fico-icon-sort-up fa-lg fa-rotate-270"></wm-icon>
+                        <wm-icon class="backIcon" on-click="Actions.goToPage_lookupEntity.invoke()" name="icon1" iconclass="fico-icon-sort-up fa-lg fa-rotate-270"></wm-icon>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn32_1">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label1" caption="Entity Name" height="45px" width="1000px"></wm-label>
@@ -26,7 +26,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn39"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn40"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn41">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Included Ban" name="label4"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Included BAN's" name="label4"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn42"></wm-gridcolumn>
                 </wm-gridrow>
@@ -92,9 +92,7 @@
                     </wm-tabpane>
                     <wm-tabpane name="Dispute" title="Dispute" on-select="DisputeSelect($event, widget)" on-deselect="DisputeDeselect($event, widget)">
                         <wm-container name="container4" class="rrr">
-                            <!-- <wm-gridcolumn class="createDispute">
-                                <wm-button class="btn-default" caption="Create Dispute" type="button" margin="1em 1.2em 1em 1em" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
-                            </wm-gridcolumn>-->
+                            <!-- <wm-gridcolumn class="createDispute"><wm-button class="btn-default" caption="Create Dispute" type="button" margin="1em 1.2em 1em 1em" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button></wm-gridcolumn>-->
                             <wm-button class="btn-default createDispute" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="DisputeListPanel" content="DisputeList" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDisputePanel" content="CreateDispute" show="bind:Variables.DisputePageName.dataSet.dataValue=='CreateDispute'"></wm-panel>

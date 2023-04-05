@@ -17,8 +17,102 @@
         <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
         <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
     </wm-container>
-    <wm-layoutgrid name="layoutgrid2">
-        <wm-gridrow name="gridrow4" padding="1em unset 1em 2.0em">
+    <wm-layoutgrid name="layoutgrid2" margin="0 0 0 25px" style="display: flex; flex-direction: column;">
+        <wm-gridrow style="display: flex;" margin="10px 10px 10px 10px">
+            <wm-gridcolumn class="selectBAN" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="80%">
+                    <wm-label name="label3" id="selectBANLabel" text-align="right" caption="Selected BAN*" class="col-md-3 createDisputeLabel" color="grey" left="-8px" whitespace="nowrap"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-text name="selectedDisputeBan" width="75%" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="true" placeholder=""></wm-text>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-button class="btn-default BANbutton" caption="Select BAN" type="button" name="button1" on-click="Widgets.SelectDisputeBanDialog.open()"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="exclusion" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label name="label14" caption="Exclusion*" class="col-md-3 createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-select name="exclusionDropdown" width="70%" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="dataValue" displayfield="name"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="reason" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label name="ReasonLabel" caption="Reason*" class="col-md-3 createDisputeLabel" whitespace="nowrap" width="150px" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-select name="reasonDropdown" width="70%" dataset="bind:Variables.reasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" placeholder="Select" textalign="left"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow style="display: flex;" margin="10px 10px 10px 10px">
+            <wm-gridcolumn class="disputeAmt" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label class="col-md-3 createDisputeLabel" name="disputeAmtLabel" caption="Dispute Amount $*" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-number textalign="right" name="disputeAmt" width="70%" height="38px" required="true" placeholder=""></wm-number>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="chargeType" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label name="ChargeTypeLabel" caption="Charge Type*" class="col-md-3 createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-select name="chargeTypeDropDown" placeholder="Select" width="70%" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="productSRV" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label name="label12" caption="Product &amp; Srv*" whitespace="nowrap" class="col-md-3 createDisputeLabel" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-select name="productsDropdown" width="70%" placeholder="Select" dataset="bind:Variables.productsDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow style="display: flex;" margin="10px 10px 10px 10px">
+            <wm-gridcolumn class="adjustmentDate" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label name="label13_1" color="grey" caption="Adjustment(s) to Date" whitespace="nowrap" class="col-md-3 createDisputeLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-number textalign="right" name="AdjustmentToDate" width="70%" placeholder=""></wm-number>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="assignedDisputePrime" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label class="col-md-3 createDisputeLabel" name="label13" caption="Assigned Dispute Prime" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-text name="AssignedDisputePrime" textalign="left" placeholder=""></wm-text>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+            <wm-gridcolumn class="customerEmail" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="40%">
+                    <wm-label class="col-md-3 createDisputeLabel" name="customerEmailLabel" caption="Customer Email" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-text name="custEmailText" textalign="left" placeholder=""></wm-text>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow style="display: flex;" margin="10px 10px 10px 10px">
+            <wm-gridcolumn class="comments" style="display: flex;" margin="0 10px 0 0">
+                <wm-gridcolumn width="10.5%">
+                    <wm-label class="col-md-3 createDisputeLabel" name="label11" caption="Comments" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn>
+                    <wm-textarea name="CreateCommentsDispute" width="37%" placeholder=""></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridcolumn>
+        </wm-gridrow>
+
+
+        <!--break-->
+        <!--<wm-gridrow name="gridrow4" padding="1em unset 1em 2.0em">
             <wm-gridcolumn columnwidth="3" name="gridcolumn15" horizontalalign="left">
                 <wm-layoutgrid name="layoutgrid14">
                     <wm-gridrow name="gridrow31">
@@ -139,7 +233,6 @@
                 </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow7"></wm-gridrow>
         <wm-gridrow name="gridrow8" padding="unset unset 1em 2.0em">
             <wm-gridcolumn columnwidth="4" name="gridcolumn55">
                 <wm-layoutgrid name="layoutgrid15">
@@ -154,8 +247,14 @@
                 </wm-layoutgrid>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="8" name="gridcolumn56"></wm-gridcolumn>
-        </wm-gridrow>
+        </wm-gridrow>-->
     </wm-layoutgrid>
+
+
+
+
+
+    <!--break-->
     <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
         <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetails.dataSet" navigation="None" multiselect="false" radioselect="true">
             <wm-table-column binding="banId" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>

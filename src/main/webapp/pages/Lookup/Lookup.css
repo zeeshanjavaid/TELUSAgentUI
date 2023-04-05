@@ -7,3 +7,8 @@
     margin-top: 1%;
     margin-left: 92.7%;
 }
+
+.backIcon {
+    font-size: 25px;
+    cursor: pointer;
+}
