@@ -3364,7 +3364,7 @@
         "target" : "teamId",
         "type" : "integer",
         "matchMode" : "exact",
-        "value" : "bind:pageParams.teamId",
+        "value" : "bind:pageParams.id",
         "required" : false,
         "secondvalue" : "",
         "isFirst" : true

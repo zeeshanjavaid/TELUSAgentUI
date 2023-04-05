@@ -106,6 +106,7 @@ Partial.RoleListClick = function(widget, $data) {
 };
 
 Partial.getRolesAssociatedUsersPermissionsonSuccess = function(variable, data) {
+
     if (App.Variables.RolePageCommunication.currentRoleInFocusId) {
 
         let selectedItem = App.getRoleIndex(App.Variables.RolePageCommunication.currentRoleInFocusId);

@@ -93,7 +93,7 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
                     'updatedOn': new Date()
                 });
-
+                App.Variables.RolePageCommunication.currentRoleInFocusId = Partial.pageParams.roleId;
                 Partial.Variables.updateRole.update();
             } else {
                 Partial.Variables.createRole.setInput({
