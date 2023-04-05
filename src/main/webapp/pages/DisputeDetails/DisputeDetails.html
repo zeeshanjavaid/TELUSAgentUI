@@ -17,7 +17,7 @@
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
                 <wm-container name="container4" horizontalalign="right" margin="8px unset unset unset">
                     <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="CloseDispute" on-click="CloseDisputeClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.cancelDisputeConfirmation.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)"></wm-button>
                     <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="button3" textalign="right" on-click="Widgets.updateDisputeConfirmation.open()"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
@@ -246,7 +246,10 @@
     </wm-dialog>
     <!--<wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%">-->
     <wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%" class="updateDisputeLine1" closable="true">
-        <wm-container name="container18" margin="-1em unset unset unset" class="updateDisputeLine1"></wm-container>
+        <wm-container name="container18" margin="-1em unset unset unset" class="updateDisputeLine1">
+            <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
+        </wm-container>
         <wm-layoutgrid name="layoutgrid16">
             <wm-gridrow name="gridrow21_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn54" padding="2em unset unset unset">
@@ -280,7 +283,7 @@
                                 <wm-layoutgrid name="layoutgrid29">
                                     <wm-gridrow name="gridrow43">
                                         <wm-gridcolumn columnwidth="4" name="gridcolumn95">
-                                            <wm-label padding="unset 0.5em" name="label43_1" caption="Exclusion:" color="grey"></wm-label>
+                                            <wm-label padding="unset 0.5em" name="label43_1" caption="Exclusion *" color="grey"></wm-label>
                                         </wm-gridcolumn>
                                         <wm-gridcolumn columnwidth="8" name="gridcolumn96">
                                             <wm-composite name="composite14_1">
@@ -298,7 +301,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow22_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn56_1">
-                    <wm-label padding="unset 0.5em" caption="Dispute Amount" name="label33" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" caption="Dispute Amount *" name="label33" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn57">
                     <wm-composite name="composite8">
@@ -324,7 +327,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow27_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn62_1">
-                    <wm-label padding="unset 0.5em" caption="Charge Type" name="label43" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" caption="Charge Type *" name="label43" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn63">
                     <wm-composite name="composite10" width="60%">
@@ -338,7 +341,7 @@
         <wm-layoutgrid name="layoutgrid22">
             <wm-gridrow name="gridrow31" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn70_1">
-                    <wm-label padding="unset 0.5em" caption="Reason" name="label44" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" caption="Reason *" name="label44" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn71_1">
                     <wm-composite name="composite11" width="60%">
@@ -350,7 +353,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow32" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn72_1">
-                    <wm-label padding="unset 0.5em" caption="Product &amp; Srv" name="label45" whitespace="nowrap" class="col-md-3 control-label" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" caption="Product &amp; Srv *" name="label45" whitespace="nowrap" class="col-md-3 control-label" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn73">
                     <wm-composite name="composite12" width="60%">

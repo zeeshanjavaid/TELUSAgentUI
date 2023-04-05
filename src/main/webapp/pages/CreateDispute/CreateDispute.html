@@ -33,7 +33,7 @@
                     <wm-label name="label14" caption="Exclusion*" class="col-md-3" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn9">
-                    <wm-select name="exclusionDropdown" width="70%" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="dataValue" displayfield="name"></wm-select>
+                    <wm-select name="exclusionDropdown" width="70%" placeholder="Select" dataset="bind:Variables.exclusionDropdownVar.dataSet" datafield="dataValue" displayfield="name" required="true"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
             <wm-gridcolumn class="reason" style="display: flex;" margin="0 10px 0 0" name="gridcolumn10">
@@ -107,9 +107,7 @@
                 </wm-gridcolumn>
             </wm-gridcolumn>
         </wm-gridrow>
-
     </wm-layoutgrid>
-
     <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
         <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetails.dataSet" navigation="None" multiselect="false" radioselect="true">
             <wm-table-column binding="banId" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
