@@ -17,8 +17,7 @@
                             <wm-label class="col-md-3 control-label" name="label4" caption="Level*" margin="10px 3px 5px 15px" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px" class="app-grid-column-mac">
-                            <wm-select name="select1" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.levelValue.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.levelValue.dataSet[2].dataValue" displayfield="dataValue"
-                                on-change="select1Change($event, widget, newVal, oldVal)"></wm-select>
+                            <wm-select name="select1" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.levelValue.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.levelValue.dataSet[2].dataValue" displayfield="dataValue" on-change="select1Change($event, widget, newVal, oldVal)"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn5_1">
                             <wm-container name="container3" show="bind:Widgets.select1.datavalue==='BAN'">
@@ -37,7 +36,7 @@
                                 <!--</wm-gridcolumn>-->
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn7">
-                                <wm-text name="text4" type="text" width="66%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
+                                <wm-text name="text4" type="text" width="60%" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
                                 <p id="p02" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
@@ -54,7 +53,7 @@
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn11">
-                                <wm-text name="text5" placeholder="" width="78%" class="selectbox2-mac" disabled="true"></wm-text>
+                                <wm-text name="text5" placeholder="" width="69%" class="selectbox2-mac" disabled="true"></wm-text>
                                 <p id="p03" style="color:red;"></p>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
