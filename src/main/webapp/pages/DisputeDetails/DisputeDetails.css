@@ -32,4 +32,8 @@
     background-color: #fff;
     padding-bottom: -14em;
     margin-bottom: -14px;
-}    
+}
+
+.updateDisputeLabel {
+    float: right;
+}

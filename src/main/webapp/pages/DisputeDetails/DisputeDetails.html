@@ -180,7 +180,7 @@
             <wm-gridrow name="gridrow18" padding="2em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn48_1">
                     <wm-composite name="composite3">
-                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason *" width="27%" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason*" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container9" width="72%">
                             <wm-select name="cancelledReasonValue" placeholder="Select" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
@@ -190,7 +190,7 @@
             <wm-gridrow name="gridrow29" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn66_1">
                     <wm-composite name="composite4">
-                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments *" width="27%" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label40" caption="Comments*" width="27%" color="grey" style="text-align: right; left: -10px;"></wm-label>
                         <wm-container class="col-md-9" name="container10" width="72%">
                             <wm-textarea name="CommentsCancelDispute" required="true" datavalue="bind:Variables.getDisputeDetails.dataSet.comment" placeholder="" maxchars="256"></wm-textarea>
                         </wm-container>
@@ -217,7 +217,7 @@
             <wm-gridrow name="gridrow25" padding="2em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn60_1">
                     <wm-composite name="composite1">
-                        <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason *" padding="unset unset unset 0.5em" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason*" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container6">
                             <wm-select name="ClosedDisputeReason" placeholder="Select" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" required="true"></wm-select>
                         </wm-container>
@@ -227,7 +227,7 @@
             <wm-gridrow name="gridrow26_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn61_1">
                     <wm-composite name="composite2">
-                        <wm-label class="col-md-3 control-label" name="label37" caption="Comments *" padding="unset unset unset 0.5em" color="grey"></wm-label>
+                        <wm-label class="col-md-3 control-label" name="label37" caption="Comments*" padding="unset unset unset 0.5em" color="grey" style="text-align: right; left: -11px;"></wm-label>
                         <wm-container class="col-md-9" name="container7">
                             <wm-textarea name="CloseDisputeComments" width="97%" required="true" placeholder="" maxchars="256"></wm-textarea>
                         </wm-container>
@@ -244,64 +244,43 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
-    <!--<wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%">-->
     <wm-dialog dialogtype="design-dialog" modal="true" title="Update Dispute" iconclass="" name="updateDisputeConfirmation" width="50%" height="100%" class="updateDisputeLine1" closable="true">
         <wm-container name="container18" margin="-1em unset unset unset" class="updateDisputeLine1">
             <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
         </wm-container>
         <wm-layoutgrid name="layoutgrid16">
-            <wm-gridrow name="gridrow21_1" padding="0.5em unset unset unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn54" padding="2em unset unset unset">
-                    <wm-layoutgrid name="layoutgrid19">
-                        <wm-gridrow name="gridrow25_2">
-                            <wm-gridcolumn columnwidth="3" name="gridcolumn57_2">
-                                <wm-layoutgrid name="layoutgrid25_1">
-                                    <wm-gridrow name="gridrow35_1">
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn78_1">
-                                            <wm-label padding="unset 0.5em" name="label31" caption="Dispute ID" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn79_1">
-                                            <wm-label padding="unset 0.5em" name="label34_1" caption="bind:Variables.getDisputeDetails.dataSet.id"></wm-label>
-                                        </wm-gridcolumn>
-                                    </wm-gridrow>
-                                </wm-layoutgrid>
-                            </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="4" name="gridcolumn61_2">
-                                <wm-layoutgrid name="layoutgrid26">
-                                    <wm-gridrow name="gridrow37">
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn82">
-                                            <wm-label padding="unset 0.5em" name="label32" caption="Selected BAN" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="6" name="gridcolumn83_1">
-                                            <wm-label padding="unset 0.5em" name="label35" caption="BAN 638"></wm-label>
-                                        </wm-gridcolumn>
-                                    </wm-gridrow>
-                                </wm-layoutgrid>
-                            </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="5" name="gridcolumn94">
-                                <wm-layoutgrid name="layoutgrid29">
-                                    <wm-gridrow name="gridrow43">
-                                        <wm-gridcolumn columnwidth="4" name="gridcolumn95">
-                                            <wm-label padding="unset 0.5em" name="label43_1" caption="Exclusion *" color="grey"></wm-label>
-                                        </wm-gridcolumn>
-                                        <wm-gridcolumn columnwidth="8" name="gridcolumn96">
-                                            <wm-composite name="composite14_1">
-                                                <wm-container class="col-md-9" name="container21_1" width="95%">
-                                                    <wm-select name="updateDisputeExclusionDropdown" dataset="bind:Variables.exclusionDropDownUpdateVar.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.getDisputeDetails.dataSet.collectionExclusionIndicator"></wm-select>
-                                                </wm-container>
-                                            </wm-composite>
-                                        </wm-gridcolumn>
-                                    </wm-gridrow>
-                                </wm-layoutgrid>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                    </wm-layoutgrid>
+            <wm-gridrow name="gridrow35_1" margin="10px 0 30px 0">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn78_1">
+                    <wm-label padding="unset 0.5em" name="label31" caption="Dispute ID" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey" margin="0 50px 0 0"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="9" name="gridcolumn79_1">
+                    <wm-label name="label34_1" caption="bind:Variables.getDisputeDetails.dataSet.id"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow37" margin="10px 0 30px 0">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn82">
+                    <wm-label margin="0 71px 0 0" padding="unset 0.5em" name="label32" caption="Selected BAN" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="9" name="gridcolumn83_1">
+                    <wm-label name="label35" caption="BAN 638"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow43">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn95">
+                    <wm-label padding="unset 0.5em" margin="0 24px 0 0" class="updateDisputeLabel" name="label43_1" caption="Exclusion*" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="9" name="gridcolumn96">
+                    <wm-composite name="composite14_1">
+                        <wm-container class="col-md-9" name="container21_1" width="45%">
+                            <wm-select name="updateDisputeExclusionDropdown" dataset="bind:Variables.exclusionDropDownUpdateVar.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.getDisputeDetails.dataSet.collectionExclusionIndicator"></wm-select>
+                        </wm-container>
+                    </wm-composite>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow22_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn56_1">
-                    <wm-label padding="unset 0.5em" caption="Dispute Amount *" name="label33" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 89px 0 0" caption="Dispute Amount*" name="label33" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn57">
                     <wm-composite name="composite8">
@@ -315,7 +294,7 @@
         <wm-layoutgrid name="layoutgrid20">
             <wm-gridrow name="gridrow28_2" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn64">
-                    <wm-label padding="unset 0.5em" caption="Adjustment(s) to Date" name="label42" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 120px 0 0" caption="Adjustment(s) to Date" name="label42" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn65_1">
                     <wm-composite name="composite9" horizontalalign="left">
@@ -327,7 +306,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow27_1" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn62_1">
-                    <wm-label padding="unset 0.5em" caption="Charge Type *" name="label43" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 65px 0 0" caption="Charge Type*" name="label43" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn63">
                     <wm-composite name="composite10" width="60%">
@@ -341,7 +320,7 @@
         <wm-layoutgrid name="layoutgrid22">
             <wm-gridrow name="gridrow31" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn70_1">
-                    <wm-label padding="unset 0.5em" caption="Reason *" name="label44" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" caption="Reason*" margin="0 34px 0 0" name="label44" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn71_1">
                     <wm-composite name="composite11" width="60%">
@@ -353,7 +332,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow32" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn72_1">
-                    <wm-label padding="unset 0.5em" caption="Product &amp; Srv *" name="label45" whitespace="nowrap" class="col-md-3 control-label" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 71px 0 0" caption="Product &amp; Srv*" name="label45" whitespace="nowrap" class="col-md-3 control-label updateDisputeLabel" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn73">
                     <wm-composite name="composite12" width="60%">
@@ -367,7 +346,7 @@
         <wm-layoutgrid name="layoutgrid23">
             <wm-gridrow name="gridrow33" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn74">
-                    <wm-label padding="unset 0.5em" caption="Customer Email" name="label46" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 79px 0 0" caption="Customer Email" name="label46" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn75_1">
                     <wm-composite name="composite13" width="60%">
@@ -379,7 +358,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow34" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn76_1">
-                    <wm-label padding="unset 0.5em" caption="Assigned Dispute Prime" name="label47" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 126px 0 0" caption="Assigned Dispute Prime" name="label47" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn77">
                     <wm-composite name="composite14" width="65%">
@@ -393,7 +372,7 @@
         <wm-layoutgrid name="layoutgrid24">
             <wm-gridrow name="gridrow35" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn78">
-                    <wm-label padding="unset 0.5em" caption="Comments" name="label48" class="col-md-3 control-label" whitespace="nowrap" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 46px 0 0" caption="Comments" name="label48" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn79">
                     <wm-composite name="composite15" width="100%">
