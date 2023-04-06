@@ -75,7 +75,7 @@
             </wm-layoutgrid>
             <wm-container name="container3_1" show="true" class="rrr">
                 <h3><b>Lookup Results</b></h3>
-                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false">
+                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false" showrecordcount="true" pagesize="10">
                     <wm-table-column binding="entityId" caption="Entity ID" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
                         <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
                     </wm-table-column>
