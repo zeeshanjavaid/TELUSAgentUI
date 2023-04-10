@@ -289,6 +289,14 @@
       "name" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
       "breakPoints" : [ {
         "info" : null,
+        "line" : 107,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addBillingAccountRef",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
         "line" : 113,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateBillingAccountRef",
@@ -385,14 +393,6 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 204,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updatePaymentArrangement",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
         "line" : 216,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getdispute",
@@ -457,9 +457,9 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 94,
+        "line" : 204,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getBillingAccountRef",
+        "name" : "updatePaymentArrangement",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -473,9 +473,9 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 107,
+        "line" : 94,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addBillingAccountRef",
+        "name" : "getBillingAccountRef",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

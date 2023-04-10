@@ -107,14 +107,14 @@
     "saveInPhonegap" : false
   },
   "getDisputeDetails" : {
-    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1680451414447",
+    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1681119744888",
     "name" : "getDisputeDetails",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "id",
-      "value" : "bind:pageParams.DisputeId",
+      "value" : "bind:Variables.disputeIdAppVar.dataSet.dataValue",
       "type" : "integer"
     }, {
       "target" : "history",
@@ -123,14 +123,14 @@
     } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
-    "operation" : "getdispute_1",
-    "operationId" : "CollectionEntityController_getdispute_1",
+    "operation" : "getdispute",
+    "operationId" : "CollectionEntityController_getdispute",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

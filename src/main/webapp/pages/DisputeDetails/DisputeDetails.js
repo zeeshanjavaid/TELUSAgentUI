@@ -47,7 +47,7 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({
-            "id": 10,
+            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
             "CollectionDisputeUpdate": {
                 'CollectionDisputeStatus': [{
                     'reason': Partial.Widgets.cancelledReasonValue.datavalue.dataValue
@@ -72,7 +72,7 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({
-            "id": 10,
+            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
             "CollectionDisputeUpdate": {
                 'CollectionDisputeStatus': [{
                     'reason': Partial.Widgets.ClosedDisputeReason.datavalue.dataValue
@@ -102,7 +102,7 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({
-            "id": 10,
+            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
             "CollectionDisputeUpdate": {
                 'adjustmentToDate': Partial.Widgets.AdjustmentToDateUpdate.datavalue,
                 'amount': Partial.Widgets.diputeAmtUpdate.datavalue,

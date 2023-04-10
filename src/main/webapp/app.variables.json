@@ -30,6 +30,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "disputeIdAppVar" : {
+    "_id" : "wm-DisputeIdAppVar-wm.Variable-1681104311545",
+    "name" : "disputeIdAppVar",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "DisputePageName" : {
     "_id" : "wm-DisputePageName-wm.Variable-1679900969661",
     "name" : "DisputePageName",
