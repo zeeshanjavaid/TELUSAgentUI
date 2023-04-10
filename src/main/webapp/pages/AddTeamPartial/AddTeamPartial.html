@@ -87,7 +87,7 @@
                         <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
                             <!--<wm-prefab prefabname="DualList_TD" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
                                 resetleftdataset="false" displayfield="bind:&quot;fullName&quot;" identifier="bind:userId"></wm-prefab>-->
-                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;" new="bind:pageParams.teamId === undefined"
+                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;" new="bind:pageParams.id === undefined"
                                 isreadonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-prefab>
                         </wm-container>
                     </wm-composite>
@@ -130,5 +130,5 @@
             </wm-container>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="createGroup,CreateGroupRole,CreateGroupUser,deleteGroup,executeDeleteGroupRole,executeDeleteGroupUser,getAllRole,getAllUsers,getGroup,updateGroup"></wm-spinner>
+    <!-- <wm-spinner show="true" name="spinner1" caption="" servicevariabletotrack="createGroup,CreateGroupRole,CreateGroupUser,deleteGroup,executeDeleteGroupRole,executeDeleteGroupUser,getAllRole,getAllUsers,getGroup,updateGroup"></wm-spinner>-->
 </wm-partial>

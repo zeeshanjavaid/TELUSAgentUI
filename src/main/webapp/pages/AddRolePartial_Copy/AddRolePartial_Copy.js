@@ -230,7 +230,7 @@ Partial.updateRoleonSuccess = async function(variable, data) {
     Partial.Variables.deleteRolePermission.setInput({
         'RoleId': data.id
     });
-    await Partial.Variables.deleteRolePermission.invoke();
+    Partial.Variables.deleteRolePermission.invoke();
 };
 
 Partial.getRolePermissiononError = function(variable, data) {
@@ -298,8 +298,13 @@ Partial.deleteRolePermissiononSuccess = function(variable, data) {
             Partial.Variables.CreateRolePermission.invoke();
         })
         App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.ROLE_UPDATED_SUCCESSFULLY;
-    }
+    } else {
 
+        Partial.Variables.deleteRole.setInput({
+            'id': Partial.pageParams.roleId
+        });
+        Partial.Variables.deleteRole.invoke();
+    }
 };
 
 Partial.deleteRoleConfirmOkClick = function($event, widget) {
@@ -310,7 +315,6 @@ Partial.deleteRoleConfirmOkClick = function($event, widget) {
         'RoleId': Partial.pageParams.roleId
     });
     Partial.Variables.deleteRolePermission.invoke();
-
 };
 
 Partial.deleteRoleonSuccess = function(variable, data) {
@@ -334,18 +338,6 @@ Partial.deleteRoleonError = function(variable, data) {
 
 };
 
-Partial.executeDeleteGroupRoleByRoleIdonError = function(variable, data) {
-
-};
-Partial.executeDeleteGroupRoleByRoleIdonSuccess = function(variable, data) {
-
-    Partial.Variables.deleteRole.setInput({
-        'id': Partial.pageParams.roleId
-    });
-    Partial.Variables.deleteRole.invoke();
-
-};
-
 Partial.renderScreenReadOnly = function() {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
@@ -364,10 +356,12 @@ Partial.DeleteButtonClick = function($event, widget) {
 };
 
 Partial.getAllPermissiononSuccess = function(variable, data) {
+    /*
 
-    Partial.Variables.getAllPermission.dataSet = data;
-    Partial.Variables.leftPermissionList.dataSet = Partial.Variables.getAllPermission.dataSet;
-    Partial.Variables.getAllPermission.dataSet.forEach(function(p) {
-        p.fullPermissionName = App.htmlEncode(p.description);
-    });
+        Partial.Variables.getAllPermission.dataSet = data;
+        Partial.Variables.leftPermissionList.dataSet = Partial.Variables.getAllPermission.dataSet;
+        Partial.Variables.getAllPermission.dataSet.forEach(function(p) {
+            p.fullPermissionName = App.htmlEncode(p.description);
+        });
+    */
 };

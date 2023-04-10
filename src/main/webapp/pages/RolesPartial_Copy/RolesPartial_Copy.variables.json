@@ -19,7 +19,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 5,
-    "onSuccess" : "Javascript",
+    "onSuccess" : "getRolesAssociatedUsersPermissionsonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeAll",

@@ -28,7 +28,7 @@ Partial.onReady = function() {
     Partial.isDeleteTeam = false;
     Partial.Variables.leftUserList.dataSet = [];
 
-    if (Partial.pageParams.teamId === undefined) {
+    if (Partial.pageParams.id === undefined) {
         Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     }
 
@@ -39,7 +39,6 @@ App.addTeams = function() {
 
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
-
     Partial.Variables.leftUserList.dataSet = [];
     Partial.Variables.selectedUsers.dataSet = [];
     Partial.Variables.teamData.dataSet = [];
@@ -65,7 +64,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
-    //App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
+    App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
 
     if (Partial.Widgets.TeamIdText.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Team ID is mandatory";
@@ -148,7 +147,7 @@ Partial.CancelbuttonClick = function($event, widget) {
     Partial.canceledClicked = true;
 
     if (Partial.pageParams.id) {
-        if (Partial.Widgets.DualListRoles_TD && Partial.Widgets.DualListUsers_TD) {
+        if (Partial.Widgets.DualListUsers_TD !== undefined) {
             Partial.Widgets.DualListUsers_TD.rightdataset = Partial.Variables.selectedUsers.dataSet;
             Partial.Widgets.DualListUsers_TD.leftdataset = Partial.Variables.leftUserList.dataSet;
         }
@@ -156,7 +155,7 @@ Partial.CancelbuttonClick = function($event, widget) {
     } else {
         Partial.Variables.teamData.dataSet = [];
         Partial.pageParams.id = undefined;
-        if (Partial.Widgets.DualListRoles_TD && Partial.Widgets.DualListUsers_TD) {
+        if (Partial.Widgets.DualListUsers_TD !== undefined) {
             Partial.Widgets.DualListUsers_TD.rightdataset = [];
             Partial.Widgets.DualListUsers_TD.leftdataset = Partial.Variables.leftUserList.dataSet;
         }
@@ -168,19 +167,14 @@ Partial.getAllUsersonError = function(variable, data) {
 
 };
 Partial.getAllUsersonSuccess = function(variable, data) {
+    /*
 
-    Partial.Variables.leftUserList.dataSet = data;
-    data.forEach(function(u) {
-        u.fullName = App.htmlEncode(u.userId);
-    });
-    if (Partial.pageParams.id == undefined) {
+
         Partial.Variables.leftUserList.dataSet = data;
-        setTimeout(function() {
-            if (Partial.Widgets.DualListUsers_TD !== undefined) {
-                Partial.Widgets.DualListUsers_TD.leftdataset = data;
-            }
-        }, 100);
-    }
+        data.forEach(function(u) {
+            u.fullName = App.htmlEncode(u.userId);
+        });
+    */
 };
 
 Partial.scrollToTop = function() {
@@ -290,6 +284,7 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
     if (Partial.pageParams.id && Partial.pageParams.id > 0 && App.Variables.successMessage.dataSet.dataValue == null || App.Variables.successMessage.dataSet.dataValue == "") {
 
         App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
+        //App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
     } else if (App.Variables.successMessage.dataSet.dataValue == null || App.Variables.successMessage.dataSet.dataValue == "") {
         App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
     }
