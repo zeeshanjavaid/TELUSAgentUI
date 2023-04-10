@@ -18,8 +18,8 @@ import java.util.List;
 import java.lang.Integer;
 import io.swagger.client.model.CollectionContactArray;
 import io.swagger.client.model.CollectionContact;
-import io.swagger.client.model.CollectionEntityArray;
 import io.swagger.client.model.CollectionEntity;
+import io.swagger.client.model.CollectionEntityArray;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionSuppressionArray;
 import io.swagger.client.model.CollectionSuppression;
@@ -105,13 +105,17 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/collectionEntityArray", method = RequestMethod.GET)
-    public List<CollectionEntityArray> getCollectionEntityArray(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntityArray(ban, history);
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionEntity getCollectionEntityArray(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntityArray(id, history);
     }
 
     @RequestMapping(value = "/collectionEntityArray_1", method = RequestMethod.GET)
-    public CollectionEntity getCollectionEntityArray_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntityArray(id, history);
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionEntityArray> getCollectionEntityArray_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntityArray(ban, history);
     }
 
     @RequestMapping(value = "/paymentArrangement/{id}", method = RequestMethod.GET)
@@ -143,13 +147,17 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
-    public CollectionDispute getdispute(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(id, fields, history);
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
     }
 
     @RequestMapping(value = "/dispute_1", method = RequestMethod.GET)
-    public List<CollectionDispute> getdispute_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionDispute getdispute_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(id, fields, history);
     }
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.PUT)

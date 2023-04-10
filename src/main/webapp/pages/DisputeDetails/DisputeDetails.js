@@ -58,6 +58,7 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
 
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.cancelDisputeConfirmation.close();
+        App.Variables.successMessage.dataSet.dataValue = "Dispute Cancelled successfully";
     }
 
 };
@@ -83,6 +84,7 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
 
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.closeDisputeDialog.close();
+        App.Variables.successMessage.dataSet.dataValue = "Dispute Closed successfully";
     }
 
 
@@ -118,6 +120,7 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
 
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.updateDisputeConfirmation.close();
+        App.Variables.successMessage.dataSet.dataValue = "Dispute Updated successfully";
     }
 
 };
@@ -130,4 +133,9 @@ Partial.CancelDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.cancelDisputeConfirmation.open();
+};
+Partial.UpdateDisputeClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Partial.Widgets.updateDisputeConfirmation.open();
 };
