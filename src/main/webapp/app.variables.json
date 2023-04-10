@@ -88,7 +88,7 @@
     "type" : "Role",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 20,
+    "maxResults" : 200,
     "designMaxResults" : 10,
     "onSuccess" : "getAllRolesonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",

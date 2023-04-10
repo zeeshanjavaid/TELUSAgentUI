@@ -348,6 +348,8 @@ Partial.renderScreenReadOnly = function() {
 }
 Partial.EditRoleButtonClick = function($event, widget) {
 
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
 
 };

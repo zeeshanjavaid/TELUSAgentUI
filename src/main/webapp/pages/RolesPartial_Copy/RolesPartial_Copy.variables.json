@@ -7,7 +7,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "role",
-      "value" : "bind:Widgets.roleSearchText.datavalue",
+      "value" : "bind:'%'+Widgets.roleSearchText.datavalue+'%'",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetRolesAssociatedUsersPermissionsResponse",

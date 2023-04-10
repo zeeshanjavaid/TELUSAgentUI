@@ -83,17 +83,16 @@ Partial.SaveButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Team Name is invalid.";
         Partial.scrollToTop();
     } else {
-
         if (Partial.pageParams.id) {
             Partial.Variables.getAllTeams.dataSet.forEach(function(team) {
-                if (team.teamId.toLowerCase() == Partial.Widgets.TeamNameText.datavalue.toLowerCase() && team.id != Partial.pageParams.id) {
-                    Partial.teamIdExists = true;
+                if (team.teamId.toLowerCase() == Partial.Widgets.TeamIdText.datavalue.toLowerCase() && team.id != Partial.pageParams.id) {
+                    Partial.teamExists = true;
                 }
             });
         } else {
             Partial.Variables.getAllTeams.dataSet.forEach(function(team) {
-                if (team.teamId.toLowerCase() == Partial.Widgets.TeamNameText.datavalue.toLowerCase()) {
-                    Partial.teamExists = true;
+                if (team.teamId.toLowerCase() == Partial.Widgets.TeamIdText.datavalue.toLowerCase()) {
+                    Partial.teamIdExists = true;
                 }
             });
         }
@@ -168,7 +167,6 @@ Partial.getAllUsersonError = function(variable, data) {
 };
 Partial.getAllUsersonSuccess = function(variable, data) {
     /*
-
 
         Partial.Variables.leftUserList.dataSet = data;
         data.forEach(function(u) {
