@@ -1,4 +1,31 @@
 {
+  "getEntityProfileDetails" : {
+    "_id" : "wm-getEntityProfileDetails-wm.ServiceVariable-1681112443333",
+    "name" : "getEntityProfileDetails",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "entityId",
+      "value" : "bind:Page.pageParam.entityId",
+      "type" : "string"
+    } ],
+    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  },
   "LookUpSummary" : {
     "_id" : "wm-LookUpSummary-wm.Variable-1677651795236",
     "name" : "LookUpSummary",

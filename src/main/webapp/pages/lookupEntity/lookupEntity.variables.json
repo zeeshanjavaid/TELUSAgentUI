@@ -130,6 +130,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "number_IdCriteria1" : {
+    "_id" : "wm-number_IdCriteria1-wm.Variable-1680703664063",
+    "name" : "number_IdCriteria1",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "searchEntity" : {
     "_id" : "wm-searchEntity-wm.ServiceVariable-1679381011818",
     "name" : "searchEntity",

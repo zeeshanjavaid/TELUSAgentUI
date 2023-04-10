@@ -283,20 +283,20 @@ $(function() {
         }
     });
 });
-// Page.select1Change = function($event, widget, newVal, oldVal) {
+Page.select1Change = function($event, widget, newVal, oldVal) {
 
 
-//     if (newVal === "Entity") {
-//         //Page.Variables.number_IdCriteria.dataSet = Page.Variables.number_IdCriteria.dataSet[0].dataValue;
+    debugger;
+    if (newVal === "Entity") {
+        // Page.Variables.number_IdCriteria1.dataSet = ["Exact match"];
+        Page.Variables.number_IdCriteria.dataSet.pop(0)
+        Page.Variables.number_IdCriteria.dataSet.pop(1)
 
-//         var v = new Array();
-//         v = Page.Variables.number_IdCriteria.dataSet.dataValue;
+    } else {
 
-//         // Page.Variables.number_IdCriteria.dataSet[0].dataValue;
-//     }
+        Page.Variables.number_IdCriteria.dataSet.push("")
 
-//     debugger;
+    }
 
 
-//     alert("HI");
-// };
+};

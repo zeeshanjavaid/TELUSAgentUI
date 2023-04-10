@@ -1,1 +1,26 @@
-{ }
+{
+  "CollectionDataServiceGetEntityDetails" : {
+    "_id" : "wm-CollectionDataServiceGetEntityDetails-wm.ServiceVariable-1681109429158",
+    "name" : "CollectionDataServiceGetEntityDetails",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "CollectionData"
+  }
+}
