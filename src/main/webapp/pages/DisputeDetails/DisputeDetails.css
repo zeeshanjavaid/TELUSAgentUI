@@ -37,3 +37,47 @@
 .updateDisputeLabel {
     float: right;
 }
+
+.disputeDetailsLabel {
+    float: right;
+}
+
+.labelGrid {
+    width: 40%;
+}
+
+.labelValue {
+    width: 60%;
+}
+
+i.app-icon.panel-icon.fico-icon-chevron-light-down {
+    margin: 23px 0 0 28px;
+    cursor: pointer;
+}
+
+i.app-icon.panel-icon.fico-icon-chevron-light-right {
+    margin: 23px 0 0 28px;
+    cursor: pointer;
+}
+
+h3 {
+    padding: 0 0 5px 0;
+    margin: 10px 0 0 15px; 
+    border-bottom: 1px solid #ddd;
+}
+
+h4 {
+    padding: 0 0 7px 0;
+    width: 96%;
+    font-size: 22px !important;
+    position: relative;
+    cursor: pointer;
+    top: -33px;
+    left: 59px;
+    border-bottom: 1px solid #ddd; 
+    font-weight: bold !important;
+}
+
+button.app-icon.wi.card-action {
+    display: none;
+}
