@@ -1648,8 +1648,8 @@
     "type" : "Team",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 200,
-    "designMaxResults" : 10,
+    "maxResults" : 500,
+    "designMaxResults" : 500,
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
     "autoUpdate" : false,
@@ -3425,6 +3425,34 @@
       "TeamAssignUser" : ""
     },
     "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "teamsErrorMsg" : {
+    "_id" : "wm-teamsErrorMsg-wm.Variable-1681229239452",
+    "name" : "teamsErrorMsg",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "teamsSuccessMessage" : {
+    "_id" : "wm-teamsSuccessMessage-wm.Variable-1681229265446",
+    "name" : "teamsSuccessMessage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
   },

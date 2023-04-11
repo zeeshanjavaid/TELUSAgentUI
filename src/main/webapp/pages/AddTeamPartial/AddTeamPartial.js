@@ -20,8 +20,8 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.canceledClicked = false;
     Partial.teamExists = false;
     Partial.teamIdExists = false;
@@ -37,8 +37,8 @@ Partial.onReady = function() {
 
 App.addTeams = function() {
 
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.Variables.leftUserList.dataSet = [];
     Partial.Variables.selectedUsers.dataSet = [];
     Partial.Variables.teamData.dataSet = [];
@@ -58,29 +58,24 @@ Partial.SaveButtonClick = function($event, widget) {
     Partial.teamExists = false;
     Partial.teamIdExists = false;
     Partial.Widgets.TeamNameText.required = false;
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     let pattern = Partial.Widgets.TeamNameText.regexp;
 
-    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
-
     App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
-
-    if (Partial.Widgets.TeamIdText.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Team ID is mandatory";
+    if (Partial.Widgets.TeamIdText.datavalue == undefined || Partial.Widgets.TeamIdText.datavalue == "") {
+        Partial.Variables.teamsErrorMsg.dataSet.dataValue = "Team ID is mandatory";
         Partial.scrollToTop();
         Partial.Widgets.TeamIdText.required = true;
-        Partial.Variables.readOnlyMode.dataSet.dataValue = false
 
-    } else if (Partial.Widgets.TeamNameText.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAM_NAME_MANDATORY;
+    } else if (Partial.Widgets.TeamNameText.datavalue == undefined || Partial.Widgets.TeamNameText.datavalue == "") {
+        Partial.Variables.teamsErrorMsg.dataSet.dataValue = Partial.appLocale.TEAM_NAME_MANDATORY;
         Partial.scrollToTop();
         Partial.Widgets.TeamNameText.required = true;
-        Partial.Variables.readOnlyMode.dataSet.dataValue = false
 
     } else
     if (Partial.Widgets.TeamNameText.datavalue.match(pattern) == null) {
-        App.Variables.errorMsg.dataSet.dataValue = "Team Name is invalid.";
+        Partial.Variables.teamsErrorMsg.dataSet.dataValue = "Team Name is invalid.";
         Partial.scrollToTop();
     } else {
         if (Partial.pageParams.id) {
@@ -125,11 +120,11 @@ Partial.SaveButtonClick = function($event, widget) {
 
 
         } else if (Partial.teamExists) {
-            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.TEAM_ALREADY_EXIST;
+            Partial.Variables.teamsErrorMsg.dataSet.dataValue = Partial.appLocale.TEAM_ALREADY_EXIST;
             Partial.scrollToTop();
 
         } else {
-            App.Variables.errorMsg.dataSet.dataValue = "TeamId already exists.";
+            Partial.Variables.teamsErrorMsg.dataSet.dataValue = "TeamId already exists.";
             Partial.scrollToTop();
         }
     }
@@ -140,8 +135,8 @@ Partial.CancelbuttonClick = function($event, widget) {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
 
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.isDeleteTeam = false;
     Partial.canceledClicked = true;
 
@@ -257,8 +252,8 @@ Partial.getTeamUseronSuccess = function(variable, data) {
 };
 
 Partial.createTeamonSuccess = function(variable, data) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
 
     Partial.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
     Partial.scrollToTop();
@@ -279,12 +274,12 @@ Partial.createTeamonSuccess = function(variable, data) {
 
 Partial.CreateTeamUseronSuccess = function(variable, data) {
 
-    if (Partial.pageParams.id && Partial.pageParams.id > 0 && App.Variables.successMessage.dataSet.dataValue == null || App.Variables.successMessage.dataSet.dataValue == "") {
+    if (Partial.pageParams.id && Partial.pageParams.id > 0 && Partial.Variables.teamsSuccessMessage.dataSet.dataValue == null || Partial.Variables.teamsSuccessMessage.dataSet.dataValue == "") {
 
-        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
+        Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
         //App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
-    } else if (App.Variables.successMessage.dataSet.dataValue == null || App.Variables.successMessage.dataSet.dataValue == "") {
-        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
+    } else if (Partial.Variables.teamsSuccessMessage.dataSet.dataValue == null || Partial.Variables.teamsSuccessMessage.dataSet.dataValue == "") {
+        Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
     }
     Partial.scrollToTop();
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
@@ -316,19 +311,19 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 
 Partial.deleteTeamonSuccess = function(variable, data) {
 
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_DELETED_SUCCESSFULLY;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_DELETED_SUCCESSFULLY;
     App.refreshAllTeams();
 
 };
 
 Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     if (Partial.isDeleteTeam !== true) {
-        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
+        Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
 
         Partial.Widgets.DualListUsers_TD.rightdataset.forEach(function(user) {
             Partial.Variables.CreateTeamUser.setInput({

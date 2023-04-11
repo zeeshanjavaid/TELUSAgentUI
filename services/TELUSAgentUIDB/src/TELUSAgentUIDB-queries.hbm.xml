@@ -210,7 +210,7 @@ ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.ro
         select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from
 (
 select rid as roleId,userid,role,permissionId, description from(
-(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or lower(r.role) like lower(:role)) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
+(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where r.active = true and (:role is null or lower(r.role) like lower(:role))) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
 ) 
 )b group by role order by roleId desc
         ]]>
@@ -222,7 +222,7 @@ select rid as roleId,userid,role,permissionId, description from(
         select count(*) from (select roleId, role, description, count(distinct permissionId) as permissionCount, count(distinct userid) as userCount from
 (
 select rid as roleId,userid,role,permissionId, description from(
-(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where :role is null or lower(r.role) like lower(:role)) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
+(select r.id as rid,ru.userid,r.role, r.description from ROLE r left outer join USER_ROLE ru on r.id = ru.roleid where r.active = true and (:role is null or lower(r.role) like lower(:role))) a left outer join ROLE_PERMISSION rp on a.rid = rp.roleId 
 ) 
 )b group by role order by roleId desc) wmTempTable
         ]]>

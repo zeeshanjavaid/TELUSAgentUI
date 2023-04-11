@@ -26,8 +26,8 @@ Partial.onReady = function() {
     Partial.Variables.roleData.dataSet = [];
     Partial.Variables.uploadRole.dataSet = [];
     Partial.Variables.uploadRoleItem.dataSet = [];
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
     Partial.canceledClicked = false;
     Partial.roleexists = false;
     Partial.currentRoleName = "";
@@ -46,25 +46,26 @@ Partial.SaveButtonClick = function($event, widget) {
     Partial.isDelete = false;
     Partial.roleexists = false;
     Partial.Widgets.NameText.required = false;
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
     let pattern = Partial.Widgets.NameText.regexp;
-    if (Partial.Widgets.NameText.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.ROLE_NAME_MANDATORY;
+    if (Partial.Widgets.NameText.datavalue == undefined || Partial.Widgets.NameText.datavalue == "") {
+        Partial.Variables.rolesErrorMsg.dataSet.dataValue = Partial.appLocale.ROLE_NAME_MANDATORY;
         Partial.Widgets.NameText.required = true;
 
     } else if (Partial.Widgets.NameText.datavalue.match(pattern) == null) {
-        App.Variables.errorMsg.dataSet.dataValue = "Role name is invalid.";
+        Partial.Variables.rolesErrorMsg.dataSet.dataValue = "Role name is invalid.";
     } else if (!Partial.Widgets.DualList_TD1.rightdataset.length > 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Permission assignment is mandatory.";
+        Partial.Variables.rolesErrorMsg.dataSet.dataValue = "Permission assignment is mandatory.";
     } else {
 
         if (Partial.pageParams.roleId) {
 
-            App.Variables.getAllRoles.dataSet.forEach(function(role) {
+            Partial.Variables.getAllRolesPartial.dataSet.forEach(function(role) {
                 if (role.role !== null) {
-                    if (role.role.toLowerCase() == Partial.Widgets.NameText.datavalue.toLowerCase() && role.id != Partial.Variables.roleId) {
+
+                    if (role.role.toLowerCase() == Partial.Widgets.NameText.datavalue.toLowerCase() && role.id != Partial.pageParams.roleId) {
                         Partial.roleexists = true;
                     }
                 }
@@ -72,7 +73,7 @@ Partial.SaveButtonClick = function($event, widget) {
 
         } else {
 
-            App.Variables.getAllRoles.dataSet.forEach(function(role) {
+            Partial.Variables.getAllRolesPartial.dataSet.forEach(function(role) {
                 if (role.role !== null) {
                     if (role.role.toLowerCase() == Partial.Widgets.NameText.datavalue.toLowerCase()) {
                         Partial.roleexists = true;
@@ -109,11 +110,9 @@ Partial.SaveButtonClick = function($event, widget) {
             }
 
         } else {
-            App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.ROLE_ALREADY_EXIST;
+            Partial.Variables.rolesErrorMsg.dataSet.dataValue = Partial.appLocale.ROLE_ALREADY_EXIST;
 
         }
-
-
     }
 };
 
@@ -121,8 +120,8 @@ Partial.CancelbuttonClick = function($event, widget) {
     // debugger;
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
     Partial.isDelete = false;
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
     Partial.canceledClicked = true;
     Partial.Widgets.textarea1.setWidgetProperty('datavalue', Partial.Variables.roleDescription.dataValue);
     Partial.Widgets.textarea1.updatePrevDatavalue();
@@ -145,8 +144,8 @@ Partial.CancelbuttonClick = function($event, widget) {
 
 App.addRoles = function() {
 
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
     Partial.Variables.roleData.dataSet = [];
     Partial.Variables.leftPermissionList.dataSet = [];
     Partial.Variables.selectedpermissions.dataSet = [];
@@ -165,18 +164,18 @@ App.addRoles = function() {
 
 Partial.createRoleonError = function(variable, data, xhrobject) {
     // debugger;
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
-    App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.INTERNAL_ERROR_MSG;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = Partial.appLocale.INTERNAL_ERROR_MSG;
 
 };
 Partial.createRoleonSuccess = function(variable, data) {
     // debugger;
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
-    App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.ROLE_CREATED_SUCCESSFULLY;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_CREATED_SUCCESSFULLY;
     Partial.Widgets.DualList_TD1.rightdataset.forEach(function(permission) {
         Partial.Variables.CreateRolePermission.setInput({
             'roleId': data.id,
@@ -206,8 +205,8 @@ Partial.getRoleonSuccess = function(variable, data) {
 };
 
 Partial.CreateRolePermissiononError = function(variable, data) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
     App.Variables.roleErrorMessage.dataSet.dataValue = "";
     App.Variables.roleSuccessMessage.dataSet.dataValue = "";
@@ -286,8 +285,8 @@ Partial.deleteRolePermissiononError = function(variable, data) {
 
 };
 Partial.deleteRolePermissiononSuccess = function(variable, data) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
     if (Partial.isDelete !== true) {
         Partial.Widgets.DualList_TD1.rightdataset.forEach(function(selectedPermission) {
@@ -297,7 +296,7 @@ Partial.deleteRolePermissiononSuccess = function(variable, data) {
             });
             Partial.Variables.CreateRolePermission.invoke();
         })
-        App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.ROLE_UPDATED_SUCCESSFULLY;
+        Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_UPDATED_SUCCESSFULLY;
     } else {
 
         Partial.Variables.deleteRole.setInput({
@@ -318,10 +317,10 @@ Partial.deleteRoleConfirmOkClick = function($event, widget) {
 };
 
 Partial.deleteRoleonSuccess = function(variable, data) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
-    App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.ROLE_DELETED_SUCCESSFULLY;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_DELETED_SUCCESSFULLY;
 
     cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
 
@@ -329,9 +328,9 @@ Partial.deleteRoleonSuccess = function(variable, data) {
 };
 
 Partial.updateRoleonError = function(variable, data, xhrobject) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Variables.successMessage.dataSet.dataValue = null;
-    App.Variables.errorMsg.dataSet.dataValue = Partial.appLocale.INTERNAL_ERROR_MSG;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = Partial.appLocale.INTERNAL_ERROR_MSG;
 };
 
 Partial.deleteRoleonError = function(variable, data) {
@@ -348,8 +347,8 @@ Partial.renderScreenReadOnly = function() {
 }
 Partial.EditRoleButtonClick = function($event, widget) {
 
-    App.Variables.errorMsg.dataSet.dataValue = "";
-    App.Variables.successMessage.dataSet.dataValue = "";
+    Partial.Variables.rolesErrorMsg.dataSet.dataValue = "";
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = "";
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
 
 };

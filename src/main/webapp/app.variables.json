@@ -88,8 +88,8 @@
     "type" : "Role",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 200,
-    "designMaxResults" : 10,
+    "maxResults" : 500,
+    "designMaxResults" : 500,
     "onSuccess" : "getAllRolesonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
@@ -98,7 +98,7 @@
     "liveSource" : "TELUSAgentUIDB",
     "ignoreCase" : true,
     "matchMode" : "startignorecase",
-    "orderBy" : "id asc",
+    "orderBy" : "id desc",
     "propertiesMap" : {
       "columns" : [ {
         "fieldName" : "userByCreatedBy",
