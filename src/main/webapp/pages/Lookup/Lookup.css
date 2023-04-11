@@ -24,3 +24,7 @@ li.tab-header.nav-item {
 .wm-app .nav-tabs {
     border-bottom: none;
 }
+
+.entityProfileLabel {
+    float: right;
+}

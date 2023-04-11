@@ -4,105 +4,127 @@
     <wm-content name="content1">
         <wm-page-content columnwidth="1" name="page_content1">
             <wm-layoutgrid name="layoutgrid2" columns="12" width="100%">
-                <wm-gridrow name="gridrow4_1" height="55px">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn31_1">
-                        <wm-icon class="backIcon" on-click="Actions.goToPage_lookupEntity.invoke()" name="icon1" iconclass="fico-icon-sort-up fa-lg fa-rotate-270"></wm-icon>
+                <wm-gridrow style="display: flex;">
+                    <wm-gridcolumn width="85%" name="gridcolumn31_1">
+                        <wm-anchor margin="10px 0 0 20px" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="Actions.goToPage_lookupEntity.invoke()"></wm-anchor>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn32_1">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label1" caption="Entity Name" height="45px" width="1000px" color="grey"></wm-label>
+                    <wm-gridcolumn style="display: flex;" width="15%" margin="8px 0 0 0">
+                        <wm-gridcolumn width="30%" name="gridcolumn40">
+                            <wm-label padding="unset 0.5em" name="label25" caption="Team"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="70%" name="gridcolumn41">
+                            <wm-label padding="unset 0.5em" name="label26" caption="Work category"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn33">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label10" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityName"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn34">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Entity ID" name="label2" color="grey"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn35">
-                        <wm-label padding="unset 0.5em" name="label13_1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityId"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn36">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Entity Type" name="label3" color="grey"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn37">
-                        <wm-label padding="unset 0.5em" name="label14" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityType"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn38">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Included BAN's" name="label4" color="grey"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn39">
-                        <wm-label padding="unset 0.5em" name="label27" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalBan"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn40">
-                        <wm-label padding="unset 0.5em" name="label25" caption="Team"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn41">
-                        <wm-label padding="unset 0.5em" name="label26" caption="Work category"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn42"></wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow5" height="55px">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn43_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn44_1">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey"></wm-label>
+                <wm-gridrow style="display: flex;" margin="0 0 20px 30px" width="100%">
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn name="gridcolumn32_1" width="30%">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Entity Name" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn33" width="25%">
+                            <wm-label padding="unset 0.5em" name="label10" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityName"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn45">
-                        <wm-label padding="unset 0.5em" name="label15" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn name="gridcolumn34" width="30%">
+                            <wm-label padding="unset 0.5em" caption="Entity ID" name="label2" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn35" width="25%">
+                            <wm-label padding="unset 0.5em" name="label13_1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityId"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn46">
-                        <wm-label padding="unset 0.5em" name="label17" caption="Collection Status" color="grey"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn name="gridcolumn36" width="30%">
+                            <wm-label padding="unset 0.5em" caption="Entity Type" name="label3" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn37" width="25%">
+                            <wm-label padding="unset 0.5em" name="label14" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityType"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn47_1">
-                        <wm-label padding="unset 0.5em" name="label19" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn name="gridcolumn38" width="32%">
+                            <wm-label padding="unset 0.5em" caption="Included BAN's" name="label4" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn39" width="25%">
+                            <wm-label padding="unset 0.5em" name="label27" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalBan"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn48_1">
-                        <wm-label padding="unset 0.5em" name="label21" caption="Delinq Cycle" color="grey"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn49_1">
-                        <wm-label padding="unset 0.5em" name="label23"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn50_1">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Cust Risk" name="label6" color="grey"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn51_1">
-                        <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn52_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn53_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn54"></wm-gridcolumn>
+                    <wm-gridcolumn></wm-gridcolumn>
                 </wm-gridrow>
-            </wm-layoutgrid>
-            <wm-layoutgrid name="layoutgrid3" height="85px">
-                <wm-gridrow name="gridrow6" height="55px">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn43"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn51">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total OD" name="label8" color="grey"></wm-label>
+                <wm-gridrow style="display: flex;" margin="0 0 5px 30px" width="100%">
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn name="gridcolumn44_1" width="30%">
+                            <wm-label padding="unset 0.5em" caption="Total AR" name="label5" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn45">
+                            <wm-label padding="unset 0.5em" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                        <wm-label padding="unset 0.5em" name="label16" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalOverDue"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="35%" name="gridcolumn46" style="left: -17px">
+                            <wm-label padding="unset 0.5em" name="label17" caption="Collection Status" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="20%" name="gridcolumn47_1" style="left: -18px">
+                            <wm-label padding="unset 0.5em" name="label19" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn49">
-                        <wm-label padding="unset 0.5em" name="label18" caption="Manual Coll" color="grey"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn48_1">
+                            <wm-label padding="unset 0.5em" name="label21" caption="Delinq Cycle" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn49_1">
+                            <wm-label padding="unset 0.5em" name="label23"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn48">
-                        <wm-label padding="unset 0.5em" name="label20" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.manualFlag? 'Y' : 'N'"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn50_1">
+                            <wm-label padding="unset 0.5em" caption="Cust Risk" name="label6" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn51_1">
+                            <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn47">
-                        <wm-label padding="unset 0.5em" name="label22" caption="Coll Start DT" color="grey"></wm-label>
+                    <wm-gridcolumn></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow style="display: flex;" margin="0 0 20px 30px" width="100%">
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn51">
+                            <wm-label padding="unset 0.5em" caption="Total OD" name="label8" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn50">
+                            <wm-label padding="unset 0.5em" name="label16" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalOverDue"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn44">
-                        <wm-label padding="unset 0.5em" name="label24"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn49">
+                            <wm-label padding="unset 0.5em" name="label18" caption="Manual Coll" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn48">
+                            <wm-label padding="unset 0.5em" name="label20" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.manualFlag? 'Y' : 'N'"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn52">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Cust Value" name="label9" color="grey"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn47">
+                            <wm-label padding="unset 0.5em" name="label22" caption="Coll Start DT" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn44">
+                            <wm-label padding="unset 0.5em" name="label24"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn53">
-                        <wm-label padding="unset 0.5em" name="label29" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityValue"></wm-label>
+                    <wm-gridcolumn style="display: flex;">
+                        <wm-gridcolumn width="30%" name="gridcolumn50_1">
+                            <wm-label padding="unset 0.5em" caption="Cust Risk" name="label6" color="grey" class="entityProfileLabel"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn width="25%" name="gridcolumn51_1">
+                            <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn34_1">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="More..." name="label7"></wm-label>
+                    <wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn47" style="left: -125px">
+                            <wm-label padding="unset 0.5em" name="label22" caption="More..." color="purple"></wm-label>
+                        </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn35_1"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-container name="container1">
@@ -115,8 +137,8 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true">
                         <wm-container name="container3_1" show="true" class="rrr">
-                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
-                                backgroundposition="right, top" on-click="CreateClick($event, widget)" deferload="false"></wm-button>
+                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
+                                on-click="CreateClick($event, widget)" deferload="false"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">
                                 <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
