@@ -725,18 +725,14 @@ td, th {
 }
 .wm-app .modal-dialog .modal-body {
     padding: 3px 80px 15px 25px ;
-    /*text-align: center !important;*/
 }
 .m_10 {
     margin: 5px 0;
 }
 .save_btn {
     position: relative;
-    /*right: -4rem;*/
 }
-/*.ds_grid{*/
-/*    display:grid !important;*/
-/*}*/
+
 .wm-app hr {
     margin-top: 3px;
     margin-bottom: 0px;
@@ -753,14 +749,9 @@ td, th {
     border-radius: 50% !important;
     border: 1px solid !important;
 }
-/*.modal-footer1{*/
-/*    text-align: center !important;*/
-/*}*/
 
 .wm-app .app-form .app-label, .wm-app .app-liveform .app-label {
-    text-align: left !important;
     padding: 0;
-   
     font-size: 15px !important;
 }
 .wm-app .app-form .form-control-static+wm-select>.form-control{
@@ -802,9 +793,6 @@ li.app-list-item.col-xs-12.col-sm-12.col-md-12.col-lg-12.list-group-item.work-ca
 }
 
 ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
-    /*display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;*/
   columns: 3;
 }
 .btn.app-button.btn-createUser{
@@ -823,11 +811,7 @@ ul.app-livelist-container.card-body.clearfix.list-group.work-cat-list {
     color: #800080;
     background-color: #fff; 
 }
-/*.wm-app.btn.app-button.form-resetButton:hover{
-    border: 1px solid purple;
-    color: purple;
-    background-color: #fff; 
-}*/
+
 .btn.app-button.btn-formSave{
   border: 1px solid purple;
     color: #800080;
