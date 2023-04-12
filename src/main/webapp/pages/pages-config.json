@@ -151,6 +151,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "EntityNameEllipsisPartial",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "EntityProfile",
   "type" : "PARTIAL",
   "params" : [ ]
