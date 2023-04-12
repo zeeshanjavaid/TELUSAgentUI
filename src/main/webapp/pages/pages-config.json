@@ -151,6 +151,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "EntityArDelinqueCycel",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "EntityNameEllipsisPartial",
   "type" : "PARTIAL",
   "params" : [ ]
@@ -305,10 +309,6 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
-  "name" : "SampleArDelinque",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "SetupLanding",
   "type" : "PAGE",
   "params" : [ ]
@@ -367,6 +367,10 @@
 }, {
   "name" : "lookupEntity",
   "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "moreDetails",
+  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "partial_searchentity",
