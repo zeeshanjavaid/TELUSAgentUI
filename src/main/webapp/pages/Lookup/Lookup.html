@@ -8,7 +8,7 @@
             <wm-layoutgrid name="layoutgrid2" columns="7">
                 <wm-gridrow name="gridrow28">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn61">
-                        <wm-icon class="backIcon" on-click="Actions.goToPage_lookupEntity.invoke()" name="icon1" iconclass="fico-icon-sort-up fa-lg fa-rotate-270"></wm-icon>
+                        <wm-anchor margin="10px 0 0 20px" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="Actions.goToPage_lookupEntity.invoke()"></wm-anchor>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn62">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label1" caption="Entity Name" height="45px" width="1000px" color="grey"></wm-label>
@@ -49,10 +49,10 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="440" popoverheight="100" margin="unset 0.5em" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="440" popoverheight="100" padding="0.5em 0.5em unset 0.5em" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collection Status" color="grey" fontsize="12"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn77">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus"></wm-label>
@@ -64,7 +64,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label23"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn80">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Cust Risk" name="label6" color="grey" fontsize="12"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Customer Risk" name="label6" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn81">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label28" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
@@ -96,13 +96,13 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label24"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn52">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Cust Value" name="label9" color="grey" fontsize="12"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Customer Value" name="label9" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn53">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label29" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityValue"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn34_1">
-                        <wm-popover popoverwidth="240" popoverheight="150" margin="unset 0.5em" name="popover3" caption="More..." content="moreDetails" popoverplacement="bottom" popoverarrow="true"></wm-popover>
+                        <wm-popover popoverwidth="240" popoverheight="150" padding="0.5em 0.5em unset 0.5em" name="popover3" caption="More..." content="moreDetails" popoverplacement="bottom" popoverarrow="true"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn35_1"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>
@@ -118,8 +118,8 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true">
                         <wm-container name="container3_1" show="true" class="rrr">
-                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
-                                backgroundposition="right, top" on-click="CreateClick($event, widget)" deferload="false"></wm-button>
+                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
+                                on-click="CreateClick($event, widget)" deferload="false"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">
                                 <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
