@@ -28,3 +28,7 @@ li.tab-header.nav-item {
 .entityProfileLabel {
     float: right;
 }
+
+.popover.bottom > .arrow {
+    margin-left: 50px;
+}
