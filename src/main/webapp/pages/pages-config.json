@@ -305,6 +305,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "SampleArDelinque",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "SetupLanding",
   "type" : "PAGE",
   "params" : [ ]

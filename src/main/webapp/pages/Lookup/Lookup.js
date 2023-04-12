@@ -66,3 +66,11 @@ Page.DisputeDeselect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
 };
+
+Page.openARbyDelinqCycle = function() {
+
+    Page.Widgets.ArByDelinqCycle.open();
+
+
+
+}

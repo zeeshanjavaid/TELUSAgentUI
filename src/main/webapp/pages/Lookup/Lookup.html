@@ -1,9 +1,11 @@
 <wm-page pagetitle="Dispute" name="page1">
-    <wm-header content="header" name="header1"></wm-header>
+    <wm-header content="header" name="header1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
         <wm-page-content columnwidth="1" name="page_content1">
-            <wm-layoutgrid name="layoutgrid2" columns="12">
+            <wm-layoutgrid name="layoutgrid2" columns="7">
                 <wm-gridrow name="gridrow28">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn61">
                         <wm-icon class="backIcon" on-click="Actions.goToPage_lookupEntity.invoke()" name="icon1" iconclass="fico-icon-sort-up fa-lg fa-rotate-270"></wm-icon>
@@ -47,7 +49,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label15" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr"></wm-label>
+                        <wm-popover popoverwidth="440" popoverheight="100" margin="unset 0.5em" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="SampleArDelinque" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collection Status" color="grey"></wm-label>
@@ -100,7 +102,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label29" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityValue"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn34_1">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="More..." name="label7"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="More..." name="label7" color="purple"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn35_1"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>
@@ -144,4 +146,59 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Entity AR by Delinquency Cycle" iconclass="" name="ArByDelinqCycle" width="70%" closable="false">
+        <wm-layoutgrid name="layoutgrid4" columns="1" height="50px">
+            <wm-gridrow name="gridrow7" height="50px">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn48_1">
+                    <wm-label padding="unset 0.5em" caption="30D" name="label43"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50_1">
+                    <wm-label padding="unset 0.5em" caption="60D" name="label42"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51_1">
+                    <wm-label padding="unset 0.5em" caption="90D" name="label41"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn52_1">
+                    <wm-label padding="unset 0.5em" caption="120D" name="label40"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn53_1">
+                    <wm-label padding="unset 0.5em" caption="150D" name="label39_1"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn54">
+                    <wm-label padding="unset 0.5em" caption="180D" name="label38"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn55">
+                    <wm-label padding="unset 0.5em" caption="180+" name="label37_1"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="More Entity Details" iconclass="" name="moreDetails" closable="false">
+        <wm-layoutgrid name="layoutgrid4_1">
+            <wm-gridrow name="gridrow5">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
+                    <wm-label padding="unset 0.5em" caption="Line of Business" name="label37"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn45">
+                    <wm-label padding="unset 0.5em" caption="WLN" name="label38_1"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn46">
+                    <wm-label padding="unset 0.5em" caption="Portfolio" name="label39"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn47_1">
+                    <wm-label padding="unset 0.5em" caption="Portfolio Name" name="label40_1"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn48_2">
+                    <wm-label padding="unset 0.5em" caption="Tenure" name="label41_1"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn49_1">
+                    <wm-label padding="unset 0.5em" caption="Date" name="label42_1"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
 </wm-page>
