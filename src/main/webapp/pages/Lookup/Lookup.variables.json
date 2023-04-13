@@ -109,5 +109,19 @@
     "type" : "entry",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "selectedBanLengthVar" : {
+    "_id" : "wm-selectedBanLengthVar-wm.Variable-1681387438379",
+    "name" : "selectedBanLengthVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }

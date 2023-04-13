@@ -196,10 +196,19 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid7">
+            <wm-gridrow name="gridrow11">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn46">
+                    <wm-label padding="unset 0.5em" name="label37" caption="Selected"></wm-label>
+                    <wm-label padding="unset 0.5em" name="SelectedBanTextValue" caption="bind:Variables.selectedBanLengthVar.dataSet.dataValue"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid6">
             <wm-gridrow name="gridrow10_1">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45_1">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
+                        on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)">
                         <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

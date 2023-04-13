@@ -84,8 +84,13 @@ Page.TransferBanToExistingEntityClick = function($event, widget) {
     Page.Variables.entityNameTextVar.dataSet.dataValue = Page.Widgets.label10.caption;
     Page.Variables.entityTypeTextVar.dataSet.dataValue = Page.Widgets.label14.caption;
 };
-Page.getEntityBanDetailsTable1Click = function($event, widget, row) {
-    Page;
-    debugger;
 
+Page.getEntityBanDetailsTable1Select = function($event, widget, row) {
+    debugger;
+    Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
+};
+
+Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
+    debugger;
+    Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
 };
