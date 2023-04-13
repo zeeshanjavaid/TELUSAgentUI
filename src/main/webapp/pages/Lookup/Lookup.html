@@ -172,7 +172,7 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" iconclass="wi wi-file-text" name="TransferBanToExistEntDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" iconclass="wi wi-file-text" name="TransferBanToExistEntDialog" width="50%">
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45">
@@ -182,19 +182,17 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid4">
             <wm-gridrow name="gridrow8">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn41">
-                    <wm-label padding="unset 0.5em" caption="Name" name="label30"></wm-label>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn41">
+                    <wm-label padding="unset 0.5em" caption="Entity ID" name="entityIdText"></wm-label>
+                    <wm-label padding="unset 0.5em" name="EntityIdLabel" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn42">
-                    <wm-label padding="unset 0.5em" caption="Eric" name="label31"></wm-label>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn42">
+                    <wm-label padding="unset 0.5em" caption="Entity Name" name="entityNameText"></wm-label>
+                    <wm-label padding="unset 0.5em" name="EntityNameLabel" caption="bind:Variables.entityNameTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow9">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn43_1">
-                    <wm-label padding="unset 0.5em" caption="Title" name="label32"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
-                    <wm-label padding="unset 0.5em" caption="Engineer" name="label33"></wm-label>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn43_1">
+                    <wm-label padding="unset 0.5em" caption="Entity Type" name="entityTypeText"></wm-label>
+                    <wm-label padding="unset 0.5em" name="EntityTypeLabel" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
