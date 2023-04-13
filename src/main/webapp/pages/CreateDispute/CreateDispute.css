@@ -55,3 +55,15 @@ wm-textarea.ng-valid.app-input-wrapper.ng-touched.ng-dirty {
 textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
     resize: none;
 }
+
+.labelGrid {
+    width: 40%;
+}
+
+.labelValue {
+    width: 60%;
+}
+
+.createDisputeLabel {
+    float: right;
+}
