@@ -1,4 +1,73 @@
 {
+  "entityIdTextVar" : {
+    "_id" : "wm-entityIdTextVar-wm.Variable-1681364621669",
+    "name" : "entityIdTextVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "entityNameTextVar" : {
+    "_id" : "wm-entityNameTextVar-wm.Variable-1681365047594",
+    "name" : "entityNameTextVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "entityTypeTextVar" : {
+    "_id" : "wm-entityTypeTextVar-wm.Variable-1681365252721",
+    "name" : "entityTypeTextVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "getEntityBanDetailsService" : {
+    "_id" : "wm-getEntityBanDetailsService-wm.ServiceVariable-1681366179440",
+    "name" : "getEntityBanDetailsService",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "entityId",
+      "value" : "bind:Variables.entityIdTextVar.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "io.swagger.client.model.EntityBanDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityBanDetails",
+    "operationId" : "CollectionDataController_getEntityBanDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  },
   "getEntityProfileDetails" : {
     "_id" : "wm-getEntityProfileDetails-wm.ServiceVariable-1681112443333",
     "name" : "getEntityProfileDetails",

@@ -74,3 +74,18 @@ Page.openARbyDelinqCycle = function() {
 
 
 }
+
+
+Page.TransferBanToExistingEntityClick = function($event, widget) {
+    debugger;
+    Page.Widgets.entityNamePopOver.hidePopover();
+    Page.Widgets.TransferBanToExistEntDialog.open();
+    Page.Variables.entityIdTextVar.dataSet.dataValue = Page.Widgets.label13_1.caption;
+    Page.Variables.entityNameTextVar.dataSet.dataValue = Page.Widgets.label10.caption;
+    Page.Variables.entityTypeTextVar.dataSet.dataValue = Page.Widgets.label14.caption;
+};
+Page.getEntityBanDetailsTable1Click = function($event, widget, row) {
+    Page;
+    debugger;
+
+};

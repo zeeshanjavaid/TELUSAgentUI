@@ -15,7 +15,30 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn63">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label10" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityName"></wm-label>
-                        <wm-popover popoverwidth="150" popoverheight="100" margin="unset 0.5em" name="entityNamePopOver" caption="..." contentsource="partial" interaction="click" encodeurl="false" content="EntityNameEllipsisPartial" popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="150" popoverheight="100" margin="unset 0.5em" name="entityNamePopOver" caption="..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom">
+                            <wm-layoutgrid name="layoutgrid1">
+                                <wm-gridrow name="gridrow1">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                                        <wm-label padding="unset 0.5em" name="label1" caption="Transfer Bans"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow2">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                                        <wm-anchor margin="unset 0.5em unset 1.5em" name="TransferBanToExistingEntity" caption="To Existing Entity" on-click="TransferBanToExistingEntityClick($event, widget)"></wm-anchor>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow3">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3" class="entityNameEllipsisSeparation">
+                                        <wm-anchor margin="unset 0.5em unset 1.5em" name="TransferBanToNewEntity" caption="To New Entity"></wm-anchor>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow3">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                                        <wm-anchor margin="unset 0.5em" name="BanTravelHistory" caption="BANs Travel history"></wm-anchor>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn64">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Entity ID" name="label2" color="grey" class="lookupLabel"></wm-label>
@@ -149,4 +172,27 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Information" iconclass="wi wi-file-text" name="TransferBanToExistEntDialog">
+        <wm-layoutgrid name="layoutgrid4">
+            <wm-gridrow name="gridrow8">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn41">
+                    <wm-label padding="unset 0.5em" caption="Name" name="label30"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn42">
+                    <wm-label padding="unset 0.5em" caption="Eric" name="label31"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn43_1">
+                    <wm-label padding="unset 0.5em" caption="Title" name="label32"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
+                    <wm-label padding="unset 0.5em" caption="Engineer" name="label33"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-page>
