@@ -41,7 +41,9 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn71">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label26" caption="Work category"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn72"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn72">
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Work category" name="label41_2"></wm-label>
+                    </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow29">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn73"></wm-gridcolumn>
@@ -49,7 +51,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="440" popoverheight="100" padding="0.5em 0.5em unset 0.5em" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="440" popoverheight="100" padding="0.5em 0.5em unset 0.5em" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
+                            popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status" color="grey" fontsize="12"></wm-label>
@@ -81,7 +84,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total OD" name="label8" color="grey" fontsize="12"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label16" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalOverDue"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label16" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalOverDue"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn49">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label18" caption="Manual Coll" color="grey" fontsize="12"></wm-label>
@@ -118,8 +121,8 @@
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true">
                         <wm-container name="container3_1" show="true" class="rrr">
-                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
-                                on-click="CreateClick($event, widget)" deferload="false"></wm-button>
+                            <wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center"
+                                backgroundposition="right, top" on-click="CreateClick($event, widget)" deferload="false"></wm-button>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrListPanel" badgetype="default" content="ParrList" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ParrDetailPanel" content="ParrDetails" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;ParrDetail&quot;">
                                 <wm-param name="ParrId" value="bind:Widgets.ParrListPanel.Widgets.getPaymentArrangementTable1.selecteditem.id" type="integer"></wm-param>
@@ -146,59 +149,4 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Entity AR by Delinquency Cycle" iconclass="" name="ArByDelinqCycle" width="70%" closable="false">
-        <wm-layoutgrid name="layoutgrid4" columns="1" height="50px">
-            <wm-gridrow name="gridrow7" height="50px">
-                <wm-gridcolumn columnwidth="1" name="gridcolumn48_1">
-                    <wm-label padding="unset 0.5em" caption="30D" name="label43"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn50_1">
-                    <wm-label padding="unset 0.5em" caption="60D" name="label42"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn51_1">
-                    <wm-label padding="unset 0.5em" caption="90D" name="label41"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn52_1">
-                    <wm-label padding="unset 0.5em" caption="120D" name="label40"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn53_1">
-                    <wm-label padding="unset 0.5em" caption="150D" name="label39_1"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn54">
-                    <wm-label padding="unset 0.5em" caption="180D" name="label38"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn55">
-                    <wm-label padding="unset 0.5em" caption="180+" name="label37_1"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-    </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="More Entity Details" iconclass="" name="moreDetails" closable="false">
-        <wm-layoutgrid name="layoutgrid4_1">
-            <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
-                    <wm-label padding="unset 0.5em" caption="Line of Business" name="label37"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn45">
-                    <wm-label padding="unset 0.5em" caption="WLN" name="label38_1"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow6_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn46">
-                    <wm-label padding="unset 0.5em" caption="Portfolio" name="label39"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn47_1">
-                    <wm-label padding="unset 0.5em" caption="Portfolio Name" name="label40_1"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow7_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn48_2">
-                    <wm-label padding="unset 0.5em" caption="Tenure" name="label41_1"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn49_1">
-                    <wm-label padding="unset 0.5em" caption="Date" name="label42_1"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-    </wm-dialog>
 </wm-page>

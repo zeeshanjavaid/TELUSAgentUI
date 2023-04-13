@@ -3,7 +3,7 @@
     <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
     <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" formposition="top" enablecolumnselection="false">
         <wm-table-column binding="banId" caption="BAN #" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
-            <wm-anchor caption="bind:row.getProperty('banId')" hyperlink="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-anchor>
+            <wm-anchor caption="" hyperlink="" class="" conditionalclass=""></wm-anchor>
         </wm-table-column>
         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -11,5 +11,7 @@
         <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-row content="BanArDelinqueCycle" position="0" closeothers="true" widget-type="anchor" display-name="bind:Widgets.getEntityDetailsTable1.currentItem.banId" title="bind:Widgets.getEntityDetailsTable1.currentItem.banId"
+            show="true" disabled="false" columnwidth="0px"></wm-table-row>
     </wm-table>
 </wm-partial>

@@ -97,6 +97,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "BanArDelinqueCycle",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "Common",
   "type" : "PARTIAL",
   "params" : [ ]
