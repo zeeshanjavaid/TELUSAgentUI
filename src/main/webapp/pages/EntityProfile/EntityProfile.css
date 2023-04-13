@@ -6,3 +6,17 @@ h3 {
     margin-top: 10px;
     border: 0.1px solid #ddd
 }
+
+@media (max-width: 1024px) and (min-width: 768px) {
+
+  .parr_Sum{
+    width:20% !important;
+}
+}
+
+.parr_Sum{
+    border: 0.1px solid #ddd
+}
+.latest_User{
+    border: 0.1px solid #ddd
+}
