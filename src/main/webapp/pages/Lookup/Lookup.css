@@ -32,3 +32,7 @@ li.tab-header.nav-item {
 .popover.bottom > .arrow {
     margin-left: 50px;
 }
+
+.lookupLabel {
+    float: right;
+}
