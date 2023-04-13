@@ -196,6 +196,20 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid6">
+            <wm-gridrow name="gridrow10_1">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn45_1">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true">
+                        <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="Dispute Flag" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4"></wm-button>
         </wm-dialogactions>
