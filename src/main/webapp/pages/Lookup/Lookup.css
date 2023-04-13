@@ -36,3 +36,9 @@ li.tab-header.nav-item {
 .lookupLabel {
     float: right;
 }
+
+.morePopover {
+    font-style: italic;
+    right: 50px;
+    bottom: 3px;
+}

@@ -1,0 +1,8 @@
+.full-border {
+    text-align: center;
+    border: 0.1px solid #ddd
+}
+
+.gridLabel {
+    margin: 15px;
+}
