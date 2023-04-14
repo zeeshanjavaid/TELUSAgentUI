@@ -20,7 +20,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    Partial.Variables.CollectionEntityGetPaymentArrangement.invoke();
+
     debugger;
 };
 
