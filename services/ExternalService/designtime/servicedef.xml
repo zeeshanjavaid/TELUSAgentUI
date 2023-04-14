@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="ExternalService" class="com.fico.dmp.externalservice.ExternalService" type="JavaService" springFile="ExternalService.spring.xml"/>

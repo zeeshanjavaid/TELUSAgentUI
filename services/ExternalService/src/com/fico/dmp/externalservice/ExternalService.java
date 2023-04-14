@@ -1,25 +1,24 @@
 /*Copyright (c) 2020-2021 fico.com All Rights Reserved.
  This software is the confidential and proprietary information of fico.com You shall not disclose such Confidential Information and shall use it only in accordance
  with the terms of the source code license agreement you entered into with fico.com*/
-package com.fico.dmp.paymentarrangement;
+package com.fico.dmp.externalservice;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.util.List;
+import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import com.fico.telus.model.AgentInfo;
 
 
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
 
-import java.util.List;
-import io.swagger.client.model.CollectionPaymentArrangement;
-
-//import com.fico.dmp.paymentarrangement.model.*;
+//import com.fico.dmp.externalservice.model.*;
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -32,9 +31,9 @@ import io.swagger.client.model.CollectionPaymentArrangement;
  * Complex Types/Objects will become part of the Request body in the generated API.
  */
 @ExposeToClient
-public class PaymentArrangement {
+public class ExternalService {
 
-    private static final Logger logger = FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(PaymentArrangement.class.getName());
+    private static final Logger logger = FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(ExternalService.class.getName());
 
     @Autowired
     private SecurityService securityService;
@@ -48,22 +47,19 @@ public class PaymentArrangement {
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
-    public String createPaymentArrangement(CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
-       
-        logger.debug("::::::::::createPaymentArrangement::::::::::::: " + request.getRequestURL().toString());
+    public AgentInfo getAgent() {
+        // logger.debug("Starting sample operation with request url " + request.getRequestURL().toString());
         
-        String result = null;
-        
-        return result;
-    }
-    public String updatePaymentArrangement(CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
-       
-        logger.debug("::::::::::updatePaymentArrangement::::::::::::: " + collectionPaymentArrangement.getId());
-        System.out.println(":::::::::updatePaymentArrangement amount::::::::::::: " + collectionPaymentArrangement.getAmount());
-        // System.out.println(":::::::::updatePaymentArrangement: comment:::::::::::: " + collectionPaymentArrangement.getComment());
-        
-        String result = null;
-        
+        AgentInfo result = new AgentInfo();
+        ArrayList<String> workCategory = new ArrayList<String>();
+        workCategory.add("TQ");
+        result.setWorkCategory(workCategory);
+        // if (securityService.isAuthenticated()) {
+        //     result = "Hello " + name + ", You are logged in as "+  securityService.getLoggedInUser().getUserName();
+        // } else {
+        //     result = "Hello " + name + ", You are not authenticated yet!";
+        // }
+        // logger.debug("Returning {}", result);
         return result;
     }
 

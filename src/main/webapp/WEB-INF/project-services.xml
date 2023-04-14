@@ -11,6 +11,7 @@
     <import resource="classpath:DomainValueRelatedBS.spring.xml"/>
     <import resource="classpath:DuplicateCheckRelatedBS.spring.xml"/>
     <import resource="classpath:Environment.spring.xml"/>
+    <import resource="classpath:ExternalService.spring.xml"/>
     <import resource="classpath:FDOUtilityServices.spring.xml"/>
     <import resource="classpath:FileRelatedBS.spring.xml"/>
     <import resource="classpath:LookupFileBS.spring.xml"/>
