@@ -101,3 +101,13 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
     });
 };
+Page.ParrSelect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
+Page.ParrDeselect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
