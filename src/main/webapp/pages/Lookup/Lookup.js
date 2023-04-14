@@ -86,11 +86,18 @@ Page.TransferBanToExistingEntityClick = function($event, widget) {
 };
 
 Page.getEntityBanDetailsTable1Select = function($event, widget, row) {
-    debugger;
     Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
 };
 
 Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
-    debugger;
     Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
+};
+Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
+    Page;
+    debugger;
+    Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+
+
+    });
 };
