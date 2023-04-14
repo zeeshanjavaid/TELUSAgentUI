@@ -165,7 +165,17 @@
 }, {
   "name" : "EntityProfile",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "EntityProfileCancelledBans",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "ErrorLanding",
   "type" : "PAGE",
@@ -197,7 +207,10 @@
 }, {
   "name" : "Lookup",
   "type" : "PAGE",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "LookupFileCreateEdit",
   "type" : "PAGE",
@@ -375,7 +388,10 @@
 }, {
   "name" : "lookupEntity",
   "type" : "PAGE",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "moreDetails",
   "type" : "PARTIAL",

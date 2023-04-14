@@ -22,6 +22,9 @@ Page.onReady = function() {
      
      */
 
+    debugger;
+
+
     var sv = Page.Variables.PermissionsForLoggedInUserId;
     sv.invoke({}, function(data) {
             // Success Callback        

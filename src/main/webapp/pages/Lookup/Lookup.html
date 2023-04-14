@@ -1,6 +1,6 @@
 <wm-page pagetitle="Dispute" name="page1">
     <wm-header content="header" name="header1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     </wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
@@ -136,7 +136,9 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1">
-                    <wm-tabpane name="tabpane2" title="Entity Profile" margin="0 5px 0 0" content="EntityProfile"></wm-tabpane>
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
+                        show="true" deferload="true" badgetype="primary"></wm-tabpane>
+                    <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
                     <wm-tabpane name="tabpane3" title="Contacts">
                         <wm-container name="container3">
                             <wm-button class="btn-default" caption="Button" type="button" margin="unset 0.5em" name="button1" show="bind:Variables.pageName.dataSet.dataValue==='PaarList'?&quot;true&quot;:&quot;false&quot;" iconposition="right"></wm-button>
