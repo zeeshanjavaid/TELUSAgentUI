@@ -1,4 +1,16 @@
 {
+  "BanListForTransferToExistingEntVar" : {
+    "_id" : "wm-BanListForTransferToExistingEntVar-wm.Variable-1681457313163",
+    "name" : "BanListForTransferToExistingEntVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "entityIdTextVar" : {
     "_id" : "wm-entityIdTextVar-wm.Variable-1681364621669",
     "name" : "entityIdTextVar",

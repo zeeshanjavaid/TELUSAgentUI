@@ -93,11 +93,25 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
     Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
 };
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
-    Page;
+
+    Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
     debugger;
     Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+        Page.selectedBanList = [];
+        Page.selectedBanList = {
+            "entityId": d.entityId,
+            "disputeFlag": d.disputeFlag,
+            "banStatus": d.banStatus,
+            "banOverdueAmount": d.banOverdueAmount,
+            "banName": d.banName,
+            "banMapRefId": d.banMapRefId,
+            "banId": d.banId,
+            "banArAmount": d.banArAmount,
+            "suppresionFlag": d.suppresionFlag
+        }
 
-
+        Page.Variables.BanListForTransferToExistingEntVar.dataSet.push(Page.selectedBanList);
+        Page.Widgets.TransferBanToExistEntDialog.close();
 
     });
 };
