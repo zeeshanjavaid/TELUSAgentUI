@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
-                            popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
+                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -136,7 +136,7 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1">
-                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
                         show="true" deferload="true" badgetype="primary"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
                     <wm-tabpane name="tabpane3" title="Contacts">
