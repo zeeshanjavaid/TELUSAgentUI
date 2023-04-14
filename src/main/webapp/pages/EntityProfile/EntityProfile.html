@@ -1,4 +1,4 @@
-<wm-partial name="partial1">
+<wm-partial name="partial1" style="overflow: auto">
     <wm-gridcolumn class="entityProfileGrid" name="gridcolumn1">
         <h3><b>Entity BANs</b></h3>
         <wm-table margin="10px 10px 16px 14px" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" formposition="top" enablecolumnselection="false">
@@ -11,8 +11,8 @@
             <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-row content="BanArDelinqueCycle" position="0" closeothers="true" widget-type="anchor" display-name="bind:Widgets.getEntityDetailsTable1.currentItem.banId" title="bind:Widgets.getEntityDetailsTable1.currentItem.banId"
-                show="true" disabled="false" columnwidth="0px"></wm-table-row>
+            <wm-table-row content="BanArDelinqueCycle" position="0" closeothers="true" widget-type="anchor" display-name="bind:Widgets.getEntityDetailsTable1.currentItem.banId" title="bind:Widgets.getEntityDetailsTable1.currentItem.banId" show="true" disabled="false"
+                columnwidth="0px"></wm-table-row>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
@@ -148,13 +148,12 @@
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow17_1" padding="0.5em unset unset 1em">
+                    <wm-gridrow name="gridrow17_1" padding="1em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="" name="label24"></wm-label>
-                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy" bordercolor="grey"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy" bordercolor="grey" color="gray"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow18" padding="0.5em unset unset 1em">
+                    <wm-gridrow name="gridrow18" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn33">
                             <wm-composite name="composite4_1">
                                 <wm-container class="col-md-9" name="container4_1">
@@ -163,12 +162,12 @@
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow19" padding="0.5em unset unset 1em">
+                    <wm-gridrow name="gridrow19" padding="1em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
                             <wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy" name="label25"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow20" padding="0.5em unset unset 1em">
+                    <wm-gridrow name="gridrow20" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn35">
                             <wm-composite name="composite5">
                                 <wm-container class="col-md-9" name="container5">

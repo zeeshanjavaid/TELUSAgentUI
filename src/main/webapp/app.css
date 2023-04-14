@@ -318,3 +318,11 @@ textarea.form-control.app-textarea.ng-untouched.ng-pristine {
 textarea.form-control.app-textarea.ng-pristine.ng-valid.ng-touched {
     resize: none;
 }
+
+.wm-app popover-container.popover.in.popover-bottom.bs-popover-bottom.bottom.app-popover.animated.app-popover-widget-id44.bs3 {
+    left: 220px !important;
+}
+
+.wm-app popover-container.popover.in.popover-bottom.bs-popover-bottom.bottom.app-popover.animated.app-popover-widget-id44.bs3 .popover-arrow.arrow {
+    left: 102px !important;
+}
