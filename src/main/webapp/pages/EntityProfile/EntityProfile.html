@@ -2,8 +2,8 @@
     <wm-gridcolumn class="entityProfileGrid" name="gridcolumn1">
         <h3><b>Entity BANs</b></h3>
         <wm-table margin="10px 10px 16px 14px" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" formposition="top" enablecolumnselection="false">
-            <wm-table-column binding="banId" caption="BAN #" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
-                <wm-anchor caption="" hyperlink="" class="" conditionalclass=""></wm-anchor>
+            <wm-table-column binding="banId" caption="BAN #" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                <wm-label caption="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -11,13 +11,12 @@
             <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-row content="BanArDelinqueCycle" position="0" closeothers="true" widget-type="anchor" display-name="bind:Widgets.getEntityDetailsTable1.currentItem.banId" title="bind:Widgets.getEntityDetailsTable1.currentItem.banId" show="true" disabled="false"
-                columnwidth="0px"></wm-table-row>
+            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow1" style="display: flex;">
-            <wm-gridcolumn columnwidth="6" name="gridcolumn2" class="parr_Sum" style="display: flex;flex-direction: column;width: 20%;margin:20px;">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn2" class="parr_Sum" style="display: flex;flex-direction: column;width: 20%;margin:20px 20px 20px 0;">
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em unset unset unset">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
