@@ -1,0 +1,8 @@
+section.app-partial.clearfix {
+    overflow: auto;
+}
+
+.createParrBtn {
+    float: right;
+    margin: 0 15px 2px 0; 
+}

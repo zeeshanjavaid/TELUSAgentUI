@@ -1,0 +1,8 @@
+section.app-partial.clearfix {
+    overflow: auto;
+}
+
+.createDisputeBtn {
+    float: right;
+    margin: 5px 12px 0 0;
+}
