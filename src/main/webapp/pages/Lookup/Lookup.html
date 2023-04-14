@@ -219,6 +219,22 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid8">
+            <wm-gridrow name="gridrow12">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn47_1">
+                    <wm-label padding="unset 0.5em" name="label39" caption="Select Entity to transfer the BANs to"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow13">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn49_1">
+                    <wm-composite name="composite1">
+                        <wm-container class="col-md-9" name="container5">
+                            <wm-select name="select1" placeholder="Select"></wm-select>
+                        </wm-container>
+                    </wm-composite>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="button4"></wm-button>
             <wm-button class="btn-default" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
