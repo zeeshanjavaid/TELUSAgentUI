@@ -179,6 +179,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "LatestUserNotes",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "LogConfiguration",
   "type" : "PAGE",
   "params" : [ ]

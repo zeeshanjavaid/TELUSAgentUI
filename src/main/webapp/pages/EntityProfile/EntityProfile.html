@@ -122,27 +122,26 @@
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="6" class="latest_User" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
+            <wm-gridcolumn columnwidth="6" class="latest_User" name="gridcolumn15" style="margin: 20px; width: 25%; display: flex; flex-direction: column;">
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em 0.5em unset unset">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
                             <wm-label padding="unset 0.5em" name="label1" caption="Latest User Notes"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right">
-                            <wm-menu caption="" autoclose="outsideClick" name="menu1" iconclass="fico-icon-ellipsis-solid" horizontalalign="right"></wm-menu>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
+                            <wm-popover popoverwidth="40" popoverheight="20" margin="-0.5em 1.5em unset unset" name="popover2" caption="..." content="LatestUserNotes"></wm-popover>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
                 <wm-layoutgrid name="layoutgrid8">
-                    <wm-gridrow name="gridrow15" padding="0.5em unset unset 1em">
+                    <wm-gridrow name="gridrow15" padding="1.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn30">
-                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="Date"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="mm/dd/yy"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%">
                             <wm-composite name="composite4">
-                                <wm-label class="col-md-3 control-label" name="label28"></wm-label>
                                 <wm-container class="col-md-9" name="container4">
                                     <wm-text name="text1"></wm-text>
                                 </wm-container>
@@ -151,28 +150,29 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow17_1" padding="0.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="Date" name="label24"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="" name="label24"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy" bordercolor="grey"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow18" padding="0.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn33">
-                            <wm-composite name="composite2">
-                                <wm-container class="col-md-9" name="container2">
-                                    <wm-textarea name="textarea2"></wm-textarea>
+                            <wm-composite name="composite4_1">
+                                <wm-container class="col-md-9" name="container4_1">
+                                    <wm-text name="text2"></wm-text>
                                 </wm-container>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow19" padding="0.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
-                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="Date" name="label25"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy" name="label25"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow20" padding="0.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn35">
-                            <wm-composite name="composite3">
-                                <wm-container class="col-md-9" name="container3">
-                                    <wm-textarea name="textarea3"></wm-textarea>
+                            <wm-composite name="composite5">
+                                <wm-container class="col-md-9" name="container5">
+                                    <wm-text name="text3"></wm-text>
                                 </wm-container>
                             </wm-composite>
                         </wm-gridcolumn>
