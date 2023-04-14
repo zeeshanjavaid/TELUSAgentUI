@@ -9,7 +9,7 @@ import java.lang.Exception;
 import io.swagger.client.model.CollectionContactCreate;
 import io.swagger.client.model.CollectionEntityCreate;
 import io.swagger.client.model.CollectionDisputeCreate;
-import io.swagger.client.model.CollectionPaymentArrangementCreate;
+import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionSuppressionCreate;
 import java.lang.String;
 import java.lang.Boolean;
@@ -18,17 +18,15 @@ import java.util.List;
 import java.lang.Integer;
 import io.swagger.client.model.CollectionContactArray;
 import io.swagger.client.model.CollectionContact;
-import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionEntityArray;
-import io.swagger.client.model.CollectionPaymentArrangement;
-import io.swagger.client.model.CollectionSuppressionArray;
+import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionSuppression;
+import io.swagger.client.model.CollectionSuppressionArray;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionContactUpdate;
 import io.swagger.client.model.CollectionEntityUpdate;
 import io.swagger.client.model.CollectionDisputeUpdate;
-import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.CollectionSuppressionUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -67,8 +65,8 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
-    public CollectionPaymentArrangementCreate addPaymentArrangement(@RequestBody CollectionPaymentArrangementCreate collectionPaymentArrangementCreate) throws Exception {
-        return collectionEntityService.addPaymentArrangement(collectionPaymentArrangementCreate);
+    public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
+        return collectionEntityService.addPaymentArrangement(collectionPaymentArrangement);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.POST)
@@ -105,17 +103,13 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/collectionEntityArray", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionEntity getCollectionEntityArray(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntityArray(id, history);
+    public List<CollectionEntityArray> getCollectionEntityArray(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntityArray(ban, history);
     }
 
     @RequestMapping(value = "/collectionEntityArray_1", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionEntityArray> getCollectionEntityArray_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntityArray(ban, history);
+    public CollectionEntity getCollectionEntityArray_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntityArray(id, history);
     }
 
     @RequestMapping(value = "/paymentArrangement/{id}", method = RequestMethod.GET)
@@ -133,17 +127,13 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionSuppressionArray> getSuppression(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
-        return collectionEntityService.getSuppression(banRefId);
+    public CollectionSuppression getSuppression(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getSuppression(id, fields, history);
     }
 
     @RequestMapping(value = "/suppression_1", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionSuppression getSuppression_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getSuppression(id, fields, history);
+    public List<CollectionSuppressionArray> getSuppression_1(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
+        return collectionEntityService.getSuppression(banRefId);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
@@ -181,8 +171,8 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
-    public CollectionPaymentArrangementUpdate updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception {
-        return collectionEntityService.updatePaymentArrangement(id, collectionPaymentArrangementUpdate);
+    public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
+        return collectionEntityService.updatePaymentArrangement(id, collectionPaymentArrangement);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.PUT)

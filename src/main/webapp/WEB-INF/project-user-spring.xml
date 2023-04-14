@@ -9,7 +9,7 @@ and is an ideal location for end-users to put any code they need.
 	    xmlns:context="http://www.springframework.org/schema/context"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.fico.pscomponent.handlers, com.fico.pscomponent.logging, com.fico.pscomponent.s3.upload, com.fico.pscomponent.cache.config, com.fico.pscomponent.util, com.fico.pscomponent.service, com.fico.pscomponent.service.logging, com.fico.pscomponent.service.property,com.fico.pscomponent.config, com.fico.pscomponent.quartz, com.fico.pscomponent.user,com.fico.core,com.fico.ps" />
+    <context:component-scan base-package="com.fico.pscomponent.handlers, com.fico.pscomponent.logging, com.fico.pscomponent.s3.upload, com.fico.pscomponent.cache.config, com.fico.pscomponent.util, com.fico.pscomponent.service, com.fico.pscomponent.service.logging, com.fico.pscomponent.service.property,com.fico.pscomponent.config, com.fico.pscomponent.quartz, com.fico.pscomponent.user,com.fico.core,com.fico.ps, com.fico.telus.service" />
     
     <context:component-scan base-package="com.fico.ps.service,com.fico.ps.config,com.fico.ps.core,com.fico.ps.mapper,com.fico.ps.hermes.*"/>
     
