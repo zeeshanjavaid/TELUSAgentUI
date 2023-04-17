@@ -13,4 +13,41 @@
         <wm-table-column binding="customField1" caption="Closing Cycle" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
     </wm-table>
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1" style="display: flex;">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn2" class="parr_Sum" style="display: flex;flex-direction: column;width: 40%;margin:20px;">
+                <wm-layoutgrid name="layoutgrid2">
+                    <wm-gridrow name="gridrow2" padding="1em unset unset unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="PARR Summary"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4" padding="5em unset unset unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn5" horizontalalign="center">
+                            <wm-label padding="unset 0.5em" name="label3" caption="No active Parr" textalign="center"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn6" horizontalalign="center" padding="unset unset 8em unset">
+                            <wm-button class="primaryButton" caption="Create Parr" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" class="latest_Action" name="gridcolumn15" style="margin: 20px; width: 60%; display: flex; flex-direction: column;">
+                <wm-layoutgrid name="layoutgrid2">
+                    <wm-gridrow name="gridrow2" padding="1em 0.5em unset unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Latest Actions"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="6em unset 9.3em unset" horizontalalign="center">
+                            <wm-label padding="unset 0.5em" name="label4" caption="No actions."></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
 </wm-partial>
