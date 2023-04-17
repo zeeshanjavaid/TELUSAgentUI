@@ -61,6 +61,6 @@ h4.subHeading {
     margin-bottom: 10px;
 }
 
-.ng-star-inserted.app-dialog-header.modal-header {
+.app-dialog-header.modal-header {
     border-bottom: 1px solid #ddd; 
 }
