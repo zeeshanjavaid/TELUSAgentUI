@@ -140,3 +140,6 @@ Page.ParrDeselect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };
+Page.popover4Show = function ($event, widget) { 
+
+};

@@ -177,6 +177,10 @@
     "type" : "string"
   } ]
 }, {
+  "name" : "EntityProfileTeam",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "ErrorLanding",
   "type" : "PAGE",
   "params" : [ ]

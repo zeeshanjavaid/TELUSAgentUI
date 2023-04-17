@@ -4,8 +4,8 @@
             <wm-gridcolumn columnwidth="12" name="gridcolumn1">
                 <wm-layoutgrid name="layoutgrid3">
                     <wm-gridrow name="gridrow5">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                            <wm-label padding="unset 0.5em" name="label1" caption="Create User Notes" class="createUserNotes"></wm-label>
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn9" padding="0.5em unset">
+                            <wm-button class="btn-default" caption="Create User Notes" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.CreateUserNotesdialog1.open();button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -13,4 +13,40 @@
         </wm-gridrow>
         <wm-gridrow name="gridrow2"></wm-gridrow>
     </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Notes" iconclass="" name="CreateUserNotesdialog1" width="50%" class="CreateUserNotesdialog1">
+        <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36" class="enter_NoteLine" padding="1em unset unset unset">
+                    <wm-label padding="unset unset 0.5em unset" caption="Enter Note *" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid4">
+            <wm-gridrow name="gridrow5_1" padding="1em unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                    <wm-composite name="composite1">
+                        <wm-container class="col-md-9" name="container2">
+                            <wm-textarea name="textarea1" class="textAreaRadius"></wm-textarea>
+                        </wm-container>
+                    </wm-composite>
+                    <wm-label padding="-0.5em 0.5em unset unset" name="label3" caption="Associate with BAN"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn6" padding="2em unset 0.5em unset" class="addAttachmentLine">
+                    <wm-label name="label3_1" caption="Add Attachment to Note"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="1em unset 3em unset">
+                    <wm-button class="btn-default" caption="Attach" type="button" margin="unset 0.5em unset unset" name="button4_1"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1" padding="1em unset 1em unset">
+            <wm-button class="primaryButton" caption="Create" type="button" margin="1em 0.5em" name="button3" style="float:right;"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button4" style="float:right;" margin="1em unset"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-partial>
