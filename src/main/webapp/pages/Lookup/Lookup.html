@@ -29,7 +29,7 @@
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow3">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn3" class="entityNameEllipsisSeparation">
-                                        <wm-anchor margin="unset 0.5em unset 1.5em" name="TransferBanToNewEntity" caption="To New Entity"></wm-anchor>
+                                        <wm-anchor margin="unset 0.5em unset 1.5em" name="TransferBanToNewEntity" caption="To New Entity" on-click="TransferBanToNewEntityClick($event, widget)"></wm-anchor>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow3">
@@ -239,6 +239,29 @@
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="button4"></wm-button>
             <wm-button class="btn-default" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" iconclass="wi wi-file-text" name="TransferBanToNewEntDialog">
+        <wm-layoutgrid name="layoutgrid9">
+            <wm-gridrow name="gridrow14">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn49_2">
+                    <wm-label padding="unset 0.5em" caption="Name" name="label40"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn50_1">
+                    <wm-label padding="unset 0.5em" caption="Eric" name="label41"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow15">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn51_1">
+                    <wm-label padding="unset 0.5em" caption="Title" name="label42"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn52_1">
+                    <wm-label padding="unset 0.5em" caption="Engineer" name="label43"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4_1"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-page>

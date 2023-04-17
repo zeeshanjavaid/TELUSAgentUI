@@ -118,6 +118,17 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
     });
 };
+
+Page.TransferBanToNewEntityClick = function($event, widget) {
+    debugger;
+    Page.Widgets.entityNamePopOver.hidePopover();
+    Page.Widgets.TransferBanToNewEntDialog.open();
+    //  Page.Variables.entityIdTextVar.dataSet.dataValue = Page.Widgets.label13_1.caption;
+    //  Page.Variables.entityNameTextVar.dataSet.dataValue = Page.Widgets.label10.caption;
+    //   Page.Variables.entityTypeTextVar.dataSet.dataValue = Page.Widgets.label14.caption;
+};
+
+
 Page.ParrSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
