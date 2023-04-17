@@ -173,44 +173,45 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" iconclass="wi wi-file-text" name="TransferBanToExistEntDialog" width="50%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" name="TransferBanToExistEntDialog" width="50%">
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45">
-                    <wm-label padding="unset 0.5em" name="label34" caption="Select BANs to transfer FROM current Entity"></wm-label>
+                    <h4 class="subHeading">Select BANs to transfer FROM current Entity</h4>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid4">
-            <wm-gridrow name="gridrow8">
-                <wm-gridcolumn columnwidth="4" name="gridcolumn41">
-                    <wm-label padding="unset 0.5em" caption="Entity ID" name="entityIdText"></wm-label>
+            <wm-gridrow name="gridrow8" columnwidth="12">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn41">
+                    <wm-label caption="Entity ID" name="entityIdText" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="EntityIdLabel" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn42">
-                    <wm-label padding="unset 0.5em" caption="Entity Name" name="entityNameText"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn42">
+                    <wm-label caption="Entity Name" name="entityNameText" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="EntityNameLabel" caption="bind:Variables.entityNameTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn43_1">
-                    <wm-label padding="unset 0.5em" caption="Entity Type" name="entityTypeText"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn43_1">
+                    <wm-label caption="Entity Type" name="entityTypeText" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="EntityTypeLabel" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
+                <wm-gridcolumn></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid7">
             <wm-gridrow name="gridrow11">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn46">
-                    <wm-label padding="unset 0.5em" name="label37" caption="Selected"></wm-label>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn46" class="selectedLabel">
+                    <wm-label padding="unset 0.5em 0.5em 0.5em" name="label37" caption="Selected" color="grey"></wm-label>
                     <wm-label padding="unset 0.5em" name="SelectedBanTextValue" caption="bind:Variables.selectedBanLengthVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid6">
             <wm-gridrow name="gridrow10_1">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn45_1">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn45_1" class="dialogTable">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
                         on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)">
-                        <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banId" caption="Ban ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
@@ -223,7 +224,7 @@
         <wm-layoutgrid name="layoutgrid8">
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn47_1">
-                    <wm-label padding="unset 0.5em" name="label39" caption="Select Entity to transfer the BANs to"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" name="label39" caption="Select Entity to transfer the BANs to" color="grey"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow13">
@@ -236,12 +237,12 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="button4"></wm-button>
-            <wm-button class="btn-default" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
+        <wm-dialogactions name="dialogactions1" style="text-align:right">
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button4"></wm-button>
+            <wm-button class="primaryButton" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" iconclass="wi wi-file-text" name="TransferBanToNewEntDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" name="TransferBanToNewEntDialog">
         <wm-layoutgrid name="layoutgrid9">
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="6" name="gridcolumn49_2">

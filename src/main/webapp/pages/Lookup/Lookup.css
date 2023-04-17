@@ -43,10 +43,24 @@ li.tab-header.nav-item {
     bottom: 3px;
 }
 
-/*tr.app-datagrid-detail-row: hover {
-    background-color: green;
+h4.subHeading {
+    font-size: 18px;
+    width: 100%;
+    border-bottom: 1px solid #ddd; 
+    padding-bottom: 5px;
+    margin-bottom: 13px;
 }
 
-td.app-datagrid-row-details-cell: hover {
-    background-color: green;
-}*/
+.selectedLabel {
+    text-align: right;
+}
+
+.dialogTable {
+    padding: 1em 1em 0 1em;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.ng-star-inserted.app-dialog-header.modal-header {
+    border-bottom: 1px solid #ddd; 
+}
