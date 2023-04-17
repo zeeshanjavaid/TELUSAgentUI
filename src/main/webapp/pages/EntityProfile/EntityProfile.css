@@ -20,3 +20,7 @@ h3 {
 .latest_User{
     border: 0.1px solid #ddd
 }
+
+.parrSumLabel {
+    text-align: right;
+}
