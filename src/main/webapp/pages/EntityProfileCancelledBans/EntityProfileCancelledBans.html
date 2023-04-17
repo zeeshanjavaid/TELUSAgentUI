@@ -3,7 +3,7 @@
     <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
     <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.lastRecord.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false">
         <wm-table-column binding="banId" caption="BAN #" widget-type="icon" edit-widget-type="text" type="string" show="true" readonly="false">
-            <wm-icon caption="bind:row.getProperty('banId')" iconclass="fico-icon-flag" iconposition="left" class="" conditionalclass=""></wm-icon>
+            <wm-icon caption="bind:row.getProperty('banId')" iconclass="fico-icon-flag-solid" iconposition="left" iconcolor="red" class="" conditionalclass=""></wm-icon>
         </wm-table-column>
         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
