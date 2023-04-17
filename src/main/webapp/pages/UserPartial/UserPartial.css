@@ -753,7 +753,13 @@ td, th {
 .wm-app .app-form .app-label, .wm-app .app-liveform .app-label {
     padding: 0;
     font-size: 15px !important;
+    text-align: left !important;
 }
+
+label.app-label.control-label.formfield-label.userLabel {
+    text-align: right !important;
+}
+
 .wm-app .app-form .form-control-static+wm-select>.form-control{
     width: 70%;
     margin-left: 20px;
