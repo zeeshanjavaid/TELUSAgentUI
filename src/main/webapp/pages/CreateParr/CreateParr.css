@@ -2,25 +2,26 @@
     border: solid;
     border-width: 0.1px;
     border-color: lightgray;
-    width:85%;
+    /*width:85%;*/
     overflow: hidden;
-    width: 14em;
+    /*width: 14em;*/
 }
 
 @media (min-width: 500px) {
 .summary-col-width-mediuminstallBAN {
 flex: 0 0 9%;
 max-width: 10%;
-min-width: 12.333%;
+min-width: 16%;
 text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 }
 }
 /* for lines*/
-.parrDeatailsLine{
-   border-bottom: 1px solid #ddd; 
-   width:96%;
+h4.subHeadingLabel {
+    margin: 0 0 0 34px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%
 }
 .installmentDetailsLine{
     border-bottom: 1px solid #ddd;
@@ -35,4 +36,8 @@ overflow: hidden;
 }
 .InstallmentLable{
   border-bottom: 1px solid #ddd;  
+}
+
+h3 {
+    padding: 8px;
 }

@@ -6,16 +6,16 @@
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="getPaymentArrangementTable1" title="" margin="5px 5px 0px 13px" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
-                <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" width="80px" edit-widget-type="number" type="integer" show="true" readonly="false">
+                <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="statuses[0].status" caption="Status" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="installments[0].date" caption="Start" width="65px" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="customField1" caption="Expiry" widget-type="label" width="65px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="installments[0].date" caption="Start" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="customField1" caption="Expiry" widget-type="label" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
                     <wm-label caption="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments.length > 1 ? Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments[Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments.length].date : Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments[$i].date | toDate: 'MM/dd/yyyy'"
                         class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="evaluationResult" caption="Evaluation" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="evaluationResult" caption="Evaluation" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="amount" caption="PARR Amt" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" prefix="$" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
