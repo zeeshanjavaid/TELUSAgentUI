@@ -43,7 +43,7 @@
             <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
                 <wm-layoutgrid name="layoutgrid13">
                     <wm-gridrow name="gridrow18">
-                        <wm-gridcolumn columnwidth="6" style="display: flex;">
+                        <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn8">
                             <wm-gridcolumn name="gridcolumn38_1" style="text-align: right;" class="summary-col-width-mediuminstallBAN">
                                 <wm-label padding="5px 10px 5px 5px" name="label10" caption="Installment BANs" textalign="right" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
@@ -75,8 +75,7 @@
                                 <wm-button class="btn-default" caption="Select BANs" type="button" margin="unset 0.5em unset 2.5em" name="button2_1" on-click="Widgets.selectBANdialog.open()" textalign="center"></wm-button>
                             </wm-gridcolumn>
                         </wm-gridcolumn>
-
-                        <wm-gridcolumn columnwidth="6" style="display: flex;">
+                        <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn14">
                             <wm-gridcolumn name="gridcolumn24_1" width="30%">
                                 <wm-label padding="5px" name="label8" caption="Installment type*" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
@@ -97,13 +96,14 @@
                                     </wm-container>
                                 </wm-composite>
                             </wm-gridcolumn>
-                            <wm-gridcolumn></wm-gridcolumn>
+                            <wm-gridcolumn name="gridcolumn18_1"></wm-gridcolumn>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow19" padding="unset unset 1em unset">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn40"></wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn41" horizontalalign="right">
-                            <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>
+                            <!--<wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearButton" on-click="ClearButtonClick($event, widget)"></wm-button>-->
+                            <wm-button class="secondaryButton" id="cancelButton" caption="Cancel" type="button" margin="unset 0.5em" name="CancelButton" on-click="CancelInstallmentScheduleClick($event, widget)"></wm-button>
                             <wm-button caption="Create Installment Schedule" type="button" class="primaryButton" margin="unset 0.5em" name="createInstalmntSchedule" on-click="createInstalmntScheduleClick($event, widget)" show="true" disabled="bind:( Widgets.noOfInstlmnt.datavalue == undefined || Widgets.noOfInstlmnt.datavalue == 0) &amp;&amp; (Widgets.amountPerInstlmnt.datavalue == undefined || Widgets.amountPerInstlmnt.datavalue  ==0)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -129,7 +129,8 @@
     </wm-dialog>
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 2.5em">
         <wm-container name="container9_2" class="installmentScheduleLine-9_2con"></wm-container>
-        <wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule:"></wm-label>
+        <wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule"></wm-label>
+        <!--<h4 class="subHeadingLabel"><b>Installment Schedule</b></h4>-->
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
@@ -149,7 +150,7 @@
                     <wm-composite name="composite11_1">
                         <wm-label class="col-md-3 control-label" name="createParrComment" caption="Comments:"></wm-label>
                         <wm-container class="col-md-9" name="container15">
-                            <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em"></wm-textarea>
+                            <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em" placeholder=""></wm-textarea>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -163,7 +164,7 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
                     <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
-                    <wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>
+                    <!--<wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>-->
                     <wm-button class="primaryButton" caption="Create PARR" type="button" margin="unset 0.5em" name="button10" on-click="Variables.createPaymentArrangement.invoke()" disabled="bind:AmtOverUnder != 0"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>

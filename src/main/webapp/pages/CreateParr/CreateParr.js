@@ -25,6 +25,8 @@ Partial.onReady = function() {
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
+    document.getElementById("cancelButton").style.display = "none";
+
     var installmentSchedule = new Array();
     var amount = '';
     var remainder = 0;
@@ -210,4 +212,15 @@ Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
     }
     Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt;
 
+};
+
+Partial.CancelInstallmentScheduleClick = function($event, widget) {
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
+    Partial.Widgets.noOfInstlmnt.datavalue = 0;
+    Partial.Widgets.amountPerInstlmnt.datavalue = 0;
+    Partial.Widgets.RecurrenceDropdown.datavalue = '';
+    Partial.Widgets.ParrTotal.datavalue = '';
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    Partial.Widgets.InstallmentOptionRadio.datavalue = '';
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };
