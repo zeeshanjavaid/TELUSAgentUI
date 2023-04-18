@@ -26,6 +26,7 @@ Partial.onReady = function() {
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
     document.getElementById("cancelButton").style.display = "none";
+    //document.getElementById("cancelButton").hide();
 
     var installmentSchedule = new Array();
     var amount = '';
@@ -102,6 +103,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
     Variables.createPaymentArrangement.dataSet.installments.dataset.push(...installmentSchedule);
+    //document.getElementById("cancelButton").style.display = "block";
 };
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
@@ -215,6 +217,9 @@ Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
 };
 
 Partial.CancelInstallmentScheduleClick = function($event, widget) {
+    debugger;
+    document.getElementById("cancelButton").style.display = "block";
+    debugger;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
     Partial.Widgets.noOfInstlmnt.datavalue = 0;
     Partial.Widgets.amountPerInstlmnt.datavalue = 0;

@@ -23,6 +23,10 @@ h4.subHeadingLabel {
     border-bottom: 1px solid #ddd; 
     width: 96%
 }
+h4.installScheduleLabel {
+    margin: 0 0 0 34px;
+    width: 96%
+}
 .installmentDetailsLine{
     border-bottom: 1px solid #ddd;
      width:96%;

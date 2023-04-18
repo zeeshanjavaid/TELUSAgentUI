@@ -43,8 +43,6 @@ Partial.CancelDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
-
-
 };
 Partial.CreateDisputeClick = function($event, widget) {
     debugger;

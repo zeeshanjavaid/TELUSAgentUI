@@ -76,10 +76,10 @@
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn14">
-                            <wm-gridcolumn name="gridcolumn24_1" width="30%">
+                            <wm-gridcolumn name="gridcolumn24_1" width="30%" minwidth="17%">
                                 <wm-label padding="5px" name="label8" caption="Installment type*" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
-                            <wm-gridcolumn name="gridcolumn25_1">
+                            <wm-gridcolumn name="gridcolumn25_1" width="42%" minwidth="26%">
                                 <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="bind:Variables.InstallmentOptions.dataSet" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"
                                     datafield="dataValue" displayfield="name" disabled="bind:Widgets.RecurrenceDropdown.datavalue == undefined || Widgets.ParrTotal.datavalue == undefined" readonly="false"></wm-radioset>
                             </wm-gridcolumn>
@@ -129,30 +129,27 @@
     </wm-dialog>
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 2.5em">
         <wm-container name="container9_2" class="installmentScheduleLine-9_2con"></wm-container>
-        <wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule"></wm-label>
-        <!--<h4 class="subHeadingLabel"><b>Installment Schedule</b></h4>-->
+        <!--<wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule"></wm-label>-->
+        <h4><b>Installment Schedule</b></h4>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
                     <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" on-rowupdate="installmentScheduleTableRowupdate($event, widget, row)">
-                        <wm-table-column binding="sequenceId" caption="InstallmentID" widget-type="label" textalignment="right" edit-widget-type="text" type="string" readonly="true" show="true">
+                        <wm-table-column binding="sequenceId" caption="InstallmentID" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
                             <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="date" caption="Date" textalignment="center" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy"
-                            readonly="false"></wm-table-column>
-                        <wm-table-column binding="amount" caption="Installment Amt" textalignment="right" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
+                        <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn18" horizontalalign="center">
-                    <wm-composite name="composite11_1">
-                        <wm-label class="col-md-3 control-label" name="createParrComment" caption="Comments:"></wm-label>
-                        <wm-container class="col-md-9" name="container15">
-                            <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em" placeholder=""></wm-textarea>
-                        </wm-container>
-                    </wm-composite>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn18" horizontalalign="center" style="display: flex;">
+                    <wm-label padding="5px 15px 5px 5px" name="createParrComment" caption="Comments"></wm-label>
+                    <wm-gridcolumn class="col-md-9" name="container15">
+                        <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em" placeholder=""></wm-textarea>
+                    </wm-gridcolumn>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
