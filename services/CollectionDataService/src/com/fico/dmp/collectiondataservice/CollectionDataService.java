@@ -112,7 +112,7 @@ public class CollectionDataService {
     @RequestMapping(value = "/entityBanDetails", method = {RequestMethod.GET})
     public List<EntityBanDetailsResponse> getEntityBanDetails(String entityId) throws Exception  {
 
-        return objectMapper.readValue("[{\"entityId\":6766677,\"banId\":2244343,\"banStatus\":\"In Collection\",\"banName\":\"Air Canada\",\"banArAmount\":234,\"banOverdueAmount\":234,\"suppresionFlag\":true,\"disputeFlag\":false},{\"entityId\":6766677,\"banId\":2244344,\"banStatus\":\"In Collection\",\"banName\":\"Air Canada2\",\"banArAmount\":22,\"banOverdueAmount\":10,\"suppresionFlag\":true,\"disputeFlag\":false}]",
+        return objectMapper.readValue("[{\"entityId\":6766677,\"banId\":2244343,\"banStatus\":\"In Collection\",\"banName\":\"Air Canada\",\"banArAmount\":234,\"banOverdueAmount\":234,\"suppresionFlag\":false,\"disputeFlag\":false},{\"entityId\":6766677,\"banId\":2244344,\"banStatus\":\"In Collection\",\"banName\":\"Air Canada2\",\"banArAmount\":22,\"banOverdueAmount\":10,\"suppresionFlag\":true,\"disputeFlag\":true}]",
         objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
         // return new Object(); 
     }

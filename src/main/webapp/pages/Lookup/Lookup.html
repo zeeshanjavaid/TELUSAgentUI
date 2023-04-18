@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
-                            popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
+                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -212,11 +212,16 @@
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
                         on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)">
                         <wm-table-column binding="banId" caption="Ban ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="suppresionFlag" caption="Suppresion Flag" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                            <wm-label class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" caption=""></wm-label>
+                        </wm-table-column>
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="Dispute Flag" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="Dispute Flag" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
