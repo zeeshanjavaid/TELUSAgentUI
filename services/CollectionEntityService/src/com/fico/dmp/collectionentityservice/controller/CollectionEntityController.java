@@ -16,12 +16,9 @@ import java.lang.Integer;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
 import java.lang.Boolean;
-import io.swagger.client.model.CollectionContactArray;
 import io.swagger.client.model.CollectionContact;
 import io.swagger.client.model.CollectionEntity;
-import io.swagger.client.model.CollectionEntityArray;
 import io.swagger.client.model.CollectionSuppression;
-import io.swagger.client.model.CollectionSuppressionArray;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionContactUpdate;
@@ -91,7 +88,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionContactArray> getCollectionContact(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+    public List<CollectionContact> getCollectionContact(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntityService.getCollectionContact(ban, history);
     }
 
@@ -112,7 +109,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/collectionEntityArray_1", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionEntityArray> getCollectionEntityArray_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+    public List<CollectionEntity> getCollectionEntityArray_1(@RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntityService.getCollectionEntityArray(ban, history);
     }
 
@@ -140,7 +137,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/suppression_1", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionSuppressionArray> getSuppression_1(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
+    public List<CollectionSuppression> getSuppression_1(@RequestParam(value = "banRefId", required = false) String banRefId) throws Exception {
         return collectionEntityService.getSuppression(banRefId);
     }
 
