@@ -8,6 +8,8 @@ h3 {
 }
 
 h4.disputeDetaillabel {
+    font-size: 19px;
+    font-weight: bold;
     margin: 0 0 0 34px;
     border-bottom: 1px solid #ddd; 
     width: 96%
