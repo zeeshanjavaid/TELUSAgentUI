@@ -139,20 +139,15 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "createPaymentArrangement" : {
-    "_id" : "wm-createPaymentArrangement-wm.ServiceVariable-1678429945032",
-    "name" : "createPaymentArrangement",
+  "CreatePaymentArrangement" : {
+    "_id" : "wm-createPaymentArrangement-wm.ServiceVariable-1681917233014",
+    "name" : "CreatePaymentArrangement",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "isList" : false,
-      "target" : "CollectionPaymentArrangement",
-      "value" : "bind:Variables.createParrModel.dataSet",
-      "type" : "io.swagger.client.model.CollectionPaymentArrangement"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionPaymentArrangement",
-    "service" : "CollectionEntity",
+    "service" : "CollectionEntityService",
     "operation" : "addPaymentArrangement",
     "operationId" : "CollectionEntityController_addPaymentArrangement",
     "operationType" : "post",
@@ -161,7 +156,7 @@
     "isList" : false,
     "maxResults" : 20,
     "startUpdate" : false,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
@@ -304,6 +299,18 @@
       "Dispute Indc" : "",
       "Suppress Indc" : "Active"
     } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "SelectedBans" : {
+    "_id" : "wm-SelectedBans-wm.Variable-1681930823513",
+    "name" : "SelectedBans",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
     "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false

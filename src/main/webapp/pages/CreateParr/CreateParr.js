@@ -22,6 +22,7 @@ Partial.onReady = function() {
      */
     //Partial.Widgets.InstallmentOptions.dataValue = 'NoOfInstallments';
     App.Variables.errorMsg.dataSet.dataValue = null;
+    App.Variables.successMessage.dataSet.dataValue = null;
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
@@ -148,7 +149,7 @@ Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) 
     Partial.Widgets.amountPerInstlmnt.datavalue = 0;
 };
 
-Partial.ClearButtonClick = function($event, widget) {
+Partial.Clear = function() {
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
     Partial.Widgets.noOfInstlmnt.datavalue = 0;
@@ -193,31 +194,16 @@ Partial.ClearScheduleClick = function($event, widget) {
 Partial.SubmitBanClick = function($event, widget) {
 
     Partial.Variables.installmentBANCreateParr.dataSet = [];
-    //BANName
-    /*Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(a) {
+    var selectedBans = new Array();
+    Partial.Variables.installmentBANCreateParr.dataSet.push(...Partial.Widgets.selectBanParrTable1.selectedItems);
+    Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
 
-        Partial.obj = {
-            "BAN": a.BAN,
-            "BANName": a.BANName
-        }
-        Partial.Variables.installmentBANCreateParr.dataSet.push(Partial.obj);
-    })*/
-    Partial.Variables.installmentBANCreateParr.dataSet = Partial.Widgets.selectBanParrTable1.selectedItems;
-
-    /*Partial.Variables.getEntityBanDetails.invoke({
-            "inputFields": {
-                "entityId": 1
-            }
-        },
-        function(data) {
-            debugger;
-            Partial.Variables.installmentBANCreateParr.dataSet = data;
-        },
-        function(error) {
-            debugger;
-            console.log("error", error)
-        });*/
-
+        var entityRef = {};
+        entityRef.id = selectedBan.banMapRefId;
+        entityRef.name = selectedBan.banName;
+        selectedBans.push(entityRef);
+    });
+    Partial.Variables.SelectedBans.dataSet.push(...selectedBans);
     Partial.Widgets.selectBANdialog.close();
 };
 Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
@@ -232,9 +218,7 @@ Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
 };
 
 Partial.CancelInstallmentScheduleClick = function($event, widget) {
-    debugger;
     document.getElementById("cancelButton").style.display = "inline";
-    debugger;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
     Partial.Widgets.noOfInstlmnt.datavalue = 0;
     Partial.Widgets.amountPerInstlmnt.datavalue = 0;
@@ -243,4 +227,21 @@ Partial.CancelInstallmentScheduleClick = function($event, widget) {
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     Partial.Widgets.InstallmentOptionRadio.datavalue = '';
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
+
+Partial.CreatePARRClick = function($event, widget) {
+    Partial.Variables.CreatePaymentArrangement.setInput({
+        "CollectionPaymentArrangementCreate": {
+            'amount': Partial.Widgets.ParrTotal.datavalue,
+            'billingAccountRefs': Partial.Variables.SelectedBans.dataSet,
+            'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
+            'recurrence': Partial.Widgets.RecurrenceDropdown.datavalue
+        },
+        "entityId": Partial.pageParams.entityId
+    });
+    //Invoke POST createDispute service
+    Partial.Variables.CreatePaymentArrangement.invoke();
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    Partial.Clear();
+    App.refreshParrList();
 };

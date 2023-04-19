@@ -5,7 +5,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "string"
+    } ],
     "type" : "io.swagger.client.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "getPaymentArrangements",

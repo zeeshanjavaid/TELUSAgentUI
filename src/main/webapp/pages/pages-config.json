@@ -111,7 +111,10 @@
 }, {
   "name" : "CreateParr",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "CreateTeamsPartial",
   "type" : "PARTIAL",
@@ -246,7 +249,10 @@
 }, {
   "name" : "ParrList",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "Partial_Conditions",
   "type" : "PARTIAL",

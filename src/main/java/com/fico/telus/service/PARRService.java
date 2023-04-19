@@ -4,42 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fico.pscomponent.util.PropertiesUtil;
 
 import io.swagger.client.model.CollectionPaymentArrangement;
+import io.swagger.client.model.CollectionPaymentArrangementCreate;
+import io.swagger.client.model.CollectionPaymentArrangementUpdate;
+import io.swagger.client.model.EntityRef;
 
 @Service
 public class PARRService {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(PARRService.class);
 
 	private static final String IS_PARR_STUB_ENABLED = "IS_PARR_STUB_ENABLED";
-	
+
 	private static final String PARR_ENDPOINT_URL = "PARR_ENDPOINT_URL";
 
 	@Autowired
 	private PropertiesUtil propertiesUtil;
-	
+
 	@Autowired
 	private TelusAPIConnectivityService telusAPIConnectivityService;
-	
+
 	@Autowired
 	private CollectionCommonService collectionCommonService;
-	
+
 	private boolean isParrStubEnabled;
-	
+
 	private String parrEndPointUrl;
-	
+
 	@Autowired
 	@Qualifier("customObjectMapper")
 	private ObjectMapper mapper;
@@ -47,54 +48,72 @@ public class PARRService {
 	@PostConstruct
 	public void init() {
 
-		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED,"true"));
+		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "true"));
 		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "");
 	}
-	
-	private String propertyValueFrom(String propertyName, String defaulValueIfNull)
-    {
-        String propertyValue = propertiesUtil.getPropertyValue(propertyName);
-        if (propertyValue == null) {
-            logger.info("property value is null, using default");
-            propertyValue = defaulValueIfNull;
-        }
-        return propertyValue;
-    }
 
-	public CollectionPaymentArrangement createPaymentArrangement(CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
-
-		if(isParrStubEnabled) {
-			
-			return collectionPaymentArrangement;
-		} else {
-			
-			collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(), true);
-			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangement);			
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl, "POST");
-			collectionPaymentArrangement = mapper.readValue(responseStr, CollectionPaymentArrangement.class);
+	private String propertyValueFrom(String propertyName, String defaulValueIfNull) {
+		String propertyValue = propertiesUtil.getPropertyValue(propertyName);
+		if (propertyValue == null) {
+			logger.info("property value is null, using default");
+			propertyValue = defaulValueIfNull;
 		}
-		return collectionPaymentArrangement;
+		return propertyValue;
+	}
+
+	public CollectionPaymentArrangement createPaymentArrangement(
+			CollectionPaymentArrangementCreate collectionPaymentArrangementCreate, String entityId) throws Exception {
+
+    
+		if (isParrStubEnabled) {
+		    
+		    EntityRef entityRef =  new EntityRef();
+			entityRef.setId(Integer.valueOf(entityId));
+			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
+			if (collectionPaymentArrangementCreate.getBillingAccountRefs().size() > 0) {
+				logger.info(":::::::BillingAccountRefs :::::::::::: {}", collectionPaymentArrangementCreate.getBillingAccountRefs().get(0).getName());
+			}
+			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
+            logger.info(":::::::In stub collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
+			return new CollectionPaymentArrangement();
+		} else {
+
+			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
+			// true);
+			EntityRef entityRef =  new EntityRef();
+			entityRef.setId(Integer.valueOf(entityId));
+			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
+			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
+			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
+					"POST");
+			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
+					CollectionPaymentArrangement.class);
+			return collectionPaymentArrangement;
+		}
 	}
 
 	public CollectionPaymentArrangement updatePaymentArrangement(
-			CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
+			CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception {
 
 		if (isParrStubEnabled) {
 
-			return collectionPaymentArrangement;
+			return new CollectionPaymentArrangement();
 		} else {
-			
-			collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(), false);
-			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangement);
+
+			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
+			// false);
+			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementUpdate);
+			logger.info("::::::::collectionPaymentArrangementUpdate requestPayload ::::::::{}", requestPayload);
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
 					"PATCH");
-			collectionPaymentArrangement = mapper.readValue(responseStr, CollectionPaymentArrangement.class);
+			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
+					CollectionPaymentArrangement.class);
+			return collectionPaymentArrangement;
 		}
-		return collectionPaymentArrangement;
 	}
-	
-	public List<CollectionPaymentArrangement> getPaymentArrangements(
-			String entityId) throws Exception {
+
+	public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId) throws Exception {
 
 		List<CollectionPaymentArrangement> collectionPaymentArrangements = new ArrayList<CollectionPaymentArrangement>();
 		if (isParrStubEnabled) {
@@ -102,27 +121,29 @@ public class PARRService {
 			collectionPaymentArrangements = mapper.readValue(
 					"[{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"allBillingAccountIncludedIndicator\":true,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"INCOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"},\"validityIndicator\":true,\"@type\":\"CollectionPaymentArrangementBillingAccountMap\"}],\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"comment\":\"string\",\"evaluationResult\":\"string\",\"expectedPaymentAmountToDate\":100.0,\"installments\":[{\"id\":1,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"date\":\"2023-01-01\",\"evaluationResult\":\"string\",\"evaluationTimestamp\":\"2023-01-01T09:00:00.001Z\",\"sequenceId\":1,\"validityIndicator\":true,\"@type\":\"CollectionPaymentInstallment\"}],\"receivedPaymentAmountToDate\":0.0,\"recurrence\":\"MONTHLY\",\"statuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"reason\":\"string\",\"status\":\"string\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.001Z\"},\"@type\":\"CollectionPaymentArrangementStatus\"}],\"@type\":\"CollectionPaymentArrangement\"}]",
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
-			
+
 		} else {
 
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(null, this.parrEndPointUrl + "?id="+ entityId,
-					"GET");
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
+					this.parrEndPointUrl + "?id=" + entityId, "GET");
 			collectionPaymentArrangements = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}
 		return collectionPaymentArrangements;
 	}
-	
-	public CollectionPaymentArrangement getPaymentArrangement(Integer parrId, Boolean history) throws Exception  {
-		
+
+	public CollectionPaymentArrangement getPaymentArrangement(Integer parrId, Boolean history) throws Exception {
+
 		CollectionPaymentArrangement collectionPaymentArrangement = null;
 		if (isParrStubEnabled) {
 
-			collectionPaymentArrangement = mapper.readValue("{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"allBillingAccountIncludedIndicator\":true,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"INCOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"},\"validityIndicator\":true,\"@type\":\"CollectionPaymentArrangementBillingAccountMap\"}],\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"comment\":\"string\",\"evaluationResult\":\"string\",\"expectedPaymentAmountToDate\":100.0,\"installments\":[{\"id\":1,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"date\":\"2023-01-01\",\"evaluationResult\":\"string\",\"evaluationTimestamp\":\"2023-01-01T09:00:00.001Z\",\"sequenceId\":1,\"validityIndicator\":true,\"@type\":\"CollectionPaymentInstallment\"}],\"receivedPaymentAmountToDate\":0.0,\"recurrence\":\"MONTHLY\",\"statuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"reason\":\"string\",\"status\":\"string\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.001Z\"},\"@type\":\"CollectionPaymentArrangementStatus\"}],\"@type\":\"CollectionPaymentArrangement\"}",CollectionPaymentArrangement.class);
+			collectionPaymentArrangement = mapper.readValue(
+					"{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"allBillingAccountIncludedIndicator\":true,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"INCOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"},\"validityIndicator\":true,\"@type\":\"CollectionPaymentArrangementBillingAccountMap\"}],\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"comment\":\"string\",\"evaluationResult\":\"string\",\"expectedPaymentAmountToDate\":100.0,\"installments\":[{\"id\":1,\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"date\":\"2023-01-01\",\"evaluationResult\":\"string\",\"evaluationTimestamp\":\"2023-01-01T09:00:00.001Z\",\"sequenceId\":1,\"validityIndicator\":true,\"@type\":\"CollectionPaymentInstallment\"}],\"receivedPaymentAmountToDate\":0.0,\"recurrence\":\"MONTHLY\",\"statuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.001Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.001Z\",\"@type\":\"AuditInfo\"},\"reason\":\"string\",\"status\":\"string\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.001Z\"},\"@type\":\"CollectionPaymentArrangementStatus\"}],\"@type\":\"CollectionPaymentArrangement\"}",
+					CollectionPaymentArrangement.class);
 		} else {
 
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(null, this.parrEndPointUrl + "?id="+ parrId,
-					"GET");
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
+					this.parrEndPointUrl + "?id=" + parrId, "GET");
 			collectionPaymentArrangement = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}

@@ -20,8 +20,6 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-
-    debugger;
 };
 
 Partial.CreateClick = function($event, widget) {
@@ -30,7 +28,14 @@ Partial.CreateClick = function($event, widget) {
 
 Partial.getPaymentArrangementTable1_idOnClick = function($event, widget, row) {
 
-
-
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrDetail';
+};
+
+App.refreshParrList = function() {
+
+    Partial.Variables.CollectionEntityGetPaymentArrangement.setInput({
+
+        "entityId": Partial.pageParams.entityId
+    });
+    Partial.Variables.CollectionEntityGetPaymentArrangement.invoke();
 };
