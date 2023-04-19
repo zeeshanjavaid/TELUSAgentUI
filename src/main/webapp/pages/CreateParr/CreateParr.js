@@ -25,16 +25,26 @@ Partial.onReady = function() {
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
-    App.Variables.errorMsg.dataSet.dataValue = null;
-    debugger;
+    //App.Variables.errorMsg.dataSet.dataValue = null;
+    //debugger;
 
-    if (Partial.Widgets.ParrTotal.dataValue == undefined) {
+    if (Partial.Widgets.ParrTotal._datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
-    } else if (Partial.Widgets.RecurrenceDropdown.dataValue == undefined) {
+    } else if (Partial.Widgets.RecurrenceDropdown.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
-    } else if (Partial.Widgets.InstallmentOptionRadio.dataValue == undefined) {
+    } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
-    } else {
+    }
+    /*else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments') {
+           if (Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
+               App.Variables.errorMsg.dataSet.dataValue = "Number of Installments is mandatory";
+           }
+       } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'AmtPerInstallment') {
+           if (Partial.Variables.AmountPerInstallment.dataSet.dataValue <= 0) {
+               App.Variables.errorMsg.dataSet.dataValue = "Amount per Installment is mandatory";
+           }
+       }*/
+    else {
 
         document.getElementById("cancelButton").style.display = "none";
 
@@ -114,6 +124,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
         Variables.createPaymentArrangement.dataSet.installments.dataset.push(...installmentSchedule);
     }
+    //App.Variables.errorMsg.dataSet.dataValue = null;
 };
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
@@ -122,6 +133,7 @@ Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
 };
 
 Partial.CancelClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = null;
     document.getElementById("cancelButton").style.display = "inline";
 
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
@@ -145,7 +157,7 @@ Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) 
 };
 
 Partial.ClearButtonClick = function($event, widget) {
-
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
     Partial.Widgets.noOfInstlmnt.datavalue = 0;
     Partial.Widgets.amountPerInstlmnt.datavalue = 0;

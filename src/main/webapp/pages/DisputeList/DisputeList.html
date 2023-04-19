@@ -5,7 +5,7 @@
             <wm-button class="btn-default createDisputeBtn" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
         </wm-gridcolumn>
         <wm-gridcolumn width="100%">
-            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic" margin="5px 5px 0 10px" showrecordcount="true" navigationalign="right" style="padding:5px;">
+            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%">
                 <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
