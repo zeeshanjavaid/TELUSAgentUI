@@ -19,6 +19,8 @@ overflow: hidden;
 }
 /* for lines*/
 h4.subHeadingLabel {
+    font-size: 19px;
+    font-weight: bold;
     margin: 0 0 0 34px;
     border-bottom: 1px solid #ddd; 
     width: 96%

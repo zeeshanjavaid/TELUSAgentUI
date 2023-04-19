@@ -18,7 +18,7 @@
                 <wm-table-column binding="evaluationResult" caption="Evaluation" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="amount" caption="PARR Amt" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" prefix="$" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="110px" edit-widget-type="number" type="double" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>

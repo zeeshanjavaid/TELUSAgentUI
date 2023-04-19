@@ -201,10 +201,10 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "name" : "Number Of Installments:",
+      "name" : "Number of Installments",
       "dataValue" : "NoOfInstallments"
     }, {
-      "name" : "Amount Per Installment:",
+      "name" : "Amount per Installment",
       "dataValue" : "AmtPerInstallment"
     } ],
     "type" : "entry",
