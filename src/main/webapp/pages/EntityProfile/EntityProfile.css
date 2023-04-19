@@ -24,3 +24,7 @@ h3 {
 .parrSumLabel {
     text-align: right;
 }
+
+.form-group.app-composite-widget.row.clearfix {
+    margin-bottom: unset;
+}
