@@ -125,7 +125,7 @@
             <wm-table-column binding="disputeFlag" caption="Dispute Indicator" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="entityId" caption="Entity Id" edit-widget-type="text" type="string" pcdisplay="false" show="true" readonly="false"></wm-table-column>
         </wm-table>
-        <wm-button class="primaryButton" caption="Submit" type="button" margin="1em 0.5em unset 53em" name="SubmitBan" on-click="SubmitBanClick($event, widget)" iconposition="right"></wm-button>
+        <wm-button class="primaryButton" caption="Submit" type="button" style="float: right;" name="SubmitBan" on-click="SubmitBanClick($event, widget)" iconposition="right"></wm-button>
     </wm-dialog>
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 2.5em">
         <wm-container name="container9_2" class="installmentScheduleLine-9_2con"></wm-container>
@@ -146,15 +146,15 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="6" name="gridcolumn18" horizontalalign="center" style="display: flex;">
-                    <wm-label padding="5px 15px 5px 5px" name="createParrComment" caption="Comments"></wm-label>
+                    <wm-label padding="5px 15px 5px 5px" color="#6e6d6a" name="createParrComment" caption="Comments"></wm-label>
                     <wm-gridcolumn class="col-md-9" name="container15">
                         <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.createPaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em" placeholder=""></wm-textarea>
                     </wm-gridcolumn>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn19">
-                    <wm-label name="AmtOverUnderTotalLabel" caption="Amt Over/Under PARR Total:" class="col-md-3 control-label" whitespace="nowrap" color="#6e6d6a"></wm-label>
+            <wm-gridrow name="gridrow10" style="display: flex;">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn19" style="text-align: right;">
+                    <wm-label name="AmtOverUnderTotalLabel" caption="Amt Over/Under PARR Total" whitespace="nowrap" color="#6e6d6a"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="7" name="gridcolumn21">
                     <wm-label padding="unset 0.5em" name="AmtOverUnderParrTotalValue" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
