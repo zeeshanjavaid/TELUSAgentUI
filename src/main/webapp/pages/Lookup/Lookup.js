@@ -147,10 +147,11 @@ Page.getEntityBanDetailsTable1Datarender = function(widget, $data) {
     Page;
     debugger;
 };
-Page.TransferBanToCurrEntityTableSelect = function($event, widget, row) {
+
+Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
     Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToCurrEntityTable.selectedItems.length;
 };
 
-Page.TransferBanToCurrEntityTableDeselect = function($event, widget, row) {
+Page.TransferBanToNewEntityTableDeselect = function($event, widget, row) {
     Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToCurrEntityTable.selectedItems.length;
 };

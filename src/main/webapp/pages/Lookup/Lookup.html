@@ -282,8 +282,8 @@
         <wm-layoutgrid name="layoutgrid12">
             <wm-gridrow name="gridrow17">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55">
-                    <wm-table name="TransferBanToCurrEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToCurrEntityTableSelect($event, widget, row)"
-                        on-deselect="TransferBanToCurrEntityTableDeselect($event, widget, row)">
+                    <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
+                        on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
@@ -296,7 +296,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button4_1"></wm-button>
+            <wm-button class="btn-primary" caption="Cancel" name="button4_1" on-click="Widgets.TransferBanToNewEntDialog.close()"></wm-button>
+            <wm-button class="btn-default" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="button5"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-page>
