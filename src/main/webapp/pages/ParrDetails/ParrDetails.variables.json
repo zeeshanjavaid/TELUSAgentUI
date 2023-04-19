@@ -1,76 +1,4 @@
 {
-  "DisputePageName" : {
-    "_id" : "wm-DisputePageName-wm.Variable-1679434081932",
-    "name" : "DisputePageName",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "dataValue",
-      "value" : "DisputeList",
-      "type" : "string"
-    } ],
-    "dataSet" : {
-      "dataValue" : ""
-    },
-    "type" : "string",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
-  "getDisputeHistory" : {
-    "_id" : "wm-getDisputeHistory-wm.ServiceVariable-1679953241612",
-    "name" : "getDisputeHistory",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionDispute",
-    "service" : "CollectionDataService",
-    "operation" : "getdispute",
-    "operationId" : "CollectionDataController_getdispute",
-    "operationType" : "get",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 20,
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "CollectionData"
-  },
-  "getPaymentArrangement" : {
-    "_id" : "wm-getPaymentArrangement-wm.ServiceVariable-1678378294213",
-    "name" : "getPaymentArrangement",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "id",
-      "value" : "bind:pageParams.ParrId",
-      "type" : "integer"
-    }, {
-      "target" : "history",
-      "value" : true,
-      "type" : "boolean"
-    } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
-    "service" : "CollectionEntity",
-    "operation" : "getPaymentArrangement",
-    "operationId" : "CollectionEntityController_getPaymentArrangement",
-    "operationType" : "get",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "CollectionEntity"
-  },
   "ParrInstallmentSchedule" : {
     "_id" : "wm-ParrInstallmentSchedule-wm.Variable-1679576077612",
     "name" : "ParrInstallmentSchedule",
@@ -104,7 +32,7 @@
     "designMaxResults" : 10,
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
     "ignoreCase" : true,
@@ -1000,7 +928,18 @@
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
     } ],
-    "filterExpressions" : { },
+    "filterFields" : { },
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ {
+        "target" : "",
+        "type" : "string",
+        "matchMode" : "anywhereignorecase",
+        "value" : "",
+        "required" : false,
+        "secondvalue" : ""
+      } ]
+    },
     "package" : "com.fico.dmp.telusagentuidb.User"
   },
   "TELUSAgentUIDBUserData1" : {
@@ -1018,8 +957,8 @@
     "maxResults" : 20,
     "designMaxResults" : 10,
     "inFlightBehavior" : "executeLast",
-    "startUpdate" : true,
-    "autoUpdate" : true,
+    "startUpdate" : false,
+    "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
     "ignoreCase" : true,
@@ -1915,7 +1854,18 @@
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
     } ],
-    "filterExpressions" : { },
+    "filterFields" : { },
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ {
+        "target" : "",
+        "type" : "string",
+        "matchMode" : "anywhereignorecase",
+        "value" : "",
+        "required" : false,
+        "secondvalue" : ""
+      } ]
+    },
     "package" : "com.fico.dmp.telusagentuidb.User"
   },
   "TELUSAgentUIDBUserData2" : {
@@ -1933,8 +1883,8 @@
     "maxResults" : 20,
     "designMaxResults" : 10,
     "inFlightBehavior" : "executeLast",
-    "startUpdate" : true,
-    "autoUpdate" : true,
+    "startUpdate" : false,
+    "autoUpdate" : false,
     "transformationRequired" : false,
     "liveSource" : "TELUSAgentUIDB",
     "ignoreCase" : true,
@@ -2830,7 +2780,18 @@
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
     } ],
-    "filterExpressions" : { },
+    "filterFields" : { },
+    "filterExpressions" : {
+      "condition" : "AND",
+      "rules" : [ {
+        "target" : "",
+        "type" : "string",
+        "matchMode" : "anywhereignorecase",
+        "value" : "",
+        "required" : false,
+        "secondvalue" : ""
+      } ]
+    },
     "package" : "com.fico.dmp.telusagentuidb.User"
   },
   "updatePaymentArrangement" : {
