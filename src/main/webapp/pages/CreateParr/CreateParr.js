@@ -25,8 +25,6 @@ Partial.onReady = function() {
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
-    //App.Variables.errorMsg.dataSet.dataValue = null;
-    //debugger;
 
     if (Partial.Widgets.ParrTotal._datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
@@ -34,17 +32,11 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
-    }
-    /*else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments') {
-           if (Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
-               App.Variables.errorMsg.dataSet.dataValue = "Number of Installments is mandatory";
-           }
-       } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'AmtPerInstallment') {
-           if (Partial.Variables.AmountPerInstallment.dataSet.dataValue <= 0) {
-               App.Variables.errorMsg.dataSet.dataValue = "Amount per Installment is mandatory";
-           }
-       }*/
-    else {
+    } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments' && Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Number of Installments is mandatory";
+    } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'AmtPerInstallment' && Partial.Variables.AmountPerInstallment.dataSet.dataValue <= 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Amount per Installment is mandatory";
+    } else {
 
         document.getElementById("cancelButton").style.display = "none";
 

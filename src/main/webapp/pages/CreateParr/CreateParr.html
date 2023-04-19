@@ -78,10 +78,10 @@
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn14">
-                            <wm-gridcolumn name="gridcolumn24_1" width="30%" style="min-width: 17%;">
+                            <wm-gridcolumn name="gridcolumn24_1" width="30%" style="min-width: 150px;">
                                 <wm-label padding="5px" name="label8" caption="Installment type*" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
-                            <wm-gridcolumn name="gridcolumn25_1" width="42%" style="min-width: 25%;" class="radioBtnGrid">
+                            <wm-gridcolumn name="gridcolumn25_1" width="42%" style="min-width: 200px;" class="radioBtnGrid">
                                 <wm-radioset height="auto" name="InstallmentOptionRadio" layout="inline" dataset="bind:Variables.InstallmentOptions.dataSet" datavalue="bind:Variables.InstallmentOption.dataSet" on-change="InstallmentOptionRadioChange($event, widget, newVal, oldVal)"
                                     datafield="dataValue" displayfield="name" disabled="bind:Widgets.RecurrenceDropdown.datavalue == undefined || Widgets.ParrTotal.datavalue == undefined" readonly="false"></wm-radioset>
                             </wm-gridcolumn>
@@ -91,7 +91,7 @@
                                         <wm-composite name="composite7">
                                             <wm-container class="col-md-9" name="container8">
                                                 <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)" show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"
-                                                    width="95%"></wm-text>
+                                                    width="95%" style="min-width: 140px;"></wm-text>
                                             </wm-container>
                                         </wm-composite>
                                         <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder="" disabled="bind:Widgets.InstallmentOptionRadio.datavalue != 'AmtPerInstallment'" width="70%"></wm-text>
@@ -144,7 +144,7 @@
                         <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
                         <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>

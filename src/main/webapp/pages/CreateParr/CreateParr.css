@@ -49,8 +49,14 @@ h3 {
     padding: 8px;
 }
 
-@media only screen and (min-width: 576px) {
-    .radioBtnGrid {
-        min-wdth: 30%;
-    }
+button.btn.app-button.row-action.row-action-button.undefined.edit.edit-row-button.btn-xs {
+    width: 30%;
+    background-color: #4B286D;
+    color: white;
+}
+
+button.btn.app-button.row-action.row-action-button.undefined.edit.edit-row-button.btn-xs: hover {
+    width: 30%;
+    background-color: #4B286D;
+    color: white;
 }
