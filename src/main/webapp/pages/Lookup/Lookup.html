@@ -210,7 +210,7 @@
             <wm-gridrow name="gridrow10_1">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45_1" class="dialogTable">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
-                        on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)">
+                        on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)">
                         <wm-table-column binding="banId" caption="Ban ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="suppresionFlag" caption="Suppresion Flag" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                             <wm-label class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" caption=""></wm-label>
@@ -219,7 +219,7 @@
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="Dispute Flag" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                     </wm-table>
@@ -275,21 +275,22 @@
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn54">
                     <wm-label padding="unset 0.5em" name="label45" caption="Selected:"></wm-label>
-                    <wm-label padding="unset 0.5em" name="label46"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label46" caption="bind:Variables.SelectedBanForCurrEntityVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid12">
             <wm-gridrow name="gridrow17">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55">
-                    <wm-table name="getEntityBanDetailsTable1_1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true">
-                        <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                    <wm-table name="TransferBanToCurrEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToCurrEntityTableSelect($event, widget, row)"
+                        on-deselect="TransferBanToCurrEntityTableDeselect($event, widget, row)">
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="suppresionFlag" caption="Suppresion Flag" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
