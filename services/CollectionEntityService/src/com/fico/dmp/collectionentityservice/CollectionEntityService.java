@@ -204,7 +204,7 @@ public class CollectionEntityService {
         	// return new Object(); 
     }    
         
-    public CollectionPaymentArrangement addPaymentArrangement( CollectionPaymentArrangement  collectionPaymentArrangement) throws Exception  {
+    public CollectionPaymentArrangement addPaymentArrangement( CollectionPaymentArrangementCreate  collectionPaymentArrangement) throws Exception  {
     
 		/*
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
@@ -215,14 +215,14 @@ public class CollectionEntityService {
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
 		 * collectionPaymentArrangementCreate.getInstallments().get(0).getAmount()); }
 		 */
-    	collectionPaymentArrangement = parrService.createPaymentArrangement(collectionPaymentArrangement);
-        return collectionPaymentArrangement;
+    // 	collectionPaymentArrangement = parrService.createPaymentArrangement(collectionPaymentArrangement);
+        return new CollectionPaymentArrangement();
         
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionPaymentArrangement updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangement collectionPaymentArrangement) throws Exception  {
+    public CollectionPaymentArrangement updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangementUpdate collectionPaymentArrangement) throws Exception  {
         
 		/*
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
@@ -231,8 +231,8 @@ public class CollectionEntityService {
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
 		 * collectionPaymentArrangementCreate.getInstallments().get(0).getAmount()); }
 		 */
-    	collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangement);
-        return collectionPaymentArrangement;        
+    // 	collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangement);
+        return new CollectionPaymentArrangement();        
     }
     
 //dispute

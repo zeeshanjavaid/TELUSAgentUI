@@ -9,6 +9,7 @@ import java.lang.Exception;
 import io.swagger.client.model.CollectionContactCreate;
 import io.swagger.client.model.CollectionEntityCreate;
 import io.swagger.client.model.CollectionDisputeCreate;
+import io.swagger.client.model.CollectionPaymentArrangementCreate;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionSuppressionCreate;
 import java.lang.Integer;
@@ -24,6 +25,7 @@ import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionContactUpdate;
 import io.swagger.client.model.CollectionEntityUpdate;
 import io.swagger.client.model.CollectionDisputeUpdate;
+import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.CollectionSuppressionUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -42,43 +44,31 @@ public class CollectionEntityController {
     private CollectionEntityService collectionEntityService;
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionBillingAccountRefCreate addBillingAccountRef(@RequestBody CollectionBillingAccountRefCreate collectionBillingAccountRefCreate) throws Exception {
         return collectionEntityService.addBillingAccountRef(collectionBillingAccountRefCreate);
     }
 
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionContactCreate addCollectionContact(@RequestBody CollectionContactCreate collectionContactCreate) throws Exception {
         return collectionEntityService.addCollectionContact(collectionContactCreate);
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionEntityCreate addCollectionEntity(@RequestBody CollectionEntityCreate collectionEntityCreate) throws Exception {
         return collectionEntityService.addCollectionEntity(collectionEntityCreate);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionDisputeCreate addDispute(@RequestBody CollectionDisputeCreate collectionDispute) throws Exception {
         return collectionEntityService.addDispute(collectionDispute);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
+    public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangementCreate collectionPaymentArrangement) throws Exception {
         return collectionEntityService.addPaymentArrangement(collectionPaymentArrangement);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionSuppressionCreate addSuppression(@RequestBody CollectionSuppressionCreate collectionSuppressionCreate) throws Exception {
         return collectionEntityService.addSuppression(collectionSuppressionCreate);
     }
@@ -168,43 +158,31 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionBillingAccountRefUpdate updateBillingAccountRef(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionBillingAccountRefUpdate collectionBillingAccountRefUpdate) throws Exception {
         return collectionEntityService.updateBillingAccountRef(id, collectionBillingAccountRefUpdate);
     }
 
     @RequestMapping(value = "/collectioncontact", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionContactUpdate updateCollectionContact(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionContactUpdate collectionContactUpdate) throws Exception {
         return collectionEntityService.updateCollectionContact(id, collectionContactUpdate);
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionEntityUpdate updateCollectionEntity(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionEntityUpdate collectionEntityUpdate) throws Exception {
         return collectionEntityService.updateCollectionEntity(id, collectionEntityUpdate);
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionDisputeUpdate updateDispute(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionDisputeUpdate collectionDispute) throws Exception {
         return collectionEntityService.updateDispute(id, collectionDispute);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangement collectionPaymentArrangement) throws Exception {
+    public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangementUpdate collectionPaymentArrangement) throws Exception {
         return collectionEntityService.updatePaymentArrangement(id, collectionPaymentArrangement);
     }
 
     @RequestMapping(value = "/suppression", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
     public CollectionSuppressionUpdate updateSuppression(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionSuppressionUpdate collectionSuppressionUpdate) throws Exception {
         return collectionEntityService.updateSuppression(id, collectionSuppressionUpdate);
     }

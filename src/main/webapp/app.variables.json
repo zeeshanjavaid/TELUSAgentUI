@@ -2286,7 +2286,8 @@
       "tenantId" : "",
       "isAuthenticated" : false,
       "isSecurityEnabled" : true,
-      "roles" : [ ]
+      "roles" : [ ],
+      "empId" : ""
     },
     "type" : "entry",
     "isList" : false,
