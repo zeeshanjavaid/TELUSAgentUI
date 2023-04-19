@@ -33,7 +33,22 @@
                     <wm-layoutgrid name="layoutgrid5">
                         <wm-gridrow name="gridrow8">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
-                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="panel1" font="14">
+                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)">
+                                    <wm-layoutgrid name="layoutgrid25">
+                                        <wm-gridrow name="gridrow39">
+                                            <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
+                                                <wm-container name="container21" margin="0 0 0 0">
+                                                    <wm-table name="AssociatedwithBanTable1" title="" dataset="bind:Variables.AssociatedwithBan.dataSet" navigation="None">
+                                                        <wm-table-column binding="BAN#" caption="Ban#" show="true" readonly="undefined"></wm-table-column>
+                                                        <wm-table-column binding="BANName" caption="Ban Name" mobiledisplay="false" show="true" readonly="undefined"></wm-table-column>
+                                                        <wm-table-column binding="Total AR" caption="Total Ar" show="true" readonly="undefined"></wm-table-column>
+                                                        <wm-table-column binding="Total OD" caption="Total Od" show="true" readonly="undefined"></wm-table-column>
+                                                        <wm-table-column binding="IS Dispute" caption="Is Dispute" show="true" readonly="undefined"></wm-table-column>
+                                                    </wm-table>
+                                                </wm-container>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
                                 </wm-panel>
                             </wm-gridcolumn>
                         </wm-gridrow>

@@ -25,3 +25,11 @@ Partial.onReady = function() {
 Partial.button1Click = function($event, widget) {
     Partial.Widgets.popover2.close();
 };
+
+
+Partial.AssociatewithBANExpand = function($event, widget) {
+    Partial.IsExpandedIS = true;
+};
+Partial.AssociatewithBANCollapse = function($event, widget) {
+    Partial.IsExpandedIS = false;
+};

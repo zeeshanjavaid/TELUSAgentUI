@@ -1,1 +1,20 @@
-{ }
+{
+  "AssociatedwithBan" : {
+    "_id" : "wm-AssociatedwithBan-wm.Variable-1681885701140",
+    "name" : "AssociatedwithBan",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "BAN#" : " ",
+      "BANName" : " ",
+      "Total AR" : " ",
+      "Total OD" : "",
+      "IS Dispute" : ""
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
