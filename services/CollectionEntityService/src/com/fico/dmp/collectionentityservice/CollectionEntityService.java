@@ -55,6 +55,7 @@ import io.swagger.client.model.CollectionSuppressionArray;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionDisputeUpdate;
 import io.swagger.client.model.CollectionDisputeCreate;
+import io.swagger.client.model.EntityRef;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -204,7 +205,7 @@ public class CollectionEntityService {
         	// return new Object(); 
     }    
         
-    public CollectionPaymentArrangement addPaymentArrangement( CollectionPaymentArrangementCreate  collectionPaymentArrangement) throws Exception  {
+    public CollectionPaymentArrangement addPaymentArrangement(CollectionPaymentArrangementCreate  collectionPaymentArrangement, List<EntityRef> selectedBans) throws Exception  {
     
 		/*
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
