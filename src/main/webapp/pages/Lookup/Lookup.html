@@ -273,7 +273,25 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11">
             <wm-gridrow name="gridrow16">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn54"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn54">
+                    <wm-label padding="unset 0.5em" name="label45" caption="Selected:"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label46"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid12">
+            <wm-gridrow name="gridrow17">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn55">
+                    <wm-table name="getEntityBanDetailsTable1_1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true">
+                        <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="suppresionFlag" caption="Suppresion Flag" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2">
