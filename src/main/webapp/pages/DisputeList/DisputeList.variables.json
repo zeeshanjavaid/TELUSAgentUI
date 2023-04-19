@@ -1,6 +1,6 @@
 {
   "getAllDisputes" : {
-    "_id" : "wm-getAllDisputes1-wm.ServiceVariable-1681133165465",
+    "_id" : "wm-getAllDisputes1-wm.ServiceVariable-1681884678513",
     "name" : "getAllDisputes",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
@@ -12,8 +12,8 @@
     } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
-    "operation" : "getdispute",
-    "operationId" : "CollectionEntityController_getdispute",
+    "operation" : "getdispute_1",
+    "operationId" : "CollectionEntityController_getdispute_1",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],

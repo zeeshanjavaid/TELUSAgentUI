@@ -107,7 +107,7 @@
     "saveInPhonegap" : false
   },
   "getDisputeDetails" : {
-    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1681133252508",
+    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1681885090916",
     "name" : "getDisputeDetails",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
@@ -123,8 +123,8 @@
     } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
-    "operation" : "getdispute_1",
-    "operationId" : "CollectionEntityController_getdispute_1",
+    "operation" : "getdispute",
+    "operationId" : "CollectionEntityController_getdispute",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
