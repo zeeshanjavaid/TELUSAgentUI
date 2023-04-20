@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
-                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
+                            popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -259,37 +259,39 @@
         <wm-layoutgrid name="layoutgrid9">
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn49_2">
-                    <wm-label padding="unset 0.5em" caption="Select BANs to transfer FROM current Entity" name="label40"></wm-label>
+                    <!--<wm-label padding="unset 0.5em" caption="Select BANs to transfer FROM current Entity" name="label40"></wm-label>-->
+                    <h4 class="subHeading">Select BANs to transfer FROM current Entity</h4>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid10">
             <wm-gridrow name="gridrow15">
-                <wm-gridcolumn columnwidth="4" name="gridcolumn51_1">
-                    <wm-label padding="unset 0.5em" name="label39_1" caption="Entity ID:"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn51_1">
+                    <wm-label name="label39_1" caption="Entity ID:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label40_1" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn52_1">
-                    <wm-label padding="unset 0.5em" name="label41" caption="Entity Name:"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn52_1">
+                    <wm-label name="label41" caption="Entity Name:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label42" caption="bind:Variables.entityNameTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn53_1">
-                    <wm-label padding="unset 0.5em" name="label43" caption="Entity Type:"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn53_1">
+                    <wm-label name="label43" caption="Entity Type:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label44" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
+                <wm-gridcolumn name="gridcolumn45_2"></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11">
             <wm-gridrow name="gridrow16">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn54">
-                    <wm-label padding="unset 0.5em" name="label45" caption="Selected:"></wm-label>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn54" class="selectedLabel">
+                    <wm-label padding="unset 0.5em 0.5em 0.5em" name="label45" caption="Selected:" color="grey"></wm-label>
                     <wm-label padding="unset 0.5em" name="label46" caption="bind:Variables.SelectedBanForCurrEntityVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid12">
             <wm-gridrow name="gridrow17">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn55">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
                     <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
                         on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
@@ -303,9 +305,9 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions2">
-            <wm-button class="btn-primary" caption="Cancel" name="button4_1" on-click="Widgets.TransferBanToNewEntDialog.close()"></wm-button>
-            <wm-button class="btn-default" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="button5"></wm-button>
+        <wm-dialogactions name="dialogactions2" style="text-align:right">
+            <wm-button class="secondaryButton" caption="Cancel" name="button4_1" on-click="Widgets.TransferBanToNewEntDialog.close()"></wm-button>
+            <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="button5"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-page>

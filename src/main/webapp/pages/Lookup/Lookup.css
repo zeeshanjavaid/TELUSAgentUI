@@ -45,6 +45,7 @@ li.tab-header.nav-item {
 }
 
 h4.subHeading {
+    font-weight: bold;
     font-size: 18px;
     width: 100%;
     border-bottom: 1px solid #ddd; 
@@ -64,4 +65,8 @@ h4.subHeading {
 
 .app-dialog-header.modal-header {
     border-bottom: 1px solid #ddd; 
+}
+
+label.app-label.fico-icon-flag-solid {
+    color: red;
 }
