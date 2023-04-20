@@ -220,8 +220,8 @@
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
                         on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)">
                         <wm-table-column binding="banId" caption="Ban ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="suppresionFlag" caption="Suppresion Flag" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
-                            <wm-label class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" caption=""></wm-label>
+                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                            <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>
                         <wm-table-column binding="banMapRefId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
