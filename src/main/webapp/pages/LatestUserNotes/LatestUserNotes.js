@@ -24,6 +24,9 @@ Partial.onReady = function() {
 
 Partial.button1Click = function($event, widget) {
     debugger;
+
+    //Page.Widgets.LatestUserNotes.hidePopover();
+
     Partial.Widgets.CreateUserNotesdialog1.open();
     const x = document.getElementById("popoverButton");
     if (x !== null) {

@@ -26,3 +26,20 @@ Partial.onReady = function() {
     // console.log(Partial.Variables.CollectionDataServiceGetEntityDetails.dataSet);
     // debugger;
 };
+
+Partial.button1Click = function($event, widget) {
+    debugger;
+
+    Partial.Widgets.createNoteButton.hidePopover();
+
+    Partial.Widgets.CreateUserNotesdialog1.open();
+    // const x = document.getElementById("popoverButton");
+    // if (x !== null) {
+
+    //     //x.click();
+    //     x.style.display = "none";
+    // }
+
+
+
+};
