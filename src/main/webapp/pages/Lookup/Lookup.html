@@ -309,7 +309,7 @@
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2" style="text-align:right">
             <wm-button class="secondaryButton" caption="Cancel" name="button4_1" on-click="Widgets.TransferBanToNewEntDialog.close()"></wm-button>
-            <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="button5"></wm-button>
+            <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="CreateEntityAndTransBansButton" on-click="CreateEntityAndTransBansButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-page>

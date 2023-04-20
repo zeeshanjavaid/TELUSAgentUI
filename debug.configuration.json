@@ -62,6 +62,24 @@
       } ]
     } ]
   }, {
+    "serviceId" : "AgentInfoService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "description" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "name" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 53,
+        "path" : "/services/AgentInfoService/src/com/fico/dmp/agentinfoservice/AgentInfoService.java",
+        "name" : "getAgent",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "SchemaService",
     "type" : "JAVA_SERVICE",
     "url" : null,

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="AgentInfoService" class="com.fico.dmp.agentinfoservice.AgentInfoService" type="JavaService" springFile="AgentInfoService.spring.xml"/>

@@ -154,3 +154,6 @@ Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
 Page.TransferBanToNewEntityTableDeselect = function($event, widget, row) {
     Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToNewEntityTable.selectedItems.length;
 };
+Page.CreateEntityAndTransBansButtonClick = function ($event, widget) { 
+
+};
