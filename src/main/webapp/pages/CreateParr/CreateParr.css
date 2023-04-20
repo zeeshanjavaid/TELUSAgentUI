@@ -7,7 +7,7 @@
     /*width: 14em;*/
 }
 
-@media (min-width: 500px) {
+/*@media (min-width: 500px) {
 .summary-col-width-mediuminstallBAN {
 flex: 0 0 9%;
 max-width: 10%;
@@ -16,7 +16,7 @@ text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 }
-}
+}*/
 /* for lines*/
 h4.subHeadingLabel {
     font-size: 19px;

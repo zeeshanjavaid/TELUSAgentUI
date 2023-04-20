@@ -14,7 +14,8 @@
 }
 
 a.nav-link.active {
-    border-bottom: 4px solid gray;
+    color: #482B6D;
+    border-bottom: 4px solid #482B6D;
 }
 
 li.tab-header.nav-item {

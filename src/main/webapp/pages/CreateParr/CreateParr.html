@@ -46,12 +46,11 @@
                 <wm-layoutgrid name="layoutgrid13">
                     <wm-gridrow name="gridrow18">
                         <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn8">
-                            <wm-gridcolumn name="gridcolumn38_1" style="text-align: right;" class="summary-col-width-mediuminstallBAN">
-                                <wm-label padding="5px 14px 5px 5px" name="label10" caption="Installment BANs" textalign="right" color="#6e6d6a"></wm-label>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn38_1" style="text-align: right;" class="summary-col-width-mediuminstallBAN">
+                                <wm-label padding="5px 14px 5px 5px" style="min-width: 135px;" name="label10" caption="Installment BANs" textalign="right" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn name="gridcolumn39">
-                                <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet"
-                                    navigation="None">
+                                <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet" navigation="None">
                                     <wm-listtemplate layout="inline" name="listtemplate1">
                                         <wm-container class="media-left" name="container10" width="0.5%">
                                             <wm-layoutgrid name="layoutgrid10">
@@ -91,8 +90,8 @@
                                     <wm-container class="col-md-9" name="container9_1">
                                         <wm-composite name="composite7">
                                             <wm-container class="col-md-9" name="container8">
-                                                <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)"
-                                                    show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'" width="95%" style="min-width: 140px;"></wm-text>
+                                                <wm-text name="noOfInstlmnt" datavalue="bind:Variables.NoOfInstallments.dataSet.dataValue" type="number" placeholder="" on-change="noOfInstlmntChange($event, widget, newVal, oldVal)" on-mouseleave="noOfInstlmntMouseleave($event, widget)" show="true" disabled="bind:Widgets.InstallmentOptionRadio.datavalue !='NoOfInstallments'"
+                                                    width="95%" style="min-width: 140px;"></wm-text>
                                             </wm-container>
                                         </wm-composite>
                                         <wm-text name="amountPerInstlmnt" datavalue="bind:Variables.AmountPerInstallment.dataSet.dataValue" type="number" placeholder="" disabled="bind:Widgets.InstallmentOptionRadio.datavalue != 'AmtPerInstallment'" width="70%"></wm-text>
@@ -142,8 +141,7 @@
                         <wm-table-column binding="sequenceId" caption="Installment ID" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
                             <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy"
-                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
                         <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toCurrency" currencypattern="USD" fractionsize="2" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                         <wm-table-row-action key="updaterow" display-name="" show="true" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>

@@ -26,10 +26,11 @@ Partial.onReady = function() {
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
+    debugger;
 
-    if (Partial.Widgets.ParrTotal._datavalue == "") {
+    if (Partial.Widgets.ParrTotal._datavalue == "" || Partial.Widgets.ParrTotal._datavalue == null) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
-    } else if (Partial.Widgets.RecurrenceDropdown.datavalue == undefined) {
+    } else if (Partial.Widgets.RecurrenceDropdown.datavalue == undefined || Partial.Widgets.RecurrenceDropdown.datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
