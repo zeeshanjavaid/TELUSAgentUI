@@ -293,7 +293,10 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
                     <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
                         on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
-                        <wm-table-column binding="banId" caption="Ban Id" type="integer" show="true" readonly="undefined"></wm-table-column>
+                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                            <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
+                        </wm-table-column>
+                        <wm-table-column binding="banId" caption="Ban Id" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
