@@ -149,9 +149,9 @@ Page.getEntityBanDetailsTable1Datarender = function(widget, $data) {
 };
 
 Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
-    Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToCurrEntityTable.selectedItems.length;
+    Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToNewEntityTable.selectedItems.length;
 };
 
 Page.TransferBanToNewEntityTableDeselect = function($event, widget, row) {
-    Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToCurrEntityTable.selectedItems.length;
+    Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToNewEntityTable.selectedItems.length;
 };
