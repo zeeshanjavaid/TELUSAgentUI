@@ -97,10 +97,10 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn82"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn83">
-                        <wm-label padding="unset 0.5%" caption="Pervious entity" color="#800080" name="label45" margin="unset unset unset 35%" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
+                        <wm-label padding="unset 0.5%" caption="Pervious entity:" color="#800080" name="label45" margin="unset unset unset 1.8em" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn84">
-                        <wm-label padding="unset 0.5em" caption="EntityID" name="label46" color="#800080" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
+                        <wm-label padding="unset 0.5em unset 1em" caption="EntityID" name="label46" color="#800080" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
@@ -140,7 +140,7 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1">
-                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
                         show="true" deferload="true" badgetype="primary"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
                     <wm-tabpane name="tabpane3" title="Contacts">

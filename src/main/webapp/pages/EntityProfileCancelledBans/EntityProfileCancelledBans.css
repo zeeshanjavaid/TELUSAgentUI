@@ -9,8 +9,13 @@
 .fico-icon-flag-solid
 {
     color: red;
+   padding-right: 0.4em;
+   padding-left:-1.3em;
 }
 .entityProfileCancelledGrid {
     margin-top: 10px;
     border: 0.1px solid #ddd
+}
+.getEntityDetailsTable1{
+    padding-right: 1.7em;
 }

@@ -23,7 +23,17 @@ Partial.onReady = function() {
 };
 
 Partial.button1Click = function($event, widget) {
-    Partial.Widgets.popover2.close();
+    debugger;
+    Partial.Widgets.CreateUserNotesdialog1.open();
+    const x = document.getElementById("popoverButton");
+    if (x !== null) {
+
+        //x.click();
+        x.style.display = "none";
+    }
+
+
+
 };
 
 

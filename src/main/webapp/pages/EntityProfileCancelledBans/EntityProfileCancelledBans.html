@@ -1,8 +1,8 @@
 <wm-partial name="partial1">
-    <wm-gridcolumn class="entityProfileCancelledGrid" name="gridcolumn1">
-        <h3><b> Cancelled BANs</b></h3>
+    <wm-gridcolumn class="entityProfileCancelledGrid" padding="unset unset unset 0.5em" name="gridcolumn1">
+        <h3><b> Cancelled BANs   </b></h3>
         <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
-        <wm-table margin="10px 10px 16px 14px" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.lastRecord.banDetails[0]" navigation="Classic" formposition="top" enablecolumnselection="false">
+        <wm-table margin="10px 10px 14px 10px" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.lastRecord.banDetails[0]" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1">
             <wm-table-column binding="banId" caption="BAN #" widget-type="icon" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-icon caption="bind:row.getProperty('banId')" iconclass="fico-icon-flag-solid" iconposition="left" iconcolor="red" class="" conditionalclass=""></wm-icon>
             </wm-table-column>
@@ -17,35 +17,163 @@
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow1" style="display: flex;">
-            <wm-gridcolumn columnwidth="6" name="gridcolumn2" class="parr_Sum" style="display: flex;flex-direction: column;width: 40%;margin:20px;">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn2" class="parr_Sum" style="display: flex;flex-direction: column;width: 20%;margin:20px 20px 20px 0;">
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em unset unset unset">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
                             <wm-label padding="unset 0.5em" name="label1" caption="PARR Summary"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow4" padding="5em unset unset unset">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn5" horizontalalign="center">
-                            <wm-label padding="unset 0.5em" name="label3" caption="No active Parr" textalign="center"></wm-label>
+                </wm-layoutgrid>
+                <wm-layoutgrid name="layoutgrid3">
+                    <wm-gridrow name="gridrow4" padding="1.5em unset unset 1em">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn8">
+                            <wm-layoutgrid name="layoutgrid4">
+                                <wm-gridrow name="gridrow6">
+                                    <wm-gridcolumn columnwidth="4" name="gridcolumn13" class="parrSumLabel">
+                                        <wm-label name="label2" caption="ID:" color="grey"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="8" name="gridcolumn14">
+                                        <wm-label name="label3" padding="0 0 0 0.5em" caption="3455" color="#000"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn12">
+                            <wm-layoutgrid name="layoutgrid5">
+                                <wm-gridrow name="gridrow8">
+                                    <wm-gridcolumn columnwidth="5" name="gridcolumn17" class="parrSumLabel">
+                                        <wm-label name="label4" caption="Status:" color="grey"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="7" name="gridcolumn18">
+                                        <wm-label name="label5" padding="0 0 0 0.5em" caption="Active" color="#000"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn9">
+                            <wm-layoutgrid name="layoutgrid6">
+                                <wm-gridrow name="gridrow10">
+                                    <wm-gridcolumn columnwidth="4" name="gridcolumn21" class="parrSumLabel">
+                                        <wm-label name="label6" caption="Eval:" color="grey"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="8" name="gridcolumn22">
+                                        <wm-label name="label7" padding="0 0 0 0.5em" caption="Broken" color="#000"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow5">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn6" horizontalalign="center" padding="unset unset 8em unset">
-                            <wm-button class="primaryButton" caption="Create Parr" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                    <wm-gridrow name="gridrow5" padding="1.5em 0.5em unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn10" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label8" color="grey" caption="TOTAL AMT:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn11">
+                            <wm-label padding="unset 0.5em" name="label9" color="#000" caption="$1000.00"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow9" padding="unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn17_1" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label10" color="grey" caption="CUMM PMT EXP:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn18_1">
+                            <wm-label padding="unset 0.5em" name="label11" color="#000" caption="$300.00"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow8_1" padding="unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn15" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label12" color="grey" caption="CUMM PMT RVCD:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn16">
+                            <wm-label padding="unset 0.5em" name="label13" color="#000" caption="$200.00"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow10_1" padding="unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn19" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label14" caption="%PMT RVD/EXP:" color="GREY"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn20">
+                            <wm-label padding="unset 0.5em" name="label15" caption="20%"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6" padding="1.5em 0.5em unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn21" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label81" color="grey" caption="Installment Amt:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn22">
+                            <wm-label padding="unset 0.5em" name="label91" color="#000" caption="$100.00"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow9" padding="unset 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn23_1" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label101" color="grey" caption="# of Installment:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn24_1">
+                            <wm-label padding="unset 0.5em" name="label111" color="#000" caption="$10.00"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow8_1" padding="unset 0.5em 1.7em 0.5em">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn25" class="parrSumLabel">
+                            <wm-label padding="unset 0.5em" name="label121" color="grey" caption="Recurrence:"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn16">
+                            <wm-label padding="unset 0.5em" name="label13" color="#000" caption="Monthly"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="6" class="latest_Action" name="gridcolumn15" style="margin: 20px; width: 60%; display: flex; flex-direction: column;">
+            <wm-gridcolumn columnwidth="6" class="latest_Action" name="gridcolumn15" style="margin: 20px; width: 25%; display: flex; flex-direction: column;">
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em 0.5em unset unset">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
-                            <wm-label padding="unset 0.5em" name="label1" caption="Latest Actions"></wm-label>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Latest User Notes"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
+                            <wm-popover popoverwidth="40" popoverheight="20" margin="-0.5em 1.5em unset unset" name="popover2" caption="..." content="LatestUserNotes" popoverarrow="false" popoverautoclose="false"></wm-popover>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow6">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="6em unset 9.3em unset" horizontalalign="center">
-                            <wm-label padding="unset 0.5em" name="label4" caption="No actions."></wm-label>
+                </wm-layoutgrid>
+                <wm-layoutgrid name="layoutgrid8">
+                    <wm-gridrow name="gridrow15" padding="1.5em unset unset 1em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn30">
+                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="mm/dd/yy:"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%">
+                            <wm-composite name="composite4">
+                                <wm-container class="col-md-9" name="container4">
+                                    <wm-text name="text1"></wm-text>
+                                </wm-container>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow17_1" padding="0.7em unset unset 1em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn32">
+                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy:" bordercolor="grey" color="gray"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow18" padding="unset unset unset 1em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn33">
+                            <wm-composite name="composite4_1">
+                                <wm-container class="col-md-9" name="container4_1">
+                                    <wm-text name="text2"></wm-text>
+                                </wm-container>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow19" padding="0.7em unset unset 1em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
+                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy:" name="label25"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow20" padding="unset unset unset 1em" margin="0 0 0 0">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn35">
+                            <wm-composite name="composite5">
+                                <wm-container class="col-md-9" name="container5">
+                                    <wm-text name="text3"></wm-text>
+                                </wm-container>
+                            </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
