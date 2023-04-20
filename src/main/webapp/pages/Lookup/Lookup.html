@@ -7,7 +7,7 @@
         <wm-page-content columnwidth="1" name="page_content1">
             <wm-layoutgrid name="layoutgrid2" columns="7">
                 <wm-gridrow name="gridrow28">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn61">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn61" width="3%">
                         <wm-anchor margin="10px 0 0 20px" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="Actions.goToPage_lookupEntity.invoke()"></wm-anchor>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn62">
@@ -15,11 +15,11 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn63">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label10" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityName"></wm-label>
-                        <wm-popover popoverwidth="150" popoverheight="100" margin="unset 0.5em" name="entityNamePopOver" caption="..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom">
+                        <wm-popover popoverwidth="150" popoverheight="115" margin="unset 0.5em" name="entityNamePopOver" caption="..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom">
                             <wm-layoutgrid name="layoutgrid1">
                                 <wm-gridrow name="gridrow1">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" name="label1" caption="Transfer Bans"></wm-label>
+                                        <wm-label padding="0.2em 0.5em 0.2em 0.5em" style="font-size: 16px;" name="label1" caption="Transfer Bans"></wm-label>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow2">
@@ -28,13 +28,13 @@
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow3">
-                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3" class="entityNameEllipsisSeparation">
-                                        <wm-anchor margin="unset 0.5em unset 1.5em" name="TransferBanToNewEntity" caption="To New Entity" on-click="TransferBanToNewEntityClick($event, widget)"></wm-anchor>
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3" class="entityNameEllipsisSeparation" style="border-bottom: 1px solid #ddd;">
+                                        <wm-anchor margin="unset 0.5em 0.5em 1.5em" name="TransferBanToNewEntity" caption="To New Entity" on-click="TransferBanToNewEntityClick($event, widget)"></wm-anchor>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow3">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
-                                        <wm-anchor margin="unset 0.5em" name="BanTravelHistory" caption="BANs Travel history"></wm-anchor>
+                                        <wm-anchor margin="0.5em 0.5em 0.5em 0.5em" name="BanTravelHistory" caption="BANs Travel history"></wm-anchor>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
@@ -69,7 +69,7 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow29">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn73"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn73" width="3%"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn74">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
@@ -104,9 +104,9 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-layoutgrid name="layoutgrid3">
+            <wm-layoutgrid name="layoutgrid3" style="border-bottom: 1px solid #ddd; margin-bottom: 1em;">
                 <wm-gridrow name="gridrow6" height="55px">
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn43"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn43" width="3%"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total OD:" name="label8" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
@@ -140,7 +140,7 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1">
-                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot; "
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
                         show="true" deferload="true" badgetype="primary"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
                     <wm-tabpane name="tabpane3" title="Contacts">
