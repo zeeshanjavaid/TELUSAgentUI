@@ -60,3 +60,7 @@ button.btn.app-button.row-action.row-action-button.undefined.edit.edit-row-butto
     background-color: #4B286D;
     color: white;
 }
+
+.wm-app .app-datagrid {
+    margin-bottom: 10px;
+}

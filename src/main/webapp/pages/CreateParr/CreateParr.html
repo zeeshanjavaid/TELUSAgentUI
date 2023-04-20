@@ -14,8 +14,8 @@
             <wm-gridcolumn columnwidth="3" name="gridcolumn1" padding="unset 25px unset unset">
                 <wm-layoutgrid name="layoutgrid7">
                     <wm-gridrow name="gridrow11">
-                        <wm-gridcolumn columnwidth="4" name="gridcolumn21_1" style="text-align: right;">
-                            <wm-label padding="5px 10px 5px 5px" name="label2" caption="PARR Total*" color="#6e6d6a"></wm-label>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn21_1" width="100px" style="min-width: 100px;">
+                            <wm-label padding="5px 10px 5px 0" name="label2" caption="PARR Total*" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn22">
                             <wm-text name="ParrTotal" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="87%"></wm-text>
@@ -26,12 +26,11 @@
             <wm-gridcolumn columnwidth="9" name="gridcolumn20_2">
                 <wm-layoutgrid name="layoutgrid8">
                     <wm-gridrow name="gridrow13">
-                        <wm-gridcolumn columnwidth="1" name="gridcolumn25" style="text-align: right;">
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn25" style="min-width: 82px;">
                             <wm-label padding="5px 10px 5px 5px" name="label5" caption="Recurrence*" fontsize="14" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="11" name="gridcolumn26">
-                            <wm-select width="20%" name="RecurrenceDropdown" placeholder="Select" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" margin="unset unset unset 5px" textalign="left" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.recurrence"
-                                displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)"></wm-select>
+                            <wm-select width="20%" name="RecurrenceDropdown" placeholder="Select" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" textalign="left" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.recurrence" displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)"></wm-select>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -46,8 +45,8 @@
                 <wm-layoutgrid name="layoutgrid13">
                     <wm-gridrow name="gridrow18">
                         <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn8">
-                            <wm-gridcolumn columnwidth="2" name="gridcolumn38_1" style="text-align: right;" class="summary-col-width-mediuminstallBAN">
-                                <wm-label padding="5px 14px 5px 5px" style="min-width: 135px;" name="label10" caption="Installment BANs" textalign="right" color="#6e6d6a"></wm-label>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn38_1" class="summary-col-width-mediuminstallBAN" width="155px">
+                                <wm-label padding="5px 12px 5px 0" width="133px" name="label10" caption="Installment BANs" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn name="gridcolumn39">
                                 <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list selectBan fix" name="selectBanParrList1" dataset="bind:Variables.installmentBANCreateParr.dataSet" navigation="None">
@@ -78,7 +77,7 @@
                             </wm-gridcolumn>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" style="display: flex;" name="gridcolumn14">
-                            <wm-gridcolumn name="gridcolumn24_1" width="30%" style="min-width: 150px;">
+                            <wm-gridcolumn name="gridcolumn24_1" width="26%" style="min-width: 135px;">
                                 <wm-label padding="5px" name="label8" caption="Installment type*" color="#6e6d6a"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn name="gridcolumn25_1" width="42%" style="min-width: 200px;" class="radioBtnGrid">
@@ -133,7 +132,7 @@
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 2.5em">
         <wm-container name="container9_2" class="installmentScheduleLine-9_2con"></wm-container>
         <!--<wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule"></wm-label>-->
-        <h4 style="font-size: 19px; font-weight: bold;"><b>Installment Schedule</b></h4>
+        <h4 style="font-size: 19px; font-weight: bold; margin-bottom: 18px;"><b>Installment Schedule</b></h4>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
@@ -149,20 +148,20 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn24"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="6" name="gridcolumn18" horizontalalign="center" style="display: flex;">
-                    <wm-label padding="5px 15px 5px 5px" color="#6e6d6a" name="createParrComment" caption="Comments"></wm-label>
+                    <wm-label padding="5px 35px 5px 5px" color="#6e6d6a" name="createParrComment" caption="Comments"></wm-label>
                     <wm-gridcolumn class="col-md-9" name="container15">
                         <wm-textarea name="Comments" textalign="left" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.comment" margin="unset unset unset -0.5em" placeholder=""></wm-textarea>
                     </wm-gridcolumn>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10" style="display: flex;">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn19" style="text-align: right;">
-                    <wm-label name="AmtOverUnderTotalLabel" caption="Amt Over/Under PARR Total" whitespace="nowrap" color="#6e6d6a"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn19" width="190px">
+                    <wm-label padding="0 1em 0 0" name="AmtOverUnderTotalLabel" caption="Amt Over/Under PARR Total:" whitespace="nowrap" color="#6e6d6a"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="7" name="gridcolumn21">
                     <wm-label padding="unset 0.5em" name="AmtOverUnderParrTotalValue" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="right">
+                <wm-gridcolumn columnwidth="3" width="100%" name="gridcolumn20" horizontalalign="right" style="text-align: right;">
                     <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="Cancel" on-click="CancelClick($event, widget)"></wm-button>
                     <!--<wm-button class="secondaryButton" caption="Clear" type="button" margin="unset 0.5em" name="ClearSchedule" on-click="Widgets.installmentScheduleTable.redraw();ClearScheduleClick($event, widget)"></wm-button>-->
                     <wm-button class="primaryButton" caption="Create PARR" type="button" margin="unset 0.5em" name="CreatePARR" on-click="CreatePARRClick($event, widget)" disabled="bind:AmtOverUnder != 0"></wm-button>
