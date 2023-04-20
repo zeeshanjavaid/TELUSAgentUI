@@ -6,6 +6,7 @@
 
 #selectBox {
     width: 44%;
+    min-width: 152px;
 }
 
 .labelOR {
@@ -64,7 +65,3 @@ h3 {
     margin: 20px 0 !important;
 }
 }
-
-
-
-
