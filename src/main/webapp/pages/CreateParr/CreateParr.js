@@ -26,7 +26,6 @@ Partial.onReady = function() {
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
-    debugger;
 
     if (Partial.Widgets.ParrTotal._datavalue == "" || Partial.Widgets.ParrTotal._datavalue == null) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
@@ -116,7 +115,6 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
         Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
         Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
-        Variables.createPaymentArrangement.dataSet.installments.dataset.push(...installmentSchedule);
     }
     //App.Variables.errorMsg.dataSet.dataValue = null;
 };
@@ -204,6 +202,7 @@ Partial.SubmitBanClick = function($event, widget) {
         entityRef.name = selectedBan.banName;
         selectedBans.push(entityRef);
     });
+    Partial.Variables.SelectedBans.dataSet.splice(0, Partial.Variables.SelectedBans.dataSet.length);
     Partial.Variables.SelectedBans.dataSet.push(...selectedBans);
     Partial.Widgets.selectBANdialog.close();
 };
@@ -242,6 +241,7 @@ Partial.CreatePARRClick = function($event, widget) {
     });
     //Invoke POST createDispute service
     Partial.Variables.CreatePaymentArrangement.invoke();
+    App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
     Partial.Clear();
     App.refreshParrList();

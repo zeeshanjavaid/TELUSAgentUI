@@ -2190,22 +2190,6 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "installmentBAN" : {
-    "_id" : "wm-installmentBAN-wm.Variable-1678439555089",
-    "name" : "installmentBAN",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "banName" : "Air Canada"
-    }, {
-      "banName" : "Air Canada2"
-    } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
   "isLocked" : {
     "_id" : "wm-isLocked-wm.Variable-1658408282052",
     "name" : "isLocked",

@@ -3,6 +3,7 @@
         <wm-gridcolumn width="100%" name="gridcolumn1">
             <wm-button class="btn-default createParrBtn" caption="Create PARR" type="button" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top" on-click="CreateClick($event, widget)"
                 deferload="false"></wm-button>
+            <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" width="80%" hideclose="true"></wm-message>
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="getPaymentArrangementTable1" width="98%" title="" margin="5px 5px 0px 17px" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
