@@ -44,6 +44,24 @@
       } ]
     } ]
   }, {
+    "serviceId" : "ExternalService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.externalservice.ExternalService",
+      "description" : "com.fico.dmp.externalservice.ExternalService",
+      "name" : "com.fico.dmp.externalservice.ExternalService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 53,
+        "path" : "/services/ExternalService/src/com/fico/dmp/externalservice/ExternalService.java",
+        "name" : "getAgent",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "AgentInfoService",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -53,7 +71,7 @@
       "name" : "com.fico.dmp.agentinfoservice.AgentInfoService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 53,
+        "line" : 58,
         "path" : "/services/AgentInfoService/src/com/fico/dmp/agentinfoservice/AgentInfoService.java",
         "name" : "getAgent",
         "phaseSequence" : 0,
@@ -292,204 +310,6 @@
         "line" : 48,
         "path" : "/services/DuplicateCheckRelatedBS/src/com/fico/dmp/duplicatecheckrelatedbs/DuplicateCheckRelatedBS.java",
         "name" : "getDuplicateCheckReviewData",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "ExternalService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.externalservice.ExternalService",
-      "description" : "com.fico.dmp.externalservice.ExternalService",
-      "name" : "com.fico.dmp.externalservice.ExternalService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 53,
-        "path" : "/services/ExternalService/src/com/fico/dmp/externalservice/ExternalService.java",
-        "name" : "getAgent",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "DomainValueRelatedBS",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
-      "description" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
-      "name" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 105,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "findDomainValueById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 81,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "domainValueCreateUpdate",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 343,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDomainValueByCodeAndTypeCodeWithActiveFlag",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 153,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDVListByFilters",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 364,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getAllDomainValuesByTypeCodeWithActiveFlag",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 126,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "activateDeactivateDVByIds",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 279,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getAllDomainValuesByTypeCode",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 320,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getAllDomainValueWithTwoParent",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 261,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDomainValueByCodeAndTypeCode",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 188,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDomainValueTypeByDescription",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 299,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getAllDomainValueWithSingleParent",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 241,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDomainValueByDomainValueId",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 223,
-        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
-        "name" : "getDomainValueByDomainValueIdWithActiveFlag",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "CollectionDataService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "description" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 98,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getAssignedActions",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 80,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getAssignedEntitiesInEntityView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 88,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getassignedEntitiesInClassicView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 115,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityBanDetails",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 106,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityContacts",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 71,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntitySearch",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 124,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityDetails",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -882,6 +702,16 @@
       "breakPoints" : [ ]
     } ]
   }, {
+    "serviceId" : "CodeDescriptionLookupService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "description" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "name" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "breakPoints" : [ ]
+    } ]
+  }, {
     "serviceId" : "PaymentArrangement",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -924,16 +754,6 @@
         "condition" : null,
         "variables" : null
       } ]
-    } ]
-  }, {
-    "serviceId" : "CodeDescriptionLookupService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "description" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "name" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "breakPoints" : [ ]
     } ]
   }, {
     "serviceId" : "LookupFileBS",
@@ -980,6 +800,186 @@
         "line" : 138,
         "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
         "name" : "getLookupFileInfoById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "CollectionDataService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "description" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 98,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getAssignedActions",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 80,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getAssignedEntitiesInEntityView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 88,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getassignedEntitiesInClassicView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 115,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityBanDetails",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 106,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityContacts",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 71,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntitySearch",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 124,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityDetails",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "DomainValueRelatedBS",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
+      "description" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
+      "name" : "com.fico.dmp.domainvaluerelatedbs.DomainValueRelatedBS",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 105,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "findDomainValueById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 81,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "domainValueCreateUpdate",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 343,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDomainValueByCodeAndTypeCodeWithActiveFlag",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 153,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDVListByFilters",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 364,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getAllDomainValuesByTypeCodeWithActiveFlag",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 126,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "activateDeactivateDVByIds",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 279,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getAllDomainValuesByTypeCode",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 320,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getAllDomainValueWithTwoParent",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 261,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDomainValueByCodeAndTypeCode",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 188,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDomainValueTypeByDescription",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 299,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getAllDomainValueWithSingleParent",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 241,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDomainValueByDomainValueId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 223,
+        "path" : "/services/DomainValueRelatedBS/src/com/fico/dmp/domainvaluerelatedbs/DomainValueRelatedBS.java",
+        "name" : "getDomainValueByDomainValueIdWithActiveFlag",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

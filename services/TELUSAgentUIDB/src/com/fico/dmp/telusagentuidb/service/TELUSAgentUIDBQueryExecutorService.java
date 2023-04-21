@@ -47,6 +47,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportCountRolePermission(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetActiveAgentListWithWorkCategoryResponse> executeGetActiveAgentListWithWorkCategory(Pageable pageable);
+
+    void exportGetActiveAgentListWithWorkCategory(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<GetRolesAssociatedUsersPermissionsResponse> executeGetRolesAssociatedUsersPermissions(String role, Pageable pageable);
 
     void exportGetRolesAssociatedUsersPermissions(String role, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);

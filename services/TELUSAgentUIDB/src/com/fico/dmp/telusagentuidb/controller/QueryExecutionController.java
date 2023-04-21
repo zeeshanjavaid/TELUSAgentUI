@@ -251,6 +251,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getActiveAgentListWithWorkCategory", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "This query is used to retrieve the active agent information list along with work categories")
+    public Page<GetActiveAgentListWithWorkCategoryResponse> executeGetActiveAgentListWithWorkCategory(Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getActiveAgentListWithWorkCategory");
+        Page<GetActiveAgentListWithWorkCategoryResponse> _result = queryService.executeGetActiveAgentListWithWorkCategory(pageable);
+        LOGGER.debug("got the result for named query: getActiveAgentListWithWorkCategory, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getActiveAgentListWithWorkCategory")
+    @RequestMapping(value = "/queries/getActiveAgentListWithWorkCategory/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetActiveAgentListWithWorkCategory(@RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getActiveAgentListWithWorkCategory");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getActiveAgentListWithWorkCategory";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetActiveAgentListWithWorkCategory( exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/getRolesAssociatedUsersPermissions", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getRolesAssociatedUsersPermissions")

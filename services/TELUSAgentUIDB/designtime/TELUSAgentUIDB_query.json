@@ -2243,6 +2243,57 @@
       "responseType" : "SINGLE"
     }
   },
+  "getActiveAgentListWithWorkCategory" : {
+    "name" : "getActiveAgentListWithWorkCategory",
+    "description" : "This query is used to retrieve the active agent information list along with work categories",
+    "version" : "V2",
+    "queryString" : "SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER\r\nLEFT JOIN WORKCATEGORY_USER\r\nON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId",
+    "countQueryString" : "select count(*) from (SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER\r\nLEFT JOIN WORKCATEGORY_USER\r\nON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetActiveAgentListWithWorkCategoryResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "empId",
+        "fieldName" : "empId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "workCategory",
+        "fieldName" : "workCategory",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getActiveRolesByUserName" : {
     "name" : "getActiveRolesByUserName",
     "description" : "getActiveRolesByUserName",

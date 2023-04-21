@@ -17,6 +17,8 @@ import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
 
 import com.fico.telus.model.AgentInfo;
+import com.fico.telus.service.AgentInformationIntermediateService;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -39,6 +41,9 @@ public class AgentInfoService {
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private AgentInformationIntermediateService agentInformationIntermediateService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -54,11 +59,11 @@ public class AgentInfoService {
 		List<String> workCategory = new ArrayList<String>();
 		workCategory.add("WLN Large FR");
 		workCategory.add("WLN Small FR High Value");
-		agentInfo.setEmpId(7879);
+		agentInfo.setEmpId("7879");
 		agentInfo.setWorkCategory(workCategory);
-		List<AgentInfo> agentInfoList = new ArrayList<AgentInfo>();
-		agentInfoList.add(agentInfo);
         
+		
+		List<AgentInfo> agentInfoList =  agentInformationIntermediateService.getActiveAgentInformation();
         return agentInfoList;
     }
 

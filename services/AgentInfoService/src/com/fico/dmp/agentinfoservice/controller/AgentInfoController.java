@@ -23,6 +23,8 @@ public class AgentInfoController {
     private AgentInfoService agentInfoService;
 
     @RequestMapping(value = "/agent", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<AgentInfo> getAgent() {
         return agentInfoService.getAgent();
     }

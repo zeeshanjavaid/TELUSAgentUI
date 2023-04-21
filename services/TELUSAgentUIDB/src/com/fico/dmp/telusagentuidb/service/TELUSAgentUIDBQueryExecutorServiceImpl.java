@@ -210,6 +210,26 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetActiveAgentListWithWorkCategoryResponse> executeGetActiveAgentListWithWorkCategory(Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(0);
+
+
+        return queryExecutor.executeNamedQuery("getActiveAgentListWithWorkCategory", params, GetActiveAgentListWithWorkCategoryResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetActiveAgentListWithWorkCategory(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(0);
+
+
+        QueryProcedureInput<GetActiveAgentListWithWorkCategoryResponse> queryInput = new QueryProcedureInput<>("getActiveAgentListWithWorkCategory", params, GetActiveAgentListWithWorkCategoryResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<GetRolesAssociatedUsersPermissionsResponse> executeGetRolesAssociatedUsersPermissions(String role, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 

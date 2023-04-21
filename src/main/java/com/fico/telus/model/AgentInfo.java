@@ -4,26 +4,22 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AgentInfo {
-	Integer empId;
+	
+	String empId;
 	List<String> workCategory;
-    
-    @JsonProperty("empId")
-	public Integer getEmpId() {
+	
+	
+	public String getEmpId() {
 		return empId;
 	}
-
-	public void setEmpId(Integer empId) {
+	public void setEmpId(String empId) {
 		this.empId = empId;
 	}
-
-    
-    @JsonProperty("workCategory")
 	public List<String> getWorkCategory() {
 		return workCategory;
 	}
-
 	public void setWorkCategory(List<String> workCategory) {
 		this.workCategory = workCategory;
 	}
-      
+   
 }
