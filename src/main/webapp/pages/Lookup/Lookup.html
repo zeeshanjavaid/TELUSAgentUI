@@ -182,6 +182,13 @@
         </wm-page-content>
     </wm-content>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" name="TransferBanToExistEntDialog" width="50%">
+        <wm-layoutgrid name="layoutgrid13">
+            <wm-gridrow name="gridrow18">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn57">
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45">
@@ -243,7 +250,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn49_1">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container5">
-                            <wm-select name="select1" placeholder="Select" width="60%" dataset="bind:Variables.getCollectionEntityService.dataSet" datafield="id" displayfield="id"></wm-select>
+                            <wm-select name="entityToTransferBanDropdown" placeholder="Select" width="60%" dataset="bind:Variables.getCollectionEntityService.dataSet" datafield="id" displayfield="id"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

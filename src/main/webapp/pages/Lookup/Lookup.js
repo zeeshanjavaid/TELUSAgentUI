@@ -82,6 +82,7 @@ Page.TransferBanToExistingEntityClick = function($event, widget) {
     debugger;
     Page.Widgets.entityNamePopOver.hidePopover();
     Page.Widgets.TransferBanToExistEntDialog.open();
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Page.Variables.selectedBanLengthVar.dataSet.dataValue = 0;
     Page.Variables.entityIdTextVar.dataSet.dataValue = Page.Widgets.label13_1.caption;
     Page.Variables.entityNameTextVar.dataSet.dataValue = Page.Widgets.label10.caption;
@@ -96,28 +97,36 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
     Page.Variables.selectedBanLengthVar.dataSet.dataValue = Page.Widgets.getEntityBanDetailsTable1.selectedItems.length;
 };
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
-
-    Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
     debugger;
-    Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-        Page.selectedBanList = [];
-        Page.selectedBanList = {
-            "entityId": d.entityId,
-            "disputeFlag": d.disputeFlag,
-            "banStatus": d.banStatus,
-            "banOverdueAmount": d.banOverdueAmount,
-            "banName": d.banName,
-            "banMapRefId": d.banMapRefId,
-            "banId": d.banId,
-            "banArAmount": d.banArAmount,
-            "suppresionFlag": d.suppresionFlag
-        }
+    if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the entity that needs to transferred";
+    } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current entity";
+    } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please select an entity to transfer the BAN";
+    } else {
 
-        Page.Variables.BanListForTransferToExistingEntVar.dataSet.push(Page.selectedBanList);
+        Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
+        Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+            Page.selectedBanList = [];
+            Page.selectedBanList = {
+                "entityId": d.entityId,
+                "disputeFlag": d.disputeFlag,
+                "banStatus": d.banStatus,
+                "banOverdueAmount": d.banOverdueAmount,
+                "banName": d.banName,
+                "banMapRefId": d.banMapRefId,
+                "banId": d.banId,
+                "banArAmount": d.banArAmount,
+                "suppresionFlag": d.suppresionFlag
+            }
+
+            Page.Variables.BanListForTransferToExistingEntVar.dataSet.push(Page.selectedBanList);
 
 
-    });
-    Page.Widgets.TransferBanToExistEntDialog.close();
+        });
+        Page.Widgets.TransferBanToExistEntDialog.close();
+    }
 };
 
 Page.TransferBanToNewEntityClick = function($event, widget) {
