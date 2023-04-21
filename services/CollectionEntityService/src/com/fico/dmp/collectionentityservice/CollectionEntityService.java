@@ -236,6 +236,12 @@ public class CollectionEntityService {
         return collectionPaymentArrangement;        
     }
     
+    public CollectionPaymentArrangement updateParrStatus(Integer parrId, String status, String comments) throws Exception {
+        
+        CollectionPaymentArrangement collectionPaymentArrangement = parrService.updateParrStatus(parrId, status, comments);
+        return collectionPaymentArrangement;
+    }
+    
 //dispute
 
     @RequestMapping(value = "/dispute", method = {RequestMethod.GET})

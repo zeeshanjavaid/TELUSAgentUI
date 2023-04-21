@@ -146,15 +146,15 @@ public class CollectionEntityController {
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionDispute getdispute(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(id, fields, history);
+    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
     }
 
     @RequestMapping(value = "/dispute_1", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
+    public CollectionDispute getdispute_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(id, fields, history);
     }
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.PUT)
@@ -175,6 +175,13 @@ public class CollectionEntityController {
     @RequestMapping(value = "/dispute", method = RequestMethod.PUT)
     public CollectionDisputeUpdate updateDispute(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionDisputeUpdate collectionDispute) throws Exception {
         return collectionEntityService.updateDispute(id, collectionDispute);
+    }
+
+    @RequestMapping(value = "/parrStatus", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public CollectionPaymentArrangement updateParrStatus(@RequestParam(value = "parrId", required = false) Integer parrId, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "comments", required = false) String comments) throws Exception {
+        return collectionEntityService.updateParrStatus(parrId, status, comments);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)

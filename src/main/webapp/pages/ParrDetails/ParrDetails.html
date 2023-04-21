@@ -19,8 +19,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn22_1" horizontalalign="right">
                 <wm-container name="container14" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em unset 1em" name="button1" on-click="Widgets.cancelPARRConfirmationdialog.open()"></wm-button>
-                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em unset 1em" name="CancelParr" on-click="CancelParrClick($event, widget);Widgets.cancelPARRConfirmationdialog.open()"></wm-button>
+                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="RenegotiateParr" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -331,14 +331,14 @@
         <wm-composite name="composite14_1" margin="2em unset unset unset">
             <wm-label class="col-md-3 control-label" name="label41" caption="Comments" width="19%" textalign="center" margin="unset unset unset 0.8em"></wm-label>
             <wm-container class="col-md-9" name="container27">
-                <wm-textarea name="textarea2" color="#ddd" class="cancelParrborder" margin="unset unset unset 1em" width="95%"></wm-textarea>
+                <wm-textarea name="CancelComments" color="#ddd" class="cancelParrborder" margin="unset unset unset 1em" width="95%" placeholder=""></wm-textarea>
             </wm-container>
         </wm-composite>
         <wm-layoutgrid name="layoutgrid16_1">
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn37" height="-10%" horizontalalign="right">
                     <wm-button class="secondaryButton" caption="No, Cancel" type="button" margin="2em -0.5em 1em 15em" name="button8" on-click="Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
-                    <wm-button class="primaryButton" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Variables.updatePaymentArrangement.invoke();Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
+                    <wm-button class="primaryButton" caption="Yes, Cancel" type="button" margin="2em 0.5em 1em 2em" name="YesCancelButton" on-click="YesCancelButtonClick($event, widget);Widgets.cancelPARRConfirmationdialog.close()"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow20_2"></wm-gridrow>

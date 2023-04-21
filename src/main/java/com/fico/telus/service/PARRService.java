@@ -16,6 +16,7 @@ import com.fico.pscomponent.util.PropertiesUtil;
 
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
+import io.swagger.client.model.CollectionPaymentArrangementStatus;
 import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.EntityRef;
 
@@ -91,6 +92,19 @@ public class PARRService {
 					CollectionPaymentArrangement.class);
 			return collectionPaymentArrangement;
 		}
+	}
+	
+	public CollectionPaymentArrangement updateParrStatus(Integer parrId, String status, String comments) throws Exception {
+		
+		CollectionPaymentArrangementStatus parrStatus = new CollectionPaymentArrangementStatus();
+		List<CollectionPaymentArrangementStatus> statuses = new ArrayList<CollectionPaymentArrangementStatus>();
+		parrStatus.setStatus(status);
+		statuses.add(parrStatus);
+		CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate = new CollectionPaymentArrangementUpdate();
+		collectionPaymentArrangementUpdate.setStatuses(statuses);
+		collectionPaymentArrangementUpdate.setId(parrId);
+		CollectionPaymentArrangement collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate);
+		return collectionPaymentArrangement;
 	}
 
 	public CollectionPaymentArrangement updatePaymentArrangement(

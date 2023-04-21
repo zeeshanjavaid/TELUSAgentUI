@@ -48,8 +48,20 @@ Partial.parrHistoryExpand = function($event, widget) {
 };
 
 Partial.YesCancelButtonClick = function($event, widget) {
-    Partial.Variables.getPaymentArrangement.dataSet.statuses[0].status = 'Cancel';
+    Partial.Variables.updateParrStatus.setInput({
+
+        'status': 'Cancel',
+        'parrId': Partial.pageParams.ParrId
+    });
+    //Invoke POST updateParrStatus service
+    Partial.Variables.updateParrStatus.invoke();
+    App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
+    Partial.Variables.getPaymentArrangement.setInput({
+        "id": Partial.pageParams.ParrId
+    });
+    Partial.Variables.getPaymentArrangement.invoke();
 };
+
 Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
     Partial.Variables.getPaymentArrangement.dataSet.amount = newVal;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
@@ -74,6 +86,8 @@ Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
 
 Partial.renegotiatePARRdialogOpened = function($event, widget) {
 
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...Partial.Variables.getPaymentArrangement.dataSet.installments);
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
@@ -93,7 +107,7 @@ Partial.SubmitButtonClick = function($event, widget) {
             'id': Partial.pageParams.ParrId
         },
     });
-    //Invoke POST createDispute service
+    //Invoke POST UpdateParr service
     Partial.Variables.updatePaymentArrangement.invoke();
     App.Variables.successMessage.dataSet.dataValue = "PARR renegotiated successfully."
     Partial.Variables.getPaymentArrangement.setInput({
@@ -117,4 +131,9 @@ Partial.BackLinkClick = function($event, widget) {
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+};
+
+Partial.CancelParrClick = function($event, widget) {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
 };
