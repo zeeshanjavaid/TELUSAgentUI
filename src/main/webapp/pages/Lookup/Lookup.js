@@ -114,9 +114,10 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         }
 
         Page.Variables.BanListForTransferToExistingEntVar.dataSet.push(Page.selectedBanList);
-        Page.Widgets.TransferBanToExistEntDialog.close();
+
 
     });
+    Page.Widgets.TransferBanToExistEntDialog.close();
 };
 
 Page.TransferBanToNewEntityClick = function($event, widget) {
@@ -154,6 +155,6 @@ Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
 Page.TransferBanToNewEntityTableDeselect = function($event, widget, row) {
     Page.Variables.SelectedBanForCurrEntityVar.dataSet.dataValue = Page.Widgets.TransferBanToNewEntityTable.selectedItems.length;
 };
-Page.CreateEntityAndTransBansButtonClick = function ($event, widget) { 
+Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
 };
