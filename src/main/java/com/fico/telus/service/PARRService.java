@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fico.pscomponent.util.PropertiesUtil;
 
+import io.swagger.client.model.AuditInfo;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
 import io.swagger.client.model.CollectionPaymentArrangementStatus;
@@ -99,6 +100,7 @@ public class PARRService {
 		CollectionPaymentArrangementStatus parrStatus = new CollectionPaymentArrangementStatus();
 		List<CollectionPaymentArrangementStatus> statuses = new ArrayList<CollectionPaymentArrangementStatus>();
 		parrStatus.setStatus(status);
+		parrStatus.setAuditInfo(collectionCommonService.UpdateAuditInfo(new AuditInfo(), true));
 		statuses.add(parrStatus);
 		CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate = new CollectionPaymentArrangementUpdate();
 		collectionPaymentArrangementUpdate.setStatuses(statuses);
