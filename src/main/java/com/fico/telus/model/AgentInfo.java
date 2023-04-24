@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AgentInfo {
 	
-	String empId;
-	List<String> workCategory;
+	private String empId;
+	private List<String> workCategory;
 	
 	
 	public String getEmpId() {

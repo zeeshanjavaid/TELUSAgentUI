@@ -55,14 +55,6 @@ public class AgentInfoService {
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
     public List<AgentInfo> getAgent() {
-   		AgentInfo agentInfo = new AgentInfo();
-		List<String> workCategory = new ArrayList<String>();
-		workCategory.add("WLN Large FR");
-		workCategory.add("WLN Small FR High Value");
-		agentInfo.setEmpId("7879");
-		agentInfo.setWorkCategory(workCategory);
-        
-		
 		List<AgentInfo> agentInfoList =  agentInformationIntermediateService.getActiveAgentInformation();
         return agentInfoList;
     }
