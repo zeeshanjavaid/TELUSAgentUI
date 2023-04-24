@@ -283,3 +283,17 @@ i.fico-icon-chevron-right.hide-icon2 {
 .wm-app .app-dialog-header.modal-header {
     border-bottom: 1px solid #ddd; 
 }
+
+h4.reneSubHeadingLabel {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0 0 20px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%;
+    padding-bottom: 6px;
+}
+
+button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-row-button {
+    background-color: #482b6d;
+    border-color: #482b6d;
+}
