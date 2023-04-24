@@ -29,7 +29,7 @@ public class AgentInformationIntermediateService {
 	public List<AgentInfo> getActiveAgentInformation() {
 		logger.info("inside AgentInformationIntermediateService#getActiveAgentInformation");
 		List<GetActiveAgentListWithWorkCategoryResponse> getActiveAgentsListResponseList = new ArrayList<GetActiveAgentListWithWorkCategoryResponse>();
-		Pageable pageable = PageRequest.of(0, 10);
+		Pageable pageable = PageRequest.of(0, 1000);
 		Page<GetActiveAgentListWithWorkCategoryResponse> activeAgentListPageableResponse = telusAgentUIDBQueryExecutorService.executeGetActiveAgentListWithWorkCategory(pageable);
 		while(!activeAgentListPageableResponse.isEmpty()) {
 			logger.info("Not empty");
