@@ -1,7 +1,7 @@
 {
   "cascadeEnabled" : false,
   "description" : "TELUSAgentUIDB",
-  "draft" : false,
+  "draft" : true,
   "name" : "TELUSAgentUIDB",
   "packageName" : "com.fico.dmp.telusagentuidb",
   "tables" : [ {
@@ -7924,6 +7924,40 @@
       "scale" : 0,
       "sequenceSchema" : null,
       "sqlType" : "number",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : "",
+        "type" : "user-defined"
+      },
+      "constraintList" : [ ],
+      "encrypted" : false,
+      "fieldName" : "documentName",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "hidden" : false,
+      "javaType" : "string",
+      "length" : 50,
+      "mask" : {
+        "type" : "NONE"
+      },
+      "name" : "documentName",
+      "nullable" : true,
+      "oldName" : null,
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfIndex" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "period" : false,
+      "precision" : 0,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
       "unique" : false
     } ],
     "constraints" : [ ],

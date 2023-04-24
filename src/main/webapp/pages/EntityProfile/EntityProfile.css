@@ -28,3 +28,40 @@ h3 {
 .form-group.app-composite-widget.row.clearfix {
     margin-bottom: unset;
 }
+
+/*.createUserNotes{
+     border: 0.1px solid #ddd
+}*/
+.cancelLine-19_1con{
+     border-top: 1px solid #ddd;
+}
+.enter_NoteLine{
+     border-bottom: 1px solid #ddd;
+     width: 90%;
+}
+.addAttachmentLine{
+    border-bottom: 1px solid #ddd;
+    width: 90%;
+}
+.textAreaRadius
+{
+    border-radius: 0.2em
+}
+/*.CreateUserNotesdialog1{
+    top:70px;
+}*/
+/* for dialog box header underline */
+.wm-app .modal-dialog .modal-header .modal-title {
+    color: #333;
+    font-size: 22px;
+    text-transform: none;
+    background-color: #fff;
+    padding-bottom: -14em;
+    margin-bottom: -19px;
+}
+
+
+/* panel */
+button.app-icon.wi.card-action {
+display: none;
+}

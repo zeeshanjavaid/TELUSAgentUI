@@ -64,13 +64,13 @@ public class Activity implements Serializable {
 
     private String username;
 
-    private DomainValue domainValueByType;
-
     private DomainValue domainValueByApplicationStatus;
 
     private Application application;
 
     private DomainValue domainValueBySource;
+
+    private DomainValue domainValueByType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,21 +192,6 @@ public class Activity implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`type`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValqeU7B`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueByType() {
-        return this.domainValueByType;
-    }
-
-    public void setDomainValueByType(DomainValue domainValueByType) {
-        if(domainValueByType != null) {
-            this.type = domainValueByType.getId();
-        }
-
-        this.domainValueByType = domainValueByType;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`applicationStatus`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValayBFN`"))
     @Fetch(FetchMode.JOIN)
     public DomainValue getDomainValueByApplicationStatus() {
@@ -249,6 +234,21 @@ public class Activity implements Serializable {
         }
 
         this.domainValueBySource = domainValueBySource;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`type`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ACTIVITY_TO_DomainValqeU7B`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueByType() {
+        return this.domainValueByType;
+    }
+
+    public void setDomainValueByType(DomainValue domainValueByType) {
+        if(domainValueByType != null) {
+            this.type = domainValueByType.getId();
+        }
+
+        this.domainValueByType = domainValueByType;
     }
 
 

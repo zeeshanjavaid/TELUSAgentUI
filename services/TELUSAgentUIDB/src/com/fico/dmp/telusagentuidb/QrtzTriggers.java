@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
  */
 @Entity
 @Table(name = "`QRTZ_TRIGGERS`", indexes = {
-            @Index(name = "`QRTZ_TRIGGERS_ibfk_1`", columnList = "`JOB_NAME`, `SCHED_NAME`, `JOB_GROUP`")})
+            @Index(name = "`QRTZ_TRIGGERS_ibfk_1`", columnList = "`JOB_NAME`, `JOB_GROUP`, `SCHED_NAME`")})
 @IdClass(QrtzTriggersId.class)
 public class QrtzTriggers implements Serializable {
 

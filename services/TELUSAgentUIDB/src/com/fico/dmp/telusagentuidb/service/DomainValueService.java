@@ -285,18 +285,6 @@ public interface DomainValueService {
     Page<DomainValueDescription> findAssociatedDomainValueDescriptions(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated domainValueRelationsForParentDomainValueId1 for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated DomainValueRelation instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated domainValueRelationsForDomainValueId for given DomainValue id.
      *
      * @param id value of id; value cannot be null
@@ -321,16 +309,16 @@ public interface DomainValueService {
     Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId2(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated activitiesForType for given DomainValue id.
+     * Returns the associated domainValueRelationsForParentDomainValueId1 for given DomainValue id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Activity instances.
+     * @return Paginated list of associated DomainValueRelation instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Activity> findAssociatedActivitiesForType(Integer id, Pageable pageable);
+    Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(Integer id, Pageable pageable);
 
     /*
      * Returns the associated activitiesForApplicationStatus for given DomainValue id.
@@ -355,5 +343,17 @@ public interface DomainValueService {
      * @see Page
      */
     Page<Activity> findAssociatedActivitiesForSource(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated activitiesForType for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Activity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Activity> findAssociatedActivitiesForType(Integer id, Pageable pageable);
 
 }

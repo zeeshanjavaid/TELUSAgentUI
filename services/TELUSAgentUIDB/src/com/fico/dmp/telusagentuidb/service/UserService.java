@@ -429,18 +429,6 @@ public interface UserService {
     Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated fawbPropertySourcesForCreatedBy for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated FawbPropertySource instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated fawbPropertySourcesForUpdatedBy for given User id.
      *
      * @param id value of id; value cannot be null
@@ -451,6 +439,18 @@ public interface UserService {
      * @see Page
      */
     Page<FawbPropertySource> findAssociatedFawbPropertySourcesForUpdatedBy(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated fawbPropertySourcesForCreatedBy for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated FawbPropertySource instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated domainValueTypesForUpdatedBy for given User id.
@@ -477,18 +477,6 @@ public interface UserService {
     Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated usersForCreatedBy for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated User instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<User> findAssociatedUsersForCreatedBy(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated usersForUpdatedBy for given User id.
      *
      * @param id value of id; value cannot be null
@@ -501,16 +489,16 @@ public interface UserService {
     Page<User> findAssociatedUsersForUpdatedBy(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated _groupsForCreatedBy for given User id.
+     * Returns the associated usersForCreatedBy for given User id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Group instances.
+     * @return Paginated list of associated User instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable);
+    Page<User> findAssociatedUsersForCreatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated _groupsForUpdatedBy for given User id.
@@ -525,16 +513,16 @@ public interface UserService {
     Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated userGroupsForUpdatedBy for given User id.
+     * Returns the associated _groupsForCreatedBy for given User id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated UserGroup instances.
+     * @return Paginated list of associated Group instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<UserGroup> findAssociatedUserGroupsForUpdatedBy(Integer id, Pageable pageable);
+    Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated userGroupsForCreatedBy for given User id.
@@ -559,5 +547,17 @@ public interface UserService {
      * @see Page
      */
     Page<UserGroup> findAssociatedUserGroupsForUserId(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated userGroupsForUpdatedBy for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated UserGroup instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<UserGroup> findAssociatedUserGroupsForUpdatedBy(Integer id, Pageable pageable);
 
 }

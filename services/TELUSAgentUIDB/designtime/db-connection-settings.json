@@ -143,6 +143,12 @@
   }, {
     "table" : "ACTIVITY_PAYLOAD",
     "schema" : null
+  }, {
+    "table" : "ENTITY_NOTES",
+    "schema" : null
+  }, {
+    "table" : "ENTITY_DOCUMENTS",
+    "schema" : null
   } ],
   "schemaFilter" : [ ],
   "impersonateUser" : false,

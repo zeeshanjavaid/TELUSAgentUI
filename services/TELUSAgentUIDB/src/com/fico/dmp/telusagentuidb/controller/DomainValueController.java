@@ -258,15 +258,6 @@ public class DomainValueController {
         return domainValueService.findAssociatedDomainValueDescriptions(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
-        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/domainValueRelationsForDomainValueId", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the domainValueRelationsForDomainValueId instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -285,13 +276,13 @@ public class DomainValueController {
         return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId2(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/activitiesForType", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the activitiesForType instance associated with the given id.")
+    @RequestMapping(value="/{id:.+}/domainValueRelationsForParentDomainValueId1", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the domainValueRelationsForParentDomainValueId1 instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Activity> findAssociatedActivitiesForType(@PathVariable("id") Integer id, Pageable pageable) {
+    public Page<DomainValueRelation> findAssociatedDomainValueRelationsForParentDomainValueId1(@PathVariable("id") Integer id, Pageable pageable) {
 
-        LOGGER.debug("Fetching all associated activitiesForType");
-        return domainValueService.findAssociatedActivitiesForType(id, pageable);
+        LOGGER.debug("Fetching all associated domainValueRelationsForParentDomainValueId1");
+        return domainValueService.findAssociatedDomainValueRelationsForParentDomainValueId1(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/activitiesForApplicationStatus", method=RequestMethod.GET)
@@ -310,6 +301,15 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated activitiesForSource");
         return domainValueService.findAssociatedActivitiesForSource(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/activitiesForType", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the activitiesForType instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Activity> findAssociatedActivitiesForType(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated activitiesForType");
+        return domainValueService.findAssociatedActivitiesForType(id, pageable);
     }
 
     /**
