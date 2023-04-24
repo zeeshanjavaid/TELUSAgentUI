@@ -99,7 +99,6 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
     debugger;
-    App.Variables.errorMsg.dataSet.dataValue = "";
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the entity that needs to transferred";
     } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
