@@ -31,6 +31,33 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "parrHistoryVar" : {
+    "_id" : "wm-parrHistoryVar-wm.Variable-1682326367541",
+    "name" : "parrHistoryVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "date" : "08/30/2023",
+      "user" : "John",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Smith",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Kevin",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "ParrInstallmentSchedule" : {
     "_id" : "wm-ParrInstallmentSchedule-wm.Variable-1679576077612",
     "name" : "ParrInstallmentSchedule",
@@ -46,6 +73,34 @@
     } ],
     "type" : "entry",
     "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "parrIsExpand" : {
+    "_id" : "wm-parrIsExpand-wm.Variable-1682317629372",
+    "name" : "parrIsExpand",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "parrIsExpandedGroup" : {
+    "_id" : "wm-parrIsExpandedGroup-wm.Variable-1682317727388",
+    "name" : "parrIsExpandedGroup",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
     "saveInPhonegap" : false
   },
   "updateParrStatus" : {

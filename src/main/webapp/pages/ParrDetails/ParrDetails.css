@@ -27,7 +27,7 @@ button.app-icon.wi.card-action {
     display: none;
 }
 .cancelParrDialog{
-     top: 200px;
+    top: 200px;
 }
 .cancelParrborder{
     border-radius: 5px;
@@ -71,7 +71,7 @@ button.app-icon.wi.card-action {
    border-bottom: 1px solid #ddd;  
 }
 
-.installScheduleLine1-20_1con{
+/*.installScheduleLine1-20_1con{
    border-bottom: 1px solid #ddd ; 
    margin-left: 5.7em;
    margin-right: 1.1em;
@@ -80,7 +80,7 @@ button.app-icon.wi.card-action {
    border-bottom: 1px solid #ddd ; 
    margin-left: 5.7em;
    margin-right: 1.1em;
-}
+}*/
 /* managing spaces for renegotiate dialog box */
 .col-sm-5grid{
     width:68%;
@@ -130,7 +130,7 @@ text-align: right
      borde: none !important;
 }
 
-@media (min-width: 500px) {
+/*@media (min-width: 500px) {
 .summary-col-width-mediumparrID{
     flex: 0 0 9%;
     max-width: 9%;
@@ -194,4 +194,92 @@ text-align: right
     white-space: nowrap;
     overflow: hidden;
 }
+}*/
+
+h4.subHeadingLabel {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0 0 60px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%;
+    padding-bottom: 6px;
+}
+
+h4.panelSubHeading {
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0 0 60px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%;
+    padding-bottom: 6px;
+}
+
+.ParrDetailsLabel {
+    float: right;
+}
+
+/*.labelGrid {
+    width: 40%;
+}
+
+.labelValue {
+    width: 60%;
+}*/
+
+h3.viewPARRlabel {
+    padding: 0 0 5px 0;
+    margin: 10px 0 0 15px; 
+}
+
+.hide-icon1 {
+    display: none;
+}
+
+.hide-icon2 {
+    display: none;
+}
+
+i.fico-icon-chevron-down.show-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.hide-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.show-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.hide-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.show-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.hide-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.show-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.hide-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.wm-app .app-dialog-header.modal-header {
+    border-bottom: 1px solid #ddd; 
 }

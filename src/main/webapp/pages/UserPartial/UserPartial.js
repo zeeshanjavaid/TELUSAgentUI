@@ -944,7 +944,7 @@ Partial.panel1Expand = function($event, widget) {
     if (showIcon) {
         showIcon.style.display = 'inline-block';
     }
-    Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
+    Partial.Variables.isExpand.dataSet.dataValue = !Partial.Variables.isExpand.dataSet.dataValue;
 };
 
 Partial.panel1Collapse = function($event, widget) {
@@ -956,7 +956,7 @@ Partial.panel1Collapse = function($event, widget) {
     if (showIcon) {
         showIcon.style.display = 'none';
     }
-    Page.Variables.isExpand.dataSet.dataValue = !Page.Variables.isExpand.dataSet.dataValue;
+    Partial.Variables.isExpand.dataSet.dataValue = !Partial.Variables.isExpand.dataSet.dataValue;
 
 };
 

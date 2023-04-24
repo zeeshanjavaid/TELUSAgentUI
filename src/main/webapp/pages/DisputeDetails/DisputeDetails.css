@@ -6,18 +6,6 @@
     width:190% !important;
 }
 
-.updateDisputeLine1{
-    border-bottom: 1px solid #ddd ; 
-}
-
-.closeDisputeLine{
-    border-bottom: 1px solid #ddd ; 
-}
-
-.cancelDisputeLine{
-   border-bottom: 1px solid #ddd ;  
-}
-
 .disputeHistoryLine-21_1con{
    border-bottom: 1px solid #ddd ; 
    margin-left: 5.7em;
@@ -80,4 +68,8 @@ h3 {
 
 button.app-icon.wi.card-action {
     display: none;
+}
+
+.wm-app .app-dialog-header.modal-header {
+    border-bottom: 1px solid #ddd; 
 }

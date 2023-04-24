@@ -11,6 +11,7 @@
 
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
+
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -30,21 +31,52 @@ Partial.onReady = function() {
     }
 };
 
-Partial.installmentScheduleCollapse = function($event, widget) {
-    Partial.IsExpandedIS = false;
-
-};
-
 Partial.installmentScheduleExpand = function($event, widget) {
-    Partial.IsExpandedIS = true;
+    let showIcon1 = document.querySelector('.show-icon1');
+    let hideIcon1 = document.querySelector('.hide-icon1');
+    if (hideIcon1) {
+        hideIcon1.style.display = 'none';
+    }
+    if (showIcon1) {
+        showIcon1.style.display = 'inline-block';
+    }
+    Partial.Variables.parrIsExpand.dataSet.dataValue = !Partial.Variables.parrIsExpand.dataSet.dataValue;
 };
 
+Partial.installmentScheduleCollapse = function($event, widget) {
+    let showIcon1 = document.querySelector('.show-icon1');
+    let hideIcon1 = document.querySelector('.hide-icon1');
+    if (hideIcon1) {
+        hideIcon1.style.display = 'inline-block';
+    }
+    if (showIcon1) {
+        showIcon1.style.display = 'none';
+    }
+    Partial.Variables.parrIsExpand.dataSet.dataValue = !Partial.Variables.parrIsExpand.dataSet.dataValue;
+};
+
+Partial.parrHistoryExpand = function($event, widget) {
+    let showIcon2 = document.querySelector('.show-icon2');
+    let hideIcon2 = document.querySelector('.hide-icon2');
+    if (hideIcon2) {
+        hideIcon2.style.display = 'none';
+    }
+    if (showIcon2) {
+        showIcon2.style.display = 'inline-block';
+    }
+    Partial.Variables.parrIsExpand.dataSet.dataValue = !Partial.Variables.parrIsExpand.dataSet.dataValue;
+};
 
 Partial.parrHistoryCollapse = function($event, widget) {
-    Partial.IsExpandedIS = false;
-};
-Partial.parrHistoryExpand = function($event, widget) {
-    Partial.IsExpandedIS = true;
+    let showIcon2 = document.querySelector('.show-icon2');
+    let hideIcon2 = document.querySelector('.hide-icon2');
+    if (hideIcon2) {
+        hideIcon2.style.display = 'inline-block';
+    }
+    if (showIcon2) {
+        showIcon2.style.display = 'none';
+    }
+    Partial.Variables.parrIsExpand.dataSet.dataValue = !Partial.Variables.parrIsExpand.dataSet.dataValue;
 };
 
 Partial.YesCancelButtonClick = function($event, widget) {
