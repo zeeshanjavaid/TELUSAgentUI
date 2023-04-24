@@ -28,3 +28,19 @@
     padding-bottom: -14em;
     margin-bottom: -19px;
 }
+
+/* panel */
+button.app-icon.wi.card-action {
+    display: none;
+}
+.associatePanel h5{
+      padding: 0 0 7px 0;
+    width: 96%;
+    font-size: 15px !important;
+    position: relative;
+    cursor: pointer;
+    top: -33px;
+    left: 59px;
+    
+    font-weight: bold !important;
+}
