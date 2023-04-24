@@ -33,29 +33,21 @@
 button.app-icon.wi.card-action {
     display: none;
 }
-.associatePanel h5{
-      padding: 0 0 7px 0;
+.associatePanel h4{
+    padding: 0 0 7px 0;
     width: 96%;
-    font-size: 15px !important;
+    font-size: 14px !important;
     position: relative;
     cursor: pointer;
-    top: -33px;
-    left: 59px;
-    
-    font-weight: bold !important;
+    top: -18px;
+    left: 3px;
+    color: #4B286D !important;
+   font-weight: bold !important;
 }
+  
 
 
 
 
-
-
-/* panel */
-
-button.app-icon.wi.card-action {
-
-display: none;
-
-}
 
 

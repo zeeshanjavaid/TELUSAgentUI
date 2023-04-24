@@ -26,19 +26,19 @@
             <wm-gridrow name="gridrow5_1" padding="1em unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                     <wm-composite name="composite1">
-                        <wm-container class="col-md-9" name="container2">
+                        <wm-container class="col-md-9" name="container2" width="85%">
                             <wm-textarea name="textarea1" class="textAreaRadius"></wm-textarea>
                         </wm-container>
                     </wm-composite>
                     <wm-layoutgrid name="layoutgrid5">
                         <wm-gridrow name="gridrow8">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
-                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)" class="associatePanel" id="AssociateBan"
-                                    expanded="false">
+                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)"
+                                    class="associatePanel" id="AssociateBan" expanded="false">
                                     <wm-layoutgrid name="layoutgrid25">
                                         <wm-gridrow name="gridrow39">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
-                                                <wm-container name="container21" margin="0 0 0 0">
+                                                <wm-container name="container21" margin="0 0 0 0" width="90%">
                                                     <wm-table name="AssociatedwithBanTable1" title="" dataset="bind:Variables.AssociatedwithBan.dataSet" navigation="None">
                                                         <wm-table-column binding="BAN#" caption="Ban#" show="true" readonly="undefined"></wm-table-column>
                                                         <wm-table-column binding="BANName" caption="Ban Name" mobiledisplay="false" show="true" readonly="undefined"></wm-table-column>
