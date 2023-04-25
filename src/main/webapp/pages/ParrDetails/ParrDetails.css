@@ -214,6 +214,24 @@ text-align: right
     }
 }
 
+@media (width: 1519px) {
+.viewParrLabelsGrid {
+    margin-left: 20px;
+    }
+}
+
+@media (width: 1519px) {
+.installmentBANlabel {
+    min-width: 19%;
+    }
+}
+
+@media (width: 1519px) {
+.amtOverlabel {
+    min-width: 30%;
+    }
+}
+
 h4.subHeadingLabel {
     font-size: 19px;
     font-weight: bold;
