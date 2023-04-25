@@ -141,74 +141,61 @@
         </wm-layoutgrid>
     </wm-panel>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" closable="true" on-opened="renegotiatePARRdialogOpened($event, widget)">
-        <wm-layoutgrid name="layoutgrid2">
-            <wm-gridrow name="gridrow4_1" padding="1.5em unset unset unset" margin="0 0 10px 0">
-                <wm-gridcolumn columnwidth="4" name="gridcolumn3">
-                    <wm-gridcolumn columnwidth="7" name="gridcolumn37_1" class="summary-col-width-mediumparrID">
-                        <wm-label class="col-md-3 control-label" name="label5" caption="PARR ID:" width="85%" color="#6e6d6a" style="text-align: right;"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="5" name="gridcolumn38">
-                        <wm-label padding="unset 0.5em unset unset" name="parrID" caption="bind:Variables.getPaymentArrangement.dataSet.id"></wm-label>
-                    </wm-gridcolumn>
+        <wm-layoutgrid>
+            <wm-gridrow name="gridrow29">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn74">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR ID:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn17">
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn49_1">
-                        <wm-label class="col-md-3 control-label" name="label12" caption="Recurrence:" width="38%" color="#6e6d6a" style="text-align: right;"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn50_1">
-                        <wm-label padding="unset 0.5em unset unset" name="reccurence" caption="bind:Variables.getPaymentArrangement.dataSet.recurrence"></wm-label>
-                    </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75">
+                    <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.id"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn6">
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn49" class="summary-col-width-mediumparrAmt">
-                        <wm-label class="col-md-3 control-label" name="label8" caption="PARR Amt:" width="100%" color="#6e6d6a"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="5" name="gridcolumn50" margin="-5px 0 0 -8px">
-                        <wm-number textalign="right" name="ParrAmount" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)" placeholder=""></wm-number>
-                    </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn76">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Recurrence:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn77">
+                    <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.recurrence"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn78">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label21" caption="PARR Amt:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn79">
+                    <wm-number padding="0.5em 0.5em unset 0.5em" textalign="right" name="ParrAmount" margin="-14px 0 0 0" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)" placeholder=""></wm-number>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77"></wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="10" name="gridcolumn18" class="col-sm-18grid">
-                    <wm-composite name="composite10" width="100%">
-                        <wm-container class="media-left" name="container19">
-                            <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" picturesource="bind:Variables.installmentBAN.dataSet['BAN ID']" class="media-object" show="resources/images/imagelists/bullet.png"></wm-picture>
-                        </wm-container>
-                        <wm-layoutgrid name="layoutgrid4">
-                            <wm-gridrow name="gridrow9" style="display: flex;">
-                                <wm-gridcolumn columnwidth="4" name="gridcolumn17_1">
-                                    <wm-label name="label32" caption="Installment BANs:" margin="unset unset unset 2.2em" color="#6e6d6a"></wm-label>
-                                </wm-gridcolumn>
-                                <wm-gridcolumn columnwidth="10" name="gridcolumn17_3">
-                                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs" navigation="None"
-                                        nodatamessage="">
-                                        <wm-listtemplate layout="inline" name="listtemplate3">
-                                            <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
-                                                <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
-                                            </wm-container>
-                                            <wm-container class="media-body" padding="unset unset unset 1.25em" name="container25">
-                                                <wm-layoutgrid name="layoutgrid3" width="70%">
-                                                    <wm-gridrow name="gridrow7_1">
-                                                        <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
-                                                            <wm-label name="banValue" caption="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs[$i].name" class="p text-muted" color="#000"></wm-label>
-                                                        </wm-gridcolumn>
-                                                    </wm-gridrow>
-                                                    <wm-gridrow name="gridrow8"></wm-gridrow>
-                                                </wm-layoutgrid>
-                                            </wm-container>
-                                        </wm-listtemplate>
-                                    </wm-list>
-                                </wm-gridcolumn>
-                            </wm-gridrow>
-                        </wm-layoutgrid>
-                    </wm-composite>
+            <wm-gridrow name="gridrow29" margin="0 0 10px 0">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="installmentBANlabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="4" name="gridcolumn47_1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75" padding="0.5em 0.5em unset unset">
+                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs" navigation="None"
+                        nodatamessage="">
+                        <wm-listtemplate layout="inline" name="listtemplate3">
+                            <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
+                                <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
+                            </wm-container>
+                            <wm-container class="media-body" padding="unset unset unset 1.25em" name="container25">
+                                <wm-layoutgrid name="layoutgrid3" width="70%">
+                                    <wm-gridrow name="gridrow7_1">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
+                                            <wm-label name="banValue" caption="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs[$i].name" class="p text-muted" color="#000"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow8"></wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-container>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn78"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn79"></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <h4 class="reneSubHeadingLabel" margin="20px 0 0 20px">Installment Schedule</h4>
         <wm-container name="container20">
-            <wm-layoutgrid name="layoutgrid11"></wm-layoutgrid>
             <wm-layoutgrid name="layoutgrid16">
                 <wm-gridrow name="gridrow24">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn51">
@@ -228,24 +215,20 @@
             </wm-layoutgrid>
         </wm-container>
         <wm-container name="container21">
-            <wm-layoutgrid name="layoutgrid14">
-                <wm-gridrow name="gridrow20_1">
-                    <wm-gridcolumn columnwidth="3" name="gridcolumn43">
-                        <wm-label padding="1em 0.5em 1.5em unset" color="gray" name="label26" caption="Amt Over/Under Parr Total:" textalign="left" margin="unset unset unset 2.8em"></wm-label>
+            <wm-layoutgrid>
+                <wm-gridrow name="gridrow29" margin="0 0 30px -12px">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn74">
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Amt Over/Under PARR Total:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="8" name="gridcolumn44">
-                        <wm-label padding="1em 0.5em 1.5em unset" name="AmountOverUnder" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn75">
+                        <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
-            </wm-layoutgrid>
-        </wm-container>
-        <wm-container name="container22">
-            <wm-layoutgrid name="layoutgrid15">
-                <wm-gridrow name="gridrow22" class="col-22grid">
-                    <wm-gridcolumn columnwidth="2" name="gridcolumn47">
-                        <wm-label class="col-md-3 control-label" name="label29" caption="Comments" textalign="left" margin="0.5em 1em unset 2.7em" color="#6e6d6a"></wm-label>
+                <wm-gridrow name="gridrow29" margin="0 0 10px -12px">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn74">
+                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Comments:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="6" name="gridcolumn48">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn74">
                         <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
                     </wm-gridcolumn>
                 </wm-gridrow>

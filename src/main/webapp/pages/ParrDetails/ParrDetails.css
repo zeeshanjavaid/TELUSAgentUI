@@ -95,8 +95,8 @@ button.app-icon.wi.card-action {
     width:25%;
 }
 .getInstallment-reneTable{
-    width:87%; 
-    margin-left:2.9em;
+    width: 96%; 
+    margin-left: 1.4em;
 }
 .col-22grid{
     width:80%;
@@ -196,6 +196,12 @@ text-align: right
 }
 }*/
 
+/*@media (min-width: 634px) {
+.installmentBANlabel {
+    min-width: 22%;
+    }
+}*/
+
 h4.subHeadingLabel {
     font-size: 19px;
     font-weight: bold;
@@ -218,14 +224,6 @@ h4.panelSubHeading {
 .ParrDetailsLabel {
     float: right;
 }
-
-/*.labelGrid {
-    width: 40%;
-}
-
-.labelValue {
-    width: 60%;
-}*/
 
 h3.viewPARRlabel {
     padding: 0 0 5px 0;
@@ -295,10 +293,15 @@ h4.reneSubHeadingLabel {
 }
 
 button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-row-button {
-    background-color: #482b6d;
-    border-color: #482b6d;
+    background-color: #4B286D;
+    border-color: #4B286D;
+    width: 30%;
 }
 
 .viewPARRLabel {
     float: right;
+}
+
+.wm-app input.form-control.app-textbox.app-number-input {
+    margin-top: -14px;
 }

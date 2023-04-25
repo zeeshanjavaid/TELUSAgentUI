@@ -307,14 +307,18 @@
     margin-top: 10px !important;
 }
 
-textarea.form-control.app-textarea.ng-untouched.ng-pristine {
+.wm-app textarea.form-control.app-textarea.ng-untouched.ng-pristine {
     resize: none;
 }
 
-textarea.form-control.app-textarea.ng-pristine.ng-valid.ng-touched {
+.wm-app textarea.form-control.app-textarea.ng-pristine.ng-valid.ng-touched {
     resize: none;
 }
 
 .wm-app .modal-dialog .modal-body .app-livelist .app-list-item {
     padding: 7px 15px;
+}
+
+.wm-app textarea.form-control.app-textarea.ng-valid.ng-touched.ng-dirty {
+    resize: none;
 }
