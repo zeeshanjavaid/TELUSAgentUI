@@ -232,6 +232,12 @@ text-align: right
     }
 }
 
+@media (width: 1519px) {
+.commentsLabel {
+    min-width: 30%;
+    }
+}
+
 h4.subHeadingLabel {
     font-size: 19px;
     font-weight: bold;
