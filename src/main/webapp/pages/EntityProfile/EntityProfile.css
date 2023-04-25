@@ -37,7 +37,7 @@ h3 {
 }
 .enter_NoteLine{
      border-bottom: 1px solid #ddd;
-     width: 90%;
+     width: 94%;
 }
 .addAttachmentLine{
     border-bottom: 1px solid #ddd;
@@ -59,9 +59,18 @@ h3 {
     padding-bottom: -14em;
     margin-bottom: -19px;
 }
-
-
 /* panel */
 button.app-icon.wi.card-action {
 display: none;
+}
+.associatePanel h4{
+    padding: 0 0 -5px 0;
+    width: 96%;
+    font-size: 14px !important;
+    position: relative;
+    cursor: pointer;
+    top: -7px;
+    left: 3px;
+    color: #4B286D !important;
+   font-weight: bold !important;
 }
