@@ -196,11 +196,23 @@ text-align: right
 }
 }*/
 
-/*@media (min-width: 634px) {
-.installmentBANlabel {
-    min-width: 22%;
+@media (width: 1519px) {
+.parrlabel4 {
+    min-width: 11%;
     }
-}*/
+}
+
+@media (width: 1519px) {
+.parrlabel5 {
+    min-width: 11%;
+    }
+}
+
+@media (width: 1519px) {
+.parrlabel9 {
+    min-width: 11%;
+    }
+}
 
 h4.subHeadingLabel {
     font-size: 19px;

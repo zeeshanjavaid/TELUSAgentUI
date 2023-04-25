@@ -28,6 +28,7 @@ Partial.onReady = function() {
             "id": Partial.pageParams.ParrId
         });
         Partial.Variables.getPaymentArrangement.invoke();
+        debugger;
     }
 };
 
