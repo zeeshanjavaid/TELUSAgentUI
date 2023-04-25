@@ -281,6 +281,7 @@ i.fico-icon-chevron-right.hide-icon2 {
 }
 
 .wm-app .app-dialog-header.modal-header {
+    padding-bottom: 22px;
     border-bottom: 1px solid #ddd; 
 }
 
@@ -296,4 +297,8 @@ h4.reneSubHeadingLabel {
 button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-row-button {
     background-color: #482b6d;
     border-color: #482b6d;
+}
+
+.viewPARRLabel {
+    float: right;
 }
