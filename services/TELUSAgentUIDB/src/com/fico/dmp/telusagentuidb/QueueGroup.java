@@ -39,9 +39,9 @@ public class QueueGroup implements Serializable {
 
     private Integer groupId;
 
-    private Queue queue;
-
     private Group _group;
+
+    private Queue queue;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,21 +73,6 @@ public class QueueGroup implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`QueueId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_GROUP_TO_QUEUE_dbyLa`"))
-    @Fetch(FetchMode.JOIN)
-    public Queue getQueue() {
-        return this.queue;
-    }
-
-    public void setQueue(Queue queue) {
-        if(queue != null) {
-            this.queueId = queue.getId();
-        }
-
-        this.queue = queue;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`GroupId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_GROUP_TO_GROUP_JjVRw`"))
     @Fetch(FetchMode.JOIN)
     public Group get_group() {
@@ -100,6 +85,21 @@ public class QueueGroup implements Serializable {
         }
 
         this._group = _group;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`QueueId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_QUEUE_GROUP_TO_QUEUE_dbyLa`"))
+    @Fetch(FetchMode.JOIN)
+    public Queue getQueue() {
+        return this.queue;
+    }
+
+    public void setQueue(Queue queue) {
+        if(queue != null) {
+            this.queueId = queue.getId();
+        }
+
+        this.queue = queue;
     }
 
 

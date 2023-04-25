@@ -78,6 +78,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(String entityId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        return queryExecutor.executeNamedQuery("checkforDocumentWithEid", params, CheckforDocumentWithEidResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportCheckforDocumentWithEid(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        QueryProcedureInput<CheckforDocumentWithEidResponse> queryInput = new QueryProcedureInput<>("checkforDocumentWithEid", params, CheckforDocumentWithEidResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeDeleteGroupUser(String groupId) {
@@ -458,6 +480,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("RoleId", roleId);
 
         return queryExecutor.executeNamedQueryForUpdate("deleteRolePermission", params);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        return queryExecutor.executeNamedQuery("getLatestNotes", params, GetLatestNotesResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        QueryProcedureInput<GetLatestNotesResponse> queryInput = new QueryProcedureInput<>("getLatestNotes", params, GetLatestNotesResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)

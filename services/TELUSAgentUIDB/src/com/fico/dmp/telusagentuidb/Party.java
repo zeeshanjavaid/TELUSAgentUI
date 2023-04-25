@@ -52,13 +52,13 @@ public class Party implements Serializable {
 
     private Integer applicationRole;
 
-    private Application application;
-
-    private DomainValue domainValue;
-
     private User userByUpdatedBy;
 
     private User userByCreatedBy;
+
+    private Application application;
+
+    private DomainValue domainValue;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -135,36 +135,6 @@ public class Party implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`ApplicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKco9t3f6g66opwm70sbn8mdr3r`"))
-    @Fetch(FetchMode.JOIN)
-    public Application getApplication() {
-        return this.application;
-    }
-
-    public void setApplication(Application application) {
-        if(application != null) {
-            this.applicationId = application.getId();
-        }
-
-        this.application = application;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`applicationRole`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_PARTY_TO_DomainValue_jBf97`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValue() {
-        return this.domainValue;
-    }
-
-    public void setDomainValue(DomainValue domainValue) {
-        if(domainValue != null) {
-            this.applicationRole = domainValue.getId();
-        }
-
-        this.domainValue = domainValue;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK3ge8qx045mlshses9gi4yslsl`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByUpdatedBy() {
@@ -192,6 +162,36 @@ public class Party implements Serializable {
         }
 
         this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`ApplicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKco9t3f6g66opwm70sbn8mdr3r`"))
+    @Fetch(FetchMode.JOIN)
+    public Application getApplication() {
+        return this.application;
+    }
+
+    public void setApplication(Application application) {
+        if(application != null) {
+            this.applicationId = application.getId();
+        }
+
+        this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`applicationRole`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_PARTY_TO_DomainValue_jBf97`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValue() {
+        return this.domainValue;
+    }
+
+    public void setDomainValue(DomainValue domainValue) {
+        if(domainValue != null) {
+            this.applicationRole = domainValue.getId();
+        }
+
+        this.domainValue = domainValue;
     }
 
 

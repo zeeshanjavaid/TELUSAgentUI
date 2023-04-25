@@ -42,11 +42,11 @@ public class DomainValueTypeRelationship implements Serializable {
 
     private Integer parentDomainValueTypeId2;
 
-    private DomainValueType domainValueTypeByParentDomainValueTypeId2;
-
     private DomainValueType domainValueTypeByParentDomainValueTypeId1;
 
     private DomainValueType domainValueTypeByDomainValueTypeId;
+
+    private DomainValueType domainValueTypeByParentDomainValueTypeId2;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,21 +87,6 @@ public class DomainValueTypeRelationship implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`ParentDomainValueTypeId2`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelatiY1y2v`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValueType getDomainValueTypeByParentDomainValueTypeId2() {
-        return this.domainValueTypeByParentDomainValueTypeId2;
-    }
-
-    public void setDomainValueTypeByParentDomainValueTypeId2(DomainValueType domainValueTypeByParentDomainValueTypeId2) {
-        if(domainValueTypeByParentDomainValueTypeId2 != null) {
-            this.parentDomainValueTypeId2 = domainValueTypeByParentDomainValueTypeId2.getId();
-        }
-
-        this.domainValueTypeByParentDomainValueTypeId2 = domainValueTypeByParentDomainValueTypeId2;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`ParentDomainValueTypeId1`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelatixUieD`"))
     @Fetch(FetchMode.JOIN)
     public DomainValueType getDomainValueTypeByParentDomainValueTypeId1() {
@@ -129,6 +114,21 @@ public class DomainValueTypeRelationship implements Serializable {
         }
 
         this.domainValueTypeByDomainValueTypeId = domainValueTypeByDomainValueTypeId;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`ParentDomainValueTypeId2`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueTypeRelatiY1y2v`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValueType getDomainValueTypeByParentDomainValueTypeId2() {
+        return this.domainValueTypeByParentDomainValueTypeId2;
+    }
+
+    public void setDomainValueTypeByParentDomainValueTypeId2(DomainValueType domainValueTypeByParentDomainValueTypeId2) {
+        if(domainValueTypeByParentDomainValueTypeId2 != null) {
+            this.parentDomainValueTypeId2 = domainValueTypeByParentDomainValueTypeId2.getId();
+        }
+
+        this.domainValueTypeByParentDomainValueTypeId2 = domainValueTypeByParentDomainValueTypeId2;
     }
 
 

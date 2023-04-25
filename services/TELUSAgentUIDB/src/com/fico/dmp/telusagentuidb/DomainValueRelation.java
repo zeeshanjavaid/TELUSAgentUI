@@ -42,11 +42,11 @@ public class DomainValueRelation implements Serializable {
 
     private Integer parentDomainValueId2;
 
-    private DomainValue domainValueByDomainValueId;
-
     private DomainValue domainValueByParentDomainValueId2;
 
     private DomainValue domainValueByParentDomainValueId1;
+
+    private DomainValue domainValueByDomainValueId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,21 +87,6 @@ public class DomainValueRelation implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`DomainValueId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueRelation_ThHkUG`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueByDomainValueId() {
-        return this.domainValueByDomainValueId;
-    }
-
-    public void setDomainValueByDomainValueId(DomainValue domainValueByDomainValueId) {
-        if(domainValueByDomainValueId != null) {
-            this.domainValueId = domainValueByDomainValueId.getId();
-        }
-
-        this.domainValueByDomainValueId = domainValueByDomainValueId;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`ParentDomainValueId2`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueRelation_TIKNtp`"))
     @Fetch(FetchMode.JOIN)
     public DomainValue getDomainValueByParentDomainValueId2() {
@@ -129,6 +114,21 @@ public class DomainValueRelation implements Serializable {
         }
 
         this.domainValueByParentDomainValueId1 = domainValueByParentDomainValueId1;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`DomainValueId`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DomainValueRelation_ThHkUG`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueByDomainValueId() {
+        return this.domainValueByDomainValueId;
+    }
+
+    public void setDomainValueByDomainValueId(DomainValue domainValueByDomainValueId) {
+        if(domainValueByDomainValueId != null) {
+            this.domainValueId = domainValueByDomainValueId.getId();
+        }
+
+        this.domainValueByDomainValueId = domainValueByDomainValueId;
     }
 
 

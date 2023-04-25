@@ -25,6 +25,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(String entityId, Pageable pageable);
+
+    void exportCheckforDocumentWithEid(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Integer executeDeleteGroupUser(String groupId);
 
     Integer executeQuery_updateUserDetails(QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest);
@@ -90,6 +94,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     void exportQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Integer executeDeleteRolePermission(String roleId);
+
+    Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable);
+
+    void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable);
 

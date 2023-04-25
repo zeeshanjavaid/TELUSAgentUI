@@ -105,6 +105,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/checkforDocumentWithEid", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "checkforDocumentWithEid")
+    public Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(@RequestParam(value = "entityId") String entityId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: checkforDocumentWithEid");
+        Page<CheckforDocumentWithEidResponse> _result = queryService.executeCheckforDocumentWithEid(entityId, pageable);
+        LOGGER.debug("got the result for named query: checkforDocumentWithEid, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query checkforDocumentWithEid")
+    @RequestMapping(value = "/queries/checkforDocumentWithEid/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportCheckforDocumentWithEid(@RequestParam(value = "entityId") String entityId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: checkforDocumentWithEid");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "checkforDocumentWithEid";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportCheckforDocumentWithEid(entityId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/deleteGroupUser", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "deleteGroupUser")
@@ -559,6 +588,35 @@ public class QueryExecutionController {
         Integer _result = queryService.executeDeleteRolePermission(roleId);
         LOGGER.debug("got the result for named query: deleteRolePermission, result:{}", _result);
         return new IntegerWrapper(_result);
+    }
+
+    @RequestMapping(value = "/queries/getLatestNotes", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getLatestNotes")
+    public Page<GetLatestNotesResponse> executeGetLatestNotes(@RequestParam(value = "entityId") String entityId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getLatestNotes");
+        Page<GetLatestNotesResponse> _result = queryService.executeGetLatestNotes(entityId, pageable);
+        LOGGER.debug("got the result for named query: getLatestNotes, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getLatestNotes")
+    @RequestMapping(value = "/queries/getLatestNotes/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetLatestNotes(@RequestParam(value = "entityId") String entityId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getLatestNotes");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getLatestNotes";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetLatestNotes(entityId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
     }
 
     @RequestMapping(value = "/queries/getAllRolePermission", method = RequestMethod.GET)

@@ -32,6 +32,20 @@ ur.userId=u.id  join ROLE r on ur.roleId= r.id where ur.roleId = :roleId and r.r
     <query-param name="GroupId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="checkforDocumentWithEid">
+        <![CDATA[
+        select *  from ENTITY_NOTES where  entityId=:entityId and docId is not NULL
+        ]]>
+    <query-param name="entityId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="checkforDocumentWithEid__count">
+        <![CDATA[
+        select count(*) from (select *  from ENTITY_NOTES where  entityId=:entityId and docId is not NULL) wmTempTable
+        ]]>
+    <query-param name="entityId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="deleteGroupUser">
         <![CDATA[
         delete from USER_GROUP where GroupId=:GroupId
@@ -555,6 +569,20 @@ END ASC) wmTempTable
         DELETE FROM ROLE_PERMISSION WHERE RoleId = :RoleId
         ]]>
     <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getLatestNotes">
+        <![CDATA[
+        select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC
+        ]]>
+    <query-param name="entityId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getLatestNotes__count">
+        <![CDATA[
+        select count(*) from (select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC) wmTempTable
+        ]]>
+    <query-param name="entityId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getAllRolePermission">

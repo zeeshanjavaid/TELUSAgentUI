@@ -12,6 +12,9 @@
   "port" : null,
   "schemaName" : null,
   "tableFilter" : [ {
+    "table" : "ENTITY_NOTES",
+    "schema" : null
+  }, {
     "table" : "QRTZ_SIMPLE_TRIGGERS",
     "schema" : null
   }, {
@@ -73,6 +76,9 @@
     "schema" : null
   }, {
     "table" : "AuditDataChange",
+    "schema" : null
+  }, {
+    "table" : "ENTITY_DOCUMENTS",
     "schema" : null
   }, {
     "table" : "Error",
@@ -142,12 +148,6 @@
     "schema" : null
   }, {
     "table" : "ACTIVITY_PAYLOAD",
-    "schema" : null
-  }, {
-    "table" : "ENTITY_NOTES",
-    "schema" : null
-  }, {
-    "table" : "ENTITY_DOCUMENTS",
     "schema" : null
   } ],
   "schemaFilter" : [ ],

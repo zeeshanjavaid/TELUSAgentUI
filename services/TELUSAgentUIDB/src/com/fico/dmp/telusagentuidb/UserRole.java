@@ -48,9 +48,9 @@ public class UserRole implements Serializable {
 
     private Integer roleId;
 
-    private Role role;
-
     private User user;
+
+    private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -118,21 +118,6 @@ public class UserRole implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`roleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ROLE_TO_USER_ROLE_id_OGLV5`"))
-    @Fetch(FetchMode.JOIN)
-    public Role getRole() {
-        return this.role;
-    }
-
-    public void setRole(Role role) {
-        if(role != null) {
-            this.roleId = role.getId();
-        }
-
-        this.role = role;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`userId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_USER_ROLE_TO_USER_useUDeiZ`"))
     @Fetch(FetchMode.JOIN)
     public User getUser() {
@@ -145,6 +130,21 @@ public class UserRole implements Serializable {
         }
 
         this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`roleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_ROLE_TO_USER_ROLE_id_OGLV5`"))
+    @Fetch(FetchMode.JOIN)
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        if(role != null) {
+            this.roleId = role.getId();
+        }
+
+        this.role = role;
     }
 
 
