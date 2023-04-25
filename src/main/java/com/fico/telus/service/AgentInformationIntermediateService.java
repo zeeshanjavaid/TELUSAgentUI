@@ -11,11 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fico.dmp.telusagentuidb.models.query.GetActiveAgentListWithWorkCategoryResponse;
 import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorService;
 import com.fico.telus.model.AgentInfo;
+import com.fico.telus.model.ErrorInfo;
 
 @Service
 public class AgentInformationIntermediateService {
@@ -26,10 +29,12 @@ public class AgentInformationIntermediateService {
 	TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
 	
 	
-	public List<AgentInfo> getActiveAgentInformation() {
+	public ResponseEntity<Object> getActiveAgentInformation() {
 		logger.info("inside AgentInformationIntermediateService#getActiveAgentInformation");
 		List<GetActiveAgentListWithWorkCategoryResponse> getActiveAgentsListResponseList = new ArrayList<GetActiveAgentListWithWorkCategoryResponse>();
 		Pageable pageable = PageRequest.of(0, 1000);
+		List<AgentInfo> agentInfoList = null;
+		try {
 		Page<GetActiveAgentListWithWorkCategoryResponse> activeAgentListPageableResponse = telusAgentUIDBQueryExecutorService.executeGetActiveAgentListWithWorkCategory(pageable);
 		while(!activeAgentListPageableResponse.isEmpty()) {
 			logger.info("Not empty");
@@ -37,7 +42,7 @@ public class AgentInformationIntermediateService {
 			   getActiveAgentsListResponseList = activeAgentListPageableResponse.getContent();
 			   activeAgentListPageableResponse = telusAgentUIDBQueryExecutorService.executeGetActiveAgentListWithWorkCategory(pageable);
 		}
-		List<AgentInfo> agentInfoList = new ArrayList<AgentInfo>();
+		    agentInfoList = new ArrayList<AgentInfo>();
 		for (GetActiveAgentListWithWorkCategoryResponse getActiveAgentListResponse : getActiveAgentsListResponseList) {
 			String workCategoryCommaSeparatedStr = getActiveAgentListResponse.getWorkCategory();
 			List<String> workCategories = new ArrayList<String>();
@@ -49,6 +54,16 @@ public class AgentInformationIntermediateService {
 			agentInfo.setWorkCategory(workCategories);
 			agentInfoList.add(agentInfo);
 		}
-		return agentInfoList;
 		}
+		catch(Exception exception) {
+			ErrorInfo errorInfo = new ErrorInfo();
+			errorInfo.setCode(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			errorInfo.setMessage("Error Occured");
+			return new ResponseEntity<Object>(errorInfo, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Object>(agentInfoList,HttpStatus.OK);
+		}
+	
+	
+	
 	}

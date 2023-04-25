@@ -4,8 +4,8 @@
 package com.fico.dmp.agentinfoservice.controller;
 
 import com.fico.dmp.agentinfoservice.AgentInfoService;
-import com.fico.telus.model.AgentInfo;
-import java.util.List;
+import java.lang.Object;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class AgentInfoController {
     @RequestMapping(value = "/agent", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<AgentInfo> getAgent() {
+    public ResponseEntity<Object> getAgent() {
         return agentInfoService.getAgent();
     }
 }

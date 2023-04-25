@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
 
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
@@ -54,8 +54,8 @@ public class AgentInfoService {
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
-    public List<AgentInfo> getAgent() {
-		List<AgentInfo> agentInfoList =  agentInformationIntermediateService.getActiveAgentInformation();
+    public ResponseEntity<Object> getAgent() {		
+		ResponseEntity<Object> agentInfoList =  agentInformationIntermediateService.getActiveAgentInformation();
         return agentInfoList;
     }
 

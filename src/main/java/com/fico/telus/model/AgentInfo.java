@@ -7,6 +7,7 @@ public class AgentInfo {
 	
 	private String empId;
 	private List<String> workCategory;
+
 	
 	
 	public String getEmpId() {
@@ -21,5 +22,5 @@ public class AgentInfo {
 	public void setWorkCategory(List<String> workCategory) {
 		this.workCategory = workCategory;
 	}
-   
+
 }
