@@ -32,6 +32,8 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
     } else if (Partial.Widgets.RecurrenceDropdown.datavalue == undefined || Partial.Widgets.RecurrenceDropdown.datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
+    } else if (Partial.Variables.installmentBANCreateParr.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Installment Ban is mandatory";
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments' && Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
@@ -116,6 +118,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
         Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
         Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
+        App.Variables.errorMsg.dataSet.dataValue = "";
     }
     //App.Variables.errorMsg.dataSet.dataValue = null;
 };
@@ -231,6 +234,7 @@ Partial.CancelInstallmentScheduleClick = function($event, widget) {
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     Partial.Widgets.InstallmentOptionRadio.datavalue = '';
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    App.Variables.errorMsg.dataSet.dataValue = "";
 };
 
 Partial.CreatePARRClick = function($event, widget) {

@@ -12,7 +12,8 @@ h4.disputeDetaillabel {
     font-weight: bold;
     margin: 0 0 0 34px;
     border-bottom: 1px solid #ddd; 
-    width: 96%
+    width: 96%;
+    padding-bottom: 6px;
 }
 
 .BANbutton {
