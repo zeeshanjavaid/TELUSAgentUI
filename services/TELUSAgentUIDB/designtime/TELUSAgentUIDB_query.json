@@ -2535,6 +2535,80 @@
       } ]
     }
   },
+  "getDocumentByDocId" : {
+    "name" : "getDocumentByDocId",
+    "description" : "This query is used to return the document from ENTITY_DOCUMENTS table using docId",
+    "version" : "V2",
+    "queryString" : "select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId",
+    "countQueryString" : "select count(*) from (select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "docId",
+      "type" : "integer",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ "ID", "documentName" ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetDocumentByDocIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ID",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "ENTITY_DOCUMENTS",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "document",
+        "fieldName" : "document",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "byte[]",
+          "list" : false
+        },
+        "tableName" : "ENTITY_DOCUMENTS",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "documentName",
+        "fieldName" : "documentName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ENTITY_DOCUMENTS",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getDvTypeById" : {
     "name" : "getDvTypeById",
     "description" : "getDvTypeById",
