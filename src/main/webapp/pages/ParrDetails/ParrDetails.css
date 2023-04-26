@@ -159,19 +159,19 @@ text-align: right
     }
 }
 
-@media only screen and (max-width: 1519px) {
+@media only screen and (max-width: 1521px) {
 .viewParrLabelsGrid {
     margin-left: 30px;
     }
 }
 
-@media only screen and (max-width: 1519px) {
+@media only screen and (max-width: 1521px) {
   .installmentBANlabel {
     min-width: 25%;
     }
 }
 
-@media only screen and (max-width: 1519px) {
+@media only screen and (max-width: 1521px) {
   .amtOverlabel {
     min-width: 30%;
     }
