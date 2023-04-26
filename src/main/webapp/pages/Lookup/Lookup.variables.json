@@ -172,5 +172,19 @@
     "type" : "number",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "successMessageEntManagementVar" : {
+    "_id" : "wm-successMessageEntManagementVar-wm.Variable-1682509717650",
+    "name" : "successMessageEntManagementVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }
