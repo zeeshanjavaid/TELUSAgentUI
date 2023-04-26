@@ -135,7 +135,14 @@
                         <wm-popover popoverwidth="240" popoverheight="150" padding="0.5em 0.5em unset 0.5em" name="popover3" caption="More..." content="moreDetails" popoverplacement="bottom" popoverarrow="true"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" name="gridcolumn35_1"></wm-gridcolumn>
-                    <!-- <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>-->
+                    <!-- <wm-gridcolumn columnwidth="1" name="gridcolumn36_1"></wm-gridcolumn>--></wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid100">
+                <wm-gridrow name="gridrow101">
+                    <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow102">
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-container name="container1">

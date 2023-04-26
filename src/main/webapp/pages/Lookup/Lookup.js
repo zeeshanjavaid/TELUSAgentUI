@@ -127,6 +127,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
         });
         Page.Widgets.TransferBanToExistEntDialog.close();
+        App.Variables.successMessage.dataSet.dataValue = "BANs transferred successfully"
     }
 };
 
