@@ -1,4 +1,8 @@
 /*managing space for parr details*/
+* {
+  box-sizing: border-box;
+}
+
 .col-sm-18grid{
     width: 63.333333%
 }
@@ -130,114 +134,50 @@ text-align: right
      borde: none !important;
 }
 
-/*@media (min-width: 500px) {
-.summary-col-width-mediumparrID{
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 34.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
+
+@media only screen and (max-width: 1630px) {
+.parrlabel4 {
+    min-width: 11%;
+    }
 }
 
-@media (min-width: 500px) {
-.summary-col-width-mediumStatus {
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 31.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-}
-
-@media (min-width: 500px) {
-.summary-col-width-mediumEvaluation {
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 40.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-}
-
-@media (min-width: 500px) {
-.summary-col-width-mediumparrAmt {
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 43.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-}
-
-@media (min-width: 500px) {
-.summary-col-width-mediumcumm_P_EXP {
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 41.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-}
-
-@media (min-width: 500px) {
-.summary-col-width-mediumcumm_P_RCVD {
-    flex: 0 0 9%;
-    max-width: 9%;
-    min-width: 54.333%;;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-}*/
-
-@media (width: 1519px) {
+@media only screen and (max-width: 1630px) {
 .parrlabel5 {
     min-width: 11%;
     }
 }
 
-@media (width: 1519px) {
+@media only screen and (max-width: 1630px) {
 .parrlabel6 {
     min-width: 11%;
     }
 }
 
-@media (width: 1519px) {
+@media only screen and (max-width: 1630px) {
 .parrlabel9 {
     min-width: 11%;
     }
 }
 
-@media (width: 1519px) {
+@media only screen and (max-width: 1519px) {
 .viewParrLabelsGrid {
     margin-left: 20px;
     }
 }
 
-@media (width: 1519px) {
-.installmentBANlabel {
-    min-width: 19%;
+@media only screen and (max-width: 1519px) {
+  .installmentBANlabel {
+    min-width: 25%;
     }
 }
 
-@media (width: 1519px) {
-.amtOverlabel {
+@media only screen and (max-width: 1519px) {
+  .amtOverlabel {
     min-width: 30%;
     }
 }
 
-@media (width: 1519px) {
-.commentsLabel {
-    min-width: 30%;
-    }
-}
-@media (width: 1519px) {
+@media only screen and (max-width: 1630px) {
 .parrIDvalueLabel {
     width: 4%;
     }
