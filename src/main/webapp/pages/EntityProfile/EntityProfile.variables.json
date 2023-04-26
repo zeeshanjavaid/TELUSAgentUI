@@ -140,7 +140,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityId",
-      "value" : "bind:pageParams.entityId",
+      "value" : "6766677",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetLatestNotesResponse",
@@ -151,7 +151,7 @@
     "serviceType" : "DataService",
     "dataSet" : [ ],
     "isList" : true,
-    "maxResults" : 20,
+    "maxResults" : 3,
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

@@ -148,42 +148,40 @@
                 <wm-layoutgrid name="layoutgrid8">
                     <wm-gridrow name="gridrow15" padding="1.5em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn30">
-                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="mm/dd/yy:"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="bind:Variables.getLatestNotesByEntityId.dataSet[0].createdOn | toDate: 'MM/dd/yy'"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%">
                             <wm-composite name="composite4">
-                                <wm-container class="col-md-9" name="container4">
-                                    <wm-text name="text1"></wm-text>
-                                </wm-container>
+                                <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getLatestNotesByEntityId.dataSet[0].notes"></wm-label>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow17_1" padding="1em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy:" bordercolor="grey" color="gray"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="bind:Variables.getLatestNotesByEntityId.dataSet[1].createdOn | toDate: 'MM/dd/yy'" bordercolor="grey" color="gray"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow18" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn33">
                             <wm-composite name="composite4_1">
                                 <wm-container class="col-md-9" name="container4_1">
-                                    <wm-text name="text2"></wm-text>
+                                    <wm-label padding="unset 0.5em" name="label32" caption="bind:Variables.getLatestNotesByEntityId.dataSet[1].notes"></wm-label>
                                 </wm-container>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow19" padding="1em unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
-                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy:" name="label25"></wm-label>
+                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="bind:Variables.getLatestNotesByEntityId.dataSet[2].createdOn | toDate: 'MM/dd/yy'" name="label25"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow20" padding="unset unset unset 1em" margin="0 0 22px 0">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn35">
                             <wm-composite name="composite5">
                                 <wm-container class="col-md-9" name="container5">
-                                    <wm-text name="text3"></wm-text>
+                                    <wm-label padding="unset 0.5em" name="label31" caption="bind:Variables.getLatestNotesByEntityId.dataSet[2].notes"></wm-label>
                                 </wm-container>
                             </wm-composite>
                         </wm-gridcolumn>
@@ -305,6 +303,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="1em unset 3em unset">
                     <wm-fileupload name="fileupload1" on-select="fileupload1Select($event, widget, selectedFiles)" caption="Attach" iconclass=""></wm-fileupload>
                     <p id="p02" style="color:red;"></p>
+                    <wm-button class="btn-default" caption="Detach" type="button" margin="unset 0.5em" name="button4_1" on-click="button4_1Click($event, widget)"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
