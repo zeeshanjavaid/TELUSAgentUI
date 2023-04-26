@@ -38,6 +38,10 @@ Page.onReady = function() {
 
 };
 
+function messageTimeout() {
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = null;
+}
+
 Page.CreateClick = function($event, widget) {
     Page.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };
@@ -128,13 +132,11 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         });
         Page.Widgets.TransferBanToExistEntDialog.close();
         Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred successfully"
-        setTimeout(explode, 5000);
+        setTimeout(messageTimeout, 4000);
     }
 };
 
-function explode() {
-    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = null;
-}
+
 
 Page.TransferBanToNewEntityClick = function($event, widget) {
     debugger;
