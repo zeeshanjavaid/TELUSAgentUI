@@ -30,15 +30,39 @@
                     <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6"><input type="radio" name="checkAndUncheck" id="name" value="NAME"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
-                                <!--<wm-gridcolumn id="selectBox" name="gridcolumn10_1">-->
+                            <!--break-->
+                            <wm-layoutgrid name="layoutgrid2" columns="7">
+                                <wm-gridrow name="gridrow28" width="85%" margin="0 0 5px 0">
+                                    <wm-gridcolumn columnwidth="1" name="gridcolumn61">
+                                        <input class="radioBtn" type="radio" name="checkAndUncheck" id="name" value="NAME">
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="2" name="gridcolumn62">
+                                        <label for="name" style="margin: 6px 3px 2px -1px;color: grey;">Name</label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="5" name="gridcolumn64">
+                                        <wm-select name="select3" id="selectBox" dataset="bind:Variables.nameCriteria.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.nameCriteria.dataSet[0].dataValue" displayfield="dataValue"></wm-select>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow width="85%">
+                                    <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 65%;" name="gridcolumn7">
+                                        <wm-text name="text4" type="text" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
+                                        <p id="p02" style="color:red;"></p>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <!--break-->
+
+
+
+                            <!--<wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn6">
+                                <input type="radio" name="checkAndUncheck" id="name" value="NAME">
+                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Name</label>
                                 <wm-select name="select3" id="selectBox" dataset="bind:Variables.nameCriteria.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.nameCriteria.dataSet[0].dataValue" displayfield="dataValue"></wm-select>
-                                <!--</wm-gridcolumn>-->
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn7">
-                                <wm-text name="text4" type="text" width="208px" style="min-width: 208px;" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
+                                <wm-text name="text4" type="text" placeholder="" required="true" regexp="bind:Widgets.select1.displayValue==='BAN'" class="selectbox1-mac" disabled="true"></wm-text>
                                 <p id="p02" style="color:red;"></p>
-                            </wm-gridcolumn>
+                            </wm-gridcolumn>-->
                         </wm-gridcolumn>
                         <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8" class="number-mac">
                             <wm-container name="container10_1">
@@ -47,15 +71,41 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px -25px 5px 28px; width: 40%;" name="gridcolumn9" class="textbox-mac">
                             <p id="p05" style="color:red;"></p>
-                            <wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn10"><input type="radio" name="checkAndUncheck" id="numID" value="numID"><label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Number/ID</label>
+
+                            <!--break-->
+                            <wm-layoutgrid name="layoutgrid2" columns="7">
+                                <wm-gridrow name="gridrow28" width="85%" margin="0 0 5px 0">
+                                    <wm-gridcolumn columnwidth="1" name="gridcolumn61">
+                                        <input class="radioBtn" type="radio" name="checkAndUncheck" id="numID" value="numID">
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="3" name="gridcolumn62">
+                                        <label for="name" style="margin: 6px 3px 2px -1px;color: grey;">Number/ID</label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="5" name="gridcolumn64">
+                                        <wm-select name="select4" id="selectBox" dataset="bind:Variables.number_IdCriteria.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.number_IdCriteria.dataSet[0].dataValue" displayfield="dataValue"></wm-select>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow width="85%">
+                                    <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: 74%;" name="gridcolumn7">
+                                        <wm-text name="text5" placeholder="" class="selectbox2-mac" disabled="true"></wm-text>
+                                        <p id="p03" style="color:red;"></p>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <!--break-->
+
+
+                            <!--<wm-gridcolumn style="display: flex; margin: 4px;" width="100%" name="gridcolumn10">
+                                <input type="radio" name="checkAndUncheck" id="numID" value="numID">
+                                <label for="name" style="margin: 9px 3px 2px 2px;color: grey;">Number/ID</label>
                                 <wm-gridcolumn id="selectBox" name="gridcolumn15_1">
                                     <wm-select name="select4" id="selectBox" dataset="bind:Variables.number_IdCriteria.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.number_IdCriteria.dataSet[0].dataValue" displayfield="dataValue"></wm-select>
                                 </wm-gridcolumn>
                             </wm-gridcolumn>
                             <wm-gridcolumn style="margin: 4px 4px 50px 4px; width: unset;" name="gridcolumn11">
-                                <wm-text name="text5" placeholder="" width="240px" style="min-width: 240px;" class="selectbox2-mac" disabled="true"></wm-text>
+                                <wm-text name="text5" placeholder="" class="selectbox2-mac" disabled="true"></wm-text>
                                 <p id="p03" style="color:red;"></p>
-                            </wm-gridcolumn>
+                            </wm-gridcolumn>-->
                         </wm-gridcolumn>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="4" class="billing-mac mar-20" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
