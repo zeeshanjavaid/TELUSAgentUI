@@ -11,6 +11,18 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "BanListForTransferToNewEntVar" : {
+    "_id" : "wm-BanListForTransferToNewEntVar-wm.Variable-1682537295234",
+    "name" : "BanListForTransferToNewEntVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "entityIdTextVar" : {
     "_id" : "wm-entityIdTextVar-wm.Variable-1681364621669",
     "name" : "entityIdTextVar",
@@ -54,7 +66,7 @@
     "saveInPhonegap" : false
   },
   "getCollectionEntityService" : {
-    "_id" : "wm-getCollectionEntityService-wm.ServiceVariable-1682046369785",
+    "_id" : "wm-getCollectionEntityService1-wm.ServiceVariable-1682535235788",
     "name" : "getCollectionEntityService",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
@@ -62,8 +74,8 @@
     "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionEntity",
     "service" : "CollectionEntityService",
-    "operation" : "getCollectionEntity",
-    "operationId" : "CollectionEntityController_getCollectionEntity",
+    "operation" : "getCollectionEntity_1",
+    "operationId" : "CollectionEntityController_getCollectionEntity_1",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
