@@ -23,6 +23,7 @@ Partial.onReady = function() {
     //Partial.Widgets.InstallmentOptions.dataValue = 'NoOfInstallments';
     App.Variables.errorMsg.dataSet.dataValue = null;
     App.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Widgets.ParrTotal.datavalue = Partial.pageParams.parrTotal;
 };
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
@@ -96,7 +97,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
                 //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             } else {
 
-                tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
+                tempDate = new Date(tempDate.setDate(tempDate.getDate() + 1));
                 collectionPaymentInstallment.date = new Date(tempDate);
                 //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             }
@@ -194,16 +195,19 @@ Partial.SubmitBanClick = function($event, widget) {
 
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     var selectedBans = new Array();
+    var parrTotal = 0;
     Partial.Variables.installmentBANCreateParr.dataSet.push(...Partial.Widgets.selectBanParrTable1.selectedItems);
     Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
 
         var entityRef = {};
         entityRef.id = selectedBan.banMapRefId;
         entityRef.name = selectedBan.banName;
+        parrTotal = parrTotal + selectedBan.banArAmount;
         selectedBans.push(entityRef);
     });
     Partial.Variables.SelectedBans.dataSet.splice(0, Partial.Variables.SelectedBans.dataSet.length);
     Partial.Variables.SelectedBans.dataSet.push(...selectedBans);
+    Partial.Widgets.ParrTotal.datavalue = parrTotal;
     Partial.Widgets.selectBANdialog.close();
 };
 Partial.installmentScheduleTableRowupdate = function($event, widget, row) {

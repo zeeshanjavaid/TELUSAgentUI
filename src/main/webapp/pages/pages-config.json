@@ -114,6 +114,9 @@
   "params" : [ {
     "name" : "entityId",
     "type" : "string"
+  }, {
+    "name" : "parrTotal",
+    "type" : "integer"
   } ]
 }, {
   "name" : "CreateTeamsPartial",

@@ -160,6 +160,7 @@
                             </wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateParrPanel" content="CreateParr" show="bind:Variables.ParrPageName.dataSet.dataValue==&quot;CreateParr&quot;">
                                 <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
+                                <wm-param name="parrTotal" value="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" type="integer"></wm-param>
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
