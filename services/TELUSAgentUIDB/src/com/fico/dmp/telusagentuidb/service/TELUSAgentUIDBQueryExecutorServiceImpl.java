@@ -587,11 +587,10 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
-    public InputStream getDocumentContentForGetDocumentByDocId(Long id, String documentName, Integer docId) throws EntityNotFoundException {
+    public InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException {
         Map<String, Object> params = new HashMap<>(1);
 
         params.put("id", id);
-        params.put("documentName", documentName);
         params.put("docId", docId);
 
         GetDocumentByDocIdResponse _result =  queryExecutor.executeNamedQuery("getDocumentByDocId__identifier", params, GetDocumentByDocIdResponse.class);

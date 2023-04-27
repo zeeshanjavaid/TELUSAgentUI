@@ -667,25 +667,24 @@ END ASC) wmTempTable
 
     <sql-query name="getDocumentByDocId">
         <![CDATA[
-        select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId
+        select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId
         ]]>
     <query-param name="docId" type="java.lang.Integer"/>
     </sql-query>
 
     <sql-query name="getDocumentByDocId__count">
         <![CDATA[
-        select count(*) from (select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable
+        select count(*) from (select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable
         ]]>
     <query-param name="docId" type="java.lang.Integer"/>
     </sql-query>
 
     <sql-query name="getDocumentByDocId__identifier">
         <![CDATA[
-        select * from (select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable where `ID`=:id and `documentName`=:documentName
+        select * from (select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable where `ID`=:id
         ]]>
     <query-param name="docId" type="java.lang.Integer"/>
     <query-param name="id" type="java.lang.Long"/>
-    <query-param name="documentName" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getRolesPermission">

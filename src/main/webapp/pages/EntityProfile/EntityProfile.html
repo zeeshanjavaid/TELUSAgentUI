@@ -153,8 +153,12 @@
                     </wm-gridrow>
                     <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%">
+
                             <wm-composite name="composite4">
-                                <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getLatestNotesByEntityId.dataSet[0].notes"></wm-label>
+                                <wm-container class="col-md-9" name="container6_1">
+                                    <wm-label padding="unset 0.5em" name="label28" caption="bind:Variables.getLatestNotesByEntityId.dataSet[0].notes"></wm-label>
+                                </wm-container>
+                                <wm-button class="btn-default" caption="" type="button" margin="unset 0.5em" name="button4_1" iconclass="fico-icon-file" on-click="button4_1Click($event, widget)" show="bind:Variables.getLatestNotesByEntityId.dataSet[0].docId!=null"></wm-button>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -169,6 +173,7 @@
                                 <wm-container class="col-md-9" name="container4_1">
                                     <wm-label padding="unset 0.5em" name="label32" caption="bind:Variables.getLatestNotesByEntityId.dataSet[1].notes"></wm-label>
                                 </wm-container>
+                                <wm-button class="btn-default" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)"></wm-button>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -183,6 +188,7 @@
                                 <wm-container class="col-md-9" name="container5">
                                     <wm-label padding="unset 0.5em" name="label31" caption="bind:Variables.getLatestNotesByEntityId.dataSet[2].notes"></wm-label>
                                 </wm-container>
+                                <wm-button class="btn-default" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)"></wm-button>
                             </wm-composite>
                         </wm-gridcolumn>
                     </wm-gridrow>
@@ -270,8 +276,8 @@
                     <wm-layoutgrid name="layoutgrid5">
                         <wm-gridrow name="gridrow8">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
-                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)"
-                                    class="associatePanel" id="AssociateBan" expanded="false">
+                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)" class="associatePanel" id="AssociateBan"
+                                    expanded="false">
                                     <wm-layoutgrid name="layoutgrid25">
                                         <wm-gridrow name="gridrow39">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
@@ -303,7 +309,6 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="1em unset 3em unset">
                     <wm-fileupload name="fileupload1" on-select="fileupload1Select($event, widget, selectedFiles)" caption="Attach" iconclass=""></wm-fileupload>
                     <p id="p02" style="color:red;"></p>
-                    <wm-button class="btn-default" caption="Detach" type="button" margin="unset 0.5em" name="button4_1" on-click="button4_1Click($event, widget)"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

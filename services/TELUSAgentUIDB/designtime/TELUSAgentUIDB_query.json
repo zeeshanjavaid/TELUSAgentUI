@@ -2539,8 +2539,8 @@
     "name" : "getDocumentByDocId",
     "description" : "This query is used to return the document from ENTITY_DOCUMENTS table using docId",
     "version" : "V2",
-    "queryString" : "select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId",
-    "countQueryString" : "select count(*) from (select ID, document , documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable",
+    "queryString" : "select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId",
+    "countQueryString" : "select count(*) from (select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2551,7 +2551,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "1",
+      "testValue" : "36",
       "required" : true
     } ],
     "request" : {
@@ -2559,7 +2559,7 @@
       "typeRef" : null,
       "method" : "GET"
     },
-    "identifiers" : [ "ID", "documentName" ],
+    "identifiers" : [ "ID" ],
     "response" : {
       "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetDocumentByDocIdResponse",
       "returns" : "CUSTOM",

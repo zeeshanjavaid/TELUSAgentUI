@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -715,13 +716,10 @@ public class QueryExecutionController {
         Page<GetDocumentByDocIdResponse> _result = queryService.executeGetDocumentByDocId(docId, pageable);
         LOGGER.debug("got the result for named query: getDocumentByDocId, result:{}", _result);
         UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
-        _uriBuilder.path("/composite-id/content/{_fieldName_}");
-        _uriBuilder.queryParam("id", "{id}");
-        _uriBuilder.queryParam("documentName", "{documentName}");
+        _uriBuilder.path("/{id}/content/{_fieldName_}");
         for(GetDocumentByDocIdResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(3);
+            Map<String, Object> _properties = new HashMap(2);
             _properties.put("id", _content.getId());
-            _properties.put("documentName", _content.getDocumentName());
             _properties.put("_fieldName_", "document");
             if(_content.getDocument() != null) {
                 _content.setDocument(_uriBuilder.buildAndExpand(_properties).toUriString().getBytes());
@@ -733,12 +731,12 @@ public class QueryExecutionController {
     }
 
     @ApiOperation(value = "Retrives the BLOB content for property document in query getDocumentByDocId")
-    @RequestMapping(value = "/queries/getDocumentByDocId/composite-id/content/document", method = RequestMethod.GET, produces = "application/octet-stream")
+    @RequestMapping(value = "/queries/getDocumentByDocId/{id}/content/document", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getDocumentContentForGetDocumentByDocId(@RequestParam("id") Long id, @RequestParam("documentName") String documentName, @RequestParam(value = "docId") Integer docId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+    public Downloadable getDocumentContentForGetDocumentByDocId(@PathVariable("id") Long id, @RequestParam(value = "docId") Integer docId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: getDocumentByDocId");
 
-        InputStream _result = queryService.getDocumentContentForGetDocumentByDocId(id, documentName, docId);
+        InputStream _result = queryService.getDocumentContentForGetDocumentByDocId(id, docId);
         return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
     }
 

@@ -115,7 +115,7 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable);
 
-    InputStream getDocumentContentForGetDocumentByDocId(Long id, String documentName, Integer docId) throws EntityNotFoundException;
+    InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException;
 
     void exportGetDocumentByDocId(Integer docId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
