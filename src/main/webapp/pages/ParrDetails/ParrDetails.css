@@ -137,55 +137,55 @@ text-align: right
 
 @media only screen and (max-width: 1630px) {
 .parrlabel4 {
-    min-width: 11%;
+    min-width: 11% !important;
     }
 }
 
 @media only screen and (max-width: 1630px) {
 .parrlabel5 {
-    min-width: 11%;
+    min-width: 11% !important;
     }
 }
 
 @media only screen and (max-width: 1630px) {
 .parrlabel6 {
-    min-width: 11%;
+    min-width: 11% !important;
     }
 }
 
 @media only screen and (max-width: 1630px) {
 .parrlabel9 {
-    min-width: 11%;
+    min-width: 11% !important;
     }
 }
 
 @media only screen and (max-width: 1521px) {
 .viewParrLabelsGrid {
-    margin-left: 30px;
+    margin-left: 30px !important;
     }
 }
 
 @media only screen and (max-width: 1530px) {
   .installmentBANlabel {
-    min-width: 25%;
+    min-width: 25% !important;
     }
 }
 
 @media only screen and (max-width: 1530px) {
   .amtOverlabel {
-    min-width: 30%;
+    min-width: 30% !important;
     }
 }
 
 @media only screen and (max-width: 1195px) {
   .amtOverlabel {
-    min-width: 38%;
+    min-width: 38% !important;
     }
 }
 
 @media only screen and (max-width: 1630px) {
 .parrIDvalueLabel {
-    width: 4%;
+    width: 4% !important;
     }
 }
 

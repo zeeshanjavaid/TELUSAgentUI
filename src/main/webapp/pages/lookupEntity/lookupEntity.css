@@ -69,3 +69,51 @@ h3 {
 .radioBtn {
     margin: 7px 0 0 2px !important;
 }
+
+@media only screen and (max-width: 1630px) {
+.nameLabelGrid {
+    width: 95% !important;
+    }
+}
+@media only screen and (max-width: 1630px) {
+.nameValueGrid {
+    width: 95% !important;
+    }
+}
+@media only screen and (max-width: 1630px) {
+.numberLabelGrid {
+    width: 95% !important;
+    }
+}
+@media only screen and (max-width: 1630px) {
+.numberValueGrid {
+    width: 95% !important;
+    }
+}
+
+@media only screen and (max-width: 1435px) {
+.nameLabelGrid {
+    width: 110% !important;
+    }
+}
+@media only screen and (max-width: 1435px) {
+.nameValueGrid {
+    width: 110% !important;
+    }
+}
+@media only screen and (max-width: 1435px) {
+.numberLabelGrid {
+    width: 110% !important;
+    }
+}
+@media only screen and (max-width: 1435px) {
+.numberValueGrid {
+    width: 110% !important;
+    }
+}
+@media only screen and (max-width: 1435px) {
+.numberLayoutGrid {
+    margin-left: -33px;
+    }
+}
+
