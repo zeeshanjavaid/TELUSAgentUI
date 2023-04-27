@@ -11575,9 +11575,9 @@ button.wm-app .close {
 }
 
 .wm-app .app-fileupload input[type="file"]:hover+.btn-default {
-    background-color: #00629b;
+    background-color: #4B286D;
     color: #fff;
-    border-color: #00629b;
+    border-color: #4B286D;
 }
 
 .wm-app input[type='range'] {

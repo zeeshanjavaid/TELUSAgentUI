@@ -181,7 +181,8 @@ Partial.button3Click1 = function($event, widget) {
         if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
             try {
                 isError = true;
-                throw "Please enter the note"
+                Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
+                /*throw "Please enter the note"*/
             } catch (err) {
                 message.innerHTML = err;
             }
