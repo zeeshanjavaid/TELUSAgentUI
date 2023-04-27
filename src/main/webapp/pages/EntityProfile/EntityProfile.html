@@ -170,7 +170,8 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn35">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)" style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)"
+                                style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow19">
@@ -183,7 +184,8 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn37">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)" style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)"
+                                style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -252,8 +254,11 @@
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Notes" iconclass="" name="CreateUserNotesdialog1" width="50%" class="CreateUserNotesdialog1">
         <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
         <wm-layoutgrid name="layoutgrid11_1">
-            <wm-gridrow>
+            <wm-gridrow name="gridrow20">
                 <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow21">
+                <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true"></wm-message>
             </wm-gridrow>
             <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36" class="enter_NoteLine" padding="1em unset unset unset">
@@ -273,8 +278,8 @@
                     <wm-layoutgrid name="layoutgrid5">
                         <wm-gridrow name="gridrow8">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
-                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)" class="associatePanel" id="AssociateBan"
-                                    expanded="false">
+                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)"
+                                    class="associatePanel" id="AssociateBan" expanded="false">
                                     <wm-layoutgrid name="layoutgrid25">
                                         <wm-gridrow name="gridrow39">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
@@ -311,7 +316,7 @@
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" padding="1em unset 1em unset">
             <wm-button class="primaryButton" caption="Create" type="button" margin="1em 0.5em" name="button3" style="float:right;" on-click="button3Click1($event, widget)"></wm-button>
-            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button4" style="float:right;" margin="1em unset"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog();button4Click($event, widget)" name="button4" style="float:right;" margin="1em unset"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>

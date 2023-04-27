@@ -146,6 +146,9 @@ Partial.button3Click1 = function($event, widget) {
                             console.log("success", data);
                             documentId = "";
                             // App.pageRefresh();
+                            Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
+
+                            Partial.Widgets.CreateUserNotesdialog1.close();;
                             window.location.reload();
 
                         },
@@ -179,13 +182,13 @@ Partial.button3Click1 = function($event, widget) {
         message.innerHTML = "";
 
         if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-            try {
-                isError = true;
-                Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
-                /*throw "Please enter the note"*/
-            } catch (err) {
-                message.innerHTML = err;
-            }
+            //    try {
+
+            Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
+            /*throw "Please enter the note"*/
+            // } catch (err) {
+            //     message.innerHTML = err;
+            // }
         } else {
             var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
             var note = Partial.Widgets.textarea1.datavalue;
@@ -209,6 +212,9 @@ Partial.button3Click1 = function($event, widget) {
                     console.log("success", data);
                     documentId = "";
                     // App.pageRefresh();
+                    Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
+
+                    Partial.Widgets.CreateUserNotesdialog1.close();;
                     window.location.reload();
 
                 },
@@ -296,28 +302,10 @@ Partial.button4_1Click = function($event, widget) {
 
     Partial.Variables.getDocumentByDocId.invoke({},
         function(data) {
-            // Success Callback
-            debugger;
-            //  console.log("success", data);
+
             $event.preventDefault();
-            window.location.href = data.content[0].document;
-            //  let blob = base64toBlob(data.content[0].document, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            download(data.content[0].document, data.content[0].documentName)
 
-            // let blob = new Blob([data.value], {
-            //     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            // })
-
-            let url = window.URL || window.webkitURL;
-            link = url.createObjectURL(blob);
-
-            console.log(link);
-
-            let a = document.createElement("a");
-            a.setAttribute("download", "DomainValueExport.xlsx");
-            a.setAttribute("href", link);
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
 
         },
         function(error) {
@@ -333,7 +321,7 @@ Partial.button4_1Click = function($event, widget) {
 };
 Partial.button5Click = function($event, widget) {
 
-    debugger;
+
     var docId = Partial.Variables.getLatestNotesByEntityId.dataSet[1].docId;
 
     Partial.Variables.getDocumentByDocId.setInput({
@@ -345,18 +333,10 @@ Partial.button5Click = function($event, widget) {
 
     Partial.Variables.getDocumentByDocId.invoke({},
         function(data) {
-            // Success Callback
-            // debugger;
-            // $event.preventDefault();
-            // window.location.href = data.content[0].document;
 
-            debugger;
-            var link = document.createElement("a");
-            link.download = "Sample.txt";
-            link.href = data.content[0].document;
-            link.click();
-            link.remove();
-            window.URL.revokeObjectURL(link.href);
+
+
+            download(data.content[0].document, data.content[0].documentName)
 
         },
         function(error) {
@@ -370,7 +350,6 @@ Partial.button5Click = function($event, widget) {
 
 Partial.button6Click = function($event, widget) {
 
-    debugger;
     var docId = Partial.Variables.getLatestNotesByEntityId.dataSet[2].docId;
 
     Partial.Variables.getDocumentByDocId.setInput({
@@ -386,19 +365,7 @@ Partial.button6Click = function($event, widget) {
             debugger;
             console.log("success", data);
             $event.preventDefault();
-            //   window.location.href = data.content[0].document;
-
-            // const link = document.createElement("a");
-            // link.download = "test";
-            // const data1 = await fetch(data1.content[0].document).then((res) => res.blob())
-            // link.href = window.URL.createObjectURL(
-            //     new Blob([data1], {
-            //         type: 'application/pdf'
-            //     })
-            // );
-            // link.click();
-            // link.remove();
-            // window.URL.revokeObjectURL(link.href);
+            download(data.content[0].document, data.content[0].documentName)
 
 
         },
@@ -408,5 +375,28 @@ Partial.button6Click = function($event, widget) {
 
         });
 
+
+};
+
+const download = async(url, filename) => {
+    const data = await fetch(url)
+    const blob = await data.blob()
+    const objectUrl = URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+
+    link.setAttribute('href', objectUrl)
+    link.setAttribute('download', filename)
+    link.style.display = 'none'
+
+    document.body.appendChild(link)
+
+    link.click()
+
+    document.body.removeChild(link)
+}
+Partial.button4Click = function($event, widget) {
+
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
 
 };
