@@ -220,26 +220,24 @@
                 </wm-gridrow>
             </wm-layoutgrid>
         </wm-container>
-        <wm-container name="container21">
-            <wm-layoutgrid name="layoutgrid9_1">
-                <wm-gridrow name="gridrow29" margin="0 0 30px -12px">
-                    <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="amtOverlabel">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Amt Over/Under PARR Total:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-                <wm-gridrow name="gridrow29" margin="0 0 10px -12px">
-                    <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="commentsLabel">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" caption="Comments:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
-                    </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn74">
-                        <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
-                    </wm-gridcolumn>
-                </wm-gridrow>
-            </wm-layoutgrid>
-        </wm-container>
+        <wm-layoutgrid name="layoutgrid9_1">
+            <wm-gridrow name="gridrow29" margin="0 0 30px -12px">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="amtOverlabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Amt Over/Under PARR Total:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75">
+                    <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow29" margin="0 0 10px -12px">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="commentsLabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Comments:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="4" name="gridcolumn74">
+                    <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1">
             <wm-layoutgrid name="layoutgrid11_2" columns="2">
                 <wm-gridrow name="gridrow26">

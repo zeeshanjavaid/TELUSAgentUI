@@ -165,13 +165,13 @@ text-align: right
     }
 }
 
-@media only screen and (max-width: 1525px) {
+@media only screen and (max-width: 1530px) {
   .installmentBANlabel {
     min-width: 25%;
     }
 }
 
-@media only screen and (max-width: 1525px) {
+@media only screen and (max-width: 1530px) {
   .amtOverlabel {
     min-width: 30%;
     }
