@@ -170,8 +170,7 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn35">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)"
-                                style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)" style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow19">
@@ -184,8 +183,7 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn37">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)"
-                                style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)" style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -284,16 +282,15 @@
                                     <wm-gridrow name="gridrow39">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
                                             <wm-container name="container21" margin="0 0 0 0" width="89%">
-                                                <wm-anchor margin="unset 0.5em" name="anchor2" caption="Associate with BAN" on-click="anchor2Click($event, widget)"></wm-anchor>
-                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" multiselect="false" radioselect="false"
-                                                    show="bind:Variables.banListShow.dataSet.dataValue==false">
+                                                <wm-anchor id="associateBanLink" margin="0.5em 0 1.5em 0" name="anchor2" caption="Associate with BAN" on-click="anchor2Click($event, widget)"></wm-anchor>
+                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.banListShow.dataSet.dataValue==false">
                                                     <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="number" type="double" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="number" type="double" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="customField" caption="In Dispute" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
                                                 </wm-table>
-                                                <wm-anchor style="float: right;" margin="unset 0.5em" name="anchor1" caption="Clear" on-click="anchor1Click($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
+                                                <wm-anchor style="float: right;" name="anchor1" caption="Clear" on-click="anchor1Click($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
                                             </wm-container>
                                         </wm-gridcolumn>
                                     </wm-gridrow>

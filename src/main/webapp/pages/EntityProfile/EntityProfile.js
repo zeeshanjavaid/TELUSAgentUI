@@ -401,10 +401,8 @@ Partial.button4Click = function($event, widget) {
     Partial.Variables.banListShow.dataSet.dataValue = true;
 
 };
+
 Partial.anchor2Click = function($event, widget) {
-
-    debugger;
-
+    document.getElementById("associateBanLink").style.color = 'gray';
     Partial.Variables.banListShow.dataSet.dataValue = false;
-
 };
