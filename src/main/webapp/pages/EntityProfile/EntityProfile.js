@@ -398,5 +398,13 @@ const download = async(url, filename) => {
 Partial.button4Click = function($event, widget) {
 
     Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.banListShow.dataSet.dataValue = true;
+
+};
+Partial.anchor2Click = function($event, widget) {
+
+    debugger;
+
+    Partial.Variables.banListShow.dataSet.dataValue = false;
 
 };

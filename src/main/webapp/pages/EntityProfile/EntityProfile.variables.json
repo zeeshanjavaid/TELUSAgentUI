@@ -1,4 +1,18 @@
 {
+  "banListShow" : {
+    "_id" : "wm-banListShow-wm.Variable-1682656673288",
+    "name" : "banListShow",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "checkIfDocIsPresent" : {
     "_id" : "wm-checkIfDocIsPresent-wm.ServiceVariable-1682406158117",
     "name" : "checkIfDocIsPresent",
