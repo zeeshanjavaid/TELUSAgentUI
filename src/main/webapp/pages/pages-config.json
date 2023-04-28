@@ -109,6 +109,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "CreateHistoryAction",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "CreateParr",
   "type" : "PARTIAL",
   "params" : [ {
