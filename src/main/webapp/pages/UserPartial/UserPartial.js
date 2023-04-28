@@ -851,6 +851,8 @@ Partial.searchUsersFinal = function($event) {
 
 Partial.userMVTable1_customRow1Action = function($event, row) {
     //Partial.TestTeamId = row;
+
+    debugger;
     Partial.Variables.dialogUserId.dataSet = {};
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
@@ -890,8 +892,14 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
 };
 Partial.updateUserForm1_saveAction = function($event) {
 
+    debugger;
+
     Partial.Widgets.updateUserForm1.dataoutput.UserDTO;
-    Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
+    if (subComboBox1.getSelectedIds() == null) {
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = [];
+    } else {
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
+    }
     if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
         Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.TestTeamId.teamId)
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;

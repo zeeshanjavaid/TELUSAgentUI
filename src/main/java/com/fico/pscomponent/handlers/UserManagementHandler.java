@@ -245,20 +245,22 @@ public class UserManagementHandler {
 			
             List<WorkcategoryUser> workCategoryUserList=new ArrayList<>();
             Page<WorkcategoryUser> workcategoryUsers = workcategoryUserService.findAll(USERID + dbUser.getId(), PageRequest.of(0, Integer.MAX_VALUE));
-            if (userRolePage.hasContent()) {
+            if (workcategoryUsers.hasContent()) {
                  workCategoryUserList = workcategoryUsers.getContent();
                  
             }
             
             List<String> workCategory = userDTO.getWorkCategory();
+            
+              List<String> existingWorkCat = workCategoryUserList.stream()
+                        .map(WorkcategoryUser::getWorkCategory)
+                        .collect(Collectors.toList());
 
             
             if(!CollectionUtils.isEmpty(workCategory))
             {
                 
-                  List<String> existingWorkCat = workCategoryUserList.stream()
-                        .map(WorkcategoryUser::getWorkCategory)
-                        .collect(Collectors.toList());
+                
 
                 
                 if(workCategory!=null){
@@ -275,7 +277,7 @@ public class UserManagementHandler {
                     }
                 }
 
-            System.out.println("Size of existingwork================== "+ workCategoryUserList.size());
+             logger.info("Size of existingwork================== "+ workCategoryUserList.size());
 
 
                  for (String workCar : workCategory) {
@@ -302,7 +304,16 @@ public class UserManagementHandler {
                     workcategoryUserService.create(workcategoryUser);
                 }
             }
-            }
+            }else{
+				if (existingWorkCat.size() > 0) {
+					for (WorkcategoryUser workCar : workCategoryUserList) {
+						logger.info("In handler before update workcategory user :::::::::::::::::::::");
+
+							workcategoryUserService.delete(workCar);
+							logger.info("Updated workcategory for user :::::::::::::::::::::");
+					}
+				}
+			}
             
             logger.info("In handler before update team user :::::::::::::::::::::");
 
