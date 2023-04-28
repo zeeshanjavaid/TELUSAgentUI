@@ -165,6 +165,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "EntityHistoryActionList",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "EntityNameEllipsisPartial",
   "type" : "PARTIAL",
   "params" : [ ]
