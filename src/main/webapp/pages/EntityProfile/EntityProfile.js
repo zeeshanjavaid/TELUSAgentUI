@@ -237,55 +237,13 @@ Partial.anchor1Click = function($event, widget) {
     Partial.Widgets.getEntityDetailsTable1_1.selecteditem = false;
 
 };
-// Partial.fileupload1Select = function($event, widget, selectedFiles) {
+Partial.fileupload1Select = function($event, widget, selectedFiles) {
 
-//     debugger;
-//     documentId = "";
-//     var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
-
-//     var checkDocument = Partial.Variables.checkIfDocIsPresent.dataSet.length;
-
-//     if (checkDocument == 0) {
-
-//         var docName = Partial.Widgets.fileupload1.selectedFiles[0].name;
-
-//         Partial.Variables.saveDocument.setInput({
-
-//             'documentName': docName,
-//             'document': Partial.Widgets.fileupload1.selectedFiles
-//         });
-
-//         Partial.Variables.saveDocument.invoke({},
-//             function(data) {
-//                 // Success Callback
-//                 debugger;
-//                 console.log("success", data);
-//                 documentId = data.id;
-
-//             },
-//             function(error) {
-//                 // Error Callback
-//                 console.log("error", error)
-
-//             });
-
-//     } else {
-//         const message1 = document.getElementById("p02");
-//         message1.innerHTML = "Attachment already exists with entityId: " + entityId;
-//     }
+    debugger;
 
 
 
-
-
-// };
-// Partial.button4_1Click = function($event, widget) {
-
-//     Partial.Widgets.fileupload1.selectedFiles = "";
-//     const message1 = document.getElementById("p02");
-//     message1.innerHTML = "";
-
-// };
+};
 
 
 Partial.button4_1Click = function($event, widget) {

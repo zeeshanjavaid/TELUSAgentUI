@@ -64,6 +64,8 @@ public class Document implements Serializable {
 
     private String externalId;
 
+    private User userByUpdatedBy;
+
     private Party party;
 
     private DomainValue domainValueByDocumentLabel;
@@ -73,8 +75,6 @@ public class Document implements Serializable {
     private User userByCreatedBy;
 
     private DomainValue domainValueByType;
-
-    private User userByUpdatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -196,6 +196,21 @@ public class Document implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_USER_upda2H9vu`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByUpdatedBy() {
+        return this.userByUpdatedBy;
+    }
+
+    public void setUserByUpdatedBy(User userByUpdatedBy) {
+        if(userByUpdatedBy != null) {
+            this.updatedBy = userByUpdatedBy.getId();
+        }
+
+        this.userByUpdatedBy = userByUpdatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`partyId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_PARTY_par1bs57`"))
     @Fetch(FetchMode.JOIN)
     public Party getParty() {
@@ -268,21 +283,6 @@ public class Document implements Serializable {
         }
 
         this.domainValueByType = domainValueByType;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_USER_upda2H9vu`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByUpdatedBy() {
-        return this.userByUpdatedBy;
-    }
-
-    public void setUserByUpdatedBy(User userByUpdatedBy) {
-        if(userByUpdatedBy != null) {
-            this.updatedBy = userByUpdatedBy.getId();
-        }
-
-        this.userByUpdatedBy = userByUpdatedBy;
     }
 
 

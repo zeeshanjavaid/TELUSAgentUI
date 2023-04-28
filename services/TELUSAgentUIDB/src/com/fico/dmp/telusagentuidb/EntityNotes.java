@@ -67,7 +67,7 @@ public class EntityNotes implements Serializable {
         this.banId = banId;
     }
 
-    @Column(name = "`notes`", nullable = true, length = 255)
+    @Column(name = "`notes`", nullable = true, length = 256)
     public String getNotes() {
         return this.notes;
     }

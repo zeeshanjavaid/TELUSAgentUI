@@ -54,9 +54,9 @@ public class Role implements Serializable {
 
     private String description;
 
-    private User userByUpdatedBy;
-
     private User userByCreatedBy;
+
+    private User userByUpdatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,21 +142,6 @@ public class Role implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKm4pj2umb9ji3spjnqf3krw2c8`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByUpdatedBy() {
-        return this.userByUpdatedBy;
-    }
-
-    public void setUserByUpdatedBy(User userByUpdatedBy) {
-        if(userByUpdatedBy != null) {
-            this.updatedBy = userByUpdatedBy.getId();
-        }
-
-        this.userByUpdatedBy = userByUpdatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKnnewcklsu1l8bn0caamaki2qv`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByCreatedBy() {
@@ -169,6 +154,21 @@ public class Role implements Serializable {
         }
 
         this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKm4pj2umb9ji3spjnqf3krw2c8`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByUpdatedBy() {
+        return this.userByUpdatedBy;
+    }
+
+    public void setUserByUpdatedBy(User userByUpdatedBy) {
+        if(userByUpdatedBy != null) {
+            this.updatedBy = userByUpdatedBy.getId();
+        }
+
+        this.userByUpdatedBy = userByUpdatedBy;
     }
 
 

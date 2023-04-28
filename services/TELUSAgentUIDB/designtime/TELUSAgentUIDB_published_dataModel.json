@@ -123,7 +123,7 @@
       "generatorValue" : null,
       "hidden" : false,
       "javaType" : "string",
-      "length" : 255,
+      "length" : 256,
       "mask" : {
         "type" : "NONE"
       },
@@ -1302,13 +1302,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByUpdatedBy",
+      "fieldName" : "userByCreatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "updatedBy",
+        "sourceColumn" : "createdBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKm4pj2umb9ji3spjnqf3krw2c8",
+      "name" : "FKnnewcklsu1l8bn0caamaki2qv",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -1334,13 +1334,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByCreatedBy",
+      "fieldName" : "userByUpdatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "createdBy",
+        "sourceColumn" : "updatedBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKnnewcklsu1l8bn0caamaki2qv",
+      "name" : "FKm4pj2umb9ji3spjnqf3krw2c8",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -3165,6 +3165,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "domainValue",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "noteCategory",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_NOTE_TO_DomainValue_nvLcfG",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "NOTE",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "DomainValue",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "party",
       "ignored" : false,
       "mappings" : [ {
@@ -3214,38 +3246,6 @@
       "sourceTable" : "NOTE",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "APPLICATION",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "domainValue",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "noteCategory",
-        "targetColumn" : "ID"
-      } ],
-      "name" : "FK_NOTE_TO_DomainValue_nvLcfG",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "NOTE",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "DomainValue",
       "valid" : true,
       "virtual" : false
     } ],
@@ -4950,6 +4950,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "userByUpdatedBy",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "UpdatedBy",
+        "targetColumn" : "id"
+      } ],
+      "name" : "FK_QUEUE_TO_USER_UpdatedBy_id",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "QUEUE",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "USER",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "domainValueByQueueResultPage",
       "ignored" : false,
       "mappings" : [ {
@@ -5053,38 +5085,6 @@
         "targetColumn" : "id"
       } ],
       "name" : "FK_QUEUE_TO_USER_LockedBy_id",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUEUE",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "USER",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "userByUpdatedBy",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "UpdatedBy",
-        "targetColumn" : "id"
-      } ],
-      "name" : "FK_QUEUE_TO_USER_UpdatedBy_id",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -6100,6 +6100,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "userByUpdatedBy",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "updatedBy",
+        "targetColumn" : "id"
+      } ],
+      "name" : "FK_DOCUMENT_TO_USER_upda2H9vu",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "DOCUMENT",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "USER",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "party",
       "ignored" : false,
       "mappings" : [ {
@@ -6245,38 +6277,6 @@
       "sourceTable" : "DOCUMENT",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "DomainValue",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "userByUpdatedBy",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "updatedBy",
-        "targetColumn" : "id"
-      } ],
-      "name" : "FK_DOCUMENT_TO_USER_upda2H9vu",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "DOCUMENT",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "USER",
       "valid" : true,
       "virtual" : false
     } ],
@@ -11560,16 +11560,16 @@
       "unique" : false
     } ],
     "constraints" : [ {
-      "columns" : [ "email" ],
+      "columns" : [ "userId" ],
       "composite" : false,
-      "name" : "UK_oso07pudw19e66bs4yp8hwpux",
+      "name" : "UK_exa4yyy95hmwcp5tan8dgw9uv",
       "schemaName" : null,
       "type" : "UNIQUE",
       "virtual" : false
     }, {
-      "columns" : [ "userId" ],
+      "columns" : [ "email" ],
       "composite" : false,
-      "name" : "UK_exa4yyy95hmwcp5tan8dgw9uv",
+      "name" : "UK_oso07pudw19e66bs4yp8hwpux",
       "schemaName" : null,
       "type" : "UNIQUE",
       "virtual" : false
