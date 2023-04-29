@@ -1,1 +1,30 @@
-{ }
+{
+  "ActionListDropdownVar" : {
+    "_id" : "wm-ActionListDropdownVar-wm.Variable-1682691874817",
+    "name" : "ActionListDropdownVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Call Outbound"
+    }, {
+      "dataValue" : "Call Inbound"
+    }, {
+      "dataValue" : "Email Inbound"
+    }, {
+      "dataValue" : "General Follow-up"
+    }, {
+      "dataValue" : "Overdue Notice"
+    }, {
+      "dataValue" : "Payment Reminder Notice"
+    }, {
+      "dataValue" : "Disconnect Notice"
+    }, {
+      "dataValue" : "Cancellation Notice"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
