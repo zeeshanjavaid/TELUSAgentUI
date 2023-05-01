@@ -134,36 +134,26 @@ text-align: right
      borde: none !important;
 }
 
-/*view PARR small */
+/*view PARR small res*/
 @media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel3 {
     min-width: 7% !important;
     }
-}
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel4 {
     min-width: 11% !important;
     }
-}
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel5 {
     min-width: 11% !important;
     }
-}
 
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel6 {
     min-width: 13% !important;
     }
-}
 
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel7 {
     min-width: 9.7% !important;
     }
-}
 
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel9 {
     min-width: 11% !important;
     }
@@ -175,32 +165,24 @@ text-align: right
     }
 }
 
-/*view PARR medium */
+/*view PARR medium res*/
 @media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel4 {
     min-width: 11% !important;
     }
-}
 
-@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel5 {
     min-width: 11% !important;
     }
-}
 
-@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel6 {
     min-width: 11% !important;
     }
-}
 
-@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel9 {
     min-width: 11% !important;
     }
-}
 
-@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrIDvalueLabel {
     width: 4% !important;
     }
@@ -212,38 +194,55 @@ text-align: right
     }
 }
 
-/*view PARR large*/
+/*view PARR large res*/
 @media only screen and (min-width: 1918px) {
-.parrValuelabel8 {
-    width: 6% !important;
+    .parrValuelabel8 {
+        width: 6% !important;
     }
-}
-@media only screen and (min-width: 1918px) {
-.viewParrLabelsGrid {
-    margin-left: -12px !important;
-    }
-}
-
-
-/*renegotiate PARR*/
-@media only screen and (max-width: 1530px) {
-  .installmentBANlabel {
-    min-width: 25% !important;
+    
+    .viewParrLabelsGrid {
+        margin-left: -12px !important;
     }
 }
 
-@media only screen and (max-width: 1530px) {
-  .amtOverlabel {
-    min-width: 30% !important;
+
+/*renegotiate PARR small res*/
+@media only screen and (min-width: 1260px) and (max-width: 1630px) {
+    .installmentBANlabelGrid {
+        width: 23% !important;
+    }
+    
+    .parrIDLabelGrid {
+        width: 23% !important;
+    }
+    
+    .amtOverlabelGrid {
+        width: 35% !important;
+    }
+    
+    .commentsLabelGrid {
+        width: 35% !important;
     }
 }
 
-@media only screen and (max-width: 1195px) {
-  .amtOverlabel {
-    min-width: 38% !important;
+/*renegotiate PARR large res*/
+@media only screen and (min-width: 1795px) {
+    .installmentBANlabelGrid {
+        width: 15% !important;
+    }
+    
+    .parrIDLabelGrid {
+        width: 15% !important;
+    }
+    
+    .amtOverlabelGrid {
+        width: 23% !important;
+    }
+    
+    .commentsLabelGrid {
+        width: 23% !important;
     }
 }
-
 
 
 h4.subHeadingLabel {
