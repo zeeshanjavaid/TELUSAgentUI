@@ -75,7 +75,7 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn78" width="6%" class="parrlabel8">
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label21" caption="Evaluation:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn79">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn79" class="parrValuelabel8">
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label23" caption="bind:Variables.getPaymentArrangement.dataSet.evaluationResult"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn74" class="parrlabel9">
@@ -149,7 +149,7 @@
     <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" closable="true" on-opened="renegotiatePARRdialogOpened($event, widget)">
         <wm-layoutgrid name="layoutgrid6_1">
             <wm-gridrow name="gridrow29">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn74">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="parrIDLabelGrid">
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR ID:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75">
@@ -171,8 +171,8 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77"></wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow29" margin="0 0 10px 0">
-                <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="installmentBANlabel">
-                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="installmentBANlabelGrid">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel installmentBANlabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75" padding="0.5em 0.5em unset unset">
                     <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs" navigation="None"
@@ -222,8 +222,8 @@
         </wm-container>
         <wm-layoutgrid name="layoutgrid9_1">
             <wm-gridrow name="gridrow29" margin="0 0 30px -12px">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="amtOverlabel">
-                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Amt Over/Under PARR Total:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn74" class="amtOverlabelGrid">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Amt Over/Under PARR Total:" name="label5" color="grey" class="viewPARRLabel amtOverlabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75">
                     <wm-label padding="0.5em 0.5em unset unset" name="label19" caption="bind:AmtOverUnder | toCurrency: '$': '2'"></wm-label>

@@ -134,28 +134,75 @@ text-align: right
      borde: none !important;
 }
 
-
-@media only screen and (max-width: 1630px) {
+/*view PARR small */
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+.parrlabel3 {
+    min-width: 7% !important;
+    }
+}
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel4 {
     min-width: 11% !important;
     }
 }
-
-@media only screen and (max-width: 1630px) {
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
 .parrlabel5 {
     min-width: 11% !important;
     }
 }
 
-@media only screen and (max-width: 1630px) {
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+.parrlabel6 {
+    min-width: 13% !important;
+    }
+}
+
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+.parrlabel7 {
+    min-width: 9.7% !important;
+    }
+}
+
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+.parrlabel9 {
+    min-width: 11% !important;
+    }
+}
+
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+.parrIDvalueLabel {
+    width: 2% !important;
+    }
+}
+
+/*view PARR medium */
+@media only screen and (min-width: 1405px) and (max-width: 1630px) {
+.parrlabel4 {
+    min-width: 11% !important;
+    }
+}
+
+@media only screen and (min-width: 1405px) and (max-width: 1630px) {
+.parrlabel5 {
+    min-width: 11% !important;
+    }
+}
+
+@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel6 {
     min-width: 11% !important;
     }
 }
 
-@media only screen and (max-width: 1630px) {
+@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel9 {
     min-width: 11% !important;
+    }
+}
+
+@media only screen and (min-width: 1405px) and (max-width: 1630px) {
+.parrIDvalueLabel {
+    width: 4% !important;
     }
 }
 
@@ -165,6 +212,20 @@ text-align: right
     }
 }
 
+/*view PARR large*/
+@media only screen and (min-width: 1918px) {
+.parrValuelabel8 {
+    width: 6% !important;
+    }
+}
+@media only screen and (min-width: 1918px) {
+.viewParrLabelsGrid {
+    margin-left: -12px !important;
+    }
+}
+
+
+/*renegotiate PARR*/
 @media only screen and (max-width: 1530px) {
   .installmentBANlabel {
     min-width: 25% !important;
@@ -183,11 +244,7 @@ text-align: right
     }
 }
 
-@media only screen and (max-width: 1630px) {
-.parrIDvalueLabel {
-    width: 4% !important;
-    }
-}
+
 
 h4.subHeadingLabel {
     font-size: 19px;
