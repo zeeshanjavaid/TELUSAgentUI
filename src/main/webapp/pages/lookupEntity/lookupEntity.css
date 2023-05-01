@@ -117,3 +117,33 @@ h3 {
     }
 }
 
+/*lookup small res*/
+@media only screen and (min-width: 1260px) and (max-width: 1700px) {
+    .levelSelectBox {
+        width: 120px !important;
+    }
+    
+    .banTextBox {
+        width: 120px !important;
+    }
+    
+    .grid1 {
+        width: 15% !important;
+    }
+    
+    .orGrid {
+        width: 17% !important;
+    }
+    
+    .billSystemSelectBox {
+        width: 150px !important;
+    }
+    
+    .buttonGrid {
+        margin: 40px 10px 10px 50px !important;
+    }
+    
+    .grid3 {
+        width: 15% !important;
+    }
+}

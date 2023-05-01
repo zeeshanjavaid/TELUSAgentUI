@@ -12,22 +12,22 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow9" class="lookup-container" style="display: flex;">
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn13" class="lookup_mac" style="display: flex;flex-direction: column;width: 20%;margin:20px;">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn13" class="lookup_mac grid1" style="display: flex;flex-direction: column;width: 20%;margin:20px;">
                         <wm-gridcolumn name="gridcolumn3_1">
                             <wm-label class="col-md-3 control-label" name="label4" caption="Level*" margin="10px 3px -2px 15px" color="grey"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px" class="app-grid-column-mac">
+                        <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px" class="app-grid-column-mac levelSelectBox">
                             <wm-select name="select1" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.levelValue.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.levelValue.dataSet[2].dataValue" displayfield="dataValue" on-change="select1Change($event, widget, newVal, oldVal)"></wm-select>
                         </wm-gridcolumn>
-                        <wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn5_1">
+                        <wm-gridcolumn margin="2px 2px 2px 15px" style="width: unset;" name="gridcolumn5_1" class="banLabel">
                             <wm-container name="container3" show="bind:Widgets.select1.datavalue==='BAN'">
-                                <wm-label padding="0.5em 0.5em 0.4em unset" name="label10_1" caption="BAN Phone Number" color="grey"></wm-label>
-                                <wm-text name="text3" placeholder="" id="banPhNo" required="true"></wm-text>
-                                <p id="p01" style="color:red;"></p>
+                                <wm-label padding="0.5em 0.5em 0.4em unset" name="label10_1" caption="BAN Phone Number" color="grey" width="135px"></wm-label>
+                                <wm-text name="text3" placeholder="" id="banPhNo" required="true" width="200px" class="banTextBox"></wm-text>
+                                <p id="p01" style="color:red;" width="200px"></p>
                             </wm-container>
                         </wm-gridcolumn>
                         <!--<wm-gridcolumn margin="2px 2px 2px 15px" width="200px" name="gridcolumn6_1"></wm-gridcolumn>--></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display:flex; margin: 20px; width: 60%" class="borderGrid mar-20 grid2">
                         <wm-gridcolumn style="display: flex; flex-direction: column; margin: 5px 5px 5px 70px; width: 40%;" name="gridcolumn5" class="borderGrid-mac">
                             <p id="p04" style="color:red;"></p>
                             <!--break-->
@@ -64,7 +64,7 @@
                                 <p id="p02" style="color:red;"></p>
                             </wm-gridcolumn>-->
                         </wm-gridcolumn>
-                        <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8" class="number-mac">
+                        <wm-gridcolumn style="margin: 6px -12px 5px 42px; width: 20%;" name="gridcolumn8" class="number-mac orGrid">
                             <wm-container name="container10_1">
                                 <wm-label padding="unset 0.5em" name="label8" caption="OR" class="labelOR"></wm-label>
                             </wm-container>
@@ -108,14 +108,14 @@
                             </wm-gridcolumn>-->
                         </wm-gridcolumn>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="4" class="billing-mac mar-20" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
+                    <wm-gridcolumn columnwidth="4" class="billing-mac mar-20 grid3" name="gridcolumn15" style="margin: 20px; width: 20%; display: flex; flex-direction: column;">
                         <wm-gridcolumn width="200px" name="gridcolumn16">
                             <wm-label class="col-md-3 control-label" margin="10px 3px 5px 15px" name="label14" caption="Billing System" width="100%" color="grey"></wm-label>
                         </wm-gridcolumn>
-                        <wm-gridcolumn margin="2px 2px 2px 15px" width="300px" name="gridcolumn17">
+                        <wm-gridcolumn margin="2px 2px 2px 15px" width="300px" name="gridcolumn17" class="billSystemSelectBox">
                             <wm-select name="select5" datavalue="CES" width="65%" dataset="bind:Variables.getBillingSystemByCOde.dataSet" datafield="code" placeholder="" displayfield="code"></wm-select>
                         </wm-gridcolumn>
-                        <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18">
+                        <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18" class="buttonGrid">
                             <wm-button class="secondaryButton" caption="Clear" type="button" margin="8px 2px 8px 2px" name="button2" on-click="button2Click($event, widget)"></wm-button>
                             <wm-button class="primaryButton" caption="Submit" margin="6px 6px 3px 5px" type="button" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         </wm-gridcolumn>
