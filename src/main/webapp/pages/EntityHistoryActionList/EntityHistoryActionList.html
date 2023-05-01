@@ -8,7 +8,7 @@
                     <wm-layoutgrid name="layoutgrid1000">
                         <wm-gridrow name="gridrow1000">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn1000">
-                                <wm-anchor margin="unset 0.5em" name="CreateActionLink" caption="Create Action" on-click="CreateActionLinkClick($event, widget)"></wm-anchor>
+                                <wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateActionLink" caption="Create Action" on-click="CreateActionLinkClick($event, widget)"></wm-anchor>
                             </wm-gridcolumn>
                         </wm-gridrow>
                     </wm-layoutgrid>
@@ -20,7 +20,7 @@
         <wm-layoutgrid name="layoutgrid3">
             <wm-gridrow name="gridrow3">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                    <wm-label padding="unset 0.5em" caption="Action *" name="label1"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Action *" name="label1"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow4">
@@ -33,8 +33,9 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button1"></wm-button>
+        <wm-dialogactions name="dialogactions1" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button1"></wm-button>
+            <wm-button class="primaryButton" caption="Next" on-click="closeDialog()" name="button2"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>
