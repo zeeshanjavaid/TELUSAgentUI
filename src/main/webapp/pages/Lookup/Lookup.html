@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
-                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
+                            popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -96,8 +96,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label28" fontsize="12" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn82"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn83">
-                        <wm-label padding="unset 0.5%" caption="Previous Entity:" color="#800080" name="label45" margin="unset unset unset 1.8em" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn83" style="text-align: right;">
+                        <wm-label padding="unset 0.5em" caption="Previous entity:" color="#800080" name="label45" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn84">
                         <wm-label padding="unset 0.5em unset .7em" caption="6766676" name="label46" color="#800080" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
@@ -139,8 +139,7 @@
             </wm-layoutgrid>
             <wm-layoutgrid name="layoutgrid100">
                 <wm-gridrow name="gridrow101">
-                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true"
-                        style="margin:5px;"></wm-message>
+                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow102">
                     <!--  <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>--></wm-gridrow>
