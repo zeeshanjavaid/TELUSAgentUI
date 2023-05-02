@@ -26,5 +26,53 @@
     "type" : "string",
     "isList" : true,
     "saveInPhonegap" : false
+  },
+  "actionName" : {
+    "_id" : "wm-actionaName-wm.Variable-1682965685890",
+    "name" : "actionName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "actionPriority" : {
+    "_id" : "wm-actionPriority-wm.Variable-1683001990301",
+    "name" : "actionPriority",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Low"
+    }, {
+      "dataValue" : "Medium"
+    }, {
+      "dataValue" : "High"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "actionStatus" : {
+    "_id" : "wm-actionStatus-wm.Variable-1683001667828",
+    "name" : "actionStatus",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Closed"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   }
 }

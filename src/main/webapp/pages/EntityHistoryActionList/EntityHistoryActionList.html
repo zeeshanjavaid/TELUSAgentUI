@@ -17,13 +17,13 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog">
-        <wm-layoutgrid name="layoutgrid3">
-            <wm-gridrow name="gridrow3">
+        <wm-layoutgrid name="layoutgrid3" class="createActionLayoutGrid">
+            <wm-gridrow name="gridrow3" id="actionGrid">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn5">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Action *" name="label1"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Action*" name="label1"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow4">
+            <wm-gridrow name="gridrow4" id="createActionSelectBox">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn7">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container1">
@@ -32,10 +32,120 @@
                     </wm-composite>
                 </wm-gridcolumn>
             </wm-gridrow>
+            <wm-layoutgrid id="callOutBoundAction" name="layoutgrid4" style="display: none;">
+                <wm-gridrow name="gridrow5_1">
+                    <h4 class="heading">Action Main Details</h4>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow5">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                        <wm-label padding="unset 0.5em 0.3em unset" caption="Action" name="label1" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow6" margin="0 0 1em 0">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                        <wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.actionName.dataValue" name="label2"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <!--call inbound specific -->
+                <wm-layoutgrid id="callInBoundAction" style="display: none;">
+                    <wm-gridrow name="gridrow15">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                            <wm-label padding="unset 0.5em 0.3em unset" caption="Customer Name" name="label1" color="gray"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow16" margin="0 0 1em 0">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                            <input type="text" id="custName" autocomplete="off">
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow20">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn28">
+                            <wm-label padding="unset 0.5em 0.3em unset" caption="Phone Number" name="label1" color="gray"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow21" margin="0 0 1em 0">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn29">
+                            <input type="number" id="phnNumber" autocomplete="off">
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <!--call inbound specific -->
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                        <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
+                        <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow10_1">
+                    <h4 class="heading">Action Status and Priority</h4>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow9">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                        <wm-label padding="unset 0.5em unset unset" caption="Status" name="label4" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow10">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                        <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionStatus.dataSet[0].dataValue" displayfield="dataValue"
+                            on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow19">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn20">
+                        <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow10">
+                    <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                        <wm-date name="date1"></wm-date>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                        <wm-label padding="unset 0.5em unset unset" caption="Priority" name="label5" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow12">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
+                        <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
+                            on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow17">
+                    <h4 class="heading">Action Assignment</h4>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                        <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
+                        <wm-select width="70%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
+                            on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
+                        <wm-select width="70%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
+                            on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button1"></wm-button>
-            <wm-button class="primaryButton" caption="Next" on-click="closeDialog()" name="button2"></wm-button>
+        <wm-dialogactions name="dialogactions1" style="text-align: right;" class="createActionBtns">
+            <wm-button class="secondaryButton" caption="Cancel" on-click="cancelClick()" name="button1"></wm-button>
+            <wm-button class="primaryButton" id="nextBtn" caption="Next" on-click="nextButtonClick($event, widget)" name="button2"></wm-button>
+            <wm-button class="primaryButton" id="createBtn" caption="Create" on-click="createButtonClick($event, widget)" name="button3" style="display: none;"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>

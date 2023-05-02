@@ -28,3 +28,53 @@ Partial.CreateActionLinkClick = function($event, widget) {
     Partial.Widgets.SelectActionDialog.open();
 
 };
+
+
+Partial.nextButtonClick = function($event, widget) {
+    Partial.Widgets.select1.datavalue;
+
+    // Call Outbound
+    if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
+        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        // hiding create action dialog
+        hideCreateActionDialog();
+        // displaying Call Outbound action form
+        $('#callOutBoundAction').show();
+    }
+
+
+    // Call Inbound
+    if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
+        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        // hiding create action dialog
+        hideCreateActionDialog();
+        // displaying Call Outbound action form
+        $('#callOutBoundAction').show();
+        // displaying Call Inbound action form
+        $('#callInBoundAction').show();
+    }
+};
+
+Partial.cancelClick = function() {
+    showCreateActionDialog();
+    // hiding Call Outbound action form
+    $('#callOutBoundAction').hide();
+    // hiding Call Inbound action form
+    $('#callInBoundAction').hide();
+};
+
+// function created to hide create action dialog
+function hideCreateActionDialog() {
+    $('#actionGrid').hide();
+    $('#createActionSelectBox').hide();
+    $('#nextBtn').hide();
+    $('#createBtn').show();
+};
+
+// function created to show create action dialog
+function showCreateActionDialog() {
+    $('#actionGrid').show();
+    $('#createActionSelectBox').show();
+    $('#nextBtn').show();
+    $('#createBtn').hide();
+};
