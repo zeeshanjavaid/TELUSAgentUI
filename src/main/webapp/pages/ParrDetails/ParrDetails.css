@@ -136,34 +136,58 @@ text-align: right
 
 /*view PARR small res*/
 @media only screen and (min-width: 1260px) and (max-width: 1404px) {
-.parrlabel3 {
-    min-width: 7% !important;
+    .gridrow5 {
+        margin: -12px 0px 15px -3px !important;
     }
-.parrlabel4 {
-    min-width: 11% !important;
+    .parrlabel1 {
+        width: 15% !important;
     }
-.parrlabel5 {
-    min-width: 11% !important;
+    .parrIDvalueLabel {
+        width: 15% !important;
     }
-
-.parrlabel6 {
-    min-width: 13% !important;
+    .parrlabel2 {
+        width: 15% !important;
     }
-
-.parrlabel7 {
-    min-width: 9.7% !important;
+    .statusValueLabel {
+        width: 15% !important;
     }
-
-.parrlabel9 {
-    min-width: 11% !important;
+    .parrlabel3 {
+        width: 15% !important;
     }
-}
-
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
-.parrIDvalueLabel {
-    width: 2% !important;
+    .parrAmtValueLabel {
+        width: 15% !important;
     }
-}
+    .parrlabel4 {
+        width: 15% !important;
+    }
+    .parrValueLabel4 {
+        width: 15% !important;
+    }
+    .parrlabel5 {
+        width: 15% !important;
+    }
+    .parrValueLabel5 {
+        width: 15% !important;
+    }
+    .parrlabel6 {
+        width: 15% !important;
+    }
+    .parrlabel7 {
+        width: 15% !important;
+    }
+    .parrValueLabel7 {
+        width: 15% !important;
+    }
+    .parrlabel8 {
+        width: 15% !important;
+    }
+    .parrValuelabel8 {
+        width: 15% !important;
+    }
+    .parrlabel9 {
+        width: 15% !important;
+    }
+}   
 
 /*view PARR medium res*/
 @media only screen and (min-width: 1405px) and (max-width: 1630px) {
@@ -185,12 +209,6 @@ text-align: right
 
 .parrIDvalueLabel {
     width: 4% !important;
-    }
-}
-
-@media only screen and (max-width: 1521px) {
-.viewParrLabelsGrid {
-    margin-left: 30px !important;
     }
 }
 
