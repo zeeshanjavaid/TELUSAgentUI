@@ -47,6 +47,10 @@ input.form-control.app-textbox.ng-pristine.ng-valid.ng-touched {
 
 input.form-control.app-textbox.ng-untouched.ng-pristine.ng-valid {
     width: 70%;
+} 
+
+input.form-control.app-textbox.ng-valid.ng-touched.ng-dirty {
+    width: 70%;
 }
 
 textarea.form-control.app-textarea.ng-valid.ng-dirty.ng-touched {
