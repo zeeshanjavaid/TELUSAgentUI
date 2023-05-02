@@ -47,8 +47,8 @@
                     <wm-label padding="unset 0.5em unset unset" caption="bind:Variables.actionName.dataValue" name="label2"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <!--call inbound specific -->
-            <wm-layoutgrid id="callInBoundActionForm" style="display: none;">
+            <!--call inbound specific start-->
+            <wm-layoutgrid id="customerName" style="display: none;">
                 <wm-gridrow name="gridrow15">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn18">
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Customer Name" name="label1" color="gray"></wm-label>
@@ -59,6 +59,8 @@
                         <wm-text name="custName" textalign="left" width="50%" padding="unset 0.5em"></wm-text>
                     </wm-gridcolumn>
                 </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid id="callInBoundActionForm" style="display: none;">
                 <wm-gridrow name="gridrow20">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28">
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Phone Number" name="label1" color="gray"></wm-label>
@@ -74,14 +76,28 @@
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Call Duration*" name="label1" color="gray"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
-                <wm-gridrow name="gridrow21" margin="0 0 1em 0">
+                <wm-gridrow name="gridrow21" margin="0 0 0.2em 0">
                     <wm-gridcolumn name="gridcolumn15" width="28%" style="display: flex;">
                         <wm-number textalign="left" name="callduration" height="38px"></wm-number>
                         <wm-label padding="0.5em 0.5em 0.5em 0.5em" caption="min" name="label1"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <!--call inbound specific -->
+            <!--call inbound specific end-->
+            <!--email inbound specific start-->
+            <wm-layoutgrid id="emailInBoundActionForm" style="display: none;">
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-label padding="unset 0.5em 0.3em unset" caption="Email Address*" name="label1" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16" margin="0 0 1em 0">
+                    <wm-gridcolumn name="gridcolumn30">
+                        <wm-text name="email" textalign="left" width="50%" padding="unset 0.5em"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <!--email inbound specific end-->
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
                     <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>

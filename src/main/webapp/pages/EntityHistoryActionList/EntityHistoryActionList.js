@@ -31,12 +31,11 @@ Partial.CreateActionLinkClick = function($event, widget) {
 
 
 Partial.nextButtonClick = function($event, widget) {
-    Partial.Widgets.select1.datavalue;
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        // hiding create action dialog
+        // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
         $('#callOutBoundActionForm').show();
@@ -46,12 +45,53 @@ Partial.nextButtonClick = function($event, widget) {
     // Call Inbound Action
     if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        // hiding create action dialog
+        // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
         $('#callOutBoundActionForm').show();
+        // displaying customer name
+        $('#customerName').show();
         // displaying Call Inbound action form
         $('#callInBoundActionForm').show();
+    }
+
+    // Email Inbound Action 
+    if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
+        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        // hiding select action form
+        hideSelectActionForm();
+        // displaying Call Outbound action form
+        $('#callOutBoundActionForm').show();
+        // displaying Email Inbound action form
+        $('#emailInBoundActionForm').show();
+        // hiding customer name
+        $('#customerName').hide();
+    }
+
+    // General Follow-up Action 
+    if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
+        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        // hiding select action form
+        hideSelectActionForm();
+        // displaying Call Outbound action form
+        $('#callOutBoundActionForm').show();
+        // hiding customer name
+        $('#customerName').hide();
+        // hiding email address
+        $('#emailInBoundActionForm').hide();
+    }
+
+    // Overdue Notice Action 
+    if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
+        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        // hiding select action form
+        hideSelectActionForm();
+        // displaying Call Outbound action form
+        $('#callOutBoundActionForm').show();
+        // displaying customer name
+        $('#customerName').show();
+        // displaying Email Inbound action form
+        $('#emailInBoundActionForm').show();
     }
 };
 
