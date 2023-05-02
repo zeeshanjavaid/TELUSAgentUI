@@ -44,7 +44,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.actionName.dataValue" name="label2"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="bind:Variables.actionName.dataValue" name="label2"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <!--call inbound specific -->
@@ -55,8 +55,8 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow16" margin="0 0 1em 0">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn19">
-                        <input type="text" id="custName" autocomplete="off">
+                    <wm-gridcolumn name="gridcolumn30">
+                        <wm-text name="custName" textalign="left" width="50%" padding="unset 0.5em"></wm-text>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20">
@@ -65,8 +65,19 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" margin="0 0 1em 0">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn29">
-                        <input type="number" id="phnNumber" autocomplete="off">
+                    <wm-gridcolumn name="gridcolumn15" width="50%">
+                        <wm-number textalign="left" name="phnNumber" height="38px"></wm-number>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow20">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn28">
+                        <wm-label padding="unset 0.5em 0.3em unset" caption="Call Duration*" name="label1" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow21" margin="0 0 1em 0">
+                    <wm-gridcolumn name="gridcolumn15" width="28%" style="display: flex;">
+                        <wm-number textalign="left" name="callduration" height="38px"></wm-number>
+                        <wm-label padding="0.5em 0.5em 0.5em 0.5em" caption="min" name="label1"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
