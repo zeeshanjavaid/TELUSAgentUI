@@ -33,48 +33,46 @@ Partial.CreateActionLinkClick = function($event, widget) {
 Partial.nextButtonClick = function($event, widget) {
     Partial.Widgets.select1.datavalue;
 
-    // Call Outbound
+    // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         // hiding create action dialog
-        hideCreateActionDialog();
+        hideSelectActionForm();
         // displaying Call Outbound action form
-        $('#callOutBoundAction').show();
+        $('#callOutBoundActionForm').show();
     }
 
 
-    // Call Inbound
+    // Call Inbound Action
     if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         // hiding create action dialog
-        hideCreateActionDialog();
+        hideSelectActionForm();
         // displaying Call Outbound action form
-        $('#callOutBoundAction').show();
+        $('#callOutBoundActionForm').show();
         // displaying Call Inbound action form
-        $('#callInBoundAction').show();
+        $('#callInBoundActionForm').show();
     }
 };
 
 Partial.cancelClick = function() {
-    showCreateActionDialog();
+    showSelectActionForm();
     // hiding Call Outbound action form
-    $('#callOutBoundAction').hide();
+    $('#callOutBoundActionForm').hide();
     // hiding Call Inbound action form
-    $('#callInBoundAction').hide();
+    $('#callInBoundActionForm').hide();
 };
 
-// function created to hide create action dialog
-function hideCreateActionDialog() {
-    $('#actionGrid').hide();
-    $('#createActionSelectBox').hide();
-    $('#nextBtn').hide();
-    $('#createBtn').show();
+// function created to hide select action form
+function hideSelectActionForm() {
+    $('#selectActionForm').hide();
+    $('#selectActionBtns').hide();
+    $('#createActionBtns').show();
 };
 
-// function created to show create action dialog
-function showCreateActionDialog() {
-    $('#actionGrid').show();
-    $('#createActionSelectBox').show();
-    $('#nextBtn').show();
-    $('#createBtn').hide();
+// function created to show select action form
+function showSelectActionForm() {
+    $('#selectActionForm').show();
+    $('#selectActionBtns').show();
+    $('#createActionBtns').hide();
 };
