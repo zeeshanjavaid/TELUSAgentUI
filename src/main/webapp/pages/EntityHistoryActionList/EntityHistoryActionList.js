@@ -23,18 +23,23 @@ Partial.onReady = function() {
 };
 
 Partial.CreateActionLinkClick = function($event, widget) {
-
     Partial.Widgets.CreateActionPopOver.hidePopover();
     Partial.Widgets.SelectActionDialog.open();
-
 };
 
 
 Partial.nextButtonClick = function($event, widget) {
+    if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
+        Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
+    } else {
+        Partial.Variables.errorMsg.dataSet.dataValue = "";
+    }
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        Partial.Widgets.actionStatusSelect.datavalue = 'Open';
+        Partial.Widgets.prioritySelect.datavalue = 'High';
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -45,6 +50,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Call Inbound Action
     if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
+        Partial.Widgets.prioritySelect.datavalue = 'Medium';
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -58,6 +65,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Email Inbound Action 
     if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
+        Partial.Widgets.prioritySelect.datavalue = 'Medium';
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -71,6 +80,8 @@ Partial.nextButtonClick = function($event, widget) {
     // General Follow-up Action 
     if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        Partial.Widgets.actionStatusSelect.datavalue = 'Open';
+        Partial.Widgets.prioritySelect.datavalue = 'Low';
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -84,6 +95,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Overdue Notice Action 
     if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
+        Partial.Widgets.prioritySelect.datavalue = 'Medium';
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -93,9 +106,11 @@ Partial.nextButtonClick = function($event, widget) {
         // displaying Email Inbound action form
         $('#emailInBoundActionForm').show();
     }
+
 };
 
 Partial.cancelClick = function() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     showSelectActionForm();
     // hiding Call Outbound action form
     $('#callOutBoundActionForm').hide();
@@ -103,8 +118,15 @@ Partial.cancelClick = function() {
     $('#callInBoundActionForm').hide();
 };
 
+
+Partial.closeSelectActionDialog = function() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Widgets.SelectActionDialog.close();
+};
+
 // function created to hide select action form
 function hideSelectActionForm() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     $('#selectActionForm').hide();
     $('#selectActionBtns').hide();
     $('#createActionBtns').show();
@@ -112,6 +134,7 @@ function hideSelectActionForm() {
 
 // function created to show select action form
 function showSelectActionForm() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     $('#selectActionForm').show();
     $('#selectActionBtns').show();
     $('#createActionBtns').hide();

@@ -18,6 +18,9 @@
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog">
         <wm-layoutgrid name="layoutgrid3" id="selectActionForm">
+            <wm-gridrow name="gridrow1">
+                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+            </wm-gridrow>
             <wm-gridrow name="gridrow3" id="actionGrid">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn5">
                     <wm-label padding="unset 0.5em 0.5em unset" caption="Action*" name="label1"></wm-label>
@@ -118,7 +121,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionStatus.dataSet[0].dataValue" displayfield="dataValue"
+                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
                         on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -139,7 +142,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
+                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue" displayfield="dataValue"
                         on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -153,8 +156,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
-                        on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -164,14 +166,13 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.actionPriority.dataSet[2].dataValue" displayfield="dataValue"
-                        on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns">
-                <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button5"></wm-button>
+                <wm-button class="secondaryButton" caption="Cancel" on-click="closeSelectActionDialog()" name="button5"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Next" on-click="nextButtonClick($event, widget)" name="button2"></wm-button>
             </wm-gridrow>
             <wm-gridrow style="display: none;" id="createActionBtns">
