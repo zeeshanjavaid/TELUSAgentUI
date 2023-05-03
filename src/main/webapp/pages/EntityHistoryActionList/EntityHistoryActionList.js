@@ -49,6 +49,9 @@ Partial.nextButtonClick = function($event, widget) {
         $('#customerName').hide();
         $('#nonMandatoryEmail').hide();
         $('#mandatoryEmail').hide();
+        // making fields empty so that the same value does not carry over to another forms
+        Partial.Widgets.Comments.datavalue = '';
+        Partial.Widgets.dueDate.datavalue = '';
     }
 
 
@@ -68,6 +71,12 @@ Partial.nextButtonClick = function($event, widget) {
         // hiding non-required fields
         $('#nonMandatoryEmail').hide();
         $('#mandatoryEmail').hide();
+        // making fields empty so that the same value does not carry over to another forms
+        Partial.Widgets.Comments.datavalue = '';
+        Partial.Widgets.dueDate.datavalue = '';
+        Partial.Widgets.custName.datavalue = '';
+        Partial.Widgets.phnNumber.datavalue = '';
+        Partial.Widgets.callduration.datavalue = '';
     }
 
     // Email Inbound Action 
@@ -85,6 +94,10 @@ Partial.nextButtonClick = function($event, widget) {
         $('#customerName').hide();
         $('#callInBoundActionForm').hide();
         $('#nonMandatoryEmail').hide();
+        // making fields empty so that the same value does not carry over to another forms
+        Partial.Widgets.Comments.datavalue = '';
+        Partial.Widgets.dueDate.datavalue = '';
+        Partial.Widgets.mandatoryEmail.datavalue = '';
     }
 
     // General Follow-up Action 
@@ -101,6 +114,9 @@ Partial.nextButtonClick = function($event, widget) {
         $('#mandatoryEmail').hide();
         $('#callInBoundActionForm').hide();
         $('#customerName').hide();
+        // making fields empty so that the same value does not carry over to another forms
+        Partial.Widgets.Comments.datavalue = '';
+        Partial.Widgets.dueDate.datavalue = '';
     }
 
     //  Notice Actions
@@ -119,6 +135,11 @@ Partial.nextButtonClick = function($event, widget) {
         // hiding non-required fields
         $('#callInBoundActionForm').hide();
         $('#mandatoryEmail').hide();
+        // making fields empty so that the same value does not carry over to another forms
+        Partial.Widgets.Comments.datavalue = '';
+        Partial.Widgets.dueDate.datavalue = '';
+        Partial.Widgets.custName.datavalue = '';
+        Partial.Widgets.nonMandatoryEmail.datavalue = '';
     }
 
 };
