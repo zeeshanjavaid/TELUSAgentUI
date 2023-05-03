@@ -41,6 +41,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'High';
         Partial.Widgets.dueDate.datavalue = createDueDate();
+        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -62,6 +63,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
+        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -87,6 +89,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
+        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -109,6 +112,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'Low';
         Partial.Widgets.dueDate.datavalue = createDueDate();
+        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -129,6 +133,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
+        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
