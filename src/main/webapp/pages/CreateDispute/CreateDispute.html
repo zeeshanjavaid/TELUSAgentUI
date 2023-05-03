@@ -21,7 +21,7 @@
                 <wm-gridcolumn name="gridcolumn4" class="labelGrid">
                     <wm-label name="label3" padding="unset 0.5em" caption="Selected BAN*" color="grey" class="createDisputeLabel" whitespace="nowrap"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn style="display: flex;" class="labelValue">
+                <wm-gridcolumn style="display: flex;" class="labelValue" name="gridcolumn5_1">
                     <wm-gridcolumn name="gridcolumn5">
                         <wm-text name="selectedDisputeBan" padding="unset 0.5em" width="75%" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="true" placeholder=""></wm-text>
                     </wm-gridcolumn>
@@ -53,7 +53,7 @@
                     <wm-label class="createDisputeLabel" name="disputeAmtLabel" padding="unset 0.5em" caption="Dispute Amount $*" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn15" class="labelValue">
-                    <wm-number textalign="right" name="disputeAmt" width="70%" padding="unset 0.5em" height="38px" required="true" placeholder=""></wm-number>
+                    <wm-number textalign="left" name="disputeAmt" width="70%" padding="unset 0.5em" height="38px" required="true" placeholder=""></wm-number>
                 </wm-gridcolumn>
             </wm-gridcolumn>
             <wm-gridcolumn class="chargeType" style="display: flex;" margin="0 10px 0 0" name="gridcolumn16">
@@ -79,7 +79,7 @@
                     <wm-label name="label13_1" color="grey" caption="Adjustment(s) to Date" padding="unset 0.5em" whitespace="nowrap" class="createDisputeLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn24" class="labelValue">
-                    <wm-number textalign="right" name="AdjustmentToDate" padding="unset 0.5em" width="70%" placeholder=""></wm-number>
+                    <wm-number textalign="left" name="AdjustmentToDate" padding="unset 0.5em" width="70%" placeholder=""></wm-number>
                 </wm-gridcolumn>
             </wm-gridcolumn>
             <wm-gridcolumn class="assignedDisputePrime" style="display: flex;" margin="0 10px 0 0" name="gridcolumn25">
@@ -108,8 +108,8 @@
                     <wm-textarea margin="0 0 0 -2px" padding="unset 0.5em" style="resize: none;" name="CreateCommentsDispute" width="100%" placeholder="" maxchars="256"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridcolumn>
-            <wm-gridcolumn></wm-gridcolumn>
-            <wm-gridcolumn></wm-gridcolumn>
+            <wm-gridcolumn name="gridcolumn35"></wm-gridcolumn>
+            <wm-gridcolumn name="gridcolumn36"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
