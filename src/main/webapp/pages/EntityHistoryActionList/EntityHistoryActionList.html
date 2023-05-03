@@ -3,7 +3,7 @@
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="4" name="gridcolumn1"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn2"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="center">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0 1em 0 0">
                 <wm-popover popoverwidth="100" popoverheight="50" margin="unset 0.5em" name="CreateActionPopOver" caption="..." contentsource="inline" show="true">
                     <wm-layoutgrid name="layoutgrid1000">
                         <wm-gridrow name="gridrow1000">
@@ -42,7 +42,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action*" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
@@ -51,7 +51,7 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <!--call inbound specific start-->
-            <wm-layoutgrid id="customerName" style="display: none;">
+            <wm-layoutgrid id="customerName" name="layoutgrid5" style="display: none;">
                 <wm-gridrow name="gridrow15">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn18">
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Customer Name" name="label1" color="gray"></wm-label>
@@ -59,11 +59,11 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow16" margin="0 0 1em 0">
                     <wm-gridcolumn name="gridcolumn30">
-                        <wm-text name="custName" textalign="left" width="50%" padding="unset 0.5em"></wm-text>
+                        <wm-text name="custName" textalign="left" width="50%" padding="unset 0.5em" placeholder=""></wm-text>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-layoutgrid id="callInBoundActionForm" style="display: none;">
+            <wm-layoutgrid id="callInBoundActionForm" name="layoutgrid6" style="display: none;">
                 <wm-gridrow name="gridrow20">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28">
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Phone Number" name="label1" color="gray"></wm-label>
@@ -71,24 +71,36 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                     <wm-gridcolumn name="gridcolumn15" width="50%">
-                        <wm-number textalign="left" name="phnNumber" height="38px"></wm-number>
+                        <wm-number textalign="left" name="phnNumber" height="38px" placeholder=""></wm-number>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn28">
-                        <wm-label padding="unset 0.5em 0.3em unset" caption="Call Duration*" name="label1" color="gray"></wm-label>
+                        <wm-label padding="unset 0.5em 0.3em unset" caption="Call Duration" name="label1" color="gray"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" margin="0 0 0.2em 0">
                     <wm-gridcolumn name="gridcolumn15" width="28%" style="display: flex;">
-                        <wm-number textalign="left" name="callduration" height="38px"></wm-number>
+                        <wm-number textalign="left" name="callduration" height="38px" placeholder=""></wm-number>
                         <wm-label padding="0.5em 0.5em 0.5em 0.5em" caption="min" name="label1"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <!--call inbound specific end-->
-            <!--email inbound specific start-->
-            <wm-layoutgrid id="emailInBoundActionForm" style="display: none;">
+            <!--email specific start-->
+            <wm-layoutgrid id="nonMandatoryEmail" name="layoutgrid7" style="display: none;">
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-label padding="unset 0.5em 0.3em unset" caption="Email Address" name="label1" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16" margin="0 0 1em 0">
+                    <wm-gridcolumn name="gridcolumn30">
+                        <wm-text name="email1" textalign="left" width="50%" padding="unset 0.5em" placeholder=""></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid id="mandatoryEmail" name="layoutgrid7" style="display: none;">
                 <wm-gridrow name="gridrow15">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn18">
                         <wm-label padding="unset 0.5em 0.3em unset" caption="Email Address*" name="label1" color="gray"></wm-label>
@@ -96,11 +108,11 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow16" margin="0 0 1em 0">
                     <wm-gridcolumn name="gridcolumn30">
-                        <wm-text name="email" textalign="left" width="50%" padding="unset 0.5em"></wm-text>
+                        <wm-text name="email2" textalign="left" width="50%" padding="unset 0.5em" placeholder=""></wm-text>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <!--email inbound specific end-->
+            <!--email specific end-->
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
                     <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
@@ -116,7 +128,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-label padding="unset 0.5em unset unset" caption="Status" name="label4" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
@@ -132,12 +144,12 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="date1"></wm-date>
+                    <wm-date name="date1" placeholder=""></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn14">
-                    <wm-label padding="unset 0.5em unset unset" caption="Priority" name="label5" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="Priority*" name="label5" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
@@ -156,7 +168,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -166,16 +178,16 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" datavalue="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-gridrow id="selectActionBtns">
+            <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" on-click="closeSelectActionDialog()" name="button5"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Next" on-click="nextButtonClick($event, widget)" name="button2"></wm-button>
             </wm-gridrow>
-            <wm-gridrow style="display: none;" id="createActionBtns">
+            <wm-gridrow style="display: none;" id="createActionBtns" name="gridrow32">
                 <wm-button class="secondaryButton" caption="Cancel" on-click="cancelClick()" name="button1"></wm-button>
                 <wm-button class="primaryButton" id="createBtn" caption="Create" on-click="createButtonClick($event, widget)" name="button3"></wm-button>
             </wm-gridrow>

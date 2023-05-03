@@ -44,6 +44,11 @@ Partial.nextButtonClick = function($event, widget) {
         hideSelectActionForm();
         // displaying Call Outbound action form
         $('#callOutBoundActionForm').show();
+        // hiding non-required fields
+        $('#callInBoundActionForm').hide();
+        $('#customerName').hide();
+        $('#nonMandatoryEmail').hide();
+        $('#mandatoryEmail').hide();
     }
 
 
@@ -60,6 +65,9 @@ Partial.nextButtonClick = function($event, widget) {
         $('#customerName').show();
         // displaying Call Inbound action form
         $('#callInBoundActionForm').show();
+        // hiding non-required fields
+        $('#nonMandatoryEmail').hide();
+        $('#mandatoryEmail').hide();
     }
 
     // Email Inbound Action 
@@ -71,10 +79,12 @@ Partial.nextButtonClick = function($event, widget) {
         hideSelectActionForm();
         // displaying Call Outbound action form
         $('#callOutBoundActionForm').show();
-        // displaying Email Inbound action form
-        $('#emailInBoundActionForm').show();
-        // hiding customer name
+        // displaying Email address
+        $('#mandatoryEmail').show();
+        // hiding non-required fields
         $('#customerName').hide();
+        $('#callInBoundActionForm').hide();
+        $('#nonMandatoryEmail').hide();
     }
 
     // General Follow-up Action 
@@ -86,13 +96,14 @@ Partial.nextButtonClick = function($event, widget) {
         hideSelectActionForm();
         // displaying Call Outbound action form
         $('#callOutBoundActionForm').show();
-        // hiding customer name
+        // hiding non-required fields
+        $('#nonMandatoryEmail').hide();
+        $('#mandatoryEmail').hide();
+        $('#callInBoundActionForm').hide();
         $('#customerName').hide();
-        // hiding email address
-        $('#emailInBoundActionForm').hide();
     }
 
-    // Overdue Notice Action 
+    //  Notice Actions
     if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
@@ -103,8 +114,11 @@ Partial.nextButtonClick = function($event, widget) {
         $('#callOutBoundActionForm').show();
         // displaying customer name
         $('#customerName').show();
-        // displaying Email Inbound action form
-        $('#emailInBoundActionForm').show();
+        // displaying Email address
+        $('#nonMandatoryEmail').show();
+        // hiding non-required fields
+        $('#callInBoundActionForm').hide();
+        $('#mandatoryEmail').hide();
     }
 
 };
