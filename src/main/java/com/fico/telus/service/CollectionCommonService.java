@@ -40,11 +40,11 @@ public class CollectionCommonService {
 			empId = user.getEmplId();
 		}		
 		if (isCreate) {
-			auditInfo.setCreatedDateTime(LocalDateTime.now());
+			auditInfo.setCreatedTimestamp(LocalDateTime.now());
 			auditInfo.setCreatedBy(empId);
 		} else {
 			auditInfo.setLastUpdatedBy(empId);
-			auditInfo.setLastUpdatedDateTime(LocalDateTime.now());
+			auditInfo.setLastUpdatedTimestamp(LocalDateTime.now());
 		}
 		return auditInfo;
 	}

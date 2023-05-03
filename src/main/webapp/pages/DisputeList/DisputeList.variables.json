@@ -1,19 +1,15 @@
 {
   "getAllDisputes" : {
-    "_id" : "wm-getAllDisputes1-wm.ServiceVariable-1681884678513",
+    "_id" : "wm-getAllDisputes1-wm.ServiceVariable-1683113440243",
     "name" : "getAllDisputes",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "history",
-      "value" : true,
-      "type" : "boolean"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
-    "operation" : "getdispute_1",
-    "operationId" : "CollectionEntityController_getdispute_1",
+    "operation" : "getdispute",
+    "operationId" : "CollectionEntityController_getdispute",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],

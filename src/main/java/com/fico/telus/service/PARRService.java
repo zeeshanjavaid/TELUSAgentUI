@@ -17,7 +17,7 @@ import com.fico.pscomponent.util.PropertiesUtil;
 import io.swagger.client.model.AuditInfo;
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
-import io.swagger.client.model.CollectionPaymentArrangementStatus;
+//import io.swagger.client.model.CollectionPaymentArrangementStatus;
 import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.EntityRef;
 
@@ -70,7 +70,7 @@ public class PARRService {
 		if (isParrStubEnabled) {
 		    
 		    EntityRef entityRef =  new EntityRef();
-			entityRef.setId(Integer.valueOf(entityId));
+			entityRef.setId(Long.valueOf(entityId));
 			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			if (collectionPaymentArrangementCreate.getBillingAccountRefs().size() > 0) {
 				logger.info(":::::::BillingAccountRefs :::::::::::: {}", collectionPaymentArrangementCreate.getBillingAccountRefs().get(0).getName());
@@ -83,7 +83,7 @@ public class PARRService {
 			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
 			// true);
 			EntityRef entityRef =  new EntityRef();
-			entityRef.setId(Integer.valueOf(entityId));
+			entityRef.setId(Long.valueOf(entityId));
 			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
@@ -97,13 +97,13 @@ public class PARRService {
 	
 	public CollectionPaymentArrangement updateParrStatus(Integer parrId, String status, String comments) throws Exception {
 		
-		CollectionPaymentArrangementStatus parrStatus = new CollectionPaymentArrangementStatus();
-		List<CollectionPaymentArrangementStatus> statuses = new ArrayList<CollectionPaymentArrangementStatus>();
-		parrStatus.setStatus(status);
-		parrStatus.setAuditInfo(collectionCommonService.UpdateAuditInfo(new AuditInfo(), true));
-		statuses.add(parrStatus);
+	//	CollectionPaymentArrangementStatus parrStatus = new CollectionPaymentArrangementStatus();
+	//	List<CollectionPaymentArrangementStatus> statuses = new ArrayList<CollectionPaymentArrangementStatus>();
+	//	parrStatus.setStatus(status);
+	//	parrStatus.setAuditInfo(collectionCommonService.UpdateAuditInfo(new AuditInfo(), true));
+	//	statuses.add(parrStatus);
 		CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate = new CollectionPaymentArrangementUpdate();
-		collectionPaymentArrangementUpdate.setStatuses(statuses);
+	//	collectionPaymentArrangementUpdate.setStatuses(statuses);
 		collectionPaymentArrangementUpdate.setId(parrId);
 		CollectionPaymentArrangement collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate);
 		return collectionPaymentArrangement;
