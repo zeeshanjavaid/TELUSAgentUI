@@ -174,3 +174,22 @@ function showSelectActionForm() {
     $('#selectActionBtns').show();
     $('#createActionBtns').hide();
 };
+
+function validateEmail(email) {
+    return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+}
+
+Partial.createButtonClick = function($event, widget) {
+    // Email validation for Email inbound action
+    if (Partial.Variables.actionName.dataValue == 'Email Inbound') {
+        if (Partial.Widgets.mandatoryEmail._datavalue == undefined || Partial.Widgets.mandatoryEmail._datavalue == "") {
+            App.Variables.errorMsg.dataSet.dataValue = "Email is mandatory";
+        } else {
+            if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
+                App.Variables.errorMsg.dataSet.dataValue = "";
+            } else {
+                App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email address";
+            }
+        }
+    }
+};

@@ -17,10 +17,10 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog">
+        <wm-gridrow name="gridrow1">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+        </wm-gridrow>
         <wm-layoutgrid name="layoutgrid3" id="selectActionForm">
-            <wm-gridrow name="gridrow1">
-                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
-            </wm-gridrow>
             <wm-gridrow name="gridrow3" id="actionGrid">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn5">
                     <wm-label padding="unset 0.5em 0.5em unset" caption="Action*" name="label1"></wm-label>
@@ -120,7 +120,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-textarea name="Comments" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                    <wm-textarea name="Comment" on-change="CommentsChange($event, widget, newVal, oldVal)" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
