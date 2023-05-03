@@ -40,6 +40,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'High';
+        Partial.Widgets.dueDate.datavalue = createDueDate();
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -60,6 +61,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Widgets.dueDate.datavalue = new Date();
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -84,6 +86,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Widgets.dueDate.datavalue = new Date();
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -105,6 +108,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'Low';
+        Partial.Widgets.dueDate.datavalue = createDueDate();
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -124,6 +128,7 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Widgets.dueDate.datavalue = new Date();
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -173,6 +178,12 @@ function showSelectActionForm() {
     $('#selectActionForm').show();
     $('#selectActionBtns').show();
     $('#createActionBtns').hide();
+};
+
+function createDueDate() {
+    var date = new Date();
+    date.setDate(date.getDate() + 2); // add 2 days
+    return date;
 };
 
 function validateEmail(email) {
