@@ -13,7 +13,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn62">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label1" caption="Entity Name:" height="45px" width="1000px" color="grey" class="lookupLabel" textalign="right"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn63">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn63" class="entityNameValueGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label10" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityName"></wm-label>
                         <wm-popover popoverwidth="150" popoverheight="115" margin="unset 0.5em" name="entityNamePopOver" caption="..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom">
                             <wm-layoutgrid name="layoutgrid1">
@@ -40,7 +40,7 @@
                             </wm-layoutgrid>
                         </wm-popover>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn64">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn64" class="entityIDLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Entity ID:" name="label2" color="grey" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn65">
@@ -52,7 +52,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn67">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label14" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityType"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn68">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn68" class="includedBansLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Included BANs:" name="label4" color="grey" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn69">
@@ -61,7 +61,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn70">
                         <wm-popover popoverwidth="185px" popoverheight="65px" margin="unset 0.5em" name="popover4_Team" caption="Team" color="#800080" class="lookupLabel" content="EntityProfileTeam" popoverarrow="false" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn71" style="text-align: right;">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn71" style="text-align: right;" class="workCategoryLabelGrid">
                         <wm-label padding="unset 0.5em" name="label26" caption="Work Category:" color="grey"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn72">
@@ -77,7 +77,7 @@
                         <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
                             popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn76">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn76" class="collstatusLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn77">
@@ -89,14 +89,14 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn79">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label23" fontsize="12"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn80">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn80" class="custRiskLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Customer Risk:" name="label6" fontsize="12" color="grey" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn81">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label28" fontsize="12" caption="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.risk"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn82"></wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn83" style="text-align: right;">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn83" style="text-align: right;" class="prevEntityLabelGrid">
                         <wm-label padding="unset 0.5em" caption="Previous entity:" color="#800080" name="label45" show="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Open&quot;"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn84">
@@ -113,7 +113,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn50">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label16" fontsize="12" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalOverDue"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn49">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn49" class="manualCollLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label18" caption="Manual Coll:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn48">
@@ -125,7 +125,7 @@
                     <wm-gridcolumn columnwidth="1" name="gridcolumn44">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label24" fontsize="12"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" name="gridcolumn52">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn52" class="custValueLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Customer Value:" name="label9" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn53">

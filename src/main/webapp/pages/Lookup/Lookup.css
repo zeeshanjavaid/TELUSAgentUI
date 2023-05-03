@@ -78,3 +78,34 @@ color: red;
 i.wi-file-text:before {
     content:"";
 }
+
+/*lookup summary small res*/
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+    .entityNameValueGrid {
+        width: 9% !important;
+    }
+    .entityIDLabelGrid {
+        width: 9.5% !important;
+    }
+    .includedBansLabelGrid {
+        width: 10% !important;
+    }
+    .workCategoryLabelGrid {
+        width: 10% !important;
+    }
+    .collstatusLabelGrid {
+        width: 10% !important;
+    }
+    .prevEntityLabelGrid {
+        width: 10% !important;
+    }
+    .manualCollLabelGrid {
+        width: 10% !important;
+    }
+    .custRiskLabelGrid {
+        width: 10% !important;
+    }
+    .custValueLabelGrid {
+        width: 10% !important;
+    }
+}
