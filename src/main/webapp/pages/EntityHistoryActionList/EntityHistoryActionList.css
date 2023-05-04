@@ -12,3 +12,7 @@
 textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
     resize: none;
 }
+
+.borderGrid{
+     border-right: 1px solid #ddd;
+}

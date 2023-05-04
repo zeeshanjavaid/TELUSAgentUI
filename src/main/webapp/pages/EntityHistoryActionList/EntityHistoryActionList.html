@@ -1,5 +1,5 @@
 <wm-partial name="partial1">
-    <wm-layoutgrid name="layoutgrid1" height="300px">
+    <wm-layoutgrid name="layoutgrid1">
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="4" name="gridcolumn1"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn2"></wm-gridcolumn>
@@ -15,6 +15,22 @@
                 </wm-popover>
             </wm-gridcolumn>
         </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-layoutgrid name="layoutgrid2">
+        <wm-gridrow name="gridrow9" style="display: flex;">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn13" style="display: flex;flex-direction: column;width: 7.5%;">
+                <wm-button class="btn-default" caption="To Do" type="button" margin="unset 0.5em" name="button5_1"></wm-button>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display: flex;flex-direction: column;width: 11%;class=" class="borderGrid">
+                <wm-button class="btn-default" caption="Completed" type="button" margin="unset 1.3em unset 0.5em" name="button5_1"></wm-button>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn15" style="display: flex;flex-direction: column;width: 7.5%;" horizontalalign="left" padding="unset unset unset 1em">
+                <wm-icon name="icon1" iconclass="fico-icon-filter fa-" iconsize="1.5em" on-click="openFilter"></wm-icon>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-layoutgrid id="openFilter" name="layoutgrid4" style="display: none;">
+
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog" on-opened="SelectActionDialogOpened($event, widget)">
         <wm-gridrow name="gridrow1">
