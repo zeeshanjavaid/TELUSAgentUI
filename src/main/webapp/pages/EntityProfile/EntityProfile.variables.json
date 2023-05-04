@@ -381,7 +381,7 @@
         "columnName" : "notes",
         "isPrimaryKey" : false,
         "notNull" : false,
-        "length" : 255,
+        "length" : 256,
         "precision" : 0,
         "generator" : "assigned",
         "isRelated" : false,

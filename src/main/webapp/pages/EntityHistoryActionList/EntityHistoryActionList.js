@@ -25,6 +25,7 @@ Partial.onReady = function() {
 Partial.CreateActionLinkClick = function($event, widget) {
     Partial.Widgets.CreateActionPopOver.hidePopover();
     Partial.Widgets.SelectActionDialog.open();
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
 };
 
 

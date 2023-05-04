@@ -322,3 +322,62 @@
 .wm-app textarea.form-control.app-textarea.ng-valid.ng-touched.ng-dirty {
     resize: none;
 }
+
+
+/*styling added for pagination for User partial page*/
+
+.wm-app app-partial-userpartial .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 20px;
+}
+
+.wm-app app-partial-userpartial button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: -8px;
+    width: unset;
+}
+
+
+/*styling added for pagination for Roles partial page*/
+
+.wm-app app-partial-rolespartial_copy .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 4px;
+    margin-top: 20px;
+}
+
+.wm-app app-partial-rolespartial_copy button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 9px;
+    width: unset;
+}
+
+
+/*styling added for pagination for Teams partial page*/
+
+.wm-app app-partial-teamspartial_copy .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 4px;
+    margin-top: 20px;
+}
+
+.wm-app app-partial-teamspartial_copy button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 9px;
+    width: unset;
+}
+
+
+/*styling added for pagination for lookup entity page*/
+
+.wm-app app-page-lookupentity .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 18px;
+    margin-top: 20px;
+}
+
+.wm-app app-page-lookupentity button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}

@@ -229,7 +229,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn57">
                     <wm-composite name="composite8">
                         <wm-container class="col-md-9" name="container13" width="20%">
-                            <wm-number textalign="right" name="diputeAmtUpdate" placeholder="" datavalue="bind:Variables.getDisputeDetails.dataSet.amount"></wm-number>
+                            <wm-number textalign="left" name="diputeAmtUpdate" placeholder="" datavalue="bind:Variables.getDisputeDetails.dataSet.amount"></wm-number>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -243,7 +243,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn65_1">
                     <wm-composite name="composite9" horizontalalign="left">
                         <wm-container class="col-md-9" name="container14" width="20%">
-                            <wm-number textalign="right" name="AdjustmentToDateUpdate" placeholder="" datavalue="bind:Variables.getDisputeDetails.dataSet.adjustmentToDate"></wm-number>
+                            <wm-number textalign="left" name="AdjustmentToDateUpdate" placeholder="" datavalue="bind:Variables.getDisputeDetails.dataSet.adjustmentToDate"></wm-number>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -340,11 +340,11 @@
             <wm-gridrow name="gridrow39">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
                     <wm-container name="container21" margin="-15px 0 0 60px">
-                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.disputeHistoryVar.dataSet" width="98%">
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.disputeHistoryVar.dataSet" width="98%" navigationalign="right">
                             <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="comments" caption="Comments" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="comments" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>

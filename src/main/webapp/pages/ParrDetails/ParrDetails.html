@@ -61,9 +61,7 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel6">
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:(Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate) * 100 "></wm-label>
                 </wm-gridcolumn>
-                <!--<wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>-->
-            </wm-gridrow>
+                <!--<wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>--></wm-gridrow>
             <wm-gridrow margin="0 0 15px -3px" name="gridrow5" class="gridrow5">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn74" class="parrlabel7">
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="Recurrence:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
@@ -71,7 +69,6 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75" class="parrValueLabel7">
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.recurrence"></wm-label>
                 </wm-gridcolumn>
-
                 <wm-gridcolumn columnwidth="1" name="gridcolumn78" width="6%" class="parrlabel8">
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label21" caption="Evaluation:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
@@ -82,8 +79,8 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75" padding="0.5em 0.5em unset 0.5em">
-                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs" navigation="None"
-                        nodatamessage="">
+                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs"
+                        navigation="None" nodatamessage="">
                         <wm-listtemplate layout="inline" name="listtemplate3">
                             <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
                                 <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
@@ -110,13 +107,13 @@
                 <!--<wm-gridcolumn columnwidth="1" name="gridcolumn80"></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn81"></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn77"></wm-gridcolumn>--></wm-gridrow>
         </wm-layoutgrid>
     </wm-layoutgrid>
-    <wm-panel subheading="<h4 class=panelSubHeading><i  class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Installment Schedule</h4>" autoclose="outsideClick" title="" collapsible="true" expanded="true"
-        on-expand="installmentScheduleExpand($event, widget)" name="installmentSchedule" on-collapse="installmentScheduleCollapse($event, widget)">
+    <wm-panel subheading="<h4 class=panelSubHeading><i  class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Installment Schedule</h4>" autoclose="outsideClick" title="" collapsible="true"
+        expanded="true" on-expand="installmentScheduleExpand($event, widget)" name="installmentSchedule" on-collapse="installmentScheduleCollapse($event, widget)">
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="left" margin="0 0 0 60px">
                     <wm-container name="container24_1" padding="1.5em unset unset unset">
-                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic">
+                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic" navigationalign="right">
                             <wm-table-column binding="sequenceId" caption="Installment ID" width="25%" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" width="25%" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -134,11 +131,11 @@
             <wm-gridrow name="gridrow13">
                 <wm-gridcolumn columnwidth="10" name="gridcolumn30" margin="20px 0 0 60px">
                     <wm-container name="container25_1">
-                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.parrHistoryVar.dataSet" width="98%">
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.parrHistoryVar.dataSet" width="98%" navigationalign="right">
                             <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="comments" caption="Comments" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="comments" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>
@@ -165,7 +162,8 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label21" caption="PARR Amt:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn79">
-                    <wm-number padding="0.5em 0.5em unset 0.5em" textalign="left" name="ParrAmount" margin="-14px 0 0 0" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)" placeholder=""></wm-number>
+                    <wm-number padding="0.5em 0.5em unset 0.5em" textalign="left" name="ParrAmount" margin="-14px 0 0 0" width="70%" datavalue="bind:Variables.getPaymentArrangement.dataSet.amount" on-change="RenegotiateParrAmountChange($event, widget, newVal, oldVal)"
+                        placeholder=""></wm-number>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77"></wm-gridcolumn>
@@ -175,8 +173,8 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel installmentBANlabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn75" padding="0.5em 0.5em unset unset">
-                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs" navigation="None"
-                        nodatamessage="">
+                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement.dataSet.billingAccountRefs"
+                        navigation="None" nodatamessage="">
                         <wm-listtemplate layout="inline" name="listtemplate3">
                             <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
                                 <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
@@ -205,15 +203,16 @@
             <wm-layoutgrid name="layoutgrid16">
                 <wm-gridrow name="gridrow24">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn51">
-                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Basic" class="getInstallment-reneTable" on-rowupdate="getInstallmentScheduleTableRowupdate($event, widget, row)" showrowindex="false"
-                            on-rowinsert="getInstallmentScheduleTableRowinsert($event, widget, row)">
-                            <wm-table-column binding="sequenceId" caption="Installment ID" textalignment="left" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-                            <wm-table-column binding="date" caption="Date" textalignment="left" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true" editdatepattern="MM/dd/yyyy"
-                                readonly="false"></wm-table-column>
-                            <wm-table-column binding="amount" caption="Installment Amt" textalignment="left" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Classic" class="getInstallment-reneTable" on-rowupdate="getInstallmentScheduleTableRowupdate($event, widget, row)"
+                            showrowindex="false" on-rowinsert="getInstallmentScheduleTableRowinsert($event, widget, row)" navigationalign="right">
+                            <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true"
+                                editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                             <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                            <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-default" iconclass="wi wi-plus" title="New" action="addNewRow();getInstallmentScheduleTable_addNewRowAction($event)" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                            <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-default" iconclass="wi wi-plus" title="New" action="addNewRow();getInstallmentScheduleTable_addNewRowAction($event)" shortcutkey=""
+                                disabled="false" widget-type="button" position="header"></wm-table-action>
                             <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                         </wm-table>
                     </wm-gridcolumn>
