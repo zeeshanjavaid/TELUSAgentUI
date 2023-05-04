@@ -323,6 +323,29 @@
     resize: none;
 }
 
+.wm-app .app-date .bs-calendar-container .bs-datepicker-head {
+    background-color: #4B286D;
+}
+
+.wm-app .app-date thead,
+.wm-app .app-datetime thead {
+    background-color: #4B286D;
+}
+
+.wm-app i.app-icon.fico-icon-calendar: hover {
+    color: #4B286D;
+}
+
+.app-date .bs-datepicker-body table td span.selected,
+.app-date .bs-datepicker-body table td span[class*=select-]::after {
+    background-color: #4B286D;
+    color: white;
+}
+
+.wm-app span.current-date.text-info {
+    color: #4B286D;
+}
+
 
 /*styling added for pagination for User partial page*/
 
@@ -379,5 +402,20 @@
     margin: -27px 0 0 0;
     float: left;
     right: 11px;
+    width: unset;
+}
+
+
+/*styling added for pagination for Create PARR partial page*/
+
+.wm-app app-partial-createparr .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 1px;
+    margin-top: 3px;
+}
+
+.wm-app app-partial-createparr button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 12px;
     width: unset;
 }
