@@ -22,10 +22,12 @@ import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 import com.wavemaker.tools.api.core.annotations.WMAccessVisibility;
 import com.wavemaker.tools.api.core.models.AccessSpecifier;
 
+import io.swagger.client.model.CollectionActivityLog;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import io.swagger.client.model.CollectionBillingAccountRefCreate;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionTreatment;
+import io.swagger.client.model.CollectionTreatmentStep;
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -69,6 +71,51 @@ public class CollectionTreatmentService {
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionTreatment updateCollectionTreatment(@PathVariable("id") String id, CollectionTreatment  collectionTreatment) throws Exception {
         return collectionTreatment;
+    }
+    
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public List<CollectionTreatmentStep> getCollectionTreatmentStep(Integer collectionTreatmentStepId, Integer collectionEntityId,String type,String createdDate,String createdBy, String status,String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception  {
+    	return objectMapper.readValue("[{\"id\":100102,\"collectionTreatment\":{\"id\":4001,\"name\":\"Treatment for Air Canada\",\"href\":\"href\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"CollectionTreatment\",\"@schemaLocation\":\"href\"},\"stepDate\":\"2023-03-04\",\"stepTypeCode\":\"SUS\",\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13 14:30:45\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30 14:30:45\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"href\"},\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"manualStepIndicator\":false,\"status\":\"PENDING\",\"languageCode\":\"en\",\"assignedAgentId\":\"parry.sound\",\"priority\":\"TOP\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"Offshore\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"href\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"href\"}],\"comment\":\"This is a collection treatment step\",\"href\":\"href\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"href\"}]",
+    	         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionTreatmentStep.class));
+    }
+    
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public CollectionTreatmentStep getCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey) throws Exception {
+    	return objectMapper.readValue("{\"id\":100102,\"collectionTreatment\":{\"id\":4001,\"name\":\"Treatment for Air Canada\",\"href\":\"href\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"CollectionTreatment\",\"@schemaLocation\":\"href\"},\"stepDate\":\"2023-03-04\",\"stepTypeCode\":\"SUS\",\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13 14:30:45\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30 14:30:45\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"href\"},\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"manualStepIndicator\":false,\"status\":\"PENDING\",\"languageCode\":\"en\",\"assignedAgentId\":\"parry.sound\",\"priority\":\"TOP\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"Offshore\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"href\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"href\"}],\"comment\":\"This is a collection treatment step\",\"href\":\"href\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"href\"}",CollectionTreatmentStep.class);
+    }
+    
+    public CollectionTreatmentStep  addCollectionTreatmentStep(CollectionTreatmentStep collectionTreatmentStep ) throws Exception  {
+        return collectionTreatmentStep;
+    }
+    
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey, CollectionTreatmentStep  collectionTreatmentStep) throws Exception {
+        return collectionTreatmentStep;
+    }
+    
+    
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public List<CollectionActivityLog> getCollectionActivityLog(Integer collectionEntityId, String type, String category, String createdDate,String createdBy, String status, String assignedTo, String assignedTeam, String completionDate, String fields, Integer offset, Integer limit, Boolean history) throws Exception  {
+    	return objectMapper.readValue("[{\"id\":678532,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13 14:30:45\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30 14:30:45\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityCompletionTimestamp\":\"2023-03-30 14:30:45\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30 14:30:45\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"SUSPEND\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}]",
+    	         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionActivityLog.class));
+    }
+    
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public CollectionActivityLog getCollectionActivityLog(@PathVariable("id") String id, String partitionKey) throws Exception {
+    	return objectMapper.readValue("{\"id\":678532,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13 14:30:45\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30 14:30:45\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"schemaLocation\"},\"collectionActivityCompletionTimestamp\":\"2023-03-30 14:30:45\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30 14:30:45\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"SUSPEND\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"schemaLocation\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"schemaLocation\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}",CollectionActivityLog.class);
+    }
+    
+    public CollectionActivityLog  addCollectionActivityLog(CollectionActivityLog collectionActivityLog ) throws Exception  {
+        return collectionActivityLog;
+    }
+    
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public CollectionActivityLog updateCollectionActivityLog(@PathVariable("id") String id, CollectionActivityLog  collectionActivityLog) throws Exception {
+        return collectionActivityLog;
     }
 
 }
