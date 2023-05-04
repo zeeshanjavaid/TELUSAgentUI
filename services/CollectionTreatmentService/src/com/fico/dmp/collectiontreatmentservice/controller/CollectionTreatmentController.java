@@ -4,6 +4,12 @@
 package com.fico.dmp.collectiontreatmentservice.controller;
 
 import com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService;
+import io.swagger.client.model.CollectionTreatment;
+import java.lang.Exception;
+import java.lang.String;
+import java.lang.Integer;
+import java.lang.Boolean;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +22,27 @@ import com.wavemaker.tools.api.core.models.AccessSpecifier;
 @RestController
 @RequestMapping(value = "/collectionTreatment")
 public class CollectionTreatmentController {
+
+    @Autowired
+    private CollectionTreatmentService collectionTreatmentService;
+
+    @RequestMapping(value = "/collectionTreatment", method = RequestMethod.POST)
+    public CollectionTreatment addCollectionTreatment(@RequestBody CollectionTreatment collectionTreatment) throws Exception {
+        return collectionTreatmentService.addCollectionTreatment(collectionTreatment);
+    }
+
+    @RequestMapping(value = "/collectionTreatment", method = RequestMethod.GET)
+    public CollectionTreatment getCollectionTreatment(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
+        return collectionTreatmentService.getCollectionTreatment(id, partitionKey);
+    }
+
+    @RequestMapping(value = "/collectionTreatment_1", method = RequestMethod.GET)
+    public List<CollectionTreatment> getCollectionTreatment_1(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionTreatmentService.getCollectionTreatment(collectionEntityId, fields, offset, limit, history);
+    }
+
+    @RequestMapping(value = "/collectionTreatment", method = RequestMethod.PUT)
+    public CollectionTreatment updateCollectionTreatment(@RequestParam(value = "id", required = false) String id, @RequestBody CollectionTreatment collectionTreatment) throws Exception {
+        return collectionTreatmentService.updateCollectionTreatment(id, collectionTreatment);
+    }
 }
