@@ -196,6 +196,14 @@ function validateEmail(email) {
 }
 
 Partial.createButtonClick = function($event, widget) {
+
+    // Status and Priority fields are mandatory for all the create actions
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    }
+
     // Email validation for Email inbound action
     if (Partial.Variables.actionName.dataValue == 'Email Inbound') {
         if (Partial.Widgets.mandatoryEmail._datavalue == undefined || Partial.Widgets.mandatoryEmail._datavalue == "") {
@@ -208,4 +216,5 @@ Partial.createButtonClick = function($event, widget) {
             }
         }
     }
+
 };
