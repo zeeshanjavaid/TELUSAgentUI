@@ -23,6 +23,7 @@ Partial.onReady = function() {
 };
 
 Partial.CreateActionLinkClick = function($event, widget) {
+
     Partial.Widgets.CreateActionPopOver.hidePopover();
     Partial.Widgets.SelectActionDialog.open();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -208,14 +209,25 @@ Partial.createButtonClick = function($event, widget) {
     // Email validation for Email inbound action
     if (Partial.Variables.actionName.dataValue == 'Email Inbound') {
         if (Partial.Widgets.mandatoryEmail._datavalue == undefined || Partial.Widgets.mandatoryEmail._datavalue == "") {
-            App.Variables.errorMsg.dataSet.dataValue = "Email is mandatory";
+            App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
         } else {
             if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
                 App.Variables.errorMsg.dataSet.dataValue = "";
             } else {
-                App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email address";
+                App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
             }
         }
     }
 
+    Partial.Widgets.SelectActionDialog.close();
+};
+
+// On opening of select action dialog, we are hiding the fields present in create action dialog
+Partial.SelectActionDialogOpened = function($event, widget) {
+    $('#callOutBoundActionForm').hide();
+    $('#customerName').hide();
+    $('#callInBoundActionForm').hide();
+    $('#nonMandatoryEmail').hide();
+    $('#mandatoryEmail').hide();
+    $('#createActionBtns').hide();
 };
