@@ -29,9 +29,7 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid id="openFilter" name="layoutgrid4" style="display: none;">
-
-    </wm-layoutgrid>
+    <wm-layoutgrid id="openFilter" name="layoutgrid4" style="display: none;"></wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog" on-opened="SelectActionDialogOpened($event, widget)">
         <wm-gridrow name="gridrow1">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
@@ -149,8 +147,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                        on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue"
+                        displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -170,8 +168,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue" displayfield="dataValue"
-                        on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue"
+                        displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -194,7 +192,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" datafield="teamId" placeholder="Select" displayfield="teamName" on-change="prioritySelect($event, widget, newVal, oldVal)" dataset="bind:Variables.getAllTeamList.dataSet"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
