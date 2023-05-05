@@ -16,3 +16,7 @@ textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
 .borderGrid{
      border-right: 1px solid #ddd;
 }
+
+.filterIcon {
+    cursor: pointer;
+}
