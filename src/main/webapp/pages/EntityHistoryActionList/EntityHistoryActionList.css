@@ -19,4 +19,19 @@ textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
 
 .filterIcon {
     cursor: pointer;
+    color: #4B286D;
+    margin: 4px;
+}
+
+.actionlabel {
+    margin: 5px 0 15px 9px !important;
+}
+
+.filterLabel {
+    margin-bottom: -5px;
+}
+
+.filterButtons {
+    text-align: right;
+    margin: -50px 0 10px 0;
 }

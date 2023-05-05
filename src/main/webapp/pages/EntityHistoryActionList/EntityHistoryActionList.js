@@ -22,6 +22,10 @@ Partial.onReady = function() {
      */
 };
 
+function messageTimeout() {
+    App.Variables.successMessage.dataSet.dataValue = null;
+}
+
 Partial.CreateActionLinkClick = function($event, widget) {
 
     Partial.Widgets.CreateActionPopOver.hidePopover();
@@ -220,6 +224,8 @@ Partial.createButtonClick = function($event, widget) {
     }
 
     Partial.Widgets.SelectActionDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = "Action created successfully."
+    setTimeout(messageTimeout, 10000);
 };
 
 // On opening of select action dialog, we are hiding the fields present in create action dialog
@@ -232,12 +238,21 @@ Partial.SelectActionDialogOpened = function($event, widget) {
     $('#createActionBtns').hide();
 };
 
+// function added to toggle between show and hide the filter grid on click of filter icon
 Partial.openFilterGrid = function($event, widget) {
-    debugger;
-    var x = document.getElementById("filterGrid");
-    if (x.style.display === "none") {
-        x.style.display = "block";
+    var filterGrid = document.getElementById("filterGrid");
+    if (filterGrid.style.display === "none") {
+        filterGrid.style.display = "block";
     } else {
-        x.style.display = "none";
+        filterGrid.style.display = "none";
     }
 };
+
+// function added to clear all the fields in the filter
+Partial.clearFilterFields = function($event, widget) {
+
+}
+// function added to apply filter to the table
+Partial.applyFilter = function($event, widget) {
+
+}
