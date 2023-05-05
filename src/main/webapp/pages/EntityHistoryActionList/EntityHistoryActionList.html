@@ -24,61 +24,54 @@
     <wm-layoutgrid name="layoutgrid2" id="buttonsLayoutGrid" margin="0 0 10px 10px">
         <wm-gridrow name="gridrow9" style="display: flex;">
             <wm-gridcolumn columnwidth="4" name="gridcolumn13" style="display: flex;flex-direction: column;width: 7.5%;">
-                <wm-button class="btn-default" caption="To Do" type="button" margin="unset 0.5em" name="button5_1"></wm-button>
+                <wm-button class="btn-default" id="toDoBtn" caption="To Do" type="button" margin="unset 0.5em" name="button5_1" on-click="toDoButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display: flex;flex-direction: column;width: 11%;class=" class="borderGrid">
-                <wm-button class="btn-default" caption="Completed" type="button" margin="unset 1.3em unset 0.5em" name="button5_1"></wm-button>
+                <wm-button class="btn-default" id="completedBtn" caption="Completed" type="button" margin="unset 1.3em unset 0.5em" name="button5_1" on-click="completedButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn15" style="display: flex;flex-direction: column;width: 7.5%;" horizontalalign="left" padding="unset unset unset 1em">
                 <wm-icon name="icon1" iconclass="fico-icon-filter fa-" iconsize="1.5em" on-click="openFilterGrid()" class="filterIcon"></wm-icon>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid id="filterGrid" name="layoutgrid4" style="display: none;" margin="0 0 10px 16px" width="98%">
+    <wm-layoutgrid id="filterGrid" name="layoutgrid4" margin="0 0 10px 16px" width="98%">
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn8_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Category" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn9_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Type" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="typeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" id="creationDateGrid" name="gridcolumn10_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Creation date" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-date name="dueDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                <wm-date name="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: none; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" id="completionDateGrid" name="gridcolumn11_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Completion Date" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-date name="dueDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                <wm-date name="completionDate" placeholder="" margin="5px unset unset unset"></wm-date>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn12_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Status" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="statusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn13_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Created By" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedTeamSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllTeamList.dataSet" datafield="teamId" placeholder="Select" displayfield="teamName" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
-        </wm-gridrow>
-        <wm-gridrow name="gridrow26" id="filterButtonRow">
-            <wm-gridcolumn columnwidth="12" name="gridcolumn56" class="filterButtons" padding="unset 1.4em unset unset">
+            <wm-gridcolumn columnwidth="5" name="gridcolumn16_1"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="10%" padding="1.5em 0 0 0">
                 <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFields()" name="button1" margin="0 10px 0 0"></wm-button>
                 <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFilter($event, widget)" name="button3"></wm-button>
             </wm-gridcolumn>
@@ -261,7 +254,7 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%">
+    <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%" id="toDoTableGrid">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet" navigation="None">
@@ -277,4 +270,5 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
+    <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid"><span>Completed table</span></wm-layoutgrid>
 </wm-partial>

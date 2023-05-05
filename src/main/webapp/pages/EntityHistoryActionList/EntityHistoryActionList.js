@@ -20,6 +20,12 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    debugger;
+    $('#filterGrid').hide();
+    $('#completionDateGrid').hide();
+    $('#completedTableGrid').hide();
+    $("#toDoBtn").css("background-color", "#4B286D");
+    $("#toDoBtn").css("color", "white");
 };
 
 function messageTimeout() {
@@ -240,19 +246,64 @@ Partial.SelectActionDialogOpened = function($event, widget) {
 
 // function added to toggle between show and hide the filter grid on click of filter icon
 Partial.openFilterGrid = function($event, widget) {
+    debugger;
     var filterGrid = document.getElementById("filterGrid");
     if (filterGrid.style.display === "none") {
         filterGrid.style.display = "block";
     } else {
         filterGrid.style.display = "none";
     }
+
+    // to display completion date filter only for completed table
+    var completedTable = document.getElementById("completedTableGrid");
+    var toDoTable = document.getElementById("toDoTableGrid");
+    if (completedTable.style.display === "none") {
+        debugger;
+        $('#completionDateGrid').hide();
+    } else if (toDoTable.style.display === "none") {
+        debugger;
+        $('#completionDateGrid').show();
+    }
 };
 
 // function added to clear all the fields in the filter
 Partial.clearFilterFields = function($event, widget) {
-
+    Partial.Widgets.categorySelect.datavalue = "";
+    Partial.Widgets.typeSelect.datavalue = "";
+    Partial.Widgets.creationDate.datavalue = "";
+    Partial.Widgets.completionDate.datavalue = "";
+    Partial.Widgets.statusSelect.datavalue = "";
+    Partial.Widgets.createdBySelect.datavalue = "";
+    Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
+    Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
 }
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
 
 }
+
+Partial.toDoButtonClick = function($event, widget) {
+    // to make buttons selected
+    $("#toDoBtn").css("background-color", "#4B286D");
+    $("#toDoBtn").css("color", "white");
+    $("#completedBtn").css("background-color", "white");
+    $("#completedBtn").css("color", "#4B286D");
+
+    // display TO-DO table and hide Completed table
+    $('#toDoTableGrid').show();
+    $('#completedTableGrid').hide();
+    $('#completionDateGrid').hide();
+};
+
+Partial.completedButtonClick = function($event, widget) {
+    // to make buttons selected
+    $("#completedBtn").css("background-color", "#4B286D");
+    $("#completedBtn").css("color", "white");
+    $("#toDoBtn").css("background-color", "white");
+    $("#toDoBtn").css("color", "#4B286D");
+
+    // display Completed table and hide TO-DO table
+    $('#completedTableGrid').show();
+    $('#completionDateGrid').show();
+    $('#toDoTableGrid').hide();
+};
