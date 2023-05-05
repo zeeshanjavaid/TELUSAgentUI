@@ -48,13 +48,11 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
                 <wm-label padding="unset 0.5em unset unset" caption="Creation date" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-date name="dueDate" placeholder="" margin="5px unset unset unset"></wm-date>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%">
+            <wm-gridcolumn columnwidth="1" style="display: none; flex-direction: column;" width="12%">
                 <wm-label padding="unset 0.5em unset unset" caption="Completion Date" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="80%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                    on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-date name="dueDate" placeholder="" margin="5px unset unset unset"></wm-date>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
