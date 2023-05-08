@@ -194,8 +194,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" displayfield="dataValue"
-                        on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue"
+                        displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -215,8 +215,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue" displayfield="dataValue"
-                        on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue"
+                        displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -229,7 +229,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="" displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="" on-change="prioritySelect($event, widget, newVal, oldVal)" dataset="bind:Variables.getAllActiveUserList.dataSet"
+                        displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">

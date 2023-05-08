@@ -936,6 +936,168 @@
       } ]
     } ]
   }, {
+    "serviceId" : "UserManagementService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "description" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "name" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 171,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "executeGetPermissionByUserId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 119,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 160,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "importUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 190,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "updateUserLimitAndTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 294,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "setupSuperUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 283,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "isSystemOnBootstrapStatus",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 133,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUserId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 211,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getUserOrDefaultTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 229,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "refreshRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 111,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUserRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 149,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "activateDeactivateUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 137,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getAllUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 115,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "createSystemRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 103,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "deletUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 107,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getAllRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 95,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "createUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 316,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 99,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "updateUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 253,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "DomainValueRelatedBS",
     "type" : "JAVA_SERVICE",
     "url" : null,

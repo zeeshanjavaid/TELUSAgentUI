@@ -747,7 +747,7 @@
     "maxResults" : 20,
     "onSuccess" : "getLoggedInUserDetailsonSuccess(variable, data, options)",
     "onError" : "getLoggedInUserDetailsonError(variable, data, options)",
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

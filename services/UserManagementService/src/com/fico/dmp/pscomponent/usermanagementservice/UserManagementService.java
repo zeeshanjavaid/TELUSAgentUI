@@ -124,6 +124,7 @@ public class UserManagementService {
         userDTO.setStatus("Active");
         userDTO.setRole("Role");
         userDTO.setActive(true);
+        userDTO.setEmplId(userManagementHandler.getLoggedInUser().getEmplId());
         return userDTO;
 
     }

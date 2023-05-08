@@ -49,11 +49,13 @@ Partial.nextButtonClick = function($event, widget) {
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
+        debugger;
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'High';
         Partial.Widgets.dueDate.datavalue = createDueDate();
-        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
