@@ -56,6 +56,11 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.dueDate.datavalue = createDueDate();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form

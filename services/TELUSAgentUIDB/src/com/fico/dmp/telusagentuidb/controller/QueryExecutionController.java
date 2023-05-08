@@ -416,6 +416,16 @@ public class QueryExecutionController {
         return new IntegerWrapper(_result);
     }
 
+    @RequestMapping(value = "/queries/getLoggedInUserTeam", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "This query is used to retrieve the logged in user team Id")
+    public GetLoggedInUserTeamResponse executeGetLoggedInUserTeam(@RequestParam(value = "userId") Integer userId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getLoggedInUserTeam");
+        GetLoggedInUserTeamResponse _result = queryService.executeGetLoggedInUserTeam(userId);
+        LOGGER.debug("got the result for named query: getLoggedInUserTeam, result:{}", _result);
+        return _result;
+    }
+
     @RequestMapping(value = "/queries/getPermissionByUserId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getPermissionByUserId")

@@ -341,6 +341,16 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public GetLoggedInUserTeamResponse executeGetLoggedInUserTeam(Integer userId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        return queryExecutor.executeNamedQuery("getLoggedInUserTeam", params, GetLoggedInUserTeamResponse.class);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<GetPermissionByUserIdResponse> executeGetPermissionByUserId(String userId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 

@@ -430,6 +430,20 @@ ORDER BY usr.firstName asc) wmTempTable
     <query-param name="GroupId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getLoggedInUserTeam">
+        <![CDATA[
+        select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))
+        ]]>
+    <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getLoggedInUserTeam__count">
+        <![CDATA[
+        select count(*) from (select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))) wmTempTable
+        ]]>
+    <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
     <sql-query name="getPermissionByUserId">
         <![CDATA[
         select Distinct Name from PERMISSION p join ROLE_PERMISSION rp on rp.PermissionId = p.Id left join ROLE r on r.Id = rp.RoleId left join USER_ROLE ur on ur.RoleId = r.Id left join USER u on u.Id = ur.UserId where u.userId = :UserId
