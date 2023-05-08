@@ -146,6 +146,33 @@
     "isDefault" : true,
     "controller" : "DmpS3File"
   },
+  "DmpS3FileServiceUploadFile2" : {
+    "_id" : "wm-DmpS3FileServiceUploadFile2-wm.ServiceVariable-1683539924882",
+    "name" : "DmpS3FileServiceUploadFile2",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "files",
+      "value" : "bind:Widgets.fileupload2.selectedFiles",
+      "type" : "java.lang.String"
+    } ],
+    "type" : "com.fico.dmp.dmps3fileservice.DmpS3FileService.FileUploadResponse",
+    "service" : "DmpS3FileService",
+    "operation" : "uploadFile",
+    "operationId" : "DmpS3FileController_uploadFile",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "DmpS3File"
+  },
   "getDocumentByDocId" : {
     "_id" : "wm-getDocumentByDocId-wm.ServiceVariable-1682500255458",
     "name" : "getDocumentByDocId",

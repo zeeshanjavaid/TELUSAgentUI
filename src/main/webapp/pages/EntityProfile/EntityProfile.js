@@ -26,10 +26,8 @@ Partial.onReady = function() {
      */
 };
 Partial.button1Click = function($event, widget) {
-    debugger;
-
     Partial.Widgets.createNoteButton.hidePopover();
-
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Widgets.CreateUserNotesdialog1.open();
 
 
@@ -76,104 +74,100 @@ Partial.button3Click1 = function($event, widget) {
 
     //for file upload
     debugger;
+
     documentId = "";
     const message = document.getElementById("p01");
     message.innerHTML = "";
 
-    // if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-    //     try {
-    //         isError = true;
-    //         throw "Please enter the note"
-    //     } catch (err) {
-    //         message.innerHTML = err;
-    //     }
-    // } else {
+
     if (Partial.Widgets.fileupload1.selectedFiles != undefined) {
         var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
 
-        //   var checkDocument = Partial.Variables.checkIfDocIsPresent.dataSet.length;
-
-        //    if (checkDocument == 0) {
-
         var docName = Partial.Widgets.fileupload1.selectedFiles[0].name;
 
-        Partial.Variables.saveDocument.setInput({
+        var docSize = Partial.Widgets.fileupload1.selectedFiles[0].size;
 
-            'documentName': docName,
-            'document': Partial.Widgets.fileupload1.selectedFiles[0]
-        });
+        if (Partial.Widgets.textarea1.datavalue != undefined) {
+            //Restricting it to 500KB
+            if (docSize <= 512000) {
+
+                Partial.Variables.saveDocument.setInput({
+                    'documentName': docName,
+                    'document': Partial.Widgets.fileupload1.selectedFiles[0]
+                });
 
 
 
-        Partial.Variables.saveDocument.invoke({},
-            function(data) {
-                // Success Callback
-                debugger;
-                console.log("success", data);
-                documentId = data.id;
+                Partial.Variables.saveDocument.invoke({},
+                    function(data) {
+                        // Success Callback
+                        debugger;
+                        console.log("success", data);
+                        documentId = data.id;
 
-                //for note save
-                const message = document.getElementById("p01");
-                message.innerHTML = "";
+                        //for note save
+                        const message = document.getElementById("p01");
+                        message.innerHTML = "";
 
-                if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-                    try {
-                        isError = true;
-                        throw "Please enter the note"
-                    } catch (err) {
-                        message.innerHTML = err;
-                    }
-                } else {
-                    var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
-                    var note = Partial.Widgets.textarea1.datavalue;
-                    var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
+                        if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
+                            try {
+                                isError = true;
+                                throw "Please enter the note"
+                            } catch (err) {
+                                message.innerHTML = err;
+                            }
+                        } else {
+                            var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
+                            var note = Partial.Widgets.textarea1.datavalue;
+                            var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
 
-                    Partial.Variables.saveNote.setInput({
+                            Partial.Variables.saveNote.setInput({
 
-                        'entityId': entityId,
-                        'banId': banId,
-                        'notes': note,
-                        'docId': documentId
+                                'entityId': entityId,
+                                'banId': banId,
+                                'notes': note,
+                                'docId': documentId
+
+                            });
+
+
+
+                            Partial.Variables.saveNote.invoke({},
+                                function(data) {
+                                    // Success Callback
+                                    debugger;
+                                    console.log("success", data);
+                                    documentId = "";
+                                    // App.pageRefresh();
+                                    Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
+                                    Partial.Variables.errorMsg.dataSet.dataValue = "";
+                                    Partial.Widgets.CreateUserNotesdialog1.close();;
+                                    window.location.reload();
+
+                                },
+                                function(error) {
+                                    // Error Callback
+                                    console.log("error", error)
+
+                                });
+
+                        }
+
+
+
+                    },
+                    function(error) {
+                        // Error Callback
+                        console.log("error", error)
 
                     });
 
-
-
-                    Partial.Variables.saveNote.invoke({},
-                        function(data) {
-                            // Success Callback
-                            debugger;
-                            console.log("success", data);
-                            documentId = "";
-                            // App.pageRefresh();
-                            Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
-
-                            Partial.Widgets.CreateUserNotesdialog1.close();;
-                            window.location.reload();
-
-                        },
-                        function(error) {
-                            // Error Callback
-                            console.log("error", error)
-
-                        });
-
-                }
-
-
-
-            },
-            function(error) {
-                // Error Callback
-                console.log("error", error)
-
-            });
-
-        //   }
-        // else {
-        //     const message1 = document.getElementById("p02");
-        //     message1.innerHTML = "Attachment already exists with entityId: " + entityId;
-        // }
+            } else {
+                Partial.Variables.errorMsg.dataSet.dataValue = "Attached file is greater than the specified limit. Please upload a lesser one";
+            }
+        } else {
+            Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
+        }
     } else {
 
 
@@ -182,13 +176,8 @@ Partial.button3Click1 = function($event, widget) {
         message.innerHTML = "";
 
         if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-            //    try {
-
             Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
-            /*throw "Please enter the note"*/
-            // } catch (err) {
-            //     message.innerHTML = err;
-            // }
+
         } else {
             var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
             var note = Partial.Widgets.textarea1.datavalue;
@@ -212,6 +201,7 @@ Partial.button3Click1 = function($event, widget) {
                     console.log("success", data);
                     documentId = "";
                     // App.pageRefresh();
+                    Partial.Variables.errorMsg.dataSet.dataValue = "";
                     Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
 
                     Partial.Widgets.CreateUserNotesdialog1.close();;
