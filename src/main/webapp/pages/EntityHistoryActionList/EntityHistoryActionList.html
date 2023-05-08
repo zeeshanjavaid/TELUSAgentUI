@@ -259,14 +259,14 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet" navigation="None">
-                    <wm-table-column binding="type" caption="Type" type="string" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" type="datetime" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="auditInfo.createdBy" caption="Created By" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedAgentId" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="auditInfo.lastUpdatedTimestamp" caption="Due Date" type="datetime" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="priority" caption="Priority" type="string" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="auditInfo.lastUpdatedTimestamp" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>

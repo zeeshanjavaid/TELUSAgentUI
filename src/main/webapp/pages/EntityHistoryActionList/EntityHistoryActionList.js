@@ -20,12 +20,12 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    debugger;
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
+    Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
 };
 
 function messageTimeout() {
@@ -216,23 +216,28 @@ Partial.createButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "" && Partial.Variables.actionName.dataValue != 'Email Inbound') {
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
     }
+
+
 
     // Email validation for Email inbound action
     if (Partial.Variables.actionName.dataValue == 'Email Inbound') {
         if (Partial.Widgets.mandatoryEmail._datavalue == undefined || Partial.Widgets.mandatoryEmail._datavalue == "") {
             App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
         } else {
-            if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
+            if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue) && !Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
                 App.Variables.errorMsg.dataSet.dataValue = "";
-            } else {
+                App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+                Partial.Widgets.SelectActionDialog.close();
+            } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
                 App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
             }
         }
     }
 
-    Partial.Widgets.SelectActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = "Action created successfully."
     setTimeout(messageTimeout, 10000);
 };
 
@@ -248,7 +253,6 @@ Partial.SelectActionDialogOpened = function($event, widget) {
 
 // function added to toggle between show and hide the filter grid on click of filter icon
 Partial.openFilterGrid = function($event, widget) {
-    debugger;
     var filterGrid = document.getElementById("filterGrid");
     if (filterGrid.style.display === "none") {
         filterGrid.style.display = "block";
@@ -260,12 +264,12 @@ Partial.openFilterGrid = function($event, widget) {
     var completedTable = document.getElementById("completedTableGrid");
     var toDoTable = document.getElementById("toDoTableGrid");
     if (completedTable.style.display === "none") {
-        debugger;
         $('#completionDateGrid').hide();
     } else if (toDoTable.style.display === "none") {
-        debugger;
         $('#completionDateGrid').show();
     }
+
+    Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
 };
 
 // function added to clear all the fields in the filter
