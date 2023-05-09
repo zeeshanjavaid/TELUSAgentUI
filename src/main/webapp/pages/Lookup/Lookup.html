@@ -34,7 +34,7 @@
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow3">
                                     <wm-gridcolumn columnwidth="12" name="gridcolumn4">
-                                        <wm-anchor margin="0.5em 0.5em 0.5em 0.5em" name="BanTravelHistory" caption="BANs Travel History"></wm-anchor>
+                                        <wm-anchor margin="0.5em 0.5em 0.5em 0.5em" name="BanTravelHistory" caption="BANs Travel History" on-click="BansTravelHistoryClick($event, widget)"></wm-anchor>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
@@ -331,6 +331,50 @@
         <wm-dialogactions name="dialogactions2" style="text-align:right">
             <wm-button class="secondaryButton" caption="Cancel" name="button4_1" on-click="Widgets.TransferBanToNewEntDialog.close()"></wm-button>
             <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="CreateEntityAndTransBansButton" on-click="CreateEntityAndTransBansButtonClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="BANs Travel History" name="BansTravelHistoryDialog" width="50%">
+        <wm-layoutgrid name="layoutgrid14">
+            <wm-gridrow name="gridrow19">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn58">
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid10" margin="0 0 15px 0">
+            <wm-gridrow name="gridrow15">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn51_1">
+                    <wm-label name="label39_1" caption="Entity ID:" color="grey" textalign="right"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label40_1" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn52_1" margin="0 38px 0 0">
+                    <wm-label name="label41" caption="Entity Name:" color="grey" textalign="right"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label42" caption="bind:Variables.entityNameTextVar.dataSet.dataValue"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn53_1">
+                    <wm-label name="label43" caption="Entity Type:" color="grey" textalign="right"></wm-label>
+                    <wm-label padding="unset 0.5em" name="label44" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn name="gridcolumn45_2"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid12">
+            <wm-gridrow name="gridrow17">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
+                    <wm-table name="BansTravelHistoryTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)" on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
+                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Transfer Out DT" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Ban Status" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Ban Status DT" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Closing Cycle" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Last Updated By" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2" style="text-align:right">
+            <wm-button class="primaryButton" caption="Close" name="button4_1" on-click="Widgets.BansTravelHistoryDialog.close()"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-page>

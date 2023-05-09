@@ -148,6 +148,16 @@ Page.TransferBanToNewEntityClick = function($event, widget) {
     Page.Variables.entityTypeTextVar.dataSet.dataValue = Page.Widgets.label14.caption;
 };
 
+Page.BansTravelHistoryClick = function($event, widget) {
+    debugger;
+    Page.Widgets.entityNamePopOver.hidePopover();
+    Page.Widgets.BansTravelHistoryDialog.open();
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    Page.Variables.entityIdTextVar.dataSet.dataValue = Page.Widgets.label13_1.caption;
+    Page.Variables.entityNameTextVar.dataSet.dataValue = Page.Widgets.label10.caption;
+    Page.Variables.entityTypeTextVar.dataSet.dataValue = Page.Widgets.label14.caption;
+};
+
 
 Page.ParrSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
