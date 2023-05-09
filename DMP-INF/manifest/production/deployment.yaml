@@ -21,7 +21,7 @@ spec:
     matchLabels: {app: 'fawb-app-{{instanceId}}'}
   template:
     metadata:
-      annotations: {sidecar.istio.io/inject: '${istio.param}'}
+      annotations: {sidecar.istio.io/inject: '${istio.param}', traffic.sidecar.istio.io/excludeInboundPorts: "5071"}
       labels: {app: 'fawb-app-{{instanceId}}', com.fico.dmp/enable-opa: 'true'}
     spec:
       containers:
