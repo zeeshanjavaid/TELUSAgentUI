@@ -182,7 +182,7 @@ public class CollectionEntityService {
     }
     //PAAR
   @RequestMapping(value = "/paymentArrangement", method = {RequestMethod.GET})
-    public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId) throws Exception  {
+    public List<CollectionPaymentArrangement> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
     	
         // return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"allBillingAccountIncludedIndicator\":true,\"amount\":100.0,\"billingAccountMaps\":[{\"id\":1,\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"INCOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false},\"validityIndicator\":true}],\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\"},\"comment\":\"string\",\"evaluationResult\":\"string\",\"expectedPaymentAmountToDate\":100.0,\"installments\":[{\"id\":1,\"amount\":100.0,\"evaluationResult\":\"string\",\"sequenceId\":1,\"validityIndicator\":true}],\"receivedPaymentAmountToDate\":0.0,\"recurrence\":\"MONTHLY\",\"statuses\":[{\"id\":1,\"reason\":\"string\",\"status\":\"string\"}]}]",
 		/*

@@ -125,6 +125,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/ParrReportService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/PaymentArrangement/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -335,6 +342,7 @@
                                 <source>services/FDOUtilityServices/src</source>
                                 <source>services/FileRelatedBS/src</source>
                                 <source>services/LookupFileBS/src</source>
+                                <source>services/ParrReportService/src</source>
                                 <source>services/PaymentArrangement/src</source>
                                 <source>services/PropertiesService/src</source>
                                 <source>services/QueueLoadService/src</source>

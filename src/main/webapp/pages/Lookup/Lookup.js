@@ -214,3 +214,8 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         setTimeout(messageTimeout, 10000);
     }
 };
+Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
+    Page;
+    debugger;
+    $('#TransferBanToNewEntityTableID th input[type=checkbox]').attr('disabled', true);
+};

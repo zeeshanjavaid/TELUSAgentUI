@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
-                            popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
+                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76" class="collstatusLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -139,7 +139,8 @@
             </wm-layoutgrid>
             <wm-layoutgrid name="layoutgrid100">
                 <wm-gridrow name="gridrow101">
-                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true"
+                        style="margin:5px;"></wm-message>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow102">
                     <!--  <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>--></wm-gridrow>
@@ -312,8 +313,8 @@
         <wm-layoutgrid name="layoutgrid12">
             <wm-gridrow name="gridrow17">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
-                    <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
-                        on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
+                    <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="TransferBanToNewEntityTableID" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
+                        on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)" on-datarender="TransferBanToNewEntityTableDatarender(widget, $data)">
                         <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                             <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>
