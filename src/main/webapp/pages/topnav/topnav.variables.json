@@ -7,16 +7,8 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "label" : "User Administration",
-      "link" : "#UserManagement",
-      "roleId" : "Support"
-    }, {
-      "label" : "Domain Values",
-      "link" : "#DomainValues",
-      "roleId" : "Support"
-    }, {
-      "label" : "Timer Setting",
-      "link" : "#TimerSetting",
+      "label" : "PARR",
+      "link" : "#ReportsPARR",
       "roleId" : "Support"
     } ],
     "type" : "entry",

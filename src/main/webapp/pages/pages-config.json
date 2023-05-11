@@ -339,6 +339,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "ReportsPARR",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "Roles",
   "type" : "PAGE",
   "params" : [ ]
