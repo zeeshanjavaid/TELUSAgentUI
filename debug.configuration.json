@@ -936,6 +936,24 @@
       } ]
     } ]
   }, {
+    "serviceId" : "EntityBanTravelHistoryService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.entitybantravelhistoryservice.EntityBanTravelHistoryService",
+      "description" : "com.fico.dmp.entitybantravelhistoryservice.EntityBanTravelHistoryService",
+      "name" : "com.fico.dmp.entitybantravelhistoryservice.EntityBanTravelHistoryService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 49,
+        "path" : "/services/EntityBanTravelHistoryService/src/com/fico/dmp/entitybantravelhistoryservice/EntityBanTravelHistoryService.java",
+        "name" : "getEntityBanTravelHistoryService",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "ParrReportService",
     "type" : "JAVA_SERVICE",
     "url" : null,

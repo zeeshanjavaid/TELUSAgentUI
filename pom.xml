@@ -90,6 +90,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/EntityBanTravelHistoryService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/Environment/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -337,6 +344,7 @@
                                 <source>services/DmpS3FileService/src</source>
                                 <source>services/DomainValueRelatedBS/src</source>
                                 <source>services/DuplicateCheckRelatedBS/src</source>
+                                <source>services/EntityBanTravelHistoryService/src</source>
                                 <source>services/Environment/src</source>
                                 <source>services/ExternalService/src</source>
                                 <source>services/FDOUtilityServices/src</source>
