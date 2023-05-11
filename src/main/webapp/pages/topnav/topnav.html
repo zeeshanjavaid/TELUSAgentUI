@@ -14,7 +14,7 @@
         <wm-container name="container5" class="right" horizontalalign="right">
             <wm-button class="btn-link anchor-caption" caption="Logout" type="button" margin="unset 0.5em" name="btnLogout" on-click="Actions.logoutAction.invoke()" horizontalalign="right" color="#fff"></wm-button>
         </wm-container>
-    </wm-container>
+    </wm-container> SystemAdminMenuItem
 </wm-partial>-->
 
 <wm-partial name="menuPartial">
@@ -22,19 +22,16 @@
         <wm-container name="leftcontainer" class="left">
             <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" accessroles="Everyone" show="true" userrole="roles">
                 <wm-nav-item name="nav_item1">
-                    <wm-anchor name="anchor1" iconclass="" caption="Setup" on-click="Actions.goToPage_SetupLanding.invoke()" textalign="center"></wm-anchor>
+                    <wm-anchor name="anchor1" iconclass="" caption="Audit" on-click="Actions.goToPage_ActivityLogs.invoke()" textalign="center"></wm-anchor>
                 </wm-nav-item>
                 <wm-nav-item name="nav_item2">
-                    <wm-anchor name="anchor2" iconclass="" caption="Audit" on-click="Actions.goToPage_ActivityLogs.invoke()" textalign="center"></wm-anchor>
+                    <wm-menu caption="System Administration" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.SystemAdminMenuItem.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
                 </wm-nav-item>
                 <wm-nav-item name="nav_item3">
-                    <wm-anchor name="anchor3" iconclass="" caption="System Administration" on-click="Actions.goToPage_Admin.invoke()" textalign="center"></wm-anchor>
+                    <wm-anchor name="anchor3" iconclass="" caption="Lookup" on-click="Actions.goToPage_lookupEntity.invoke()" textalign="center"></wm-anchor>
                 </wm-nav-item>
                 <wm-nav-item name="nav_item4">
-                    <wm-anchor name="anchor4" iconclass="" caption="Lookup" on-click="Actions.goToPage_lookupEntity.invoke()" textalign="center"></wm-anchor>
-                </wm-nav-item>
-                <wm-nav-item name="nav_item5">
-                    <wm-menu caption="Reports" name="anchor5" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.AdminstrationMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
+                    <wm-menu caption="Reports" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.AdminstrationMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
                 </wm-nav-item>
             </wm-nav>
             <wm-container name="rightcontainer" class="right" width="25%" horizontalalign="left">

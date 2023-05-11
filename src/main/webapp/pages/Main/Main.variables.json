@@ -30,5 +30,25 @@
     "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false
+  },
+  "SystemAdminMenuItem" : {
+    "_id" : "wm-SystemAdminMenuItem-wm.Variable-1683795333790",
+    "name" : "SystemAdminMenuItem",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "User Management",
+      "link" : "#Admin",
+      "roleId" : "Support"
+    }, {
+      "label" : "Setup",
+      "link" : "#SetupLanding",
+      "roleId" : "Support"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
   }
 }
