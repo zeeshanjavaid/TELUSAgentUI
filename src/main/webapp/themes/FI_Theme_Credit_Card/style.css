@@ -9177,9 +9177,10 @@ button.wm-app .close {
     -o-box-shadow: inset 0px -3px 0 0px transparent;
 }
 
-.wm-app .app-top-nav ul li a.active span {
+
+/*.wm-app .app-top-nav ul li a.active span {
     border-bottom: 2px solid;
-}
+}*/
 
 .wm-app .app-top-nav ul li>.dropdown .dropdown-menu {
     margin: 3px 5px 3px 3px;
