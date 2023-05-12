@@ -235,35 +235,159 @@ function createDueDate() {
 
 function validateEmail(email) {
     return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-}
+};
 
-Partial.createButtonClick = function($event, widget) {
-
-    // Status and Priority fields are mandatory for all the create actions
+function callOutboundAction($event, widget) {
+    // Status and Priority fields are mandatory
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "" && Partial.Variables.actionName.dataValue != 'Email Inbound') {
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
         App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
+};
 
+function callInboundAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
 
-    // Email validation for Email inbound action
-    if (Partial.Variables.actionName.dataValue == 'Email Inbound') {
-        if (Partial.Widgets.mandatoryEmail._datavalue == undefined || Partial.Widgets.mandatoryEmail._datavalue == "") {
-            App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
-        } else {
-            if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue) && !Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
-                App.Variables.errorMsg.dataSet.dataValue = "";
-                App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
-                Partial.Widgets.SelectActionDialog.close();
-            } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
-                App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-            }
+};
+
+function emailInboundAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    }
+
+    // email field is mandatory for email inbound call
+    if (Partial.Widgets.mandatoryEmail._datavalue == "" || Partial.Widgets.mandatoryEmail._datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
+    } else {
+        if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue) && !Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+            App.Variables.errorMsg.dataSet.dataValue = "";
+            App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+            Partial.Widgets.SelectActionDialog.close();
+        } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
         }
+    }
+
+};
+
+function generalFollowUpAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
+
+};
+
+function overdueNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
+
+};
+
+function paymentReminderNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
+
+};
+
+function disconnectNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
+
+};
+
+function cancellationNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+    }
+
+};
+
+Partial.createButtonClick = function($event, widget) {
+
+    var actionName = Partial.Variables.actionName.dataValue;
+    switch (actionName) {
+        case 'Call Outbound':
+            callOutboundAction($event, widget);
+            break;
+        case 'Call Inbound':
+            callInboundAction($event, widget);
+            break;
+        case 'Email Inbound':
+            emailInboundAction($event, widget);
+            break;
+        case 'General Follow-up':
+            generalFollowUpAction($event, widget);
+            break;
+        case 'Overdue Notice':
+            overdueNoticeAction($event, widget);
+            break;
+        case 'Payment Reminder Notice':
+            paymentReminderNoticeAction($event, widget);
+            break;
+        case 'Disconnect Notice':
+            disconnectNoticeAction($event, widget);
+            break;
+        case 'Cancellation Notice':
+            cancellationNoticeAction($event, widget);
+            break;
+        default:
+            App.Variables.errorMsg.dataSet.dataValue = "Not a valid action.";
     }
 
     setTimeout(messageTimeout, 10000);
@@ -341,6 +465,7 @@ Partial.completedButtonClick = function($event, widget) {
     $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
 };
+
 Partial.getCollectionTreatmentStepTable2_customFieldOnClick = function($event, widget, row) {
     Partial.Widgets.ToDoActionPopover.open();
 };
