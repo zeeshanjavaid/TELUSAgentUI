@@ -49,7 +49,6 @@ Partial.nextButtonClick = function($event, widget) {
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
-        debugger;
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'High';
@@ -82,7 +81,13 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -108,7 +113,13 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -131,7 +142,13 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Open';
         Partial.Widgets.prioritySelect.datavalue = 'Low';
         Partial.Widgets.dueDate.datavalue = createDueDate();
-        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
@@ -152,7 +169,13 @@ Partial.nextButtonClick = function($event, widget) {
         Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
         Partial.Widgets.prioritySelect.datavalue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Widgets.assignedPersonSelect.datavalue = App.Variables.loggedInUser.dataSet.name;
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
         // hiding select action form
         hideSelectActionForm();
         // displaying Call Outbound action form
