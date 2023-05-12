@@ -3,15 +3,25 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.entitybantravelhistoryservice;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.LongStream;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
+import io.swagger.client.model.CollectionEntity;
+import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -35,6 +45,9 @@ public class EntityBanTravelHistoryService {
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private CollectionEntityService collectionEntityService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -44,14 +57,26 @@ public class EntityBanTravelHistoryService {
      *
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
+     * @throws Exception 
      */
-    public String getEntityBanTravelHistoryService(String name, HttpServletRequest request) {
-        logger.debug("Starting sample operation with request url " + request.getRequestURL().toString());
-        
-        String result = name;
-       
-        logger.debug("Returning {}", result);
-        return result;
+    public List<CollectionEntityBillingAccountRefMap> fetchEntityBanTravelHistory(Integer id) throws Exception {
+    	CollectionEntity collectionEntity =  collectionEntityService.getCollectionEntity(id, true);
+    	List<CollectionEntityBillingAccountRefMap> collectionEntityBillingAccountRefList = collectionEntity.getBillingAccountRefMaps();
+    	List<Long> billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
+    	logger.info("billingAcctRefIds----"+billingAcctRefIds);
+    	//String billing = String.join(",", billingAcctRefIds);
+    	String joinedList = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+    	logger.info("joinedList----"+joinedList);
+    	
+    /*	List<Integer> billingAccountRefIds = null;
+    	for (CollectionEntityBillingAccountRefMap collectionEntityBillingAccountRefMap : collectionEntityBillingAccountRefList) {
+    		billingAccountRefIds = new ArrayList<Integer>();
+    		if(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId() != null) {
+
+    		}
+		} */
+    	logger.info("entity serivic size---"+collectionEntityBillingAccountRefList.size());
+    	return collectionEntityBillingAccountRefList;
     }
 
 }

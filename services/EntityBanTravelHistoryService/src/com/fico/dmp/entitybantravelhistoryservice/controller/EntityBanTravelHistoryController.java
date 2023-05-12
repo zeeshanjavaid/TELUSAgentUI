@@ -4,8 +4,10 @@
 package com.fico.dmp.entitybantravelhistoryservice.controller;
 
 import com.fico.dmp.entitybantravelhistoryservice.EntityBanTravelHistoryService;
-import java.lang.String;
-import javax.servlet.http.HttpServletRequest;
+import java.lang.Integer;
+import java.lang.Exception;
+import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,10 @@ public class EntityBanTravelHistoryController {
     @Autowired
     private EntityBanTravelHistoryService entityBanTravelHistoryService;
 
-    @RequestMapping(value = "/entityBanTravelHistoryService", produces = "application/json", method = RequestMethod.GET)
-    public String getEntityBanTravelHistoryService(@RequestParam(value = "name", required = false) String name, HttpServletRequest request) {
-        return entityBanTravelHistoryService.getEntityBanTravelHistoryService(name, request);
+    @RequestMapping(value = "/entityBanTravelHistory", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<CollectionEntityBillingAccountRefMap> fetchEntityBanTravelHistory(@RequestParam(value = "id", required = false) Integer id) throws Exception {
+        return entityBanTravelHistoryService.fetchEntityBanTravelHistory(id);
     }
 }
