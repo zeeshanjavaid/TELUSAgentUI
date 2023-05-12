@@ -1792,6 +1792,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_ARAgentView" : {
+    "_id" : "wm-goToPage_ARAgentView-wm.NavigationVariable-1683885699160",
+    "name" : "goToPage_ARAgentView",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "ARAgentView",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_Audit_AcessLogs" : {
     "_id" : "wm-goToPage__Audit-wm.NavigationVariable-1653523559551",
     "name" : "goToPage_Audit_AcessLogs",
@@ -1989,6 +2001,18 @@
     "subCategory" : "None",
     "operation" : "gotoPage",
     "pageName" : "Main"
+  },
+  "goToPage_OrderDeskAgentView" : {
+    "_id" : "wm-goToPage_OrderDeskAgentView-wm.NavigationVariable-1683885855138",
+    "name" : "goToPage_OrderDeskAgentView",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "OrderDeskAgentView",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
   },
   "goToPage_PARRReports" : {
     "_id" : "wm-goToPage_PARRReports-wm.NavigationVariable-1683870142733",

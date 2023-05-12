@@ -1,4 +1,8 @@
 [ {
+  "name" : "ARAgentView",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "ActivityLog",
   "type" : "PAGE",
   "params" : [ ]
@@ -251,6 +255,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "OrderDeskAgentView",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "PARRReports",
   "type" : "PAGE",
   "params" : [ ]
@@ -377,6 +385,10 @@
 }, {
   "name" : "TimerSetting",
   "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ToDoListActionHistory",
+  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "UserManagement",

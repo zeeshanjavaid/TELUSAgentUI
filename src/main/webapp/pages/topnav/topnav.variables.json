@@ -1,4 +1,24 @@
 {
+  "ActionManagementMenuItemList" : {
+    "_id" : "wm-ActionManagementMenuItemList-wm.Variable-1683881806262",
+    "name" : "ActionManagementMenuItemList",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "AR Agent View",
+      "link" : "#ARAgentView",
+      "roleId" : "Support"
+    }, {
+      "label" : "Order Desk Agent View",
+      "link" : "#OrderDeskAgentView",
+      "roleId" : "Support"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "AdminstrationMenuItemModel" : {
     "_id" : "wm-AdminstrationMenuItemModel-wm.Variable-1624518169068",
     "name" : "AdminstrationMenuItemModel",
@@ -188,6 +208,18 @@
       "roles" : "",
       "deleted" : false
     } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "OrderManagementMenuItemModel" : {
+    "_id" : "wm-OrderManagementMenuItemModel-wm.Variable-1683882432293",
+    "name" : "OrderManagementMenuItemModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
     "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false

@@ -268,9 +268,187 @@
                     <wm-table-column binding="auditInfo.lastUpdatedTimestamp" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="customField" caption="" widget-type="icon" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false" on-click="getCollectionTreatmentStepTable2_customFieldOnClick($event, widget, row)">
+                        <wm-icon caption="bind:row.getProperty('customField')" iconclass="fico-icon-ellipsis" iconposition="left" class="" conditionalclass=""></wm-icon>
+                    </wm-table-column>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid"><span>Completed table</span></wm-layoutgrid>
+    <wm-layoutgrid name="layoutgrid13">
+        <wm-gridrow name="gridrow40">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn45">
+                <wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false">
+                    <wm-layoutgrid name="layoutgrid4">
+                        <wm-gridrow name="gridrow4">
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn4">
+                                <wm-anchor margin="0.5em 0.5em 0.3em 1em" name="anchor1" caption="Edit" on-click="Widgets.EditActionDialog.open()"></wm-anchor>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow5">
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn6">
+                                <wm-anchor margin="unset 0.5em 0.3em 1em" name="anchor1" caption="Close" on-click="Widgets.CloseActionDialog.open()"></wm-anchor>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow6">
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn8">
+                                <wm-anchor margin="unset 0.5em unset 1em" name="anchor1" caption="Cancle"></wm-anchor>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-popover>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Action" iconclass="wi wi-file-text" name="EditActionDialog">
+        <wm-gridrow name="gridrow1">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"></wm-message>
+        </wm-gridrow>
+        <wm-layoutgrid name="layoutgrid5">
+            <wm-gridrow name="gridrow5_1">
+                <h4 class="heading">Action Main Details</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow5">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action*" name="label1" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                    <wm-label padding="unset 0.5em unset unset" caption="Action Type" name="label2"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID*" name="label1" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11">
+                    <wm-label padding="unset 0.5em unset unset" caption="Action ID" name="label2"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10_1">
+                <h4 class="heading">Action Status and Priority</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow19">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn20">
+                    <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10">
+                <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                    <wm-date name="dueDate" placeholder=""></wm-date>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow11">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                    <wm-label padding="unset 0.5em unset unset" caption="Priority*" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow12">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
+                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.actionPriority.dataSet[1].dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow17">
+                <h4 class="heading">Action Assignment</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow13">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                    <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow14">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow15">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                    <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow16">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataSet.teamId"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="Close" on-click="closeDialog()" name="button1"></wm-button>
+            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Information" iconclass="wi wi-file-text" name="CloseActionDialog">
+        <wm-gridrow name="gridrow17">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+        </wm-gridrow>
+        <wm-layoutgrid name="layoutgrid3">
+            <wm-gridrow name="gridrow5">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action*" name="label1" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                    <wm-label padding="unset 0.5em unset unset" caption="Action Type" name="label2"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID*" name="label1" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11">
+                    <wm-label padding="unset 0.5em unset unset" caption="Action ID" name="label2"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Phone Number" name="label3" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow21" margin="0 0 1em 0">
+                <wm-gridcolumn name="gridcolumn15" width="50%">
+                    <wm-number textalign="left" name="phnNumber" height="38px" placeholder=""></wm-number>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions2">
+            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button3"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-partial>

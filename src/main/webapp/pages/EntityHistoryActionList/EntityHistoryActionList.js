@@ -341,3 +341,6 @@ Partial.completedButtonClick = function($event, widget) {
     $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
 };
+Partial.getCollectionTreatmentStepTable2_customFieldOnClick = function($event, widget, row) {
+    Partial.Widgets.ToDoActionPopover.open();
+};
