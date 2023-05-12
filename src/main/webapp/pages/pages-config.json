@@ -251,6 +251,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "PARRReports",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "ParrDetails",
   "type" : "PARTIAL",
   "params" : [ {
@@ -337,10 +341,6 @@
 }, {
   "name" : "Queues",
   "type" : "PAGE",
-  "params" : [ ]
-}, {
-  "name" : "ReportsPARR",
-  "type" : "PARTIAL",
   "params" : [ ]
 }, {
   "name" : "Roles",

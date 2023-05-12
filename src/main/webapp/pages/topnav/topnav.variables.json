@@ -8,7 +8,7 @@
     "dataBinding" : [ ],
     "dataSet" : [ {
       "label" : "PARR",
-      "link" : "#ReportsPARR",
+      "link" : "#PARRReports",
       "roleId" : "Support"
     } ],
     "type" : "entry",
