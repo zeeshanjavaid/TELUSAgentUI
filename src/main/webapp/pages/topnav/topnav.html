@@ -2,18 +2,14 @@
     <wm-container class="header-row" name="maincontainer">
         <wm-container name="leftcontainer" class="left">
             <wm-nav type="pills" autoclose="outsideClick" name="leftMenu" class="topnav" accessroles="Everyone" show="true" userrole="roles">
-                <!--<wm-nav-item name="nav_item1">
-                    <wm-anchor name="anchor1" iconclass="" caption="Audit" on-click="Actions.goToPage_ActivityLogs.invoke()" textalign="center"></wm-anchor>
-                </wm-nav-item>-->
+                <!--<wm-nav-item name="nav_item1"><wm-anchor name="anchor1" iconclass="" caption="Audit" on-click="Actions.goToPage_ActivityLogs.invoke()" textalign="center"></wm-anchor></wm-nav-item> -->
                 <wm-nav-item name="nav_item1">
-                    <wm-anchor name="anchor1" iconclass="" caption="Home" textalign="center"></wm-anchor>
+                    <wm-anchor name="anchor1" iconclass="fico-icon-home" caption="" textalign="center"></wm-anchor>
                 </wm-nav-item>
                 <wm-nav-item name="nav_item2">
                     <wm-menu caption="Action Management" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.ActionManagementMenuItemList.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
                 </wm-nav-item>
-                <!-- <wm-nav-item name="nav_item3">
-                    <wm-menu caption="Order Management" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.OrderManagementMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
-                </wm-nav-item> -->
+                <!-- <wm-nav-item name="nav_item3"><wm-menu caption="Order Management" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.OrderManagementMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu></wm-nav-item> -->
                 <wm-nav-item name="nav_item5">
                     <wm-menu caption="Reports" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.AdminstrationMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
                 </wm-nav-item>
