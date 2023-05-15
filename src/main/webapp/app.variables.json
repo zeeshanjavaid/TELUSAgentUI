@@ -1910,6 +1910,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_Home" : {
+    "_id" : "wm-goToPage_Home-wm.NavigationVariable-1684145487650",
+    "name" : "goToPage_Home",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Home",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_layoutgridtest" : {
     "_id" : "wm-goToPage_layoutgridtest-wm.NavigationVariable-1661157251698",
     "name" : "goToPage_layoutgridtest",

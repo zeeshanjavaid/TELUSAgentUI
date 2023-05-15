@@ -466,6 +466,7 @@ Partial.completedButtonClick = function($event, widget) {
     $('#toDoTableGrid').hide();
 };
 
-Partial.getCollectionTreatmentStepTable2_customFieldOnClick = function($event, widget, row) {
-    Partial.Widgets.ToDoActionPopover.open();
+Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
+    debugger;
+    Partial.Widgets.ToDoActionPopover.showPopover();
 };

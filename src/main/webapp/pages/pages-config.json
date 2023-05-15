@@ -211,6 +211,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "Home",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "LatestUserNotes",
   "type" : "PARTIAL",
   "params" : [ ]
