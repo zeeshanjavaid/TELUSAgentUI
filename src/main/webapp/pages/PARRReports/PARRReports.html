@@ -2,13 +2,93 @@
     <wm-header content="header" name="header1"></wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
-        <wm-page-content columnwidth="12" name="page_content1">
-            <wm-layoutgrid name="layoutgrid1" columns="1">
-                <wm-gridrow name="gridrow8">
-                    <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                        <wm-container name="container11">
+        <wm-page-content columnwidth="1" name="page_content1">
+            <wm-layoutgrid name="layoutgrid1" columns="3">
+                <wm-gridrow name="gridrow4">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn4">
+                        <wm-container name="container1">
                             <h1>PARR Listing</h1>
                         </wm-container>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="9" name="gridcolumn2">
+                        <!--<wm-message name="message1" type="info" caption="This listing includes all payments arrangement created in the past 3 months. Use conditions below to change the listing output."></wm-message>-->
+                        <wm-icon name="icon1" iconclass="fico-icon-info"></wm-icon>
+                        <wm-label padding="unset 0.5em" name="label1" caption="This listing includes all payments arrangement created in the past 3 months. Use conditions below to change the listing output."></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid11" margin="3px 0 10px 3px" padding="25px 25px 25px 25px" style="border: 1px solid #ddd;">
+                <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="20%" name="gridcolumn8_1">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Entity Risk"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="select1" placeholder="Select" width="80%"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="20%" name="gridcolumn8_2">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Parr Status"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="select1" placeholder="Select" width="80%"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="10%" name="gridcolumn10_1">
+                        <wm-label class="col-md-3 control-label" padding="unset 0.5em unset unset" caption="Creat TimeFrame:" name="label4" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="30%" name="gridcolumn10_1">
+                        <wm-composite name="composite3">
+                            <wm-label padding="unset 0.5em unset unset" caption="From" name="label4" color="gray"></wm-label>
+                            <wm-container class="col-md-9" name="container4">
+                                <wm-date name="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="20%" id="completionDateGrid" name="gridcolumn11_1">
+                        <wm-composite name="composite3">
+                            <wm-label padding="unset 0.5em unset unset" caption="To:" name="label4" color="gray"></wm-label>
+                            <wm-container class="col-md-9" name="container4">
+                                <wm-date name="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="20%" name="gridcolumn8_1">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Evaluation:"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="select1" placeholder="Select" width="80%"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="20%" name="gridcolumn8_2">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Created By:"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="select1" placeholder="Select" width="80%"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="40%" name="gridcolumn8_2">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Created Team:"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="select1" placeholder="Select" width="40%"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow5" style="text-align: right;">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn11">
+                        <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                        <wm-button class="btn-default" caption="Search" type="button" margin="unset 0.5em" name="button2"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
