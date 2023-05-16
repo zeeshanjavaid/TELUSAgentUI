@@ -25,14 +25,15 @@
             </wm-container>
         </wm-container>
         <wm-container name="container5" class="right" horizontalalign="right">
-            <!--<wm-anchor name="anchor3" iconclass="fico-icon-search" caption="" on-click="Actions.goToPage_lookupEntity.invoke()" textalign="center" color="#fff" margin="0.7em unset unset unset"></wm-anchor>-->
+
             <wm-button class="btn-link anchor-caption" caption="Logout" type="button" margin="unset 0.5em" name="btnLogout" on-click="Actions.logoutAction.invoke()" horizontalalign="right" color="#fff"></wm-button>
         </wm-container>
         <wm-container name="container6" class="right" horizontalalign="right">
-            <wm-anchor name="anchor3" caption="bind:Variables.getLoggedInUserId.firstRecord.firstName + &quot; &quot; + Variables.getLoggedInUserId.firstRecord.lastName" textalign="center" color="#fff" margin="0.6em unset unset unset"></wm-anchor>
+            <wm-label name="label1" caption="bind:Variables.getLoggedInUserId.firstRecord.firstName + &quot; &quot; + Variables.getLoggedInUserId.firstRecord.lastName" textalign="center" color="#fff" margin="0.6em unset unset unset"></wm-label>
         </wm-container>
         <wm-container name="container7" class="right" horizontalalign="right">
             <wm-anchor name="anchor3" iconclass="fico-icon-search" caption="" on-click="Actions.goToPage_lookupEntity.invoke()" textalign="center" color="#fff" margin="0.7em 2em unset unset" class="right_LookupLine"></wm-anchor>
         </wm-container>
     </wm-container>
+
 </wm-partial>
