@@ -245,6 +245,18 @@ function callOutboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "CALL-OB",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -259,6 +271,18 @@ function callInboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "CALL-IB",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
