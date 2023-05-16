@@ -59,6 +59,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "actionPriorityDefaultVar" : {
+    "_id" : "wm-actionPriorityDefaultVar-wm.Variable-1684257698278",
+    "name" : "actionPriorityDefaultVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "actionStatus" : {
     "_id" : "wm-actionStatus-wm.Variable-1683001667828",
     "name" : "actionStatus",
@@ -73,6 +87,20 @@
     } ],
     "type" : "string",
     "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "actionStatusDefaultVar" : {
+    "_id" : "wm-actionStatusDefaultVar-wm.Variable-1684257366738",
+    "name" : "actionStatusDefaultVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
     "saveInPhonegap" : false
   },
   "CollectionTreatmentServiceGetCollectionTreatmentStep" : {

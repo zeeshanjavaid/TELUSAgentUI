@@ -50,8 +50,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Widgets.actionStatusSelect.datavalue = 'Open';
-        Partial.Widgets.prioritySelect.datavalue = 'High';
+        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
+        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';
         Partial.Widgets.dueDate.datavalue = createDueDate();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
@@ -78,8 +78,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Call Inbound Action
     if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
-        Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
@@ -110,8 +110,8 @@ Partial.nextButtonClick = function($event, widget) {
     // Email Inbound Action 
     if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
-        Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
@@ -139,8 +139,8 @@ Partial.nextButtonClick = function($event, widget) {
     // General Follow-up Action 
     if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Widgets.actionStatusSelect.datavalue = 'Open';
-        Partial.Widgets.prioritySelect.datavalue = 'Low';
+        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
+        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Low';
         Partial.Widgets.dueDate.datavalue = createDueDate();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
@@ -166,8 +166,8 @@ Partial.nextButtonClick = function($event, widget) {
     //  Notice Actions
     if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Widgets.actionStatusSelect.datavalue = 'Closed';
-        Partial.Widgets.prioritySelect.datavalue = 'Medium';
+        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
         Partial.Widgets.dueDate.datavalue = new Date();
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
@@ -257,7 +257,7 @@ function callOutboundAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Call Outbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
@@ -271,6 +271,21 @@ function callInboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
+        var characteristicList = [];
+
+        characteristicList.push({
+            name: 'CustomerName',
+            value: Partial.Widgets.custName.datavalue
+        });
+        characteristicList.push({
+            name: 'PhoneNumber',
+            value: Partial.Widgets.phnNumber.datavalue
+        });
+        characteristicList.push({
+            name: 'CallDuration',
+            value: Partial.Widgets.callduration.datavalue
+        });
+
 
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
@@ -279,11 +294,13 @@ function callInboundAction($event, widget) {
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'additionalCharacteristics': characteristicList
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+
+        App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
@@ -303,7 +320,27 @@ function emailInboundAction($event, widget) {
     } else {
         if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue) && !Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
             App.Variables.errorMsg.dataSet.dataValue = "";
-            App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+            // API Call will come here
+            var characteristicList = [];
+
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.mandatoryEmail.datavalue
+            });
+            Partial.Variables.createEntityHistoryAction.setInput({
+                "CollectionTreatmentStepCreate": {
+                    'stepTypeCode': "EM-IN",
+                    'comment': Partial.Widgets.Comment.datavalue,
+                    'status': Partial.Widgets.actionStatusSelect.datavalue,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'additionalCharacteristics': characteristicList
+                },
+            });
+            Partial.Variables.createEntityHistoryAction.invoke();
+
+            App.Variables.successMessage.dataSet.dataValue = "Email Inbound Action created successfully.";
             Partial.Widgets.SelectActionDialog.close();
         } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
             App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
@@ -320,7 +357,18 @@ function generalFollowUpAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "FOLLOWUP",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "General Follow-up Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
