@@ -1,1 +1,98 @@
-{ }
+{
+  "createdBy" : {
+    "_id" : "wm-createdBy-wm.Variable-1684313197269",
+    "name" : "createdBy",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "firstName"
+    }, {
+      "dataValue" : "lastName"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "createdTeam" : {
+    "_id" : "wm-createdTeam-wm.Variable-1684313079222",
+    "name" : "createdTeam",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "BC"
+    }, {
+      "dataValue" : "AR"
+    }, {
+      "dataValue" : "TQ AR"
+    }, {
+      "dataValue" : "TIG AR"
+    }, {
+      "dataValue" : "OD"
+    }, {
+      "dataValue" : "SPT"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "entityRisk" : {
+    "_id" : "wm-entityRisk-wm.Variable-1684307702145",
+    "name" : "entityRisk",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "High"
+    }, {
+      "dataValue" : "Medium"
+    }, {
+      "dataValue" : "Low"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "Evaluation" : {
+    "_id" : "wm-Evaluation-wm.Variable-1684312790526",
+    "name" : "Evaluation",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "All"
+    }, {
+      "dataValue" : "Broken"
+    }, {
+      "dataValue" : "Kept"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "parrStatus" : {
+    "_id" : "wm-parrStatus-wm.Variable-1684308448931",
+    "name" : "parrStatus",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Closed"
+    }, {
+      "dataValue" : "Renagotitated"
+    }, {
+      "dataValue" : "Cancelled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
