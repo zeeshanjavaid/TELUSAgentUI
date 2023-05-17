@@ -88,7 +88,7 @@ public class PARRService {
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
-					"POST");
+					"POST","3161");
 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
 					CollectionPaymentArrangement.class);
 			return collectionPaymentArrangement;
@@ -124,7 +124,7 @@ public class PARRService {
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementUpdate);
 			logger.info("::::::::collectionPaymentArrangementUpdate requestPayload ::::::::{}", requestPayload);
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
-					"PATCH");
+					"PATCH","3161");
 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
 					CollectionPaymentArrangement.class);
 			return collectionPaymentArrangement;
@@ -143,7 +143,7 @@ public class PARRService {
 		} else {
 
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-					this.parrEndPointUrl + "?id=" + entityId, "GET");
+					this.parrEndPointUrl + "?id=" + entityId, "GET","3161");
 			collectionPaymentArrangements = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}
@@ -161,7 +161,7 @@ public class PARRService {
 		} else {
 
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-					this.parrEndPointUrl + "?id=" + parrId, "GET");
+					this.parrEndPointUrl + "?id=" + parrId, "GET","3161");
 			collectionPaymentArrangement = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}

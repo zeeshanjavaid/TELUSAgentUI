@@ -50,14 +50,16 @@ public class EnvironmentController {
         return environment.getRootLoggerLevel();
     }
 
-    @RequestMapping(value = "/token", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/telustoken", produces = "application/json", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public String getToken() {
-        return environment.getToken();
+    public String getTelusToken(@RequestParam(value = "scope", required = false) String scope) {
+        return environment.getTelusToken(scope);
     }
 
     @RequestMapping(value = "/userID", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String getUserID() {
         return environment.getUserID();
     }

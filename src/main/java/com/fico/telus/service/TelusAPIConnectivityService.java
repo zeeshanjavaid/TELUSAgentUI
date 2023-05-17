@@ -33,6 +33,8 @@ import com.fico.pscomponent.util.PropertiesUtil;
 import com.hazelcast.map.IMap;
 import com.wavemaker.runtime.hazelcast.FawbAppHazelcastInstance;
 
+import com.fico.telus.model.TelusTokenResponse;
+
 @Service
 public class TelusAPIConnectivityService {
 	
@@ -73,7 +75,7 @@ public class TelusAPIConnectivityService {
 	 * @return String
 	 * @throws Exception
 	 */
-	private String getTelusToken () throws Exception {
+	public String getTelusToken (String scope) throws Exception {
 		
 		String token = getToken();
 		if (!Objects.isNull(token)) {
@@ -87,7 +89,7 @@ public class TelusAPIConnectivityService {
 		map.add("client_id", this.clientId);
 		map.add("client_secret", this.secret);
 		map.add("grant_type", "client_credentials");
-		map.add("scope", "COLLECTION");
+		map.add("scope", scope);
 		
 		logger.info(":::::::::::::::::::::Before calling Telus token URL:::::::::::::::::::::");
 		
@@ -97,19 +99,26 @@ public class TelusAPIConnectivityService {
 		logger.info("::::::::::::::::::::: Telus token URL:::::::::::::::::::::"+url);
 		ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
 		String result = "";
+		
+		logger.info("::::::::::::::::::::: Telus token API eesponse:::::::::::::::::::::"+ response);
+
 		if (response != null) {
 
 			HttpStatus statusCode = response.getStatusCode();
 			//TODO: Uncomment and create the object TelusTokenResponse object according to TelUs token response
 			if (statusCode == HttpStatus.OK) {
-				/*
-				 * result = response.getBody(); TelusTokenResponse telusTokenResponse =
-				 * mapper.readValue(result, com.fico.telus.model.TelusTokenResponse.class);
-				 * this.cacheExpireInSec = telusTokenResponse.getExpires_in();
-				 * registerToken(telusTokenResponse.getAccess_token()); token =
-				 * telusTokenResponse.getAccess_token();
-				 * 
-				 */} else {
+				
+				 result = response.getBody(); 
+				 TelusTokenResponse telusTokenResponse = mapper.readValue(result, com.fico.telus.model.TelusTokenResponse.class);
+				//  this.cacheExpireInSec = telusTokenResponse.getExpires_in();
+				//  registerToken(telusTokenResponse.getAccess_token()); 
+				 token = telusTokenResponse.getAccess_token();
+				 
+				 
+				logger.info("::::::::Telus token :::::::::::::::::" + token);
+
+			    
+			} else {
 
 				logger.info("::::::::Telus token API response status code:::::::::::::::::" + statusCode);
 			}
@@ -133,9 +142,9 @@ public class TelusAPIConnectivityService {
 	@PostConstruct
 	public void init() {
 		
-		this.clientId = propertyValueFrom(TELUS_API_CLIENT_ID, "1ep4zdgidqy");
-		this.secret = propertyValueFrom(TELUS_API_SECRET, "MQy3WOy1cP9_gvoGPjLzwSscIbVyzcn93vK8");		
-		this.tokenURL = propertyValueFrom(TELUS_TOKEN_URL, "https://iam-svc.dms.apset2.ficoanalyticcloud.com/registration/rest/client/token");
+		this.clientId = propertyValueFrom(TELUS_API_CLIENT_ID, "ac93e924-e669-4c21-a8c5-11945cee7ffd");
+		this.secret = propertyValueFrom(TELUS_API_SECRET, "2abf5c9c-dd75-4709-963a-115e3e6c19057c59bc75-9672-4b7a-99a8-49ed10f661d9");		
+		this.tokenURL = propertyValueFrom(TELUS_TOKEN_URL, "https://apigw-st.telus.com/st/token");
 		this.cacheExpireInSec = Long.parseLong(propertyValueFrom(TELUS_TOKEN_CACHE_EXPIRE_IN_SEC,"600"));
 	}
 	
@@ -157,9 +166,9 @@ public class TelusAPIConnectivityService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String executeTelusAPI(String requestPayload, String endpointURL, String httpMethod) throws Exception {
+	public String executeTelusAPI(String requestPayload, String endpointURL, String httpMethod, String scope) throws Exception {
 
-		String bearerToken = getTelusToken();
+		String bearerToken = getTelusToken(scope);
 		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
 		StringEntity entity = new StringEntity(requestPayload, ContentType.APPLICATION_JSON);
 		logger.info("::::::::::::::::::::: Telus telusEndpointURL:::::::::::::::::::::" + endpointURL);

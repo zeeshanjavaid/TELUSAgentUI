@@ -5,7 +5,7 @@ package com.fico.dmp.environment;
 
 import com.fico.dmp.telusagentuidb.FawbPropertySource;
 import com.fico.dmp.telusagentuidb.service.FawbPropertySourceService;
-import com.fico.pscomponent.handlers.DMPAuthenticationHandler;
+// import com.fico.pscomponent.handlers.DMPAuthenticationHandler;
 import com.wavemaker.runtime.security.WMUser;
 import com.wavemaker.runtime.security.dmp.WMAppDmpAuthenticationToken;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
@@ -23,6 +23,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.fico.telus.service.TelusAPIConnectivityService;
 
 //import com.fico.dmp.environment.model.*;
 
@@ -52,7 +54,7 @@ public class Environment {
     private FawbPropertySourceService fawbPropertySourceService;
 
     @Autowired
-    private DMPAuthenticationHandler dmpAuthenticationHandler;
+    private TelusAPIConnectivityService telusAPIConnectivityService;
 
     public String whereAmI(HttpServletRequest request) {
         String fromEnvironment = environment.getProperty("DMP_ENV_ID");
@@ -155,9 +157,16 @@ public class Environment {
 
     }
 
-    public String getToken() {
+    public String getTelusToken(String scope) {
+        
+        if (scope.isEmpty()){
+            
+            logger.error("Scope is missing in the request" );
+            return "Please provide a valid scope";
+        }
+        
         try {
-            return dmpAuthenticationHandler.generateToken();
+            return telusAPIConnectivityService.getTelusToken(scope);
         } catch (Exception e) {
             logger.error("Error in generating token ", e);
             return "Error";
