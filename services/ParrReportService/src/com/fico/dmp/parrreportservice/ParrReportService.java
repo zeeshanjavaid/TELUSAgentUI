@@ -10,11 +10,26 @@ import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import java.lang.String;
+import java.util.List;
+import io.swagger.client.model.CollectionEntity;
 
 
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
+import com.fico.dmp.collectionentityservice.CollectionEntityService;
+import io.swagger.client.model.CollectionPaymentArrangement;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import com.fico.telus.model.ParrReports;
+import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
+import java.util.stream.Collectors;
+
+
+
+
+
 
 //import com.fico.dmp.parrreportservice.model.*;
 
@@ -35,6 +50,9 @@ public class ParrReportService {
 
     @Autowired
     private SecurityService securityService;
+    
+     @Autowired
+    private CollectionEntityService collectionEntityService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -57,5 +75,67 @@ public class ParrReportService {
         logger.debug("Returning {}", result);
         return result;
     }
+    
+   
+   
+ public List<ParrReports> getParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String status, String createdFrom, String createdTo, String evaluation, String createdBy)throws Exception {
+
+        List<String> entityIds=new ArrayList<>();
+
+        List<ParrReports> parrReportsList=new ArrayList<>();
+
+        List<CollectionPaymentArrangement> parrReportList= collectionEntityService.getPaymentArrangements(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
+
+        if(!CollectionUtils.isEmpty(parrReportList))
+        {
+            entityIds= parrReportList.stream().map(a->a.getCollectionEntity().getId().toString()).collect(Collectors.toList());
+
+            for(CollectionPaymentArrangement cpa:parrReportList)
+            {
+                ParrReports parrReports=new ParrReports();
+                parrReports.setParrId(cpa.getId());
+                parrReports.setEntityId(cpa.getCollectionEntity().getId());
+                parrReports.setParrStatus(cpa.getStatus());
+                parrReports.setEvaluation(cpa.getEvaluationResult());
+                parrReports.setParrAmt("$"+cpa.getAmount());
+                parrReports.setStart(cpa.getInstallments().get(0).getDate().toString());
+                if(cpa.getInstallments().size()==0) {
+                    parrReports.setExpiry(cpa.getInstallments().get(0).getDate().toString());
+                }else{
+                    parrReports.setExpiry(cpa.getInstallments().get(cpa.getInstallments().size()-1).getDate().toString());
+                }
+               parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate()/cpa.getExpectedPaymentAmountToDate()*100+"%");
+                parrReports.setCreatedBy(cpa.getAuditInfo().getCreatedBy());
+              //  parrReports.setCreatedTeam(cpa.getAuditInfo().getT);
+
+                parrReportsList.add(parrReports);
+            }
+
+
+         String entityIdsAsString= entityIds.stream().collect(Collectors.joining(","));
+
+
+            List<CollectionEntity> collectionEntityList=   collectionEntityService.getCollectionEntity(null,0,0,null,null,null,entityIdsAsString,null,null,null);
+
+            if(!CollectionUtils.isEmpty(collectionEntityList))
+            {
+                for(ParrReports parrReports:parrReportsList)
+                {
+                   for(CollectionEntity collectionEntity:collectionEntityList)
+                   {
+                       if(collectionEntity.getId().equals(parrReports.getParrId()))
+                       {
+                           parrReports.setEntityName(collectionEntity.getName());
+                           parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+                       }
+                   }
+                }
+            }
+
+        }
+
+     return parrReportsList;
+    }
+
 
 }
