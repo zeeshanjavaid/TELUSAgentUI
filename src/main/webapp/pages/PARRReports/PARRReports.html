@@ -35,7 +35,7 @@
                         <wm-composite name="composite1">
                             <wm-label class="col-md-3 control-label" name="label2" caption="Parr Status:"></wm-label>
                             <wm-container class="col-md-9" name="container2">
-                                <wm-select name="select1" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.parrStatus.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                                <wm-select name="parrStatusSelect" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.parrStatus.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -46,7 +46,7 @@
                         <wm-composite name="composite8">
                             <wm-label class="col-md-3 control-label" name="label10" padding="unset unset unset -0.5em" caption="From:" color="gray"></wm-label>
                             <wm-container class="col-md-9" name="container9">
-                                <wm-date name="creationDate" placeholder="Enter Value" margin="unset unset unset -0.5em"></wm-date>
+                                <wm-date name="creationDateFrom" placeholder="Enter Value" margin="unset unset unset -0.5em"></wm-date>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -54,7 +54,7 @@
                         <wm-composite name="composite8">
                             <wm-label class="col-md-3 control-label" name="label10" padding="unset 0.5em unset unset" caption="To:" color="gray"></wm-label>
                             <wm-container class="col-md-9" name="container9">
-                                <wm-date name="creationDate" placeholder="Enter Value" margin="unset unset unset -0.7em"></wm-date>
+                                <wm-date name="creationDateTo" placeholder="Enter Value" margin="unset unset unset -0.7em"></wm-date>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -64,7 +64,7 @@
                         <wm-composite name="composite1">
                             <wm-label class="col-md-3 control-label" name="label2" caption="Evaluation:" padding="unset unset unset 1em"></wm-label>
                             <wm-container class="col-md-9" name="container2">
-                                <wm-select name="select1" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.Evaluation.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                                <wm-select name="evalSelect" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.Evaluation.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -72,7 +72,7 @@
                         <wm-composite name="composite1">
                             <wm-label class="col-md-3 control-label" name="label2" caption="Created By:"></wm-label>
                             <wm-container class="col-md-9" name="container2">
-                                <wm-select name="select1" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.createdBy.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                                <wm-select name="createdBySelect" placeholder="Select Value" width="60%" margin="unset unset unset 2em" dataset="bind:Variables.createdBy.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -87,7 +87,7 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow5" style="text-align: right;">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn11" padding="-1.5em unset -1em unset">
-                        <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button1"></wm-button>
+                        <wm-button class="btn-default" caption="Clear" type="button" margin="unset 0.5em" name="button1" on-click="button1Click($event, widget)"></wm-button>
                         <wm-button class="btn-default" caption="Search" type="button" margin="unset 0.5em" name="button2"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridrow>

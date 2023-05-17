@@ -10,7 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
-Page.onReady = function () {
+Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,4 +20,24 @@ Page.onReady = function () {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+};
+
+Page.button1Click = function($event, widget) {
+
+
+    Page.Widgets.entityRiskSelect.datavalue = "";
+
+    Page.Widgets.parrStatusSelect.datavalue = "";
+    Page.Widgets.evalSelect.datavalue = "";
+
+    Page.Widgets.createdBySelect.datavalue = "";
+
+    Page.Widgets.createTeam.datavalue = "";
+
+    Page.Widgets.creationDateFrom.datavalue = "";
+
+    Page.Widgets.creationDateTo.datavalue = "";
+
+    Page.Variables.ParrReportServiceGetParrReport.invoke();
+
 };
