@@ -382,7 +382,30 @@ function overdueNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        var characteristicList = [];
+
+        characteristicList.push({
+            name: 'CustomerName',
+            value: Partial.Widgets.custName.datavalue
+        });
+        characteristicList.push({
+            name: 'EmailAddress',
+            value: Partial.Widgets.nonMandatoryEmail.datavalue
+        });
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC2-OD",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'additionalCharacteristics': characteristicList
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "Overdue Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
@@ -396,7 +419,30 @@ function paymentReminderNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        var characteristicList = [];
+
+        characteristicList.push({
+            name: 'CustomerName',
+            value: Partial.Widgets.custName.datavalue
+        });
+        characteristicList.push({
+            name: 'EmailAddress',
+            value: Partial.Widgets.nonMandatoryEmail.datavalue
+        });
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC1-PMTR",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'additionalCharacteristics': characteristicList
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "Payment Reminder Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
@@ -410,7 +456,30 @@ function disconnectNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        var characteristicList = [];
+
+        characteristicList.push({
+            name: 'CustomerName',
+            value: Partial.Widgets.custName.datavalue
+        });
+        characteristicList.push({
+            name: 'EmailAddress',
+            value: Partial.Widgets.nonMandatoryEmail.datavalue
+        });
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC3-DIST",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'additionalCharacteristics': characteristicList
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "Disconnect Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
@@ -424,7 +493,31 @@ function cancellationNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        App.Variables.successMessage.dataSet.dataValue = "Action created successfully.";
+        // API Call will come here
+        var characteristicList = [];
+
+        characteristicList.push({
+            name: 'CustomerName',
+            value: Partial.Widgets.custName.datavalue
+        });
+        characteristicList.push({
+            name: 'EmailAddress',
+            value: Partial.Widgets.nonMandatoryEmail.datavalue
+        });
+
+        Partial.Variables.createEntityHistoryAction.setInput({
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC4-CANL",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'additionalCharacteristics': characteristicList
+            },
+        });
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "Cancellation Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
 
