@@ -92,20 +92,24 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
+            <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;" class="reportTableBorder">
+                <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
+                    <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic">
+                        <wm-table-column binding="parrId" caption="PARR ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="Entity ID" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityRisk" caption="Entity Risk" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="parrStatus" caption="PARR Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="start" caption="Start" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="expiry" caption="Expiry" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="evaluation" caption="Evaluation" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="parrAmt" caption="PARR AMT" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="perOfAmtRecieved_Exp" caption="% Of PMT RVD/ EXP" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="createdTeam" caption="Created Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-gridcolumn>
+            </wm-container>
         </wm-page-content>
-        <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic">
-            <wm-table-column binding="parrId" caption="PARR ID" pcdisplay="true" mobiledisplay="true" type="integer"></wm-table-column>
-            <wm-table-column binding="entityId" caption="Entity ID" pcdisplay="true" mobiledisplay="true" type="long"></wm-table-column>
-            <wm-table-column binding="entityName" caption="Entity Name" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="entityRisk" caption="Entity Risk" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="parrStatus" caption="PARR Status" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="start" caption="Start" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="expiry" caption="Expiry" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="evaluation" caption="Evaluation" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="parrAmt" caption="PARR AMT" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="perOfAmtRecieved_Exp" caption="% Of PMT RVD/ EXP" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="createdTeam" caption="Created Team" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            <wm-table-column binding="createdBy" caption="Created By" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-        </wm-table>
     </wm-content>
 </wm-page>

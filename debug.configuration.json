@@ -117,9 +117,41 @@
       "name" : "com.fico.dmp.parrreportservice.ParrReportService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 49,
+        "line" : 67,
         "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
         "name" : "sampleJavaOperation",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 91,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 83,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "getParrReport",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 126,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 128,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$2",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

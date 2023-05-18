@@ -121,14 +121,22 @@ public class ParrReportService {
             {
                 for(ParrReports parrReports:parrReportsList)
                 {
-                   for(CollectionEntity collectionEntity:collectionEntityList)
-                   {
-                       if(collectionEntity.getId().equals(parrReports.getParrId()))
-                       {
-                           parrReports.setEntityName(collectionEntity.getName());
-                           parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
-                       }
-                   }
+                    
+               
+                    collectionEntityList.stream().filter(cel->cel.getId().equals(parrReports.getParrId())).forEach(collectionEntity -> {
+
+                        parrReports.setEntityName(collectionEntity.getName());
+                        parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+
+                    });
+                //   for(CollectionEntity collectionEntity:collectionEntityList)
+                //   {
+                //       if(collectionEntity.getId().equals(parrReports.getParrId()))
+                //       {
+                //           parrReports.setEntityName(collectionEntity.getName());
+                //           parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+                //       }
+                //   }
                 }
             }
 
