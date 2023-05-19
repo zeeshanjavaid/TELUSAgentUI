@@ -41,3 +41,8 @@ Page.button1Click = function($event, widget) {
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
+Page.button2Click = function($event, widget) {
+
+    Page.Variables.ParrReportServiceGetParrReport.invoke();
+
+};
