@@ -135,6 +135,13 @@ public class CollectionEntityController {
         return collectionEntityService.getdispute(id, fields, history);
     }
 
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public void init() {
+        collectionEntityService.init();
+    }
+
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.PUT)
     public CollectionBillingAccountRefUpdate updateBillingAccountRef(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionBillingAccountRefUpdate collectionBillingAccountRefUpdate) throws Exception {
         return collectionEntityService.updateBillingAccountRef(id, collectionBillingAccountRefUpdate);

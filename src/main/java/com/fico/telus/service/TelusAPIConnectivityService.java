@@ -167,10 +167,12 @@ public class TelusAPIConnectivityService {
 	 * @throws Exception
 	 */
 	public String executeTelusAPI(String requestPayload, String endpointURL, String httpMethod, String scope) throws Exception {
-
+        StringEntity entity=null;
 		String bearerToken = getTelusToken(scope);
 		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
-		StringEntity entity = new StringEntity(requestPayload, ContentType.APPLICATION_JSON);
+        if(requestPayload != null){
+		    entity = new StringEntity(requestPayload, ContentType.APPLICATION_JSON);
+        }
 		logger.info("::::::::::::::::::::: Telus telusEndpointURL:::::::::::::::::::::" + endpointURL);
 		HttpResponse response = null;
 		switch (httpMethod) {

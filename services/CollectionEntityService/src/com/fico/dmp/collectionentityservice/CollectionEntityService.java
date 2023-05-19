@@ -68,7 +68,8 @@ import java.text.SimpleDateFormat;
 import com.fico.core.util.ObjectMapperConfig;
 import com.fico.telus.service.PARRService;
 import org.springframework.stereotype.Service;
-
+import com.fico.pscomponent.util.PropertiesUtil;
+import com.fico.telus.service.TelusAPIConnectivityService;
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -89,10 +90,40 @@ public class CollectionEntityService {
      
     @Autowired
     private SecurityService securityService;
-    
-     @Autowired
+
+	private static final String IS_PARR_STUB_ENABLED = "IS_PARR_STUB_ENABLED";
+
+	private static final String PARR_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+	
+	@Autowired
+	private PropertiesUtil propertiesUtil;
+
+	@Autowired
+	private TelusAPIConnectivityService telusAPIConnectivityService;
+
+    @Autowired
     private PARRService parrService;
 
+	private boolean isParrStubEnabled;
+
+	private String parrEndPointUrl;
+
+	@PostConstruct
+	public void init() {
+
+		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "false"));
+		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+	}
+
+	private String propertyValueFrom(String propertyName, String defaulValueIfNull) {
+		String propertyValue = propertiesUtil.getPropertyValue(propertyName);
+		if (propertyValue == null) {
+			logger.info("property value is null, using default");
+			propertyValue = defaulValueIfNull;
+		}
+		return propertyValue;
+	}
+	
     //Billing Account Ref    
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
      public List<CollectionBillingAccountRef> getBillingAccountRef(String fields,Integer offset, Integer limit, String ban, Integer entityId, Integer id) throws Exception  {
@@ -100,11 +131,12 @@ public class CollectionEntityService {
         return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"C\",\"stateDate\":\"2022-12-12\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"ceaseReason\":null,\"closingCycle\":6,\"collectionStatus\":\"PRECOLL\",\"collectionStatusDate\":\"2022-12-12\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"lineOfBusiness\":\"WLN\",\"previousCollectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"suppressionReason\":null,\"suppressionValidFor\":null,\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"}]",
          objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionBillingAccountRef.class));
          
-    }    
-          // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
-        @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
-        @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-        public CollectionBillingAccountRef getBillingAccountRef(@PathVariable("id") Integer id, String fields) throws Exception  {
+    }
+    
+    // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public CollectionBillingAccountRef getBillingAccountRef(@PathVariable("id") Integer id, String fields) throws Exception  {
 
        return objectMapper.readValue("{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\",\"stateDate\":\"2022-12-12\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"PRECOLL\",\"collectionStatusDate\":\"2022-12-12\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"lineOfBusiness\":\"WLN\",\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"}",CollectionBillingAccountRef.class);
     }    
@@ -125,13 +157,19 @@ public class CollectionEntityService {
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @RequestMapping(value = "/entity", method = {RequestMethod.GET})
     public List<CollectionEntity> getCollectionEntity(String fields,Integer offset, Integer limit,  String ban, String rcid,String cbucid,String entityId,String agentId,String workCategory,String sortBy) throws Exception  {
-
-        // return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEntityBillingAccountMap\"}],\"characteristics\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"name\":\"string\",\"value\":\"string\",\"@type\":\"Characteristic\"}],\"collectionStatuses\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"code\":\"PRECOLL\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionStatus\"}],\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"customerRisk\":\"H\",\"customerRiskId\":59,\"customerValue\":\"L\",\"customerValueId\":10,\"delinquentCycle\":6,\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"manualTreatmentIndicator\":false,\"name\":\"string\",\"notTouchListIndicator\":false,\"paymentArrangement\":{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"@referredType\":\"CollectionPaymentArrangement\",\"@type\":\"EntityRef\"},\"randomDigit\":1,\"relatedEntity\":{\"id\":\"1\",\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"tenure\":29,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]",
-           return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRefMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEntityBillingAccountMap\"}],\"characteristics\":[{\"name\":\"name\",\"value\":\"value\",\"@type\":\"Characteristic\"}],\"collectionEpisodes\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"endReason\":null,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEpisode\"}],\"collectionStatus\":\"INCOLL\",\"collectionStatusDateTime\":\"2023-01-01T09:00:00.00Z\",\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"customerRisk\":\"H\",\"customerRiskId\":59,\"customerValue\":\"L\",\"customerValueId\":10,\"delinquentCycle\":6,\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"lineOfBusiness\":\"WLN\",\"manualTreatmentIndicator\":false,\"name\":\"Entity 1\",\"notTouchListIndicator\":false,\"paymentArrangement\":{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"@referredType\":\"CollectionPaymentArrangement\",\"@type\":\"EntityRef\"},\"randomDigit\":1,\"relatedEntity\":{\"id\":\"1\",\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"tenure\":29,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]",
-        objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
         
-             
+        if (isParrStubEnabled) {
+            return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRefMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEntityBillingAccountMap\"}],\"characteristics\":[{\"name\":\"name\",\"value\":\"value\",\"@type\":\"Characteristic\"}],\"collectionEpisodes\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"endReason\":null,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEpisode\"}],\"collectionStatus\":\"INCOLL\",\"collectionStatusDateTime\":\"2023-01-01T09:00:00.00Z\",\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"customerRisk\":\"H\",\"customerRiskId\":59,\"customerValue\":\"L\",\"customerValueId\":10,\"delinquentCycle\":6,\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"lineOfBusiness\":\"WLN\",\"manualTreatmentIndicator\":false,\"name\":\"Entity 1\",\"notTouchListIndicator\":false,\"paymentArrangement\":{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"@referredType\":\"CollectionPaymentArrangement\",\"@type\":\"EntityRef\"},\"randomDigit\":1,\"relatedEntity\":{\"id\":\"1\",\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"tenure\":29,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]",
+            objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
+        }else {
+         			logger.info("::::::::Calling  entity endpoint call ::::::::");
 
+                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + "?id=" + entityId, "GET","3161");
+                List<CollectionEntity> collectionEntityList = objectMapper.readValue(responseStr,
+					objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
+								logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
+                return collectionEntityList;
+        }
     }    
           // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
         // @RequestMapping(value = "/entity", method = {RequestMethod.GET})
