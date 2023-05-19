@@ -81,7 +81,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityId",
+      "value" : "3",
+      "type" : "string"
+    } ],
     "type" : "com.fico.telus.model.ParrReports",
     "service" : "ParrReportService",
     "operation" : "getParrReport",
