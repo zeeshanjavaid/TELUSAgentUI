@@ -103,7 +103,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action*" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
@@ -194,7 +194,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatusDefaultVar.dataSet.dataValue"
+                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionStatusDefaultVar.dataSet.dataValue"
                         displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -215,7 +215,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriorityDefaultVar.dataSet.dataValue"
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriorityDefaultVar.dataSet.dataValue"
                         displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -269,8 +269,7 @@
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-ellipsis" title="Custom rowActions" action="getCollectionTreatmentStepTable2_customRowAction($event, row)"
-                        disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-ellipsis" title="Custom rowActions" action="getCollectionTreatmentStepTable2_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil fico fico-icon-pencil" show="true" class="btn-primary btn-xs" action="editRow($event);getCollectionTreatmentStepTable2_updaterowAction($event, row)"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
