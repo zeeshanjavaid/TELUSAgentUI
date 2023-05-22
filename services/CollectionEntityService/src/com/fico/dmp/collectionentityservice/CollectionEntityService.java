@@ -91,9 +91,12 @@ public class CollectionEntityService {
     @Autowired
     private SecurityService securityService;
 
-	private static final String IS_PARR_STUB_ENABLED = "IS_PARR_STUB_ENABLED";
+	private static final String IS_ENTITYSVC_STUB_ENABLED = "IS_ENTITYSVC_STUB_ENABLED";
 
-	private static final String PARR_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+	
+	private static final String ENTITYSVC_ENDPOINT_SCOPE = "ENTITYSVC_ENDPOINT_SCOPE";
+
 	
 	@Autowired
 	private PropertiesUtil propertiesUtil;
@@ -104,15 +107,20 @@ public class CollectionEntityService {
     @Autowired
     private PARRService parrService;
 
-	private boolean isParrStubEnabled;
+	private boolean isStubEnabled;
 
 	private String parrEndPointUrl;
+	
+	private String entitySvcAuthScope;
+
 
 	@PostConstruct
 	public void init() {
 
-		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "true"));
-		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+		this.isStubEnabled = Boolean.valueOf(propertyValueFrom(IS_ENTITYSVC_STUB_ENABLED, "true"));
+		this.parrEndPointUrl = propertyValueFrom(ENTITYSVC_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+		this.entitySvcAuthScope = propertyValueFrom(ENTITYSVC_ENDPOINT_SCOPE, "3161");
+
 	}
 
 	private String propertyValueFrom(String propertyName, String defaulValueIfNull) {
@@ -158,13 +166,13 @@ public class CollectionEntityService {
     @RequestMapping(value = "/entity", method = {RequestMethod.GET})
     public List<CollectionEntity> getCollectionEntity(String fields,Integer offset, Integer limit,  String ban, String rcid,String cbucid,String entityId,String agentId,String workCategory,String sortBy) throws Exception  {
         
-        if (isParrStubEnabled) {
+        if (isStubEnabled) {
             return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"agentId\":\"agent1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRefMaps\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEntityBillingAccountMap\"}],\"characteristics\":[{\"name\":\"name\",\"value\":\"value\",\"@type\":\"Characteristic\"}],\"collectionEpisodes\":[{\"id\":1,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"endReason\":null,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"@type\":\"CollectionEpisode\"}],\"collectionStatus\":\"INCOLL\",\"collectionStatusDateTime\":\"2023-01-01T09:00:00.00Z\",\"contacts\":[{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"@referredType\":\"CollectionContact\",\"@type\":\"EntityRef\"}],\"customerRisk\":\"H\",\"customerRiskId\":59,\"customerValue\":\"L\",\"customerValueId\":10,\"delinquentCycle\":6,\"engagedCustomerParty\":{\"cbucid\":\"123\",\"cbuCode\":\"cbuCode123\",\"cbuName\":\"cbu-name-123\",\"organizationType\":\"CBU\",\"@type\":\"Organization\"},\"engagedRegionalCustomerParty\":{\"organizationType\":\"RC\",\"rcid\":\"rc-12345\",\"rcName\":\"rc-name-12345\",\"portfolioCategory\":\"PUBLIC\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"subMarketSegment\":\"string\",\"@type\":\"Organization\"},\"exclusionIndicatorCharacter\":\"string\",\"exclusionIndicatorInteger\":1,\"lineOfBusiness\":\"WLN\",\"manualTreatmentIndicator\":false,\"name\":\"Entity 1\",\"notTouchListIndicator\":false,\"paymentArrangement\":{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"@referredType\":\"CollectionPaymentArrangement\",\"@type\":\"EntityRef\"},\"randomDigit\":1,\"relatedEntity\":{\"id\":\"1\",\"role\":\"RCID\",\"@type\":\"RelatedEntity\"},\"tenure\":29,\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workCategory\":\"string\",\"@type\":\"CollectionEntity\"}]",
             objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
         }else {
          			logger.info("::::::::Calling  entity endpoint call ::::::::");
 
-                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + "?id=" + entityId, "GET","3161");
+                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + "?id=" + entityId, "GET", entitySvcAuthScope);
                 List<CollectionEntity> collectionEntityList = objectMapper.readValue(responseStr,
 					objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
 								logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
