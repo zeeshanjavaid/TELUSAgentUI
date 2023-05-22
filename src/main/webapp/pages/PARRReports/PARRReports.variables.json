@@ -23,9 +23,7 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "BC"
-    }, {
-      "dataValue" : "AR"
+      "dataValue" : "BC AR"
     }, {
       "dataValue" : "TQ AR"
     }, {
@@ -115,7 +113,7 @@
     }, {
       "dataValue" : "Closed"
     }, {
-      "dataValue" : "Renagotitated"
+      "dataValue" : "Renegotiated"
     }, {
       "dataValue" : "Cancelled"
     } ],
