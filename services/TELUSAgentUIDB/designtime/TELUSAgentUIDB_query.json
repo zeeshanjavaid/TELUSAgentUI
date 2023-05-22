@@ -2923,8 +2923,8 @@
     "name" : "getLoggedInUserTeam",
     "description" : "This query is used to retrieve the logged in user team Id",
     "version" : "V2",
-    "queryString" : "select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))",
-    "countQueryString" : "select count(*) from (select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))) wmTempTable",
+    "queryString" : "select TeamID as teamId from TEAM where ID = (select max(TeamID) from TEAM_USER where userId = :userId)",
+    "countQueryString" : "select count(*) from (select TeamID as teamId from TEAM where ID = (select max(TeamID) from TEAM_USER where userId = :userId)) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2935,7 +2935,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "9",
+      "testValue" : "15",
       "required" : true
     } ],
     "request" : {

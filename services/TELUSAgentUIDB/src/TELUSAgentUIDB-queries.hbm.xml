@@ -432,14 +432,14 @@ ORDER BY usr.firstName asc) wmTempTable
 
     <sql-query name="getLoggedInUserTeam">
         <![CDATA[
-        select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))
+        select TeamID as teamId from TEAM where ID = (select max(TeamID) from TEAM_USER where userId = :userId)
         ]]>
     <query-param name="userId" type="java.lang.Integer"/>
     </sql-query>
 
     <sql-query name="getLoggedInUserTeam__count">
         <![CDATA[
-        select count(*) from (select TeamID as teamId from TEAM where ID = (select TeamID from TEAM_USER where ID = (select max(ID) from TEAM_USER where userId = :userId))) wmTempTable
+        select count(*) from (select TeamID as teamId from TEAM where ID = (select max(TeamID) from TEAM_USER where userId = :userId)) wmTempTable
         ]]>
     <query-param name="userId" type="java.lang.Integer"/>
     </sql-query>
