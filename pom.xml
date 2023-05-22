@@ -69,6 +69,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/CommonUtilityService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/DmpS3FileService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -341,6 +348,7 @@
                                 <source>services/CollectionDataService/src</source>
                                 <source>services/CollectionEntityService/src</source>
                                 <source>services/CollectionTreatmentService/src</source>
+                                <source>services/CommonUtilityService/src</source>
                                 <source>services/DmpS3FileService/src</source>
                                 <source>services/DomainValueRelatedBS/src</source>
                                 <source>services/DuplicateCheckRelatedBS/src</source>

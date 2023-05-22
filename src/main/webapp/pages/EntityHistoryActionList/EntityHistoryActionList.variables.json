@@ -1228,18 +1228,18 @@
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
   "getLoggedInUserTeamIdVar" : {
-    "_id" : "wm-getLoggedInUserTeamIdVar-wm.ServiceVariable-1683525567531",
+    "_id" : "wm-getLoggedInUserTeamIdVar2-wm.ServiceVariable-1684765555986",
     "name" : "getLoggedInUserTeamIdVar",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetLoggedInUserTeamResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetLoggedInUserTeam",
-    "operationId" : "QueryExecutionController_executeGetLoggedInUserTeam",
+    "type" : "string",
+    "service" : "CommonUtilityService",
+    "operation" : "getLoggedInUserTeamId",
+    "operationId" : "CommonUtilityController_getLoggedInUserTeamId",
     "operationType" : "get",
-    "serviceType" : "DataService",
+    "serviceType" : "JavaService",
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
@@ -1248,7 +1248,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
+    "controller" : "CommonUtility"
   },
   "UserLoggedInVar" : {
     "_id" : "wm-UserLoggedInVar-wm.Variable-1683296483665",
