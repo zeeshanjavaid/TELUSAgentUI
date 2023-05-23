@@ -269,8 +269,8 @@
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-ellipsis" title="Custom rowActions" action="getCollectionTreatmentStepTable2_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil fico fico-icon-pencil" show="true" class="btn-primary btn-xs" action="editRow($event);getCollectionTreatmentStepTable2_updaterowAction($event, row)"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-ellipsis" title="Custom rowActions" action="getCollectionTreatmentStepTable2_customRowAction($event, row)"
+                        disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -397,8 +397,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Close" on-click="closeDialog()" name="button1"></wm-button>
-            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2"></wm-button>
+            <wm-button class="secondaryButton" caption="Close" name="button1"></wm-button>
+            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.updateActionDialog.open()"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Close" iconclass="wi wi-file-text" name="CloseActionDialog">
@@ -478,21 +478,136 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions2">
-            <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button3"></wm-button>
+        <wm-dialogactions name="dialogactions2" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="Cancle" on-click="closeDialog()" name="button3"></wm-button>
+            <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="button17"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Update Action <actionType>" iconclass="" name="updateActionDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Update Action <actionType>" iconclass="" name="updateActionDialog" width="40%">
         <wm-layoutgrid name="layoutgrid17">
-            <wm-gridrow name="gridrow79">
+            <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn79" height="50px">
-                    <wm-label padding="unset 0.5em" caption="Name" name="label43" width="100%" height="40px"></wm-label>
+                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43"
+                        width="100%" height="40px"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.2em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Are you sure you want to update this action and change the assignment?" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11">
+            <wm-gridrow name="gridrow7" padding="0.7em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.3em unset">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2">
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.2em" class="comment-border"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
             <wm-button class="secondaryButton" caption="No" on-click="closeDialog()" name="button14_1"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action <actionType>" iconclass="" name="assigned_closeActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Are you sure you want to close the action (actionType actionName ) (ID actionID)?" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11">
+            <wm-gridrow name="gridrow7" padding="1.2em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.2em unset">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2">
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="closeDialog()" name="button14_1"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Cancle Action <actionType>" iconclass="" name="assigned_cancleActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Are you sure you want to cancel the action (actionType actionName) (ID actionID)?" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11">
+            <wm-gridrow name="gridrow7" padding="1.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.2em unset">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2">
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="closeDialog()" name="button14_1"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action <actionType>" iconclass="" name="notAssigned_closeActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="The action (actionType Action Name) (ID Action ID) has not been assigned to someone to work on it." name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Please go back and assign it to yourself before closing" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Cancle Action <actionType>" iconclass="" name="notAssigned_cancleActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="The action (actionType Action Name) (ID Action ID) has not been assigned to someone to work on it." name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Please go back and assign it to yourself before canceling" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>
