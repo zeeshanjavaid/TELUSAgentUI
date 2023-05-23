@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
+
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
@@ -27,6 +28,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fico.pscomponent.util.PropertiesUtil;
@@ -175,39 +178,58 @@ public class TelusAPIConnectivityService {
         }
 		logger.info("::::::::::::::::::::: Telus telusEndpointURL:::::::::::::::::::::" + endpointURL);
 		HttpResponse response = null;
+		ResponseEntity<String> responseEntity=null;
+		HttpHeaders headers=null;
 		switch (httpMethod) {
 
 			case "POST":
 	
-				HttpPost httpPost = new HttpPost(endpointURL);
-				httpPost.addHeader("Authorization", "Bearer " + bearerToken);
-				httpPost.setEntity(entity);
-				httpPost.addHeader("Content-Type", "application/json");
-				response = invokeTelusPostAPI(httpPost);
+				// HttpPost httpPost = new HttpPost(endpointURL);
+				// httpPost.addHeader("Authorization", "Bearer " + bearerToken);
+				// httpPost.setEntity(entity);
+				// httpPost.addHeader("Content-Type", "application/json");
+				// response = invokeTelusPostAPI(httpPost);
+				
+				headers = new HttpHeaders();
+				headers.add("Authorization", "Bearer " + bearerToken);
+				headers.add("Content-Type", "application/json");
+				responseEntity= invokeTelusPostAPIWithRestTemp(headers,endpointURL);
 				break;
 	
 			case "GET":
-				HttpGet httpGet = new HttpGet(endpointURL);
-				httpGet.addHeader("Authorization", "Bearer " + bearerToken);
-				httpGet.addHeader("Content-Type", "application/json");
-				response = invokeTelusGetAPI(httpGet);
+				// HttpGet httpGet = new HttpGet(endpointURL);
+				// httpGet.addHeader("Authorization", "Bearer " + bearerToken);
+				// httpGet.addHeader("Content-Type", "application/json");
+				// response = invokeTelusGetAPI(httpGet);
+				
+				 headers = new HttpHeaders();
+				headers.add("Authorization", "Bearer " + bearerToken);
+				headers.add("Content-Type", "application/json");
+				responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
 				break;
 	
 			case "PATCH":
-				HttpPatch httpPatch = new HttpPatch(endpointURL);
-				httpPatch.addHeader("Authorization", "Bearer " + bearerToken);
-				httpPatch.setEntity(entity);
-				httpPatch.addHeader("Content-Type", "application/json");
-				response = invokeTelusPatchAPI(httpPatch);
+				// HttpPatch httpPatch = new HttpPatch(endpointURL);
+				// httpPatch.addHeader("Authorization", "Bearer " + bearerToken);
+				// httpPatch.setEntity(entity);
+				// httpPatch.addHeader("Content-Type", "application/json");
+				// response = invokeTelusPatchAPI(httpPatch);
+				
+				headers = new HttpHeaders();
+				headers.add("Authorization", "Bearer " + bearerToken);
+				headers.add("Content-Type", "application/json");
+				responseEntity= invokeTelusPatchAPIWithRestTemp(headers,endpointURL);
 				break;
 			default:
 		}
 		Integer statusCode = null;
 		String result = null;
-		if (response != null) {
+		HttpStatus httpStatus = responseEntity.getStatusCode();
+		statusCode=httpStatus.value();
+		if (responseEntity != null) {
 			// Read the response
-			result = readResponse(response);
-			if (response.getStatusLine().getStatusCode() == 200) {
+			result = responseEntity.getBody();
+			if (statusCode == 200) {
 				logger.info("::::::::Telus outbound API response statusCode ::::::::::::::::" + statusCode);
 				return result;
 			} else {
@@ -218,6 +240,34 @@ public class TelusAPIConnectivityService {
 			}
 		}
 		return result;
+	}
+	
+	
+		private ResponseEntity<String> invokeTelusGetAPIWithRestTemp(HttpHeaders headers,String endpointURL ) {
+
+     	logger.info(":::::::::::Before calling Telus API get execute method ::::::::::::::::::::");
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
+		return restTemplate.exchange(endpointURL, HttpMethod.GET, requestEntity, String.class);
+
+	}
+	
+		private ResponseEntity<String> invokeTelusPostAPIWithRestTemp(HttpHeaders headers,String endpointURL ) {
+
+		RestTemplate restTemplate =new RestTemplate();
+
+		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
+		return restTemplate.exchange(endpointURL, HttpMethod.POST, requestEntity, String.class);
+
+	}
+
+	private ResponseEntity<String> invokeTelusPatchAPIWithRestTemp(HttpHeaders headers,String endpointURL ) {
+
+		RestTemplate restTemplate =new RestTemplate();
+
+		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
+		return restTemplate.exchange(endpointURL, HttpMethod.PATCH, requestEntity, String.class);
+
 	}
 	
 	private String readResponse(HttpResponse response) throws Exception {

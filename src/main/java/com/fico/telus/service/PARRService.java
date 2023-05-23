@@ -50,8 +50,13 @@ public class PARRService {
 	@PostConstruct
 	public void init() {
 
-		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "true"));
-		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "false"));
+// 		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+
+	this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/paymentArrangement");
+		
+		
+		
 	}
 
 	private String propertyValueFrom(String propertyName, String defaulValueIfNull) {
