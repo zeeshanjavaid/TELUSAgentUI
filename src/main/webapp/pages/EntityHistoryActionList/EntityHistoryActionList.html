@@ -401,7 +401,7 @@
             <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.updateActionDialog.open()"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Close" iconclass="wi wi-file-text" name="CloseActionDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)">
         <wm-gridrow name="gridrow17">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
         </wm-gridrow>
@@ -453,18 +453,18 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                 <wm-gridcolumn name="gridcolumn15" width="50%">
-                    <wm-button class="btn-default" caption="Yes" type="button" margin="unset 0.5em" name="button14"></wm-button>
-                    <wm-button class="btn-default" caption="No" type="button" margin="unset 0.5em" name="button15"></wm-button>
+                    <wm-button class="btn-default" caption="Yes" type="button" name="yesButton" on-click="yesButtonClick($event, widget)" id="yesBtn"></wm-button>
+                    <wm-button class="btn-default" caption="No" type="button" margin="unset unset unset 0.7em" name="noButton" on-click="noButtonClick($event, widget) " id="yesBtn"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow13">
+            <wm-gridrow name="gridrow13" id="Outcome">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Outcome" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10">
+            <wm-gridrow name="gridrow10" id="actionOutcomeSelect">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionOutcomeSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.actionStatus.dataSet[1].dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="50%" name="actionOutcomeSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">

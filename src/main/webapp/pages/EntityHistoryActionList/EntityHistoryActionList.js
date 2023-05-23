@@ -26,6 +26,7 @@ Partial.onReady = function() {
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
     Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
+
 };
 
 function messageTimeout() {
@@ -644,4 +645,30 @@ Partial.completedButtonClick = function($event, widget) {
 Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
     debugger;
     Partial.Widgets.ToDoActionPopover.showPopover();
+};
+// display the close action Dailog
+Partial.CloseActionDialogOpened = function($event, widget) {
+    $("#yesBtn").css("background-color", "#4B286D");
+    $("#yesBtn").css("color", "white");
+    $('#Outcome').hide();
+    $('#actionOutcomeSelect').hide();
+};
+Partial.yesButtonClick = function($event, widget) {
+    // to make buttons selected
+    $("#yesBtn").css("background-color", "#4B286D");
+    $("#yesBtn").css("color", "white");
+    $("#noBtn").css("background-color", "white");
+    $("#noBtn").css("color", "#4B286D");
+    // hide outcome
+    $('#Outcome').hide();
+    $('#actionOutcomeSelect').hide();
+};
+Partial.noButtonClick = function($event, widget) {
+    $("#noBtn").css("background-color", "#4B286D");
+    $("#noBtn").css("color", "white");
+    $("#yesBtn").css("background-color", "white");
+    $("#yesBtn").css("color", "#4B286D");
+    // show outcome
+    $('#Outcome').show();
+    $('#actionOutcomeSelect').show();
 };
