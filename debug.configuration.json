@@ -1110,24 +1110,6 @@
       "breakPoints" : [ ]
     } ]
   }, {
-    "serviceId" : "ExternalService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.externalservice.ExternalService",
-      "description" : "com.fico.dmp.externalservice.ExternalService",
-      "name" : "com.fico.dmp.externalservice.ExternalService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 53,
-        "path" : "/services/ExternalService/src/com/fico/dmp/externalservice/ExternalService.java",
-        "name" : "getAgent",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
     "serviceId" : "Environment",
     "type" : "JAVA_SERVICE",
     "url" : null,

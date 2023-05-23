@@ -111,13 +111,6 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
-                <directory>services/ExternalService/src</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <filtering>true</filtering>
                 <directory>services/FDOUtilityServices/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -354,7 +347,6 @@
                                 <source>services/DuplicateCheckRelatedBS/src</source>
                                 <source>services/EntityBanTravelHistoryService/src</source>
                                 <source>services/Environment/src</source>
-                                <source>services/ExternalService/src</source>
                                 <source>services/FDOUtilityServices/src</source>
                                 <source>services/FileRelatedBS/src</source>
                                 <source>services/LookupFileBS/src</source>
