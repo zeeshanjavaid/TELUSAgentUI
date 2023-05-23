@@ -16,12 +16,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
+import io.swagger.client.model.CollectionBillingAccountRef;
 import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fico.dmp.collectionentityservice.CollectionEntityService;
+import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
+import com.fico.telus.model.BanTravelHistoryModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -59,24 +62,50 @@ public class EntityBanTravelHistoryService {
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      * @throws Exception 
      */
-    public List<CollectionEntityBillingAccountRefMap> fetchEntityBanTravelHistory(Integer id) throws Exception {
+    public List<BanTravelHistoryModel> fetchEntityBanTravelHistory(Integer id) throws Exception {
     	CollectionEntity collectionEntity =  collectionEntityService.getCollectionEntity(id, true);
     	List<CollectionEntityBillingAccountRefMap> collectionEntityBillingAccountRefList = collectionEntity.getBillingAccountRefMaps();
-    	List<Long> billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
-    	logger.info("billingAcctRefIds----"+billingAcctRefIds);
-    	//String billing = String.join(",", billingAcctRefIds);
-    	String joinedList = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
-    	logger.info("joinedList----"+joinedList);
+    	List<Long> billingAcctRefIds = new ArrayList<Long>();
+    	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();
+    	if(!CollectionUtils.isEmpty(collectionEntityBillingAccountRefList)) {
+        	billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
+        	logger.info("billingAcctRefIds----"+billingAcctRefIds);
+        	
+        	for (CollectionEntityBillingAccountRefMap collectionEntityBillingAccountRefMap : collectionEntityBillingAccountRefList) {
+        		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
+        		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
+        		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
+        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
+        		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
+        		}
+        		banTravelHistoryModelList.add(banTravelHistoryModel);
+			}
+    	}
     	
-    /*	List<Integer> billingAccountRefIds = null;
-    	for (CollectionEntityBillingAccountRefMap collectionEntityBillingAccountRefMap : collectionEntityBillingAccountRefList) {
-    		billingAccountRefIds = new ArrayList<Integer>();
-    		if(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId() != null) {
-
-    		}
-		} */
-    	logger.info("entity serivic size---"+collectionEntityBillingAccountRefList.size());
-    	return collectionEntityBillingAccountRefList;
+    	String billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+    	logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
+    	
+    	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(null, null, null, null, null, null);
+    	
+    	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
+    		
+    		for (BanTravelHistoryModel banTravelHistoryModel : banTravelHistoryModelList) {
+    			
+    			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(banTravelHistoryModel.getBillingAccountRefId().intValue())).forEach(collectionBillingAccountRef -> {
+    				banTravelHistoryModel.setBanId(collectionBillingAccountRef.getBillingAccount().getId());
+    				banTravelHistoryModel.setBanStatus(collectionBillingAccountRef.getBillingAccount().getState().toString());
+    				banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
+    				banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
+    				banTravelHistoryModel.setLastUpdatedBy(collectionBillingAccountRef.getAuditInfo().getLastUpdatedBy());
+    			});
+				
+			}
+    		
+    	}
+    	
+    	logger.info("banTravelHistoryModelList----"+banTravelHistoryModelList.toString());
+    	
+    	return banTravelHistoryModelList;
     }
 
 }

@@ -6,7 +6,7 @@ package com.fico.dmp.entitybantravelhistoryservice.controller;
 import com.fico.dmp.entitybantravelhistoryservice.EntityBanTravelHistoryService;
 import java.lang.Integer;
 import java.lang.Exception;
-import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
+import com.fico.telus.model.BanTravelHistoryModel;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class EntityBanTravelHistoryController {
     @RequestMapping(value = "/entityBanTravelHistory", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionEntityBillingAccountRefMap> fetchEntityBanTravelHistory(@RequestParam(value = "id", required = false) Integer id) throws Exception {
+    public List<BanTravelHistoryModel> fetchEntityBanTravelHistory(@RequestParam(value = "id", required = false) Integer id) throws Exception {
         return entityBanTravelHistoryService.fetchEntityBanTravelHistory(id);
     }
 }
