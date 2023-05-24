@@ -9,9 +9,9 @@
  * example: var utils = App.getDependency('Utils');
  */
 
-$('document').ready(() => {
-    document.getElementsByTagName("html")[0].style.visibility = "hidden";
-});
+// $('document').ready(() => {
+//     document.getElementsByTagName("html")[0].style.visibility = "hidden";
+// });
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
@@ -25,7 +25,7 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
-    initPage();
+    // initPage();
 };
 
 function initPage() {

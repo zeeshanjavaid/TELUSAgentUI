@@ -264,6 +264,19 @@
           "isRelated" : false,
           "defaultValue" : "",
           "scale" : 0
+        }, {
+          "fieldName" : "managerId",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "managerId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
         } ]
       }, {
         "fieldName" : "userByCreatedBy",
@@ -476,6 +489,19 @@
           "notNull" : false,
           "length" : 16,
           "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
+        }, {
+          "fieldName" : "managerId",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "managerId",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
           "generator" : "assigned",
           "isRelated" : false,
           "defaultValue" : "",
