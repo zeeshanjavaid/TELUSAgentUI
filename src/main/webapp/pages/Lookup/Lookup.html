@@ -334,7 +334,7 @@
             <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="CreateEntityAndTransBansButton" on-click="CreateEntityAndTransBansButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="BANs Travel History" name="BansTravelHistoryDialog" width="50%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="BANs Travel History" name="BansTravelHistoryDialog" width="70%">
         <wm-layoutgrid name="layoutgrid14">
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn58">
@@ -362,14 +362,14 @@
         <wm-layoutgrid name="layoutgrid12">
             <wm-gridrow name="gridrow17">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
-                    <wm-table name="BansTravelHistoryTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" navigation="Classic" radioselect="false" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)" on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
-                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banArAmount" caption="Transfer Out DT" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Ban Status" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Ban Status DT" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Closing Cycle" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Last Updated By" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                    <wm-table name="BansTravelHistoryTable" title="" dataset="bind:Variables.entityBanTravelHistoryVar.dataSet" navigation="Classic" radioselect="false" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)" on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)">
+                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="transferInDT" caption="Transfer In DT" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="transferOutDT" caption="Transfer Out DT" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="BAN Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatusDT" caption="BAN Status DT" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="closingCycle" caption="Closing Cycle" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="lastUpdatedBy" caption="Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
