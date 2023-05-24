@@ -644,6 +644,7 @@ Partial.completedButtonClick = function($event, widget) {
 
 Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
     debugger;
+
     Partial.Widgets.ToDoActionPopover.showPopover();
 };
 // display the close action Dailog
@@ -671,4 +672,15 @@ Partial.noButtonClick = function($event, widget) {
     // show outcome
     $('#Outcome').show();
     $('#actionOutcomeSelect').show();
+};
+Partial.closeButtonClick = function($event, widget) {
+    Partial.Widgets.CloseActionDialog.close();
+    Partial.Widgets.assigned_closeActionDialog.open();
+    /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
+};
+
+Partial.cancleButtonClick = function($event, widget) {
+    Partial.Widgets.CloseActionDialog.close();
+    Partial.Widgets.assigned_cancleActionDialog.open();
+    /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
 };

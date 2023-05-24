@@ -278,8 +278,8 @@
     <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid"><span>Completed table</span></wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid13">
         <wm-gridrow name="gridrow40">
-            <wm-gridcolumn columnwidth="12" name="gridcolumn45">
-                <wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn45" horizontalalign="left">
+                <wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false" id="toDoPopover">
                     <wm-layoutgrid name="layoutgrid4">
                         <wm-gridrow name="gridrow4">
                             <wm-gridcolumn columnwidth="1" name="gridcolumn4">
@@ -479,8 +479,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Cancle" on-click="closeDialog()" name="button3"></wm-button>
-            <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="button17"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancle" on-click="cancleButtonClick($event, widget)" name="cancleButton"></wm-button>
+            <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="closeButton" on-click="closeButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Update Action <actionType>" iconclass="" name="updateActionDialog" width="40%">
