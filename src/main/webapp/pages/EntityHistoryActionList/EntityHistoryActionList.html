@@ -259,8 +259,8 @@
     <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%" id="toDoTableGrid">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet" navigation="None">
-                    <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.getCollectionTreatmentStep_1.dataSet" navigation="None">
+                    <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedAgentId" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -413,7 +413,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-label padding="unset 0.5em unset unset" caption="Action Type" name="label2"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" name="label2"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">

@@ -674,9 +674,18 @@ Partial.noButtonClick = function($event, widget) {
     $('#actionOutcomeSelect').show();
 };
 Partial.closeButtonClick = function($event, widget) {
-    Partial.Widgets.CloseActionDialog.close();
-    Partial.Widgets.assigned_closeActionDialog.open();
-    /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
+    debugger;
+    // if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+        Partial.Widgets.notAssigned_closeActionDialog.open();
+
+    } else {
+        Partial.Widgets.CloseActionDialog.close();
+        Partial.Widgets.assigned_closeActionDialog.open();
+        /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
+    }
 };
 
 Partial.cancleButtonClick = function($event, widget) {

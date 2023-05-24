@@ -136,7 +136,7 @@ public class PARRService {
 		}
 	}
 
-	public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId) throws Exception {
+	public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId, String parrEndPointUrl) throws Exception {
 
 		List<CollectionPaymentArrangement> collectionPaymentArrangements = new ArrayList<CollectionPaymentArrangement>();
 		if (isParrStubEnabled) {
@@ -149,7 +149,7 @@ public class PARRService {
 		} else {
 
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-					this.parrEndPointUrl + "?id=in:" + entityId, "GET","3161");
+					parrEndPointUrl, "GET","3161");
 			collectionPaymentArrangements = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}

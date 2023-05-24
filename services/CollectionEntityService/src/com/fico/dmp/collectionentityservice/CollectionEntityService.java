@@ -2,6 +2,7 @@
  This software is the confidential and proprietary information of fico.com You shall not disclose such Confidential Information and shall use it only in accordance
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.collectionentityservice;
+import com.fico.telus.utility.URIConstant;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -70,6 +71,8 @@ import com.fico.telus.service.PARRService;
 import org.springframework.stereotype.Service;
 import com.fico.pscomponent.util.PropertiesUtil;
 import com.fico.telus.service.TelusAPIConnectivityService;
+import org.springframework.web.util.UriComponentsBuilder;
+
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -118,7 +121,7 @@ public class CollectionEntityService {
 	public void init() {
 
 		this.isStubEnabled = Boolean.valueOf(propertyValueFrom(IS_ENTITYSVC_STUB_ENABLED, "false"));
-		this.parrEndPointUrl = propertyValueFrom(ENTITYSVC_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
+		this.parrEndPointUrl = propertyValueFrom(ENTITYSVC_ENDPOINT_URL, URIConstant.COLLECTION_ENTITY_SERVICE_URL);
 		this.entitySvcAuthScope = propertyValueFrom(ENTITYSVC_ENDPOINT_SCOPE, "3161");
 
 	}
@@ -163,7 +166,7 @@ public class CollectionEntityService {
 //Collection Entity    
 
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @RequestMapping(value = "/entity", method = {RequestMethod.GET})
+    @RequestMapping(value =  URIConstant.ApiMapping.GET_ENTITY, method = {RequestMethod.GET})
     public List<CollectionEntity> getCollectionEntity(String fields,Integer offset, Integer limit,  String ban, String rcid,String cbucid,String entityId,String agentId,String workCategory,String sortBy) throws Exception  {
         
         if (isStubEnabled) {
@@ -172,7 +175,9 @@ public class CollectionEntityService {
         }else {
          			logger.info("::::::::Calling  entity endpoint call ::::::::");
 
-                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + "?id=" + entityId, "GET", entitySvcAuthScope);
+                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "?id=" + entityId, "GET", entitySvcAuthScope);
+                	logger.info("::::::::Entity endpoint call success ::::::::");
+                	logger.info("Resoinse---"+ responseStr);
                 List<CollectionEntity> collectionEntityList = objectMapper.readValue(responseStr,
 					objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
 								logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
@@ -228,7 +233,7 @@ public class CollectionEntityService {
         return collectionContactUpdate ;
     }
     //PAAR
-  @RequestMapping(value = "/paymentArrangement", method = {RequestMethod.GET})
+  @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
     public List<CollectionPaymentArrangement> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
     	
         // return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/paymentArrangement/1\",\"allBillingAccountIncludedIndicator\":true,\"amount\":100.0,\"billingAccountMaps\":[{\"id\":1,\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"INCOLL\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"writeOffIndicator\":false},\"validityIndicator\":true}],\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\"},\"comment\":\"string\",\"evaluationResult\":\"string\",\"expectedPaymentAmountToDate\":100.0,\"installments\":[{\"id\":1,\"amount\":100.0,\"evaluationResult\":\"string\",\"sequenceId\":1,\"validityIndicator\":true}],\"receivedPaymentAmountToDate\":0.0,\"recurrence\":\"MONTHLY\",\"statuses\":[{\"id\":1,\"reason\":\"string\",\"status\":\"string\"}]}]",
@@ -239,7 +244,10 @@ public class CollectionEntityService {
 		 * CollectionPaymentArrangement.class));
 		 */
         // return new Object(); 
-    	return parrService.getPaymentArrangements(entityId);
+         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
+              .queryParam("id=in:", entityId)
+               .queryParam("entityRisk",entityRisk);
+    	return parrService.getPaymentArrangements(entityId,builder.toUriString());
     }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
         @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
