@@ -27,7 +27,7 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "label" : "PARR",
+      "label" : "PARR Report",
       "link" : "#PARRReports",
       "roleId" : "Support"
     } ],
