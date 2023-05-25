@@ -642,11 +642,11 @@ Partial.completedButtonClick = function($event, widget) {
     $('#toDoTableGrid').hide();
 };
 
-Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
+/*Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
     debugger;
 
     Partial.Widgets.ToDoActionPopover.showPopover();
-};
+};*/
 // display the close action Dailog
 Partial.CloseActionDialogOpened = function($event, widget) {
     $("#yesBtn").css("background-color", "#4B286D");
@@ -692,4 +692,10 @@ Partial.cancleButtonClick = function($event, widget) {
     Partial.Widgets.CloseActionDialog.close();
     Partial.Widgets.assigned_cancleActionDialog.open();
     /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
+};
+Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
+    Partial.Widgets.EditActionDialog.open();
+};
+Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
+    Partial.Widgets.CloseActionDialog.open();
 };
