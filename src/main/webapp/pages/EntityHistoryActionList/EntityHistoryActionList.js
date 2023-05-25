@@ -679,6 +679,7 @@ Partial.closeButtonClick = function($event, widget) {
 
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
 
+        Partial.Widgets.CloseActionDialog.close();
         Partial.Widgets.notAssigned_closeActionDialog.open();
 
     } else {
@@ -690,12 +691,79 @@ Partial.closeButtonClick = function($event, widget) {
 
 Partial.cancleButtonClick = function($event, widget) {
     Partial.Widgets.CloseActionDialog.close();
-    Partial.Widgets.assigned_cancleActionDialog.open();
+    // Partial.Widgets.assigned_cancleActionDialog.open();
     /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     Partial.Widgets.EditActionDialog.open();
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
-    Partial.Widgets.CloseActionDialog.open();
+    debugger;
+    if (row.stepTypeCode == 'CALL-OB') {
+        Partial.Widgets.CloseActionDialog.open();
+    } else {
+        Partial.Widgets.assigned_closeActionDialog.open();
+    }
+
+};
+Partial.button15_1Click = function($event, widget) {
+
+
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+        Partial.Widgets.notAssigned_closeActionDialog.close();
+
+        Partial.Widgets.EditActionDialog.open();
+    } else {
+        Partial.Widgets.assigned_closeActionDialog.close();
+    }
+
+
+};
+
+Partial.button15Click = function($event, widget) {
+
+
+
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+        Partial.Widgets.assigned_closeActionDialog.close();
+        Partial.Widgets.notAssigned_closeActionDialog.open();
+
+
+    } else {
+        Partial.Widgets.assigned_closeActionDialog.close();
+    }
+
+
+};
+Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row) {
+
+    Partial.Widgets.assigned_cancleActionDialog.open();
+
+};
+Partial.button16_1Click = function($event, widget) {
+
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+        Partial.Widgets.assigned_cancleActionDialog.close();
+        Partial.Widgets.notAssigned_cancleActionDialog.open();
+
+
+    } else {
+        Partial.Widgets.assigned_cancleActionDialog.close();
+    }
+
+
+};
+Partial.button17_1Click = function($event, widget) {
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+        Partial.Widgets.notAssigned_cancleActionDialog.close();
+
+        Partial.Widgets.EditActionDialog.open();
+    } else {
+        Partial.Widgets.assigned_cancleActionDialog.close();
+    }
+
 };
