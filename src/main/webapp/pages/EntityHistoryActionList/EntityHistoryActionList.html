@@ -284,31 +284,7 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid"><span>Completed table</span></wm-layoutgrid>
-    <wm-layoutgrid name="layoutgrid13">
-        <wm-gridrow name="gridrow40">
-            <wm-gridcolumn columnwidth="12" name="gridcolumn45" horizontalalign="left">
-                <wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false" id="toDoPopover">
-                    <wm-layoutgrid name="layoutgrid4">
-                        <wm-gridrow name="gridrow4">
-                            <wm-gridcolumn columnwidth="1" name="gridcolumn4">
-                                <wm-anchor margin="0.5em 0.5em 0.3em 1em" name="anchor1" caption="Edit" on-click="Widgets.EditActionDialog.open()"></wm-anchor>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                        <wm-gridrow name="gridrow5">
-                            <wm-gridcolumn columnwidth="1" name="gridcolumn6">
-                                <wm-anchor margin="unset 0.5em 0.3em 1em" name="anchor1" caption="Close" on-click="Widgets.EditActionDialog.close();Widgets.CloseActionDialog.open()"></wm-anchor>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                        <wm-gridrow name="gridrow6">
-                            <wm-gridcolumn columnwidth="1" name="gridcolumn8">
-                                <wm-anchor margin="unset 0.5em unset 1em" name="anchor1" caption="Cancle"></wm-anchor>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                    </wm-layoutgrid>
-                </wm-popover>
-            </wm-gridcolumn>
-        </wm-gridrow>
-    </wm-layoutgrid>
+    <!-- <wm-layoutgrid name="layoutgrid13"><wm-gridrow name="gridrow40"><wm-gridcolumn columnwidth="12" name="gridcolumn45" horizontalalign="left"><wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false" id="toDoPopover"><wm-layoutgrid name="layoutgrid4"><wm-gridrow name="gridrow4"><wm-gridcolumn columnwidth="1" name="gridcolumn4"><wm-anchor margin="0.5em 0.5em 0.3em 1em" name="anchor1" caption="Edit" on-click="Widgets.EditActionDialog.open()"></wm-anchor></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow5"><wm-gridcolumn columnwidth="1" name="gridcolumn6"><wm-anchor margin="unset 0.5em 0.3em 1em" name="anchor1" caption="Close" on-click="Widgets.EditActionDialog.close();Widgets.CloseActionDialog.open()"></wm-anchor></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow6"><wm-gridcolumn columnwidth="1" name="gridcolumn8"><wm-anchor margin="unset 0.5em unset 1em" name="anchor1" caption="Cancle"></wm-anchor></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-popover></wm-gridcolumn></wm-gridrow></wm-layoutgrid>-->
     <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Action" iconclass="wi wi-file-text" name="EditActionDialog">
         <wm-gridrow name="gridrow1">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"></wm-message>
@@ -343,8 +319,8 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="90%" style="text-align: justify;">
+                    <wm-label name="label54" caption="Nulla tempus nisi sed mollis varius. In luctus volutpat quam etrhoncus.Maecenas ut elit efficitur,eleieng sem in ,placerat quam. Class aptent taciti sociossqu ad litora toruent."></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
@@ -440,8 +416,8 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="90%" style="text-align: justify;">
+                    <wm-label name="label54" caption="Nulla tempus nisi sed mollis varius. In luctus volutpat quam etrhoncus.Maecenas ut elit efficitur,eleieng sem in ,placerat quam. Class aptent taciti sociossqu ad litora toruent."></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
@@ -496,8 +472,8 @@
         <wm-layoutgrid name="layoutgrid17">
             <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn79" height="50px">
-                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43"
-                        width="100%" height="40px"></wm-label>
+                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43" width="100%"
+                        height="40px"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
