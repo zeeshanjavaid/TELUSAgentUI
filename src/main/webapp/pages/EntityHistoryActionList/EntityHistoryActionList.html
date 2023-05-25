@@ -276,7 +276,7 @@
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-close" title="Close" action="getCollectionTreatmentStepTable2_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
-" class="btn-transparent" iconclass="fico-icon-minus-circle" title="Cancle" action="getCollectionTreatmentStepTable2_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+" class="btn-transparent" iconclass="fico-icon-minus-circle" title="Cancel" action="getCollectionTreatmentStepTable2_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow" display-name="Go to Order mgmt" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;SUS&quot;
 " class="" iconclass="" title="Go to Order mgmt" disabled="false" widget-type="anchor"></wm-table-row-action>
                 </wm-table>
@@ -324,7 +324,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-label padding="unset 0.5em unset unset" caption="Action Type" name="label2"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" name="label2"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -334,7 +334,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11">
-                    <wm-label padding="unset 0.5em unset unset" caption="Action ID" name="label2"></wm-label>
+                    <wm-label padding="unset 0.5em unset unset" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.id" name="label2"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
