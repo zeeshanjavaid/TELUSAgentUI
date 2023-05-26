@@ -25,7 +25,7 @@
                 <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
                     <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="25%" name="gridcolumn8_1">
                         <wm-composite name="composite1">
-                            <wm-label class="col-md-3 control-label" name="label2" caption="Entity Risk:" textalign="left" padding="unset unset unset 1em"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Entity Risk" textalign="right" padding="unset unset unset 1em"></wm-label>
                             <wm-container class="col-md-9" name="container2">
                                 <wm-select name="entityRiskSelect" placeholder="Select Value" width="70%" margin="unset unset unset 1.5em" dataset="bind:Variables.entityRisk.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
                             </wm-container>
@@ -33,28 +33,28 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="25%" name="gridcolumn8_2">
                         <wm-composite name="composite1">
-                            <wm-label class="col-md-3 control-label" name="label2" caption="PARR Status:"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label2" caption="PARR Status" textalign="right"></wm-label>
                             <wm-container class="col-md-9" name="container2">
                                 <wm-select name="parrStatusSelect" placeholder="Select Value" width="70%" margin="unset unset unset 1.5em" dataset="bind:Variables.parrStatus.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn10_1">
-                        <wm-label class="col-md-3 control-label" padding="0.5em unset unset unset" caption="Creat TimeFrame:" name="label4" color="gray" width="75%"></wm-label>
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="10%" name="gridcolumn10_1">
+                        <wm-label class="col-md-3 control-label" padding="0.5em unset unset unset" caption="Creat TimeFrame:" name="label4" color="gray" width="78%" textalign="right"></wm-label>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="19%" name="gridcolumn10_1">
+                    <wm-gridcolumn columnwidth="2" style="display: flex; flex-direction: column;" width="19%" name="gridcolumn10_1" padding="unset 8em unset unset">
                         <wm-composite name="composite8">
-                            <wm-label class="col-md-3 control-label" name="label10" padding="unset unset unset -0.5em" caption="From:" color="gray"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label10" caption="From:" color="gray" textalign="right"></wm-label>
                             <wm-container class="col-md-9" name="container9">
-                                <wm-date name="creationDateFrom" placeholder="Enter Value" margin="unset unset unset -0.5em"></wm-date>
+                                <wm-date name="creationDateFrom" placeholder="Enter Value" margin="unset unset unset 1.5em"></wm-date>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="19%" id="completionDateGrid" name="gridcolumn11_1">
+                    <wm-gridcolumn columnwidth="2" style="display: flex; flex-direction: column;" width="19%" id="completionDateGrid" name="gridcolumn11_1" padding="unset 4em unset unset">
                         <wm-composite name="composite8">
-                            <wm-label class="col-md-3 control-label" name="label10" padding="unset 0.5em unset unset" caption="To:" color="gray"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label10" caption="To:" color="gray" textalign="right"></wm-label>
                             <wm-container class="col-md-9" name="container9">
-                                <wm-date name="creationDateTo" placeholder="Enter Value" margin="unset unset unset -0.7em"></wm-date>
+                                <wm-date name="creationDateTo" placeholder="Enter Value" margin="unset unset unset 2em"></wm-date>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -62,7 +62,7 @@
                 <wm-gridrow name="gridrow4_1" margin="0 0 0 0">
                     <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="25%" name="gridcolumn8_1">
                         <wm-composite name="composite1">
-                            <wm-label class="col-md-3 control-label" name="label2" caption="Evaluation:" padding="unset unset unset 1em"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Evaluation:" padding="unset unset unset 1em" textalign="right"></wm-label>
                             <wm-container class="col-md-9" name="container2">
                                 <wm-select name="evalSelect" placeholder="Select Value" width="70%" margin="unset unset unset 1.5em" dataset="bind:Variables.Evaluation.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
                             </wm-container>
@@ -70,17 +70,17 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="25%" name="gridcolumn8_2">
                         <wm-composite name="composite1">
-                            <wm-label class="col-md-3 control-label" name="label2" caption="Created By:"></wm-label>
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Created By:" textalign="right"></wm-label>
                             <wm-container class="col-md-9" name="container2">
                                 <wm-select name="createdBySelect" placeholder="Select Value" width="70%" margin="unset unset unset 1.5em" dataset="bind:Variables.createdBy.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="40%" name="gridcolumn8_2">
+                    <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="40%" name="gridcolumn8_2" padding="unset 15em unset unset">
                         <wm-composite name="composite1">
-                            <wm-label class="col-md-3 control-label" name="label2" caption="Created Team:"></wm-label>
-                            <wm-container class="col-md-9" name="container2" margin="unset unset unset -1em">
-                                <wm-select name="createTeam" placeholder="Select Value" width="44%" dataset="bind:Variables.createdTeam.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                            <wm-label class="col-md-3 control-label" name="label2" caption="Created Team:" textalign="right"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-select name="createTeam" placeholder="Select Value" width="70%" dataset="bind:Variables.createdTeam.dataSet" datafield="All Fields" displayfield="dataValue" margin="unset unset unset 1.5em"></wm-select>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
