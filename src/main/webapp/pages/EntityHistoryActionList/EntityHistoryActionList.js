@@ -713,7 +713,7 @@ Partial.button15_1Click = function($event, widget) {
 
         Partial.Widgets.notAssigned_closeActionDialog.close();
 
-        Partial.Widgets.EditActionDialog.open();
+
     } else {
         Partial.Widgets.assigned_closeActionDialog.close();
     }
@@ -761,9 +761,17 @@ Partial.button17_1Click = function($event, widget) {
 
         Partial.Widgets.notAssigned_cancleActionDialog.close();
 
-        Partial.Widgets.EditActionDialog.open();
     } else {
         Partial.Widgets.assigned_cancleActionDialog.close();
     }
+
+};
+
+
+Partial.button14_2Click = function($event, widget) {
+    Partial.Widgets.assigned_cancleActionDialog.close();
+};
+Partial.closeActionClick = function($event, widget) {
+    Partial.Widgets.assigned_closeActionDialog.close();
 
 };

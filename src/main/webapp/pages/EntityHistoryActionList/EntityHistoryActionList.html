@@ -527,7 +527,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="closeDialog()" name="button14_1"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="closeActionClick($event, widget)" name="closeAction"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1" on-click="button15Click($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
@@ -554,7 +554,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="closeDialog()" name="button14_1"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="button14_2Click($event, widget)" name="button14_2"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button16_1" on-click="button16_1Click($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
