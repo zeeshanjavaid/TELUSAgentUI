@@ -12,12 +12,18 @@
     font-size:17px;
 }
 
-/*right_LookupLine{*/
-/*    border-right: 0.4px solid rgba(255, 255, 255, .1);*/
-/*}*/
-
 .right_LookupLine{
    border-right: 1.2px solid rgba(255, 255, 255, .3);
    margin-right: 1.5em;
    padding-right: 1.5em
 }
+
+#reportsID ul {
+    width: 135px !important;
+    min-width: unset !important;
+}
+
+/*#reportsID ul a{
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}*/
