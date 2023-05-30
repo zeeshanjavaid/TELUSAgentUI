@@ -2,3 +2,35 @@
 border: 0.1px solid #ddd;
 margin-left: 0.2em
 }
+
+/*@media only screen and (min-width: 1475px) and (max-width: 1512px) {
+    .label3 {
+        width: 84% !important;
+    }
+}
+
+@media only screen and (min-width: 1375px) and (max-width: 1482px) {
+    .label3 {
+        width: 87% !important;
+    }
+    .createTeamGrid {
+        width: 44% !important;
+    }
+}
+
+@media only screen and (min-width: 1280) and (max-width: 1375) {
+    .label3 {
+        width: 87% !important;
+    }
+    .createTeamGrid {
+        width: 44% !important;
+    }
+}*/
+
+.createdTeamGrid wm-select#mySelection {
+    width: 40%;
+}
+
+wm-select#mySelection {
+    width: 60%;
+}
