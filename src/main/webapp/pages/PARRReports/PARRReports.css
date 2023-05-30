@@ -1,36 +1,61 @@
-.reportTableBorder{
-border: 0.1px solid #ddd;
-margin-left: 0.2em
+.reportTableBorder {
+    border: 0.1px solid #ddd;
+    margin-left: 0.2em
 }
 
-/*@media only screen and (min-width: 1475px) and (max-width: 1512px) {
-    .label3 {
-        width: 84% !important;
-    }
-}
-
-@media only screen and (min-width: 1375px) and (max-width: 1482px) {
-    .label3 {
-        width: 87% !important;
-    }
-    .createTeamGrid {
-        width: 44% !important;
-    }
-}
-
-@media only screen and (min-width: 1280) and (max-width: 1375) {
-    .label3 {
-        width: 87% !important;
-    }
-    .createTeamGrid {
-        width: 44% !important;
-    }
-}*/
-
-.createdTeamGrid wm-select#mySelection {
+.createdTeamGrid wm-select#createdTeamSelection {
     width: 40%;
 }
 
 wm-select#mySelection {
     width: 60%;
 }
+
+/*resolution styling start*/
+@media only screen and (max-width: 1720px) {
+    #createTimeFrameGrid {
+        width: 12% !important;
+    }
+    
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1580px) {
+    .parrStatusGrid {
+        width: 19% !important;
+    }
+    .createdByGrid {
+        width: 19% !important;
+    }
+    
+}
+
+@media only screen and (min-width: 1250px) and (max-width: 1500px) {
+    .blankGrid {
+        width: 4% !important;
+    }
+    .entityRiskGrid {
+        width: 20% !important;
+    }
+    .parrStatusGrid {
+        width: 20% !important;
+    }
+    wm-select#mySelection {
+        width: 50% !important;
+    }
+    input.form-control.app-textbox.app-dateinput.display-input {
+        width: 45% !important;
+    }
+    .evaluationGrid {
+        width: 20% !important;
+    }
+    .createdByGrid {
+        width: 20% !important;
+    }
+    .createdTeamGrid {
+        width: 24% !important;
+    }
+    .createdTeamGrid wm-select#createdTeamSelection {
+        width: 43%;
+    }
+}
+/*resolution styling end*/
