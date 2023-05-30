@@ -9193,9 +9193,10 @@ button.wm-app .close {
 }
 
 .wm-app .app-top-nav ul li>.dropdown .dropdown-menu a {
+    margin: unset;
     /*color: #00629b;*/
     color: #4B286D;
-    padding: 10px;
+    padding: 10px 4px;
     font-size: 1em;
     text-transform: initial;
 }
