@@ -20,12 +20,13 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    debugger;
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
-    Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
+
 
 };
 
@@ -50,6 +51,7 @@ Partial.nextButtonClick = function($event, widget) {
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
+        debugger;
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
         Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';

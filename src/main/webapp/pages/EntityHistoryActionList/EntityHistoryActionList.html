@@ -278,7 +278,7 @@
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStepTable2_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;SUS&quot;
-" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" disabled="false" widget-type="button"></wm-table-row-action>
+" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order Management" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -333,7 +333,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <!--<wm-select width="50%" name="EditActionStatusLabel" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select> -->
+                    <wm-label padding="unset 0.5em" name="EditActionStatusLabel" caption="Open"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -343,7 +344,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder=""></wm-date>
+                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate.chronology.calendarType"></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
