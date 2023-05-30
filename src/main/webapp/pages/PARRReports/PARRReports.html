@@ -22,6 +22,9 @@
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-layoutgrid id="parrfilterGrid" name="layoutgrid4" margin="10px 0 10px 3px" style="border: 1px solid #ddd;">
+                <wm-gridrow name="gridrow1">
+                    <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+                </wm-gridrow>
                 <wm-gridrow name="gridrow4_1" margin="20px 0px 20px 20px">
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="entityRiskGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="Entity Risk" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -38,11 +41,11 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" id="fromGrid" name="gridcolumn10_1">
                         <wm-label padding="10px 20px 2px 5px" caption="From" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-date name="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                        <wm-date name="creationDate" id="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" id="toGrid" name="gridcolumn11_1">
                         <wm-label padding="10px 20px 2px 5px" caption="To" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-date name="completionDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                        <wm-date name="completionDate" id="completionDate" placeholder="" margin="5px unset unset unset"></wm-date>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow4_1" margin="20px 0px 20px 20px">

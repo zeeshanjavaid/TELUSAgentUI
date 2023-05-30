@@ -22,6 +22,11 @@ Page.onReady = function() {
      */
 };
 
+function messageTimeout() {
+    Page.Variables.errorMsg.dataSet.dataValue = null;
+}
+
+
 Page.button1Click = function($event, widget) {
 
 
@@ -32,17 +37,37 @@ Page.button1Click = function($event, widget) {
 
     Page.Widgets.createdBySelect.datavalue = "";
 
-    Page.Widgets.createTeam.datavalue = "";
+    Page.Widgets.createdTeamSelect.datavalue = "";
 
-    Page.Widgets.creationDateFrom.datavalue = "";
+    Page.Widgets.creationDate.bsDataValue = "";
 
-    Page.Widgets.creationDateTo.datavalue = "";
+    Page.Widgets.completionDate.bsDataValue = "";
 
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
 Page.button2Click = function($event, widget) {
+    debugger;
+    var fromDate = Page.Widgets.creationDate.bsDataValue;
+    var toDate = Page.Widgets.completionDate.bsDataValue;
 
+    var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
+    var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth();
+
+    var fromDate = new Date(Page.Widgets.creationDate.bsDataValue).getDate();
+    var toDate = new Date(Page.Widgets.completionDate.bsDataValue).getDate();
+
+
+    if (toDateMonth < fromDateMonth) {
+        Page.Variables.errorMsg.dataSet.dataValue = "Completion date can not be less than Creation date";
+    } else if (fromDateMonth >= toDateMonth) {
+        debugger;
+        if (toDate < fromDate) {
+            Page.Variables.errorMsg.dataSet.dataValue = "Completion date can not be less than Creation date";
+        }
+    }
+
+    setTimeout(messageTimeout, 10000);
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
