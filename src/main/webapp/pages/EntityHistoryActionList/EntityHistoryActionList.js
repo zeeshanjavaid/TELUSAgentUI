@@ -43,8 +43,6 @@ Partial.CreateActionLinkClick = function($event, widget) {
 
 
 Partial.nextButtonClick = function($event, widget) {
-    debugger;
-    var data = Partial.Variables.getCollectionTreatmentStep_1.dataSet;
     if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
         Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
     } else {
@@ -615,9 +613,33 @@ Partial.clearFilterFields = function($event, widget) {
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
 }
+
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
+    debugger;
+    var category = Partial.Widgets.categorySelect.datavalue;
+    var type = Partial.Widgets.typeSelect.datavalue;
+    var createdDate = Partial.Widgets.creationDate.datavalue;
+    var completionDate = Partial.Widgets.completionDate.datavalue;
+    var status = Partial.Widgets.statusSelect.datavalue;
+    var createdBy = Partial.Widgets.createdBySelect.datavalue;
+    var assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
+    var assignedTeam = Partial.Widgets.assignedTeamSelectfilter.datavalue;
 
+    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+
+        'category': Partial.Widgets.categorySelect.datavalue,
+        'type': Partial.Widgets.typeSelect.datavalue,
+        'createdDate': Partial.Widgets.creationDate.datavalue,
+        /*'completionDate': Partial.Widgets.completionDate.datavalue,*/
+        'status': Partial.Widgets.statusSelect.datavalue,
+        'createdBy': Partial.Widgets.createdBySelect.datavalue,
+        'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue,
+        'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+
+    });
+
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
 }
 
 Partial.toDoButtonClick = function($event, widget) {
