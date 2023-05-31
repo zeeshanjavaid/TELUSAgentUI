@@ -721,7 +721,10 @@ Partial.cancleButtonClick = function($event, widget) {
     /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
+    debugger;
+    Partial;
     Partial.Widgets.EditActionDialog.open();
+    debugger;
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
@@ -799,5 +802,16 @@ Partial.button14_2Click = function($event, widget) {
 };
 Partial.closeActionClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
+
+};
+Partial.UpdateActionClick = function($event, widget) {
+    debugger;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
+        alert("change");
+    } else {
+        alert("no-change");
+    }
 
 };
