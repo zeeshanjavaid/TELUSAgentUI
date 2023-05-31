@@ -103,6 +103,40 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "actionTypeFilter" : {
+    "_id" : "wm-actionTypeFilter-wm.Variable-1685529878872",
+    "name" : "actionTypeFilter",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CALL-OB"
+    }, {
+      "dataValue" : "CALL-IB"
+    }, {
+      "dataValue" : "EM-IN"
+    }, {
+      "dataValue" : "FOLLOWUP"
+    }, {
+      "dataValue" : "NOTC2-OD"
+    }, {
+      "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL SUSPEND"
+    }, {
+      "dataValue" : "RESTORE"
+    }, {
+      "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "SUS"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "CollectionTreatmentServiceGetCollectionActivityLog_1" : {
     "_id" : "wm-CollectionTreatmentServiceGetCollectionActivityLog_1-wm.ServiceVariable-1685456758771",
     "name" : "CollectionTreatmentServiceGetCollectionActivityLog_1",
