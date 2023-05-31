@@ -278,13 +278,27 @@
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStepTable2_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;SUS&quot;
-" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order Management" disabled="false" widget-type="button"></wm-table-row-action>
+" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid"><span>Completed table</span></wm-layoutgrid>
-    <!-- <wm-layoutgrid name="layoutgrid13"><wm-gridrow name="gridrow40"><wm-gridcolumn columnwidth="12" name="gridcolumn45" horizontalalign="left"><wm-popover popoverwidth="140" popoverheight="100" margin="unset 0.5em" name="ToDoActionPopover" caption="..." contentsource="inline" show="true" popoverarrow="false" id="toDoPopover"><wm-layoutgrid name="layoutgrid4"><wm-gridrow name="gridrow4"><wm-gridcolumn columnwidth="1" name="gridcolumn4"><wm-anchor margin="0.5em 0.5em 0.3em 1em" name="anchor1" caption="Edit" on-click="Widgets.EditActionDialog.open()"></wm-anchor></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow5"><wm-gridcolumn columnwidth="1" name="gridcolumn6"><wm-anchor margin="unset 0.5em 0.3em 1em" name="anchor1" caption="Close" on-click="Widgets.EditActionDialog.close();Widgets.CloseActionDialog.open()"></wm-anchor></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow6"><wm-gridcolumn columnwidth="1" name="gridcolumn8"><wm-anchor margin="unset 0.5em unset 1em" name="anchor1" caption="Cancle"></wm-anchor></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-popover></wm-gridcolumn></wm-gridrow></wm-layoutgrid>-->
+    <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid">
+        <wm-gridrow name="gridrow36">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                <wm-table name="getCollectionActivityLog_1Table3" title="" dataset="bind:Variables.CollectionTreatmentServiceGetCollectionActivityLog_11.dataSet" navigation="None">
+                    <wm-table-column binding="collectionActivityType" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityType" caption="Category" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" edit-widget-type="datetime" type="datetime" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="comment" caption="Comment" type="string" show="true" readonly="undefined"></wm-table-column>
+                </wm-table>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Action" iconclass="wi wi-file-text" name="EditActionDialog">
         <wm-gridrow name="gridrow1">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"></wm-message>
@@ -333,8 +347,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <!--<wm-select width="50%" name="EditActionStatusLabel" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select> -->
-                    <wm-label padding="unset 0.5em" name="EditActionStatusLabel" caption="Open"></wm-label>
+                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -344,7 +357,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate.chronology.calendarType"></wm-date>
+                    <wm-date name="dueDate" placeholder=""></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
@@ -473,8 +486,8 @@
         <wm-layoutgrid name="layoutgrid17">
             <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn79" height="50px">
-                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43"
-                        width="100%" height="40px"></wm-label>
+                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43" width="100%"
+                        height="40px"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
