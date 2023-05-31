@@ -349,7 +349,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-label padding="unset 0.5em" name="EditStatusLabel" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.status"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -382,7 +382,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId" dataset="bind:Variables.getAllActiveUserList.dataSet"
+                        displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -392,13 +393,14 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataSet.teamId"></wm-select>
+                    <wm-select width="70%" name="assignedTeamSelect" id="mySelection" margin="5px unset unset unset" datafield="teamId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedTeam" dataset="bind:Variables.getAllTeamList.dataSet"
+                        displayfield="teamName"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Close" name="button1"></wm-button>
-            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="Widgets.updateActionDialog.open()"></wm-button>
+            <wm-button class="secondaryButton" caption="Close" name="EditCloseAction" on-click="Widgets.EditActionDialog.close()"></wm-button>
+            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Close" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)">
