@@ -23,6 +23,8 @@ Partial.onReady = function() {
              * widgets can be accessed through 'Partial.Widgets' property here
              * e.g. to get value of text widget named 'username' use following script
              * 'Partial.Widgets.username.datavalue'
+             
+             
              */
     //Partial.usersPartial = [];
     //Partial.Variables.userCreateMV.dataSet = [];
@@ -37,6 +39,8 @@ Partial.onReady = function() {
     var selectedIds = [];
     Partial.TestTeamId = [];
     Partial.Variables.dataTeam.dataSet = [];
+
+
 
     /* if (App.Variables.appUsersMV.dataSet && App.Variables.appUsersMV.dataSet.length < 1) {
          App.Variables.getTenantUsersSV.invoke();
@@ -764,7 +768,6 @@ Partial.executeSearchUsersForm1_resetAction = function($event) {
     Partial.Variables.searchUsers.dataSet = [];
     Partial.Variables.searchUsers.dataSet = Partial.Variables.ResetPREValue.dataSet;
 
-
 };
 
 Partial.resetTableDataonSuccess = function(variable, data) {
@@ -973,6 +976,14 @@ Partial.executeSearchUsersForm1_saveAction = function($event) {
     alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
         debugger;
+
+        Partial.Variables.searchUsers.setInput({
+            'role': Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue,
+            'userCriteria': Partial.Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue,
+            'work_category': Partial.Widgets.executeSearchUsersForm1.formWidgets.work_category.datavalue,
+            'managerId': Partial.Widgets.executeSearchUsersForm1.formWidgets.TeamManager.datavalue,
+            'teamID': Partial.Widgets.executeSearchUsersForm1.formWidgets.TeamID.datavalue
+        });
         Partial.Variables.searchUsers.invoke();
         App.Variables.errorMsg.dataSet.dataValue = "";
     } else {

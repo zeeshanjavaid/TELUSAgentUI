@@ -135,6 +135,7 @@
                 <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                     <wm-gridcolumn name="gridcolumn15" width="50%">
                         <wm-number textalign="left" name="phnNumber" height="38px" placeholder=""></wm-number>
+                        <p id="p01" style="color:red;" width="200px"></p>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow20">
@@ -403,7 +404,7 @@
             <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Close" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)">
         <wm-gridrow name="gridrow17">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
         </wm-gridrow>
@@ -435,7 +436,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="90%" style="text-align: justify;">
-                    <wm-label name="label54" caption="Nulla tempus nisi sed mollis varius. In luctus volutpat quam etrhoncus.Maecenas ut elit efficitur,eleieng sem in ,placerat quam. Class aptent taciti sociossqu ad litora toruent."></wm-label>
+                    <wm-label name="label54" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.comment"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
@@ -445,7 +446,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                 <wm-gridcolumn name="gridcolumn15" width="50%">
-                    <wm-number textalign="left" name="phnNumber" placeholder="" width="50%"></wm-number>
+                    <wm-number textalign="left" name="phnNumber" placeholder="" width="50%" required="true" on-keydown="phnNumberKeydown($event, widget)"></wm-number>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
@@ -467,7 +468,7 @@
             <wm-gridrow name="gridrow10" id="actionOutcomeSelect">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
                     <wm-select width="50%" name="actionOutcomeSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" on-change="actionStatusSelect($event, widget, newVal, oldVal)" dataset="bind:Variables.outcomeValues.dataSet"
-                        displayfield="dataValue"></wm-select>
+                        displayfield="dataValue" required="true"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -482,7 +483,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions2" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Cancle" on-click="cancleButtonClick($event, widget)" name="cancleButton"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" on-click="cancleButtonClick($event, widget)" name="cancleButton"></wm-button>
             <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="closeButton" on-click="closeButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>

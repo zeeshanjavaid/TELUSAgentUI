@@ -245,8 +245,8 @@ public class CollectionEntityService {
 		 */
         // return new Object(); 
          UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
-              .queryParam("id=in:", entityId)
-               .queryParam("entityRisk",entityRisk);
+              .queryParam("id=in:", entityId);
+              // .queryParam("entityRisk",entityRisk);
     	return parrService.getPaymentArrangements(entityId,builder.toUriString());
     }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")

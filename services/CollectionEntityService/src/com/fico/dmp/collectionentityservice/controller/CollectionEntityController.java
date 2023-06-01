@@ -80,11 +80,15 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<CollectionEntity> getCollectionEntity(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "rcid", required = false) String rcid, @RequestParam(value = "cbucid", required = false) String cbucid, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "sortBy", required = false) String sortBy) throws Exception {
         return collectionEntityService.getCollectionEntity(fields, offset, limit, ban, rcid, cbucid, entityId, agentId, workCategory, sortBy);
     }
 
     @RequestMapping(value = "/collectionEntity_1", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionEntity getCollectionEntity_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntityService.getCollectionEntity(id, history);
     }
@@ -118,17 +122,13 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionDispute getdispute(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(id, fields, history);
+    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
     }
 
     @RequestMapping(value = "/dispute_1", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
+    public CollectionDispute getdispute_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdispute(id, fields, history);
     }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)

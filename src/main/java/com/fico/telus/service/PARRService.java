@@ -147,9 +147,12 @@ public class PARRService {
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 
 		} else {
+		    
+		     logger.info("Htting telus API :::::::::::::::::::::::");
 
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
 					parrEndPointUrl, "GET","3161");
+					 logger.info("PARR TELUS RESPONSE:: " + responseStr);
 			collectionPaymentArrangements = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		}

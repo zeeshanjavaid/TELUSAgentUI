@@ -2945,6 +2945,10 @@
       "target" : "managerId",
       "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.TeamManager.datavalue",
       "type" : "string"
+    }, {
+      "target" : "teamID",
+      "value" : "bind:Widgets.executeSearchUsersForm1.formWidgets.TeamID.datavalue",
+      "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.SearchUsersResponse",
     "service" : "TELUSAgentUIDB",
