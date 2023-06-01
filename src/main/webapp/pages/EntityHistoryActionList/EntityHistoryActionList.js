@@ -8,7 +8,7 @@
  * 'HttpService' for Http service
  * example: var utils = App.getDependency('Utils');
  */
-
+var isClicked = false;
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
     /*
@@ -20,6 +20,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
     debugger;
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
@@ -691,6 +692,7 @@ Partial.yesButtonClick = function($event, widget) {
     $('#actionOutcomeSelect').hide();
 };
 Partial.noButtonClick = function($event, widget) {
+    isClicked = true;
     $("#noBtn").css("background-color", "#4B286D");
     $("#noBtn").css("color", "white");
     $("#yesBtn").css("background-color", "white");
@@ -701,21 +703,51 @@ Partial.noButtonClick = function($event, widget) {
 };
 Partial.closeButtonClick = function($event, widget) {
     debugger;
+
+    var isError = false;
     // if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
 
-    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+    //  if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
 
-        Partial.Widgets.CloseActionDialog.close();
-        Partial.Widgets.notAssigned_closeActionDialog.open();
+    var phnumber = Math.floor(Math.log10(Partial.Widgets.phnNumber.datavalue)) + 1;
 
-    } else {
-        Partial.Widgets.CloseActionDialog.close();
-        Partial.Widgets.assigned_closeActionDialog.open();
-        /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
+    if (Partial.Widgets.phnNumber.datavalue === undefined || Partial.Widgets.phnNumber.datavalue == null) {
+
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields.";
+        isError = true;
+    } else if (phnumber > 10) {
+        App.Variables.errorMsg.dataSet.dataValue = "Invalid phone number.";
+        isError = true;
     }
+    if (isClicked) {
+
+        if (Partial.Widgets.actionOutcomeSelect.datavalue === undefined || Partial.Widgets.actionOutcomeSelect.datavalue == '') {
+            isError = true;
+            App.Variables.errorMsg.dataSet.dataValue = "Outcome option is not selected";
+
+        }
+
+    }
+
+    if (!isError) {
+
+        App.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Widgets.CloseActionDialog.close();
+        Partial.Variables.successMessage.dataSet.dataValue = "Action closed successfully."
+        setTimeout(messageTimeout, 5000);
+
+    }
+    // Partial.Widgets.notAssigned_closeActionDialog.open();
+
+    // } else {
+    //     Partial.Widgets.CloseActionDialog.close();
+    //     Partial.Widgets.assigned_closeActionDialog.open();
+    //     /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
+    // }
 };
 
 Partial.cancleButtonClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Widgets.CloseActionDialog.close();
     // Partial.Widgets.assigned_cancleActionDialog.open();
     /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
@@ -728,7 +760,9 @@ Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
-    if (row.stepTypeCode == 'CALL-OB') {
+    if (row.assignedAgentId == '') {
+        Partial.Widgets.notAssigned_closeActionDialog.open();
+    } else if (row.stepTypeCode == 'CALL-OB') {
         Partial.Widgets.CloseActionDialog.open();
     } else {
         Partial.Widgets.assigned_closeActionDialog.open();
@@ -768,7 +802,15 @@ Partial.button15Click = function($event, widget) {
 };
 Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row) {
 
-    Partial.Widgets.assigned_cancleActionDialog.open();
+    debugger;
+
+    if (row.assignedAgentId == '') {
+        Partial.Widgets.notAssigned_cancleActionDialog.open();
+
+    } else {
+
+        Partial.Widgets.assigned_cancleActionDialog.open();
+    }
 
 };
 Partial.button16_1Click = function($event, widget) {
@@ -825,4 +867,8 @@ Partial.categorySelect = function($event, widget, newVal, oldVal) {
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
     }
+}
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
 }

@@ -53,6 +53,8 @@ public class CollectionTreatmentController {
     }
 
     @RequestMapping(value = "/collectionActivityLogById", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionActivityLog getCollectionActivityLogById(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
         return collectionTreatmentService.getCollectionActivityLogById(id, partitionKey);
     }
