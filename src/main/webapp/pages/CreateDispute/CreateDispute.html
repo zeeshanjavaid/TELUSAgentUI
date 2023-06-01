@@ -43,7 +43,7 @@
                     <wm-label name="ReasonLabel" caption="Reason*" padding="unset 0.5em" class="createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn12" class="labelValue">
-                    <wm-select name="reasonDropdown" width="70%" padding="unset 0.5em" dataset="bind:Variables.reasonDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue" placeholder="Select" textalign="left"></wm-select>
+                    <wm-select name="reasonDropdown" width="70%" padding="unset 0.5em" dataset="bind:Variables.getCodeFromDomainValueAsCREATE_DISPUTE_REASON.dataSet" datafield="code" displayfield="code" placeholder="Select" textalign="left"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -61,7 +61,7 @@
                     <wm-label name="ChargeTypeLabel" caption="Charge Type*" padding="unset 0.5em" class="createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn18" class="labelValue">
-                    <wm-select name="chargeTypeDropDown" placeholder="Select" padding="unset 0.5em" width="70%" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="All Fields" displayfield="dataValue"></wm-select>
+                    <wm-select name="chargeTypeDropDown" placeholder="Select" padding="unset 0.5em" width="70%" dataset="bind:Variables.getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE.dataSet" datafield="code" displayfield="code"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
             <wm-gridcolumn class="productSRV" style="display: flex;" margin="0 10px 0 0" name="gridcolumn19">
