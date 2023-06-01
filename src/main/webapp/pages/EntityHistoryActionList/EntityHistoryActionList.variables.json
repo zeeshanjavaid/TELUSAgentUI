@@ -137,6 +137,120 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "categoryFilter" : {
+    "_id" : "wm-categoryFilter-wm.Variable-1685602406288",
+    "name" : "categoryFilter",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "COLL_TRTMT_STEP"
+    }, {
+      "dataValue" : "PYMT_ARRNGMT"
+    }, {
+      "dataValue" : "COLL_DISPUTE"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "collDisputeCtgValues" : {
+    "_id" : "wm-collDisputeCtgValues-wm.Variable-1685616726259",
+    "name" : "collDisputeCtgValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Dispute Update"
+    }, {
+      "dataValue" : "Dispute Comment"
+    }, {
+      "dataValue" : "Dispute Status"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "CollectionTreatmentServiceGetCollectionActivityLog_1" : {
+    "_id" : "wm-CollectionTreatmentServiceGetCollectionActivityLog_1-wm.ServiceVariable-1685456758771",
+    "name" : "CollectionTreatmentServiceGetCollectionActivityLog_1",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionActivityLog",
+    "service" : "CollectionTreatmentService",
+    "operation" : "getCollectionActivityLog_1",
+    "operationId" : "CollectionTreatmentController_getCollectionActivityLog_1",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "CollectionTreatment"
+  },
+  "CollectionTreatmentServiceGetCollectionActivityLog_11" : {
+    "_id" : "wm-CollectionTreatmentServiceGetCollectionActivityLog_11-wm.ServiceVariable-1685457022827",
+    "name" : "CollectionTreatmentServiceGetCollectionActivityLog_11",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionActivityLog",
+    "service" : "CollectionTreatmentService",
+    "operation" : "getCollectionActivityLog_1",
+    "operationId" : "CollectionTreatmentController_getCollectionActivityLog_1",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "CollectionTreatment"
+  },
+  "collTrtmtStpCtgValues" : {
+    "_id" : "wm-collTrtmtStpCtgValues-wm.Variable-1685616588839",
+    "name" : "collTrtmtStpCtgValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CALL-OB"
+    }, {
+      "dataValue" : "CALL-IB"
+    }, {
+      "dataValue" : "EM-IN"
+    }, {
+      "dataValue" : "FOLLOWUP NOTC2-OD"
+    }, {
+      "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL SUSPEND"
+    }, {
+      "dataValue" : "RESTORE"
+    }, {
+      "dataValue" : "CEASE"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "createEntityHistoryAction" : {
     "_id" : "wm-createEntityHistoryAction-wm.ServiceVariable-1684170870230",
     "name" : "createEntityHistoryAction",
@@ -1319,6 +1433,22 @@
       "dataValue" : "Left voice mail"
     }, {
       "dataValue" : "Not in service"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "pmtArrgntCtgValues" : {
+    "_id" : "wm-pmtArrgntCtgValues-wm.Variable-1685604891616",
+    "name" : "pmtArrgntCtgValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "PARR Update"
+    }, {
+      "dataValue" : "PARR Status"
     } ],
     "type" : "string",
     "isList" : true,

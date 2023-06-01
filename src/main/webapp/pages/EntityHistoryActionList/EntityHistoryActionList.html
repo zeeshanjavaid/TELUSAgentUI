@@ -38,7 +38,7 @@
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn8_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Category" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.categoryFilter.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="categorySelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn9_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Type" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -65,8 +65,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                    datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
+                    displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -491,8 +491,8 @@
         <wm-layoutgrid name="layoutgrid17">
             <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn79" height="50px">
-                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43"
-                        width="100%" height="40px"></wm-label>
+                    <wm-label caption="This action <actionType ActionName> (ID<actionID>) has been assigned to <userFIrstName Last ame (ID<userID> who may be working on it. Are you sure you want to update this action and change the assignment." name="label43" width="100%"
+                        height="40px"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

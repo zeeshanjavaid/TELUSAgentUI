@@ -815,3 +815,14 @@ Partial.UpdateActionClick = function($event, widget) {
     }
 
 };
+
+Partial.categorySelect = function($event, widget, newVal, oldVal) {
+    if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
+        debugger;
+        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
+    } else if (Partial.Widgets.categorySelect.datavalue == "COLL_TRTMT_STEP") {
+        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
+    } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
+        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
+    }
+}
