@@ -9,8 +9,8 @@ import java.lang.Exception;
 import io.swagger.client.model.CollectionTreatment;
 import io.swagger.client.model.CollectionTreatmentStepCreate;
 import io.swagger.client.model.CollectionTreatmentStep;
-import java.lang.String;
 import java.lang.Integer;
+import java.lang.String;
 import java.lang.Boolean;
 import java.util.List;
 import io.swagger.client.model.CollectionTreatmentStepUpdate;
@@ -48,15 +48,13 @@ public class CollectionTreatmentController {
     @RequestMapping(value = "/collectionActivityLog", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionActivityLog getCollectionActivityLog(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
-        return collectionTreatmentService.getCollectionActivityLog(id, partitionKey);
+    public List<CollectionActivityLog> getCollectionActivityLog(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedTo", required = false) String assignedTo, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "completionDate", required = false) String completionDate, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionTreatmentService.getCollectionActivityLog(collectionEntityId, type, category, createdDate, createdBy, status, assignedTo, assignedTeam, completionDate, fields, offset, limit, history);
     }
 
-    @RequestMapping(value = "/collectionActivityLog_1", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionActivityLog> getCollectionActivityLog_1(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedTo", required = false) String assignedTo, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "completionDate", required = false) String completionDate, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionTreatmentService.getCollectionActivityLog(collectionEntityId, type, category, createdDate, createdBy, status, assignedTo, assignedTeam, completionDate, fields, offset, limit, history);
+    @RequestMapping(value = "/collectionActivityLogById", method = RequestMethod.GET)
+    public CollectionActivityLog getCollectionActivityLogById(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
+        return collectionTreatmentService.getCollectionActivityLogById(id, partitionKey);
     }
 
     @RequestMapping(value = "/collectionTreatment", method = RequestMethod.GET)
@@ -66,11 +64,11 @@ public class CollectionTreatmentController {
         return collectionTreatmentService.getCollectionTreatment(collectionEntityId, fields, offset, limit, history);
     }
 
-    @RequestMapping(value = "/collectionTreatment_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/collectionTreatmentById", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionTreatment getCollectionTreatment_1(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
-        return collectionTreatmentService.getCollectionTreatment(id, partitionKey);
+    public CollectionTreatment getCollectionTreatmentById(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
+        return collectionTreatmentService.getCollectionTreatmentById(id, partitionKey);
     }
 
     @RequestMapping(value = "/collectionTreatmentStep", method = RequestMethod.GET)
@@ -80,11 +78,11 @@ public class CollectionTreatmentController {
         return collectionTreatmentService.getCollectionTreatmentStep(collectionTreatmentStepId, collectionEntityId, type, createdDate, createdBy, status, assignedAgentId, assignedTeam, fields, offset, limit);
     }
 
-    @RequestMapping(value = "/collectionTreatmentStep_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/collectionTreatmentStepById", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionTreatmentStep getCollectionTreatmentStep_1(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
-        return collectionTreatmentService.getCollectionTreatmentStep(id, partitionKey);
+    public CollectionTreatmentStep getCollectionTreatmentStepById(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
+        return collectionTreatmentService.getCollectionTreatmentStepById(id, partitionKey);
     }
 
     @RequestMapping(value = "/collectionActivityLog", method = RequestMethod.PUT)

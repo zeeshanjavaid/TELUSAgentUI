@@ -289,15 +289,15 @@
     <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table name="getCollectionActivityLog_1Table3" title="" dataset="bind:Variables.CollectionTreatmentServiceGetCollectionActivityLog_11.dataSet" navigation="None">
+                <wm-table name="getCollectionActivityLog_1Table3" title="" dataset="bind:Variables.GetCollectionActivityLogList.dataSet" navigation="None">
                     <wm-table-column binding="collectionActivityType" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityType" caption="Category" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" edit-widget-type="datetime" type="datetime" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="comment" caption="Comment" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
