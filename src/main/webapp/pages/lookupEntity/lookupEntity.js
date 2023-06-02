@@ -73,7 +73,7 @@ Page.navigateToEntityPage = function(entityId) {
 
 
 Page.button1Click = function($event, widget) {
-
+    //  App.Variables.errorMsg.dataSet.dataValue = null;
     debugger;
     const message = document.getElementById("p01");
     const message1 = document.getElementById("p02");
@@ -298,5 +298,11 @@ Page.select1Change = function($event, widget, newVal, oldVal) {
 
     }
 
+
+};
+
+Page.searchEntityonError = function(variable, data) {
+
+    // App.Variables.errorMsg.dataSet.dataValue = "No data found";
 
 };
