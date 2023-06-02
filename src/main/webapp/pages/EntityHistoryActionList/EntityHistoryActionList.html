@@ -405,7 +405,7 @@
             <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)" closable="true" on-close="CloseActionDialogClose($event, widget)">
         <wm-gridrow name="gridrow17">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
         </wm-gridrow>
@@ -581,7 +581,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'The action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -600,7 +600,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'The action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ' '+
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ' '+
 'has not been assigned to someone to work on it.'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>

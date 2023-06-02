@@ -683,6 +683,7 @@ Partial.CloseActionDialogOpened = function($event, widget) {
 };
 Partial.yesButtonClick = function($event, widget) {
     // to make buttons selected
+    isClicked = false;
     $("#yesBtn").css("background-color", "#4B286D");
     $("#yesBtn").css("color", "white");
     $("#noBtn").css("background-color", "white");
@@ -733,7 +734,7 @@ Partial.closeButtonClick = function($event, widget) {
 
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Widgets.CloseActionDialog.close();
-        Partial.Variables.successMessage.dataSet.dataValue = "Action closed successfully."
+        Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
         setTimeout(messageTimeout, 5000);
 
     }
@@ -823,6 +824,8 @@ Partial.button16_1Click = function($event, widget) {
 
     } else {
         Partial.Widgets.assigned_cancleActionDialog.close();
+        Partial.Variables.successMessage.dataSet.dataValue = "Action was cancelled."
+        setTimeout(messageTimeout, 3000);
     }
 
 
@@ -874,3 +877,8 @@ Partial.categorySelect = function($event, widget, newVal, oldVal) {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
 }
+Partial.CloseActionDialogClose = function($event, widget) {
+
+    App.Variables.errorMsg.dataSet.dataValue = null;
+
+};
