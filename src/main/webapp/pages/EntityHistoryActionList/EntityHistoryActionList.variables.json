@@ -1406,6 +1406,33 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "UpdateCollectionTreatmentVar" : {
+    "_id" : "wm-UpdateCollectionTreatmentVar-wm.ServiceVariable-1685725848875",
+    "name" : "UpdateCollectionTreatmentVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.id",
+      "type" : "string"
+    } ],
+    "type" : "io.swagger.client.model.CollectionTreatmentStep",
+    "service" : "CollectionTreatmentService",
+    "operation" : "updateCollectionTreatmentStep",
+    "operationId" : "CollectionTreatmentController_updateCollectionTreatmentStep",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
+  },
   "UserLoggedInVar" : {
     "_id" : "wm-UserLoggedInVar-wm.Variable-1683296483665",
     "name" : "UserLoggedInVar",

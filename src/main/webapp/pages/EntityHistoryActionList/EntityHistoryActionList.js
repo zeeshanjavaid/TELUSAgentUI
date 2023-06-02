@@ -873,16 +873,59 @@ Partial.CloseActionDialogClose = function($event, widget) {
 
 Partial.UpdateActionClick = function($event, widget) {
     debugger;
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
-    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
-    if (originalAgentId != selectedAgentId) {
-        Partial.Widgets.updateActionDialog.open();
+    // Partial.Widgets.EditActionNameText.caption
+    // Partial.Widgets.EditActionIdText.caption
+    // Partial.Widgets.EditActionComment.caption
+    // Partial.Widgets.EditStatusLabel.caption
+    // Partial.Widgets.dueDate.datavalue
+    //Partial.Widgets.assignedPersonSelect.datavalue
+    //Partial.Widgets.assignedTeamSelect.datavalue
+    if (!Partial.Widgets.prioritySelect.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
+        var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
+        var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+        if (originalAgentId != selectedAgentId) {
+            Partial.Widgets.updateActionDialog.open();
+        } else {
+            Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+                'id': Partial.Widgets.EditActionIdText.caption,
+                'partitionKey': '123',
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
+                    'status': Partial.Widgets.EditStatusLabel.caption,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.EditActionComment.caption,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+                }
+            });
 
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+            Partial.Widgets.EditActionDialog.close();
+        }
     }
 
 };
 
 Partial.EditUpdateYesButtonClick = function($event, widget) {
+
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        'id': Partial.Widgets.EditActionIdText.caption,
+        "CollectionTreatmentStepUpdate": {
+            'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
+            'status': Partial.Widgets.EditStatusLabel.caption,
+            'priority': Partial.Widgets.prioritySelect.datavalue,
+            'comment': Partial.Widgets.EditActionComment.caption,
+            'stepDate': Partial.Widgets.dueDate.datavalue,
+            'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
 
 };
