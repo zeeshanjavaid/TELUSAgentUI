@@ -854,6 +854,7 @@ Partial.UpdateActionClick = function($event, widget) {
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
+        debugger;
         Partial.Widgets.updateActionDialog.open();
     } else {
 
