@@ -849,18 +849,7 @@ Partial.closeActionClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
 
 };
-Partial.UpdateActionClick = function($event, widget) {
-    debugger;
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
-    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
-    if (originalAgentId != selectedAgentId) {
-        debugger;
-        Partial.Widgets.updateActionDialog.open();
-    } else {
 
-    }
-
-};
 
 Partial.categorySelect = function($event, widget, newVal, oldVal) {
     if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
@@ -879,5 +868,21 @@ function messageTimeout() {
 Partial.CloseActionDialogClose = function($event, widget) {
 
     App.Variables.errorMsg.dataSet.dataValue = null;
+
+};
+
+Partial.UpdateActionClick = function($event, widget) {
+    debugger;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
+        Partial.Widgets.updateActionDialog.open();
+    } else {
+
+    }
+
+};
+
+Partial.EditUpdateYesButtonClick = function($event, widget) {
 
 };

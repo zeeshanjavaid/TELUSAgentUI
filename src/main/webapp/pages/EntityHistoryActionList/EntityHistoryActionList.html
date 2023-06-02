@@ -519,8 +519,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="Widgets.updateActionDialog.close()" name="button14_1"></wm-button>
-            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="Widgets.updateActionDialog.close()" name="EditUpdateNoButton"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="EditUpdateYesButton" on-click="EditUpdateYesButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="assigned_closeActionDialog" width="40%">
