@@ -65,8 +65,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                    placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
+                    displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -350,7 +350,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-label padding="unset 0.5em" name="EditStatusLabel" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.status"></wm-label>
+                    <wm-label name="EditStatusLabel" caption="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.status"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -370,7 +370,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="50%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.priority" dataset="bind:Variables.actionPriority.dataSet"
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.priority" dataset="bind:Variables.actionPriority.dataSet"
                         displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -401,7 +401,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Close" name="EditCloseAction" on-click="Widgets.EditActionDialog.close()"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" name="EditCloseAction" on-click="Widgets.EditActionDialog.close()"></wm-button>
             <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
@@ -491,13 +491,13 @@
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' +Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="updateActionDialog" width="40%">
         <wm-layoutgrid name="layoutgrid17">
             <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn79" height="50px">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it'"
-                        name="label43" width="100%" height="40px"></wm-label>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn79" margin="0 0 15px 0">
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'"
+                        name="label43" width="100%"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-layoutgrid name="layoutgrid11_1">
+        <wm-layoutgrid name="layoutgrid11_1" margin="0 0 15px 0">
             <wm-gridrow name="gridrow17" padding="0.2em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
                     <wm-label caption="Are you sure you want to update this action and change the assignment?" name="label36"></wm-label>
@@ -505,16 +505,16 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11_11">
-            <wm-gridrow name="gridrow7" padding="0.7em unset unset unset">
+            <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.3em unset">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="grey" fontweight="bold"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11_2">
             <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.2em" class="comment-border"></wm-textarea>
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
