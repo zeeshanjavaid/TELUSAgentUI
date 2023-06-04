@@ -122,13 +122,15 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
     }
 
-    @RequestMapping(value = "/dispute_1", method = RequestMethod.GET)
-    public CollectionDispute getdispute_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(id, fields, history);
+    @RequestMapping(value = "/disputeById", method = RequestMethod.GET)
+    public CollectionDispute getdisputeById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getdisputeById(id, fields, history);
     }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)

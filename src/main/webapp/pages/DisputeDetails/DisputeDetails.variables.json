@@ -107,20 +107,16 @@
     "saveInPhonegap" : false
   },
   "getDisputeDetails" : {
-    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1683113563709",
+    "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1685859383961",
     "name" : "getDisputeDetails",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "history",
-      "value" : true,
-      "type" : "boolean"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
-    "operation" : "getdispute_1",
-    "operationId" : "CollectionEntityController_getdispute_1",
+    "operation" : "getdisputeById",
+    "operationId" : "CollectionEntityController_getdisputeById",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
