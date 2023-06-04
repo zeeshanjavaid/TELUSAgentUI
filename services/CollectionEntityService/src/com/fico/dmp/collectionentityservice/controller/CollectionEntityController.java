@@ -107,11 +107,9 @@ public class CollectionEntityController {
         return collectionEntityService.getContact(fields, offset, limit, entityId);
     }
 
-    @RequestMapping(value = "/paymentArrangement/{id}", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public CollectionPaymentArrangement getPaymentArrangement(@PathVariable("id") Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getPaymentArrangement(id, history);
+    @RequestMapping(value = "/paymentArrangementById", method = RequestMethod.GET)
+    public CollectionPaymentArrangement getPaymentArrangementById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getPaymentArrangementById(id, history);
     }
 
     @RequestMapping(value = "/paymentArrangements", method = RequestMethod.GET)
@@ -129,6 +127,8 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/disputeById", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public CollectionDispute getdisputeById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionEntityService.getdisputeById(id, fields, history);
     }

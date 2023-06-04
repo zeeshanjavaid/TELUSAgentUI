@@ -15,8 +15,8 @@ import com.fico.dmp.telusagentuidb.service.UserService;
 import com.wavemaker.runtime.security.SecurityService;
 
 import io.swagger.client.model.AuditInfo;
-//import java.time.OffsetDateTime;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+//import org.threeten.bp.OffsetDateTime;
 
 
 
@@ -44,11 +44,11 @@ public class CollectionCommonService {
 			empId = user.getEmplId();
 		}		
 		if (isCreate) {
-			auditInfo.setCreatedTimestamp(LocalDateTime.now());
+			auditInfo.setCreatedTimestamp(OffsetDateTime.now());
 			auditInfo.setCreatedBy(empId);
 		} else {
 			auditInfo.setLastUpdatedBy(empId);
-			auditInfo.setLastUpdatedTimestamp(LocalDateTime.now());
+			auditInfo.setLastUpdatedTimestamp(OffsetDateTime.now());
 		}
 		return auditInfo;
 	}
