@@ -940,3 +940,8 @@ Partial.EditUpdateNoButtonClick = function($event, widget) {
 Partial.updateActionDialogClose = function($event, widget) {
 
 };
+
+Partial.getCollectionTreatmentStepTable2_OnRowexpand = function($event, widget, row, $data) {
+
+    App.showRowExpansion(row);
+};

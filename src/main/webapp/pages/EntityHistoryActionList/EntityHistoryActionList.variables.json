@@ -125,13 +125,13 @@
     }, {
       "dataValue" : "NOTC3-DIST"
     }, {
-      "dataValue" : "NOTC4-CANL SUSPEND"
+      "dataValue" : "NOTC4-CANL"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
     }, {
-      "dataValue" : "SUS"
+      "dataValue" : "SUSPEND"
     } ],
     "type" : "string",
     "isList" : true,
@@ -187,17 +187,21 @@
     }, {
       "dataValue" : "EM-IN"
     }, {
-      "dataValue" : "FOLLOWUP NOTC2-OD"
+      "dataValue" : "FOLLOWUP"
     }, {
       "dataValue" : "NOTC1-PMTR"
     }, {
       "dataValue" : "NOTC3-DIST"
     }, {
-      "dataValue" : "NOTC4-CANL SUSPEND"
+      "dataValue" : "NOTC4-CANL"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "NOTC2-OD"
+    }, {
+      "dataValue" : "SUSPEND"
     } ],
     "type" : "string",
     "isList" : true,

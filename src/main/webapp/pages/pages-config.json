@@ -391,6 +391,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "ToDoActionRowExpansion",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "ToDoListActionHistory",
   "type" : "PARTIAL",
   "params" : [ ]
