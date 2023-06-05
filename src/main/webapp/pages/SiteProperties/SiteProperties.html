@@ -23,6 +23,8 @@
                     <wm-table-column binding="propertyKey" caption="Property Key" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="propertyValue" caption="Property Value" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                    <wm-table-action key="customButton" display-name="Reset" show="true" class="btn-secondary" iconclass="" title="Reset" action="Variables.refreshProperties.invoke()" shortcutkey="" disabled="false" widget-type="button"
+                        position="header"></wm-table-action>
                     <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="Widgets.createPropertyDialogue.open()" shortcutkey="" disabled="false" widget-type="button"
                         position="header"></wm-table-action>
                     <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="Widgets.updatePropertyDialogue.open()" disabled="false"
