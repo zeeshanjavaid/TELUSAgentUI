@@ -184,10 +184,10 @@ Page.button2Click = function($event, widget) {
 
     debugger;
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
-    const message1 = document.getElementById("p02");
-    const message2 = document.getElementById("p03");
-    const message3 = document.getElementById("p04");
-    const message4 = document.getElementById("p05");
+    // const message1 = document.getElementById("p02");
+    // const message2 = document.getElementById("p03");
+    // const message3 = document.getElementById("p04");
+    // const message4 = document.getElementById("p05");
 
     Page.Widgets.select1.datavalue = 'Entity';
     Page.Widgets.select3.datavalue = 'Exact match';
@@ -197,14 +197,24 @@ Page.button2Click = function($event, widget) {
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
 
-    message2.innerHTML = "";
-    message3.innerHTML = "";
-    message1.innerHTML = "";
-    message4.innerHTML = "";
+    // message2.innerHTML = "";
+    // message3.innerHTML = "";
+    // message1.innerHTML = "";
+    // message4.innerHTML = "";
     Page.Widgets.text5.disabled = true;
     Page.Widgets.text4.disabled = true;
 
     // console.clear();
+
+    Page.Variables.searchEntity.setInput({
+
+        'inputType': "",
+        'inputValue': "",
+        'level': "",
+        'billingSystem': "",
+        'searchMatchCriteria': ""
+
+    });
 
     Page.Variables.searchEntity.invoke();
 
