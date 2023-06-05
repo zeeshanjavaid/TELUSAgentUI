@@ -488,7 +488,7 @@
             <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="closeButton" on-click="closeButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' +Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="updateActionDialog" width="40%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' +Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="updateActionDialog" width="40%" on-close="updateActionDialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid17">
             <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn79" margin="0 0 15px 0">
@@ -514,12 +514,12 @@
         <wm-layoutgrid name="layoutgrid11_2">
             <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea>
+                    <wm-textarea name="UpdateActionComment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="Widgets.updateActionDialog.close()" name="EditUpdateNoButton"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="EditUpdateNoButtonClick($event, widget)" name="EditUpdateNoButton"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="EditUpdateYesButton" on-click="EditUpdateYesButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
