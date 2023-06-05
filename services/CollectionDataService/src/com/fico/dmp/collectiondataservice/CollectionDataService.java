@@ -69,11 +69,11 @@ public class CollectionDataService {
     private TelusAPIConnectivityService telusAPIConnectivityService;
 
 
-    private static final String IS_ENTITYSVC_STUB_ENABLED = "IS_ENTITYSVC_STUB_ENABLED";
+    private static final String IS_COLLDATAMGMT_STUB_ENABLED = "IS_COLLDATAMGMT_STUB_ENABLED";
 
-    private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+    private static final String COLLDATAMGMT_ENDPOINT_URL = "COLLDATAMGMT_ENDPOINT_BASEURL";
 
-    private static final String ENTITYSVC_ENDPOINT_SCOPE = "ENTITYSVC_ENDPOINT_SCOPE";
+    private static final String COLLDATAMGMT_ENDPOINT_SCOPE = "COLLDATAMGMT_ENDPOINT_SCOPE";
 
     private boolean isStubEnabled;
 
@@ -91,9 +91,9 @@ public class CollectionDataService {
     @PostConstruct
     public void init() {
 
-        this.isStubEnabled = Boolean.valueOf(propertyValueFrom(IS_ENTITYSVC_STUB_ENABLED, "false"));
-        this.entityDataEndPointUrl = propertyValueFrom(ENTITYSVC_ENDPOINT_URL, URIConstant.COLLECTION_ENTITY_DATA_SERVICE_URL);
-        this.entitySvcAuthScope = propertyValueFrom(ENTITYSVC_ENDPOINT_SCOPE, "3162");
+        this.isStubEnabled = Boolean.valueOf(propertyValueFrom(IS_COLLDATAMGMT_STUB_ENABLED, "false"));
+        this.entityDataEndPointUrl = propertyValueFrom(COLLDATAMGMT_ENDPOINT_URL, URIConstant.COLLECTION_ENTITY_DATA_SERVICE_URL);
+        this.entitySvcAuthScope = propertyValueFrom(COLLDATAMGMT_ENDPOINT_SCOPE, "3162");
 
     }
 
