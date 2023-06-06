@@ -20,7 +20,6 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
@@ -766,7 +765,8 @@ Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row
     debugger;
     Partial;
     Partial.Widgets.EditActionDialog.open();
-    debugger;
+
+
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
@@ -889,7 +889,11 @@ Partial.UpdateActionClick = function($event, widget) {
         var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
         if (originalAgentId != selectedAgentId) {
             debugger;
-            Partial.Widgets.updateActionDialog.open();
+            //Partial.Widgets.updateActionDialog.open();
+            $("#layoutgrid5id").hide();
+            $("#EditActionButtonId").hide();
+            $("#updateActionDialogId").show();
+            $("#UpdateActionButtonId").show();
         } else {
             Partial.Variables.UpdateCollectionTreatmentVar.setInput({
                 'id': Partial.Widgets.EditActionIdText.caption,
@@ -918,7 +922,7 @@ Partial.UpdateActionClick = function($event, widget) {
 Partial.EditUpdateYesButtonClick = function($event, widget) {
     debugger;
     var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
-    /*Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
         'id': Partial.Widgets.EditActionIdText.caption,
         'partitionKey': '123',
         "CollectionTreatmentStepUpdate": {
@@ -930,12 +934,11 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
             'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
             'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
         }
-    }); 
+    });
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateCollectionTreatmentVar.invoke(); */
+    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
 
-    Partial.Widgets.updateActionDialog.close();
     Partial.Widgets.EditActionDialog.close();
 
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
@@ -943,7 +946,11 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
 
 };
 Partial.EditUpdateNoButtonClick = function($event, widget) {
-    Partial.Widgets.updateActionDialog.close();
+    $("#updateActionDialogId").hide();
+    $("#UpdateActionButtonId").hide();
+    $("#layoutgrid5id").show();
+    $("#EditActionButtonId").show();
+
 };
 Partial.updateActionDialogClose = function($event, widget) {
 
@@ -952,4 +959,8 @@ Partial.updateActionDialogClose = function($event, widget) {
 Partial.getCollectionTreatmentStepTable2_OnRowexpand = function($event, widget, row, $data) {
 
     App.showRowExpansion(row, $data);
+};
+Partial.EditActionDialogOpened = function($event, widget) {
+    $("#updateActionDialogId").hide();
+    $("#UpdateActionButtonId").hide();
 };

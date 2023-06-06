@@ -316,6 +316,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
   },
+  "dialogNameBool" : {
+    "_id" : "wm-dialogNameBool-wm.Variable-1686046800285",
+    "name" : "dialogNameBool",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getAllActiveUserList" : {
     "_id" : "wm-getAllActiveUserList-wm.LiveVariable-1683291597317",
     "name" : "getAllActiveUserList",

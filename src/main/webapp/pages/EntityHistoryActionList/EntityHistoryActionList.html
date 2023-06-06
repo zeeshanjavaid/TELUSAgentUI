@@ -65,8 +65,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
-                    displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
+                    placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -272,8 +272,8 @@
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-beforerowexpand="getCollectionTreatmentStepTable2_OnBeforerowexpand($event, widget, row, $data)" on-rowexpand="getCollectionTreatmentStepTable2_OnRowexpand($event, widget, row, $data)"
-                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-beforerowexpand="getCollectionTreatmentStepTable2_OnBeforerowexpand($event, widget, row, $data)"
+                        on-rowexpand="getCollectionTreatmentStepTable2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 
 
@@ -304,11 +304,11 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Action" iconclass="wi wi-file-text" name="EditActionDialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:Variables.dialogNameBool.dataSet.dataValue?&quot;hello&quot;:&quot;edit&quot;" iconclass="wi wi-file-text" name="EditActionDialog" on-opened="EditActionDialogOpened($event, widget)">
         <wm-gridrow name="gridrow1">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true"></wm-message>
         </wm-gridrow>
-        <wm-layoutgrid name="layoutgrid5">
+        <wm-layoutgrid id="layoutgrid5id" name="layoutgrid5">
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Action Main Details</h4>
             </wm-gridrow>
@@ -402,9 +402,47 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
+        <!--Update Action Dialog Started-->
+        <wm-layoutgrid id="updateActionDialogId" name="layoutgrid14">
+            <wm-layoutgrid name="layoutgrid17">
+                <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn79" margin="0 0 15px 0">
+                        <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'"
+                            name="label43" width="100%"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid11_1" margin="0 0 15px 0">
+                <wm-gridrow name="gridrow17" padding="0.2em unset unset unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                        <wm-label caption="Are you sure you want to update this action and change the assignment?" name="label36"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid11_11">
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.3em unset">
+                        <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="grey" fontweight="bold"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid11_2">
+                <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                        <wm-textarea name="UpdateActionComment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="Cancel" name="EditCloseAction" on-click="Widgets.EditActionDialog.close()"></wm-button>
-            <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
+            <wm-gridrow id="EditActionButtonId" name="gridrow313">
+                <wm-button class="secondaryButton" caption="Cancel" name="EditCloseAction" on-click="Widgets.EditActionDialog.close()"></wm-button>
+                <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="UpdateAction" on-click="UpdateActionClick($event, widget)"></wm-button>
+            </wm-gridrow>
+            <wm-gridrow id="UpdateActionButtonId" name="gridrow314">
+                <wm-button class="secondaryButton" caption="No" on-click="EditUpdateNoButtonClick($event, widget)" name="EditUpdateNoButton"></wm-button>
+                <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="EditUpdateYesButton" on-click="EditUpdateYesButtonClick($event, widget)"></wm-button>
+            </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Close Action" iconclass="wi wi-file-text" name="CloseActionDialog" on-opened="CloseActionDialogOpened($event, widget)" closable="true" on-close="CloseActionDialogClose($event, widget)">
@@ -490,41 +528,8 @@
             <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="closeButton" on-click="closeButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' +Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="updateActionDialog" width="40%" on-close="updateActionDialogClose($event, widget)">
-        <wm-layoutgrid name="layoutgrid17">
-            <wm-gridrow name="gridrow79" padding="0.5em unset unset unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn79" margin="0 0 15px 0">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'"
-                        name="label43" width="100%"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-        <wm-layoutgrid name="layoutgrid11_1" margin="0 0 15px 0">
-            <wm-gridrow name="gridrow17" padding="0.2em unset unset unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="Are you sure you want to update this action and change the assignment?" name="label36"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-        <wm-layoutgrid name="layoutgrid11_11">
-            <wm-gridrow name="gridrow7">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.3em unset">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="grey" fontweight="bold"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-        <wm-layoutgrid name="layoutgrid11_2">
-            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
-                    <wm-textarea name="UpdateActionComment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="EditUpdateNoButtonClick($event, widget)" name="EditUpdateNoButton"></wm-button>
-            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="EditUpdateYesButton" on-click="EditUpdateYesButtonClick($event, widget)"></wm-button>
-        </wm-dialogactions>
-    </wm-dialog>
+    <!--<wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' +Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="updateActionDialog" width="40%" on-close="updateActionDialogClose($event, widget)"><wm-layoutgrid id="updateActionDialogId"><wm-layoutgrid name="layoutgrid17"><wm-gridrow name="gridrow79" padding="0.5em unset unset unset"><wm-gridcolumn columnwidth="12" name="gridcolumn79" margin="0 0 15px 0"><wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'"
+                            name="label43" width="100%"></wm-label></wm-gridcolumn></wm-gridrow></wm-layoutgrid><wm-layoutgrid name="layoutgrid11_1" margin="0 0 15px 0"><wm-gridrow name="gridrow17" padding="0.2em unset unset unset"><wm-gridcolumn columnwidth="12" name="gridcolumn36"><wm-label caption="Are you sure you want to update this action and change the assignment?" name="label36"></wm-label></wm-gridcolumn></wm-gridrow></wm-layoutgrid><wm-layoutgrid name="layoutgrid11_11"><wm-gridrow name="gridrow7"><wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.3em unset"><wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="grey" fontweight="bold"></wm-label></wm-gridcolumn></wm-gridrow></wm-layoutgrid><wm-layoutgrid name="layoutgrid11_2"><wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1em unset"><wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%"><wm-textarea name="UpdateActionComment" width="100%" resize="none" maxchars="256" placeholder="" class="comment-border"></wm-textarea></wm-gridcolumn></wm-gridrow></wm-layoutgrid><wm-dialogactions name="dialogactions4" style="text-align: right;"><wm-button class="secondaryButton" caption="No" on-click="EditUpdateNoButtonClick($event, widget)" name="EditUpdateNoButton"></wm-button><wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="EditUpdateYesButton" on-click="EditUpdateYesButtonClick($event, widget)"></wm-button></wm-dialogactions></wm-layoutgrid></wm-dialog>  -->
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode" iconclass="" name="assigned_closeActionDialog" width="40%">
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
