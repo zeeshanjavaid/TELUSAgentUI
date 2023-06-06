@@ -87,6 +87,11 @@ public class CollectionTreatmentController {
         return collectionTreatmentService.getCollectionTreatmentStepById(id, partitionKey);
     }
 
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    public void init() {
+        collectionTreatmentService.init();
+    }
+
     @RequestMapping(value = "/collectionActivityLog", method = RequestMethod.PUT)
     public CollectionActivityLog updateCollectionActivityLog(@RequestParam(value = "id", required = false) String id, @RequestBody CollectionActivityLog collectionActivityLog) throws Exception {
         return collectionTreatmentService.updateCollectionActivityLog(id, collectionActivityLog);

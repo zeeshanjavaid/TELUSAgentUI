@@ -93,22 +93,6 @@ Page.button1Click = function($event, widget) {
     var searchCriteria = "";
 
 
-    // if (Page.Widgets.select1.datavalue === "BAN") {
-
-    //     if (Page.Widgets.text3._datavalue === undefined || Page.Widgets.text3._datavalue == "") {
-    //         try {
-    //             throw "Required field";
-    //         } catch (err) {
-    //             message.innerHTML = err;
-    //         }
-    //     } else {
-    //         intputType = "phoneNumber";
-    //         inputValue = Page.Widgets.text3._datavalue;
-    //     }
-
-
-
-    // } else {
     var value = $("input:radio[name=checkAndUncheck]:checked").val();
 
     if (value === undefined && Page.Widgets.text4._datavalue !== "") {
@@ -133,7 +117,7 @@ Page.button1Click = function($event, widget) {
 
 
     if (value == "NAME") {
-        intputType = "name";
+        intputType = "NAME";
         searchCriteria = Page.Widgets.select3.datavalue;
         if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
             try {
@@ -147,7 +131,7 @@ Page.button1Click = function($event, widget) {
 
         }
     } else if (value == "numID") {
-        intputType = "id";
+        intputType = "ID";
         searchCriteria = Page.Widgets.select4.datavalue;
         if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue == "") {
             try {
@@ -161,7 +145,7 @@ Page.button1Click = function($event, widget) {
 
 
         }
-        //  }
+
     }
 
     if (!isError) {
@@ -293,23 +277,23 @@ $(function() {
         }
     });
 });
-Page.select1Change = function($event, widget, newVal, oldVal) {
+// Page.select1Change = function($event, widget, newVal, oldVal) {
 
 
-    debugger;
-    if (newVal === "Entity") {
-        // Page.Variables.number_IdCriteria1.dataSet = ["Exact match"];
-        Page.Variables.number_IdCriteria.dataSet.pop(0)
-        Page.Variables.number_IdCriteria.dataSet.pop(1)
+//     debugger;
+//     if (newVal === "Entity") {
+//         // Page.Variables.number_IdCriteria1.dataSet = ["Exact match"];
+//         Page.Variables.number_IdCriteria.dataSet.pop(0)
+//         Page.Variables.number_IdCriteria.dataSet.pop(1)
 
-    } else {
+//     } else {
 
-        Page.Variables.number_IdCriteria.dataSet.push("")
+//         Page.Variables.number_IdCriteria.dataSet.push("")
 
-    }
+//     }
 
 
-};
+// };
 
 Page.searchEntityonError = function(variable, data) {
 

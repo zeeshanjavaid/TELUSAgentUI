@@ -617,6 +617,8 @@ Partial.clearFilterFields = function($event, widget) {
 
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
+
+    debugger;
     var category = Partial.Widgets.categorySelect.datavalue;
     var type = Partial.Widgets.typeSelect.datavalue;
     var createdDate = Partial.Widgets.creationDate.datavalue;

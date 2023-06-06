@@ -46,6 +46,8 @@ import java.util.List;
 import com.fico.core.util.ObjectMapperConfig;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URLEncoder;
+
 
 
 /**
@@ -122,7 +124,7 @@ public class CollectionDataService {
             logger.info("::::::::Calling  entity data endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_SEARCH)
                     .queryParam("inputType", inputType)
-                    .queryParam("inputValue",inputValue)
+                    .queryParam("inputValue", URLEncoder.encode(inputValue,"UTF-8"))
                     .queryParam("level",level)
                     .queryParam("searchMatchCriteria",searchMatchCriteria)
                     .queryParam("billingSystem",billingSystem)
