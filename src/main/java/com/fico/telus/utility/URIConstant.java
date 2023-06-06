@@ -14,6 +14,7 @@ public class URIConstant {
         public static final String GET_PARR = "/paymentArrangement";
         public static final String ENTITY_SEARCH = "/entitySearch";
         public static final String GET_COLLECTION_TREATMENT = "/collectionTreatmentStep";
+        public static final String GET_DISPUTE = "/dispute";
 
 
     }
