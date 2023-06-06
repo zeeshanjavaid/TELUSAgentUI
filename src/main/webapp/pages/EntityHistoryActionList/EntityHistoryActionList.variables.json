@@ -1,4 +1,18 @@
 {
+  "actionFilter" : {
+    "_id" : "wm-actionFilter-wm.Variable-1686027896322",
+    "name" : "actionFilter",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "ActionListDropdownVar" : {
     "_id" : "wm-ActionListDropdownVar-wm.Variable-1682691874817",
     "name" : "ActionListDropdownVar",
@@ -103,9 +117,9 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "actionTypeFilter" : {
-    "_id" : "wm-actionTypeFilter-wm.Variable-1685529878872",
-    "name" : "actionTypeFilter",
+  "actionTypeFilterCompleted" : {
+    "_id" : "wm-actionTypeFilterCompleted-wm.Variable-1686028231925",
+    "name" : "actionTypeFilterCompleted",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
@@ -119,9 +133,53 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
+      "dataValue" : "NOTC1-PMTR"
+    }, {
       "dataValue" : "NOTC2-OD"
     }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL"
+    }, {
+      "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "RESTORE"
+    }, {
+      "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "PARR Update"
+    }, {
+      "dataValue" : "PARR Status"
+    }, {
+      "dataValue" : "Dispute Update"
+    }, {
+      "dataValue" : "Dispute Comment"
+    }, {
+      "dataValue" : "Dispute Status"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "actionTypeFilterTODO" : {
+    "_id" : "wm-actionTypeFilter-wm.Variable-1685529878872",
+    "name" : "actionTypeFilterTODO",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CALL-OB"
+    }, {
+      "dataValue" : "CALL-IB"
+    }, {
+      "dataValue" : "EM-IN"
+    }, {
+      "dataValue" : "FOLLOWUP"
+    }, {
       "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC2-OD"
     }, {
       "dataValue" : "NOTC3-DIST"
     }, {
@@ -145,11 +203,39 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "categorySelectCompletedfilter" : {
+    "_id" : "wm-categorySelectCompletedfilter-wm.Variable-1686027491625",
+    "name" : "categorySelectCompletedfilter",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
       "dataValue" : "COLL_TRTMT_STEP"
     }, {
       "dataValue" : "PYMT_ARRNGMT"
     }, {
       "dataValue" : "COLL_DISPUTE"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "categorySelectTODOfilter" : {
+    "_id" : "wm-categorySelectTODOfilter-wm.Variable-1686027415967",
+    "name" : "categorySelectTODOfilter",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "COLL_TRTMT_STEP"
     } ],
     "type" : "string",
     "isList" : true,

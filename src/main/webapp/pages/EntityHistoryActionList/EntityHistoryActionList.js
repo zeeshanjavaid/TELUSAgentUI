@@ -21,7 +21,6 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    debugger;
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
@@ -52,7 +51,6 @@ Partial.nextButtonClick = function($event, widget) {
 
     // Call Outbound Action 
     if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
-        debugger;
         Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
         Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
         Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';
@@ -379,14 +377,12 @@ function generalFollowUpAction($event, widget) {
 };
 
 function overdueNoticeAction($event, widget) {
-    debugger;
     // Status and Priority fields are mandatory
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else if (!validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
-        debugger;
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
@@ -594,9 +590,13 @@ Partial.openFilterGrid = function($event, widget) {
     // to display completion date filter only for completed table
     var completedTable = document.getElementById("completedTableGrid");
     var toDoTable = document.getElementById("toDoTableGrid");
-    if (completedTable.style.display === "none") {
+    if (completedTable.style.display === "none") { // to-do table
+        Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
         $('#completionDateGrid').hide();
-    } else if (toDoTable.style.display === "none") {
+    } else if (toDoTable.style.display === "none") { // completed table
+        Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
         $('#completionDateGrid').show();
     }
 
@@ -617,7 +617,6 @@ Partial.clearFilterFields = function($event, widget) {
 
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
-    debugger;
     var category = Partial.Widgets.categorySelect.datavalue;
     var type = Partial.Widgets.typeSelect.datavalue;
     var createdDate = Partial.Widgets.creationDate.datavalue;
@@ -650,6 +649,10 @@ Partial.toDoButtonClick = function($event, widget) {
     $("#completedBtn").css("background-color", "white");
     $("#completedBtn").css("color", "#4B286D");
 
+    // changing dataset for category dropdown
+    Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
+    Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
+
     // display TO-DO table and hide Completed table
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
@@ -662,6 +665,10 @@ Partial.completedButtonClick = function($event, widget) {
     $("#completedBtn").css("color", "white");
     $("#toDoBtn").css("background-color", "white");
     $("#toDoBtn").css("color", "#4B286D");
+
+    // changing dataset for category dropdown
+    Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
+    Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
 
     // display Completed table and hide TO-DO table
     $('#completedTableGrid').show();
@@ -851,14 +858,13 @@ Partial.closeActionClick = function($event, widget) {
 };
 
 
-Partial.categorySelect = function($event, widget, newVal, oldVal) {
+Partial.categorySelectOnChange = function($event, widget, newVal, oldVal) {
     if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
-        debugger;
-        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_TRTMT_STEP") {
-        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
-        Partial.Variables.actionTypeFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
     }
 }
 
@@ -943,5 +949,5 @@ Partial.updateActionDialogClose = function($event, widget) {
 
 Partial.getCollectionTreatmentStepTable2_OnRowexpand = function($event, widget, row, $data) {
 
-    App.showRowExpansion(row);
+    App.showRowExpansion(row, $data);
 };

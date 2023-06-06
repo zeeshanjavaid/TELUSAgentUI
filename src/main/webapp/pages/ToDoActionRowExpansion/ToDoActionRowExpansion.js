@@ -20,9 +20,10 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    App.showRowExpansion = function(row) {
+    App.showRowExpansion = function(row, data) {
         debugger;
-        var data = row;
+        var data1 = row;
+        var data2 = data;
         var type = row.stepTypeCode;
         if (type == 'CALL-OB') {
             $('.reachedCustomer').show();
