@@ -592,10 +592,14 @@ Partial.openFilterGrid = function($event, widget) {
     if (completedTable.style.display === "none") { // to-do table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
+        $('.categorySelectToDo').show();
+        $('.categorySelectCompleted').hide();
         $('#completionDateGrid').hide();
     } else if (toDoTable.style.display === "none") { // completed table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+        $('.categorySelectToDo').hide();
+        $('.categorySelectCompleted').show();
         $('#completionDateGrid').show();
     }
 
@@ -654,6 +658,9 @@ Partial.toDoButtonClick = function($event, widget) {
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
     Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
 
+    $('.categorySelectToDo').show();
+    $('.categorySelectCompleted').hide();
+
     // display TO-DO table and hide Completed table
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
@@ -670,6 +677,9 @@ Partial.completedButtonClick = function($event, widget) {
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
     Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+
+    $('.categorySelectToDo').hide();
+    $('.categorySelectCompleted').show();
 
     // display Completed table and hide TO-DO table
     $('#completedTableGrid').show();
@@ -860,13 +870,25 @@ Partial.closeActionClick = function($event, widget) {
 };
 
 
-Partial.categorySelectOnChange = function($event, widget, newVal, oldVal) {
+Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    Partial.Widgets.categorySelect.datavalue;
+    if (Partial.Widgets.categorySelect.datavalue == "") {
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
+    }
+}
+
+Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    Partial.Widgets.categorySelect.datavalue;
     if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_TRTMT_STEP") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
+    } else if (Partial.Widgets.categorySelect.datavalue == "") {
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
     }
 }
 
