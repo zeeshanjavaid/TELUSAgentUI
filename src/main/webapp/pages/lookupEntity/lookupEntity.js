@@ -133,7 +133,7 @@ Page.button1Click = function($event, widget) {
     } else if (value == "numID") {
         intputType = "ID";
         searchCriteria = Page.Widgets.select4.datavalue;
-        if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue == "") {
+        if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue === "") {
             try {
                 isError = true;
                 throw "Required field";
@@ -167,7 +167,8 @@ Page.button1Click = function($event, widget) {
 Page.button2Click = function($event, widget) {
 
     debugger;
-    $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+
+
     // const message1 = document.getElementById("p02");
     // const message2 = document.getElementById("p03");
     // const message3 = document.getElementById("p04");
@@ -187,6 +188,8 @@ Page.button2Click = function($event, widget) {
     // message4.innerHTML = "";
     Page.Widgets.text5.disabled = true;
     Page.Widgets.text4.disabled = true;
+
+    $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
 
     // console.clear();
 

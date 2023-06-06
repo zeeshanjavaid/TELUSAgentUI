@@ -238,6 +238,8 @@ Partial.CancelInstallmentScheduleClick = function($event, widget) {
 };
 
 Partial.CreatePARRClick = function($event, widget) {
+
+    debugger;
     Partial.Variables.CreatePaymentArrangement.setInput({
         "CollectionPaymentArrangementCreate": {
             'amount': Partial.Widgets.ParrTotal.datavalue,
