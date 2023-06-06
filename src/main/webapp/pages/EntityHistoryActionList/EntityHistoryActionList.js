@@ -773,7 +773,7 @@ Partial.cancleButtonClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     debugger;
-    Partial;
+    Partial.Variables.dialogNameBool.dataSet.dataValue = false;
     Partial.Widgets.EditActionDialog.open();
 
 
@@ -903,6 +903,7 @@ Partial.CloseActionDialogClose = function($event, widget) {
 
 Partial.UpdateActionClick = function($event, widget) {
     debugger;
+    Partial.Variables.dialogNameBool.dataSet.dataValue = false;
 
     if (!Partial.Widgets.prioritySelect.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -912,6 +913,7 @@ Partial.UpdateActionClick = function($event, widget) {
         if (originalAgentId != selectedAgentId) {
             debugger;
             //Partial.Widgets.updateActionDialog.open();
+            Partial.Variables.dialogNameBool.dataSet.dataValue = true;
             $("#layoutgrid5id").hide();
             $("#EditActionButtonId").hide();
             $("#updateActionDialogId").show();
@@ -968,6 +970,7 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
 
 };
 Partial.EditUpdateNoButtonClick = function($event, widget) {
+    Partial.Variables.dialogNameBool.dataSet.dataValue = false;
     $("#updateActionDialogId").hide();
     $("#UpdateActionButtonId").hide();
     $("#layoutgrid5id").show();
