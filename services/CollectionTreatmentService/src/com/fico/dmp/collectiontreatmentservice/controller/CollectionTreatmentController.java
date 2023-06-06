@@ -88,6 +88,8 @@ public class CollectionTreatmentController {
     }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public void init() {
         collectionTreatmentService.init();
     }
