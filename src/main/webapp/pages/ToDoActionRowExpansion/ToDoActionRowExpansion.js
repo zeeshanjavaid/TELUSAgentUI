@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+var reachedCustomer;
 Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
@@ -21,7 +22,17 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     App.showRowExpansionToDo = function(row, data) {
+        debugger;
         var type = row.stepTypeCode;
+        Partial.Widgets.status.caption = row.status;
+        Partial.Widgets.actionID.caption = row.id;
+        Partial.Widgets.description.caption = row.comment;
+
+        if (!type == 'RESTORE' || !type == 'CEASE' || !type == 'SUS' || !type == 'SUSPEND') {
+            var additionalChars = row.additionalCharacteristics;
+            additionalChars.forEach(populateDataInRowExpansion);
+        }
+
         if (type == 'CALL-OB') {
             $('.reachedCustomer').show();
             $('.phone').show();
@@ -34,7 +45,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB-notreached') {
+        } else if (type == 'CALL-OB' && reachedCustomer == 'No') {
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();
@@ -124,7 +135,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB-notreached') {
+        } else if (type == 'CALL-OB' && reachedCustomer == 'No') {
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();
@@ -200,3 +211,27 @@ Partial.onReady = function() {
 
     }
 };
+
+function populateDataInRowExpansion(item, index) {
+    debugger;
+    var item = item;
+    if (item.name == "CustomerName") {
+        Partial.Widgets.custName.caption = item.value;
+    } else if (item.name == "PhoneNumber") {
+        Partial.Widgets.phoneNum.caption = item.value;
+    } else if (item.name == "CallDuration") {
+        Partial.Widgets.callDuration.caption = item.value;
+    } else if (item.name == "ReachedCustomer") {
+        Partial.Widgets.reachedCust.caption = item.value;
+        reachedCustomer = item.value;
+    } else if (item.name == "Email") {
+        Partial.Widgets.email.caption = item.value;
+    } else if (item.name == "EventID") {
+        Partial.Widgets.eventID.caption = item.value;
+    } else if (item.name == "ActivityType") {
+        Partial.Widgets.activityType.caption = item.value;
+    } else if (item.name == "NoticeEmail") {
+        Partial.Widgets.noticeEmail.caption = item.value;
+    }
+
+}
