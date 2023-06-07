@@ -25,15 +25,10 @@ Partial.onReady = function() {
         debugger;
         var type = row.stepTypeCode;
         Partial.Widgets.status.caption = row.status;
-        Partial.Widgets.actionID.caption = row.id;
-        Partial.Widgets.description.caption = row.comment;
+        Partial.Widgets.activityType.caption = row.stepTypeCode;
+        populateDataInRowExpansion(row);
 
-        if (!type == 'RESTORE' || !type == 'CEASE' || !type == 'SUS' || !type == 'SUSPEND') {
-            var additionalChars = row.additionalCharacteristics;
-            additionalChars.forEach(populateDataInRowExpansion);
-        }
-
-        if (type == 'CALL-OB') {
+        if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.actionID').show();
@@ -45,7 +40,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB' && reachedCustomer == 'No') {
+        } else if (type == 'CALL-OB' && reachedCustomer == 'N') { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();
@@ -122,8 +117,13 @@ Partial.onReady = function() {
     }
 
     App.showRowExpansionCompleted = function(row, data) {
-        var type = row.collectionActivityType;;
-        if (type == 'CALL-OB') {
+        debugger;
+        var type = row.collectionActivityType;
+        Partial.Widgets.status.caption = row.relatedBusinessEntityStatus;
+        Partial.Widgets.activityType.caption = row.collectionActivityType;
+        populateDataInRowExpansion(row);
+
+        if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.actionID').show();
@@ -135,7 +135,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB' && reachedCustomer == 'No') {
+        } else if (type == 'CALL-OB' && reachedCustomer == 'N') { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();
@@ -208,30 +208,37 @@ Partial.onReady = function() {
             $('.actionID').hide();
             $('.phone').hide();
         }
-
     }
 };
 
-function populateDataInRowExpansion(item, index) {
-    debugger;
+function populateDataInRowExpansion(row) {
+    Partial.Widgets.actionID.caption = row.id;
+    Partial.Widgets.description.caption = row.comment;
+
+    var additionalChars = row.additionalCharacteristics;
+    if (additionalChars != undefined) {
+        additionalChars.forEach(populateAdditionalCharacteristicsInRowExpansion);
+    }
+};
+
+
+function populateAdditionalCharacteristicsInRowExpansion(item, index) {
     var item = item;
     if (item.name == "CustomerName") {
         Partial.Widgets.custName.caption = item.value;
-    } else if (item.name == "PhoneNumber") {
+    } else if (item.name == "PhoneNumber" || item.name == "Phone") {
         Partial.Widgets.phoneNum.caption = item.value;
     } else if (item.name == "CallDuration") {
         Partial.Widgets.callDuration.caption = item.value;
     } else if (item.name == "ReachedCustomer") {
         Partial.Widgets.reachedCust.caption = item.value;
         reachedCustomer = item.value;
-    } else if (item.name == "Email") {
+    } else if (item.name == "Outcome") {
+        Partial.Widgets.outcome.caption = item.value;
+    } else if (item.name == "EmailAddress") {
         Partial.Widgets.email.caption = item.value;
+        Partial.Widgets.noticeEmail.caption = item.value;
     } else if (item.name == "EventID") {
         Partial.Widgets.eventID.caption = item.value;
-    } else if (item.name == "ActivityType") {
-        Partial.Widgets.activityType.caption = item.value;
-    } else if (item.name == "NoticeEmail") {
-        Partial.Widgets.noticeEmail.caption = item.value;
     }
-
-}
+};
