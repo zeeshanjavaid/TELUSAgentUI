@@ -38,15 +38,17 @@
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn8_1" class="categorySelectToDo">
                 <wm-label padding="unset 0.5em unset unset" caption="Category" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.categoryFilter.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="categorySelectToDoOnChange($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.categoryFilter.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.categoryFilter.dataSet[0].dataValue"
+                    on-change="categorySelectToDoOnChange($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn8_1" class="categorySelectCompleted">
                 <wm-label padding="unset 0.5em unset unset" caption="Category" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.categoryFilter.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="categorySelectCompletedOnChange($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="categorySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.categoryFilter.dataSet" datafield="dataValue" datavalue="bind:Variables.categorySelectCompletedfilter.dataSet[0].dataValue" displayfield="dataValue"
+                    on-change="categorySelectCompletedOnChange($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn9_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Type" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="typeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionFilter.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="typeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionFilter.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" id="creationDateGrid" name="gridcolumn10_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Creation date" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -69,8 +71,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                    placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
+                    displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -276,8 +278,8 @@
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-beforerowexpand="getCollectionTreatmentStepTable2_OnBeforerowexpand($event, widget, row, $data)"
-                        on-rowexpand="getCollectionTreatmentStepTable2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-beforerowexpand="getCollectionTreatmentStepTable2_OnBeforerowexpand($event, widget, row, $data)" on-rowexpand="getCollectionTreatmentStepTable2_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 
 
@@ -304,8 +306,8 @@
                     <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionActivityLog_1Table3_OnRowexpand($event, widget, row, $data)"
-                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionActivityLog_1Table3_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
