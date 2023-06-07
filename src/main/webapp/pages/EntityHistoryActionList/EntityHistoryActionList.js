@@ -665,6 +665,7 @@ Partial.toDoButtonClick = function($event, widget) {
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
     $('#completionDateGrid').hide();
+
 };
 
 Partial.completedButtonClick = function($event, widget) {
@@ -685,6 +686,7 @@ Partial.completedButtonClick = function($event, widget) {
     $('#completedTableGrid').show();
     $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
+
 };
 
 /*Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
@@ -969,6 +971,7 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     setTimeout(messageTimeout, 5000);
 
 };
+
 Partial.EditUpdateNoButtonClick = function($event, widget) {
     Partial.Variables.dialogNameBool.dataSet.dataValue = false;
     $("#updateActionDialogId").hide();
@@ -977,15 +980,21 @@ Partial.EditUpdateNoButtonClick = function($event, widget) {
     $("#EditActionButtonId").show();
 
 };
+
 Partial.updateActionDialogClose = function($event, widget) {
 
 };
 
 Partial.getCollectionTreatmentStepTable2_OnRowexpand = function($event, widget, row, $data) {
 
-    App.showRowExpansion(row, $data);
+    App.showRowExpansionToDo(row, $data);
 };
+
 Partial.EditActionDialogOpened = function($event, widget) {
     $("#updateActionDialogId").hide();
     $("#UpdateActionButtonId").hide();
+};
+
+Partial.getCollectionActivityLog_1Table3_OnRowexpand = function($event, widget, row, $data) {
+    App.showRowExpansionCompleted(row, $data);
 };

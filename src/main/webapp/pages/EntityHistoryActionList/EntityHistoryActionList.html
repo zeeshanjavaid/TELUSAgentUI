@@ -304,6 +304,8 @@
                     <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionActivityLog_1Table3_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
