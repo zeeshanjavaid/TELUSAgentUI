@@ -217,6 +217,8 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
+      "dataValue" : "All"
+    }, {
       "dataValue" : "COLL_TRTMT_STEP"
     }, {
       "dataValue" : "PYMT_ARRNGMT"

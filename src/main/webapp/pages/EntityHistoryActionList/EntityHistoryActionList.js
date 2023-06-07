@@ -874,7 +874,6 @@ Partial.closeActionClick = function($event, widget) {
 
 Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Partial.Widgets.categorySelect.datavalue;
     if (Partial.Widgets.categorySelect.datavalue == "") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
     }
@@ -882,14 +881,13 @@ Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
 
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Partial.Widgets.categorySelect.datavalue;
     if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_TRTMT_STEP") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
     } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
-    } else if (Partial.Widgets.categorySelect.datavalue == "") {
+    } else if (Partial.Widgets.categorySelect.datavalue == "" || Partial.Widgets.categorySelect.datavalue == "All") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
     }
 }
