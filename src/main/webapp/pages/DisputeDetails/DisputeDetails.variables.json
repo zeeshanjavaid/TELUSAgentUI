@@ -112,7 +112,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    } ],
     "type" : "io.swagger.client.model.CollectionDispute",
     "service" : "CollectionEntityService",
     "operation" : "getdisputeById",
@@ -122,7 +126,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

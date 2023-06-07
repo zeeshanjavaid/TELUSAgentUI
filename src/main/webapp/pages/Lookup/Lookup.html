@@ -74,8 +74,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial" content="EntityArDelinqueCycel"
-                            popoverplacement="bottom"></wm-popover>
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet[$i].entityDetails.totalAr" contentsource="partial"
+                            content="EntityArDelinqueCycel" popoverplacement="bottom"></wm-popover>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn76" class="collstatusLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Collections Status:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
@@ -139,7 +139,8 @@
             </wm-layoutgrid>
             <wm-layoutgrid name="layoutgrid100">
                 <wm-gridrow name="gridrow101">
-                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true"
+                        style="margin:5px;"></wm-message>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow102">
                     <!--  <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>--></wm-gridrow>
@@ -175,7 +176,9 @@
                             <!--<wm-button class="btn-default createDispute" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>-->
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="DisputeListPanel" width="100%" content="DisputeList" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDisputePanel" content="CreateDispute" show="bind:Variables.DisputePageName.dataSet.dataValue=='CreateDispute'"></wm-panel>
-                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ViewDisputeDetailsPanel" content="DisputeDetails" show="bind:Variables.DisputePageName.dataSet.dataValue==&quot;DisputeDetail&quot;"></wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="ViewDisputeDetailsPanel" content="DisputeDetails" show="bind:Variables.DisputePageName.dataSet.dataValue==&quot;DisputeDetail&quot;">
+                                <wm-param name="DisputeId" value="bind:Widgets.DisputeListPanel.Widgets.getdisputeTable1.selecteditem.id" type="integer"></wm-param>
+                            </wm-panel>
                         </wm-container>
                     </wm-tabpane>
                     <wm-tabpane name="UserNotes" title="User Notes &amp; Docs">
@@ -343,7 +346,6 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid10" margin="0 0 15px 0">
             <wm-gridrow name="gridrow15">
-
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51_1">
                     <wm-label name="label53" caption="Current Entity:" style="font-weight: bold;"></wm-label>
                 </wm-gridcolumn>
@@ -359,7 +361,6 @@
                     <wm-label name="label43" padding="0 0 0 3em" caption="Entity Type:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label44" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid12">

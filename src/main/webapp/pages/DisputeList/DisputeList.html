@@ -1,10 +1,10 @@
 <wm-partial name="partial1">
     <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;">
         <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
-        <wm-gridcolumn width="100%">
+        <wm-gridcolumn width="100%" name="gridcolumn1">
             <wm-button class="btn-default createDisputeBtn" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
         </wm-gridcolumn>
-        <wm-gridcolumn width="100%">
+        <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputes.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%">
                 <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
@@ -16,9 +16,9 @@
                 <wm-table-column binding="collectionExclusionIndicator" caption="Collection Exclusion" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('collectionExclusionIndicator')?&quot;Y&quot;:&quot;N&quot;" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
