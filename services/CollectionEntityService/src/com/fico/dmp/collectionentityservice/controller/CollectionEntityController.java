@@ -15,8 +15,8 @@ import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Integer;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
-import io.swagger.client.model.CollectionEntity;
 import java.lang.Boolean;
+import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionContact;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
@@ -82,15 +82,15 @@ public class CollectionEntityController {
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionEntity> getCollectionEntity(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "rcid", required = false) String rcid, @RequestParam(value = "cbucid", required = false) String cbucid, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "sortBy", required = false) String sortBy) throws Exception {
-        return collectionEntityService.getCollectionEntity(fields, offset, limit, ban, rcid, cbucid, entityId, agentId, workCategory, sortBy);
+    public CollectionEntity getCollectionEntity(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntity(id, history);
     }
 
     @RequestMapping(value = "/collectionEntity_1", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionEntity getCollectionEntity_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntity(id, history);
+    public List<CollectionEntity> getCollectionEntity_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "rcid", required = false) String rcid, @RequestParam(value = "cbucid", required = false) String cbucid, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "sortBy", required = false) String sortBy) throws Exception {
+        return collectionEntityService.getCollectionEntity(fields, offset, limit, ban, rcid, cbucid, entityId, agentId, workCategory, sortBy);
     }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
