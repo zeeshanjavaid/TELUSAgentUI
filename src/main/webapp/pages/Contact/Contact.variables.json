@@ -1,0 +1,25 @@
+{
+  "getCollectionEntityContacts" : {
+    "_id" : "wm-getCollectionEntityContacts-wm.ServiceVariable-1686138677476",
+    "name" : "getCollectionEntityContacts",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.EntityContactsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityContacts",
+    "operationId" : "CollectionDataController_getEntityContacts",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  }
+}
