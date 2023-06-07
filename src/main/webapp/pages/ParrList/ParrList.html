@@ -10,7 +10,7 @@
                 <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" width="80px" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="statuses[0].status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="installments[0].date" caption="Start" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="customField1" caption="Expiry" widget-type="label" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
                     <wm-label caption="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments[row.getProperty('installments').length-1].date | toDate: 'MM/dd/yyyy'" class="" conditionalclass=""></wm-label>
@@ -23,7 +23,7 @@
                     <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.createdTimestamp.dayOfMonth" caption="Created DT" type="integer" datepattern="MM-dd-yyyy" formatpattern="toDate" show="true" readonly="undefined"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
             </wm-table>

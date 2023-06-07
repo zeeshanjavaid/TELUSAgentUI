@@ -704,6 +704,7 @@ Partial.CloseActionDialogOpened = function($event, widget) {
 Partial.yesButtonClick = function($event, widget) {
     // to make buttons selected
     isClicked = false;
+    App.Variables.errorMsg.dataSet.dataValue = "";
     $("#yesBtn").css("background-color", "#4B286D");
     $("#yesBtn").css("color", "white");
     $("#noBtn").css("background-color", "white");
@@ -737,7 +738,7 @@ Partial.closeButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields.";
         isError = true;
     } else if (phnumber > 10) {
-        App.Variables.errorMsg.dataSet.dataValue = "Invalid phone number.";
+        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be grater than 10 digit";
         isError = true;
     }
     if (isClicked) {

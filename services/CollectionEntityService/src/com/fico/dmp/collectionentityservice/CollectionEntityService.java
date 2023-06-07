@@ -287,7 +287,7 @@ public class CollectionEntityService {
 		 * logger.info(":::::::::::In add Parr, parr amount::::::::::::::::::" +
 		 * collectionPaymentArrangementCreate.getInstallments().get(0).getAmount()); }
 		 */
-        CollectionPaymentArrangement collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangementUpdate);
+        CollectionPaymentArrangement collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangementUpdate,id);
         return collectionPaymentArrangement;        
     }
     

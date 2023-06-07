@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import com.fico.telus.utility.URIConstant;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,10 @@ import io.swagger.client.model.CollectionPaymentArrangementCreate;
 //import io.swagger.client.model.CollectionPaymentArrangementStatus;
 import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.EntityRef;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+
 
 @Service
 public class PARRService {
@@ -87,16 +93,22 @@ public class PARRService {
 
 			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
 			// true);
+			logger.info("::::::::Calling telus API to create PARR:::::\n::::::: {}");
+
 			EntityRef entityRef =  new EntityRef();
 			entityRef.setId(Long.valueOf(entityId));
 			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
+
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
 					"POST","3161");
+						logger.info("::::::::Response from Success Telus  API- CREATE PARR:::::\n::::::: {}",responseStr);
 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
 					CollectionPaymentArrangement.class);
 			return collectionPaymentArrangement;
+			
+		
 		}
 	}
 	
@@ -110,12 +122,12 @@ public class PARRService {
 		CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate = new CollectionPaymentArrangementUpdate();
 	//	collectionPaymentArrangementUpdate.setStatuses(statuses);
 		collectionPaymentArrangementUpdate.setId(parrId);
-		CollectionPaymentArrangement collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate);
+		CollectionPaymentArrangement collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate,parrId);
 		return collectionPaymentArrangement;
 	}
 
 	public CollectionPaymentArrangement updatePaymentArrangement(
-			CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception {
+			CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate, Integer id) throws Exception {
 
 		if (isParrStubEnabled) {
 			
@@ -128,8 +140,12 @@ public class PARRService {
 			// false);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementUpdate);
 			logger.info("::::::::collectionPaymentArrangementUpdate requestPayload ::::::::{}", requestPayload);
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
+	     	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+ URIConstant.ApiMapping.GET_PARR)
+					.queryParam("id", id);
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, builder.toUriString(),
 					"PATCH","3161");
+				logger.info("::::::::Response from Success Telus  API UPDATE PARR:::::\n::::::: {}",responseStr);
+
 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
 					CollectionPaymentArrangement.class);
 			return collectionPaymentArrangement;

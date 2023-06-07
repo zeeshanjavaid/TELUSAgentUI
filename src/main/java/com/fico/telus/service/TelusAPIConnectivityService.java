@@ -193,7 +193,7 @@ public class TelusAPIConnectivityService {
 				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
-				responseEntity= invokeTelusPostAPIWithRestTemp(headers,endpointURL);
+				responseEntity= invokeTelusPostAPIWithRestTemp(requestPayload, headers,endpointURL);
 				break;
 	
 			case "GET":
@@ -218,7 +218,7 @@ public class TelusAPIConnectivityService {
 				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
-				responseEntity= invokeTelusPatchAPIWithRestTemp(headers,endpointURL);
+				responseEntity= invokeTelusPatchAPIWithRestTemp(requestPayload,headers,endpointURL);
 				break;
 			default:
 		}
@@ -229,7 +229,7 @@ public class TelusAPIConnectivityService {
 		if (responseEntity != null) {
 			// Read the response
 			result = responseEntity.getBody();
-			if (statusCode == 200) {
+			if (statusCode == 200 || statusCode == 201 ) {
 				logger.info("::::::::Telus outbound API response statusCode ::::::::::::::::" + statusCode);
 				return result;
 			} else {
@@ -252,21 +252,21 @@ public class TelusAPIConnectivityService {
 
 	}
 	
-		private ResponseEntity<String> invokeTelusPostAPIWithRestTemp(HttpHeaders headers,String endpointURL ) {
+		private ResponseEntity<String> invokeTelusPostAPIWithRestTemp(String requestPayload, HttpHeaders headers,String endpointURL ) {
 
 		RestTemplate restTemplate =new RestTemplate();
 
-		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
+		HttpEntity<String> requestEntity = new HttpEntity<String>(requestPayload, headers);
 		return restTemplate.exchange(endpointURL, HttpMethod.POST, requestEntity, String.class);
 
 	}
 
-	private ResponseEntity<String> invokeTelusPatchAPIWithRestTemp(HttpHeaders headers,String endpointURL ) {
+	private ResponseEntity<String> invokeTelusPatchAPIWithRestTemp(String requestPayload,HttpHeaders headers,String endpointURL ) {
 
 		RestTemplate restTemplate =new RestTemplate();
 
-		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
-		return restTemplate.exchange(endpointURL, HttpMethod.PATCH, requestEntity, String.class);
+		HttpEntity<String> requestEntity = new HttpEntity<String>(requestPayload, headers);
+		return restTemplate.exchange(endpointURL, HttpMethod.PUT, requestEntity, String.class);
 
 	}
 	
