@@ -9,7 +9,7 @@ public class BanTravelHistoryModel {
 	private String banStatusDT;
 	private Integer closingCycle;
 	private String lastUpdatedBy;
-	private Long billingAccountRefId;
+	private String billingAccountRefId;
 	
 	
 	public String getBanId() {
@@ -55,10 +55,10 @@ public class BanTravelHistoryModel {
 	public void setTransferOutDT(String transferOutDT) {
 		this.transferOutDT = transferOutDT;
 	}
-	public Long getBillingAccountRefId() {
+	public String getBillingAccountRefId() {
 		return billingAccountRefId;
 	}
-	public void setBillingAccountRefId(Long billingAccountRefId) {
+	public void setBillingAccountRefId(String billingAccountRefId) {
 		this.billingAccountRefId = billingAccountRefId;
 	}
 	@Override

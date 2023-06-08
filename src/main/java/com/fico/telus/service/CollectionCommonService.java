@@ -14,7 +14,7 @@ import com.fico.dmp.telusagentuidb.User;
 import com.fico.dmp.telusagentuidb.service.UserService;
 import com.wavemaker.runtime.security.SecurityService;
 
-import io.swagger.client.model.AuditInfo;
+import io.swagger.client.model.CollectionTreatmentAuditInfo;
 import java.time.OffsetDateTime;
 //import org.threeten.bp.OffsetDateTime;
 
@@ -31,7 +31,7 @@ public class CollectionCommonService {
 	@Autowired
 	private UserService userService;
 	
-	public AuditInfo UpdateAuditInfo(AuditInfo auditInfo, boolean isCreate) {
+	public CollectionTreatmentAuditInfo UpdateAuditInfo(CollectionTreatmentAuditInfo auditInfo, boolean isCreate) {
 		
 		User user = getUser();
 		String empId = "";

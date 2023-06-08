@@ -81,7 +81,7 @@ public class PARRService {
 		if (isParrStubEnabled) {
 		    
 		    EntityRef entityRef =  new EntityRef();
-			entityRef.setId(Long.valueOf(entityId));
+			entityRef.setId(entityId);
 			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			if (collectionPaymentArrangementCreate.getBillingAccountRefs().size() > 0) {
 				logger.info(":::::::BillingAccountRefs :::::::::::: {}", collectionPaymentArrangementCreate.getBillingAccountRefs().get(0).getName());
@@ -96,7 +96,7 @@ public class PARRService {
 			logger.info("::::::::Calling telus API to create PARR:::::\n::::::: {}");
 
 			EntityRef entityRef =  new EntityRef();
-			entityRef.setId(Long.valueOf(entityId));
+			entityRef.setId(entityId);
 			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);

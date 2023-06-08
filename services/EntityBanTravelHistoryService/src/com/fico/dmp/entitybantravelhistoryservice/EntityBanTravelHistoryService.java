@@ -65,7 +65,7 @@ public class EntityBanTravelHistoryService {
     public List<BanTravelHistoryModel> fetchEntityBanTravelHistory(Integer id) throws Exception {
     	CollectionEntity collectionEntity =  collectionEntityService.getCollectionEntity(id, true);
     	List<CollectionEntityBillingAccountRefMap> collectionEntityBillingAccountRefList = collectionEntity.getBillingAccountRefMaps();
-    	List<Long> billingAcctRefIds = new ArrayList<Long>();
+    	List<String> billingAcctRefIds = new ArrayList<String>();
     	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();
     	if(!CollectionUtils.isEmpty(collectionEntityBillingAccountRefList)) {
         	billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
@@ -91,7 +91,7 @@ public class EntityBanTravelHistoryService {
     		
     		for (BanTravelHistoryModel banTravelHistoryModel : banTravelHistoryModelList) {
     			
-    			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(banTravelHistoryModel.getBillingAccountRefId().intValue())).forEach(collectionBillingAccountRef -> {
+    			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(banTravelHistoryModel.getBillingAccountRefId()))).forEach(collectionBillingAccountRef -> {
     				banTravelHistoryModel.setBanId(collectionBillingAccountRef.getBillingAccount().getId());
     				banTravelHistoryModel.setBanStatus(collectionBillingAccountRef.getBillingAccount().getState().toString());
     				banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
