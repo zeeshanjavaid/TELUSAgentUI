@@ -26,7 +26,7 @@ Partial.onReady = function() {
         var type = row.stepTypeCode;
         Partial.Widgets.status.caption = row.status;
         Partial.Widgets.activityType.caption = row.stepTypeCode;
-        populateDataInRowExpansion(row);
+        populateDataInRowExpansion(row, type);
 
         if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
             $('.reachedCustomer').show();
@@ -86,7 +86,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.eventID').hide();
-            $('.email').show();
+            $('.email').hide();
             $('.actionID').show();
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
             $('.customerName').show();
@@ -121,7 +121,7 @@ Partial.onReady = function() {
         var type = row.collectionActivityType;
         Partial.Widgets.status.caption = row.relatedBusinessEntityStatus;
         Partial.Widgets.activityType.caption = row.collectionActivityType;
-        populateDataInRowExpansion(row);
+        populateDataInRowExpansion(row, type);
 
         if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
             $('.reachedCustomer').show();
@@ -181,7 +181,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.eventID').hide();
-            $('.email').show();
+            $('.email').hide();
             $('.actionID').show();
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
             $('.customerName').show();
@@ -211,18 +211,29 @@ Partial.onReady = function() {
     }
 };
 
-function populateDataInRowExpansion(row) {
+function populateDataInRowExpansion(row, type) {
+    debugger;
     Partial.Widgets.actionID.caption = row.id;
-    Partial.Widgets.description.caption = row.comment;
 
     var additionalChars = row.additionalCharacteristics;
     if (additionalChars != undefined) {
         additionalChars.forEach(populateAdditionalCharacteristicsInRowExpansion);
     }
+
+    if (type == 'SUSPEND' || type == 'SUS') {
+        Partial.Widgets.description.caption = 'Suspension';
+    } else if (type == 'RESTORE') {
+        Partial.Widgets.description.caption = 'Restorel';
+    } else if (type == 'CEASE') {
+        Partial.Widgets.description.caption = 'Cease';
+    } else {
+        Partial.Widgets.description.caption = 'Other';
+    }
 };
 
 
 function populateAdditionalCharacteristicsInRowExpansion(item, index) {
+    debugger;
     var item = item;
     if (item.name == "CustomerName") {
         Partial.Widgets.custName.caption = item.value;

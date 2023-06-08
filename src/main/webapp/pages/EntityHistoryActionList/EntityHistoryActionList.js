@@ -995,5 +995,6 @@ Partial.EditActionDialogOpened = function($event, widget) {
 };
 
 Partial.getCollectionActivityLog_1Table3_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
     App.showRowExpansionCompleted(row, $data);
 };
