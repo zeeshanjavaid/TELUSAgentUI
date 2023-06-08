@@ -9,6 +9,8 @@
  * example: var utils = App.getDependency('Utils');
  */
 var isClicked = false;
+var toDoTable = true;
+var completedTable = false;
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
     /*
@@ -608,7 +610,8 @@ Partial.openFilterGrid = function($event, widget) {
 
 // function added to clear all the fields in the filter
 Partial.clearFilterFields = function($event, widget) {
-    Partial.Widgets.categorySelect.datavalue = "";
+    Partial.Widgets.toDoCategorySelect.datavalue = "";
+    Partial.Widgets.completedCategorySelect.datavalue = "";
     Partial.Widgets.typeSelect.datavalue = "";
     Partial.Widgets.creationDate.datavalue = "";
     Partial.Widgets.completionDate.datavalue = "";
@@ -620,34 +623,49 @@ Partial.clearFilterFields = function($event, widget) {
 
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
-
     debugger;
-    var category = Partial.Widgets.categorySelect.datavalue;
-    var type = Partial.Widgets.typeSelect.datavalue;
-    var createdDate = Partial.Widgets.creationDate.datavalue;
-    var completionDate = Partial.Widgets.completionDate.datavalue;
-    var status = Partial.Widgets.statusSelect.datavalue;
-    var createdBy = Partial.Widgets.createdBySelect.datavalue;
-    var assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
-    var assignedTeam = Partial.Widgets.assignedTeamSelectfilter.datavalue;
 
-    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+    if (toDoTable == true) {
+        debugger;
+        Partial.Variables.getCollectionTreatmentStep_1.setInput({
 
-        'category': Partial.Widgets.categorySelect.datavalue,
-        'type': Partial.Widgets.typeSelect.datavalue,
-        'createdDate': Partial.Widgets.creationDate.datavalue,
-        /*'completionDate': Partial.Widgets.completionDate.datavalue,*/
-        'status': Partial.Widgets.statusSelect.datavalue,
-        'createdBy': Partial.Widgets.createdBySelect.datavalue,
-        'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue,
-        'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+            'category': Partial.Widgets.toDoCategorySelect.datavalue,
+            'type': Partial.Widgets.typeSelect.datavalue,
+            'createdDate': Partial.Widgets.creationDate.datavalue,
+            'status': Partial.Widgets.statusSelect.datavalue,
+            'createdBy': Partial.Widgets.createdBySelect.datavalue,
+            'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue,
+            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
 
-    });
+        });
 
-    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
+    } else if (completedTable == true) {
+        debugger;
+        Partial.Variables.GetCollectionActivityLogList.setInput({
+
+            'category': Partial.Widgets.toDoCategorySelect.datavalue,
+            'type': Partial.Widgets.typeSelect.datavalue,
+            'createdDate': Partial.Widgets.creationDate.datavalue,
+            'completionDate': Partial.Widgets.completionDate.datavalue,
+            'status': Partial.Widgets.statusSelect.datavalue,
+            'createdBy': Partial.Widgets.createdBySelect.datavalue,
+            'assignedTo': Partial.Widgets.assignedPersonSelectfilter.datavalue,
+            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+
+        });
+
+        Partial.Variables.GetCollectionActivityLogList.invoke();
+
+    }
+
 }
 
 Partial.toDoButtonClick = function($event, widget) {
+    toDoTable = true;
+    completedTable = false;
+
     // to make buttons selected
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
@@ -669,6 +687,9 @@ Partial.toDoButtonClick = function($event, widget) {
 };
 
 Partial.completedButtonClick = function($event, widget) {
+    completedTable = true;
+    toDoTable = false;
+
     // to make buttons selected
     $("#completedBtn").css("background-color", "#4B286D");
     $("#completedBtn").css("color", "white");
@@ -875,20 +896,20 @@ Partial.closeActionClick = function($event, widget) {
 
 Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Partial.Widgets.categorySelect.datavalue == "") {
+    if (Partial.Widgets.toDoCategorySelect.datavalue == "") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
     }
 }
 
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Partial.Widgets.categorySelect.datavalue == "PYMT_ARRNGMT") {
+    if (Partial.Widgets.completedCategorySelect.datavalue == "PYMT_ARRNGMT") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
-    } else if (Partial.Widgets.categorySelect.datavalue == "COLL_TRTMT_STEP") {
+    } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
-    } else if (Partial.Widgets.categorySelect.datavalue == "COLL_DISPUTE") {
+    } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
-    } else if (Partial.Widgets.categorySelect.datavalue == "" || Partial.Widgets.categorySelect.datavalue == "All") {
+    } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
     }
 }
