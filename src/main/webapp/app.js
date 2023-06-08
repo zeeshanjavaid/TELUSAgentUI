@@ -1384,18 +1384,10 @@ App.getLoggedInUserDetailsonError = function(variable, data) {
 };
 
 App.getLoggedInUserDetailsonSuccess = function(variable, data) {
-        console.log("getLoggedInUserDetailsonSuccess - Logged in user security details :" + JSON.stringify(data));
-        if (data) {
-            console.log("Provisioning user record ..")
-            //     App.Variables.createUser.setInput("UserDTO", data);
-            //     App.Variables.createUser.invoke();
-            // }
-        };
+    console.log("getLoggedInUserDetailsonSuccess - Logged in user security details :" + JSON.stringify(data));
+    if (data) {
+        console.log("Provisioning user record ..")
 
-        /*
-        App.logoutActiononSuccess = function(variable, data) {
-            // window.location.href = "removeSession";
+    };
 
-
-        };
-        */
+}
