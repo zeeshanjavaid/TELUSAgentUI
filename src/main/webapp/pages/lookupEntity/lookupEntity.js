@@ -11,12 +11,11 @@
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
-
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
     // var ex1 = document.getElementById('name');
     // // var ex2 = document.getElementById('numID');
-
+    App.Variables.errorMsg.dataSet.dataValue = null;
 
     // ex1.onclick = handle1;
     // ex2.onclick = handle2;
