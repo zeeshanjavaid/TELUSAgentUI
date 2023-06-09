@@ -28,18 +28,26 @@ Partial.onReady = function() {
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
+    debugger;
+
     if (Partial.Widgets.ParrTotal._datavalue == "" || Partial.Widgets.ParrTotal._datavalue == null) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else if (Partial.Widgets.RecurrenceDropdown.datavalue == undefined || Partial.Widgets.RecurrenceDropdown.datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else if (Partial.Variables.installmentBANCreateParr.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment Ban is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments' && Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Number of Installments is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'AmtPerInstallment' && Partial.Variables.AmountPerInstallment.dataSet.dataValue <= 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Amount per Installment is mandatory";
+        setTimeout(messageTimeout, 3000);
     } else {
 
         document.getElementById("cancelButton").style.display = "none";
@@ -121,6 +129,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "";
     }
     //App.Variables.errorMsg.dataSet.dataValue = null;
+
 };
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
@@ -256,3 +265,7 @@ Partial.CreatePARRClick = function($event, widget) {
     Partial.Clear();
     App.refreshParrList();
 };
+
+function messageTimeout() {
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
+}

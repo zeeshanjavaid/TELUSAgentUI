@@ -93,6 +93,7 @@ Partial.YesCancelButtonClick = function($event, widget) {
         "id": Partial.pageParams.ParrId
     });
     Partial.Variables.getPaymentArrangement.invoke();
+    setTimeout(messageTimeout, 5000);
 };
 
 Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
@@ -147,6 +148,7 @@ Partial.SubmitButtonClick = function($event, widget) {
         "id": Partial.pageParams.ParrId
     });
     Partial.Variables.getPaymentArrangement.invoke();
+    setTimeout(messageTimeout, 5000);
 };
 Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
@@ -170,3 +172,7 @@ Partial.CancelParrClick = function($event, widget) {
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
 };
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+}
