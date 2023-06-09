@@ -2,10 +2,10 @@
     <wm-layoutgrid name="layoutgrid2" margin="10px 0 10px 10px">
         <wm-gridrow name="gridrow9" style="display: flex;">
             <wm-gridcolumn columnwidth="4" name="gridcolumn13" style="display: flex;flex-direction: column;width: 12%;">
-                <wm-button class="btn-default" caption="Digital Contact" type="button" margin="unset 0.5em" name="digitalContactBtn" id="digitalBtn" on-click="digitalContactBtnClick($event, widget)"></wm-button>
+                <wm-button class="btn-default" caption="Digital Contacts" type="button" margin="unset 0.5em" name="digitalContactBtn" id="digitalBtn" on-click="digitalContactBtnClick($event, widget)"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display: flex;flex-direction: column;width: 15%;class=" class="borderGrid">
-                <wm-button class="btn-default" caption="Mailing Contact" type="button" margin="unset 1.3em unset 0.5em" name="mailingContactBtn" id="mailingBtn" on-click="mailingContactBtnClick($event, widget)"></wm-button>
+                <wm-button class="btn-default" caption="Mailing Contacts" type="button" margin="unset 1.3em unset 0.5em" name="mailingContactBtn" id="mailingBtn" on-click="mailingContactBtnClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
@@ -16,14 +16,15 @@
                     <wm-table-column binding="rcId" caption="RCID NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="banId" caption="BAN NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="sourceOfContact" caption="Data Source" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="contactForNotices" caption="Email For Notices" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="telusContacts" caption="Telus Contacts" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="contactForNotices" caption="Contact for Notices" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="telusContacts" caption="TELUS Contacts" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="title" caption="Title" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="email" caption="Email" width="160px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="workNumber" caption="Work Number" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="mobileNumber" caption="Mobile Number" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="workNumber" caption="Work No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="mobileNumber" caption="Mobile No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="faxno" caption="Fax No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
@@ -41,19 +42,19 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table name="getEntityContactsTable1_1" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.mailingContacts" navigation="Classic">
-                    <wm-table-column binding="banId" caption="BAN NO" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="banId" caption="BAN NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="careOf" caption="Care Of" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="poBox" caption="PO BOX" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="unitNumber" caption="Unit No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="streetNumber" caption="Street No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="streetNumber" caption="Street No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetNumberSuffix" caption="Street No. Suffix" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetName" caption="Street Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetType" caption="Street Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetDirection" caption="Street Direction" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="city" caption="City" type="string" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="province" caption="State or Province" type="string" show="true" readonly="undefined"></wm-table-column>
-                    <wm-table-column binding="postalCode" caption="Postal Code" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="city" caption="City" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="province" caption="State or Province" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="postalCode" caption="Postal Code" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>

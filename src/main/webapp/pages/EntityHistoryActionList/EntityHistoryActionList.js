@@ -610,8 +610,8 @@ Partial.openFilterGrid = function($event, widget) {
 
 // function added to clear all the fields in the filter
 Partial.clearFilterFields = function($event, widget) {
-    Partial.Widgets.toDoCategorySelect.datavalue = "";
-    Partial.Widgets.completedCategorySelect.datavalue = "";
+    Partial.Widgets.toDoCategorySelect.datavalue = "COLL_TRTMT_STEP";
+    Partial.Widgets.completedCategorySelect.datavalue = "All";
     Partial.Widgets.typeSelect.datavalue = "";
     Partial.Widgets.creationDate.datavalue = "";
     Partial.Widgets.completionDate.datavalue = "";
