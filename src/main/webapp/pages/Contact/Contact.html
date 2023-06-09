@@ -1,4 +1,4 @@
-<wm-partial name="partial1" style="border: 1px solid #ddd;">
+<wm-partial name="partial1" style="border: 1px solid #ddd;" width="99.8%">
     <wm-layoutgrid name="layoutgrid2" margin="10px 0 10px 10px">
         <wm-gridrow name="gridrow9" style="display: flex;">
             <wm-gridcolumn columnwidth="4" name="gridcolumn13" style="display: flex;flex-direction: column;width: 12%;">
@@ -21,10 +21,11 @@
                     <wm-table-column binding="title" caption="Title" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="email" caption="Email" width="160px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="workNumber" caption="Work Number" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="mobileNumber" caption="Mobile Number" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil fico fico-icon-pencil" show="true" class="btn-primary btn-xs" action="editRow($event)"></wm-table-row-action>
+                    <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                    <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -32,7 +33,7 @@
     <wm-layoutgrid name="layoutgrid3" id="buttonsLayoutGrid">
         <wm-gridrow name="gridrow3">
             <wm-gridcolumn columnwidth="12" name="gridcolumn4" style="text-align: right;" padding="0.5em 1.5em 0.5em unset">
-                <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="button4"></wm-button>
+                <wm-button class="primaryButton" caption="Create" type="button" margin="unset unset 0.5em 0.5em" name="button4"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>

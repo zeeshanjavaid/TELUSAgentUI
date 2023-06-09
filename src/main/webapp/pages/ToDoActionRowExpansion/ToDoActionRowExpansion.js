@@ -214,6 +214,7 @@ Partial.onReady = function() {
 function populateDataInRowExpansion(row, type) {
     debugger;
     Partial.Widgets.actionID.caption = row.id;
+    Partial.Widgets.eventID.caption = row.id;
 
     var additionalChars = row.additionalCharacteristics;
     if (additionalChars != undefined) {
@@ -249,7 +250,5 @@ function populateAdditionalCharacteristicsInRowExpansion(item, index) {
     } else if (item.name == "EmailAddress") {
         Partial.Widgets.email.caption = item.value;
         Partial.Widgets.noticeEmail.caption = item.value;
-    } else if (item.name == "EventID") {
-        Partial.Widgets.eventID.caption = item.value;
     }
 };
