@@ -149,8 +149,10 @@
                     <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
                         show="true" deferload="true" badgetype="primary"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
-                    <wm-tabpane name="tabpane3" title="Contacts" content="Contact" width="99.8%">
+                    <wm-tabpane name="tabpane3" title="Contacts" width="99.8%">
                         <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" content="Contact"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="false"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="false"></wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="Parr" title="PARR" show="true" on-select="ParrSelect($event, widget)" on-deselect="ParrDeselect($event, widget)">
                         <wm-container name="container3_1" show="true" class="rrr" width="100%" style="overflow: hidden;">
