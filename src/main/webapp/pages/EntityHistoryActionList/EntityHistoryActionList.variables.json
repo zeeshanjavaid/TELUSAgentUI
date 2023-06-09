@@ -1512,6 +1512,46 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "statusSelectCompleted" : {
+    "_id" : "wm-statusSelectCompleted-wm.Variable-1686310373971",
+    "name" : "statusSelectCompleted",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Closed"
+    }, {
+      "dataValue" : "Cancelled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statusSelectToDo" : {
+    "_id" : "wm-statusSelectToDo-wm.Variable-1686310299168",
+    "name" : "statusSelectToDo",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    }, {
+      "dataValue" : "Order Fulfilled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "UpdateCollectionTreatmentVar" : {
     "_id" : "wm-UpdateCollectionTreatmentVar-wm.ServiceVariable-1685725848875",
     "name" : "UpdateCollectionTreatmentVar",

@@ -594,12 +594,14 @@ Partial.openFilterGrid = function($event, widget) {
     if (completedTable.style.display === "none") { // to-do table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
         $('.categorySelectToDo').show();
         $('.categorySelectCompleted').hide();
         $('#completionDateGrid').hide();
     } else if (toDoTable.style.display === "none") { // completed table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectCompleted.dataSet;
         $('.categorySelectToDo').hide();
         $('.categorySelectCompleted').show();
         $('#completionDateGrid').show();
@@ -675,6 +677,7 @@ Partial.toDoButtonClick = function($event, widget) {
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
     Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
+    Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
 
     $('.categorySelectToDo').show();
     $('.categorySelectCompleted').hide();
@@ -699,6 +702,7 @@ Partial.completedButtonClick = function($event, widget) {
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
     Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+    Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectCompleted.dataSet;
 
     $('.categorySelectToDo').hide();
     $('.categorySelectCompleted').show();
