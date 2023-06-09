@@ -140,15 +140,15 @@ public class PARRService {
 			// false);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementUpdate);
 			logger.info("::::::::collectionPaymentArrangementUpdate requestPayload ::::::::{}", requestPayload);
-	     	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+ URIConstant.ApiMapping.GET_PARR)
-					.queryParam("id", id);
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, builder.toUriString(),
+	   //  	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+ URIConstant.ApiMapping.GET_PARR)
+				// 	.queryParam("id", id);
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl+"/"+id,
 					"PATCH","3161");
 				logger.info("::::::::Response from Success Telus  API UPDATE PARR:::::\n::::::: {}",responseStr);
 
-			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
-					CollectionPaymentArrangement.class);
-			return collectionPaymentArrangement;
+// 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
+// 					CollectionPaymentArrangement.class);
+			return new CollectionPaymentArrangement();
 		}
 	}
 

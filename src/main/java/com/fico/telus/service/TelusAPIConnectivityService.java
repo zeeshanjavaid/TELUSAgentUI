@@ -29,6 +29,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -217,7 +219,7 @@ public class TelusAPIConnectivityService {
 				
 				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
-				headers.add("Content-Type", "application/json");
+				headers.add("Content-Type", "application/merge-patch+json");
 				responseEntity= invokeTelusPatchAPIWithRestTemp(requestPayload,headers,endpointURL);
 				break;
 			default:
@@ -264,9 +266,14 @@ public class TelusAPIConnectivityService {
 	private ResponseEntity<String> invokeTelusPatchAPIWithRestTemp(String requestPayload,HttpHeaders headers,String endpointURL ) {
 
 		RestTemplate restTemplate =new RestTemplate();
+		
+		HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+		
+
+		restTemplate.setRequestFactory(httpRequestFactory);
 
 		HttpEntity<String> requestEntity = new HttpEntity<String>(requestPayload, headers);
-		return restTemplate.exchange(endpointURL, HttpMethod.PUT, requestEntity, String.class);
+		return restTemplate.exchange(endpointURL, HttpMethod.PATCH, requestEntity, String.class);
 
 	}
 	

@@ -35,7 +35,7 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Status:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="statusValueLabel">
-                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.statuses[$i].status"></wm-label>
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.status"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn80" class="parrlabel3" width="6%">
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR Amt:" name="label6" class="viewPARRLabel" color="grey"></wm-label>
@@ -59,7 +59,7 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="% of PMT RCVD/EXP:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel6">
-                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:(Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate) * 100 "></wm-label>
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate==0.0? 0.0:(Variables.getPaymentArrangement.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement.dataSet.expectedPaymentAmountToDate) * 100 "></wm-label>
                 </wm-gridcolumn>
                 <!--<wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn><wm-gridcolumn columnwidth="1" name="gridcolumn76"></wm-gridcolumn>--></wm-gridrow>
             <wm-gridrow margin="0 0 15px -3px" name="gridrow5" class="gridrow5">
@@ -114,10 +114,10 @@
                 <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="left" margin="0 0 0 60px">
                     <wm-container name="container24_1" padding="1.5em unset unset unset">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement.dataSet.installments" navigation="Classic" navigationalign="right">
-                            <wm-table-column binding="sequenceId" caption="Installment ID" width="25%" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Date" width="25%" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="amount" caption="Installment Amt" width="25%" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="25%" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.createdDateTime" caption="Date" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" searchable="false" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>

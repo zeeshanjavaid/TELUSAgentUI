@@ -23,9 +23,9 @@
                     <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.createdTimestamp.dayOfMonth" caption="Created DT" type="integer" datepattern="MM-dd-yyyy" formatpattern="toDate" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="text" type="dateTime" datepattern="MM-dd-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-gridcolumn>
     </wm-container>
