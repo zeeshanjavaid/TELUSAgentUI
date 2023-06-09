@@ -66,19 +66,22 @@ Partial.CreateDisputeClick = function($event, widget) {
 
 
         App.Variables.errorMsg.dataSet.dataValue = "";
+        var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
 
         Partial.Variables.CreateDisputeService.setInput({
             "CollectionDisputeCreate": {
-                'id': 10,
                 'amount': Partial.Widgets.disputeAmt.datavalue,
-                'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue.dataValue,
+                'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
                 'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
-                'disputeReason': Partial.Widgets.chargeTypeDropDown.datavalue.dataValue,
-                'product': Partial.Widgets.productsDropdown.datavalue.dataValue,
+                'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
+                'product': Partial.Widgets.productsDropdown.datavalue,
                 'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
                 'customerEmail': Partial.Widgets.custEmailText.datavalue,
                 'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
-                'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue
+                'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
+                'billingAccountRef': {
+                    'id': selectedBanInt
+                }
             }
         });
 

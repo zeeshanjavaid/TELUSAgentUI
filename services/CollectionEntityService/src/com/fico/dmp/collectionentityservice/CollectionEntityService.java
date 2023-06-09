@@ -319,8 +319,11 @@ public class CollectionEntityService {
     }
     
     public CollectionDisputeCreate addDispute( CollectionDisputeCreate  collectionDispute) throws Exception  {
-
-        return collectionDispute;
+    	String requestPayload = objectMapper.writeValueAsString(collectionDispute);
+    	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_DISPUTE, "POST", entitySvcAuthScope);
+    	logger.info("::::::::Response from Success Telus  API- ADD Dispute:::::\n::::::: {}",responseStr);
+    	CollectionDisputeCreate collectionDisputeCreate = objectMapper.readValue(responseStr,CollectionDisputeCreate.class);
+        return collectionDisputeCreate;
         
     }
 
