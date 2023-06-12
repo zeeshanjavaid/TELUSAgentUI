@@ -53,3 +53,9 @@ Partial.mailingContactBtnClick = function($event, widget) {
     $('#buttonsLayoutGrid').hide();
 
 };
+
+
+Partial.CreateButtonClick = function($event, widget) {
+    debugger;
+    Partial.Variables.ContactPageName.dataSet.dataValue = 'CreateDigitalContact';
+};

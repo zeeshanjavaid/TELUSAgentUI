@@ -15,13 +15,13 @@
                 <wm-table name="getEntityContactsTable1" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.digitalContacts" navigation="Classic" multiselect="false" radioselect="false" enablesort="true">
                     <wm-table-column binding="rcId" caption="RCID NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="banId" caption="BAN NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="sourceOfContact" caption="Data Source" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="contactForNotices" caption="Contact for Notices" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="sourceOfContact" caption="Data Source" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="contactForNotices" caption="Contact for Notices" width="80px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="telusContacts" caption="TELUS Contacts" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="title" caption="Title" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="email" caption="Email" width="160px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="email" caption="Email" width="240px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="workNumber" caption="Work No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="mobileNumber" caption="Mobile No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="faxno" caption="Fax No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -34,7 +34,7 @@
     <wm-layoutgrid name="layoutgrid3" id="buttonsLayoutGrid">
         <wm-gridrow name="gridrow3">
             <wm-gridcolumn columnwidth="12" name="gridcolumn4" style="text-align: right;" padding="0.5em 1.5em 0.5em unset">
-                <wm-button class="primaryButton" caption="Create" type="button" margin="unset unset 0.5em 0.5em" name="button4"></wm-button>
+                <wm-button class="primaryButton" caption="Create" type="button" margin="unset unset 0.5em 0.5em" name="button4" on-click="CreateButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>

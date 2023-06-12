@@ -16,6 +16,24 @@
     } ],
     "operation" : "toast"
   },
+  "ContactPageName" : {
+    "_id" : "wm-ConatctPageName-wm.Variable-1686555097582",
+    "name" : "ContactPageName",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Contact",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "currentPage" : {
     "_id" : "wm-currentPage-wm.Variable-1653469611305",
     "name" : "currentPage",

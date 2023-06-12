@@ -1,3 +1,15 @@
 .CreateDigitalLabel{
     float: right;
 }
+
+textarea.form-control.app-textarea.ng-valid.ng-dirty.ng-touched {
+    resize: none;
+}
+
+wm-textarea.ng-valid.app-input-wrapper.ng-touched.ng-dirty {
+    resize: none;
+}
+
+textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
+    resize: none;
+}

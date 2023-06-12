@@ -111,7 +111,10 @@
 }, {
   "name" : "Contact",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "CreateDigitalContact",
   "type" : "PARTIAL",
