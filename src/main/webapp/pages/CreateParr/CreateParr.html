@@ -17,7 +17,7 @@
                             <wm-label padding="5px 10px 5px 0" name="label2" caption="PARR Total*" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="8" name="gridcolumn22">
-                            <wm-text name="ParrTotal" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.amount | toCurrency: '$': '2'" required="true" type="number" placeholder="" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="87%"></wm-text>
+                            <wm-text name="ParrTotal" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.amount" required="true" type="number" placeholder="" on-change="ParrTotalChange($event, widget, newVal, oldVal)" width="87%"></wm-text>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>

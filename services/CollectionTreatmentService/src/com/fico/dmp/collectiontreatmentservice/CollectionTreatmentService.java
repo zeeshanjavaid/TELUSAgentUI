@@ -30,6 +30,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.HttpMethod;
+import java.math.BigDecimal;
+
 
 /**
  * This is a singleton class with all its public methods exposed as REST APIs via generated controller class.
@@ -153,7 +155,25 @@ public class CollectionTreatmentService {
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey, CollectionTreatmentStepUpdate  collectionTreatmentStepUpdate) throws Exception {
+                collectionTreatmentStepUpdate.setId(BigDecimal.TEN);
+                 TelusChannel channel=new TelusChannel();
+                 channel.setChannelOrgId(id);
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
+         CollectionTreatmentEntityRef collectionTreatmentEntityRef=new CollectionTreatmentEntityRef();
+        collectionTreatmentEntityRef.setId(Long.valueOf(id));
+        collectionTreatmentStepUpdate.setCollectionTreatment(collectionTreatmentEntityRef);
+        collectionTreatmentStepUpdate.setChannel(channel);
+
+           UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT+"/"+id)
+                .queryParam("partitionKey","2023-01-01");
+        String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepUpdate);
+        logger.info(":::::Before calling Update coll treatment step- RequestPayload :::",requestPayload);
+        String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, builder.toUriString(),
+                "PATCH",collTreatmentSvcAuthScope);
+        logger.info("::::::::Response from Success Telus  API- Update coll treatment step:::::\n::::::: {}",responseStr);
+        //  collectionTreatmentStep = objectMapper.readValue(responseStr,
+        //          CollectionTreatmentStep.class);
+        
         return collectionTreatmentStep;
     }
     

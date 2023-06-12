@@ -763,7 +763,7 @@ Partial.closeButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields.";
         isError = true;
     } else if (phnumber > 10) {
-        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be grater than 10 digit";
+        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater than 10 digit";
         isError = true;
     }
     if (isClicked) {
@@ -775,9 +775,23 @@ Partial.closeButtonClick = function($event, widget) {
         }
 
     }
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+
+        'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+        'partitionKey': '20231-01-01',
+        "CollectionTreatmentStepUpdate": {
+            'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
+            //  phnNumber: Partial.Widgets.phnNumber.displayValue,
+            'status': 'Closed',
+            'comment': Partial.Widgets.Comment.datavalue,
+            'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
+            'channel': {},
+        }
+    });
 
     if (!isError) {
-
+        debugger;
+        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Widgets.CloseActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."

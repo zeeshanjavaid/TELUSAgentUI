@@ -1558,11 +1558,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "id",
-      "value" : "bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.id",
-      "type" : "string"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",
     "operation" : "updateCollectionTreatmentStep",
