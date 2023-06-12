@@ -795,7 +795,7 @@ Partial.closeButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Widgets.CloseActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
-        setTimeout(messageTimeout, 5000);
+        setTimeout(messageTimeout, 3000);
 
     }
     // Partial.Widgets.notAssigned_closeActionDialog.open();
@@ -848,7 +848,7 @@ Partial.button15_1Click = function($event, widget) {
 
 Partial.button15Click = function($event, widget) {
 
-
+    debugger;
 
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
 
@@ -857,7 +857,27 @@ Partial.button15Click = function($event, widget) {
 
 
     } else {
+        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+
+            'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+            'partitionKey': '20231-01-01',
+            "CollectionTreatmentStepUpdate": {
+                'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
+                //  phnNumber: Partial.Widgets.phnNumber.displayValue,
+                'status': 'Closed',
+                'comment': Partial.Widgets.Comment.datavalue,
+                'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
+                'channel': {},
+            }
+        });
+
+        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+
+
         Partial.Widgets.assigned_closeActionDialog.close();
+        Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
+        setTimeout(messageTimeout, 3000);
+
     }
 
 
@@ -884,6 +904,23 @@ Partial.button16_1Click = function($event, widget) {
 
 
     } else {
+
+        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+
+            'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+            'partitionKey': '20231-01-01',
+            "CollectionTreatmentStepUpdate": {
+                'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
+                //  phnNumber: Partial.Widgets.phnNumber.displayValue,
+                'status': 'Cancelled',
+                'comment': Partial.Widgets.Comment.datavalue,
+                'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
+                'channel': {},
+            }
+        });
+
+        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was cancelled."
         setTimeout(messageTimeout, 3000);
