@@ -45,3 +45,15 @@ textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
 .comment-border{
     border-radius: 0.3em;
 }
+
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+    .wm-app .app-date.input-group .form-control.app-dateinput {
+        width: 46% !important;
+    }
+}
+
+@media only screen and (min-width: 1404px) and (max-width: 1550px) {
+    .wm-app .app-date.input-group .form-control.app-dateinput {
+        width: 60% !important;
+    }
+}

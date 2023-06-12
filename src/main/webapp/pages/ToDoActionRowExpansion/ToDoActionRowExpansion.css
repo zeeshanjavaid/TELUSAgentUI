@@ -1,0 +1,15 @@
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+    .customerName {
+        width: 19% !important;
+    }
+    .email {
+        width: 19% !important;
+    }
+    .noticeEmail {
+        width: 19% !important;
+    }
+    .blankGrid {
+        width: 19% !important;
+    }
+    
+}
