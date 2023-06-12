@@ -913,14 +913,12 @@ Partial.closeActionClick = function($event, widget) {
 
 
 Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Partial.Widgets.toDoCategorySelect.datavalue == "") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterTODO.dataSet;
     }
 }
 
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Partial.Widgets.completedCategorySelect.datavalue == "PYMT_ARRNGMT") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
@@ -1034,6 +1032,5 @@ Partial.EditActionDialogOpened = function($event, widget) {
 };
 
 Partial.getCollectionActivityLog_1Table3_OnRowexpand = function($event, widget, row, $data) {
-    debugger;
     App.showRowExpansionCompleted(row, $data);
 };

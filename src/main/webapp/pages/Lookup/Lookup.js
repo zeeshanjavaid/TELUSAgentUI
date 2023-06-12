@@ -169,6 +169,17 @@ Page.ParrDeselect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };
+Page.ContactSelect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+};
+Page.ContactDeselect = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.successMessage.dataSet.dataValue = "";
+    Page.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+};
+
 Page.popover4Show = function($event, widget) {
 
 };

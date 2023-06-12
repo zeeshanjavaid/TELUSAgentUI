@@ -13,3 +13,9 @@ wm-textarea.ng-valid.app-input-wrapper.ng-touched.ng-dirty {
 textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
     resize: none;
 }
+
+@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+    .smallRes {
+        width: 11% !important;
+    }
+}
