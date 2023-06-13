@@ -9,6 +9,7 @@
  * example: var utils = App.getDependency('Utils');
  */
 var isClicked = false;
+var isReachedClickedYes = true;
 var toDoTable = true;
 var completedTable = false;
 /* perform any action on widgets/variables within this block */
@@ -729,6 +730,7 @@ Partial.CloseActionDialogOpened = function($event, widget) {
 Partial.yesButtonClick = function($event, widget) {
     // to make buttons selected
     isClicked = false;
+    isReachedClickedYes = true;
     App.Variables.errorMsg.dataSet.dataValue = "";
     $("#yesBtn").css("background-color", "#4B286D");
     $("#yesBtn").css("color", "white");
@@ -740,6 +742,7 @@ Partial.yesButtonClick = function($event, widget) {
 };
 Partial.noButtonClick = function($event, widget) {
     isClicked = true;
+    isReachedClickedYes = false;
     $("#noBtn").css("background-color", "#4B286D");
     $("#noBtn").css("color", "white");
     $("#yesBtn").css("background-color", "white");
@@ -755,6 +758,7 @@ Partial.closeButtonClick = function($event, widget) {
     // if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
 
     //  if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+    var characteristicList = [];
 
     var phnumber = Math.floor(Math.log10(Partial.Widgets.phnNumber.datavalue)) + 1;
 
@@ -772,9 +776,27 @@ Partial.closeButtonClick = function($event, widget) {
             isError = true;
             App.Variables.errorMsg.dataSet.dataValue = "Outcome option is not selected";
 
+        } else {
+            characteristicList.push({
+                name: 'Reached Customer',
+                value: 'N'
+            });
+            characteristicList.push({
+                name: 'Outcome',
+                value: Partial.Widgets.actionOutcomeSelect.datavalue.dataValue
+
+            });
         }
 
     }
+
+    if (isReachedClickedYes) {
+        characteristicList.push({
+            name: 'Reached Customer',
+            value: 'Y'
+        });
+    }
+
     Partial.Variables.UpdateCollectionTreatmentVar.setInput({
 
         'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
@@ -786,6 +808,7 @@ Partial.closeButtonClick = function($event, widget) {
             'comment': Partial.Widgets.Comment.datavalue,
             'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
             'channel': {},
+            'additionalCharacteristics': characteristicList,
         }
     });
 
@@ -868,6 +891,7 @@ Partial.button15Click = function($event, widget) {
                 'comment': Partial.Widgets.Comment.datavalue,
                 'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
                 'channel': {},
+
             }
         });
 
