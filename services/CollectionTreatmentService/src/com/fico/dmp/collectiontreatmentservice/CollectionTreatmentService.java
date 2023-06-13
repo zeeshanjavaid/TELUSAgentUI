@@ -149,6 +149,19 @@ public class CollectionTreatmentService {
     
     public CollectionTreatmentStep addCollectionTreatmentStep(CollectionTreatmentStepCreate collectionTreatmentStepCreate ) throws Exception  {
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
+          TelusChannel channel=new TelusChannel();
+        CollectionTreatmentEntityRef collectionTreatmentEntityRef=new CollectionTreatmentEntityRef();
+                collectionTreatmentEntityRef.setId(Long.valueOf("1"));
+
+        collectionTreatmentStepCreate.setCollectionTreatment(collectionTreatmentEntityRef);
+        collectionTreatmentStepCreate.setChannel(channel);
+        String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepCreate);
+        logger.info(":::::Before calling Create coll treatment step- RequestPayload :::",requestPayload);
+        String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT,
+                "POST",collTreatmentSvcAuthScope);
+        logger.info("::::::::Response from Success Telus  API- Create coll treatment step:::::\n::::::: {}",responseStr);
+        collectionTreatmentStep = objectMapper.readValue(responseStr,
+                CollectionTreatmentStep.class);
         return collectionTreatmentStep;
     }
     

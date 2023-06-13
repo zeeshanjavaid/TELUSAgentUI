@@ -187,6 +187,10 @@ Page.button2Click = function($event, widget) {
     // message4.innerHTML = "";
     Page.Widgets.text5.disabled = true;
     Page.Widgets.text4.disabled = true;
+    Page.Widgets.select3.disabled = false;
+    Page.Widgets.select4.disabled = false;
+    $('#name').prop('disabled', false);
+    $('#numID').prop('disabled', false);
 
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
 
@@ -279,26 +283,57 @@ $(function() {
         }
     });
 });
-// Page.select1Change = function($event, widget, newVal, oldVal) {
 
-
-//     debugger;
-//     if (newVal === "Entity") {
-//         // Page.Variables.number_IdCriteria1.dataSet = ["Exact match"];
-//         Page.Variables.number_IdCriteria.dataSet.pop(0)
-//         Page.Variables.number_IdCriteria.dataSet.pop(1)
-
-//     } else {
-
-//         Page.Variables.number_IdCriteria.dataSet.push("")
-
-//     }
-
-
-// };
 
 Page.searchEntityonError = function(variable, data) {
 
     // App.Variables.errorMsg.dataSet.dataValue = "No data found";
 
+};
+
+Page.select1Change = function($event, widget, newVal, oldVal) {
+
+
+    if (Page.Widgets.select1.datavalue == 'BAN') {
+
+        $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+
+        Page.Widgets.select3.disabled = true;
+
+        Page.Widgets.select4.disabled = true;
+
+        Page.Widgets.text4._datavalue = '';
+
+        Page.Widgets.text4._datavalue = '';
+
+        Page.Widgets.text5._datavalue = '';
+
+        Page.Widgets.text4.disabled = true;
+
+        Page.Widgets.text5.disabled = true;
+
+        $('#name').prop('disabled', true);
+
+        $('#numID').prop('disabled', true);
+
+    } else if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID' || Page.Widgets.select1.datavalue == 'Entity') {
+        $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+
+        Page.Widgets.select3.disabled = false;
+
+        Page.Widgets.select4.disabled = false;
+
+        Page.Widgets.text4._datavalue = '';
+
+        Page.Widgets.text5._datavalue = '';
+
+        Page.Widgets.text4.disabled = true;
+
+        Page.Widgets.text5.disabled = true;
+
+        $('#name').prop('disabled', false);
+
+        $('#numID').prop('disabled', false);
+
+    }
 };

@@ -243,6 +243,8 @@ function validateEmail(email) {
 
 function callOutboundAction($event, widget) {
     // Status and Priority fields are mandatory
+
+    debugger;
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
@@ -253,11 +255,13 @@ function callOutboundAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CALL-OB",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -294,12 +298,14 @@ function callInboundAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CALL-IB",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'additionalCharacteristics': characteristicList
+                'additionalCharacteristics': characteristicList,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -334,12 +340,14 @@ function emailInboundAction($event, widget) {
             Partial.Variables.createEntityHistoryAction.setInput({
                 "CollectionTreatmentStepCreate": {
                     'stepTypeCode': "EM-IN",
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
                     'comment': Partial.Widgets.Comment.datavalue,
                     'status': Partial.Widgets.actionStatusSelect.datavalue,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                    'additionalCharacteristics': characteristicList
+                    'additionalCharacteristics': characteristicList,
+                    'channel': {},
                 },
             });
             Partial.Variables.createEntityHistoryAction.invoke();
@@ -364,11 +372,13 @@ function generalFollowUpAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "FOLLOWUP",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -402,12 +412,14 @@ function overdueNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC2-OD",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'additionalCharacteristics': characteristicList
+                'additionalCharacteristics': characteristicList,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -441,12 +453,14 @@ function paymentReminderNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC1-PMTR",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'additionalCharacteristics': characteristicList
+                'additionalCharacteristics': characteristicList,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -480,12 +494,14 @@ function disconnectNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC3-DIST",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'additionalCharacteristics': characteristicList
+                'additionalCharacteristics': characteristicList,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -520,12 +536,14 @@ function cancellationNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC4-CANL",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': Partial.Widgets.actionStatusSelect.datavalue,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'additionalCharacteristics': characteristicList
+                'additionalCharacteristics': characteristicList,
+                'channel': {},
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -769,6 +787,11 @@ Partial.closeButtonClick = function($event, widget) {
     } else if (phnumber > 10) {
         App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater than 10 digit";
         isError = true;
+    } else {
+        characteristicList.push({
+            name: 'PhoneNumber',
+            value: Partial.Widgets.phnNumber.datavalue
+        });
     }
     if (isClicked) {
 
