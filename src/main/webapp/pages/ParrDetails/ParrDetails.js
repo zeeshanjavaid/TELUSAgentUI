@@ -134,11 +134,17 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
 };
 
 Partial.SubmitButtonClick = function($event, widget) {
+    debugger;
     Partial.Variables.updatePaymentArrangement.setInput({
         "CollectionPaymentArrangementUpdate": {
             'amount': Partial.Variables.getPaymentArrangement.dataSet.amount,
             'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
-            'id': Partial.pageParams.ParrId
+            'id': Partial.pageParams.ParrId,
+            'comment': Partial.Widgets.Comments.datavalue,
+            'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence
+
+
+
         },
     });
     //Invoke POST UpdateParr service
