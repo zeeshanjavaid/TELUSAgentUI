@@ -44,6 +44,24 @@
       } ]
     } ]
   }, {
+    "serviceId" : "AgentInfoService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "description" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "name" : "com.fico.dmp.agentinfoservice.AgentInfoService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 58,
+        "path" : "/services/AgentInfoService/src/com/fico/dmp/agentinfoservice/AgentInfoService.java",
+        "name" : "getAgent",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
     "serviceId" : "FDOUtilityServices",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -100,6 +118,56 @@
         "line" : 53,
         "path" : "/services/PaymentArrangement/src/com/fico/dmp/paymentarrangement/PaymentArrangement.java",
         "name" : "createPaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "LookupFileBS",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.lookupfilebs.LookupFileBS",
+      "description" : "com.fico.dmp.lookupfilebs.LookupFileBS",
+      "name" : "com.fico.dmp.lookupfilebs.LookupFileBS",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 57,
+        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
+        "name" : "createLookupFile",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 77,
+        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
+        "name" : "getLookupFileList",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 96,
+        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
+        "name" : "getLookupFileMetadata",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 117,
+        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
+        "name" : "getLookupFileById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 138,
+        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
+        "name" : "getLookupFileInfoById",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -220,848 +288,6 @@
       } ]
     } ]
   }, {
-    "serviceId" : "LookupFileBS",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.lookupfilebs.LookupFileBS",
-      "description" : "com.fico.dmp.lookupfilebs.LookupFileBS",
-      "name" : "com.fico.dmp.lookupfilebs.LookupFileBS",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 57,
-        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
-        "name" : "createLookupFile",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 77,
-        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
-        "name" : "getLookupFileList",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 96,
-        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
-        "name" : "getLookupFileMetadata",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 117,
-        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
-        "name" : "getLookupFileById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 138,
-        "path" : "/services/LookupFileBS/src/com/fico/dmp/lookupfilebs/LookupFileBS.java",
-        "name" : "getLookupFileInfoById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "CollectionEntityService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
-      "description" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
-      "name" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 130,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "propertyValueFrom",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 142,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getBillingAccountRef",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 142,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getBillingAccountRef",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 172,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getCollectionEntity",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 172,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getCollectionEntity",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 157,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addBillingAccountRef",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 163,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updateBillingAccountRef",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 198,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addCollectionEntity",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 204,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updateCollectionEntity",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 227,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addContact",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 233,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updateContact",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 259,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getPaymentArrangementById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 274,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addPaymentArrangement",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 296,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updateParrStatus",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 304,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getdispute",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 322,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "addDispute",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 333,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getdisputeById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 351,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updateDispute",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 247,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getPaymentArrangements",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 290,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "updatePaymentArrangement",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 214,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getContact",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 214,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "getContact",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 123,
-        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
-        "name" : "init",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "ParrReportService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.parrreportservice.ParrReportService",
-      "description" : "com.fico.dmp.parrreportservice.ParrReportService",
-      "name" : "com.fico.dmp.parrreportservice.ParrReportService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 91,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 126,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "lambda$1",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 128,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "lambda$2",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 83,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "getParrReport",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 67,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "sampleJavaOperation",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "Environment",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.environment.Environment",
-      "description" : "com.fico.dmp.environment.Environment",
-      "name" : "com.fico.dmp.environment.Environment",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 91,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getInputConfiguration",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 60,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "whereAmI",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 133,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "setRootLoggerLevel",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 68,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getUserID",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 76,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getActiveProperty",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 162,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getTelusToken",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 81,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getPropertyValueByName",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 139,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "getRootLoggerLevel",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 152,
-        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
-        "name" : "setLoggerLevel",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "CollectionDataService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "description" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 118,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntitySearch",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 181,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityBanDetails",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 190,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityDetails",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 164,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getAssignedActions",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 154,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getassignedEntitiesInClassicView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 172,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntityContacts",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 146,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getAssignedEntitiesInEntityView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 103,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "propertyValueFrom",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 96,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "init",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "TimerService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.pscomponent.timerservice.TimerService",
-      "description" : "com.fico.dmp.pscomponent.timerservice.TimerService",
-      "name" : "com.fico.dmp.pscomponent.timerservice.TimerService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 55,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "runNow",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 31,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "scheduleJob",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 38,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "updateScheduledJob",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 45,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "deactivateJob",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 50,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "activateJob",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 60,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "deleteJob",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 65,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "getAllJobsInfo",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 70,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "getJobTypes",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 75,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "getJobInfo",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 85,
-        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
-        "name" : "createResponse",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "CollectionTreatmentService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
-      "description" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
-      "name" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 83,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "propertyValueFrom",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 185,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 192,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionActivityLogById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 202,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 147,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentStepById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 196,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 119,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 106,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 112,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 102,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 158,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 93,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 151,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 76,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "init",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "CodeDescriptionLookupService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "description" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "name" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
-      "breakPoints" : [ ]
-    } ]
-  }, {
-    "serviceId" : "UserManagementService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
-      "description" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
-      "name" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 171,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "executeGetPermissionByUserId",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 119,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getLoggedInUser",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 160,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "importUsers",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 190,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "updateUserLimitAndTimeZone",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 294,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "setupSuperUsers",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 283,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "isSystemOnBootstrapStatus",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 133,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getLoggedInUserId",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 211,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getUserOrDefaultTimeZone",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 229,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "refreshRoles",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 111,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getLoggedInUserRoles",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 149,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "activateDeactivateUsers",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 137,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getAllUsers",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 115,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "createSystemRoles",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 103,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "deletUser",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 107,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "getAllRoles",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 95,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "createUser",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 316,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "lambda$1",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 99,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "updateUser",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 253,
-        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
     "serviceId" : "AuditDataChangeService",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -1074,24 +300,6 @@
         "line" : 39,
         "path" : "/services/AuditDataChangeService/src/com/fico/dmp/auditdatachangeservice/AuditDataChangeService.java",
         "name" : "getAuditDataChangeListByFilters",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
-    "serviceId" : "DuplicateCheckRelatedBS",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
-      "description" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
-      "name" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 48,
-        "path" : "/services/DuplicateCheckRelatedBS/src/com/fico/dmp/duplicatecheckrelatedbs/DuplicateCheckRelatedBS.java",
-        "name" : "getDuplicateCheckReviewData",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -1150,6 +358,24 @@
         "line" : 186,
         "path" : "/services/QueueLoadService/src/com/fico/dmp/queueloadservice/QueueLoadService.java",
         "name" : "getQueuesByLoggedinUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "DuplicateCheckRelatedBS",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
+      "description" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
+      "name" : "com.fico.dmp.duplicatecheckrelatedbs.DuplicateCheckRelatedBS",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 48,
+        "path" : "/services/DuplicateCheckRelatedBS/src/com/fico/dmp/duplicatecheckrelatedbs/DuplicateCheckRelatedBS.java",
+        "name" : "getDuplicateCheckReviewData",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -1374,24 +600,6 @@
       } ]
     } ]
   }, {
-    "serviceId" : "AgentInfoService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.agentinfoservice.AgentInfoService",
-      "description" : "com.fico.dmp.agentinfoservice.AgentInfoService",
-      "name" : "com.fico.dmp.agentinfoservice.AgentInfoService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 58,
-        "path" : "/services/AgentInfoService/src/com/fico/dmp/agentinfoservice/AgentInfoService.java",
-        "name" : "getAgent",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
     "serviceId" : "EntityBanTravelHistoryService",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -1428,6 +636,798 @@
         "line" : 66,
         "path" : "/services/EntityBanTravelHistoryService/src/com/fico/dmp/entitybantravelhistoryservice/EntityBanTravelHistoryService.java",
         "name" : "fetchEntityBanTravelHistory",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "CollectionDataService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "description" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 118,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntitySearch",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 181,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityBanDetails",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 190,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityDetails",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 164,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getAssignedActions",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 154,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getassignedEntitiesInClassicView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 172,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntityContacts",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 146,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getAssignedEntitiesInEntityView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 103,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 96,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "init",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "CodeDescriptionLookupService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "description" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "name" : "com.fico.dmp.pscomponent.codedescriptionlookupservice.CodeDescriptionLookupService",
+      "breakPoints" : [ ]
+    } ]
+  }, {
+    "serviceId" : "CollectionTreatmentService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
+      "description" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
+      "name" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 83,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 93,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 102,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 106,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 112,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 119,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 147,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentStepById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 151,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 158,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 185,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 192,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionActivityLogById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 196,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 202,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 76,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "init",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "TimerService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.pscomponent.timerservice.TimerService",
+      "description" : "com.fico.dmp.pscomponent.timerservice.TimerService",
+      "name" : "com.fico.dmp.pscomponent.timerservice.TimerService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 55,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "runNow",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 31,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "scheduleJob",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 38,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "updateScheduledJob",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 45,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "deactivateJob",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 50,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "activateJob",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 60,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "deleteJob",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 65,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "getAllJobsInfo",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 70,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "getJobTypes",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 75,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "getJobInfo",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 85,
+        "path" : "/services/TimerService/src/com/fico/dmp/pscomponent/timerservice/TimerService.java",
+        "name" : "createResponse",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "UserManagementService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "description" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "name" : "com.fico.dmp.pscomponent.usermanagementservice.UserManagementService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 171,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "executeGetPermissionByUserId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 119,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 160,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "importUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 190,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "updateUserLimitAndTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 294,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "setupSuperUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 283,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "isSystemOnBootstrapStatus",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 133,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUserId",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 211,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getUserOrDefaultTimeZone",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 229,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "refreshRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 111,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getLoggedInUserRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 149,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "activateDeactivateUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 137,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getAllUsers",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 115,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "createSystemRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 103,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "deletUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 107,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "getAllRoles",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 95,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "createUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 316,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 99,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "updateUser",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 253,
+        "path" : "/services/UserManagementService/src/com/fico/dmp/pscomponent/usermanagementservice/UserManagementService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "CollectionEntityService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
+      "description" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
+      "name" : "com.fico.dmp.collectionentityservice.CollectionEntityService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 130,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 142,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getBillingAccountRef",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 142,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getBillingAccountRef",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 172,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getCollectionEntity",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 172,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getCollectionEntity",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 157,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addBillingAccountRef",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 163,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updateBillingAccountRef",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 198,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addCollectionEntity",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 204,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updateCollectionEntity",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 227,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addContact",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 233,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updateContact",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 259,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getPaymentArrangementById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 274,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addPaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 296,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updateParrStatus",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 304,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getdispute",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 322,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "addDispute",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 333,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getdisputeById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 351,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updateDispute",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 247,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getPaymentArrangements",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 290,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "updatePaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 214,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getContact",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 214,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getContact",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 123,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "init",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "Environment",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.environment.Environment",
+      "description" : "com.fico.dmp.environment.Environment",
+      "name" : "com.fico.dmp.environment.Environment",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 91,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getInputConfiguration",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 60,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "whereAmI",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 133,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "setRootLoggerLevel",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 68,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getUserID",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 76,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getActiveProperty",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 162,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getTelusToken",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 81,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getPropertyValueByName",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 139,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "getRootLoggerLevel",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 152,
+        "path" : "/services/Environment/src/com/fico/dmp/environment/Environment.java",
+        "name" : "setLoggerLevel",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "ParrReportService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.parrreportservice.ParrReportService",
+      "description" : "com.fico.dmp.parrreportservice.ParrReportService",
+      "name" : "com.fico.dmp.parrreportservice.ParrReportService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 91,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 126,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 128,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$2",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 83,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "getParrReport",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 67,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "sampleJavaOperation",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
