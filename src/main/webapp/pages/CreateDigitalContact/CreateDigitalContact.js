@@ -37,10 +37,12 @@ Partial.CancelClick = function($event, widget) {
 
     // clearing the fields
     Partial.Widgets.TITLESelect.datavalue = "";
+    Partial.Widgets.TELUSContactsSelect.datavalue = "N";
+    Partial.Widgets.EmailForNoticesSelect.datavalue = "Y";
     Partial.Widgets.firstName.datavalue = "";
     Partial.Widgets.lastName.datavalue = "";
     Partial.Widgets.emailText.datavalue = "";
-    Partial.Widgets.work.datavalue = "";
+    Partial.Widgets.workNo.datavalue = "";
     Partial.Widgets.cellPhone.datavalue = "";
     Partial.Widgets.ext.datavalue = "";
     Partial.Widgets.fax.datavalue = "";
@@ -49,6 +51,7 @@ Partial.CancelClick = function($event, widget) {
 
 
 Partial.createContact = function($event, widget) {
+    Partial.Widgets.emailText._datavalue;
     if (Partial.Widgets.TELUSContactsSelect.datavalue == "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue == "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -57,29 +60,39 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
     } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Last Name is mandatory";
-    } else {
-        if (Partial.Widgets.emailText._datavalue == "" || Partial.Widgets.emailText._datavalue == undefined || validateEmail(Partial.Widgets.emailText._datavalue)) {
-            // API Call will come here
-            App.Variables.successMessage.dataSet.dataValue = "Contact created successfully.";
-            Partial.Widgets.TITLESelect.datavalue = "";
-            Partial.Widgets.firstName.datavalue = "";
-            Partial.Widgets.lastName.datavalue = "";
-            Partial.Widgets.emailText.datavalue = "";
-            Partial.Widgets.work.datavalue = "";
-            Partial.Widgets.cellPhone.datavalue = "";
-            Partial.Widgets.ext.datavalue = "";
-            Partial.Widgets.fax.datavalue = "";
-            Partial.Widgets.comments.datavalue = "";
-            Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue == 'Y' && (Partial.Widgets.emailText._datavalue == "" || Partial.Widgets.emailText._datavalue == undefined)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
+    } else if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && !validateEmail(Partial.Widgets.emailText._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if (!Partial.Widgets.ext.datavalue == "" || !Partial.Widgets.ext.datavalue == undefined) {
+        if (Partial.Widgets.fax.datavalue == null || Partial.Widgets.fax.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Fax no";
+        } else if (Partial.Widgets.cellPhone.datavalue == null || Partial.Widgets.cellPhone.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Cell Phone no";
+        } else if (Partial.Widgets.workNo.datavalue == null || Partial.Widgets.workNo.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone no";
         }
+    } else if (!Partial.Widgets.TELUSContactsSelect.datavalue == "" && !Partial.Widgets.EmailForNoticesSelect.datavalue == "" && !Partial.Widgets.firstName.datavalue == "" && !Partial.Widgets.lastName.datavalue == "") {
 
-
-        if (!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) {
-            if (!validateEmail(Partial.Widgets.emailText._datavalue)) {
-                App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-            }
+        if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && validateEmail(Partial.Widgets.emailText._datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "";
         }
+        // API Call will come here
+        App.Variables.successMessage.dataSet.dataValue = "Contact created successfully.";
+        Partial.Widgets.TITLESelect.datavalue = "";
+        Partial.Widgets.TELUSContactsSelect.datavalue = "N";
+        Partial.Widgets.EmailForNoticesSelect.datavalue = "Y";
+        Partial.Widgets.firstName.datavalue = "";
+        Partial.Widgets.lastName.datavalue = "";
+        Partial.Widgets.emailText.datavalue = "";
+        Partial.Widgets.workNo.datavalue = "";
+        Partial.Widgets.cellPhone.datavalue = "";
+        Partial.Widgets.ext.datavalue = "";
+        Partial.Widgets.fax.datavalue = "";
+        Partial.Widgets.comments.datavalue = "";
+        Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+
     }
 
-    setTimeout(messageTimeout, 8000);
+    setTimeout(messageTimeout, 10000);
 };

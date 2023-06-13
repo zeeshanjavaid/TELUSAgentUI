@@ -34,6 +34,24 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "contactTitleValues" : {
+    "_id" : "wm-contactTitleValues-wm.Variable-1686633615051",
+    "name" : "contactTitleValues",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Mr."
+    }, {
+      "dataValue" : "Ms."
+    }, {
+      "dataValue" : "Dr."
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "currentPage" : {
     "_id" : "wm-currentPage-wm.Variable-1653469611305",
     "name" : "currentPage",
@@ -3628,6 +3646,22 @@
     },
     "type" : "entry",
     "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "yesNoValues" : {
+    "_id" : "wm-yesNoValues-wm.Variable-1686633352270",
+    "name" : "yesNoValues",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
     "saveInPhonegap" : false
   }
 }
