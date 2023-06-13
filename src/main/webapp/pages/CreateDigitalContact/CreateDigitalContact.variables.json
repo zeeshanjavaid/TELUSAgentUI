@@ -1,1 +1,36 @@
-{ }
+{
+  "contactTitleValues" : {
+    "_id" : "wm-contactTitleValues-wm.Variable-1686633615051",
+    "name" : "contactTitleValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Mr."
+    }, {
+      "dataValue" : "Ms."
+    }, {
+      "dataValue" : "Dr."
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "yesNoValues" : {
+    "_id" : "wm-yesNoValues-wm.Variable-1686633352270",
+    "name" : "yesNoValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
