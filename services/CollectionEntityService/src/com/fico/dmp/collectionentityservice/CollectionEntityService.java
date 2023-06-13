@@ -348,6 +348,7 @@ public class CollectionEntityService {
    // @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
    // @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionDisputeUpdate updateDispute(@PathVariable("id") Integer id,  CollectionDisputeUpdate  collectionDispute) throws Exception  {
+        logger.info("Inside update Dispute method"+id);
     	String requestPayload = objectMapper.writeValueAsString(collectionDispute);
     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_DISPUTE + "/" + id, "PATCH", entitySvcAuthScope);
     	logger.info("::::::::Response from Success Telus  API- ADD Dispute:::::\n::::::: {}",responseStr);

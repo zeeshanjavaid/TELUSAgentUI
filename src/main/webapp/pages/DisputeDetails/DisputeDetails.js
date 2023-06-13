@@ -31,6 +31,10 @@ Partial.onReady = function() {
 
 };
 
+function messageTimeout() {
+    App.Variables.successMessage.dataSet.dataValue = null;
+}
+
 
 Partial.anchor3Click = function($event, widget) {
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
@@ -58,9 +62,9 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.setInput({
             "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
             "CollectionDisputeUpdate": {
-                'CollectionDisputeStatus': [{
-                    'reason': Partial.Widgets.cancelledReasonValue.datavalue.dataValue
-                }]
+                'statusReason': Partial.Widgets.cancelledReasonValue.datavalue,
+                'comment': Partial.Widgets.CommentsCancelDispute.datavalue,
+                'status': "CANCEL"
             }
         });
 
@@ -68,6 +72,7 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.cancelDisputeConfirmation.close();
         App.Variables.successMessage.dataSet.dataValue = "Dispute Cancelled successfully";
+        setTimeout(messageTimeout, 8000);
     }
 
 };
@@ -84,9 +89,9 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.setInput({
             "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
             "CollectionDisputeUpdate": {
-                'CollectionDisputeStatus': [{
-                    'reason': Partial.Widgets.ClosedDisputeReason.datavalue.dataValue
-                }]
+                'statusReason': Partial.Widgets.ClosedDisputeReason.datavalue,
+                'comment': Partial.Widgets.CloseDisputeComments.datavalue,
+                'status': "CLOSED"
             }
         });
 
@@ -94,6 +99,7 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.closeDisputeDialog.close();
         App.Variables.successMessage.dataSet.dataValue = "Dispute Closed successfully";
+        setTimeout(messageTimeout, 8000);
     }
 
 
@@ -130,6 +136,7 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.invoke();
         Partial.Widgets.updateDisputeConfirmation.close();
         App.Variables.successMessage.dataSet.dataValue = "Dispute Updated successfully";
+        setTimeout(messageTimeout, 8000);
     }
 
 };
