@@ -23,6 +23,15 @@ Partial.onReady = function() {
 
 };
 
+function isEmail(email) {
+    var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    return regex.test(email);
+}
+
+function messageTimeout() {
+    App.Variables.successMessage.dataSet.dataValue = null;
+}
+
 Partial.SubmitDisputeBanClick = function($event, widget) {
 
     Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
@@ -48,6 +57,8 @@ Partial.CreateDisputeClick = function($event, widget) {
     debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+
+
     if (!Partial.Widgets.selectedDisputeBan.datavalue && !Partial.Widgets.disputeAmt.datavalue && Partial.Widgets.exclusionDropdown.datavalue === "" && !Partial.Widgets.chargeTypeDropDown.datavalue && !Partial.Widgets.reasonDropdown.datavalue && !Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
     } else if (!Partial.Widgets.selectedDisputeBan.datavalue) {
@@ -62,34 +73,39 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Charge Type is mandatory";
     } else if (!Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
-    } else {
+    } else if (Partial.Widgets.custEmailText.datavalue !== "") {
+        if (!isEmail(Partial.Widgets.custEmailText.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide valid email id";
+        } else {
 
 
-        App.Variables.errorMsg.dataSet.dataValue = "";
-        var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
+            App.Variables.errorMsg.dataSet.dataValue = "";
+            var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
 
-        Partial.Variables.CreateDisputeService.setInput({
-            "CollectionDisputeCreate": {
-                'amount': Partial.Widgets.disputeAmt.datavalue,
-                'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
-                'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
-                'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
-                'product': Partial.Widgets.productsDropdown.datavalue,
-                'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
-                'customerEmail': Partial.Widgets.custEmailText.datavalue,
-                'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
-                'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
-                'billingAccountRef': {
-                    'id': selectedBanInt
+            Partial.Variables.CreateDisputeService.setInput({
+                "CollectionDisputeCreate": {
+                    'amount': Partial.Widgets.disputeAmt.datavalue,
+                    'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
+                    'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
+                    'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
+                    'product': Partial.Widgets.productsDropdown.datavalue,
+                    'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
+                    'customerEmail': Partial.Widgets.custEmailText.datavalue,
+                    'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
+                    'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
+                    'billingAccountRef': {
+                        'id': selectedBanInt
+                    }
                 }
-            }
-        });
+            });
 
-        //Invoke POST createDispute service
-        Partial.Variables.CreateDisputeService.invoke();
+            //Invoke POST createDispute service
+            Partial.Variables.CreateDisputeService.invoke();
 
-        App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
-        Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+            App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
+            Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+            setTimeout(messageTimeout, 10000);
+        }
     }
 
 };
