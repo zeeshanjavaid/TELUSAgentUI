@@ -81,10 +81,13 @@ Partial.parrHistoryCollapse = function($event, widget) {
 };
 
 Partial.YesCancelButtonClick = function($event, widget) {
+
+    debugger;
     Partial.Variables.updateParrStatus.setInput({
 
         'status': 'Cancel',
-        'parrId': Partial.pageParams.ParrId
+        'parrId': Partial.pageParams.ParrId,
+        'comments': Partial.Widgets.CancelComments.datavalue
     });
     //Invoke POST updateParrStatus service
     Partial.Variables.updateParrStatus.invoke();
