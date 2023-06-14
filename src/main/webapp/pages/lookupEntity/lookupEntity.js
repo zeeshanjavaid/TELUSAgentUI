@@ -16,6 +16,7 @@ Page.onReady = function() {
     // var ex1 = document.getElementById('name');
     // // var ex2 = document.getElementById('numID');
     App.Variables.errorMsg.dataSet.dataValue = null;
+    Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
 
     // ex1.onclick = handle1;
     // ex2.onclick = handle2;
@@ -291,49 +292,86 @@ Page.searchEntityonError = function(variable, data) {
 
 };
 
+// Page.select1Change = function($event, widget, newVal, oldVal) {
+
+
+//     if (Page.Widgets.select1.datavalue == 'BAN') {
+
+//         $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+
+//         Page.Widgets.select3.disabled = true;
+
+//         Page.Widgets.select4.disabled = true;
+
+//         Page.Widgets.text4._datavalue = '';
+
+//         Page.Widgets.text4._datavalue = '';
+
+//         Page.Widgets.text5._datavalue = '';
+
+//         Page.Widgets.text4.disabled = true;
+
+//         Page.Widgets.text5.disabled = true;
+
+//         $('#name').prop('disabled', true);
+
+//         $('#numID').prop('disabled', true);
+
+//     } else if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID' || Page.Widgets.select1.datavalue == 'Entity') {
+//         $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+
+//         Page.Widgets.select3.disabled = false;
+
+//         Page.Widgets.select4.disabled = false;
+
+//         Page.Widgets.text4._datavalue = '';
+
+//         Page.Widgets.text5._datavalue = '';
+
+//         Page.Widgets.text4.disabled = true;
+
+//         Page.Widgets.text5.disabled = true;
+
+//         $('#name').prop('disabled', false);
+
+//         $('#numID').prop('disabled', false);
+
+//     }
+// };
+
+
 Page.select1Change = function($event, widget, newVal, oldVal) {
-
-
     if (Page.Widgets.select1.datavalue == 'BAN') {
-
         $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
-
         Page.Widgets.select3.disabled = true;
-
         Page.Widgets.select4.disabled = true;
-
         Page.Widgets.text4._datavalue = '';
-
         Page.Widgets.text4._datavalue = '';
-
         Page.Widgets.text5._datavalue = '';
-
         Page.Widgets.text4.disabled = true;
-
         Page.Widgets.text5.disabled = true;
-
         $('#name').prop('disabled', true);
-
         $('#numID').prop('disabled', true);
-
-    } else if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID' || Page.Widgets.select1.datavalue == 'Entity') {
-        $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
-
-        Page.Widgets.select3.disabled = false;
-
-        Page.Widgets.select4.disabled = false;
-
-        Page.Widgets.text4._datavalue = '';
-
-        Page.Widgets.text5._datavalue = '';
-
-        Page.Widgets.text4.disabled = true;
-
-        Page.Widgets.text5.disabled = true;
-
-        $('#name').prop('disabled', false);
-
-        $('#numID').prop('disabled', false);
-
+    } else if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
+        selectTypeChange();
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
+    } else if (Page.Widgets.select1.datavalue == 'Entity') {
+        selectTypeChange();
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
     }
 };
+
+function selectTypeChange() {
+    $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+    Page.Widgets.select4._datavalue = '';
+    Page.Widgets.select3.disabled = false;
+    Page.Widgets.select4.disabled = false;
+    Page.Widgets.text4._datavalue = '';
+    Page.Widgets.text5._datavalue = '';
+    Page.Widgets.text4.disabled = true;
+    Page.Widgets.text5.disabled = true;
+    $('#name').prop('disabled', false);
+    $('#numID').prop('disabled', false);
+
+
+}

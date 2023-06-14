@@ -244,7 +244,6 @@ function validateEmail(email) {
 function callOutboundAction($event, widget) {
     // Status and Priority fields are mandatory
 
-    debugger;
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
@@ -261,7 +260,13 @@ function callOutboundAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -305,7 +310,13 @@ function callInboundAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'additionalCharacteristics': characteristicList,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -347,7 +358,13 @@ function emailInboundAction($event, widget) {
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                     'additionalCharacteristics': characteristicList,
-                    'channel': {},
+                    'collectionTreatment': {
+                        'id': 0
+                    },
+                    'channel': {
+                        'channelOrgId': "string",
+                        'userId': Partial.Variables.loggedInUser.dataSet.id
+                    },
                 },
             });
             Partial.Variables.createEntityHistoryAction.invoke();
@@ -378,7 +395,13 @@ function generalFollowUpAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -419,7 +442,13 @@ function overdueNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'additionalCharacteristics': characteristicList,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -460,7 +489,13 @@ function paymentReminderNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'additionalCharacteristics': characteristicList,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -501,7 +536,13 @@ function disconnectNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'additionalCharacteristics': characteristicList,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -543,7 +584,13 @@ function cancellationNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'additionalCharacteristics': characteristicList,
-                'channel': {},
+                'collectionTreatment': {
+                    'id': 0
+                },
+                'channel': {
+                    'channelOrgId': "string",
+                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                },
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
@@ -801,7 +848,7 @@ Partial.closeButtonClick = function($event, widget) {
 
         } else {
             characteristicList.push({
-                name: 'Reached Customer',
+                name: 'ReachedCustomer',
                 value: 'N'
             });
             characteristicList.push({
@@ -815,7 +862,7 @@ Partial.closeButtonClick = function($event, widget) {
 
     if (isReachedClickedYes) {
         characteristicList.push({
-            name: 'Reached Customer',
+            name: 'ReachedCustomer',
             value: 'Y'
         });
     }

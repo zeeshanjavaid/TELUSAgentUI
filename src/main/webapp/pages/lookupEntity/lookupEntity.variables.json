@@ -22,6 +22,20 @@
     "isDefault" : true,
     "controller" : "CollectionData"
   },
+  "entityLevelTypeVal" : {
+    "_id" : "wm-entityLevelTypeVal-wm.Variable-1686734634607",
+    "name" : "entityLevelTypeVal",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Exact match"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getBillingSystemByCOde" : {
     "_id" : "wm-getBillingSystemByCOde-wm.ServiceVariable-1680685346796",
     "name" : "getBillingSystemByCOde",
@@ -75,6 +89,24 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
+  },
+  "levelTypeValue" : {
+    "_id" : "wm-levelTypeValue-wm.Variable-1686734612603",
+    "name" : "levelTypeValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Exact match"
+    }, {
+      "dataValue" : "Begins with"
+    }, {
+      "dataValue" : "Ends with"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "levelValue" : {
     "_id" : "wm-levelValue-wm.Variable-1680677745464",
