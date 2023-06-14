@@ -64,14 +64,8 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
     } else if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && !validateEmail(Partial.Widgets.emailText._datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if (!Partial.Widgets.ext.datavalue == "" || !Partial.Widgets.ext.datavalue == undefined) {
-        if (Partial.Widgets.fax.datavalue == null || Partial.Widgets.fax.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Fax no";
-        } else if (Partial.Widgets.cellPhone.datavalue == null || Partial.Widgets.cellPhone.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Cell Phone no";
-        } else if (Partial.Widgets.workNo.datavalue == null || Partial.Widgets.workNo.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone no";
-        }
+    } else if ((!Partial.Widgets.ext.datavalue == "" || !Partial.Widgets.ext.datavalue == undefined) && (Partial.Widgets.workNo.datavalue == null || Partial.Widgets.workNo.datavalue == undefined)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone no";
     } else if (!Partial.Widgets.TELUSContactsSelect.datavalue == "" && !Partial.Widgets.EmailForNoticesSelect.datavalue == "" && !Partial.Widgets.firstName.datavalue == "" && !Partial.Widgets.lastName.datavalue == "") {
 
         if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && validateEmail(Partial.Widgets.emailText._datavalue)) {
