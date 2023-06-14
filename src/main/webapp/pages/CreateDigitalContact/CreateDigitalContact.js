@@ -51,7 +51,6 @@ Partial.CancelClick = function($event, widget) {
 
 
 Partial.createContact = function($event, widget) {
-    Partial.Widgets.emailText._datavalue;
     if (Partial.Widgets.TELUSContactsSelect.datavalue == "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue == "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -88,5 +87,33 @@ Partial.createContact = function($event, widget) {
 
     }
 
+    setTimeout(messageTimeout, 10000);
+};
+
+
+Partial.workNoKeypress = function($event, widget) {
+    var value = $event.key;
+    isNotANumber(value);
+};
+
+Partial.extKeypress = function($event, widget) {
+    var value = $event.key;
+    isNotANumber(value);
+};
+
+Partial.faxKeypress = function($event, widget) {
+    var value = $event.key;
+    isNotANumber(value);
+};
+
+Partial.cellPhoneKeypress = function($event, widget) {
+    var value = $event.key;
+    isNotANumber(value);
+};
+
+function isNotANumber(value) {
+    if (isNaN(value)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Invalid. Value must be numeric";
+    }
     setTimeout(messageTimeout, 10000);
 };
