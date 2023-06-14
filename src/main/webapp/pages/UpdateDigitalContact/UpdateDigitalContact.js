@@ -22,22 +22,32 @@ Partial.onReady = function() {
      */
 
     App.rowDataValues = function(row) {
-        debugger;
-        var data = row;
+        if (!(row.sourceOfContact == 'FAWB')) {
+            Partial.Widgets.TELUSContactsSelect.disabled = true;
+            Partial.Widgets.TITLESelect.disabled = true;
+            Partial.Widgets.firstName.disabled = true;
+            Partial.Widgets.lastName.disabled = true;
+            Partial.Widgets.emailText.disabled = true;
+            Partial.Widgets.cellPhone.disabled = true;
+            Partial.Widgets.ext.disabled = true;
+            Partial.Widgets.workNo.disabled = true;
+            Partial.Widgets.fax.disabled = true;
+            Partial.Widgets.comments.disabled = true;
+        }
 
-        Partial.Widgets.contactID.datavalue = row.contactId;
+        Partial.Widgets.contactID.caption = row.contactId;
         Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts ? 'Y' : 'N';
-        Partial.Widgets.dataSource.datavalue = row.sourceOfContact;
+        Partial.Widgets.dataSource.caption = row.sourceOfContact;
         Partial.Widgets.TITLESelect.datavalue = row.title;
         Partial.Widgets.firstName.datavalue = row.firstName;
         Partial.Widgets.lastName.datavalue = row.lastName;
         Partial.Widgets.emailText.datavalue = row.email;
         Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices ? 'Y' : 'N';
         Partial.Widgets.cellPhone.datavalue = row.mobileNumber;
-        //Partial.Widgets.ext.datavalue = row.datavalue;
+        Partial.Widgets.ext.datavalue = '';
         Partial.Widgets.workNo.datavalue = row.workNumber;
-        //Partial.Widgets.fax.datavalue = row.datavalue;
-        //Partial.Widgets.comments.datavalue = row.datavalue;
+        Partial.Widgets.fax.datavalue = '';
+        Partial.Widgets.comments.datavalue = '';
 
     }
 };
@@ -80,7 +90,6 @@ Partial.updateContact = function($event, widget) {
         }
         // API Call will come here
         App.Variables.successMessage.dataSet.dataValue = "Contact updated successfully.";
-
         Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
 
     }

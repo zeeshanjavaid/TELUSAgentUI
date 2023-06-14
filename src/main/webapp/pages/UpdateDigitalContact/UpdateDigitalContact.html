@@ -13,19 +13,19 @@
                 <wm-label padding="unset 0.5em" caption="Contact ID" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="contactID" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="contactID" caption="" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Telus Contact*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
+                <wm-select name="TELUSContactsSelect" id="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Data Source" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="dataSource" color="#000"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="dataSource" caption="" color="#000"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow9" margin="10px 0px 20px 20px">
@@ -33,7 +33,7 @@
                 <wm-label padding="unset 0.5em" caption="Title" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="TITLESelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                <wm-select name="TITLESelect" id="TITLESelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="First Name*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -41,7 +41,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="firstName" placeholder=""></wm-text>
+                        <wm-text name="firstName" id="firstName" placeholder=""></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -51,7 +51,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="lastName" placeholder=""></wm-text>
+                        <wm-text name="lastName" id="lastName" placeholder=""></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -63,7 +63,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="emailText" placeholder=""></wm-text>
+                        <wm-text name="emailText" id="emailText" placeholder=""></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -71,7 +71,7 @@
                 <wm-label padding="unset 0.5em" caption="Email for Notices*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
+                <wm-select name="EmailForNoticesSelect" id="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Cell Phone" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -79,7 +79,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50" margin="-23px 0 0 0">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-number name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
+                        <wm-number name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -91,7 +91,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50" margin="-23px 0 0 0">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-number name="ext" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
+                        <wm-number name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -101,7 +101,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50" margin="-23px 0 0 0">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-number name="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
+                        <wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -111,7 +111,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50" margin="-23px 0 0 0">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-number name="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
+                        <wm-number name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -123,7 +123,7 @@
             <wm-gridcolumn columnwidth="10" name="gridcolumn50">
                 <wm-composite name="composite10">
                     <wm-container class="col-md-9" name="container10">
-                        <wm-textarea style="resize: none;" name="comments" width="45%" placeholder="" maxchars="256"></wm-textarea>
+                        <wm-textarea style="resize: none;" name="comments" id="comments" width="45%" placeholder="" maxchars="256"></wm-textarea>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
