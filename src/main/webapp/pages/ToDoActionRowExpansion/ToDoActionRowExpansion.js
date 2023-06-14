@@ -39,7 +39,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB' && reachedCustomer == 'N') { // notReached outbound call
+        } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();
@@ -133,7 +133,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
-        } else if (type == 'CALL-OB' && reachedCustomer == 'N') { // notReached outbound call
+        } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.outcome').show();

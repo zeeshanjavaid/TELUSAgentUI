@@ -1153,7 +1153,7 @@ Partial.updateActionDialogClose = function($event, widget) {
 };
 
 Partial.getCollectionTreatmentStepTable2_OnRowexpand = function($event, widget, row, $data) {
-
+    debugger;
     App.showRowExpansionToDo(row, $data);
 };
 
