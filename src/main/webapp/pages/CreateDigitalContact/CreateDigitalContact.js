@@ -51,9 +51,10 @@ Partial.CancelClick = function($event, widget) {
 
 
 Partial.createContact = function($event, widget) {
-    if (Partial.Widgets.TELUSContactsSelect.datavalue == "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
+    debugger;
+    if (Partial.Widgets.TELUSContactsSelect.datavalue === "") {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue == "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "") {
         App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
     } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
@@ -65,16 +66,40 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
     } else if ((!Partial.Widgets.ext.datavalue == "" || !Partial.Widgets.ext.datavalue == undefined) && (Partial.Widgets.workNo.datavalue == null || Partial.Widgets.workNo.datavalue == undefined)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone no";
-    } else if (!Partial.Widgets.TELUSContactsSelect.datavalue == "" && !Partial.Widgets.EmailForNoticesSelect.datavalue == "" && !Partial.Widgets.firstName.datavalue == "" && !Partial.Widgets.lastName.datavalue == "") {
+    } else if (!Partial.Widgets.TELUSContactsSelect.datavalue === "" && !Partial.Widgets.EmailForNoticesSelect.datavalue === "" && !Partial.Widgets.firstName.datavalue == "" && !Partial.Widgets.lastName.datavalue == "") {
 
         if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && validateEmail(Partial.Widgets.emailText._datavalue)) {
             App.Variables.errorMsg.dataSet.dataValue = "";
         }
         // API Call will come here
+
+        Partial.Variables.CreateContactServiceVar.setInput({
+            "CollectionContactCreate": {
+                'firstName': Partial.Widgets.firstName.datavalue,
+                'lastName': Partial.Widgets.lastName.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
+                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                'title': Partial.Widgets.TITLESelect.datavalue,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
+                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
+                'comment': Partial.Widgets.comments.datavalue,
+                'email': Partial.Widgets.emailText.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue,
+                'collectionEntity': {
+                    'id': "1"
+                }
+            }
+        });
+
+        //Invoke POST createDispute service
+        Partial.Variables.CreateContactServiceVar.invoke();
+
+
         App.Variables.successMessage.dataSet.dataValue = "Contact created successfully.";
         Partial.Widgets.TITLESelect.datavalue = "";
-        Partial.Widgets.TELUSContactsSelect.datavalue = "N";
-        Partial.Widgets.EmailForNoticesSelect.datavalue = "Y";
+        Partial.Widgets.TELUSContactsSelect.datavalue = false;
+        Partial.Widgets.EmailForNoticesSelect.datavalue = true;
         Partial.Widgets.firstName.datavalue = "";
         Partial.Widgets.lastName.datavalue = "";
         Partial.Widgets.emailText.datavalue = "";

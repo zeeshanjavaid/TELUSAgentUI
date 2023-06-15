@@ -1,1 +1,25 @@
-{ }
+{
+  "CreateContactServiceVar" : {
+    "_id" : "wm-AddContactServiceVar-wm.ServiceVariable-1686827624378",
+    "name" : "CreateContactServiceVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionContactCreate",
+    "service" : "CollectionEntityService",
+    "operation" : "addContact",
+    "operationId" : "CollectionEntityController_addContact",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  }
+}

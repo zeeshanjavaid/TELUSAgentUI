@@ -3656,11 +3656,13 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Y"
+      "name" : "Y",
+      "dataValue" : true
     }, {
-      "dataValue" : "N"
+      "name" : "N",
+      "dataValue" : false
     } ],
-    "type" : "string",
+    "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false
   }

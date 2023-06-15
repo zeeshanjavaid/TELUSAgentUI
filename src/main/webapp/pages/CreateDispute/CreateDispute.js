@@ -74,39 +74,10 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Charge Type is mandatory";
     } else if (!Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
-    } else if (Partial.Widgets.custEmailText.datavalue !== "") {
-        if (!isEmail(Partial.Widgets.custEmailText.datavalue)) {
-            App.Variables.errorMsg.dataSet.dataValue = "Please provide valid email id";
-        } else {
-
-
-            App.Variables.errorMsg.dataSet.dataValue = "";
-            var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
-
-            Partial.Variables.CreateDisputeService.setInput({
-                "CollectionDisputeCreate": {
-                    'amount': Partial.Widgets.disputeAmt.datavalue,
-                    'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
-                    'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
-                    'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
-                    'product': Partial.Widgets.productsDropdown.datavalue,
-                    'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
-                    'customerEmail': Partial.Widgets.custEmailText.datavalue,
-                    'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
-                    'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
-                    'billingAccountRef': {
-                        'id': selectedBanInt
-                    }
-                }
-            });
-
-            //Invoke POST createDispute service
-            Partial.Variables.CreateDisputeService.invoke();
-
-            App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
-            Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
-            setTimeout(messageTimeout, 10000);
-        }
+    } else if (Partial.Widgets.custEmailText.datavalue !== "" && !isEmail(Partial.Widgets.custEmailText.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Customer email id";
+    } else if (Partial.Widgets.AssignedDisputePrime.datavalue !== "" && !isEmail(Partial.Widgets.AssignedDisputePrime.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Assigned dispute prime email id";
     } else {
 
 
