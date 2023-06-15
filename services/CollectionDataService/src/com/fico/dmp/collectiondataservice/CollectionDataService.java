@@ -36,7 +36,7 @@ import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntitySearchResponseArray;
 import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
 import io.swagger.client.model.AssignedEntitiesInClassicViewResponseArray;
-import io.swagger.client.model.AssignedActionsResponseArray;
+//import io.swagger.client.model.AssignedActionsResponseArray;
 
 import io.swagger.client.model.EntityContactsResponse;
 import io.swagger.client.model.EntityDetailsResponse;
@@ -164,11 +164,11 @@ public class CollectionDataService {
 //assignedActions - Get Action List by Agent ID and WorkCategory ID
 //FAWB Actions List Page. FAWB page where agent can see assigned actions
 
-    @RequestMapping(value = "/assignedActions", method = {RequestMethod.GET})
+ /*   @RequestMapping(value = "/assignedActions", method = {RequestMethod.GET})
     public AssignedActionsResponseArray getAssignedActions(@RequestParam(required = true) String agentId , @RequestParam(required = true) String workCategory) throws Exception  {
 
         return objectMapper.readValue("[{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-02\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300102\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-03\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300103\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-04\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300104\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-02\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400102\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-03\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400103\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-04\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400104\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-05\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400105\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2}]",AssignedActionsResponseArray.class);
-    }
+    } */
 
     
 //entityContacts
