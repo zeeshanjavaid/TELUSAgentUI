@@ -693,12 +693,21 @@ Partial.clearFilterFields = function($event, widget) {
 Partial.applyFilter = function($event, widget) {
     debugger;
 
+    var typeCode = '';
+
+    if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
+        typeCode = 'ALL';
+    } else {
+        typeCode = Partial.Widgets.typeSelect.datavalue;
+
+    }
+
     if (toDoTable == true) {
         debugger;
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
 
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
-            'type': Partial.Widgets.typeSelect.datavalue,
+            'type': typeCode,
             'createdDate': Partial.Widgets.creationDate.datavalue,
             'status': Partial.Widgets.statusSelect.datavalue,
             'createdBy': Partial.Widgets.createdBySelect.datavalue,
@@ -1106,7 +1115,7 @@ Partial.UpdateActionClick = function($event, widget) {
             Partial.Variables.UpdateCollectionTreatmentVar.invoke();
             App.Variables.successMessage.dataSet.dataValue = "Action ID (" + Partial.Widgets.EditActionIdText.caption + ") edited successfully."
             Partial.Widgets.EditActionDialog.close();
-            setTimeout(messageTimeout, 5000);
+            setTimeout(messageTimeout, 3000);
         }
     }
 
@@ -1135,7 +1144,7 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     Partial.Widgets.EditActionDialog.close();
 
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
-    setTimeout(messageTimeout, 5000);
+    setTimeout(messageTimeout, 3000);
 
 };
 

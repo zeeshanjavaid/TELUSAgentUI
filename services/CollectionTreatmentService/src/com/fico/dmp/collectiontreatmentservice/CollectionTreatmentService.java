@@ -163,7 +163,7 @@ public class CollectionTreatmentService {
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey, CollectionTreatmentStepUpdate  collectionTreatmentStepUpdate) throws Exception {
-                collectionTreatmentStepUpdate.setId(BigDecimal.TEN);
+        collectionTreatmentStepUpdate.setId(BigDecimal.valueOf(Long.parseLong(id)));
                  TelusChannel channel=new TelusChannel();
                  channel.setChannelOrgId(id);
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
