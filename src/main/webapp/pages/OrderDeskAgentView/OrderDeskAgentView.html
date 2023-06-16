@@ -3,21 +3,21 @@
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
         <wm-layoutgrid name="layoutgrid1">
-            <wm-gridrow name="gridrow1" margin="10px 0 0 16px">
+            <wm-gridrow name="gridrow1">
                 <wm-gridcolumn columnwidth="4" name="gridcolumn1">
-                    <h1 class="actionlabel" style="text-decoration: underline;">Order Desk View</h1>
+                    <h1 class="actionlabel" style="text-decoration: underline; margin: 10px 0 0 20px;">Order Desk View</h1>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid2">
-            <wm-gridrow name="gridrow6" margin="10px 0px 10px 68px">
-                <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+            <wm-gridrow name="gridrow6">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" margin="15px 0 0 46px">
                     <wm-label caption="Filter Criteria" name="label8" color="#000" textdecoration="underline" style="font-size: 16px;"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid4">
-            <wm-gridrow name="gridrow6" margin="10px 0px 30px 20px">
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
@@ -42,10 +42,10 @@
                     <wm-label caption="Work Category" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" placeholder="All" datafield="All Fields"></wm-select>
+                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getCodeFromDomainValueAsWorkCategory.dataSet" datafield="code" displayfield="code" placeholder="All"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow7" margin="10px 0px 30px 20px">
+            <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Action Type" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
@@ -67,25 +67,28 @@
                 <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn56">
-                    <wm-button class="secondaryButton" caption="Clear" name="clearButton" margin="unset 2em unset 10em"></wm-button>
+                    <wm-button class="secondaryButton" caption="Clear" name="clearButton" margin="unset 2em unset 11em"></wm-button>
                     <wm-button class="primaryButton" caption="Filter" name="filterButton"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-layoutgrid name="layoutgrid4_1" padding="2em 2em 2em 2em" style="border: 1px solid #ddd;" width="95%" margin="2em 2em 2em 2em">
+        <wm-layoutgrid name="layoutgrid4_1" padding="2em 2em 2em 2em" style="border: 1px solid #ddd;" width="96%" margin="2em 2em 2em 2em">
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-table name="getCollectionTreatmentTable1" title="" dataset="bind:Variables.getCollectionTreatment_orderDeskView.dataSet" navigation="Classic">
-                        <wm-table-column binding="cureThreshold" caption="Cure Threshold" pcdisplay="true" mobiledisplay="true" type="double"></wm-table-column>
-                        <wm-table-column binding="dMPathId" caption="D M Path Id" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="lastAssessmentProcessType" caption="Last Assessment Process Type" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="lastCollectionAssessmentId" caption="Last Collection Assessment Id" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="scenarioId" caption="Scenario Id" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="baseType" caption="Base Type" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="href" caption="Href" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="schemaLocation" caption="Schema Location" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="id" caption="Id" pcdisplay="true" mobiledisplay="true" type="double"></wm-table-column>
-                        <wm-table-column binding="type" caption="Type" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                        <wm-table-column binding="id" caption="Action ID" edit-widget-type="number" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="collectionEntity.id" caption="ENT. ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="collectionEntity.name" caption="ENT Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="collStatus" caption="Coll Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="owner" caption="Entity Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="category" caption="Work Category" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="totalAR" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="totalOD" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="type" caption="Action Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="nextStepDueDate" caption="Due Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="team" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="person" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
