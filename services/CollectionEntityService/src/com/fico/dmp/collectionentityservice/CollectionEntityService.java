@@ -222,9 +222,13 @@ public class CollectionEntityService {
        return objectMapper.readValue("{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"comment\":\"This is collection contact comment 1\",\"email\":\"john.doe@telus.com\",\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"faxNumnber\":\"9059979999\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"mobilePhoneNumber\":\"5149979999\",\"notificationIndicator\":true,\"telusContactIndicator\":true,\"title\":\"Mr.\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workPhoneNumber\":\"9059979797\",\"@type\":\"CollectionContact\"}",CollectionContact.class);
     }    
     
-    public CollectionContactCreate   addContact( CollectionContactCreate    collectionContactCreate  ) throws Exception  {
-    
-        return collectionContactCreate  ;
+    public CollectionContactCreate   addContact(CollectionContactCreate collectionContactCreate) throws Exception  {
+    	logger.info("::::::::Inside Add contact API");
+    	String requestPayload = objectMapper.writeValueAsString(collectionContactCreate);
+    	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_CONTACT, "POST", entitySvcAuthScope);
+    	logger.info("::::::::Response from Success Telus  API- ADD CONTACT:::::\n::::::: {}",responseStr);
+    	CollectionContactCreate collectionContactCreateResponse = objectMapper.readValue(responseStr,CollectionContactCreate.class);
+        return collectionContactCreateResponse;
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)

@@ -31,6 +31,11 @@ function validateEmail(email) {
     return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 };
 
+function isEmail(email) {
+    var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    return regex.test(email);
+}
+
 Partial.CancelClick = function($event, widget) {
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.Variables.errorMsg.dataSet.dataValue = null;
@@ -60,19 +65,13 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
     } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Last Name is mandatory";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue == 'Y' && (Partial.Widgets.emailText._datavalue == "" || Partial.Widgets.emailText._datavalue == undefined)) {
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && (Partial.Widgets.emailText.datavalue == "" || Partial.Widgets.emailText.datavalue == undefined)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
-    } else if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && !validateEmail(Partial.Widgets.emailText._datavalue)) {
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if ((!Partial.Widgets.ext.datavalue == "" || !Partial.Widgets.ext.datavalue == undefined) && (Partial.Widgets.workNo.datavalue == null || Partial.Widgets.workNo.datavalue == undefined)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone no";
-    } else if (!Partial.Widgets.TELUSContactsSelect.datavalue === "" && !Partial.Widgets.EmailForNoticesSelect.datavalue === "" && !Partial.Widgets.firstName.datavalue == "" && !Partial.Widgets.lastName.datavalue == "") {
-
-        if ((!Partial.Widgets.emailText._datavalue == "" || !Partial.Widgets.emailText._datavalue == undefined) && validateEmail(Partial.Widgets.emailText._datavalue)) {
-            App.Variables.errorMsg.dataSet.dataValue = "";
-        }
-        // API Call will come here
-
+    } else if ((Partial.Widgets.ext.datavalue !== "") && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
+    } else {
         Partial.Variables.CreateContactServiceVar.setInput({
             "CollectionContactCreate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
@@ -93,7 +92,7 @@ Partial.createContact = function($event, widget) {
         Partial.Variables.CreateContactServiceVar.invoke();
 
 
-        App.Variables.successMessage.dataSet.dataValue = "Contact created successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
         Partial.Widgets.TITLESelect.datavalue = "";
         Partial.Widgets.TELUSContactsSelect.datavalue = false;
         Partial.Widgets.EmailForNoticesSelect.datavalue = true;
@@ -106,10 +105,10 @@ Partial.createContact = function($event, widget) {
         Partial.Widgets.fax.datavalue = "";
         Partial.Widgets.comments.datavalue = "";
         Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
-
+        setTimeout(messageTimeout, 10000);
     }
 
-    setTimeout(messageTimeout, 10000);
+
 };
 
 
