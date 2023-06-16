@@ -129,8 +129,8 @@ public class CollectionTreatmentService {
                     .queryParam("status",status)
                     .queryParam("assignedAgentId",assignedAgentId)
                     .queryParam("assignedTeam",assignedTeam)
-                    .queryParam("fields",fields)
-                    .queryParam("limit",20);
+                    .queryParam("fields",fields);
+                   // .queryParam("limit",20);
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
             logger.info("::::::::Entity data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
