@@ -22,6 +22,7 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     App.showRowExpansionToDo = function(row, data) {
+        debugger;
         var type = row.stepTypeCode;
         Partial.Widgets.status.caption = row.status;
         Partial.Widgets.activityType.caption = row.stepTypeCode;
@@ -210,6 +211,7 @@ Partial.onReady = function() {
 };
 
 function populateDataInRowExpansion(row, type) {
+    debugger;
     Partial.Widgets.actionID.caption = row.id;
     Partial.Widgets.eventID.caption = row.id;
 
@@ -231,6 +233,7 @@ function populateDataInRowExpansion(row, type) {
 
 
 function populateAdditionalCharacteristicsInRowExpansion(item, index) {
+    debugger;
     var item = item;
     if (item.name == "CustomerName") {
         Partial.Widgets.custName.caption = item.value;

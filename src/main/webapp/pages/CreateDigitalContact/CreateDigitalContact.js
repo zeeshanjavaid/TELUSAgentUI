@@ -112,13 +112,13 @@ Partial.createContact = function($event, widget) {
 };
 
 
-Partial.workNoKeypress = function($event, widget) {
+/*Partial.workNoKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
-};
+};*/
 
 
-/*Partial.workNoKeypress = function($event, widget) {
+Partial.workNoKeypress = function($event, widget) {
     debugger;
     var value = $event.key;
     isNotANumber(value);
@@ -138,14 +138,14 @@ Partial.workNoKeypress = function($event, widget) {
         Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
     }
 
-    if (fullInputValue.length == 13) {
+    /*if (fullInputValue.length == 13) {
         fullInputValue = fullInputValue.split('-').join('');
         fullInputValue = fullInputValue.split('(').join('');
         fullInputValue = fullInputValue.split(')').join('');
         fullInputValue;
 
         Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
-    }
+    }*/
 
     // var z = fullInputValue.substring(8, 9);
     // if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
@@ -157,7 +157,7 @@ Partial.workNoKeypress = function($event, widget) {
 
 
 };
-*/
+
 Partial.extKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);

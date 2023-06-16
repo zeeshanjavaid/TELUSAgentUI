@@ -2,3 +2,7 @@
     float: right;
     padding: 0.2em 0.5em 0 0.5em;
 }
+
+input.form-control.app-textbox.app-dateinput.display-input {
+    width: 49%;
+}
