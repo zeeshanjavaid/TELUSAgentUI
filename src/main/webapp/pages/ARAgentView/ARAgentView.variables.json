@@ -1,1 +1,73 @@
-{ }
+{
+  "actionTypeSelect_ARAgentView" : {
+    "_id" : "wm-actionTypeSelect_ARAgentView-wm.Variable-1686908498055",
+    "name" : "actionTypeSelect_ARAgentView",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CALL-IB"
+    }, {
+      "dataValue" : "CALL-OB"
+    }, {
+      "dataValue" : "EM-IN"
+    }, {
+      "dataValue" : "FOLLOWUP"
+    }, {
+      "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC2-OD"
+    }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "getCollectionTreatment_ARAgentView" : {
+    "_id" : "wm-getCollectionTreatment_ARAgentView-wm.ServiceVariable-1686908108437",
+    "name" : "getCollectionTreatment_ARAgentView",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionTreatment",
+    "service" : "CollectionTreatmentService",
+    "operation" : "getCollectionTreatment",
+    "operationId" : "CollectionTreatmentController_getCollectionTreatment",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
+  },
+  "statusSelect_ARAgentView" : {
+    "_id" : "wm-statusSelect_ARAgentView-wm.Variable-1686908629767",
+    "name" : "statusSelect_ARAgentView",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Order Fulfilled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}
