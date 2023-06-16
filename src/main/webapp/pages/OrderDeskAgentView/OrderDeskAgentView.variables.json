@@ -1,1 +1,59 @@
-{ }
+{
+  "actionTypeSelect_orderDeskView" : {
+    "_id" : "wm-actionTypeSelect_orderDeskView-wm.Variable-1686901022264",
+    "name" : "actionTypeSelect_orderDeskView",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "RESTORE"
+    }, {
+      "dataValue" : "CEASE"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "getCollectionTreatment_orderDeskView" : {
+    "_id" : "wm-getCollectionTreatment_orderDeskView-wm.ServiceVariable-1686900530347",
+    "name" : "getCollectionTreatment_orderDeskView",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionTreatment",
+    "service" : "CollectionTreatmentService",
+    "operation" : "getCollectionTreatment",
+    "operationId" : "CollectionTreatmentController_getCollectionTreatment",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
+  },
+  "statusSelect_orderDeskView" : {
+    "_id" : "wm-statusSelect_orderDeskView-wm.Variable-1686901133394",
+    "name" : "statusSelect_orderDeskView",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

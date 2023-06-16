@@ -117,6 +117,47 @@ Partial.workNoKeypress = function($event, widget) {
     isNotANumber(value);
 };
 
+
+/*Partial.workNoKeypress = function($event, widget) {
+    debugger;
+    var value = $event.key;
+    isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+    //input_value = "1234567890"  # Replace with your actual 10-digit input
+
+
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        debugger;
+        Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+
+    if (fullInputValue.length == 13) {
+        fullInputValue = fullInputValue.split('-').join('');
+        fullInputValue = fullInputValue.split('(').join('');
+        fullInputValue = fullInputValue.split(')').join('');
+        fullInputValue;
+
+        Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+
+    // var z = fullInputValue.substring(8, 9);
+    // if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
+    //     debugger;
+    //     var a1 = fullInputValue.substring(0, 5);
+    //     var a2 = fullInputValue.substring(5, 8);
+    //     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
+    // }
+
+
+};
+*/
 Partial.extKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
