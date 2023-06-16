@@ -57,9 +57,9 @@ Partial.CancelClick = function($event, widget) {
 
 Partial.createContact = function($event, widget) {
     debugger;
-    if (Partial.Widgets.TELUSContactsSelect.datavalue === "") {
+    if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "") {
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
     } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";

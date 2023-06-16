@@ -1,1 +1,25 @@
-{ }
+{
+  "updateDigitalContact" : {
+    "_id" : "wm-updateDigitalContact-wm.ServiceVariable-1686915716182",
+    "name" : "updateDigitalContact",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionContactUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateContact",
+    "operationId" : "CollectionEntityController_updateContact",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  }
+}

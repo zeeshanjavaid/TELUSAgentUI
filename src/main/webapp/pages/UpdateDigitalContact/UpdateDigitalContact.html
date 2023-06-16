@@ -19,7 +19,7 @@
                 <wm-label padding="unset 0.5em" caption="Telus Contact*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="TELUSContactsSelect" id="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
+                <wm-select name="TELUSContactsSelect" id="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Data Source" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -71,7 +71,7 @@
                 <wm-label padding="unset 0.5em" caption="Email for Notices*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="EmailForNoticesSelect" id="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
+                <wm-select name="EmailForNoticesSelect" id="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Cell Phone" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -132,35 +132,7 @@
                 </wm-composite>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow6" margin="10px 0px 20px 20px">
-            <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="smallRes">
-                <wm-label padding="unset 0.5em" caption="Last Updated on" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="3/1/2023" color="#000" text-align="right"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn53">
-                <wm-label padding="unset 0.5em" caption="Last Updated by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="Jane Smith" color="#000" text-align="right"></wm-label>
-            </wm-gridcolumn>
-        </wm-gridrow>
-        <wm-gridrow name="gridrow6" margin="10px 0px 20px 20px">
-            <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="smallRes">
-                <wm-label padding="unset 0.5em" caption="Created on" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="1/1/2023" color="#000" text-align="right"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn53">
-                <wm-label padding="unset 0.5em" caption="Created by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="Li Lai" color="#000" text-align="right"></wm-label>
-            </wm-gridcolumn>
-        </wm-gridrow>
-    </wm-layoutgrid>
+        <!--<wm-gridrow name="gridrow6" margin="10px 0px 20px 20px"><wm-gridcolumn columnwidth="1" name="gridcolumn51" class="smallRes"><wm-label padding="unset 0.5em" caption="Last Updated on" name="label8" color="grey" class="UpdateDigitalLabel" show="true"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn50"><wm-label padding="unset 0.5em 0 0" name="label16" caption="3/1/2023" color="#000" text-align="right"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn53"><wm-label padding="unset 0.5em" caption="Last Updated by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn50"><wm-label padding="unset 0.5em 0 0" name="label16" caption="Jane Smith" color="#000" text-align="right"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow6" margin="10px 0px 20px 20px"><wm-gridcolumn columnwidth="1" name="gridcolumn51" class="smallRes"><wm-label padding="unset 0.5em" caption="Created on" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn50"><wm-label padding="unset 0.5em 0 0" name="label16" caption="1/1/2023" color="#000" text-align="right"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn53"><wm-label padding="unset 0.5em" caption="Created by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label></wm-gridcolumn><wm-gridcolumn columnwidth="2" name="gridcolumn50"><wm-label padding="unset 0.5em 0 0" name="label16" caption="Li Lai" color="#000" text-align="right"></wm-label></wm-gridcolumn></wm-gridrow> --></wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid3_1" margin="-15px 0 20px 95px">
         <wm-gridrow name="gridrow7">
             <wm-gridcolumn columnwidth="11" name="gridcolumn26" style="text-align:right;">

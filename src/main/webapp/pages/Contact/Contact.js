@@ -59,6 +59,7 @@ Partial.CreateButtonClick = function($event, widget) {
     Partial.Variables.ContactPageName.dataSet.dataValue = 'CreateDigitalContact';
 };
 Partial.getEntityContactsTable1_customRowAction = function($event, row) {
+    debugger;
     Partial.Variables.ContactPageName.dataSet.dataValue = 'UpdateDigitalContact';
     App.rowDataValues(row);
 };
