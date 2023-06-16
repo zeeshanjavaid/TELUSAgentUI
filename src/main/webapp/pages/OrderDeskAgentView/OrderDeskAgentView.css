@@ -2,3 +2,13 @@
     float: right;
     padding: 0.2em 0.5em 0 0.5em;
 }
+
+
+@media only screen and (min-width: 1270px) and (max-width: 1720px) {
+    .clearButtonARAgent {
+        margin: unset 2em unset 5em;
+    }
+    .OrderDeskLabel {
+        width: 12% !important;
+    }
+}

@@ -5,7 +5,7 @@
         <wm-layoutgrid name="layoutgrid1">
             <wm-gridrow name="gridrow1">
                 <wm-gridcolumn columnwidth="4" name="gridcolumn1">
-                    <h1 class="actionlabel" style="text-decoration: underline; margin: 10px 0 0 20px;">AR Agent View</h1>
+                    <h2 class="actionlabel" style="text-decoration: underline; margin: 10px 0 0 20px;">AR Agent View</h2>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -22,27 +22,27 @@
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="AssignedTeamSelect" width="75%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="AssignedTeamSelect" width="75%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_ARAgentView.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Assigned Person" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="AssignedPersonSelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"
-                        datafield="All Fields"></wm-select>
+                    <wm-select name="AssignedPersonSelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="All" displayfield="dataValue"
+                        on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="All Fields"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"
-                        datafield="All Fields"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="All" displayfield="dataValue"
+                        on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="All Fields"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.getCodeFromDomainValueAsWorkCategory.dataSet" datafield="code" displayfield="code" placeholder="All"></wm-select>
+                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_ARAgentView.dataSet" datafield="code" displayfield="code" placeholder="All"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -61,13 +61,18 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                     <wm-label caption="Due Date" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="dueDate" width="85%" padding="unset 0.5em" placeholder="Select" datafield="All Fields"></wm-select>
+                <wm-gridcolumn columnwidth="2" style="display: flex;" id="fromGrid" name="gridcolumn10_1">
+                    <wm-label padding="3px 10px 2px 55px" caption="From" name="label4" color="gray" class="filterLabel"></wm-label>
+                    <wm-date name="creationDate" id="creationDate" placeholder=""></wm-date>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" style="display: flex;" id="toGrid" name="gridcolumn11_1">
+                    <wm-label padding="3px 10px 2px 55px" caption="To" name="label4" color="gray" class="filterLabel"></wm-label>
+                    <wm-date name="completionDate" id="completionDate" placeholder=""></wm-date>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn56">
-                    <wm-button class="secondaryButton" caption="Clear" name="clearButton" margin="unset 2em unset 11em"></wm-button>
+                    <wm-button class="secondaryButton" caption="Clear" name="clearButton" margin="unset 2em unset 8em"></wm-button>
                     <wm-button class="primaryButton" caption="Filter" name="filterButton"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
