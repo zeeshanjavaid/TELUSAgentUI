@@ -927,6 +927,7 @@ Partial.cancleButtonClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     debugger;
+    App.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.dialogNameBool.dataSet.dataValue = false;
     Partial.Widgets.EditActionDialog.open();
 
@@ -1092,10 +1093,12 @@ Partial.CloseActionDialogClose = function($event, widget) {
 Partial.UpdateActionClick = function($event, widget) {
     debugger;
     Partial.Variables.dialogNameBool.dataSet.dataValue = false;
+    App.Variables.errorMsg.dataSet.dataValue = null;
 
     if (!Partial.Widgets.prioritySelect.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
+        App.Variables.errorMsg.dataSet.dataValue = null;
         var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
         var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
         if (originalAgentId != selectedAgentId) {
