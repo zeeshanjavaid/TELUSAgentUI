@@ -3,12 +3,70 @@
     padding: 0.2em 0.5em 0 0.5em;
 }
 
+.filterCriteriaGrid {
+    margin: 15px 0 0 46px;
+}
 
-/*@media only screen and (min-width: 1270px) and (max-width: 1720px) {
-    .clearButtonARAgent {
-        margin: unset 2em unset 5em;
+input.form-control.app-textbox.app-dateinput.display-input {
+    width: 49%;
+}
+
+.filterButtons {
+    text-align: right;
+}
+
+@media only screen and (min-width: 1780px) and (max-width: 1930px) {
+    input.form-control.app-textbox.app-dateinput.display-input {
+        width: 54% !important;
     }
-    .OrderDeskLabel {
+}
+
+@media only screen and (min-width: 1270px) and (max-width: 1500px) {
+    input.form-control.app-textbox.app-dateinput.display-input {
+        width: 30% !important;
+    }
+    
+    .assignedTeamGrid {
+        width: 10.5% !important;
+    }
+    
+    .actionTypeGrid {
+        width: 10.5% !important;
+    }
+    
+    .selectGrid {
         width: 12% !important;
     }
-}*/
+    
+    .assignedPersonGrid {
+        width: 10% !important;
+    }
+    
+    .statusGrid {
+        width: 10% !important;
+    }
+    
+    .fromDateGrid {
+        width: 10% !important;
+    }
+    
+    .toDateGrid {
+        width: 10% !important;
+    }
+    
+    .entityOwnerGrid {
+        width: 10% !important;
+    }
+    
+    .workCategoryGrid {
+        width: 10% !important;
+    }
+    
+    .filterButtons {
+        width: 20.5% !important;
+    }
+    
+    .filterCriteriaGrid {
+        margin: 15px 0 0 32px;
+    }
+}
