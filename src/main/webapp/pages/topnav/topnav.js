@@ -17,6 +17,7 @@ Partial.isUserAutoProvisionEnabled = false;
 
 Partial.onReady = function() {
 
+    Partial.Variables.getWorkCategoriesByCode.dataSet;
 
     // loadAppMetadata();
 };

@@ -22,33 +22,12 @@ Page.onReady = function() {
      */
 
     debugger;
-    Page.Variables.workCategorySelect_ARAgentView.dataSet;
-    Page.workCategoryData = [];
 
-    Page.Variables.workCategorySelect_ARAgentView.dataSet.forEach(function(item) {
-        Page.workCategoryData.push({
-            id: item.code.replace(/\s/g, ''),
-            title: item.code
-        });
-    });
-
-
-    subComboBox = $('#workCategorySelectValues').comboTree({
-        source: Page.workCategoryData,
-        isMultiple: true,
-        cascadeSelect: true,
-        collapse: true
-    });
-
-};
-
-Page.clickWK = function($event, widget) {
-    debugger;
-    Page.Variables.workCategorySelect_ARAgentView.dataSet;
+    Page.Variables.getWorkCategoriesByCode.dataSet;
     workCategorySelectValues;
 
     Page.workCategoryData = [];
-    Page.Variables.workCategorySelect_ARAgentView.dataSet.forEach(function(item) {
+    Page.Variables.getWorkCategoriesByCode.dataSet.forEach(function(item) {
         Page.workCategoryData.push({
             id: item.code.replace(/\s/g, ''),
             title: item.code
@@ -67,7 +46,37 @@ Page.clickWK = function($event, widget) {
 
     }, 50);
 
+
+
+
 };
+
+// Page.clickWK = function($event, widget) {
+//     debugger;
+//     Page.Variables.workCategorySelect_ARAgentView.dataSet;
+//     workCategorySelectValues;
+
+//     Page.workCategoryData = [];
+//     Page.Variables.workCategorySelect_ARAgentView.dataSet.forEach(function(item) {
+//         Page.workCategoryData.push({
+//             id: item.code.replace(/\s/g, ''),
+//             title: item.code
+//         });
+//     });
+
+
+//     setTimeout(function() {
+//         subComboBox = $('#workCategorySelectValues').comboTree({
+//             source: Page.workCategoryData,
+//             isMultiple: true,
+//             cascadeSelect: true,
+//             collapse: true
+//         });
+
+
+//     }, 50);
+
+// };
 
 /*
 function clickWKK() {

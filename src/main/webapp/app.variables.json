@@ -1762,7 +1762,7 @@
     "isList" : true,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
