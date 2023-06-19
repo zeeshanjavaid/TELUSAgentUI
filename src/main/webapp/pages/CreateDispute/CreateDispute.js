@@ -24,7 +24,7 @@ Partial.onReady = function() {
 };
 
 function isEmail(email) {
-    var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    var regex = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,3}/;
     return regex.test(email);
 }
 
@@ -59,6 +59,9 @@ Partial.CreateDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
 
+    var custEmailText = Partial.Widgets.custEmailText.datavalue;
+    var AssignedDisputePrime = Partial.Widgets.AssignedDisputePrime.datavalue;
+
 
     if (!Partial.Widgets.selectedDisputeBan.datavalue && !Partial.Widgets.disputeAmt.datavalue && Partial.Widgets.exclusionDropdown.datavalue === "" && !Partial.Widgets.chargeTypeDropDown.datavalue && !Partial.Widgets.reasonDropdown.datavalue && !Partial.Widgets.productsDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
@@ -78,6 +81,8 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Customer email id";
     } else if (Partial.Widgets.AssignedDisputePrime.datavalue !== "" && !isEmail(Partial.Widgets.AssignedDisputePrime.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Assigned dispute prime email id";
+    } else if (Partial.Widgets.custEmailText.datavalue !== "" && Partial.Widgets.AssignedDisputePrime.datavalue !== "" && (custEmailText.toLowerCase() === AssignedDisputePrime.toLowerCase())) {
+        App.Variables.errorMsg.dataSet.dataValue = "Customer email id and Assigned dispute prime email id should be different";
     } else {
 
 
