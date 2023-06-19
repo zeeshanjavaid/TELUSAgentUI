@@ -231,10 +231,15 @@ public class CollectionEntityService {
         return collectionContactCreateResponse;
     }
     
-    @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
+     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionContactUpdate  updateContact(@PathVariable("id") Integer id, CollectionContactUpdate   collectionContactUpdate ) throws Exception {
-        return collectionContactUpdate ;
+    	 logger.info("Inside updateContact method"+id);
+     	String requestPayload = objectMapper.writeValueAsString(collectionContactUpdate);
+     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_CONTACT + "/" + id, "PATCH", entitySvcAuthScope);
+     	logger.info("::::::::Response from Success Telus  API- Update contact:::::\n::::::: {}",responseStr);
+     	CollectionContactUpdate collectionContactUpdateResponse = objectMapper.readValue(responseStr,CollectionContactUpdate.class);
+     	return collectionContactUpdateResponse;
     }
     //PAAR
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})

@@ -37,6 +37,7 @@ App.rowDataValues = function(row) {
         Partial.Widgets.workNo.disabled = true;
         Partial.Widgets.fax.disabled = true;
         Partial.Widgets.comments.disabled = true;
+        Partial.Widgets.Expire.show = false;
     } else {
         Partial.Widgets.TELUSContactsSelect.disabled = false;
         Partial.Widgets.TITLESelect.disabled = false;
@@ -48,6 +49,7 @@ App.rowDataValues = function(row) {
         Partial.Widgets.workNo.disabled = false;
         Partial.Widgets.fax.disabled = false;
         Partial.Widgets.comments.disabled = false;
+        Partial.Widgets.Expire.show = true;
     }
 
     Partial.Widgets.contactID.caption = row.contactId;
@@ -76,7 +78,7 @@ function validateEmail(email) {
 };
 
 function isEmail(email) {
-    var regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+    var regex = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,3}/;
     return regex.test(email);
 }
 
@@ -106,6 +108,7 @@ Partial.updateContact = function($event, widget) {
         // API Call will come here
 
         Partial.Variables.updateDigitalContact.setInput({
+            "id": Partial.Widgets.contactID.caption,
             "CollectionContactUpdate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
@@ -158,4 +161,49 @@ function isNotANumber(value) {
         App.Variables.errorMsg.dataSet.dataValue = "Invalid. Value must be numeric";
     }
     setTimeout(messageTimeout, 10000);
+};
+Partial.ExpireClick = function($event, widget) {
+    debugger;
+    if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
+    } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
+    } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Last Name is mandatory";
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && (Partial.Widgets.emailText.datavalue == "" || Partial.Widgets.emailText.datavalue == undefined)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
+    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if ((Partial.Widgets.ext.datavalue !== "") && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
+    } else {
+        // API Call will come here
+
+        Partial.Variables.updateDigitalContact.setInput({
+            "id": Partial.Widgets.contactID.caption,
+            "CollectionContactUpdate": {
+                'firstName': Partial.Widgets.firstName.datavalue,
+                'lastName': Partial.Widgets.lastName.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
+                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                'title': Partial.Widgets.TITLESelect.datavalue,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
+                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
+                'comment': Partial.Widgets.comments.datavalue,
+                'email': Partial.Widgets.emailText.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue
+            }
+        });
+
+        //Invoke POST createDispute service
+        Partial.Variables.updateDigitalContact.invoke();
+
+        App.Variables.successMessage.dataSet.dataValue = "Digital Contact expired successfully.";
+        Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+        setTimeout(messageTimeout, 10000);
+    }
+
 };

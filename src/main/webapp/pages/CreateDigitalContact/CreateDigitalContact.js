@@ -85,6 +85,9 @@ Partial.createContact = function($event, widget) {
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
                 'faxNumber': Partial.Widgets.fax.datavalue
+                // 'collectionEntity': {
+                //     'id': '12345'
+                // }
             }
         });
 

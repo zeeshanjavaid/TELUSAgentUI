@@ -166,8 +166,11 @@
             <wm-gridcolumn columnwidth="11" name="gridcolumn26" style="text-align:right;">
                 <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button1" on-click="CancelClick($event, widget)"></wm-button>
                 <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="updateContact($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="expireId" caption="Expire" type="button" margin="unset 0.5em" name="Expire" on-click="ExpireClick($event, widget)"></wm-button>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn27">
+
+            </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
 </wm-partial>
