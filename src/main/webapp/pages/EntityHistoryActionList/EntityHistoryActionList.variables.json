@@ -1438,7 +1438,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "type",
+      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND",
+      "type" : "string"
+    } ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",
     "operation" : "getCollectionTreatmentStep",
@@ -1448,7 +1452,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

@@ -696,7 +696,8 @@ Partial.applyFilter = function($event, widget) {
     var typeCode = '';
 
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
-        typeCode = 'ALL';
+        // typeCode = 'ALL';
+        typeCode = 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND';
     } else {
         typeCode = Partial.Widgets.typeSelect.datavalue;
 
