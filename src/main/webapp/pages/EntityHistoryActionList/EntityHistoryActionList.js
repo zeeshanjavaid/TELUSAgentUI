@@ -278,7 +278,16 @@ function callOutboundAction($event, widget) {
 
 function callInboundAction($event, widget) {
     // Status and Priority fields are mandatory
-    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
+    debugger;
+
+    var phnumber;
+    if (!Partial.Widgets.phnNumber.datavalue == "" || !Partial.Widgets.phnNumber.datavalue == undefined) {
+        phnumber = Math.floor(Math.log10(Partial.Widgets.phnNumber.datavalue)) + 1;
+    }
+
+    if (phnumber < 10) {
+        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be less than 10 digit";
+    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
