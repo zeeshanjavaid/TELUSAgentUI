@@ -104,6 +104,26 @@ Partial.updateContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
     } else {
         // API Call will come here
+
+        Partial.Variables.updateDigitalContact.setInput({
+            "CollectionContactUpdate": {
+                'firstName': Partial.Widgets.firstName.datavalue,
+                'lastName': Partial.Widgets.lastName.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
+                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                'title': Partial.Widgets.TITLESelect.datavalue,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
+                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
+                'comment': Partial.Widgets.comments.datavalue,
+                'email': Partial.Widgets.emailText.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue
+            }
+        });
+
+        //Invoke POST createDispute service
+        Partial.Variables.updateDigitalContact.invoke();
+
         App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
         Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
         setTimeout(messageTimeout, 10000);
