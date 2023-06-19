@@ -775,6 +775,7 @@ Partial.resetTableDataonSuccess = function(variable, data) {
 };
 
 Partial.button3Click = function($event, widget) {
+    debugger;
 
 
     Partial.Widgets.createUserPage.open();

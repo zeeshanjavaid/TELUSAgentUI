@@ -11,7 +11,6 @@
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
-    debugger;
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -21,5 +20,16 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    Page.Variables.getCollectionTreatment_orderDeskView.dataSet;
 };
+
+// function added to clear all the fields in the filter grid
+Page.clearFilterFields = function($event, widget) {
+    Page.Widgets.AssignedTeamSelect.datavalue = "All";
+    Page.Widgets.AssignedPersonSelect.datavalue = "All";
+    Page.Widgets.EntityOwnerSelect.datavalue = "All";
+    Page.Widgets.WorkCategorySelect.datavalue = "All";
+    Page.Widgets.ActionTypeSelect.datavalue = "All";
+    Page.Widgets.StatusSelect.datavalue = "All";
+    Page.Widgets.creationDate.datavalue = "";
+    Page.Widgets.completionDate.datavalue = "";
+}

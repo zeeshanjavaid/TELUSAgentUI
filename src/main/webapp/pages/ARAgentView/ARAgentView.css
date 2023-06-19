@@ -11,6 +11,26 @@ input.form-control.app-textbox.app-dateinput.display-input {
     width: 49%;
 }
 
+input#workCategorySelectValues {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}
+
+.comboTreeArrowBtn {
+    border-radius: unset;
+    background: none;
+    border-left: 0;
+    border-color: #4B286D;
+    border-top: 1px solid #4B286D !important;
+    border-right: 1px solid #4B286D !important;
+    border-bottom: 1px solid #4B286D !important;
+}
+
+.comboTreeDropDownContainer{
+    height: 100px;
+}
+
 .filterButtons {
     text-align: right;
 }
