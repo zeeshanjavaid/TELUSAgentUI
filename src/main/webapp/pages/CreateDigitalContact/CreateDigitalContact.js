@@ -69,7 +69,7 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if ((Partial.Widgets.ext.datavalue !== "") && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+    } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
     } else {
         Partial.Variables.CreateContactServiceVar.setInput({
@@ -115,13 +115,13 @@ Partial.createContact = function($event, widget) {
 };
 
 
-/*Partial.workNoKeypress = function($event, widget) {
+Partial.workNoKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
-};*/
+};
 
 
-Partial.workNoKeypress = function($event, widget) {
+/*Partial.workNoKeypress = function($event, widget) {
     debugger;
     var value = $event.key;
     isNotANumber(value);
@@ -150,16 +150,16 @@ Partial.workNoKeypress = function($event, widget) {
         Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
     }*/
 
-    // var z = fullInputValue.substring(8, 9);
-    // if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
-    //     debugger;
-    //     var a1 = fullInputValue.substring(0, 5);
-    //     var a2 = fullInputValue.substring(5, 8);
-    //     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
-    // }
+// var z = fullInputValue.substring(8, 9);
+// if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
+//     debugger;
+//     var a1 = fullInputValue.substring(0, 5);
+//     var a2 = fullInputValue.substring(5, 8);
+//     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
+// }
 
 
-};
+//};
 
 Partial.extKeypress = function($event, widget) {
     var value = $event.key;
