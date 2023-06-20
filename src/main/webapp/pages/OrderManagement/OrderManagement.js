@@ -26,3 +26,12 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
     debugger;
     App.showRowExpansionOrderManagement(row, $data);
 };
+
+Partial.CreateSuspentionRequestClick = function($event, widget) {
+    Partial.Widgets.CreateSuspensionRequestdialog.open();
+};
+
+
+Partial.CreateRestoralRequestClick = function($event, widget) {
+    Partial.Widgets.CreateRestoralRequestdialog.open();
+};
