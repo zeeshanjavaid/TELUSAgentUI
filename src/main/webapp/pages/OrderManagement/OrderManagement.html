@@ -6,14 +6,15 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
-                    <wm-table-column binding="id" caption="Action ID" type="double" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="id" caption="Action ID" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="status" caption="Status" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedAgentId" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>

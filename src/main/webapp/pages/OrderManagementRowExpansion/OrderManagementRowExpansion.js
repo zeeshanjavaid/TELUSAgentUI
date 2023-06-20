@@ -10,7 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
-Partial.onReady = function () {
+Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,4 +20,19 @@ Partial.onReady = function () {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+    App.showRowExpansionOrderManagement = function(row, data) {
+        debugger;
+        var type = row.stepTypeCode;
+        Partial.Widgets.type.caption = row.stepTypeCode;
+        Partial.Widgets.DueDate.caption = row.stepTypeCode;
+        Partial.Widgets.BansToSuspend.caption = row.stepTypeCode;
+        Partial.Widgets.assignedPerson.caption = row.stepTypeCode;
+        Partial.Widgets.Comment.caption = row.stepTypeCode;
+        Partial.Widgets.Description.caption = row.stepTypeCode;
+        Partial.Widgets.Priority.caption = row.stepTypeCode;
+        Partial.Widgets.assignedTeam.caption = row.stepTypeCode;
+        Partial.Widgets.Status.caption = row.status;
+        Partial.Widgets.ReasonCode.caption = row.stepTypeCode;
+    }
 };
