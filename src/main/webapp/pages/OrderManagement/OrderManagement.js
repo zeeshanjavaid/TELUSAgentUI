@@ -28,10 +28,22 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 };
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
+    Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Widgets.CreateSuspensionRequestdialog.open();
 };
 
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
+    Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Widgets.CreateRestoralRequestdialog.open();
+};
+
+Partial.closeCreateSuspensionActionDialog = function() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Widgets.CreateSuspensionRequestdialog.close();
+};
+
+Partial.closeCreateRestoralActionDialog = function() {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Widgets.CreateRestoralRequestdialog.close();
 };

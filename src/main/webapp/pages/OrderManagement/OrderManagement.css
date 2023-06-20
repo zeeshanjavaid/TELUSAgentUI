@@ -1,0 +1,14 @@
+.wm-app i.wi.wi-file-text {
+    display: none;
+}
+
+.wm-app .app-dialog-header.modal-header {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.heading {
+    border-bottom: 1px solid #e9ecef;
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}

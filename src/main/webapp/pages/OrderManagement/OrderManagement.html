@@ -10,7 +10,7 @@
                     <wm-layoutgrid name="layoutgrid1000">
                         <wm-gridrow name="gridrow1000">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn1000">
-                                <wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateSuspentionRequestLink" caption="Create Suspention Request" on-click="CreateSuspentionRequestClick($event, widget)"></wm-anchor>
+                                <wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateSuspentionRequestLink" caption="Create Suspension Request" on-click="CreateSuspentionRequestClick($event, widget)"></wm-anchor>
                             </wm-gridcolumn>
                         </wm-gridrow>
                         <wm-gridrow name="gridrow1">
@@ -129,7 +129,7 @@
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
-                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton"></wm-button>
+                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbutton"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
@@ -160,11 +160,10 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
-                <h4 class="heading">BANs to Suspend</h4>
+                <h4 class="heading">BANs to Restore</h4>
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn12"></wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
                 <h4 class="heading">Status and Priority</h4>
@@ -225,7 +224,7 @@
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
-                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton"></wm-button>
+                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateRestoralActionDialog($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbutton"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
