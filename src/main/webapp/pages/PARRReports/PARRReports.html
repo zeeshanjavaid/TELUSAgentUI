@@ -15,7 +15,6 @@
             <wm-layoutgrid name="layoutgrid2">
                 <wm-gridrow name="gridrow2">
                     <wm-gridcolumn columnwidth="9" name="gridcolumn2">
-                        <!--<wm-message name="message1" type="info" caption="This listing includes all payments arrangement created in the past 3 months. Use conditions below to change the listing output."></wm-message>-->
                         <wm-icon name="icon1" iconclass="fico-icon-info"></wm-icon>
                         <wm-label padding="unset 0.5em" name="label1" caption="This listing includes all payments arrangement created in the past 3 months. Use conditions below to change the listing output."></wm-label>
                     </wm-gridcolumn>
@@ -28,14 +27,14 @@
                 <wm-gridrow name="gridrow4_1" margin="20px 0px 20px 20px">
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="entityRiskGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="Entity Risk" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-select name="entityRiskSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.entityRisk.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue"></wm-select>
+                        <wm-select name="entityRiskSelect" id="mySelection" margin="5px unset unset unset" datafield="code" placeholder="Select" dataset="bind:Variables.entityRisk.dataSet" displayfield="code"></wm-select>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" class="blankGrid"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn9_1" class="parrStatusGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="PARR Status" name="label4" color="gray" class="parrStatusLabel"></wm-label>
-                        <wm-select name="parrStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.parrStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue"></wm-select>
+                        <wm-select name="parrStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.parrStatus.dataSet" datafield="code" placeholder="Select" displayfield="code"></wm-select>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" class="blankGrid"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn6"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" style="display: flex;" id="createTimeFrameGrid" name="gridcolumn10_1">
                         <wm-label padding="10px 20px 2px 5px" caption="Create TimeFrame" name="label4" color="gray" class="createdTimeFrameLabel"></wm-label>
                     </wm-gridcolumn>
@@ -51,14 +50,14 @@
                 <wm-gridrow name="gridrow4_1" margin="20px 0px 20px 20px">
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="evaluationGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="Evaluation" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-select name="evalSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.Evaluation.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue"></wm-select>
+                        <wm-select name="evalSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.Evaluation.dataSet" datafield="code" placeholder="Select" displayfield="code"></wm-select>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" class="blankGrid"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn11_2"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="createdByGrid">
                         <wm-label padding="10px 20px 2px 15px" caption="Created By" name="label4" color="gray" class="createdByLabel"></wm-label>
                         <wm-select name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.createdBy.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue"></wm-select>
                     </wm-gridcolumn>
-                    <wm-gridcolumn columnwidth="1" class="blankGrid"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">
                         <wm-label padding="10px 20px 2px 32px" caption="Created Team" name="label4" color="gray" class="createdteamLLabel"></wm-label>
                         <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeam.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue"></wm-select>

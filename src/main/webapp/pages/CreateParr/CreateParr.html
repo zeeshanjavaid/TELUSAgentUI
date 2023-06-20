@@ -29,8 +29,8 @@
                             <wm-label padding="5px 10px 5px 5px" name="label5" caption="Recurrence*" fontsize="14" color="#6e6d6a"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="11" name="gridcolumn26">
-                            <wm-select width="20%" name="RecurrenceDropdown" placeholder="Select" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="dataValue" textalign="left" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.recurrence"
-                                displayfield="name" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)"></wm-select>
+                            <wm-select width="20%" name="RecurrenceDropdown" placeholder="Select" dataset="bind:Variables.RecurrenceModel.dataSet" datafield="code" textalign="left" datavalue="bind:Variables.CreatePaymentArrangement.dataSet.recurrence"
+                                displayfield="code" on-change="RecurrenceDropdownChange($event, widget, newVal, oldVal)"></wm-select>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>

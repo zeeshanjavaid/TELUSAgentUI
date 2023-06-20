@@ -14,32 +14,31 @@
     "saveInPhonegap" : false
   },
   "ActionListDropdownVar" : {
-    "_id" : "wm-ActionListDropdownVar-wm.Variable-1682691874817",
+    "_id" : "wm-ActionListDropdownVar_1-wm.ServiceVariable-1685899662689",
     "name" : "ActionListDropdownVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Call Outbound"
-    }, {
-      "dataValue" : "Call Inbound"
-    }, {
-      "dataValue" : "Email Inbound"
-    }, {
-      "dataValue" : "General Follow-up"
-    }, {
-      "dataValue" : "Overdue Notice"
-    }, {
-      "dataValue" : "Payment Reminder Notice"
-    }, {
-      "dataValue" : "Disconnect Notice"
-    }, {
-      "dataValue" : "Cancellation Notice"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_ACTIONTYPE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "actionName" : {
     "_id" : "wm-actionaName-wm.Variable-1682965685890",
@@ -56,22 +55,31 @@
     "saveInPhonegap" : false
   },
   "actionPriority" : {
-    "_id" : "wm-actionPriority-wm.Variable-1683001990301",
+    "_id" : "wm-actionPriority_1-wm.ServiceVariable-1685900100173",
     "name" : "actionPriority",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Low"
-    }, {
-      "dataValue" : "Medium"
-    }, {
-      "dataValue" : "High"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_ACTION_PRIORITY",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "actionPriorityDefaultVar" : {
     "_id" : "wm-actionPriorityDefaultVar-wm.Variable-1684257698278",
@@ -88,20 +96,31 @@
     "saveInPhonegap" : false
   },
   "actionStatus" : {
-    "_id" : "wm-actionStatus-wm.Variable-1683001667828",
+    "_id" : "wm-actionStatus_1-wm.ServiceVariable-1685899888943",
     "name" : "actionStatus",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Open"
-    }, {
-      "dataValue" : "Closed"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_ACTION_STATUS",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "actionStatusDefaultVar" : {
     "_id" : "wm-actionStatusDefaultVar-wm.Variable-1684257366738",
@@ -1483,22 +1502,31 @@
     "controller" : "CommonUtility"
   },
   "outcomeValues" : {
-    "_id" : "wm-outcomeValues-wm.Variable-1684994251503",
+    "_id" : "wm-outcomeValues_1-wm.ServiceVariable-1685900825344",
     "name" : "outcomeValues",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "No voicemail"
-    }, {
-      "dataValue" : "Left voice mail"
-    }, {
-      "dataValue" : "Not in service"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CLOSE_ACTION_OUTCOME",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "pmtArrgntCtgValues" : {
     "_id" : "wm-pmtArrgntCtgValues-wm.Variable-1685604891616",

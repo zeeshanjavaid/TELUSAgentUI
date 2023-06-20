@@ -38,40 +38,58 @@
     "saveInPhonegap" : false
   },
   "entityRisk" : {
-    "_id" : "wm-entityRisk-wm.Variable-1684307702145",
+    "_id" : "wm-entityRisk_1-wm.ServiceVariable-1685901892694",
     "name" : "entityRisk",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "High"
-    }, {
-      "dataValue" : "Medium"
-    }, {
-      "dataValue" : "Low"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "PARR_REPORT_ENTITY",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "Evaluation" : {
-    "_id" : "wm-Evaluation-wm.Variable-1684312790526",
+    "_id" : "wm-Evaluation_1-wm.ServiceVariable-1685902716598",
     "name" : "Evaluation",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "All"
-    }, {
-      "dataValue" : "Broken"
-    }, {
-      "dataValue" : "Kept"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "PARR_REPORT_EVALUTION",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "ParrReportServiceGetParrReport" : {
     "_id" : "wm-ParrReportServiceGetParrReport-wm.ServiceVariable-1684315320753",
@@ -102,23 +120,30 @@
     "controller" : "ParrReport"
   },
   "parrStatus" : {
-    "_id" : "wm-parrStatus-wm.Variable-1684308448931",
+    "_id" : "wm-parrStatus_1-wm.ServiceVariable-1685902245549",
     "name" : "parrStatus",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Open"
-    }, {
-      "dataValue" : "Closed"
-    }, {
-      "dataValue" : "Renegotiated"
-    }, {
-      "dataValue" : "Cancelled"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "PARR_REPORT_STATUS",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   }
 }

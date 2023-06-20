@@ -109,24 +109,31 @@
     "saveInPhonegap" : false
   },
   "levelValue" : {
-    "_id" : "wm-levelValue-wm.Variable-1680677745464",
+    "_id" : "wm-levelValue_1-wm.ServiceVariable-1685901444968",
     "name" : "levelValue",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "CBUCID"
-    }, {
-      "dataValue" : "RCID"
-    }, {
-      "dataValue" : "Entity"
-    }, {
-      "dataValue" : "BAN"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "LOOKUP_LEVEL",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "nameCriteria" : {
     "_id" : "wm-nameCriteria-wm.Variable-1680682828476",

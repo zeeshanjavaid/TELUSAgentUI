@@ -99,7 +99,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn7">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container1">
-                            <wm-select name="select1" dataset="bind:Variables.ActionListDropdownVar.dataSet" datafield="dataValue" displayfield="dataValue" placeholder="Select"></wm-select>
+                            <wm-select name="select1" dataset="bind:Variables.ActionListDropdownVar.dataSet" datafield="code" displayfield="code" placeholder="Select"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -203,7 +203,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="Open,Closed" datafield="All Fields" placeholder="Select" datavalue="Select" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="code" placeholder="Select" datavalue="bind:Variables.actionStatusDefaultVar.dataSet.dataValue"
+                        displayfield="code" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -223,8 +224,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="dataValue" placeholder="Select" datavalue="bind:Variables.actionPriorityDefaultVar.dataSet.dataValue"
-                        displayfield="dataValue" on-change="prioritySelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionPriority.dataSet" datafield="code" placeholder="Select" datavalue="bind:Variables.actionPriorityDefaultVar.dataSet.dataValue"
+                        on-change="prioritySelect($event, widget, newVal, oldVal)" displayfield="code"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -381,8 +382,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.priority" dataset="bind:Variables.actionPriority.dataSet"
-                        displayfield="dataValue"></wm-select>
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="code" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.priority" dataset="bind:Variables.actionPriority.dataSet"
+                        displayfield="code"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -517,8 +518,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10" id="actionOutcomeSelect">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="50%" name="actionOutcomeSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" on-change="actionStatusSelect($event, widget, newVal, oldVal)" dataset="bind:Variables.outcomeValues.dataSet"
-                        displayfield="dataValue" required="true"></wm-select>
+                    <wm-select width="50%" name="actionOutcomeSelect" id="mySelection" margin="5px unset unset unset" datafield="code" placeholder="Select" on-change="actionStatusSelect($event, widget, newVal, oldVal)" dataset="bind:Variables.outcomeValues.dataSet"
+                        displayfield="code" required="true"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">

@@ -253,28 +253,31 @@
     "saveInPhonegap" : false
   },
   "RecurrenceModel" : {
-    "_id" : "wm-RecurrenceModel-wm.Variable-1678458727751",
+    "_id" : "wm-getCodeFromDomainValueAsCREATE_PARR_RECURRENCE-wm.ServiceVariable-1685688202040",
     "name" : "RecurrenceModel",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "name" : "Weekly",
-      "dataValue" : "Weekly"
-    }, {
-      "name" : "Bi-Weekly",
-      "dataValue" : "Bi-Weekly"
-    }, {
-      "name" : "Monthly",
-      "dataValue" : "Monthly"
-    }, {
-      "name" : "Custom",
-      "dataValue" : "30"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_PARR_RECURRENCE",
+      "type" : "string"
     } ],
-    "type" : "entry",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "selectBanParr" : {
     "_id" : "wm-selectBanParr-wm.Variable-1678285325792",

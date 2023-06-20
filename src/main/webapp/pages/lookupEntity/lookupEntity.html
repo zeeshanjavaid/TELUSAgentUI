@@ -17,8 +17,8 @@
                             <wm-label class="col-md-3 control-label" name="label4" caption="Level*" margin="10px 3px -2px 15px" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn name="gridcolumn3" margin="2px 2px 2px 15px" width="200px" class="app-grid-column-mac levelSelectBox">
-                            <wm-select name="select1" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.levelValue.dataSet" datafield="dataValue" placeholder="" datavalue="bind:Variables.levelValue.dataSet[2].dataValue" displayfield="dataValue"
-                                on-change="select1Change($event, widget, newVal, oldVal)"></wm-select>
+                            <wm-select name="select1" id="mySelection" margin="5px unset unset unset" datafield="code" placeholder="" datavalue="bind:Variables.levelValue.dataSet[2].code" on-change="select1Change($event, widget, newVal, oldVal)" dataset="bind:Variables.levelValue.dataSet"
+                                displayfield="code"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" style="width: unset;" name="gridcolumn5_1" class="banLabel">
                             <wm-container name="container3" show="bind:Widgets.select1.datavalue==='BAN'">
