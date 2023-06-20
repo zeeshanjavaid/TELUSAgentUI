@@ -23,8 +23,10 @@ Page.onReady = function() {
 
     debugger;
 
+    Page.Variables.storeworkCategoryForMultiSelect;
+
     Page.Variables.getWorkCategoriesByCode.dataSet;
-    workCategorySelectValues;
+
 
     Page.workCategoryData = [];
     Page.Variables.getWorkCategoriesByCode.dataSet.forEach(function(item) {

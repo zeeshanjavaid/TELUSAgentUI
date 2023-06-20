@@ -41,19 +41,12 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
-                <!--<wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_ARAgentView.dataSet" datafield="code" displayfield="code" placeholder="All" show="true" class="multiple"></wm-select>
-                </wm-gridcolumn>-->
+                <!--<wm-gridcolumn columnwidth="1" name="gridcolumn50"><wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_ARAgentView.dataSet" datafield="code" displayfield="code" placeholder="All" show="true" class="multiple"></wm-select></wm-gridcolumn>-->
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
                     <wm-composite name="composite11" width="100%">
-                        <wm-container class="col-md-12 mutli-select" key="ARAgentView.workCategory" name="text-container" width="100%" on-click="clickWK($event, widget)">
-                            <input type="text" id="workCategorySelectValues" placeholder="Select" autocomplete="off">
-                        </wm-container>
+                        <wm-container class="col-md-12 mutli-select" key="ARAgentView.workCategory" name="text-container" width="100%" on-click="clickWK($event, widget)"><input type="text" id="workCategorySelectValues" placeholder="Select" autocomplete="off"></wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
-
-
-
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="actionTypeGrid">

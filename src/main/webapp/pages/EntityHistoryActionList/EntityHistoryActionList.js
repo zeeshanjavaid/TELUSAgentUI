@@ -329,7 +329,6 @@ function callInboundAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -414,6 +413,8 @@ function generalFollowUpAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
+
+
         App.Variables.successMessage.dataSet.dataValue = "General Follow-up Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -461,6 +462,8 @@ function overdueNoticeAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
+
+
         App.Variables.successMessage.dataSet.dataValue = "Overdue Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -508,6 +511,8 @@ function paymentReminderNoticeAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
+
+
         App.Variables.successMessage.dataSet.dataValue = "Payment Reminder Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -555,6 +560,8 @@ function disconnectNoticeAction($event, widget) {
             },
         });
         Partial.Variables.createEntityHistoryAction.invoke();
+
+
         App.Variables.successMessage.dataSet.dataValue = "Disconnect Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
     }
@@ -615,27 +622,44 @@ Partial.createButtonClick = function($event, widget) {
     switch (actionName) {
         case 'Call Outbound':
             callOutboundAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'Call Inbound':
             callInboundAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
+
             break;
         case 'Email Inbound':
             emailInboundAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'General Follow-up':
             generalFollowUpAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'Overdue Notice':
             overdueNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'Payment Reminder Notice':
             paymentReminderNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'Disconnect Notice':
             disconnectNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         case 'Cancellation Notice':
             cancellationNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
             break;
         default:
             App.Variables.errorMsg.dataSet.dataValue = "Not a valid action.";
@@ -696,6 +720,15 @@ Partial.clearFilterFields = function($event, widget) {
     Partial.Widgets.createdBySelect.datavalue = "";
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+
+    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+
+        'type': 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
+
+    });
+
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
 }
 
 // function added to apply filter to the table

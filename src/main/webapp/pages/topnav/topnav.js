@@ -17,9 +17,11 @@ Partial.isUserAutoProvisionEnabled = false;
 
 Partial.onReady = function() {
 
-    Partial.Variables.getWorkCategoriesByCode.dataSet;
+    //Partial.Variables.getWorkCategoriesByCode.dataSet;
 
     // loadAppMetadata();
+    Partial.Variables.storeworkCategoryForMultiSelect = Partial.Variables.getWorkCategoriesByCode.dataSet;
+
 };
 
 

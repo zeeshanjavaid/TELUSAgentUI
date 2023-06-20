@@ -3596,6 +3596,21 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "storeworkCategoryForMultiSelect" : {
+    "_id" : "wm-storeworkCategoryForMultiSelect-wm.Variable-1687177178116",
+    "name" : "storeworkCategoryForMultiSelect",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "successMessage" : {
     "_id" : "wm-successMessage-wm.Variable-1662534928423",
     "name" : "successMessage",

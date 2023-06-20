@@ -20,6 +20,8 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
 };
 
 Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widget, row, $data) {
@@ -29,21 +31,29 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
     Partial.Widgets.CreateSuspensionRequestdialog.open();
 };
 
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
     Partial.Widgets.CreateRestoralRequestdialog.open();
 };
 
 Partial.closeCreateSuspensionActionDialog = function() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
     Partial.Widgets.CreateSuspensionRequestdialog.close();
 };
 
 Partial.closeCreateRestoralActionDialog = function() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
     Partial.Widgets.CreateRestoralRequestdialog.close();
 };

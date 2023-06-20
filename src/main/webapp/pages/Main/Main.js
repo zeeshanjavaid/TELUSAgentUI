@@ -15,6 +15,11 @@
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
+
+    debugger;
+
+    Page.Variables.storeworkCategoryForMultiSelect = Page.Variables.getWorkCategoriesByCode.dataSet;
+
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
