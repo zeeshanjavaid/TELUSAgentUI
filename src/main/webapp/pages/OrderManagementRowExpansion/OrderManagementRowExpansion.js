@@ -23,12 +23,23 @@ Partial.onReady = function() {
 
     App.showRowExpansionOrderManagement = function(row, data) {
         debugger;
-        Partial.Widgets.type.caption = row.stepTypeCode;
+        var type = row.stepTypeCode;
+        if (type == 'SUSPEND') {
+            Partial.Widgets.BansLabel.caption = 'BANs to Suspend:';
+        } else if (type == 'RESTORE') {
+            Partial.Widgets.BansLabel.caption = 'BANs to Restore:';
+        } else if (type == 'CEASE') {
+            Partial.Widgets.BansLabel.caption = 'BANs to Cease:';
+        } else {
+            Partial.Widgets.BansLabel.caption = 'BANs to ' + type + ':';
+        }
+
+        Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
-        Partial.Widgets.BansToSuspend.caption = row.stepTypeCode;
+        Partial.Widgets.BansLabelValue.caption = '';
         Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.Comment.caption = row.comment;
-        Partial.Widgets.Description.caption = row.desciption;
+        Partial.Widgets.Description.caption = '';
         Partial.Widgets.Priority.caption = row.priority;
         Partial.Widgets.assignedTeam.caption = row.assignedTeam;
         Partial.Widgets.Status.caption = row.status;
