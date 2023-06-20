@@ -176,6 +176,13 @@
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
+                    <wm-tabpane name="OrderManagement" title="Order Management" on-select="OrderManagementSelect($event, widget)" on-deselect="OrderManagementDeselect($event, widget)">
+                        <wm-container name="container4" class="rrr">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="OrderManagementPanel" width="100%" content="OrderManagement" show="bind:Variables.OrderManagementPageName.dataSet.dataValue=='OrderManagement'">
+                                <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
+                            </wm-panel>
+                        </wm-container>
+                    </wm-tabpane>
                     <wm-tabpane name="UserNotes" title="User Notes &amp; Docs">
                         <wm-label padding="unset 0.5em" name="label12" caption="Notes"></wm-label>
                     </wm-tabpane>

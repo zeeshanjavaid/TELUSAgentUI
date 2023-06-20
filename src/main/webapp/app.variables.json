@@ -2420,6 +2420,24 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "OrderManagementPageName" : {
+    "_id" : "wm-OrderManagementPageName-wm.Variable-1687238146890",
+    "name" : "OrderManagementPageName",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "OrderManagement",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "ParrPageName" : {
     "_id" : "wm-ParrPageName-wm.Variable-1678267778659",
     "name" : "ParrPageName",

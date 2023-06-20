@@ -274,6 +274,17 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "OrderManagement",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "OrderManagementRowExpansion",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "PARRReports",
   "type" : "PAGE",
   "params" : [ ]

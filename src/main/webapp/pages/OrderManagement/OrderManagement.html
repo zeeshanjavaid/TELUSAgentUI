@@ -1,0 +1,21 @@
+<wm-partial name="partial1">
+    <wm-container width="100%" name="container1">
+        <wm-gridcolumn width="100%" name="gridcolumn2"></wm-gridcolumn>
+    </wm-container>
+    <wm-layoutgrid name="layoutgrid11" margin="20px 0 0 15px" width="98%" id="orderManagament">
+        <wm-gridrow name="gridrow36">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
+                    <wm-table-column binding="id" caption="Action ID" type="double" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="status" caption="Status" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="assignedAgentId" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                </wm-table>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+</wm-partial>
