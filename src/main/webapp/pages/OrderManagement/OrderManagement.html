@@ -20,7 +20,7 @@
                         </wm-gridrow>
                         <wm-gridrow name="gridrow1">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn1000">
-                                <wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateActionLink" caption="Create Cease Request"></wm-anchor>
+                                <wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateCeaseRequestLink" caption="Create Cease Request" on-click="CreateCeaseRequestClick($event, widget)"></wm-anchor>
                             </wm-gridcolumn>
                         </wm-gridrow>
                     </wm-layoutgrid>
@@ -39,8 +39,8 @@
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
-                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -237,6 +237,101 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create Cease Request" iconclass="wi wi-file-text" name="CreateCeaseRequestdialog">
+        <wm-layoutgrid name="layoutgrid4">
+            <wm-gridrow name="gridrow5_1">
+                <h4 class="heading">Main Details</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow5">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn8">
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Reason Code" name="label1" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn9">
+                    <wm-select width="70%" name="reasonCodeSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10_1">
+                <h4 class="heading">BANs to Cease Suspension</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn12"></wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10_1">
+                <h4 class="heading">Status and Priority</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn12">
+                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow19">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn20">
+                    <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow10">
+                <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
+                    <wm-date name="dueDate" placeholder=""></wm-date>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow11">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn14">
+                    <wm-label padding="unset 0.5em unset unset" caption="Priority*" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow12">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow17">
+                <h4 class="heading">Assignment</h4>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow13">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                    <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow14">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow15">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                    <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow16">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
+                    <wm-select width="70%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1" style="text-align: right;">
+            <wm-gridrow id="selectActionBtns" name="gridrow31">
+                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateCeaseActionDialogClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbutton"></wm-button>
+            </wm-gridrow>
+        </wm-dialogactions>
+    </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Suspention Request" iconclass="wi wi-file-text" name="EditSuspensiondialog">
         <wm-layoutgrid name="layoutgrid4">
             <wm-gridrow name="gridrow5_1">
@@ -268,7 +363,6 @@
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
                     <wm-label padding="unset 0.5em 0.5em unset" caption="AdDitional Comment" name="label3" color="gray"></wm-label>

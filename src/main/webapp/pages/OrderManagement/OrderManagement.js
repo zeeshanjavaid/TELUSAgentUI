@@ -43,6 +43,11 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
 
     Partial.Widgets.CreateRestoralRequestdialog.open();
 };
+Partial.CreateCeaseRequestClick = function($event, widget) {
+    Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Widgets.CreateCeaseRequestdialog.open();
+}
 
 Partial.closeCreateSuspensionActionDialog = function() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -56,4 +61,10 @@ Partial.closeCreateRestoralActionDialog = function() {
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     Partial.Widgets.CreateRestoralRequestdialog.close();
+};
+Partial.closeCreateCeaseActionDialogClick = function($event, widget) {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+    Partial.Widgets.CreateCeaseRequestdialog.close();
 };
