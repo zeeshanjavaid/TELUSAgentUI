@@ -23,16 +23,15 @@ Partial.onReady = function() {
 
     App.showRowExpansionOrderManagement = function(row, data) {
         debugger;
-        var type = row.stepTypeCode;
         Partial.Widgets.type.caption = row.stepTypeCode;
-        Partial.Widgets.DueDate.caption = row.stepTypeCode;
+        Partial.Widgets.DueDate.caption = row.stepDate;
         Partial.Widgets.BansToSuspend.caption = row.stepTypeCode;
-        Partial.Widgets.assignedPerson.caption = row.stepTypeCode;
-        Partial.Widgets.Comment.caption = row.stepTypeCode;
-        Partial.Widgets.Description.caption = row.stepTypeCode;
-        Partial.Widgets.Priority.caption = row.stepTypeCode;
-        Partial.Widgets.assignedTeam.caption = row.stepTypeCode;
+        Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
+        Partial.Widgets.Comment.caption = row.comment;
+        Partial.Widgets.Description.caption = row.desciption;
+        Partial.Widgets.Priority.caption = row.priority;
+        Partial.Widgets.assignedTeam.caption = row.assignedTeam;
         Partial.Widgets.Status.caption = row.status;
-        Partial.Widgets.ReasonCode.caption = row.stepTypeCode;
+        Partial.Widgets.ReasonCode.caption = row.reasonCode;
     }
 };
