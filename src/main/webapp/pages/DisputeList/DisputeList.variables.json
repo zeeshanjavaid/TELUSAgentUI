@@ -21,5 +21,28 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "getAllDisputesList" : {
+    "_id" : "wm-getAllDisputesList-wm.ServiceVariable-1687368387425",
+    "name" : "getAllDisputesList",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.telus.model.DisputeModel",
+    "service" : "DisputeService",
+    "operation" : "getAllDisputes",
+    "operationId" : "DisputeController_getAllDisputes",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Dispute"
   }
 }

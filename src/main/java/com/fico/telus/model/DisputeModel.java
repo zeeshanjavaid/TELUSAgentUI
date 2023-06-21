@@ -1,33 +1,35 @@
 package com.fico.telus.model;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.util.Date;
+
 
 public class DisputeModel {
 
-	private Integer disputeId;
-	private Integer ban;
+
+	private Integer id;
+	private String ban;
 	private String banName;
 	private String billingSystem;
 	private Double disputeAmount;
 	private Boolean collectionExclusion;
 	private String status;
 	private String createdBy;
-	private OffsetDateTime createdDateTime;
+	private Date createdDateTime;
 	private String updatedBy;
-	private OffsetDateTime updatedDateTime;
+	private Date updatedDateTime;
 	
-	
-	
-	public Integer getDisputeId() {
-		return disputeId;
+	public Integer getId() {
+		return id;
 	}
-	public void setDisputeId(Integer disputeId) {
-		this.disputeId = disputeId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public Integer getBan() {
+
+	public String getBan() {
 		return ban;
 	}
-	public void setBan(Integer ban) {
+	public void setBan(String ban) {
 		this.ban = ban;
 	}
 	public String getBanName() {
@@ -66,22 +68,32 @@ public class DisputeModel {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-	public OffsetDateTime getCreatedDateTime() {
-		return createdDateTime;
-	}
-	public void setCreatedDateTime(OffsetDateTime createdDateTime) {
-		this.createdDateTime = createdDateTime;
-	}
+
 	public String getUpdatedBy() {
 		return updatedBy;
 	}
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
 	}
-	public OffsetDateTime getUpdatedDateTime() {
+
+	@Override
+	public String toString() {
+		return "DisputeModel [disputeId=" + id + ", ban=" + ban + ", banName=" + banName + ", billingSystem="
+				+ billingSystem + ", disputeAmount=" + disputeAmount + ", collectionExclusion=" + collectionExclusion
+				+ ", status=" + status + ", createdBy=" + createdBy + ", createdDateTime=" + createdDateTime
+				+ ", updatedBy=" + updatedBy + ", updatedDateTime=" + updatedDateTime + "]";
+	}
+	public Date getCreatedDateTime() {
+		return createdDateTime;
+	}
+	public void setCreatedDateTime(Date createdDateTime) {
+		this.createdDateTime = createdDateTime;
+	}
+	public Date getUpdatedDateTime() {
 		return updatedDateTime;
 	}
-	public void setUpdatedDateTime(OffsetDateTime updatedDateTime) {
+	public void setUpdatedDateTime(Date updatedDateTime) {
 		this.updatedDateTime = updatedDateTime;
 	}
+
 }

@@ -3,15 +3,26 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.disputeservice;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
+import io.swagger.client.model.CollectionBillingAccountRef;
+import io.swagger.client.model.CollectionDispute;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import com.fico.dmp.collectionentityservice.CollectionEntityService;
+import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
+import com.fico.telus.model.DisputeModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -35,6 +46,9 @@ public class DisputeService {
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private CollectionEntityService collectionEntityService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -45,10 +59,53 @@ public class DisputeService {
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
-    public String retrieveAllDisputes(String name) {
-        logger.debug("Starting sample operation with request url ");
+    public List<DisputeModel> getAllDisputes() {
+        logger.info("Inside retrieveAllDisputes method");
+        List<DisputeModel> disputeModelList = new ArrayList<DisputeModel>();
+        try {
+        	List<CollectionDispute> collectionDisputeList = collectionEntityService.getdispute(null, null, null, null, null);
+        	
+        	List<String> billingAcctRefIds = new ArrayList<String>();
+        	if(!CollectionUtils.isEmpty(collectionDisputeList)) {
+        		billingAcctRefIds = collectionDisputeList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
+        		
+        		for (CollectionDispute collectionDispute : collectionDisputeList) {
+        			DisputeModel disputeModel = new DisputeModel();
+        			disputeModel.setId(collectionDispute.getId());
+        			disputeModel.setBan(collectionDispute.getBillingAccountRef().getId());
+        			disputeModel.setBanName(collectionDispute.getBillingAccountRef().getName());
+        			disputeModel.setDisputeAmount(collectionDispute.getAmount());
+        			disputeModel.setCollectionExclusion(collectionDispute.isCollectionExclusionIndicator());
+        			disputeModel.setStatus(collectionDispute.getStatus());
+        			disputeModel.setCreatedBy(collectionDispute.getAuditInfo().getCreatedBy());
+        			disputeModel.setCreatedDateTime(Date.from(collectionDispute.getAuditInfo().getCreatedDateTime().toInstant()));
+        			disputeModel.setUpdatedBy(collectionDispute.getAuditInfo().getLastUpdatedBy());
+        			disputeModel.setUpdatedDateTime(Date.from(collectionDispute.getAuditInfo().getLastUpdatedDateTime().toInstant()));
+        			disputeModelList.add(disputeModel);
+				}
+        		
+        	}
+        	
+        	String billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+        	logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
+        	String fields = "id,billingAccount.id,billingAccount.name";
+        	String idInQuery = "in:"+billingAcctRefIdsInListAsString;
+        	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fields, null, null, null, null, idInQuery);
+        	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
+        		for (DisputeModel disputeModel : disputeModelList) {
+        			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(disputeModel.getBan()))).forEach(collectionBillingAccountRef -> {
+        				disputeModel.setBillingSystem(collectionBillingAccountRef.getBillingAccount().getName());
+        			});
+				}
+        		
+        		logger.info("disputeModelList---"+disputeModelList.toString());
+        	}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return disputeModelList;
         
-        return null;
     }
 
 }

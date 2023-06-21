@@ -66,9 +66,7 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/billingAccountRef", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionBillingAccountRef> getBillingAccountRef(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "entityId", required = false) Integer entityId, @RequestParam(value = "id", required = false) Integer id) throws Exception {
+    public List<CollectionBillingAccountRef> getBillingAccountRef(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "ban", required = false) String ban, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "id", required = false) String id) throws Exception {
         return collectionEntityService.getBillingAccountRef(fields, offset, limit, ban, entityId, id);
     }
 

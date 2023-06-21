@@ -4,7 +4,8 @@
 package com.fico.dmp.disputeservice.controller;
 
 import com.fico.dmp.disputeservice.DisputeService;
-import java.lang.String;
+import com.fico.telus.model.DisputeModel;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ public class DisputeController {
     @Autowired
     private DisputeService disputeService;
 
-    @RequestMapping(value = "/retrieveAllDisputes", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/allDisputes", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public String retrieveAllDisputes(@RequestParam(value = "name", required = false) String name) {
-        return disputeService.retrieveAllDisputes(name);
+    public List<DisputeModel> getAllDisputes() {
+        return disputeService.getAllDisputes();
     }
 }
