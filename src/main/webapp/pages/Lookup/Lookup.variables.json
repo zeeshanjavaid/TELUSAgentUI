@@ -93,7 +93,7 @@
     "saveInPhonegap" : false
   },
   "getCollectionEntityService" : {
-    "_id" : "wm-getCollectionEntityService1-wm.ServiceVariable-1682535235788",
+    "_id" : "wm-getCollectionEntityService1-wm.ServiceVariable-1687338311284",
     "name" : "getCollectionEntityService",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
@@ -101,8 +101,8 @@
     "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionEntity",
     "service" : "CollectionEntityService",
-    "operation" : "getCollectionEntity_1",
-    "operationId" : "CollectionEntityController_getCollectionEntity_1",
+    "operation" : "getCollectionEntity",
+    "operationId" : "CollectionEntityController_getCollectionEntity",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
