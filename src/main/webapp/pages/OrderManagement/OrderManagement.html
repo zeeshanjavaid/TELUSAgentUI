@@ -39,8 +39,8 @@
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
-                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -437,4 +437,98 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="assigned_closeActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + '?'" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11">
+            <wm-gridrow name="gridrow7" padding="1.2em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.2em unset">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2">
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="closeActionClick($event, widget)" name="closeAction"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1" on-click="button15Click($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Cancel Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="assigned_cancleActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + '?'" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11">
+            <wm-gridrow name="gridrow7" padding="1.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn10" padding="unset unset 0.2em unset">
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="black" fontweight="bold"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2">
+            <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
+                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="button14_2Click($event, widget)" name="button14_2"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button16_1" on-click="button16_1Click($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="notAssigned_closeActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Please go back and assign it to yourself, before closing." name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button15_1" on-click="button15_1Click($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Cancel Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="notAssigned_cancleActionDialog" width="40%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+
+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Please go back and assign it to yourself, before canceling." name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button17_1" on-click="button17_1Click($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+
 </wm-partial>
