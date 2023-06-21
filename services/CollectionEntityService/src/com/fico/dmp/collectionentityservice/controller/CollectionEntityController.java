@@ -72,11 +72,11 @@ public class CollectionEntityController {
         return collectionEntityService.getBillingAccountRef(fields, offset, limit, ban, entityId, id);
     }
 
-    @RequestMapping(value = "/billingAccountRef_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/billingAccountRefbyId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionBillingAccountRef getBillingAccountRef_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields) throws Exception {
-        return collectionEntityService.getBillingAccountRef(id, fields);
+    public CollectionBillingAccountRef getBillingAccountRefById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields) throws Exception {
+        return collectionEntityService.getBillingAccountRefById(id, fields);
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.GET)

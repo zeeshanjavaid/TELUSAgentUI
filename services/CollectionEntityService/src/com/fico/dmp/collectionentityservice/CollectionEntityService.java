@@ -137,17 +137,30 @@ public class CollectionEntityService {
 	
     //Billing Account Ref    
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @RequestMapping(value =  URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF, method = {RequestMethod.GET})
      public List<CollectionBillingAccountRef> getBillingAccountRef(String fields,Integer offset, Integer limit, String ban, Integer entityId, Integer id) throws Exception  {
-
+    	 if (isStubEnabled) {
         return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"C\",\"stateDate\":\"2022-12-12\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"ceaseReason\":null,\"closingCycle\":6,\"collectionStatus\":\"PRECOLL\",\"collectionStatusDate\":\"2022-12-12\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"lineOfBusiness\":\"WLN\",\"previousCollectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"suppressionReason\":null,\"suppressionValidFor\":null,\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"}]",
          objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionBillingAccountRef.class));
+    	 }
+    	 else {
+  			logger.info("::::::::Calling  getBillingAccountRef method ::::::::");
+
+         String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF, "GET", entitySvcAuthScope);
+         	logger.info("::::::::Billing Account Reference endpoint call success ::::::::");
+         	logger.info("Resoinse---"+ responseStr);
+         	List<CollectionBillingAccountRef> collectionBillingAccountRefList = objectMapper.readValue(responseStr,
+				objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionBillingAccountRef.class));
+							logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
+         return collectionBillingAccountRefList;
+ }
          
     }
     
     // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionBillingAccountRef getBillingAccountRef(@PathVariable("id") Integer id, String fields) throws Exception  {
+    public CollectionBillingAccountRef getBillingAccountRefById(@PathVariable("id") Integer id, String fields) throws Exception  {
 
        return objectMapper.readValue("{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccount\":{\"id\":\"12345\",\"accountGroupId\":1,\"accountType\":\"B\",\"accountSubType\":\"I\",\"name\":\"A Company\",\"state\":\"O\",\"stateDate\":\"2022-12-12\",\"@type\":\"BillingAccount\"},\"billingSystemId\":10,\"billingSystemName\":\"CES9\",\"closingCycle\":6,\"collectionStatus\":\"PRECOLL\",\"collectionStatusDate\":\"2022-12-12\",\"fraudIndicator\":false,\"involuntaryCeasedIndicator\":false,\"lineOfBusiness\":\"WLN\",\"writeOffIndicator\":false,\"@type\":\"CollectionBillingAccountRef\"}",CollectionBillingAccountRef.class);
     }    
