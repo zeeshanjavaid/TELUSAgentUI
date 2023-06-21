@@ -1459,8 +1459,12 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "type",
-      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND",
+      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND",
       "type" : "string"
+    }, {
+      "target" : "IsOdManagement",
+      "value" : false,
+      "type" : "boolean"
     } ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",

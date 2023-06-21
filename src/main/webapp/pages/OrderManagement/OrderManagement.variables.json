@@ -41,6 +41,29 @@
     "isDefault" : true,
     "controller" : "CollectionTreatment"
   },
+  "createOrderManagment" : {
+    "_id" : "wm-createOrderManagment-wm.ServiceVariable-1687261157732",
+    "name" : "createOrderManagment",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionTreatmentStep",
+    "service" : "CollectionTreatmentService",
+    "operation" : "addCollectionTreatmentStep",
+    "operationId" : "CollectionTreatmentController_addCollectionTreatmentStep",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
+  },
   "getAllActiveUserList" : {
     "_id" : "wm-getAllActiveUserList-wm.LiveVariable-1687258358389",
     "name" : "getAllActiveUserList",
@@ -1125,8 +1148,12 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "type",
-      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND",
+      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND",
       "type" : "string"
+    }, {
+      "target" : "IsOdManagement",
+      "value" : true,
+      "type" : "boolean"
     } ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",
@@ -1138,7 +1165,7 @@
     "isList" : true,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
