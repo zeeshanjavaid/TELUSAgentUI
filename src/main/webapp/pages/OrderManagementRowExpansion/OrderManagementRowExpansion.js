@@ -41,7 +41,9 @@ Partial.onReady = function() {
 
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
-        Partial.Widgets.BansLabelValue.caption = '';
+        Partial.Widgets.BanID1.caption = 'BAN #11';
+        Partial.Widgets.BanID2.caption = 'BAN #22';
+        Partial.Widgets.BanID3.caption = 'BAN #33' + ' ' + Partial.Widgets.BanID3.caption;
         Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.Comment.caption = row.comment;
         Partial.Widgets.Priority.caption = row.priority;
