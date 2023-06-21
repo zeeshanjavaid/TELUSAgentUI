@@ -203,7 +203,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="Open,Closed" datafield="All Fields" placeholder="" datavalue="bind:Variables.actionName.dataValue=='Call Outbound' || Variables.actionName.dataValue=='General Follow-up' ? 'Open' : 'Closed'"
+                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" dataset="Select,Open,Closed" datafield="All Fields" placeholder="" datavalue="bind:Variables.actionName.dataValue=='Call Outbound' || Variables.actionName.dataValue=='General Follow-up' ? 'Open' : 'Closed'"
                         on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
