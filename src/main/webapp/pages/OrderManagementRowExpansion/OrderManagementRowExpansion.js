@@ -41,14 +41,81 @@ Partial.onReady = function() {
 
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
-        Partial.Widgets.BanID1.caption = 'BAN #11';
-        Partial.Widgets.BanID2.caption = 'BAN #22';
-        Partial.Widgets.BanID3.caption = 'BAN #33' + ' ' + Partial.Widgets.BanID3.caption;
+        //Partial.Widgets.BanID1.caption = 'BAN #11';
+        //Partial.Widgets.BanID2.caption = 'BAN #22';
+        //Partial.Widgets.BanID3.caption = 'BAN #33' + ' ' + Partial.Widgets.BanID3.caption;
         Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.Comment.caption = row.comment;
         Partial.Widgets.Priority.caption = row.priority;
         Partial.Widgets.assignedTeam.caption = row.assignedTeam;
         Partial.Widgets.Status.caption = row.status;
         Partial.Widgets.ReasonCode.caption = row.reasonCode;
+
+        //var billingAccountIdRefs = row.billingAccountIdRefs;
+        var billingAccountIdRefs = [{
+                id: 23,
+                name: null,
+                baseType: null,
+                type: null
+            },
+            {
+                id: 46,
+                name: null,
+                baseType: null,
+                type: null
+            },
+            {
+                id: 38,
+                name: null,
+                baseType: null,
+                type: null
+            },
+            {
+                id: 51,
+                name: null,
+                baseType: null,
+                type: null
+            },
+            {
+                id: 29,
+                name: null,
+                baseType: null,
+                type: null
+            },
+            {
+                id: 34,
+                name: null,
+                baseType: null,
+                type: null
+            }, {
+                id: 37,
+                name: null,
+                baseType: null,
+                type: null
+            }
+        ];
+
+        populateBANIds(billingAccountIdRefs);
     }
+};
+
+
+function populateBANIds(items) {
+    debugger;
+    var bansLength = items.length;
+    var banId1 = items[0].id;
+    var banId2 = items[1].id;
+    var banId3 = items[2].id;
+
+    Partial.Widgets.BanID1.caption = banId1;
+    Partial.Widgets.BanID2.caption = banId2;
+    Partial.Widgets.BanID3.caption = banId3;
+
+    if (bansLength > 3) {
+        debugger;
+        document.getElementById("moreLabel").style.display = "initial";
+    }
+
+
+
 };
