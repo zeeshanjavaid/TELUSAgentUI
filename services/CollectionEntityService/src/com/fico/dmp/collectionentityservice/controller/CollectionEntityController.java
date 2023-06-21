@@ -86,25 +86,25 @@ public class CollectionEntityController {
         return collectionEntityService.getCollectionEntity(fields, offset, limit, ban, rcid, cbucid, entityId, agentId, workCategory, sortBy);
     }
 
-    @RequestMapping(value = "/collectionEntity_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/collectionEntityById", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionEntity getCollectionEntity_1(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getCollectionEntity(id, history);
+    public CollectionEntity getCollectionEntityById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionEntityService.getCollectionEntityById(id, history);
     }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionContact getContact(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields) throws Exception {
-        return collectionEntityService.getContact(id, fields);
+    public List<CollectionContact> getContact(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "entityId", required = false) Integer entityId) throws Exception {
+        return collectionEntityService.getContact(fields, offset, limit, entityId);
     }
 
-    @RequestMapping(value = "/contact_1", method = RequestMethod.GET)
+    @RequestMapping(value = "/contactById", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionContact> getContact_1(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "entityId", required = false) Integer entityId) throws Exception {
-        return collectionEntityService.getContact(fields, offset, limit, entityId);
+    public CollectionContact getContactById(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "fields", required = false) String fields) throws Exception {
+        return collectionEntityService.getContactById(id, fields);
     }
 
     @RequestMapping(value = "/paymentArrangementById", method = RequestMethod.GET)

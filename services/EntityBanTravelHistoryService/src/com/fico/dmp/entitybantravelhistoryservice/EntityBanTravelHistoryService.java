@@ -63,7 +63,7 @@ public class EntityBanTravelHistoryService {
      * @throws Exception 
      */
     public List<BanTravelHistoryModel> fetchEntityBanTravelHistory(Integer id) throws Exception {
-    	CollectionEntity collectionEntity =  collectionEntityService.getCollectionEntity(id, true);
+    	CollectionEntity collectionEntity = collectionEntityService.getCollectionEntityById(id, true);
     	List<CollectionEntityBillingAccountRefMap> collectionEntityBillingAccountRefList = collectionEntity.getBillingAccountRefMaps();
     	List<String> billingAcctRefIds = new ArrayList<String>();
     	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();

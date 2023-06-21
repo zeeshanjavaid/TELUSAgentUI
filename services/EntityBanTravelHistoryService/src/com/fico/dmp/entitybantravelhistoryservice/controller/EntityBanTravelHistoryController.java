@@ -25,6 +25,8 @@ public class EntityBanTravelHistoryController {
     private EntityBanTravelHistoryService entityBanTravelHistoryService;
 
     @RequestMapping(value = "/entityBanTravelHistory", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<BanTravelHistoryModel> fetchEntityBanTravelHistory(@RequestParam(value = "id", required = false) Integer id) throws Exception {
         return entityBanTravelHistoryService.fetchEntityBanTravelHistory(id);
     }
