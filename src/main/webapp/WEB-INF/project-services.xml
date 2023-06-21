@@ -9,6 +9,7 @@
     <import resource="classpath:CollectionEntityService.spring.xml"/>
     <import resource="classpath:CollectionTreatmentService.spring.xml"/>
     <import resource="classpath:CommonUtilityService.spring.xml"/>
+    <import resource="classpath:DisputeService.spring.xml"/>
     <import resource="classpath:DmpS3FileService.spring.xml"/>
     <import resource="classpath:DomainValueRelatedBS.spring.xml"/>
     <import resource="classpath:DuplicateCheckRelatedBS.spring.xml"/>
