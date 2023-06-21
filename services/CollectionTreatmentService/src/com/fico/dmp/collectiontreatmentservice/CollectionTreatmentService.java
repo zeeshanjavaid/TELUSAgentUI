@@ -149,7 +149,7 @@ public class CollectionTreatmentService {
                 
                             logger.info("Order management data");
 
-                                 collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND")).collect(Collectors.toList());
+                                 collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
 
 
             }
