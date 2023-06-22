@@ -13,7 +13,7 @@
                 <wm-label padding="unset 0.5em" caption="Contact ID" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="contactID" caption="" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="contactIDLabel" caption="bind:Variables.GetContactDetailsById.dataSet.id" color="grey" text-align="right"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Telus Contact*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -33,7 +33,7 @@
                 <wm-label padding="unset 0.5em" caption="Title" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="TITLESelect" id="TITLESelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                <wm-select name="TITLESelect" id="TITLESelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.GetContactDetailsById.dataSet.title"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="First Name*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -41,7 +41,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="firstName" id="firstName" placeholder=""></wm-text>
+                        <wm-text name="firstName" id="firstName" placeholder="" datavalue="bind:Variables.GetContactDetailsById.dataSet.firstName"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -51,7 +51,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="lastName" id="lastName" placeholder=""></wm-text>
+                        <wm-text name="lastName" id="lastName" placeholder="" datavalue="bind:Variables.GetContactDetailsById.dataSet.lastName"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -63,7 +63,7 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-text name="emailText" id="emailText" placeholder=""></wm-text>
+                        <wm-text name="emailText" id="emailText" placeholder="" datavalue="bind:Variables.GetContactDetailsById.dataSet.email"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -71,7 +71,7 @@
                 <wm-label padding="unset 0.5em" caption="Email for Notices*" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="EmailForNoticesSelect" id="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
+                <wm-select name="EmailForNoticesSelect" id="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.GetContactDetailsById.dataSet.notificationIndicator"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Cell Phone" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
@@ -80,7 +80,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="cellPhoneKeypress($event, widget)"></wm-text>
+                        <wm-text name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="cellPhoneKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.mobilePhoneNumber"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -93,7 +93,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="6" on-keypress="extKeypress($event, widget)"></wm-text>
+                        <wm-text name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="6" on-keypress="extKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumberExtension"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -104,7 +104,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)"></wm-text>
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -115,7 +115,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="faxKeypress($event, widget)"></wm-text>
+                        <wm-text name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="faxKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.faxNumber"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -127,7 +127,7 @@
             <wm-gridcolumn columnwidth="10" name="gridcolumn50">
                 <wm-composite name="composite10">
                     <wm-container class="col-md-9" name="container10">
-                        <wm-textarea style="resize: none;" name="comments" id="comments" width="45%" placeholder="" maxchars="256"></wm-textarea>
+                        <wm-textarea style="resize: none;" name="comments" id="comments" width="45%" placeholder="" maxchars="256" datavalue="bind:Variables.GetContactDetailsById.dataSet.comment"></wm-textarea>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -137,13 +137,13 @@
                 <wm-label padding="unset 0.5em" caption="Last Updated on" name="label8" color="grey" class="UpdateDigitalLabel" show="true"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="3/1/2023" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="label16" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.lastUpdatedDateTime" color="#000" text-align="right" required="false"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn53">
                 <wm-label padding="unset 0.5em" caption="Last Updated by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="Jane Smith" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="label16" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.lastUpdatedBy" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow6" margin="10px 0px 20px 20px">
@@ -151,13 +151,13 @@
                 <wm-label padding="unset 0.5em" caption="Created on" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="1/1/2023" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="label16" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.createdDateTime" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn53">
                 <wm-label padding="unset 0.5em" caption="Created by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="label16" caption="Li Lai" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="label16" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.createdBy" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
@@ -168,9 +168,7 @@
                 <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="updateContact($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="expireId" caption="Expire" type="button" margin="unset 0.5em" name="Expire" on-click="ExpireClick($event, widget)"></wm-button>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn27">
-
-            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
 </wm-partial>

@@ -52,19 +52,19 @@ App.rowDataValues = function(row) {
         Partial.Widgets.Expire.show = true;
     }
 
-    Partial.Widgets.contactID.caption = row.contactId;
-    Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+    // Partial.Widgets.contactID.caption = row.contactId;
+    //Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
     Partial.Widgets.dataSource.caption = row.sourceOfContact;
-    Partial.Widgets.TITLESelect.datavalue = row.title;
-    Partial.Widgets.firstName.datavalue = row.firstName;
-    Partial.Widgets.lastName.datavalue = row.lastName;
-    Partial.Widgets.emailText.datavalue = row.email;
-    Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
-    Partial.Widgets.cellPhone.datavalue = row.mobileNumber;
-    Partial.Widgets.ext.datavalue = '';
-    Partial.Widgets.workNo.datavalue = row.workNumber;
-    Partial.Widgets.fax.datavalue = '';
-    Partial.Widgets.comments.datavalue = '';
+    // Partial.Widgets.TITLESelect.datavalue = row.title;
+    //  Partial.Widgets.firstName.datavalue = row.firstName;
+    // Partial.Widgets.lastName.datavalue = row.lastName;
+    // Partial.Widgets.emailText.datavalue = row.email;
+    // Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
+    // Partial.Widgets.cellPhone.datavalue = row.mobileNumber;
+    //Partial.Widgets.ext.datavalue = '';
+    //  Partial.Widgets.workNo.datavalue = row.workNumber;
+    //  Partial.Widgets.fax.datavalue = '';
+    //  Partial.Widgets.comments.datavalue = '';
 
 }
 
@@ -108,7 +108,7 @@ Partial.updateContact = function($event, widget) {
         // API Call will come here
 
         Partial.Variables.updateDigitalContact.setInput({
-            "id": Partial.Widgets.contactID.caption,
+            "id": Partial.Widgets.contactIDLabel.caption,
             "CollectionContactUpdate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
@@ -164,6 +164,8 @@ function isNotANumber(value) {
 };
 Partial.ExpireClick = function($event, widget) {
     debugger;
+    var today = new Date();
+    alert(today);
     if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -182,7 +184,7 @@ Partial.ExpireClick = function($event, widget) {
         // API Call will come here
 
         Partial.Variables.updateDigitalContact.setInput({
-            "id": Partial.Widgets.contactID.caption,
+            "id": Partial.Widgets.contactIDLabel.caption,
             "CollectionContactUpdate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
@@ -194,7 +196,10 @@ Partial.ExpireClick = function($event, widget) {
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue
+                'faxNumber': Partial.Widgets.fax.datavalue,
+                'validFor': {
+                    'endDateTime': today
+                }
             }
         });
 

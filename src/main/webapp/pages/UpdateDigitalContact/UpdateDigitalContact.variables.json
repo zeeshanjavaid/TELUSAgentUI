@@ -1,4 +1,27 @@
 {
+  "GetContactDetailsById" : {
+    "_id" : "wm-GetContactDetailsById-wm.ServiceVariable-1687434408143",
+    "name" : "GetContactDetailsById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionContact",
+    "service" : "CollectionEntityService",
+    "operation" : "getContactById",
+    "operationId" : "CollectionEntityController_getContactById",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "updateDigitalContact" : {
     "_id" : "wm-updateDigitalContact-wm.ServiceVariable-1686915716182",
     "name" : "updateDigitalContact",

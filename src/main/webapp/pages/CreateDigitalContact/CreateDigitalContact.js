@@ -84,10 +84,10 @@ Partial.createContact = function($event, widget) {
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue
-                // 'collectionEntity': {
-                //     'id': '12345'
-                // }
+                'faxNumber': Partial.Widgets.fax.datavalue,
+                'channel': {
+                    'originatorAppId': Partial.Widgets.Datasource.caption
+                }
             }
         });
 
