@@ -65,9 +65,6 @@ Partial.closeCreateRestoralActionDialog = function() {
 Partial.closeCreateCeaseActionDialogClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-
-
-
     Partial.Widgets.CreateCeaseRequestdialog.close();
 };
 Partial.createbuttonClick = function($event, widget) {

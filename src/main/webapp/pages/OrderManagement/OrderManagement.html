@@ -147,6 +147,7 @@
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Restoral Request" iconclass="wi wi-file-text" name="CreateRestoralRequestdialog">
         <wm-layoutgrid name="layoutgrid4">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
             </wm-gridrow>
@@ -243,6 +244,7 @@
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Cease Request" iconclass="wi wi-file-text" name="CreateCeaseRequestdialog">
         <wm-layoutgrid name="layoutgrid4">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
             </wm-gridrow>
@@ -339,6 +341,7 @@
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditNotSentdialog">
         <wm-layoutgrid name="layoutgrid4">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
             </wm-gridrow>
@@ -451,6 +454,7 @@
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditAndFullfillSentdialog">
         <wm-layoutgrid name="layoutgrid4">
+            <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
             </wm-gridrow>
@@ -561,7 +565,6 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="assigned_closeActionDialog" width="40%">
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
