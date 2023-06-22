@@ -193,3 +193,13 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
 
 };
+Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
+    if (row.stepTypeCode == 'SUSPEND') {
+        Partial.Widgets.EditSuspensiondialog.open();
+    } else if (row.stepTypeCode == 'RESTORE') {
+        Partial.Widgets.EditRestoraldialog.open();
+    } else if (row.stepTypeCode == 'CEASE') {
+        Partial.Widgets.EditCeasedialog.open();
+    }
+
+};
