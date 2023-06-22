@@ -55,7 +55,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/entityContacts", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public EntityContactsResponse getEntityContacts(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+    public EntityContactsResponse getEntityContacts(@RequestParam(value = "entityId", required = false) Integer entityId) throws Exception {
         return collectionDataService.getEntityContacts(entityId);
     }
 

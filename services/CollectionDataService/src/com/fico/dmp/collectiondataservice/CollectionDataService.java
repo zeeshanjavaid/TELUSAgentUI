@@ -176,10 +176,25 @@ public class CollectionDataService {
     
 //entityContacts
     @RequestMapping(value = "/entityContacts", method = {RequestMethod.GET})
-    public EntityContactsResponse getEntityContacts(@RequestParam(required = true) String entityId) throws Exception  {
-
+    public EntityContactsResponse getEntityContacts(@RequestParam(required = true) Integer entityId) throws Exception  {
+    	Boolean entityContactStub = true;
+    	 if (entityContactStub) {
         return objectMapper.readValue("{\"mailingContacts\":[{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"unitNumber\":\"Unit Number\",\"streetNumber\":\"111\",\"streetNumberSuffix\":\"streetSuffix\",\"streetName\":\"Britannia Ave\",\"streetType\":\"streetType\",\"streetDirection\":\"stDirection\",\"city\":\"Oshawa\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"},{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"streetDirection\":\"stDirection\",\"poBox\":\"P O Box 123\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"}],\"digitalContacts\":[{\"contactId\":1,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John1\",\"lastName\":\"Doe1\",\"email\":\"john1.doe1@telus.com\",\"workNumber\":\"9059974001\",\"mobileNumber\":\"5149979001\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"511\"},{\"contactId\":2,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John2\",\"lastName\":\"Doe2\",\"email\":\"john2.doe2@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"311\"},{\"contactId\":3,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"FAWB\",\"contactForNotices\":true,\"telusContacts\":true,\"title\":\"Mr.\",\"firstName\":\"Kevin\",\"lastName\":\"Smith\",\"email\":\"Kevin.Smith@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"211\"}]}",EntityContactsResponse.class);
-    }
+    	 }
+    	 else{
+
+             logger.info("::::::::Calling  entityContacts endpoint call ::::::::");
+             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_CONTACTS)
+                     .queryParam("entityId", entityId);
+
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             logger.info("::::::::Entity data endpoint call success ::::::::");
+             logger.info("Resoinse---"+ responseStr);
+            return objectMapper.readValue(responseStr,EntityContactsResponse.class);
+
+         }
+    	 
+    	 }
 
     
     
