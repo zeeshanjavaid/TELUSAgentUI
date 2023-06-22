@@ -22,6 +22,7 @@ Page.onReady = function() {
      */
 
     debugger;
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.dataSet;
 
     Page.Variables.storeworkCategoryForMultiSelect;
 
