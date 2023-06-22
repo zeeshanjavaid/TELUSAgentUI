@@ -29,11 +29,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wordnik.swagger.annotations.ApiOperation;
-
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntitySearchResponseArray;
+import io.swagger.client.model.TeamsActionViewResponse;
 import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
 import io.swagger.client.model.AssignedEntitiesInClassicViewResponseArray;
 //import io.swagger.client.model.AssignedActionsResponseArray;
@@ -45,12 +46,14 @@ import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.CollectionDispute;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Date;
 
 import com.fico.core.util.ObjectMapperConfig;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URLEncoder;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 
@@ -220,5 +223,10 @@ public class CollectionDataService {
 
     }
     
+    
+    public List<TeamsActionViewResponse> getActionViewByTeam(String assignedAgent, String assignedTeam,String entityOwner, Date fromDueDate, Date toDueDate, String actionType, String status, String workCategory, String viewType, Integer offset, Integer limit) throws Exception {
+    	 return objectMapper.readValue("[{\"actionId\":6766677,\"entityId\":6766677,\"entityName\":\"Air Canada\",\"entityType\":\"RCID\",\"collectionStatus\":\"In-collection\",\"actionType\":\"Suspend\",\"actionDescription\":\"Suspension\",\"priority\":\"High\",\"dueDate\":\"2022-08-29\",\"status\":\"Open\",\"assignedTeam\":\"TIG\",\"assignedAgent\":\"John 123\",\"workCategory\":\"workCategory1\",\"totalAr\":400,\"totalOverDue\":390},{\"actionId\":6766678,\"entityId\":6766677,\"entityName\":\"Air Canada\",\"entityType\":\"RCID\",\"collectionStatus\":\"In-collection\",\"actionType\":\"Suspend\",\"actionDescription\":\"Suspension\",\"priority\":\"High\",\"dueDate\":\"2022-08-29\",\"status\":\"Open\",\"assignedTeam\":\"TIG\",\"assignedAgent\":\"John 123\",\"workCategory\":\"workCategory2\",\"totalAr\":500,\"totalOverDue\":490},{\"actionId\":6766679,\"entityId\":6766677,\"entityName\":\"Air Canada\",\"entityType\":\"RCID\",\"collectionStatus\":\"In-collection\",\"actionType\":\"Suspend\",\"actionDescription\":\"Suspension\",\"priority\":\"High\",\"dueDate\":\"2022-08-29\",\"status\":\"Open\",\"assignedTeam\":\"TIG\",\"assignedAgent\":\"John 123\",\"workCategory\":\"workCategory3\",\"totalAr\":600,\"totalOverDue\":690}]",
+    		        objectMapper.getTypeFactory().constructCollectionType(List.class, TeamsActionViewResponse.class));
+    }
 
 }
