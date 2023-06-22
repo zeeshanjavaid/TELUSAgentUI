@@ -342,7 +342,7 @@
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="<#ID>" name="label1" color="black"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editSusActionID" color="black"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
@@ -352,7 +352,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="70%" name="reasonCodeSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-select width="70%" name="reasonCodeSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="Non-payment, Insolvency/Bankruptcy, Fraud"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -362,7 +362,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="String" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -391,7 +391,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="Open, Closed"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -411,7 +411,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -424,7 +424,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -434,7 +434,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select"></wm-select>
+                    <wm-select width="70%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

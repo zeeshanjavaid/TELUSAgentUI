@@ -958,7 +958,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 3,
+    "bindCount" : 4,
     "tableName" : "USER",
     "tableType" : "TABLE",
     "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
@@ -1122,7 +1122,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 6,
+    "bindCount" : 7,
     "tableName" : "TEAM",
     "tableType" : "TABLE",
     "properties" : [ ],
