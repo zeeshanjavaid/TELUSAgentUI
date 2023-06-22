@@ -195,11 +195,14 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
     if (row.stepTypeCode == 'SUSPEND') {
-        Partial.Widgets.EditSuspensiondialog.open();
+        Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
+        Partial.Widgets.EditNotSentdialog.open();
     } else if (row.stepTypeCode == 'RESTORE') {
-        Partial.Widgets.EditRestoraldialog.open();
+        Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
+        Partial.Widgets.EditNotSentdialog.open();
     } else if (row.stepTypeCode == 'CEASE') {
-        Partial.Widgets.EditCeasedialog.open();
+        Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
+        Partial.Widgets.EditNotSentdialog.open();
     }
 
 };

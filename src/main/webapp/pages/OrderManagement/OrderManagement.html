@@ -41,8 +41,8 @@
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
-                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -337,7 +337,7 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Suspention Request" iconclass="wi wi-file-text" name="EditSuspensiondialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditNotSentdialog">
         <wm-layoutgrid name="layoutgrid4">
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
@@ -405,7 +405,6 @@
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
                     <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE"></wm-date>
-                    
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
@@ -443,14 +442,14 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-gridrow id="selectActionBtns" name="gridrow31">
+            <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
                 <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="createbutton"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Restoral Request" iconclass="wi wi-file-text" name="EditRestoraldialog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditAndFullfillSentdialog">
         <wm-layoutgrid name="layoutgrid4">
             <wm-gridrow name="gridrow5_1">
                 <h4 class="heading">Main Details</h4>
@@ -458,7 +457,7 @@
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8" padding="unset unset 0.5em unset">
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editRestActionID" color="black"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editSusActionID" color="black"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
@@ -478,7 +477,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.createOrderManagment.dataSet.comment" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -492,7 +491,7 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
-                <h4 class="heading">BANs to Restore</h4>
+                <h4 class="heading">BANs to Suspend</h4>
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12"></wm-gridcolumn>
@@ -540,7 +539,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" dataset="bind:Variables.getAllActiveUserList.dataSet"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -555,125 +554,14 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-gridrow id="selectActionBtns" name="gridrow31">
+            <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="createbutton"></wm-button>
+                <wm-button class="secondaryButton" caption="Update &amp; Do Not Fulfill" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
+                <wm-button class="primaryButton" caption="Update &amp; Fulfill" name="createbutton"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Cease Request" iconclass="wi wi-file-text" name="EditCeasedialog">
-        <wm-layoutgrid name="layoutgrid4">
-            <wm-gridrow name="gridrow5_1">
-                <h4 class="heading">Main Details</h4>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn8" padding="unset unset 0.5em unset">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editCeaseActionID" color="black"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow5">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Reason Code" name="label1" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow6" margin="0 0 1em 0">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="70%" name="reasonCodeSelect" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="Non-payment, Insolvency/Bankruptcy, Fraud"></wm-select>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow7">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.createOrderManagment.dataSet.comment" name="EditCeaseComment" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow7">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="AdDitional Comment" name="label3" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow8" margin="0 0 1em 0">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow10_1">
-                <h4 class="heading">BANs to Cease Suspention</h4>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow9">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn12"></wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow10_1">
-                <h4 class="heading">Status and Priority</h4>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow9">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="38%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="Open, Closed"></wm-select>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow19">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn20">
-                    <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE"></wm-date>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow11">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn14">
-                    <wm-label padding="unset 0.5em unset unset" caption="Priority*" name="label5" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow12">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue"></wm-select>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow17">
-                <h4 class="heading">Assignment</h4>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow13">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn16">
-                    <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow14">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"></wm-select>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow15">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn18">
-                    <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow16">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName"></wm-select>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
-        <wm-dialogactions name="dialogactions1" style="text-align: right;">
-            <wm-gridrow id="selectActionBtns" name="gridrow31">
-                <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="createbutton"></wm-button>
-            </wm-gridrow>
-        </wm-dialogactions>
-    </wm-dialog>
+
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Close Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="assigned_closeActionDialog" width="40%">
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
@@ -732,8 +620,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'"
-                        name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
