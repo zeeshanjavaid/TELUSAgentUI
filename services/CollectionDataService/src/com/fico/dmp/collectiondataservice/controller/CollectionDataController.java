@@ -48,8 +48,8 @@ public class CollectionDataController {
     @RequestMapping(value = "/entityBanDetails", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<EntityBanDetailsResponse> getEntityBanDetails(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
-        return collectionDataService.getEntityBanDetails(entityId);
+    public List<EntityBanDetailsResponse> getEntityBanDetails(@RequestParam(value = "entityId", required = false) Integer entityId, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionDataService.getEntityBanDetails(entityId, offset, limit);
     }
 
     @RequestMapping(value = "/entityContacts", method = RequestMethod.GET)

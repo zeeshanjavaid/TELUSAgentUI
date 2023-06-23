@@ -123,8 +123,8 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityId",
-      "value" : "bind:Variables.entityIdTextVar.dataSet.dataValue",
-      "type" : "string"
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "io.swagger.client.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",

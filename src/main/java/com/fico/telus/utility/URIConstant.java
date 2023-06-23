@@ -19,6 +19,7 @@ public class URIConstant {
         public static final String GET_CONTACT = "/contact";
         public static final String GET_BILLING_ACCOUNT_REF = "/billingAccountRef";
         public static final String ENTITY_CONTACTS = "/entityContacts";
+        public static final String ENTITY_BAN_DETAILS = "/entityBanDetails";
 
 
     }
