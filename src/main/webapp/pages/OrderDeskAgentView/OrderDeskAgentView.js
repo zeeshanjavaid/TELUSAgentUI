@@ -32,4 +32,21 @@ Page.clearFilterFields = function($event, widget) {
     Page.Widgets.StatusSelect.datavalue = "All";
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
-}
+};
+
+Page.applyFilter = function($event, widget) {
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+
+        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
+        'workCategory': Page.Widgets.WorkCategorySelect.datavalue,
+        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+        'status': Page.Widgets.StatusSelect.datavalue,
+        'fromDueDate': Page.Widgets.creationDate.datavalue,
+        'toDueDate': Page.Widgets.completionDate.datavalue,
+
+    });
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+};
