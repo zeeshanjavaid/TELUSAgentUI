@@ -71,10 +71,16 @@ Partial.createbuttonClick = function($event, widget) {
 
     debugger;
 
+    var isAssignedPerson = '';
+
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        isAssignedPerson = "Request Created";
+    } else {
+        isAssignedPerson = "Request Assigned";
+    }
+
     if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
-    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
@@ -86,7 +92,7 @@ Partial.createbuttonClick = function($event, widget) {
                 'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
-                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'status': isAssignedPerson,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -111,10 +117,17 @@ Partial.createbuttonClick = function($event, widget) {
 
 };
 Partial.createbuttonRestoralClick = function($event, widget) {
+
+
+    var isAssignedPerson = '';
+
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        isAssignedPerson = "Request Created";
+    } else {
+        isAssignedPerson = "Request Assigned";
+    }
     if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
-    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
@@ -126,7 +139,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
-                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'status': isAssignedPerson,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -152,10 +165,16 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 };
 Partial.createbuttonCeaseClick = function($event, widget) {
 
+    var isAssignedPerson = '';
+
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        isAssignedPerson = "Request Created";
+    } else {
+        isAssignedPerson = "Request Assigned";
+    }
+
     if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
-    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
@@ -167,7 +186,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
-                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'status': isAssignedPerson,
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -201,5 +220,11 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
         Partial.Widgets.EditNotSentdialog.open();
     }
+
+};
+Partial.updatebuttonClick = function($event, widget) {
+
+
+
 
 };
