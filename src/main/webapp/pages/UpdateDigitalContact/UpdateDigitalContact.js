@@ -102,7 +102,7 @@ Partial.updateContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if ((Partial.Widgets.ext.datavalue !== "") && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+    } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
     } else {
         // API Call will come here
@@ -165,7 +165,6 @@ function isNotANumber(value) {
 Partial.ExpireClick = function($event, widget) {
     debugger;
     var today = new Date();
-    alert(today);
     if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -178,7 +177,7 @@ Partial.ExpireClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if ((Partial.Widgets.ext.datavalue !== "") && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+    } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
     } else {
         // API Call will come here
