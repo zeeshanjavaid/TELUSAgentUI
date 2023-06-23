@@ -89,7 +89,7 @@ Partial.createbuttonClick = function($event, widget) {
         Partial.Variables.createOrderManagment.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "SUSPEND",
-                'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
+                'reasonCode': Partial.Widgets.susReasonCode.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': isAssignedPerson,
@@ -136,7 +136,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.createOrderManagment.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "RESTORE",
-                'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
+                'reasonCode': Partial.Widgets.restoralReasonCode.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': isAssignedPerson,
@@ -183,7 +183,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         Partial.Variables.createOrderManagment.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CEASE",
-                'reasonCode': Partial.Widgets.reasonCodeSelect.datavalue,
+                'reasonCode': Partial.Widgets.ceaseReasonCode.datavalue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': isAssignedPerson,
