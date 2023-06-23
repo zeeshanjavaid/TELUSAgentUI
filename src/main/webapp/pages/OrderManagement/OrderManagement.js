@@ -211,20 +211,39 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
     if (row.stepTypeCode == 'SUSPEND') {
-        Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
-        Partial.Widgets.EditNotSentdialog.open();
+        if (row.status == 'Request Assigned' || row.status == 'Request Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
+            Partial.Widgets.EditNotSentdialog.open();
+        } else if (status == 'Order Assigned' || status == ' Order Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Service Suspention ";
+            Partial.Widgets.EditAndFullfillSentdialog.open();
+        }
+
     } else if (row.stepTypeCode == 'RESTORE') {
-        Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
-        Partial.Widgets.EditNotSentdialog.open();
+        /*  Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
+           Partial.Widgets.EditNotSentdialog.open()*/
+
+        if (row.status == 'Request Assigned' || row.status == 'Request Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
+            Partial.Widgets.EditNotSentdialog.open();
+        } else if (status == 'Order Assigned' || status == ' Order Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Service Restoration ";
+            Partial.Widgets.EditAndFullfillSentdialog.open();
+        }
     } else if (row.stepTypeCode == 'CEASE') {
-        Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
-        Partial.Widgets.EditNotSentdialog.open();
+        /*Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
+        Partial.Widgets.EditNotSentdialog.open();*/
+        if (row.status == 'Request Assigned' || row.status == 'Request Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
+            Partial.Widgets.EditNotSentdialog.open();
+        } else if (status == 'Order Assigned' || status == ' Order Created') {
+            Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Cease ";
+            Partial.Widgets.EditAndFullfillSentdialog.open();
+        }
+
     }
-
 };
+
 Partial.updatebuttonClick = function($event, widget) {
-
-
-
 
 };
