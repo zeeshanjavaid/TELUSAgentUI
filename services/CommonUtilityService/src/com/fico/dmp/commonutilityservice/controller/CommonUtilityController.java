@@ -4,6 +4,8 @@
 package com.fico.dmp.commonutilityservice.controller;
 
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
+import com.fico.telus.model.AssignedUserModel;
+import java.util.List;
 import java.lang.Integer;
 import java.lang.String;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,16 @@ public class CommonUtilityController {
     @Autowired
     private CommonUtilityService commonUtilityService;
 
+    @RequestMapping(value = "/assignedPersonInactionManagement", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<AssignedUserModel> getAssignedPersonInActionManagement() {
+        return commonUtilityService.getAssignedPersonInActionManagement();
+    }
+
     @RequestMapping(value = "/loggedInUserTeamId", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String getLoggedInUserTeamId(@RequestParam(value = "userId", required = false) Integer userId) {
         return commonUtilityService.getLoggedInUserTeamId(userId);
     }

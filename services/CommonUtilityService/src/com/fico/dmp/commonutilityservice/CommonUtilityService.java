@@ -3,6 +3,9 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.commonutilityservice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -15,7 +18,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import com.fico.dmp.telusagentuidb.TeamUser;
+import com.fico.dmp.telusagentuidb.User;
 import com.fico.dmp.telusagentuidb.service.TeamUserService;
+import com.fico.dmp.telusagentuidb.service.UserService;
+import com.fico.telus.model.AssignedUserModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -42,6 +48,9 @@ public class CommonUtilityService {
     
     @Autowired
     private TeamUserService teamUserService;
+    
+    @Autowired
+    private UserService userService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -65,9 +74,32 @@ public class CommonUtilityService {
         	teamUser = teamUserPageList.getContent().get(0);
         	teamId = teamUser.getTeam().getTeamId();
         }
-        
+       
         logger.info("teamId-----"+teamId);
         return teamId;
     }
+    
+    public List<AssignedUserModel> getAssignedPersonInActionManagement(){
+    	Pageable pageable = PageRequest.of(0, 10000);
+        Page<User> userPageList = userService.findAll("active = true", pageable);
+        List<AssignedUserModel> assignedUserModelList = new ArrayList<AssignedUserModel>();
+        AssignedUserModel assignedUser = new AssignedUserModel();
+        assignedUser.setFirstName("NULL");
+        assignedUser.setLastName("NULL");
+        assignedUser.setEmpId("NULL");
+        assignedUserModelList.add(assignedUser);
+        if(userPageList.hasContent()) {
+        userPageList.stream().forEach( user -> {
+        	AssignedUserModel assignedUserModel = new AssignedUserModel();
+        	assignedUserModel.setFirstName(user.getFirstName());
+        	assignedUserModel.setLastName(user.getLastName());
+        	assignedUserModel.setEmpId(user.getEmplId());
+        	assignedUserModelList.add(assignedUserModel);
+        });
+        }
+    	return assignedUserModelList;
+    }
+    
+    
 
 }
