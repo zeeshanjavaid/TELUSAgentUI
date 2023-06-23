@@ -79,7 +79,7 @@ Partial.createbuttonClick = function($event, widget) {
         isAssignedPerson = "Request Assigned";
     }
 
-    if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
+    if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.WidgetssusReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -126,7 +126,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     } else {
         isAssignedPerson = "Request Assigned";
     }
-    if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
+    if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -173,7 +173,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         isAssignedPerson = "Request Assigned";
     }
 
-    if (Partial.Widgets.reasonCodeSelect.datavalue == "" || Partial.Widgets.reasonCodeSelect.datavalue == undefined) {
+    if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -244,6 +244,32 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
     }
 };
 
-Partial.updatebuttonClick = function($event, widget) {
+// Edit Suspention/Restore/Cease- Not Sent button 
+
+
+Partial.updateDONotSentbuttonClick = function($event, widget) {
+
+};
+Partial.editNotSentCancelbuttonClick = function($event, widget) {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Widgets.EditNotSentdialog.close();
+};
+Partial.updateandsendbuttonClick = function($event, widget) {
+
+};
+
+// Edit Suspention/Restore/Cease- Sent button 
+
+Partial.editSentcancelbuttonClick = function($event, widget) {
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Widgets.EditAndFullfillSentdialog.close();
+};
+Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
+
+};
+
+Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
 };

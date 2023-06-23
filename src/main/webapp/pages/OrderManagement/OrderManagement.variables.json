@@ -17,6 +17,38 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "actionStatus_NotSent" : {
+    "_id" : "wm-actionStatus-wm.Variable-1687526633959",
+    "name" : "actionStatus_NotSent",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "actionStatus_Sent" : {
+    "_id" : "wm-actionStatus_Sent-wm.Variable-1687526841216",
+    "name" : "actionStatus_Sent",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "CollectionDataServiceGetEntityBanDetails" : {
     "_id" : "wm-CollectionDataServiceGetEntityBanDetails-wm.ServiceVariable-1687433785128",
     "name" : "CollectionDataServiceGetEntityBanDetails",
@@ -1222,6 +1254,24 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
+  },
+  "reasonCodeOrdMngmtVar" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1687520756493",
+    "name" : "reasonCodeOrdMngmtVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Non-payment"
+    }, {
+      "dataValue" : "Insolvency/Bankruptcy,"
+    }, {
+      "dataValue" : "Fraud"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "UserLoggedInVar" : {
     "_id" : "wm-UserLoggedInVar-wm.Variable-1687260490050",
