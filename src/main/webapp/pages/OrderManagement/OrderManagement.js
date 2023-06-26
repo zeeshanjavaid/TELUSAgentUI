@@ -210,6 +210,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
+    debugger;
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             debugger;
@@ -218,9 +219,9 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode
             /*Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority;*/
             //   Partial.Widgets.editSusActionID.caption = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selectedItems[0].status;
-        } else if (status == 'Order Assigned' || status == ' Order Created') {
-            Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Service Suspention ";
-            Partial.Widgets.EditAndFullfillSentdialog.open();
+        } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
+            Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspention ";
+            Partial.Widgets.EditAndFulfillSentdialog.open();
         }
 
     } else if (row.stepTypeCode == 'RESTORE') {
@@ -260,11 +261,13 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
         updateStatus = "Request Assigned";
     } else {
-        updateStatus = Partial.Widgets.EditStatusLabel.caption;
+        updateStatus = Partial.Widgets.Status_NotSent.datavalue;
     }
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
-        'id': Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-        'partitionKey': '123',
+
+
+    Partial.Variables.UpdateODManagemntVar.setInput({
+        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': '20231-01-01',
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': 'SUSPEND',
             'status': updateStatus,
@@ -272,16 +275,17 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             'comment': Partial.Widgets.Comment.datavalue,
             'stepDate': Partial.Widgets.dueDate.datavalue,
             'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+            'channel': {},
         }
     });
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+    Partial.Variables.UpdateODManagemntVar.invoke();
 
     Partial.Widgets.EditNotSentdialog.close();
 
-    App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
+    App.Variables.successMessage.dataSet.dataValue = "Action ID (" + "" + ") edited successfully.";
     setTimeout(messageTimeout, 3000);
 
 };
@@ -291,7 +295,38 @@ Partial.editNotSentCancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditNotSentdialog.close();
 };
 Partial.updateandsendbuttonClick = function($event, widget) {
+    // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
+    // var updateStatus = '';
 
+    // if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+    //     updateStatus = "Request Assigned";
+    // } else {
+    //     updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+    // }
+
+
+    Partial.Variables.UpdateODManagemntVar.setInput({
+        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': '20231-01-01',
+        "CollectionTreatmentStepUpdate": {
+            'stepTypeCode': 'SUSPEND',
+            'status': 'Order Created',
+            'priority': Partial.Widgets.prioritySelect.datavalue,
+            'comment': Partial.Widgets.Comment.datavalue,
+            'stepDate': Partial.Widgets.dueDate.datavalue,
+            'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+            'channel': {},
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateODManagemntVar.invoke();
+
+    Partial.Widgets.EditNotSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = "Action ID (" + "" + ") edited successfully.";
+    setTimeout(messageTimeout, 3000);
 };
 
 // Edit Suspention/Restore/Cease- Sent button 
@@ -303,8 +338,13 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
+
 };
 
 Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
 };
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+}
