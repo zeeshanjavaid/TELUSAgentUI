@@ -37,13 +37,13 @@ input#workCategorySelectValues {
 
 @media only screen and (min-width: 1780px) and (max-width: 1930px) {
     input.form-control.app-textbox.app-dateinput.display-input {
-        width: 54% !important;
+        width: 67% !important;
     }
 }
 
 @media only screen and (min-width: 1270px) and (max-width: 1500px) {
     input.form-control.app-textbox.app-dateinput.display-input {
-        width: 30% !important;
+        width: 38% !important;
     }
     
     .assignedTeamGrid {
