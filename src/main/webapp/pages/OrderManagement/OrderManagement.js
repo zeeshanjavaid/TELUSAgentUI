@@ -79,9 +79,9 @@ Partial.createbuttonClick = function($event, widget) {
         isAssignedPerson = "Request Assigned";
     }
 
-    if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.WidgetssusReasonCode.datavalue == undefined) {
+    if (Partial.Widgets.susReasonCode.datavalue.dataValue == "" || Partial.Widgets.susReasonCode.datavalue.dataValue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
-    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+    } else if (Partial.Widgets.prioritySelect.datavalue.dataValue == "" || Partial.Widgets.prioritySelect.datavalue.dataValue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
@@ -89,11 +89,11 @@ Partial.createbuttonClick = function($event, widget) {
         Partial.Variables.createOrderManagment.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "SUSPEND",
-                'reasonCode': Partial.Widgets.susReasonCode.datavalue,
+                'reasonCode': Partial.Widgets.susReasonCode.datavalue.dataValue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': isAssignedPerson,
-                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue.dataValue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'collectionTreatment': {
@@ -126,7 +126,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     } else {
         isAssignedPerson = "Request Assigned";
     }
-    if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
+    if (Partial.Widgets.restoralReasonCode.datavalue.dataValue == "" || Partial.Widgets.restoralReasonCode.datavalue.dataValue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -136,7 +136,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.createOrderManagment.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "RESTORE",
-                'reasonCode': Partial.Widgets.restoralReasonCode.datavalue,
+                'reasonCode': Partial.Widgets.susReasonCode.datavalue.dataValue,
                 'stepDate': Partial.Widgets.dueDate.datavalue,
                 'comment': Partial.Widgets.Comment.datavalue,
                 'status': isAssignedPerson,
@@ -252,6 +252,37 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
 Partial.updateDONotSentbuttonClick = function($event, widget) {
     debugger;
+
+    // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
+    var updateStatus = '';
+
+    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        updateStatus = "Request Assigned";
+    } else {
+        updateStatus = Partial.Widgets.EditStatusLabel.caption;
+    }
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        'id': Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': '123',
+        "CollectionTreatmentStepUpdate": {
+            'stepTypeCode': 'SUSPEND',
+            'status': updateStatus,
+            'priority': Partial.Widgets.prioritySelect.datavalue,
+            'comment': Partial.Widgets.Comment.datavalue,
+            'stepDate': Partial.Widgets.dueDate.datavalue,
+            'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+
+    Partial.Widgets.EditNotSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
+    setTimeout(messageTimeout, 3000);
+
 };
 Partial.editNotSentCancelbuttonClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
