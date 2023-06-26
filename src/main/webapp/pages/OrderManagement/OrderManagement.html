@@ -463,7 +463,7 @@
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
                     <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                        datavalue="bind:Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;"></wm-select>
+                        datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -473,7 +473,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataset.assignedTeam"></wm-select>
+                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -586,7 +586,7 @@
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
                     <wm-select width="45%" name="assignedPersonSelect" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar.dataSet[$i].dataValue"></wm-select>
+                        datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -596,7 +596,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataSet.value"></wm-select>
+                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

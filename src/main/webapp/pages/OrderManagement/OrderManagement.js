@@ -215,7 +215,8 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
             Partial.Widgets.EditNotSentdialog.open();
-            Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority;
+            Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode
+            /*Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority;*/
             //   Partial.Widgets.editSusActionID.caption = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selectedItems[0].status;
         } else if (status == 'Order Assigned' || status == ' Order Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Service Suspention ";
