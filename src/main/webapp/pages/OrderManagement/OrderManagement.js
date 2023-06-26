@@ -445,3 +445,8 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
 }
+Partial.getCollectionTreatmentStep_orderMngt_customRow2Action = function($event, row) {
+
+
+
+};

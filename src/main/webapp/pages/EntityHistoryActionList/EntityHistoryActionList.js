@@ -970,7 +970,7 @@ Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
-    if (row.assignedAgentId == '') {
+    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
         Partial.Widgets.notAssigned_closeActionDialog.open();
     } else if (row.stepTypeCode == 'CALL-OB') {
         Partial.Widgets.CloseActionDialog.open();
@@ -1035,7 +1035,7 @@ Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row
 
     debugger;
 
-    if (row.assignedAgentId == '') {
+    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
         Partial.Widgets.notAssigned_cancleActionDialog.open();
 
     } else {
