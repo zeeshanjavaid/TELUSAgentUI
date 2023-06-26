@@ -188,7 +188,7 @@ public class CollectionEntityService {
         }else {
          			logger.info("::::::::Calling  entity endpoint call ::::::::");
 
-                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "?id=" + entityId, "GET", entitySvcAuthScope);
+                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "?id" + "in:"+entityId, "GET", entitySvcAuthScope);
                 	logger.info("::::::::Entity endpoint call success ::::::::");
                 	logger.info("Resoinse---"+ responseStr);
                 List<CollectionEntity> collectionEntityList = objectMapper.readValue(responseStr,

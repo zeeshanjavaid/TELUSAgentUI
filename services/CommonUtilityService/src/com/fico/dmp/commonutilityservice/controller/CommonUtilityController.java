@@ -8,6 +8,7 @@ import com.fico.telus.model.AssignedUserModel;
 import java.util.List;
 import java.lang.Integer;
 import java.lang.String;
+import com.fico.telus.model.AssignedTeamModel;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class CommonUtilityController {
     @ApiOperation(value = "")
     public String getLoggedInUserTeamId(@RequestParam(value = "userId", required = false) Integer userId) {
         return commonUtilityService.getLoggedInUserTeamId(userId);
+    }
+
+    @RequestMapping(value = "/teamListInActionManagement", method = RequestMethod.GET)
+    public List<AssignedTeamModel> getTeamListInActionManagement() {
+        return commonUtilityService.getTeamListInActionManagement();
     }
 }

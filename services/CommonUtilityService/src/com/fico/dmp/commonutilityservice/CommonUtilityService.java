@@ -17,10 +17,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import com.fico.dmp.telusagentuidb.Team;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.User;
+import com.fico.dmp.telusagentuidb.service.TeamService;
 import com.fico.dmp.telusagentuidb.service.TeamUserService;
 import com.fico.dmp.telusagentuidb.service.UserService;
+import com.fico.telus.model.AssignedTeamModel;
 import com.fico.telus.model.AssignedUserModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
@@ -51,6 +54,9 @@ public class CommonUtilityService {
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private TeamService	teamService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -99,6 +105,28 @@ public class CommonUtilityService {
         }
     	return assignedUserModelList;
     }
+    
+    
+    public List<AssignedTeamModel> getTeamListInActionManagement(){
+    	Pageable pageable = PageRequest.of(0, 10000);
+    	String query = null;
+        Page<Team> teamPageList = teamService.findAll(query, pageable);
+        List<AssignedTeamModel> assignedTeamModelList = new ArrayList<AssignedTeamModel>();
+        AssignedTeamModel assignedTeam = new AssignedTeamModel();
+        assignedTeam.setTeamId("NULL");
+        assignedTeam.setTeamName("NULL");
+        assignedTeamModelList.add(assignedTeam);
+        if(teamPageList.hasContent()) {
+        	teamPageList.stream().forEach( team -> {
+        		AssignedTeamModel assignedTeamModel = new AssignedTeamModel();
+        		assignedTeamModel.setTeamId(team.getTeamId());
+        		assignedTeamModel.setTeamName(team.getTeamName());
+        		assignedTeamModelList.add(assignedTeamModel);
+        });
+        }
+    	return assignedTeamModelList;
+    }
+    
     
     
 
