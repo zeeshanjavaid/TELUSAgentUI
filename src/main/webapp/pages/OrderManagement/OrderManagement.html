@@ -69,7 +69,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container2">
-                            <wm-select name="susReasonCode" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode" placeholder="Select"></wm-select>
+                            <wm-select name="susReasonCode" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" datafield="All Fields" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode" placeholder="Select"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -114,7 +114,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="38%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -162,7 +162,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="restoralReasonCode" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
+                    <wm-select width="45%" name="restoralReasonCode" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -220,7 +220,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -268,7 +268,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="ceaseReasonCode" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
+                    <wm-select width="45%" name="ceaseReasonCode" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -326,7 +326,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -370,7 +370,7 @@
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8" padding="unset unset 0.5em unset">
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editSusActionID" color="black"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id" name="editSusActionID" color="black"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
@@ -380,7 +380,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="editReasonCode" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
+                    <wm-select width="45%" name="editReasonCode" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -428,7 +428,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="28%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_NotSent.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status"></wm-select>
+                    <wm-select width="28%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" dataset="bind:Variables.actionStatus_NotSent.dataSet"
+                        displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -448,7 +449,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -462,7 +463,7 @@
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
                     <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar.dataSet[$i].dataValue"></wm-select>
+                        datavalue="bind:Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -472,7 +473,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataSet.value"></wm-select>
+                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamName" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataset.assignedTeam"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -493,7 +494,7 @@
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8" padding="unset unset 0.5em unset">
                     <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID:" name="label1" color="gray"></wm-label>
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].id" name="editSusActionID" color="black"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id" name="editSusActionID" color="black"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
@@ -503,7 +504,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="editReasonCode_Sent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
+                    <wm-select width="45%" name="editReasonCode_Sent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -551,7 +552,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="28%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status"></wm-select>
+                    <wm-select width="28%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -571,7 +572,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">

@@ -212,8 +212,11 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
+            debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
             Partial.Widgets.EditNotSentdialog.open();
+            Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority;
+            //   Partial.Widgets.editSusActionID.caption = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selectedItems[0].status;
         } else if (status == 'Order Assigned' || status == ' Order Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit and Fulfill Service Suspention ";
             Partial.Widgets.EditAndFullfillSentdialog.open();
@@ -248,7 +251,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
 
 Partial.updateDONotSentbuttonClick = function($event, widget) {
-
+    debugger;
 };
 Partial.editNotSentCancelbuttonClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
