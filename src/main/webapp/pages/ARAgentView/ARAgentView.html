@@ -42,9 +42,7 @@
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-composite name="composite11" width="100%">
-                        <wm-container class="col-md-12 mutli-select" key="ARAgentView.workCategory" name="text-container" width="100%" on-click="clickWK($event, widget)"><input type="text" id="workCategorySelectValues" placeholder="Select" autocomplete="off"></wm-container>
-                    </wm-composite>
+                    <wm-select name="WorkCategorySelect" width="85%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_ARAgentView.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -72,7 +70,6 @@
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
                     <wm-date name="completionDate" id="creationDate" placeholder=""></wm-date>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="22.5%">
                     <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFields()" name="button1" margin="0 10px 0 0"></wm-button>
                     <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFilter($event, widget)" name="button3"></wm-button>

@@ -35,6 +35,7 @@ Page.clearFilterFields = function($event, widget) {
 };
 
 Page.applyFilter = function($event, widget) {
+
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
 
         'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
