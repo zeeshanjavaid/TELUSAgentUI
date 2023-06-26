@@ -14,8 +14,10 @@
 Partial.QueueChildren = [];
 //Partial.UserAssignedMenus = [];
 Partial.isUserAutoProvisionEnabled = false;
+Partial.Variables.getWorkCategoriesByCode.dataSet;
 
 Partial.onReady = function() {
+    debugger;
 
     //Partial.Variables.getWorkCategoriesByCode.dataSet;
 

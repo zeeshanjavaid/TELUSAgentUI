@@ -88,7 +88,21 @@ Page.dashboardMenuItemClick = function($event, widget, item, currentItemWidgets)
     }
 };
 
+
 function loadDashboardMenus() {
+
+    debugger;
+
+    //  Page.Variables.storeworkCategoryForMultiSelect = Page.Variables.getWorkCategoriesByCode.dataSet;
+
+    //  Page.workCategoryData = [];
+    Page.Variables.getWorkCategoriesByCode.dataSet.forEach(function(item) {
+        App.Variables.storeworkCategoryForMultiSelect.push({
+            id: item.code.replace(/\s/g, ''),
+            title: item.code
+        });
+    });
+
     /*    const intervalId = setInterval(function() {
             if (App.permissionsLoaded) {
                 clearInterval(intervalId);

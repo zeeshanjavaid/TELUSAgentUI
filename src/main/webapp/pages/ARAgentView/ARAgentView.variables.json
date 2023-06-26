@@ -1044,6 +1044,33 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
   },
+  "getWorkCategoriesByCodeForARagent" : {
+    "_id" : "wm-getWorkCategoriesByCodeForARagent-wm.ServiceVariable-1687503569694",
+    "name" : "getWorkCategoriesByCodeForARagent",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "domainValueTypeCode",
+      "value" : "WORKCATEGORY",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.QueryGetAllDomainValuesByDvTypeCodeResponse",
+    "service" : "DomainValueRelatedBS",
+    "operation" : "getAllDomainValuesByTypeCode",
+    "operationId" : "DomainValueRelatedBSController_getAllDomainValuesByTypeCode",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "DomainValueRelatedBS"
+  },
   "statusSelect_ARAgentView" : {
     "_id" : "wm-statusSelect_ARAgentView-wm.Variable-1686908629767",
     "name" : "statusSelect_ARAgentView",

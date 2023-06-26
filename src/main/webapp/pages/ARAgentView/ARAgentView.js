@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+
 Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
@@ -24,13 +25,13 @@ Page.onReady = function() {
     debugger;
     Page.Variables.CollectionDataServiceGetActionViewByTeam.dataSet;
 
-    Page.Variables.storeworkCategoryForMultiSelect;
+    App.Variables.storeworkCategoryForMultiSelect;
 
-    Page.Variables.getWorkCategoriesByCode.dataSet;
+    // Page.Variables.getWorkCategoriesByCodeForARagent.invoke();
 
 
     Page.workCategoryData = [];
-    Page.Variables.getWorkCategoriesByCode.dataSet.forEach(function(item) {
+    Page.Variables.getWorkCategoriesByCodeForARagent.dataSet.forEach(function(item) {
         Page.workCategoryData.push({
             id: item.code.replace(/\s/g, ''),
             title: item.code
@@ -40,7 +41,7 @@ Page.onReady = function() {
 
     setTimeout(function() {
         subComboBox = $('#workCategorySelectValues').comboTree({
-            source: Page.workCategoryData,
+            source: App.Variables.storeworkCategoryForMultiSelect,
             isMultiple: true,
             cascadeSelect: true,
             collapse: true

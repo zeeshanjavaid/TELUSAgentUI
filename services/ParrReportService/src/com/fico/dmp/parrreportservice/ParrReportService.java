@@ -104,7 +104,13 @@ public class ParrReportService {
                 }else{
                     parrReports.setExpiry(cpa.getInstallments().get(cpa.getInstallments().size()-1).getDate().toString());
                 }
-               parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate()/cpa.getExpectedPaymentAmountToDate()*100+"%");
+              if(cpa.getReceivedPaymentAmountToDate()==null ||cpa.getExpectedPaymentAmountToDate()==null )
+                {
+                    parrReports.setPerOfAmtRecieved_Exp("0");
+
+                }else {
+                    parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate() / cpa.getExpectedPaymentAmountToDate() * 100 + "%");
+                }      
                 parrReports.setCreatedBy(cpa.getAuditInfo().getCreatedBy());
               //  parrReports.setCreatedTeam(cpa.getAuditInfo().getT);
 
