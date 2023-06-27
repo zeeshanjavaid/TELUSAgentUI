@@ -71,6 +71,7 @@ Partial.createbuttonClick = function($event, widget) {
 
     debugger;
 
+
     var isAssignedPerson = '';
 
     if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
@@ -107,12 +108,15 @@ Partial.createbuttonClick = function($event, widget) {
         });
         Partial.Variables.createOrderManagment.invoke();
 
-        App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
         Partial.Widgets.CreateSuspensionRequestdialog.close();
+        App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
+
+        setTimeout(messageTimeout, 4000);
+
 
     }
 
-    Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
 };
@@ -126,6 +130,21 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     } else {
         isAssignedPerson = "Request Assigned";
     }
+
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
+
     if (Partial.Widgets.restoralReasonCode.datavalue.dataValue == "" || Partial.Widgets.restoralReasonCode.datavalue.dataValue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
@@ -150,16 +169,19 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                     'channelOrgId': "string",
                     'userId': Partial.Variables.loggedInUser.dataSet.id
                 },
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
         Partial.Variables.createOrderManagment.invoke();
 
-        App.Variables.successMessage.dataSet.dataValue = "Action Restore successfully.";
         Partial.Widgets.CreateRestoralRequestdialog.close();
+        App.Variables.successMessage.dataSet.dataValue = "Action Restore successfully.";
+
+        setTimeout(messageTimeout, 4000);
 
     }
 
-    Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
 };
@@ -172,6 +194,21 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     } else {
         isAssignedPerson = "Request Assigned";
     }
+
+
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
 
     if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
@@ -197,15 +234,19 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                     'channelOrgId': "string",
                     'userId': Partial.Variables.loggedInUser.dataSet.id
                 },
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
         Partial.Variables.createOrderManagment.invoke();
-        App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
         Partial.Widgets.CreateCeaseRequestdialog.close();
+        App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
+
+        setTimeout(messageTimeout, 4000);
+
 
     }
 
-    Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
 };
@@ -259,6 +300,21 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
     var updateStatus = '';
 
+
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
+
     if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
         updateStatus = "Request Assigned";
     } else {
@@ -280,6 +336,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'channel': {},
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             }
         });
 
@@ -310,6 +367,20 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         stepTypeCode = "CEASE";
     }
 
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
+
     if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
@@ -325,6 +396,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'channel': {},
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             }
         });
 
@@ -356,6 +428,20 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         stepTypeCode = "CEASE";
     }
 
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
+
 
 
     var updateStatus = '';
@@ -381,6 +467,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'channel': {},
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             }
         });
 
@@ -405,6 +492,19 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         stepTypeCode = "CEASE";
     }
 
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
 
     if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -421,6 +521,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'channel': {},
+                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             }
         });
 

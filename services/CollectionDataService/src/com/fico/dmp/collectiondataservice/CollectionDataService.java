@@ -210,7 +210,7 @@ public class CollectionDataService {
                      .queryParam("entityId", entityId);
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity Ban details endpoint call success ::::::::");
-             logger.info("Response payload---"+ responseStr);
+             logger.info("Response payload for Ban Details---"+ responseStr);
              List<EntityBanDetailsResponse> entityBanDetailsResponseList = objectMapper.readValue(responseStr,
      				objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
              return entityBanDetailsResponseList;

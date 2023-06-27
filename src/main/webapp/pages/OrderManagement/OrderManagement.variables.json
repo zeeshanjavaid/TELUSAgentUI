@@ -49,6 +49,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "BanListRefIds" : {
+    "_id" : "wm-BanListRefIds-wm.Variable-1687857028465",
+    "name" : "BanListRefIds",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "CollectionDataServiceGetEntityBanDetails" : {
     "_id" : "wm-CollectionDataServiceGetEntityBanDetails-wm.ServiceVariable-1687433785128",
     "name" : "CollectionDataServiceGetEntityBanDetails",
@@ -1226,7 +1240,7 @@
     "isList" : true,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

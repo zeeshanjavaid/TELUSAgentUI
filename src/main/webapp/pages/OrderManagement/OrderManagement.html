@@ -145,7 +145,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateSuspensionActionDialog($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbutton" on-click="createbuttonClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbutton" on-click="createbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -251,7 +251,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateRestoralActionDialog($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -357,7 +357,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateCeaseActionDialogClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -390,7 +390,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].comment" name="label1" color="#000"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.comment" name="label1" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -480,8 +480,8 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="editNotSentCancelbutton" on-click="editNotSentCancelbuttonClick($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="updateDONotSentbutton" on-click="updateDONotSentbuttonClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="updateandsendbutton" on-click="updateandsendbuttonClick($event, widget)"></wm-button>
+                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="updateDONotSentbutton" on-click="updateDONotSentbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="updateandsendbutton" on-click="updateandsendbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -514,7 +514,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].comment" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.comment" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -603,8 +603,8 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="editSentcancelbutton" on-click="editSentcancelbuttonClick($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Fulfill" name="updateAndDoNotFulfillbutton" on-click="updateAndDoNotFulfillbuttonClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" caption="Update &amp; Fulfill" name="updateAndFulfilbutton" on-click="updateAndFulfilbuttonClick($event, widget)"></wm-button>
+                <wm-button class="secondaryButton" caption="Update &amp; Do Not Fulfill" name="updateAndDoNotFulfillbutton" on-click="updateAndDoNotFulfillbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="primaryButton" caption="Update &amp; Fulfill" name="updateAndFulfilbutton" on-click="updateAndFulfilbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
