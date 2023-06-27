@@ -53,3 +53,15 @@ Page.banViewButtonClick = function($event, widget) {
     $('#entityViewTableGrid').hide();
 
 };
+
+// function added to clear all the fields in the filter
+Page.clearFilterFields = function($event, widget) {
+    Page.Widgets.AssignedTeamSelect.datavalue = "";
+    Page.Widgets.portfolioSelect.datavalue = "";
+    Page.Widgets.includeCurrentCreditSelect.datavalue = "";
+    Page.Widgets.entityOwnerSelect.datavalue = "";
+    Page.Widgets.billingSystemSelect.datavalue = "";
+    Page.Widgets.ARExcludedInternalSelect.datavalue = "";
+    Page.Widgets.workCategorySelect.datavalue = "";
+    Page.Widgets.collStatusSelect.datavalue = "";
+}
