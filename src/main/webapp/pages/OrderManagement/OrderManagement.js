@@ -138,7 +138,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -203,7 +203,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -308,7 +308,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -374,7 +374,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -435,7 +435,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -499,7 +499,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banId,
+            "id": d.banMapRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
