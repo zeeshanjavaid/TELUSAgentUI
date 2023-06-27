@@ -35,8 +35,8 @@
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDeskView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDeskView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder="All"
+                        displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
@@ -82,7 +82,9 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic">
                         <wm-table-column binding="actionId" caption="Action ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT. ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="ENT. ID" edit-widget-type="number" type="integer" show="true" readonly="false">
+                            <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
+                        </wm-table-column>
                         <wm-table-column binding="entityName" caption="ENT. Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="collectionStatus" caption="Coll Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

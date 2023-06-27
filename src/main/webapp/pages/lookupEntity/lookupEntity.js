@@ -239,13 +239,6 @@ Page.goToEnityPage = function(row) {
         window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
     }
 
-
-
-
-
-
-
-
 }
 
 function resetVals() {

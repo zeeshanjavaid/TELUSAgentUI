@@ -51,3 +51,7 @@ Page.applyFilter = function($event, widget) {
 
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 };
+
+Page.goToEnityPage = function(row) {
+    window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
+}

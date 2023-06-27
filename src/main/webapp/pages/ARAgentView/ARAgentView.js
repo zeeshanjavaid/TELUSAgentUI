@@ -22,92 +22,8 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
-    debugger;
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.dataSet;
-
-    App.Variables.storeworkCategoryForMultiSelect;
-
-    // Page.Variables.getWorkCategoriesByCodeForARagent.invoke();
-
-
-    Page.workCategoryData = [];
-    Page.Variables.getWorkCategoriesByCodeForARagent.dataSet.forEach(function(item) {
-        Page.workCategoryData.push({
-            id: item.code.replace(/\s/g, ''),
-            title: item.code
-        });
-    });
-
-
-    setTimeout(function() {
-        subComboBox = $('#workCategorySelectValues').comboTree({
-            source: App.Variables.storeworkCategoryForMultiSelect,
-            isMultiple: true,
-            cascadeSelect: true,
-            collapse: true
-        });
-
-
-    }, 50);
-
-
-
-
 };
 
-// Page.clickWK = function($event, widget) {
-//     debugger;
-//     Page.Variables.workCategorySelect_ARAgentView.dataSet;
-//     workCategorySelectValues;
-
-//     Page.workCategoryData = [];
-//     Page.Variables.workCategorySelect_ARAgentView.dataSet.forEach(function(item) {
-//         Page.workCategoryData.push({
-//             id: item.code.replace(/\s/g, ''),
-//             title: item.code
-//         });
-//     });
-
-
-//     setTimeout(function() {
-//         subComboBox = $('#workCategorySelectValues').comboTree({
-//             source: Page.workCategoryData,
-//             isMultiple: true,
-//             cascadeSelect: true,
-//             collapse: true
-//         });
-
-
-//     }, 50);
-
-// };
-
-/*
-function clickWKK() {
-    debugger;
-    Page.Variables.workCategorySelect_ARAgentView.dataSet;
-
-
-    Page.workCategoryData = [];
-    Page.Variables.workCategorySelect_ARAgentView.dataSet.forEach(function(item) {
-        Page.workCategoryData.push({
-            id: item.code.replace(/\s/g, ''),
-            title: item.code
-        });
-    });
-
-
-    //setTimeout(function() {
-    subComboBox = $('#workCategorySelectValues').comboTree({
-        source: Page.workCategoryData,
-        isMultiple: true,
-        cascadeSelect: true,
-        collapse: true
-    });
-
-
-    //}, 50);
-};*/
 
 // function added to clear all the fields in the filter grid
 Page.clearFilterFields = function($event, widget) {
@@ -137,3 +53,7 @@ Page.applyFilter = function($event, widget) {
 
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 };
+
+Page.goToEnityPage = function(row) {
+    window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
+}

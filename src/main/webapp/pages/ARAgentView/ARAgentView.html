@@ -81,7 +81,9 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic">
                         <wm-table-column binding="actionId" caption="Action ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT. ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="ENT. ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
+                            <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
+                        </wm-table-column>
                         <wm-table-column binding="entityName" caption="ENT. Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="collectionStatus" caption="Coll Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
