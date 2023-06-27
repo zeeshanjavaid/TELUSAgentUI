@@ -6,3 +6,7 @@
 .filterCriteriaGrid {
     margin: 15px 0 0 46px;
 }
+
+.filterButtons {
+    text-align: right;
+}

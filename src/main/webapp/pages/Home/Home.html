@@ -73,12 +73,16 @@
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <wm-select name="collStatusSelect" width="70%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="collStatusSelectOn_Change($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
                 </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="47.7%">
+                    <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFields()" name="button1" margin="0 10px 0 0"></wm-button>
+                    <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFilter($event, widget)" name="button3"></wm-button>
+                </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-layoutgrid id="entityViewTable" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
+        <wm-layoutgrid id="entityViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
             <span>entity view table</span>
         </wm-layoutgrid>
-        <wm-layoutgrid id="entityViewTable" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
+        <wm-layoutgrid id="banViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
             <span>ban view table</span>
         </wm-layoutgrid>
     </wm-content>
