@@ -1,9 +1,86 @@
-<wm-page pagetitle="Home"> 
-    <wm-header content="header"></wm-header> 
-    <wm-top-nav content="topnav"></wm-top-nav> 
-    <wm-content> 
-        <wm-page-content columnwidth="12"> 
-        </wm-page-content> 
-    </wm-content> 
-    <wm-footer content="footer"></wm-footer> 
+<wm-page pagetitle="Home">
+    <wm-header content="header"></wm-header>
+    <wm-top-nav content="topnav"></wm-top-nav>
+    <wm-content>
+        <wm-layoutgrid name="layoutgrid2" id="buttonsLayoutGrid" margin="20px 0px 10px 30px">
+            <wm-gridrow columnwidth="12" name="gridrow9" style="display: flex;">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn13">
+                    <wm-button class="btn-default" id="entityViewBtn" caption="ENTITY VIEW" type="button" margin="unset 0.5em" name="button5_1" on-click="entityViewButtonClick($event, widget)"></wm-button>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn14">
+                    <wm-button class="btn-default" id="banViewBtn" caption="BAN VIEW" type="button" margin="unset 1.3em unset 0.5em" name="button5_1" on-click="banViewButtonClick($event, widget)"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid2">
+            <wm-gridrow name="gridrow6">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="filterCriteriaGrid">
+                    <wm-label caption="Filters" name="label8" color="#000" textdecoration="underline" style="font-size: 16px;"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid id="filterGrid" name="layoutgrid4" margin="0 0 10px 30px" width="98%">
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedTeamGrid">
+                    <wm-label caption="Assigned Team" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="AssignedTeamSelect" width="70%" padding="unset 0.5em" dataset="" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="portfolioGrid">
+                    <wm-label caption="Portfolio" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="portfolioSelect" width="70%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="includeCurrentCreditGrid">
+                    <wm-label caption="Include Current or Credit" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                    <wm-select name="includeCurrentCreditSelect" width="100%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="includeCurrentCreditSelectOn_Change($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="entityOwnerGrid">
+                    <wm-label caption="Entity Owner" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="entityOwnerSelect" width="70%" padding="unset 0.5em" dataset="" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
+                    <wm-label caption="Billing System" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="billingSystemSelect" width="70%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="billingSystemSelectOn_Change($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="ARExcludedInternalGrid">
+                    <wm-label caption="AR Excluded/Internal" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                    <wm-select name="ARExcludedInternalSelect" width="100%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="ARExcludedInternalSelectOn_Change($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
+                    <wm-label caption="Work Category" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="workCategorySelect" width="70%" padding="unset 0.5em" dataset="" datafield="teamId" placeholder="All" displayfield="teamName" on-change="workCategorySelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
+                    <wm-label caption="Coll Status" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="collStatusSelect" width="70%" padding="unset 0.5em" dataset="" placeholder="All" displayfield="dataValue" on-change="collStatusSelectOn_Change($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid id="entityViewTable" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
+            <span>entity view table</span>
+        </wm-layoutgrid>
+        <wm-layoutgrid id="entityViewTable" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px">
+            <span>ban view table</span>
+        </wm-layoutgrid>
+    </wm-content>
+    <wm-footer content="footer"></wm-footer>
 </wm-page>

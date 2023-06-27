@@ -1,0 +1,8 @@
+.HomeFilterLabel {
+    float: right;
+    padding: 0.2em 0.5em 0 0.5em;
+}
+
+.filterCriteriaGrid {
+    margin: 15px 0 0 46px;
+}
