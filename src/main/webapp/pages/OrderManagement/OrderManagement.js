@@ -447,6 +447,37 @@ function messageTimeout() {
 }
 Partial.getCollectionTreatmentStep_orderMngt_customRow2Action = function($event, row) {
 
+    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
+
+        Partial.Widgets.notAssigned_closeActionDialog.open();
 
 
+    } else {
+        Partial.Widgets.assigned_closeActionDialog.open();
+    }
+
+};
+Partial.getCollectionTreatmentStep_orderMngt_customRow3Action = function($event, row) {
+    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
+
+        Partial.Widgets.notAssigned_cancleActionDialog.open();
+
+
+    } else {
+        Partial.Widgets.update_ActionDialog.open();
+    }
+};
+Partial.button17_1Click = function($event, widget) {
+    Partial.Widgets.notAssigned_cancleActionDialog.close();
+};
+Partial.button15_1closeActionClick = function($event, widget) {
+
+    Partial.Widgets.notAssigned_closeActionDialog.close();
+
+};
+Partial.button14_2_NoClick = function($event, widget) {
+    Partial.Widgets.update_ActionDialog.close();
+};
+Partial.closeAction_NoClick = function($event, widget) {
+    Partial.Widgets.assigned_closeActionDialog.close();
 };

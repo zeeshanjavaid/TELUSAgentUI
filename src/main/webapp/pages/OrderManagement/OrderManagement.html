@@ -48,7 +48,7 @@
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-close" title="Close" action="getCollectionTreatmentStep_orderMngt_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
-" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="" disabled="false" widget-type="button"></wm-table-row-action>
+" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStep_orderMngt_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow" display-name="" show="false" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
@@ -631,7 +631,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="closeActionClick($event, widget)" name="closeAction"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="closeAction_NoClick($event, widget)" name="closeAction_No"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button15_1" on-click="button15Click($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
@@ -658,7 +658,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="secondaryButton" caption="No" on-click="button14_2Click($event, widget)" name="button14_2"></wm-button>
+            <wm-button class="secondaryButton" caption="No" on-click="button14_2_NoClick($event, widget)" name="button14_2_No"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="button16_1" on-click="button16_1Click($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
@@ -679,7 +679,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
-            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button15_1" on-click="button15_1Click($event, widget)"></wm-button>
+            <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button15_1closeAction" on-click="button15_1closeActionClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
     <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Cancel Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="notAssigned_cancleActionDialog" width="40%">
