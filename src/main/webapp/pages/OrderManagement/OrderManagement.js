@@ -80,9 +80,9 @@ Partial.createbuttonClick = function($event, widget) {
         isAssignedPerson = "Request Assigned";
     }
 
-    if (Partial.Widgets.susReasonCode.datavalue.dataValue == "" || Partial.Widgets.susReasonCode.datavalue.dataValue == undefined) {
+    if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
-    } else if (Partial.Widgets.prioritySelect.datavalue.dataValue == "" || Partial.Widgets.prioritySelect.datavalue.dataValue == undefined) {
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
@@ -145,7 +145,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
     });
 
-    if (Partial.Widgets.restoralReasonCode.datavalue.dataValue == "" || Partial.Widgets.restoralReasonCode.datavalue.dataValue == undefined) {
+    if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
