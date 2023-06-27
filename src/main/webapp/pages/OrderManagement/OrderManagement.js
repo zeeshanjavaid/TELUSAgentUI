@@ -288,65 +288,77 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 Partial.updateDONotSentbuttonClick = function($event, widget) {
     debugger;
 
-    var stepTypeCode;
-    if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
-        stepTypeCode = "SUSPEND";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
-        stepTypeCode = "RESTORE";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request") {
-        stepTypeCode = "CEASE";
-    }
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
 
-    // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
-    var updateStatus = '';
+        Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.update_ActionDialog.open();
+
+    } else {
 
 
-    Partial.Variables.BanListRefIds.dataSet = [];
-
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-    Partial.selectedBanList = [];
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-        Partial.selectedBanList = {
-            "id": d.banMapRefId,
-
+        var stepTypeCode;
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
+            stepTypeCode = "SUSPEND";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
+            stepTypeCode = "RESTORE";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request") {
+            stepTypeCode = "CEASE";
         }
-        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
-    });
+        // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
+        var updateStatus = '';
 
-    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-        updateStatus = "Request Assigned";
-    } else {
-        updateStatus = Partial.Widgets.Status_NotSent.datavalue;
-    }
 
-    if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else {
-        Partial.Variables.UpdateODManagemntVar.setInput({
-            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': '20231-01-01',
-            "CollectionTreatmentStepUpdate": {
-                'stepTypeCode': stepTypeCode,
-                'status': updateStatus,
-                'priority': Partial.Widgets.prioritySelect.datavalue,
-                'comment': Partial.Widgets.Comment.datavalue,
-                'stepDate': Partial.Widgets.dueDate.datavalue,
-                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+        Partial.Variables.BanListRefIds.dataSet = [];
+
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+        Partial.selectedBanList = [];
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+            Partial.selectedBanList = {
+                "id": d.banMapRefId,
+
             }
+            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
         });
 
-        //Invoke POST createDispute service
-        Partial.Variables.UpdateODManagemntVar.invoke();
-        Partial.Widgets.EditNotSentdialog.close();
+        if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+            updateStatus = "Request Assigned";
+        } else {
+            updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+        }
 
-        App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
-        setTimeout(messageTimeout, 3000);
+        if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        } else {
+            Partial.Variables.UpdateODManagemntVar.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': '20231-01-01',
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': updateStatus,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.Comment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {},
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
 
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntVar.invoke();
+            Partial.Widgets.EditNotSentdialog.close();
+
+            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
+            setTimeout(messageTimeout, 3000);
+
+        }
     }
 
 
@@ -358,55 +370,66 @@ Partial.editNotSentCancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditNotSentdialog.close();
 };
 Partial.updateandsendbuttonClick = function($event, widget) {
-    var stepTypeCode;
-    if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
-        stepTypeCode = "SUSPEND";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
-        stepTypeCode = "RESTORE";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request") {
-        stepTypeCode = "CEASE";
-    }
 
-    Partial.Variables.BanListRefIds.dataSet = [];
 
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-    Partial.selectedBanList = [];
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-        Partial.selectedBanList = {
-            "id": d.banMapRefId,
-
-        }
-        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-    });
-
-    if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else {
-        Partial.Variables.UpdateODManagemntVar.setInput({
-            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': '20231-01-01',
-            "CollectionTreatmentStepUpdate": {
-                'stepTypeCode': stepTypeCode,
-                'status': 'Order Created',
-                'priority': Partial.Widgets.prioritySelect.datavalue,
-                'comment': Partial.Widgets.Comment.datavalue,
-                'stepDate': Partial.Widgets.dueDate.datavalue,
-                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
-            }
-        });
-
-        //Invoke POST createDispute service
-        Partial.Variables.UpdateODManagemntVar.invoke();
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
 
         Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.update_ActionDialog.open();
 
-        App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
-        setTimeout(messageTimeout, 3000);
+    } else {
+        var stepTypeCode;
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
+            stepTypeCode = "SUSPEND";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
+            stepTypeCode = "RESTORE";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request") {
+            stepTypeCode = "CEASE";
+        }
+
+        Partial.Variables.BanListRefIds.dataSet = [];
+
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+        Partial.selectedBanList = [];
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+            Partial.selectedBanList = {
+                "id": d.banMapRefId,
+
+            }
+            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+        });
+
+        if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        } else {
+            Partial.Variables.UpdateODManagemntVar.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': '20231-01-01',
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': 'Order Created',
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.Comment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {},
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntVar.invoke();
+
+            Partial.Widgets.EditNotSentdialog.close();
+
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
+            setTimeout(messageTimeout, 3000);
+        }
     }
 };
 
@@ -418,120 +441,138 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFullfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
-
-    var stepTypeCode;
-    if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
-        stepTypeCode = "SUSPEND";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
-        stepTypeCode = "RESTORE";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
-        stepTypeCode = "CEASE";
-    }
-
-    Partial.Variables.BanListRefIds.dataSet = [];
-
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-    Partial.selectedBanList = [];
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-        Partial.selectedBanList = {
-            "id": d.banMapRefId,
-
-        }
-        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-    });
-
-
-
-    var updateStatus = '';
-
-    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-        updateStatus = "Request Assigned";
-    } else {
-        updateStatus = Partial.Widgets.Status_NotSent.datavalue;
-    }
-
-    if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else {
-        Partial.Variables.UpdateODManagemntVar.setInput({
-            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': '20231-01-01',
-            "CollectionTreatmentStepUpdate": {
-                'stepTypeCode': stepTypeCode,
-                'status': updateStatus,
-                'priority': Partial.Widgets.prioritySelect.datavalue,
-                'comment': Partial.Widgets.Comment.datavalue,
-                'stepDate': Partial.Widgets.dueDate.datavalue,
-                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
-            }
-        });
-
-        //Invoke POST createDispute service
-        Partial.Variables.UpdateODManagemntVar.invoke();
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
 
         Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.update_ActionDialog.open();
 
-        App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
-        setTimeout(messageTimeout, 3000);
+    } else {
+        var stepTypeCode;
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+            stepTypeCode = "SUSPEND";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+            stepTypeCode = "RESTORE";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
+            stepTypeCode = "CEASE";
+        }
+
+        Partial.Variables.BanListRefIds.dataSet = [];
+
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+        Partial.selectedBanList = [];
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+            Partial.selectedBanList = {
+                "id": d.banMapRefId,
+
+            }
+            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+        });
+
+
+
+        var updateStatus = '';
+
+        if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+            updateStatus = "Request Assigned";
+        } else {
+            updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+        }
+
+        if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        } else {
+            Partial.Variables.UpdateODManagemntVar.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': '20231-01-01',
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': updateStatus,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.Comment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {},
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntVar.invoke();
+
+            Partial.Widgets.EditNotSentdialog.close();
+
+            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
+            setTimeout(messageTimeout, 3000);
+        }
     }
 };
 
 Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
-    var stepTypeCode;
-    if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
-        stepTypeCode = "SUSPEND";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
-        stepTypeCode = "RESTORE";
-    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
-        stepTypeCode = "CEASE";
-    }
-
-    Partial.Variables.BanListRefIds.dataSet = [];
-
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-    Partial.selectedBanList = [];
-    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-        Partial.selectedBanList = {
-            "id": d.banMapRefId,
-
-        }
-        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-    });
-
-    if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else {
-        Partial.Variables.UpdateODManagemntVar.setInput({
-            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': '20231-01-01',
-            "CollectionTreatmentStepUpdate": {
-                'stepTypeCode': stepTypeCode,
-                'status': 'Order Fulfilled',
-                'priority': Partial.Widgets.prioritySelect.datavalue,
-                'comment': Partial.Widgets.Comment.datavalue,
-                'stepDate': Partial.Widgets.dueDate.datavalue,
-                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                'channel': {},
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
-            }
-        });
-
-        //Invoke POST createDispute service
-        Partial.Variables.UpdateODManagemntVar.invoke();
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (originalAgentId != selectedAgentId) {
 
         Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.update_ActionDialog.open();
 
-        App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
-        setTimeout(messageTimeout, 3000);
+    } else {
+
+        var stepTypeCode;
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+            stepTypeCode = "SUSPEND";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+            stepTypeCode = "RESTORE";
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
+            stepTypeCode = "CEASE";
+        }
+
+        Partial.Variables.BanListRefIds.dataSet = [];
+
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+        Partial.selectedBanList = [];
+        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+            Partial.selectedBanList = {
+                "id": d.banMapRefId,
+
+            }
+            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+        });
+
+        if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        } else {
+            Partial.Variables.UpdateODManagemntVar.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': '20231-01-01',
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': 'Order Fulfilled',
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.Comment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {},
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntVar.invoke();
+
+            Partial.Widgets.EditNotSentdialog.close();
+
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
+            setTimeout(messageTimeout, 3000);
+        }
     }
 };
 
@@ -593,8 +634,18 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 // for Update 
 Partial.update_YesBtnClick = function($event, widget) {
 
+    Partial.Widgets.update_ActionDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = " Action Updated successfully";
+    setTimeout(messageTimeout, 3000);
+
+
 };
 
 Partial.update_NoBtnClick = function($event, widget) {
+
+    Partial.Widgets.update_ActionDialog.close();
+
+    Partial.Widgets.EditNotSentdialog.open();
+
 
 };
