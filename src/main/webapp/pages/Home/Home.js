@@ -55,7 +55,7 @@ Page.banViewButtonClick = function($event, widget) {
 };
 
 // function added to clear all the fields in the filter
-Page.clearFilterFields = function($event, widget) {
+Page.clearFilterFieldsEntityView = function($event, widget) {
     Page.Widgets.AssignedTeamSelect.datavalue = "";
     Page.Widgets.portfolioSelect.datavalue = "";
     Page.Widgets.includeCurrentCreditSelect.datavalue = "";

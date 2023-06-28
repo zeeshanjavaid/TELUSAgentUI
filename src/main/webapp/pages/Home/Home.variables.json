@@ -1,4 +1,72 @@
 {
+  "ARExcludedInternal_home" : {
+    "_id" : "wm-ARExcludedInternal_home-wm.Variable-1687943947590",
+    "name" : "ARExcludedInternal_home",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "billingSystemEntityView_home" : {
+    "_id" : "wm-billingSystemEntityView_home-wm.Variable-1687947098548",
+    "name" : "billingSystemEntityView_home",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "CES"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "CollStatus_home" : {
+    "_id" : "wm-CollStatus_home-wm.Variable-1687944501332",
+    "name" : "CollStatus_home",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "AGENCY"
+    }, {
+      "dataValue" : "ARREAR"
+    }, {
+      "dataValue" : "BRARRG"
+    }, {
+      "dataValue" : "CAARRG"
+    }, {
+      "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "CMARRG"
+    }, {
+      "dataValue" : "INARRG"
+    }, {
+      "dataValue" : "INCOLL"
+    }, {
+      "dataValue" : "INSOLVENCY"
+    }, {
+      "dataValue" : "PRECOLL"
+    }, {
+      "dataValue" : "RECALL"
+    }, {
+      "dataValue" : "REOPEN"
+    }, {
+      "dataValue" : "SUSPEND"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getAllActiveUserList_Home" : {
     "_id" : "wm-getAllActiveUserList_Home-wm.ServiceVariable-1687870630516",
     "name" : "getAllActiveUserList_Home",
@@ -172,6 +240,46 @@
       } ]
     },
     "package" : "com.fico.dmp.telusagentuidb.Team"
+  },
+  "includeCurrentCredit_home" : {
+    "_id" : "wm-includeCurrentCredit_home-wm.Variable-1687943795682",
+    "name" : "includeCurrentCredit_home",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "portfolioEntityView_home" : {
+    "_id" : "wm-portfolioEntityView_home-wm.Variable-1687943468584",
+    "name" : "portfolioEntityView_home",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "SMB"
+    }, {
+      "dataValue" : "Internal"
+    }, {
+      "dataValue" : "Commercial-MM"
+    }, {
+      "dataValue" : "Commercial_ENT"
+    }, {
+      "dataValue" : "Public"
+    }, {
+      "dataValue" : "Partner"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "workCategorySelect_Home" : {
     "_id" : "wm-workCategorySelect_Home-wm.ServiceVariable-1687870902710",
