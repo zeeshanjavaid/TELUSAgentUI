@@ -133,7 +133,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
             billingAccountRef = {
                 "id": d.banMapRefId,
                 "billingAccountRef": {
-                    "id": d.banMapRefId,
+                    "id": d.banId,
                     "name": d.banName
                 },
                 "validFor": {
@@ -144,7 +144,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
             billingAccountRef1 = {
                 "id": d.banMapRefId,
                 "billingAccountRef": {
-                    "id": d.banMapRefId,
+                    "id": d.banId,
                     "name": d.banName
                 },
                 "validFor": {
@@ -166,8 +166,9 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
         //PATCH for Moving out
         Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+            "id": parseInt(Page.pageParams.entityId),
             "CollectionEntityUpdate": {
-                "id": Page.pageParams.entityId,
+                "id": parseInt(Page.pageParams.entityId),
                 "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 "channel": {
                     "originatorAppId": "FAWBTELUSAGENT",
@@ -181,8 +182,9 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         Page.Variables.UpdateCollectionEntityServiceVar.invoke();
 
         //PATCH for Moving In
-
+        billingAccountRefMaps = billingAccountRefMaps1;
         Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+            "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
             "CollectionEntityUpdate": {
                 "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
                 "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
@@ -190,7 +192,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                     "originatorAppId": "FAWBTELUSAGENT",
                     "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
-                billingAccountRefMaps1
+                billingAccountRefMaps
             }
         });
         Page.Variables.UpdateCollectionEntityServiceVar.invoke();

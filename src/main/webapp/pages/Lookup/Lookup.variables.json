@@ -98,7 +98,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "cbucid",
+      "value" : "bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.cbucId",
+      "type" : "string"
+    } ],
     "type" : "io.swagger.client.model.CollectionEntity",
     "service" : "CollectionEntityService",
     "operation" : "getCollectionEntity",

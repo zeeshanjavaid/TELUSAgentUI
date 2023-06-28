@@ -337,7 +337,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 246,
+        "line" : 251,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getContactById",
         "phaseSequence" : 0,
@@ -345,7 +345,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 250,
+        "line" : 255,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "addContact",
         "phaseSequence" : 0,
@@ -353,7 +353,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 261,
+        "line" : 266,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateContact",
         "phaseSequence" : 0,
@@ -361,7 +361,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 282,
+        "line" : 287,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getPaymentArrangementById",
         "phaseSequence" : 0,
@@ -369,7 +369,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 288,
+        "line" : 293,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "addPaymentArrangement",
         "phaseSequence" : 0,
@@ -377,7 +377,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 303,
+        "line" : 308,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateParrStatus",
         "phaseSequence" : 0,
@@ -385,7 +385,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 329,
+        "line" : 334,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "addDispute",
         "phaseSequence" : 0,
@@ -393,7 +393,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 340,
+        "line" : 345,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getdisputeById",
         "phaseSequence" : 0,
@@ -401,7 +401,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 358,
+        "line" : 363,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateDispute",
         "phaseSequence" : 0,
@@ -449,7 +449,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 311,
+        "line" : 316,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getdispute",
         "phaseSequence" : 0,
@@ -481,7 +481,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 272,
+        "line" : 277,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getPaymentArrangements",
         "phaseSequence" : 0,
@@ -489,7 +489,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 297,
+        "line" : 302,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updatePaymentArrangement",
         "phaseSequence" : 0,
@@ -497,7 +497,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 238,
+        "line" : 243,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getContact",
         "phaseSequence" : 0,
