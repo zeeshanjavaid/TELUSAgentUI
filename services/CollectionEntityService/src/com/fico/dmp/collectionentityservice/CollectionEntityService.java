@@ -217,14 +217,14 @@ public class CollectionEntityService {
        
     }    
     
-    public CollectionEntityCreate   addCollectionEntity( CollectionEntityCreate    collectionEntityCreate  ) throws Exception  {
+    public CollectionEntityCreate   addCollectionEntity( CollectionEntityCreate collectionEntityCreate) throws Exception  {
     
         return collectionEntityCreate  ;
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionEntityUpdate  updateCollectionEntity(@PathVariable("id") Integer id, CollectionEntityUpdate   collectionEntityUpdate ) throws Exception {
+    public CollectionEntityUpdate  updateCollectionEntity(@PathVariable("id") Integer id, CollectionEntityUpdate collectionEntityUpdate ) throws Exception {
         return collectionEntityUpdate ;
     }
 

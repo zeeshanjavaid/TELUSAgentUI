@@ -225,5 +225,28 @@
     "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "UpdateCollectionEntityServiceVar" : {
+    "_id" : "wm-UpdateCollectionEntityServiceVar-wm.ServiceVariable-1687866722704",
+    "name" : "UpdateCollectionEntityServiceVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionEntityUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateCollectionEntity",
+    "operationId" : "CollectionEntityController_updateCollectionEntity",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   }
 }

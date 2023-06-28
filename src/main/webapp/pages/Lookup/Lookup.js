@@ -110,10 +110,14 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
     } else {
-
+        let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
+        var billingAccountRefMaps = []
+        var billingAccountRefMaps1 = []
         Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
             Page.selectedBanList = [];
+            var billingAccountRef = [];
+            var billingAccountRef1 = [];
             Page.selectedBanList = {
                 "entityId": d.entityId,
                 "disputeFlag": d.disputeFlag,
@@ -126,10 +130,72 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                 "suppresionFlag": d.suppresionFlag
             }
 
+            billingAccountRef = {
+                "id": d.banMapRefId,
+                "billingAccountRef": {
+                    "id": d.banMapRefId,
+                    "name": d.banName
+                },
+                "validFor": {
+                    "endDateTime": todaysDateJsonFormat
+                }
+            }
+
+            billingAccountRef1 = {
+                "id": d.banMapRefId,
+                "billingAccountRef": {
+                    "id": d.banMapRefId,
+                    "name": d.banName
+                },
+                "validFor": {
+                    "startDateTime": todaysDateJsonFormat
+                }
+            }
+
+
+            billingAccountRefMaps.push(billingAccountRef);
+            billingAccountRefMaps1.push(billingAccountRef1);
             Page.Variables.BanListForTransferToExistingEntVar.dataSet.push(Page.selectedBanList);
 
 
+
         });
+
+        //PATCH the Moving out and Moving using /entity API.
+
+
+        //PATCH for Moving out
+        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+            "CollectionEntityUpdate": {
+                "id": Page.pageParams.entityId,
+                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                "channel": {
+                    "originatorAppId": "FAWBTELUSAGENT",
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+                billingAccountRefMaps
+            }
+        });
+
+
+        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
+
+        //PATCH for Moving In
+
+        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+            "CollectionEntityUpdate": {
+                "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                "channel": {
+                    "originatorAppId": "FAWBTELUSAGENT",
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+                billingAccountRefMaps1
+            }
+        });
+        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
+
+
         Page.Widgets.TransferBanToExistEntDialog.close();
         Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to Entity: " + Page.combinedSuccessMessageVar;
         setTimeout(messageTimeout, 10000);
