@@ -1,1 +1,40 @@
-{ }
+{
+  "BanListRefIds" : {
+    "_id" : "wm-BanListRefIds-wm.Variable-1687935645338",
+    "name" : "BanListRefIds",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "getBanIdforOD" : {
+    "_id" : "wm-getBanIdforOD-wm.ServiceVariable-1687943039098",
+    "name" : "getBanIdforOD",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionBillingAccountRef",
+    "service" : "CollectionEntityService",
+    "operation" : "getBillingAccountRef",
+    "operationId" : "CollectionEntityController_getBillingAccountRef",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "getBanIdforODonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  }
+}

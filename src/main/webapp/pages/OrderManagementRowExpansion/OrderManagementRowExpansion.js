@@ -23,6 +23,7 @@ Partial.onReady = function() {
 
     App.showRowExpansionOrderManagement = function(row, data) {
         debugger;
+        var billingAccountIdRefs1 = [];
         var type = row.stepTypeCode;
         if (type == 'SUSPEND') {
             Partial.Widgets.BansLabel.caption = 'BANs to Suspend:';
@@ -38,6 +39,27 @@ Partial.onReady = function() {
             Partial.Widgets.Description.caption = 'Other Request';
         }
 
+        Partial.selectedBanList = [];
+        Partial.Variables.BanListRefIds.dataSet = [];
+
+        if (row.billingAccountIdRefs != null) {
+            row.billingAccountIdRefs.forEach(function(d) {
+                Partial.selectedBanList = {
+                    "id": d.id,
+
+                }
+                Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList.id);
+            });
+        }
+
+        Partial.Variables.getBanIdforOD.setInput({
+
+            "id": Partial.Variables.BanListRefIds.dataSet
+
+
+        });
+        Partial.Variables.getBanIdforOD.invoke();
+
 
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
@@ -52,56 +74,56 @@ Partial.onReady = function() {
         Partial.Widgets.ReasonCode.caption = row.reasonCode;
 
         //var billingAccountIdRefs = row.billingAccountIdRefs;
-        var billingAccountIdRefs = [{
-                id: 23,
-                name: null,
-                baseType: null,
-                type: null
-            },
-            {
-                id: 46,
-                name: null,
-                baseType: null,
-                type: null
-            },
-            {
-                id: 38,
-                name: null,
-                baseType: null,
-                type: null
-            },
-            {
-                id: 51,
-                name: null,
-                baseType: null,
-                type: null
-            },
-            {
-                id: 29,
-                name: null,
-                baseType: null,
-                type: null
-            },
-            {
-                id: 34,
-                name: null,
-                baseType: null,
-                type: null
-            }, {
-                id: 37,
-                name: null,
-                baseType: null,
-                type: null
-            }
-        ];
+        //     var billingAccountIdRefs = [{
+        //             id: 23,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         },
+        //         {
+        //             id: 46,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         },
+        //         {
+        //             id: 38,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         },
+        //         {
+        //             id: 51,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         },
+        //         {
+        //             id: 29,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         },
+        //         {
+        //             id: 34,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         }, {
+        //             id: 37,
+        //             name: null,
+        //             baseType: null,
+        //             type: null
+        //         }
+        //     ];
 
-        populateBANIds(billingAccountIdRefs);
+        //     populateBANIds(billingAccountIdRefs);
     }
 };
 
 
 function populateBANIds(items) {
-    debugger;
+
     var bansLength = items.length;
     var banId1 = items[0].id;
     var banId2 = items[1].id;
@@ -112,10 +134,30 @@ function populateBANIds(items) {
     Partial.Widgets.BanID3.caption = banId3;
 
     if (bansLength > 3) {
-        debugger;
+
         document.getElementById("moreLabel").style.display = "initial";
     }
 
 
+
+};
+
+Partial.getBanIdforODonSuccess = function(variable, data) {
+
+    debugger;
+
+    Partial.selectedBanList = [];
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+
+
+    data.forEach(function(d) {
+        Partial.selectedBanList = {
+            "id": d.billingAccount.id,
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+    });
+
+    populateBANIds(Partial.Variables.BanListRefIds.dataSet);
 
 };
