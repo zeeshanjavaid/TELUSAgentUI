@@ -53,5 +53,5 @@ Page.applyFilter = function($event, widget) {
 };
 
 Page.goToEnityPage = function(row) {
-    window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
+    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 }
