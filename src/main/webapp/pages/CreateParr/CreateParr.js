@@ -87,22 +87,22 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
             if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Weekly') {
 
                 tempDate = new Date(tempDate.setDate(tempDate.getDate() + 7));
-                collectionPaymentInstallment.date = new Date(tempDate);
+                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
                 // collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Bi-Weekly') {
 
                 tempDate = new Date(tempDate.setDate(tempDate.getDate() + 15));
-                collectionPaymentInstallment.date = new Date(tempDate);
+                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
                 //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Monthly') {
 
                 tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
-                collectionPaymentInstallment.date = new Date(tempDate);
+                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
                 //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             } else {
 
                 tempDate = new Date(tempDate.setDate(tempDate.getDate() + 1));
-                collectionPaymentInstallment.date = new Date(tempDate);
+                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
                 //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
             }
 
@@ -206,7 +206,8 @@ Partial.SubmitBanClick = function($event, widget) {
     Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
 
         var entityRef = {};
-        entityRef.id = selectedBan.banMapRefId;
+        var banMapRefIdInt = selectedBan.banMapRefId
+        entityRef.id = banMapRefIdInt.toString();
         entityRef.name = selectedBan.banName;
         parrTotal = parrTotal + selectedBan.banArAmount;
         selectedBans.push(entityRef);
@@ -245,12 +246,19 @@ Partial.CreatePARRClick = function($event, widget) {
     debugger;
     Partial.Variables.CreatePaymentArrangement.setInput({
         "CollectionPaymentArrangementCreate": {
+            'collectionEntity': {
+                'id': Partial.pageParams.entityId
+            },
             'amount': Partial.Widgets.ParrTotal.datavalue,
             'billingAccountRefs': Partial.Variables.SelectedBans.dataSet,
             'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
-            'recurrence': Partial.Widgets.RecurrenceDropdown.datavalue
-        },
-        "entityId": Partial.pageParams.entityId
+            'recurrence': Partial.Widgets.RecurrenceDropdown.datavalue,
+            'comment': Partial.Widgets.Comments.datavalue,
+            "channel": {
+                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                "originatorAppId": "FAWBTELUSAGENT"
+            }
+        }
     });
     //Invoke POST createDispute service
     Partial.Variables.CreatePaymentArrangement.invoke();

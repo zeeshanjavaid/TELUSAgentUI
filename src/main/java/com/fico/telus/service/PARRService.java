@@ -95,9 +95,9 @@ public class PARRService {
 			// true);
 			logger.info("::::::::Calling telus API to create PARR:::::\n::::::: {}");
 
-			EntityRef entityRef =  new EntityRef();
-			entityRef.setId(entityId);
-			collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
+			//EntityRef entityRef =  new EntityRef();
+			//entityRef.setId(entityId);
+			//collectionPaymentArrangementCreate.setCollectionEntity(entityRef);
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
 

@@ -746,8 +746,8 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityId",
-      "value" : "1",
-      "type" : "string"
+      "value" : "18",
+      "type" : "integer"
     } ],
     "type" : "io.swagger.client.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",
