@@ -1,4 +1,31 @@
 {
+  "CancelPaymentArrangement" : {
+    "_id" : "wm-CancelPaymentArrangement-wm.ServiceVariable-1688118012166",
+    "name" : "CancelPaymentArrangement",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.ParrId",
+      "type" : "integer"
+    } ],
+    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "service" : "CollectionEntityService",
+    "operation" : "updatePaymentArrangement",
+    "operationId" : "CollectionEntityController_updatePaymentArrangement",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "getPaymentArrangement" : {
     "_id" : "wm-getPaymentArrangement1-wm.ServiceVariable-1685893381663",
     "name" : "getPaymentArrangement",
@@ -146,7 +173,6 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onBeforeUpdate" : "updatePaymentArrangementonBeforeUpdate(variable, inputData)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

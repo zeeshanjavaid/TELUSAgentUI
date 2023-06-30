@@ -83,14 +83,19 @@ Partial.parrHistoryCollapse = function($event, widget) {
 Partial.YesCancelButtonClick = function($event, widget) {
 
     debugger;
-    Partial.Variables.updateParrStatus.setInput({
-
-        'status': 'Cancel',
-        'parrId': Partial.pageParams.ParrId,
-        'comments': Partial.Widgets.CancelComments.datavalue
+    Partial.Variables.CancelPaymentArrangement.setInput({
+        "CollectionPaymentArrangementUpdate": {
+            'id': Partial.pageParams.ParrId,
+            'comment': Partial.Widgets.CancelComments.datavalue,
+            'status': 'CANCELLED',
+            'channel': {
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                'originatorAppId': "FAWBTELUSAGENT"
+            }
+        }
     });
     //Invoke POST updateParrStatus service
-    Partial.Variables.updateParrStatus.invoke();
+    Partial.Variables.CancelPaymentArrangement.invoke();
     App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
     Partial.Variables.getPaymentArrangement.setInput({
         "id": Partial.pageParams.ParrId
@@ -144,11 +149,13 @@ Partial.SubmitButtonClick = function($event, widget) {
             'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
             'id': Partial.pageParams.ParrId,
             'comment': Partial.Widgets.Comments.datavalue,
-            'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence
-
-
-
-        },
+            'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence,
+            'status': 'RE-NEGOTIATED',
+            'channel': {
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                'originatorAppId': "FAWBTELUSAGENT"
+            }
+        }
     });
     //Invoke POST UpdateParr service
     Partial.Variables.updatePaymentArrangement.invoke();
