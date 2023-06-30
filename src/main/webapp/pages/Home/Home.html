@@ -2,12 +2,12 @@
     <wm-header content="header" name="header1"></wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
     <wm-content name="content1">
-        <wm-layoutgrid name="layoutgrid2" id="buttonsLayoutGrid" margin="20px 0px 10px 30px">
+        <wm-layoutgrid name="layoutgrid2" id="buttonsLayoutGrid" margin="20px 0px 10px 30px" width="50%">
             <wm-gridrow columnwidth="12" name="gridrow9" style="display: flex;">
-                <wm-gridcolumn columnwidth="1" name="gridcolumn13">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn13" width="17%" class="entityViewButton">
                     <wm-button class="btn-default" id="entityViewBtn" caption="ENTITY VIEW" type="button" margin="unset 0.5em" name="button5_1" on-click="entityViewButtonClick($event, widget)"></wm-button>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn14">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn14" class="banViewButton">
                     <wm-button class="btn-default" id="banViewBtn" caption="BAN VIEW" type="button" margin="unset 1.3em unset 0.5em" name="button5_1" on-click="banViewButtonClick($event, widget)"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>

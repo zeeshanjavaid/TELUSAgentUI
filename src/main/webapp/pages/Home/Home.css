@@ -14,3 +14,33 @@
 .banViewFilterButtons {
     text-align: right;
 }
+
+@media only screen and (min-width: 1270px) and (max-width: 1480px) {
+    .assignedTeamGrid {
+        width: 10% !important;
+    }
+    
+    .entityOwnerGrid {
+        width: 10% !important;
+    }
+    
+    .workCategoryGrid {
+        width: 10% !important;
+    }
+    
+    #buttonsLayoutGrid {
+        width: 30% !important;
+    }
+    
+    .entityViewButton {
+        width: 36% !important;
+    }
+    
+    .entityViewFilterButtons {
+        width: 45.7% !important;
+    }
+    
+    .banViewFilterButtons {
+        width: 45.7% !important;
+    }
+}
