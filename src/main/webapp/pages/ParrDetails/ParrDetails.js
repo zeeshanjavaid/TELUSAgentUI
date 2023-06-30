@@ -182,6 +182,7 @@ Partial.BackLinkClick = function($event, widget) {
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    App.refreshParrList();
 };
 
 Partial.CancelParrClick = function($event, widget) {
