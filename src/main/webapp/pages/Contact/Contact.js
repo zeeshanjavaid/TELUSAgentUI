@@ -31,11 +31,12 @@ Partial.digitalContactBtnClick = function($event, widget) {
     $("#digitalBtn").css("color", "white");
     $("#mailingBtn").css("background-color", "white");
     $("#mailingBtn").css("color", "#4B286D");
-
+    Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = true;
     // display TO-DO table and hide Completed table
     $('#digitalTableGrid').show();
     $('#buttonsLayoutGrid').show();
     $('#mailingTableGrid').hide();
+
 
 
 };
@@ -46,11 +47,13 @@ Partial.mailingContactBtnClick = function($event, widget) {
     $("#mailingBtn").css("color", "white");
     $("#digitalBtn").css("background-color", "white");
     $("#digitalBtn").css("color", "#4B286D");
-
+    Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = false;
     // display Completed table and hide TO-DO table
     $('#mailingTableGrid').show();
-    $('#digitalTableGrid').hide();
     $('#buttonsLayoutGrid').hide();
+    $('#digitalTableGrid').hide();
+
+
 
 };
 

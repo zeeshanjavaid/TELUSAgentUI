@@ -8,7 +8,7 @@
     "dataBinding" : [ {
       "target" : "entityId",
       "value" : "bind:pageParams.entityId",
-      "type" : "string"
+      "type" : "integer"
     } ],
     "type" : "io.swagger.client.model.EntityContactsResponse",
     "service" : "CollectionDataService",
@@ -25,5 +25,19 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionData"
+  },
+  "ShowHideCreateBtnGrid" : {
+    "_id" : "wm-ShowHideCreateBtnGrid-wm.Variable-1688145251975",
+    "name" : "ShowHideCreateBtnGrid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }

@@ -35,7 +35,7 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid name="layoutgrid3" id="buttonsLayoutGrid">
+    <wm-layoutgrid name="layoutgrid3" id="buttonsLayoutGrid" show="bind:Variables.ShowHideCreateBtnGrid.dataSet.dataValue">
         <wm-gridrow name="gridrow3">
             <wm-gridcolumn columnwidth="12" name="gridcolumn4" style="text-align: right;" padding="0.5em 1.5em 0.5em unset">
                 <wm-button class="primaryButton" caption="Create" type="button" margin="unset unset 0.5em 0.5em" name="button4" on-click="CreateButtonClick($event, widget)"></wm-button>
