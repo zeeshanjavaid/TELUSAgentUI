@@ -14,30 +14,30 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid2">
             <wm-gridrow name="gridrow6">
-                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="filterCriteriaGrid">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="filtersLabelGrid">
                     <wm-label caption="Filters" name="label8" color="#000" textdecoration="underline" style="font-size: 16px;"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-layoutgrid id="filterGrid" name="layoutgrid4" margin="0 0 10px 30px" width="98%">
+        <wm-layoutgrid id="filterGridEntityView" name="layoutgrid4" margin="0 0 10px 30px" width="98%">
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedTeamGrid">
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="AssignedTeamSelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.getTeamList_Home.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="AssignedTeamSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getTeamList_Home.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="portfolioGrid">
                     <wm-label caption="Portfolio" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="portfolioSelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.portfolioEntityView_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
+                    <wm-select name="portfolioSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.portfolioEntityView_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="includeCurrentCreditGrid">
                     <wm-label caption="Include Current or Credit" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="includeCurrentCreditSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.includeCurrentCredit_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.includeCurrentCredit_home.dataSet[0].dataValue"></wm-select>
+                    <wm-select name="includeCurrentCreditSelectEV" width="100%" padding="unset 0.5em" dataset="bind:Variables.includeCurrentCredit_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.includeCurrentCredit_home.dataSet[0].dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
@@ -45,20 +45,20 @@
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_Home.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        placeholder="All" displayfield="dataValue" on-change="entityOwnerSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_Home.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder="All"
+                        displayfield="dataValue" on-change="entityOwnerSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
                     <wm-label caption="Billing System" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="billingSystemSelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.billingSystemEntityView_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.billingSystemEntityView_home.dataSet[0].dataValue"></wm-select>
+                    <wm-select name="billingSystemSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.billingSystemEntityView_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.billingSystemEntityView_home.dataSet[0].dataValue"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="ARExcludedInternalGrid">
                     <wm-label caption="AR Excluded/Internal" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="ARExcludedInternalSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.ARExcludedInternal_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.ARExcludedInternal_home.dataSet[0].dataValue"></wm-select>
+                    <wm-select name="ARExcludedInternalSelectEV" width="100%" padding="unset 0.5em" dataset="bind:Variables.ARExcludedInternal_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.ARExcludedInternal_home.dataSet[0].dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
@@ -66,17 +66,78 @@
                     <wm-label caption="Work Category" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="workCategorySelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_Home.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true" style="display: block; width: 145%;"></wm-select>
+                    <wm-select name="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_Home.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true" style="display: block; width: 145%;"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="collStatusSelect" width="70%" padding="unset 0.5em" dataset="bind:Variables.CollStatus_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
+                    <wm-select name="collStatusSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.CollStatus_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="47.7%">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="entityViewFilterButtons" width="47.7%">
                     <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFieldsEntityView()" name="button1" margin="0 10px 0 0"></wm-button>
-                    <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFilter($event, widget)" name="button3"></wm-button>
+                    <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFiltersEntityView($event, widget)" name="button3"></wm-button>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid id="filterGridBanView" name="layoutgrid4" margin="0 0 10px 30px" width="98%">
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedTeamGrid">
+                    <wm-label caption="Assigned Team" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="AssignedTeamSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getTeamList_Home.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="portfolioGrid">
+                    <wm-label caption="Portfolio" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="portfolioSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.portfolioEntityView_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="includeCurrentCreditGrid">
+                    <wm-label caption="Include Current or Credit" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                    <wm-select name="includeCurrentCreditSelectBV" width="100%" padding="unset 0.5em" dataset="bind:Variables.includeCurrentCredit_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.includeCurrentCredit_home.dataSet[0].dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="entityOwnerGrid">
+                    <wm-label caption="Entity Owner" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_Home.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder="All"
+                        displayfield="dataValue" on-change="entityOwnerSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
+                    <wm-label caption="Billing System" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="billingSystemSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.billingSystemEntityView_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.billingSystemEntityView_home.dataSet[0].dataValue"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="ARExcludedInternalGrid">
+                    <wm-label caption="AR Excluded/Internal" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                    <wm-select name="ARExcludedInternalSelectBV" width="100%" padding="unset 0.5em" dataset="bind:Variables.ARExcludedInternal_home.dataSet" placeholder="Select" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.ARExcludedInternal_home.dataSet[0].dataValue"></wm-select>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
+                    <wm-label caption="Work Category" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="workCategorySelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_Home.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true" style="display: block; width: 145%;"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
+                    <wm-label caption="Coll Status" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="collStatusSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.CollStatus_home.dataSet" placeholder="All" datafield="dataValue" displayfield="dataValue"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="banViewFilterButtons" width="47.7%">
+                    <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFieldsBanView()" name="button1" margin="0 10px 0 0"></wm-button>
+                    <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFiltersBanView($event, widget)" name="button3"></wm-button>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -100,8 +161,8 @@
                 <wm-table-column binding="totalDelinquentBans" caption="Dlq BANs" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityType" caption="Ent Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId" caption="Ent Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="entityViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="entityViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
         <wm-layoutgrid id="banViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid5">
@@ -127,8 +188,8 @@
                 <wm-table-column binding="openActionDate" caption="Open Action Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId" caption="Ent Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" height="120px" on-rowexpand="banViewTable_OnRowexpand($event, widget, row, $data)"
-                    widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" height="120px" on-rowexpand="banViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true"
+                    disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
     </wm-content>

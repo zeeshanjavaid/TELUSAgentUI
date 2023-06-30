@@ -3,10 +3,14 @@
     padding: 0.2em 0.5em 0 0.5em;
 }
 
-.filterCriteriaGrid {
+.filtersLabelGrid {
     margin: 15px 0 0 46px;
 }
 
-.filterButtons {
+.entityViewFilterButtons {
+    text-align: right;
+}
+
+.banViewFilterButtons {
     text-align: right;
 }

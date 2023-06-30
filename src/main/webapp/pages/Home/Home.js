@@ -22,6 +22,7 @@ Page.onReady = function() {
      */
 
     $('#banViewTableGrid').hide();
+    $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
 };
@@ -41,6 +42,10 @@ Page.entityViewButtonClick = function($event, widget) {
     $('#entityViewTableGrid').show();
     $('#banViewTableGrid').hide();
 
+    // display filter grid for entity view and hide for ban view
+    $('#filterGridEntityView').show();
+    $('#filterGridBanView').hide();
+
 };
 
 Page.banViewButtonClick = function($event, widget) {
@@ -57,18 +62,34 @@ Page.banViewButtonClick = function($event, widget) {
     $('#banViewTableGrid').show();
     $('#entityViewTableGrid').hide();
 
+    // display filter grid for ban view and hide for entity view
+    $('#filterGridBanView').show();
+    $('#filterGridEntityView').hide();
+
 };
 
-// function added to clear all the fields in the filter
+// function added to clear all the fields in the filter for Entity View
 Page.clearFilterFieldsEntityView = function($event, widget) {
-    Page.Widgets.AssignedTeamSelect.datavalue = "";
-    Page.Widgets.portfolioSelect.datavalue = "";
-    Page.Widgets.includeCurrentCreditSelect.datavalue = "";
-    Page.Widgets.entityOwnerSelect.datavalue = "";
-    Page.Widgets.billingSystemSelect.datavalue = "";
-    Page.Widgets.ARExcludedInternalSelect.datavalue = "";
-    Page.Widgets.workCategorySelect.datavalue = "";
-    Page.Widgets.collStatusSelect.datavalue = "";
+    Page.Widgets.AssignedTeamSelectEV.datavalue = "";
+    Page.Widgets.portfolioSelectEV.datavalue = "";
+    Page.Widgets.includeCurrentCreditSelectEV.datavalue = "Y";
+    Page.Widgets.entityOwnerSelectEV.datavalue = "";
+    Page.Widgets.billingSystemSelectEV.datavalue = "CES";
+    Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";
+    Page.Widgets.workCategorySelectEV.datavalue = "";
+    Page.Widgets.collStatusSelectEV.datavalue = "";
+}
+
+// function added to clear all the fields in the filter for Ban View
+Page.clearFilterFieldsBanView = function($event, widget) {
+    Page.Widgets.AssignedTeamSelectBV.datavalue = "";
+    Page.Widgets.portfolioSelectBV.datavalue = "";
+    Page.Widgets.includeCurrentCreditSelectBV.datavalue = "Y";
+    Page.Widgets.entityOwnerSelectBV.datavalue = "";
+    Page.Widgets.billingSystemSelectBV.datavalue = "CES";
+    Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";
+    Page.Widgets.workCategorySelectBV.datavalue = "";
+    Page.Widgets.collStatusSelectBV.datavalue = "";
 }
 
 Page.goToEnityPage = function(row) {
@@ -76,11 +97,9 @@ Page.goToEnityPage = function(row) {
 }
 
 Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {
-    debugger;
     App.showRowExpansionEntityViewHome(row, $data);
 };
 
 Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
-    debugger;
     App.showRowExpansionBanViewHome(row, $data);
 };
