@@ -25,9 +25,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Request Created"
-    }, {
       "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Request Created"
     } ],
     "type" : "string",
     "isList" : true,
@@ -1075,7 +1075,7 @@
     "type" : "Team",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 200,
+    "maxResults" : 2000,
     "designMaxResults" : 100,
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
@@ -1282,6 +1282,24 @@
       "dataValue" : "Insolvency/Bankruptcy,"
     }, {
       "dataValue" : "Fraud"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "reasonCodeRestoral" : {
+    "_id" : "wm-reasonCodeRestoral-wm.Variable-1688105868326",
+    "name" : "reasonCodeRestoral",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Payment made"
+    }, {
+      "dataValue" : "Escalation"
+    }, {
+      "dataValue" : "Dispute"
     } ],
     "type" : "string",
     "isList" : true,

@@ -31,6 +31,7 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     Partial.Widgets.CreateSuspensionRequestdialog.open();
@@ -39,12 +40,14 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     Partial.Widgets.CreateRestoralRequestdialog.open();
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Partial.Widgets.CreateCeaseRequestdialog.open();
 }
@@ -257,6 +260,10 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
+            Partial.Widgets.BansHeading = "BANS";
+            /*  $('#bansSuspend').show();
+              $('#bansRestore').hide();
+              $('#bansCease').hide();*/
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspension";
             Partial.Widgets.EditAndFulfillSentdialog.open();

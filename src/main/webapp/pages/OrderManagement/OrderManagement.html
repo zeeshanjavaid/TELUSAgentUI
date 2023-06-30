@@ -92,11 +92,7 @@
                     <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Test" name="Sus_Statuslabel" color="#000"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
+            <!-- <wm-gridrow name="gridrow10"><wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset"><wm-label padding="unset 0.5em 0.5em unset" caption="Test" name="Sus_Statuslabel" color="#000"></wm-label></wm-gridcolumn></wm-gridrow>-->
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
@@ -162,7 +158,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="restoralReasonCode" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
+                    <wm-select width="45%" name="restoralReasonCode" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.reasonCodeRestoral.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].reasonCode"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -198,11 +194,7 @@
                     <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status" name="Restoral_Statuslabel" color="#000"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
+            <!-- <wm-gridrow name="gridrow10"><wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset"><wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status" name="Restoral_Statuslabel" color="#000"></wm-label></wm-gridcolumn></wm-gridrow>-->
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
@@ -304,11 +296,7 @@
                     <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status" name="Cease_Statuslabel" color="#000"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
+            <!--           <wm-gridrow name="gridrow10"><wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset"><wm-label padding="unset 0.5em 0.5em unset" caption="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].status" name="Cease_Statuslabel" color="#000"></wm-label></wm-gridcolumn></wm-gridrow>-->
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-label padding="0.5em 0.5em 0.4em unset" caption="Due Date" name="label7" color="gray"></wm-label>
@@ -395,7 +383,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="AdDitional Comment" name="label3" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Additional Comment" name="label3" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
@@ -403,9 +391,13 @@
                     <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-gridrow name="gridrow10_1">
-                <h4 class="heading">BANs to Suspend</h4>
-            </wm-gridrow>
+            <wm-layoutgrid name="layoutgrid3" id="bansSuspend">
+                <wm-gridrow name="gridrow10_1">
+                    <wm-label padding="unset 0.5em unset unset" caption=" " name="BansHeading" color="gray"></wm-label>
+                    <!-- <h4 class="heading"></h4>-->
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <!-- <wm-layoutgrid name="layoutgrid3" id="bansRestore"><wm-gridrow name="gridrow10_2"><h4 class="heading">BANs to Restore</h4></wm-gridrow></wm-layoutgrid><wm-layoutgrid name="layoutgrid3" id="bansCease"><wm-gridrow name="gridrow10_3"><h4 class="heading">BANs to Cease Suspension</h4></wm-gridrow></wm-layoutgrid>-->
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="96%">
@@ -519,7 +511,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="AdDitional Comment" name="label3" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Additional Comment" name="label3" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
@@ -714,7 +706,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to update this action and change the assignment ?'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
