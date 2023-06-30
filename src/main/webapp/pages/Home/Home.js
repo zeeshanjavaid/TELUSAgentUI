@@ -70,3 +70,12 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     Page.Widgets.workCategorySelect.datavalue = "";
     Page.Widgets.collStatusSelect.datavalue = "";
 }
+
+Page.goToEnityPage = function(row) {
+    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
+}
+
+Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
+    App.showRowExpansionEntityViewHome(row, $data);
+};
