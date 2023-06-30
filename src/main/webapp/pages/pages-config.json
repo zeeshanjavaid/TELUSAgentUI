@@ -118,7 +118,10 @@
 }, {
   "name" : "CreateDigitalContact",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "CreateDispute",
   "type" : "PARTIAL",
