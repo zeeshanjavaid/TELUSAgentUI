@@ -444,6 +444,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "banViewHome_rowExp",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "entityViewHome_rowExp",
   "type" : "PARTIAL",
   "params" : [ ]

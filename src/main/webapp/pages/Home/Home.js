@@ -79,3 +79,8 @@ Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {
     debugger;
     App.showRowExpansionEntityViewHome(row, $data);
 };
+
+Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
+    App.showRowExpansionBanViewHome(row, $data);
+};
