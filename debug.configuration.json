@@ -1385,7 +1385,7 @@
       "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 253,
+        "line" : 256,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getActionViewByTeam",
         "phaseSequence" : 0,
@@ -1393,7 +1393,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 155,
+        "line" : 156,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getAssignedEntitiesInEntityView",
         "phaseSequence" : 0,
@@ -1401,7 +1401,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 204,
+        "line" : 207,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityBanDetails",
         "phaseSequence" : 0,
@@ -1409,7 +1409,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 180,
+        "line" : 183,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityContacts",
         "phaseSequence" : 0,
@@ -1417,7 +1417,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 225,
+        "line" : 228,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityDetails",
         "phaseSequence" : 0,
@@ -1425,7 +1425,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 127,
+        "line" : 128,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntitySearch",
         "phaseSequence" : 0,
@@ -1433,7 +1433,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 163,
+        "line" : 165,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getassignedEntitiesInClassicView",
         "phaseSequence" : 0,
@@ -1441,7 +1441,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 112,
+        "line" : 113,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "propertyValueFrom",
         "phaseSequence" : 0,
@@ -1449,7 +1449,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 105,
+        "line" : 106,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "init",
         "phaseSequence" : 0,

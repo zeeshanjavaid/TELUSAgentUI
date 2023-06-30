@@ -10,11 +10,12 @@ import java.lang.Integer;
 import java.lang.Exception;
 import io.swagger.client.model.TeamsActionViewResponse;
 import java.util.List;
-import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
+import io.swagger.client.model.AssignedEntitiesInEntityViewResponse;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntityContactsResponse;
 import io.swagger.client.model.EntityDetailsResponse;
 import io.swagger.client.model.EntitySearchResponseArray;
+import io.swagger.client.model.AssignedEntitiesInClassicViewResponse;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public AssignedEntitiesInEntityViewResponseArray getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<AssignedEntitiesInEntityViewResponse> getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getAssignedEntitiesInEntityView(entityOwner, workCategory, portfolio, billingSystem, collectionStatus, offset, limit);
     }
 
@@ -76,7 +77,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/assignedEntitiesInClassicView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public AssignedEntitiesInEntityViewResponseArray getassignedEntitiesInClassicView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<AssignedEntitiesInClassicViewResponse> getassignedEntitiesInClassicView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getassignedEntitiesInClassicView(entityOwner, workCategory, portfolio, billingSystem, collectionStatus, offset, limit);
     }
 

@@ -267,3 +267,15 @@ Partial.CreatePARRClick = function($event, widget) {
     Partial.Clear();
     App.refreshParrList();
 };
+Partial.button2_1Click = function($event, widget) {
+    var entityIdStr = Partial.pageParams.entityId
+    var entityIdInt = parseInt(entityIdStr);
+    Partial.Variables.getEntityBanDetails.setInput({
+        'entityId': entityIdInt
+    });
+
+    Partial.Variables.getEntityBanDetails.invoke();
+
+    Partial.Widgets.selectBANdialog.open();
+
+};
