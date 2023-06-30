@@ -20,6 +20,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+
     $('#banViewTableGrid').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
@@ -27,6 +28,8 @@ Page.onReady = function() {
 
 
 Page.entityViewButtonClick = function($event, widget) {
+    debugger;
+    var data = Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet;
 
     // to make buttons selected
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -41,6 +44,8 @@ Page.entityViewButtonClick = function($event, widget) {
 };
 
 Page.banViewButtonClick = function($event, widget) {
+    debugger;
+    var data = Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet;
 
     // to make buttons selected
     $("#banViewBtn").css("background-color", "#4B286D");
