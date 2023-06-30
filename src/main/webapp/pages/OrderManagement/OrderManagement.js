@@ -109,7 +109,7 @@ Partial.createbuttonClick = function($event, widget) {
         Partial.Variables.createOrderManagment.invoke();
 
         Partial.Widgets.CreateSuspensionRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Action Suspended Successfully.";
 
         setTimeout(messageTimeout, 4000);
 
@@ -175,7 +175,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.createOrderManagment.invoke();
 
         Partial.Widgets.CreateRestoralRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Restore successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Action Restored Successfully.";
 
         setTimeout(messageTimeout, 4000);
 
@@ -239,7 +239,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         });
         Partial.Variables.createOrderManagment.invoke();
         Partial.Widgets.CreateCeaseRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Action Ceased Successfully.";
 
         setTimeout(messageTimeout, 4000);
 
@@ -255,10 +255,10 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             debugger;
-            Partial.Widgets.EditNotSentdialog.title = "Edit Suspention Request";
+            Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
-            Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspention";
+            Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspension";
             Partial.Widgets.EditAndFulfillSentdialog.open();
         }
 
@@ -282,7 +282,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
     }
 };
 
-// Edit Suspention/Restore/Cease- Not Sent button 
+// Edit Suspension/Restore/Cease- Not Sent button 
 
 
 Partial.updateDONotSentbuttonClick = function($event, widget) {
@@ -300,7 +300,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
 
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request") {
             stepTypeCode = "SUSPEND";
         } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
             stepTypeCode = "RESTORE";
@@ -355,7 +355,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             Partial.Variables.UpdateODManagemntVar.invoke();
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
+            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment Successfully.";
             setTimeout(messageTimeout, 3000);
 
         }
@@ -371,6 +371,7 @@ Partial.editNotSentCancelbuttonClick = function($event, widget) {
 };
 Partial.updateandsendbuttonClick = function($event, widget) {
 
+    debugger;
 
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -381,7 +382,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     } else {
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspention Request") {
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request") {
             stepTypeCode = "SUSPEND";
         } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
             stepTypeCode = "RESTORE";
@@ -427,13 +428,13 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent Successfully.";
             setTimeout(messageTimeout, 3000);
         }
     }
 };
 
-// Edit Suspention/Restore/Cease- Sent button 
+// Edit Suspension/Restore/Cease- Sent button 
 
 Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -450,9 +451,9 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
     } else {
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "SUSPEND";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "RESTORE";
         } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
             stepTypeCode = "CEASE";
@@ -524,9 +525,9 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     } else {
 
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "SUSPEND";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspention") {
+        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "RESTORE";
         } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
             stepTypeCode = "CEASE";
@@ -570,7 +571,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill Successfully";
             setTimeout(messageTimeout, 3000);
         }
     }
@@ -617,14 +618,14 @@ Partial.closeAction_NoClick = function($event, widget) {
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Closed Successfully";
     setTimeout(messageTimeout, 3000);
 };
 
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled Successfully";
     setTimeout(messageTimeout, 3000);
 };
 Partial.assigned_cancleNoBtnClick = function($event, widget) {
@@ -635,7 +636,7 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 Partial.update_YesBtnClick = function($event, widget) {
 
     Partial.Widgets.update_ActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Updated successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 3000);
 
 

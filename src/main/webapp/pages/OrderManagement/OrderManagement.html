@@ -181,12 +181,12 @@
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="96%">
-                        <wm-table-column binding="banId" caption="Ban" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -210,7 +210,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE"></wm-date>
+                    <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE" width="28%"></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
@@ -220,7 +220,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -287,12 +287,12 @@
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="96%">
-                        <wm-table-column binding="banId" caption="Ban" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -326,7 +326,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -357,7 +357,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateCeaseActionDialogClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -409,12 +409,12 @@
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="96%">
-                        <wm-table-column binding="banId" caption="Ban" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banId" caption="BAN" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -428,7 +428,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="28%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" dataset="bind:Variables.actionStatus_NotSent.dataSet"
+                    <wm-select width="25.2%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" dataset="bind:Variables.actionStatus_NotSent.dataSet"
                         displayfield="dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -449,7 +449,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
+                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -537,8 +537,8 @@
                         <wm-table-column binding="banName" caption="Ban Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -552,7 +552,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="28%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
+                    <wm-select width="25.2%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -572,7 +572,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="28%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
+                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">

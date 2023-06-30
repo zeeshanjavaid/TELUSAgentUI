@@ -150,8 +150,8 @@
     "type" : "User",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 20,
-    "designMaxResults" : 10,
+    "maxResults" : 2000,
+    "designMaxResults" : 100,
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
     "autoUpdate" : false,
@@ -1075,8 +1075,8 @@
     "type" : "Team",
     "isList" : false,
     "saveInPhonegap" : false,
-    "maxResults" : 20,
-    "designMaxResults" : 10,
+    "maxResults" : 200,
+    "designMaxResults" : 100,
     "inFlightBehavior" : "executeLast",
     "startUpdate" : true,
     "autoUpdate" : false,
@@ -1262,7 +1262,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
@@ -1317,11 +1317,11 @@
     "category" : "wm.Variable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "dataSet" : [ {
+    "dataSet" : {
       "dataValue" : ""
-    } ],
+    },
     "type" : "string",
-    "isList" : true,
+    "isList" : false,
     "saveInPhonegap" : false
   }
 }

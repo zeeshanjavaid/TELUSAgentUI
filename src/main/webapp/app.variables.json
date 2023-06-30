@@ -1684,7 +1684,7 @@
       "tableType" : "TABLE",
       "primaryFields" : [ "id" ]
     },
-    "bindCount" : 2,
+    "bindCount" : 1,
     "tableName" : "USER",
     "tableType" : "TABLE",
     "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
