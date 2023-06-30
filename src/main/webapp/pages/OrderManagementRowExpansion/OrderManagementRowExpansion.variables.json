@@ -13,6 +13,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "banListStrings" : {
+    "_id" : "wm-banListStrings-wm.Variable-1688123136583",
+    "name" : "banListStrings",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getBanIdforOD" : {
     "_id" : "wm-getBanIdforOD-wm.ServiceVariable-1687943039098",
     "name" : "getBanIdforOD",
@@ -36,5 +50,23 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "TestBanList" : {
+    "_id" : "wm-TestBanList-wm.Variable-1688115867917",
+    "name" : "TestBanList",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Exact match",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : "Exact match"
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   }
 }

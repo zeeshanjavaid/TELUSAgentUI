@@ -1,0 +1,24 @@
+<wm-partial name="partial1">
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="11" name="gridcolumn2">
+                <wm-label padding="unset 0.5em" name="label2" caption="Ban IDs"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn1"></wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow2">
+            <wm-gridcolumn columnwidth="11" name="gridcolumn3">
+                <wm-label padding="unset 0.5em" name="label3" caption="bind:Variables.BanListRefIds.dataSet.toString()"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" name="gridcolumn4"></wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" datafield="All Fields" name="getEntityBanDetailsList1" dataset="bind:Variables.BanListRefIds.dataSet.toString()" navigation="Basic">
+        <wm-listtemplate layout="inline" name="listtemplate1">
+            <wm-container class="media-left" name="container1"></wm-container>
+            <wm-container class="media-body" name="container2">
+                <wm-label class="p media-heading" name="Name" caption="Name" fontunit="em" padding="unset unset unset 1.25em"></wm-label>
+            </wm-container>
+        </wm-listtemplate>
+    </wm-list>
+</wm-partial>

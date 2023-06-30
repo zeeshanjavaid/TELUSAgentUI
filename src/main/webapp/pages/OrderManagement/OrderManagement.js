@@ -260,6 +260,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
+            Partial.Widgets.label59.caption = "zoozozozozoz";
             Partial.Widgets.BansHeading = "BANS";
             /*  $('#bansSuspend').show();
               $('#bansRestore').hide();
@@ -267,6 +268,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspension";
             Partial.Widgets.EditAndFulfillSentdialog.open();
+            Partial.Widgets.label59.caption = "zoozozozozoz";
         }
 
     } else if (row.stepTypeCode == 'RESTORE') {

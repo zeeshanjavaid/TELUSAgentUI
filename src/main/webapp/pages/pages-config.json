@@ -270,6 +270,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "OrderBanIdPopup",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "OrderDeskAgentView",
   "type" : "PAGE",
   "params" : [ ]

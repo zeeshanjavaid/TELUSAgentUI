@@ -1,0 +1,22 @@
+{
+  "BanListTestVar" : {
+    "_id" : "wm-BanListTestVar-wm.Variable-1688115340961",
+    "name" : "BanListTestVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Exact match"
+    }, {
+      "dataValue" : "true"
+    }, {
+      "dataValue" : "Exact match"
+    }, {
+      "dataValue" : "WLN LARGE"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

@@ -22,7 +22,7 @@ Partial.onReady = function() {
      */
 
     App.showRowExpansionOrderManagement = function(row, data) {
-        debugger;
+
         var billingAccountIdRefs1 = [];
         var type = row.stepTypeCode;
         if (type == 'SUSPEND') {
@@ -46,9 +46,10 @@ Partial.onReady = function() {
             row.billingAccountIdRefs.forEach(function(d) {
                 Partial.selectedBanList = {
                     "id": d.id,
-
+                    //   Partial.Variables.BanListRefIds.dataSet.push(d.id);
                 }
                 Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList.id);
+
             });
         }
 
@@ -63,9 +64,6 @@ Partial.onReady = function() {
 
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
-        //Partial.Widgets.BanID1.caption = 'BAN #11';
-        //Partial.Widgets.BanID2.caption = 'BAN #22';
-        //Partial.Widgets.BanID3.caption = 'BAN #33' + ' ' + Partial.Widgets.BanID3.caption;
         Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.Comment.caption = row.comment;
         Partial.Widgets.Priority.caption = row.priority;
@@ -73,51 +71,6 @@ Partial.onReady = function() {
         Partial.Widgets.Status.caption = row.status;
         Partial.Widgets.ReasonCode.caption = row.reasonCode;
 
-        //var billingAccountIdRefs = row.billingAccountIdRefs;
-        //     var billingAccountIdRefs = [{
-        //             id: 23,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         },
-        //         {
-        //             id: 46,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         },
-        //         {
-        //             id: 38,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         },
-        //         {
-        //             id: 51,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         },
-        //         {
-        //             id: 29,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         },
-        //         {
-        //             id: 34,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         }, {
-        //             id: 37,
-        //             name: null,
-        //             baseType: null,
-        //             type: null
-        //         }
-        //     ];
-
-        //     populateBANIds(billingAccountIdRefs);
     }
 };
 
@@ -125,9 +78,9 @@ Partial.onReady = function() {
 function populateBANIds(items) {
 
     var bansLength = items.length;
-    var banId1 = items[0].id;
-    var banId2 = items[1].id;
-    var banId3 = items[2].id;
+    var banId1 = items[0];
+    var banId2 = items[1];
+    var banId3 = items[2];
 
     Partial.Widgets.BanID1.caption = banId1;
     Partial.Widgets.BanID2.caption = banId2;
@@ -146,6 +99,7 @@ Partial.getBanIdforODonSuccess = function(variable, data) {
 
     debugger;
 
+
     Partial.selectedBanList = [];
     Partial.Variables.BanListRefIds.dataSet = [];
 
@@ -155,7 +109,7 @@ Partial.getBanIdforODonSuccess = function(variable, data) {
         Partial.selectedBanList = {
             "id": d.billingAccount.id,
         }
-        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList.id);
     });
 
     populateBANIds(Partial.Variables.BanListRefIds.dataSet);
