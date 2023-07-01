@@ -36,6 +36,11 @@ function messageTimeout() {
     App.Variables.successMessage.dataSet.dataValue = null;
 }
 
+function getCurrentDate() {
+    var currentDate = new Date().toJSON().slice(0, 10);
+    return currentDate;
+}
+
 Partial.CreateActionLinkClick = function($event, widget) {
 
     Partial.Widgets.CreateActionPopOver.hidePopover();
@@ -262,14 +267,16 @@ function callOutboundAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Outbound Action created successfully.";
@@ -320,15 +327,17 @@ function callInboundAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
@@ -367,15 +376,17 @@ function emailInboundAction($event, widget) {
                     'priority': Partial.Widgets.prioritySelect.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'partitionKey': getCurrentDate(),
                     'additionalCharacteristics': characteristicList,
                     'collectionTreatment': {
                         'id': 0
                     },
                     'channel': {
-                        'channelOrgId': "string",
-                        'userId': Partial.Variables.loggedInUser.dataSet.id
-                    },
-                },
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    }
+                }
             });
             Partial.Variables.createEntityHistoryAction.invoke();
 
@@ -405,14 +416,16 @@ function generalFollowUpAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
 
@@ -453,15 +466,17 @@ function overdueNoticeAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
 
@@ -502,15 +517,17 @@ function paymentReminderNoticeAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
 
@@ -551,15 +568,17 @@ function disconnectNoticeAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
 
@@ -601,15 +620,17 @@ function cancellationNoticeAction($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
-                },
-            },
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Cancellation Notice Action created successfully.";
@@ -924,15 +945,18 @@ Partial.closeButtonClick = function($event, widget) {
     Partial.Variables.UpdateCollectionTreatmentVar.setInput({
 
         'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-        'partitionKey': '20231-01-01',
+        'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
-            //  phnNumber: Partial.Widgets.phnNumber.displayValue,
             'status': 'Closed',
             'comment': Partial.Widgets.Comment.datavalue,
             'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
-            'channel': {},
             'additionalCharacteristics': characteristicList,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'channelOrgId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            }
         }
     });
 
@@ -1008,14 +1032,17 @@ Partial.button15Click = function($event, widget) {
         Partial.Variables.UpdateCollectionTreatmentVar.setInput({
 
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': '20231-01-01',
+            'partitionKey': getCurrentDate(),
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
-                //  phnNumber: Partial.Widgets.phnNumber.displayValue,
                 'status': 'Closed',
                 'comment': Partial.Widgets.Comment.datavalue,
                 'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
-                'channel': {},
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
 
             }
         });
@@ -1057,14 +1084,17 @@ Partial.button16_1Click = function($event, widget) {
         Partial.Variables.UpdateCollectionTreatmentVar.setInput({
 
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': '20231-01-01',
+            'partitionKey': getCurrentDate(),
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
-                //  phnNumber: Partial.Widgets.phnNumber.displayValue,
                 'status': 'Cancelled',
                 'comment': Partial.Widgets.Comment.datavalue,
                 'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
-                'channel': {},
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
             }
         });
 
@@ -1147,7 +1177,7 @@ Partial.UpdateActionClick = function($event, widget) {
         } else {
             Partial.Variables.UpdateCollectionTreatmentVar.setInput({
                 'id': Partial.Widgets.EditActionIdText.caption,
-                'partitionKey': '123',
+                'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
                     'status': Partial.Widgets.EditStatusLabel.caption,
@@ -1155,7 +1185,12 @@ Partial.UpdateActionClick = function($event, widget) {
                     'comment': Partial.Widgets.EditActionComment.caption,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    }
                 }
             });
 
@@ -1174,7 +1209,7 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
     Partial.Variables.UpdateCollectionTreatmentVar.setInput({
         'id': Partial.Widgets.EditActionIdText.caption,
-        'partitionKey': '123',
+        'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
             'status': Partial.Widgets.EditStatusLabel.caption,
@@ -1182,7 +1217,12 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
             'comment': Partial.Widgets.UpdateActionComment.datavalue,
             'stepDate': Partial.Widgets.dueDate.datavalue,
             'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
-            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue
+            'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'channelOrgId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            }
         }
     });
 
