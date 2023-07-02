@@ -296,15 +296,9 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
-            Partial.Widgets.label59.caption = "zoozozozozoz";
-            Partial.Widgets.BansHeading = "BANS";
-            /*  $('#bansSuspend').show();
-              $('#bansRestore').hide();
-              $('#bansCease').hide();*/
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspension";
             Partial.Widgets.EditAndFulfillSentdialog.open();
-            Partial.Widgets.label59.caption = "zoozozozozoz";
         }
 
     } else if (row.stepTypeCode == 'RESTORE') {
@@ -363,9 +357,19 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         Partial.selectedBanList = [];
         Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
-            Partial.selectedBanList = {
-                "id": d.banMapRefId,
+            if (stepTypeCode == "SUSPEND" && d.banStatus == "SUSPEND") {
+                App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended."
+            } else if (stepTypeCode == "RESTORE" && d.banStatus == "RESTORE") {
 
+                App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored."
+
+
+            } else {
+
+                Partial.selectedBanList = {
+                    "id": d.banMapRefId,
+
+                }
             }
             Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
@@ -484,7 +488,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Partial.Widgets.EditAndFullfillSentdialog.close();
+    Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
@@ -694,5 +698,19 @@ Partial.update_NoBtnClick = function($event, widget) {
 
     Partial.Widgets.EditNotSentdialog.open();
 
+
+};
+Partial.EditNotSentdialogOpened = function($event, widget) {
+
+
+
+    if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
+
+        document.getElementById("myHeader").innerHTML = "BANs to Suspend";
+    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Restoration") {
+        document.getElementById("myHeader").innerHTML = "BANs to Restore";
+    } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
+        document.getElementById("myHeader").innerHTML = "BANs to Cease Suspension";
+    }
 
 };
