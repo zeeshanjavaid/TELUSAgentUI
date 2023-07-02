@@ -50,6 +50,8 @@ Partial.CreateActionLinkClick = function($event, widget) {
 
 
 Partial.nextButtonClick = function($event, widget) {
+
+    debugger;
     if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
         Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
     } else {

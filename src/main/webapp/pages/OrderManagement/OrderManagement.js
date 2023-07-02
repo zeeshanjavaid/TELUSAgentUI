@@ -20,7 +20,13 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    //  Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+
+    // Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+    //     'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+    // });
+    // Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
 };
 
@@ -30,9 +36,16 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 };
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
+
+    debugger;
     Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
+
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+    });
+    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
     Partial.Widgets.CreateSuspensionRequestdialog.open();
 };

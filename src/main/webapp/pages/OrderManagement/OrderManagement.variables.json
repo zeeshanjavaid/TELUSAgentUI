@@ -1262,7 +1262,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
@@ -1279,7 +1279,7 @@
     "dataSet" : [ {
       "dataValue" : "Non-payment"
     }, {
-      "dataValue" : "Insolvency/Bankruptcy,"
+      "dataValue" : "Insolvency/Bankruptcy"
     }, {
       "dataValue" : "Fraud"
     } ],
