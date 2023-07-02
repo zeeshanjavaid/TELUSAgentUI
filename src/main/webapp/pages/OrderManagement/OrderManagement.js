@@ -55,6 +55,11 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+    });
+    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
 
     Partial.Widgets.CreateRestoralRequestdialog.open();
 };
@@ -62,6 +67,11 @@ Partial.CreateCeaseRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+    });
+    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
     Partial.Widgets.CreateCeaseRequestdialog.open();
 }
 
@@ -126,11 +136,15 @@ Partial.createbuttonClick = function($event, widget) {
 
         Partial.Widgets.CreateSuspensionRequestdialog.close();
         App.Variables.successMessage.dataSet.dataValue = "Action Suspended Successfully.";
-
         setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        }, 1000);
 
 
     }
+
 
     // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
@@ -195,6 +209,10 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
         setTimeout(messageTimeout, 4000);
 
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        }, 1000);
+
     }
 
     // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
@@ -257,7 +275,12 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         Partial.Widgets.CreateCeaseRequestdialog.close();
         App.Variables.successMessage.dataSet.dataValue = "Action Ceased Successfully.";
 
+
         setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        }, 1000);
 
 
     }
@@ -601,6 +624,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
 }
 Partial.getCollectionTreatmentStep_orderMngt_customRow2Action = function($event, row) {
 
