@@ -1,7 +1,23 @@
 {
-  "ARExcludedInternal_home" : {
+  "ARExcludedInternal_homeBV" : {
+    "_id" : "wm-ARExcludedInternal_homeBV-wm.Variable-1688363699189",
+    "name" : "ARExcludedInternal_homeBV",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "ARExcludedInternal_homeEV" : {
     "_id" : "wm-ARExcludedInternal_home-wm.Variable-1687943947590",
-    "name" : "ARExcludedInternal_home",
+    "name" : "ARExcludedInternal_homeEV",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
@@ -426,9 +442,25 @@
     },
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
-  "includeCurrentCredit_home" : {
+  "includeCurrentCredit_homeBV" : {
+    "_id" : "wm-includeCurrentCredit_homeBV-wm.Variable-1688363471573",
+    "name" : "includeCurrentCredit_homeBV",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "includeCurrentCredit_homeEV" : {
     "_id" : "wm-includeCurrentCredit_home-wm.Variable-1687943795682",
-    "name" : "includeCurrentCredit_home",
+    "name" : "includeCurrentCredit_homeEV",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
