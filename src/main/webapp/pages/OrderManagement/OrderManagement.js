@@ -99,8 +99,8 @@ Partial.closeCreateCeaseActionDialogClick = function($event, widget) {
 };
 Partial.createbuttonClick = function($event, widget) {
 
-    debugger;
 
+    debugger;
 
     var isAssignedPerson = '';
 
@@ -157,7 +157,7 @@ Partial.createbuttonClick = function($event, widget) {
 };
 Partial.createbuttonRestoralClick = function($event, widget) {
 
-    debugger;
+
 
     var isAssignedPerson = '';
 
@@ -761,7 +761,6 @@ function getBanDetails() {
 }
 Partial.update_ActionDialogOpened = function($event, widget) {
 
-    debugger;
     Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + ' who may be working on it.'
 
 };
