@@ -9,6 +9,8 @@
  * example: var utils = App.getDependency('Utils');
  */
 
+
+
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
     /*
@@ -53,6 +55,7 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    getBanDetails();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Partial.Variables.getLoggedInUserTeamIdVar.setInput({
@@ -65,6 +68,7 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
+    getBanDetails();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Partial.Variables.getLoggedInUserTeamIdVar.setInput({
@@ -154,6 +158,7 @@ Partial.createbuttonClick = function($event, widget) {
 Partial.createbuttonRestoralClick = function($event, widget) {
 
     debugger;
+
     var isAssignedPerson = '';
 
     if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
@@ -175,6 +180,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
     });
+
+
 
     if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
@@ -291,6 +298,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
     debugger;
+    getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             debugger;
@@ -330,12 +338,17 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 Partial.updateDONotSentbuttonClick = function($event, widget) {
     debugger;
 
+    Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        //  Partial.Widgets.EditNotSentdialog.close();
+        Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+
+
+
+        Partial.Widgets.EditNotSentdialog.close();
 
         Partial.Widgets.update_ActionDialog.open();
 
@@ -426,13 +439,17 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     debugger;
 
+    Partial.Variables.newlyAssignedPerson.dataset = '';
+
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
+        Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
+        Partial.Widgets.EditNotSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
-        //   Partial.Widgets.EditNotSentdialog.close();
+
 
     } else {
         var stepTypeCode;
@@ -496,11 +513,15 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
+    Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        //  Partial.Widgets.EditNotSentdialog.close();
+        Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+
+
+        Partial.Widgets.EditNotSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -573,7 +594,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        //  Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.EditNotSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -690,11 +711,10 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 // for Update 
 Partial.update_YesBtnClick = function($event, widget) {
 
-    //   Partial.Widgets.EditNotSentdialog.close();
+    //  Partial.Widgets.EditNotSentdialog.close();
 
-    //  Partial.Widgets.update_ActionDialog.close();
+    Partial.Widgets.update_ActionDialog.close();
 
-    App.Variables.successMessage.dataSet.dataValue = " Action Updated successfully";
     //Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     // Partial.Widgets.EditNotSentdialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
@@ -727,6 +747,21 @@ Partial.EditNotSentdialogOpened = function($event, widget) {
     }
 
 };
-Partial.update_ActionDialogClose = function($event, widget) {
-    Partial.Widgets.update_ActionDialog.destroy();
+
+
+function getBanDetails() {
+    var entityIdStr = Partial.pageParams.entityId
+    var entityIdInt = parseInt(entityIdStr);
+    Partial.Variables.CollectionDataServiceGetEntityBanDetails.setInput({
+        'entityId': entityIdInt
+    });
+
+    Partial.Variables.CollectionDataServiceGetEntityBanDetails.invoke();
+
+}
+Partial.update_ActionDialogOpened = function($event, widget) {
+
+    debugger;
+    Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + ' who may be working on it.'
+
 };
