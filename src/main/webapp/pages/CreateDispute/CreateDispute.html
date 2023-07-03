@@ -43,7 +43,7 @@
                     <wm-label name="ReasonLabel" caption="Reason*" padding="unset 0.5em" class="createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn12" class="labelValue">
-                    <wm-select name="reasonDropdown" width="70%" padding="unset 0.5em" dataset="bind:Variables.getCodeFromDomainValueAsCREATE_DISPUTE_REASON.dataSet" datafield="code" displayfield="code" placeholder="Select" textalign="left"></wm-select>
+                    <wm-select name="reasonDropdown" width="70%" padding="unset 0.5em" dataset="bind:Variables.reasonDropdownVar.dataSet" datafield="code" displayfield="code" placeholder="Select" textalign="left"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -61,7 +61,7 @@
                     <wm-label name="ChargeTypeLabel" caption="Charge Type*" padding="unset 0.5em" class="createDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn18" class="labelValue">
-                    <wm-select name="chargeTypeDropDown" placeholder="Select" padding="unset 0.5em" width="70%" dataset="bind:Variables.getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE.dataSet" datafield="code" displayfield="code"></wm-select>
+                    <wm-select name="chargeTypeDropDown" placeholder="Select" padding="unset 0.5em" width="70%" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="code" displayfield="code"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
             <wm-gridcolumn class="productSRV" style="display: flex;" margin="0 10px 0 0" name="gridcolumn19">
@@ -69,7 +69,7 @@
                     <wm-label name="label12" caption="Product &amp; Srv*" padding="unset 0.5em" whitespace="nowrap" class="createDisputeLabel" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn21" class="labelValue">
-                    <wm-select name="productsDropdown" width="70%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.productsDropdownVar.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                    <wm-select name="productsDropdown" width="70%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.productsDropdownVar.dataSet" datafield="code" displayfield="code"></wm-select>
                 </wm-gridcolumn>
             </wm-gridcolumn>
         </wm-gridrow>

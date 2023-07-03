@@ -1,65 +1,84 @@
 {
   "CancelReasonDropdownVar" : {
-    "_id" : "wm-CancelReasonVar-wm.Variable-1680449334798",
+    "_id" : "wm-CancelReasonDropdownVar_1-wm.ServiceVariable-1688380883043",
     "name" : "CancelReasonDropdownVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "PAYMENT IN FULL (NO TELUS ADJUSTMENT)"
-    }, {
-      "dataValue" : "PAYMENT OF PORTION PLUS TELUS ADJUSTMENT"
-    }, {
-      "dataValue" : "TELUS ADJUSTMENT (NO PAYMENT)"
-    }, {
-      "dataValue" : "OTHER REASON"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "DISPUTE_DETAILS_CANCELLED",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "chargeTypeDropdownVar" : {
-    "_id" : "wm-chargeTypeDropdownVar-wm.Variable-1680520040490",
+    "_id" : "wm-chargeTypeDropdownVar_1-wm.ServiceVariable-1688381134949",
     "name" : "chargeTypeDropdownVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "One-time charge"
-    }, {
-      "dataValue" : "Recurring billing @ 100%"
-    }, {
-      "dataValue" : "Recurring billing @ Partial"
-    }, {
-      "dataValue" : "Final owning as shown"
-    }, {
-      "dataValue" : "Further (non-recurring) billing pending"
-    }, {
-      "dataValue" : "LPC charges accruing"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_DISPUTE_CHARGETYPE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "closedReasonDropdownVar" : {
-    "_id" : "wm-closedReasonDropdownVar-wm.Variable-1680450691220",
+    "_id" : "wm-closedReasonDropdownVar_1-wm.ServiceVariable-1688380688776",
     "name" : "closedReasonDropdownVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "CREATED IN ERROR"
-    }, {
-      "dataValue" : "DUPLICATE TICKET"
-    }, {
-      "dataValue" : "OTHER REASON"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "DISPUTE_DETAILS_CLOSED",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "disputeHistoryVar" : {
     "_id" : "wm-disputeHistoryVar-wm.Variable-1680508939953",

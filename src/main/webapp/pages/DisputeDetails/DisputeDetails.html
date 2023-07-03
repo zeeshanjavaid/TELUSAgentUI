@@ -130,7 +130,7 @@
                     <wm-composite name="composite3">
                         <wm-label class="col-md-3 control-label" name="label39" caption="Cancelled Reason*" width="27%" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container9" width="72%">
-                            <wm-select name="cancelledReasonValue" placeholder="Select" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="dataValue" displayfield="dataValue" required="true"></wm-select>
+                            <wm-select name="cancelledReasonValue" placeholder="Select" width="100%" dataset="bind:Variables.CancelReasonDropdownVar.dataSet" datafield="code" displayfield="code" required="true"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -165,7 +165,7 @@
                     <wm-composite name="composite1">
                         <wm-label class="col-md-3 control-label" name="label36" caption="Closed Reason*" padding="unset unset unset 0.5em" color="grey"></wm-label>
                         <wm-container class="col-md-9" name="container6">
-                            <wm-select name="ClosedDisputeReason" placeholder="Select" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="dataValue" displayfield="dataValue" required="true"></wm-select>
+                            <wm-select name="ClosedDisputeReason" placeholder="Select" width="97%" dataset="bind:Variables.closedReasonDropdownVar.dataSet" datafield="code" displayfield="code" required="true"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -255,7 +255,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn63">
                     <wm-composite name="composite10" width="60%">
                         <wm-container class="col-md-9" name="container15">
-                            <wm-select name="chargeTypeDropdownUpdate" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.getDisputeDetails.dataSet.chargeType"></wm-select>
+                            <wm-select name="chargeTypeDropdownUpdate" dataset="bind:Variables.chargeTypeDropdownVar.dataSet" datafield="code" displayfield="code" datavalue="bind:Variables.getDisputeDetails.dataSet.chargeType"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

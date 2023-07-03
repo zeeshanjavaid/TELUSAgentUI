@@ -14,28 +14,31 @@
     "saveInPhonegap" : false
   },
   "chargeTypeDropdownVar" : {
-    "_id" : "wm-chargeTypeDropdownVar-wm.Variable-1679985437032",
+    "_id" : "wm-getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE-wm.ServiceVariable-1685607302953",
     "name" : "chargeTypeDropdownVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "One-time charge"
-    }, {
-      "dataValue" : "Recurring billing @ 100%"
-    }, {
-      "dataValue" : "Recurring billing @ Partial"
-    }, {
-      "dataValue" : "Final owning as shown"
-    }, {
-      "dataValue" : "Further (non-recurring) billing pending"
-    }, {
-      "dataValue" : "LPC charges accruing"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_DISPUTE_CHARGETYPE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "CollectionDispute" : {
     "_id" : "wm-CollectionDispute-wm.Variable-1680548044529",
@@ -95,15 +98,15 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
-  "getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE" : {
-    "_id" : "wm-getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE-wm.ServiceVariable-1685607302953",
-    "name" : "getCodeFromDomainValueAsCREATE_DISPUTE_CHARGETYPE",
+  "productsDropdownVar" : {
+    "_id" : "wm-productsDropdownVar_1-wm.ServiceVariable-1688379931800",
+    "name" : "productsDropdownVar",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "workCategory",
-      "value" : "CREATE_DISPUTE_CHARGETYPE",
+      "value" : "CREATE_DISPUTE_PRODSERVICE",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
@@ -122,9 +125,9 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
-  "getCodeFromDomainValueAsCREATE_DISPUTE_REASON" : {
+  "reasonDropdownVar" : {
     "_id" : "wm-getCodeFromDomainValueAsCREATE_DISPUTE_REASON-wm.ServiceVariable-1685606022509",
-    "name" : "getCodeFromDomainValueAsCREATE_DISPUTE_REASON",
+    "name" : "reasonDropdownVar",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
@@ -148,66 +151,6 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
-  },
-  "productsDropdownVar" : {
-    "_id" : "wm-productsDropdownVar-wm.Variable-1679986645889",
-    "name" : "productsDropdownVar",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Business Connect"
-    }, {
-      "dataValue" : "Copper Internet"
-    }, {
-      "dataValue" : "Fiber Internet"
-    }, {
-      "dataValue" : "SBS Wi-Fi"
-    }, {
-      "dataValue" : "TELUS Secure Business"
-    }, {
-      "dataValue" : "Equipment"
-    }, {
-      "dataValue" : "Other Products and Services"
-    } ],
-    "type" : "string",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
-  "reasonDropdownVar" : {
-    "_id" : "wm-reasonDropdownVar-wm.Variable-1679986346289",
-    "name" : "reasonDropdownVar",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "BILLED CHARGES (DEEMED) INCORRECT"
-    }, {
-      "dataValue" : "PRICE / VALUE DISSATISFACTION"
-    }, {
-      "dataValue" : "OUT/TERMINATION ORDER IN PROGRESS"
-    }, {
-      "dataValue" : "PRODUCTS/SERVICES BILLED BUT NOT DELIVERED"
-    }, {
-      "dataValue" : "INVOICE INFORMATION INCORRECT"
-    }, {
-      "dataValue" : "PRODUCT/SERVICE NOT WORKING AS EXPECTED"
-    }, {
-      "dataValue" : "TLC BILLED - BEING CONTESTED/ADJUSTED"
-    }, {
-      "dataValue" : "LPC BILLED - BEING CONTESTED / ADJUSTED"
-    }, {
-      "dataValue" : "ACCOUNT NOT CANCELLED ON TIME"
-    }, {
-      "dataValue" : "PRE-BILL"
-    }, {
-      "dataValue" : "OTHER REASON"
-    } ],
-    "type" : "string",
-    "isList" : true,
-    "saveInPhonegap" : false
   },
   "selectedDisputeBanVar" : {
     "_id" : "wm-selectedBanVar-wm.Variable-1680025695076",
