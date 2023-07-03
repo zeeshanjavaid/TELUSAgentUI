@@ -475,3 +475,17 @@
     right: 11px;
     width: unset;
 }
+
+
+/*styling added for pagination for Home page*/
+
+.wm-app app-page-home .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 1px;
+}
+
+.wm-app app-page-home button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}
