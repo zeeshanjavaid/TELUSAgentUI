@@ -447,3 +447,31 @@
     right: 11px;
     width: unset;
 }
+
+
+/*styling added for pagination for ARAgent View Action Management page*/
+
+.wm-app app-page-aragentview .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 1px;
+}
+
+.wm-app app-page-aragentview button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}
+
+
+/*styling added for pagination for Order Desk Agent View Action Management page*/
+
+.wm-app app-page-orderdeskagentview .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 1px;
+}
+
+.wm-app app-page-orderdeskagentview button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}
