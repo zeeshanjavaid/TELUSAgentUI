@@ -1,5 +1,5 @@
 <wm-partial name="partial1">
-    <wm-layoutgrid name="layoutgrid1" columns="1" height="50px">
+    <wm-layoutgrid name="layoutgrid1" columns="1" height="185px">
         <wm-gridrow name="gridrow1" style="display: flex;">
             <wm-gridcolumn columnwidth="2" name="gridcolumn1" class="Type">
                 <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Type:" color="grey"></wm-label>
@@ -17,7 +17,7 @@
                 <wm-label padding="unset 0.5em 0 unset" name="label3" caption="Assigned Person:" color="grey"></wm-label>
                 <wm-label padding="unset 0.5em 0 unset" name="assignedPerson" caption=""></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn2" class="Comment">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn2" class="Comment">
                 <wm-label padding="unset 0.5em 0 unset" name="label3" caption="Comment:" color="grey"></wm-label>
                 <wm-label padding="unset 0.5em 0 unset" name="Comment" caption=""></wm-label>
                 <!--<wm-composite name="composite2"><wm-container class="col-md-9" name="container2"><wm-textarea name="textarea1" disabled="true" maxchars="255" required="false"></wm-textarea></wm-container></wm-composite>--></wm-gridcolumn>
@@ -51,8 +51,7 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn2" class="BanID3">
                 <wm-label padding="unset 0.5em 0 unset" name="BanID3" caption=""></wm-label>
-                <wm-popover popoverwidth="700" popoverheight="115" id="moreLabel" margin="unset 0.5em" name="more" caption="More..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom" on-show="moreShow($event, widget)"
-                    show="true">
+                <wm-popover popoverwidth="700" popoverheight="115" id="moreLabel" margin="unset 0.5em" name="more" caption="More..." contentsource="inline" interaction="click" encodeurl="false" popoverplacement="bottom" on-show="moreShow($event, widget)" show="true">
                     <wm-layoutgrid name="layoutgrid1">
                         <wm-gridrow name="gridrow1">
                             <wm-gridcolumn columnwidth="11" name="gridcolumn2">
