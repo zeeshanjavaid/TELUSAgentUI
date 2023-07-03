@@ -188,13 +188,16 @@ public class CollectionDataService {
              logger.info("::::::::Calling  entityContacts endpoint call ::::::::");
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_CONTACTS)
                      .queryParam("entityId", entityId);
-
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
-             logger.info("::::::::Entity data endpoint call success ::::::::");
-             logger.info("Resoinse---"+ responseStr);
-            return objectMapper.readValue(responseStr,EntityContactsResponse.class);
+             if(entityId != null) {
+	             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+	             logger.info("::::::::Entity data endpoint call success ::::::::");
+	             logger.info("Resoinse---"+ responseStr);
+	             EntityContactsResponse entityContactsResponse = objectMapper.readValue(responseStr,EntityContactsResponse.class);
+	             return entityContactsResponse;
+             }
 
          }
+		return null;
     	 
     	 }
 
