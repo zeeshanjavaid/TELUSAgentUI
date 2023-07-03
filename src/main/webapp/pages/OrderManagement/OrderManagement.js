@@ -408,7 +408,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'comment': Partial.Widgets.Comment.datavalue,
+                    'comment': Partial.Widgets.AddComment.datavalue,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -485,7 +485,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                     'stepTypeCode': stepTypeCode,
                     'status': 'Order Created',
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'comment': Partial.Widgets.Comment.datavalue,
+                    'comment': Partial.Widgets.AddComment.datavalue,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -521,7 +521,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
 
-        Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.EditAndFulfillSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -594,7 +594,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        Partial.Widgets.EditNotSentdialog.close();
+        Partial.Widgets.EditAndFulfillSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
