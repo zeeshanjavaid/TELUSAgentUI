@@ -43,6 +43,8 @@
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
                         widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -244,6 +246,7 @@
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateRestoralActionDialog($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -345,6 +348,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateCeaseActionDialogClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget)"></wm-button>
                 <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
@@ -477,8 +481,8 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="editNotSentCancelbutton" on-click="editNotSentCancelbuttonClick($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="updateDONotSentbutton" on-click="updateDONotSentbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="updateandsendbutton" on-click="updateandsendbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="secondaryButton" caption="Update &amp; Do Not Send for Fulfillment" name="updateDONotSentbutton" on-click="updateDONotSentbuttonClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Update &amp; Send" name="updateandsendbutton" on-click="updateandsendbuttonClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -601,8 +605,8 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="editSentcancelbutton" on-click="editSentcancelbuttonClick($event, widget)"></wm-button>
-                <wm-button class="secondaryButton" caption="Update &amp; Do Not Fulfill" name="updateAndDoNotFulfillbutton" on-click="updateAndDoNotFulfillbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
-                <wm-button class="primaryButton" caption="Update &amp; Fulfill" name="updateAndFulfilbutton" on-click="updateAndFulfilbuttonClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="secondaryButton" caption="Update &amp; Do Not Fulfill" name="updateAndDoNotFulfillbutton" on-click="updateAndDoNotFulfillbuttonClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" caption="Update &amp; Fulfill" name="updateAndFulfilbutton" on-click="updateAndFulfilbuttonClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -700,12 +704,11 @@
             <wm-button class="primaryButton" caption="Go Back" type="button" margin="unset 0.5em" name="button17_1" on-click="button17_1Click($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="update_ActionDialog" width="40%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="bind:'Update Action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode" iconclass="" name="update_ActionDialog" width="40%" closable="true" showheader="true" on-close="update_ActionDialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action  ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ')' +  ' has been assigned to  ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedTeamSelect.datavalue + ')' + '  who may be working on it.'"
-                        name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode +  ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' who may be working on it.'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -732,7 +735,7 @@
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
             <wm-button class="secondaryButton" caption="No" name="update_NoBtn" on-click="update_NoBtnClick($event, widget)"></wm-button>
-            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="update_YesBtn" on-click="update_YesBtnClick($event, widget)"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="update_YesBtn" on-click="update_YesBtnClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData();Widgets.update_ActionDialog.close();Widgets.EditNotSentdialog.close()"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>

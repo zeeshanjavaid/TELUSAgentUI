@@ -36,6 +36,7 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 };
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
+
     debugger;
     Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -334,7 +335,8 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        Partial.Widgets.EditNotSentdialog.close();
+        //  Partial.Widgets.EditNotSentdialog.close();
+
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -428,8 +430,9 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        Partial.Widgets.EditNotSentdialog.close();
+
         Partial.Widgets.update_ActionDialog.open();
+        //   Partial.Widgets.EditNotSentdialog.close();
 
     } else {
         var stepTypeCode;
@@ -497,7 +500,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        Partial.Widgets.EditNotSentdialog.close();
+        //  Partial.Widgets.EditNotSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -570,7 +573,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
-        Partial.Widgets.EditNotSentdialog.close();
+        //  Partial.Widgets.EditNotSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -687,9 +690,17 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 // for Update 
 Partial.update_YesBtnClick = function($event, widget) {
 
-    Partial.Widgets.update_ActionDialog.close();
+    //   Partial.Widgets.EditNotSentdialog.close();
+
+    //  Partial.Widgets.update_ActionDialog.close();
+
     App.Variables.successMessage.dataSet.dataValue = " Action Updated successfully";
+    //Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    // Partial.Widgets.EditNotSentdialog.close();
+    App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 3000);
+
+
 
 
 };
@@ -715,4 +726,7 @@ Partial.EditNotSentdialogOpened = function($event, widget) {
         document.getElementById("myHeader").innerHTML = "BANs to Cease Suspension";
     }
 
+};
+Partial.update_ActionDialogClose = function($event, widget) {
+    Partial.Widgets.update_ActionDialog.destroy();
 };
