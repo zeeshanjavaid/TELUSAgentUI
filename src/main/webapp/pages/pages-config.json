@@ -105,6 +105,10 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "BanIDsTable_OM",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "Common",
   "type" : "PARTIAL",
   "params" : [ ]

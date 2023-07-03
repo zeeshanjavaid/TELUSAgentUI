@@ -60,6 +60,8 @@ Partial.onReady = function() {
 
         });
         Partial.Variables.getBanIdforOD.invoke();
+        debugger;
+        Partial.Variables.BanListRefIds.dataSet;
 
 
         Partial.Widgets.type.caption = type;
@@ -93,6 +95,7 @@ function populateBANIds(items) {
 
 
 
+
 };
 
 Partial.getBanIdforODonSuccess = function(variable, data) {
@@ -113,5 +116,11 @@ Partial.getBanIdforODonSuccess = function(variable, data) {
     });
 
     populateBANIds(Partial.Variables.BanListRefIds.dataSet);
+    /* var data = Partial.Variables.BanListRefIds.dataSet;
+     for (let i = 0; i < data.length; i++) {
+         Partial.Variables.BanListRefIds.dataSet = data[i];
+     }*/
+    /*Partial.Variables.BanListRefIds.dataSet = data.join("\n");
+    Partial.Variables.BanListRefIds.dataSet;*/
 
 };

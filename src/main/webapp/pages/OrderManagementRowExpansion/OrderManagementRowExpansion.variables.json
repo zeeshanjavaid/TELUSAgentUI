@@ -1,18 +1,4 @@
 {
-  "BanListRefIds" : {
-    "_id" : "wm-BanListRefIds-wm.Variable-1687935645338",
-    "name" : "BanListRefIds",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : ""
-    } ],
-    "type" : "string",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
   "banListStrings" : {
     "_id" : "wm-banListStrings-wm.Variable-1688123136583",
     "name" : "banListStrings",

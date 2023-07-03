@@ -1,0 +1,17 @@
+h4.card-title {
+    color: #4B286D !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+.app-grid.app-card.card {
+    margin-bottom: unset !important;
+}
+
+.app-page-content.app-content-column.col-md-12.col-sm-12 {
+    padding: 10px 20px 0px 15px !important;
+}
+
+.app-page.container {
+    overflow: hidden;
+}

@@ -16,6 +16,20 @@
     } ],
     "operation" : "toast"
   },
+  "BanListRefIds" : {
+    "_id" : "wm-BanListRefIds-wm.Variable-1687935645338",
+    "name" : "BanListRefIds",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "ContactPageName" : {
     "_id" : "wm-ConatctPageName-wm.Variable-1686555097582",
     "name" : "ContactPageName",
@@ -1869,6 +1883,18 @@
     "dataBinding" : [ ],
     "operation" : "gotoPage",
     "pageName" : "Audit_UserSession",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_BanIDsTable_OM" : {
+    "_id" : "wm-goToPage_BanIDsTable_OM-wm.NavigationVariable-1688381753169",
+    "name" : "goToPage_BanIDsTable_OM",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "BanIDsTable_OM",
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
