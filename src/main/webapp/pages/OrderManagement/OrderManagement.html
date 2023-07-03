@@ -41,8 +41,8 @@
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -243,7 +243,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateRestoralActionDialog($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonRestoral" on-click="createbuttonRestoralClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -345,7 +345,7 @@
         <wm-dialogactions name="dialogactions1" style="text-align: right;">
             <wm-gridrow id="selectActionBtns" name="gridrow31">
                 <wm-button class="secondaryButton" caption="Cancel" name="cancelbutton" on-click="closeCreateCeaseActionDialogClick($event, widget)"></wm-button>
-                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+                <wm-button class="primaryButton" id="nextBtn" caption="Create" name="createbuttonCease" on-click="createbuttonCeaseClick($event, widget)"></wm-button>
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
@@ -368,12 +368,12 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="editReasonCode" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode"></wm-select>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode" name="editReasonCode" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Comment" name="label3" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
@@ -419,13 +419,14 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="25.2%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" dataset="bind:Variables.actionStatus_NotSent.dataSet"
-                        displayfield="dataValue"></wm-select>
+                    <!-- <wm-select width="25.2%" name="Status_NotSent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" dataset="bind:Variables.actionStatus_NotSent.dataSet"
+                        displayfield="dataValue"></wm-select>-->
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" name="Status_NotSent" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -500,17 +501,17 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn9">
-                    <wm-select width="45%" name="editReasonCode_Sent" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.reasonCodeOrdMngmtVar.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.reasonCode" name="editReasonCode_Sent" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Comment" name="label3" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Comment" name="label3" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.comment" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.comment" name="label1" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -543,12 +544,13 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-label padding="unset 0.5em unset unset" caption="Status*" name="label4" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Status*" name="label4" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="25.2%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>
+                    <!--  <wm-select width="25.2%" name="actionStatusSelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionStatus_Sent.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status"></wm-select>-->
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.status" name="Status_Sent" color="#000"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow19">
@@ -662,7 +664,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -701,7 +704,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind: 'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatment_orderMngt.selecteditem.id + ')' + ' has been assigned to ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'"
+                    <wm-label caption="bind:'This action  ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ')' +  ' has been assigned to  ' + Widgets.assignedPersonSelect.displayValue + ' (' + Widgets.assignedTeamSelect.datavalue + ')' + '  who may be working on it.'"
                         name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>

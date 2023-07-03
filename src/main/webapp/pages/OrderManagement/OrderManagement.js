@@ -36,7 +36,6 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
 };
 
 Partial.CreateSuspentionRequestClick = function($event, widget) {
-
     debugger;
     Partial.Widgets.OrderPopOver.hidePopover();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -135,7 +134,8 @@ Partial.createbuttonClick = function($event, widget) {
         Partial.Variables.createOrderManagment.invoke();
 
         Partial.Widgets.CreateSuspensionRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Suspended Successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
+
         setTimeout(messageTimeout, 4000);
 
         setTimeout(function() {
@@ -205,7 +205,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.createOrderManagment.invoke();
 
         Partial.Widgets.CreateRestoralRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Restored Successfully.";
+        App.Variables.successMessage.dataSet.dataValue = "Action Restored successfully.";
 
         setTimeout(messageTimeout, 4000);
 
@@ -273,8 +273,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         });
         Partial.Variables.createOrderManagment.invoke();
         Partial.Widgets.CreateCeaseRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Ceased Successfully.";
-
+        App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
 
         setTimeout(messageTimeout, 4000);
 
@@ -296,9 +295,12 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
             debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
+
+
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Suspension";
             Partial.Widgets.EditAndFulfillSentdialog.open();
+
         }
 
     } else if (row.stepTypeCode == 'RESTORE') {
@@ -404,7 +406,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             Partial.Variables.UpdateODManagemntVar.invoke();
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment Successfully.";
+            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
             setTimeout(messageTimeout, 3000);
 
         }
@@ -477,7 +479,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent Successfully.";
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
             setTimeout(messageTimeout, 3000);
         }
     }
@@ -620,7 +622,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
             Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill Successfully";
+            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
             setTimeout(messageTimeout, 3000);
         }
     }
@@ -668,14 +670,14 @@ Partial.closeAction_NoClick = function($event, widget) {
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Closed Successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
     setTimeout(messageTimeout, 3000);
 };
 
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled Successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
     setTimeout(messageTimeout, 3000);
 };
 Partial.assigned_cancleNoBtnClick = function($event, widget) {
@@ -686,7 +688,7 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 Partial.update_YesBtnClick = function($event, widget) {
 
     Partial.Widgets.update_ActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
+    App.Variables.successMessage.dataSet.dataValue = " Action Updated successfully";
     setTimeout(messageTimeout, 3000);
 
 
