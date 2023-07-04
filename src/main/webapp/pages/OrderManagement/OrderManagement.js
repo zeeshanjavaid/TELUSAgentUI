@@ -316,7 +316,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
             Partial.Widgets.EditNotSentdialog.open();
-        } else if (row.status == 'Order Assigned' || row.status == ' Order Created') {
+        } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Restoration";
             Partial.Widgets.EditAndFulfillSentdialog.open();
         }
@@ -324,7 +324,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
             Partial.Widgets.EditNotSentdialog.open();
-        } else if (row.status == 'Order Assigned' || row.status == ' Order Created') {
+        } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Cease";
             Partial.Widgets.EditAndFulfillSentdialog.open();
         }
@@ -513,6 +513,7 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
+    debugger;
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -526,11 +527,11 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
     } else {
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
+        if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "SUSPEND";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
+        } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Restoration") {
             stepTypeCode = "RESTORE";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
+        } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
             stepTypeCode = "CEASE";
         }
 
@@ -555,7 +556,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
             updateStatus = "Request Assigned";
         } else {
-            updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+            updateStatus = Partial.Widgets.Status_Sent.caption;
         }
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
@@ -568,7 +569,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'comment': Partial.Widgets.Comment.datavalue,
+                    'comment': Partial.Widgets.AddComment2.datavalue,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -580,7 +581,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             //Invoke POST createDispute service
             Partial.Variables.UpdateODManagemntVar.invoke();
 
-            Partial.Widgets.EditNotSentdialog.close();
+            Partial.Widgets.EditAndFulfillSentdialog.close();
 
             App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
             setTimeout(messageTimeout, 3000);
@@ -590,6 +591,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
 Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
+    debugger;
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
@@ -600,11 +602,11 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     } else {
 
         var stepTypeCode;
-        if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
+        if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
             stepTypeCode = "SUSPEND";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
+        } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Restoration") {
             stepTypeCode = "RESTORE";
-        } else if (Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Cease") {
+        } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
             stepTypeCode = "CEASE";
         }
 
@@ -632,7 +634,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                     'stepTypeCode': stepTypeCode,
                     'status': 'Order Fulfilled',
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'comment': Partial.Widgets.Comment.datavalue,
+                    'comment': Partial.Widgets.AddComment2.datavalue,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -644,7 +646,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             //Invoke POST createDispute service
             Partial.Variables.UpdateODManagemntVar.invoke();
 
-            Partial.Widgets.EditNotSentdialog.close();
+            Partial.Widgets.EditAndFulfillSentdialog.close();
 
             App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
             setTimeout(messageTimeout, 3000);
@@ -762,5 +764,10 @@ function getBanDetails() {
 Partial.update_ActionDialogOpened = function($event, widget) {
 
     Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + ' who may be working on it.'
+
+};
+Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, row) {
+    Partial.Widgets.ViewHistory.open();
+
 
 };

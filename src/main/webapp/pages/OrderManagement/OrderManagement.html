@@ -49,7 +49,8 @@
 " class="btn-transparent" iconclass="fico-icon-close" title="Close" action="getCollectionTreatmentStep_orderMngt_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStep_orderMngt_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="customRow" display-name="" show="false" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)"
+                        disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -212,7 +213,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="20%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -314,7 +315,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
+                    <wm-select width="20%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="All Fields" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[$i].priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -446,7 +447,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
+                    <wm-select width="20%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -521,7 +522,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="80%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
+                    <wm-textarea name="AddComment2" width="100%" resize="none" maxchars="256" placeholder=""></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10_1">
@@ -570,7 +571,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow12">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="unset 0.5em 1.5em unset">
-                    <wm-select width="25.2%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
+                    <wm-select width="20%" name="prioritySelect" id="mySelection" margin="5px unset unset unset" datafield="dataValue" placeholder="Select" dataset="bind:Variables.actionPriority.dataSet" displayfield="dataValue" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow17">
@@ -734,6 +735,29 @@
         <wm-dialogactions name="dialogactions4" style="text-align: right;">
             <wm-button class="secondaryButton" caption="No" name="update_NoBtn" on-click="update_NoBtnClick($event, widget)"></wm-button>
             <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="update_YesBtn" on-click="update_YesBtnClick($event, widget);Widgets.getCollectionTreatmentStep_orderMngt.refreshData()"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="History" iconclass="wi wi-file-text" name="ViewHistory" width="70%" height="70%">
+        <wm-layoutgrid name="layoutgrid24">
+            <wm-gridrow name="gridrow122">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn99">
+                    <wm-label padding="unset 0.5em" caption="Name" name="label62"></wm-label>
+                    <wm-table name="getCollectionTreatmentStepTable1" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="Classic">
+                        <wm-table-column binding="id" caption="Id" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="assignedAgentId" caption="Assigned Agent Id" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Auditinfo Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="customField" caption="BAN List" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions11
+                                ">
+            <wm-button class="btn-primary " caption="Close " on-click="closeDialog() " name="button21 "></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>
