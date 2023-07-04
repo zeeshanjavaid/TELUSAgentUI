@@ -161,7 +161,10 @@
 }, {
   "name" : "DisputeList",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "DomainValue",
   "type" : "PAGE",
@@ -193,7 +196,10 @@
 }, {
   "name" : "EntityHistoryActionList",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "EntityNameEllipsisPartial",
   "type" : "PARTIAL",
