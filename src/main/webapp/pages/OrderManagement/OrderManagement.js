@@ -737,6 +737,7 @@ Partial.update_NoBtnClick = function($event, widget) {
 };
 Partial.EditNotSentdialogOpened = function($event, widget) {
 
+    debugger;
 
 
     if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
@@ -771,3 +772,19 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
 
 
 };
+
+
+Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
+
+    debugger;
+
+    if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
+
+        document.getElementById("myHeader2").innerHTML = "BANs to Suspend";
+    } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Restoral Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Restoration") {
+        document.getElementById("myHeader2").innerHTML = "BANs to Restore";
+    } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Cease Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
+        document.getElementById("myHeader2").innerHTML = "BANs to Cease Suspension";
+    }
+
+}
