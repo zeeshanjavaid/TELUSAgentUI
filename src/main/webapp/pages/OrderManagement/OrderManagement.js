@@ -764,7 +764,7 @@ function getBanDetails() {
 }
 Partial.update_ActionDialogOpened = function($event, widget) {
 
-    Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + ' who may be working on it.'
+    Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + " " + Partial.Widgets.assignedPersonSelect.datavalue + ' who may be working on it.'
 
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, row) {
