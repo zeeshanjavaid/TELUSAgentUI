@@ -1,4 +1,27 @@
 {
+  "AddCollectionEntityServiceVar" : {
+    "_id" : "wm-AddCollectionEntityServiceVar-wm.ServiceVariable-1688542697199",
+    "name" : "AddCollectionEntityServiceVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionEntityCreate",
+    "service" : "CollectionEntityService",
+    "operation" : "addCollectionEntity",
+    "operationId" : "CollectionEntityController_addCollectionEntity",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "BanListForTransferToExistingEntVar" : {
     "_id" : "wm-BanListForTransferToExistingEntVar-wm.Variable-1681457313163",
     "name" : "BanListForTransferToExistingEntVar",
@@ -91,6 +114,33 @@
     "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "getCollectionEntityById" : {
+    "_id" : "wm-getCollectionEntityById-wm.ServiceVariable-1688553382628",
+    "name" : "getCollectionEntityById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
+    } ],
+    "type" : "io.swagger.client.model.CollectionEntity",
+    "service" : "CollectionEntityService",
+    "operation" : "getCollectionEntityById",
+    "operationId" : "CollectionEntityController_getCollectionEntityById",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   },
   "getCollectionEntityService" : {
     "_id" : "wm-getCollectionEntityService1-wm.ServiceVariable-1687338311284",

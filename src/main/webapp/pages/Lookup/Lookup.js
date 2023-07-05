@@ -269,9 +269,23 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else {
 
+        //Page.Variables.getCollectionEntityById.setInput
+        /*    Page.Variables.getCollectionEntityById.setInput({
+                "id": parseInt(Page.pageParams.entityId)
+            });
+
+
+            Page.Variables.getCollectionEntityById.invoke(); 
+
+        alert(Page.Variables.getCollectionEntityById.collectionStatus); */
+
+        let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToNewEntVar.dataSet = [];
+        var billingAccountRefMaps = [];
+        var billingAccountRefMaps1 = [];
         Page.Widgets.TransferBanToNewEntityTable.selectedItems.forEach(function(d) {
             Page.selectedBanList = [];
+            var billingAccountRef = {};
             Page.selectedBanList = {
                 "entityId": d.entityId,
                 "disputeFlag": d.disputeFlag,
@@ -284,10 +298,98 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                 "suppresionFlag": d.suppresionFlag
             }
 
+            billingAccountRef = {
+                "id": d.banMapRefId,
+                "billingAccountRef": {
+                    "id": d.banId,
+                    "name": d.banName
+                },
+                "validFor": {
+                    "endDateTime": todaysDateJsonFormat
+                }
+            }
+
+
+            billingAccountRef1 = {
+                "id": d.banMapRefId,
+                "billingAccountRef": {
+                    "id": d.banId,
+                    "name": d.banName
+                },
+                "validFor": {
+                    "startDateTime": todaysDateJsonFormat
+                }
+            }
+
+            billingAccountRefMaps.push(billingAccountRef);
+            billingAccountRefMaps1.push(billingAccountRef1);
             Page.Variables.BanListForTransferToNewEntVar.dataSet.push(Page.selectedBanList);
 
 
         });
+
+        //PATCH for Moving out
+        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+            "id": parseInt(Page.pageParams.entityId),
+            "CollectionEntityUpdate": {
+                "id": parseInt(Page.pageParams.entityId),
+                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                "channel": {
+                    "originatorAppId": "FAWBTELUSAGENT",
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+                billingAccountRefMaps
+            }
+        });
+
+        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
+
+        //POST for creating new entity
+        //need to write the logic
+        billingAccountRefMaps = billingAccountRefMaps1;
+        var roleType;
+        if (billingAccountRefMaps.length == 1) {
+            roleType = 'BAN';
+        } else {
+            roleType = 'BG';
+        }
+
+        var relatedEntityId;
+        if (Page.Variables.getEntityProfileDetails.dataSet[0].entityType == 'RCID') {
+            relatedEntityId = Page.Variables.getEntityProfileDetails.dataSet[0].entityId;
+        }
+
+        Page.Variables.AddCollectionEntityServiceVar.setInput({
+            "CollectionEntityCreate": {
+                "agentId": Page.Variables.getCollectionEntityById.dataSet.agentId,
+                "channel": {
+                    "originatorAppId": "FAWBTELUSAGENT",
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+                billingAccountRefMaps,
+                'name': Page.Variables.getCollectionEntityById.dataSet.name,
+                'customerRisk': Page.Variables.getCollectionEntityById.dataSet.customerRisk,
+                'customerRiskId': Page.Variables.getCollectionEntityById.dataSet.customerRiskId,
+                'customerValue': Page.Variables.getCollectionEntityById.dataSet.customerValue,
+                'customerValueId': Page.Variables.getCollectionEntityById.dataSet.customerValueId,
+                'delinquentCycle': Page.Variables.getCollectionEntityById.dataSet.delinquentCycle,
+                'lineOfBusiness': Page.Variables.getCollectionEntityById.dataSet.lineOfBusiness,
+                'workCategory': Page.Variables.getCollectionEntityById.dataSet.workCategory,
+                'tenure': Page.Variables.getCollectionEntityById.dataSet.tenure,
+                'relatedEntity': {
+                    'id': relatedEntityId,
+                    'role': roleType
+                },
+                'validFor': {
+                    'startDateTime': todaysDateJsonFormat
+                }
+            }
+        });
+
+
+        Page.Variables.AddCollectionEntityServiceVar.invoke();
+
+
         Page.Widgets.TransferBanToNewEntDialog.close();
         Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to newly created Entity: NewEntityName (NewEntityID)";
         setTimeout(messageTimeout, 10000);
