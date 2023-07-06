@@ -266,6 +266,9 @@ Partial.CreatePARRClick = function($event, widget) {
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
     Partial.Clear();
     App.refreshParrList();
+    setTimeout(messageTimeout, 5000);
+
+
 };
 Partial.button2_1Click = function($event, widget) {
     var entityIdStr = Partial.pageParams.entityId
@@ -279,3 +282,7 @@ Partial.button2_1Click = function($event, widget) {
     Partial.Widgets.selectBANdialog.open();
 
 };
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+}

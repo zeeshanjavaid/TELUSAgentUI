@@ -116,6 +116,7 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedOn': new Date()
                 });
                 Partial.Variables.createTeam.invoke();
+                Partial.Variables.teamsSuccessMessage.dataSet.dataValue = "Team is created"
             }
 
 
