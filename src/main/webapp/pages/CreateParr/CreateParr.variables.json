@@ -155,6 +155,8 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "CreatePaymentArrangementonSuccess(variable, data, options)",
+    "onError" : "CreatePaymentArrangementonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

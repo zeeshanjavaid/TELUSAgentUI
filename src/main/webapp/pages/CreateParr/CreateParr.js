@@ -262,11 +262,11 @@ Partial.CreatePARRClick = function($event, widget) {
     });
     //Invoke POST createDispute service
     Partial.Variables.CreatePaymentArrangement.invoke();
-    App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
-    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
-    Partial.Clear();
-    App.refreshParrList();
-    setTimeout(messageTimeout, 5000);
+    // App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
+    // Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    // Partial.Clear();
+    //  App.refreshParrList();
+    // setTimeout(messageTimeout, 5000);
 
 
 };
@@ -285,4 +285,20 @@ Partial.button2_1Click = function($event, widget) {
 
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
 }
+
+Partial.CreatePaymentArrangementonError = function(variable, data, xhrObj) {
+    debugger;
+    //var errorObj = xhrObj.error;
+
+    App.Variables.errorMsg.dataSet.dataValue = "PARR creation failed as Multiple Payment arrangements are not allowed"
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    setTimeout(messageTimeout, 5000);
+};
+
+Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    setTimeout(messageTimeout, 5000);
+};
