@@ -596,6 +596,9 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
+        Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+
+
         Partial.Widgets.EditAndFulfillSentdialog.close();
         Partial.Widgets.update_ActionDialog.open();
 

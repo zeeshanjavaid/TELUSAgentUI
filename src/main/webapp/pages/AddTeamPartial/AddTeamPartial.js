@@ -34,7 +34,10 @@ Partial.onReady = function() {
 
 };
 
-
+/*function messageTimeout() {
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
+}
+*/
 App.addTeams = function() {
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
@@ -116,7 +119,8 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedOn': new Date()
                 });
                 Partial.Variables.createTeam.invoke();
-                Partial.Variables.teamsSuccessMessage.dataSet.dataValue = "Team is created"
+                Partial.Variables.teamsSuccessMessage.dataSet.dataValue = "Team is created. ";
+                /*setTimeout(messageTimeout, 3000);*/
             }
 
 
