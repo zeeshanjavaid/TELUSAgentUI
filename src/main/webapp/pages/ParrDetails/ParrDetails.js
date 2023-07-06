@@ -96,12 +96,7 @@ Partial.YesCancelButtonClick = function($event, widget) {
     });
     //Invoke POST updateParrStatus service
     Partial.Variables.CancelPaymentArrangement.invoke();
-    App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
-    Partial.Variables.getPaymentArrangement.setInput({
-        "id": Partial.pageParams.ParrId
-    });
-    Partial.Variables.getPaymentArrangement.invoke();
-    setTimeout(messageTimeout, 5000);
+
 };
 
 Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
@@ -159,12 +154,7 @@ Partial.SubmitButtonClick = function($event, widget) {
     });
     //Invoke POST UpdateParr service
     Partial.Variables.updatePaymentArrangement.invoke();
-    App.Variables.successMessage.dataSet.dataValue = "PARR renegotiated successfully."
-    Partial.Variables.getPaymentArrangement.setInput({
-        "id": Partial.pageParams.ParrId
-    });
-    Partial.Variables.getPaymentArrangement.invoke();
-    setTimeout(messageTimeout, 5000);
+
 };
 Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
@@ -192,4 +182,37 @@ Partial.CancelParrClick = function($event, widget) {
 
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
+    App.Variables.errorMsg.dataSet.dataValue = null
 }
+
+Partial.updatePaymentArrangementonError = function(variable, data, xhrObj) {
+
+    App.Variables.errorMsg.dataSet.dataValue = "PARR renegotiation failed as it can be renegotiated only once."
+    setTimeout(messageTimeout, 5000);
+};
+
+
+Partial.updatePaymentArrangementonSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "PARR renegotiated successfully."
+    Partial.Variables.getPaymentArrangement.setInput({
+        "id": Partial.pageParams.ParrId
+    });
+    Partial.Variables.getPaymentArrangement.invoke();
+    setTimeout(messageTimeout, 5000);
+};
+
+Partial.CancelPaymentArrangementonError = function(variable, data, xhrObj) {
+    App.Variables.errorMsg.dataSet.dataValue = "PARR Cancellation failed as it can be Cancelled only once."
+    setTimeout(messageTimeout, 5000);
+};
+
+
+Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
+    Partial.Variables.getPaymentArrangement.setInput({
+        "id": Partial.pageParams.ParrId
+    });
+    Partial.Variables.getPaymentArrangement.invoke();
+    setTimeout(messageTimeout, 5000);
+
+};
