@@ -269,7 +269,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn71_1">
                     <wm-composite name="composite11" width="60%">
                         <wm-container class="col-md-9" name="container16">
-                            <wm-select name="reasonDropdownUpdate" datavalue="bind:Variables.getDisputeDetails.dataSet.disputeReason" dataset="bind:Variables.reasonDropdownUpdateVar.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                            <wm-select name="reasonDropdownUpdate" datavalue="bind:Variables.getDisputeDetails.dataSet.disputeReason" dataset="bind:Variables.reasonDropdownUpdateVar.dataSet" datafield="code" displayfield="code"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>
@@ -281,7 +281,7 @@
                 <wm-gridcolumn columnwidth="9" name="gridcolumn73">
                     <wm-composite name="composite12" width="60%">
                         <wm-container class="col-md-9" name="container17">
-                            <wm-select name="productDropdown" dataset="bind:Variables.productsDropdownUpdatevar.dataSet" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.getDisputeDetails.dataSet.product"></wm-select>
+                            <wm-select name="productDropdown" datafield="code" datavalue="bind:Variables.getDisputeDetails.dataSet.product" dataset="bind:Variables.productsDropdownUpdatevar.dataSet" displayfield="code"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

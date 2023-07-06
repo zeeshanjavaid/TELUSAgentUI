@@ -153,60 +153,58 @@
     "controller" : "CollectionEntity"
   },
   "productsDropdownUpdatevar" : {
-    "_id" : "wm-productsDropdownUpdatevar-wm.Variable-1680629185398",
+    "_id" : "wm-productsDropdownUpdatevar_1-wm.ServiceVariable-1688641807560",
     "name" : "productsDropdownUpdatevar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Copper Internet"
-    }, {
-      "dataValue" : "Fiber Internet"
-    }, {
-      "dataValue" : "Business Connect"
-    }, {
-      "dataValue" : "SBS Wi-Fi"
-    }, {
-      "dataValue" : "TELUS Secure Business"
-    }, {
-      "dataValue" : "Other Products and Services"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_DISPUTE_PRODSERVICE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "reasonDropdownUpdateVar" : {
-    "_id" : "wm-reasonDropdownUpdateVar-wm.Variable-1680618673490",
+    "_id" : "wm-reasonDropdownUpdateVar_1-wm.ServiceVariable-1688641575670",
     "name" : "reasonDropdownUpdateVar",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "BILLED CHARGES (DEEMED) INCORRECT"
-    }, {
-      "dataValue" : "PRICE / VALUE DISSATISFACTION"
-    }, {
-      "dataValue" : "OUT/TERMINATION ORDER IN PROGRESS"
-    }, {
-      "dataValue" : "PRODUCTS/SERVICES BILLED BUT NOT DELIVERED"
-    }, {
-      "dataValue" : "INVOICE INFORMATION INCORRECT"
-    }, {
-      "dataValue" : "PRODUCT/SERVICE NOT WORKING AS EXPECTED"
-    }, {
-      "dataValue" : "TLC BILLED - BEING CONTESTED/ADJUSTED,"
-    }, {
-      "dataValue" : "LPC BILLED - BEING CONTESTED / ADJUSTED"
-    }, {
-      "dataValue" : "ACCOUNT NOT CANCELLED ON TIME"
-    }, {
-      "dataValue" : "OTHER REASON"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "CREATE_DISPUTE_REASON",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "updateDisputeService" : {
     "_id" : "wm-updateDisputeService-wm.ServiceVariable-1680519528340",
