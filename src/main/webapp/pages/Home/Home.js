@@ -21,16 +21,20 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
+    debugger;
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
     $('#banViewTableGrid').hide();
     $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
+
 };
 
 
 Page.entityViewButtonClick = function($event, widget) {
     debugger;
-    var data = Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet;
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     // to make buttons selected
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -50,7 +54,7 @@ Page.entityViewButtonClick = function($event, widget) {
 
 Page.banViewButtonClick = function($event, widget) {
     debugger;
-    var data = Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet;
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     // to make buttons selected
     $("#banViewBtn").css("background-color", "#4B286D");
@@ -92,6 +96,32 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     Page.Widgets.collStatusSelectBV.datavalue = "";
 }
 
+// function added to display table based on the filters for entity view
+Page.applyFiltersEntityView = function($event, widget) {
+    debugger;
+    Page.Widgets.AssignedTeamSelectEV.datavalue;
+    Page.Widgets.portfolioSelectEV.datavalue;
+    Page.Widgets.includeCurrentCreditSelectEV.datavalue;
+    Page.Widgets.entityOwnerSelectEV.datavalue;
+    Page.Widgets.billingSystemSelectEV.datavalue;
+    Page.Widgets.ARExcludedInternalSelectEV.datavalue;
+    Page.Widgets.workCategorySelectEV.datavalue;
+    Page.Widgets.collStatusSelectEV.datavalue;
+}
+
+// function added to display table based on the filters for ban view
+Page.applyFiltersBanView = function($event, widget) {
+    debugger;
+    Page.Widgets.AssignedTeamSelectBV.datavalue;
+    Page.Widgets.portfolioSelectBV.datavalue;
+    Page.Widgets.includeCurrentCreditSelectBV.datavalue;
+    Page.Widgets.entityOwnerSelectBV.datavalue;
+    Page.Widgets.billingSystemSelectBV.datavalue;
+    Page.Widgets.ARExcludedInternalSelectBV.datavalue;
+    Page.Widgets.workCategorySelectBV.datavalue;
+    Page.Widgets.collStatusSelectBV.datavalue;
+}
+
 Page.goToEnityPage = function(row) {
     window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 }
@@ -102,4 +132,36 @@ Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {
 
 Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
     App.showRowExpansionBanViewHome(row, $data);
+};
+
+Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.workCategorySelect_Home.dataSet = App.Variables.getLoggedInUserDetails.dataSet.workCategory;
+};
+
+Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.workCategorySelect_Home.dataSet = App.Variables.getLoggedInUserDetails.dataSet.workCategory;
+};
+
+Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    var dropdown = document.getElementById('workCategorySelectEV');
+    var selectedOptions = Page.Widgets.workCategorySelectEV.datavalue;
+    var isAllSelected = selectedOptions.includes('All');
+    var otherOptionsSelected = selectedOptions.length > 1;
+    if (isAllSelected && otherOptionsSelected) {
+        debugger;
+        allOptionIndex = selectedOptions.indexOf('All');
+        dropdown.options[allOptionIndex].selected = false;
+
+    }
+};
+
+
+Page.workCategorySelect_HomeonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_Home.dataSet.unshift({
+        code: "All"
+    });
+    Page.Variables.workCategorySelect_Home.dataSet = Page.Variables.workCategorySelect_Home.dataSet;
 };
