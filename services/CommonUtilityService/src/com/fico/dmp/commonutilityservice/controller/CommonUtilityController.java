@@ -40,7 +40,14 @@ public class CommonUtilityController {
     }
 
     @RequestMapping(value = "/teamListInActionManagement", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<AssignedTeamModel> getTeamListInActionManagement() {
         return commonUtilityService.getTeamListInActionManagement();
+    }
+
+    @RequestMapping(value = "/userListByTeamId", method = RequestMethod.GET)
+    public List<AssignedUserModel> getUserListByTeamId(@RequestParam(value = "teamId", required = false) String teamId) {
+        return commonUtilityService.getUserListByTeamId(teamId);
     }
 }

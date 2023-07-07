@@ -14,8 +14,8 @@ import com.wavemaker.runtime.data.annotations.ColumnAlias;
 public class GetUserListByTeamIdResponse implements Serializable {
 
 
-    @ColumnAlias("ID")
-    private Long id;
+    @ColumnAlias("emplId")
+    private String emplId;
 
     @ColumnAlias("firstName")
     private String firstName;
@@ -23,12 +23,12 @@ public class GetUserListByTeamIdResponse implements Serializable {
     @ColumnAlias("lastName")
     private String lastName;
 
-    public Long getId() {
-        return this.id;
+    public String getEmplId() {
+        return this.emplId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmplId(String emplId) {
+        this.emplId = emplId;
     }
 
     public String getFirstName() {
@@ -52,14 +52,14 @@ public class GetUserListByTeamIdResponse implements Serializable {
         if (this == o) return true;
         if (!(o instanceof GetUserListByTeamIdResponse)) return false;
         final GetUserListByTeamIdResponse getUserListByTeamIdResponse = (GetUserListByTeamIdResponse) o;
-        return Objects.equals(getId(), getUserListByTeamIdResponse.getId()) &&
+        return Objects.equals(getEmplId(), getUserListByTeamIdResponse.getEmplId()) &&
                 Objects.equals(getFirstName(), getUserListByTeamIdResponse.getFirstName()) &&
                 Objects.equals(getLastName(), getUserListByTeamIdResponse.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),
+        return Objects.hash(getEmplId(),
                 getFirstName(),
                 getLastName());
     }

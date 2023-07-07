@@ -20,6 +20,8 @@ import org.springframework.data.domain.Pageable;
 import com.fico.dmp.telusagentuidb.Team;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.User;
+import com.fico.dmp.telusagentuidb.models.query.GetUserListByTeamIdResponse;
+import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorService;
 import com.fico.dmp.telusagentuidb.service.TeamService;
 import com.fico.dmp.telusagentuidb.service.TeamUserService;
 import com.fico.dmp.telusagentuidb.service.UserService;
@@ -57,6 +59,10 @@ public class CommonUtilityService {
     
     @Autowired
     private TeamService	teamService;
+    
+    
+	@Autowired
+	TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -125,6 +131,23 @@ public class CommonUtilityService {
         });
         }
     	return assignedTeamModelList;
+    }
+    
+    
+    public List<AssignedUserModel> getUserListByTeamId(String teamId){
+    	Pageable pageable = PageRequest.of(0, 1000);
+    	Page<GetUserListByTeamIdResponse> pageableUserListByTeamIdResponse = telusAgentUIDBQueryExecutorService.executeGetUserListByTeamId(teamId, pageable);
+        List<AssignedUserModel> assignedUserModelList = new ArrayList<AssignedUserModel>();
+        if(pageableUserListByTeamIdResponse.hasContent()) {
+        	pageableUserListByTeamIdResponse.stream().forEach( user -> {
+        	AssignedUserModel assignedUserModel = new AssignedUserModel();
+        	assignedUserModel.setFirstName(user.getFirstName());
+        	assignedUserModel.setLastName(user.getLastName());
+        	assignedUserModel.setEmpId(user.getEmplId());
+        	assignedUserModelList.add(assignedUserModel);
+        });
+        }
+    	return assignedUserModelList;
     }
     
     

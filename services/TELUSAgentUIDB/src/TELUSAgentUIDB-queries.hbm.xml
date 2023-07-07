@@ -831,20 +831,20 @@ ur.userId=u.id  join ROLE r on ur.roleId= r.id where ur.roleId = :roleId and r.r
 
     <sql-query name="getUserListByTeamId">
         <![CDATA[
-        select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER 
+        select distinct(USER.emplId) as emplId, USER.firstName as firstName, USER.lastName as lastName from TEAM_USER 
 JOIN USER on  TEAM_USER.userId = USER.ID
 JOIN TEAM on TEAM.ID = TEAM_USER.TeamID
-where TEAM.TeamID = :teamid
+where TEAM.TeamID = :teamid and USER.active = true
         ]]>
     <query-param name="teamid" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getUserListByTeamId__count">
         <![CDATA[
-        select count(*) from (select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER 
+        select count(*) from (select distinct(USER.emplId) as emplId, USER.firstName as firstName, USER.lastName as lastName from TEAM_USER 
 JOIN USER on  TEAM_USER.userId = USER.ID
 JOIN TEAM on TEAM.ID = TEAM_USER.TeamID
-where TEAM.TeamID = :teamid) wmTempTable
+where TEAM.TeamID = :teamid and USER.active = true) wmTempTable
         ]]>
     <query-param name="teamid" type="java.lang.String"/>
     </sql-query>

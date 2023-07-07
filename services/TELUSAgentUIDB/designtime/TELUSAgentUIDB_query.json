@@ -4281,8 +4281,8 @@
     "name" : "getUserListByTeamId",
     "description" : "This query is used to retrieve the user list using Team Id",
     "version" : "V2",
-    "queryString" : "select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid",
-    "countQueryString" : "select count(*) from (select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid) wmTempTable",
+    "queryString" : "select distinct(USER.emplId) as emplId, USER.firstName as firstName, USER.lastName as lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid and USER.active = true",
+    "countQueryString" : "select count(*) from (select distinct(USER.emplId) as emplId, USER.firstName as firstName, USER.lastName as lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid and USER.active = true) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -4293,7 +4293,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "BC",
+      "testValue" : "LOC",
       "required" : false
     } ],
     "request" : {
@@ -4307,12 +4307,12 @@
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "ID",
-        "fieldName" : "id",
+        "name" : "emplId",
+        "fieldName" : "emplId",
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",
-          "typeRef" : "java.lang.Long",
+          "typeRef" : "java.lang.String",
           "list" : false
         },
         "tableName" : "USER",
