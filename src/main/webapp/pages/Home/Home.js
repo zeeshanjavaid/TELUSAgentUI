@@ -139,47 +139,37 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Widgets.AssignedTeamSelectEV.datavalue;
-    Page.Variables.getUserListByTeamId_homeEV.setInput({
+    Page.Variables.getUserListByTeamId_home.setInput({
         'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
     });
-    Page.Variables.getUserListByTeamId_homeEV.invoke();
-    Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getUserListByTeamId_homeEV.dataSet;
-    Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: 'All'
-    });
-    Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getAllActiveUserList_Home.dataSet;
+    Page.Variables.getUserListByTeamId_home.invoke();
 };
 
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Widgets.AssignedTeamSelectEV.datavalue;
-    Page.Variables.getUserListByTeamId_homeEV.setInput({
-        'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
+    Page.Variables.getUserListByTeamId_home.setInput({
+        'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
     });
-    Page.Variables.getUserListByTeamId_homeEV.invoke();
-    Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getUserListByTeamId_homeEV.dataSet;
-    Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: 'All'
-    });
-    Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getAllActiveUserList_Home.dataSet;
+    Page.Variables.getUserListByTeamId_home.invoke();
 };
 
 Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Page.Variables.workCategorySelect_Home.dataSet = App.Variables.getLoggedInUserDetails.dataSet.workCategory;
+    debugger;
+    Page.Variables.workcategoriesByEmpId_home.setInput({
+        'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
+    });
+    Page.Variables.workcategoriesByEmpId_home.invoke();
 };
 
 Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Page.Variables.workCategorySelect_Home.dataSet = App.Variables.getLoggedInUserDetails.dataSet.workCategory;
+    debugger;
+    Page.Variables.workcategoriesByEmpId_home.setInput({
+        'emplId': Page.Widgets.entityOwnerSelectBV.datavalue
+    });
+    Page.Variables.workcategoriesByEmpId_home.invoke();
 };
 
-Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
+/*Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
     debugger;
     var dropdown = document.getElementById('workCategorySelectEV');
     var selectedOptions = Page.Widgets.workCategorySelectEV.datavalue;
@@ -191,9 +181,9 @@ Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
         dropdown.options[allOptionIndex].selected = false;
 
     }
-};
+};*/
 
-
+// adding 'All' in the dropdown list for workCategory dropdown
 Page.workCategorySelect_HomeonSuccess = function(variable, data) {
     Page.Variables.workCategorySelect_Home.dataSet.unshift({
         code: "All"
@@ -201,6 +191,7 @@ Page.workCategorySelect_HomeonSuccess = function(variable, data) {
     Page.Variables.workCategorySelect_Home.dataSet = Page.Variables.workCategorySelect_Home.dataSet;
 };
 
+// adding 'All' in the dropdown list for assignedTeam dropdown
 Page.getTeamList_HomeonSuccess = function(variable, data) {
     Page.Variables.getTeamList_Home.dataSet.unshift({
         id: 0,
@@ -210,12 +201,28 @@ Page.getTeamList_HomeonSuccess = function(variable, data) {
     Page.Variables.getTeamList_Home.dataSet = Page.Variables.getTeamList_Home.dataSet;
 };
 
+// adding 'All' in the dropdown list for entityOwner dropdown
 Page.getAllActiveUserList_HomeonSuccess = function(variable, data) {
-    debugger;
     Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
         empId: 'All',
         firstName: 'All',
         lastName: 'All'
     });
     Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getAllActiveUserList_Home.dataSet;
+};
+
+Page.getUserListByTeamId_homeonSuccess = function(variable, data) {
+    Page.Variables.getAllActiveUserList_Home.dataSet = data;
+    Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
+        empId: 'All',
+        firstName: 'All',
+        lastName: 'All'
+    });
+};
+
+Page.workcategoriesByEmpId_homeonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_Home.dataSet = data;
+    Page.Variables.workCategorySelect_Home.dataSet.unshift({
+        code: "All"
+    });
 };
