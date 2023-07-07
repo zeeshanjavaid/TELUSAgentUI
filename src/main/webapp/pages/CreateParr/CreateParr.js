@@ -300,5 +300,6 @@ Partial.CreatePaymentArrangementonError = function(variable, data, xhrObj) {
 Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    App.refreshParrList();
     setTimeout(messageTimeout, 5000);
 };
