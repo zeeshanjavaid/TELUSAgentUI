@@ -40,7 +40,7 @@
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                    <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
                         widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
@@ -182,8 +182,8 @@
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="BAN Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -284,8 +284,8 @@
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="BAN Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -410,8 +410,8 @@
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="BAN Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -535,8 +535,8 @@
                         <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="BAN Coll.Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -625,7 +625,7 @@
         <wm-layoutgrid name="layoutgrid11_2">
             <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                    <wm-textarea name="closeComment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -652,7 +652,7 @@
         <wm-layoutgrid name="layoutgrid11_2">
             <wm-gridrow name="gridrow8" margin="0 0 1em 0" padding="unset unset 1.5em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn11" width="95%">
-                    <wm-textarea name="Comment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
+                    <wm-textarea name="cancelComment" width="100%" resize="none" maxchars="256" placeholder="" margin="unset unset unset 0.1em" class="comment-border"></wm-textarea>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -742,16 +742,17 @@
             <wm-gridrow name="gridrow122">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn99">
                     <wm-label padding="unset 0.5em" caption="Name" name="label62"></wm-label>
-                    <wm-table name="getCollectionTreatmentStepTable1" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="Classic">
-                        <wm-table-column binding="id" caption="Id" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                    <wm-table name="getCollectionTreatmentStepTable1" title="" dataset="bind:Variables.getODMgmtHistory.dataSet" navigation="Classic">
+                        <wm-table-column binding="actionId" caption="Action Id" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="assignedTo" caption="Assigned To" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="dueDate" caption="Due Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="getAssignedTeam" caption="Get Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="assignedAgentId" caption="Assigned Agent Id" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Auditinfo Last Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="type" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet.toString()" caption="BAN List" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true"
-                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="updatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="updatedOn" caption="Updated On" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banList" caption="Ban List" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('banList').toString()" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>

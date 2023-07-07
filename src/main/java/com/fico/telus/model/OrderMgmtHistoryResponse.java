@@ -11,18 +11,7 @@ public class OrderMgmtHistoryResponse {
     private String updatedBy;
     private String updatedOn;
     private String dueDate;
-    private List<String> banList;
-
-    public OrderMgmtHistoryResponse(String actionId, String status, String assignedTo, String getAssignedTeam, String updatedBy, String updatedOn, String dueDate, List<String> banList) {
-        this.actionId = actionId;
-        this.status = status;
-        this.assignedTo = assignedTo;
-        this.getAssignedTeam = getAssignedTeam;
-        this.updatedBy = updatedBy;
-        this.updatedOn = updatedOn;
-        this.dueDate = dueDate;
-        this.banList = banList;
-    }
+    private List<Integer> banList;
 
     public String getActionId() {
         return actionId;
@@ -80,11 +69,11 @@ public class OrderMgmtHistoryResponse {
         this.dueDate = dueDate;
     }
 
-    public List<String> getBanList() {
+    public List<Integer> getBanList() {
         return banList;
     }
 
-    public void setBanList(List<String> banList) {
+    public void setBanList(List<Integer> banList) {
         this.banList = banList;
     }
 }

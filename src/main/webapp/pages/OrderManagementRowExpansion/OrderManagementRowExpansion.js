@@ -51,15 +51,17 @@ Partial.onReady = function() {
                 Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList.id);
 
             });
+
+
+            Partial.Variables.getBanIdforOD.setInput({
+
+                "id": Partial.Variables.BanListRefIds.dataSet
+
+
+            });
+            Partial.Variables.getBanIdforOD.invoke();
         }
 
-        Partial.Variables.getBanIdforOD.setInput({
-
-            "id": Partial.Variables.BanListRefIds.dataSet
-
-
-        });
-        Partial.Variables.getBanIdforOD.invoke();
         debugger;
         Partial.Variables.BanListRefIds.dataSet;
 

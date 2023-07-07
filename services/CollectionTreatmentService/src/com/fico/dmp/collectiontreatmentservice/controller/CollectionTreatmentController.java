@@ -13,6 +13,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.lang.Boolean;
 import java.util.List;
+import com.fico.telus.model.OrderMgmtHistoryResponse;
 import io.swagger.client.model.CollectionTreatmentStepUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -85,6 +86,13 @@ public class CollectionTreatmentController {
     @ApiOperation(value = "")
     public CollectionTreatmentStep getCollectionTreatmentStepById(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey) throws Exception {
         return collectionTreatmentService.getCollectionTreatmentStepById(id, partitionKey);
+    }
+
+    @RequestMapping(value = "/odMgmtHistoryView", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<OrderMgmtHistoryResponse> getOdMgmtHistoryView(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedTo", required = false) String assignedTo, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "completionDate", required = false) String completionDate, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionTreatmentService.getOdMgmtHistoryView(collectionEntityId, type, category, createdDate, createdBy, status, assignedTo, assignedTeam, completionDate, fields, offset, limit, history);
     }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)

@@ -15,6 +15,7 @@ public class URIConstant {
         public static final String ENTITY_SEARCH = "/entitySearch";
         public static final String ENTITY_DETAILS = "/entityDetails";
         public static final String GET_COLLECTION_TREATMENT = "/collectionTreatmentStep";
+        public static final String GET_COLL_ACTIVITY_LOG = "/collectionActivityLog";
         public static final String GET_DISPUTE = "/dispute";
         public static final String GET_CONTACT = "/contact";
         public static final String GET_BILLING_ACCOUNT_REF = "/billingAccountRef";

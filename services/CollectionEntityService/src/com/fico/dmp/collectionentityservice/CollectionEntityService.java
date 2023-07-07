@@ -145,9 +145,25 @@ public class CollectionEntityService {
          objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionBillingAccountRef.class));
     	 }
     	 else {
-  			logger.info("::::::::Calling  getBillingAccountRef method ::::::::");
+    	    // System.out.println(id);
+    	              	logger.info("Checking id value "+id);
 
-         String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF, "GET", entitySvcAuthScope);
+  			logger.info("::::::::Calling  getBillingAccountRef method ::::::::");
+  			if(id==null)
+  			{
+  			    id="0";
+  			}
+  			
+  			
+             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF)
+                     .queryParam("fields", fields)
+                     .queryParam("ban", ban)
+                     .queryParam("entityId",entityId)
+                     .queryParam("id","in:"+id);
+                     
+                     	logger.info("::::::::Billing Account Reference endpoint call success ::::::::",builder.toUriString());
+
+         String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
          	logger.info("::::::::Billing Account Reference endpoint call success ::::::::");
          	logger.info("Resoinse---"+ responseStr);
          	List<CollectionBillingAccountRef> collectionBillingAccountRefList = objectMapper.readValue(responseStr,

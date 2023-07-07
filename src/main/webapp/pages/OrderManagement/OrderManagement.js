@@ -37,6 +37,11 @@ Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widg
     App.showRowExpansionOrderManagement(row, $data);
 };
 
+function getCurrentDate() {
+    var currentDate = new Date().toJSON().slice(0, 10);
+    return currentDate;
+}
+
 Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
@@ -127,12 +132,14 @@ Partial.createbuttonClick = function($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue.dataValue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 0
+                    'id': 1
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
             },
         });
@@ -200,12 +207,14 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue.dataValue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': 0
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
                 'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
@@ -228,6 +237,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
 };
 Partial.createbuttonCeaseClick = function($event, widget) {
+
+    debugger;
 
     var isAssignedPerson = '';
 
@@ -269,12 +280,14 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'priority': Partial.Widgets.prioritySelect.datavalue.dataValue,
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 0
+                    'id': 1
                 },
                 'channel': {
-                    'channelOrgId': "string",
-                    'userId': Partial.Variables.loggedInUser.dataSet.id
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
                 'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
@@ -403,7 +416,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': '20231-01-01',
+                'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -412,7 +425,11 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                    'channel': {},
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
                     'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
@@ -480,7 +497,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': '20231-01-01',
+                'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': 'Order Created',
@@ -489,7 +506,11 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                    'channel': {},
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
                     'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
@@ -564,7 +585,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': '20231-01-01',
+                'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -573,7 +594,11 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                    'channel': {},
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
                     'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
@@ -632,7 +657,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': '20231-01-01',
+                'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': 'Order Fulfilled',
@@ -641,7 +666,11 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
-                    'channel': {},
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
                     'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
@@ -698,6 +727,25 @@ Partial.closeAction_NoClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
+    debugger;
+    Partial.Variables.UpdateODManagemntVar.setInput({
+        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': getCurrentDate(),
+        "CollectionTreatmentStepUpdate": {
+            'status': 'Close',
+            'comment': Partial.Widgets.closeComment.datavalue,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'channelOrgId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            },
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateODManagemntVar.invoke();
+
+
     Partial.Widgets.assigned_closeActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
     setTimeout(messageTimeout, 3000);
@@ -705,6 +753,25 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
 
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
+
+    debugger;
+    Partial.Variables.UpdateODManagemntVar.setInput({
+        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': getCurrentDate(),
+        "CollectionTreatmentStepUpdate": {
+            'status': 'Cancel',
+            'comment': Partial.Widgets.cancelComment.datavalue,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'channelOrgId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            },
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateODManagemntVar.invoke();
+
     Partial.Widgets.assigned_cancleActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
     setTimeout(messageTimeout, 3000);
@@ -772,6 +839,17 @@ Partial.update_ActionDialogOpened = function($event, widget) {
 };
 
 Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, row) {
+
+    debugger;
+    var entityIdStr = Partial.pageParams.entityId
+    var entityIdInt = parseInt(entityIdStr);
+    Partial.Variables.getODMgmtHistory.setInput({
+        'collectionEntityId': entityIdInt,
+        'relatedBusinessEntityId': row.id,
+        'relatedBusinessEntityType': 'COLL_TRTMT_STEP'
+    });
+
+    Partial.Variables.getODMgmtHistory.invoke();
     Partial.Widgets.ViewHistory.open();
 
 
@@ -792,3 +870,22 @@ Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
     }
 
 }
+
+Partial.getODMgmtHistoryonSuccess = function(variable, data) {
+    debugger;
+    var bansLength = data.length;
+    var banId1 = data[0];
+    var banId2 = data[1];
+    var banId3 = data[2];
+
+    Partial.Widgets.BanID1.caption = banId1;
+    Partial.Widgets.BanID2.caption = banId2;
+    Partial.Widgets.BanID3.caption = banId3;
+
+    if (bansLength > 3) {
+
+        document.getElementById("moreLabel").style.display = "initial";
+    }
+
+
+};
