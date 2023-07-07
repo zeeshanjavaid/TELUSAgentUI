@@ -135,6 +135,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetWorkCategoriesByEmpIdResponse> executeGetWorkCategoriesByEmpId(String emplId, Pageable pageable);
+
+    void exportGetWorkCategoriesByEmpId(String emplId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId);
 
     Page<GetPermissionByUserIdResponse> executeGetPermissionByUserId(String userId, Pageable pageable);

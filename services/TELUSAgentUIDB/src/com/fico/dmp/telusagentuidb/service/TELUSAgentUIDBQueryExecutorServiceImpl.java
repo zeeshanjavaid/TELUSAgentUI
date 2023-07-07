@@ -725,6 +725,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetWorkCategoriesByEmpIdResponse> executeGetWorkCategoriesByEmpId(String emplId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("emplId", emplId);
+
+        return queryExecutor.executeNamedQuery("getWorkCategoriesByEmpId", params, GetWorkCategoriesByEmpIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetWorkCategoriesByEmpId(String emplId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("emplId", emplId);
+
+        QueryProcedureInput<GetWorkCategoriesByEmpIdResponse> queryInput = new QueryProcedureInput<>("getWorkCategoriesByEmpId", params, GetWorkCategoriesByEmpIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId) {

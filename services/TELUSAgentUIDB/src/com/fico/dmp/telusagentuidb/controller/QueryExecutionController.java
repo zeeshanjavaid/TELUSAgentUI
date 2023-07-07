@@ -884,6 +884,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getWorkCategoriesByEmpId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "This query is used to get the workcategories by EmpId")
+    public Page<GetWorkCategoriesByEmpIdResponse> executeGetWorkCategoriesByEmpId(@RequestParam(value = "emplId", required = false) String emplId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getWorkCategoriesByEmpId");
+        Page<GetWorkCategoriesByEmpIdResponse> _result = queryService.executeGetWorkCategoriesByEmpId(emplId, pageable);
+        LOGGER.debug("got the result for named query: getWorkCategoriesByEmpId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getWorkCategoriesByEmpId")
+    @RequestMapping(value = "/queries/getWorkCategoriesByEmpId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetWorkCategoriesByEmpId(@RequestParam(value = "emplId", required = false) String emplId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getWorkCategoriesByEmpId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getWorkCategoriesByEmpId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetWorkCategoriesByEmpId(emplId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_DeleteAllErrorsByApplicationId", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_DeleteAllErrorsByApplicationId")

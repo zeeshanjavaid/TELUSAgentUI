@@ -4351,6 +4351,52 @@
       } ]
     }
   },
+  "getWorkCategoriesByEmpId" : {
+    "name" : "getWorkCategoriesByEmpId",
+    "description" : "This query is used to get the workcategories by EmpId",
+    "version" : "V2",
+    "queryString" : "select WKUSER.work_category as code from WORKCATEGORY_USER WKUSER\r\nJOIN USER USER on WKUSER.userId = USER.ID\r\nwhere USER.emplId = :emplId and USER.active = true",
+    "countQueryString" : "select count(*) from (select WKUSER.work_category as code from WORKCATEGORY_USER WKUSER\r\nJOIN USER USER on WKUSER.userId = USER.ID\r\nwhere USER.emplId = :emplId and USER.active = true) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "emplId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "909123",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoriesByEmpIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "code",
+        "fieldName" : "code",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "WORKCATEGORY_USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getWorkCategoryByUserId" : {
     "name" : "getWorkCategoryByUserId",
     "description" : "getting work category by Id for user profile page",

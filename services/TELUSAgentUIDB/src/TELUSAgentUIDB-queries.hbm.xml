@@ -924,6 +924,24 @@ END ASC) wmTempTable
     <query-param name="dvDescription" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getWorkCategoriesByEmpId">
+        <![CDATA[
+        select WKUSER.work_category as code from WORKCATEGORY_USER WKUSER
+JOIN USER USER on WKUSER.userId = USER.ID
+where USER.emplId = :emplId and USER.active = true
+        ]]>
+    <query-param name="emplId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getWorkCategoriesByEmpId__count">
+        <![CDATA[
+        select count(*) from (select WKUSER.work_category as code from WORKCATEGORY_USER WKUSER
+JOIN USER USER on WKUSER.userId = USER.ID
+where USER.emplId = :emplId and USER.active = true) wmTempTable
+        ]]>
+    <query-param name="emplId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="Query_DeleteAllErrorsByApplicationId">
         <![CDATA[
         delete from Error where applicationId = :applicationId
