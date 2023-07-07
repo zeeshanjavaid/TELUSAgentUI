@@ -294,6 +294,7 @@ Partial.CreatePaymentArrangementonError = function(variable, data, xhrObj) {
 
     App.Variables.errorMsg.dataSet.dataValue = "PARR creation failed as Multiple Payment arrangements are not allowed"
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    Partial.Clear();
     setTimeout(messageTimeout, 5000);
 };
 
