@@ -139,34 +139,34 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.getUserListByTeamId_home.setInput({
+    Page.Variables.getUserListByTeamId_homeEV.setInput({
         'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
     });
-    Page.Variables.getUserListByTeamId_home.invoke();
+    Page.Variables.getUserListByTeamId_homeEV.invoke();
 };
 
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.getUserListByTeamId_home.setInput({
+    Page.Variables.getUserListByTeamId_homeBV.setInput({
         'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
     });
-    Page.Variables.getUserListByTeamId_home.invoke();
+    Page.Variables.getUserListByTeamId_homeBV.invoke();
 };
 
 Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.workcategoriesByEmpId_home.setInput({
+    Page.Variables.workcategoriesByEmpId_homeEV.setInput({
         'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
     });
-    Page.Variables.workcategoriesByEmpId_home.invoke();
+    Page.Variables.workcategoriesByEmpId_homeEV.invoke();
 };
 
 Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.workcategoriesByEmpId_home.setInput({
+    Page.Variables.workcategoriesByEmpId_homeBV.setInput({
         'emplId': Page.Widgets.entityOwnerSelectBV.datavalue
     });
-    Page.Variables.workcategoriesByEmpId_home.invoke();
+    Page.Variables.workcategoriesByEmpId_homeBV.invoke();
 };
 
 /*Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
@@ -183,46 +183,97 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     }
 };*/
 
-// adding 'All' in the dropdown list for workCategory dropdown
-Page.workCategorySelect_HomeonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_Home.dataSet.unshift({
-        code: "All"
-    });
-    Page.Variables.workCategorySelect_Home.dataSet = Page.Variables.workCategorySelect_Home.dataSet;
-};
 
-// adding 'All' in the dropdown list for assignedTeam dropdown
-Page.getTeamList_HomeonSuccess = function(variable, data) {
-    Page.Variables.getTeamList_Home.dataSet.unshift({
+
+// adding 'All' in the dropdown list for assignedTeam dropdown for ENTITY VIEW
+Page.getTeamList_HomeEVonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.getTeamList_HomeEV.dataSet.unshift({
         id: 0,
         teamId: 'All',
         teamName: 'All'
     });
-    Page.Variables.getTeamList_Home.dataSet = Page.Variables.getTeamList_Home.dataSet;
+    Page.Variables.getTeamList_HomeEV.dataSet = Page.Variables.getTeamList_HomeEV.dataSet;
 };
 
-// adding 'All' in the dropdown list for entityOwner dropdown
-Page.getAllActiveUserList_HomeonSuccess = function(variable, data) {
-    Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
+// adding 'All' in the dropdown list for assignedTeam dropdown for BAN VIEW
+Page.getTeamList_HomeBVonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.getTeamList_HomeBV.dataSet.unshift({
+        id: 0,
+        teamId: 'All',
+        teamName: 'All'
+    });
+    Page.Variables.getTeamList_HomeBV.dataSet = Page.Variables.getTeamList_HomeBV.dataSet;
+};
+
+// adding 'All' in the dropdown list for entityOwner dropdown for ENTITY VIEW
+Page.getAllActiveUserList_HomeEVonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
         empId: 'All',
         firstName: 'All',
         lastName: 'All'
     });
-    Page.Variables.getAllActiveUserList_Home.dataSet = Page.Variables.getAllActiveUserList_Home.dataSet;
+    Page.Variables.getAllActiveUserList_HomeEV.dataSet = Page.Variables.getAllActiveUserList_HomeEV.dataSet;
 };
 
-Page.getUserListByTeamId_homeonSuccess = function(variable, data) {
-    Page.Variables.getAllActiveUserList_Home.dataSet = data;
-    Page.Variables.getAllActiveUserList_Home.dataSet.unshift({
+// adding 'All' in the dropdown list for entityOwner dropdown for BAN VIEW
+Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+        empId: 'All',
+        firstName: 'All',
+        lastName: 'All'
+    });
+    Page.Variables.getAllActiveUserList_HomeBV.dataSet = Page.Variables.getAllActiveUserList_HomeBV.dataSet;
+};
+
+// adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
+Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
+        code: "All"
+    });
+    Page.Variables.workCategorySelect_HomeEV.dataSet = Page.Variables.workCategorySelect_HomeEV.dataSet;
+};
+
+// adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
+Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
+        code: "All"
+    });
+    Page.Variables.workCategorySelect_HomeBV.dataSet = Page.Variables.workCategorySelect_HomeBV.dataSet;
+};
+
+
+Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
+    Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
+    Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
         empId: 'All',
         firstName: 'All',
         lastName: 'All'
     });
 };
 
-Page.workcategoriesByEmpId_homeonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_Home.dataSet = data;
-    Page.Variables.workCategorySelect_Home.dataSet.unshift({
+Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
+    Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
+    Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+        empId: 'All',
+        firstName: 'All',
+        lastName: 'All'
+    });
+};
+
+Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_HomeEV.dataSet = data;
+    Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
+        code: "All"
+    });
+};
+
+Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
+    Page.Variables.workCategorySelect_HomeBV.dataSet = data;
+    Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
         code: "All"
     });
 };
