@@ -57,64 +57,6 @@ public class QueryExecutionController {
     @Autowired
 	private ExportedFileManager exportedFileManager;
 
-    @RequestMapping(value = "/queries/getTeamManagerByRoleId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getTeamManagerByRoleId")
-    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getTeamManagerByRoleId");
-        Page<GetTeamManagerByRoleIdResponse> _result = queryService.executeGetTeamManagerByRoleId(roleId, pageable);
-        LOGGER.debug("got the result for named query: getTeamManagerByRoleId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getTeamManagerByRoleId")
-    @RequestMapping(value = "/queries/getTeamManagerByRoleId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getTeamManagerByRoleId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getTeamManagerByRoleId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetTeamManagerByRoleId(roleId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/getRolesByGroupId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getRolesByGroupId")
-    public Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(@RequestParam(value = "GroupId") String groupId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getRolesByGroupId");
-        Page<GetRolesByGroupIdResponse> _result = queryService.executeGetRolesByGroupId(groupId, pageable);
-        LOGGER.debug("got the result for named query: getRolesByGroupId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getRolesByGroupId")
-    @RequestMapping(value = "/queries/getRolesByGroupId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetRolesByGroupId(@RequestParam(value = "GroupId") String groupId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getRolesByGroupId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getRolesByGroupId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetRolesByGroupId(groupId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
     @RequestMapping(value = "/queries/checkforDocumentWithEid", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "checkforDocumentWithEid")
@@ -140,55 +82,6 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportCheckforDocumentWithEid(entityId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/deleteGroupUser", method = RequestMethod.DELETE)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "deleteGroupUser")
-    public IntegerWrapper executeDeleteGroupUser(@RequestParam(value = "GroupId") String groupId, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: deleteGroupUser");
-        Integer _result = queryService.executeDeleteGroupUser(groupId);
-        LOGGER.debug("got the result for named query: deleteGroupUser, result:{}", _result);
-        return new IntegerWrapper(_result);
-    }
-
-    @RequestMapping(value = "/queries/Query_updateUserDetails", method = RequestMethod.PUT)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_updateUserDetails")
-    public IntegerWrapper executeQuery_updateUserDetails(@Valid @RequestBody QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_updateUserDetails");
-        Integer _result = queryService.executeQuery_updateUserDetails(queryUpdateUserDetailsRequest);
-        LOGGER.debug("got the result for named query: Query_updateUserDetails, result:{}", _result);
-        return new IntegerWrapper(_result);
-    }
-
-    @RequestMapping(value = "/queries/Query_GetAllDomainValueWithOneParent", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_GetAllDomainValueWithOneParent")
-    public Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(@RequestParam(value = "suppliedLocale") String suppliedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "parent1DomainValueId") Integer parent1domainValueId, @RequestParam(value = "dvDescription", required = false) String dvDescription, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_GetAllDomainValueWithOneParent");
-        Page<QueryGetAllDomainValueWithOneParentResponse> _result = queryService.executeQuery_GetAllDomainValueWithOneParent(suppliedLocale, domainValueTypeCode, parent1domainValueId, dvDescription, pageable);
-        LOGGER.debug("got the result for named query: Query_GetAllDomainValueWithOneParent, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query Query_GetAllDomainValueWithOneParent")
-    @RequestMapping(value = "/queries/Query_GetAllDomainValueWithOneParent/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportQuery_GetAllDomainValueWithOneParent(@RequestParam(value = "suppliedLocale") String suppliedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "parent1DomainValueId") Integer parent1domainValueId, @RequestParam(value = "dvDescription", required = false) String dvDescription, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: Query_GetAllDomainValueWithOneParent");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "Query_GetAllDomainValueWithOneParent";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportQuery_GetAllDomainValueWithOneParent(suppliedLocale, domainValueTypeCode, parent1domainValueId, dvDescription,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -249,16 +142,6 @@ public class QueryExecutionController {
                         outputStream -> queryService.exportGetTeamManagersByTeamId(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/Query_DeleteAllErrorsByApplicationId", method = RequestMethod.DELETE)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_DeleteAllErrorsByApplicationId")
-    public IntegerWrapper executeQuery_DeleteAllErrorsByApplicationId(@RequestParam(value = "applicationId") String applicationId, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_DeleteAllErrorsByApplicationId");
-        Integer _result = queryService.executeQuery_DeleteAllErrorsByApplicationId(applicationId);
-        LOGGER.debug("got the result for named query: Query_DeleteAllErrorsByApplicationId, result:{}", _result);
-        return new IntegerWrapper(_result);
     }
 
     @RequestMapping(value = "/queries/countRolePermission", method = RequestMethod.GET)
@@ -426,6 +309,591 @@ public class QueryExecutionController {
         return _result;
     }
 
+    @RequestMapping(value = "/queries/getPermissionByRoleId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getPermissionByRoleId")
+    public Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(@RequestParam(value = "RoleId") String roleId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getPermissionByRoleId");
+        Page<GetPermissionByRoleIdResponse> _result = queryService.executeGetPermissionByRoleId(roleId, pageable);
+        LOGGER.debug("got the result for named query: getPermissionByRoleId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getPermissionByRoleId")
+    @RequestMapping(value = "/queries/getPermissionByRoleId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetPermissionByRoleId(@RequestParam(value = "RoleId") String roleId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getPermissionByRoleId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getPermissionByRoleId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetPermissionByRoleId(roleId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/Query_GetDomainValueByIdWithActiveFlag", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_GetDomainValueByIdWithActiveFlag")
+    public Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueId") Integer domainValueId, @RequestParam(value = "showAll", required = false) Boolean showAll, @RequestParam(value = "isActiveFlag", required = false) Boolean isActiveFlag, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_GetDomainValueByIdWithActiveFlag");
+        Page<QueryGetDomainValueByIdWithActiveFlagResponse> _result = queryService.executeQuery_GetDomainValueByIdWithActiveFlag(selectedLocale, domainValueId, showAll, isActiveFlag, pageable);
+        LOGGER.debug("got the result for named query: Query_GetDomainValueByIdWithActiveFlag, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query Query_GetDomainValueByIdWithActiveFlag")
+    @RequestMapping(value = "/queries/Query_GetDomainValueByIdWithActiveFlag/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportQuery_GetDomainValueByIdWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueId") Integer domainValueId, @RequestParam(value = "showAll", required = false) Boolean showAll, @RequestParam(value = "isActiveFlag", required = false) Boolean isActiveFlag, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: Query_GetDomainValueByIdWithActiveFlag");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "Query_GetDomainValueByIdWithActiveFlag";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportQuery_GetDomainValueByIdWithActiveFlag(selectedLocale, domainValueId, showAll, isActiveFlag,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getLatestNotes", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getLatestNotes")
+    public Page<GetLatestNotesResponse> executeGetLatestNotes(@RequestParam(value = "entityId") String entityId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getLatestNotes");
+        Page<GetLatestNotesResponse> _result = queryService.executeGetLatestNotes(entityId, pageable);
+        LOGGER.debug("got the result for named query: getLatestNotes, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getLatestNotes")
+    @RequestMapping(value = "/queries/getLatestNotes/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetLatestNotes(@RequestParam(value = "entityId") String entityId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getLatestNotes");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getLatestNotes";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetLatestNotes(entityId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getAllRolePermission", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getAllRolePermission")
+    public Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getAllRolePermission");
+        Page<GetAllRolePermissionResponse> _result = queryService.executeGetAllRolePermission(pageable);
+        LOGGER.debug("got the result for named query: getAllRolePermission, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getAllRolePermission")
+    @RequestMapping(value = "/queries/getAllRolePermission/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetAllRolePermission(@RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getAllRolePermission");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getAllRolePermission";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetAllRolePermission( exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @JsonView(BlobAsUrlView.class)
+    @RequestMapping(value = "/queries/getDocumentByDocId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "This query is used to return the document from ENTITY_DOCUMENTS table using docId")
+    public Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(@RequestParam(value = "docId") Integer docId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getDocumentByDocId");
+        Page<GetDocumentByDocIdResponse> _result = queryService.executeGetDocumentByDocId(docId, pageable);
+        LOGGER.debug("got the result for named query: getDocumentByDocId, result:{}", _result);
+        UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
+        _uriBuilder.path("/{id}/content/{_fieldName_}");
+        for(GetDocumentByDocIdResponse _content : _result.getContent()) {
+            Map<String, Object> _properties = new HashMap(2);
+            _properties.put("id", _content.getId());
+            _properties.put("_fieldName_", "document");
+            if(_content.getDocument() != null) {
+                _content.setDocument(_uriBuilder.buildAndExpand(_properties).toUriString().getBytes());
+            } else {
+                _content.setDocument(null);
+            }
+        }
+        return _result;
+    }
+
+    @ApiOperation(value = "Retrives the BLOB content for property document in query getDocumentByDocId")
+    @RequestMapping(value = "/queries/getDocumentByDocId/{id}/content/document", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable getDocumentContentForGetDocumentByDocId(@PathVariable("id") Long id, @RequestParam(value = "docId") Integer docId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getDocumentByDocId");
+
+        InputStream _result = queryService.getDocumentContentForGetDocumentByDocId(id, docId);
+        return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getDocumentByDocId")
+    @RequestMapping(value = "/queries/getDocumentByDocId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetDocumentByDocId(@RequestParam(value = "docId") Integer docId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getDocumentByDocId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getDocumentByDocId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetDocumentByDocId(docId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getDvTypeById", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getDvTypeById")
+    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(@RequestParam(value = "id") Integer id, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getDvTypeById");
+        Page<GetDvTypeByIdResponse> _result = queryService.executeGetDvTypeById(id, pageable);
+        LOGGER.debug("got the result for named query: getDvTypeById, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getDvTypeById")
+    @RequestMapping(value = "/queries/getDvTypeById/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetDvTypeById(@RequestParam(value = "id") Integer id, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getDvTypeById");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getDvTypeById";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetDvTypeById(id,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/Query_ActivityLog", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_ActivityLog")
+    public Page<QueryActivityLogResponse> executeQuery_ActivityLog(@RequestParam(value = "userLocale", required = false) String userLocale, @RequestParam(value = "applicationNumber", required = false) String applicationNumber, @RequestParam(value = "activityType", required = false) Integer activityType, @RequestParam(value = "activityName", required = false) String activityName, @RequestParam(value = "isAppHistory", required = false) Boolean isAppHistory, @RequestParam(value = "createdDateStart", required = false) Timestamp createdDateStart, @RequestParam(value = "createdDateEnd", required = false) Timestamp createdDateEnd, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_ActivityLog");
+        Page<QueryActivityLogResponse> _result = queryService.executeQuery_ActivityLog(userLocale, applicationNumber, activityType, activityName, isAppHistory, createdDateStart, createdDateEnd, pageable);
+        LOGGER.debug("got the result for named query: Query_ActivityLog, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query Query_ActivityLog")
+    @RequestMapping(value = "/queries/Query_ActivityLog/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportQuery_ActivityLog(@RequestParam(value = "userLocale", required = false) String userLocale, @RequestParam(value = "applicationNumber", required = false) String applicationNumber, @RequestParam(value = "activityType", required = false) Integer activityType, @RequestParam(value = "activityName", required = false) String activityName, @RequestParam(value = "isAppHistory", required = false) Boolean isAppHistory, @RequestParam(value = "createdDateStart", required = false) Timestamp createdDateStart, @RequestParam(value = "createdDateEnd", required = false) Timestamp createdDateEnd, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: Query_ActivityLog");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "Query_ActivityLog";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportQuery_ActivityLog(userLocale, applicationNumber, activityType, activityName, isAppHistory, createdDateStart, createdDateEnd,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getGroupByUserId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getGroupByUserId")
+    public Page<GetGroupByUserIdResponse> executeGetGroupByUserId(@RequestParam(value = "UserId") String userId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getGroupByUserId");
+        Page<GetGroupByUserIdResponse> _result = queryService.executeGetGroupByUserId(userId, pageable);
+        LOGGER.debug("got the result for named query: getGroupByUserId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getGroupByUserId")
+    @RequestMapping(value = "/queries/getGroupByUserId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetGroupByUserId(@RequestParam(value = "UserId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getGroupByUserId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getGroupByUserId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetGroupByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getRoleByUserId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getRoleByUserId")
+    public Page<GetRoleByUserIdResponse> executeGetRoleByUserId(@RequestParam(value = "UserId") String userId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getRoleByUserId");
+        Page<GetRoleByUserIdResponse> _result = queryService.executeGetRoleByUserId(userId, pageable);
+        LOGGER.debug("got the result for named query: getRoleByUserId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getRoleByUserId")
+    @RequestMapping(value = "/queries/getRoleByUserId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetRoleByUserId(@RequestParam(value = "UserId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getRoleByUserId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getRoleByUserId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetRoleByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getTeamsAndAssociatedUsers", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamsAndAssociatedUsers")
+    public Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamsAndAssociatedUsers");
+        Page<GetTeamsAndAssociatedUsersResponse> _result = queryService.executeGetTeamsAndAssociatedUsers(teamId, pageable);
+        LOGGER.debug("got the result for named query: getTeamsAndAssociatedUsers, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamsAndAssociatedUsers")
+    @RequestMapping(value = "/queries/getTeamsAndAssociatedUsers/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamsAndAssociatedUsers(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamsAndAssociatedUsers");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamsAndAssociatedUsers";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamsAndAssociatedUsers(teamId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/DVSearchByCodeAndDescription", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "DVSearchByCodeAndDescription")
+    public Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(@RequestParam(value = "defaultLocale") String defaultLocale, @RequestParam(value = "domainValueTypeId") String domainValueTypeId, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestParam(value = "searchValue") String searchValue, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: DVSearchByCodeAndDescription");
+        Page<DvsearchByCodeAndDescriptionResponse> _result = queryService.executeDVSearchByCodeAndDescription(defaultLocale, domainValueTypeId, showAll, isActiveFlag, searchValue, pageable);
+        LOGGER.debug("got the result for named query: DVSearchByCodeAndDescription, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query DVSearchByCodeAndDescription")
+    @RequestMapping(value = "/queries/DVSearchByCodeAndDescription/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportDVSearchByCodeAndDescription(@RequestParam(value = "defaultLocale") String defaultLocale, @RequestParam(value = "domainValueTypeId") String domainValueTypeId, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestParam(value = "searchValue") String searchValue, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: DVSearchByCodeAndDescription");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "DVSearchByCodeAndDescription";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportDVSearchByCodeAndDescription(defaultLocale, domainValueTypeId, showAll, isActiveFlag, searchValue,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/Query_GetAllDVsByDVTypeWithActiveFlag", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_GetAllDVsByDVTypeWithActiveFlag")
+    public Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_GetAllDVsByDVTypeWithActiveFlag");
+        Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> _result = queryService.executeQuery_GetAllDVsByDVTypeWithActiveFlag(selectedLocale, domainValueTypeCode, showAll, isActiveFlag, pageable);
+        LOGGER.debug("got the result for named query: Query_GetAllDVsByDVTypeWithActiveFlag, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query Query_GetAllDVsByDVTypeWithActiveFlag")
+    @RequestMapping(value = "/queries/Query_GetAllDVsByDVTypeWithActiveFlag/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportQuery_GetAllDVsByDVTypeWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: Query_GetAllDVsByDVTypeWithActiveFlag");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "Query_GetAllDVsByDVTypeWithActiveFlag";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportQuery_GetAllDVsByDVTypeWithActiveFlag(selectedLocale, domainValueTypeCode, showAll, isActiveFlag,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getManagerByTeamName", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getManagerByTeamName")
+    public Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getManagerByTeamName");
+        Page<GetManagerByTeamNameResponse> _result = queryService.executeGetManagerByTeamName(teamId, pageable);
+        LOGGER.debug("got the result for named query: getManagerByTeamName, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getManagerByTeamName")
+    @RequestMapping(value = "/queries/getManagerByTeamName/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getManagerByTeamName");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getManagerByTeamName";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetManagerByTeamName(teamId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getWorkCategoryByUserId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getting work category by Id for user profile page")
+    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getWorkCategoryByUserId");
+        Page<GetWorkCategoryByUserIdResponse> _result = queryService.executeGetWorkCategoryByUserId(userId, pageable);
+        LOGGER.debug("got the result for named query: getWorkCategoryByUserId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getWorkCategoryByUserId")
+    @RequestMapping(value = "/queries/getWorkCategoryByUserId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getWorkCategoryByUserId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getWorkCategoryByUserId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetWorkCategoryByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/deleteTeamUser", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "deleteTeamUser")
+    public IntegerWrapper executeDeleteTeamUser(@RequestParam(value = "teamId") Integer teamId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: deleteTeamUser");
+        Integer _result = queryService.executeDeleteTeamUser(teamId);
+        LOGGER.debug("got the result for named query: deleteTeamUser, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
+    @RequestMapping(value = "/queries/getTeamManagerByRoleId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamManagerByRoleId")
+    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamManagerByRoleId");
+        Page<GetTeamManagerByRoleIdResponse> _result = queryService.executeGetTeamManagerByRoleId(roleId, pageable);
+        LOGGER.debug("got the result for named query: getTeamManagerByRoleId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamManagerByRoleId")
+    @RequestMapping(value = "/queries/getTeamManagerByRoleId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamManagerByRoleId(@RequestParam(value = "roleId") Integer roleId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamManagerByRoleId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamManagerByRoleId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamManagerByRoleId(roleId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getRolesByGroupId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getRolesByGroupId")
+    public Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(@RequestParam(value = "GroupId") String groupId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getRolesByGroupId");
+        Page<GetRolesByGroupIdResponse> _result = queryService.executeGetRolesByGroupId(groupId, pageable);
+        LOGGER.debug("got the result for named query: getRolesByGroupId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getRolesByGroupId")
+    @RequestMapping(value = "/queries/getRolesByGroupId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetRolesByGroupId(@RequestParam(value = "GroupId") String groupId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getRolesByGroupId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getRolesByGroupId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetRolesByGroupId(groupId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/deleteGroupUser", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "deleteGroupUser")
+    public IntegerWrapper executeDeleteGroupUser(@RequestParam(value = "GroupId") String groupId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: deleteGroupUser");
+        Integer _result = queryService.executeDeleteGroupUser(groupId);
+        LOGGER.debug("got the result for named query: deleteGroupUser, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
+    @RequestMapping(value = "/queries/getUserListByTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "This query is used to retrieve the user list using Team Id")
+    public Page<GetUserListByTeamIdResponse> executeGetUserListByTeamId(@RequestParam(value = "teamid", required = false) String teamid, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getUserListByTeamId");
+        Page<GetUserListByTeamIdResponse> _result = queryService.executeGetUserListByTeamId(teamid, pageable);
+        LOGGER.debug("got the result for named query: getUserListByTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getUserListByTeamId")
+    @RequestMapping(value = "/queries/getUserListByTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetUserListByTeamId(@RequestParam(value = "teamid", required = false) String teamid, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getUserListByTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getUserListByTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetUserListByTeamId(teamid,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/Query_updateUserDetails", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_updateUserDetails")
+    public IntegerWrapper executeQuery_updateUserDetails(@Valid @RequestBody QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_updateUserDetails");
+        Integer _result = queryService.executeQuery_updateUserDetails(queryUpdateUserDetailsRequest);
+        LOGGER.debug("got the result for named query: Query_updateUserDetails, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
+    @RequestMapping(value = "/queries/Query_GetAllDomainValueWithOneParent", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_GetAllDomainValueWithOneParent")
+    public Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(@RequestParam(value = "suppliedLocale") String suppliedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "parent1DomainValueId") Integer parent1domainValueId, @RequestParam(value = "dvDescription", required = false) String dvDescription, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_GetAllDomainValueWithOneParent");
+        Page<QueryGetAllDomainValueWithOneParentResponse> _result = queryService.executeQuery_GetAllDomainValueWithOneParent(suppliedLocale, domainValueTypeCode, parent1domainValueId, dvDescription, pageable);
+        LOGGER.debug("got the result for named query: Query_GetAllDomainValueWithOneParent, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query Query_GetAllDomainValueWithOneParent")
+    @RequestMapping(value = "/queries/Query_GetAllDomainValueWithOneParent/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportQuery_GetAllDomainValueWithOneParent(@RequestParam(value = "suppliedLocale") String suppliedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "parent1DomainValueId") Integer parent1domainValueId, @RequestParam(value = "dvDescription", required = false) String dvDescription, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: Query_GetAllDomainValueWithOneParent");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "Query_GetAllDomainValueWithOneParent";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportQuery_GetAllDomainValueWithOneParent(suppliedLocale, domainValueTypeCode, parent1domainValueId, dvDescription,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/Query_DeleteAllErrorsByApplicationId", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "Query_DeleteAllErrorsByApplicationId")
+    public IntegerWrapper executeQuery_DeleteAllErrorsByApplicationId(@RequestParam(value = "applicationId") String applicationId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: Query_DeleteAllErrorsByApplicationId");
+        Integer _result = queryService.executeQuery_DeleteAllErrorsByApplicationId(applicationId);
+        LOGGER.debug("got the result for named query: Query_DeleteAllErrorsByApplicationId, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
     @RequestMapping(value = "/queries/getPermissionByUserId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getPermissionByUserId")
@@ -542,64 +1010,6 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
-    @RequestMapping(value = "/queries/getPermissionByRoleId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getPermissionByRoleId")
-    public Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(@RequestParam(value = "RoleId") String roleId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getPermissionByRoleId");
-        Page<GetPermissionByRoleIdResponse> _result = queryService.executeGetPermissionByRoleId(roleId, pageable);
-        LOGGER.debug("got the result for named query: getPermissionByRoleId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getPermissionByRoleId")
-    @RequestMapping(value = "/queries/getPermissionByRoleId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetPermissionByRoleId(@RequestParam(value = "RoleId") String roleId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getPermissionByRoleId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getPermissionByRoleId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetPermissionByRoleId(roleId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/Query_GetDomainValueByIdWithActiveFlag", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_GetDomainValueByIdWithActiveFlag")
-    public Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueId") Integer domainValueId, @RequestParam(value = "showAll", required = false) Boolean showAll, @RequestParam(value = "isActiveFlag", required = false) Boolean isActiveFlag, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_GetDomainValueByIdWithActiveFlag");
-        Page<QueryGetDomainValueByIdWithActiveFlagResponse> _result = queryService.executeQuery_GetDomainValueByIdWithActiveFlag(selectedLocale, domainValueId, showAll, isActiveFlag, pageable);
-        LOGGER.debug("got the result for named query: Query_GetDomainValueByIdWithActiveFlag, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query Query_GetDomainValueByIdWithActiveFlag")
-    @RequestMapping(value = "/queries/Query_GetDomainValueByIdWithActiveFlag/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportQuery_GetDomainValueByIdWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueId") Integer domainValueId, @RequestParam(value = "showAll", required = false) Boolean showAll, @RequestParam(value = "isActiveFlag", required = false) Boolean isActiveFlag, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: Query_GetDomainValueByIdWithActiveFlag");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "Query_GetDomainValueByIdWithActiveFlag";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportQuery_GetDomainValueByIdWithActiveFlag(selectedLocale, domainValueId, showAll, isActiveFlag,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
     @RequestMapping(value = "/queries/deleteRolePermission", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "deleteRolePermission")
@@ -608,64 +1018,6 @@ public class QueryExecutionController {
         Integer _result = queryService.executeDeleteRolePermission(roleId);
         LOGGER.debug("got the result for named query: deleteRolePermission, result:{}", _result);
         return new IntegerWrapper(_result);
-    }
-
-    @RequestMapping(value = "/queries/getLatestNotes", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getLatestNotes")
-    public Page<GetLatestNotesResponse> executeGetLatestNotes(@RequestParam(value = "entityId") String entityId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getLatestNotes");
-        Page<GetLatestNotesResponse> _result = queryService.executeGetLatestNotes(entityId, pageable);
-        LOGGER.debug("got the result for named query: getLatestNotes, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getLatestNotes")
-    @RequestMapping(value = "/queries/getLatestNotes/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetLatestNotes(@RequestParam(value = "entityId") String entityId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getLatestNotes");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getLatestNotes";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetLatestNotes(entityId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/getAllRolePermission", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getAllRolePermission")
-    public Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getAllRolePermission");
-        Page<GetAllRolePermissionResponse> _result = queryService.executeGetAllRolePermission(pageable);
-        LOGGER.debug("got the result for named query: getAllRolePermission, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getAllRolePermission")
-    @RequestMapping(value = "/queries/getAllRolePermission/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetAllRolePermission(@RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getAllRolePermission");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getAllRolePermission";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetAllRolePermission( exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
     }
 
     @RequestMapping(value = "/queries/QueueUnLock", method = RequestMethod.PUT)
@@ -713,58 +1065,6 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportQuery_GetDomainValueById(selectedLocale, domainValueId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @JsonView(BlobAsUrlView.class)
-    @RequestMapping(value = "/queries/getDocumentByDocId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "This query is used to return the document from ENTITY_DOCUMENTS table using docId")
-    public Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(@RequestParam(value = "docId") Integer docId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getDocumentByDocId");
-        Page<GetDocumentByDocIdResponse> _result = queryService.executeGetDocumentByDocId(docId, pageable);
-        LOGGER.debug("got the result for named query: getDocumentByDocId, result:{}", _result);
-        UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
-        _uriBuilder.path("/{id}/content/{_fieldName_}");
-        for(GetDocumentByDocIdResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(2);
-            _properties.put("id", _content.getId());
-            _properties.put("_fieldName_", "document");
-            if(_content.getDocument() != null) {
-                _content.setDocument(_uriBuilder.buildAndExpand(_properties).toUriString().getBytes());
-            } else {
-                _content.setDocument(null);
-            }
-        }
-        return _result;
-    }
-
-    @ApiOperation(value = "Retrives the BLOB content for property document in query getDocumentByDocId")
-    @RequestMapping(value = "/queries/getDocumentByDocId/{id}/content/document", method = RequestMethod.GET, produces = "application/octet-stream")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getDocumentContentForGetDocumentByDocId(@PathVariable("id") Long id, @RequestParam(value = "docId") Integer docId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getDocumentByDocId");
-
-        InputStream _result = queryService.getDocumentContentForGetDocumentByDocId(id, docId);
-        return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getDocumentByDocId")
-    @RequestMapping(value = "/queries/getDocumentByDocId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetDocumentByDocId(@RequestParam(value = "docId") Integer docId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getDocumentByDocId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getDocumentByDocId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetDocumentByDocId(docId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -856,64 +1156,6 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
-    @RequestMapping(value = "/queries/getDvTypeById", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getDvTypeById")
-    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(@RequestParam(value = "id") Integer id, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getDvTypeById");
-        Page<GetDvTypeByIdResponse> _result = queryService.executeGetDvTypeById(id, pageable);
-        LOGGER.debug("got the result for named query: getDvTypeById, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getDvTypeById")
-    @RequestMapping(value = "/queries/getDvTypeById/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetDvTypeById(@RequestParam(value = "id") Integer id, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getDvTypeById");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getDvTypeById";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetDvTypeById(id,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/Query_ActivityLog", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_ActivityLog")
-    public Page<QueryActivityLogResponse> executeQuery_ActivityLog(@RequestParam(value = "userLocale", required = false) String userLocale, @RequestParam(value = "applicationNumber", required = false) String applicationNumber, @RequestParam(value = "activityType", required = false) Integer activityType, @RequestParam(value = "activityName", required = false) String activityName, @RequestParam(value = "isAppHistory", required = false) Boolean isAppHistory, @RequestParam(value = "createdDateStart", required = false) Timestamp createdDateStart, @RequestParam(value = "createdDateEnd", required = false) Timestamp createdDateEnd, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_ActivityLog");
-        Page<QueryActivityLogResponse> _result = queryService.executeQuery_ActivityLog(userLocale, applicationNumber, activityType, activityName, isAppHistory, createdDateStart, createdDateEnd, pageable);
-        LOGGER.debug("got the result for named query: Query_ActivityLog, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query Query_ActivityLog")
-    @RequestMapping(value = "/queries/Query_ActivityLog/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportQuery_ActivityLog(@RequestParam(value = "userLocale", required = false) String userLocale, @RequestParam(value = "applicationNumber", required = false) String applicationNumber, @RequestParam(value = "activityType", required = false) Integer activityType, @RequestParam(value = "activityName", required = false) String activityName, @RequestParam(value = "isAppHistory", required = false) Boolean isAppHistory, @RequestParam(value = "createdDateStart", required = false) Timestamp createdDateStart, @RequestParam(value = "createdDateEnd", required = false) Timestamp createdDateEnd, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: Query_ActivityLog");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "Query_ActivityLog";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportQuery_ActivityLog(userLocale, applicationNumber, activityType, activityName, isAppHistory, createdDateStart, createdDateEnd,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
     @RequestMapping(value = "/queries/deleteQueueGroup", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "deleteQueueGroup")
@@ -922,93 +1164,6 @@ public class QueryExecutionController {
         Integer _result = queryService.executeDeleteQueueGroup(queueId, groupId);
         LOGGER.debug("got the result for named query: deleteQueueGroup, result:{}", _result);
         return new IntegerWrapper(_result);
-    }
-
-    @RequestMapping(value = "/queries/getGroupByUserId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getGroupByUserId")
-    public Page<GetGroupByUserIdResponse> executeGetGroupByUserId(@RequestParam(value = "UserId") String userId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getGroupByUserId");
-        Page<GetGroupByUserIdResponse> _result = queryService.executeGetGroupByUserId(userId, pageable);
-        LOGGER.debug("got the result for named query: getGroupByUserId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getGroupByUserId")
-    @RequestMapping(value = "/queries/getGroupByUserId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetGroupByUserId(@RequestParam(value = "UserId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getGroupByUserId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getGroupByUserId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetGroupByUserId(userId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/getRoleByUserId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getRoleByUserId")
-    public Page<GetRoleByUserIdResponse> executeGetRoleByUserId(@RequestParam(value = "UserId") String userId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getRoleByUserId");
-        Page<GetRoleByUserIdResponse> _result = queryService.executeGetRoleByUserId(userId, pageable);
-        LOGGER.debug("got the result for named query: getRoleByUserId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getRoleByUserId")
-    @RequestMapping(value = "/queries/getRoleByUserId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetRoleByUserId(@RequestParam(value = "UserId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getRoleByUserId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getRoleByUserId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetRoleByUserId(userId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/getTeamsAndAssociatedUsers", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getTeamsAndAssociatedUsers")
-    public Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getTeamsAndAssociatedUsers");
-        Page<GetTeamsAndAssociatedUsersResponse> _result = queryService.executeGetTeamsAndAssociatedUsers(teamId, pageable);
-        LOGGER.debug("got the result for named query: getTeamsAndAssociatedUsers, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getTeamsAndAssociatedUsers")
-    @RequestMapping(value = "/queries/getTeamsAndAssociatedUsers/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetTeamsAndAssociatedUsers(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getTeamsAndAssociatedUsers");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getTeamsAndAssociatedUsers";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetTeamsAndAssociatedUsers(teamId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
     }
 
     @RequestMapping(value = "/queries/Query_GetAllDomainValuesByDvTypeCode", method = RequestMethod.GET)
@@ -1036,35 +1191,6 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportQuery_GetAllDomainValuesByDvTypeCode(selectedLocale, domainValueTypeCode, isAlphaSort,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/DVSearchByCodeAndDescription", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "DVSearchByCodeAndDescription")
-    public Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(@RequestParam(value = "defaultLocale") String defaultLocale, @RequestParam(value = "domainValueTypeId") String domainValueTypeId, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestParam(value = "searchValue") String searchValue, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: DVSearchByCodeAndDescription");
-        Page<DvsearchByCodeAndDescriptionResponse> _result = queryService.executeDVSearchByCodeAndDescription(defaultLocale, domainValueTypeId, showAll, isActiveFlag, searchValue, pageable);
-        LOGGER.debug("got the result for named query: DVSearchByCodeAndDescription, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query DVSearchByCodeAndDescription")
-    @RequestMapping(value = "/queries/DVSearchByCodeAndDescription/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportDVSearchByCodeAndDescription(@RequestParam(value = "defaultLocale") String defaultLocale, @RequestParam(value = "domainValueTypeId") String domainValueTypeId, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestParam(value = "searchValue") String searchValue, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: DVSearchByCodeAndDescription");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "DVSearchByCodeAndDescription";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportDVSearchByCodeAndDescription(defaultLocale, domainValueTypeId, showAll, isActiveFlag, searchValue,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -1098,35 +1224,6 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
-    @RequestMapping(value = "/queries/Query_GetAllDVsByDVTypeWithActiveFlag", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "Query_GetAllDVsByDVTypeWithActiveFlag")
-    public Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: Query_GetAllDVsByDVTypeWithActiveFlag");
-        Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> _result = queryService.executeQuery_GetAllDVsByDVTypeWithActiveFlag(selectedLocale, domainValueTypeCode, showAll, isActiveFlag, pageable);
-        LOGGER.debug("got the result for named query: Query_GetAllDVsByDVTypeWithActiveFlag, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query Query_GetAllDVsByDVTypeWithActiveFlag")
-    @RequestMapping(value = "/queries/Query_GetAllDVsByDVTypeWithActiveFlag/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportQuery_GetAllDVsByDVTypeWithActiveFlag(@RequestParam(value = "selectedLocale") String selectedLocale, @RequestParam(value = "domainValueTypeCode") String domainValueTypeCode, @RequestParam(value = "showAll") Boolean showAll, @RequestParam(value = "isActiveFlag") Boolean isActiveFlag, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: Query_GetAllDVsByDVTypeWithActiveFlag");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "Query_GetAllDVsByDVTypeWithActiveFlag";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportQuery_GetAllDVsByDVTypeWithActiveFlag(selectedLocale, domainValueTypeCode, showAll, isActiveFlag,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
     @RequestMapping(value = "/queries/getGroupsRolesByUserId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getGroupsRolesByUserId")
@@ -1152,35 +1249,6 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportGetGroupsRolesByUserId(userId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/getManagerByTeamName", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getManagerByTeamName")
-    public Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getManagerByTeamName");
-        Page<GetManagerByTeamNameResponse> _result = queryService.executeGetManagerByTeamName(teamId, pageable);
-        LOGGER.debug("got the result for named query: getManagerByTeamName, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getManagerByTeamName")
-    @RequestMapping(value = "/queries/getManagerByTeamName/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetManagerByTeamName(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getManagerByTeamName");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getManagerByTeamName";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetManagerByTeamName(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -1221,45 +1289,6 @@ public class QueryExecutionController {
         LOGGER.debug("Executing named query: QueueLock");
         Integer _result = queryService.executeQueueLock(queueLockRequest);
         LOGGER.debug("got the result for named query: QueueLock, result:{}", _result);
-        return new IntegerWrapper(_result);
-    }
-
-    @RequestMapping(value = "/queries/getWorkCategoryByUserId", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "getting work category by Id for user profile page")
-    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, Pageable pageable, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: getWorkCategoryByUserId");
-        Page<GetWorkCategoryByUserIdResponse> _result = queryService.executeGetWorkCategoryByUserId(userId, pageable);
-        LOGGER.debug("got the result for named query: getWorkCategoryByUserId, result:{}", _result);
-        return _result;
-    }
-
-    @ApiOperation(value = "Returns downloadable file url for query getWorkCategoryByUserId")
-    @RequestMapping(value = "/queries/getWorkCategoryByUserId/export", method = RequestMethod.POST)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @XssDisable
-    public StringWrapper exportGetWorkCategoryByUserId(@RequestParam(value = "userId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
-        LOGGER.debug("Exporting named query: getWorkCategoryByUserId");
-
-        String exportedFileName = exportOptions.getFileName();
-        if(exportedFileName == null || exportedFileName.isEmpty()) {
-            exportedFileName = "getWorkCategoryByUserId";
-        }
-        exportedFileName += exportOptions.getExportType().getExtension();
-
-        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
-                        outputStream -> queryService.exportGetWorkCategoryByUserId(userId,  exportOptions, pageable, outputStream));
-
-        return new StringWrapper(exportedUrl);
-    }
-
-    @RequestMapping(value = "/queries/deleteTeamUser", method = RequestMethod.DELETE)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "deleteTeamUser")
-    public IntegerWrapper executeDeleteTeamUser(@RequestParam(value = "teamId") Integer teamId, HttpServletRequest _request) {
-        LOGGER.debug("Executing named query: deleteTeamUser");
-        Integer _result = queryService.executeDeleteTeamUser(teamId);
-        LOGGER.debug("got the result for named query: deleteTeamUser, result:{}", _result);
         return new IntegerWrapper(_result);
     }
 

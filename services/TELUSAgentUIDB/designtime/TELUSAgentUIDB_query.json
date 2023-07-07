@@ -4277,6 +4277,80 @@
       } ]
     }
   },
+  "getUserListByTeamId" : {
+    "name" : "getUserListByTeamId",
+    "description" : "This query is used to retrieve the user list using Team Id",
+    "version" : "V2",
+    "queryString" : "select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid",
+    "countQueryString" : "select count(*) from (select distinct(USER.ID), USER.firstName, USER.lastName from TEAM_USER \r\nJOIN USER on  TEAM_USER.userId = USER.ID\r\nJOIN TEAM on TEAM.ID = TEAM_USER.TeamID\r\nwhere TEAM.TeamID = :teamid) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamid",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "BC",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetUserListByTeamIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ID",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "firstName",
+        "fieldName" : "firstName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "lastName",
+        "fieldName" : "lastName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getWorkCategoryByUserId" : {
     "name" : "getWorkCategoryByUserId",
     "description" : "getting work category by Id for user profile page",

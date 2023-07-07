@@ -19,25 +19,9 @@ import com.fico.dmp.telusagentuidb.models.query.*;
 
 public interface TELUSAgentUIDBQueryExecutorService {
 
-    Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable);
-
-    void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable);
-
-    void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
     Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(String entityId, Pageable pageable);
 
     void exportCheckforDocumentWithEid(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Integer executeDeleteGroupUser(String groupId);
-
-    Integer executeQuery_updateUserDetails(QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest);
-
-    Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, Pageable pageable);
-
-    void exportQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<QueryGetDomainValueByCodeAndTypeCodeResponse> executeQuery_GetDomainValueByCodeAndTypeCode(String selectedLocale, String domainValueCode, String domainValueTypeCode, Pageable pageable);
 
@@ -46,8 +30,6 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<GetTeamManagersByTeamIdResponse> executeGetTeamManagersByTeamId(String teamId, Pageable pageable);
 
     void exportGetTeamManagersByTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId);
 
     Page<CountRolePermissionResponse> executeCountRolePermission(String roleId, Pageable pageable);
 
@@ -73,6 +55,88 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     GetLoggedInUserTeamResponse executeGetLoggedInUserTeam(Integer userId);
 
+    Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable);
+
+    void exportGetPermissionByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
+
+    void exportQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable);
+
+    void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable);
+
+    void exportGetAllRolePermission(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable);
+
+    InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException;
+
+    void exportGetDocumentByDocId(Integer docId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable);
+
+    void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable);
+
+    void exportQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetGroupByUserIdResponse> executeGetGroupByUserId(String userId, Pageable pageable);
+
+    void exportGetGroupByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetRoleByUserIdResponse> executeGetRoleByUserId(String userId, Pageable pageable);
+
+    void exportGetRoleByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(String teamId, Pageable pageable);
+
+    void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, Pageable pageable);
+
+    void exportDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
+
+    void exportQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable);
+
+    void exportGetManagerByTeamName(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable);
+
+    void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Integer executeDeleteTeamUser(Integer teamId);
+
+    Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable);
+
+    void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable);
+
+    void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Integer executeDeleteGroupUser(String groupId);
+
+    Page<GetUserListByTeamIdResponse> executeGetUserListByTeamId(String teamid, Pageable pageable);
+
+    void exportGetUserListByTeamId(String teamid, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Integer executeQuery_updateUserDetails(QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest);
+
+    Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, Pageable pageable);
+
+    void exportQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId);
+
     Page<GetPermissionByUserIdResponse> executeGetPermissionByUserId(String userId, Pageable pageable);
 
     void exportGetPermissionByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
@@ -89,23 +153,7 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportQuery_GetQueuesByUserId(Integer userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
-    Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable);
-
-    void exportGetPermissionByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
-
-    void exportQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
     Integer executeDeleteRolePermission(String roleId);
-
-    Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable);
-
-    void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable);
-
-    void exportGetAllRolePermission(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Integer executeQueueUnLock(QueueUnLockRequest queueUnLockRequest);
 
@@ -114,12 +162,6 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<QueryGetDomainValueByIdResponse> executeQuery_GetDomainValueById(String selectedLocale, Integer domainValueId, Pageable pageable);
 
     void exportQuery_GetDomainValueById(String selectedLocale, Integer domainValueId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable);
-
-    InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException;
-
-    void exportGetDocumentByDocId(Integer docId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<GetRolesPermissionResponse> executeGetRolesPermission(String roleId, Pageable pageable);
 
@@ -133,62 +175,24 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportQuery_GetAllDomainValuesTwoParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, Integer parent2domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
-    Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable);
-
-    void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable);
-
-    void exportQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
     Integer executeDeleteQueueGroup(String queueId, String groupId);
-
-    Page<GetGroupByUserIdResponse> executeGetGroupByUserId(String userId, Pageable pageable);
-
-    void exportGetGroupByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetRoleByUserIdResponse> executeGetRoleByUserId(String userId, Pageable pageable);
-
-    void exportGetRoleByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(String teamId, Pageable pageable);
-
-    void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<QueryGetAllDomainValuesByDvTypeCodeResponse> executeQuery_GetAllDomainValuesByDvTypeCode(String selectedLocale, String domainValueTypeCode, Boolean isAlphaSort, Pageable pageable);
 
     void exportQuery_GetAllDomainValuesByDvTypeCode(String selectedLocale, String domainValueTypeCode, Boolean isAlphaSort, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
-    Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, Pageable pageable);
-
-    void exportDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
     Page<GetPermissionGroupByRoleIdResponse> executeGetPermissionGroupByRoleId(String roleId, Pageable pageable);
 
     void exportGetPermissionGroupByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
-    Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
-
-    void exportQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
     Page<GetGroupsRolesByUserIdResponse> executeGetGroupsRolesByUserId(String userId, Pageable pageable);
 
     void exportGetGroupsRolesByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable);
-
-    void exportGetManagerByTeamName(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<QueryGetDvbyCodeAndTypeCodeWithActiveFlagResponse> executeQuery_GetDVByCodeAndTypeCodeWithActiveFlag(String selectedLocale, String domainValueCode, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
 
     void exportQuery_GetDVByCodeAndTypeCodeWithActiveFlag(String selectedLocale, String domainValueCode, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Integer executeQueueLock(QueueLockRequest queueLockRequest);
-
-    Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable);
-
-    void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
-
-    Integer executeDeleteTeamUser(Integer teamId);
 
 }

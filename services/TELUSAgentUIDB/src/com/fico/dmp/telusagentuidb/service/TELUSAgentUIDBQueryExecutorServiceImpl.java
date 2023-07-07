@@ -41,50 +41,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
-    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("roleId", roleId);
-
-        return queryExecutor.executeNamedQuery("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("roleId", roleId);
-
-        QueryProcedureInput<GetTeamManagerByRoleIdResponse> queryInput = new QueryProcedureInput<>("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("GroupId", groupId);
-
-        return queryExecutor.executeNamedQuery("getRolesByGroupId", params, GetRolesByGroupIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("GroupId", groupId);
-
-        QueryProcedureInput<GetRolesByGroupIdResponse> queryInput = new QueryProcedureInput<>("getRolesByGroupId", params, GetRolesByGroupIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
     public Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(String entityId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 
@@ -101,56 +57,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("entityId", entityId);
 
         QueryProcedureInput<CheckforDocumentWithEidResponse> queryInput = new QueryProcedureInput<>("checkforDocumentWithEid", params, CheckforDocumentWithEidResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Integer executeDeleteGroupUser(String groupId) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("GroupId", groupId);
-
-        return queryExecutor.executeNamedQueryForUpdate("deleteGroupUser", params);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Integer executeQuery_updateUserDetails(QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest) {
-        Map<String, Object> params = new HashMap<>(3);
-
-        params.put("lendingLimit", queryUpdateUserDetailsRequest.getLendingLimit());
-        params.put("preferredTZ", queryUpdateUserDetailsRequest.getPreferredTz());
-        params.put("userId", queryUpdateUserDetailsRequest.getUserId());
-
-        return queryExecutor.executeNamedQueryForUpdate("Query_updateUserDetails", params);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("suppliedLocale", suppliedLocale);
-        params.put("domainValueTypeCode", domainValueTypeCode);
-        params.put("parent1DomainValueId", parent1domainValueId);
-        params.put("dvDescription", dvDescription);
-
-        return queryExecutor.executeNamedQuery("Query_GetAllDomainValueWithOneParent", params, QueryGetAllDomainValueWithOneParentResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("suppliedLocale", suppliedLocale);
-        params.put("domainValueTypeCode", domainValueTypeCode);
-        params.put("parent1DomainValueId", parent1domainValueId);
-        params.put("dvDescription", dvDescription);
-
-        QueryProcedureInput<QueryGetAllDomainValueWithOneParentResponse> queryInput = new QueryProcedureInput<>("Query_GetAllDomainValueWithOneParent", params, QueryGetAllDomainValueWithOneParentResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
@@ -201,16 +107,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         QueryProcedureInput<GetTeamManagersByTeamIdResponse> queryInput = new QueryProcedureInput<>("getTeamManagersByTeamId", params, GetTeamManagersByTeamIdResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("applicationId", applicationId);
-
-        return queryExecutor.executeNamedQueryForUpdate("Query_DeleteAllErrorsByApplicationId", params);
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
@@ -351,6 +247,496 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("RoleId", roleId);
+
+        return queryExecutor.executeNamedQuery("getPermissionByRoleId", params, GetPermissionByRoleIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetPermissionByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("RoleId", roleId);
+
+        QueryProcedureInput<GetPermissionByRoleIdResponse> queryInput = new QueryProcedureInput<>("getPermissionByRoleId", params, GetPermissionByRoleIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("selectedLocale", selectedLocale);
+        params.put("domainValueId", domainValueId);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+
+        return queryExecutor.executeNamedQuery("Query_GetDomainValueByIdWithActiveFlag", params, QueryGetDomainValueByIdWithActiveFlagResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("selectedLocale", selectedLocale);
+        params.put("domainValueId", domainValueId);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+
+        QueryProcedureInput<QueryGetDomainValueByIdWithActiveFlagResponse> queryInput = new QueryProcedureInput<>("Query_GetDomainValueByIdWithActiveFlag", params, QueryGetDomainValueByIdWithActiveFlagResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        return queryExecutor.executeNamedQuery("getLatestNotes", params, GetLatestNotesResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("entityId", entityId);
+
+        QueryProcedureInput<GetLatestNotesResponse> queryInput = new QueryProcedureInput<>("getLatestNotes", params, GetLatestNotesResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(0);
+
+
+        return queryExecutor.executeNamedQuery("getAllRolePermission", params, GetAllRolePermissionResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetAllRolePermission(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(0);
+
+
+        QueryProcedureInput<GetAllRolePermissionResponse> queryInput = new QueryProcedureInput<>("getAllRolePermission", params, GetAllRolePermissionResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("docId", docId);
+
+        return queryExecutor.executeNamedQuery("getDocumentByDocId", params, GetDocumentByDocIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("id", id);
+        params.put("docId", docId);
+
+        GetDocumentByDocIdResponse _result =  queryExecutor.executeNamedQuery("getDocumentByDocId__identifier", params, GetDocumentByDocIdResponse.class);
+        if(_result.getDocument() == null) {
+            LOGGER.debug("Blob content not exists for document in query getDocumentByDocId");
+            throw new BlobContentNotFoundException(MessageResource.create("com.wavemaker.runtime.blob.content.not.found"), "document", "query", "getDocumentByDocId");
+        }
+        return new ByteArrayInputStream(_result.getDocument());
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetDocumentByDocId(Integer docId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("docId", docId);
+
+        QueryProcedureInput<GetDocumentByDocIdResponse> queryInput = new QueryProcedureInput<>("getDocumentByDocId", params, GetDocumentByDocIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("id", id);
+
+        return queryExecutor.executeNamedQuery("getDvTypeById", params, GetDvTypeByIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("id", id);
+
+        QueryProcedureInput<GetDvTypeByIdResponse> queryInput = new QueryProcedureInput<>("getDvTypeById", params, GetDvTypeByIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(7);
+
+        params.put("userLocale", userLocale);
+        params.put("applicationNumber", applicationNumber);
+        params.put("activityType", activityType);
+        params.put("activityName", activityName);
+        params.put("isAppHistory", isAppHistory);
+        params.put("createdDateStart", createdDateStart);
+        params.put("createdDateEnd", createdDateEnd);
+
+        return queryExecutor.executeNamedQuery("Query_ActivityLog", params, QueryActivityLogResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(7);
+
+        params.put("userLocale", userLocale);
+        params.put("applicationNumber", applicationNumber);
+        params.put("activityType", activityType);
+        params.put("activityName", activityName);
+        params.put("isAppHistory", isAppHistory);
+        params.put("createdDateStart", createdDateStart);
+        params.put("createdDateEnd", createdDateEnd);
+
+        QueryProcedureInput<QueryActivityLogResponse> queryInput = new QueryProcedureInput<>("Query_ActivityLog", params, QueryActivityLogResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetGroupByUserIdResponse> executeGetGroupByUserId(String userId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("UserId", userId);
+
+        return queryExecutor.executeNamedQuery("getGroupByUserId", params, GetGroupByUserIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetGroupByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("UserId", userId);
+
+        QueryProcedureInput<GetGroupByUserIdResponse> queryInput = new QueryProcedureInput<>("getGroupByUserId", params, GetGroupByUserIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetRoleByUserIdResponse> executeGetRoleByUserId(String userId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("UserId", userId);
+
+        return queryExecutor.executeNamedQuery("getRoleByUserId", params, GetRoleByUserIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetRoleByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("UserId", userId);
+
+        QueryProcedureInput<GetRoleByUserIdResponse> queryInput = new QueryProcedureInput<>("getRoleByUserId", params, GetRoleByUserIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(String teamId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQuery("getTeamsAndAssociatedUsers", params, GetTeamsAndAssociatedUsersResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        QueryProcedureInput<GetTeamsAndAssociatedUsersResponse> queryInput = new QueryProcedureInput<>("getTeamsAndAssociatedUsers", params, GetTeamsAndAssociatedUsersResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(5);
+
+        params.put("defaultLocale", defaultLocale);
+        params.put("domainValueTypeId", domainValueTypeId);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+        params.put("searchValue", searchValue);
+
+        return queryExecutor.executeNamedQuery("DVSearchByCodeAndDescription", params, DvsearchByCodeAndDescriptionResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(5);
+
+        params.put("defaultLocale", defaultLocale);
+        params.put("domainValueTypeId", domainValueTypeId);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+        params.put("searchValue", searchValue);
+
+        QueryProcedureInput<DvsearchByCodeAndDescriptionResponse> queryInput = new QueryProcedureInput<>("DVSearchByCodeAndDescription", params, DvsearchByCodeAndDescriptionResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("selectedLocale", selectedLocale);
+        params.put("domainValueTypeCode", domainValueTypeCode);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+
+        return queryExecutor.executeNamedQuery("Query_GetAllDVsByDVTypeWithActiveFlag", params, QueryGetAllDvsByDvtypeWithActiveFlagResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("selectedLocale", selectedLocale);
+        params.put("domainValueTypeCode", domainValueTypeCode);
+        params.put("showAll", showAll);
+        params.put("isActiveFlag", isActiveFlag);
+
+        QueryProcedureInput<QueryGetAllDvsByDvtypeWithActiveFlagResponse> queryInput = new QueryProcedureInput<>("Query_GetAllDVsByDVTypeWithActiveFlag", params, QueryGetAllDvsByDvtypeWithActiveFlagResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQuery("getManagerByTeamName", params, GetManagerByTeamNameResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetManagerByTeamName(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        QueryProcedureInput<GetManagerByTeamNameResponse> queryInput = new QueryProcedureInput<>("getManagerByTeamName", params, GetManagerByTeamNameResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        return queryExecutor.executeNamedQuery("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        QueryProcedureInput<GetWorkCategoryByUserIdResponse> queryInput = new QueryProcedureInput<>("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeDeleteTeamUser(Integer teamId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamId", teamId);
+
+        return queryExecutor.executeNamedQueryForUpdate("deleteTeamUser", params);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetTeamManagerByRoleIdResponse> executeGetTeamManagerByRoleId(Integer roleId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roleId", roleId);
+
+        return queryExecutor.executeNamedQuery("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamManagerByRoleId(Integer roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roleId", roleId);
+
+        QueryProcedureInput<GetTeamManagerByRoleIdResponse> queryInput = new QueryProcedureInput<>("getTeamManagerByRoleId", params, GetTeamManagerByRoleIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetRolesByGroupIdResponse> executeGetRolesByGroupId(String groupId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("GroupId", groupId);
+
+        return queryExecutor.executeNamedQuery("getRolesByGroupId", params, GetRolesByGroupIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetRolesByGroupId(String groupId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("GroupId", groupId);
+
+        QueryProcedureInput<GetRolesByGroupIdResponse> queryInput = new QueryProcedureInput<>("getRolesByGroupId", params, GetRolesByGroupIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeDeleteGroupUser(String groupId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("GroupId", groupId);
+
+        return queryExecutor.executeNamedQueryForUpdate("deleteGroupUser", params);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetUserListByTeamIdResponse> executeGetUserListByTeamId(String teamid, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamid", teamid);
+
+        return queryExecutor.executeNamedQuery("getUserListByTeamId", params, GetUserListByTeamIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetUserListByTeamId(String teamid, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("teamid", teamid);
+
+        QueryProcedureInput<GetUserListByTeamIdResponse> queryInput = new QueryProcedureInput<>("getUserListByTeamId", params, GetUserListByTeamIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeQuery_updateUserDetails(QueryUpdateUserDetailsRequest queryUpdateUserDetailsRequest) {
+        Map<String, Object> params = new HashMap<>(3);
+
+        params.put("lendingLimit", queryUpdateUserDetailsRequest.getLendingLimit());
+        params.put("preferredTZ", queryUpdateUserDetailsRequest.getPreferredTz());
+        params.put("userId", queryUpdateUserDetailsRequest.getUserId());
+
+        return queryExecutor.executeNamedQueryForUpdate("Query_updateUserDetails", params);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<QueryGetAllDomainValueWithOneParentResponse> executeQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("suppliedLocale", suppliedLocale);
+        params.put("domainValueTypeCode", domainValueTypeCode);
+        params.put("parent1DomainValueId", parent1domainValueId);
+        params.put("dvDescription", dvDescription);
+
+        return queryExecutor.executeNamedQuery("Query_GetAllDomainValueWithOneParent", params, QueryGetAllDomainValueWithOneParentResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportQuery_GetAllDomainValueWithOneParent(String suppliedLocale, String domainValueTypeCode, Integer parent1domainValueId, String dvDescription, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(4);
+
+        params.put("suppliedLocale", suppliedLocale);
+        params.put("domainValueTypeCode", domainValueTypeCode);
+        params.put("parent1DomainValueId", parent1domainValueId);
+        params.put("dvDescription", dvDescription);
+
+        QueryProcedureInput<QueryGetAllDomainValueWithOneParentResponse> queryInput = new QueryProcedureInput<>("Query_GetAllDomainValueWithOneParent", params, QueryGetAllDomainValueWithOneParentResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeQuery_DeleteAllErrorsByApplicationId(String applicationId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("applicationId", applicationId);
+
+        return queryExecutor.executeNamedQueryForUpdate("Query_DeleteAllErrorsByApplicationId", params);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<GetPermissionByUserIdResponse> executeGetPermissionByUserId(String userId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 
@@ -437,56 +823,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("RoleId", roleId);
-
-        return queryExecutor.executeNamedQuery("getPermissionByRoleId", params, GetPermissionByRoleIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetPermissionByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("RoleId", roleId);
-
-        QueryProcedureInput<GetPermissionByRoleIdResponse> queryInput = new QueryProcedureInput<>("getPermissionByRoleId", params, GetPermissionByRoleIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<QueryGetDomainValueByIdWithActiveFlagResponse> executeQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("selectedLocale", selectedLocale);
-        params.put("domainValueId", domainValueId);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-
-        return queryExecutor.executeNamedQuery("Query_GetDomainValueByIdWithActiveFlag", params, QueryGetDomainValueByIdWithActiveFlagResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportQuery_GetDomainValueByIdWithActiveFlag(String selectedLocale, Integer domainValueId, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("selectedLocale", selectedLocale);
-        params.put("domainValueId", domainValueId);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-
-        QueryProcedureInput<QueryGetDomainValueByIdWithActiveFlagResponse> queryInput = new QueryProcedureInput<>("Query_GetDomainValueByIdWithActiveFlag", params, QueryGetDomainValueByIdWithActiveFlagResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeDeleteRolePermission(String roleId) {
@@ -495,48 +831,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("RoleId", roleId);
 
         return queryExecutor.executeNamedQueryForUpdate("deleteRolePermission", params);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetLatestNotesResponse> executeGetLatestNotes(String entityId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("entityId", entityId);
-
-        return queryExecutor.executeNamedQuery("getLatestNotes", params, GetLatestNotesResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetLatestNotes(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("entityId", entityId);
-
-        QueryProcedureInput<GetLatestNotesResponse> queryInput = new QueryProcedureInput<>("getLatestNotes", params, GetLatestNotesResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetAllRolePermissionResponse> executeGetAllRolePermission(Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(0);
-
-
-        return queryExecutor.executeNamedQuery("getAllRolePermission", params, GetAllRolePermissionResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetAllRolePermission(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(0);
-
-
-        QueryProcedureInput<GetAllRolePermissionResponse> queryInput = new QueryProcedureInput<>("getAllRolePermission", params, GetAllRolePermissionResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
@@ -581,44 +875,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("domainValueId", domainValueId);
 
         QueryProcedureInput<QueryGetDomainValueByIdResponse> queryInput = new QueryProcedureInput<>("Query_GetDomainValueById", params, QueryGetDomainValueByIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("docId", docId);
-
-        return queryExecutor.executeNamedQuery("getDocumentByDocId", params, GetDocumentByDocIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("id", id);
-        params.put("docId", docId);
-
-        GetDocumentByDocIdResponse _result =  queryExecutor.executeNamedQuery("getDocumentByDocId__identifier", params, GetDocumentByDocIdResponse.class);
-        if(_result.getDocument() == null) {
-            LOGGER.debug("Blob content not exists for document in query getDocumentByDocId");
-            throw new BlobContentNotFoundException(MessageResource.create("com.wavemaker.runtime.blob.content.not.found"), "document", "query", "getDocumentByDocId");
-        }
-        return new ByteArrayInputStream(_result.getDocument());
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetDocumentByDocId(Integer docId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("docId", docId);
-
-        QueryProcedureInput<GetDocumentByDocIdResponse> queryInput = new QueryProcedureInput<>("getDocumentByDocId", params, GetDocumentByDocIdResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
@@ -697,62 +953,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetDvTypeByIdResponse> executeGetDvTypeById(Integer id, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("id", id);
-
-        return queryExecutor.executeNamedQuery("getDvTypeById", params, GetDvTypeByIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetDvTypeById(Integer id, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("id", id);
-
-        QueryProcedureInput<GetDvTypeByIdResponse> queryInput = new QueryProcedureInput<>("getDvTypeById", params, GetDvTypeByIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<QueryActivityLogResponse> executeQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(7);
-
-        params.put("userLocale", userLocale);
-        params.put("applicationNumber", applicationNumber);
-        params.put("activityType", activityType);
-        params.put("activityName", activityName);
-        params.put("isAppHistory", isAppHistory);
-        params.put("createdDateStart", createdDateStart);
-        params.put("createdDateEnd", createdDateEnd);
-
-        return queryExecutor.executeNamedQuery("Query_ActivityLog", params, QueryActivityLogResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportQuery_ActivityLog(String userLocale, String applicationNumber, Integer activityType, String activityName, Boolean isAppHistory, Timestamp createdDateStart, Timestamp createdDateEnd, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(7);
-
-        params.put("userLocale", userLocale);
-        params.put("applicationNumber", applicationNumber);
-        params.put("activityType", activityType);
-        params.put("activityName", activityName);
-        params.put("isAppHistory", isAppHistory);
-        params.put("createdDateStart", createdDateStart);
-        params.put("createdDateEnd", createdDateEnd);
-
-        QueryProcedureInput<QueryActivityLogResponse> queryInput = new QueryProcedureInput<>("Query_ActivityLog", params, QueryActivityLogResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeDeleteQueueGroup(String queueId, String groupId) {
@@ -762,72 +962,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("GroupId", groupId);
 
         return queryExecutor.executeNamedQueryForUpdate("deleteQueueGroup", params);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetGroupByUserIdResponse> executeGetGroupByUserId(String userId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("UserId", userId);
-
-        return queryExecutor.executeNamedQuery("getGroupByUserId", params, GetGroupByUserIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetGroupByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("UserId", userId);
-
-        QueryProcedureInput<GetGroupByUserIdResponse> queryInput = new QueryProcedureInput<>("getGroupByUserId", params, GetGroupByUserIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetRoleByUserIdResponse> executeGetRoleByUserId(String userId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("UserId", userId);
-
-        return queryExecutor.executeNamedQuery("getRoleByUserId", params, GetRoleByUserIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetRoleByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("UserId", userId);
-
-        QueryProcedureInput<GetRoleByUserIdResponse> queryInput = new QueryProcedureInput<>("getRoleByUserId", params, GetRoleByUserIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetTeamsAndAssociatedUsersResponse> executeGetTeamsAndAssociatedUsers(String teamId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("teamId", teamId);
-
-        return queryExecutor.executeNamedQuery("getTeamsAndAssociatedUsers", params, GetTeamsAndAssociatedUsersResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("teamId", teamId);
-
-        QueryProcedureInput<GetTeamsAndAssociatedUsersResponse> queryInput = new QueryProcedureInput<>("getTeamsAndAssociatedUsers", params, GetTeamsAndAssociatedUsersResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
@@ -858,36 +992,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
-    public Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(5);
-
-        params.put("defaultLocale", defaultLocale);
-        params.put("domainValueTypeId", domainValueTypeId);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-        params.put("searchValue", searchValue);
-
-        return queryExecutor.executeNamedQuery("DVSearchByCodeAndDescription", params, DvsearchByCodeAndDescriptionResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(5);
-
-        params.put("defaultLocale", defaultLocale);
-        params.put("domainValueTypeId", domainValueTypeId);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-        params.put("searchValue", searchValue);
-
-        QueryProcedureInput<DvsearchByCodeAndDescriptionResponse> queryInput = new QueryProcedureInput<>("DVSearchByCodeAndDescription", params, DvsearchByCodeAndDescriptionResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
     public Page<GetPermissionGroupByRoleIdResponse> executeGetPermissionGroupByRoleId(String roleId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 
@@ -910,34 +1014,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
-    public Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("selectedLocale", selectedLocale);
-        params.put("domainValueTypeCode", domainValueTypeCode);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-
-        return queryExecutor.executeNamedQuery("Query_GetAllDVsByDVTypeWithActiveFlag", params, QueryGetAllDvsByDvtypeWithActiveFlagResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(4);
-
-        params.put("selectedLocale", selectedLocale);
-        params.put("domainValueTypeCode", domainValueTypeCode);
-        params.put("showAll", showAll);
-        params.put("isActiveFlag", isActiveFlag);
-
-        QueryProcedureInput<QueryGetAllDvsByDvtypeWithActiveFlagResponse> queryInput = new QueryProcedureInput<>("Query_GetAllDVsByDVTypeWithActiveFlag", params, QueryGetAllDvsByDvtypeWithActiveFlagResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
     public Page<GetGroupsRolesByUserIdResponse> executeGetGroupsRolesByUserId(String userId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(1);
 
@@ -954,28 +1030,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("UserId", userId);
 
         QueryProcedureInput<GetGroupsRolesByUserIdResponse> queryInput = new QueryProcedureInput<>("getGroupsRolesByUserId", params, GetGroupsRolesByUserIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("teamId", teamId);
-
-        return queryExecutor.executeNamedQuery("getManagerByTeamName", params, GetManagerByTeamNameResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetManagerByTeamName(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("teamId", teamId);
-
-        QueryProcedureInput<GetManagerByTeamNameResponse> queryInput = new QueryProcedureInput<>("getManagerByTeamName", params, GetManagerByTeamNameResponse.class);
 
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
@@ -1021,38 +1075,6 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         params.put("id", queueLockRequest.getId());
 
         return queryExecutor.executeNamedQueryForUpdate("QueueLock", params);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
-    @Override
-    public Page<GetWorkCategoryByUserIdResponse> executeGetWorkCategoryByUserId(String userId, Pageable pageable) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("userId", userId);
-
-        return queryExecutor.executeNamedQuery("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class, pageable);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
-    @Override
-    public void exportGetWorkCategoryByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("userId", userId);
-
-        QueryProcedureInput<GetWorkCategoryByUserIdResponse> queryInput = new QueryProcedureInput<>("getWorkCategoryByUserId", params, GetWorkCategoryByUserIdResponse.class);
-
-        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
-    }
-
-    @Transactional(value = "TELUSAgentUIDBTransactionManager")
-    @Override
-    public Integer executeDeleteTeamUser(Integer teamId) {
-        Map<String, Object> params = new HashMap<>(1);
-
-        params.put("teamId", teamId);
-
-        return queryExecutor.executeNamedQueryForUpdate("deleteTeamUser", params);
     }
 
 }
