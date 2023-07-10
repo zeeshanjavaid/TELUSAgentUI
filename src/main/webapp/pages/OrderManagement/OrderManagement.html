@@ -743,14 +743,15 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn99">
                     <wm-label padding="unset 0.5em" caption="Name" name="label62"></wm-label>
                     <wm-table name="getCollectionTreatmentStepTable1" title="" dataset="bind:Variables.getODMgmtHistory.dataSet" navigation="Classic">
-                        <wm-table-column binding="actionId" caption="Action Id" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="assignedTo" caption="Assigned To" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="dueDate" caption="Due Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="getAssignedTeam" caption="Get Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="actionId" caption="Action ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="assignedTo" caption="Assigned To" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="getAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="updatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="updatedOn" caption="Updated On" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banList" caption="Ban List" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
+                        <wm-table-column binding="dueDate" caption="Due Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="Coments" caption="Comments" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banList" caption="BAN List" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('banList').toString()" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                     </wm-table>

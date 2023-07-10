@@ -159,7 +159,7 @@ public class CollectionEntityService {
                      .queryParam("fields", fields)
                      .queryParam("ban", ban)
                      .queryParam("entityId",entityId)
-                     .queryParam("id","in:"+id);
+                     .queryParam("id","in:" + id);
                      
                      	logger.info("::::::::Billing Account Reference endpoint call success ::::::::",builder.toUriString());
 

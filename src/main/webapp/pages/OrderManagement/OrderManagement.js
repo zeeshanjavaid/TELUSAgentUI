@@ -845,8 +845,8 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
     var entityIdInt = parseInt(entityIdStr);
     Partial.Variables.getODMgmtHistory.setInput({
         'collectionEntityId': entityIdInt,
-        'relatedBusinessEntityId': row.id,
-        'relatedBusinessEntityType': 'COLL_TRTMT_STEP'
+        'id': row.id
+
     });
 
     Partial.Variables.getODMgmtHistory.invoke();
@@ -871,21 +871,21 @@ Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
 
 }
 
-Partial.getODMgmtHistoryonSuccess = function(variable, data) {
-    debugger;
-    var bansLength = data.length;
-    var banId1 = data[0];
-    var banId2 = data[1];
-    var banId3 = data[2];
+// Partial.getODMgmtHistoryonSuccess = function(variable, data) {
+//     debugger;
+//     var bansLength = data.length;
+//     var banId1 = data[0];
+//     var banId2 = data[1];
+//     var banId3 = data[2];
 
-    Partial.Widgets.BanID1.caption = banId1;
-    Partial.Widgets.BanID2.caption = banId2;
-    Partial.Widgets.BanID3.caption = banId3;
+//     Partial.Widgets.BanID1.caption = banId1;
+//     Partial.Widgets.BanID2.caption = banId2;
+//     Partial.Widgets.BanID3.caption = banId3;
 
-    if (bansLength > 3) {
+//     if (bansLength > 3) {
 
-        document.getElementById("moreLabel").style.display = "initial";
-    }
+//         document.getElementById("moreLabel").style.display = "initial";
+//     }
 
 
-};
+// };
