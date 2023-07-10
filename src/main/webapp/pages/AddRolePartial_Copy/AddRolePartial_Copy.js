@@ -41,6 +41,11 @@ Partial.onReady = function() {
 
 };
 
+function messageTimeout() {
+    Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
+
+}
+
 Partial.SaveButtonClick = function($event, widget) {
 
     Partial.isDelete = false;
@@ -295,8 +300,10 @@ Partial.deleteRolePermissiononSuccess = function(variable, data) {
                 'permissionId': selectedPermission.id,
             });
             Partial.Variables.CreateRolePermission.invoke();
+
         })
         Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_UPDATED_SUCCESSFULLY;
+        setTimeout(messageTimeout, 3000);
     } else {
 
         Partial.Variables.deleteRole.setInput({
@@ -304,6 +311,7 @@ Partial.deleteRolePermissiononSuccess = function(variable, data) {
         });
         Partial.Variables.deleteRole.invoke();
     }
+
 };
 
 Partial.deleteRoleConfirmOkClick = function($event, widget) {
