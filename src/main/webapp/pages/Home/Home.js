@@ -22,7 +22,10 @@ Page.onReady = function() {
      */
 
     debugger;
+    App.Variables.getLoggedInUserDetails.dataSet.dataValue;
+    App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.UserLoggedInVar_home.dataSet.dataValue;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "All";
     Page.Widgets.AssignedTeamSelectBV.datavalue = "All";
     Page.Widgets.entityOwnerSelectEV.datavalue = "All";
@@ -188,65 +191,102 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
 // adding 'All' in the dropdown list for assignedTeam dropdown for ENTITY VIEW
 Page.getTeamList_HomeEVonSuccess = function(variable, data) {
     debugger;
-    Page.Variables.getTeamList_HomeEV.dataSet.unshift({
-        id: 0,
-        teamId: 'All',
-        teamName: 'All'
-    });
-    Page.Variables.getTeamList_HomeEV.dataSet = Page.Variables.getTeamList_HomeEV.dataSet;
+    if (Page.Variables.getTeamList_HomeEV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getTeamList_HomeEV.dataSet.unshift({
+            id: 0,
+            teamId: 'All',
+            teamName: 'All'
+        });
+        Page.Variables.getTeamList_HomeEV.dataSet = Page.Variables.getTeamList_HomeEV.dataSet;
+    }
 };
 
 // adding 'All' in the dropdown list for assignedTeam dropdown for BAN VIEW
 Page.getTeamList_HomeBVonSuccess = function(variable, data) {
     debugger;
-    Page.Variables.getTeamList_HomeBV.dataSet.unshift({
-        id: 0,
-        teamId: 'All',
-        teamName: 'All'
-    });
-    Page.Variables.getTeamList_HomeBV.dataSet = Page.Variables.getTeamList_HomeBV.dataSet;
+    if (Page.Variables.getTeamList_HomeBV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getTeamList_HomeBV.dataSet.unshift({
+            id: 0,
+            teamId: 'All',
+            teamName: 'All'
+        });
+        Page.Variables.getTeamList_HomeBV.dataSet = Page.Variables.getTeamList_HomeBV.dataSet;
+    }
 };
 
 // adding 'All' in the dropdown list for entityOwner dropdown for ENTITY VIEW
 Page.getAllActiveUserList_HomeEVonSuccess = function(variable, data) {
     debugger;
-    Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: 'All'
-    });
-    Page.Variables.getAllActiveUserList_HomeEV.dataSet = Page.Variables.getAllActiveUserList_HomeEV.dataSet;
+    if (Page.Variables.getAllActiveUserList_HomeEV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
+            empId: 'All',
+            firstName: 'All',
+            lastName: 'All'
+        });
+        Page.Variables.getAllActiveUserList_HomeEV.dataSet = Page.Variables.getAllActiveUserList_HomeEV.dataSet;
+    }
 };
 
 // adding 'All' in the dropdown list for entityOwner dropdown for BAN VIEW
 Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
     debugger;
-    Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: 'All'
-    });
-    Page.Variables.getAllActiveUserList_HomeBV.dataSet = Page.Variables.getAllActiveUserList_HomeBV.dataSet;
+    if (Page.Variables.getAllActiveUserList_HomeBV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+            empId: 'All',
+            firstName: 'All',
+            lastName: 'All'
+        });
+        Page.Variables.getAllActiveUserList_HomeBV.dataSet = Page.Variables.getAllActiveUserList_HomeBV.dataSet;
+    }
 };
 
 // adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
-Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
+Page.workCategoryValues_HomeEVonSuccess = function(variable, data) {
+    debugger;
+    if (Page.Variables.workCategoryValues_HomeEV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
+            code: "All"
+        });
+        Page.Variables.workCategoryValues_HomeEV.dataSet = Page.Variables.workCategoryValues_HomeEV.dataSet;
+    }
+};
+
+// adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
+Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
+    debugger;
+    if (Page.Variables.workCategoryValues_HomeBV.dataSet.length > 1) {
+        debugger;
+        Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
+            code: "All"
+        });
+        Page.Variables.workCategoryValues_HomeBV.dataSet = Page.Variables.workCategoryValues_HomeBV.dataSet;
+    }
+};
+
+// adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
+/*Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
     Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
         code: "All"
     });
     Page.Variables.workCategorySelect_HomeEV.dataSet = Page.Variables.workCategorySelect_HomeEV.dataSet;
-};
+};*/
 
 // adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
-Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
+/*Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
     Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
         code: "All"
     });
     Page.Variables.workCategorySelect_HomeBV.dataSet = Page.Variables.workCategorySelect_HomeBV.dataSet;
-};
+};*/
 
 
 Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
         empId: 'All',
@@ -256,6 +296,7 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
 };
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
     Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
         empId: 'All',
@@ -265,15 +306,17 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
 };
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_HomeEV.dataSet = data;
-    Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
+    debugger;
+    Page.Variables.workCategoryValues_HomeEV.dataSet = data;
+    Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
         code: "All"
     });
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_HomeBV.dataSet = data;
-    Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
+    debugger;
+    Page.Variables.workCategoryValues_HomeBV.dataSet = data;
+    Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
         code: "All"
     });
 };
