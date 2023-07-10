@@ -164,7 +164,7 @@ Partial.createbuttonClick = function($event, widget) {
 };
 Partial.createbuttonRestoralClick = function($event, widget) {
 
-
+    debugger;
 
     var isAssignedPerson = '';
 
@@ -209,7 +209,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 0
+                    'id': 1
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
