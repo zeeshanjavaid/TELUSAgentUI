@@ -6,8 +6,9 @@ package com.fico.dmp.commonutilityservice.controller;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fico.telus.model.AssignedUserModel;
 import java.util.List;
-import java.lang.Integer;
 import java.lang.String;
+import com.fico.telus.model.BillingAccountModel;
+import java.lang.Integer;
 import com.fico.telus.model.AssignedTeamModel;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -30,6 +31,13 @@ public class CommonUtilityController {
     @ApiOperation(value = "")
     public List<AssignedUserModel> getAssignedPersonInActionManagement() {
         return commonUtilityService.getAssignedPersonInActionManagement();
+    }
+
+    @RequestMapping(value = "/billingAccountUsingbillingAccountReferenceIds", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public List<BillingAccountModel> getBillingAccountUsingBillingAccountReferenceIds(@RequestParam(value = "billingAccountRefIds", required = false) String billingAccountRefIds) {
+        return commonUtilityService.getBillingAccountUsingBillingAccountReferenceIds(billingAccountRefIds);
     }
 
     @RequestMapping(value = "/loggedInUserTeamId", produces = "application/json", method = RequestMethod.GET)

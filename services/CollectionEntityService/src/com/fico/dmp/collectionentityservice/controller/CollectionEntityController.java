@@ -7,6 +7,7 @@ import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import io.swagger.client.model.CollectionBillingAccountRefCreate;
 import java.lang.Exception;
 import io.swagger.client.model.CollectionEntityCreate;
+import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionContactCreate;
 import io.swagger.client.model.CollectionDisputeCreate;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
@@ -15,7 +16,6 @@ import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Integer;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
-import io.swagger.client.model.CollectionEntity;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionContact;
 import io.swagger.client.model.CollectionDispute;
@@ -46,7 +46,7 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/collectionEntity", method = RequestMethod.POST)
-    public CollectionEntityCreate addCollectionEntity(@RequestBody CollectionEntityCreate collectionEntityCreate) throws Exception {
+    public CollectionEntity addCollectionEntity(@RequestBody CollectionEntityCreate collectionEntityCreate) throws Exception {
         return collectionEntityService.addCollectionEntity(collectionEntityCreate);
     }
 

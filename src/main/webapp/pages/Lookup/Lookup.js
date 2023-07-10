@@ -347,16 +347,19 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         //POST for creating new entity
         //need to write the logic
         billingAccountRefMaps = billingAccountRefMaps1;
+        debugger;
         var roleType;
+        var relatedEntityId;
         if (billingAccountRefMaps.length == 1) {
             roleType = 'BAN';
+            relatedEntityId = billingAccountRefMaps[0].billingAccountRef.id;
         } else {
             roleType = 'BG';
         }
 
-        var relatedEntityId;
-        if (Page.Variables.getEntityProfileDetails.dataSet[0].entityType == 'RCID') {
-            relatedEntityId = Page.Variables.getEntityProfileDetails.dataSet[0].entityId;
+
+        if (Page.Variables.getCollectionEntityById.dataSet.relatedEntity.role == 'RCID') {
+            relatedEntityId = Page.Variables.getCollectionEntityById.dataSet.relatedEntity.id;
         }
 
         Page.Variables.AddCollectionEntityServiceVar.setInput({
@@ -376,12 +379,39 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                 'lineOfBusiness': Page.Variables.getCollectionEntityById.dataSet.lineOfBusiness,
                 'workCategory': Page.Variables.getCollectionEntityById.dataSet.workCategory,
                 'tenure': Page.Variables.getCollectionEntityById.dataSet.tenure,
+                'exclusionIndicatorCharacter': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorCharacter,
+                'exclusionIndicatorInteger': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorInteger,
+                'manualTreatmentIndicator': Page.Variables.getCollectionEntityById.dataSet.manualTreatmentIndicator,
+                'notTouchListIndicator': Page.Variables.getCollectionEntityById.dataSet.notTouchListIndicator,
+
                 'relatedEntity': {
                     'id': relatedEntityId,
                     'role': roleType
                 },
                 'validFor': {
                     'startDateTime': todaysDateJsonFormat
+                },
+                'engagedCustomerParty': {
+                    'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbucid,
+                    'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuCode,
+                    'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuName,
+                    'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.organizationType,
+                    'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcid,
+                    'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcName,
+                    'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioCategory,
+                    'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioSubCategory,
+                    'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.subMarketSegment
+                },
+                'engagedRegionalCustomerParty': {
+                    'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbucid,
+                    'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuCode,
+                    'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuName,
+                    'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.organizationType,
+                    'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcid,
+                    'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcName,
+                    'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioCategory,
+                    'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioSubCategory,
+                    'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.subMarketSegment
                 }
             }
         });

@@ -165,7 +165,7 @@ public class CollectionEntityService {
 
          String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
          	logger.info("::::::::Billing Account Reference endpoint call success ::::::::");
-         	logger.info("Resoinse---"+ responseStr);
+         	logger.info("Response---"+ responseStr);
          	List<CollectionBillingAccountRef> collectionBillingAccountRefList = objectMapper.readValue(responseStr,
 				objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionBillingAccountRef.class));
 							logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
@@ -234,9 +234,13 @@ public class CollectionEntityService {
        
     }    
     
-    public CollectionEntityCreate   addCollectionEntity( CollectionEntityCreate collectionEntityCreate) throws Exception  {
-    
-        return collectionEntityCreate  ;
+    public CollectionEntity addCollectionEntity( CollectionEntityCreate collectionEntityCreate) throws Exception  {
+    	logger.info("::::::::Inside  addCollectionEntity::::::::");
+    	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
+    	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY, "POST", entitySvcAuthScope);
+    	logger.info("::::::::Response from Success Telus  API- ADD CollectionEntity:::::\n::::::: {}",responseStr);
+    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class);
+        return CollectionEntityResponse;
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)

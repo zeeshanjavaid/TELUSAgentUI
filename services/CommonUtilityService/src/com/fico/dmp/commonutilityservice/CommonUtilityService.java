@@ -5,6 +5,7 @@ package com.fico.dmp.commonutilityservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,11 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
+import io.swagger.client.model.CollectionBillingAccountRef;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.fico.dmp.telusagentuidb.Team;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.User;
@@ -27,6 +31,7 @@ import com.fico.dmp.telusagentuidb.service.TeamUserService;
 import com.fico.dmp.telusagentuidb.service.UserService;
 import com.fico.telus.model.AssignedTeamModel;
 import com.fico.telus.model.AssignedUserModel;
+import com.fico.telus.model.BillingAccountModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -59,6 +64,9 @@ public class CommonUtilityService {
     
     @Autowired
     private TeamService	teamService;
+    
+    @Autowired
+    private CollectionEntityService collectionEntityService;
     
     
 	@Autowired
@@ -152,7 +160,27 @@ public class CommonUtilityService {
     
     
     
-    
+    public List<BillingAccountModel> getBillingAccountUsingBillingAccountReferenceIds(String billingAccountRefIds) {
+    	
+    	//String billingAcctRefIdsInListAsString = billingAccountRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+     	String fields = "id,billingAccount.id,billingAccount.name";
+    	//String idInQuery = "in:"+billingAccountRefIds;
+    	List<BillingAccountModel> billingAccountModelList = new ArrayList<BillingAccountModel>();
+    	try {
+    		//collectionEntityService.getBillingAccountRef(fields, offset, limit, ban, entityId, id)
+			List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fields, null, null, null, null, billingAccountRefIds);
+			for (CollectionBillingAccountRef collectionBillingAccountRef : collectionBillingAccountRefList) {
+				BillingAccountModel billingAccountModel = new BillingAccountModel();
+				billingAccountModel.setBillingAccountId(collectionBillingAccountRef.getBillingAccount().getId());
+				billingAccountModel.setBillingAccountName(collectionBillingAccountRef.getBillingAccount().getName());
+				billingAccountModelList.add(billingAccountModel);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return billingAccountModelList;
+    }
     
     
 
