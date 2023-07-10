@@ -47,6 +47,8 @@ public class CommonUtilityController {
     }
 
     @RequestMapping(value = "/userListByTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<AssignedUserModel> getUserListByTeamId(@RequestParam(value = "teamId", required = false) String teamId) {
         return commonUtilityService.getUserListByTeamId(teamId);
     }
