@@ -124,14 +124,14 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                 "banStatus": d.banStatus,
                 "banOverdueAmount": d.banOverdueAmount,
                 "banName": d.banName,
-                "banMapRefId": d.banMapRefId,
+                "banRefId": d.banRefId,
                 "banId": d.banId,
                 "banArAmount": d.banArAmount,
                 "suppresionFlag": d.suppresionFlag
             }
 
             billingAccountRef = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
                 "billingAccountRef": {
                     "id": d.banId,
                     "name": d.banName
@@ -142,7 +142,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
             }
 
             billingAccountRef1 = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
                 "billingAccountRef": {
                     "id": d.banId,
                     "name": d.banName
@@ -292,14 +292,14 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                 "banStatus": d.banStatus,
                 "banOverdueAmount": d.banOverdueAmount,
                 "banName": d.banName,
-                "banMapRefId": d.banMapRefId,
+                "banRefId": d.banRefId,
                 "banId": d.banId,
                 "banArAmount": d.banArAmount,
                 "suppresionFlag": d.suppresionFlag
             }
 
             billingAccountRef = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
                 "billingAccountRef": {
                     "id": d.banId,
                     "name": d.banName
@@ -311,7 +311,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
 
             billingAccountRef1 = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
                 "billingAccountRef": {
                     "id": d.banId,
                     "name": d.banName

@@ -206,8 +206,8 @@ Partial.SubmitBanClick = function($event, widget) {
     Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
 
         var entityRef = {};
-        var banMapRefIdInt = selectedBan.banMapRefId
-        entityRef.id = banMapRefIdInt.toString();
+        var banRefIdInt = selectedBan.banRefId
+        entityRef.id = banRefIdInt.toString();
         entityRef.name = selectedBan.banName;
         parrTotal = parrTotal + selectedBan.banArAmount;
         selectedBans.push(entityRef);
