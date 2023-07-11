@@ -115,7 +115,10 @@ Partial.createbuttonClick = function($event, widget) {
         isAssignedPerson = "Request Assigned";
     }
 
-    if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
+
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+    } else if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -134,7 +137,7 @@ Partial.createbuttonClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 1
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -189,8 +192,9 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     });
 
 
-
-    if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+    } else if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -209,7 +213,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 1
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -263,7 +267,9 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
     });
 
-    if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+    } else if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -282,7 +288,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': 1
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -870,22 +876,3 @@ Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
     }
 
 }
-
-// Partial.getODMgmtHistoryonSuccess = function(variable, data) {
-//     debugger;
-//     var bansLength = data.length;
-//     var banId1 = data[0];
-//     var banId2 = data[1];
-//     var banId3 = data[2];
-
-//     Partial.Widgets.BanID1.caption = banId1;
-//     Partial.Widgets.BanID2.caption = banId2;
-//     Partial.Widgets.BanID3.caption = banId3;
-
-//     if (bansLength > 3) {
-
-//         document.getElementById("moreLabel").style.display = "initial";
-//     }
-
-
-// };

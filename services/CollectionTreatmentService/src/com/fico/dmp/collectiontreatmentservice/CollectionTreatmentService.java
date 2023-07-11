@@ -103,9 +103,30 @@ public class CollectionTreatmentService {
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public List<CollectionTreatment> getCollectionTreatment(Integer collectionEntityId,String fields,Integer offset, Integer limit, Boolean history) throws Exception  {
+        
+        if (isStubEnabled) {
     	return objectMapper.readValue("[{\"id\":1889,\"collectionEntity\":{\"id\":666,\"name\":\"Food Basics\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"https\"},\"nextStepDueDate\":\"2023-12-31\",\"collectionTreatmentSteps\":[{\"id\":68891,\"name\":\"Step 68891\",\"href\":\"{BASE_URL}/collectionTreatmentStep/68891\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@referredType\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":68892,\"name\":\"Step 68892\",\"href\":\"{BASE_URL}/collectionTreatmentStep/68892\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@referredType\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}],\"cureThreshold\":3,\"dmPathID\":\"A DM Path ID example\",\"lastAssessmentProcessType\":\"BILLCALL\",\"lastCollectionAssessmentId\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"scenarioId\":\"Scenario information 2234753222\",\"additionalCharacteristics\":[{\"name\":\"source\",\"value\":\"head office\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"name\":\"assigned agent\",\"value\":\"offshore\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}]}]",
     	         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionTreatment.class));
-    	
+        }else{
+
+           List<CollectionTreatment> collectionTreatmentStepList=new ArrayList<>();
+            logger.info("::::::::Calling  entity data endpoint call ::::::::");
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT)
+                    .queryParam("collectionEntityId",collectionEntityId )
+                     .queryParam("fields",fields )
+                      .queryParam("offset",offset )
+                      .queryParam("limit",limit )
+                    .queryParam("history",history);
+                   // .queryParam("limit",20);
+            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+            logger.info("::::::::Entity data endpoint call success ::::::::");
+            logger.info("Resoinse---"+ responseStr);
+          //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
+             return objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatment>>(){});
+
+        }
+        
+       
     	
     }
     
@@ -136,7 +157,7 @@ public class CollectionTreatmentService {
     }else{
 
             logger.info("::::::::Calling  entity data endpoint call ::::::::");
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT)
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP)
                     .queryParam("collectionTreatmentStepId", collectionTreatmentStepId)
                     .queryParam("collectionEntityId",collectionEntityId )
                     .queryParam("type",type)
@@ -180,7 +201,7 @@ public class CollectionTreatmentService {
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
         String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepCreate);
         logger.info(":::::Before calling Create coll treatment step- RequestPayload :::",requestPayload);
-        String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT,
+        String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP,
                 "POST",collTreatmentSvcAuthScope);
         logger.info("::::::::Response from Success Telus  API- Create coll treatment step:::::\n::::::: {}",responseStr);
         collectionTreatmentStep = objectMapper.readValue(responseStr,
@@ -224,6 +245,10 @@ public class CollectionTreatmentService {
                 objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionActivityLog.class));
 
         } else {
+            
+            List<CollectionActivityLog> collectionActivityLogRes= new ArrayList<>();
+            
+            if(collectionEntityId!=null){
 
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
@@ -239,16 +264,18 @@ public class CollectionTreatmentService {
                     .queryParam("completionDate", completionDate)
                     .queryParam("fields", fields)
                     .queryParam("offset", offset)
-                    .queryParam("limit", limit)
+                    .queryParam("limit",limit)
                     .queryParam("history", history);
 
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
             logger.info("::::::::Coll Activity log endpoint call success ::::::::");
             logger.info("Coll Activity log Resoinse---" + responseStr);
             //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
-           return objectMapper.readValue(responseStr, new TypeReference<List<CollectionActivityLog>>() {
+           collectionActivityLogRes= objectMapper.readValue(responseStr, new TypeReference<List<CollectionActivityLog>>() {
 
            });
+            }
+            return collectionActivityLogRes;
         }
     }
     

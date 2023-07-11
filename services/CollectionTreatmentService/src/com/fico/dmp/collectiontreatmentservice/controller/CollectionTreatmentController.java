@@ -89,6 +89,8 @@ public class CollectionTreatmentController {
     }
 
     @RequestMapping(value = "/odMgmtHistoryView", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<OrderMgmtHistoryResponse> getOdMgmtHistoryView(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "id", required = false) String id, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedTo", required = false) String assignedTo, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "completionDate", required = false) String completionDate, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
         return collectionTreatmentService.getOdMgmtHistoryView(collectionEntityId, type, id, category, createdDate, createdBy, status, assignedTo, assignedTeam, completionDate, fields, offset, limit, history);
     }
