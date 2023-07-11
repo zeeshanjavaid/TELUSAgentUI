@@ -53,11 +53,7 @@ Partial.CreateActionLinkClick = function($event, widget) {
 Partial.nextButtonClick = function($event, widget) {
 
     debugger;
-
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
-
-    } else if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
+    if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
         Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
     } else {
         Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -258,7 +254,9 @@ function callOutboundAction($event, widget) {
 
     debugger;
 
-    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -338,7 +336,7 @@ function callInboundAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -387,7 +385,7 @@ function emailInboundAction($event, widget) {
                     'partitionKey': getCurrentDate(),
                     'additionalCharacteristics': characteristicList,
                     'collectionTreatment': {
-                        'id': parseInt(Partial.pageParams.entityId)
+                        'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                     },
                     'channel': {
                         'originatorAppId': "FAWBTELUSAGENT",
@@ -426,7 +424,7 @@ function generalFollowUpAction($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -477,7 +475,7 @@ function overdueNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -528,7 +526,7 @@ function paymentReminderNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -579,7 +577,7 @@ function disconnectNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -631,7 +629,7 @@ function cancellationNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
