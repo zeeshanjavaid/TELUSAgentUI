@@ -53,7 +53,11 @@ Partial.CreateActionLinkClick = function($event, widget) {
 Partial.nextButtonClick = function($event, widget) {
 
     debugger;
-    if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
+
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+
+    } else if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
         Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
     } else {
         Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -273,7 +277,7 @@ function callOutboundAction($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': parseInt(Partial.pageParams.entityId)
+                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",

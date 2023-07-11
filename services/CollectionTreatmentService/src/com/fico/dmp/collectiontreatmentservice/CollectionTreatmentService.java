@@ -171,21 +171,15 @@ public class CollectionTreatmentService {
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
             logger.info("::::::::Entity data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
-          //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
              collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
-
+           
             if(IsOdManagement)
             {
-                // collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equals("SUSPEND") && a.getStepTypeCode().equalsIgnoreCase("CEASE") && a.getStepTypeCode().equalsIgnoreCase("RESTORE") ).collect(Collectors.toList());
-                
                             logger.info("Order management data");
 
-                                 collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
-
-
-            }
+                     collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
+                     }
                     return collectionTreatmentStepList;
-
         }
 
     }
