@@ -1660,9 +1660,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : {
-      "dataValue" : ""
+      "empId" : ""
     },
-    "type" : "string",
+    "type" : "entry",
     "isList" : false,
     "saveInPhonegap" : false
   },

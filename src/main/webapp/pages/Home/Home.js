@@ -22,14 +22,9 @@ Page.onReady = function() {
      */
 
     debugger;
-    App.Variables.getLoggedInUserDetails.dataSet.dataValue;
-    App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue;
+    Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "All";
     Page.Widgets.AssignedTeamSelectBV.datavalue = "All";
-    Page.Widgets.entityOwnerSelectEV.datavalue = "All";
-    Page.Widgets.entityOwnerSelectBV.datavalue = "All";
     $('#banViewTableGrid').hide();
     $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -40,7 +35,7 @@ Page.onReady = function() {
 
 Page.entityViewButtonClick = function($event, widget) {
     debugger;
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     // to make buttons selected
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -60,7 +55,7 @@ Page.entityViewButtonClick = function($event, widget) {
 
 Page.banViewButtonClick = function($event, widget) {
     debugger;
-    Page.Variables.UserLoggedInVar_home.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
     // to make buttons selected
     $("#banViewBtn").css("background-color", "#4B286D");
@@ -224,7 +219,7 @@ Page.getAllActiveUserList_HomeEVonSuccess = function(variable, data) {
         Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
             empId: 'All',
             firstName: 'All',
-            lastName: 'All'
+            lastName: ''
         });
         Page.Variables.getAllActiveUserList_HomeEV.dataSet = Page.Variables.getAllActiveUserList_HomeEV.dataSet;
     }
@@ -238,7 +233,7 @@ Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
         Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
             empId: 'All',
             firstName: 'All',
-            lastName: 'All'
+            lastName: ''
         });
         Page.Variables.getAllActiveUserList_HomeBV.dataSet = Page.Variables.getAllActiveUserList_HomeBV.dataSet;
     }
@@ -291,7 +286,7 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
     Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
         empId: 'All',
         firstName: 'All',
-        lastName: 'All'
+        lastName: ''
     });
 };
 
@@ -301,7 +296,7 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
     Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
         empId: 'All',
         firstName: 'All',
-        lastName: 'All'
+        lastName: ''
     });
 };
 
