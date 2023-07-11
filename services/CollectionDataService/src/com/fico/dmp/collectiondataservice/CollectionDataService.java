@@ -207,7 +207,7 @@ public class CollectionDataService {
     @RequestMapping(value = "/entityBanDetails", method = {RequestMethod.GET})
     public List<EntityBanDetailsResponse> getEntityBanDetails(Integer entityId, Integer offset, Integer limit) throws Exception  {
     	if (isStubEnabled) {
-        return objectMapper.readValue("[{\"entityId\":1,\"banId\":\"1\",\"banMapRefId\":1,\"banStatus\":\"C\",\"banName\":\"BACCT1\",\"banArAmount\":-132.22,\"banOverdueAmount\":-133.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true},{\"entityId\":2,\"banId\":\"2\",\"banMapRefId\":2,\"banStatus\":\"D\",\"banName\":\"BACCT2\",\"banArAmount\":150.22,\"banOverdueAmount\":160.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true}]",
+        return objectMapper.readValue("[{\"entityId\":1,\"banId\":\"1\",\"banRefId\":1,\"banStatus\":\"C\",\"banName\":\"BACCT1\",\"banArAmount\":-132.22,\"banOverdueAmount\":-133.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true},{\"entityId\":2,\"banId\":\"2\",\"banRefId\":2,\"banStatus\":\"D\",\"banName\":\"BACCT2\",\"banArAmount\":150.22,\"banOverdueAmount\":160.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true}]",
         objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
     	}else {
     		 logger.info("::::::::Calling  entityBanDetails endpoint call ::::::::");
