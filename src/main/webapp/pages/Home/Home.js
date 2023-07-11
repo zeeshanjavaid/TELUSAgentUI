@@ -283,35 +283,45 @@ Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
 Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
-    Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: ''
-    });
+    if (data.length > 1) {
+        Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
+            empId: 'All',
+            firstName: 'All',
+            lastName: ''
+        });
+    }
 };
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
-    Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
-        empId: 'All',
-        firstName: 'All',
-        lastName: ''
-    });
+    if (data.length > 1) {
+        Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+            empId: 'All',
+            firstName: 'All',
+            lastName: ''
+        });
+    }
 };
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
-    Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
-        code: "All"
-    });
+    if (data.length > 1) {
+        Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
+            code: "All"
+        });
+    }
+
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
-    Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
-        code: "All"
-    });
+    if (data.length > 1) {
+        Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
+            code: "All"
+        });
+    }
+
 };
