@@ -167,7 +167,7 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     Page.Variables.workcategoriesByEmpId_homeBV.invoke();
 };
 
-/*Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
+Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
     debugger;
     var dropdown = document.getElementById('workCategorySelectEV');
     var selectedOptions = Page.Widgets.workCategorySelectEV.datavalue;
@@ -175,11 +175,10 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     var otherOptionsSelected = selectedOptions.length > 1;
     if (isAllSelected && otherOptionsSelected) {
         debugger;
-        allOptionIndex = selectedOptions.indexOf('All');
-        dropdown.options[allOptionIndex].selected = false;
-
+        let valuesWithoutAll = selectedOptions.shift();
+        Page.Widgets.workCategorySelectEV.datavalue = valuesWithoutAll;
     }
-};*/
+};
 
 
 
