@@ -195,7 +195,6 @@ public class TelusAPIConnectivityService {
 				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
-				headers.add("env", "it01");
 				responseEntity= invokeTelusPostAPIWithRestTemp(requestPayload, headers,endpointURL);
 				break;
 	
@@ -208,7 +207,6 @@ public class TelusAPIConnectivityService {
 				 headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
-				headers.add("env", "it01");
 				responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
 				break;
 	
@@ -222,7 +220,6 @@ public class TelusAPIConnectivityService {
 				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/merge-patch+json");
-				headers.add("env", "it01");
 				responseEntity= invokeTelusPatchAPIWithRestTemp(requestPayload,headers,endpointURL);
 				break;
 			default:

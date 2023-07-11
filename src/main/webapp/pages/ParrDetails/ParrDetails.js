@@ -24,11 +24,63 @@ Partial.onReady = function() {
     //alert("ParrId: " + Partial.Variables.getPaymentArrangement.dataSet.id);
     if (Partial.pageParams.ParrId) {
 
-        Partial.Variables.getPaymentArrangement.setInput({
-            "id": Partial.pageParams.ParrId
-        });
-        Partial.Variables.getPaymentArrangement.invoke();
-        debugger;
+        var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
+
+        /* Partial.Variables.getPaymentArrangement.setInput({
+             "id": Partial.pageParams.ParrId
+         });
+         Partial.Variables.getPaymentArrangement.invoke(); */
+
+        getPaymentArrangementVar.invoke({
+                "inputFields": {
+                    "id": Partial.pageParams.ParrId
+                },
+            },
+            function(data) {
+
+                var billingAccountRefIds = data.billingAccountRefs;
+                var billingAccountRefIdArray = [];
+                billingAccountRefIds.forEach(function(d) {
+                    billingAccountRefIdArray.push(d.id);
+                });
+                // console.log("success", "Inside Success block");
+
+                billingAccountRefIdArray.join(",");
+
+                var getBillingAccountNameIdVariable = Partial.Variables.getBillingAccountNameIdVar;
+                getBillingAccountNameIdVariable.invoke({
+                        "inputFields": {
+                            "billingAccountRefIds": billingAccountRefIdArray
+                        }
+                    },
+                    function(data) {
+                        // billingAccountIdNameListVar
+                        Partial.Variables.billingAccountIdNameListVar.dataSet = [];
+
+                        data.forEach(function(d) {
+
+                            Partial.billingAccountRefIdAndNameArr = {
+                                "billingAccountId": data.billingAccountId,
+                                "billingAccountName": d.billingAccountName
+                            }
+
+
+                            Partial.Variables.billingAccountIdNameListVar.dataSet.push(Partial.billingAccountRefIdAndNameArr);
+                        });
+                    },
+                    function(error) {
+                        // Error Callback
+                        console.log("error", error);
+                    });
+
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
+        );
+
     }
 };
 

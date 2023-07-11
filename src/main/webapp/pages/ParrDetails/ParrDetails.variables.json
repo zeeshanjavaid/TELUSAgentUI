@@ -1,4 +1,19 @@
 {
+  "billingAccountIdNameListVar" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1689085245677",
+    "name" : "billingAccountIdNameListVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "billingAccountId" : "",
+      "billingAccountName" : ""
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "CancelPaymentArrangement" : {
     "_id" : "wm-CancelPaymentArrangement-wm.ServiceVariable-1688118012166",
     "name" : "CancelPaymentArrangement",
@@ -27,6 +42,29 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "getBillingAccountNameIdVar" : {
+    "_id" : "wm-getBillingAccountNameIdVar-wm.ServiceVariable-1689084553579",
+    "name" : "getBillingAccountNameIdVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.telus.model.BillingAccountModel",
+    "service" : "CommonUtilityService",
+    "operation" : "getBillingAccountUsingBillingAccountReferenceIds",
+    "operationId" : "CommonUtilityController_getBillingAccountUsingBillingAccountReferenceIds",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
   },
   "getPaymentArrangement" : {
     "_id" : "wm-getPaymentArrangement1-wm.ServiceVariable-1685893381663",
