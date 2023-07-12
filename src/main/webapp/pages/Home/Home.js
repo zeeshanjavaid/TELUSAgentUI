@@ -137,10 +137,16 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.getUserListByTeamId_homeEV.setInput({
-        'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
-    });
-    Page.Variables.getUserListByTeamId_homeEV.invoke();
+    if (Page.Widgets.AssignedTeamSelectEV.datavalue == 'All') {
+        //Page.Variables.getUserListByTeamId_homeEV.invoke();
+        Page.Variables.getAllActiveUserList_HomeEV.invoke();
+    } else {
+        Page.Variables.getUserListByTeamId_homeEV.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
+        });
+        Page.Variables.getUserListByTeamId_homeEV.invoke();
+    }
+
 };
 
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
@@ -289,6 +295,11 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
             lastName: ''
         });
     }
+    /*if (data.length == 1) {
+        debugger;
+        Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].firstName + Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].lastName;
+
+    }*/
 };
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {

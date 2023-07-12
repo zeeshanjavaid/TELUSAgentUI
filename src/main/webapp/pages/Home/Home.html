@@ -46,7 +46,8 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId" datafield="empId" placeholder="Select" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId
+" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                     <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId"
                         datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>--></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
