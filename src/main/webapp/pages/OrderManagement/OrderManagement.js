@@ -184,7 +184,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banMapRefId,
+            "id": d.banRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -260,7 +260,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
         Partial.selectedBanList = {
-            "id": d.banMapRefId,
+            "id": d.banRefId,
 
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -403,7 +403,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             } else {
 
                 Partial.selectedBanList = {
-                    "id": d.banMapRefId,
+                    "id": d.banRefId,
 
                 }
             }
@@ -491,7 +491,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
             Partial.selectedBanList = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
 
             }
             Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -569,7 +569,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
             Partial.selectedBanList = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
 
             }
             Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -651,7 +651,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
             Partial.selectedBanList = {
-                "id": d.banMapRefId,
+                "id": d.banRefId,
 
             }
             Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
@@ -829,6 +829,8 @@ Partial.EditNotSentdialogOpened = function($event, widget) {
 
 
 function getBanDetails() {
+
+    debugger;
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
     Partial.Variables.CollectionDataServiceGetEntityBanDetails.setInput({
@@ -876,3 +878,7 @@ Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
     }
 
 }
+
+Partial.CollectionDataServiceGetEntityBanDetailsonError = function(variable, data, xhrObj) {
+
+};

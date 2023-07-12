@@ -1047,7 +1047,15 @@
       "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 258,
+        "line" : 128,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "getEntitySearch",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 261,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getActionViewByTeam",
         "phaseSequence" : 0,
@@ -1079,17 +1087,9 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 230,
+        "line" : 233,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityDetails",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 128,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "getEntitySearch",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

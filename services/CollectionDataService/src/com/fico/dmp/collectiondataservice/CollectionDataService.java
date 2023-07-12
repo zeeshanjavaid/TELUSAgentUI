@@ -210,14 +210,17 @@ public class CollectionDataService {
         return objectMapper.readValue("[{\"entityId\":1,\"banId\":\"1\",\"banRefId\":1,\"banStatus\":\"C\",\"banName\":\"BACCT1\",\"banArAmount\":-132.22,\"banOverdueAmount\":-133.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true},{\"entityId\":2,\"banId\":\"2\",\"banRefId\":2,\"banStatus\":\"D\",\"banName\":\"BACCT2\",\"banArAmount\":150.22,\"banOverdueAmount\":160.77,\"lineOfBusiness\":\"WLN\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false,\"disputeFlag\":true}]",
         objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
     	}else {
+    	    List<EntityBanDetailsResponse> entityBanDetailsResponseList=new ArrayList();
     		 logger.info("::::::::Calling  entityBanDetails endpoint call ::::::::");
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_BAN_DETAILS)
                      .queryParam("entityId", entityId);
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity Ban details endpoint call success ::::::::");
              logger.info("Response payload for Ban Details---"+ responseStr);
-             List<EntityBanDetailsResponse> entityBanDetailsResponseList = objectMapper.readValue(responseStr,
+             if(responseStr!=null){
+              entityBanDetailsResponseList = objectMapper.readValue(responseStr,
      				objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
+             }
              return entityBanDetailsResponseList;
     	}
     }
