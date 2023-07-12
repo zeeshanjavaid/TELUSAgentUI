@@ -172,7 +172,9 @@
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="DisputeListPanel" width="100%" content="DisputeList" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'">
                                 <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                             </wm-panel>
-                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDisputePanel" content="CreateDispute" show="bind:Variables.DisputePageName.dataSet.dataValue=='CreateDispute'"></wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDisputePanel" content="CreateDispute" show="bind:Variables.DisputePageName.dataSet.dataValue=='CreateDispute'">
+                                <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
+                            </wm-panel>
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="ViewDisputeDetailsPanel" content="DisputeDetails" show="bind:Variables.DisputePageName.dataSet.dataValue==&quot;DisputeDetail&quot;">
                                 <wm-param name="DisputeId" value="bind:Widgets.DisputeListPanel.Widgets.getdisputeTable1.selecteditem.id" type="integer"></wm-param>
                             </wm-panel>

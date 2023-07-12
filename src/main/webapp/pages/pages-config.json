@@ -129,7 +129,10 @@
 }, {
   "name" : "CreateDispute",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "CreateHistoryAction",
   "type" : "PARTIAL",

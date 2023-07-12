@@ -26,7 +26,7 @@
                         <wm-text name="selectedDisputeBan" padding="unset 0.5em" width="75%" readonly="true" datavalue="bind:Variables.selectedDisputeBanVar.dataSet.dataValue" required="true" placeholder=""></wm-text>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn6">
-                        <wm-button class="btn-default BANbutton" padding="unset 0.5em" caption="Select BAN" type="button" name="button1" on-click="Widgets.SelectDisputeBanDialog.open()"></wm-button>
+                        <wm-button class="btn-default BANbutton" padding="unset 0.5em" caption="Select BAN" type="button" name="SelectBan" on-click="SelectBanClick($event, widget)"></wm-button>
                     </wm-gridcolumn>
                 </wm-gridcolumn>
             </wm-gridcolumn>

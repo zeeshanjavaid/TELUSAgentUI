@@ -182,6 +182,29 @@ public class CommonUtilityService {
     	return billingAccountModelList;
     }
     
+        
+    public String getNameUsingEmpId(String empId) {
+    	String query = "emplId="+empId+" and active = true";
+    	Pageable pageable = PageRequest.of(0, 1000);
+    	Page<User> userPageList = userService.findAll(query, pageable);
+    	String firstAndLastNameCombined = null;
+    	String firstName = null;
+    	String lastName = null;
+    	if(userPageList.hasContent()) {
+          for (User user : userPageList) {
+        	  firstName = user.getFirstName();
+        	  lastName = user.getLastName();
+		}
+         }
+    	
+    	if(lastName != null) {
+    		firstAndLastNameCombined = firstName + " "+ lastName;
+    	}else {
+    		firstAndLastNameCombined = firstName;
+    	}
+    	return firstAndLastNameCombined;
+    }
+    
     
 
 }

@@ -94,7 +94,8 @@ Partial.CreateDisputeClick = function($event, widget) {
                 'amount': Partial.Widgets.disputeAmt.datavalue,
                 'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
                 'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
-                'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
+                //'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
+                'disputeReason': 'Pre-bill',
                 'product': Partial.Widgets.productsDropdown.datavalue,
                 'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
                 'customerEmail': Partial.Widgets.custEmailText.datavalue,
@@ -102,6 +103,10 @@ Partial.CreateDisputeClick = function($event, widget) {
                 'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
                 'billingAccountRef': {
                     'id': selectedBanInt
+                },
+                "channel": {
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                    "originatorAppId": "FAWBTELUSAGENT"
                 }
             }
         });
@@ -114,4 +119,15 @@ Partial.CreateDisputeClick = function($event, widget) {
         setTimeout(messageTimeout, 10000);
     }
 
+};
+Partial.SelectBanClick = function($event, widget) {
+    debugger;
+    var entityIdStr = Partial.pageParams.entityId
+    var entityIdInt = parseInt(entityIdStr);
+    Partial.Variables.getEntityBanDetails.setInput({
+        'entityId': entityIdInt
+    });
+
+    Partial.Variables.getEntityBanDetails.invoke();
+    Partial.Widgets.SelectDisputeBanDialog.open();
 };
