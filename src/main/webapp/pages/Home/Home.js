@@ -138,7 +138,6 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (Page.Widgets.AssignedTeamSelectEV.datavalue == 'All') {
-        //Page.Variables.getUserListByTeamId_homeEV.invoke();
         Page.Variables.getAllActiveUserList_HomeEV.invoke();
     } else {
         Page.Variables.getUserListByTeamId_homeEV.setInput({
@@ -146,31 +145,42 @@ Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
         });
         Page.Variables.getUserListByTeamId_homeEV.invoke();
     }
-
 };
 
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.getUserListByTeamId_homeBV.setInput({
-        'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
-    });
-    Page.Variables.getUserListByTeamId_homeBV.invoke();
+    if (Page.Widgets.AssignedTeamSelectBV.datavalue == 'All') {
+        Page.Variables.getAllActiveUserList_HomeBV.invoke();
+    } else {
+        Page.Variables.getUserListByTeamId_homeBV.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
+        });
+        Page.Variables.getUserListByTeamId_homeBV.invoke();
+    }
 };
 
 Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.workcategoriesByEmpId_homeEV.setInput({
-        'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
-    });
-    Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+    if (Page.Widgets.entityOwnerSelectEV.datavalue == 'All') {
+        Page.Variables.workCategorySelect_HomeEV.invoke();
+    } else {
+        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+            'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
+        });
+        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+    }
 };
 
 Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
-    Page.Variables.workcategoriesByEmpId_homeBV.setInput({
-        'emplId': Page.Widgets.entityOwnerSelectBV.datavalue
-    });
-    Page.Variables.workcategoriesByEmpId_homeBV.invoke();
+    if (Page.Widgets.entityOwnerSelectBV.datavalue == 'All') {
+        Page.Variables.workCategorySelect_HomeBV.invoke();
+    } else {
+        Page.Variables.workcategoriesByEmpId_homeBV.setInput({
+            'emplId': Page.Widgets.entityOwnerSelectBV.datavalue
+        });
+        Page.Variables.workcategoriesByEmpId_homeBV.invoke();
+    }
 };
 
 Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
@@ -268,49 +278,57 @@ Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
     }
 };
 
-// adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
-/*Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
-        code: "All"
-    });
-    Page.Variables.workCategorySelect_HomeEV.dataSet = Page.Variables.workCategorySelect_HomeEV.dataSet;
-};*/
 
-// adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
-/*Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
-    Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
-        code: "All"
-    });
-    Page.Variables.workCategorySelect_HomeBV.dataSet = Page.Variables.workCategorySelect_HomeBV.dataSet;
-};*/
+Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
+    if (Page.Variables.workCategorySelect_HomeEV.dataSet.length > 1) {
+        Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
+            code: "All"
+        });
+        Page.Variables.workCategoryValues_HomeEV.dataSet = Page.Variables.workCategorySelect_HomeEV.dataSet;
+    }
+};
+
+
+Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
+    if (Page.Variables.workCategorySelect_HomeBV.dataSet.length > 1) {
+        Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
+            code: "All"
+        });
+        Page.Variables.workCategoryValues_HomeBV.dataSet = Page.Variables.workCategorySelect_HomeBV.dataSet;
+    }
+};
 
 
 Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
-    if (data.length > 1) {
-        Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
-            empId: 'All',
-            firstName: 'All',
-            lastName: ''
-        });
+    if (data.length > 0) {
+        if (data.length > 1) {
+            debugger;
+            Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
+                empId: 'All',
+                firstName: 'All',
+                lastName: ''
+            });
+            Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
+        }
+        Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
     }
-    /*if (data.length == 1) {
-        debugger;
-        Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].firstName + Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].lastName;
-
-    }*/
 };
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
-    if (data.length > 1) {
-        Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
-            empId: 'All',
-            firstName: 'All',
-            lastName: ''
-        });
+    if (data.length > 0) {
+        if (data.length > 1) {
+            Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+                empId: 'All',
+                firstName: 'All',
+                lastName: ''
+            });
+            Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV.dataSet[0].empId;
+        }
+        Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV.dataSet[0].empId;
     }
 };
 
