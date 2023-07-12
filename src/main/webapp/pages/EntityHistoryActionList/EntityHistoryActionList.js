@@ -53,126 +53,135 @@ Partial.CreateActionLinkClick = function($event, widget) {
 Partial.nextButtonClick = function($event, widget) {
 
     debugger;
-    if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
-        Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
+
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+
+        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+
     } else {
-        Partial.Variables.errorMsg.dataSet.dataValue = "";
-    }
-
-    // Call Outbound Action 
-    if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
-        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
-        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';
-        Partial.Widgets.dueDate.datavalue = createDueDate();
-        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-
-        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-        });
-        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
-
-        // hiding select action form
-        hideSelectActionForm();
-        // displaying Call Outbound action form
-        $('#callOutBoundActionForm').show();
-        // hiding non-required fields
-        $('#callInBoundActionForm').hide();
-        $('#customerName').hide();
-        $('#nonMandatoryEmail').hide();
-        $('#mandatoryEmail').hide();
-        // making fields empty so that the same value does not carry over to another forms
-        Partial.Widgets.Comments.datavalue = '';
-        Partial.Widgets.dueDate.datavalue = '';
-    }
 
 
-    // Call Inbound Action
-    if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
-        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
-        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
-        Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
+            Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
+        } else {
+            Partial.Variables.errorMsg.dataSet.dataValue = "";
+        }
 
-        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-        });
-        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+        // Call Outbound Action 
+        if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
+            Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';
+            Partial.Widgets.dueDate.datavalue = createDueDate();
+            Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
-        // hiding select action form
-        hideSelectActionForm();
-        // displaying Call Outbound action form
-        $('#callOutBoundActionForm').show();
-        // displaying customer name
-        $('#customerName').show();
-        // displaying Call Inbound action form
-        $('#callInBoundActionForm').show();
-        // hiding non-required fields
-        $('#nonMandatoryEmail').hide();
-        $('#mandatoryEmail').hide();
-        // making fields empty so that the same value does not carry over to another forms
-        Partial.Widgets.Comments.datavalue = '';
-        Partial.Widgets.dueDate.datavalue = '';
-        Partial.Widgets.custName.datavalue = '';
-        Partial.Widgets.phnNumber.datavalue = '';
-        Partial.Widgets.callduration.datavalue = '';
-    }
+            Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+                'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+            });
+            Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
-    // Email Inbound Action 
-    if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
-        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
-        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
-        Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+            // hiding select action form
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#callOutBoundActionForm').show();
+            // hiding non-required fields
+            $('#callInBoundActionForm').hide();
+            $('#customerName').hide();
+            $('#nonMandatoryEmail').hide();
+            $('#mandatoryEmail').hide();
+            // making fields empty so that the same value does not carry over to another forms
+            Partial.Widgets.Comments.datavalue = '';
+            Partial.Widgets.dueDate.datavalue = '';
+        }
 
-        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-        });
-        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
-        // hiding select action form
-        hideSelectActionForm();
-        // displaying Call Outbound action form
-        $('#callOutBoundActionForm').show();
-        // displaying Email address
-        $('#mandatoryEmail').show();
-        // hiding non-required fields
-        $('#customerName').hide();
-        $('#callInBoundActionForm').hide();
-        $('#nonMandatoryEmail').hide();
-        // making fields empty so that the same value does not carry over to another forms
-        Partial.Widgets.Comments.datavalue = '';
-        Partial.Widgets.dueDate.datavalue = '';
-        Partial.Widgets.mandatoryEmail.datavalue = '';
-    }
+        // Call Inbound Action
+        if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+            Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
+            Partial.Widgets.dueDate.datavalue = new Date();
+            Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
-    // General Follow-up Action 
-    if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
-        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
-        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Low';
-        Partial.Widgets.dueDate.datavalue = createDueDate();
-        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+            Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+                'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+            });
+            Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
-        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-        });
-        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+            // hiding select action form
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#callOutBoundActionForm').show();
+            // displaying customer name
+            $('#customerName').show();
+            // displaying Call Inbound action form
+            $('#callInBoundActionForm').show();
+            // hiding non-required fields
+            $('#nonMandatoryEmail').hide();
+            $('#mandatoryEmail').hide();
+            // making fields empty so that the same value does not carry over to another forms
+            Partial.Widgets.Comments.datavalue = '';
+            Partial.Widgets.dueDate.datavalue = '';
+            Partial.Widgets.custName.datavalue = '';
+            Partial.Widgets.phnNumber.datavalue = '';
+            Partial.Widgets.callduration.datavalue = '';
+        }
 
-        // hiding select action form
-        hideSelectActionForm();
-        // displaying Call Outbound action form
-        $('#callOutBoundActionForm').show();
-        // hiding non-required fields
-        $('#nonMandatoryEmail').hide();
-        $('#mandatoryEmail').hide();
-        $('#callInBoundActionForm').hide();
-        $('#customerName').hide();
-        // making fields empty so that the same value does not carry over to another forms
-        Partial.Widgets.Comments.datavalue = '';
-        Partial.Widgets.dueDate.datavalue = '';
+        // Email Inbound Action 
+        if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+            Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
+            Partial.Widgets.dueDate.datavalue = new Date();
+            Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+            Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+                'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+            });
+            Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
+            // hiding select action form
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#callOutBoundActionForm').show();
+            // displaying Email address
+            $('#mandatoryEmail').show();
+            // hiding non-required fields
+            $('#customerName').hide();
+            $('#callInBoundActionForm').hide();
+            $('#nonMandatoryEmail').hide();
+            // making fields empty so that the same value does not carry over to another forms
+            Partial.Widgets.Comments.datavalue = '';
+            Partial.Widgets.dueDate.datavalue = '';
+            Partial.Widgets.mandatoryEmail.datavalue = '';
+        }
+
+        // General Follow-up Action 
+        if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
+            Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Low';
+            Partial.Widgets.dueDate.datavalue = createDueDate();
+            Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+
+            Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+                'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+            });
+            Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
+            // hiding select action form
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#callOutBoundActionForm').show();
+            // hiding non-required fields
+            $('#nonMandatoryEmail').hide();
+            $('#mandatoryEmail').hide();
+            $('#callInBoundActionForm').hide();
+            $('#customerName').hide();
+            // making fields empty so that the same value does not carry over to another forms
+            Partial.Widgets.Comments.datavalue = '';
+            Partial.Widgets.dueDate.datavalue = '';
+        }
     }
 
     //  Notice Actions
