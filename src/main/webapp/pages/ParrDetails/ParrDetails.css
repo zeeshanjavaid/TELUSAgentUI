@@ -135,7 +135,7 @@ text-align: right
 }
 
 /*view PARR small res*/
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+@media only screen and (min-width: 1260px) and (max-width: 1631px) {
     .gridrow5 {
         margin: -12px 0px 15px -3px !important;
     }
@@ -190,7 +190,7 @@ text-align: right
 }   
 
 /*view PARR medium res*/
-@media only screen and (min-width: 1405px) and (max-width: 1630px) {
+/*@media only screen and (min-width: 1405px) and (max-width: 1630px) {
 .parrlabel4 {
     min-width: 11% !important;
     }
@@ -210,7 +210,7 @@ text-align: right
 .parrIDvalueLabel {
     width: 4% !important;
     }
-}
+}*/
 
 /*view PARR large res*/
 @media only screen and (min-width: 1918px) {
