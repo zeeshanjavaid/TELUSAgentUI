@@ -54,9 +54,9 @@ Partial.nextButtonClick = function($event, widget) {
 
     debugger;
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
 
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
+        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
 
     } else {
 

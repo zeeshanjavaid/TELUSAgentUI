@@ -45,43 +45,59 @@ function getCurrentDate() {
 Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
-    Partial.Widgets.OrderPopOver.hidePopover();
-    Partial.Variables.errorMsg.dataSet.dataValue = "";
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
+        setTimeout(messageTimeout, 4000);
+    } else {
+        Partial.Widgets.OrderPopOver.hidePopover();
+        Partial.Variables.errorMsg.dataSet.dataValue = "";
 
-    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-    });
-    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
-    Partial.Widgets.CreateSuspensionRequestdialog.open();
+        Partial.Widgets.CreateSuspensionRequestdialog.open();
+    }
 };
 
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
-    Partial.Widgets.OrderPopOver.hidePopover();
-    getBanDetails();
-    Partial.Variables.errorMsg.dataSet.dataValue = "";
-    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-    });
-    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
+        setTimeout(messageTimeout, 4000);
+    } else {
+        Partial.Widgets.OrderPopOver.hidePopover();
+        getBanDetails();
+        Partial.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
 
-    Partial.Widgets.CreateRestoralRequestdialog.open();
+        Partial.Widgets.CreateRestoralRequestdialog.open();
+    }
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
-    Partial.Widgets.OrderPopOver.hidePopover();
-    getBanDetails();
-    Partial.Variables.errorMsg.dataSet.dataValue = "";
-    Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
-    Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-        'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-    });
-    Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
+        setTimeout(messageTimeout, 4000);
+    } else {
+        Partial.Widgets.OrderPopOver.hidePopover();
+        getBanDetails();
+        Partial.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+        });
+        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
-    Partial.Widgets.CreateCeaseRequestdialog.open();
+        Partial.Widgets.CreateCeaseRequestdialog.open();
+    }
 }
 
 Partial.closeCreateSuspensionActionDialog = function() {
