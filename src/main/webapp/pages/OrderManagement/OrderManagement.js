@@ -45,7 +45,7 @@ function getCurrentDate() {
 Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
         setTimeout(messageTimeout, 4000);
     } else {
@@ -65,7 +65,7 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
         setTimeout(messageTimeout, 4000);
     } else {
@@ -83,7 +83,7 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
     }
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 1) {
+    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
         setTimeout(messageTimeout, 4000);
     } else {
