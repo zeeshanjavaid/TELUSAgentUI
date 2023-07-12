@@ -196,6 +196,19 @@ Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
     }
 };
 
+Page.workCategorySelectBVChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    var dropdown = document.getElementById('workCategorySelectBV');
+    var selectedOptions = Page.Widgets.workCategorySelectBV.datavalue;
+    var isAllSelected = selectedOptions.includes('All');
+    var otherOptionsSelected = selectedOptions.length > 1;
+    if (isAllSelected && otherOptionsSelected) {
+        debugger;
+        let valuesWithoutAll = selectedOptions.shift();
+        Page.Widgets.workCategorySelectBV.datavalue = valuesWithoutAll;
+    }
+};
+
 
 
 // adding 'All' in the dropdown list for assignedTeam dropdown for ENTITY VIEW
