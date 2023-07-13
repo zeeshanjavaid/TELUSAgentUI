@@ -16,9 +16,9 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
                 <wm-container name="container4" horizontalalign="right" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="CloseDispute" on-click="CloseDisputeClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)"></wm-button>
-                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="UpdateDispute" textalign="right" on-click="UpdateDisputeClick($event, widget)"></wm-button>
+                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="CloseDispute" on-click="CloseDisputeClick($event, widget)" show="true" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
+                    <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="UpdateDispute" textalign="right" on-click="UpdateDisputeClick($event, widget)" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>

@@ -1,4 +1,32 @@
 {
+  "CancelDisputeServiceVar" : {
+    "_id" : "wm-CancelDisputeVar-wm.ServiceVariable-1689252516941",
+    "name" : "CancelDisputeServiceVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    } ],
+    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateDispute",
+    "operationId" : "CollectionEntityController_updateDispute",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "CancelDisputeServiceVaronSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "CancelReasonDropdownVar" : {
     "_id" : "wm-CancelReasonDropdownVar_1-wm.ServiceVariable-1688380883043",
     "name" : "CancelReasonDropdownVar",
@@ -52,6 +80,34 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
+  },
+  "CloseDisputeServiceVar" : {
+    "_id" : "wm-CloseDisputeServiceVar-wm.ServiceVariable-1689252566276",
+    "name" : "CloseDisputeServiceVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.DisputeId",
+      "type" : "integer"
+    } ],
+    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateDispute",
+    "operationId" : "CollectionEntityController_updateDispute",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "CloseDisputeServiceVaronSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   },
   "closedReasonDropdownVar" : {
     "_id" : "wm-closedReasonDropdownVar_1-wm.ServiceVariable-1688380688776",
@@ -217,7 +273,7 @@
       "value" : "bind:pageParams.DisputeId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionDispute",
+    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
     "service" : "CollectionEntityService",
     "operation" : "updateDispute",
     "operationId" : "CollectionEntityController_updateDispute",
@@ -226,8 +282,9 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "updateDisputeServiceonSuccess(variable, data, options)",
     "startUpdate" : false,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

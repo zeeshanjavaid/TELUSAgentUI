@@ -37,7 +37,10 @@ function messageTimeout() {
 
 
 Partial.anchor3Click = function($event, widget) {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+    Partial.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+    App.refreshDisputeList();
 };
 
 /* for panel expand and collapse*/
@@ -59,20 +62,22 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Comments is a mandatory field";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
-        Partial.Variables.updateDisputeService.setInput({
-            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
+        Partial.Variables.CancelDisputeServiceVar.setInput({
+            "id": Partial.pageParams.DisputeId,
             "CollectionDisputeUpdate": {
-                'statusReason': Partial.Widgets.cancelledReasonValue.datavalue,
+                "id": Partial.pageParams.DisputeId,
+                'disputeReason': Partial.Widgets.cancelledReasonValue.datavalue,
                 'comment': Partial.Widgets.CommentsCancelDispute.datavalue,
-                'status': "Cancelled"
+                'status': "Cancelled",
+                "channel": {
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                    "originatorAppId": "FAWBTELUSAGENT"
+                }
             }
         });
 
 
-        Partial.Variables.updateDisputeService.invoke();
-        Partial.Widgets.cancelDisputeConfirmation.close();
-        App.Variables.successMessage.dataSet.dataValue = "Dispute Cancelled successfully";
-        setTimeout(messageTimeout, 8000);
+        Partial.Variables.CancelDisputeServiceVar.invoke();
     }
 
 };
@@ -86,20 +91,23 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Comments is a mandatory field";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
-        Partial.Variables.updateDisputeService.setInput({
-            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
+        Partial.Variables.CloseDisputeServiceVar.setInput({
+            "id": Partial.pageParams.DisputeId,
             "CollectionDisputeUpdate": {
-                'statusReason': Partial.Widgets.ClosedDisputeReason.datavalue,
+                "id": Partial.pageParams.DisputeId,
+                'disputeReason': Partial.Widgets.ClosedDisputeReason.datavalue,
                 'comment': Partial.Widgets.CloseDisputeComments.datavalue,
-                'status': "Closed"
+                'status': "Closed",
+                "channel": {
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                    "originatorAppId": "FAWBTELUSAGENT"
+                }
             }
         });
 
 
-        Partial.Variables.updateDisputeService.invoke();
-        Partial.Widgets.closeDisputeDialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Dispute Closed successfully";
-        setTimeout(messageTimeout, 8000);
+        Partial.Variables.CloseDisputeServiceVar.invoke();
+
     }
 
 
@@ -119,8 +127,9 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({
-            "id": App.Variables.disputeIdAppVar.dataSet.dataValue,
+            "id": Partial.pageParams.DisputeId,
             "CollectionDisputeUpdate": {
+                "id": Partial.pageParams.DisputeId,
                 'adjustmentToDate': Partial.Widgets.AdjustmentToDateUpdate.datavalue,
                 'amount': Partial.Widgets.diputeAmtUpdate.datavalue,
                 'collectionExclusionIndicator': Partial.Widgets.updateDisputeExclusionDropdown.datavalue,
@@ -129,14 +138,16 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
                 'product': Partial.Widgets.productDropdown.datavalue,
                 'customerEmail': Partial.Widgets.customerEmailUpdate.datavalue,
                 'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
-                'comment': Partial.Widgets.commentsUpdate.datavalue
+                'comment': Partial.Widgets.commentsUpdate.datavalue,
+                "channel": {
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                    "originatorAppId": "FAWBTELUSAGENT"
+                }
             }
         });
 
         Partial.Variables.updateDisputeService.invoke();
-        Partial.Widgets.updateDisputeConfirmation.close();
-        App.Variables.successMessage.dataSet.dataValue = "Dispute Updated successfully";
-        setTimeout(messageTimeout, 8000);
+
     }
 
 };
@@ -154,4 +165,40 @@ Partial.UpdateDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.updateDisputeConfirmation.open();
+};
+
+Partial.CloseDisputeServiceVaronSuccess = function(variable, data) {
+
+    Partial.Widgets.closeDisputeDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = "Dispute Closed successfully";
+    Partial.Variables.getDisputeDetails.setInput({
+        "id": Partial.pageParams.DisputeId
+    });
+    Partial.Variables.getDisputeDetails.invoke();
+    setTimeout(messageTimeout, 8000);
+
+};
+
+Partial.CancelDisputeServiceVaronSuccess = function(variable, data) {
+
+    Partial.Widgets.cancelDisputeConfirmation.close();
+    App.Variables.successMessage.dataSet.dataValue = "Dispute Cancelled successfully";
+    Partial.Variables.getDisputeDetails.setInput({
+        "id": Partial.pageParams.DisputeId
+    });
+    Partial.Variables.getDisputeDetails.invoke();
+    setTimeout(messageTimeout, 8000);
+
+};
+
+Partial.updateDisputeServiceonSuccess = function(variable, data) {
+
+    Partial.Widgets.updateDisputeConfirmation.close();
+    App.Variables.successMessage.dataSet.dataValue = "Dispute Updated successfully";
+    Partial.Variables.getDisputeDetails.setInput({
+        "id": Partial.pageParams.DisputeId
+    });
+    Partial.Variables.getDisputeDetails.invoke();
+    setTimeout(messageTimeout, 8000);
+
 };
