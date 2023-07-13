@@ -45,3 +45,8 @@ Partial.getdisputeTable1_idOnClick = function($event, widget, row) {
     App.Variables.disputeIdAppVar.dataSet.dataValue = row.id;
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeDetail';
 };
+
+
+App.refreshDisputeList = function() {
+    Partial.Variables.getAllDisputesList.invoke();
+};

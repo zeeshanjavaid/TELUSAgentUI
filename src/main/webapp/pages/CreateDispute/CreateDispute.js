@@ -33,9 +33,9 @@ function messageTimeout() {
 }
 
 Partial.SubmitDisputeBanClick = function($event, widget) {
-
+    debugger;
     Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
-    Partial.Widgets.selectedDisputeBan.datavalue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
+    Partial.Widgets.selectedDisputeBan.datavalue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banRefId;
     Partial.Widgets.SelectDisputeBanDialog.close();
 };
 Partial.CancelDisputeClick = function($event, widget) {
@@ -94,13 +94,14 @@ Partial.CreateDisputeClick = function($event, widget) {
                 'amount': Partial.Widgets.disputeAmt.datavalue,
                 'chargeType': Partial.Widgets.chargeTypeDropDown.datavalue,
                 'collectionExclusionIndicator': Partial.Widgets.exclusionDropdown.datavalue,
-                //'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
-                'disputeReason': 'Pre-bill',
+                'disputeReason': Partial.Widgets.reasonDropdown.datavalue,
                 'product': Partial.Widgets.productsDropdown.datavalue,
                 'adjustmentToDate': Partial.Widgets.AdjustmentToDate.datavalue,
                 'customerEmail': Partial.Widgets.custEmailText.datavalue,
                 'comment': Partial.Widgets.CreateCommentsDispute.datavalue,
                 'disputePrime': Partial.Widgets.AssignedDisputePrime.datavalue,
+                'billingAdjustmentRequestId': 'string',
+                'status': 'Open',
                 'billingAccountRef': {
                     'id': selectedBanInt
                 },
@@ -114,9 +115,7 @@ Partial.CreateDisputeClick = function($event, widget) {
         //Invoke POST createDispute service
         Partial.Variables.CreateDisputeService.invoke();
 
-        App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
-        Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
-        setTimeout(messageTimeout, 10000);
+
     }
 
 };
@@ -130,4 +129,13 @@ Partial.SelectBanClick = function($event, widget) {
 
     Partial.Variables.getEntityBanDetails.invoke();
     Partial.Widgets.SelectDisputeBanDialog.open();
+};
+
+Partial.CreateDisputeServiceonSuccess = function(variable, data) {
+
+    App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
+    Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+    App.refreshDisputeList();
+    setTimeout(messageTimeout, 10000);
+
 };

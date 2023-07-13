@@ -64,7 +64,7 @@ Partial.CancelDisputeSubmitClick = function($event, widget) {
             "CollectionDisputeUpdate": {
                 'statusReason': Partial.Widgets.cancelledReasonValue.datavalue,
                 'comment': Partial.Widgets.CommentsCancelDispute.datavalue,
-                'status': "CANCEL"
+                'status': "Cancelled"
             }
         });
 
@@ -91,7 +91,7 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
             "CollectionDisputeUpdate": {
                 'statusReason': Partial.Widgets.ClosedDisputeReason.datavalue,
                 'comment': Partial.Widgets.CloseDisputeComments.datavalue,
-                'status': "CLOSED"
+                'status': "Closed"
             }
         });
 

@@ -95,7 +95,7 @@ public class ParrReportService {
                 ParrReports parrReports=new ParrReports();
                 parrReports.setParrId(cpa.getId());
                 parrReports.setEntityId(Long.valueOf(cpa.getCollectionEntity().getId()));
-                parrReports.setParrStatus(cpa.getStatus().getValue().toString());
+                parrReports.setParrStatus(cpa.getStatus());
                // parrReports.setParrStatus(cpa.getStatus());
                 parrReports.setEvaluation(cpa.getEvaluationResult());
                 parrReports.setParrAmt("$"+cpa.getAmount());
