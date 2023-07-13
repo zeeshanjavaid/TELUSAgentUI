@@ -184,7 +184,7 @@ public class CommonUtilityService {
     
         
     public String getNameUsingEmpId(String empId) {
-    	String query = "emplId = "+empId+" and active = true";
+    	String query = "emplId='" + empId + "' and active = true";
     	Pageable pageable = PageRequest.of(0, 1000);
     	Page<User> userPageList = userService.findAll(query, pageable);
     	String firstAndLastNameCombined = null;
