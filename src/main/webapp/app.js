@@ -41,7 +41,7 @@ App.onSessionTimeout = function() {
  * $activePageEl  : page jQuery element
  */
 App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
-
+    App.Variables.getLoggedInUserDetails.invoke();
 };
 
 /*

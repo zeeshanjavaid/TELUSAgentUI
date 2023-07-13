@@ -29,6 +29,8 @@ Page.onReady = function() {
     $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
+    Page.Variables.workCategoryValues_HomeEV.invoke();
+    Page.Variables.workCategoryValues_HomeBV.invoke();
 
 };
 
@@ -270,44 +272,52 @@ Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
 // adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
 Page.workCategoryValues_HomeEVonSuccess = function(variable, data) {
     debugger;
-    if (Page.Variables.workCategoryValues_HomeEV.dataSet.length > 1) {
+    if (data.length > 1) {
         debugger;
-        Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
+        Page.Variables.workCategoryValues_HomeEV.dataSet = [];
+        data.unshift({
             code: "All"
         });
-        Page.Variables.workCategoryValues_HomeEV.dataSet = Page.Variables.workCategoryValues_HomeEV.dataSet;
+        Page.Variables.workCategoryValues_HomeEV.dataSet = data;
     }
 };
 
 // adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
 Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
     debugger;
-    if (Page.Variables.workCategoryValues_HomeBV.dataSet.length > 1) {
+    if (data.length > 1) {
         debugger;
-        Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
+        Page.Variables.workCategoryValues_HomeBV.dataSet = [];
+        data.unshift({
             code: "All"
         });
-        Page.Variables.workCategoryValues_HomeBV.dataSet = Page.Variables.workCategoryValues_HomeBV.dataSet;
+        Page.Variables.workCategoryValues_HomeBV.dataSet = data;
     }
 };
 
 
 Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
-    if (Page.Variables.workCategorySelect_HomeEV.dataSet.length > 1) {
-        Page.Variables.workCategorySelect_HomeEV.dataSet.unshift({
+    debugger;
+    if (data.length > 1) {
+        data.unshift({
             code: "All"
         });
-        Page.Variables.workCategoryValues_HomeEV.dataSet = Page.Variables.workCategorySelect_HomeEV.dataSet;
+        if (Page.Widgets.entityOwnerSelectEV.datavalue == 'All') {
+            Page.Variables.workCategoryValues_HomeEV.dataSet = data;
+        }
     }
 };
 
 
 Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
-    if (Page.Variables.workCategorySelect_HomeBV.dataSet.length > 1) {
-        Page.Variables.workCategorySelect_HomeBV.dataSet.unshift({
+    debugger;
+    if (data.length > 1) {
+        data.unshift({
             code: "All"
         });
-        Page.Variables.workCategoryValues_HomeBV.dataSet = Page.Variables.workCategorySelect_HomeBV.dataSet;
+        if (Page.Widgets.entityOwnerSelectBV.datavalue == 'All') {
+            Page.Variables.workCategoryValues_HomeBV.dataSet = data;
+        }
     }
 };
 
