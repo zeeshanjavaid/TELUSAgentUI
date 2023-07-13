@@ -73,7 +73,6 @@ public class DisputeService {
         			DisputeModel disputeModel = new DisputeModel();
         			disputeModel.setId(collectionDispute.getId());
         			disputeModel.setBan(collectionDispute.getBillingAccountRef().getId());
-        			disputeModel.setBanName(collectionDispute.getBillingAccountRef().getName());
         			disputeModel.setDisputeAmount(collectionDispute.getAmount());
         			disputeModel.setCollectionExclusion(collectionDispute.isCollectionExclusionIndicator());
         			disputeModel.setStatus(collectionDispute.getStatus());
@@ -88,13 +87,14 @@ public class DisputeService {
         	
         	String billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
         	logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
-        	String fields = "id,billingAccount.id,billingAccount.name";
-        	String idInQuery = "in:"+billingAcctRefIdsInListAsString;
-        	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fields, null, null, null, null, idInQuery);
+        	String fields = "id,billingAccount.id,billingAccount.name,billingSystemName";
+        	//String idInQuery = billingAcctRefIdsInListAsString;
+        	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fields, null, null, null, null, billingAcctRefIdsInListAsString);
         	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
         		for (DisputeModel disputeModel : disputeModelList) {
         			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(disputeModel.getBan()))).forEach(collectionBillingAccountRef -> {
-        				disputeModel.setBillingSystem(collectionBillingAccountRef.getBillingAccount().getName());
+        				disputeModel.setBanName(collectionBillingAccountRef.getBillingAccount().getName());
+        				disputeModel.setBillingSystem(collectionBillingAccountRef.getBillingSystemName());
         			});
 				}
         		
