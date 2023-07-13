@@ -56,7 +56,7 @@ Partial.nextButtonClick = function($event, widget) {
 
     if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
 
-        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
+        App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
 
     } else {
 
@@ -1276,4 +1276,8 @@ Partial.EditActionDialogOpened = function($event, widget) {
 
 Partial.getCollectionActivityLog_1Table3_OnRowexpand = function($event, widget, row, $data) {
     App.showRowExpansionCompleted(row, $data);
+};
+Partial.SelectActionDialogClose = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = '';
+
 };

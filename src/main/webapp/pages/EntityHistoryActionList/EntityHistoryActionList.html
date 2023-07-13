@@ -85,7 +85,7 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog" on-opened="SelectActionDialogOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create Action" iconclass="wi wi-file-text" name="SelectActionDialog" on-opened="SelectActionDialogOpened($event, widget)" on-close="SelectActionDialogClose($event, widget)">
         <wm-gridrow name="gridrow1">
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
         </wm-gridrow>

@@ -1238,7 +1238,7 @@
     "maxResults" : 20,
     "startUpdate" : true,
     "autoUpdate" : false,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"

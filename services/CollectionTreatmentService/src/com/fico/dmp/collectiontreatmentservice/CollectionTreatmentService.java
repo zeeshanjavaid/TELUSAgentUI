@@ -110,6 +110,7 @@ public class CollectionTreatmentService {
         }else{
 
            List<CollectionTreatment> collectionTreatmentStepList=new ArrayList<>();
+           if(collectionEntityId!=null){
             logger.info("::::::::Calling  entity data endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT)
                     .queryParam("collectionEntityId",collectionEntityId )
@@ -122,9 +123,14 @@ public class CollectionTreatmentService {
             logger.info("::::::::Entity data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
           //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
-             return objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatment>>(){});
+             collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatment>>(){});
 
         }
+        
+        
+        return collectionTreatmentStepList;
+        
+    }
         
        
     	

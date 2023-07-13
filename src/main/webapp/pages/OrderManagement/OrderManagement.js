@@ -30,6 +30,8 @@ Partial.onReady = function() {
     // });
     // Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
+    App.Variables.errorMsg.dataSet.dataValue = '';
+
 };
 
 Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widget, row, $data) {
@@ -46,8 +48,8 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
     if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
-        setTimeout(messageTimeout, 4000);
+        App.Variables.errorMsg.dataSet.dataValue = "You cannot create an order for this entity. Entity is not yet in collection treatment.";
+        setTimeout(messageTimeout, 5000);
     } else {
         Partial.Widgets.OrderPopOver.hidePopover();
         Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -64,10 +66,9 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
-
     if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
-        setTimeout(messageTimeout, 4000);
+        App.Variables.errorMsg.dataSet.dataValue = "You cannot create an order for this entity. Entity is not yet in collection treatment.";
+        setTimeout(messageTimeout, 5000);
     } else {
         Partial.Widgets.OrderPopOver.hidePopover();
         getBanDetails();
@@ -84,8 +85,8 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
     if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Entity id is not acive, Not able to create order.";
-        setTimeout(messageTimeout, 4000);
+        App.Variables.errorMsg.dataSet.dataValue = "You cannot create an order for this entity. Entity is not yet in collection treatment.";
+        setTimeout(messageTimeout, 5000);
     } else {
         Partial.Widgets.OrderPopOver.hidePopover();
         getBanDetails();
@@ -132,9 +133,7 @@ Partial.createbuttonClick = function($event, widget) {
     }
 
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
-    } else if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
+    if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -208,9 +207,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     });
 
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
-    } else if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
+    if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -283,9 +280,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
     });
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
-    } else if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
+    if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -327,16 +322,14 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
     }
 
-    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-
 
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
-    debugger;
+
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
-            debugger;
+
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
 
@@ -371,7 +364,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
 
 Partial.updateDONotSentbuttonClick = function($event, widget) {
-    debugger;
+
 
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
@@ -476,7 +469,7 @@ Partial.editNotSentCancelbuttonClick = function($event, widget) {
 };
 Partial.updateandsendbuttonClick = function($event, widget) {
 
-    debugger;
+
 
     Partial.Variables.newlyAssignedPerson.dataset = '';
 
@@ -556,7 +549,7 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
-    debugger;
+
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -638,7 +631,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
 Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
-    debugger;
+
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
@@ -749,7 +742,7 @@ Partial.closeAction_NoClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
-    debugger;
+
     Partial.Variables.UpdateODManagemntVar.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
@@ -776,7 +769,7 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
 
-    debugger;
+
     Partial.Variables.UpdateODManagemntVar.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
@@ -829,7 +822,7 @@ Partial.update_NoBtnClick = function($event, widget) {
 };
 Partial.EditNotSentdialogOpened = function($event, widget) {
 
-    debugger;
+
 
 
     if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
@@ -846,7 +839,7 @@ Partial.EditNotSentdialogOpened = function($event, widget) {
 
 function getBanDetails() {
 
-    debugger;
+
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
     Partial.Variables.CollectionDataServiceGetEntityBanDetails.setInput({
@@ -864,7 +857,7 @@ Partial.update_ActionDialogOpened = function($event, widget) {
 
 Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, row) {
 
-    debugger;
+
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
     Partial.Variables.getODMgmtHistory.setInput({
@@ -882,7 +875,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
 
 Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
 
-    debugger;
+
 
     if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
 
