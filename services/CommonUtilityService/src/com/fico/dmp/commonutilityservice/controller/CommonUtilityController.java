@@ -48,6 +48,8 @@ public class CommonUtilityController {
     }
 
     @RequestMapping(value = "/nameUsingEmpId", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String getNameUsingEmpId(@RequestParam(value = "empId", required = false) String empId) {
         return commonUtilityService.getNameUsingEmpId(empId);
     }
