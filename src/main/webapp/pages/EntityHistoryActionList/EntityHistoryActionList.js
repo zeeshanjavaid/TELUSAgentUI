@@ -744,7 +744,7 @@ Partial.openFilterGrid = function($event, widget) {
         $('#completionDateGrid').show();
     }
 
-    Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
+    //Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
 };
 
 // function added to clear all the fields in the filter
