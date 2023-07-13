@@ -1,4 +1,28 @@
 {
+  "assignedPerson_orderMngt" : {
+    "_id" : "wm-assignedPerson_orderMngt-wm.ServiceVariable-1689239803231",
+    "name" : "assignedPerson_orderMngt",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "CommonUtilityService",
+    "operation" : "getNameUsingEmpId",
+    "operationId" : "CommonUtilityController_getNameUsingEmpId",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "assignedPerson_orderMngtonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
+  },
   "banListStrings" : {
     "_id" : "wm-banListStrings-wm.Variable-1688123136583",
     "name" : "banListStrings",

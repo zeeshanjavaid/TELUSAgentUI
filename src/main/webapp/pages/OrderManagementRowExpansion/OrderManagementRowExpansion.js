@@ -22,6 +22,10 @@ Partial.onReady = function() {
      */
 
     App.showRowExpansionOrderManagement = function(row, data) {
+        Partial.Variables.assignedPerson_orderMngt.setInput({
+            'empId': row.assignedAgentId
+        });
+        Partial.Variables.assignedPerson_orderMngt.invoke();
 
         var billingAccountIdRefs1 = [];
         var type = row.stepTypeCode;
@@ -68,7 +72,7 @@ Partial.onReady = function() {
 
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
-        Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
+        //Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.Comment.caption = row.comment;
         Partial.Widgets.Priority.caption = row.priority;
         Partial.Widgets.assignedTeam.caption = row.assignedTeam;
@@ -77,7 +81,6 @@ Partial.onReady = function() {
 
     }
 };
-
 
 function populateBANIds(items) {
 
@@ -125,4 +128,8 @@ Partial.getBanIdforODonSuccess = function(variable, data) {
     /*Partial.Variables.BanListRefIds.dataSet = data.join("\n");
     Partial.Variables.BanListRefIds.dataSet;*/
 
+};
+
+Partial.assignedPerson_orderMngtonSuccess = function(variable, data) {
+    Partial.Widgets.assignedPerson.caption = data.value;
 };
