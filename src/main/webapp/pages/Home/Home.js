@@ -38,6 +38,8 @@ Page.onReady = function() {
 Page.entityViewButtonClick = function($event, widget) {
     debugger;
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.hideBanTableGrid.dataValue = false;
+    Page.Variables.hideBanFilterGrid.dataValue = false;
 
     // to make buttons selected
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -58,6 +60,8 @@ Page.entityViewButtonClick = function($event, widget) {
 Page.banViewButtonClick = function($event, widget) {
     debugger;
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Variables.hideBanTableGrid.dataValue = true;
+    Page.Variables.hideBanFilterGrid.dataValue = true;
 
     // to make buttons selected
     $("#banViewBtn").css("background-color", "#4B286D");

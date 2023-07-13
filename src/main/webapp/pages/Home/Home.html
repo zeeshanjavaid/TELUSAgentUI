@@ -85,7 +85,7 @@
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
-        <wm-layoutgrid id="filterGridBanView" name="layoutgrid4" margin="0 0 10px 30px" width="98%" show="true">
+        <wm-layoutgrid id="filterGridBanView" name="layoutgrid4" margin="0 0 10px 30px" width="98%" show="bind:Variables.hideBanFilterGrid.dataValue">
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedTeamGrid">
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -171,7 +171,7 @@
                     show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
-        <wm-layoutgrid id="banViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid5">
+        <wm-layoutgrid id="banViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid5" show="bind:Variables.hideBanTableGrid.dataValue">
             <wm-table title="" dataset="bind:Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet" navigation="Classic" name="table2" margin="16px 10px 16px 16px" width="98%" navigationalign="right">
                 <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>

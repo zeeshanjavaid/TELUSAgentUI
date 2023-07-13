@@ -1594,6 +1594,34 @@
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
   },
+  "hideBanFilterGrid" : {
+    "_id" : "wm-hideBanFilterGrid-wm.Variable-1689246930528",
+    "name" : "hideBanFilterGrid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "hideBanTableGrid" : {
+    "_id" : "wm-hideBanTableGrid-wm.Variable-1689247050818",
+    "name" : "hideBanTableGrid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "includeCurrentCredit_homeBV" : {
     "_id" : "wm-includeCurrentCredit_homeBV-wm.Variable-1688363471573",
     "name" : "includeCurrentCredit_homeBV",
