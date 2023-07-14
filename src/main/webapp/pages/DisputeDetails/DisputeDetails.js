@@ -162,8 +162,38 @@ Partial.CancelDisputeClick = function($event, widget) {
     Partial.Widgets.cancelDisputeConfirmation.open();
 };
 Partial.UpdateDisputeClick = function($event, widget) {
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+    billingAccountRefId = Partial.Variables.getDisputeDetails.dataSet.billingAccountRef.id;
+
+    var getBillingAccountNameIdVariable = Partial.Variables.getBillingAccountNameIdVar;
+    getBillingAccountNameIdVariable.invoke({
+            "inputFields": {
+                "billingAccountRefIds": billingAccountRefId
+            }
+        },
+        function(data) {
+
+            Partial.Variables.billingAccountIdNameDisputeListVar.dataSet = [];
+
+            data.forEach(function(d) {
+
+                Partial.billingAccountRefIdAndNameArr = {
+                    "billingAccountId": data.billingAccountId,
+                    "billingAccountName": d.billingAccountName
+                }
+
+
+                Partial.Variables.billingAccountIdNameDisputeListVar.dataSet.push(Partial.billingAccountRefIdAndNameArr);
+            });
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+
+    );
     Partial.Widgets.updateDisputeConfirmation.open();
 };
 

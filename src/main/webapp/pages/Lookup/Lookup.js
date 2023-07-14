@@ -430,3 +430,6 @@ Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
     debugger;
     $('#TransferBanToNewEntityTableID th input[type=checkbox]').hide();
 };
+Page.TransferBanToExistEntDialogOpened = function($event, widget) {
+    //Page.Variables.getEntityBanDetailsService.setIn
+};
