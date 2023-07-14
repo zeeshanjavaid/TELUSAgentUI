@@ -265,8 +265,8 @@ Partial.createTeamonSuccess = function(variable, data) {
     /* Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
      Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;*/
     debugger;
-    Partial.Variables.successMessage.dataSet.dataValue = "TEAM CREATED SUCCESSFULLY";
-    // Partial.Variables.successMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
+    /*Partial.Variables.teamsSuccessMessage.dataSet.dataValue = "TEAM CREATED SUCCESSFULLY";*/
+    Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
     setTimeout(messageTimeout, 5000);
     Partial.scrollToTop();
 
@@ -329,7 +329,7 @@ Partial.deleteTeamonSuccess = function(variable, data) {
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_DELETED_SUCCESSFULLY;
-    setTimeout(messageTimeout, 5000);
+    setTimeout(messageTimeout, 6000);
     App.refreshAllTeams();
 
 };
@@ -340,7 +340,7 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     if (Partial.isDeleteTeam !== true) {
         Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
-        setTimeout(messageTimeout, 3000);
+        setTimeout(messageTimeout, 5000);
         Partial.Widgets.DualListUsers_TD.rightdataset.forEach(function(user) {
             Partial.Variables.CreateTeamUser.setInput({
                 'teamId': Partial.pageParams.id,

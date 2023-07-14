@@ -181,6 +181,7 @@ Partial.createRoleonSuccess = function(variable, data) {
     Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
     Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_CREATED_SUCCESSFULLY;
+    /* setTimeout(messageTimeout, 5000);*/
     Partial.Widgets.DualList_TD1.rightdataset.forEach(function(permission) {
         Partial.Variables.CreateRolePermission.setInput({
             'roleId': data.id,

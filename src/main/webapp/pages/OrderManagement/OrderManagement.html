@@ -42,15 +42,16 @@
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-close" title="Close" action="getCollectionTreatmentStep_orderMngt_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStep_orderMngt_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)"
+                        disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -202,7 +203,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE" width="28%"></wm-date>
+                    <wm-date name="dueDate" placeholder="" datavalue="CURRENT_DATE"></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">
@@ -663,7 +664,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
