@@ -4,6 +4,7 @@
 package com.fico.dmp.disputeservice.controller;
 
 import com.fico.dmp.disputeservice.DisputeService;
+import java.lang.String;
 import com.fico.telus.model.DisputeModel;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class DisputeController {
     @RequestMapping(value = "/allDisputes", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<DisputeModel> getAllDisputes() {
-        return disputeService.getAllDisputes();
+    public List<DisputeModel> getAllDisputes(@RequestParam(value = "entityId", required = false) String entityId) {
+        return disputeService.getAllDisputes(entityId);
     }
 }

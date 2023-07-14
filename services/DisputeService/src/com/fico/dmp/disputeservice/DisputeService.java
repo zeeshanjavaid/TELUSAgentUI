@@ -59,11 +59,11 @@ public class DisputeService {
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
-    public List<DisputeModel> getAllDisputes() {
+    public List<DisputeModel> getAllDisputes(String entityId) {
         logger.info("Inside retrieveAllDisputes method");
         List<DisputeModel> disputeModelList = new ArrayList<DisputeModel>();
         try {
-        	List<CollectionDispute> collectionDisputeList = collectionEntityService.getdispute(null, null, null, null, null);
+        	List<CollectionDispute> collectionDisputeList = collectionEntityService.getdispute(null, null, null, null, entityId);
         	
         	List<String> billingAcctRefIds = new ArrayList<String>();
         	if(!CollectionUtils.isEmpty(collectionDisputeList)) {

@@ -28,7 +28,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "string"
+    } ],
     "type" : "com.fico.telus.model.DisputeModel",
     "service" : "DisputeService",
     "operation" : "getAllDisputes",
@@ -39,7 +43,7 @@
     "isList" : true,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

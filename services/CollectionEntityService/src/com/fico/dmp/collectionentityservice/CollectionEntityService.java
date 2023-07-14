@@ -333,22 +333,26 @@ public class CollectionEntityService {
 //dispute
 
     @RequestMapping(value = "/dispute", method = {RequestMethod.GET})
-    public List<CollectionDispute> getdispute(String fields,Integer offset, Integer limit, Integer banRefId, Boolean history) throws Exception  {
+    public List<CollectionDispute> getdispute(String fields,Integer offset, Integer limit, String baRefId, String entityId) throws Exception  {
     	if (isStubEnabled) {
         return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/dispute/1\",\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"billingAdjustmentRequestId\":\"string\",\"chargeType\":\"One-time charge\",\"comment\":\"Collection dispute comment 1\",\"customerEmail\":\"John.Snow@telus.com\",\"collectionExclusionIndicator\":false,\"disputePrime\":\"string\",\"disputeReason\":\"BILLED CHARGES (DEEMED) INCORRECT\",\"product\":\"Business Connect\",\"status\":\"OPEN\",\"statusDateTime\":\"2023-01-01T09:00:00.00Z\",\"statusReason\":\"string\",\"@type\":\"CollectionDispute\"}]",
         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
     	}else {
  			logger.info("::::::::Calling  entity endpoint call ::::::::");
-
-            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_DISPUTE, "GET", entitySvcAuthScope);
+ 			
+ 			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_DISPUTE)
+                    .queryParam("entityId","eq:"+entityId);
+ 			if(entityId != null) {
+            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
             	logger.info("::::::::Entity endpoint call success ::::::::");
             	logger.info("Resoinse---"+ responseStr);
             	List<CollectionDispute> collectionDisputeList = objectMapper.readValue(responseStr,
 				objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
 							logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
             return collectionDisputeList;
+    	}
     }
-        // return new Object(); 
+         return null; 
     }
     
     public CollectionDisputeCreate addDispute( CollectionDisputeCreate  collectionDispute) throws Exception  {

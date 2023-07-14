@@ -124,8 +124,8 @@ public class CollectionEntityController {
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "banRefId", required = false) Integer banRefId, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionEntityService.getdispute(fields, offset, limit, banRefId, history);
+    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "baRefId", required = false) String baRefId, @RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+        return collectionEntityService.getdispute(fields, offset, limit, baRefId, entityId);
     }
 
     @RequestMapping(value = "/disputeById", method = RequestMethod.GET)
