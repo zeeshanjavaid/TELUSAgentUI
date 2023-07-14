@@ -139,7 +139,7 @@ Partial.YesCancelButtonClick = function($event, widget) {
         "CollectionPaymentArrangementUpdate": {
             'id': Partial.pageParams.ParrId,
             'comment': Partial.Widgets.CancelComments.datavalue,
-            'status': 'CANCELLED',
+            'status': 'Cancelled',
             'channel': {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 'originatorAppId': "FAWBTELUSAGENT"
@@ -197,7 +197,7 @@ Partial.SubmitButtonClick = function($event, widget) {
             'id': Partial.pageParams.ParrId,
             'comment': Partial.Widgets.Comments.datavalue,
             'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence,
-            'status': 'RE-NEGOTIATED',
+            'status': 'Renegotiated',
             'channel': {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 'originatorAppId': "FAWBTELUSAGENT"
