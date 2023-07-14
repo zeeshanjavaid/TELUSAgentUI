@@ -57,7 +57,7 @@ App.onServiceError = function(source, errorMsg, xhrObj) {
 
 
     if (source.name === 'UserManagementServiceCreateUser') {
-        App.Variables.errorMsg.dataSet.dataValue = xhrObj.error;
+        App.Variables.createUserErrormsg.dataSet.dataValue = xhrObj.error;
     }
 
 

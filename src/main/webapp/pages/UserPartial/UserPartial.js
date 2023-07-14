@@ -61,16 +61,16 @@ Partial.onReady = function() {
 
 
     Partial.statusData = [{
-        id: 'New',
+
         title: 'New'
     }, {
-        id: 'Open',
+
         title: 'Open'
     }, {
-        id: 'Active',
+
         title: 'Active'
     }, {
-        id: 'Closed',
+
         title: 'Closed'
     }];
 
@@ -356,95 +356,10 @@ Partial.getAllUsersonSuccess = async function(variable, data) {
             Partial.Variables.userMV.dataSet.push(Partial.usersObj);
         }
 
-        // Partial.Variables.executeGetGroupsRolesByUserId.invoke({}, function(rm) {
-        //     Partial.Variables.groupsCount.dataSet.dataValue = rm.content.length;
-        //     console.log("Processing user (inside): " + d.userId);
-        //     Partial.usersObj = {
-        //         "id": d.id,
-        //         "Username": d.firstName + " " + d.lastName,
-        //         "userId": d.userId,
-        //         "Emailaddress": d.email,
-        //         "IsActive": d.active,
-        //         'firstName': d.firstName,
-        //         'lastName': d.lastName,
-        //         'createdBy': d.createdBy,
-        //         'createdOn': d.createdOn,
-        //         'updatedBy': d.updatedBy,
-        //         'updatedOn': d.updatedOn
-        //     };
 
-        //     if (rm.content.length > 1) {
-        //         Partial.usersObj.Groups = rm.content[0].count___;
-        //         Partial.usersObj.Roles = rm.content[1].count___;
-        //     } else if (rm.content.length = 1 && rm.content[0].count___) {
-        //         Partial.usersObj.Groups = rm.content[0].count___;
-        //         Partial.usersObj.Roles = rm.content[0].count___;
-        //     } else {
-        //         Partial.usersObj.Groups = 0;
-        //         Partial.usersObj.Roles = 0;
-        //     }
-
-        //     let c = Partial.Variables.userMVPre.dataSet.find((element) => {
-        //         return element.userId === Partial.usersObj.userId;
-        //     });
-
-        //     if (!c) {
-        //         console.log("Pushing user: " + Partial.usersObj.userId);
-        //         Partial.Variables.userMVPre.dataSet.push(Partial.usersObj);
-        //         Partial.Variables.userMV.dataSet.push(Partial.usersObj);
-        //     }
-        // });
     }
 };
 
-/*Partial.getAllUsersCreateonError = function(variable, data) {
-
-};
-Partial.getAllUsersCreateonSuccess = function(variable, data) {
-
-    //
-    if (data.length > 0) {
-        Partial.Variables.userCreateMV.dataSet.forEach(function(user) {
-            // data.forEach(function(dbusers) {
-            ///  if (user.Username !== dbusers.userId) {
-            //  if (!data.includes(user)) {
-
-            var userData = data.find(element => element.userId === user.Username);
-            if (!userData) {
-                Partial.Variables.createUser.setInput({
-                    'firstName': user.firstName,
-                    'lastName': user.lastName,
-                    'userId': user.Username,
-                    'email': user.Emailaddress,
-                    'isActive': true,
-                    'createdBy': Partial.Variables.loggedInUser.dataSet.name,
-                    'createdOn': new Date(),
-                    'updatedBy': Partial.Variables.loggedInUser.dataSet.name,
-                    'updatedOn': new Date()
-                });
-                Partial.Variables.createUser.invoke();
-            }
-
-        });
-    }
-
-};
-*/
-// Partial.updateUseronError = function(variable, data) {
-
-// };
-
-// Partial.updateUseronSuccess = function(variable, data) {
-//     /*setTimeout(fade_out, 5000);
-
-//     function fade_out() {
-//         $("#message").fadeOut().empty();
-//     }*/
-
-//     //$("#message").delay(3200).fadeOut(300);
-//     //setTimeout(, 5000);
-//     App.Variables.successMessage.dataSet.dataValue = Partial.appLocale.USER_UPDATED_SUCCESSFULLY;
-// };
 
 Partial.toggle1Click = function($event, widget) {
     //
@@ -477,17 +392,6 @@ processUsersImport = function(input) {
                 }
             });
 
-            /* Below code for JS level file read & then server API call */
-            // let reader = new FileReader();
-            // reader.onload = (event) => {
-            //     const base64Content = btoa(event.target.result);
-            //     Partial.Variables.sv_importUsers.invoke({
-            //         "inputFields": {
-            //             "importFileContents": base64Content
-            //         }
-            //     });
-            // };
-            // reader.readAsText(importFile);
         } catch (err) {
             console.error(err);
             App.Variables.errorMsg.dataSet.dataValue = "Something went wrong while importing. Please check console log for more details";
@@ -728,7 +632,7 @@ Partial.dialogUpdateUserDetailsAction = function($event, row) {
     Partial.statusData = [];
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
-            id: item.code.replace(/\s/g, ''),
+            // id: item.code.replace(/\s/g, ''),
             title: item.code
         });
     });
@@ -747,10 +651,7 @@ Partial.dialogUpdateUserDetailsAction = function($event, row) {
 
 }
 Partial.userMVTable1_customRowAction = function($event, row) {
-    // Partial.Variables.deletUser.setInput({
-    //     'userId': row.email
-    // });
-    // Partial.Variables.deletUser.invoke();
+
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
@@ -786,9 +687,13 @@ Partial.button3Click = function($event, widget) {
     Partial.statusData = [];
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
+
+            //item.code
             id: item.code.replace(/\s/g, ''),
             title: item.code
+
         });
+
     });
 
 
@@ -819,6 +724,7 @@ Partial.createUserForm1_saveAction = function($event) {
             function(data) {
 
                 App.Variables.errorMsg.dataSet.dataValue = "";
+                App.Variables.createUserErrormsg.dataSet.dataValue = "";
                 console.log("success", data);
             },
             function(error) {
@@ -923,21 +829,20 @@ Partial.updateUserForm1_saveAction = function($event) {
     }
     //dataBinding
     if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
-        Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
-            // Success Callback
-            console.log("success", data);
-        }, function(error) {
-            // Error Callback
-            console.log("error", error)
+        Partial.Variables.UserManagementServiceUpdateUser.invoke();
+        Partial.Variables.searchUsers.invoke();
+        // Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
+        //     // Success Callback
+        //     console.log("success", data);
+        // }, function(error) {
+        //     // Error Callback
+        //     console.log("error", error)
 
-        });
+        // });
     }
 };
 
-/*Partial.getmanagerForUpdateuseronSuccess = function(variable, data) {
-    Partial.sadsa = data;
-    debugger;
-};*/
+
 
 Partial.getTeamonSuccess = function(variable, data) {
     Partial.Variables.dataTeam.dataSet = data;
@@ -1001,5 +906,15 @@ Partial.UserManagementServiceCreateUseronError = function(variable, data) {
 Partial.createUserForm1_resetAction = function($event) {
 
     App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.createUserErrormsg.dataSet.dataValue = "";
+
+};
+Partial.createUserPageClose = function($event, widget) {
+
+    App.Variables.errorMsg.dataSet.dataValue = "";
+    App.Variables.createUserErrormsg.dataSet.dataValue = "";
+
+};
+Partial.updateUserForm1_saveAction1 = function($event) {
 
 };

@@ -66,6 +66,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "createUserErrormsg" : {
+    "_id" : "wm-createUserErrormsg-wm.Variable-1689314371481",
+    "name" : "createUserErrormsg",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "currentPage" : {
     "_id" : "wm-currentPage-wm.Variable-1653469611305",
     "name" : "currentPage",

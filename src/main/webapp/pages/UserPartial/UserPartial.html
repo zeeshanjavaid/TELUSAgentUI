@@ -177,8 +177,9 @@
         <wm-table-row-action key="customRow" display-name="" show="true" class="inactiveUser" iconclass="fico-icon-close" title="Inactivate" action="userMVTable1_customRowAction($event, row)" disabled="bind:!Widgets.userMVTable1.currentItem.active"
             widget-type="button"></wm-table-row-action>
     </wm-table>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User" class="createUserPage" iconclass="wi wi-file-text" name="createUserPage">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User" class="createUserPage" iconclass="wi wi-file-text" name="createUserPage" on-close="createUserPageClose($event, widget)">
         <wm-dialogactions name="dialogactions3"></wm-dialogactions>
+        <wm-message name="message4" type="error" caption="bind:Variables.createUserErrormsg.dataSet.dataValue" show="bind:Variables.createUserErrormsg.dataSet.dataValue ? true : false" width="100%" hideclose="true"></wm-message>
         <hr>
         <wm-form errormessage="" style="left:22px;" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="createUserForm1" on-error="createUserForm1Error($event, widget, $data)" validationtype="default"
             on-success="Variables.searchUsers.invoke()">
@@ -317,7 +318,8 @@
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-form-action key="reset" display-name="Cancel" show="true" class="form-reset secondaryButton" iconclass="" title="Cancel" action="Widgets.updateUser.close()" shortcutkey="" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
-            <wm-form-action key="save" display-name="Update" show="true" class="btn-success save_btn save" iconclass="" title="Update" action="updateUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
+            <wm-form-action key="save" display-name="Update" show="true" class="btn-success save_btn save" iconclass="" title="Update" action="updateUserForm1_saveAction($event);updateUserForm1_saveAction1($event)" disabled="false" widget-type="button"
+                type="submit" update-mode="true"></wm-form-action>
         </wm-form>
         <wm-dialogactions name="dialogactions3_1"></wm-dialogactions>
     </wm-dialog>
