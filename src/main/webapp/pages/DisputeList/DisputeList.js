@@ -48,5 +48,8 @@ Partial.getdisputeTable1_idOnClick = function($event, widget, row) {
 
 
 App.refreshDisputeList = function() {
+    Partial.Variables.getAllDisputesList.setInput({
+        "entityId": Partial.pageParams.entityId
+    });
     Partial.Variables.getAllDisputesList.invoke();
 };

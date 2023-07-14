@@ -30,6 +30,7 @@ function isEmail(email) {
 
 function messageTimeout() {
     App.Variables.successMessage.dataSet.dataValue = null;
+    App.Variables.errorMsg.dataSet.dataValue = null;
 }
 
 Partial.SubmitDisputeBanClick = function($event, widget) {
@@ -123,12 +124,12 @@ Partial.SelectBanClick = function($event, widget) {
     debugger;
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
-    Partial.Variables.getEntityBanDetails.setInput({
+    Partial.Variables.getEntityBanDetailsServiceVar.setInput({
         'entityId': entityIdInt
     });
 
-    Partial.Variables.getEntityBanDetails.invoke();
-    Partial.Widgets.SelectDisputeBanDialog.open();
+    Partial.Variables.getEntityBanDetailsServiceVar.invoke();
+
 };
 
 Partial.CreateDisputeServiceonSuccess = function(variable, data) {
@@ -138,4 +139,20 @@ Partial.CreateDisputeServiceonSuccess = function(variable, data) {
     App.refreshDisputeList();
     setTimeout(messageTimeout, 10000);
 
+};
+
+Partial.CreateDisputeServiceonError = function(variable, data, xhrObj) {
+    App.Variables.errorMsg.dataSet.dataValue = "Dispute creation failed"
+    Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+    setTimeout(messageTimeout, 10000);
+};
+
+Partial.getEntityBanDetailsServiceVaronSuccess = function(variable, data) {
+
+    Partial.Widgets.SelectDisputeBanDialog.open();
+
+};
+
+Partial.getEntityBanDetailsServiceVaronError = function(variable, data, xhrObj) {
+    Partial.Widgets.SelectDisputeBanDialog.open();
 };

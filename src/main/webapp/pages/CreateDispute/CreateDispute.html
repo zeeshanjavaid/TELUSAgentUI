@@ -113,7 +113,7 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
-        <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetails.dataSet" navigation="None" multiselect="false" radioselect="true">
+        <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetailsServiceVar.dataSet" navigation="None" multiselect="false" radioselect="true">
             <wm-table-column binding="banId" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>

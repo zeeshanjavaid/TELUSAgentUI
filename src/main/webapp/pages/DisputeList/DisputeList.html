@@ -1,6 +1,7 @@
 <wm-partial name="partial1">
     <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;">
         <wm-message name="successmessage" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" caption="bind:Variables.successMessage.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>
         <wm-gridcolumn width="100%" name="gridcolumn1">
             <wm-button class="btn-default createDisputeBtn" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
         </wm-gridcolumn>
