@@ -26,6 +26,13 @@ Partial.onReady = function() {
 
 App.rowDataValues = function(row) {
     debugger;
+
+    Partial.Variables.GetContactDetailsById.setInput({
+        "id": row.contactId
+    });
+    Partial.Variables.GetContactDetailsById.invoke();
+
+
     if (!(row.sourceOfContact == 'TCM')) {
         Partial.Widgets.TELUSContactsSelect.disabled = true;
         Partial.Widgets.TITLESelect.disabled = true;
@@ -110,6 +117,7 @@ Partial.updateContact = function($event, widget) {
         Partial.Variables.updateDigitalContact.setInput({
             "id": Partial.Widgets.contactIDLabel.caption,
             "CollectionContactUpdate": {
+                'id': Partial.Widgets.contactIDLabel.caption,
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
                 'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
@@ -120,16 +128,16 @@ Partial.updateContact = function($event, widget) {
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue
+                'faxNumber': Partial.Widgets.fax.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
             }
         });
 
         //Invoke POST createDispute service
         Partial.Variables.updateDigitalContact.invoke();
-
-        App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
-        Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
-        setTimeout(messageTimeout, 10000);
     }
 
 
@@ -182,9 +190,10 @@ Partial.ExpireClick = function($event, widget) {
     } else {
         // API Call will come here
 
-        Partial.Variables.updateDigitalContact.setInput({
+        Partial.Variables.expireDigitalContact.setInput({
             "id": Partial.Widgets.contactIDLabel.caption,
             "CollectionContactUpdate": {
+                'id': Partial.Widgets.contactIDLabel.caption,
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
                 'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
@@ -196,6 +205,10 @@ Partial.ExpireClick = function($event, widget) {
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
                 'faxNumber': Partial.Widgets.fax.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
                 'validFor': {
                     'endDateTime': today
                 }
@@ -203,11 +216,22 @@ Partial.ExpireClick = function($event, widget) {
         });
 
         //Invoke POST createDispute service
-        Partial.Variables.updateDigitalContact.invoke();
-
-        App.Variables.successMessage.dataSet.dataValue = "Digital Contact expired successfully.";
-        Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
-        setTimeout(messageTimeout, 10000);
+        Partial.Variables.expireDigitalContact.invoke();
     }
 
+};
+
+Partial.updateDigitalContactonSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
+    Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    App.refreshContactList();
+    setTimeout(messageTimeout, 10000);
+
+};
+
+Partial.expireDigitalContactonSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "Digital Contact expired successfully.";
+    Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    App.refreshContactList();
+    setTimeout(messageTimeout, 10000);
 };

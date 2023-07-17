@@ -98,21 +98,6 @@ Partial.createContact = function($event, widget) {
         //Invoke POST createDispute service
         Partial.Variables.CreateContactServiceVar.invoke();
 
-
-        App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
-        Partial.Widgets.TITLESelect.datavalue = "";
-        Partial.Widgets.TELUSContactsSelect.datavalue = false;
-        Partial.Widgets.EmailForNoticesSelect.datavalue = true;
-        Partial.Widgets.firstName.datavalue = "";
-        Partial.Widgets.lastName.datavalue = "";
-        Partial.Widgets.emailText.datavalue = "";
-        Partial.Widgets.workNo.datavalue = "";
-        Partial.Widgets.cellPhone.datavalue = "";
-        Partial.Widgets.ext.datavalue = "";
-        Partial.Widgets.fax.datavalue = "";
-        Partial.Widgets.comments.datavalue = "";
-        Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
-        setTimeout(messageTimeout, 10000);
     }
 
 
@@ -185,4 +170,28 @@ function isNotANumber(value) {
         App.Variables.errorMsg.dataSet.dataValue = "Invalid. Value must be numeric";
     }
     setTimeout(messageTimeout, 10000);
+};
+
+Partial.Clear = function() {
+    Partial.Widgets.TITLESelect.datavalue = "";
+    Partial.Widgets.TELUSContactsSelect.datavalue = false;
+    Partial.Widgets.EmailForNoticesSelect.datavalue = true;
+    Partial.Widgets.firstName.datavalue = "";
+    Partial.Widgets.lastName.datavalue = "";
+    Partial.Widgets.emailText.datavalue = "";
+    Partial.Widgets.workNo.datavalue = "";
+    Partial.Widgets.cellPhone.datavalue = "";
+    Partial.Widgets.ext.datavalue = "";
+    Partial.Widgets.fax.datavalue = "";
+    Partial.Widgets.comments.datavalue = "";
+};
+
+Partial.CreateContactServiceVaronSuccess = function(variable, data) {
+
+    App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
+    Partial.Clear();
+    Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    App.refreshContactList();
+    setTimeout(messageTimeout, 10000);
+
 };

@@ -268,8 +268,18 @@ public class CollectionEntityService {
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionContact getContactById(@PathVariable("id") Integer id, String fields) throws Exception  {
-
+    	if (isStubEnabled) {
        return objectMapper.readValue("{\"id\":1,\"href\":\"BASE_URL/contact/1\",\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"comment\":\"This is collection contact comment 1\",\"email\":\"john.doe@telus.com\",\"collectionEntity\":{\"id\":1,\"href\":\"BASE_URL/entity/1\",\"@referredType\":\"CollectionEntity\",\"@type\":\"EntityRef\"},\"faxNumnber\":\"9059979999\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"mobilePhoneNumber\":\"5149979999\",\"notificationIndicator\":true,\"telusContactIndicator\":true,\"title\":\"Mr.\",\"validFor\":{\"startDateTime\":\"2023-01-01T09:00:00.00Z\"},\"workPhoneNumber\":\"9059979797\",\"@type\":\"CollectionContact\"}",CollectionContact.class);
+    	}else {
+    		logger.info("::::::::Calling  entity endpoint call ::::::::");
+    		logger.info("Id in getContactById is...."+id);
+            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_CONTACT + "/" + id, "GET", entitySvcAuthScope);
+            	logger.info("::::::::Entity endpoint call success ::::::::");
+            	logger.info("Response from ContactById---"+ responseStr);
+            	CollectionContact collectionContact = objectMapper.readValue(responseStr,CollectionContact.class);
+							logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
+            return collectionContact;
+    	}
     }    
     
     public CollectionContactCreate   addContact(CollectionContactCreate collectionContactCreate) throws Exception  {

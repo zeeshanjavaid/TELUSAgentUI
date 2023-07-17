@@ -446,7 +446,10 @@
 }, {
   "name" : "UpdateDigitalContact",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "contactId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "UserManagement",
   "type" : "PAGE",

@@ -33,6 +33,7 @@ Partial.digitalContactBtnClick = function($event, widget) {
     $("#mailingBtn").css("color", "#4B286D");
     Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = true;
     // display TO-DO table and hide Completed table
+    App.refreshContactList();
     $('#digitalTableGrid').show();
     $('#buttonsLayoutGrid').show();
     $('#mailingTableGrid').hide();
@@ -49,6 +50,8 @@ Partial.mailingContactBtnClick = function($event, widget) {
     $("#digitalBtn").css("color", "#4B286D");
     Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = false;
     // display Completed table and hide TO-DO table
+    App.refreshContactList();
+
     $('#mailingTableGrid').show();
     $('#buttonsLayoutGrid').hide();
     $('#digitalTableGrid').hide();
@@ -66,3 +69,11 @@ Partial.getEntityContactsTable1_customRowAction = function($event, row) {
     Partial.Variables.ContactPageName.dataSet.dataValue = 'UpdateDigitalContact';
     App.rowDataValues(row);
 };
+
+
+App.refreshContactList = function() {
+    Partial.Variables.getCollectionEntityContacts.setInput({
+        "id": Partial.pageParams.entityId
+    });
+    Partial.Variables.getCollectionEntityContacts.invoke();
+}
