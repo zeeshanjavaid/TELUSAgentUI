@@ -245,6 +245,16 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         return queryExecutor.executeNamedQuery("getLoggedInUserTeam", params, GetLoggedInUserTeamResponse.class);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Integer executeDeleteUserRole(String roleId) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("roleId", roleId);
+
+        return queryExecutor.executeNamedQueryForUpdate("deleteUserRole", params);
+    }
+
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
     public Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable) {

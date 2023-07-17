@@ -309,6 +309,16 @@ public class QueryExecutionController {
         return _result;
     }
 
+    @RequestMapping(value = "/queries/deleteUserRole", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "deleteUserRole")
+    public IntegerWrapper executeDeleteUserRole(@RequestParam(value = "roleId") String roleId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: deleteUserRole");
+        Integer _result = queryService.executeDeleteUserRole(roleId);
+        LOGGER.debug("got the result for named query: deleteUserRole, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
     @RequestMapping(value = "/queries/getPermissionByRoleId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getPermissionByRoleId")

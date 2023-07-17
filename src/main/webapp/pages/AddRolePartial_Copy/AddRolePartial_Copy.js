@@ -291,6 +291,7 @@ Partial.deleteRolePermissiononError = function(variable, data) {
 
 };
 Partial.deleteRolePermissiononSuccess = function(variable, data) {
+
     Partial.Variables.rolesErrorMsg.dataSet.dataValue = null;
     Partial.Variables.rolesSuccessMessage.dataSet.dataValue = null;
 
@@ -319,10 +320,18 @@ Partial.deleteRoleConfirmOkClick = function($event, widget) {
 
     Partial.isDelete = true;
     Partial.Widgets.deleteRoleDialog.close();
+    //to delete permmission before deleting role
     Partial.Variables.deleteRolePermission.setInput({
         'RoleId': Partial.pageParams.roleId
     });
     Partial.Variables.deleteRolePermission.invoke();
+
+
+    //to delete user before deleting role
+    Partial.Variables.executeDeleteUserRole.setInput({
+        'roleId': Partial.pageParams.roleId
+    });
+    Partial.Variables.executeDeleteUserRole.invoke();
 };
 
 Partial.deleteRoleonSuccess = function(variable, data) {

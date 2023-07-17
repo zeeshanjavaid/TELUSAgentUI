@@ -92,62 +92,66 @@ Page.button1Click = function($event, widget) {
     var inputValue = "";
     var searchCriteria = "";
 
+    if (Page.Widgets.select1.datavalue == "BAN") {
+        intputType = "PHONENUMBER";
+        inputValue = Page.Widgets.text3._datavalue;
+    } else {
 
-    var value = $("input:radio[name=checkAndUncheck]:checked").val();
+        var value = $("input:radio[name=checkAndUncheck]:checked").val();
 
-    if (value === undefined && Page.Widgets.text4._datavalue !== "") {
-        try {
-            isError = true;
-            throw "Please click on Name"
-        } catch (err) {
-            message3.innerHTML = err;
-        }
-    }
-    if (value === undefined && Page.Widgets.text5._datavalue !== "") {
-
-        try {
-            isError = true;
-            throw "Please click on Number/ID"
-        } catch (err) {
-            message4.innerHTML = err;
-        }
-    }
-
-
-
-
-    if (value == "NAME") {
-        intputType = "NAME";
-        searchCriteria = Page.Widgets.select3.datavalue;
-        if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
+        if (value === undefined && Page.Widgets.text4._datavalue !== "") {
             try {
                 isError = true;
-                throw "Required field";
+                throw "Please click on Name"
             } catch (err) {
-                message1.innerHTML = err;
+                message3.innerHTML = err;
             }
-        } else {
-            inputValue = Page.Widgets.text4._datavalue;
-
         }
-    } else if (value == "numID") {
-        intputType = "ID";
-        searchCriteria = Page.Widgets.select4.datavalue;
-        if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue === "") {
+        if (value === undefined && Page.Widgets.text5._datavalue !== "") {
+
             try {
                 isError = true;
-                throw "Required field";
+                throw "Please click on Number/ID"
             } catch (err) {
-                message2.innerHTML = err;
+                message4.innerHTML = err;
             }
-        } else {
-            inputValue = Page.Widgets.text5._datavalue;
-
-
         }
 
-    }
 
+
+
+        if (value == "NAME") {
+            intputType = "NAME";
+            searchCriteria = Page.Widgets.select3.datavalue;
+            if (Page.Widgets.text4._datavalue === undefined || Page.Widgets.text4._datavalue == "") {
+                try {
+                    isError = true;
+                    throw "Required field";
+                } catch (err) {
+                    message1.innerHTML = err;
+                }
+            } else {
+                inputValue = Page.Widgets.text4._datavalue;
+
+            }
+        } else if (value == "numID") {
+            intputType = "ID";
+            searchCriteria = Page.Widgets.select4.datavalue;
+            if (Page.Widgets.text5._datavalue === undefined || Page.Widgets.text5._datavalue === "") {
+                try {
+                    isError = true;
+                    throw "Required field";
+                } catch (err) {
+                    message2.innerHTML = err;
+                }
+            } else {
+                inputValue = Page.Widgets.text5._datavalue;
+
+
+            }
+
+        }
+    }
     if (!isError) {
         Page.Variables.searchEntity.setInput({
 

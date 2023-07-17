@@ -325,6 +325,13 @@ ORDER BY usr.firstName asc) wmTempTable
     <query-param name="userId" type="java.lang.Integer"/>
     </sql-query>
 
+    <sql-query name="deleteUserRole">
+        <![CDATA[
+        delete from USER_ROLE where roleId=:roleId
+        ]]>
+    <query-param name="roleId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="getPermissionByRoleId">
         <![CDATA[
         select PERMISSION.Id,PERMISSION.Name,PERMISSION.Description from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId)

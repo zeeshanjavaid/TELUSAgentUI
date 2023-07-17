@@ -55,6 +55,8 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     GetLoggedInUserTeamResponse executeGetLoggedInUserTeam(Integer userId);
 
+    Integer executeDeleteUserRole(String roleId);
+
     Page<GetPermissionByRoleIdResponse> executeGetPermissionByRoleId(String roleId, Pageable pageable);
 
     void exportGetPermissionByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);

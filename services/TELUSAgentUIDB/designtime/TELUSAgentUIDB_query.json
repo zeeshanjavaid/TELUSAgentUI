@@ -2373,6 +2373,37 @@
       "responseType" : "SINGLE"
     }
   },
+  "deleteUserRole" : {
+    "name" : "deleteUserRole",
+    "description" : "deleteUserRole",
+    "version" : "V2",
+    "queryString" : "delete from USER_ROLE where roleId=:roleId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "roleId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "11",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
   "getActiveAgentListWithWorkCategory" : {
     "name" : "getActiveAgentListWithWorkCategory",
     "description" : "This query is used to retrieve the active agent information list along with work categories",
