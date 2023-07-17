@@ -46,6 +46,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "isContactExpired" : {
+    "_id" : "wm-isContactExpired-wm.Variable-1689595415269",
+    "name" : "isContactExpired",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "updateDigitalContact" : {
     "_id" : "wm-updateDigitalContact-wm.ServiceVariable-1686915716182",
     "name" : "updateDigitalContact",

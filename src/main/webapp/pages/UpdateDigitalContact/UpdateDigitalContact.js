@@ -26,11 +26,27 @@ Partial.onReady = function() {
 
 App.rowDataValues = function(row) {
     debugger;
+    var GetContactDetailsByIdVar = Partial.Variables.GetContactDetailsById;
+    GetContactDetailsByIdVar.invoke({
+            "inputFields": {
+                "id": row.contactId
+            }
+        },
+        function(data) {
+            var endDateTime = data.validFor.endDateTime;
+            if (endDateTime == null || endDateTime == undefined) {
+                Partial.Variables.isContactExpired.dataSet.dataValue = false;
+            } else {
+                Partial.Variables.isContactExpired.dataSet.dataValue = true;
+            }
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
 
-    Partial.Variables.GetContactDetailsById.setInput({
-        "id": row.contactId
-    });
-    Partial.Variables.GetContactDetailsById.invoke();
+    );
+
 
 
     if (!(row.sourceOfContact == 'TCM')) {
@@ -59,19 +75,8 @@ App.rowDataValues = function(row) {
         Partial.Widgets.Expire.show = true;
     }
 
-    // Partial.Widgets.contactID.caption = row.contactId;
-    //Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
     Partial.Widgets.dataSource.caption = row.sourceOfContact;
-    // Partial.Widgets.TITLESelect.datavalue = row.title;
-    //  Partial.Widgets.firstName.datavalue = row.firstName;
-    // Partial.Widgets.lastName.datavalue = row.lastName;
-    // Partial.Widgets.emailText.datavalue = row.email;
-    // Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
-    // Partial.Widgets.cellPhone.datavalue = row.mobileNumber;
-    //Partial.Widgets.ext.datavalue = '';
-    //  Partial.Widgets.workNo.datavalue = row.workNumber;
-    //  Partial.Widgets.fax.datavalue = '';
-    //  Partial.Widgets.comments.datavalue = '';
+
 
 }
 
