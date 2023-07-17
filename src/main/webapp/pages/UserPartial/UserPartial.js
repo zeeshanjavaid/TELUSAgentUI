@@ -665,15 +665,25 @@ Partial.userMVTable1_customRowAction = function($event, row) {
 
 Partial.executeSearchUsersForm1_resetAction = function($event) {
     debugger;
-    Partial.Variables.dialogUserId.dataSet = {};
-    Partial.Variables.searchUsers.dataSet = [];
-    Partial.Variables.searchUsers.dataSet = Partial.Variables.ResetPREValue.dataSet;
+    // Partial.Variables.dialogUserId.dataSet = {};
+    // Partial.Variables.searchUsers.dataSet = [];
+    // Partial.Variables.searchUsers.dataSet = Partial.Variables.ResetPREValue.dataSet;
+    Partial.Variables.searchUsers.setInput({
+        'role': null,
+        'userCriteria': null,
+        'work_category': null,
+        'managerId': null,
+        'teamID': null
+    });
+    Partial.Variables.searchUsers.invoke();
+
+
 
 };
 
-Partial.resetTableDataonSuccess = function(variable, data) {
-    Partial.Variables.ResetPREValue.dataSet = data;
-};
+// Partial.resetTableDataonSuccess = function(variable, data) {
+//     Partial.Variables.ResetPREValue.dataSet = data;
+// };
 
 Partial.button3Click = function($event, widget) {
     debugger;
@@ -831,7 +841,6 @@ Partial.updateUserForm1_saveAction = function($event) {
     if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
         Partial.Variables.UserManagementServiceUpdateUser.invoke();
         Partial.Variables.searchUsers.invoke();
-
         Partial.Variables.searchUsers.setInput({
             'page': Partial.Widgets.userMVTable1.dataNavigator.dn.currentPage,
             'size': 10
