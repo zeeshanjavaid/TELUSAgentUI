@@ -1172,11 +1172,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "entityId",
-      "value" : "3",
-      "type" : "string"
-    } ],
+    "dataBinding" : [ ],
     "type" : "com.fico.telus.model.ParrReports",
     "service" : "ParrReportService",
     "operation" : "getParrReport",
@@ -1187,7 +1183,7 @@
     "isList" : true,
     "maxResults" : 20,
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

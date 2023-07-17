@@ -296,7 +296,14 @@ public class CollectionEntityService {
     public List<CollectionPaymentArrangement> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
     	
          UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
-              .queryParam("entityId", "eq:"+entityId);
+              .queryParam("fields", fields)
+               .queryParam("agentId", agentId)
+                .queryParam("entityRisk", entityRisk)
+                 .queryParam("evaluation", evaluation)
+                  .queryParam("status", status)
+                   .queryParam("createdBy", createdBy)
+                    .queryParam("createdFrom", createdFrom)
+                     .queryParam("createdTo", createdTo);
               // .queryParam("entityRisk",entityRisk);
     	return parrService.getPaymentArrangements(entityId,builder.toUriString());
     }
