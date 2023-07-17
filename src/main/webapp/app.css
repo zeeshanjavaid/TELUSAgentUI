@@ -503,3 +503,17 @@
     right: 11px;
     width: unset;
 }
+
+
+/*styling added for pagination for Parr list page*/
+
+.wm-app app-page-lookup .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 1px;
+}
+
+.wm-app app-page-lookup button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}
