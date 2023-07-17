@@ -831,6 +831,12 @@ Partial.updateUserForm1_saveAction = function($event) {
     if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
         Partial.Variables.UserManagementServiceUpdateUser.invoke();
         Partial.Variables.searchUsers.invoke();
+
+        Partial.Variables.searchUsers.setInput({
+            'page': Partial.Widgets.userMVTable1.dataNavigator.dn.currentPage,
+            'size': 10
+        });
+        Partial.Variables.searchUsers.invoke();
         // Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
         //     // Success Callback
         //     console.log("success", data);
