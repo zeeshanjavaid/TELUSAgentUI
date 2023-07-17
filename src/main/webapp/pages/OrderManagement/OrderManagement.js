@@ -893,3 +893,12 @@ Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
 Partial.CollectionDataServiceGetEntityBanDetailsonError = function(variable, data, xhrObj) {
 
 };
+
+Partial.getCollectionTreatmentStep_orderMngtonError = function(variable, data, xhrObj){
+	
+};
+
+
+Partial.getCollectionTreatMentonError = function(variable, data, xhrObj){
+	
+};

@@ -26,7 +26,7 @@ Partial.onReady = function() {
 
 App.rowDataValues = function(row) {
     debugger;
-    if (!(row.sourceOfContact == 'FAWB')) {
+    if (!(row.sourceOfContact == 'TCM')) {
         Partial.Widgets.TELUSContactsSelect.disabled = true;
         Partial.Widgets.TITLESelect.disabled = true;
         Partial.Widgets.firstName.disabled = true;
