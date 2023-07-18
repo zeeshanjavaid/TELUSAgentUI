@@ -517,3 +517,17 @@
     right: 11px;
     width: unset;
 }
+
+
+/*styling added for pagination for Parr list page*/
+
+.wm-app app-page-parrreports .pagination.advanced.d-flex.justify-content-between {
+    margin-right: 18px;
+}
+
+.wm-app app-page-parrreports button.btn.app-button.btn-default.dropdown-toggle {
+    margin: -27px 0 0 0;
+    float: left;
+    right: 11px;
+    width: unset;
+}
