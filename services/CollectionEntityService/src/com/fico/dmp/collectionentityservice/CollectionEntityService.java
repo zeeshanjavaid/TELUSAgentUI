@@ -331,6 +331,7 @@ public class CollectionEntityService {
                 .queryParam("status", status)
                  .queryParam("createdBy", createdBy)
                   .queryParam("createdFrom", createdFrom)
+                  .queryParam("limit", limit)
                    .queryParam("createdTo", createdTo);
   	return parrService.getPaymentArrangements(entityId,builder.toUriString());
   }
