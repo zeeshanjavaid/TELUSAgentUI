@@ -2758,13 +2758,12 @@
     "filterExpressions" : {
       "condition" : "AND",
       "rules" : [ {
-        "target" : "user.email",
+        "target" : "",
         "type" : "string",
-        "matchMode" : "exact",
+        "matchMode" : "anywhereignorecase",
         "value" : "",
         "required" : false,
-        "secondvalue" : "",
-        "isFirst" : true
+        "secondvalue" : ""
       } ]
     },
     "package" : "com.fico.dmp.telusagentuidb.WorkcategoryUser"
@@ -2966,8 +2965,7 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution",
-    "spinnerContext" : "userMVTable1",
-    "spinnerMessage" : "Loading"
+    "spinnerContext" : "userMVTable1"
   },
   "StatusModel" : {
     "_id" : "wm-StatusModel-wm.Variable-1675423438730",

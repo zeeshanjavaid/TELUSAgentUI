@@ -633,6 +633,7 @@ Partial.dialogUpdateUserDetailsAction = function($event, row) {
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
             // id: item.code.replace(/\s/g, ''),
+            id: item.code,
             title: item.code
         });
     });
@@ -699,7 +700,8 @@ Partial.button3Click = function($event, widget) {
         Partial.statusData.push({
 
             //item.code
-            id: item.code.replace(/\s/g, ''),
+            //id: item.code.replace(/\s/g, ''),
+            id: item.code,
             title: item.code
 
         });
@@ -792,7 +794,8 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
     }
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet.forEach(function(item) {
         Partial.statusData.push({
-            id: item.code.replace(/\s/g, ''),
+            // id: item.code.replace(/\s/g, ''),
+            id: item.code,
             title: item.code
         });
     });
