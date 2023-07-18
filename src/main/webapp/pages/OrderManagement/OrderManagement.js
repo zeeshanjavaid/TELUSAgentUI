@@ -54,6 +54,7 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
     } else {
         Partial.Widgets.OrderPopOver.hidePopover();
         Partial.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
 
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
         Partial.Variables.getLoggedInUserTeamIdVar.setInput({
@@ -76,6 +77,7 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.hidePopover();
     getBanDetails();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
     Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Partial.Variables.getLoggedInUserTeamIdVar.setInput({
         'userId': App.Variables.getLoggedInUserId.dataSet[0].id
@@ -94,6 +96,7 @@ Partial.CreateCeaseRequestClick = function($event, widget) {
         Partial.Widgets.OrderPopOver.hidePopover();
         getBanDetails();
         Partial.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
         Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
         Partial.Variables.getLoggedInUserTeamIdVar.setInput({
             'userId': App.Variables.getLoggedInUserId.dataSet[0].id
