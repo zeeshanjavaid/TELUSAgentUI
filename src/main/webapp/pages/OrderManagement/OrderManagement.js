@@ -31,6 +31,7 @@ Partial.onReady = function() {
     // Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
     App.Variables.errorMsg.dataSet.dataValue = '';
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = '';
 
 };
 
@@ -136,9 +137,11 @@ Partial.createbuttonClick = function($event, widget) {
 
 
     if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
 
@@ -210,9 +213,10 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
 
     if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
 
@@ -283,9 +287,10 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     });
 
     if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
 
@@ -370,6 +375,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
@@ -405,10 +411,12 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
             if (stepTypeCode == "SUSPEND" && d.banStatus == "SUSPEND") {
-                App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended."
+                //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended.";
+                Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended."
             } else if (stepTypeCode == "RESTORE" && d.banStatus == "RESTORE") {
 
-                App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored."
+                //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored.";
+                Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored."
 
 
             } else {
@@ -429,7 +437,8 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         }
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
@@ -510,7 +519,8 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         });
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
@@ -598,7 +608,8 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         }
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
@@ -670,7 +681,8 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         });
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-            App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
         } else {
             Partial.Variables.UpdateODManagemntVar.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
@@ -894,11 +906,11 @@ Partial.CollectionDataServiceGetEntityBanDetailsonError = function(variable, dat
 
 };
 
-Partial.getCollectionTreatmentStep_orderMngtonError = function(variable, data, xhrObj){
-	
+Partial.getCollectionTreatmentStep_orderMngtonError = function(variable, data, xhrObj) {
+
 };
 
 
-Partial.getCollectionTreatMentonError = function(variable, data, xhrObj){
-	
+Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
+
 };

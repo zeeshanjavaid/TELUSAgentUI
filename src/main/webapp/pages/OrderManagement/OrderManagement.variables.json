@@ -1512,6 +1512,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "popUperrorMsg" : {
+    "_id" : "wm-popUperrorMsg-wm.Variable-1689658359981",
+    "name" : "popUperrorMsg",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "reasonCodeOrdMngmtVar" : {
     "_id" : "wm-staticVariable1-wm.Variable-1687520756493",
     "name" : "reasonCodeOrdMngmtVar",
