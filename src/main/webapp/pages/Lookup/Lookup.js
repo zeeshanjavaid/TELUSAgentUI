@@ -269,17 +269,6 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else {
 
-
-        //Page.Variables.getCollectionEntityById.setInput
-        /*    Page.Variables.getCollectionEntityById.setInput({
-                "id": parseInt(Page.pageParams.entityId)
-            });
-
-
-            Page.Variables.getCollectionEntityById.invoke(); 
-
-        alert(Page.Variables.getCollectionEntityById.collectionStatus); */
-
         let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToNewEntVar.dataSet = [];
         var billingAccountRefMaps = [];
@@ -335,100 +324,123 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         });
 
         //PATCH for Moving out
-        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
-            "id": parseInt(Page.pageParams.entityId),
-            "CollectionEntityUpdate": {
-                "id": parseInt(Page.pageParams.entityId),
-                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                "channel": {
-                    "originatorAppId": "FAWBTELUSAGENT",
-                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                },
-                billingAccountRefMaps
-            }
-        });
-
-        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
-
-        //POST for creating new entity
-        //need to write the logic
-        billingAccountRefMaps = billingAccountRefMaps1;
-        debugger;
-        var roleType;
-        var relatedEntityId;
-        if (billingAccountRefMaps.length == 1) {
-            roleType = 'BAN';
-            relatedEntityId = billingAccountRefMaps[0].billingAccountRef.id;
-        } else {
-            roleType = 'BG';
-        }
-
-
-        if (Page.Variables.getCollectionEntityById.dataSet.relatedEntity.role == 'RCID') {
-            relatedEntityId = Page.Variables.getCollectionEntityById.dataSet.relatedEntity.id;
-        }
-
-        Page.Variables.AddCollectionEntityServiceVar.setInput({
-            "CollectionEntityCreate": {
-                "agentId": Page.Variables.getCollectionEntityById.dataSet.agentId,
-                "channel": {
-                    "originatorAppId": "FAWBTELUSAGENT",
-                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                },
-                billingAccountRefMaps,
-                'name': Page.Variables.getCollectionEntityById.dataSet.name,
-                'customerRisk': Page.Variables.getCollectionEntityById.dataSet.customerRisk,
-                'customerRiskId': Page.Variables.getCollectionEntityById.dataSet.customerRiskId,
-                'customerValue': Page.Variables.getCollectionEntityById.dataSet.customerValue,
-                'customerValueId': Page.Variables.getCollectionEntityById.dataSet.customerValueId,
-                'delinquentCycle': Page.Variables.getCollectionEntityById.dataSet.delinquentCycle,
-                'lineOfBusiness': Page.Variables.getCollectionEntityById.dataSet.lineOfBusiness,
-                'workCategory': Page.Variables.getCollectionEntityById.dataSet.workCategory,
-                'tenure': Page.Variables.getCollectionEntityById.dataSet.tenure,
-                'exclusionIndicatorCharacter': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorCharacter,
-                'exclusionIndicatorInteger': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorInteger,
-                'manualTreatmentIndicator': Page.Variables.getCollectionEntityById.dataSet.manualTreatmentIndicator,
-                'notTouchListIndicator': Page.Variables.getCollectionEntityById.dataSet.notTouchListIndicator,
-
-                'relatedEntity': {
-                    'id': relatedEntityId,
-                    'role': roleType
-                },
-                'validFor': {
-                    'startDateTime': todaysDateJsonFormat
-                },
-                'engagedCustomerParty': {
-                    'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbucid,
-                    'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuCode,
-                    'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuName,
-                    'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.organizationType,
-                    'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcid,
-                    'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcName,
-                    'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioCategory,
-                    'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioSubCategory,
-                    'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.subMarketSegment
-                },
-                'engagedRegionalCustomerParty': {
-                    'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbucid,
-                    'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuCode,
-                    'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuName,
-                    'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.organizationType,
-                    'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcid,
-                    'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcName,
-                    'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioCategory,
-                    'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioSubCategory,
-                    'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.subMarketSegment
+        var updateCollectionEntityServiceVar = Page.Variables.UpdateCollectionEntityServiceVar;
+        updateCollectionEntityServiceVar.invoke({
+                "inputFields": {
+                    "id": parseInt(Page.pageParams.entityId),
+                    "CollectionEntityUpdate": {
+                        "id": parseInt(Page.pageParams.entityId),
+                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps
+                    }
                 }
+            },
+
+            function(data) {
+                //POST for creating new entity
+                //need to write the logic
+                billingAccountRefMaps = billingAccountRefMaps1;
+                var roleType;
+                var relatedEntityId;
+                if (billingAccountRefMaps.length == 1) {
+                    roleType = 'BAN';
+                    relatedEntityId = billingAccountRefMaps[0].billingAccountRef.id;
+                } else {
+                    roleType = 'BG';
+                }
+
+
+                if (Page.Variables.getCollectionEntityById.dataSet.relatedEntity.role == 'RCID') {
+                    relatedEntityId = Page.Variables.getCollectionEntityById.dataSet.relatedEntity.id;
+                }
+
+                Page.Variables.AddCollectionEntityServiceVar.setInput({
+                    "CollectionEntityCreate": {
+                        "agentId": Page.Variables.getCollectionEntityById.dataSet.agentId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps,
+                        'name': Page.Variables.getCollectionEntityById.dataSet.name,
+                        'customerRisk': Page.Variables.getCollectionEntityById.dataSet.customerRisk,
+                        'customerRiskId': Page.Variables.getCollectionEntityById.dataSet.customerRiskId,
+                        'customerValue': Page.Variables.getCollectionEntityById.dataSet.customerValue,
+                        'customerValueId': Page.Variables.getCollectionEntityById.dataSet.customerValueId,
+                        'delinquentCycle': Page.Variables.getCollectionEntityById.dataSet.delinquentCycle,
+                        'lineOfBusiness': Page.Variables.getCollectionEntityById.dataSet.lineOfBusiness,
+                        'workCategory': Page.Variables.getCollectionEntityById.dataSet.workCategory,
+                        'tenure': Page.Variables.getCollectionEntityById.dataSet.tenure,
+                        'exclusionIndicatorCharacter': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorCharacter,
+                        'exclusionIndicatorInteger': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorInteger,
+                        'manualTreatmentIndicator': Page.Variables.getCollectionEntityById.dataSet.manualTreatmentIndicator,
+                        'notTouchListIndicator': Page.Variables.getCollectionEntityById.dataSet.notTouchListIndicator,
+
+                        'relatedEntity': {
+                            'id': relatedEntityId,
+                            'role': roleType
+                        },
+                        'validFor': {
+                            'startDateTime': todaysDateJsonFormat
+                        },
+                        'engagedCustomerParty': {
+                            'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbucid,
+                            'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuCode,
+                            'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuName,
+                            'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.organizationType,
+                            'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcid,
+                            'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcName,
+                            'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioCategory,
+                            'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioSubCategory,
+                            'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.subMarketSegment
+                        },
+                        'engagedRegionalCustomerParty': {
+                            'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbucid,
+                            'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuCode,
+                            'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuName,
+                            'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.organizationType,
+                            'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcid,
+                            'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcName,
+                            'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioCategory,
+                            'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioSubCategory,
+                            'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.subMarketSegment
+                        }
+                    }
+                });
+
+
+                Page.Variables.AddCollectionEntityServiceVar.invoke();
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
             }
-        });
+
+        );
+        /*  Page.Variables.UpdateCollectionEntityServiceVar.setInput({
+              "id": parseInt(Page.pageParams.entityId),
+              "CollectionEntityUpdate": {
+                  "id": parseInt(Page.pageParams.entityId),
+                  "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                  "channel": {
+                      "originatorAppId": "FAWBTELUSAGENT",
+                      "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                  },
+                  billingAccountRefMaps
+              }
+          });
+
+          Page.Variables.UpdateCollectionEntityServiceVar.invoke(); */
 
 
-        Page.Variables.AddCollectionEntityServiceVar.invoke();
 
 
-        Page.Widgets.TransferBanToNewEntDialog.close();
-        Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to newly created Entity: NewEntityName (NewEntityID)";
-        setTimeout(messageTimeout, 10000);
+
     }
 };
 Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
@@ -447,4 +459,12 @@ Page.TransferBanToNewEntDialogOpened = function($event, widget) {
         "entityId": parseInt(Page.pageParams.entityId)
     });
     Page.Variables.getEntityBanDetailsService.invoke();
+};
+
+Page.AddCollectionEntityServiceVaronSuccess = function(variable, data) {
+    Page.Widgets.TransferBanToNewEntDialog.close();
+    var newEntityId = data.id;
+    var newEntityName = data.name;
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to newly created Entity: " + newEntityName + " (" + newEntityId + ")";
+    setTimeout(messageTimeout, 10000);
 };

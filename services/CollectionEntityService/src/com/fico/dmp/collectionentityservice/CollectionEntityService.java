@@ -239,8 +239,8 @@ public class CollectionEntityService {
     	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY, "POST", entitySvcAuthScope);
     	logger.info("::::::::Response from Success Telus  API- ADD CollectionEntity:::::\n::::::: {}",responseStr);
-    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class); 
-        return CollectionEntityResponse;
+    	CollectionEntity collectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class); 
+        return collectionEntityResponse;
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
