@@ -62,21 +62,7 @@ public class ParrReportService {
      *
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
-     */
-    public String sampleJavaOperation(String name, HttpServletRequest request) {
-        logger.debug("Starting sample operation with request url " + request.getRequestURL().toString());
-        
-        String result = null;
-        if (securityService.isAuthenticated()) {
-            result = "Hello " + name + ", You are logged in as "+  securityService.getLoggedInUser().getUserName();
-        } else {
-            result = "Hello " + name + ", You are not authenticated yet!";
-        }
-        logger.debug("Returning {}", result);
-        return result;
-    }
-    
-   
+     */   
    
  public List<ParrReports> getParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String status, String createdFrom, String createdTo, String evaluation, String createdBy)throws Exception {
 
@@ -84,7 +70,7 @@ public class ParrReportService {
 
         List<ParrReports> parrReportsList=new ArrayList<>();
 
-        List<CollectionPaymentArrangement> parrReportList= collectionEntityService.getPaymentArrangements(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
+        List<CollectionPaymentArrangement> parrReportList= collectionEntityService.getPaymentArrangementsForParrReport(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
 
         if(!CollectionUtils.isEmpty(parrReportList))
         {

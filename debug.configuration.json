@@ -417,7 +417,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 326,
+        "line" : 342,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getPaymentArrangementById",
         "phaseSequence" : 0,
@@ -425,7 +425,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 332,
+        "line" : 348,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "addPaymentArrangement",
         "phaseSequence" : 0,
@@ -433,7 +433,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 347,
+        "line" : 363,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateParrStatus",
         "phaseSequence" : 0,
@@ -441,7 +441,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 377,
+        "line" : 393,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "addDispute",
         "phaseSequence" : 0,
@@ -449,7 +449,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 388,
+        "line" : 404,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getdisputeById",
         "phaseSequence" : 0,
@@ -457,7 +457,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 406,
+        "line" : 422,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updateDispute",
         "phaseSequence" : 0,
@@ -497,7 +497,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 355,
+        "line" : 371,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "getdispute",
         "phaseSequence" : 0,
@@ -521,9 +521,17 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 341,
+        "line" : 357,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "updatePaymentArrangement",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 326,
+        "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
+        "name" : "getPaymentArrangementsForParrReport",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
@@ -555,31 +563,7 @@
       "name" : "com.fico.dmp.parrreportservice.ParrReportService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 91,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 67,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "sampleJavaOperation",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 83,
-        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
-        "name" : "getParrReport",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 133,
+        "line" : 119,
         "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
         "name" : "lambda$1",
         "phaseSequence" : 0,
@@ -587,9 +571,25 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 135,
+        "line" : 121,
         "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
         "name" : "lambda$2",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 77,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 69,
+        "path" : "/services/ParrReportService/src/com/fico/dmp/parrreportservice/ParrReportService.java",
+        "name" : "getParrReport",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

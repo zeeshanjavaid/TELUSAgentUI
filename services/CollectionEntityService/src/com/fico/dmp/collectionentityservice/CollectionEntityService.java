@@ -318,6 +318,22 @@ public class CollectionEntityService {
               // .queryParam("entityRisk",entityRisk);
     	return parrService.getPaymentArrangements(entityId,builder.toUriString());
     }
+  
+  
+  @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
+  public List<CollectionPaymentArrangement> getPaymentArrangementsForParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
+  	
+       UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
+            .queryParam("fields", fields)
+             .queryParam("agentId", agentId)
+              .queryParam("entityRisk", entityRisk)
+               .queryParam("evaluation", evaluation)
+                .queryParam("status", status)
+                 .queryParam("createdBy", createdBy)
+                  .queryParam("createdFrom", createdFrom)
+                   .queryParam("createdTo", createdTo);
+  	return parrService.getPaymentArrangements(entityId,builder.toUriString());
+  }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
         @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
         @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)

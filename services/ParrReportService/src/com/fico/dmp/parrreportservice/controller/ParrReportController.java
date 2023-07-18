@@ -9,7 +9,6 @@ import java.lang.Integer;
 import java.lang.Exception;
 import com.fico.telus.model.ParrReports;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,5 @@ public class ParrReportController {
     @ApiOperation(value = "")
     public List<ParrReports> getParrReport(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "entityRisk", required = false) String entityRisk, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "createdFrom", required = false) String createdFrom, @RequestParam(value = "createdTo", required = false) String createdTo, @RequestParam(value = "evaluation", required = false) String evaluation, @RequestParam(value = "createdBy", required = false) String createdBy) throws Exception {
         return parrReportService.getParrReport(fields, offset, limit, agentId, entityId, entityRisk, status, createdFrom, createdTo, evaluation, createdBy);
-    }
-
-    @RequestMapping(value = "/sampleJavaOperation", produces = "application/json", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public String sampleJavaOperation(@RequestParam(value = "name", required = false) String name, HttpServletRequest request) {
-        return parrReportService.sampleJavaOperation(name, request);
     }
 }
