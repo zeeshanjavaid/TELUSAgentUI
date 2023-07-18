@@ -96,7 +96,11 @@ public class ParrReportService {
                     parrReports.setPerOfAmtRecieved_Exp("0");
 
                 }else {
+                	if(cpa.getExpectedPaymentAmountToDate() != 0) {
                     parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate() / cpa.getExpectedPaymentAmountToDate() * 100 + "%");
+                	}else {
+                		parrReports.setPerOfAmtRecieved_Exp(0+"%");
+                	}
                 }      
                 parrReports.setCreatedBy(cpa.getAuditInfo().getCreatedBy());
               //  parrReports.setCreatedTeam(cpa.getAuditInfo().getT);
