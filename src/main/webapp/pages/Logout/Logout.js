@@ -24,7 +24,17 @@ Page.onReady = function() {
     // Page.Variables.sv_unlockAppsForSessionUser.invoke();
 
     // window.location.href = "removeSession";
+    setTimeout(function() {
 
+        // console.log("window.sessionStorage" + window.sessionStorage);
+        // window.sessionStorage.clear();
+        // delete window.sessionStorage;
+        // window.localStorage.clear();
+
+        // window.location.href = "https://www.ficoanalyticcloud.com/fac_fawb_login/#/singlelogout";
+
+        window.location.href = "https://console.dms.cact1.ficoanalyticcloud.com/com.fico.fusion/logout?logoutType=idp";
+    }, 500);
 
 };
 
