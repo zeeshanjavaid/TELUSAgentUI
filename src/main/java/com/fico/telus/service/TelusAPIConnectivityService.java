@@ -3,6 +3,7 @@ package com.fico.telus.service;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 
@@ -49,13 +50,13 @@ public class TelusAPIConnectivityService {
 	
 	private static final String TELUS_API_SECRET = "TELUS_API_SECRET";
 	
-	private static final String TELUS_TOKEN_URL = "TELUS_TOKEN_URL";
+	private static final String TELUS_AUTH_TOKEN_URL = "TELUS_AUTH_TOKEN_URL";
 	
-	private static final String TELUS_TOKEN_CACHE_MAP = "TELUS_TOKEN_CACHE_MAP";
+	private static final String TELUS_AUTH_TOKEN_CACHE_MAP = "TELUS_AUTH_TOKEN_CACHE_MAP";
 
-	private static final String TELUS_TOKEN = "TELUS_TOKEN";
+	private static final String TELUS_AUTH_TOKEN = "TELUS_AUTH_TOKEN";
 	
-	private static final String TELUS_TOKEN_CACHE_EXPIRE_IN_SEC = "TELUS_TOKEN_CACHE_EXPIRE_IN_SEC";
+	private static final String TELUS_AUTH_TOKEN_CACHE_EXPIRE_IN_SEC = "TELUS_AUTH_TOKEN_CACHE_EXPIRE_IN_SEC";
 	
 	@Autowired
 	private FawbAppHazelcastInstance fawbAppHazelcastInstance;
@@ -66,7 +67,7 @@ public class TelusAPIConnectivityService {
 	
 	private String clientId;
 
-	private long cacheExpireInSec;
+	private Integer cacheExpireInSec;
 
 	private String secret;
 
@@ -115,12 +116,11 @@ public class TelusAPIConnectivityService {
 				
 				 result = response.getBody(); 
 				 TelusTokenResponse telusTokenResponse = mapper.readValue(result, com.fico.telus.model.TelusTokenResponse.class);
-				//  this.cacheExpireInSec = telusTokenResponse.getExpires_in();
-				//  registerToken(telusTokenResponse.getAccess_token()); 
 				 token = telusTokenResponse.getAccess_token();
+				 this.cacheExpireInSec = Integer.parseInt(telusTokenResponse.getExpires_in());
+				 registerToken(token, cacheExpireInSec); 
 				 
-				 
-				logger.info("::::::::Telus token :::::::::::::::::" + token);
+				 logger.info("::::::::Telus token :::::::::::::::::" + token);
 
 			    
 			} else {
@@ -137,9 +137,9 @@ public class TelusAPIConnectivityService {
 	
 	private String getToken() {
 		
-		IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_TOKEN_CACHE_MAP);
-		if (map.containsKey(TELUS_TOKEN)) {
-			String token = map.get(TELUS_TOKEN);
+		IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_AUTH_TOKEN_CACHE_MAP);
+		if (map.containsKey(TELUS_AUTH_TOKEN)) {
+			String token = map.get(TELUS_AUTH_TOKEN);
 			return token;
 		} 
 		return null;
@@ -149,8 +149,8 @@ public class TelusAPIConnectivityService {
 		
 		this.clientId = propertyValueFrom(TELUS_API_CLIENT_ID, "ac93e924-e669-4c21-a8c5-11945cee7ffd");
 		this.secret = propertyValueFrom(TELUS_API_SECRET, "2abf5c9c-dd75-4709-963a-115e3e6c19057c59bc75-9672-4b7a-99a8-49ed10f661d9");		
-		this.tokenURL = propertyValueFrom(TELUS_TOKEN_URL, "https://apigw-st.telus.com/st/token");
-		this.cacheExpireInSec = Long.parseLong(propertyValueFrom(TELUS_TOKEN_CACHE_EXPIRE_IN_SEC,"600"));
+		this.tokenURL = propertyValueFrom(TELUS_AUTH_TOKEN_URL, "https://apigw-st.telus.com/st/token");
+		this.cacheExpireInSec = Integer.parseInt(propertyValueFrom(TELUS_AUTH_TOKEN_CACHE_EXPIRE_IN_SEC,"600"));
 	}
 	
 	private String propertyValueFrom(String propertyName, String defaulValueIfNull)
@@ -312,5 +312,11 @@ public class TelusAPIConnectivityService {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpResponse response = client.execute(httpRequest);
 		return response;
+	}
+	
+	private void registerToken(String token, Integer expiresInSec) {
+		logger.info("INVOKED: registerToken()");
+		IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_AUTH_TOKEN);
+		map.tryPut(TELUS_AUTH_TOKEN, token, expiresInSec, TimeUnit.SECONDS);
 	}
 }
