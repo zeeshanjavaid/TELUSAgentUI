@@ -112,15 +112,15 @@
             <wm-gridcolumn name="gridcolumn36"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="BAN Listing" iconclass="" name="SelectDisputeBanDialog" width="55%" height="45%">
         <wm-table name="selectBanDisputeTable1" title="" dataset="bind:Variables.getEntityBanDetailsServiceVar.dataSet" navigation="None" multiselect="false" radioselect="true">
             <wm-table-column binding="banId" caption="BAN" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banStatus" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="disputeFlag" caption="Dispute Indc" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="suppresionFlag" caption="Suppress Indc" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="disputeFlag" caption="Dispute Indicator" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="suppresionFlag" caption="Suppress Indicator" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
         </wm-table>
         <wm-layoutgrid name="layoutgrid13_1">
             <wm-gridrow name="gridrow19_1">
