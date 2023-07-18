@@ -175,11 +175,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "entityId",
-      "value" : "bind:pageParams.entityId",
-      "type" : "integer"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityBanDetails",

@@ -425,5 +425,14 @@ Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
     $('#TransferBanToNewEntityTableID th input[type=checkbox]').hide();
 };
 Page.TransferBanToExistEntDialogOpened = function($event, widget) {
-    //Page.Variables.getEntityBanDetailsService.setIn
+    Page.Variables.getEntityBanDetailsService.setInput({
+        "entityId": parseInt(Page.pageParams.entityId)
+    });
+    Page.Variables.getEntityBanDetailsService.invoke();
+};
+Page.TransferBanToNewEntDialogOpened = function($event, widget) {
+    Page.Variables.getEntityBanDetailsService.setInput({
+        "entityId": parseInt(Page.pageParams.entityId)
+    });
+    Page.Variables.getEntityBanDetailsService.invoke();
 };

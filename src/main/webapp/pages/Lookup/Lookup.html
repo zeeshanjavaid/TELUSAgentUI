@@ -196,17 +196,11 @@
                         </wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="tabpane3" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
                         <!--<wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="true"></wm-panel><wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="true"></wm-panel>--></wm-tabpane>
                 </wm-tabs>
             </wm-container>
@@ -292,7 +286,7 @@
             <wm-button class="primaryButton" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" name="TransferBanToNewEntDialog" width="50%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" name="TransferBanToNewEntDialog" width="50%" on-opened="TransferBanToNewEntDialogOpened($event, widget)">
         <wm-layoutgrid name="layoutgrid14">
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn58">
