@@ -269,6 +269,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else {
 
+
         //Page.Variables.getCollectionEntityById.setInput
         /*    Page.Variables.getCollectionEntityById.setInput({
                 "id": parseInt(Page.pageParams.entityId)
@@ -298,8 +299,16 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                 "suppresionFlag": d.suppresionFlag
             }
 
+            var billingAccountRefIdUsingEntityId = {};
+            Page.Variables.getCollectionEntityById.dataSet.billingAccountRefMaps.forEach(function(data) {
+                if (data.billingAccountRef.id == d.banRefId) {
+                    billingAccountRefIdUsingEntityId = data.id;
+                }
+
+            });
+
             billingAccountRef = {
-                "id": d.banRefId,
+                "id": billingAccountRefIdUsingEntityId,
                 "validFor": {
                     "endDateTime": todaysDateJsonFormat
                 }
@@ -308,12 +317,15 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
             billingAccountRef1 = {
                 "billingAccountRef": {
-                    "id": d.banId
+                    "id": d.banRefId,
+                    "name": d.banName
                 },
                 "validFor": {
                     "startDateTime": todaysDateJsonFormat
                 }
             }
+
+
 
             billingAccountRefMaps.push(billingAccountRef);
             billingAccountRefMaps1.push(billingAccountRef1);

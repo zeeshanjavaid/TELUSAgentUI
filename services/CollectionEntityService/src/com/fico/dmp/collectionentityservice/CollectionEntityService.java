@@ -236,12 +236,10 @@ public class CollectionEntityService {
     
     public CollectionEntity addCollectionEntity( CollectionEntityCreate collectionEntityCreate) throws Exception  {
     	logger.info("::::::::Inside  addCollectionEntity::::::::");
-    /*	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
+    	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY, "POST", entitySvcAuthScope);
     	logger.info("::::::::Response from Success Telus  API- ADD CollectionEntity:::::\n::::::: {}",responseStr);
-    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class); */
-       // return CollectionEntityResponse;
-       CollectionEntity CollectionEntityResponse = new CollectionEntity();
+    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class); 
         return CollectionEntityResponse;
     }
     
@@ -249,11 +247,11 @@ public class CollectionEntityService {
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionEntityUpdate  updateCollectionEntity(@PathVariable("id") Integer id, CollectionEntityUpdate collectionEntityUpdate ) throws Exception {
     	 logger.info("Inside updateCollectionEntity method"+id);
-     	//String requestPayload = objectMapper.writeValueAsString(collectionEntityUpdate);
-     	//String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "/" + id, "PATCH", entitySvcAuthScope);
-     	//logger.info("::::::::Response from Success Telus  API- Update entity:::::\n::::::: {}",responseStr);
-     	//CollectionEntityUpdate collectionEntityUpdateResponse = objectMapper.readValue(responseStr,CollectionEntityUpdate.class);
-    	return collectionEntityUpdate;
+     	String requestPayload = objectMapper.writeValueAsString(collectionEntityUpdate);
+     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "/" + id, "PATCH", entitySvcAuthScope);
+     	logger.info("::::::::Response from Success Telus  API- Update entity:::::\n::::::: {}",responseStr);
+     	CollectionEntityUpdate collectionEntityUpdateResponse = objectMapper.readValue(responseStr,CollectionEntityUpdate.class);
+    	return collectionEntityUpdateResponse;
     }
 
 
