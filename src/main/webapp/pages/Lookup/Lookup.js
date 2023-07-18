@@ -300,10 +300,6 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
             billingAccountRef = {
                 "id": d.banRefId,
-                "billingAccountRef": {
-                    "id": d.banId,
-                    "name": d.banName
-                },
                 "validFor": {
                     "endDateTime": todaysDateJsonFormat
                 }
@@ -311,10 +307,8 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
 
             billingAccountRef1 = {
-                "id": d.banRefId,
                 "billingAccountRef": {
-                    "id": d.banId,
-                    "name": d.banName
+                    "id": d.banId
                 },
                 "validFor": {
                     "startDateTime": todaysDateJsonFormat

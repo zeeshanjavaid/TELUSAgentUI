@@ -81,9 +81,9 @@ Partial.CreateDisputeClick = function($event, widget) {
     } else if (Partial.Widgets.custEmailText.datavalue !== "" && !isEmail(Partial.Widgets.custEmailText.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Customer email id";
     } else if (Partial.Widgets.AssignedDisputePrime.datavalue !== "" && !isEmail(Partial.Widgets.AssignedDisputePrime.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Assigned dispute prime email id";
+        App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Assigned prime email id";
     } else if (Partial.Widgets.custEmailText.datavalue !== "" && Partial.Widgets.AssignedDisputePrime.datavalue !== "" && (custEmailText.toLowerCase() === AssignedDisputePrime.toLowerCase())) {
-        App.Variables.errorMsg.dataSet.dataValue = "Customer email id and Assigned dispute prime email id should be different";
+        App.Variables.errorMsg.dataSet.dataValue = "Customer email id and Assigned prime email id should be different";
     } else {
 
 
@@ -142,7 +142,7 @@ Partial.CreateDisputeServiceonSuccess = function(variable, data) {
 };
 
 Partial.CreateDisputeServiceonError = function(variable, data, xhrObj) {
-    App.Variables.errorMsg.dataSet.dataValue = "Dispute creation failed"
+    App.Variables.errorMsg.dataSet.dataValue = "Dispute creation failed as multiple disputes are not allowed."
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
     setTimeout(messageTimeout, 10000);
 };

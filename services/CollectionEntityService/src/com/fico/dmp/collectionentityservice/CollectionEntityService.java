@@ -236,10 +236,12 @@ public class CollectionEntityService {
     
     public CollectionEntity addCollectionEntity( CollectionEntityCreate collectionEntityCreate) throws Exception  {
     	logger.info("::::::::Inside  addCollectionEntity::::::::");
-    	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
+    /*	String requestPayload = objectMapper.writeValueAsString(collectionEntityCreate);
     	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY, "POST", entitySvcAuthScope);
     	logger.info("::::::::Response from Success Telus  API- ADD CollectionEntity:::::\n::::::: {}",responseStr);
-    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class);
+    	CollectionEntity CollectionEntityResponse = objectMapper.readValue(responseStr,CollectionEntity.class); */
+       // return CollectionEntityResponse;
+       CollectionEntity CollectionEntityResponse = new CollectionEntity();
         return CollectionEntityResponse;
     }
     
@@ -251,7 +253,7 @@ public class CollectionEntityService {
      	//String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "/" + id, "PATCH", entitySvcAuthScope);
      	//logger.info("::::::::Response from Success Telus  API- Update entity:::::\n::::::: {}",responseStr);
      	//CollectionEntityUpdate collectionEntityUpdateResponse = objectMapper.readValue(responseStr,CollectionEntityUpdate.class);
-    	return collectionEntityUpdate ;
+    	return collectionEntityUpdate;
     }
 
 
