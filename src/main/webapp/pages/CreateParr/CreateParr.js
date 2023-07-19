@@ -306,6 +306,6 @@ Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
 };
 
-Partial.getEntityBanDetailsForParronError = function(variable, data, xhrObj){
-	
+Partial.getEntityBanDetailsForParronError = function(variable, data, xhrObj) {
+
 };
