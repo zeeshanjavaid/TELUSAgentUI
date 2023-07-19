@@ -23,6 +23,8 @@ Partial.onReady = function() {
 };
 
 Partial.CreateClick = function($event, widget) {
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    App.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };
 

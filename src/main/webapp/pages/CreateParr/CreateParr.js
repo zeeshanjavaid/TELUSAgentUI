@@ -164,6 +164,7 @@ Partial.Clear = function() {
     Partial.Widgets.ParrTotal.datavalue = '';
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     Partial.Widgets.InstallmentOptionRadio.datavalue = '';
+    Partial.Widgets.Comments.datavalue = '';
 };
 
 Partial.ClearScheduleClick = function($event, widget) {
