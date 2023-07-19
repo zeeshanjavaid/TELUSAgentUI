@@ -40,6 +40,6 @@ App.refreshParrList = function() {
     Partial.Variables.CollectionEntityGetPaymentArrangement.invoke();
 };
 
-Partial.CollectionEntityGetPaymentArrangementonError = function(variable, data, xhrObj){
+/*Partial.CollectionEntityGetPaymentArrangementonError = function(variable, data, xhrObj){
 	
-};
+};*/

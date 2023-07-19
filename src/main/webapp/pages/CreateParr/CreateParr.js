@@ -28,7 +28,7 @@ Partial.onReady = function() {
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
-    debugger;
+
 
     if (Partial.Widgets.ParrTotal._datavalue == "" || Partial.Widgets.ParrTotal._datavalue == null) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
@@ -156,7 +156,7 @@ Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) 
 };
 
 Partial.Clear = function() {
-    App.Variables.errorMsg.dataSet.dataValue = null;
+    //App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
     Partial.Widgets.noOfInstlmnt.datavalue = 0;
     Partial.Widgets.amountPerInstlmnt.datavalue = 0;
@@ -243,7 +243,7 @@ Partial.CancelInstallmentScheduleClick = function($event, widget) {
 
 Partial.CreatePARRClick = function($event, widget) {
 
-    debugger;
+
     Partial.Variables.CreatePaymentArrangement.setInput({
         "CollectionPaymentArrangementCreate": {
             'collectionEntity': {
