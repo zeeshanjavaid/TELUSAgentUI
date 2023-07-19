@@ -273,11 +273,11 @@ Partial.CreatePARRClick = function($event, widget) {
 Partial.button2_1Click = function($event, widget) {
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
-    Partial.Variables.getEntityBanDetails.setInput({
+    Partial.Variables.getEntityBanDetailsForParr.setInput({
         'entityId': entityIdInt
     });
 
-    Partial.Variables.getEntityBanDetails.invoke();
+    Partial.Variables.getEntityBanDetailsForParr.invoke();
 
     Partial.Widgets.selectBANdialog.open();
 
@@ -304,4 +304,8 @@ Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
     Partial.Clear();
     App.refreshParrList();
     setTimeout(messageTimeout, 5000);
+};
+
+Partial.getEntityBanDetailsForParronError = function(variable, data, xhrObj){
+	
 };

@@ -130,21 +130,24 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                 "suppresionFlag": d.suppresionFlag
             }
 
+            var billingAccountRefIdUsingEntityId = {};
+            Page.Variables.getCollectionEntityById.dataSet.billingAccountRefMaps.forEach(function(data) {
+                if (data.billingAccountRef.id == d.banRefId) {
+                    billingAccountRefIdUsingEntityId = data.id;
+                }
+
+            });
+
             billingAccountRef = {
-                "id": d.banRefId,
-                "billingAccountRef": {
-                    "id": d.banId,
-                    "name": d.banName
-                },
+                "id": billingAccountRefIdUsingEntityId,
                 "validFor": {
                     "endDateTime": todaysDateJsonFormat
                 }
             }
 
             billingAccountRef1 = {
-                "id": d.banRefId,
                 "billingAccountRef": {
-                    "id": d.banId,
+                    "id": d.banRefId,
                     "name": d.banName
                 },
                 "validFor": {
