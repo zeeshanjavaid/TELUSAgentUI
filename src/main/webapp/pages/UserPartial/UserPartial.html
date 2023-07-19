@@ -305,7 +305,7 @@
                 <wm-gridrow name="gridrow1">
                     <wm-gridcolumn name="gridcolumn10" columnwidth="12"><label class="app-label control-label formfield-label col-12 text-danger">Team Manager</label>
                         <wm-form-field name="UserDTO_teamManager" key="UserDTO.teamManagerId" type="string" widget="select" placeholder="Select" dataset="bind:Variables.getManagerByTeamName.dataSet"
-                            datafield="id" displayfield="managerName" on-click="Variables.getManagerByTeamName.invoke()" defaultvalue="bind:Variables.dialogUserId.dataSet.managerName" show="true"></wm-form-field>
+                            datafield="id" displayfield="managerName" on-click="Variables.getManagerByTeamName.invoke()" defaultvalue="bind:Widgets.userMVTable1.selecteditem.teamManager | numberToString: 'numberToString'" show="true"></wm-form-field>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow1" class="m_10">

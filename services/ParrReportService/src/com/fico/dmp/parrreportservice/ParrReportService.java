@@ -4,6 +4,8 @@
 package com.fico.dmp.parrreportservice;
 
 import javax.servlet.http.HttpServletRequest;
+import com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse;
+import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.lang.String;
 import java.util.List;
 import io.swagger.client.model.CollectionEntity;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 
 import com.wavemaker.runtime.security.SecurityService;
@@ -53,6 +59,9 @@ public class ParrReportService {
     
      @Autowired
     private CollectionEntityService collectionEntityService;
+    
+     @Autowired
+   private TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -83,6 +92,8 @@ public class ParrReportService {
                 parrReports.setEntityId(Long.valueOf(cpa.getCollectionEntity().getId()));
                 parrReports.setParrStatus(cpa.getStatus());
                // parrReports.setParrStatus(cpa.getStatus());
+                parrReports.setCreatedTeam(getTeamName(cpa.getAuditInfo().getCreatedBy()));
+
                 parrReports.setEvaluation(cpa.getEvaluationResult());
                 parrReports.setParrAmt("$"+cpa.getAmount());
                 parrReports.setStart(cpa.getInstallments().get(0).getDate().toString());
@@ -126,20 +137,34 @@ public class ParrReportService {
                         parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
 
                     });
-                //   for(CollectionEntity collectionEntity:collectionEntityList)
-                //   {
-                //       if(collectionEntity.getId().equals(parrReports.getParrId()))
-                //       {
-                //           parrReports.setEntityName(collectionEntity.getName());
-                //           parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
-                //       }
-                //   }
                 }
             }
 
         }
 
      return parrReportsList;
+    }
+    
+    
+ private String getTeamName(String emplId)
+    {
+         List<GetTeamNameByEmplIdResponse> getTeamNameByEmplIdResponseList=new ArrayList<>();
+       String teamName=null;
+        Pageable pageable = PageRequest.of(0, 1000);
+
+        Page<GetTeamNameByEmplIdResponse> getTeamNameByEmplIdResponsePage = telusAgentUIDBQueryExecutorService.executeGetTeamNameByEmplId(emplId, pageable);
+
+        if(getTeamNameByEmplIdResponsePage.hasContent()) {
+             getTeamNameByEmplIdResponseList =getTeamNameByEmplIdResponsePage.getContent();
+
+            if(!getTeamNameByEmplIdResponseList.isEmpty())
+            {
+                teamName=  getTeamNameByEmplIdResponseList.get(0).getTeamId();
+            }
+        }
+        return teamName;
+
+
     }
 
 

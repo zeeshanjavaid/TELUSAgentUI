@@ -4220,6 +4220,52 @@
       } ]
     }
   },
+  "getTeamNameByEmplId" : {
+    "name" : "getTeamNameByEmplId",
+    "description" : "getTeamNameByEmplId",
+    "version" : "V2",
+    "queryString" : "select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId group by u.emplId",
+    "countQueryString" : "select count(*) from (select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId group by u.emplId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "emplId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : null,
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "TeamID",
+        "fieldName" : "teamId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "TEAM",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getTeamsAndAssociatedUsers" : {
     "name" : "getTeamsAndAssociatedUsers",
     "description" : "getTeamsAndAssociatedUsers",

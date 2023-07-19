@@ -666,7 +666,7 @@ Partial.userMVTable1_customRowAction = function($event, row) {
 
 Partial.executeSearchUsersForm1_resetAction = function($event) {
     debugger;
-    // Partial.Variables.dialogUserId.dataSet = {};
+    Partial.Variables.dialogUserId.dataSet = {};
     // Partial.Variables.searchUsers.dataSet = [];
     // Partial.Variables.searchUsers.dataSet = Partial.Variables.ResetPREValue.dataSet;
     Partial.Variables.searchUsers.setInput({
@@ -776,7 +776,8 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
 
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
-    Object.assign(Partial.Variables.dialogUserId.dataSet, row);
+    Partial.Variables.dialogUserId.dataSet = row;
+    //  Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
     Partial.Widgets.updateUser.open();
     Partial.TestTeamId = row;

@@ -57,6 +57,35 @@ public class QueryExecutionController {
     @Autowired
 	private ExportedFileManager exportedFileManager;
 
+    @RequestMapping(value = "/queries/getTeamNameByEmplId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamNameByEmplId")
+    public Page<GetTeamNameByEmplIdResponse> executeGetTeamNameByEmplId(@RequestParam(value = "emplId", required = false) String emplId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamNameByEmplId");
+        Page<GetTeamNameByEmplIdResponse> _result = queryService.executeGetTeamNameByEmplId(emplId, pageable);
+        LOGGER.debug("got the result for named query: getTeamNameByEmplId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamNameByEmplId")
+    @RequestMapping(value = "/queries/getTeamNameByEmplId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamNameByEmplId(@RequestParam(value = "emplId", required = false) String emplId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamNameByEmplId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamNameByEmplId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamNameByEmplId(emplId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/checkforDocumentWithEid", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "checkforDocumentWithEid")

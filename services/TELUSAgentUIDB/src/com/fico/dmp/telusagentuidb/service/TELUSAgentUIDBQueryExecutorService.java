@@ -19,6 +19,10 @@ import com.fico.dmp.telusagentuidb.models.query.*;
 
 public interface TELUSAgentUIDBQueryExecutorService {
 
+    Page<GetTeamNameByEmplIdResponse> executeGetTeamNameByEmplId(String emplId, Pageable pageable);
+
+    void exportGetTeamNameByEmplId(String emplId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<CheckforDocumentWithEidResponse> executeCheckforDocumentWithEid(String entityId, Pageable pageable);
 
     void exportCheckforDocumentWithEid(String entityId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
