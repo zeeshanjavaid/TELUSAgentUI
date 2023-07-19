@@ -189,6 +189,7 @@ Partial.Clear = function() {
 Partial.CreateContactServiceVaronSuccess = function(variable, data) {
 
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Clear();
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
