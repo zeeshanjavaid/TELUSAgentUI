@@ -35,6 +35,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import java.util.List;
+import java.util.Optional;
+
 import io.swagger.client.model.CollectionPaymentArrangement;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
 import io.swagger.client.model.CollectionPaymentArrangementUpdate;
@@ -204,8 +206,23 @@ public class CollectionEntityService {
             objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionEntity.class));
         }else {
          			logger.info("::::::::Calling  entity endpoint call ::::::::");
+         			String entityStr = null;
+         			if(entityId != null) {
+         				entityStr = "in:"+entityId;
+         			}
+         			
+         			String cbucidStr = null;
+         			if(cbucid != null) {
+         				cbucidStr = "eq:"+cbucid;
+         			}
+         			
+         			//UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY).queryParamIfPresent(name, value)
+         			
+                    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY)
+                            .queryParamIfPresent("id", Optional.ofNullable(entityStr))
+                            .queryParamIfPresent("cbucid", Optional.ofNullable(cbucidStr));
 
-                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "?id" + "in:"+entityId, "GET", entitySvcAuthScope);
+                String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
                 	logger.info("::::::::Entity endpoint call success ::::::::");
                 	logger.info("Resoinse---"+ responseStr);
                 List<CollectionEntity> collectionEntityList = objectMapper.readValue(responseStr,

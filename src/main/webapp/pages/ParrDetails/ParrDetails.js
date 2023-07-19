@@ -198,6 +198,7 @@ Partial.SubmitButtonClick = function($event, widget) {
             'comment': Partial.Widgets.Comments.datavalue,
             'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence,
             'status': 'Renegotiated',
+            'evaluationResult': 'Kept',
             'channel': {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 'originatorAppId': "FAWBTELUSAGENT"
