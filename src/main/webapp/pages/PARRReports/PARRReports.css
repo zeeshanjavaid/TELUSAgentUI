@@ -71,6 +71,7 @@ wm-select#mySelection {
 .subHeading_dialog {
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+    margin-top: unset;
 }
 
 i.wi.wi-file-text {
@@ -79,4 +80,27 @@ i.wi.wi-file-text {
 
 .app-dialog-header.modal-header {
     border-bottom: 1px solid #ddd;
+}
+
+.InstallBAN {
+    border: solid;
+    border-width: 0.1px ;
+    border-color: lightgray ;
+    width:85% ;
+    overflow: hidden ;
+    width: 14em ;
+}
+
+.installmentlist{
+    border: solid ;
+    border-width: 0.1px ;
+    border-color: lightgray;
+    width:85% ;
+    overflow: hidden ;
+    width: 14em ;
+    
+}
+
+.modal-dialog.app-dialog.modal-dialog.PARRdetailsDailog .pagination.advanced.d-flex.justify-content-between {
+    margin-right: unset;
 }

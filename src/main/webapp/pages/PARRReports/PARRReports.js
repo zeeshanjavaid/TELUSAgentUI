@@ -20,6 +20,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+
 };
 
 function messageTimeout() {
@@ -79,5 +80,65 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
     });
     Page.Variables.getPaymentArrangement_parrReports.invoke();
     //Page.Variables.getPaymentArrangement_parrReports.dataSet;
+
+
+    var getPaymentArrangementVar = Page.Variables.getPaymentArrangement_parrReports;
+
+    /* Partial.Variables.getPaymentArrangement.setInput({
+         "id": Partial.pageParams.ParrId
+     });
+     Partial.Variables.getPaymentArrangement.invoke(); */
+
+    getPaymentArrangementVar.invoke({
+            "inputFields": {
+                "id": row.parrId
+            },
+        },
+        function(data) {
+
+            var billingAccountRefIds = data.billingAccountRefs;
+            var billingAccountRefIdArray = [];
+            billingAccountRefIds.forEach(function(d) {
+                billingAccountRefIdArray.push(d.id);
+            });
+            // console.log("success", "Inside Success block");
+
+            billingAccountRefIdArray.join(",");
+
+            var getBillingAccountNameIdVariable = Page.Variables.getBillingAccountNameIdVar_parrReports;
+            getBillingAccountNameIdVariable.invoke({
+                    "inputFields": {
+                        "billingAccountRefIds": billingAccountRefIdArray
+                    }
+                },
+                function(data) {
+                    // billingAccountIdNameListVar
+                    Page.Variables.billingAccountIdNameListVar_parrReports.dataSet = [];
+
+                    data.forEach(function(d) {
+
+                        Page.billingAccountRefIdAndNameArr = {
+                            "billingAccountId": data.billingAccountId,
+                            "billingAccountName": d.billingAccountName
+                        }
+
+
+                        Page.Variables.billingAccountIdNameListVar_parrReports.dataSet.push(Page.billingAccountRefIdAndNameArr);
+                    });
+                },
+                function(error) {
+                    // Error Callback
+                    console.log("error", error);
+                });
+
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
+
     Page.Widgets.PARRdetailsDailog.open();
 }
