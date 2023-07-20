@@ -133,13 +133,13 @@ Partial.parrHistoryCollapse = function($event, widget) {
 };
 
 Partial.YesCancelButtonClick = function($event, widget) {
-
     debugger;
     Partial.Variables.CancelPaymentArrangement.setInput({
         "CollectionPaymentArrangementUpdate": {
             'id': Partial.pageParams.ParrId,
             'comment': Partial.Widgets.CancelComments.datavalue,
             'status': 'Cancelled',
+            'evaluationResult': 'Broken',
             'channel': {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 'originatorAppId': "FAWBTELUSAGENT"
@@ -190,6 +190,13 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
 
 Partial.SubmitButtonClick = function($event, widget) {
     debugger;
+    //Adding Broken to evaluationResult
+    Partial.Variables.ParrInstallmentSchedule.dataSet.forEach(function(data) {
+        data.evaluationResult = "Kept";
+
+    });
+    //Hardcoding evaluation result in the backend.
+    //Partial.Variables.ParrInstallmentSchedule.dataSet
     Partial.Variables.updatePaymentArrangement.setInput({
         "CollectionPaymentArrangementUpdate": {
             'amount': Partial.Variables.getPaymentArrangement.dataSet.amount,
@@ -205,7 +212,7 @@ Partial.SubmitButtonClick = function($event, widget) {
             }
         }
     });
-    //Invoke POST UpdateParr service
+    //Invoke PATCH UpdateParr service
     Partial.Variables.updatePaymentArrangement.invoke();
 
 };

@@ -164,46 +164,50 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
         });
 
-        //PATCH the Moving out and Moving using /entity API.
+        var PatchOutCollectionEntityVar = Page.Variables.PatchOutCollectionEntity;
+        PatchOutCollectionEntityVar.invoke({
+                "inputFields": {
+                    "id": parseInt(Page.pageParams.entityId),
+                    "CollectionEntityUpdate": {
+                        "id": parseInt(Page.pageParams.entityId),
+                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps
+                    }
+                }
+            },
 
+            function(data) {
+                //PATCH for transferring
+                billingAccountRefMaps = billingAccountRefMaps1;
 
-        //PATCH for Moving out
-        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
-            "id": parseInt(Page.pageParams.entityId),
-            "CollectionEntityUpdate": {
-                "id": parseInt(Page.pageParams.entityId),
-                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                "channel": {
-                    "originatorAppId": "FAWBTELUSAGENT",
-                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                },
-                billingAccountRefMaps
+                Page.Variables.PatchInCollectionEntity.setInput({
+                    "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                    "CollectionEntityUpdate": {
+                        "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps
+                    }
+                });
+                Page.Variables.PatchInCollectionEntity.invoke();
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
             }
-        });
+
+        );
 
 
-        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
 
-        //PATCH for Moving In
-        billingAccountRefMaps = billingAccountRefMaps1;
-        Page.Variables.UpdateCollectionEntityServiceVar.setInput({
-            "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-            "CollectionEntityUpdate": {
-                "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                "channel": {
-                    "originatorAppId": "FAWBTELUSAGENT",
-                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                },
-                billingAccountRefMaps
-            }
-        });
-        Page.Variables.UpdateCollectionEntityServiceVar.invoke();
-
-
-        Page.Widgets.TransferBanToExistEntDialog.close();
-        Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to Entity: " + Page.combinedSuccessMessageVar;
-        setTimeout(messageTimeout, 10000);
     }
 };
 
@@ -425,24 +429,6 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
             }
 
         );
-        /*  Page.Variables.UpdateCollectionEntityServiceVar.setInput({
-              "id": parseInt(Page.pageParams.entityId),
-              "CollectionEntityUpdate": {
-                  "id": parseInt(Page.pageParams.entityId),
-                  "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                  "channel": {
-                      "originatorAppId": "FAWBTELUSAGENT",
-                      "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                  },
-                  billingAccountRefMaps
-              }
-          });
-
-          Page.Variables.UpdateCollectionEntityServiceVar.invoke(); */
-
-
-
-
 
     }
 };
@@ -477,4 +463,12 @@ Page.AddCollectionEntityServiceVaronSuccess = function(variable, data) {
     var newEntityName = data.name;
     Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to newly created Entity: " + newEntityName + " (" + newEntityId + ")";
     setTimeout(messageTimeout, 10000);
+};
+
+Page.PatchInCollectionEntityonSuccess = function(variable, data) {
+
+    Page.Widgets.TransferBanToExistEntDialog.close();
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to Entity: ";
+    setTimeout(messageTimeout, 10000);
+
 };

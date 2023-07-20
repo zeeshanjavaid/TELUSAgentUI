@@ -33,6 +33,22 @@ App.rowDataValues = function(row) {
             }
         },
         function(data) {
+            Partial.Widgets.TELUSContactsSelect.datavalue = data.telusContactIndicator;
+            Partial.Widgets.TITLESelect.datavalue = data.title;
+            Partial.Widgets.firstName.datavalue = data.firstName;
+            Partial.Widgets.lastName.datavalue = data.lastName;
+            Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
+            Partial.Widgets.emailText.datavalue = data.email;
+            Partial.Widgets.cellPhone.datavalue = data.mobilePhoneNumber;
+            Partial.Widgets.workNo.datavalue = data.workPhoneNumber;
+            Partial.Widgets.ext.datavalue = data.workPhoneNumberExtension;
+            Partial.Widgets.fax.datavalue = data.faxNumber;
+            Partial.Widgets.comments.datavalue = data.comment;
+            Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
+            Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
+            Partial.Widgets.createdOn.caption = data.auditInfo.createdDateTime;
+            Partial.Widgets.createdBy.caption = data.auditInfo.createdBy;
+
             var endDateTime = data.validFor.endDateTime;
             if (endDateTime == null || endDateTime == undefined) {
                 Partial.Variables.isContactExpired.dataSet.dataValue = false;
