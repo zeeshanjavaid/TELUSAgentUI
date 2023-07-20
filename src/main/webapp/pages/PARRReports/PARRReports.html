@@ -74,7 +74,9 @@
             <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;" class="reportTableBorder">
                 <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
                     <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic" navigationalign="right" pagesize="50">
-                        <wm-table-column binding="parrId" caption="PARR ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="parrId" caption="PARR ID" edit-widget-type="number" type="integer" show="true" readonly="false">
+                            <wm-anchor caption="bind:row.getProperty('parrId')" hyperlink="" class="" on-click="openPARRdetailsDailog($event, widget, row)" conditionalclass=""></wm-anchor>
+                        </wm-table-column>
                         <wm-table-column binding="entityId" caption="Entity ID" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityRisk" caption="Entity Risk" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -91,4 +93,123 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="PARR Details" class="PARRdetailsDailog" name="PARRdetailsDailog">
+        <wm-layoutgrid name="layoutgrid4_1">
+            <wm-gridrow name="gridrow7">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn74" class="parrlabel1">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR ID:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75" class="parrIDvalueLabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.id"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn76" class="parrlabel5">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="CUMM PMT RCVD:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel5">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.receivedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn76" class="parrlabel6">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="% of PMT RCVD/EXP:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel6">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate==0.0? 0.0:(Variables.getPaymentArrangement_parrReports.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate) * 100 "></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn76" class="parrlabel2">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="Status:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="statusValueLabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.status"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn80" class="parrlabel3">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR Amt:" name="label6" class="viewPARRLabel" color="grey"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn81" class="parrAmtValueLabel">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label28" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.amount | toCurrency: '$': '2'"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn76" class="parrlabel4">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="CUMM PMT EXP:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel4">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate | toCurrency: '$': '2'"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow9">
+                <wm-gridcolumn columnwidth="1" name="gridcolumn74" class="parrlabel7">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Recurrence:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75" class="parrValueLabel7">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.recurrence"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn78" class="parrlabel8">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label21" caption="Evaluation:" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn79" class="parrValuelabel8">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label23" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.evaluationResult"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="parrlabel9">
+                    <wm-label padding="0.5em 0.5em unset 0.5em" caption="Installment BANs:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn75" padding="0.5em 0.5em unset 0.5em">
+                    <wm-list listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list InstallBAN" name="installmentBANList" dataset="bind:Variables.getPaymentArrangement_parrReports.dataSet.billingAccountRefs"
+                        navigation="None" nodatamessage="">
+                        <wm-listtemplate layout="inline" name="listtemplate3">
+                            <wm-container class="media-left" name="container24" width="2%" horizontalalign="left">
+                                <wm-picture width="3pt" height="3pt" name="Picture" shape="circle" class="media-object" pictureplaceholder="resources/images/imagelists/bullet.png" margin="10px unset unset unset"></wm-picture>
+                            </wm-container>
+                            <wm-container class="media-body" padding="unset unset unset 1.25em" name="container25">
+                                <wm-layoutgrid name="layoutgrid3" width="70%">
+                                    <wm-gridrow name="gridrow7_1">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
+                                            <wm-label name="banValue" caption="bind:Variables.billingAccountIdNameListVar.dataSet[$i].billingAccountName" class="p text-muted" color="#000"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow8"></wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-container>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid5">
+            <h3 class="subHeading_dialog">Installment Schedule</h3>
+            <wm-gridrow name="gridrow10">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn20" horizontalalign="left">
+                    <wm-container name="container24_1">
+                        <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement_parrReports.dataSet.installments" navigation="Classic" navigationalign="right">
+                            <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="auditInfo.createdDateTime" caption="Date" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" searchable="false" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table>
+                    </wm-container>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="5" name="gridcolumn25"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid6">
+            <h3 class="subHeading_dialog">PARR History</h3>
+            <wm-gridrow name="gridrow13">
+                <wm-gridcolumn columnwidth="10" name="gridcolumn30">
+                    <wm-container name="container25_1">
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.parrHistoryVar_parrReports.dataSet" width="98%" navigationalign="right">
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="comments" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table>
+                    </wm-container>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn31"></wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+    </wm-dialog>
 </wm-page>

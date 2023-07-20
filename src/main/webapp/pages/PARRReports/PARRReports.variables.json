@@ -1166,6 +1166,60 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "getPaymentArrangement_parrReports" : {
+    "_id" : "wm-getPaymentArrangement_parrReports-wm.ServiceVariable-1689837068758",
+    "name" : "getPaymentArrangement_parrReports",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "history",
+      "value" : true,
+      "type" : "boolean"
+    } ],
+    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "service" : "CollectionEntityService",
+    "operation" : "getPaymentArrangementById",
+    "operationId" : "CollectionEntityController_getPaymentArrangementById",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
+  "parrHistoryVar_parrReports" : {
+    "_id" : "wm-parrHistoryVar_parrReports-wm.Variable-1689837416059",
+    "name" : "parrHistoryVar_parrReports",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "date" : "08/30/2023",
+      "user" : "John",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Smith",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    }, {
+      "date" : "08/30/2023",
+      "user" : "Kevin",
+      "event" : "Open",
+      "comments" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. "
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "ParrReportServiceGetParrReport" : {
     "_id" : "wm-ParrReportServiceGetParrReport-wm.ServiceVariable-1684315320753",
     "name" : "ParrReportServiceGetParrReport",

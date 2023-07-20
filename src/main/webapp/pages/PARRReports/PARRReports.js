@@ -71,3 +71,13 @@ Page.button2Click = function($event, widget) {
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
+
+Page.openPARRdetailsDailog = function($event, widget, row) {
+    debugger;
+    Page.Variables.getPaymentArrangement_parrReports.setInput({
+        "id": row.parrId
+    });
+    Page.Variables.getPaymentArrangement_parrReports.invoke();
+    //Page.Variables.getPaymentArrangement_parrReports.dataSet;
+    Page.Widgets.PARRdetailsDailog.open();
+}

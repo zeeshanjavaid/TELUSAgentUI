@@ -310,7 +310,10 @@
 }, {
   "name" : "PARRReports",
   "type" : "PAGE",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "ParrId",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "ParrDetails",
   "type" : "PARTIAL",
