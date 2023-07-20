@@ -199,17 +199,6 @@ Partial.ExpireClick = function($event, widget) {
             "id": Partial.Widgets.contactIDLabel.caption,
             "CollectionContactUpdate": {
                 'id': Partial.Widgets.contactIDLabel.caption,
-                'firstName': Partial.Widgets.firstName.datavalue,
-                'lastName': Partial.Widgets.lastName.datavalue,
-                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
-                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
-                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
-                'title': Partial.Widgets.TITLESelect.datavalue,
-                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
-                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
-                'comment': Partial.Widgets.comments.datavalue,
-                'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue,
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
