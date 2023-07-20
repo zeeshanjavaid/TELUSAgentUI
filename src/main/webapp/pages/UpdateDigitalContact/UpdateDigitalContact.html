@@ -87,17 +87,6 @@
         </wm-gridrow>
         <wm-gridrow name="gridrow12" margin="10px 0px 20px 20px">
             <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="smallRes">
-                <wm-label padding="unset 0.5em" caption="Ext." name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-composite name="composite1">
-                    <wm-container class="col-md-9" name="container1">
-                        <!--<wm-number name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="6" on-keypress="extKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumberExtension"></wm-text>
-                    </wm-container>
-                </wm-composite>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Work No" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
@@ -105,6 +94,17 @@
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
                         <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Ext." name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-composite name="composite1">
+                    <wm-container class="col-md-9" name="container1">
+                        <!--<wm-number name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
+                        <wm-text name="ext" id="ext" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="6" on-keypress="extKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumberExtension"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
