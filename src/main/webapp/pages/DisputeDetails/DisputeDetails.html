@@ -111,7 +111,7 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn35">
                     <wm-gridcolumn name="gridcolumn85" class="labelGrid">
-                        <wm-label padding="unset 0.5em" name="label22" caption="Assigned Dispute Prime:" color="#6e6d6a" class="disputeDetailsLabel" whitespace="nowrap" style="min-width:162px;"></wm-label>
+                        <wm-label padding="unset 0.5em" name="label22" caption="Assigned Prime Email:" color="#6e6d6a" class="disputeDetailsLabel" whitespace="nowrap" style="min-width:162px;"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn86" class="labelValue">
                         <wm-label padding="unset 0.5em" name="disputePrimeEmailValue" caption="bind:Variables.getDisputeDetails.dataSet.disputePrime"></wm-label>
@@ -217,7 +217,7 @@
                     <wm-label margin="0 71px 0 0" padding="unset 0.5em" name="label32" caption="Selected BAN" class="col-md-3 control-label updateDisputeLabel" whitespace="nowrap" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn83_1">
-                    <wm-label name="label35" caption="bind:Variables.billingAccountIdNameDisputeListVar.dataSet[$i].billingAccountName"></wm-label>
+                    <wm-label name="label35" caption="bind:Variables.getDisputeDetails.dataSet.billingAccountRef.id"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow43">
@@ -351,7 +351,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
                     <wm-container name="container21" margin="-15px 0 0 60px">
                         <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.disputeHistoryVar.dataSet" width="98%" navigationalign="right">
-                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="comments" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
