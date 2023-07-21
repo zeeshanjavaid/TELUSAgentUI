@@ -42,8 +42,8 @@ Partial.CancelClick = function($event, widget) {
 
     // clearing the fields
     Partial.Widgets.TITLESelect.datavalue = "";
-    Partial.Widgets.TELUSContactsSelect.datavalue = "N";
-    Partial.Widgets.EmailForNoticesSelect.datavalue = "Y";
+    Partial.Widgets.TELUSContactsSelect.datavalue = false;
+    Partial.Widgets.EmailForNoticesSelect.datavalue = true;
     Partial.Widgets.firstName.datavalue = "";
     Partial.Widgets.lastName.datavalue = "";
     Partial.Widgets.emailText.datavalue = "";
