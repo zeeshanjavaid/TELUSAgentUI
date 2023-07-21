@@ -21,6 +21,7 @@ import io.swagger.client.model.CollectionDispute;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fico.dmp.collectionentityservice.CollectionEntityService;
+import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
 import com.fico.telus.model.DisputeModel;
 import com.wavemaker.runtime.security.SecurityService;
@@ -49,6 +50,9 @@ public class DisputeService {
     
     @Autowired
     private CollectionEntityService collectionEntityService;
+    
+    @Autowired
+    private CommonUtilityService commonUtilityService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -76,9 +80,9 @@ public class DisputeService {
         			disputeModel.setDisputeAmount(collectionDispute.getAmount());
         			disputeModel.setCollectionExclusion(collectionDispute.isCollectionExclusionIndicator());
         			disputeModel.setStatus(collectionDispute.getStatus());
-        			disputeModel.setCreatedBy(collectionDispute.getAuditInfo().getCreatedBy());
+        			disputeModel.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionDispute.getAuditInfo().getCreatedBy()));
         			disputeModel.setCreatedDateTime(Date.from(collectionDispute.getAuditInfo().getCreatedDateTime().toInstant()));
-        			disputeModel.setUpdatedBy(collectionDispute.getAuditInfo().getLastUpdatedBy());
+        			disputeModel.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionDispute.getAuditInfo().getLastUpdatedBy()));
         			disputeModel.setUpdatedDateTime(Date.from(collectionDispute.getAuditInfo().getLastUpdatedDateTime().toInstant()));
         			disputeModelList.add(disputeModel);
 				}
