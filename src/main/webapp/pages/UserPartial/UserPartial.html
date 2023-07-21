@@ -250,9 +250,10 @@
             <wm-form-action key="save" display-name="Create" show="true" class="btn-success save" iconclass="" title="Create" action="createUserForm1_saveAction($event)" disabled="false" widget-type="button" type="submit" update-mode="true"></wm-form-action>
         </wm-form>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit User" class="userEditPage" iconclass="wi wi-file-text" name="updateUser" on-opened="updateUserOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit User" class="userEditPage" iconclass="wi wi-file-text" name="updateUser" on-close="updateUserClose($event, widget)">
+        <wm-message name="message5" type="error" caption="bind:Variables.updateUserErrormsg.dataSet.dataValue" show="bind:Variables.updateUserErrormsg.dataSet.dataValue ? true : false" width="100%" hideclose="true"></wm-message>
         <hr>
-        <wm-form errormessage="" style="left:22px;" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="" validationtype="html" on-success="Widgets.updateUser.close()">
+        <wm-form errormessage="" style="left:22px;" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="put" captionalign="left" name="updateUserForm1" postmessage="" validationtype="html" on-error="updateUserForm1Error($event, widget, $data)">
             <wm-layoutgrid columns="1" name="layoutgrid6" class="m_10">
                 <wm-gridrow name="gridrow18" class="m_10">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn25"><label class="app-label control-label formfield-label col-12 text-danger">First Name<span class="asterisk">*</span></label>

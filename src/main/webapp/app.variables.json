@@ -3717,6 +3717,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "updateUserErrormsg" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1689942319414",
+    "name" : "updateUserErrormsg",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "yesNoValues" : {
     "_id" : "wm-yesNoValues-wm.Variable-1686633352270",
     "name" : "yesNoValues",

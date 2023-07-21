@@ -728,8 +728,12 @@ Partial.createUserForm1_saveAction = function($event) {
     debugger;
     Partial.Widgets.createUserForm1.dataoutput.UserDTO;
     Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
-    if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
+    if (!validateEmail(Partial.Widgets.createUserForm1.dataoutput.UserDTO.email)) {
+        debugger;
+        App.Variables.createUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
         Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
+        debugger;
 
 
         Partial.Variables.UserManagementServiceCreateUser.invoke({},
@@ -842,7 +846,11 @@ Partial.updateUserForm1_saveAction = function($event) {
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
     }
     //dataBinding
-    if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
+    if (!validateEmail(Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email)) {
+        debugger;
+        App.Variables.updateUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if (Partial.Widgets.updateUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId != undefined && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.userId != undefined) {
+        debugger;
         Partial.Variables.UserManagementServiceUpdateUser.invoke();
         Partial.Variables.searchUsers.invoke();
         Partial.Variables.searchUsers.setInput({
@@ -850,6 +858,8 @@ Partial.updateUserForm1_saveAction = function($event) {
             'size': 10
         });
         Partial.Variables.searchUsers.invoke();
+        Partial.Widgets.updateUser.close();
+
         // Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
         //     // Success Callback
         //     console.log("success", data);
@@ -899,6 +909,10 @@ Partial.panel1Collapse = function($event, widget) {
 Partial.executeSearchUsersForm1_saveAction = function($event) {
     /*alert("HI");
     alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
+    /* debugger;
+     if (!validateEmail(Partial.Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue)) {
+         debugger;
+         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";*/
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
         debugger;
 
@@ -915,6 +929,7 @@ Partial.executeSearchUsersForm1_saveAction = function($event) {
         debugger;
         App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
     }
+
 
 };
 
@@ -934,6 +949,16 @@ Partial.createUserPageClose = function($event, widget) {
     App.Variables.createUserErrormsg.dataSet.dataValue = "";
 
 };
-Partial.updateUserForm1_saveAction1 = function($event) {
+Partial.updateUserForm1_Action1 = function($event) {
+
+};
+
+function validateEmail(email) {
+    return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+};
+Partial.updateUserClose = function($event, widget) {
+    App.Variables.updateUserErrormsg.dataSet.dataValue = "";
+};
+Partial.updateUserForm1Error = function($event, widget, $data) {
 
 };
