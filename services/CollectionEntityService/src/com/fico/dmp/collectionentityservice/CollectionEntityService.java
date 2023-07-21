@@ -313,6 +313,7 @@ public class CollectionEntityService {
     public CollectionContactUpdate  updateContact(@PathVariable("id") Integer id, CollectionContactUpdate   collectionContactUpdate ) throws Exception {
     	 logger.info("Inside updateContact method"+id);
      	String requestPayload = objectMapper.writeValueAsString(collectionContactUpdate);
+     	logger.info("requestPayload for update Contact---"+requestPayload);
      	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_CONTACT + "/" + id, "PATCH", entitySvcAuthScope);
      	logger.info("::::::::Response from Success Telus  API- Update contact:::::\n::::::: {}",responseStr);
      	CollectionContactUpdate collectionContactUpdateResponse = objectMapper.readValue(responseStr,CollectionContactUpdate.class);

@@ -26,7 +26,7 @@ public class ObjectMapperConfig {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_CREATOR_PROPERTIES, false);
 		objectMapper.setSerializationInclusion(Include.NON_NULL);
-		objectMapper.setSerializationInclusion(Include.NON_EMPTY);
+		//objectMapper.setSerializationInclusion(Include.NON_EMPTY);
 		objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		JavaTimeModule module = new JavaTimeModule();		
 		//DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");

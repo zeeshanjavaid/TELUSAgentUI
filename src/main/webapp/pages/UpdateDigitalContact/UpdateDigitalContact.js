@@ -230,6 +230,22 @@ Partial.ExpireClick = function($event, widget) {
 
 };
 
+Partial.Clear = function() {
+    Partial.Widgets.TELUSContactsSelect.datavalue = false;
+    Partial.Widgets.TITLESelect.datavalue = "";
+    Partial.Widgets.firstName.datavalue = "";
+    Partial.Widgets.lastName.datavalue = "";
+    Partial.Widgets.EmailForNoticesSelect.datavalue = false;
+    Partial.Widgets.emailText.datavalue = "";
+    Partial.Widgets.cellPhone.datavalue = "";
+    Partial.Widgets.workNo.datavalue = "";
+    Partial.Widgets.ext.datavalue = "";
+    Partial.Widgets.fax.datavalue = "";
+    Partial.Widgets.comments.datavalue = "";
+};
+
+
+
 Partial.updateDigitalContactonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
     App.Variables.errorMsg.dataSet.dataValue = null;
@@ -242,6 +258,7 @@ Partial.updateDigitalContactonSuccess = function(variable, data) {
 Partial.expireDigitalContactonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact expired successfully.";
     App.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Clear()
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
     setTimeout(messageTimeout, 10000);
