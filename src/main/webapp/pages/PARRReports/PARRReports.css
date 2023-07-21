@@ -104,3 +104,9 @@ i.wi.wi-file-text {
 .modal-dialog.app-dialog.modal-dialog.PARRdetailsDailog .pagination.advanced.d-flex.justify-content-between {
     margin-right: unset;
 }
+
+@media only screen and (min-width: 1250px) and (max-width: 1765px) {
+    .modal-dialog.app-dialog.modal-dialog.PARRdetailsDailog {
+        width: 85%; 
+    }
+}
