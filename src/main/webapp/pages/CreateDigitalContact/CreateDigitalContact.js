@@ -86,7 +86,7 @@ Partial.createContact = function($event, widget) {
                 'email': Partial.Widgets.emailText.datavalue,
                 'faxNumber': Partial.Widgets.fax.datavalue,
                 'channel': {
-                    'originatorAppId': Partial.Widgets.Datasource.caption,
+                    'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
                 'collectionEntity': {

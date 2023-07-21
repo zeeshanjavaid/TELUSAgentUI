@@ -194,7 +194,7 @@ function isNotANumber(value) {
 Partial.ExpireClick = function($event, widget) {
     debugger;
     var today = new Date();
-    if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
+    /*if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
@@ -208,31 +208,31 @@ Partial.ExpireClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
     } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
-    } else {
-        // API Call will come here
+    }  */
+    // API Call will come here
 
-        Partial.Variables.expireDigitalContact.setInput({
-            "id": Partial.Widgets.contactIDLabel.caption,
-            "CollectionContactUpdate": {
-                'id': Partial.Widgets.contactIDLabel.caption,
-                'channel': {
-                    'originatorAppId': "FAWBTELUSAGENT",
-                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-                },
-                'validFor': {
-                    'endDateTime': today
-                }
+    Partial.Variables.expireDigitalContact.setInput({
+        "id": Partial.Widgets.contactIDLabel.caption,
+        "CollectionContactUpdate": {
+            'id': Partial.Widgets.contactIDLabel.caption,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            },
+            'validFor': {
+                'endDateTime': today
             }
-        });
+        }
+    });
 
-        //Invoke POST createDispute service
-        Partial.Variables.expireDigitalContact.invoke();
-    }
+    //Invoke POST createDispute service
+    Partial.Variables.expireDigitalContact.invoke();
 
 };
 
 Partial.updateDigitalContactonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
     setTimeout(messageTimeout, 10000);
@@ -241,6 +241,7 @@ Partial.updateDigitalContactonSuccess = function(variable, data) {
 
 Partial.expireDigitalContactonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact expired successfully.";
+    App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
     setTimeout(messageTimeout, 10000);
