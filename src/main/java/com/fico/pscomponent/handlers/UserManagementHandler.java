@@ -247,73 +247,95 @@ public class UserManagementHandler {
             Page<WorkcategoryUser> workcategoryUsers = workcategoryUserService.findAll(USERID + dbUser.getId(), PageRequest.of(0, Integer.MAX_VALUE));
             if (workcategoryUsers.hasContent()) {
                  workCategoryUserList = workcategoryUsers.getContent();
-                 
             }
             
-            List<String> workCategory = userDTO.getWorkCategory();
             
-              List<String> existingWorkCat = workCategoryUserList.stream()
-                        .map(WorkcategoryUser::getWorkCategory)
-                        .collect(Collectors.toList());
-
+            if(!workCategoryUserList.isEmpty()) {
+	            for (WorkcategoryUser workcategoryUser : workCategoryUserList) {
+	           	workcategoryUserService.delete(workcategoryUser);
+	                          }
+                      }
             
-            if(!CollectionUtils.isEmpty(workCategory))
-            {
-                
-                
-
-                
-                if(workCategory!=null){
-                
-                 if (existingWorkCat.size() > workCategory.size()) {
-                    for (WorkcategoryUser workCar : workCategoryUserList) {
-                        logger.info("In handler before update workcategory user :::::::::::::::::::::");
-                        if (!workCategory.contains(workCar.getWorkCategory())) {
-                            workcategoryUserService.delete(workCar);
-                            logger.info("Updated workcategory for user :::::::::::::::::::::");
-
-
-                        }
-                    }
-                }
-
-             logger.info("Size of existingwork================== "+ workCategoryUserList.size());
-
-
-                 for (String workCar : workCategory) {
-                    logger.info("In handler before update workcategory user :::::::::::::::::::::");
-                    if (!existingWorkCat.contains(workCar.trim())   ) {
-                        WorkcategoryUser workcategoryUser = new WorkcategoryUser();
-                        workcategoryUser.setUser(dbUser);
-                        workcategoryUser.setWorkCategory(workCar);
-                        workcategoryUserService.create(workcategoryUser);
-                        logger.info("Updated workcategory for user :::::::::::::::::::::");
-
-
-                    }
-                }
-
-
-
-            }else if (userDTO.getWorkCategory()!=null && userDTO.getWorkCategory().size() > 0) {
-
-                for (String workCar : userDTO.getWorkCategory()) {
-                    WorkcategoryUser workcategoryUser = new WorkcategoryUser();
-                    workcategoryUser.setUser(dbUser);
-                    workcategoryUser.setWorkCategory(workCar);
-                    workcategoryUserService.create(workcategoryUser);
-                }
-            }
-            }else{
-				if (existingWorkCat.size() > 0) {
-					for (WorkcategoryUser workCar : workCategoryUserList) {
+            
+            
+				List<String> workCategory = userDTO.getWorkCategory();
+				if(!workCategory.isEmpty()) {
+					for (String workCar : workCategory) {
 						logger.info("In handler before update workcategory user :::::::::::::::::::::");
+						WorkcategoryUser workcategoryUser = new WorkcategoryUser();
+						workcategoryUser.setUser(dbUser);
+						workcategoryUser.setWorkCategory(workCar);
+						workcategoryUserService.create(workcategoryUser);
+						logger.info("Updated workcategory for user :::::::::::::::::::::");
 
-							workcategoryUserService.delete(workCar);
-							logger.info("Updated workcategory for user :::::::::::::::::::::");
+
 					}
-				}
+				
+				
+
 			}
+//               List<String> existingWorkCat = workCategoryUserList.stream()
+//                         .map(WorkcategoryUser::getWorkCategory)
+//                         .collect(Collectors.toList());
+
+            
+//             if(!CollectionUtils.isEmpty(workCategory))
+//             {
+                
+                
+
+                
+//                 if(workCategory!=null){
+                
+//                  if (existingWorkCat.size() > workCategory.size()) {
+//                     for (WorkcategoryUser workCar : workCategoryUserList) {
+//                         logger.info("In handler before update workcategory user :::::::::::::::::::::");
+//                         if (!workCategory.contains(workCar.getWorkCategory())) {
+//                             workcategoryUserService.delete(workCar);
+//                             logger.info("Updated workcategory for user :::::::::::::::::::::");
+
+
+//                         }
+//                     }
+//                 }
+
+//              logger.info("Size of existingwork================== "+ workCategoryUserList.size());
+
+
+//                  for (String workCar : workCategory) {
+//                     logger.info("In handler before update workcategory user :::::::::::::::::::::");
+//                     if (!existingWorkCat.contains(workCar.trim())   ) {
+//                         WorkcategoryUser workcategoryUser = new WorkcategoryUser();
+//                         workcategoryUser.setUser(dbUser);
+//                         workcategoryUser.setWorkCategory(workCar);
+//                         workcategoryUserService.create(workcategoryUser);
+//                         logger.info("Added new work categroy workcategory for user :::::::::::::::::::::  "+workCar);
+
+
+//                     }
+//                 }
+
+
+
+//             }else if (userDTO.getWorkCategory()!=null && userDTO.getWorkCategory().size() > 0) {
+
+//                 for (String workCar : userDTO.getWorkCategory()) {
+//                     WorkcategoryUser workcategoryUser = new WorkcategoryUser();
+//                     workcategoryUser.setUser(dbUser);
+//                     workcategoryUser.setWorkCategory(workCar);
+//                     workcategoryUserService.create(workcategoryUser);
+//                 }
+//             }
+//             }else{
+// 				if (existingWorkCat.size() > 0) {
+// 					for (WorkcategoryUser workCar : workCategoryUserList) {
+// 						logger.info("In handler before update workcategory user :::::::::::::::::::::");
+
+// 							workcategoryUserService.delete(workCar);
+// 							logger.info("Updated workcategory for user :::::::::::::::::::::");
+// 					}
+// 				}
+// 			}
             
             logger.info("In handler before update team user :::::::::::::::::::::");
 

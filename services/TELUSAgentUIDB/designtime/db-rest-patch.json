@@ -1,4 +1,5 @@
 {
   "WorkcategoryUserController" : { },
-  "DomainValueController" : { }
+  "DomainValueController" : { },
+  "QueryExecutionController" : { }
 }

@@ -104,7 +104,7 @@ public interface UserService {
      * @throws EntityNotFoundException if no matching User found.
      */
     User getByUserId(String userId);
-
+    
     /**
      * Updates the details of an existing User. It replaces all fields of the existing User with the given user.
      *
