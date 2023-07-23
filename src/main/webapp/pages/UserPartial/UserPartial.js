@@ -749,7 +749,7 @@ Partial.createUserForm1_saveAction = function($event) {
             if (!validateEmail(Partial.Widgets.createUserForm1.dataoutput.UserDTO.email)) {
                 App.Variables.createUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
             } else if (isEmplIdExists) {
-                App.Variables.createUserErrormsg.dataSet.dataValue = "EmplId already exists";
+                App.Variables.createUserErrormsg.dataSet.dataValue = "Empl ID already exists";
             } else if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
                 Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
 
