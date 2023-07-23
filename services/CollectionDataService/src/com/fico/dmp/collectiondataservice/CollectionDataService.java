@@ -46,6 +46,7 @@ import io.swagger.client.model.EntityBanDetailsResponse;
 
 import io.swagger.client.model.CollectionDispute;
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -153,8 +154,23 @@ public class CollectionDataService {
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
     public List<AssignedEntitiesInEntityViewResponse> getAssignedEntitiesInEntityView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus, Integer offset, Integer limit) throws Exception  {
 
+    	 if (isStubEnabled) {
         return objectMapper.readValue("[{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":\"224343\",\"cbucId\":\"7232323\",\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"},{\"entityId\":6766678,\"entityType\":\"CBUCID\",\"rcId\":\"224344\",\"cbucId\":\"723223\",\"entityName\":\"Air Canada2\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"reprehenderit commodo\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"}]",
         		objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+    	 }else {
+    		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
+             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_ENTITY_VIEW)
+                     .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
+                     .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
+                     .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
+                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
+
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             logger.info("::::::::Entity data endpoint call success ::::::::");
+             logger.info("Response---"+ responseStr);
+            return objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+    	 }
         // return new Object(); 
     }
     
@@ -162,21 +178,26 @@ public class CollectionDataService {
     @RequestMapping(value = "/assignedEntitiesInClassicView", method = {RequestMethod.GET})
     public List<AssignedEntitiesInClassicViewResponse> getassignedEntitiesInClassicView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus, Integer offset, Integer limit) throws Exception  {
 
+    	 if (isStubEnabled) {
         return objectMapper.readValue("[{\"banId\":\"256645999\",\"banName\":\"NORTHLAND PROPERTIES CORPORATION\",\"cbucId\":\"761846\",\"rcId\":\"392931\",\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"lastPaymentDate\":\"2022-08-19\",\"paymentMethod\":\"Card\",\"odRemaining\":2344390.88,\"acctStatus\":\"O\",\"acctStatusDate\":\"2022-08-29\",\"acctType\":\"B\",\"acctSubType\":\"I\",\"dispute\":2344390.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\",\"banCollectionStatus\":\"In-Collection\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false},{\"banId\":\"256645900\",\"banName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"cbucId\":\"761846\",\"rcId\":\"392931\",\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"lastPaymentDate\":\"2022-08-29\",\"paymentMethod\":\"Card\",\"odRemaining\":390,\"acctStatus\":\"O\",\"acctStatusDate\":\"2022-08-29\",\"acctType\":\"B\",\"acctSubType\":\"I\",\"dispute\":90.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\",\"banCollectionStatus\":\"In-Collection\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false}]",
         		objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
-        // return new Object(); 
+    	 }else {
+    		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
+             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_CLASSIC_VIEW)
+                     .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
+                     .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
+                     .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
+                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
+
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             logger.info("::::::::Entity data endpoint call success ::::::::");
+             logger.info("Response---"+ responseStr);
+            return objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
+    	 }
     }
     
-//assignedActions - Get Action List by Agent ID and WorkCategory ID
-//FAWB Actions List Page. FAWB page where agent can see assigned actions
 
- /*   @RequestMapping(value = "/assignedActions", method = {RequestMethod.GET})
-    public AssignedActionsResponseArray getAssignedActions(@RequestParam(required = true) String agentId , @RequestParam(required = true) String workCategory) throws Exception  {
-
-        return objectMapper.readValue("[{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-02\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300102\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-03\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300103\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-03-04\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 300104\",\"entityType\":\"RCID\",\"entityName\":\"entity1\",\"entityId\":1},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-02\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400102\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-03\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400103\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"assignedAgent\":\"parry.sound\",\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-04\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400104\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2},{\"createdBy\":\"john.doe\",\"status\":\"PENDING\",\"dueDate\":\"2023-04-05\",\"prioirty\":\"TOP\",\"actionType\":\"SUS\",\"actionDescription\":\"step 400105\",\"entityType\":\"CBUCID\",\"entityName\":\"entity2\",\"entityId\":2}]",AssignedActionsResponseArray.class);
-    } */
-
-    
 //entityContacts
     @RequestMapping(value = "/entityContacts", method = {RequestMethod.GET})
     public EntityContactsResponse getEntityContacts(@RequestParam(required = true) Integer entityId) throws Exception  {
