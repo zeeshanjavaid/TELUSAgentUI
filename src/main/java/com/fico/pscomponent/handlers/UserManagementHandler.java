@@ -10,6 +10,9 @@ import java.util.Objects;
 
 import java.util.stream.Collectors;
 
+import com.fico.dmp.telusagentuidb.models.query.GetUserByEmplIdResponse;
+
+
 
 import javax.validation.ConstraintViolationException;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
@@ -58,6 +61,9 @@ public class UserManagementHandler {
 
 	//@Autowired
 	//private AlertService alertService;
+	
+	@Autowired
+	private TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
 
 	@Autowired
 	private RoleService roleService;
@@ -87,7 +93,7 @@ public class UserManagementHandler {
 
 	private static final String USERID = "UserId=";
 
-	public ResponseEntity<String> createUser(UserDTO userDTO) {
+	public ResponseEntity<String> createUser(UserDTO userDTO)  {
 		try {
 		    //logger.info("In handler createUser :::::::::::::::::::::");
 		userValidatorService.validateUserBody(userDTO);
@@ -111,6 +117,7 @@ public class UserManagementHandler {
 		} catch (EntityNotFoundException e) {
 
 		}
+		
 		//logger.info("In handler before object assigning :::::::::::::::::::::");
 		
 

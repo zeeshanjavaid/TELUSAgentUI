@@ -1,4 +1,43 @@
 {
+  "checkEmplId" : {
+    "_id" : "wm-checkEmplId-wm.Variable-1690020668322",
+    "name" : "checkEmplId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "checkUserByEmplId" : {
+    "_id" : "wm-checkUserByEmplId-wm.ServiceVariable-1690019463209",
+    "name" : "checkUserByEmplId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetUserByEmplIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetUserByEmplId",
+    "operationId" : "QueryExecutionController_executeGetUserByEmplId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "checkUserByEmplIdonSuccess(variable, data, options)",
+    "onError" : "checkUserByEmplIdonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "dataTeam" : {
     "_id" : "wm-dataTeam-wm.Variable-1678361682508",
     "name" : "dataTeam",

@@ -60,7 +60,7 @@ public class QueryExecutionController {
     @RequestMapping(value = "/queries/getTeamNameByEmplId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "getTeamNameByEmplId")
-    public Page<GetTeamNameByEmplIdResponse> executeGetTeamNameByEmplId(@RequestParam(value = "emplId", required = false) String emplId, Pageable pageable, HttpServletRequest _request) {
+    public Page<GetTeamNameByEmplIdResponse> executeGetTeamNameByEmplId(@RequestParam(value = "emplId") String emplId, Pageable pageable, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: getTeamNameByEmplId");
         Page<GetTeamNameByEmplIdResponse> _result = queryService.executeGetTeamNameByEmplId(emplId, pageable);
         LOGGER.debug("got the result for named query: getTeamNameByEmplId, result:{}", _result);
@@ -71,7 +71,7 @@ public class QueryExecutionController {
     @RequestMapping(value = "/queries/getTeamNameByEmplId/export", method = RequestMethod.POST)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @XssDisable
-    public StringWrapper exportGetTeamNameByEmplId(@RequestParam(value = "emplId", required = false) String emplId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+    public StringWrapper exportGetTeamNameByEmplId(@RequestParam(value = "emplId") String emplId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
         LOGGER.debug("Exporting named query: getTeamNameByEmplId");
 
         String exportedFileName = exportOptions.getFileName();
@@ -1074,6 +1074,35 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportQuery_GetQueuesByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getUserByEmplId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getUserByEmplId")
+    public Page<GetUserByEmplIdResponse> executeGetUserByEmplId(@RequestParam(value = "emplid") String emplid, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getUserByEmplId");
+        Page<GetUserByEmplIdResponse> _result = queryService.executeGetUserByEmplId(emplid, pageable);
+        LOGGER.debug("got the result for named query: getUserByEmplId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getUserByEmplId")
+    @RequestMapping(value = "/queries/getUserByEmplId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetUserByEmplId(@RequestParam(value = "emplid") String emplid, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getUserByEmplId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getUserByEmplId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetUserByEmplId(emplid,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }

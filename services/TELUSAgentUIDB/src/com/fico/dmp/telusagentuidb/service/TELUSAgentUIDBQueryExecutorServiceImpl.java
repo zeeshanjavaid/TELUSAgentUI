@@ -877,6 +877,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
         queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
     }
 
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
+    public Page<GetUserByEmplIdResponse> executeGetUserByEmplId(String emplid, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("emplid", emplid);
+
+        return queryExecutor.executeNamedQuery("getUserByEmplId", params, GetUserByEmplIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetUserByEmplId(String emplid, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("emplid", emplid);
+
+        QueryProcedureInput<GetUserByEmplIdResponse> queryInput = new QueryProcedureInput<>("getUserByEmplId", params, GetUserByEmplIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
     @Transactional(value = "TELUSAgentUIDBTransactionManager")
     @Override
     public Integer executeDeleteRolePermission(String roleId) {

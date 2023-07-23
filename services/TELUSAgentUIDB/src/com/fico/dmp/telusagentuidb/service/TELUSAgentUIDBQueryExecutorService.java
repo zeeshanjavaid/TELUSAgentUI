@@ -163,6 +163,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportQuery_GetQueuesByUserId(Integer userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetUserByEmplIdResponse> executeGetUserByEmplId(String emplid, Pageable pageable);
+
+    void exportGetUserByEmplId(String emplid, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Integer executeDeleteRolePermission(String roleId);
 
     Integer executeQueueUnLock(QueueUnLockRequest queueUnLockRequest);

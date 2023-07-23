@@ -4,14 +4,14 @@
 <hibernate-mapping>
     <sql-query name="getTeamNameByEmplId">
         <![CDATA[
-        select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId group by u.emplId
+        select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId
         ]]>
     <query-param name="emplId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getTeamNameByEmplId__count">
         <![CDATA[
-        select count(*) from (select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId group by u.emplId) wmTempTable
+        select count(*) from (select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId) wmTempTable
         ]]>
     <query-param name="emplId" type="java.lang.String"/>
     </sql-query>
@@ -1024,6 +1024,20 @@ where USER.emplId = :emplId and USER.active = true) wmTempTable
         select count(*) from (SELECT DISTINCT QueueId FROM QUEUE_GROUP INNER JOIN QUEUE on QUEUE.ID = QUEUE_GROUP.QueueId WHERE groupId IN (SELECT DISTINCT groupId FROM USER_GROUP WHERE userId = :userId) ORDER BY QUEUE.`Rank` ASC) wmTempTable
         ]]>
     <query-param name="userId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getUserByEmplId">
+        <![CDATA[
+        select * from USER where emplId=:emplid
+        ]]>
+    <query-param name="emplid" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getUserByEmplId__count">
+        <![CDATA[
+        select count(*) from (select * from USER where emplId=:emplid) wmTempTable
+        ]]>
+    <query-param name="emplid" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="deleteRolePermission">
