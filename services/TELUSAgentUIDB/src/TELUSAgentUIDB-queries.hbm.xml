@@ -196,15 +196,15 @@ order by r.role) wmTempTable
         ' ',
         mngrUsr.lastName
     ) as teamManager,
-    group_concat(
-        wrkCatUsr.work_category separator ','
+    group_concat(DISTINCT
+    wrkCatUsr.work_category separator ','
     ) as workCategory,
     team.TeamID as teamId
 from USER usr
     left outer join USER mngrUsr on usr.managerId = mngrUsr.Id
     join USER_ROLE usrRole on usr.id = usrRole.userId
     join ROLE role on usrRole.roleId = role.id
-    left join WORKCATEGORY_USER wrkCatUsr on usr.id = wrkCatUsr.userId
+    left outer join WORKCATEGORY_USER wrkCatUsr on usr.id = wrkCatUsr.userId
     left outer join TEAM_USER teamUsr on teamUsr.userId = usr.id
     left join TEAM team on team.id = teamUsr.teamId
 where ( (
@@ -266,15 +266,15 @@ ORDER BY usr.firstName asc
         ' ',
         mngrUsr.lastName
     ) as teamManager,
-    group_concat(
-        wrkCatUsr.work_category separator ','
+    group_concat(DISTINCT
+    wrkCatUsr.work_category separator ','
     ) as workCategory,
     team.TeamID as teamId
 from USER usr
     left outer join USER mngrUsr on usr.managerId = mngrUsr.Id
     join USER_ROLE usrRole on usr.id = usrRole.userId
     join ROLE role on usrRole.roleId = role.id
-    left join WORKCATEGORY_USER wrkCatUsr on usr.id = wrkCatUsr.userId
+    left outer join WORKCATEGORY_USER wrkCatUsr on usr.id = wrkCatUsr.userId
     left outer join TEAM_USER teamUsr on teamUsr.userId = usr.id
     left join TEAM team on team.id = teamUsr.teamId
 where ( (
