@@ -14,6 +14,9 @@ import com.wavemaker.runtime.data.annotations.ColumnAlias;
 public class SearchUsersResponse implements Serializable {
 
 
+    @ColumnAlias("id")
+    private Long id;
+
     @ColumnAlias("firstName")
     private String firstName;
 
@@ -43,6 +46,14 @@ public class SearchUsersResponse implements Serializable {
 
     @ColumnAlias("teamId")
     private String teamId;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return this.firstName;
@@ -129,7 +140,8 @@ public class SearchUsersResponse implements Serializable {
         if (this == o) return true;
         if (!(o instanceof SearchUsersResponse)) return false;
         final SearchUsersResponse searchUsersResponse = (SearchUsersResponse) o;
-        return Objects.equals(getFirstName(), searchUsersResponse.getFirstName()) &&
+        return Objects.equals(getId(), searchUsersResponse.getId()) &&
+                Objects.equals(getFirstName(), searchUsersResponse.getFirstName()) &&
                 Objects.equals(getUserId(), searchUsersResponse.getUserId()) &&
                 Objects.equals(getLastName(), searchUsersResponse.getLastName()) &&
                 Objects.equals(getEmail(), searchUsersResponse.getEmail()) &&
@@ -143,7 +155,8 @@ public class SearchUsersResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(),
+        return Objects.hash(getId(),
+                getFirstName(),
                 getUserId(),
                 getLastName(),
                 getEmail(),

@@ -183,6 +183,7 @@ order by r.role) wmTempTable
     <sql-query name="searchUsers">
         <![CDATA[
         select
+    usr.id,
     usr.firstName,
     usr.userId,
     usr.lastName,
@@ -252,6 +253,7 @@ ORDER BY usr.firstName asc
     <sql-query name="searchUsers__count">
         <![CDATA[
         select count(*) from (select
+    usr.id,
     usr.firstName,
     usr.userId,
     usr.lastName,

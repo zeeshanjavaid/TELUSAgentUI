@@ -591,19 +591,19 @@ Partial.executeGetGroupByUserId1onSuccess = function(variable, data) {
 };
 
 Partial.dialogUserDetails = function(row) {
-    //debugger;
+    debugger;
     Partial.Variables.dialogUserId.dataSet = {};
 
     Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
 
-    //Partial.Variables.getWorkCategoryByUserId.invoke();
     // debugger;
     var lv = Partial.Variables.getWorkCategoryByUserId;
+
     lv.listRecords({
             filterFields: {
-                "user.email": {
-                    "value": Partial.Variables.dialogUserId.dataSet.email
+                "user.id": {
+                    "value": Partial.Variables.dialogUserId.dataSet.id
 
                 }
             }
@@ -611,8 +611,8 @@ Partial.dialogUserDetails = function(row) {
         function(data) {
             //debugger;
             //console.log('success', success)
-            Partial.Variables.getWorkCategoryByUserId.dataSet = [];
-            Partial.Variables.getWorkCategoryByUserId.dataSet = data;
+            Partial.Variables.getWorkCategoryByUserIdQuery.dataSet = [];
+            Partial.Variables.getWorkCategoryByUserIdQuery.dataSet = data;
             Partial.Widgets.dialogUserDetails.open();
         },
         function(error) {

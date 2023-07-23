@@ -2510,7 +2510,6 @@
     "saveInPhonegap" : false,
     "maxResults" : 200,
     "designMaxResults" : 100,
-    "onSuccess" : "getWorkCategoryByUserIdonSuccess(variable, data, options)",
     "inFlightBehavior" : "executeLast",
     "startUpdate" : false,
     "autoUpdate" : false,
