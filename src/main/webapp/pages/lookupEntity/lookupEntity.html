@@ -80,7 +80,7 @@
                             <wm-label class="col-md-3 control-label" margin="10px 3px 5px 15px" name="label14" caption="Billing System" width="100%" color="grey"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn margin="2px 2px 2px 15px" width="300px" name="gridcolumn17" class="billSystemSelectBox">
-                            <wm-select name="select5" datavalue="CES" width="65%" dataset="bind:Variables.getBillingSystemByCOde.dataSet" datafield="code" placeholder="" displayfield="code"></wm-select>
+                            <wm-select name="select5" datavalue="bind:Variables.getBillingSystemByCOde.firstRecord.code" width="65%" dataset="bind:Variables.getBillingSystemByCOde.dataSet" datafield="code" placeholder="" displayfield="code"></wm-select>
                         </wm-gridcolumn>
                         <wm-gridcolumn style="display: flex; margin: 40px 10px 10px 140px" name="gridcolumn18" class="buttonGrid">
                             <wm-button class="secondaryButton" caption="Clear" type="button" margin="8px 2px 8px 2px" name="button2" on-click="button2Click($event, widget)"></wm-button>
