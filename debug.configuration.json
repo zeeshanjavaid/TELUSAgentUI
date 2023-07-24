@@ -1457,7 +1457,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 282,
+        "line" : 294,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getActionViewByTeam",
         "phaseSequence" : 0,
@@ -1473,7 +1473,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 230,
+        "line" : 242,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityBanDetails",
         "phaseSequence" : 0,
@@ -1481,7 +1481,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 204,
+        "line" : 216,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityContacts",
         "phaseSequence" : 0,
@@ -1489,7 +1489,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 254,
+        "line" : 266,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityDetails",
         "phaseSequence" : 0,
@@ -1505,7 +1505,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 181,
+        "line" : 187,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getassignedEntitiesInClassicView",
         "phaseSequence" : 0,

@@ -159,9 +159,15 @@ public class CollectionDataService {
         		objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
     	 }else {
     		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
+    		 
+    		 String workCategoryParam = null;
+    		 if(workCategory != null) {
+    			 workCategoryParam = URLEncoder.encode(workCategory,"UTF-8");
+    		 }
+    		 
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_ENTITY_VIEW)
                      .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
-                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategoryParam))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
@@ -183,9 +189,15 @@ public class CollectionDataService {
         		objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
     	 }else {
     		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
+    		 
+    		 String workCategoryParam = null;
+    		 if(workCategory != null) {
+    			 workCategoryParam = URLEncoder.encode(workCategory,"UTF-8");
+    		 }
+    		 
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_CLASSIC_VIEW)
                      .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
-                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategoryParam))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
