@@ -1,21 +1,30 @@
 {
   "actionTypeSelect_orderDeskView" : {
-    "_id" : "wm-actionTypeSelect_orderDeskView-wm.Variable-1686901022264",
+    "_id" : "wm-actionTypeSelect_orderDeskView_1-wm.ServiceVariable-1690190869753",
     "name" : "actionTypeSelect_orderDeskView",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "SUSPEND"
-    }, {
-      "dataValue" : "RESTORE"
-    }, {
-      "dataValue" : "CEASE"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "ORDERDESK_ACTIONTYPE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "CollectionDataServiceGetActionViewByTeam" : {
     "_id" : "wm-CollectionDataServiceGetActionViewByTeam-wm.ServiceVariable-1687431975944",
@@ -111,20 +120,31 @@
     "controller" : "CollectionTreatment"
   },
   "statusSelect_orderDeskView" : {
-    "_id" : "wm-statusSelect_orderDeskView-wm.Variable-1686901133394",
+    "_id" : "wm-statusSelect_orderDeskView_1-wm.ServiceVariable-1690191099794",
     "name" : "statusSelect_orderDeskView",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Order Created"
-    }, {
-      "dataValue" : "Order Assigned"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "ORDERDESK_STATUS",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "workCategorySelect_OrderDeskView" : {
     "_id" : "wm-workCategorySelect_OrderDeskView-wm.ServiceVariable-1686913676776",

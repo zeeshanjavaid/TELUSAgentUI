@@ -28,15 +28,15 @@
                     <wm-label caption="Assigned Person" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="AssignedPersonSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.AssignedPersonList.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder="All"
-                        on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                    <wm-select name="AssignedPersonSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.AssignedPersonList.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
+                        placeholder="All" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="entityOwnerGrid">
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder="All"
-                        displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
+                        placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
@@ -50,13 +50,13 @@
                     <wm-label caption="Action Type" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50" class="selectGrid">
-                    <wm-select name="ActionTypeSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.actionTypeSelect_ARAgentView.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue"></wm-select>
+                    <wm-select name="ActionTypeSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.actionTypeSelect_ARAgentView.dataSet" datafield="code" placeholder="All" displayfield="code"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="statusGrid">
                     <wm-label caption="Status" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="StatusSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.statusSelect_ARAgentView.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue"></wm-select>
+                    <wm-select name="StatusSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.statusSelect_ARAgentView.dataSet" datafield="code" placeholder="All" displayfield="code"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="fromDateGrid">
                     <wm-label caption="From Due Date" name="label8" color="grey" class="ARAgentLabel"></wm-label>

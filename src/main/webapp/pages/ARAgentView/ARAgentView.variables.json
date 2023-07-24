@@ -1,31 +1,30 @@
 {
   "actionTypeSelect_ARAgentView" : {
-    "_id" : "wm-actionTypeSelect_ARAgentView-wm.Variable-1686908498055",
+    "_id" : "wm-actionTypeSelect_ARAgentView_1-wm.ServiceVariable-1690184973849",
     "name" : "actionTypeSelect_ARAgentView",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "CALL-IB"
-    }, {
-      "dataValue" : "CALL-OB"
-    }, {
-      "dataValue" : "EM-IN"
-    }, {
-      "dataValue" : "FOLLOWUP"
-    }, {
-      "dataValue" : "NOTC1-PMTR"
-    }, {
-      "dataValue" : "NOTC2-OD"
-    }, {
-      "dataValue" : "NOTC3-DIST"
-    }, {
-      "dataValue" : "NOTC4-CANL"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "AR_ACTIONTYPE",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "AssignedPersonList" : {
     "_id" : "wm-AssignedPersonList-wm.ServiceVariable-1687524248888",
@@ -171,24 +170,31 @@
     "controller" : "DomainValueRelatedBS"
   },
   "statusSelect_ARAgentView" : {
-    "_id" : "wm-statusSelect_ARAgentView-wm.Variable-1686908629767",
+    "_id" : "wm-statusSelect_ARAgentView_1-wm.ServiceVariable-1690185436233",
     "name" : "statusSelect_ARAgentView",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "Open"
-    }, {
-      "dataValue" : "Request Created"
-    }, {
-      "dataValue" : "Request Assigned"
-    }, {
-      "dataValue" : "Order Fulfilled"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "AR_STATUS",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "workCategorySelect_ARAgentView" : {
     "_id" : "wm-workCategorySelect_ARAgentView-wm.ServiceVariable-1686913573910",
