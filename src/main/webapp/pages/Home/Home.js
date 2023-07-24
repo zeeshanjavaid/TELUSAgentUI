@@ -55,6 +55,17 @@ Page.entityViewButtonClick = function($event, widget) {
     $('#filterGridEntityView').show();
     $('#filterGridBanView').hide();
 
+    // api call to show data in table
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+        'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
+        'workCategory': Page.Widgets.workCategorySelectEV.datavalue,
+        'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
+        'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
+        'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
+
+    });
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+
 };
 
 Page.banViewButtonClick = function($event, widget) {
@@ -76,6 +87,17 @@ Page.banViewButtonClick = function($event, widget) {
     // display filter grid for ban view and hide for entity view
     $('#filterGridBanView').show();
     $('#filterGridEntityView').hide();
+
+    // api call to show data in table
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+        'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
+        'workCategory': Page.Widgets.workCategorySelectBV.datavalue,
+        'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
+        'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
+        'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
+
+    });
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
 };
 

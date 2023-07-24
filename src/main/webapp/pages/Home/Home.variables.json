@@ -97,7 +97,27 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityOwner",
+      "value" : "bind:Widgets.entityOwnerSelectBV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "workCategory",
+      "value" : "bind:Widgets.workCategorySelectBV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "portfolio",
+      "value" : "bind:Widgets.portfolioSelectBV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "billingSystem",
+      "value" : "bind:Widgets.billingSystemSelectBV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "collectionStatus",
+      "value" : "bind:Widgets.collStatusSelectBV.datavalue",
+      "type" : "string"
+    } ],
     "type" : "io.swagger.client.model.AssignedEntitiesInClassicViewResponse",
     "service" : "CollectionDataService",
     "operation" : "getassignedEntitiesInClassicView",
@@ -190,7 +210,27 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityOwner",
+      "value" : "bind:Widgets.entityOwnerSelectEV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "workCategory",
+      "value" : "bind:Widgets.workCategorySelectEV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "portfolio",
+      "value" : "bind:Widgets.portfolioSelectEV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "billingSystem",
+      "value" : "bind:Widgets.billingSystemSelectEV.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "collectionStatus",
+      "value" : "bind:Widgets.collStatusSelectEV.datavalue",
+      "type" : "string"
+    } ],
     "type" : "io.swagger.client.model.AssignedEntitiesInEntityViewResponse",
     "service" : "CollectionDataService",
     "operation" : "getAssignedEntitiesInEntityView",
