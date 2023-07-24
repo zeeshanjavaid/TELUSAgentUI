@@ -421,21 +421,11 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
-    /*if (data.length > 1) {
-        Page.Variables.workCategoryValues_HomeEV.dataSet.unshift({
-            code: "All"
-        });
-    }*/
 
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
-    /*if (data.length > 1) {
-        Page.Variables.workCategoryValues_HomeBV.dataSet.unshift({
-            code: "All"
-        });
-    }*/
 
 };
