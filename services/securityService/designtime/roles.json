@@ -29,12 +29,6 @@
     "landingPage" : "Main"
   }
 }, {
-  "name" : "SystemValidation",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
   "name" : "ApplicationAudit",
   "description" : null,
   "roleConfig" : {
@@ -143,43 +137,85 @@
     "landingPage" : "Main"
   }
 }, {
-  "name" : "AR Agent Onshore",
+  "name" : "Home - My Assignments",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "AR Agent Offshore",
+  "name" : "My Actions",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "AR TM Onshore",
+  "name" : "My Team Actions",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "AR TM Offshore",
+  "name" : "Entity Profile (View and Manage)",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "Support",
+  "name" : "Dispute Management",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "OD Agent",
+  "name" : "PARR Management",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
   }
 }, {
-  "name" : "OD TM",
+  "name" : "Order Management - Agent",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Order Management - Order Desk Team",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "System Administration",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "DNTL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Reports",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Contacts",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Order Management",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Notes and Document",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"

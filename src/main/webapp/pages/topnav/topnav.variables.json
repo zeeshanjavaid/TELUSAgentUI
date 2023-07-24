@@ -9,27 +9,11 @@
     "dataSet" : [ {
       "label" : "AR Agent View",
       "link" : "#ARAgentView",
-      "roleId" : "Support"
+      "roleId" : "My Actions"
     }, {
       "label" : "Order Desk Agent View",
       "link" : "#OrderDeskAgentView",
-      "roleId" : "Support"
-    } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
-  "AdminstrationMenuItemModel" : {
-    "_id" : "wm-AdminstrationMenuItemModel-wm.Variable-1624518169068",
-    "name" : "AdminstrationMenuItemModel",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "label" : "PARR Report",
-      "link" : "#PARRReports",
-      "roleId" : "Support"
+      "roleId" : "My Actions"
     } ],
     "type" : "entry",
     "isList" : true,
@@ -224,6 +208,22 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "ReportMenuItemModel" : {
+    "_id" : "wm-AdminstrationMenuItemModel-wm.Variable-1624518169068",
+    "name" : "ReportMenuItemModel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "PARR Report",
+      "link" : "#PARRReports",
+      "roleId" : "Reports"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "rightTopMenuMV" : {
     "_id" : "wm-rightTopMenuMV-wm.Variable-1652791576971",
     "name" : "rightTopMenuMV",
@@ -290,11 +290,11 @@
     "dataSet" : [ {
       "label" : "User Management",
       "link" : "#Admin",
-      "roleId" : "Support"
+      "roleId" : "System Administration"
     }, {
       "label" : "Setup",
       "link" : "#SetupLanding",
-      "roleId" : "Support"
+      "roleId" : "System Administration"
     } ],
     "type" : "entry",
     "isList" : true,

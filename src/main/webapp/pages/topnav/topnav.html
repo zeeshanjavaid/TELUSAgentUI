@@ -11,10 +11,11 @@
                 </wm-nav-item>
                 <!-- <wm-nav-item name="nav_item3"><wm-menu caption="Order Management" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.OrderManagementMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu></wm-nav-item> -->
                 <wm-nav-item name="nav_item5">
-                    <wm-menu id="reportsID" caption="Reports" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.AdminstrationMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center"></wm-menu>
+                    <wm-menu id="reportsID" caption="Reports" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.ReportMenuItemModel.dataSet" menulayout="vertical" horizontalalign="center" userrole="roleId" accessroles="Reports"></wm-menu>
                 </wm-nav-item>
                 <wm-nav-item name="nav_item6">
-                    <wm-menu caption="System Administration" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.SystemAdminMenuItem.dataSet" menulayout="vertical" horizontalalign="center" accessroles="AR TM Offshore,Support,OD TM,AR TM Onshore"></wm-menu>
+                    <wm-menu caption="System Administration" name="anchor4" autoclose="outsideClick" iconclass="" type="anchor" dataset="bind:Variables.SystemAdminMenuItem.dataSet" menulayout="vertical" horizontalalign="center" accessroles="Authenticated"
+                        userrole="roleId"></wm-menu>
                 </wm-nav-item>
                 <!--<wm-nav-item name="nav_item4"><wm-anchor name="anchor3" iconclass="fico-icon-search" caption="" on-click="Actions.goToPage_lookupEntity.invoke()" textalign="center"></wm-anchor></wm-nav-item>--></wm-nav>
             <wm-container name="rightcontainer" class="right" width="25%" horizontalalign="left">

@@ -3,8 +3,8 @@
         <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     </wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
-    <wm-content name="content1">
-        <wm-page-content columnwidth="1" name="page_content1">
+    <wm-content name="content1" accessroles="Authenticated">
+        <wm-page-content columnwidth="1" name="page_content1" accessroles="Authenticated">
             <wm-layoutgrid name="layoutgrid2" columns="7">
                 <wm-gridrow name="gridrow28">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn61" width="3%">
@@ -146,11 +146,11 @@
                     <!--  <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>--></wm-gridrow>
             </wm-layoutgrid>
             <wm-container name="container1">
-                <wm-tabs name="tabs1">
+                <wm-tabs name="tabs1" accessroles="Authenticated">
                     <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
-                        show="true" deferload="true" badgetype="primary"></wm-tabpane>
+                        show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
-                    <wm-tabpane name="Parr" title="PARR" show="true" on-select="ParrSelect($event, widget)" on-deselect="ParrDeselect($event, widget)">
+                    <wm-tabpane name="Parr" title="PARR" show="true" on-select="ParrSelect($event, widget)" on-deselect="ParrDeselect($event, widget)" accessroles="PARR Management">
                         <wm-container name="container3_1" show="true" class="rrr" width="100%" style="overflow: hidden;">
                             <!--<wm-button class="btn-default" caption="Create PARR" type="button" margin="0.5em unset unset 97em" float="right" name="Create" iconposition="left" show="bind:Variables.ParrPageName.dataSet.dataValue=='ParrList'" textalign="center" backgroundposition="right, top"
                                 on-click="CreateClick($event, widget)" deferload="false"></wm-button>-->
@@ -166,7 +166,7 @@
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
-                    <wm-tabpane name="Dispute" title="Dispute" on-select="DisputeSelect($event, widget)" on-deselect="DisputeDeselect($event, widget)">
+                    <wm-tabpane name="Dispute" title="Dispute" on-select="DisputeSelect($event, widget)" on-deselect="DisputeDeselect($event, widget)" accessroles="Dispute Management">
                         <wm-container name="container4" class="rrr">
                             <!--<wm-button class="btn-default createDispute" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>-->
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="DisputeListPanel" width="100%" content="DisputeList" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'">
@@ -180,33 +180,27 @@
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
-                    <wm-tabpane name="OrderManagement" title="Order Management" on-select="OrderManagementSelect($event, widget)" on-deselect="OrderManagementDeselect($event, widget)">
+                    <wm-tabpane name="OrderManagement" title="Order Management" on-select="OrderManagementSelect($event, widget)" on-deselect="OrderManagementDeselect($event, widget)" accessroles="Order Management - Agent,Order Management - Order Desk Team">
                         <wm-container name="container4" class="rrr">
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="OrderManagementPanel" width="100%" content="OrderManagement" show="bind:Variables.OrderManagementPageName.dataSet.dataValue=='OrderManagement'">
                                 <wm-param name="entityId" value="bind:pageParams.entityId" type="Integer"></wm-param>
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
-                    <wm-tabpane name="UserNotes" title="User Notes &amp; Docs">
+                    <wm-tabpane name="UserNotes" title="User Notes &amp; Docs" accessroles="Notes and Document">
                         <wm-label padding="unset 0.5em" name="label12" caption="Notes"></wm-label>
                     </wm-tabpane>
-                    <wm-tabpane name="HistoryActions" title="Actions" padding="unset unset unset 5pt">
+                    <wm-tabpane name="HistoryActions" title="Actions" padding="unset unset unset 5pt" accessroles="My Actions,My Team Actions">
                         <wm-panel iconclass="" autoclose="outsideClick" title="" name="EntityHistoryActionListPanel" content="EntityHistoryActionList">
                             <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                         </wm-panel>
                     </wm-tabpane>
-                    <wm-tabpane name="tabpane3" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
+                    <wm-tabpane name="Contacts" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)" accessroles="Contacts">
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
                         <!--<wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="true"></wm-panel><wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="true"></wm-panel>--></wm-tabpane>
                 </wm-tabs>
             </wm-container>

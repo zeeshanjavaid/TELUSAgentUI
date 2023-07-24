@@ -15,9 +15,6 @@
     "roleName" : "everyone",
     "roleHierarchy" : null
   }, {
-    "roleName" : "SystemValidation",
-    "roleHierarchy" : null
-  }, {
     "roleName" : "ApplicationAudit",
     "roleHierarchy" : null
   }, {
@@ -72,25 +69,46 @@
     "roleName" : "SetupTimerSettings",
     "roleHierarchy" : null
   }, {
-    "roleName" : "AR Agent Onshore",
+    "roleName" : "Home - My Assignments",
     "roleHierarchy" : null
   }, {
-    "roleName" : "AR Agent Offshore",
+    "roleName" : "My Actions",
     "roleHierarchy" : null
   }, {
-    "roleName" : "AR TM Onshore",
+    "roleName" : "My Team Actions",
     "roleHierarchy" : null
   }, {
-    "roleName" : "AR TM Offshore",
+    "roleName" : "Entity Profile (View and Manage)",
     "roleHierarchy" : null
   }, {
-    "roleName" : "Support",
+    "roleName" : "Dispute Management",
     "roleHierarchy" : null
   }, {
-    "roleName" : "OD Agent",
+    "roleName" : "PARR Management",
     "roleHierarchy" : null
   }, {
-    "roleName" : "OD TM",
+    "roleName" : "Order Management - Agent",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Order Management - Order Desk Team",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "System Administration",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "DNTL",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Reports",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Contacts",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Order Management",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Notes and Document",
     "roleHierarchy" : null
   } ]
 }

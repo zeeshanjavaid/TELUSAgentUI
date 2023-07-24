@@ -1,7 +1,7 @@
 <wm-page pagetitle="Parr Reports" name="page1">
     <wm-header content="header" name="header1"></wm-header>
     <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
-    <wm-content name="content1">
+    <wm-content name="content1" accessroles="Reports">
         <wm-page-content columnwidth="12" name="page_content1">
             <wm-layoutgrid name="layoutgrid1" columns="3">
                 <wm-gridrow name="gridrow4">
@@ -93,7 +93,7 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="PARR Details" class="PARRdetailsDailog" name="PARRdetailsDailog">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="PARR Details" class="PARRdetailsDailog" name="PARRdetailsDailog" accessroles="Authenticated">
         <wm-layoutgrid name="layoutgrid4_1">
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn74" class="parrlabel1">

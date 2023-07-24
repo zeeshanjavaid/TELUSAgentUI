@@ -3,7 +3,8 @@ package com.fico.pscomponent.handlers;
 import com.fico.dmp.telusagentuidb.Role;
 import com.fico.dmp.telusagentuidb.UserRole;
 
-import com.fico.dmp.telusagentuidb.models.query.GetActiveRolesByUserNameResponse;
+// import com.fico.dmp.telusagentuidb.models.query.GetActiveRolesByUserNameResponse;
+import com.fico.dmp.telusagentuidb.models.query.GetPermissionByUserIdResponse;
 import com.fico.dmp.telusagentuidb.service.RoleService;
 import com.fico.dmp.telusagentuidb.service.UserRoleService;
 
@@ -100,10 +101,10 @@ public class RoleManagementHandler {
     public List<String> getUserRoleByUsername(String username) {
         final List<String> roles = new ArrayList<String>();
         final Pageable pageable = PageRequest.of(0, 200);
-        final Page<GetActiveRolesByUserNameResponse> response = coreQueryExecutorServiceImpl.executeGetActiveRolesByUserName(username, pageable);
-        final List<GetActiveRolesByUserNameResponse> rolesResponse = response.toList();
-        for (GetActiveRolesByUserNameResponse r : rolesResponse) {
-            roles.add(r.getRole());
+        final Page<GetPermissionByUserIdResponse> response = coreQueryExecutorServiceImpl.executeGetPermissionByUserId(username, pageable);
+        final List<GetPermissionByUserIdResponse> rolesResponse = response.toList();
+        for (GetPermissionByUserIdResponse r : rolesResponse) {
+            roles.add(r.getName());
         }
         return roles;
     }
