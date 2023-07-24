@@ -351,7 +351,7 @@
             <wm-button class="primaryButton" caption="Create Entity &amp; Transfer BANs" type="button" margin="unset 0.5em" name="CreateEntityAndTransBansButton" on-click="CreateEntityAndTransBansButtonClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="BANs Travel History" name="BansTravelHistoryDialog" width="70%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="BANs Travel History" name="BansTravelHistoryDialog" width="70%" on-opened="BansTravelHistoryDialogOpened($event, widget)">
         <wm-layoutgrid name="layoutgrid14">
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn58">

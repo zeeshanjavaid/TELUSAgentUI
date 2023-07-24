@@ -151,17 +151,18 @@ public class CollectionEntityService {
     	              	logger.info("Checking id value "+id);
 
   			logger.info("::::::::Calling  getBillingAccountRef method ::::::::");
-  			if(id==null)
-  			{
-  			    id="0";
-  			}
+
+  			String idStr = null;
+  			if(id != null) {
+  				idStr = "in:"+id;
+ 			}
   			
   			
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF)
-                     .queryParam("fields", fields)
-                     .queryParam("ban", ban)
-                     .queryParam("entityId",entityId)
-                     .queryParam("id","in:" + id);
+            		 .queryParamIfPresent("fields", Optional.ofNullable(fields))
+                     .queryParamIfPresent("ban", Optional.ofNullable(ban))
+                     .queryParamIfPresent("entityId",Optional.ofNullable(entityId))
+                     .queryParamIfPresent("id",Optional.ofNullable(idStr));
                      
                      	logger.info("::::::::Billing Account Reference endpoint call success ::::::::",builder.toUriString());
 

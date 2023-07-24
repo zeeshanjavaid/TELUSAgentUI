@@ -68,24 +68,26 @@ public class EntityBanTravelHistoryService {
     	List<String> billingAcctRefIds = new ArrayList<String>();
     	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();
     	if(!CollectionUtils.isEmpty(collectionEntityBillingAccountRefList)) {
-        	billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
-        	logger.info("billingAcctRefIds----"+billingAcctRefIds);
+        	//billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
         	
         	for (CollectionEntityBillingAccountRefMap collectionEntityBillingAccountRefMap : collectionEntityBillingAccountRefList) {
+        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
         		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
         		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
         		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
-        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
         		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
-        		}
+        		billingAcctRefIds.add(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
         		banTravelHistoryModelList.add(banTravelHistoryModel);
+        		}
 			}
     	}
     	
-    	String billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
-    	logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
-    	
-    	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(null, null, null, null, null, null);
+    	String billingAcctRefIdsInListAsString = null;
+    	if(billingAcctRefIds != null && billingAcctRefIds.size() > 0) {
+    		 billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+    		logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
+    	}
+    	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(null, null, null, null, null, billingAcctRefIdsInListAsString);
     	
     	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
     		

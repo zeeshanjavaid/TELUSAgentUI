@@ -472,3 +472,9 @@ Page.PatchInCollectionEntityonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 10000);
 
 };
+Page.BansTravelHistoryDialogOpened = function($event, widget) {
+    Page.Variables.entityBanTravelHistoryVar.setInput({
+        "id": parseInt(Page.pageParams.entityId)
+    });
+    Page.Variables.entityBanTravelHistoryVar.invoke();
+};
