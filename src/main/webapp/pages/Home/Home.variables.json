@@ -103,7 +103,7 @@
       "type" : "string"
     }, {
       "target" : "workCategory",
-      "value" : "bind:Widgets.workCategorySelectBV.datavalue",
+      "value" : "bind:Variables.workCategoryValues_HomeBV.dataSet",
       "type" : "string"
     }, {
       "target" : "portfolio",
@@ -216,7 +216,7 @@
       "type" : "string"
     }, {
       "target" : "workCategory",
-      "value" : "bind:Widgets.workCategorySelectEV.datavalue",
+      "value" : "bind:Variables.workCategoryValues_HomeEV.dataSet",
       "type" : "string"
     }, {
       "target" : "portfolio",

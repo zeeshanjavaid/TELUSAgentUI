@@ -55,10 +55,17 @@ Page.entityViewButtonClick = function($event, widget) {
     $('#filterGridEntityView').show();
     $('#filterGridBanView').hide();
 
+    var workCategoriesEVBtnClk = Page.Widgets.workCategorySelectEV.datavalue;
+    if (workCategoriesEVBtnClk.length > 1) {
+        var finalWorkCategoriesEVBtnClk = workCategoriesEVBtnClk.join("|");
+    } else {
+        var finalWorkCategoriesEVBtnClk = workCategoriesEVBtnClk;
+    }
+
     // api call to show data in table
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
-        'workCategory': Page.Widgets.workCategorySelectEV.datavalue,
+        'workCategory': finalWorkCategoriesEVBtnClk,
         'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
         'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
         'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
@@ -88,10 +95,17 @@ Page.banViewButtonClick = function($event, widget) {
     $('#filterGridBanView').show();
     $('#filterGridEntityView').hide();
 
+    var workCategoriesBVBtnClk = Page.Widgets.workCategorySelectEV.datavalue;
+    if (workCategoriesBVBtnClk.length > 1) {
+        var finalWorkCategoriesBVBtnClk = workCategoriesBVBtnClk.join("|");
+    } else {
+        var finalWorkCategoriesBVBtnClk = workCategoriesBVBtnClk;
+    }
+
     // api call to show data in table
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
-        'workCategory': Page.Widgets.workCategorySelectBV.datavalue,
+        'workCategory': finalWorkCategoriesBVBtnClk,
         'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
         'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
         'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
@@ -103,42 +117,41 @@ Page.banViewButtonClick = function($event, widget) {
 
 // function added to clear all the fields in the filter for Entity View
 Page.clearFilterFieldsEntityView = function($event, widget) {
-    Page.Widgets.AssignedTeamSelectEV.datavalue = "";
-    Page.Widgets.portfolioSelectEV.datavalue = "";
+    Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
+    Page.Widgets.portfolioSelectEV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectEV.datavalue = "Y";
-    Page.Widgets.entityOwnerSelectEV.datavalue = "";
+    Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
     Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";
-    Page.Widgets.workCategorySelectEV.datavalue = "";
-    Page.Widgets.collStatusSelectEV.datavalue = "";
+    Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
+    Page.Widgets.collStatusSelectEV.datavalue = "ALL";
 }
 
 // function added to clear all the fields in the filter for Ban View
 Page.clearFilterFieldsBanView = function($event, widget) {
-    Page.Widgets.AssignedTeamSelectBV.datavalue = "";
-    Page.Widgets.portfolioSelectBV.datavalue = "";
+    Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
+    Page.Widgets.portfolioSelectBV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectBV.datavalue = "Y";
-    Page.Widgets.entityOwnerSelectBV.datavalue = "";
+    Page.Widgets.entityOwnerSelectBV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
     Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";
-    Page.Widgets.workCategorySelectBV.datavalue = "";
-    Page.Widgets.collStatusSelectBV.datavalue = "";
+    Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
+    Page.Widgets.collStatusSelectBV.datavalue = "ALL";
 }
 
 // function added to display table based on the filters for entity view
 Page.applyFiltersEntityView = function($event, widget) {
     debugger;
-    Page.Widgets.AssignedTeamSelectEV.datavalue;
-    Page.Widgets.portfolioSelectEV.datavalue;
-    Page.Widgets.includeCurrentCreditSelectEV.datavalue;
-    Page.Widgets.entityOwnerSelectEV.datavalue;
-    Page.Widgets.billingSystemSelectEV.datavalue;
-    Page.Widgets.ARExcludedInternalSelectEV.datavalue;
-    Page.Widgets.workCategorySelectEV.datavalue;
-    Page.Widgets.collStatusSelectEV.datavalue;
+
+    var workCategoriesEV = Page.Widgets.workCategorySelectEV.datavalue;
+    if (workCategoriesEV.length > 1) {
+        var finalWorkCategoriesEV = workCategoriesEV.join("|");
+    } else {
+        var finalWorkCategoriesEV = workCategoriesEV;
+    }
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
-        'workCategory': Page.Widgets.workCategorySelectEV.datavalue,
+        'workCategory': finalWorkCategoriesEV,
         'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
         'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
         'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
@@ -151,17 +164,16 @@ Page.applyFiltersEntityView = function($event, widget) {
 // function added to display table based on the filters for ban view
 Page.applyFiltersBanView = function($event, widget) {
     debugger;
-    Page.Widgets.AssignedTeamSelectBV.datavalue;
-    Page.Widgets.portfolioSelectBV.datavalue;
-    Page.Widgets.includeCurrentCreditSelectBV.datavalue;
-    Page.Widgets.entityOwnerSelectBV.datavalue;
-    Page.Widgets.billingSystemSelectBV.datavalue;
-    Page.Widgets.ARExcludedInternalSelectBV.datavalue;
-    Page.Widgets.workCategorySelectBV.datavalue;
-    Page.Widgets.collStatusSelectBV.datavalue;
+
+    var workCategoriesBV = Page.Widgets.workCategorySelectEV.datavalue;
+    if (workCategoriesBV.length > 1) {
+        var finalWorkCategoriesBV = workCategoriesBV.join("|");
+    } else {
+        var finalWorkCategoriesBV = workCategoriesBV;
+    }
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
-        'workCategory': Page.Widgets.workCategorySelectBV.datavalue,
+        'workCategory': finalWorkCategoriesBV,
         'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
         'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
         'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
