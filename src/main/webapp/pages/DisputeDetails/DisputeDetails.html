@@ -344,12 +344,12 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
-    <wm-panel iconclass="bind:IsExpandedIS === false ? 'fico-icon-chevron-light-right':'fico-icon-chevron-light-down'" autoclose="outsideClick" title="Dispute History" name="disputeHistory" collapsible="true" on-expand="disputeHistoryExpand($event, widget)"
-        on-collapse="disputeHistoryCollapse($event, widget)" expanded="true" class="disputePanel">
+    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" name="disputeHistory" collapsible="true"
+        on-expand="disputeHistoryExpand($event, widget)" on-collapse="disputeHistoryCollapse($event, widget)" expanded="true">
         <wm-layoutgrid name="layoutgrid25">
             <wm-gridrow name="gridrow39">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
-                    <wm-container name="container21" margin="-15px 0 0 60px">
+                <wm-gridcolumn columnwidth="10" name="gridcolumn87" horizontalalign="left">
+                    <wm-container name="container21" margin="20px 0 0 60px">
                         <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.disputeHistoryVar.dataSet" width="98%" navigationalign="right">
                             <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -358,7 +358,7 @@
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="5" name="gridcolumn88"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="3" name="gridcolumn88"></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-panel>

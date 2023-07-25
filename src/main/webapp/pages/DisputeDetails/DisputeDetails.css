@@ -54,7 +54,7 @@ h3 {
     border-bottom: 1px solid #ddd;
 }
 
-.disputePanel h4 {
+/*.disputePanel h4 {
     padding: 0 0 7px 0;
     width: 96%;
     font-size: 22px !important;
@@ -64,6 +64,63 @@ h3 {
     left: 59px;
     border-bottom: 1px solid #ddd; 
     font-weight: bold !important;
+}*/
+h4.panelSubHeading {
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0 0 60px;
+    border-bottom: 1px solid #ddd; 
+    width: 96%;
+    padding-bottom: 6px;
+}
+
+.hide-icon1 {
+    display: none;
+}
+
+.hide-icon2 {
+    display: none;
+}
+
+i.fico-icon-chevron-down.show-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.hide-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.show-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.hide-icon1 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.show-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-down.hide-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.show-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+i.fico-icon-chevron-right.hide-icon2 {
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 button.app-icon.wi.card-action {

@@ -20,6 +20,8 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+    Page.Variables.UserLoggedInVar_OrderDesk.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
 };
 
 // function added to clear all the fields in the filter grid
@@ -55,3 +57,85 @@ Page.applyFilter = function($event, widget) {
 Page.goToEnityPage = function(row) {
     window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 }
+
+Page.getAllTeamList_OrderDeskViewonSuccess = function(variable, data) {
+    if (Page.Variables.getAllTeamList_OrderDeskView.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getAllTeamList_OrderDeskView.dataSet.unshift({
+            id: 0,
+            teamId: 'ALL',
+            teamName: 'ALL'
+        });
+        Page.Variables.getAllTeamList_OrderDeskView.dataSet = Page.Variables.getAllTeamList_OrderDeskView.dataSet;
+    }
+};
+Page.AssignedTeamSelecton_Change = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
+        Page.Variables.getAllActiveUserList_OrderDesk.invoke();
+    } else {
+        Page.Variables.getUserListByTeamId_OrderDesk.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelect.datavalue
+        });
+        Page.Variables.getUserListByTeamId_OrderDesk.invoke();
+    }
+};
+
+// adding 'All' in the dropdown list for entityOwner dropdown for ENTITY VIEW
+Page.getAllActiveUserList_OrderDeskonSuccess = function(variable, data) {
+    debugger;
+    if (Page.Variables.getAllActiveUserList_OrderDesk.dataSet.length > 1) {
+        debugger;
+        Page.Variables.getAllActiveUserList_OrderDesk.dataSet.unshift({
+            empId: 'ALL',
+            firstName: 'ALL',
+            lastName: ''
+        });
+        Page.Variables.getAllActiveUserList_OrderDesk.dataSet = Page.Variables.getAllActiveUserList_OrderDesk.dataSet;
+    }
+};
+
+Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
+    Page.Variables.getAllActiveUserList_OrderDesk.dataSet = data;
+    if (data.length > 0) {
+        if (data.length > 1) {
+            debugger;
+            Page.Variables.getAllActiveUserList_OrderDesk.dataSet.unshift({
+                empId: 'ALL',
+                firstName: 'ALL',
+                lastName: ''
+            });
+            Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
+        }
+        Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
+    }
+};
+
+Page.workCategoryValues_OrderDeskonSuccess = function(variable, data) {
+    Page.Variables.workCategoryValues_OrderDesk.dataSet = [];
+    Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
+};
+Page.EntityOwnerSelectChange = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
+        Page.Variables.workCategorySelect_OrderDeskView.invoke();
+    } else if (Page.Widgets.EntityOwnerSelect.datavalue == 'NULL') {
+        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+            'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+        });
+        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+    } else {
+        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+            'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
+        });
+        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+    }
+};
+
+Page.workCategorySelect_OrderDeskViewonSuccess = function(variable, data) {
+    if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
+        Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
+    }
+};
+
+Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data){
+	
+};

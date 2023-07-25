@@ -22,7 +22,7 @@
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50" class="selectGrid">
-                    <wm-select name="AssignedTeamSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_ARAgentView.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="AssignedTeamSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_ARAgentView.dataSet" datafield="teamId" placeholder="" displayfield="teamName" on-change="AssignedTeamSelectChange($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedPersonGrid">
                     <wm-label caption="Assigned Person" name="label8" color="grey" class="ARAgentLabel"></wm-label>
@@ -36,13 +36,14 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
                     <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                        placeholder="" displayfield="dataValue" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId" datavalue="bind:Variables.UserLoggedInVar_ARAgent.dataSet.empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_ARAgentView.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true" style="display: block; width: 145%;"></wm-select>
+                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_ARAgent.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
+                        on-change="WorkCategorySelectChange($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">

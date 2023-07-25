@@ -22,7 +22,7 @@
                     <wm-label caption="Assigned Team" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50" class="selectGrid">
-                    <wm-select name="AssignedTeamSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_OrderDeskView.dataSet" datafield="teamId" placeholder="All" displayfield="teamName" on-change="assignedTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="AssignedTeamSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_OrderDeskView.dataSet" datafield="teamId" placeholder="" displayfield="teamName" on-change="AssignedTeamSelecton_Change($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="assignedPersonGrid">
                     <wm-label caption="Assigned Person" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
@@ -35,14 +35,14 @@
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDeskView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDesk.dataSet" placeholder="All" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId"
+                        datavalue="bind:Variables.UserLoggedInVar_OrderDesk.dataSet.empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_OrderDeskView.dataSet" datafield="code" displayfield="code" placeholder="All" multiple="true" style="display: block; width: 145%;"></wm-select>
+                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_OrderDesk.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7" class="gridRow2">
