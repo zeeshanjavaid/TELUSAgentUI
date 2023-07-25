@@ -12,7 +12,7 @@
                             <wm-label name="label2" class="dv-header-label dvType" caption="bind:Variables.getDvTypeById.dataSet[$i].description"></wm-label>
                         </wm-gridcolumn>
                         <wm-button margin="0 10px 20px 0" class="btn secondaryButton" caption="Cancel" type="button" name="createDV_Button" on-click="Actions.goToPage_DomainValueTypes.invoke()"></wm-button>
-                        <wm-button margin="0 0 20px 0" class="btn primaryButton" caption="Create" type="button" name="createDV_Button" on-click="createDV_ButtonClick($event, widget)"></wm-button>
+                        <wm-button margin="0 0 20px 0" class="btn primaryButton" caption="Create" type="button" name="createDV_Button" on-click="createDV_ButtonClick($event, widget)" accessroles="Authenticated"></wm-button>
                     </wm-gridcolumn>
                     <wm-container name="dvDataControl-container" class="flexCol inflex-center-sb" width="100%" margin="20px unset unset unset">
                         <wm-container name="dvSearch-container" width="100%" class="inflex-center-sb">
