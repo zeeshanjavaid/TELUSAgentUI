@@ -222,6 +222,11 @@ Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
     if (Page.Widgets.entityOwnerSelectEV.datavalue == 'ALL') {
         Page.Variables.workCategorySelect_HomeEV.invoke();
+    } else if (Page.Widgets.entityOwnerSelectEV.datavalue == 'NULL') {
+        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+            'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+        });
+        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
     } else {
         Page.Variables.workcategoriesByEmpId_homeEV.setInput({
             'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
@@ -234,6 +239,11 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     debugger;
     if (Page.Widgets.entityOwnerSelectBV.datavalue == 'ALL') {
         Page.Variables.workCategorySelect_HomeBV.invoke();
+    } else if (Page.Widgets.entityOwnerSelectBV.datavalue == 'NULL') {
+        Page.Variables.workcategoriesByEmpId_homeBV.setInput({
+            'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+        });
+        Page.Variables.workcategoriesByEmpId_homeBV.invoke();
     } else {
         Page.Variables.workcategoriesByEmpId_homeBV.setInput({
             'emplId': Page.Widgets.entityOwnerSelectBV.datavalue
