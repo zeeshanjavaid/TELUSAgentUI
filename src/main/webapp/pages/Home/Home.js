@@ -36,7 +36,6 @@ Page.onReady = function() {
 
 
 Page.entityViewButtonClick = function($event, widget) {
-    debugger;
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.hideBanTableGrid.dataValue = false;
     Page.Variables.hideBanFilterGrid.dataValue = false;
@@ -55,28 +54,9 @@ Page.entityViewButtonClick = function($event, widget) {
     $('#filterGridEntityView').show();
     $('#filterGridBanView').hide();
 
-    var workCategoriesEVBtnClk = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesEVBtnClk.length > 1) {
-        var finalWorkCategoriesEVBtnClk = workCategoriesEVBtnClk.join("|");
-    } else {
-        var finalWorkCategoriesEVBtnClk = workCategoriesEVBtnClk;
-    }
-
-    // api call to show data in table
-    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-        'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
-        'workCategory': finalWorkCategoriesEVBtnClk,
-        'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
-        'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
-        'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
-
-    });
-    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
-
 };
 
 Page.banViewButtonClick = function($event, widget) {
-    debugger;
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.hideBanTableGrid.dataValue = true;
     Page.Variables.hideBanFilterGrid.dataValue = true;
@@ -94,24 +74,6 @@ Page.banViewButtonClick = function($event, widget) {
     // display filter grid for ban view and hide for entity view
     $('#filterGridBanView').show();
     $('#filterGridEntityView').hide();
-
-    var workCategoriesBVBtnClk = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesBVBtnClk.length > 1) {
-        var finalWorkCategoriesBVBtnClk = workCategoriesBVBtnClk.join("|");
-    } else {
-        var finalWorkCategoriesBVBtnClk = workCategoriesBVBtnClk;
-    }
-
-    // api call to show data in table
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-        'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
-        'workCategory': finalWorkCategoriesBVBtnClk,
-        'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
-        'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
-        'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
-
-    });
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
 };
 
@@ -144,10 +106,12 @@ Page.applyFiltersEntityView = function($event, widget) {
     debugger;
 
     var workCategoriesEV = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesEV.length > 1) {
-        var finalWorkCategoriesEV = workCategoriesEV.join("|");
-    } else {
-        var finalWorkCategoriesEV = workCategoriesEV;
+    if (workCategoriesEV) {
+        if (workCategoriesEV.length > 1) {
+            var finalWorkCategoriesEV = workCategoriesEV.join("|");
+        } else {
+            var finalWorkCategoriesEV = workCategoriesEV;
+        }
     }
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
@@ -166,10 +130,12 @@ Page.applyFiltersBanView = function($event, widget) {
     debugger;
 
     var workCategoriesBV = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesBV.length > 1) {
-        var finalWorkCategoriesBV = workCategoriesBV.join("|");
-    } else {
-        var finalWorkCategoriesBV = workCategoriesBV;
+    if (workCategoriesBV) {
+        if (workCategoriesBV.length > 1) {
+            var finalWorkCategoriesBV = workCategoriesBV.join("|");
+        } else {
+            var finalWorkCategoriesBV = workCategoriesBV;
+        }
     }
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
@@ -195,7 +161,6 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 };
 
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Page.Widgets.AssignedTeamSelectEV.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_HomeEV.invoke();
     } else {
@@ -207,7 +172,6 @@ Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
 };
 
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Page.Widgets.AssignedTeamSelectBV.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_HomeBV.invoke();
     } else {
@@ -219,7 +183,6 @@ Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
 };
 
 Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Page.Widgets.entityOwnerSelectEV.datavalue == 'ALL') {
         Page.Variables.workCategorySelect_HomeEV.invoke();
     } else if (Page.Widgets.entityOwnerSelectEV.datavalue == 'NULL') {
@@ -236,7 +199,6 @@ Page.entityOwnerEVSelectOn_Change = function($event, widget, newVal, oldVal) {
 };
 
 Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
-    debugger;
     if (Page.Widgets.entityOwnerSelectBV.datavalue == 'ALL') {
         Page.Variables.workCategorySelect_HomeBV.invoke();
     } else if (Page.Widgets.entityOwnerSelectBV.datavalue == 'NULL') {
@@ -252,39 +214,14 @@ Page.entityOwnerBVSelectOn_Change = function($event, widget, newVal, oldVal) {
     }
 };
 
-Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    var dropdown = document.getElementById('workCategorySelectEV');
-    var selectedOptions = Page.Widgets.workCategorySelectEV.datavalue;
-    var isAllSelected = selectedOptions.includes('ALL');
-    var otherOptionsSelected = selectedOptions.length > 1;
-    if (isAllSelected && otherOptionsSelected) {
-        debugger;
-        let valuesWithoutAll = selectedOptions.shift();
-        Page.Widgets.workCategorySelectEV.datavalue = valuesWithoutAll;
-    }
-};
+Page.workCategorySelectEVChange = function($event, widget, newVal, oldVal) {};
 
-Page.workCategorySelectBVChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    var dropdown = document.getElementById('workCategorySelectBV');
-    var selectedOptions = Page.Widgets.workCategorySelectBV.datavalue;
-    var isAllSelected = selectedOptions.includes('ALL');
-    var otherOptionsSelected = selectedOptions.length > 1;
-    if (isAllSelected && otherOptionsSelected) {
-        debugger;
-        let valuesWithoutAll = selectedOptions.shift();
-        Page.Widgets.workCategorySelectBV.datavalue = valuesWithoutAll;
-    }
-};
-
+Page.workCategorySelectBVChange = function($event, widget, newVal, oldVal) {};
 
 
 // adding 'All' in the dropdown list for assignedTeam dropdown for ENTITY VIEW
 Page.getTeamList_HomeEVonSuccess = function(variable, data) {
-    debugger;
     if (Page.Variables.getTeamList_HomeEV.dataSet.length > 1) {
-        debugger;
         Page.Variables.getTeamList_HomeEV.dataSet.unshift({
             id: 0,
             teamId: 'ALL',
@@ -296,9 +233,7 @@ Page.getTeamList_HomeEVonSuccess = function(variable, data) {
 
 // adding 'All' in the dropdown list for assignedTeam dropdown for BAN VIEW
 Page.getTeamList_HomeBVonSuccess = function(variable, data) {
-    debugger;
     if (Page.Variables.getTeamList_HomeBV.dataSet.length > 1) {
-        debugger;
         Page.Variables.getTeamList_HomeBV.dataSet.unshift({
             id: 0,
             teamId: 'ALL',
@@ -310,9 +245,7 @@ Page.getTeamList_HomeBVonSuccess = function(variable, data) {
 
 // adding 'All' in the dropdown list for entityOwner dropdown for ENTITY VIEW
 Page.getAllActiveUserList_HomeEVonSuccess = function(variable, data) {
-    debugger;
     if (Page.Variables.getAllActiveUserList_HomeEV.dataSet.length > 1) {
-        debugger;
         Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
             empId: 'ALL',
             firstName: 'ALL',
@@ -324,9 +257,7 @@ Page.getAllActiveUserList_HomeEVonSuccess = function(variable, data) {
 
 // adding 'All' in the dropdown list for entityOwner dropdown for BAN VIEW
 Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
-    debugger;
     if (Page.Variables.getAllActiveUserList_HomeBV.dataSet.length > 1) {
-        debugger;
         Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
             empId: 'ALL',
             firstName: 'ALL',
@@ -336,43 +267,19 @@ Page.getAllActiveUserList_HomeBVonSuccess = function(variable, data) {
     }
 };
 
-// adding 'All' in the dropdown list for workCategory dropdown for ENTITY VIEW
-/*Page.workCategoryValues_HomeEVonSuccess = function(variable, data) {
-    debugger;
-    if (data.length > 1) {
-        debugger;
-        Page.Variables.workCategoryValues_HomeEV.dataSet = [];
-        data.unshift({
-            code: "All"
-        });
-        Page.Variables.workCategoryValues_HomeEV.dataSet = data;
-    }
-};*/
+Page.workCategoryValues_HomeEVonSuccess = function(variable, data) {
+    Page.Variables.workCategoryValues_HomeEV.dataSet = [];
+    Page.Variables.workCategoryValues_HomeEV.dataSet = data;
 
-// adding 'All' in the dropdown list for workCategory dropdown for BAN VIEW
-/*Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
-    debugger;
-    if (data.length > 1) {
-        debugger;
-        Page.Variables.workCategoryValues_HomeBV.dataSet = [];
-        data.unshift({
-            code: "All"
-        });
-        Page.Variables.workCategoryValues_HomeBV.dataSet = data;
-    }
-};*/
+};
+
+Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
+    Page.Variables.workCategoryValues_HomeBV.dataSet = [];
+    Page.Variables.workCategoryValues_HomeBV.dataSet = data;
+};
 
 
 Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
-    debugger;
-    /*if (data.length > 1) {
-        data.unshift({
-            code: "ALL"
-        });
-        if (Page.Widgets.entityOwnerSelectEV.datavalue == 'ALL') {
-            Page.Variables.workCategoryValues_HomeEV.dataSet = data;
-        }
-    }*/
     if (Page.Widgets.entityOwnerSelectEV.datavalue == 'ALL') {
         Page.Variables.workCategoryValues_HomeEV.dataSet = data;
     }
@@ -380,15 +287,6 @@ Page.workCategorySelect_HomeEVonSuccess = function(variable, data) {
 
 
 Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
-    debugger;
-    /*if (data.length > 1) {
-        data.unshift({
-            code: "ALL"
-        });
-        if (Page.Widgets.entityOwnerSelectBV.datavalue == 'ALL') {
-            Page.Variables.workCategoryValues_HomeBV.dataSet = data;
-        }
-    }*/
     if (Page.Widgets.entityOwnerSelectBV.datavalue == 'ALL') {
         Page.Variables.workCategoryValues_HomeBV.dataSet = data;
     }
@@ -396,11 +294,9 @@ Page.workCategorySelect_HomeBVonSuccess = function(variable, data) {
 
 
 Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
-    debugger;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
-            debugger;
             Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
                 empId: 'ALL',
                 firstName: 'ALL',
@@ -413,7 +309,6 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
 };
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
-    debugger;
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
@@ -429,13 +324,9 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
 };
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
-    debugger;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
-
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
-    debugger;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
-
 };

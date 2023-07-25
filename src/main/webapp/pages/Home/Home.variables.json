@@ -97,7 +97,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityOwner",
-      "value" : "bind:Widgets.entityOwnerSelectEV.datavalue",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
       "type" : "string"
     }, {
       "target" : "workCategory",
