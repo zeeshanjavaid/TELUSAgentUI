@@ -22,6 +22,7 @@ Page.onReady = function() {
      */
 
     debugger;
+    Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
     Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
@@ -34,8 +35,12 @@ Page.onReady = function() {
 
 };
 
+function messageTimeout() {
+    Page.Variables.errorMsg.dataSet.dataValue = null;
+}
 
 Page.entityViewButtonClick = function($event, widget) {
+    Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.hideBanTableGrid.dataValue = false;
     Page.Variables.hideBanFilterGrid.dataValue = false;
@@ -57,6 +62,7 @@ Page.entityViewButtonClick = function($event, widget) {
 };
 
 Page.banViewButtonClick = function($event, widget) {
+    Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.hideBanTableGrid.dataValue = true;
     Page.Variables.hideBanFilterGrid.dataValue = true;
@@ -104,48 +110,54 @@ Page.clearFilterFieldsBanView = function($event, widget) {
 // function added to display table based on the filters for entity view
 Page.applyFiltersEntityView = function($event, widget) {
     debugger;
-
     var workCategoriesEV = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesEV) {
+    if (workCategoriesEV == '' || workCategoriesEV == undefined) {
+        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+        setTimeout(messageTimeout, 10000);
+    } else {
         if (workCategoriesEV.length > 1) {
             var finalWorkCategoriesEV = workCategoriesEV.join("|");
         } else {
             var finalWorkCategoriesEV = workCategoriesEV;
         }
-    }
-    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-        'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
-        'workCategory': finalWorkCategoriesEV,
-        'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
-        'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
-        'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
+        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+            'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
+            'workCategory': finalWorkCategoriesEV,
+            'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
+            'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
+            'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
 
-    });
-    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+        });
+        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+    }
+
 
 }
 
 // function added to display table based on the filters for ban view
 Page.applyFiltersBanView = function($event, widget) {
     debugger;
-
-    var workCategoriesBV = Page.Widgets.workCategorySelectEV.datavalue;
-    if (workCategoriesBV) {
+    var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+    if (workCategoriesBV == '' || workCategoriesBV == undefined) {
+        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+        setTimeout(messageTimeout, 10000);
+    } else {
         if (workCategoriesBV.length > 1) {
             var finalWorkCategoriesBV = workCategoriesBV.join("|");
         } else {
             var finalWorkCategoriesBV = workCategoriesBV;
         }
-    }
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-        'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
-        'workCategory': finalWorkCategoriesBV,
-        'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
-        'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
-        'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
+        Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+            'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
+            'workCategory': finalWorkCategoriesBV,
+            'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
+            'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
+            'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
 
-    });
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+        });
+        Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+    }
+
 }
 
 Page.goToEnityPage = function(row) {

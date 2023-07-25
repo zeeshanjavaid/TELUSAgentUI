@@ -1286,11 +1286,11 @@ Partial.getCollectionTreatmentStep_1onError = function(variable, data, xhrObj) {
 
 };
 
-Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj){
-	
+Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
+
 };
 
 
-Partial.getCollectionTreatMentonError = function(variable, data, xhrObj){
-	
+Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
+
 };

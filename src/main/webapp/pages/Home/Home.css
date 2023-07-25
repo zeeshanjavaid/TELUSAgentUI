@@ -46,3 +46,8 @@
         width: 45.7% !important;
     }
 }
+
+
+p.alert.app-message.alert-danger.errormessage {
+    width: 98% !important;
+}
