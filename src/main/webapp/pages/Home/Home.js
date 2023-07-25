@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+var workCategoryDataArray = [];
 Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
@@ -344,10 +345,20 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
 
+    if (data != undefined) {
+        data.forEach(workCategoryData);
+    }
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWCentityview = workCategoryDataArray.join("|");
+    } else {
+        var finalWCentityview = workCategoryDataArray;
+    }
+
     // api call to display data in table for entity view
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
-        'workCategory': data.length > 1 ? data.join("|") : data,
+        'workCategory': finalWCentityview,
         'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
         'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
@@ -360,14 +371,30 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
 
+    if (data != undefined) {
+        data.forEach(workCategoryData);
+    }
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWCbanview = workCategoryDataArray.join("|");
+    } else {
+        var finalWCbanview = workCategoryDataArray;
+    }
+
+
     // api call to display data in table for ban view
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
-        'workCategory': data.length > 1 ? data.join("|") : data,
+        'workCategory': finalWCbanview,
         'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
         'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
 
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+};
+
+function workCategoryData(item, index) {
+    var item = item;
+    workCategoryDataArray.push(item.code);
 };
