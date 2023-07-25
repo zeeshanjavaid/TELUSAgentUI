@@ -14,7 +14,7 @@ import com.wavemaker.runtime.data.annotations.ColumnAlias;
 public class GetTeamNameByEmplIdResponse implements Serializable {
 
 
-    @ColumnAlias("TeamID")
+    @ColumnAlias("teamId")
     private String teamId;
 
     public String getTeamId() {

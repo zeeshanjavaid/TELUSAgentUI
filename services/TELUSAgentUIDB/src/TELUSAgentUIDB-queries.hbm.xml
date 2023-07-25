@@ -4,14 +4,14 @@
 <hibernate-mapping>
     <sql-query name="getTeamNameByEmplId">
         <![CDATA[
-        select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId
+        select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId
         ]]>
     <query-param name="emplId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getTeamNameByEmplId__count">
         <![CDATA[
-        select count(*) from (select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId) wmTempTable
+        select count(*) from (select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId) wmTempTable
         ]]>
     <query-param name="emplId" type="java.lang.String"/>
     </sql-query>

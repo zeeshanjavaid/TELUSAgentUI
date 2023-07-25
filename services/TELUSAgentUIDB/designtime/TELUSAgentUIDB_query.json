@@ -4224,8 +4224,8 @@
     "name" : "getTeamNameByEmplId",
     "description" : "getTeamNameByEmplId",
     "version" : "V2",
-    "queryString" : "select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId",
-    "countQueryString" : "select count(*) from (select t.TeamID from TEAM t  join TEAM_USER ts on t.id= ts.teamId  join USER u on u.id=ts.id where u.emplId=:emplId) wmTempTable",
+    "queryString" : "select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId",
+    "countQueryString" : "select count(*) from (select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -4236,7 +4236,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "sask3456",
+      "testValue" : "t591",
       "required" : true
     } ],
     "request" : {
@@ -4250,7 +4250,7 @@
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "TeamID",
+        "name" : "teamId",
         "fieldName" : "teamId",
         "optional" : false,
         "fieldType" : {
