@@ -125,6 +125,8 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "CollectionDataServiceGetAssignedEntitiesInEntityView3onSuccess(variable, data, options)",
+    "onError" : "CollectionDataServiceGetAssignedEntitiesInEntityView3onError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

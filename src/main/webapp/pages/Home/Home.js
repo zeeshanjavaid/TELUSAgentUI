@@ -398,3 +398,12 @@ function workCategoryData(item, index) {
     var item = item;
     workCategoryDataArray.push(item.code);
 };
+
+Page.CollectionDataServiceGetAssignedEntitiesInEntityView3onSuccess = function(variable, data){
+	
+};
+
+
+Page.CollectionDataServiceGetAssignedEntitiesInEntityView3onError = function(variable, data, xhrObj){
+	
+};
