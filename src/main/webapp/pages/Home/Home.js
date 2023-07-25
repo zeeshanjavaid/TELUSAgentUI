@@ -33,6 +33,11 @@ Page.onReady = function() {
     Page.Variables.workCategoryValues_HomeEV.invoke();
     Page.Variables.workCategoryValues_HomeBV.invoke();
 
+    Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+    });
+    Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+
 };
 
 function messageTimeout() {
@@ -336,9 +341,33 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
 };
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
+
+    // api call to display data in table for entity view
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': data.length > 1 ? data.join("|") : data,
+        'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
+        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
+
+    });
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
+
+    // api call to display data in table for ban view
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': data.length > 1 ? data.join("|") : data,
+        'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
+        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
+
+    });
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 };
