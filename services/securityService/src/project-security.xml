@@ -241,107 +241,12 @@
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
-                <entry key="ApplicationAudit">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ApplicationCreate">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ApplicationEdit">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ApplicationHistory">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ApplicationView">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="CaseReviewFraud">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ReportDashboard">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ReportManualReview">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="ReportPerformance">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SecurityAudit">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SecurityGroups">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SecurityRoles">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SecurityUsers">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SetupActivityLog">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SetupDomainValues">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SetupQueues">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SetupSiteProperties">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="SetupTimerSettings">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
                 <entry key="Home - My Assignments">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
                 <entry key="My Actions">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="My Team Actions">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
                         <property name="landingPage" value="Main"/>
                     </bean>
@@ -407,25 +312,6 @@
     <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" id="roleHierarchy">
         <property name="hierarchy">
             <value>
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
 			 
 			 
 			 

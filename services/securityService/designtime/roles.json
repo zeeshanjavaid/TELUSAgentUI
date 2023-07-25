@@ -29,114 +29,6 @@
     "landingPage" : "Main"
   }
 }, {
-  "name" : "ApplicationAudit",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ApplicationCreate",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ApplicationEdit",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ApplicationHistory",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ApplicationView",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "CaseReviewFraud",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ReportDashboard",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ReportManualReview",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "ReportPerformance",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SecurityAudit",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SecurityGroups",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SecurityRoles",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SecurityUsers",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SetupActivityLog",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SetupDomainValues",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SetupQueues",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SetupSiteProperties",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "SetupTimerSettings",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
   "name" : "Home - My Assignments",
   "description" : null,
   "roleConfig" : {
@@ -144,12 +36,6 @@
   }
 }, {
   "name" : "My Actions",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "My Team Actions",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"

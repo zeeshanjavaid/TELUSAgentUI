@@ -15,67 +15,10 @@
     "roleName" : "everyone",
     "roleHierarchy" : null
   }, {
-    "roleName" : "ApplicationAudit",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ApplicationCreate",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ApplicationEdit",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ApplicationHistory",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ApplicationView",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "CaseReviewFraud",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ReportDashboard",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ReportManualReview",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "ReportPerformance",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SecurityAudit",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SecurityGroups",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SecurityRoles",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SecurityUsers",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SetupActivityLog",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SetupDomainValues",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SetupQueues",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SetupSiteProperties",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "SetupTimerSettings",
-    "roleHierarchy" : null
-  }, {
     "roleName" : "Home - My Assignments",
     "roleHierarchy" : null
   }, {
     "roleName" : "My Actions",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "My Team Actions",
     "roleHierarchy" : null
   }, {
     "roleName" : "Entity Profile (View and Manage)",
