@@ -111,6 +111,7 @@ Partial.installmentScheduleCollapse = function($event, widget) {
 };
 
 Partial.parrHistoryExpand = function($event, widget) {
+    debugger;
     let showIcon2 = document.querySelector('.show-icon2');
     let hideIcon2 = document.querySelector('.hide-icon2');
     if (hideIcon2) {
@@ -123,6 +124,7 @@ Partial.parrHistoryExpand = function($event, widget) {
 };
 
 Partial.parrHistoryCollapse = function($event, widget) {
+    debugger;
     let showIcon2 = document.querySelector('.show-icon2');
     let hideIcon2 = document.querySelector('.hide-icon2');
     if (hideIcon2) {
