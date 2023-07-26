@@ -282,7 +282,8 @@ function callOutboundAction($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -343,7 +344,8 @@ function callInboundAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -392,7 +394,8 @@ function emailInboundAction($event, widget) {
                     'partitionKey': getCurrentDate(),
                     'additionalCharacteristics': characteristicList,
                     'collectionTreatment': {
-                        'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                        'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                        'partitionKey': getCurrentDate(),
                     },
                     'channel': {
                         'originatorAppId': "FAWBTELUSAGENT",
@@ -431,7 +434,8 @@ function generalFollowUpAction($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -482,7 +486,8 @@ function overdueNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -533,7 +538,8 @@ function paymentReminderNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -584,7 +590,8 @@ function disconnectNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -636,7 +643,8 @@ function cancellationNoticeAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",

@@ -1479,7 +1479,7 @@
     "onError" : "getCollectionTreatMentonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : false,
-    "inFlightBehavior" : "executeAll",
+    "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"

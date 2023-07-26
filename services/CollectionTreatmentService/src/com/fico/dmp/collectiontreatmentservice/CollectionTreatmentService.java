@@ -218,7 +218,7 @@ public class CollectionTreatmentService {
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
          CollectionTreatmentEntityRef collectionTreatmentEntityRef=new CollectionTreatmentEntityRef();
         collectionTreatmentEntityRef.setId(Long.valueOf(id));
-        collectionTreatmentStepUpdate.setCollectionTreatment(collectionTreatmentEntityRef);
+     //   collectionTreatmentStepUpdate.setCollectionTreatment(collectionTreatmentEntityRef);
         collectionTreatmentStepUpdate.setChannel(channel);
 
            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT+"/"+id)

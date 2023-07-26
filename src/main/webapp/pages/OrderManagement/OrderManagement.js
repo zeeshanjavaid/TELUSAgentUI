@@ -168,7 +168,8 @@ Partial.createbuttonClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -243,7 +244,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -317,7 +319,8 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
-                    'id': Partial.Variables.getCollectionTreatMent.dataSet[0].id
+                    'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
+                    'partitionKey': getCurrentDate()
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
