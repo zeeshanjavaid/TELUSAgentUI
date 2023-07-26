@@ -22,6 +22,7 @@ Page.onReady = function() {
      */
     Page.Variables.UserLoggedInVar_OrderDesk.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
+    Page.Variables.workCategoryValues_OrderDesk.invoke();
 };
 
 // function added to clear all the fields in the filter grid
@@ -57,7 +58,7 @@ Page.applyFilter = function($event, widget) {
 Page.goToEnityPage = function(row) {
     window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 }
-
+// adding all in Assigned Team
 Page.getAllTeamList_OrderDeskViewonSuccess = function(variable, data) {
     if (Page.Variables.getAllTeamList_OrderDeskView.dataSet.length > 1) {
         debugger;
@@ -69,6 +70,7 @@ Page.getAllTeamList_OrderDeskViewonSuccess = function(variable, data) {
         Page.Variables.getAllTeamList_OrderDeskView.dataSet = Page.Variables.getAllTeamList_OrderDeskView.dataSet;
     }
 };
+// Assigned Team on change
 Page.AssignedTeamSelecton_Change = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_OrderDesk.invoke();
@@ -110,23 +112,21 @@ Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
     }
 };
 
+
+
+
 Page.workCategoryValues_OrderDeskonSuccess = function(variable, data) {
     Page.Variables.workCategoryValues_OrderDesk.dataSet = [];
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
 };
 Page.EntityOwnerSelectChange = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
-        Page.Variables.workCategorySelect_OrderDeskView.invoke();
-    } else if (Page.Widgets.EntityOwnerSelect.datavalue == 'NULL') {
-        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
-            'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-        });
-        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+        Page.Variables.workCategoryValues_OrderDesk.invoke();
     } else {
-        Page.Variables.workcategoriesByEmpId_homeEV.setInput({
-            'emplId': Page.Widgets.entityOwnerSelectEV.datavalue
+        Page.Variables.workcategoriesByEmpId_OrderDesk.setInput({
+            'emplId': Page.Widgets.EntityOwnerSelect.datavalue
         });
-        Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+        Page.Variables.workcategoriesByEmpId_OrderDesk.invoke();
     }
 };
 
@@ -136,6 +136,6 @@ Page.workCategorySelect_OrderDeskViewonSuccess = function(variable, data) {
     }
 };
 
-Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data){
-	
+Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
+    Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
 };
