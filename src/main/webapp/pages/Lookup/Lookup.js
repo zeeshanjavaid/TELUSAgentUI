@@ -102,14 +102,21 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
 };
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     debugger;
+
     Page.combinedSuccessMessageVar = Page.Widgets.entityToTransferBanDropdown.displayValue;
-    if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
-    } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
+
+    if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
+    } else if (Page.Widgets.getEntityBanDetailsTable1.dataset.length == 1) {
+        App.Variables.errorMsg.dataSet.dataValue = "BAN not eligible for transfer as only one BAN exists for the Entity";
+    } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
     } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
+    } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
+        App.Variables.errorMsg.dataSet.dataValue = null;
         let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
         var billingAccountRefMaps = []
@@ -164,47 +171,48 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
         });
 
+        debugger;
         var PatchOutCollectionEntityVar = Page.Variables.PatchOutCollectionEntity;
-        PatchOutCollectionEntityVar.invoke({
-                "inputFields": {
-                    "id": parseInt(Page.pageParams.entityId),
-                    "CollectionEntityUpdate": {
-                        "id": parseInt(Page.pageParams.entityId),
-                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                        "channel": {
-                            "originatorAppId": "FAWBTELUSAGENT",
-                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                        },
-                        billingAccountRefMaps
-                    }
-                }
-            },
+        /* PatchOutCollectionEntityVar.invoke({
+                 "inputFields": {
+                     "id": parseInt(Page.pageParams.entityId),
+                     "CollectionEntityUpdate": {
+                         "id": parseInt(Page.pageParams.entityId),
+                         "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                         "channel": {
+                             "originatorAppId": "FAWBTELUSAGENT",
+                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                         },
+                         billingAccountRefMaps
+                     }
+                 }
+             },
 
-            function(data) {
-                //PATCH for transferring
-                billingAccountRefMaps = billingAccountRefMaps1;
+             function(data) {
+                 //PATCH for transferring
+                 billingAccountRefMaps = billingAccountRefMaps1;
 
-                Page.Variables.PatchInCollectionEntity.setInput({
-                    "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                    "CollectionEntityUpdate": {
-                        "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                        "channel": {
-                            "originatorAppId": "FAWBTELUSAGENT",
-                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                        },
-                        billingAccountRefMaps
-                    }
-                });
-                Page.Variables.PatchInCollectionEntity.invoke();
+                 Page.Variables.PatchInCollectionEntity.setInput({
+                     "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                     "CollectionEntityUpdate": {
+                         "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                         "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                         "channel": {
+                             "originatorAppId": "FAWBTELUSAGENT",
+                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                         },
+                         billingAccountRefMaps
+                     }
+                 });
+                 Page.Variables.PatchInCollectionEntity.invoke();
 
-            },
-            function(error) {
-                // Error Callback
-                console.log("error", error);
-            }
+             },
+             function(error) {
+                 // Error Callback
+                 console.log("error", error);
+             }
 
-        );
+         );*/
 
 
 
@@ -274,6 +282,8 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
     debugger;
     if (Page.Widgets.TransferBanToNewEntityTable.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
+    } else if (Page.Widgets.TransferBanToNewEntityTable.dataset.length == 1) {
+        App.Variables.errorMsg.dataSet.dataValue = "BAN not eligible for transfer as only one BAN exists for the Entity";
     } else {
 
         let todaysDateJsonFormat = new Date().toJSON();

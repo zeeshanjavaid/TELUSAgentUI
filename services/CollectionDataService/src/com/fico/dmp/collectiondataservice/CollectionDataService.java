@@ -54,6 +54,8 @@ import com.fico.core.util.ObjectMapperConfig;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.net.URLDecoder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -160,19 +162,18 @@ public class CollectionDataService {
     	 }else {
     		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
     		 
-    		 String workCategoryParam = null;
-    		 if(workCategory != null) {
-    			 workCategoryParam = URLEncoder.encode(workCategory,"UTF-8");
-    		 }
-    		 
+    		
+    	
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_ENTITY_VIEW)
                      .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
-                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategoryParam))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
-
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             
+             String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
+            
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
              logger.info("Response---"+ responseStr);
             return objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
@@ -189,20 +190,18 @@ public class CollectionDataService {
         		objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
     	 }else {
     		 logger.info("::::::::Calling  entity data endpoint call ::::::::");
-    		 
-    		 String workCategoryParam = null;
-    		 if(workCategory != null) {
-    			 workCategoryParam = URLEncoder.encode(workCategory,"UTF-8");
-    		 }
+    		
     		 
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_CLASSIC_VIEW)
                      .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
-                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategoryParam))
+                     .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
 
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
+             
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
              logger.info("Response---"+ responseStr);
             return objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
