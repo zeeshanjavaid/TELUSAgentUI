@@ -57,6 +57,8 @@ Partial.CancelClick = function($event, widget) {
 
 Partial.createContact = function($event, widget) {
     debugger;
+    const workNumber = Partial.Widgets.workNo.datavalue;
+    const numericWorkNumber = workNumber.replace(/\D/g, '');
     if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -72,6 +74,7 @@ Partial.createContact = function($event, widget) {
     } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
     } else {
+        debugger;
         Partial.Variables.CreateContactServiceVar.setInput({
             "CollectionContactCreate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
@@ -80,7 +83,7 @@ Partial.createContact = function($event, widget) {
                 'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
                 'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
                 'title': Partial.Widgets.TITLESelect.datavalue,
-                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
+                'workPhoneNumber': numericWorkNumber,
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
@@ -104,13 +107,13 @@ Partial.createContact = function($event, widget) {
 };
 
 
-Partial.workNoKeypress = function($event, widget) {
+/*Partial.workNoKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
-};
+};*/
 
 
-/*Partial.workNoKeypress = function($event, widget) {
+Partial.workNoKeypress = function($event, widget) {
     debugger;
     var value = $event.key;
     isNotANumber(value);
@@ -118,7 +121,6 @@ Partial.workNoKeypress = function($event, widget) {
     const inputValue = input.value; // Get the current input value
     const pressedKey = String.fromCharCode(event.which); // Get the pressed key
     const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
-    //input_value = "1234567890"  # Replace with your actual 10-digit input
 
 
     var area_code = fullInputValue.substring(0, 3);
@@ -139,16 +141,65 @@ Partial.workNoKeypress = function($event, widget) {
         Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
     }*/
 
-// var z = fullInputValue.substring(8, 9);
-// if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
-//     debugger;
-//     var a1 = fullInputValue.substring(0, 5);
-//     var a2 = fullInputValue.substring(5, 8);
-//     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
-// }
+    // var z = fullInputValue.substring(8, 9);
+    // if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
+    //     debugger;
+    //     var a1 = fullInputValue.substring(0, 5);
+    //     var a2 = fullInputValue.substring(5, 8);
+    //     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
+    // }
 
 
-//};
+};
+
+/*Partial.workNoKeypress = function($event, widget) {
+    debugger;
+    var value = $event.key;
+    isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+    //input_value = "1234567890"  # Replace with your actual 10-digit input
+    formatPhoneNumber(fullInputValue)
+
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        debugger;
+        //Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+        Partial.Widgets.workNo.datavalue = formatPhoneNumber(fullInputValue);
+    }
+
+    if (fullInputValue.length == 13) {
+        fullInputValue = fullInputValue.split('-').join('');
+        fullInputValue = fullInputValue.split('(').join('');
+        fullInputValue = fullInputValue.split(')').join('');
+        fullInputValue;
+
+        Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+
+    // var z = fullInputValue.substring(8, 9);
+    // if (fullInputValue.substring(8, 9) !== '-' && fullInputValue.length == 8 && isNaN(fullInputValue)) {
+    //     debugger;
+    //     var a1 = fullInputValue.substring(0, 5);
+    //     var a2 = fullInputValue.substring(5, 8);
+    //     Partial.Widgets.workNo.datavalue = a1 + a2 + "-";
+    // }
+
+
+};
+*/
+/*function formatPhoneNumber(phoneNumberString) {
+    debugger;
+    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+        var intlCode = (match[1] ? '+1 ' : '');
+        return [intlCode, '(', match[2], ') ', match[3], '-', match[4]].join('');
+    }
+    return null;
+}*/
 
 Partial.extKeypress = function($event, widget) {
     var value = $event.key;
@@ -187,7 +238,6 @@ Partial.Clear = function() {
 };
 
 Partial.CreateContactServiceVaronSuccess = function(variable, data) {
-
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Clear();
