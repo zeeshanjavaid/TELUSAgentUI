@@ -96,7 +96,9 @@ public class EntityBanTravelHistoryService {
     			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(banTravelHistoryModel.getBillingAccountRefId()))).forEach(collectionBillingAccountRef -> {
     				banTravelHistoryModel.setBanId(collectionBillingAccountRef.getBillingAccount().getId());
     				banTravelHistoryModel.setBanStatus(collectionBillingAccountRef.getBillingAccount().getState().toString());
-    				banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
+    				if(collectionBillingAccountRef.getBillingAccount().getStateDate() != null) {
+    						banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
+    				}
     				banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
     				banTravelHistoryModel.setLastUpdatedBy(collectionBillingAccountRef.getAuditInfo().getLastUpdatedBy());
     			});
