@@ -344,8 +344,15 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
-    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" name="disputeHistory" collapsible="true"
-        on-expand="disputeHistoryExpand($event, widget)" on-collapse="disputeHistoryCollapse($event, widget)" expanded="true">
+    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" collapsible="true" expanded="true"
+        on-expand="disputeHistoryExpand($event, widget)" name="disputeHistory" on-collapse="disputeHistoryCollapse($event, widget)">
+
+
+
+        <!-- <wm-panel subheading="<h4 class=panelSubHeading><i  class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Installment Schedule</h4>" autoclose="outsideClick" title="" collapsible="true"
+        expanded="true" on-expand="installmentScheduleExpand($event, widget)" name="installmentSchedule" on-collapse="installmentScheduleCollapse($event, widget)">-->
+
+
         <wm-layoutgrid name="layoutgrid25">
             <wm-gridrow name="gridrow39">
                 <wm-gridcolumn columnwidth="10" name="gridcolumn87" horizontalalign="left">

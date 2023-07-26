@@ -85,6 +85,7 @@ Partial.onReady = function() {
 };
 
 Partial.installmentScheduleExpand = function($event, widget) {
+    debugger;
     let showIcon1 = document.querySelector('.show-icon1');
     let hideIcon1 = document.querySelector('.hide-icon1');
     if (hideIcon1) {
@@ -97,6 +98,7 @@ Partial.installmentScheduleExpand = function($event, widget) {
 };
 
 Partial.installmentScheduleCollapse = function($event, widget) {
+    debugger;
     let showIcon1 = document.querySelector('.show-icon1');
     let hideIcon1 = document.querySelector('.hide-icon1');
     if (hideIcon1) {

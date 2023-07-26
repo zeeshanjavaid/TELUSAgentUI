@@ -45,11 +45,35 @@ Partial.anchor3Click = function($event, widget) {
 
 /* for panel expand and collapse*/
 Partial.disputeHistoryExpand = function($event, widget) {
-    Partial.IsExpandedIS = true;
+    debugger;
+
+    let showIcon1 = document.querySelector('.show-icon1');
+    let hideIcon1 = document.querySelector('.hide-icon1');
+    if (hideIcon1) {
+        hideIcon1.style.display = 'none';
+    }
+    if (showIcon1) {
+        showIcon1.style.display = 'inline-block';
+    }
+    Partial.Variables.disputeIsExpand.dataSet.dataValue = !Partial.Variables.disputeIsExpand.dataSet.dataValue;
 };
 Partial.disputeHistoryCollapse = function($event, widget) {
-    Partial.IsExpandedIS = false;
+    debugger;
+
+    let showIcon1 = document.querySelector('.show-icon1');
+    let hideIcon1 = document.querySelector('.hide-icon1');
+    if (hideIcon1) {
+        debugger;
+        hideIcon1.style.display = 'inline-block';
+    }
+    if (showIcon1) {
+        debugger;
+        showIcon1.style.display = 'none';
+    }
+    Partial.Variables.disputeIsExpand.dataSet.dataValue = !Partial.Variables.disputeIsExpand.dataSet.dataValue;
 };
+
+
 
 
 Partial.CancelDisputeSubmitClick = function($event, widget) {

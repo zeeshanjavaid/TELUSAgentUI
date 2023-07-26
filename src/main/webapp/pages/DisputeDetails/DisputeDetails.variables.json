@@ -178,6 +178,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "disputeIsExpand" : {
+    "_id" : "wm-disputeIsExpand-wm.Variable-1690352421029",
+    "name" : "disputeIsExpand",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "exclusionDropDownUpdateVar" : {
     "_id" : "wm-exclusionDropDownUpdateVar-wm.Variable-1680630320329",
     "name" : "exclusionDropDownUpdateVar",

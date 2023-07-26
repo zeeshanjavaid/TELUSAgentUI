@@ -78,11 +78,6 @@ h4.panelSubHeading {
 .hide-icon1 {
     display: none;
 }
-
-.hide-icon2 {
-    display: none;
-}
-
 i.fico-icon-chevron-down.show-icon1 {
     cursor: pointer;
     margin-right: 10px;
@@ -103,25 +98,7 @@ i.fico-icon-chevron-right.hide-icon1 {
     margin-right: 10px;
 }
 
-i.fico-icon-chevron-down.show-icon2 {
-    cursor: pointer;
-    margin-right: 10px;
-}
 
-i.fico-icon-chevron-down.hide-icon2 {
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-i.fico-icon-chevron-right.show-icon2 {
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-i.fico-icon-chevron-right.hide-icon2 {
-    cursor: pointer;
-    margin-right: 10px;
-}
 
 button.app-icon.wi.card-action {
     display: none;
