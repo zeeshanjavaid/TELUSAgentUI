@@ -56,7 +56,7 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
     // });
 
     // Partial.Variables.getCollectionTreatMent.invoke();
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+    if (Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
         setTimeout(messageTimeout, 5000);
     } else {
@@ -78,7 +78,7 @@ Partial.CreateSuspentionRequestClick = function($event, widget) {
 
 
 Partial.CreateRestoralRequestClick = function($event, widget) {
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+    if (Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
         setTimeout(messageTimeout, 5000);
     } else {
@@ -97,7 +97,7 @@ Partial.CreateRestoralRequestClick = function($event, widget) {
     }
 };
 Partial.CreateCeaseRequestClick = function($event, widget) {
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+    if (Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
         setTimeout(messageTimeout, 5000);
     } else {

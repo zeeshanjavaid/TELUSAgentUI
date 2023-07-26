@@ -1216,9 +1216,9 @@
     },
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
-  "getCollectionTreatMent" : {
+  "getCollectionTreatmentByCollENtityId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689059576521",
-    "name" : "getCollectionTreatMent",
+    "name" : "getCollectionTreatmentByCollENtityId",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
@@ -1239,7 +1239,7 @@
     "onError" : "getCollectionTreatMentonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : false,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"

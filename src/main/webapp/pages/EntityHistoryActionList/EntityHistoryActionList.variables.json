@@ -1456,9 +1456,9 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
   },
-  "getCollectionTreatMent" : {
+  "getCollectionTreatMentByEntId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689084256156",
-    "name" : "getCollectionTreatMent",
+    "name" : "getCollectionTreatMentByEntId",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
@@ -1479,7 +1479,7 @@
     "onError" : "getCollectionTreatMentonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : false,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"

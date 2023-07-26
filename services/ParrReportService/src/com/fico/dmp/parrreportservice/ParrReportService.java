@@ -31,6 +31,8 @@ import java.util.stream.Collectors;
 import com.fico.telus.model.ParrReports;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
 import java.util.stream.Collectors;
+import com.fico.dmp.commonutilityservice.CommonUtilityService;
+
 
 
 
@@ -59,6 +61,9 @@ public class ParrReportService {
     
      @Autowired
     private CollectionEntityService collectionEntityService;
+    
+     @Autowired
+    private CommonUtilityService commonUtilityService;
     
      @Autowired
    private TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
@@ -113,8 +118,8 @@ public class ParrReportService {
                 		parrReports.setPerOfAmtRecieved_Exp(0+"%");
                 	}
                 }      
-                parrReports.setCreatedBy(cpa.getAuditInfo().getCreatedBy());
-              //  parrReports.setCreatedTeam(cpa.getAuditInfo().getT);
+              
+            parrReports.setCreatedBy(commonUtilityService.getNameUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
 
                 parrReportsList.add(parrReports);
             }

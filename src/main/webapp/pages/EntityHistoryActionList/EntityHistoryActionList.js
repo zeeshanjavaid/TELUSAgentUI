@@ -54,7 +54,7 @@ Partial.nextButtonClick = function($event, widget) {
 
     debugger;
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
+    if (Partial.Variables.getCollectionTreatMentByEntId.dataSet.length == 0) {
 
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
 
@@ -263,9 +263,7 @@ function callOutboundAction($event, widget) {
 
     debugger;
 
-    if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
-        App.Variables.errorMsg.dataSet.dataValue = "Not able to create order,entity id is not acive";
-    } else if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
