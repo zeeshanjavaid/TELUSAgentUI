@@ -815,11 +815,11 @@
             <systemPath>${project.lib.directory}/modelmapper-3.1.0.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>swaggerstub-0.21</groupId>
-            <artifactId>swaggerstub-0.21</artifactId>
+            <groupId>swaggerstub-0.22</groupId>
+            <artifactId>swaggerstub-0.22</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.lib.directory}/swaggerstub-0.21.jar</systemPath>
+            <systemPath>${project.lib.directory}/swaggerstub-0.22.jar</systemPath>
         </dependency>
     </dependencies>
     <dependencyManagement>
