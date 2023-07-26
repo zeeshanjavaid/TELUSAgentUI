@@ -22,6 +22,7 @@ Page.onReady = function() {
      */
     Page.Variables.UserLoggedInVar_OrderDesk.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
+    Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_OrderDesk.invoke();
 };
 
@@ -107,8 +108,11 @@ Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
                 lastName: ''
             });
             Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
+            Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
         }
         Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
+        Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_OrderDesk.dataSet[0].empId;
+
     }
 };
 

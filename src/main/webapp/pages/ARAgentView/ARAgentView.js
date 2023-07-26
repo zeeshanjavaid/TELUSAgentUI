@@ -24,6 +24,7 @@ Page.onReady = function() {
     debugger;
     Page.Variables.UserLoggedInVar_ARAgent.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
+    Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_ARAgent.invoke();
 };
 
@@ -62,6 +63,7 @@ Page.goToEnityPage = function(row) {
 }
 
 Page.getAllActiveUserList_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllActiveUserList_ARAgentView.dataSet.length > 1) {
         debugger;
         Page.Variables.getAllActiveUserList_ARAgentView.dataSet.unshift({
@@ -107,8 +109,9 @@ Page.workCategorySelect_ARAgentViewonSuccess = function(variable, data) {
     }
 };
 Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
-        Page.Variables.getAllActiveUserList_ARAgentViewonSuccess.invoke();
+        Page.Variables.getAllActiveUserList_ARAgentView.invoke();
     } else {
         Page.Variables.getUserListByTeamId_ARAgentV.setInput({
             'teamId': Page.Widgets.AssignedTeamSelect.datavalue
@@ -129,8 +132,11 @@ Page.getUserListByTeamId_ARAgentVonSuccess = function(variable, data) {
                 lastName: ''
             });
             Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView.dataSet[0].empId;
+            Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView.dataSet[0].empId;
         }
         Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView.dataSet[0].empId;
+        Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView.dataSet[0].empId;
+
     }
 };
 
