@@ -33,6 +33,7 @@ Partial.onReady = function() {
     App.Variables.errorMsg.dataSet.dataValue = '';
     Partial.Variables.popUperrorMsg.dataSet.dataValue = '';
 
+
 };
 
 Partial.getCollectionTreatmentStep_orderMngt_OnRowexpand = function($event, widget, row, $data) {
@@ -48,6 +49,13 @@ function getCurrentDate() {
 Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
+    // Partial.Variables.getCollectionTreatMent.setInput({
+    //     'collectionEntityId': Partial.pageParams.entityId
+
+
+    // });
+
+    // Partial.Variables.getCollectionTreatMent.invoke();
     if (Partial.Variables.getCollectionTreatMent.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
         setTimeout(messageTimeout, 5000);
