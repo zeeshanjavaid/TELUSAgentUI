@@ -30,6 +30,8 @@ Partial.CreateClick = function($event, widget) {
 
 Partial.getPaymentArrangementTable1_idOnClick = function($event, widget, row) {
 
+
+
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrDetail';
 };
 

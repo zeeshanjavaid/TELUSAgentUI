@@ -20,6 +20,15 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    debugger;
+    Partial.Variables.getCollectionHistoryViewDispute.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'relatedBusinessEntityId': Partial.pageParams.DisputeId,
+        'relatedBusinessEntityType': 'CollectionDispute'
+
+    });
+
+    Partial.Variables.getCollectionHistoryViewDispute.invoke();
 
     if (Partial.pageParams.DisputeId) {
 

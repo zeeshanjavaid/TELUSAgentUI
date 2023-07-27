@@ -6,12 +6,15 @@ public class OrderMgmtHistoryResponse {
 
     private String actionId;
     private String status;
+     private String createdBy;
     private String assignedTo;
     private String getAssignedTeam;
     private String updatedBy;
     private String updatedOn;
     private String dueDate;
     private List<Integer> banList;
+     private String comment;
+    private String eventType;
 
     public String getActionId() {
         return actionId;
@@ -75,5 +78,29 @@ public class OrderMgmtHistoryResponse {
 
     public void setBanList(List<Integer> banList) {
         this.banList = banList;
+    }
+    
+     public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+    
+     public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

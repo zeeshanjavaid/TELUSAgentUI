@@ -888,13 +888,14 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
 
     var entityIdStr = Partial.pageParams.entityId
     var entityIdInt = parseInt(entityIdStr);
-    Partial.Variables.getODMgmtHistory.setInput({
+    Partial.Variables.getOrderdMgmtHistory.setInput({
         'collectionEntityId': entityIdInt,
-        'id': row.id
+        'relatedBusinessEntityId': row.id,
+        'relatedBusinessEntityType': 'CollectionTreatmentStep'
 
     });
 
-    Partial.Variables.getODMgmtHistory.invoke();
+    Partial.Variables.getOrderdMgmtHistory.invoke();
     Partial.Widgets.ViewHistory.open();
 
 

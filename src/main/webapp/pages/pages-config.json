@@ -160,6 +160,9 @@
   "params" : [ {
     "name" : "DisputeId",
     "type" : "integer"
+  }, {
+    "name" : "entityId",
+    "type" : "integer"
   } ]
 }, {
   "name" : "DisputeList",
@@ -319,6 +322,9 @@
   "type" : "PARTIAL",
   "params" : [ {
     "name" : "ParrId",
+    "type" : "integer"
+  }, {
+    "name" : "entityId",
     "type" : "integer"
   } ]
 }, {

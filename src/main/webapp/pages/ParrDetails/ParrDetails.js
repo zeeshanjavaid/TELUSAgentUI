@@ -22,6 +22,20 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     //alert("ParrId: " + Partial.Variables.getPaymentArrangement.dataSet.id);
+    debugger;
+
+    // var entityIdStr = Partial.pageParams.entityId
+    // var entityIdInt = parseInt(entityIdStr);
+    // var parrIdStr = Partial.pageParams.ParrId
+    // var parrIdInt = parseInt(parrIdStr);
+    Partial.Variables.getCollectionHistoryViewParr.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'relatedBusinessEntityId': Partial.pageParams.ParrId,
+        'relatedBusinessEntityType': 'CollectionPaymentArrangement'
+
+    });
+
+    Partial.Variables.getCollectionHistoryViewParr.invoke();
     if (Partial.pageParams.ParrId) {
 
         var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
