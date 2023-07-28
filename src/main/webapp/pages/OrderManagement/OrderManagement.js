@@ -30,6 +30,15 @@ Partial.onReady = function() {
     // });
     // Partial.Variables.getLoggedInUserTeamIdVar.invoke();
 
+
+
+
+    Partial.Variables.getCollectionTreatmentByCollENtityId.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+    });
+
+    Partial.Variables.getCollectionTreatmentByCollENtityId.invoke();
+
     App.Variables.errorMsg.dataSet.dataValue = '';
     Partial.Variables.popUperrorMsg.dataSet.dataValue = '';
 
@@ -339,7 +348,6 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
         }, 1000);
-
 
     }
 

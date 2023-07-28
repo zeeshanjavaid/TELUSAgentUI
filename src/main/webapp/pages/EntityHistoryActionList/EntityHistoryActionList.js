@@ -23,6 +23,17 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+
+
+
+    Partial.Variables.getCollectionTreatMentByEntId.setInput({
+        'collectionEntityId': Partial.pageParams.entityId
+    });
+    Partial.Variables.getCollectionTreatMentByEntId.invoke();
+
+
+
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
@@ -295,6 +306,12 @@ function callOutboundAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Outbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
+
     }
 
 };
@@ -357,6 +374,12 @@ function callInboundAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
@@ -408,6 +431,11 @@ function emailInboundAction($event, widget) {
 
             App.Variables.successMessage.dataSet.dataValue = "Email Inbound Action created successfully.";
             Partial.Widgets.SelectActionDialog.close();
+            setTimeout(messageTimeout, 4000);
+
+            setTimeout(function() {
+                Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            }, 1000);
         } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
             App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
         }
@@ -449,6 +477,11 @@ function generalFollowUpAction($event, widget) {
 
         App.Variables.successMessage.dataSet.dataValue = "General Follow-up Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
@@ -501,6 +534,11 @@ function overdueNoticeAction($event, widget) {
 
         App.Variables.successMessage.dataSet.dataValue = "Overdue Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
@@ -553,6 +591,11 @@ function paymentReminderNoticeAction($event, widget) {
 
         App.Variables.successMessage.dataSet.dataValue = "Payment Reminder Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
@@ -605,6 +648,11 @@ function disconnectNoticeAction($event, widget) {
 
         App.Variables.successMessage.dataSet.dataValue = "Disconnect Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
@@ -656,6 +704,11 @@ function cancellationNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Cancellation Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
     }
 
 };
