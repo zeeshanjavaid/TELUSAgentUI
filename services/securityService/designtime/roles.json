@@ -59,18 +59,6 @@
     "landingPage" : "Main"
   }
 }, {
-  "name" : "Order Management - Agent",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
-  "name" : "Order Management - Order Desk Team",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
   "name" : "System Administration",
   "description" : null,
   "roleConfig" : {

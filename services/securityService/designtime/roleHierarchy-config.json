@@ -30,12 +30,6 @@
     "roleName" : "PARR Management",
     "roleHierarchy" : null
   }, {
-    "roleName" : "Order Management - Agent",
-    "roleHierarchy" : null
-  }, {
-    "roleName" : "Order Management - Order Desk Team",
-    "roleHierarchy" : null
-  }, {
     "roleName" : "System Administration",
     "roleHierarchy" : null
   }, {

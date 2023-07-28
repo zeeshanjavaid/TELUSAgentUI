@@ -182,7 +182,7 @@
                             </wm-panel>
                         </wm-container>
                     </wm-tabpane>
-                    <wm-tabpane name="OrderManagement" title="Order Management" on-select="OrderManagementSelect($event, widget)" on-deselect="OrderManagementDeselect($event, widget)" accessroles="Order Management - Agent,Order Management - Order Desk Team">
+                    <wm-tabpane name="OrderManagement" title="Order Management" on-select="OrderManagementSelect($event, widget)" on-deselect="OrderManagementDeselect($event, widget)" accessroles="Order Management - Agent,Order Management - Order Desk Team,Order Management">
                         <wm-container name="container4" class="rrr">
                             <wm-panel iconclass="" autoclose="outsideClick" title="" name="OrderManagementPanel" width="100%" content="OrderManagement" show="bind:Variables.OrderManagementPageName.dataSet.dataValue=='OrderManagement'">
                                 <wm-param name="entityId" value="bind:pageParams.entityId" type="Integer"></wm-param>

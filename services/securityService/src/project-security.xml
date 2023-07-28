@@ -266,16 +266,6 @@
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
-                <entry key="Order Management - Agent">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
-                <entry key="Order Management - Order Desk Team">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
                 <entry key="System Administration">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
                         <property name="landingPage" value="Main"/>
@@ -312,8 +302,6 @@
     <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" id="roleHierarchy">
         <property name="hierarchy">
             <value>
-			 
-			 
 			 
 			 
 			 
