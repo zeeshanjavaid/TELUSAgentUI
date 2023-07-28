@@ -287,13 +287,12 @@
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
                                             <wm-container name="container21" margin="0 0 0 0" width="89%">
                                                 <wm-anchor id="associateBanLink" margin="0.5em 0 1.5em 0" name="anchor2" caption="Associate with BAN" on-click="anchor2Click($event, widget)"></wm-anchor>
-                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet[$i].banDetails" navigation="Classic" multiselect="false" radioselect="false"
-                                                    show="bind:Variables.banListShow.dataSet.dataValue==false">
-                                                    <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="number" type="double" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="number" type="double" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="customField" caption="In Dispute" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
+                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.getBanDetailsForNotes.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.banListShow.dataSet.dataValue==false">
+                                                    <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                 </wm-table>
                                                 <wm-anchor style="float: right;" name="anchor1" caption="Clear" on-click="anchor1Click($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
                                             </wm-container>
