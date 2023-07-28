@@ -30,12 +30,12 @@ Page.onReady = function() {
 // function added to clear all the fields in the filter grid
 Page.clearFilterFields = function($event, widget) {
     debugger;
-    Page.Widgets.AssignedTeamSelect.datavalue = "All";
-    Page.Widgets.AssignedPersonSelect.datavalue = "All";
-    Page.Widgets.EntityOwnerSelect.datavalue = "All";
-    Page.Widgets.WorkCategorySelect.datavalue = "All";
-    Page.Widgets.ActionTypeSelect.datavalue = "All";
-    Page.Widgets.StatusSelect.datavalue = "All";
+    Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
+    Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
+    Page.Widgets.EntityOwnerSelect.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    Page.Widgets.WorkCategorySelect.datavalue = Page.Variables.workCategoryValues_OrderDesk.invoke();
+    Page.Widgets.ActionTypeSelect.datavalue = "ALL";
+    Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
 };
