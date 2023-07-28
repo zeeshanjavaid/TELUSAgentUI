@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+
 Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
@@ -124,8 +125,11 @@ Page.workCategoryValues_OrderDeskonSuccess = function(variable, data) {
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
 };
 Page.EntityOwnerSelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
+        /*Page.Variables.workCategorySelect_OrderDeskView.invoke();*/
         Page.Variables.workCategoryValues_OrderDesk.invoke();
+
     } else {
         Page.Variables.workcategoriesByEmpId_OrderDesk.setInput({
             'emplId': Page.Widgets.EntityOwnerSelect.datavalue
