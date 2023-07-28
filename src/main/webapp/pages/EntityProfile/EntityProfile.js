@@ -23,7 +23,16 @@ Partial.onReady = function() {
      * widgets can be accessed through 'Partial.Widgets' property here
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
+     
+     
      */
+
+    Partial.Variables.getLatestNotesByEntityId.setInput({
+
+        'entityId': window.location.href.toString().split("=")[1]
+
+    });
+    Partial.Variables.getLatestNotesByEntityId.invoke();
 };
 Partial.button1Click = function($event, widget) {
     Partial.Widgets.createNoteButton.hidePopover();
@@ -144,6 +153,12 @@ Partial.button3Click1 = function($event, widget) {
                                     Partial.Variables.errorMsg.dataSet.dataValue = "";
                                     Partial.Widgets.CreateUserNotesdialog1.close();;
                                     // window.location.reload();
+                                    //  Partial.Variables.getLatestNotesByEntityId.invoke();
+                                    Partial.Variables.getLatestNotesByEntityId.setInput({
+
+                                        'entityId': window.location.href.toString().split("=")[1]
+
+                                    });
                                     Partial.Variables.getLatestNotesByEntityId.invoke();
 
                                 },
@@ -208,6 +223,11 @@ Partial.button3Click1 = function($event, widget) {
 
                     Partial.Widgets.CreateUserNotesdialog1.close();;
                     // window.location.reload();
+                    Partial.Variables.getLatestNotesByEntityId.setInput({
+
+                        'entityId': window.location.href.toString().split("=")[1]
+
+                    });
                     Partial.Variables.getLatestNotesByEntityId.invoke();
 
                 },

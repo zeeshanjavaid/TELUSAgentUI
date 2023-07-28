@@ -126,6 +126,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "EntityProfilePageName" : {
+    "_id" : "wm-EntityProfilePageName-wm.Variable-1690535309966",
+    "name" : "EntityProfilePageName",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "errorMsg" : {
     "_id" : "wm-errorMsg-wm.Variable-1652712733896",
     "name" : "errorMsg",

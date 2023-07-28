@@ -232,7 +232,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityId",
-      "value" : "6766677",
+      "value" : "bind:pageParams.entityId",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetLatestNotesResponse",

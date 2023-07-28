@@ -215,7 +215,7 @@
   "type" : "PARTIAL",
   "params" : [ {
     "name" : "entityId",
-    "type" : "string"
+    "type" : "integer"
   } ]
 }, {
   "name" : "EntityProfileCancelledBans",
