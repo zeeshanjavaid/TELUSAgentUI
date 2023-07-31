@@ -10,8 +10,10 @@
  */
 
 /* perform any action on widgets/variables within this block */
+
 var workCategoryDataArray = [];
 Page.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -26,6 +28,12 @@ Page.onReady = function() {
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
     Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
+    Page.Widgets.portfolioSelectEV.datavalue = "ALL";
+    Page.Widgets.portfolioSelectBV.datavalue = "ALL";
+    Page.Widgets.collStatusSelectEV.datavalue = "ALL";
+    Page.Widgets.collStatusSelectBV.datavalue = "ALL";
+    Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
+    Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
     $('#banViewTableGrid').hide();
     $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");

@@ -32,18 +32,31 @@
     "saveInPhonegap" : false
   },
   "billingSystemEntityView_home" : {
-    "_id" : "wm-billingSystemEntityView_home-wm.Variable-1687947098548",
+    "_id" : "wm-billingSystemEntityView_home_1-wm.ServiceVariable-1690796898880",
     "name" : "billingSystemEntityView_home",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "CES9"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "BILLINGSYSTEM",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "CollectionDataServiceGetassignedEntitiesInClassicView2" : {
     "_id" : "wm-CollectionDataServiceGetassignedEntitiesInClassicView2-wm.ServiceVariable-1688110870239",
@@ -136,44 +149,31 @@
     "controller" : "CollectionData"
   },
   "CollStatus_home" : {
-    "_id" : "wm-CollStatus_home-wm.Variable-1687944501332",
+    "_id" : "wm-CollStatus_home_1-wm.ServiceVariable-1690798514282",
     "name" : "CollStatus_home",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "ALL"
-    }, {
-      "dataValue" : "AGENCY"
-    }, {
-      "dataValue" : "ARREAR"
-    }, {
-      "dataValue" : "BRARRG"
-    }, {
-      "dataValue" : "CAARRG"
-    }, {
-      "dataValue" : "CEASE"
-    }, {
-      "dataValue" : "CMARRG"
-    }, {
-      "dataValue" : "INARRG"
-    }, {
-      "dataValue" : "INCOLL"
-    }, {
-      "dataValue" : "INSOLVENCY"
-    }, {
-      "dataValue" : "PRECOLL"
-    }, {
-      "dataValue" : "RECALL"
-    }, {
-      "dataValue" : "REOPEN"
-    }, {
-      "dataValue" : "SUSPEND"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "HOME_COLLSTATUS",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "entityView_Home" : {
     "_id" : "wm-entityView_Home-wm.ServiceVariable-1688106163154",
@@ -1631,30 +1631,31 @@
     "saveInPhonegap" : false
   },
   "portfolioEntityView_home" : {
-    "_id" : "wm-portfolioEntityView_home-wm.Variable-1687943468584",
+    "_id" : "wm-portfolioEntityView_home_1-wm.ServiceVariable-1690791277418",
     "name" : "portfolioEntityView_home",
     "owner" : "Page",
-    "category" : "wm.Variable",
+    "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "ALL"
-    }, {
-      "dataValue" : "SMB"
-    }, {
-      "dataValue" : "Internal"
-    }, {
-      "dataValue" : "Commercial-MM"
-    }, {
-      "dataValue" : "Commercial_ENT"
-    }, {
-      "dataValue" : "Public"
-    }, {
-      "dataValue" : "Partner"
+    "dataBinding" : [ {
+      "target" : "workCategory",
+      "value" : "HOME_PORTFOLIO",
+      "type" : "string"
     } ],
-    "type" : "string",
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCtegoryByCodeResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCtegoryByCode",
+    "operationId" : "QueryExecutionController_executeGetWorkCtegoryByCode",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
     "isList" : true,
-    "saveInPhonegap" : false
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
   },
   "UserLoggedInVar_home" : {
     "_id" : "wm-UserLoggedInVar_home-wm.Variable-1688705899274",
