@@ -175,10 +175,10 @@ Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
-    Partial.AmtOverUnder = parseInt(newVal) - totalInstallmentAmt;
+    Partial.AmtOverUnder = parseFloat(newVal) - totalInstallmentAmt;
 };
 
 Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
@@ -186,9 +186,9 @@ Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
-    Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
+    Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
 };
 
 Partial.renegotiatePARRdialogOpened = function($event, widget) {
@@ -201,9 +201,9 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
-    Partial.AmtOverUnder = parseInt(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
+    Partial.AmtOverUnder = parseFloat(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
 };
 
 Partial.SubmitButtonClick = function($event, widget) {
@@ -239,10 +239,10 @@ Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
-    Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
+    Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
 };
 
 Partial.BackLinkClick = function($event, widget) {
@@ -276,6 +276,16 @@ Partial.updatePaymentArrangementonSuccess = function(variable, data) {
         "id": Partial.pageParams.ParrId
     });
     Partial.Variables.getPaymentArrangement.invoke();
+
+    Partial.Variables.getCollectionHistoryViewParr.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'relatedBusinessEntityId': Partial.pageParams.ParrId,
+        'relatedBusinessEntityType': 'CollectionPaymentArrangement'
+
+    });
+
+    Partial.Variables.getCollectionHistoryViewParr.invoke();
+
     setTimeout(messageTimeout, 5000);
 };
 

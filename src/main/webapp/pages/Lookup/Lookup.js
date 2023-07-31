@@ -173,46 +173,46 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
         debugger;
         var PatchOutCollectionEntityVar = Page.Variables.PatchOutCollectionEntity;
-        /* PatchOutCollectionEntityVar.invoke({
-                 "inputFields": {
-                     "id": parseInt(Page.pageParams.entityId),
-                     "CollectionEntityUpdate": {
-                         "id": parseInt(Page.pageParams.entityId),
-                         "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                         "channel": {
-                             "originatorAppId": "FAWBTELUSAGENT",
-                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                         },
-                         billingAccountRefMaps
-                     }
-                 }
-             },
+        PatchOutCollectionEntityVar.invoke({
+                "inputFields": {
+                    "id": parseInt(Page.pageParams.entityId),
+                    "CollectionEntityUpdate": {
+                        "id": parseInt(Page.pageParams.entityId),
+                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps
+                    }
+                }
+            },
 
-             function(data) {
-                 //PATCH for transferring
-                 billingAccountRefMaps = billingAccountRefMaps1;
+            function(data) {
+                //PATCH for transferring
+                billingAccountRefMaps = billingAccountRefMaps1;
 
-                 Page.Variables.PatchInCollectionEntity.setInput({
-                     "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                     "CollectionEntityUpdate": {
-                         "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                         "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                         "channel": {
-                             "originatorAppId": "FAWBTELUSAGENT",
-                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-                         },
-                         billingAccountRefMaps
-                     }
-                 });
-                 Page.Variables.PatchInCollectionEntity.invoke();
+                Page.Variables.PatchInCollectionEntity.setInput({
+                    "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                    "CollectionEntityUpdate": {
+                        "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        "channel": {
+                            "originatorAppId": "FAWBTELUSAGENT",
+                            "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+                        },
+                        billingAccountRefMaps
+                    }
+                });
+                Page.Variables.PatchInCollectionEntity.invoke();
 
-             },
-             function(error) {
-                 // Error Callback
-                 console.log("error", error);
-             }
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
 
-         );*/
+        );
 
 
 

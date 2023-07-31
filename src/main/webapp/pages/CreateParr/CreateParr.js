@@ -28,7 +28,7 @@ Partial.onReady = function() {
 
 Partial.createInstalmntScheduleClick = function($event, widget) {
 
-
+    debugger;
 
     if (Partial.Widgets.ParrTotal._datavalue == "" || Partial.Widgets.ParrTotal._datavalue == null) {
         App.Variables.errorMsg.dataSet.dataValue = "ParrTotal is mandatory";
@@ -53,6 +53,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         var totalInstallmentAmt = 0;
         //Psuedo code start
         //check if numOfInstallmetn is selected 
+        var parrTotalVar = Partial.Widgets.ParrTotal.datavalue;
         if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments') {
             installmentSize = Partial.Variables.NoOfInstallments.dataSet.datavalue;
             amount = Partial.Widgets.ParrTotal.datavalue / Partial.Variables.NoOfInstallments.dataSet.datavalue;
@@ -71,52 +72,49 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
             //ask abou installment Schedule size limitations 
         }
         // //Psuedo code End
-        for (var i = 0; i < installmentSize; i++) {
+        var installmentCostWithoutLastone = 0;
+        var collectionPaymentInstallment = {};
+        var tempDate = '';
+        var installmentSizeNewVar = installmentSize - 1;
+        for (var i = 0; i < installmentSizeNewVar; i++) {
 
-            var collectionPaymentInstallment = {};
+            var installmentCost = Math.floor(amount * 100) / 100;
+            installmentCostWithoutLastone = installmentCostWithoutLastone + installmentCost;
+
             collectionPaymentInstallment.sequenceId = i + 1;
-            var tempDate = '';
-            if (i == installmentSize - 1 && remainder !== 0) {
-                amount = lastInstallmentAmount;
-            }
+
+            /* if (i == installmentSize - 1 && remainder !== 0) {
+                 amount = lastInstallmentAmount;
+             } */
             if (i > 0) {
                 tempDate = new Date(installmentSchedule[i - 1].date);
             } else {
                 tempDate = new Date();
             }
-            if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Weekly') {
 
-                tempDate = new Date(tempDate.setDate(tempDate.getDate() + 7));
-                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
-                // collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
-            } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Bi-Weekly') {
-
-                tempDate = new Date(tempDate.setDate(tempDate.getDate() + 15));
-                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
-                //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
-            } else if (Partial.Widgets.RecurrenceDropdown.datavalue == 'Monthly') {
-
-                tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
-                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
-                //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
-            } else {
-
-                tempDate = new Date(tempDate.setDate(tempDate.getDate() + 1));
-                collectionPaymentInstallment.date = new Date(tempDate).toJSON().slice(0, 10);
-                //collectionPaymentInstallment.date = tempDate.getMonth() + "/" + tempDate.getDate() + "/" + tempDate.getFullYear();
-            }
-
-            collectionPaymentInstallment.amount = amount;
-            if (i === 0) {
-                //collectionPaymentInstallment.cummPmtAmount = collectionPaymentInstallment.amount;
-            } else {
-                //collectionPaymentInstallment.cummPmtAmount = installmentSchedule[i - 1].amount + collectionPaymentInstallment.amount;
-            }
-            totalInstallmentAmt = totalInstallmentAmt + amount;
+            var installmentDateVar = getInstallmentDate(Partial.Widgets.RecurrenceDropdown.datavalue, tempDate);
+            collectionPaymentInstallment.date = installmentDateVar;
+            collectionPaymentInstallment.amount = installmentCost;
+            //totalInstallmentAmt = totalInstallmentAmt + installmentCost;
 
             installmentSchedule.push(collectionPaymentInstallment);
+            collectionPaymentInstallment = {};
         }
-        Partial.AmtOverUnder = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
+
+        //To populate last installment
+        if (installmentSize == 1) {
+            tempDate = new Date();
+        }
+        var lastInstallmentCost = parrTotalVar - installmentCostWithoutLastone;
+        lastInstallmentCost = Math.round(lastInstallmentCost * 100) / 100;
+        collectionPaymentInstallment.sequenceId = installmentSize;
+        collectionPaymentInstallment.date = getInstallmentDate(Partial.Widgets.RecurrenceDropdown.datavalue, tempDate);
+        collectionPaymentInstallment.amount = lastInstallmentCost;
+        installmentSchedule.push(collectionPaymentInstallment);
+        //To populate last installment ends
+        totalInstallmentAmt = installmentCostWithoutLastone + lastInstallmentCost;
+        totalInstallmentAmt = Math.round(totalInstallmentAmt * 100) / 100;
+        Partial.Variables.AmtOverUnder.dataSet.dataValue = Partial.Widgets.ParrTotal.datavalue - totalInstallmentAmt;
         Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = 'true';
         Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
         Partial.Variables.ParrInstallmentSchedule.dataSet.push(...installmentSchedule);
@@ -125,6 +123,30 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
     //App.Variables.errorMsg.dataSet.dataValue = null;
 
 };
+
+function getInstallmentDate(recurrence, tempDate) {
+    debugger;
+    var collectionPaymentDate;
+    if (recurrence == 'Weekly') {
+
+        tempDate = new Date(tempDate.setDate(tempDate.getDate() + 7));
+        collectionPaymentDate = new Date(tempDate).toJSON().slice(0, 10);
+    } else if (recurrence == 'Bi-Weekly') {
+
+        tempDate = new Date(tempDate.setDate(tempDate.getDate() + 15));
+        collectionPaymentDate = new Date(tempDate).toJSON().slice(0, 10);
+    } else if (recurrence == 'Monthly') {
+
+        tempDate = new Date(tempDate.setMonth(tempDate.getMonth() + 1));
+        collectionPaymentDate = new Date(tempDate).toJSON().slice(0, 10);
+    } else {
+
+        tempDate = new Date(tempDate.setDate(tempDate.getDate() + 1));
+        collectionPaymentDate = new Date(tempDate).toJSON().slice(0, 10);
+    }
+    return collectionPaymentDate;
+}
+
 
 Partial.noOfInstlmntChange = function($event, widget, newVal, oldVal) {
 
@@ -147,7 +169,12 @@ Partial.CancelClick = function($event, widget) {
 Partial.RecurrenceDropdownChange = function($event, widget, newVal, oldVal) {
 
 };
-Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {};
+Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    newVal;
+    oldVal;
+
+};
 
 Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) {
 
@@ -219,13 +246,14 @@ Partial.SubmitBanClick = function($event, widget) {
     Partial.Widgets.selectBANdialog.close();
 };
 Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
+    debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseInt(totalInstallmentAmt) + parseInt(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
     }
-    Partial.AmtOverUnder = parseInt(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt;
+    Partial.Variables.AmtOverUnder.dataSet.dataValue = Math.round((parseFloat(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt) * 100) / 100;
 
 };
 
