@@ -57,8 +57,6 @@ Partial.CancelClick = function($event, widget) {
 
 Partial.createContact = function($event, widget) {
     debugger;
-    const workNumber = Partial.Widgets.workNo.datavalue;
-    const numericWorkNumber = workNumber.replace(/\D/g, '');
     if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
     } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
@@ -79,15 +77,15 @@ Partial.createContact = function($event, widget) {
             "CollectionContactCreate": {
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
-                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue.replace(/\D/g, ''),
                 'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
                 'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
                 'title': Partial.Widgets.TITLESelect.datavalue,
-                'workPhoneNumber': numericWorkNumber,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue.replace(/\D/g, ''),
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue.replace(/\D/g, ''),
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId

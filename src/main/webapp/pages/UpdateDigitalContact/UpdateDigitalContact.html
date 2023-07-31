@@ -80,7 +80,8 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="cellPhoneKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.mobilePhoneNumber"></wm-text>
+                        <wm-text name="cellPhone" id="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="cellPhoneKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.mobilePhoneNumber"
+                            on-keydown="cellPhoneKeydown($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -93,7 +94,8 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"></wm-text>
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"
+                            on-keydown="workNoKeydown($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -115,7 +117,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="faxKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.faxNumber"></wm-text>
+                        <wm-text name="fax" id="fax" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="faxKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.faxNumber" on-keydown="faxKeydown($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>

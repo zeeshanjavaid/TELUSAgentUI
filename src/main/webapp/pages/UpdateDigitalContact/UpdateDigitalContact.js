@@ -39,10 +39,10 @@ App.rowDataValues = function(row) {
             Partial.Widgets.lastName.datavalue = data.lastName;
             Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
             Partial.Widgets.emailText.datavalue = data.email;
-            Partial.Widgets.cellPhone.datavalue = data.mobilePhoneNumber;
-            Partial.Widgets.workNo.datavalue = data.workPhoneNumber;
+            Partial.Widgets.cellPhone.datavalue = data.mobilePhoneNumber.length == 10 ? '(' + data.mobilePhoneNumber.substring(0, 3) + ')' + data.mobilePhoneNumber.substring(3, 6) + '-' + data.mobilePhoneNumber.substring(6, 10) : data.mobilePhoneNumber;
+            Partial.Widgets.workNo.datavalue = data.workPhoneNumber.length == 10 ? '(' + data.workPhoneNumber.substring(0, 3) + ')' + data.workPhoneNumber.substring(3, 6) + '-' + data.workPhoneNumber.substring(6, 10) : data.workPhoneNumber;
             Partial.Widgets.ext.datavalue = data.workPhoneNumberExtension;
-            Partial.Widgets.fax.datavalue = data.faxNumber;
+            Partial.Widgets.fax.datavalue = data.faxNumber.length == 10 ? '(' + data.faxNumber.substring(0, 3) + ')' + data.faxNumber.substring(3, 6) + '-' + data.faxNumber.substring(6, 10) : data.faxNumber;
             Partial.Widgets.comments.datavalue = data.comment;
             Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
             Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
@@ -142,15 +142,15 @@ Partial.updateContact = function($event, widget) {
                 'id': Partial.Widgets.contactIDLabel.caption,
                 'firstName': Partial.Widgets.firstName.datavalue,
                 'lastName': Partial.Widgets.lastName.datavalue,
-                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue.replace(/\D/g, ''),
                 'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
                 'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
                 'title': Partial.Widgets.TITLESelect.datavalue,
-                'workPhoneNumber': Partial.Widgets.workNo.datavalue,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue.replace(/\D/g, ''),
                 'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue.replace(/\D/g, ''),
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
@@ -169,6 +169,19 @@ Partial.updateContact = function($event, widget) {
 Partial.workNoKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+
+
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
 };
 
 Partial.extKeypress = function($event, widget) {
@@ -179,11 +192,37 @@ Partial.extKeypress = function($event, widget) {
 Partial.faxKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+
+
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.fax.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
 };
 
 Partial.cellPhoneKeypress = function($event, widget) {
     var value = $event.key;
     isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+
+
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.cellPhone.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
 };
 
 function isNotANumber(value) {
@@ -264,4 +303,25 @@ Partial.expireDigitalContactonSuccess = function(variable, data) {
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
     setTimeout(messageTimeout, 10000);
+};
+
+Partial.cellPhoneKeydown = function($event, widget) {
+    var value = $event.key;
+    if (value === 'Backspace') {
+        Partial.Widgets.cellPhone.datavalue = "";
+    }
+};
+
+Partial.workNoKeydown = function($event, widget) {
+    var value = $event.key;
+    if (value === 'Backspace') {
+        Partial.Widgets.workNo.datavalue = "";
+    }
+};
+
+Partial.faxKeydown = function($event, widget) {
+    var value = $event.key;
+    if (value === 'Backspace') {
+        Partial.Widgets.fax.datavalue = "";
+    }
 };
