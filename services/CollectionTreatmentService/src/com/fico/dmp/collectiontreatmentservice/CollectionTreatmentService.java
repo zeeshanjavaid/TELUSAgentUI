@@ -38,6 +38,8 @@ import com.fico.telus.model.OrderMgmtHistoryResponse;
 import java.util.List;
 import java.util.ArrayList;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 
 
 
@@ -202,7 +204,8 @@ public class CollectionTreatmentService {
     }
     
     public CollectionTreatmentStep addCollectionTreatmentStep(CollectionTreatmentStepCreate collectionTreatmentStepCreate ) throws Exception  {
-        
+               objectMapper.setSerializationInclusion(Include.NON_EMPTY);
+
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
         String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepCreate);
         logger.info(":::::Before calling Create coll treatment step- RequestPayload :::",requestPayload);
