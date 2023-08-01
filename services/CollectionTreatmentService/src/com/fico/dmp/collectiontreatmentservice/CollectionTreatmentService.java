@@ -260,7 +260,7 @@ public class CollectionTreatmentService {
 
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
-                    .queryParam("collectionActivityType", collectionActivityType)
+                    .queryParam("relatedBusinessEntityType", relatedBusinessEntityType)
                     .queryParam("collectionEntityId", collectionEntityId) 
                      .queryParam("relatedBusinessEntityId", relatedBusinessEntityId)
                     .queryParam("fields", fields)

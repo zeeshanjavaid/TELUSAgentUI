@@ -91,7 +91,7 @@ Partial.button3Click1 = function($event, widget) {
 
 
     if (Partial.Widgets.fileupload1.selectedFiles != undefined) {
-        var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
+        var entityId = Partial.Variables.getLatestNotesByEntityId.dataSet[0].entityId;
 
         var docName = Partial.Widgets.fileupload1.selectedFiles[0].name;
 
@@ -129,7 +129,7 @@ Partial.button3Click1 = function($event, widget) {
                         } else {
                             var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
                             var note = Partial.Widgets.textarea1.datavalue;
-                            var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
+                            var entityId = Partial.Variables.getLatestNotesByEntityId.dataSet[0].entityId;
 
                             Partial.Variables.saveNote.setInput({
 
@@ -198,7 +198,7 @@ Partial.button3Click1 = function($event, widget) {
         } else {
             var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
             var note = Partial.Widgets.textarea1.datavalue;
-            var entityId = Partial.Widgets.getEntityDetailsTable1_1.dataset[0].entityId;
+            var entityId = Partial.Variables.getLatestNotesByEntityId.dataSet[0].entityId;
 
             Partial.Variables.saveNote.setInput({
 
