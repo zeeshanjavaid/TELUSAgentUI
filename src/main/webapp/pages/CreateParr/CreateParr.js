@@ -169,12 +169,6 @@ Partial.CancelClick = function($event, widget) {
 Partial.RecurrenceDropdownChange = function($event, widget, newVal, oldVal) {
 
 };
-Partial.ParrTotalChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    newVal;
-    oldVal;
-
-};
 
 Partial.InstallmentOptionRadioChange = function($event, widget, newVal, oldVal) {
 
