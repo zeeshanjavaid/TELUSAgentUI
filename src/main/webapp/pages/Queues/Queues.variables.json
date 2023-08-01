@@ -27,6 +27,21 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "navigationAction1" : {
+    "_id" : "wm-navigationAction1-wm.NavigationVariable-1681962605595",
+    "name" : "navigationAction1",
+    "owner" : "Page",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "QueueSearch",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "partialQueueMsg" : {
     "_id" : "wm-partialQueueMsg-wm.Variable-1660820597376",
     "name" : "partialQueueMsg",
