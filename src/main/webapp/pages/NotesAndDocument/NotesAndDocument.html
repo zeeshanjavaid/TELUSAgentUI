@@ -24,10 +24,17 @@
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid3_1">
         <wm-gridrow name="gridrow4">
-            <wm-gridcolumn columnwidth="12" name="gridcolumn6"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="12" name="gridcolumn6" padding="unset unset unset 1.5em">
+                <wm-table name="executeGetLatestNotesTable1" title="" dataset="bind:Variables.getLatestNotesBy_EntityId.dataSet" navigation="Classic" width="98%">
+                    <wm-table-column binding="createdOn" caption="Created Date" edit-widget-type="timestamp" type="Date" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="createdBy" caption="Created By" edit-widget-type="number" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="notes" caption="Notes" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="docId" caption="Attached Doc" edit-widget-type="number" type="string" show="true" readonly="false"></wm-table-column>
+                </wm-table>
+            </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Note" iconclass="" name="CreateUserNotes_dialog" width="50%" class="CreateUserNotesdialog1">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Note" iconclass="" name="CreateUserNotes_dialog" width="50%" class="CreateUserNotesdialog">
         <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow20">
