@@ -151,7 +151,10 @@ Partial.button3Click1 = function($event, widget) {
                                     // App.pageRefresh();
                                     Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
                                     Partial.Variables.errorMsg.dataSet.dataValue = "";
-                                    Partial.Widgets.CreateUserNotesdialog1.close();;
+                                    setTimeout(function() {
+                                        Partial.Widgets.CreateUserNotesdialog1.close();
+
+                                    }, 1000);
                                     // window.location.reload();
                                     //  Partial.Variables.getLatestNotesByEntityId.invoke();
                                     Partial.Variables.getLatestNotesByEntityId.setInput({
@@ -221,7 +224,12 @@ Partial.button3Click1 = function($event, widget) {
                     Partial.Variables.errorMsg.dataSet.dataValue = "";
                     Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
 
-                    Partial.Widgets.CreateUserNotesdialog1.close();;
+                    setTimeout(function() {
+                        Partial.Widgets.CreateUserNotesdialog1.close();
+
+                    }, 1000);
+
+
                     // window.location.reload();
                     Partial.Variables.getLatestNotesByEntityId.setInput({
 
