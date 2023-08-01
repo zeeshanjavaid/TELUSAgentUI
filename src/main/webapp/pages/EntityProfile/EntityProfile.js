@@ -227,7 +227,7 @@ Partial.button3Click1 = function($event, widget) {
                     setTimeout(function() {
                         Partial.Widgets.CreateUserNotesdialog1.close();
 
-                    }, 1000);
+                    }, 1300);
 
 
                     // window.location.reload();
@@ -249,6 +249,7 @@ Partial.button3Click1 = function($event, widget) {
 
         //   }
     }
+    setTimeout(messageTimeout, 1500);
 
 };
 
@@ -398,3 +399,7 @@ Partial.anchor2Click = function($event, widget) {
 Partial.getBanDetailsForNotesonError = function(variable, data, xhrObj) {
 
 };
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+}
