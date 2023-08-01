@@ -289,6 +289,13 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "NotesAndDocument",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "integer"
+  } ]
+}, {
   "name" : "OrderBanIdPopup",
   "type" : "PARTIAL",
   "params" : [ ]

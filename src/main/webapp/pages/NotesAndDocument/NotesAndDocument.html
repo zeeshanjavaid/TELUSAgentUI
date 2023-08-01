@@ -1,0 +1,99 @@
+<wm-partial name="partial1" style="border: 1px solid #ddd;">
+    <wm-layoutgrid name="layoutgrid1">
+        <wm-gridrow name="gridrow1">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn1">
+                <h3><b>Notes &amp; Document</b></h3>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn2"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0 2em 0 0">
+                <wm-popover popoverwidth="40" popoverheight="20" margin="1.5em 0.5em unset unset" name="createNoteButtonpopover" caption="..." popoverarrow="false" popoverautoclose="true" contentsource="inline" title="">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                            <wm-layoutgrid name="layoutgrid3">
+                                <wm-gridrow name="gridrow5">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn9" padding="0.5em unset">
+                                        <wm-button class="btn-default" caption="Create User Note" type="button" margin="unset 0.5em" name="createUserNotebutton" on-click="createUserNotebuttonClick($event, widget)"></wm-button>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-popover>
+            </wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-layoutgrid name="layoutgrid3_1">
+        <wm-gridrow name="gridrow4">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn6"></wm-gridcolumn>
+        </wm-gridrow>
+    </wm-layoutgrid>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Note" iconclass="" name="CreateUserNotes_dialog" width="50%" class="CreateUserNotesdialog1">
+        <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow20">
+                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow21">
+                <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true"></wm-message>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36" class="enter_NoteLine" padding="1em unset unset unset">
+                    <wm-label padding="unset unset 0.5em unset" caption="Enter Note*" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid4">
+            <wm-gridrow name="gridrow5_1" padding="1em unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                    <wm-composite name="composite1">
+                        <wm-container class="col-md-9" name="container2" width="89%">
+                            <wm-textarea name="textarea1" class="TextAreaRadius" required="false" placeholder="" resize="none" maxchars="255"></wm-textarea>
+                        </wm-container>
+                        <p id="p01" style="color:red;"></p>
+                    </wm-composite>
+                    <wm-layoutgrid name="layoutgrid5">
+                        <wm-gridrow name="gridrow8">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
+                                <!--<wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)"-->
+                                <!--    class="associatePanel" id="AssociateBan" expanded="false" on-load="AssociatewithBANLoad(widget)" on-actionsclick="AssociatewithBANActionsclick($event, action, widget)">-->
+                                <wm-layoutgrid name="layoutgrid25">
+                                    <wm-gridrow name="gridrow39">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
+                                            <wm-container name="container21" margin="0 0 0 0" width="89%">
+                                                <wm-anchor id="associateBanLink" margin="0.5em 0 1.5em 0" name="Bananchor" caption="Associate with BAN" on-click="BananchorClick($event, widget)"></wm-anchor>
+                                                <wm-table name="getEntityDetailsTable1_2" title="" dataset="bind:Variables.getBanDetailsForNotesAndDoc.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.banList_Show.dataSet.dataValue==false">
+                                                    <wm-table-column binding="banId" caption="BAN #" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" width="145px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                </wm-table>
+                                                <wm-anchor style="float: right;" name="Clearanchor" caption="Clear" on-click="ClearanchorClick($event, widget)" show="bind:Variables.banList_Show.dataSet.dataValue==false"></wm-anchor>
+                                            </wm-container>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                                <!--</wm-panel>-->
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow6" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn6" padding="2em unset 0.5em unset" class="addAttachmentLine">
+                    <wm-label name="label3_1" caption="Add Attachment to Note (File size should not exceed 500KB)"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow7" padding="unset unset unset 1em">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="1em unset 3em unset">
+                    <p id="p02" style="color:red;"></p>
+                    <wm-fileupload name="fileupload_1" iconclass="" caption="Attach" maxfilesize="20" contenttype=".pdf .doc .docx .xls .xlsx"></wm-fileupload>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1" padding="1em unset 1em unset">
+            <wm-button class="primaryButton" caption="Create" type="button" margin="1em 0.5em" name="createButton" style="float:right;" on-click="createButtonClick($event, widget)"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog();cancleButtonClick($event, widget)" name="cancleButton" style="float:right;" margin="1em unset"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+</wm-partial>
