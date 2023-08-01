@@ -21,6 +21,8 @@ Page.onReady = function() {
     // ex1.onclick = handle1;
     // ex2.onclick = handle2;
 
+    handleBanPhoneNumber();
+
 }
 
 
@@ -337,7 +339,7 @@ Page.searchEntityonError = function(variable, data) {
 // };
 
 
-Page.select1Change = function($event, widget, newVal, oldVal) {
+/*Page.select1Change = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.select1.datavalue == 'BAN') {
         $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
         Page.Widgets.select3.disabled = true;
@@ -352,8 +354,16 @@ Page.select1Change = function($event, widget, newVal, oldVal) {
     } else if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
         selectTypeChange();
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
-    } else if (Page.Widgets.select1.datavalue == 'Entity') {
+    } else if (Page.Widgets.select1.datavalue == 'Entity' || Page.Widgets.select1.datavalue == 'BAN') {
         selectTypeChange();
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
+    }
+};*/
+
+Page.select1Change = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
+    } else if (Page.Widgets.select1.datavalue == 'Entity' || Page.Widgets.select1.datavalue == 'BAN') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
     }
 };
@@ -369,6 +379,32 @@ function selectTypeChange() {
     Page.Widgets.text5.disabled = true;
     $('#name').prop('disabled', false);
     $('#numID').prop('disabled', false);
+};
 
+function handleBanPhoneNumber() {
+    $('#banPhNo').click(function(e) {
+        $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+        Page.Widgets.select3.disabled = true;
+        Page.Widgets.select4.disabled = true;
+        Page.Widgets.text4._datavalue = '';
+        Page.Widgets.text4._datavalue = '';
+        Page.Widgets.text5._datavalue = '';
+        Page.Widgets.text4.disabled = true;
+        Page.Widgets.text5.disabled = true;
+        $('#name').prop('disabled', true);
+        $('#numID').prop('disabled', true);
+    });
+};
 
-}
+Page.text3Blur = function($event, widget) {
+    $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
+    Page.Widgets.select4._datavalue = '';
+    Page.Widgets.select3.disabled = false;
+    Page.Widgets.select4.disabled = false;
+    Page.Widgets.text4._datavalue = '';
+    Page.Widgets.text5._datavalue = '';
+    Page.Widgets.text4.disabled = true;
+    Page.Widgets.text5.disabled = true;
+    $('#name').prop('disabled', false);
+    $('#numID').prop('disabled', false);
+};
