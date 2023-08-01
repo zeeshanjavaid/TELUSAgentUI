@@ -387,7 +387,6 @@ function handleBanPhoneNumber() {
         Page.Widgets.select3.disabled = true;
         Page.Widgets.select4.disabled = true;
         Page.Widgets.text4._datavalue = '';
-        Page.Widgets.text4._datavalue = '';
         Page.Widgets.text5._datavalue = '';
         Page.Widgets.text4.disabled = true;
         Page.Widgets.text5.disabled = true;
@@ -397,7 +396,9 @@ function handleBanPhoneNumber() {
 };
 
 Page.text3Blur = function($event, widget) {
-    Page.Widgets.text3._datavalue = '';
+    $('input[type=text]').each(function() {
+        $(this).val('');
+    });
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
     Page.Widgets.select4._datavalue = '';
     Page.Widgets.select3.disabled = false;
