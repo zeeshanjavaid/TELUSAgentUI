@@ -267,8 +267,7 @@ Page.popover4Show = function($event, widget) {
 
 };
 Page.getEntityBanDetailsTable1Datarender = function(widget, $data) {
-    Page;
-    debugger;
+    $('#getEntityBanDetailsTable1ID th input[type=checkbox]').hide();
 };
 
 Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
@@ -443,8 +442,6 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
     }
 };
 Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
-    Page;
-    debugger;
     $('#TransferBanToNewEntityTableID th input[type=checkbox]').hide();
 };
 Page.TransferBanToExistEntDialogOpened = function($event, widget) {
