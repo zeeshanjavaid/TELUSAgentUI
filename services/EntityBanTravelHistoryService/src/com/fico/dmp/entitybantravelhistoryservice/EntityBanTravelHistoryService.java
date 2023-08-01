@@ -3,6 +3,7 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.entitybantravelhistoryservice;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,18 +67,50 @@ public class EntityBanTravelHistoryService {
     	CollectionEntity collectionEntity = collectionEntityService.getCollectionEntityById(id, true);
     	List<CollectionEntityBillingAccountRefMap> collectionEntityBillingAccountRefList = collectionEntity.getBillingAccountRefMaps();
     	List<String> billingAcctRefIds = new ArrayList<String>();
+    	
+    	OffsetDateTime entityStartOffsetDateTime = collectionEntity.getValidFor().getStartDateTime();
+    	int entityDateTimeYear = entityStartOffsetDateTime.getYear();
+    	int entityDateTimeMonth = entityStartOffsetDateTime.getMonthValue();
+    	int entityDateTimeDay = entityStartOffsetDateTime.getDayOfMonth();
+    	int entityDateTimeHour = entityStartOffsetDateTime.getHour();
+    	int entityDateTimeMin = entityStartOffsetDateTime.getMinute();
+    	
+    	logger.info("Entity level--"+entityDateTimeYear+""+entityDateTimeMonth+""+entityDateTimeDay+""+entityDateTimeHour+""+entityDateTimeMin);
+    	
+    	
     	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();
     	if(!CollectionUtils.isEmpty(collectionEntityBillingAccountRefList)) {
         	//billingAcctRefIds = collectionEntityBillingAccountRefList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
         	
         	for (CollectionEntityBillingAccountRefMap collectionEntityBillingAccountRefMap : collectionEntityBillingAccountRefList) {
-        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
-        		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
-        		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
-        		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
-        		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
-        		billingAcctRefIds.add(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
-        		banTravelHistoryModelList.add(banTravelHistoryModel);
+            	OffsetDateTime entityBillingAccRefOffsetDateTime = collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime();
+            	int entityBillingAccRefDateTimeYear = entityBillingAccRefOffsetDateTime.getYear();
+            	int entityBillingAccRefDateTimeMonth = entityBillingAccRefOffsetDateTime.getMonthValue();
+            	int entityBillingAccRefDateTimeDay = entityBillingAccRefOffsetDateTime.getDayOfMonth();
+            	int entityBillingAccRefDateTimeHour = entityBillingAccRefOffsetDateTime.getHour();
+            	int entityBillingAccRefDateTimeMin = entityBillingAccRefOffsetDateTime.getMinute();
+            	
+            	logger.info("BillingAccount level--"+entityBillingAccRefDateTimeYear+""+entityBillingAccRefDateTimeMonth+""+entityBillingAccRefDateTimeDay+""+entityBillingAccRefDateTimeHour+""+entityBillingAccRefDateTimeMin);
+            	
+            	boolean eligibleForTransferBanHistory = false;
+            	if(entityBillingAccRefDateTimeYear == entityDateTimeYear && entityBillingAccRefDateTimeMonth == entityDateTimeMonth && entityBillingAccRefDateTimeDay == entityDateTimeDay) {
+            		if(entityBillingAccRefDateTimeHour != entityDateTimeHour) {
+            			eligibleForTransferBanHistory = true;
+            		}else {
+            			eligibleForTransferBanHistory = false;
+            		}
+            	}else {
+            		eligibleForTransferBanHistory = true;
+            	}
+            	
+        		if(eligibleForTransferBanHistory || collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
+	        		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
+	        		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
+	        		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
+	        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null)
+	        		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
+	        		billingAcctRefIds.add(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
+	        		banTravelHistoryModelList.add(banTravelHistoryModel);
         		}
 			}
     	}

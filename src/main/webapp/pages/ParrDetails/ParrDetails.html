@@ -13,8 +13,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn22_1" horizontalalign="right">
                 <wm-container name="container14" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em unset 1em" name="CancelParr" on-click="CancelParrClick($event, widget);Widgets.cancelPARRConfirmationdialog.open()" disabled="bind:Variables.getPaymentArrangement.dataSet.status == 'Closed' ? true :  false"></wm-button>
-                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="RenegotiateParr" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right" disabled="bind:(Variables.getPaymentArrangement.dataSet.status == 'Renegotiated' || Variables.getPaymentArrangement.dataSet.status == 'Closed') ? true :  false"></wm-button>
+                    <wm-button class="btn-default" caption="Cancel PARR" type="button" margin="unset 0.5em unset 1em" name="CancelParr" on-click="CancelParrClick($event, widget);Widgets.cancelPARRConfirmationdialog.open()" disabled="bind:(Variables.getPaymentArrangement.dataSet.status == 'Closed' || Variables.getPaymentArrangement.dataSet.status == 'Cancelled') ? true :  false"></wm-button>
+                    <wm-button class="btn-default" caption="Renegotiate PARR" type="button" margin="unset 0.5em" name="RenegotiateParr" on-click="Widgets.renegotiatePARRdialog.open()" textalign="right" disabled="bind:(Variables.getPaymentArrangement.dataSet.status == 'Renegotiated' || Variables.getPaymentArrangement.dataSet.status == 'Closed' || Variables.getPaymentArrangement.dataSet.status == 'Cancelled') ? true :  false"></wm-button>
                 </wm-container>
             </wm-gridcolumn>
         </wm-gridrow>

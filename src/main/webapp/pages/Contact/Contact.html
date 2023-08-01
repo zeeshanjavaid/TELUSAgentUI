@@ -7,7 +7,8 @@
             <wm-gridcolumn columnwidth="1" name="gridcolumn14" style="display: flex;flex-direction: column;width: 15%;class=" class="borderGrid">
                 <wm-button class="btn-default" caption="Mailing Contacts" type="button" margin="unset 1.3em unset 0.5em" name="mailingContactBtn" id="mailingBtn" on-click="mailingContactBtnClick($event, widget)"></wm-button>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="4" name="gridcolumn4" style="text-align: right, display: flex;flex-direction: column; width: 70.5%;" margin="unset 1.7em unset 0.5em" id="buttonsLayoutGrid" show="bind:Variables.ShowHideCreateBtnGrid.dataSet.dataValue" horizontalalign="right">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn4" style="text-align: right, display: flex;flex-direction: column; width: 70.5%;" margin="unset 1.7em unset 0.5em" id="buttonsLayoutGrid" show="bind:Variables.ShowHideCreateBtnGrid.dataSet.dataValue"
+                horizontalalign="right">
                 <wm-button class="primaryButton" caption="Create" type="button" margin="unset unset 0.5em 0.5em" name="button4" on-click="CreateButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -32,17 +33,17 @@
                         <wm-label caption="bind:row.getProperty('workNumber').length == 10 ? '(' + row.getProperty('workNumber').substring(0, 3) + ')' + row.getProperty('workNumber').substring(3, 6) + '-' + row.getProperty('workNumber').substring(6, 10) : row.getProperty('workNumber')"
                             class="" conditionalclass=""></wm-label>
                     </wm-table-column>
-                    <wm-table-column binding="mobileNumber" caption="Mobile No" width="100px" edit-widget-type="text" type="string" show="true" readonly="false">
+                    <wm-table-column binding="mobileNumber" caption="Mobile No." width="100px" edit-widget-type="text" type="string" show="true" readonly="false">
                         <wm-label caption="bind:row.getProperty('mobileNumber').length == 10 ? '(' + row.getProperty('mobileNumber').substring(0, 3) + ')' + row.getProperty('mobileNumber').substring(3, 6) + '-' + row.getProperty('mobileNumber').substring(6, 10) : row.getProperty('mobileNumber')"
                             class="" conditionalclass=""></wm-label>
                     </wm-table-column>
-                    <wm-table-column binding="faxNumber" caption="Fax No" width="104px" edit-widget-type="text" type="string" show="true" readonly="false">
+                    <wm-table-column binding="faxNumber" caption="Fax No." width="104px" edit-widget-type="text" type="string" show="true" readonly="false">
                         <wm-label caption="bind:row.getProperty('faxNumber').length == 10 ? '(' + row.getProperty('faxNumber').substring(0, 3) + ')' + row.getProperty('faxNumber').substring(3, 6) + '-' + row.getProperty('faxNumber').substring(6, 10) : row.getProperty('faxNumber')"
                             class="" conditionalclass=""></wm-label>
                     </wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row-action key="updaterow" display-name="" show="bind:Widgets.getEntityContactsTable1.currentItem.sourceOfContact == &quot;TCM&quot; ? true : false" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="getEntityContactsTable1_customRowAction($event, row)"
-                        disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="updaterow" display-name="" show="bind:Widgets.getEntityContactsTable1.currentItem.sourceOfContact == &quot;TCM&quot; ? true : false" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil"
+                        title="Edit" action="getEntityContactsTable1_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -52,11 +53,11 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table name="getEntityContactsTable1_1" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.mailingContacts" navigation="Classic" pagesize="5" navigationalign="right">
-                    <wm-table-column binding="banId" caption="BAN NO" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banId" caption="BAN No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="careOf" caption="Care Of" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="poBox" caption="PO BOX" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="unitNumber" caption="Unit No" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="unitNumber" caption="Unit No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetNumber" caption="Street No." edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetNumberSuffix" caption="Street No. Suffix" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="streetName" caption="Street Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

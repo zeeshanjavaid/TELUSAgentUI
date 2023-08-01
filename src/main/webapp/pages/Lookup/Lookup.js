@@ -103,7 +103,7 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     debugger;
 
-    Page.combinedSuccessMessageVar = Page.Widgets.entityToTransferBanDropdown.displayValue;
+    Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.entityToTransferBanDropdown.displayValue;
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
@@ -475,7 +475,7 @@ Page.AddCollectionEntityServiceVaronSuccess = function(variable, data) {
 Page.PatchInCollectionEntityonSuccess = function(variable, data) {
 
     Page.Widgets.TransferBanToExistEntDialog.close();
-    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to Entity: ";
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "BANs transferred to Entity: " + Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue;
     setTimeout(messageTimeout, 10000);
 
 };
