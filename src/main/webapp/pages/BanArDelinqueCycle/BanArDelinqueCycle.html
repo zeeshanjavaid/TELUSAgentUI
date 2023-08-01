@@ -6,32 +6,39 @@
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow7" height="50px">
-            <wm-gridcolumn columnwidth="1" name="gridcolumn50_1" class="full-border">
-                <wm-label caption="30D" name="label42" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn50_1" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="30D" name="label42" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar30Days" name="ar30D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn48_1" class="full-border">
-                <wm-label caption="60D" name="label43" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn48_1" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="60D" name="label43" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar60Days" name="ar60D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn51_1" class="full-border">
-                <wm-label caption="90D" name="label41" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn51_1" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="90D" name="label41" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar90Days" name="ar90D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn52_1" class="full-border">
-                <wm-label caption="120D" name="label40" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn52_1" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="120D" name="label40" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar120Days" name="ar120D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn53_1" class="full-border">
-                <wm-label caption="150D" name="label39_1" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn53_1" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="150D" name="label39_1" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar150Days" name="ar150D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn54" class="full-border">
-                <wm-label caption="180D" name="label38" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn54" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="180D" name="label38" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar180Days" name="ar180D" textalign="center"></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn55" class="full-border">
-                <wm-label caption="180+" name="label37_1" class="gridLabel"></wm-label>
+            <wm-gridcolumn padding="5px 5px" columnwidth="1" name="gridcolumn55" class="full-border" style="display: flex; flex-direction: column">
+                <wm-label caption="180D+" name="label37_1" textalign="center" color="gray"></wm-label>
+                <wm-label caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].ar180DaysPlus" name="ar180Dplus" textalign="center"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn9">
                 <wm-label name="label9_1" padding="1em 1.5em 0.5em 0.5em" caption="Last Payment DT:" color="gray" style="float: right;"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="3" padding="1em 1.5em 0.5em 0.5em" name="gridcolumn10" textalign="center">
-                <wm-label name="label10" caption="mm/dd/yyyy"></wm-label>
+                <wm-label name="lastPaymentDate" caption="bind:Variables.getBanDetailsAR.dataSet[$i].banDetails[$i].lastPaymentDate | toDate: 'dd-MM-yyyy'"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>

@@ -1,1 +1,26 @@
-{ }
+{
+  "getBanDetailsAR" : {
+    "_id" : "wm-getBanDetailsAR-wm.ServiceVariable-1690806385539",
+    "name" : "getBanDetailsAR",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "getBanDetailsARonSuccess(variable, data, options)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  }
+}
