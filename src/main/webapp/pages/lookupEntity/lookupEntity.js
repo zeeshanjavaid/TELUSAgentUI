@@ -397,6 +397,7 @@ function handleBanPhoneNumber() {
 };
 
 Page.text3Blur = function($event, widget) {
+    Page.Widgets.text3._datavalue = '';
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
     Page.Widgets.select4._datavalue = '';
     Page.Widgets.select3.disabled = false;
@@ -407,4 +408,5 @@ Page.text3Blur = function($event, widget) {
     Page.Widgets.text5.disabled = true;
     $('#name').prop('disabled', false);
     $('#numID').prop('disabled', false);
+
 };
