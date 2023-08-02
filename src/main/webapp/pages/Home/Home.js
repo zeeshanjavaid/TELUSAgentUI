@@ -273,11 +273,19 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
+
+            Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
+                empId: 'NULL',
+                firstName: 'NULL',
+                lastName: ''
+            });
             Page.Variables.getAllActiveUserList_HomeEV.dataSet.unshift({
                 empId: 'ALL',
                 firstName: 'ALL',
                 lastName: ''
             });
+
+
             Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
         }
         Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
@@ -288,6 +296,13 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
+
+            Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
+                empId: 'NULL',
+                firstName: 'NULL',
+                lastName: ''
+            });
+
             Page.Variables.getAllActiveUserList_HomeBV.dataSet.unshift({
                 empId: 'ALL',
                 firstName: 'ALL',
