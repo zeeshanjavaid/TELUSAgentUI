@@ -190,10 +190,14 @@
                         </wm-container>
                     </wm-tabpane>
                     <wm-tabpane name="UserNotes" title="Notes and Documents" accessroles="Notes and Document">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="UserNotesPanel" content="NotesAndDocument"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="UserNotesPanel" content="NotesAndDocument">
+                            <wm-param name="entityId" value="bind:pageParams.entityId" type="integer"></wm-param>
+                        </wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="HistoryActions" title="Actions" padding="unset unset unset 5pt" accessroles="My Actions,My Team Actions">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="EntityHistoryActionListPanel" content="EntityHistoryActionList"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="EntityHistoryActionListPanel" content="EntityHistoryActionList">
+                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
+                        </wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="Contacts" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)" accessroles="Contacts">
                         <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="100%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">

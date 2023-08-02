@@ -1062,22 +1062,16 @@ Partial.closeButtonClick = function($event, widget) {
         Partial.Widgets.CloseActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
         setTimeout(messageTimeout, 3000);
+        App.refreshCollActionList();
 
     }
-    // Partial.Widgets.notAssigned_closeActionDialog.open();
 
-    // } else {
-    //     Partial.Widgets.CloseActionDialog.close();
-    //     Partial.Widgets.assigned_closeActionDialog.open();
-    //     /* Partial.Widgets.notAssigned_closeActionDialog.open();*/
-    // }
 };
 
 Partial.cancleButtonClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Widgets.CloseActionDialog.close();
-    // Partial.Widgets.assigned_cancleActionDialog.open();
-    /* Partial.Widgets.notAssigned_notAssigned_cancleActionDialog.open();*/
+
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     debugger;
@@ -1148,6 +1142,7 @@ Partial.button15Click = function($event, widget) {
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
         setTimeout(messageTimeout, 3000);
+        App.refreshCollActionList();
 
     }
 
@@ -1198,6 +1193,7 @@ Partial.button16_1Click = function($event, widget) {
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was cancelled."
         setTimeout(messageTimeout, 3000);
+        App.refreshCollActionList();
     }
 
 
@@ -1275,9 +1271,7 @@ Partial.UpdateActionClick = function($event, widget) {
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
-                    'status': Partial.Widgets.EditStatusLabel.caption,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'comment': Partial.Widgets.EditActionComment.caption,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
@@ -1289,15 +1283,19 @@ Partial.UpdateActionClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
+            //Invoke POST coll treatment service
             Partial.Variables.UpdateCollectionTreatmentVar.invoke();
             App.Variables.successMessage.dataSet.dataValue = "Action ID (" + Partial.Widgets.EditActionIdText.caption + ") edited successfully."
             Partial.Widgets.EditActionDialog.close();
             setTimeout(messageTimeout, 3000);
-        }
-    }
+            App.refreshCollActionList();
 
-};
+
+
+        }
+
+    };
+}
 
 Partial.EditUpdateYesButtonClick = function($event, widget) {
     debugger;
@@ -1305,6 +1303,7 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     Partial.Variables.UpdateCollectionTreatmentVar.setInput({
         'id': Partial.Widgets.EditActionIdText.caption,
         'partitionKey': getCurrentDate(),
+        'collectionEntityId': Partial.pageParams.entityId,
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
             'status': Partial.Widgets.EditStatusLabel.caption,
@@ -1323,11 +1322,10 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
 
     //Invoke POST createDispute service
     Partial.Variables.UpdateCollectionTreatmentVar.invoke();
-
     Partial.Widgets.EditActionDialog.close();
-
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
     setTimeout(messageTimeout, 3000);
+    App.refreshCollActionList();
 
 };
 
@@ -1372,5 +1370,20 @@ Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
 
 
 Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
+
+};
+
+
+
+
+
+App.refreshCollActionList = function() {
+
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+    // Partial.Variables.getCollectionTreatmentStep_1.setInput({
+    //     'offset': Partial.Widgets.getCollectionTreatmentStepTable2.dataNavigator.dn.currentPage,
+    //     'limit': 10
+    // });
+    // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 };

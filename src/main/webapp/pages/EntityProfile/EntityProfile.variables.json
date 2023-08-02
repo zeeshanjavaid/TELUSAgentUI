@@ -173,6 +173,20 @@
     "isDefault" : true,
     "controller" : "DmpS3File"
   },
+  "entityIdForNotes" : {
+    "_id" : "wm-entityIdForNotes-wm.Variable-1690899191219",
+    "name" : "entityIdForNotes",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getBanDetailsForNotes" : {
     "_id" : "wm-getBanDetailsForNotes-wm.ServiceVariable-1690525771573",
     "name" : "getBanDetailsForNotes",

@@ -1498,6 +1498,10 @@
       "target" : "IsOdManagement",
       "value" : false,
       "type" : "boolean"
+    }, {
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",
@@ -1638,6 +1642,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "Javascript",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
