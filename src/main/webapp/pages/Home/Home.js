@@ -103,7 +103,7 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     Page.Widgets.includeCurrentCreditSelectEV.datavalue = "Y";
     Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
-    Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";
+    /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
     Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
     Page.Widgets.collStatusSelectEV.datavalue = "ALL";
 }
@@ -115,7 +115,7 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     Page.Widgets.includeCurrentCreditSelectBV.datavalue = "Y";
     Page.Widgets.entityOwnerSelectBV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
-    Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";
+    /* Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";*/
     Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
     Page.Widgets.collStatusSelectBV.datavalue = "ALL";
 }

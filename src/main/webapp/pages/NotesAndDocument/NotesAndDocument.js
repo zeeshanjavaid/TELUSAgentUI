@@ -232,3 +232,7 @@ Partial.createButtonClick = function($event, widget) {
     }
     setTimeout(messageTimeout, 1500);
 };
+
+function messageTimeout() {
+    Partial.Variables.successMessage.dataSet.dataValue = null;
+}
