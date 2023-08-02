@@ -428,14 +428,14 @@ END ASC) wmTempTable
 
     <sql-query name="getLatestNotes">
         <![CDATA[
-        select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC
+        select en.*,ed.documentName  from ENTITY_NOTES en left join ENTITY_DOCUMENTS ed  on en.docId=ed.ID where entityId=:entityId order by createdOn DESC
         ]]>
     <query-param name="entityId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getLatestNotes__count">
         <![CDATA[
-        select count(*) from (select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC) wmTempTable
+        select count(*) from (select en.*,ed.documentName  from ENTITY_NOTES en left join ENTITY_DOCUMENTS ed  on en.docId=ed.ID where entityId=:entityId order by createdOn DESC) wmTempTable
         ]]>
     <query-param name="entityId" type="java.lang.String"/>
     </sql-query>

@@ -2824,8 +2824,8 @@
     "name" : "getLatestNotes",
     "description" : "getLatestNotes",
     "version" : "V2",
-    "queryString" : "select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC",
-    "countQueryString" : "select count(*) from (select *  from ENTITY_NOTES where entityId=:entityId order by createdOn DESC) wmTempTable",
+    "queryString" : "select en.*,ed.documentName  from ENTITY_NOTES en left join ENTITY_DOCUMENTS ed  on en.docId=ed.ID where entityId=:entityId order by createdOn DESC",
+    "countQueryString" : "select count(*) from (select en.*,ed.documentName  from ENTITY_NOTES en left join ENTITY_DOCUMENTS ed  on en.docId=ed.ID where entityId=:entityId order by createdOn DESC) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2836,7 +2836,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "6766677",
+      "testValue" : "24",
       "required" : true
     } ],
     "request" : {
@@ -2939,10 +2939,24 @@
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",
-          "typeRef" : "java.lang.Long",
+          "typeRef" : "java.lang.String",
           "list" : false
         },
         "tableName" : "ENTITY_NOTES",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "documentName",
+        "fieldName" : "documentName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ENTITY_DOCUMENTS",
         "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false

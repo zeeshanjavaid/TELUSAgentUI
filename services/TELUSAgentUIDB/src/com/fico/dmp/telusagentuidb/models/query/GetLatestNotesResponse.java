@@ -34,7 +34,10 @@ public class GetLatestNotesResponse implements Serializable {
     private Timestamp createdOn;
 
     @ColumnAlias("createdBy")
-    private Long createdBy;
+    private String createdBy;
+
+    @ColumnAlias("documentName")
+    private String documentName;
 
     public Long getId() {
         return this.id;
@@ -84,12 +87,20 @@ public class GetLatestNotesResponse implements Serializable {
         this.createdOn = createdOn;
     }
 
-    public Long getCreatedBy() {
+    public String getCreatedBy() {
         return this.createdBy;
     }
 
-    public void setCreatedBy(Long createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getDocumentName() {
+        return this.documentName;
+    }
+
+    public void setDocumentName(String documentName) {
+        this.documentName = documentName;
     }
 
     @Override
@@ -103,7 +114,8 @@ public class GetLatestNotesResponse implements Serializable {
                 Objects.equals(getNotes(), getLatestNotesResponse.getNotes()) &&
                 Objects.equals(getDocId(), getLatestNotesResponse.getDocId()) &&
                 Objects.equals(getCreatedOn(), getLatestNotesResponse.getCreatedOn()) &&
-                Objects.equals(getCreatedBy(), getLatestNotesResponse.getCreatedBy());
+                Objects.equals(getCreatedBy(), getLatestNotesResponse.getCreatedBy()) &&
+                Objects.equals(getDocumentName(), getLatestNotesResponse.getDocumentName());
     }
 
     @Override
@@ -114,6 +126,7 @@ public class GetLatestNotesResponse implements Serializable {
                 getNotes(),
                 getDocId(),
                 getCreatedOn(),
-                getCreatedBy());
+                getCreatedBy(),
+                getDocumentName());
     }
 }

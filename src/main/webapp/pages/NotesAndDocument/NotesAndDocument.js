@@ -118,6 +118,7 @@ Partial.createButtonClick = function($event, widget) {
                                 'banId': banId,
                                 'notes': note,
                                 'docId': documentId
+                                //  'createdBy': App.Variables.getLoggedInUserDetails.dataSet.emplId
 
                             });
 
@@ -190,6 +191,7 @@ Partial.createButtonClick = function($event, widget) {
                 'banId': banId,
                 'notes': note,
                 'docId': documentId
+                //   'createdBy': App.Variables.getLoggedInUserDetails.dataSet.emplId
 
             });
 
@@ -232,6 +234,52 @@ Partial.createButtonClick = function($event, widget) {
     }
     setTimeout(messageTimeout, 1500);
 };
+
+
+Partial.downloadDoc = function(row) {
+
+    debugger;
+    var docId = Partial.Variables.getLatestNotesBy_EntityId.dataSet[0].docId;
+
+    Partial.Variables.getDocumentByDocId.setInput({
+
+        'docId': docId
+
+    });
+
+    Partial.Variables.getDocumentByDocId.invoke({},
+        function(data) {
+
+            //   $event.preventDefault();
+            download(data.content[0].document, data.content[0].documentName)
+
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error)
+
+        });
+
+}
+
+const download = async(url, filename) => {
+    const data = await fetch(url)
+    const blob = await data.blob()
+    const objectUrl = URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+
+    link.setAttribute('href', objectUrl)
+    link.setAttribute('download', filename)
+    link.style.display = 'none'
+
+    document.body.appendChild(link)
+
+    link.click()
+
+    document.body.removeChild(link)
+}
 
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
