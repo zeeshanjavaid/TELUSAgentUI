@@ -129,7 +129,7 @@
       "value" : "bind:Widgets.collStatusSelectEV.datavalue",
       "type" : "string"
     } ],
-    "type" : "io.swagger.client.model.AssignedEntitiesInEntityViewResponse",
+    "type" : "com.fico.telus.model.AssignedEntitiesInEntityModel",
     "service" : "CollectionDataService",
     "operation" : "getAssignedEntitiesInEntityView",
     "operationId" : "CollectionDataController_getAssignedEntitiesInEntityView",

@@ -10,7 +10,7 @@ import java.lang.Integer;
 import java.lang.Exception;
 import io.swagger.client.model.TeamsActionViewResponse;
 import java.util.List;
-import io.swagger.client.model.AssignedEntitiesInEntityViewResponse;
+import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntityContactsResponse;
 import io.swagger.client.model.EntityDetailsResponse;
@@ -42,7 +42,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<AssignedEntitiesInEntityViewResponse> getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getAssignedEntitiesInEntityView(entityOwner, workCategory, portfolio, billingSystem, collectionStatus, offset, limit);
     }
 

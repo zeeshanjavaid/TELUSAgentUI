@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.HttpMethod;
 
 import com.fico.pscomponent.util.PropertiesUtil;
+import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import com.fico.telus.service.TelusAPIConnectivityService;
 import com.fico.telus.utility.URIConstant;
 import org.slf4j.Logger;
@@ -154,7 +155,7 @@ public class CollectionDataService {
     
     ///assignedEntitiesInEntityView
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
-    public List<AssignedEntitiesInEntityViewResponse> getAssignedEntitiesInEntityView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus, Integer offset, Integer limit) throws Exception  {
+    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus, Integer offset, Integer limit) throws Exception  {
 
     	 if (isStubEnabled) {
         return objectMapper.readValue("[{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":\"224343\",\"cbucId\":\"7232323\",\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"},{\"entityId\":6766678,\"entityType\":\"CBUCID\",\"rcId\":\"224344\",\"cbucId\":\"723223\",\"entityName\":\"Air Canada2\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"reprehenderit commodo\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"}]",
@@ -176,7 +177,50 @@ public class CollectionDataService {
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
              logger.info("Response---"+ responseStr);
-            return objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+             
+             List<AssignedEntitiesInEntityViewResponse> AssignedEntitiesInEntityViewResponseList = objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+            
+             List<AssignedEntitiesInEntityModel> assignedEntitiesInEntityModelList = new ArrayList<AssignedEntitiesInEntityModel>();
+             for (AssignedEntitiesInEntityViewResponse assignedEntitiesInEntityViewResponse : AssignedEntitiesInEntityViewResponseList) {
+            	 AssignedEntitiesInEntityModel assignedEntitiesInEntityModel = new AssignedEntitiesInEntityModel();
+            	 assignedEntitiesInEntityModel.setEntityId(assignedEntitiesInEntityViewResponse.getEntityId());
+            	 assignedEntitiesInEntityModel.setEntityType(assignedEntitiesInEntityViewResponse.getEntityType());
+            	 assignedEntitiesInEntityModel.setRcId(assignedEntitiesInEntityViewResponse.getRcId());
+            	 assignedEntitiesInEntityModel.setCbucId(assignedEntitiesInEntityViewResponse.getCbucId());
+            	 assignedEntitiesInEntityModel.setEntityName(assignedEntitiesInEntityViewResponse.getEntityName());
+            	 assignedEntitiesInEntityModel.setTotalBan(assignedEntitiesInEntityViewResponse.getTotalBan());
+            	 assignedEntitiesInEntityModel.setTotalDelinquentBans(assignedEntitiesInEntityViewResponse.getTotalDelinquentBans());
+            	 assignedEntitiesInEntityModel.setRisk(assignedEntitiesInEntityViewResponse.getRisk());
+            	 assignedEntitiesInEntityModel.setEntityValue(assignedEntitiesInEntityViewResponse.getEntityValue());
+            	 assignedEntitiesInEntityModel.setEntityCollectionStatus(assignedEntitiesInEntityViewResponse.getEntityCollectionStatus());
+            	 assignedEntitiesInEntityModel.setManualFlag(assignedEntitiesInEntityViewResponse.isManualFlag());
+            	 assignedEntitiesInEntityModel.setLastTreatment(assignedEntitiesInEntityViewResponse.getLastTreatment());
+            	 assignedEntitiesInEntityModel.setCurrentAr(assignedEntitiesInEntityViewResponse.getCurrentAr());
+            	 assignedEntitiesInEntityModel.setAr30Days(assignedEntitiesInEntityViewResponse.getAr30Days());
+            	 assignedEntitiesInEntityModel.setAr60Days(assignedEntitiesInEntityViewResponse.getAr60Days());
+            	 assignedEntitiesInEntityModel.setAr90Days(assignedEntitiesInEntityViewResponse.getAr90Days());
+            	 assignedEntitiesInEntityModel.setAr120Days(assignedEntitiesInEntityViewResponse.getAr120Days());
+            	 assignedEntitiesInEntityModel.setAr150Days(assignedEntitiesInEntityViewResponse.getAr150Days());
+            	 assignedEntitiesInEntityModel.setAr180Days(assignedEntitiesInEntityViewResponse.getAr180Days());
+            	 assignedEntitiesInEntityModel.setAr180DaysPlus(assignedEntitiesInEntityViewResponse.getAr180DaysPlus());
+            	 //Added logic to add all Ar which are greater than 90 days.
+            	 Double ar90DayPlus = assignedEntitiesInEntityViewResponse.getAr90Days() + assignedEntitiesInEntityViewResponse.getAr120Days() + assignedEntitiesInEntityViewResponse.getAr150Days() 
+            	 + assignedEntitiesInEntityViewResponse.getAr180Days() + assignedEntitiesInEntityViewResponse.getAr180DaysPlus();
+            	 assignedEntitiesInEntityModel.setAr90DaysPlus(ar90DayPlus);
+            	 assignedEntitiesInEntityModel.setTotalAr(assignedEntitiesInEntityViewResponse.getTotalAr());
+            	 assignedEntitiesInEntityModel.setTotalOverDue(assignedEntitiesInEntityViewResponse.getTotalOverDue());
+            	 assignedEntitiesInEntityModel.setOdRemaining(assignedEntitiesInEntityViewResponse.getOdRemaining());
+            	 assignedEntitiesInEntityModel.setEntityOwnerId(assignedEntitiesInEntityViewResponse.getEntityOwnerId());
+            	 assignedEntitiesInEntityModel.setPrimeWorkCategory(assignedEntitiesInEntityViewResponse.getPrimeWorkCategory());
+            	 assignedEntitiesInEntityModel.setPortfolioCategory(assignedEntitiesInEntityViewResponse.getPortfolioCategory());
+            	 assignedEntitiesInEntityModel.setPortfolioSubCategory(assignedEntitiesInEntityViewResponse.getPortfolioSubCategory());
+            	 assignedEntitiesInEntityModel.setFtnp(assignedEntitiesInEntityViewResponse.isFtnp());
+            	 assignedEntitiesInEntityModel.setDisputeFlag(assignedEntitiesInEntityViewResponse.isDisputeFlag());
+            	 assignedEntitiesInEntityModel.setOpenActionDate(assignedEntitiesInEntityViewResponse.getOpenActionDate());
+            	 assignedEntitiesInEntityModelList.add(assignedEntitiesInEntityModel);
+			}
+             
+             return assignedEntitiesInEntityModelList;
     	 }
         // return new Object(); 
     }
