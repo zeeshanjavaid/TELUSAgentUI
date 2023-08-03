@@ -53,11 +53,11 @@ public class Note implements Serializable {
 
     private Integer partyId;
 
-    private DomainValue domainValue;
-
     private Party party;
 
     private Application application;
+
+    private DomainValue domainValue;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -143,21 +143,6 @@ public class Note implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`noteCategory`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_DomainValue_nvLcfG`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValue() {
-        return this.domainValue;
-    }
-
-    public void setDomainValue(DomainValue domainValue) {
-        if(domainValue != null) {
-            this.noteCategory = domainValue.getId();
-        }
-
-        this.domainValue = domainValue;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`partyId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_PARTY_partyId_id`"))
     @Fetch(FetchMode.JOIN)
     public Party getParty() {
@@ -185,6 +170,21 @@ public class Note implements Serializable {
         }
 
         this.application = application;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`noteCategory`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_NOTE_TO_DomainValue_nvLcfG`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValue() {
+        return this.domainValue;
+    }
+
+    public void setDomainValue(DomainValue domainValue) {
+        if(domainValue != null) {
+            this.noteCategory = domainValue.getId();
+        }
+
+        this.domainValue = domainValue;
     }
 
 

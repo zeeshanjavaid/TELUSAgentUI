@@ -39,6 +39,8 @@ public class EntityDocuments implements Serializable {
 
     private String documentName;
 
+    private String createdByEmplId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
@@ -85,6 +87,15 @@ public class EntityDocuments implements Serializable {
 
     public void setDocumentName(String documentName) {
         this.documentName = documentName;
+    }
+
+    @Column(name = "`createdByEmplId`", nullable = true, length = 100)
+    public String getCreatedByEmplId() {
+        return this.createdByEmplId;
+    }
+
+    public void setCreatedByEmplId(String createdByEmplId) {
+        this.createdByEmplId = createdByEmplId;
     }
 
 

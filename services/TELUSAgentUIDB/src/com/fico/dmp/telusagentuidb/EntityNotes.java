@@ -36,7 +36,7 @@ public class EntityNotes implements Serializable {
 
     private Timestamp createdOn;
 
-    private Integer createdBy;
+    private String createdBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -94,12 +94,12 @@ public class EntityNotes implements Serializable {
         this.createdOn = createdOn;
     }
 
-    @Column(name = "`createdBy`", nullable = true, scale = 0, precision = 10)
-    public Integer getCreatedBy() {
+    @Column(name = "`createdBy`", nullable = true, length = 255)
+    public String getCreatedBy() {
         return this.createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 

@@ -234,22 +234,22 @@ public class DomainValueServiceImpl implements DomainValueService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
+    public Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByQueueResultPage.id = '" + id + "'");
+        queryBuilder.append("domainValueByPersonalQueueField.id = '" + id + "'");
 
         return queueService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
+    public Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated queuesForQueueResultPage");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("domainValueByPersonalQueueField.id = '" + id + "'");
+        queryBuilder.append("domainValueByQueueResultPage.id = '" + id + "'");
 
         return queueService.findAll(queryBuilder.toString(), pageable);
     }

@@ -51,13 +51,13 @@ public class GroupRole implements Serializable {
 
     private Integer roleId;
 
-    private Role role;
-
     private User userByUpdatedBy;
 
     private User userByCreatedBy;
 
     private Group _group;
+
+    private Role role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,21 +125,6 @@ public class GroupRole implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`roleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKtocovgflgmna18x31hy7m9qd4`"))
-    @Fetch(FetchMode.JOIN)
-    public Role getRole() {
-        return this.role;
-    }
-
-    public void setRole(Role role) {
-        if(role != null) {
-            this.roleId = role.getId();
-        }
-
-        this.role = role;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKj45tlys3wnwdlrlmsdvn1vkrv`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByUpdatedBy() {
@@ -182,6 +167,21 @@ public class GroupRole implements Serializable {
         }
 
         this._group = _group;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`roleId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKtocovgflgmna18x31hy7m9qd4`"))
+    @Fetch(FetchMode.JOIN)
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        if(role != null) {
+            this.roleId = role.getId();
+        }
+
+        this.role = role;
     }
 
 

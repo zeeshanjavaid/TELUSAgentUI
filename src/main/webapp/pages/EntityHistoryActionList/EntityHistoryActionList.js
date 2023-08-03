@@ -27,7 +27,7 @@ Partial.onReady = function() {
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
         'IsOdManagement': false,
         'collectionEntityId': Partial.pageParams.entityId,
-        'type': 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
+        'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
 
     });
 
@@ -273,6 +273,7 @@ function createDueDate() {
 };
 
 function validateEmail(email) {
+
     return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 };
 
@@ -504,12 +505,12 @@ function overdueNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         // } else if (!validateEmail(Partial.Widgets.nonMandatoryEmail.datavalue)) {
 
-    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined) {
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
 
-        if (!validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
 
-            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-        }
+
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
@@ -565,12 +566,10 @@ function paymentReminderNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined) {
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
 
-        if (!validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
 
-            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-        }
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
@@ -626,12 +625,10 @@ function disconnectNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined) {
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
 
-        if (!validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
 
-            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-        }
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
@@ -687,12 +684,10 @@ function cancellationNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined) {
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
 
-        if (!validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
 
-            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-        }
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         // API Call will come here
