@@ -1,0 +1,290 @@
+package com.fico.telus.model;
+
+import java.time.LocalDate;
+
+public class AssignedEntitiesInClassicModel {
+
+	private String banId = null;
+	private String banName = null;
+	private String cbucId = null;
+	private String rcId = null;
+	private String billingSystem = null;
+	private Double currentAr = null;
+	private Double ar30Days = null;
+	private Double ar60Days = null;
+	private Double ar90Days = null;
+	private Double ar120Days = null;
+	private Double ar150Days = null;
+	private Double ar180Days = null;
+	private Double ar180DaysPlus = null;
+	private Double ar90DaysPlus = null;
+	private Double totalAr = null;
+	private Double totalOverDue = null;
+	private LocalDate lastPaymentDate = null;
+	private Double odRemaining = null;
+	private String acctStatus = null;
+	private LocalDate acctStatusDate = null;
+	private String acctType = null;
+	private String acctSubType = null;
+	private Double disputeAmount = null;
+	private Boolean suppresionFlag = null;
+	private String language = null;
+	private String marketSubSegment = null;
+	private String province = null;
+	private String cbu = null;
+	private String cbucidName = null;
+	private String rcidName = null;
+	private String subPortfolio = null;
+	private Integer entityId = null;
+	private String entityStatus = null;
+	private String entityType = null;
+	private String entityRisk = null;
+	private String entityValue = null;
+	private String entityOwnerId = null;
+	private String banCollectionStatus = null;
+	private LocalDate closingDate = null;
+	private Integer closingCycle = null;
+	
+	
+	public String getBanId() {
+		return banId;
+	}
+	public void setBanId(String banId) {
+		this.banId = banId;
+	}
+	public String getBanName() {
+		return banName;
+	}
+	public void setBanName(String banName) {
+		this.banName = banName;
+	}
+	public String getCbucId() {
+		return cbucId;
+	}
+	public void setCbucId(String cbucId) {
+		this.cbucId = cbucId;
+	}
+	public String getRcId() {
+		return rcId;
+	}
+	public void setRcId(String rcId) {
+		this.rcId = rcId;
+	}
+	public String getBillingSystem() {
+		return billingSystem;
+	}
+	public void setBillingSystem(String billingSystem) {
+		this.billingSystem = billingSystem;
+	}
+	public Double getCurrentAr() {
+		return currentAr;
+	}
+	public void setCurrentAr(Double currentAr) {
+		this.currentAr = currentAr;
+	}
+	public Double getAr30Days() {
+		return ar30Days;
+	}
+	public void setAr30Days(Double ar30Days) {
+		this.ar30Days = ar30Days;
+	}
+	public Double getAr60Days() {
+		return ar60Days;
+	}
+	public void setAr60Days(Double ar60Days) {
+		this.ar60Days = ar60Days;
+	}
+	public Double getAr90Days() {
+		return ar90Days;
+	}
+	public void setAr90Days(Double ar90Days) {
+		this.ar90Days = ar90Days;
+	}
+	public Double getAr120Days() {
+		return ar120Days;
+	}
+	public void setAr120Days(Double ar120Days) {
+		this.ar120Days = ar120Days;
+	}
+	public Double getAr150Days() {
+		return ar150Days;
+	}
+	public void setAr150Days(Double ar150Days) {
+		this.ar150Days = ar150Days;
+	}
+	public Double getAr180Days() {
+		return ar180Days;
+	}
+	public void setAr180Days(Double ar180Days) {
+		this.ar180Days = ar180Days;
+	}
+	public Double getAr180DaysPlus() {
+		return ar180DaysPlus;
+	}
+	public void setAr180DaysPlus(Double ar180DaysPlus) {
+		this.ar180DaysPlus = ar180DaysPlus;
+	}
+	public Double getAr90DaysPlus() {
+		return ar90DaysPlus;
+	}
+	public void setAr90DaysPlus(Double ar90DaysPlus) {
+		this.ar90DaysPlus = ar90DaysPlus;
+	}
+	public Double getTotalAr() {
+		return totalAr;
+	}
+	public void setTotalAr(Double totalAr) {
+		this.totalAr = totalAr;
+	}
+	public Double getTotalOverDue() {
+		return totalOverDue;
+	}
+	public void setTotalOverDue(Double totalOverDue) {
+		this.totalOverDue = totalOverDue;
+	}
+	public LocalDate getLastPaymentDate() {
+		return lastPaymentDate;
+	}
+	public void setLastPaymentDate(LocalDate lastPaymentDate) {
+		this.lastPaymentDate = lastPaymentDate;
+	}
+	public Double getOdRemaining() {
+		return odRemaining;
+	}
+	public void setOdRemaining(Double odRemaining) {
+		this.odRemaining = odRemaining;
+	}
+	public String getAcctStatus() {
+		return acctStatus;
+	}
+	public void setAcctStatus(String acctStatus) {
+		this.acctStatus = acctStatus;
+	}
+	public LocalDate getAcctStatusDate() {
+		return acctStatusDate;
+	}
+	public void setAcctStatusDate(LocalDate acctStatusDate) {
+		this.acctStatusDate = acctStatusDate;
+	}
+	public String getAcctType() {
+		return acctType;
+	}
+	public void setAcctType(String acctType) {
+		this.acctType = acctType;
+	}
+	public String getAcctSubType() {
+		return acctSubType;
+	}
+	public void setAcctSubType(String acctSubType) {
+		this.acctSubType = acctSubType;
+	}
+	public Double getDisputeAmount() {
+		return disputeAmount;
+	}
+	public void setDisputeAmount(Double disputeAmount) {
+		this.disputeAmount = disputeAmount;
+	}
+	public Boolean getSuppresionFlag() {
+		return suppresionFlag;
+	}
+	public void setSuppresionFlag(Boolean suppresionFlag) {
+		this.suppresionFlag = suppresionFlag;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public String getMarketSubSegment() {
+		return marketSubSegment;
+	}
+	public void setMarketSubSegment(String marketSubSegment) {
+		this.marketSubSegment = marketSubSegment;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getCbu() {
+		return cbu;
+	}
+	public void setCbu(String cbu) {
+		this.cbu = cbu;
+	}
+	public String getCbucidName() {
+		return cbucidName;
+	}
+	public void setCbucidName(String cbucidName) {
+		this.cbucidName = cbucidName;
+	}
+	public String getRcidName() {
+		return rcidName;
+	}
+	public void setRcidName(String rcidName) {
+		this.rcidName = rcidName;
+	}
+	public String getSubPortfolio() {
+		return subPortfolio;
+	}
+	public void setSubPortfolio(String subPortfolio) {
+		this.subPortfolio = subPortfolio;
+	}
+	public Integer getEntityId() {
+		return entityId;
+	}
+	public void setEntityId(Integer entityId) {
+		this.entityId = entityId;
+	}
+	public String getEntityStatus() {
+		return entityStatus;
+	}
+	public void setEntityStatus(String entityStatus) {
+		this.entityStatus = entityStatus;
+	}
+	public String getEntityType() {
+		return entityType;
+	}
+	public void setEntityType(String entityType) {
+		this.entityType = entityType;
+	}
+	public String getEntityRisk() {
+		return entityRisk;
+	}
+	public void setEntityRisk(String entityRisk) {
+		this.entityRisk = entityRisk;
+	}
+	public String getEntityValue() {
+		return entityValue;
+	}
+	public void setEntityValue(String entityValue) {
+		this.entityValue = entityValue;
+	}
+	public String getEntityOwnerId() {
+		return entityOwnerId;
+	}
+	public void setEntityOwnerId(String entityOwnerId) {
+		this.entityOwnerId = entityOwnerId;
+	}
+	public String getBanCollectionStatus() {
+		return banCollectionStatus;
+	}
+	public void setBanCollectionStatus(String banCollectionStatus) {
+		this.banCollectionStatus = banCollectionStatus;
+	}
+	public LocalDate getClosingDate() {
+		return closingDate;
+	}
+	public void setClosingDate(LocalDate closingDate) {
+		this.closingDate = closingDate;
+	}
+	public Integer getClosingCycle() {
+		return closingCycle;
+	}
+	public void setClosingCycle(Integer closingCycle) {
+		this.closingCycle = closingCycle;
+	}
+
+}

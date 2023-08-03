@@ -85,7 +85,7 @@
       "value" : "bind:Widgets.collStatusSelectBV.datavalue",
       "type" : "string"
     } ],
-    "type" : "io.swagger.client.model.AssignedEntitiesInClassicViewResponse",
+    "type" : "com.fico.telus.model.AssignedEntitiesInClassicModel",
     "service" : "CollectionDataService",
     "operation" : "getassignedEntitiesInClassicView",
     "operationId" : "CollectionDataController_getassignedEntitiesInClassicView",
