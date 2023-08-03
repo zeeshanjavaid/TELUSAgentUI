@@ -24,7 +24,14 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
+    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+        'IsOdManagement': false,
+        'collectionEntityId': Partial.pageParams.entityId,
+        'type': 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
 
+    });
+
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 
     Partial.Variables.getCollectionTreatMentByEntId.setInput({
@@ -840,7 +847,8 @@ Partial.clearFilterFields = function($event, widget) {
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
 
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
-
+        'IsOdManagement': false,
+        'collectionEntityId': Partial.pageParams.entityId,
         'type': 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
 
     });
@@ -866,7 +874,8 @@ Partial.applyFilter = function($event, widget) {
     if (toDoTable == true) {
         debugger;
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
-
+            'IsOdManagement': false,
+            'collectionEntityId': Partial.pageParams.entityId,
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
             'type': typeCode,
             'createdDate': Partial.Widgets.creationDate.datavalue,

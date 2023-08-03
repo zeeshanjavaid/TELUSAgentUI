@@ -1275,7 +1275,7 @@
     "onError" : "getCollectionTreatmentStep_orderMngtonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
