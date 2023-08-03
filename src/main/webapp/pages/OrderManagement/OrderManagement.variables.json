@@ -1258,6 +1258,10 @@
       "target" : "IsOdManagement",
       "value" : true,
       "type" : "boolean"
+    }, {
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "io.swagger.client.model.CollectionTreatmentStep",
     "service" : "CollectionTreatmentService",

@@ -72,7 +72,7 @@ Partial.createButtonClick = function($event, widget) {
 
 
     if (Partial.Widgets.fileupload_1.selectedFiles != undefined) {
-        var entityId = Partial.Variables.getLatestNotesBy_EntityId.dataSet[0].entityId;
+        var entityId = window.location.href.toString().split("=")[1];
 
         var docName = Partial.Widgets.fileupload_1.selectedFiles[0].name;
 
@@ -110,7 +110,7 @@ Partial.createButtonClick = function($event, widget) {
                         } else {
                             var banId = Partial.Widgets.getEntityDetailsTable1_2.selecteditem.banId;
                             var note = Partial.Widgets.textarea1.datavalue;
-                            var entityId = Partial.Variables.getLatestNotesBy_EntityId.dataSet[0].entityId;
+                            var entityId = window.location.href.toString().split("=")[1];
 
                             Partial.Variables.SaveNote.setInput({
 
@@ -183,7 +183,7 @@ Partial.createButtonClick = function($event, widget) {
         } else {
             var banId = Partial.Widgets.getEntityDetailsTable1_2.selecteditem.banId;
             var note = Partial.Widgets.textarea1.datavalue;
-            var entityId = Partial.Variables.getLatestNotesBy_EntityId.dataSet[0].entityId;
+            var entityId = window.location.href.toString().split("=")[1];
 
             Partial.Variables.SaveNote.setInput({
 

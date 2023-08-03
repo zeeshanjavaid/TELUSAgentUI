@@ -488,6 +488,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
             App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
             setTimeout(messageTimeout, 3000);
+            App.refreshCollOrderMgmtList();
 
         }
     }
@@ -571,6 +572,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
             App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
             setTimeout(messageTimeout, 3000);
+            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -660,6 +662,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
             App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
             setTimeout(messageTimeout, 3000);
+            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -733,6 +736,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
             App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
             setTimeout(messageTimeout, 3000);
+            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -795,11 +799,10 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
 
     //Invoke POST createDispute service
     Partial.Variables.UpdateODManagemntVar.invoke();
-
-
     Partial.Widgets.assigned_closeActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
     setTimeout(messageTimeout, 3000);
+    App.refreshCollOrderMgmtList();
 };
 
 // cancle assigned person
@@ -826,6 +829,7 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
     setTimeout(messageTimeout, 3000);
+    App.refreshCollOrderMgmtList();
 };
 Partial.assigned_cancleNoBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
@@ -935,5 +939,13 @@ Partial.getCollectionTreatmentStep_orderMngtonError = function(variable, data, x
 
 
 Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
+
+};
+
+App.refreshCollOrderMgmtList = function() {
+    setTimeout(function() {
+        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    }, 1000);
+
 
 };
