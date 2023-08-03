@@ -1095,7 +1095,7 @@ Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row
 Partial.button15_1Click = function($event, widget) {
 
 
-    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
 
         Partial.Widgets.notAssigned_closeActionDialog.close();
 
@@ -1111,7 +1111,7 @@ Partial.button15Click = function($event, widget) {
 
     debugger;
 
-    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
 
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Widgets.notAssigned_closeActionDialog.open();
@@ -1163,7 +1163,7 @@ Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row
 };
 Partial.button16_1Click = function($event, widget) {
 
-    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
 
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Widgets.notAssigned_cancleActionDialog.open();
@@ -1199,7 +1199,9 @@ Partial.button16_1Click = function($event, widget) {
 
 };
 Partial.button17_1Click = function($event, widget) {
-    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
+
+    debugger;
+    if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
 
         Partial.Widgets.notAssigned_cancleActionDialog.close();
 
@@ -1378,12 +1380,9 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 
 
 App.refreshCollActionList = function() {
+    setTimeout(function() {
+        Partial.Variables.getCollectionTreatmentStep_1.invoke();
+    }, 1000);
 
-    Partial.Variables.getCollectionTreatmentStep_1.invoke();
-    // Partial.Variables.getCollectionTreatmentStep_1.setInput({
-    //     'offset': Partial.Widgets.getCollectionTreatmentStepTable2.dataNavigator.dn.currentPage,
-    //     'limit': 10
-    // });
-    // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 };
