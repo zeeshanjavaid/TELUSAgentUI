@@ -62,6 +62,7 @@ Partial.mailingContactBtnClick = function($event, widget) {
 
 
 Partial.CreateButtonClick = function($event, widget) {
+    App.Clear();
     Partial.Variables.ContactPageName.dataSet.dataValue = 'CreateDigitalContact';
 };
 Partial.getEntityContactsTable1_customRowAction = function($event, row) {
