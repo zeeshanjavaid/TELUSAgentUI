@@ -246,11 +246,6 @@
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
-                <entry key="My Actions">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
-                </entry>
                 <entry key="Entity Profile (View and Manage)">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
                         <property name="landingPage" value="Main"/>
@@ -296,12 +291,23 @@
                         <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
+                <entry key="Action Management">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="Entity Actions">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
             </map>
         </property>
     </bean>
     <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" id="roleHierarchy">
         <property name="hierarchy">
             <value>
+			 
 			 
 			 
 			 

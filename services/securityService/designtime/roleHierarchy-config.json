@@ -18,9 +18,6 @@
     "roleName" : "Home - My Assignments",
     "roleHierarchy" : null
   }, {
-    "roleName" : "My Actions",
-    "roleHierarchy" : null
-  }, {
     "roleName" : "Entity Profile (View and Manage)",
     "roleHierarchy" : null
   }, {
@@ -46,6 +43,12 @@
     "roleHierarchy" : null
   }, {
     "roleName" : "Notes and Document",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Action Management",
+    "roleHierarchy" : null
+  }, {
+    "roleName" : "Entity Actions",
     "roleHierarchy" : null
   } ]
 }

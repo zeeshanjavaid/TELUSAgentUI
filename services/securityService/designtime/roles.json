@@ -35,12 +35,6 @@
     "landingPage" : "Main"
   }
 }, {
-  "name" : "My Actions",
-  "description" : null,
-  "roleConfig" : {
-    "landingPage" : "Main"
-  }
-}, {
   "name" : "Entity Profile (View and Manage)",
   "description" : null,
   "roleConfig" : {
@@ -90,6 +84,18 @@
   }
 }, {
   "name" : "Notes and Document",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Action Management",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "Entity Actions",
   "description" : null,
   "roleConfig" : {
     "landingPage" : "Main"
