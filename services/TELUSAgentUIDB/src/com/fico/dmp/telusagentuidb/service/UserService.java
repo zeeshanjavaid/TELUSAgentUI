@@ -429,18 +429,6 @@ public interface UserService {
     Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated fawbPropertySourcesForCreatedBy for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated FawbPropertySource instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated fawbPropertySourcesForUpdatedBy for given User id.
      *
      * @param id value of id; value cannot be null
@@ -453,16 +441,16 @@ public interface UserService {
     Page<FawbPropertySource> findAssociatedFawbPropertySourcesForUpdatedBy(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated domainValueTypesForUpdatedBy for given User id.
+     * Returns the associated fawbPropertySourcesForCreatedBy for given User id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated DomainValueType instances.
+     * @return Paginated list of associated FawbPropertySource instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable);
+    Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated domainValueTypesForCreatedBy for given User id.
@@ -475,6 +463,18 @@ public interface UserService {
      * @see Page
      */
     Page<DomainValueType> findAssociatedDomainValueTypesForCreatedBy(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated domainValueTypesForUpdatedBy for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated DomainValueType instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated usersForUpdatedBy for given User id.
@@ -501,18 +501,6 @@ public interface UserService {
     Page<User> findAssociatedUsersForCreatedBy(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated _groupsForCreatedBy for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Group instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated _groupsForUpdatedBy for given User id.
      *
      * @param id value of id; value cannot be null
@@ -523,6 +511,18 @@ public interface UserService {
      * @see Page
      */
     Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated _groupsForCreatedBy for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Group instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable);
 
     /*
      * Returns the associated userGroupsForUserId for given User id.

@@ -38,6 +38,8 @@ public class EntityNotes implements Serializable {
 
     private String createdBy;
 
+    private String createdByEmplId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
@@ -101,6 +103,15 @@ public class EntityNotes implements Serializable {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    @Column(name = "`createdByEmplId`", nullable = true, length = 100)
+    public String getCreatedByEmplId() {
+        return this.createdByEmplId;
+    }
+
+    public void setCreatedByEmplId(String createdByEmplId) {
+        this.createdByEmplId = createdByEmplId;
     }
 
 

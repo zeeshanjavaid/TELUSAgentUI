@@ -213,15 +213,6 @@ public class DomainValueController {
         return domainValueService.findAssociatedNotes(id, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/queuesForPersonalQueueField", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the queuesForPersonalQueueField instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Queue> findAssociatedQueuesForPersonalQueueField(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
-        return domainValueService.findAssociatedQueuesForPersonalQueueField(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/queuesForQueueResultPage", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the queuesForQueueResultPage instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -229,6 +220,15 @@ public class DomainValueController {
 
         LOGGER.debug("Fetching all associated queuesForQueueResultPage");
         return domainValueService.findAssociatedQueuesForQueueResultPage(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/queuesForPersonalQueueField", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the queuesForPersonalQueueField instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Queue> findAssociatedQueuesForPersonalQueueField(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated queuesForPersonalQueueField");
+        return domainValueService.findAssociatedQueuesForPersonalQueueField(id, pageable);
     }
 
     @RequestMapping(value="/{id:.+}/documentsForDocumentLabel", method=RequestMethod.GET)

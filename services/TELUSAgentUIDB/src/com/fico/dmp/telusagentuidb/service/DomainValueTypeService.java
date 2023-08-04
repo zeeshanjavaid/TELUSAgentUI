@@ -208,6 +208,18 @@ public interface DomainValueTypeService {
     Page<DomainValue> findAssociatedDomainValues(Integer id, Pageable pageable);
 
     /*
+     * Returns the associated domainValueTypeRelationshipsForParentDomainValueTypeId1 for given DomainValueType id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated DomainValueTypeRelationship instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId1(Integer id, Pageable pageable);
+
+    /*
      * Returns the associated domainValueTypeRelationshipsForDomainValueTypeId for given DomainValueType id.
      *
      * @param id value of id; value cannot be null
@@ -230,17 +242,5 @@ public interface DomainValueTypeService {
      * @see Page
      */
     Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId2(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated domainValueTypeRelationshipsForParentDomainValueTypeId1 for given DomainValueType id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated DomainValueTypeRelationship instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<DomainValueTypeRelationship> findAssociatedDomainValueTypeRelationshipsForParentDomainValueTypeId1(Integer id, Pageable pageable);
 
 }

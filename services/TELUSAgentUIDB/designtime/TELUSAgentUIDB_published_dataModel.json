@@ -244,6 +244,40 @@
       "sequenceSchema" : null,
       "sqlType" : "string",
       "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : "",
+        "type" : "user-defined"
+      },
+      "constraintList" : [ ],
+      "encrypted" : false,
+      "fieldName" : "createdByEmplId",
+      "foreignKey" : false,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "hidden" : false,
+      "javaType" : "string",
+      "length" : 100,
+      "mask" : {
+        "type" : "NONE"
+      },
+      "name" : "createdByEmplId",
+      "nullable" : true,
+      "oldName" : "createdByEmplId",
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfIndex" : false,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "period" : false,
+      "precision" : 0,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "string",
+      "unique" : false
     } ],
     "constraints" : [ ],
     "entityName" : "EntityNotes",
@@ -1644,38 +1678,6 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "role",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "RoleId",
-        "targetColumn" : "id"
-      } ],
-      "name" : "FK_ROLE_PERMISSION_TO_ROH20mB",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "ROLE_PERMISSION",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "ROLE",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
       "fieldName" : "permission",
       "ignored" : false,
       "mappings" : [ {
@@ -1693,6 +1695,38 @@
       "sourceTable" : "ROLE_PERMISSION",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "PERMISSION",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "fieldName" : "role",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "RoleId",
+        "targetColumn" : "id"
+      } ],
+      "name" : "FK_ROLE_PERMISSION_TO_ROH20mB",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "ROLE_PERMISSION",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "ROLE",
       "valid" : true,
       "virtual" : false
     } ],
@@ -3547,6 +3581,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "role",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "roleId",
+        "targetColumn" : "id"
+      } ],
+      "name" : "FKtocovgflgmna18x31hy7m9qd4",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "GROUP_ROLE",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "ROLE",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "userByUpdatedBy",
       "ignored" : false,
       "mappings" : [ {
@@ -3628,38 +3694,6 @@
       "sourceTable" : "GROUP_ROLE",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "GROUP",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "role",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "roleId",
-        "targetColumn" : "id"
-      } ],
-      "name" : "FKtocovgflgmna18x31hy7m9qd4",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "GROUP_ROLE",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "ROLE",
       "valid" : true,
       "virtual" : false
     } ],
@@ -3879,7 +3913,7 @@
     "fullyQualifiedName" : "com.fico.dmp.telusagentuidb.UserSession",
     "ignoreRefreshAfterInsert" : false,
     "indexes" : [ {
-      "columns" : [ "authCookie", "userName" ],
+      "columns" : [ "userName", "authCookie" ],
       "name" : "INDEX_USER_SESSION_authCvEwFf",
       "schemaName" : null,
       "unique" : false
@@ -4950,6 +4984,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "domainValueByQueueResultPage",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "QueueResultPage",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_QUEUE_TO_DomainValue_vL7bw",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "QUEUE",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "DomainValue",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "userByCreatedBy",
       "ignored" : false,
       "mappings" : [ {
@@ -5063,38 +5129,6 @@
       "sourceTable" : "QUEUE",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "USER",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "domainValueByQueueResultPage",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "QueueResultPage",
-        "targetColumn" : "ID"
-      } ],
-      "name" : "FK_QUEUE_TO_DomainValue_vL7bw",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "QUEUE",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "DomainValue",
       "valid" : true,
       "virtual" : false
     } ],
@@ -7940,47 +7974,13 @@
       "generatorValue" : null,
       "hidden" : false,
       "javaType" : "string",
-      "length" : 50,
+      "length" : 100,
       "mask" : {
         "type" : "NONE"
       },
       "name" : "documentName",
       "nullable" : true,
       "oldName" : "documentName",
-      "partOfAnyRelation" : false,
-      "partOfForeignKey" : false,
-      "partOfIndex" : false,
-      "partOfPrimaryKey" : false,
-      "partOfUniqueKey" : false,
-      "period" : false,
-      "precision" : 0,
-      "primaryKey" : false,
-      "scale" : 0,
-      "sequenceSchema" : null,
-      "sqlType" : "string",
-      "unique" : false
-    }, {
-      "columnValue" : {
-        "insertable" : true,
-        "updatable" : true,
-        "defaultValue" : "",
-        "type" : "user-defined"
-      },
-      "constraintList" : [ ],
-      "encrypted" : false,
-      "fieldName" : "createdByEmplId",
-      "foreignKey" : false,
-      "generatorType" : "assigned",
-      "generatorValue" : null,
-      "hidden" : false,
-      "javaType" : "string",
-      "length" : 100,
-      "mask" : {
-        "type" : "NONE"
-      },
-      "name" : "createdByEmplId",
-      "nullable" : true,
-      "oldName" : "createdByEmplId",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
       "partOfIndex" : false,
@@ -8912,13 +8912,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByCreatedBy",
+      "fieldName" : "userByUpdatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "createdBy",
+        "sourceColumn" : "updatedBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKa3vbebyh5nytrol79hhqclyxn",
+      "name" : "FKrt1k8e756kwjocp22p2uremkh",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -8944,13 +8944,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByUpdatedBy",
+      "fieldName" : "userByCreatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "updatedBy",
+        "sourceColumn" : "createdBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKrt1k8e756kwjocp22p2uremkh",
+      "name" : "FKa3vbebyh5nytrol79hhqclyxn",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -9548,13 +9548,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByUpdatedBy",
+      "fieldName" : "userByCreatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "UpdatedBy",
+        "sourceColumn" : "CreatedBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FK_DomainValueType_TO_USuJLBd",
+      "name" : "FK_DomainValueType_TO_USfrgRW",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -9580,13 +9580,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByCreatedBy",
+      "fieldName" : "userByUpdatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "CreatedBy",
+        "sourceColumn" : "UpdatedBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FK_DomainValueType_TO_USfrgRW",
+      "name" : "FK_DomainValueType_TO_USuJLBd",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -10156,7 +10156,7 @@
     "fullyQualifiedName" : "com.fico.dmp.telusagentuidb.QrtzTriggers",
     "ignoreRefreshAfterInsert" : false,
     "indexes" : [ {
-      "columns" : [ "JOB_NAME", "JOB_GROUP", "SCHED_NAME" ],
+      "columns" : [ "JOB_GROUP", "SCHED_NAME", "JOB_NAME" ],
       "name" : "QRTZ_TRIGGERS_ibfk_1",
       "schemaName" : null,
       "unique" : false
@@ -10402,6 +10402,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "domainValueTypeByParentDomainValueTypeId1",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "ParentDomainValueTypeId1",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_DomainValueTypeRelatixUieD",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "DomainValueTypeRelationship",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "DomainValueType",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "domainValueTypeByDomainValueTypeId",
       "ignored" : false,
       "mappings" : [ {
@@ -10441,38 +10473,6 @@
         "targetColumn" : "ID"
       } ],
       "name" : "FK_DomainValueTypeRelatiY1y2v",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "DomainValueTypeRelationship",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "DomainValueType",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "domainValueTypeByParentDomainValueTypeId1",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "ParentDomainValueTypeId1",
-        "targetColumn" : "ID"
-      } ],
-      "name" : "FK_DomainValueTypeRelatixUieD",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -12096,13 +12096,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByCreatedBy",
+      "fieldName" : "userByUpdatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "createdBy",
+        "sourceColumn" : "updatedBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKdjb3a2n2o3hii7n95iyo0l4mo",
+      "name" : "FKkrcc46r4ivf9abl25cimayvcr",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -12128,13 +12128,13 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
-      "fieldName" : "userByUpdatedBy",
+      "fieldName" : "userByCreatedBy",
       "ignored" : false,
       "mappings" : [ {
-        "sourceColumn" : "updatedBy",
+        "sourceColumn" : "createdBy",
         "targetColumn" : "id"
       } ],
-      "name" : "FKkrcc46r4ivf9abl25cimayvcr",
+      "name" : "FKdjb3a2n2o3hii7n95iyo0l4mo",
       "parentFetchOptions" : {
         "fetch" : false,
         "columnsFilter" : [ ]
@@ -13837,6 +13837,38 @@
         "fetch" : true,
         "columnsFilter" : [ ]
       },
+      "fieldName" : "application",
+      "ignored" : false,
+      "mappings" : [ {
+        "sourceColumn" : "applicationId",
+        "targetColumn" : "id"
+      } ],
+      "name" : "FK_ACTIVITY_TO_APPLICATIGU2uG",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "ACTIVITY",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "APPLICATION",
+      "valid" : true,
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeEnabled" : false,
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : true
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
       "fieldName" : "domainValueBySource",
       "ignored" : false,
       "mappings" : [ {
@@ -13918,38 +13950,6 @@
       "sourceTable" : "ACTIVITY",
       "targetColumnsUniqueKey" : false,
       "targetTable" : "DomainValue",
-      "valid" : true,
-      "virtual" : false
-    }, {
-      "cardinality" : "ManyToOne",
-      "cascadeEnabled" : false,
-      "cascadeOptions" : {
-        "cascadeRemove" : "NONE",
-        "cascadeReplace" : true
-      },
-      "columnsUniqueKey" : false,
-      "composite" : false,
-      "fetchOptions" : {
-        "fetch" : true,
-        "columnsFilter" : [ ]
-      },
-      "fieldName" : "application",
-      "ignored" : false,
-      "mappings" : [ {
-        "sourceColumn" : "applicationId",
-        "targetColumn" : "id"
-      } ],
-      "name" : "FK_ACTIVITY_TO_APPLICATIGU2uG",
-      "parentFetchOptions" : {
-        "fetch" : false,
-        "columnsFilter" : [ ]
-      },
-      "primary" : true,
-      "selfRelation" : false,
-      "sourceColumnsNotUniqueKey" : true,
-      "sourceTable" : "ACTIVITY",
-      "targetColumnsUniqueKey" : false,
-      "targetTable" : "APPLICATION",
       "valid" : true,
       "virtual" : false
     } ],

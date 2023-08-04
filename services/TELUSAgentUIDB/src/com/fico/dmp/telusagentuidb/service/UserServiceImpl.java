@@ -461,17 +461,6 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated fawbPropertySourcesForCreatedBy");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
-
-        return fawbPropertySourceService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
-    @Override
     public Page<FawbPropertySource> findAssociatedFawbPropertySourcesForUpdatedBy(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated fawbPropertySourcesForUpdatedBy");
 
@@ -483,13 +472,13 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated domainValueTypesForUpdatedBy");
+    public Page<FawbPropertySource> findAssociatedFawbPropertySourcesForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated fawbPropertySourcesForCreatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
-        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
+        return fawbPropertySourceService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
@@ -499,6 +488,17 @@ public class UserServiceImpl implements UserService {
 
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+
+        return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<DomainValueType> findAssociatedDomainValueTypesForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated domainValueTypesForUpdatedBy");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
         return domainValueTypeService.findAll(queryBuilder.toString(), pageable);
     }
@@ -527,22 +527,22 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated _groupsForCreatedBy");
+    public Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
+        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
 
         return groupService.findAll(queryBuilder.toString(), pageable);
     }
 
     @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
     @Override
-    public Page<Group> findAssociated_groupsForUpdatedBy(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated _groupsForUpdatedBy");
+    public Page<Group> findAssociated_groupsForCreatedBy(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _groupsForCreatedBy");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("userByUpdatedBy.id = '" + id + "'");
+        queryBuilder.append("userByCreatedBy.id = '" + id + "'");
 
         return groupService.findAll(queryBuilder.toString(), pageable);
     }

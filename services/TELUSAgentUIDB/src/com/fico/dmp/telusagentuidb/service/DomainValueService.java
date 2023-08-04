@@ -225,18 +225,6 @@ public interface DomainValueService {
     Page<Note> findAssociatedNotes(Integer id, Pageable pageable);
 
     /*
-     * Returns the associated queuesForPersonalQueueField for given DomainValue id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated Queue instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated queuesForQueueResultPage for given DomainValue id.
      *
      * @param id value of id; value cannot be null
@@ -247,6 +235,18 @@ public interface DomainValueService {
      * @see Page
      */
     Page<Queue> findAssociatedQueuesForQueueResultPage(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated queuesForPersonalQueueField for given DomainValue id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Queue instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Queue> findAssociatedQueuesForPersonalQueueField(Integer id, Pageable pageable);
 
     /*
      * Returns the associated documentsForDocumentLabel for given DomainValue id.

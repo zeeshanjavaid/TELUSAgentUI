@@ -117,8 +117,9 @@ Partial.createButtonClick = function($event, widget) {
                                 'entityId': entityId,
                                 'banId': banId,
                                 'notes': note,
-                                'docId': documentId
-                                //  'createdBy': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                                'docId': documentId,
+                                'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
+                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
 
                             });
 
@@ -190,8 +191,9 @@ Partial.createButtonClick = function($event, widget) {
                 'entityId': entityId,
                 'banId': banId,
                 'notes': note,
-                'docId': documentId
-                //   'createdBy': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                'docId': documentId,
+                'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
+                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
 
             });
 

@@ -56,9 +56,9 @@ public class Group implements Serializable {
 
     private Double lendingLimit;
 
-    private User userByCreatedBy;
-
     private User userByUpdatedBy;
+
+    private User userByCreatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -153,21 +153,6 @@ public class Group implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKdjb3a2n2o3hii7n95iyo0l4mo`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByCreatedBy() {
-        return this.userByCreatedBy;
-    }
-
-    public void setUserByCreatedBy(User userByCreatedBy) {
-        if(userByCreatedBy != null) {
-            this.createdBy = userByCreatedBy.getId();
-        }
-
-        this.userByCreatedBy = userByCreatedBy;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKkrcc46r4ivf9abl25cimayvcr`"))
     @Fetch(FetchMode.JOIN)
     public User getUserByUpdatedBy() {
@@ -180,6 +165,21 @@ public class Group implements Serializable {
         }
 
         this.userByUpdatedBy = userByUpdatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKdjb3a2n2o3hii7n95iyo0l4mo`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByCreatedBy() {
+        return this.userByCreatedBy;
+    }
+
+    public void setUserByCreatedBy(User userByCreatedBy) {
+        if(userByCreatedBy != null) {
+            this.createdBy = userByCreatedBy.getId();
+        }
+
+        this.userByCreatedBy = userByCreatedBy;
     }
 
 
