@@ -9,11 +9,11 @@
     "dataSet" : [ {
       "label" : "AR Agent View",
       "link" : "#ARAgentView",
-      "roleId" : "My Actions"
+      "roleId" : "Action Management"
     }, {
       "label" : "Order Desk Agent View",
       "link" : "#OrderDeskAgentView",
-      "roleId" : "My Actions"
+      "roleId" : "Action Management"
     } ],
     "type" : "entry",
     "isList" : true,
