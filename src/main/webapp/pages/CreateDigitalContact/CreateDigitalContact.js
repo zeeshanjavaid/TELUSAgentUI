@@ -138,6 +138,7 @@ Partial.extKeypress = function($event, widget) {
 };
 
 Partial.faxKeypress = function($event, widget) {
+    debugger;
     var value = $event.key;
     var KeyID = $event.keyCode;
     isNotANumber(value);
@@ -224,5 +225,37 @@ Partial.cellPhoneKeydown = function($event, widget) {
     var value = $event.key;
     if (value === 'Backspace') {
         Partial.Widgets.cellPhone.datavalue = "";
+    }
+};
+Partial.faxChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    const fullInputValue = newVal
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.fax.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+};
+Partial.cellPhoneChange = function($event, widget, newVal, oldVal) {
+    const fullInputValue = newVal
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.cellPhone.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+};
+
+Partial.workNoChange = function($event, widget, newVal, oldVal) {
+    const fullInputValue = newVal
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        Partial.Widgets.workNo.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
     }
 };

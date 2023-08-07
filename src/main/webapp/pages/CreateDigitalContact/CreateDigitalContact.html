@@ -74,7 +74,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="2" maxvalue="3"></wm-number>-->
-                        <wm-text name="fax" textalign="left" placeholder="" padding="unset 0.5em" maxchars="10" on-keypress="faxKeypress($event, widget)" on-keydown="faxKeydown($event, widget)"></wm-text>
+                        <wm-text name="fax" textalign="left" placeholder="" padding="unset 0.5em" maxchars="10" on-keypress="faxKeypress($event, widget)" on-keydown="faxKeydown($event, widget)" on-change="faxChange($event, widget, newVal, oldVal)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -85,7 +85,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em"></wm-number>-->
-                        <wm-text name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="cellPhoneKeypress($event, widget)" on-keydown="cellPhoneKeydown($event, widget)" maxchars="10"></wm-text>
+                        <wm-text name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="cellPhoneKeypress($event, widget)" on-keydown="cellPhoneKeydown($event, widget)" maxchars="10" on-change="cellPhoneChange($event, widget, newVal, oldVal)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -98,7 +98,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="workNoKeypress($event, widget)" on-keyup="workNoKeyup($event, widget)" on-keydown="workNoKeydown($event, widget)"></wm-number>-->
-                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="workNoKeypress($event, widget)" maxchars="10" on-keydown="workNoKeydown($event, widget)"></wm-text>
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="workNoKeypress($event, widget)" maxchars="10" on-keydown="workNoKeydown($event, widget)" on-change="workNoChange($event, widget, newVal, oldVal)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
