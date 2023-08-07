@@ -200,37 +200,38 @@ Partial.nextButtonClick = function($event, widget) {
             Partial.Widgets.Comments.datavalue = '';
             Partial.Widgets.dueDate.datavalue = '';
         }
-    }
 
-    //  Notice Actions
-    if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
-        Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
-        Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
-        Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
-        Partial.Widgets.dueDate.datavalue = new Date();
-        Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
-        Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-            'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-        });
-        Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+        //  Notice Actions
+        if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
+            Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
+            Partial.Widgets.dueDate.datavalue = new Date();
+            Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
-        // hiding select action form
-        hideSelectActionForm();
-        // displaying Call Outbound action form
-        $('#callOutBoundActionForm').show();
-        // displaying customer name
-        $('#customerName').show();
-        // displaying Email address
-        $('#nonMandatoryEmail').show();
-        // hiding non-required fields
-        $('#callInBoundActionForm').hide();
-        $('#mandatoryEmail').hide();
-        // making fields empty so that the same value does not carry over to another forms
-        Partial.Widgets.Comments.datavalue = '';
-        Partial.Widgets.dueDate.datavalue = '';
-        Partial.Widgets.custName.datavalue = '';
-        Partial.Widgets.nonMandatoryEmail.datavalue = '';
+            Partial.Variables.getLoggedInUserTeamIdVar.setInput({
+                'userId': App.Variables.getLoggedInUserId.dataSet[0].id
+            });
+            Partial.Variables.getLoggedInUserTeamIdVar.invoke();
+
+            // hiding select action form
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#callOutBoundActionForm').show();
+            // displaying customer name
+            $('#customerName').show();
+            // displaying Email address
+            $('#nonMandatoryEmail').show();
+            // hiding non-required fields
+            $('#callInBoundActionForm').hide();
+            $('#mandatoryEmail').hide();
+            // making fields empty so that the same value does not carry over to another forms
+            Partial.Widgets.Comments.datavalue = '';
+            Partial.Widgets.dueDate.datavalue = '';
+            Partial.Widgets.custName.datavalue = '';
+            Partial.Widgets.nonMandatoryEmail.datavalue = '';
+        }
     }
 
 };
@@ -954,11 +955,7 @@ Partial.completedButtonClick = function($event, widget) {
 
 };
 
-/*Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, widget, row) {
-    debugger;
 
-    Partial.Widgets.ToDoActionPopover.showPopover();
-};*/
 // display the close action Dailog
 Partial.CloseActionDialogOpened = function($event, widget) {
     $("#yesBtn").css("background-color", "#4B286D");
@@ -1079,20 +1076,24 @@ Partial.cancleButtonClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     debugger;
-    App.Variables.errorMsg.dataSet.dataValue = "";
-    Partial.Variables.dialogNameBool.dataSet.dataValue = false;
-    Partial.Widgets.EditActionDialog.open();
+    if (row.status != 'Closed' && row.status != 'Cancelled') {
+        App.Variables.errorMsg.dataSet.dataValue = "";
+        Partial.Variables.dialogNameBool.dataSet.dataValue = false;
+        Partial.Widgets.EditActionDialog.open();
+    }
 
 
 };
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
-    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
-        Partial.Widgets.notAssigned_closeActionDialog.open();
-    } else if (row.stepTypeCode == 'CALL-OB') {
-        Partial.Widgets.CloseActionDialog.open();
-    } else {
-        Partial.Widgets.assigned_closeActionDialog.open();
+    if (row.status != 'Closed' && row.status != 'Cancelled') {
+        if (row.assignedAgentId == '' || row.assignedAgentId == null) {
+            Partial.Widgets.notAssigned_closeActionDialog.open();
+        } else if (row.stepTypeCode == 'CALL-OB') {
+            Partial.Widgets.CloseActionDialog.open();
+        } else {
+            Partial.Widgets.assigned_closeActionDialog.open();
+        }
     }
 
 };
@@ -1155,13 +1156,14 @@ Partial.button15Click = function($event, widget) {
 Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row) {
 
     debugger;
+    if (row.status != 'Closed' && row.status != 'Cancelled') {
+        if (row.assignedAgentId == '' || row.assignedAgentId == null) {
+            Partial.Widgets.notAssigned_cancleActionDialog.open();
 
-    if (row.assignedAgentId == '' || row.assignedAgentId == null) {
-        Partial.Widgets.notAssigned_cancleActionDialog.open();
+        } else {
 
-    } else {
-
-        Partial.Widgets.assigned_cancleActionDialog.open();
+            Partial.Widgets.assigned_cancleActionDialog.open();
+        }
     }
 
 };

@@ -288,8 +288,8 @@
 " class="btn-transparent" iconclass="fico-icon-close" title="Close" action="getCollectionTreatmentStepTable2_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode!=&quot;SUS&quot;
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStepTable2_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="customRow" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;SUS&quot;
-" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="bind:Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;SUSPEND&quot; || Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;CEASE&quot; || Widgets.getCollectionTreatmentStepTable2.currentItem.stepTypeCode==&quot;RESTORE&quot;
+" class="btn-transparent" iconclass="fico-icon-arrow-right" title="Go to Order mgmt" action="Actions.goToOrderManagementPage.invoke()" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -324,7 +324,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action*" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="0 0 1em 0">
@@ -334,7 +334,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID*" name="EditActionIdLabel" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Action ID" name="EditActionIdLabel" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8" margin="0 0 1em 0">
@@ -492,7 +492,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn10">
-                    <wm-label padding="unset 0.5em 0.5em unset" caption="Phone Number" name="label3" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.5em unset" caption="Phone Number*" name="label3" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow21" margin="0 0 1em 0">
@@ -513,7 +513,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow13" id="Outcome">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn8">
-                    <wm-label padding="unset 0.5em 0.3em unset" caption="Outcome" name="label1" color="gray"></wm-label>
+                    <wm-label padding="unset 0.5em 0.3em unset" caption="Outcome*" name="label1" color="gray"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10" id="actionOutcomeSelect">
@@ -544,7 +544,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStepTable2.selecteditem.id +&quot;)&quot;+ '?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -571,7 +572,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStepTable2.selecteditem.id + &quot;)&quot;+'?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

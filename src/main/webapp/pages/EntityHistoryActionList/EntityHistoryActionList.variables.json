@@ -1543,6 +1543,39 @@
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
   },
+  "goToOrderManagementPage" : {
+    "_id" : "wm-goToOrderManagementPage-wm.NavigationVariable-1691401732981",
+    "name" : "goToOrderManagementPage",
+    "owner" : "Page",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "Lookup",
+      "type" : "string"
+    }, {
+      "target" : "tabName",
+      "value" : "OrderManagement",
+      "type" : "string"
+    } ],
+    "operation" : "gotoTab",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "gotToOrdermgmgtPage" : {
+    "_id" : "wm-gotToOrdermgmgtPage-wm.Variable-1691401045696",
+    "name" : "gotToOrdermgmgtPage",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "outcomeValues" : {
     "_id" : "wm-outcomeValues_1-wm.ServiceVariable-1685900825344",
     "name" : "outcomeValues",
