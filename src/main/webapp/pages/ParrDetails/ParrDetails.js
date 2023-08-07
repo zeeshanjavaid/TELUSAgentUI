@@ -272,19 +272,28 @@ Partial.updatePaymentArrangementonError = function(variable, data, xhrObj) {
 
 Partial.updatePaymentArrangementonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "PARR renegotiated successfully."
-    Partial.Variables.getPaymentArrangement.setInput({
-        "id": Partial.pageParams.ParrId
-    });
-    Partial.Variables.getPaymentArrangement.invoke();
+    var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
 
-    Partial.Variables.getCollectionHistoryViewParr.setInput({
-        'collectionEntityId': Partial.pageParams.entityId,
-        'relatedBusinessEntityId': Partial.pageParams.ParrId,
-        'relatedBusinessEntityType': 'CollectionPaymentArrangement'
+    getPaymentArrangementVar.invoke({
+            "inputFields": {
+                "id": Partial.pageParams.ParrId
+            },
+        },
+        function(data) {
+            Partial.Variables.getCollectionHistoryViewParr.setInput({
+                'collectionEntityId': Partial.pageParams.entityId,
+                'relatedBusinessEntityId': Partial.pageParams.ParrId,
+                'relatedBusinessEntityType': 'CollectionPaymentArrangement'
 
-    });
+            });
 
-    Partial.Variables.getCollectionHistoryViewParr.invoke();
+            Partial.Variables.getCollectionHistoryViewParr.invoke();
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
 
     setTimeout(messageTimeout, 5000);
 };
@@ -297,10 +306,29 @@ Partial.CancelPaymentArrangementonError = function(variable, data, xhrObj) {
 
 Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
-    Partial.Variables.getPaymentArrangement.setInput({
-        "id": Partial.pageParams.ParrId
-    });
-    Partial.Variables.getPaymentArrangement.invoke();
+    var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
+
+    getPaymentArrangementVar.invoke({
+            "inputFields": {
+                "id": Partial.pageParams.ParrId
+            },
+        },
+        function(data) {
+            Partial.Variables.getCollectionHistoryViewParr.setInput({
+                'collectionEntityId': Partial.pageParams.entityId,
+                'relatedBusinessEntityId': Partial.pageParams.ParrId,
+                'relatedBusinessEntityType': 'CollectionPaymentArrangement'
+
+            });
+
+            Partial.Variables.getCollectionHistoryViewParr.invoke();
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
     setTimeout(messageTimeout, 5000);
 
 };
