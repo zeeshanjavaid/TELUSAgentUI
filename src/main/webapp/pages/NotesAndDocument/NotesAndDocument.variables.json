@@ -83,7 +83,7 @@
     "serviceType" : "DataService",
     "dataSet" : [ ],
     "isList" : true,
-    "maxResults" : 3,
+    "maxResults" : 10,
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

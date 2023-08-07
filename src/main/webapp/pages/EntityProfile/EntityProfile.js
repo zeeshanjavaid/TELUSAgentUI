@@ -138,7 +138,9 @@ Partial.button3Click1 = function($event, widget) {
                                 'entityId': entityId,
                                 'banId': banId,
                                 'notes': note,
-                                'docId': documentId
+                                'docId': documentId,
+                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
+
 
                             });
 
@@ -210,7 +212,9 @@ Partial.button3Click1 = function($event, widget) {
                 'entityId': entityId,
                 'banId': banId,
                 'notes': note,
-                'docId': documentId
+                'docId': documentId,
+                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
+
 
             });
 
