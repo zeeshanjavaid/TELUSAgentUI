@@ -2948,6 +2948,20 @@
           "encrypted" : false
         }
       }, {
+        "name" : "createdByEmplId",
+        "fieldName" : "createdByEmplId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ENTITY_NOTES",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
         "name" : "documentName",
         "fieldName" : "documentName",
         "optional" : false,

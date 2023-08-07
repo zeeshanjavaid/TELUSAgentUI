@@ -119,7 +119,7 @@ Partial.createButtonClick = function($event, widget) {
                                 'notes': note,
                                 'docId': documentId,
                                 // 'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
-                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
 
                             });
 
@@ -193,7 +193,7 @@ Partial.createButtonClick = function($event, widget) {
                 'notes': note,
                 'docId': documentId,
                 // 'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
-                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
 
             });
 
