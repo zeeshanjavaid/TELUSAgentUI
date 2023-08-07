@@ -354,8 +354,8 @@
                     <wm-container name="container21" margin="20px 0 0 60px">
                         <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.getCollectionHistoryViewDispute.dataSet" width="98%" navigationalign="right">
                             <wm-table-column binding="updatedOn" caption="Date" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="assignedTo" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="status" caption="Status" type="string" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="updatedBy" caption="User" type="string" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="eventType" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>

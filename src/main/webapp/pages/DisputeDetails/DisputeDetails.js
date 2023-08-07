@@ -172,10 +172,28 @@ Partial.CloseDisputeServiceVaronSuccess = function(variable, data) {
 
     Partial.Widgets.closeDisputeDialog.close();
     App.Variables.successMessage.dataSet.dataValue = "Dispute Closed successfully";
-    Partial.Variables.getDisputeDetails.setInput({
-        "id": Partial.pageParams.DisputeId
-    });
-    Partial.Variables.getDisputeDetails.invoke();
+    var getDisputeDetailsVar = Partial.Variables.getDisputeDetails;
+
+    getDisputeDetailsVar.invoke({
+            "inputFields": {
+                "id": Partial.pageParams.DisputeId
+            },
+        },
+        function(data) {
+            Partial.Variables.getCollectionHistoryViewDispute.setInput({
+                'collectionEntityId': Partial.pageParams.entityId,
+                'relatedBusinessEntityId': Partial.pageParams.DisputeId,
+                'relatedBusinessEntityType': 'CollectionDispute'
+
+            });
+
+            Partial.Variables.getCollectionHistoryViewDispute.invoke();
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
     setTimeout(messageTimeout, 8000);
 
 };
@@ -184,10 +202,30 @@ Partial.CancelDisputeServiceVaronSuccess = function(variable, data) {
 
     Partial.Widgets.cancelDisputeConfirmation.close();
     App.Variables.successMessage.dataSet.dataValue = "Dispute Cancelled successfully";
-    Partial.Variables.getDisputeDetails.setInput({
-        "id": Partial.pageParams.DisputeId
-    });
-    Partial.Variables.getDisputeDetails.invoke();
+    var getDisputeDetailsVar = Partial.Variables.getDisputeDetails;
+
+    getDisputeDetailsVar.invoke({
+            "inputFields": {
+                "id": Partial.pageParams.DisputeId
+            },
+        },
+        function(data) {
+            Partial.Variables.getCollectionHistoryViewDispute.setInput({
+                'collectionEntityId': Partial.pageParams.entityId,
+                'relatedBusinessEntityId': Partial.pageParams.DisputeId,
+                'relatedBusinessEntityType': 'CollectionDispute'
+
+            });
+
+            Partial.Variables.getCollectionHistoryViewDispute.invoke();
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
+
     setTimeout(messageTimeout, 8000);
 
 };
@@ -196,10 +234,32 @@ Partial.updateDisputeServiceonSuccess = function(variable, data) {
 
     Partial.Widgets.updateDisputeConfirmation.close();
     App.Variables.successMessage.dataSet.dataValue = "Dispute Updated successfully";
-    Partial.Variables.getDisputeDetails.setInput({
-        "id": Partial.pageParams.DisputeId
-    });
-    Partial.Variables.getDisputeDetails.invoke();
+    /*    Partial.Variables.getDisputeDetails.setInput({
+            "id": Partial.pageParams.DisputeId
+        }); */
+
+    var getDisputeDetailsVar = Partial.Variables.getDisputeDetails;
+
+    getDisputeDetailsVar.invoke({
+            "inputFields": {
+                "id": Partial.pageParams.DisputeId
+            },
+        },
+        function(data) {
+            Partial.Variables.getCollectionHistoryViewDispute.setInput({
+                'collectionEntityId': Partial.pageParams.entityId,
+                'relatedBusinessEntityId': Partial.pageParams.DisputeId,
+                'relatedBusinessEntityType': 'CollectionDispute'
+
+            });
+
+            Partial.Variables.getCollectionHistoryViewDispute.invoke();
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
     setTimeout(messageTimeout, 8000);
 
 };
