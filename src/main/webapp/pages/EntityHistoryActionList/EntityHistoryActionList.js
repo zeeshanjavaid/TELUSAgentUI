@@ -832,6 +832,7 @@ Partial.openFilterGrid = function($event, widget) {
 
 // function added to clear all the fields in the filter
 Partial.clearFilterFields = function($event, widget) {
+    debugger;
     Partial.Widgets.toDoCategorySelect.datavalue = "COLL_TRTMT_STEP";
     Partial.Widgets.completedCategorySelect.datavalue = "All";
     Partial.Widgets.typeSelect.datavalue = "";
@@ -845,11 +846,25 @@ Partial.clearFilterFields = function($event, widget) {
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
         'IsOdManagement': false,
         'collectionEntityId': Partial.pageParams.entityId,
-        'type': 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
+        'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND',
+        'createdBy': '',
+        'status': '',
+        'assignedAgentId': '',
+        'assignedTeam': '',
+        'createdDate': ''
+
 
     });
 
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
+
+    IsOdManagement: false
+    collectionEntityId: 24
+    type: CALL - OB, CALL - IB, EM - IN, FOLLOWUP, NOTC1 - PMTR, NOTC2 - OD, NOTC3 - DIST, NOTC4 - CANL, RESTORE, CEASE, SUSPEND
+    createdBy: sask3456
+    status: Open
+    assignedAgentId: sask3456
 
 }
 
@@ -861,7 +876,7 @@ Partial.applyFilter = function($event, widget) {
 
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
-        typeCode = 'CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND';
+        typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
     } else {
         typeCode = Partial.Widgets.typeSelect.datavalue;
 
@@ -876,8 +891,8 @@ Partial.applyFilter = function($event, widget) {
             'type': typeCode,
             'createdDate': Partial.Widgets.creationDate.datavalue,
             'status': Partial.Widgets.statusSelect.datavalue,
-            'createdBy': Partial.Widgets.createdBySelect.datavalue,
-            'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue,
+            'createdBy': Partial.Widgets.createdBySelect.datavalue.emplId,
+            'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue.emplId,
             'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
 
         });
@@ -1390,5 +1405,8 @@ App.refreshCollActionList = function() {
         Partial.Variables.getCollectionTreatmentStep_1.invoke();
     }, 1000);
 
+
+};
+Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row) {
 
 };

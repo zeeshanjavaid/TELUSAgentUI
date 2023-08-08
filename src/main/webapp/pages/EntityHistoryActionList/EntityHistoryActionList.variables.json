@@ -1559,7 +1559,15 @@
       "type" : "string"
     } ],
     "operation" : "gotoTab",
-    "dataSet" : [ ],
+    "dataSet" : [ {
+      "type" : "string",
+      "target" : "entityId",
+      "value" : "bind:pageParams.entityId"
+    }, {
+      "type" : "integer",
+      "target" : "actionId",
+      "value" : "bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.id"
+    } ],
     "pageTransitions" : "none"
   },
   "gotToOrdermgmgtPage" : {

@@ -491,4 +491,5 @@ Page.ActiveEntitySelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.EntityProfilePageName.dataSet.dataValue = 'EntityProfile';
+
 };

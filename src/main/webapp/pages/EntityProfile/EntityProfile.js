@@ -167,6 +167,7 @@ Partial.button3Click1 = function($event, widget) {
 
                                     });
                                     Partial.Variables.getLatestNotesByEntityId.invoke();
+                                    App.reload();
 
                                 },
                                 function(error) {
@@ -243,6 +244,7 @@ Partial.button3Click1 = function($event, widget) {
 
                     });
                     Partial.Variables.getLatestNotesByEntityId.invoke();
+                    App.reload();
 
                 },
                 function(error) {

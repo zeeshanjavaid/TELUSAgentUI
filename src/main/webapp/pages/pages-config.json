@@ -205,6 +205,9 @@
   "params" : [ {
     "name" : "entityId",
     "type" : "string"
+  }, {
+    "name" : "actionId",
+    "type" : "string"
   } ]
 }, {
   "name" : "EntityNameEllipsisPartial",
@@ -266,6 +269,9 @@
   "params" : [ {
     "name" : "entityId",
     "type" : "string"
+  }, {
+    "name" : "actionId",
+    "type" : "integer"
   } ]
 }, {
   "name" : "LookupFileCreateEdit",
@@ -308,6 +314,9 @@
   "type" : "PARTIAL",
   "params" : [ {
     "name" : "entityId",
+    "type" : "string"
+  }, {
+    "name" : "actionId",
     "type" : "string"
   } ]
 }, {
