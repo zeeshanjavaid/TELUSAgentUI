@@ -140,7 +140,8 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                     <wm-gridcolumn name="gridcolumn15" width="50%">
-                        <wm-number textalign="left" name="phnNumber" height="38px" placeholder=""></wm-number>
+                        <!-- <wm-number textalign="left" name="phnNumber" height="38px" placeholder=""></wm-number>-->
+                        <wm-text name="phnNumber" textalign="left" maxchars="10" height="30px" placeholder=""></wm-text>
                         <p id="p01" style="color:red;" width="200px"></p>
                     </wm-gridcolumn>
                 </wm-gridrow>
@@ -496,7 +497,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow21" margin="0 0 1em 0">
                 <wm-gridcolumn name="gridcolumn15" width="50%">
-                    <wm-number textalign="left" name="phnNumber" placeholder="" width="50%" required="true" on-keydown="phnNumberKeydown($event, widget)"></wm-number>
+                    <!-- <wm-number textalign="left" name="phnNumber" placeholder="" width="50%" required="true" on-keydown="phnNumberKeydown($event, widget)"></wm-number>-->
+                    <wm-text name="phnNumber" textalign="left" maxchars="10" required="true" on-keydown="phnNumberKeydown($event, widget)" height="30px" placeholder=""></wm-text>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
