@@ -393,13 +393,21 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
 
 Partial.updateDONotSentbuttonClick = function($event, widget) {
-
-
+    debugger;
+    var stepTypeCode;
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        updateStatus = "Request Assigned";
+    } else {
+        updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+    }
+    Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
+
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
@@ -413,7 +421,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     } else {
 
 
-        var stepTypeCode;
+
         if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request") {
             stepTypeCode = "SUSPEND";
         } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
@@ -452,11 +460,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
         });
 
-        if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-            updateStatus = "Request Assigned";
-        } else {
-            updateStatus = Partial.Widgets.Status_NotSent.datavalue;
-        }
+
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
             //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -504,16 +508,20 @@ Partial.editNotSentCancelbuttonClick = function($event, widget) {
 Partial.updateandsendbuttonClick = function($event, widget) {
 
 
-
+    debugger;
     Partial.Variables.newlyAssignedPerson.dataset = '';
 
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
         Partial.Widgets.EditNotSentdialog.close();
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Created';
+
         Partial.Widgets.update_ActionDialog.open();
 
 
@@ -585,10 +593,18 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
-
+    var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+        updateStatus = "Request Assigned";
+    } else {
+        updateStatus = Partial.Widgets.Status_Sent.caption;
+    }
+    Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
+
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
@@ -620,16 +636,6 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
         });
-
-
-
-        var updateStatus = '';
-
-        if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-            updateStatus = "Request Assigned";
-        } else {
-            updateStatus = Partial.Widgets.Status_Sent.caption;
-        }
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
             //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -672,12 +678,15 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
 
         Partial.Widgets.EditAndFulfillSentdialog.close();
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
+
         Partial.Widgets.update_ActionDialog.open();
 
     } else {
@@ -837,8 +846,30 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 
 // for Update 
 Partial.update_YesBtnClick = function($event, widget) {
-
+    debugger;
     //  Partial.Widgets.EditNotSentdialog.close();
+    Partial.Variables.UpdateODManagemntVar.setInput({
+        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'partitionKey': getCurrentDate(),
+        'collectionEntityId': Partial.pageParams.entityId,
+        "CollectionTreatmentStepUpdate": {
+            'stepTypeCode': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode,
+            'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,
+            'priority': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority,
+            'comment': Partial.Widgets.Comment.datavalue,
+            'stepDate': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepDate,
+            'assignedAgentId': Partial.Variables.updatedAssignedPerson.dataset,
+            'assignedTeam': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam,
+            'channel': {
+                'originatorAppId': "FAWBTELUSAGENT",
+                'channelOrgId': "FAWBTELUSAGENT",
+                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+            }
+        }
+    });
+
+    //Invoke POST createDispute service
+    Partial.Variables.UpdateODManagemntVar.invoke();
 
     Partial.Widgets.update_ActionDialog.close();
 
@@ -846,6 +877,7 @@ Partial.update_YesBtnClick = function($event, widget) {
     // Partial.Widgets.EditNotSentdialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 3000);
+    App.refreshCollOrderMgmtList();
 
 
 

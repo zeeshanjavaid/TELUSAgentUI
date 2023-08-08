@@ -1501,6 +1501,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
   },
+  "getStatusIfAssignedPersonChanged" : {
+    "_id" : "wm-getStatusIfAssignedPersonChanged-wm.Variable-1691494642648",
+    "name" : "getStatusIfAssignedPersonChanged",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "newlyAssignedPerson" : {
     "_id" : "wm-newlyAssignedPerson-wm.Variable-1688382252147",
     "name" : "newlyAssignedPerson",
@@ -1563,6 +1577,20 @@
     } ],
     "type" : "string",
     "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "updatedAssignedPerson" : {
+    "_id" : "wm-updatedAssignedPerson-wm.Variable-1691491418351",
+    "name" : "updatedAssignedPerson",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
     "saveInPhonegap" : false
   },
   "UpdateODManagemntVar" : {
