@@ -20,8 +20,8 @@
             </wm-layoutgrid>
             <wm-livetable formlayout="dialog" name="FawbPropertySourceLiveTable1">
                 <wm-table gridfirstrowselect="true" editmode="dialog" name="FawbPropertySourceTable1" title="Site Properties" dataset="bind:Variables.FawbPropertySource.dataSet" navigation="Basic">
-                    <wm-table-column binding="propertyKey" caption="Property Key" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="propertyValue" caption="Property Value" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="propertyKey" caption="Property Key" width="162px" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="propertyValue" caption="Property Value" width="418px" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-action key="customButton" display-name="Reset" show="true" class="btn-secondary" iconclass="" title="Reset" action="Variables.refreshProperties.invoke()" shortcutkey="" disabled="false" widget-type="button"
                         position="header"></wm-table-action>
