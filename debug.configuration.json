@@ -1441,7 +1441,15 @@
       "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 390,
+        "line" : 118,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 388,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getActionViewByTeam",
         "phaseSequence" : 0,
@@ -1473,7 +1481,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 362,
+        "line" : 361,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityDetails",
         "phaseSequence" : 0,
@@ -1492,14 +1500,6 @@
         "line" : 233,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getassignedEntitiesInClassicView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 118,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "propertyValueFrom",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null

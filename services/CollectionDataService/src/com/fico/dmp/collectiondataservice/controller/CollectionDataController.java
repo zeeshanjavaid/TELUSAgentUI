@@ -63,7 +63,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/entityDetails", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<EntityDetailsResponse> getEntityDetails(@RequestParam(value = "entityId", required = false) @ApiParam(value = "34343") String entityId) throws Exception {
+    public EntityDetailsResponse getEntityDetails(@RequestParam(value = "entityId", required = false) @ApiParam(value = "34343") String entityId) throws Exception {
         return collectionDataService.getEntityDetails(entityId);
     }
 
