@@ -156,8 +156,7 @@ Partial.YesCancelButtonClick = function($event, widget) {
         "CollectionPaymentArrangementUpdate": {
             'id': Partial.pageParams.ParrId,
             'comment': Partial.Widgets.CancelComments.datavalue,
-            'status': 'Closed',
-            'evaluationResult': 'Broken',
+            'status': 'Cancelled',
             'channel': {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                 'originatorAppId': "FAWBTELUSAGENT"
