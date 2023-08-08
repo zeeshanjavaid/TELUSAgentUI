@@ -332,3 +332,8 @@ Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
 Partial.getEntityBanDetailsForParronError = function(variable, data, xhrObj) {
 
 };
+Partial.installmentScheduleTable_dateOnChange = function($event, widget, row) {
+    debugger;
+
+
+};
