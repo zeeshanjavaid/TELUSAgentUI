@@ -25,7 +25,7 @@ Partial.onReady = function() {
      */
     Partial.Variables.getLatestNotesBy_EntityId.setInput({
 
-        'entityId': window.location.href.toString().split("=")[1]
+        'entityId': Partial.pageParams.entityId
 
     });
     Partial.Variables.getLatestNotesBy_EntityId.invoke();
@@ -42,7 +42,7 @@ Partial.createUserNotebuttonClick = function($event, widget) {
 Partial.BananchorClick = function($event, widget) {
     Partial.Variables.getBanDetailsForNotesAndDoc.setInput({
 
-        'entityId': window.location.href.toString().split("=")[1]
+        'entityId': Partial.pageParams.entityId
 
     });
     Partial.Variables.getBanDetailsForNotesAndDoc.invoke();
@@ -72,7 +72,7 @@ Partial.createButtonClick = function($event, widget) {
 
 
     if (Partial.Widgets.fileupload_1.selectedFiles != undefined) {
-        var entityId = window.location.href.toString().split("=")[1];
+        var entityId = Partial.pageParams.entityId;
 
         var docName = Partial.Widgets.fileupload_1.selectedFiles[0].name;
 
@@ -111,7 +111,7 @@ Partial.createButtonClick = function($event, widget) {
                         } else {
                             var banId = Partial.Widgets.getEntityDetailsTable1_2.selecteditem.banId;
                             var note = Partial.Widgets.textarea1.datavalue;
-                            var entityId = window.location.href.toString().split("=")[1];
+                            var entityId = Partial.pageParams.entityId;
 
                             Partial.Variables.SaveNote.setInput({
 
@@ -143,7 +143,7 @@ Partial.createButtonClick = function($event, widget) {
                                     //  Partial.Variables.getLatestNotesBy_EntityId.invoke();
                                     Partial.Variables.getLatestNotesBy_EntityId.setInput({
 
-                                        'entityId': window.location.href.toString().split("=")[1]
+                                        'entityId': Partial.pageParams.entityId
 
                                     });
                                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
@@ -185,7 +185,7 @@ Partial.createButtonClick = function($event, widget) {
         } else {
             var banId = Partial.Widgets.getEntityDetailsTable1_2.selecteditem.banId;
             var note = Partial.Widgets.textarea1.datavalue;
-            var entityId = window.location.href.toString().split("=")[1];
+            var entityId = Partial.pageParams.entityId;
 
             Partial.Variables.SaveNote.setInput({
 
@@ -219,7 +219,7 @@ Partial.createButtonClick = function($event, widget) {
                     // window.location.reload();
                     Partial.Variables.getLatestNotesBy_EntityId.setInput({
 
-                        'entityId': window.location.href.toString().split("=")[1]
+                        'entityId': Partial.pageParams.entityId
 
                     });
                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
