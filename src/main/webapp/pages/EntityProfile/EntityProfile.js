@@ -26,6 +26,7 @@ Partial.onReady = function() {
      
      
      */
+    //  alert(Partial.pageParams.entityId);
 
     Partial.Variables.entityIdForNotes.dataSet = window.location.href.toString().split("=")[1];
 
