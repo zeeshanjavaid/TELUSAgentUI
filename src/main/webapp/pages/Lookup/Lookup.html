@@ -152,7 +152,7 @@
             <wm-container name="container1">
                 <wm-tabs name="tabs1" accessroles="Authenticated">
                     <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
-                        show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)" on-select="ActiveEntitySelect($event, widget)"></wm-tabpane>
+                        show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)" on-select="ActiveEntitySelect($event, widget)" on-load="ActiveEntityLoad($event, widget)"></wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
                     <wm-tabpane name="Parr" title="PARR" show="true" on-select="ParrSelect($event, widget)" on-deselect="ParrDeselect($event, widget)" accessroles="PARR Management">
                         <wm-container name="container3_1" show="true" class="rrr" width="100%" style="overflow: hidden;">

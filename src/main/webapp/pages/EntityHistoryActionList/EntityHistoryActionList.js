@@ -1027,10 +1027,10 @@ Partial.closeButtonClick = function($event, widget) {
 
     if (Partial.Widgets.phnNumber.datavalue === undefined || Partial.Widgets.phnNumber.datavalue == null) {
 
-        App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields.";
+        App.Variables.errorMsg.dataSet.dataValue = "Invalid Phone number.";
         isError = true;
     } else if (phnumber > 10) {
-        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater than 10 digit";
+        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater than 10 digit.";
         isError = true;
     } else {
         characteristicList.push({
@@ -1042,7 +1042,7 @@ Partial.closeButtonClick = function($event, widget) {
 
         if (Partial.Widgets.actionOutcomeSelect.datavalue === undefined || Partial.Widgets.actionOutcomeSelect.datavalue == '') {
             isError = true;
-            App.Variables.errorMsg.dataSet.dataValue = "Outcome option is not selected";
+            App.Variables.errorMsg.dataSet.dataValue = "Outcome option is not selected.";
 
         } else {
             characteristicList.push({
@@ -1415,7 +1415,7 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 App.refreshCollActionList = function() {
     setTimeout(function() {
         Partial.Variables.getCollectionTreatmentStep_1.invoke();
-    }, 1000);
+    }, 2000);
 
 
 };

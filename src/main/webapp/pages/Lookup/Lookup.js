@@ -487,9 +487,12 @@ Page.BansTravelHistoryDialogOpened = function($event, widget) {
 };
 Page.ActiveEntitySelect = function($event, widget) {
 
-
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.EntityProfilePageName.dataSet.dataValue = 'EntityProfile';
 
+};
+Page.ActiveEntityLoad = function($event, widget) {
+    debugger;
 };
