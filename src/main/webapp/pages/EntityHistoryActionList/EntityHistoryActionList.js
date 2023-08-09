@@ -873,6 +873,18 @@ Partial.applyFilter = function($event, widget) {
     debugger;
 
     var typeCode = '';
+    var createdBy = '';
+    var assignedAgentId = '';
+
+    if (Partial.Widgets.createdBySelect.datavalue != '') {
+        createdBy = Partial.Widgets.createdBySelect.datavalue.emplId;
+    }
+
+    if (Partial.Widgets.assignedPersonSelectfilter.datavalue != '' && Partial.Widgets.assignedPersonSelectfilter.datavalue != undefined) {
+        assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue.emplId;
+    }
+
+
 
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
@@ -891,8 +903,8 @@ Partial.applyFilter = function($event, widget) {
             'type': typeCode,
             'createdDate': Partial.Widgets.creationDate.datavalue,
             'status': Partial.Widgets.statusSelect.datavalue,
-            'createdBy': Partial.Widgets.createdBySelect.datavalue.emplId,
-            'assignedAgentId': Partial.Widgets.assignedPersonSelectfilter.datavalue.emplId,
+            'createdBy': createdBy,
+            'assignedAgentId': assignedAgentId,
             'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
 
         });

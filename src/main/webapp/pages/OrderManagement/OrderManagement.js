@@ -791,12 +791,12 @@ Partial.closeAction_NoClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
-
+    debugger;
     Partial.Variables.UpdateODManagemntVar.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
-            'status': 'Close',
+            'status': 'Closed',
             'comment': Partial.Widgets.closeComment.datavalue,
             'channel': {
                 'originatorAppId': "FAWBTELUSAGENT",
@@ -822,7 +822,7 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
-            'status': 'Cancel',
+            'status': 'Cancelled',
             'comment': Partial.Widgets.cancelComment.datavalue,
             'channel': {
                 'originatorAppId': "FAWBTELUSAGENT",
