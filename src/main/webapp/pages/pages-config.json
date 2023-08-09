@@ -519,7 +519,10 @@
 }, {
   "name" : "moreDetails",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "partial_searchentity",
   "type" : "PARTIAL",

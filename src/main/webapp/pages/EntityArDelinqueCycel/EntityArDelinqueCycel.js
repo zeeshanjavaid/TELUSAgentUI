@@ -21,8 +21,6 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    alert(Partial.pageParams.entityId);
-
     Partial.Variables.getEntityDetailsAR.setInput({
         'entityId': Partial.pageParams.entityId
     });
