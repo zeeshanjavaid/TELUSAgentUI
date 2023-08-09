@@ -85,7 +85,7 @@ Page.button1Click = function($event, widget) {
 
     var isError = false;
 
-    // message.innerHTML = "";
+    message.innerHTML = "";
     message1.innerHTML = "";
     message2.innerHTML = "";
     message3.innerHTML = "";
@@ -94,12 +94,24 @@ Page.button1Click = function($event, widget) {
     var inputValue = "";
     var searchCriteria = "";
 
-    if (Page.Widgets.select1.datavalue == "BAN") {
+    var value = $("input:radio[name=checkAndUncheck]:checked").val();
+
+    if (Page.Widgets.select1.datavalue == "BAN" && value === undefined) {
         intputType = "PHONENUMBER";
         inputValue = Page.Widgets.text3._datavalue;
+        searchCriteria = 'exactMatch'
     } else {
 
         var value = $("input:radio[name=checkAndUncheck]:checked").val();
+
+        if (Page.Widgets.text3._datavalue != '' && Page.Widgets.text3._datavalue != undefined) {
+            try {
+                isError = true;
+                throw "Please clear phone number"
+            } catch (err) {
+                message.innerHTML = err;
+            }
+        }
 
         if (value === undefined && Page.Widgets.text4._datavalue !== "") {
             try {
@@ -396,9 +408,7 @@ function handleBanPhoneNumber() {
 };
 
 Page.text3Blur = function($event, widget) {
-    $('input[type=text]').each(function() {
-        $(this).val('');
-    });
+
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
     Page.Widgets.select4._datavalue = '';
     Page.Widgets.select3.disabled = false;
@@ -409,5 +419,8 @@ Page.text3Blur = function($event, widget) {
     Page.Widgets.text5.disabled = true;
     $('#name').prop('disabled', false);
     $('#numID').prop('disabled', false);
+    // $('input[type=text]').each(function() {
+    //     $(this).val('');
+    // });
 
 };
