@@ -20,5 +20,16 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    Partial.Variables.getBanDetailsAR.invoke();
+
+    //Partial.Variables.getBanDetailsAR.invoke();
+
+    App.showRowExpansionEntityDetails = function(row, data) {
+        Partial.Widgets.ar30D.caption = row.ar30Days;
+        Partial.Widgets.ar60D.caption = row.ar60Days;
+        Partial.Widgets.ar90D.caption = row.ar90Days;
+        Partial.Widgets.ar120D.caption = row.ar120Days;
+        Partial.Widgets.ar150D.caption = row.ar150Days;
+        Partial.Widgets.ar180D.caption = row.ar180Days;
+        Partial.Widgets.ar180Dplus.caption = row.ar180Days;
+    }
 };

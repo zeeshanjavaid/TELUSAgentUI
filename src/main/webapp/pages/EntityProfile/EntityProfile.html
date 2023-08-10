@@ -12,8 +12,9 @@
             <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="customField" caption="In Dispute" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+            <wm-table-column binding="disputeAmount" caption="Dispute Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">

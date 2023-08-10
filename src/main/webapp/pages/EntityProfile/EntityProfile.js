@@ -410,3 +410,6 @@ Partial.getBanDetailsForNotesonError = function(variable, data, xhrObj) {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
 }
+Partial.getEntityDetailsTable1_OnRowexpand = function($event, widget, row, $data) {
+    App.showRowExpansionEntityDetails(row, $data);
+};
