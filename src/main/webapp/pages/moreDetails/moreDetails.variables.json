@@ -1,4 +1,27 @@
 {
+  "moreDetailsGetEntityById" : {
+    "_id" : "wm-moreDetailsGetEntityById-wm.ServiceVariable-1691673002474",
+    "name" : "moreDetailsGetEntityById",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionEntity",
+    "service" : "CollectionEntityService",
+    "operation" : "getCollectionEntityById",
+    "operationId" : "CollectionEntityController_getCollectionEntityById",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "moreDetailsGetEntityDetails" : {
     "_id" : "wm-moreDetailsEntityDetails-wm.ServiceVariable-1691566138220",
     "name" : "moreDetailsGetEntityDetails",

@@ -27,4 +27,12 @@ Partial.onReady = function() {
 
     Partial.Variables.moreDetailsGetEntityDetails.invoke();
 
+    Partial.Variables.moreDetailsGetEntityById.setInput({
+        'id': parseInt(Partial.pageParams.entityId)
+    });
+
+    Partial.Variables.moreDetailsGetEntityById.invoke();
+
+
+
 };
