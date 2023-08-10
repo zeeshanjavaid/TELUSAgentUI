@@ -147,7 +147,7 @@ Partial.createButtonClick = function($event, widget) {
 
                                     });
                                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
-                                    app.reload();
+
 
                                 },
                                 function(error) {
@@ -224,7 +224,7 @@ Partial.createButtonClick = function($event, widget) {
 
                     });
                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
-                    App.reload();
+
 
                 },
                 function(error) {

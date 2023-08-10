@@ -37,13 +37,13 @@
                     <wm-table-column binding="id" caption="Action ID" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="assignedAgentId" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="assignedAgentId" caption="Agent ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot;
@@ -51,7 +51,8 @@
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot;
 
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStep_orderMngt_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)"
+                        disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
@@ -614,7 +615,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -641,7 +643,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -668,14 +671,15 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+'has not been assigned to someone to work on it.'" name="label36"></wm-label>
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ ' '+'has not been assigned to someone to work on it.'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="Please go back and assign it to yourself, before closing." name="label36"></wm-label>
+                    <wm-label caption="Please go back and assign it , before closing." name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -687,7 +691,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ' '+
+                    <wm-label caption="bind:'This action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ ' '+
 'has not been assigned to someone to work on it.'" name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
@@ -695,7 +699,7 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="1.4em unset 2.5em unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="Please go back and assign it to yourself, before cancelling." name="label36"></wm-label>
+                    <wm-label caption="Please go back and assign it , before cancelling." name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
