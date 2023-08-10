@@ -21,7 +21,6 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    //Partial.Variables.getBanDetailsAR.invoke();
 
     App.showRowExpansionEntityDetails = function(row, data) {
         Partial.Widgets.ar30D.caption = row.ar30Days;
@@ -31,5 +30,7 @@ Partial.onReady = function() {
         Partial.Widgets.ar150D.caption = row.ar150Days;
         Partial.Widgets.ar180D.caption = row.ar180Days;
         Partial.Widgets.ar180Dplus.caption = row.ar180Days;
+        Partial.Widgets.lastPaymentDate.caption = row.lastPaymentDate;
+
     }
 };
