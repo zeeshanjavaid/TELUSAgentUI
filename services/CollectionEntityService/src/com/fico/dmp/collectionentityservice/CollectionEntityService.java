@@ -337,7 +337,8 @@ public class CollectionEntityService {
                    .queryParam("createdBy", createdBy)
                     .queryParam("createdFrom", createdFrom)
                      .queryParam("createdTo", createdTo)
-                     .queryParam("entityId","eq:" + entityId);
+                     .queryParam("entityId","eq:" + entityId)
+                     .queryParam("limit",limit);
               // .queryParam("entityRisk",entityRisk);
     	return parrService.getPaymentArrangements(entityId,builder.toUriString());
     }
