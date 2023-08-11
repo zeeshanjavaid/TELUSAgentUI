@@ -36,6 +36,47 @@ Page.onReady = function() {
         });
 
 
+    if (Page.pageParams.entityId) {
+        var getEntityProfileDetailsVar = Page.Variables.getEntityProfileDetails;
+
+        getEntityProfileDetailsVar.invoke({
+                "inputFields": {
+                    "entityId": Page.pageParams.entityId
+                },
+            },
+            function(data) {
+                var ar180DaysPlus = parseFloat(data.entityDetails.ar180DaysPlus);
+                var ar180Days = parseFloat(data.entityDetails.ar180Days);
+                var ar150Days = parseFloat(data.entityDetails.ar150Days);
+                var ar120Days = parseFloat(data.entityDetails.ar120Days);
+                var ar90Days = parseFloat(data.entityDetails.ar90Days);
+                var ar60Days = parseFloat(data.entityDetails.ar60Days);
+                var ar30Days = parseFloat(data.entityDetails.ar30Days);
+                Page.Widgets.deliqCycle.caption = 0;
+                if (ar180DaysPlus > 0) {
+                    Page.Widgets.deliqCycle.caption = ar180DaysPlus;
+                } else if (ar180Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar180Days;
+                } else if (ar150Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar150Days;
+                } else if (ar120Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar120Days;
+                } else if (ar90Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar90Days;
+                } else if (ar60Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar60Days;
+                } else if (ar30Days > 0) {
+                    Page.Widgets.deliqCycle.caption = ar30Days;
+                }
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
+        );
+    }
+
 };
 
 function messageTimeout() {
