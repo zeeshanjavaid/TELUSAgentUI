@@ -230,7 +230,10 @@
 }, {
   "name" : "EntityProfileTeam",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "entityId",
+    "type" : "string"
+  } ]
 }, {
   "name" : "ErrorLanding",
   "type" : "PAGE",
