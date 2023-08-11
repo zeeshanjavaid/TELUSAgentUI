@@ -187,7 +187,7 @@ Page.button2Click = function($event, widget) {
     debugger;
 
 
-    // const message1 = document.getElementById("p02");
+    const message = document.getElementById("p01");
     // const message2 = document.getElementById("p03");
     // const message3 = document.getElementById("p04");
     // const message4 = document.getElementById("p05");
@@ -200,7 +200,7 @@ Page.button2Click = function($event, widget) {
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
 
-    // message2.innerHTML = "";
+    message.innerHTML = "";
     // message3.innerHTML = "";
     // message1.innerHTML = "";
     // message4.innerHTML = "";
@@ -408,6 +408,8 @@ function handleBanPhoneNumber() {
 };
 
 Page.text3Blur = function($event, widget) {
+
+    debugger;
 
     $("input:radio[name=checkAndUncheck]:checked").prop('checked', false);
     Page.Widgets.select4._datavalue = '';

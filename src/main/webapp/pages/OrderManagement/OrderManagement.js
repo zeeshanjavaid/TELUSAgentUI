@@ -149,7 +149,7 @@ Partial.createbuttonClick = function($event, widget) {
 
     var isAssignedPerson = '';
 
-    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == undefined) {
         isAssignedPerson = "Request Created";
     } else {
         isAssignedPerson = "Request Assigned";
@@ -212,7 +212,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
     var isAssignedPerson = '';
 
-    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == undefined) {
         isAssignedPerson = "Request Created";
     } else {
         isAssignedPerson = "Request Assigned";
@@ -287,7 +287,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 
     var isAssignedPerson = '';
 
-    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == undefined) {
         isAssignedPerson = "Request Created";
     } else {
         isAssignedPerson = "Request Assigned";
@@ -395,6 +395,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 Partial.updateDONotSentbuttonClick = function($event, widget) {
     debugger;
     var stepTypeCode;
+    var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
@@ -431,7 +432,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         }
 
         // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
-        var updateStatus = '';
+
 
 
         Partial.Variables.BanListRefIds.dataSet = [];

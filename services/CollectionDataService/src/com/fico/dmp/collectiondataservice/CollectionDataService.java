@@ -142,8 +142,8 @@ public class CollectionDataService {
                     .queryParam("inputValue", URLEncoder.encode(inputValue,"UTF-8"))
                     .queryParam("level",level)
                     .queryParam("searchMatchCriteria",searchMatchCriteria)
-                    .queryParam("billingSystem",billingSystem)
-                    .queryParam("limit",20);
+                    .queryParam("billingSystem",billingSystem);
+                    
 
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
             logger.info("::::::::Entity data endpoint call success ::::::::");
