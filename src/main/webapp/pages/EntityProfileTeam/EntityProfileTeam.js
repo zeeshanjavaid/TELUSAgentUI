@@ -10,7 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
-Partial.onReady = function () {
+Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,4 +20,37 @@ Partial.onReady = function () {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    debugger;
+    var getOwerIdFromEntityDetailsVar = Partial.Variables.getOwerIdFromEntityDetails;
+
+    getOwerIdFromEntityDetailsVar.invoke({
+            "inputFields": {
+                "entityId": Partial.pageParams.entityId
+            },
+        },
+        function(data) {
+            debugger;
+            var getNameUsingEmpIdVar = Partial.Variables.getNameUsingEmpIdVar;
+            getNameUsingEmpIdVar.invoke({
+                    "inputFields": {
+                        "empId": data.entityDetails.entityOwnerId
+                    },
+                },
+                function(data1) {
+                    Partial.Variables.entityOwnerNameVar.dataSet.dataValue = data1;
+                },
+                function(error1) {
+                    // Error Callback
+                    console.log("error", error);
+                }
+            );
+
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
 };

@@ -1,4 +1,41 @@
 {
+  "entityOwnerNameVar" : {
+    "_id" : "wm-entityOwnerNameVar-wm.Variable-1691859503050",
+    "name" : "entityOwnerNameVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "getNameUsingEmpIdVar" : {
+    "_id" : "wm-getNameUsingEmpIdVar-wm.ServiceVariable-1691760631633",
+    "name" : "getNameUsingEmpIdVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "CommonUtilityService",
+    "operation" : "getNameUsingEmpId",
+    "operationId" : "CommonUtilityController_getNameUsingEmpId",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
+  },
   "getOwerIdFromEntityDetails" : {
     "_id" : "wm-getOwerIdFromEntityDetails-wm.ServiceVariable-1681811631315",
     "name" : "getOwerIdFromEntityDetails",
