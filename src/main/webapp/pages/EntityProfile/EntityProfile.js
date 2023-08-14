@@ -30,7 +30,7 @@ Partial.onReady = function() {
      */
     //  alert(Partial.pageParams.entityId);
 
-    Partial.Variables.entityIdForNotes.dataSet = window.location.href.toString().split("=")[1];
+    Partial.Variables.entityIdForNotes.dataSet = Partial.pageParams.entityId;
 
     Partial.Variables.getLatestNotesByEntityId.setInput({
 
@@ -170,7 +170,7 @@ Partial.button3Click1 = function($event, widget) {
 
                                     });
                                     Partial.Variables.getLatestNotesByEntityId.invoke();
-                                    App.reload();
+                                    //  App.reload();
 
                                 },
                                 function(error) {
@@ -247,7 +247,7 @@ Partial.button3Click1 = function($event, widget) {
 
                     });
                     Partial.Variables.getLatestNotesByEntityId.invoke();
-                    App.reload();
+                    //  App.reload();
 
                 },
                 function(error) {

@@ -1434,11 +1434,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "collectionEntityId",
-      "value" : "bind:pageParams.entityId",
-      "type" : "integer"
-    } ],
+    "dataBinding" : [ ],
     "type" : "io.swagger.client.model.CollectionActivityLog",
     "service" : "CollectionTreatmentService",
     "operation" : "getCollectionActivityLog",
@@ -1450,7 +1446,7 @@
     "maxResults" : 20,
     "onError" : "GetCollectionActivityLogListonError(variable, data, xhrObj)",
     "startUpdate" : true,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

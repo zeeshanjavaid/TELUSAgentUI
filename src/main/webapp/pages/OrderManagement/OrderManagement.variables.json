@@ -1579,9 +1579,37 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "updateAssignedTeam" : {
+    "_id" : "wm-updateAssignedTeam-wm.Variable-1692012482007",
+    "name" : "updateAssignedTeam",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "updatedAssignedPerson" : {
     "_id" : "wm-updatedAssignedPerson-wm.Variable-1691491418351",
     "name" : "updatedAssignedPerson",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "updateDueDateOrStepDate" : {
+    "_id" : "wm-updateDueDateOrStepDate-wm.Variable-1692012557608",
+    "name" : "updateDueDateOrStepDate",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",
@@ -1615,6 +1643,34 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
+  },
+  "updatePriority" : {
+    "_id" : "wm-updatePriority-wm.Variable-1692012398923",
+    "name" : "updatePriority",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "updateSelectedBans" : {
+    "_id" : "wm-updateSelectedBans-wm.Variable-1692012279118",
+    "name" : "updateSelectedBans",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "UserLoggedInVar" : {
     "_id" : "wm-UserLoggedInVar-wm.Variable-1687260490050",

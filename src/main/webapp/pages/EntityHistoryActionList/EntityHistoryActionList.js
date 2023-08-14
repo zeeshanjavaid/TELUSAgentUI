@@ -859,12 +859,7 @@ Partial.clearFilterFields = function($event, widget) {
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 
-    IsOdManagement: false
-    collectionEntityId: 24
-    type: CALL - OB, CALL - IB, EM - IN, FOLLOWUP, NOTC1 - PMTR, NOTC2 - OD, NOTC3 - DIST, NOTC4 - CANL, RESTORE, CEASE, SUSPEND
-    createdBy: sask3456
-    status: Open
-    assignedAgentId: sask3456
+
 
 }
 
@@ -914,15 +909,22 @@ Partial.applyFilter = function($event, widget) {
     } else if (completedTable == true) {
         debugger;
         Partial.Variables.GetCollectionActivityLogList.setInput({
-
-            'category': Partial.Widgets.toDoCategorySelect.datavalue,
-            'type': Partial.Widgets.typeSelect.datavalue,
-            'createdDate': Partial.Widgets.creationDate.datavalue,
-            'completionDate': Partial.Widgets.completionDate.datavalue,
-            'status': Partial.Widgets.statusSelect.datavalue,
-            'createdBy': Partial.Widgets.createdBySelect.datavalue,
-            'assignedTo': Partial.Widgets.assignedPersonSelectfilter.datavalue,
-            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+            'collectionEntityId': Partial.pageParams.entityId,
+            'relatedBusinessEntitySubType': typeCode,
+            'relatedBusinessEntityType': '',
+            'relatedBusinessEntityStatus': Partial.Widgets.statusSelect.datavalue,
+            'relatedBusinessEntityCreatedDate': Partial.Widgets.creationDate.datavalue,
+            'relatedBusinessEntityCreatedBy': createdBy,
+            'relatedBusinessEntityAssignedTo': assignedAgentId,
+            'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
+            // 'category': Partial.Widgets.toDoCategorySelect.datavalue,
+            // 'type': typeCode,
+            // 'createdDate': Partial.Widgets.creationDate.datavalue,
+            // 'completionDate': Partial.Widgets.completionDate.datavalue,
+            // 'status': Partial.Widgets.statusSelect.datavalue,
+            // 'createdBy': createdBy,
+            // 'assignedTo': assignedAgentId,
+            // 'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
 
         });
 

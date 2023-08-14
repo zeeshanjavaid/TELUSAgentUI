@@ -401,7 +401,35 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
-    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        if (stepTypeCode == "SUSPEND" && d.banStatus == "SUSPEND") {
+            //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended.";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended."
+        } else if (stepTypeCode == "RESTORE" && d.banStatus == "RESTORE") {
+
+            //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored.";
+            Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored."
+
+
+        } else {
+
+            Partial.selectedBanList = {
+                "id": d.banRefId,
+
+            }
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+
+    });
+
+
+
     if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
         updateStatus = "Request Assigned";
     } else {
@@ -412,6 +440,13 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+
+        Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
+        Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
+        Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
+        Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
+        Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
 
 
 
@@ -435,31 +470,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
 
 
-        Partial.Variables.BanListRefIds.dataSet = [];
 
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-        Partial.selectedBanList = [];
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-            if (stepTypeCode == "SUSPEND" && d.banStatus == "SUSPEND") {
-                //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended.";
-                Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Suspended."
-            } else if (stepTypeCode == "RESTORE" && d.banStatus == "RESTORE") {
-
-                //App.Variables.errorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored.";
-                Partial.Variables.popUperrorMsg.dataSet.dataValue = "Ban Id " + d.banMapRefId + " Ban name " + d.banName + " is already Restored."
-
-
-            } else {
-
-                Partial.selectedBanList = {
-                    "id": d.banRefId,
-
-                }
-            }
-            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-        });
 
 
 
@@ -515,13 +526,34 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banRefId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
 
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
-        Partial.Widgets.EditNotSentdialog.close();
+
+        Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
         Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Created';
+
+        Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
+        Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
+        Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
+        Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+
+        Partial.Widgets.EditNotSentdialog.close();
 
         Partial.Widgets.update_ActionDialog.open();
 
@@ -536,19 +568,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
             stepTypeCode = "CEASE";
         }
 
-        Partial.Variables.BanListRefIds.dataSet = [];
 
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-        Partial.selectedBanList = [];
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-            Partial.selectedBanList = {
-                "id": d.banRefId,
-
-            }
-            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-        });
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
             //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -598,17 +618,34 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
-    Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+    Partial.Variables.BanListRefIds.dataSet = [];
+
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
+    Partial.selectedBanList = [];
+    Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+
+        Partial.selectedBanList = {
+            "id": d.banRefId,
+
+        }
+        Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
+
+    });
     if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
         updateStatus = "Request Assigned";
     } else {
         updateStatus = Partial.Widgets.Status_Sent.caption;
     }
-    Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
+
 
     if (originalAgentId != selectedAgentId) {
-
+        Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = "Order Assigned";
+        Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
+        Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
+        Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
+        Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
 
 
         Partial.Widgets.EditAndFulfillSentdialog.close();
@@ -624,19 +661,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             stepTypeCode = "CEASE";
         }
 
-        Partial.Variables.BanListRefIds.dataSet = [];
 
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
-        Partial.selectedBanList = [];
-        Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-
-            Partial.selectedBanList = {
-                "id": d.banRefId,
-
-            }
-            Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
-
-        });
 
         if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
             //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -682,11 +707,21 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
     if (originalAgentId != selectedAgentId) {
 
+
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
 
-        Partial.Widgets.EditAndFulfillSentdialog.close();
+        Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
+
+        Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
         Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
+
+        Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
+        Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
+        Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+
+
+        Partial.Widgets.EditAndFulfillSentdialog.close();
 
         Partial.Widgets.update_ActionDialog.open();
 
@@ -830,6 +865,7 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
                 'channelOrgId': "FAWBTELUSAGENT",
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
             },
+
         }
     });
 
@@ -849,6 +885,7 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 Partial.update_YesBtnClick = function($event, widget) {
     debugger;
     //  Partial.Widgets.EditNotSentdialog.close();
+
     Partial.Variables.UpdateODManagemntVar.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
@@ -856,16 +893,18 @@ Partial.update_YesBtnClick = function($event, widget) {
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode,
             'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,
-            'priority': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.priority,
+            'priority': Partial.Variables.updatePriority.dataset,
             'comment': Partial.Widgets.Comment.datavalue,
-            'stepDate': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepDate,
+            'stepDate': Partial.Variables.updateDueDateOrStepDate.dataset,
             'assignedAgentId': Partial.Variables.updatedAssignedPerson.dataset,
-            'assignedTeam': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam,
+            'assignedTeam': Partial.Variables.updateAssignedTeam.dataset,
             'channel': {
                 'originatorAppId': "FAWBTELUSAGENT",
                 'channelOrgId': "FAWBTELUSAGENT",
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-            }
+            },
+
+            'billingAccountIdRefs': Partial.Variables.updateSelectedBans.dataset,
         }
     });
 
