@@ -177,7 +177,6 @@ public class TelusAPIConnectivityService {
 	public String executeTelusAPI(String requestPayload, String endpointURL, String httpMethod, String scope) throws Exception {
         StringEntity entity=null;
         String dmpEnvironment = DMPContext.getDmpEnvironment();
-        logger.info("-------------dmpEnvironment----------------"+dmpEnvironment);
 		String bearerToken = getTelusToken(scope);
 		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
         if(requestPayload != null){
@@ -187,6 +186,12 @@ public class TelusAPIConnectivityService {
 		HttpResponse response = null;
 		ResponseEntity<String> responseEntity=null;
 		HttpHeaders headers=null;
+		headers = new HttpHeaders();
+		if(dmpEnvironment != null) {
+			if (dmpEnvironment.toLowerCase().equals("staging")) {
+				headers.add("env", "it01");
+			}
+		}
 		switch (httpMethod) {
 
 			case "POST":
@@ -196,8 +201,6 @@ public class TelusAPIConnectivityService {
 				// httpPost.setEntity(entity);
 				// httpPost.addHeader("Content-Type", "application/json");
 				// response = invokeTelusPostAPI(httpPost);
-				
-				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
 				responseEntity= invokeTelusPostAPIWithRestTemp(requestPayload, headers,endpointURL);
@@ -208,8 +211,6 @@ public class TelusAPIConnectivityService {
 				// httpGet.addHeader("Authorization", "Bearer " + bearerToken);
 				// httpGet.addHeader("Content-Type", "application/json");
 				// response = invokeTelusGetAPI(httpGet);
-				
-				 headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/json");
 				responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
@@ -222,7 +223,6 @@ public class TelusAPIConnectivityService {
 				// httpPatch.addHeader("Content-Type", "application/json");
 				// response = invokeTelusPatchAPI(httpPatch);
 				
-				headers = new HttpHeaders();
 				headers.add("Authorization", "Bearer " + bearerToken);
 				headers.add("Content-Type", "application/merge-patch+json");
 				responseEntity= invokeTelusPatchAPIWithRestTemp(requestPayload,headers,endpointURL);
