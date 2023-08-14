@@ -895,7 +895,7 @@ Partial.update_NoBtnClick = function($event, widget) {
 };
 Partial.EditNotSentdialogOpened = function($event, widget) {
 
-
+    App.Variables.errorMsg.dataSet.dataValue = '';
 
 
     if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditNotSentdialog.title == "Edit and Fulfill Service Suspension") {
@@ -948,7 +948,6 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
 
 
 Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
-
 
 
     if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {

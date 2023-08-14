@@ -57,3 +57,10 @@ textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
         width: 60% !important;
     }
 }
+.Comments-ellipses{
+    max-width: 5px !important;
+    min-width: 4px !important;
+    text-overflow: ellipsis !important;;
+    white-space: nowrap !important;;
+    overflow: hidden !important;
+}

@@ -32,6 +32,7 @@ Partial.onReady = function() {
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.actionID').show();
+            $('.comments').show();
             $('.outcome').hide();
             $('.customerName').hide();
             $('.callDuration').hide();
@@ -46,6 +47,7 @@ Partial.onReady = function() {
             $('.outcome').show();
             $('.blankGrid').show();
             $('.actionID').show();
+            $('.comments').show();
             $('.customerName').hide();
             $('.callDuration').hide();
             $('.eventID').hide();
@@ -64,6 +66,7 @@ Partial.onReady = function() {
             $('.customerName').show();
             $('.callDuration').show();
             $('.blankGrid').show();
+            $('.comments').show();
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -76,6 +79,7 @@ Partial.onReady = function() {
             $('.eventID').hide();
             $('.email').show();
             $('.blankGrid').show();
+            $('.comments').show();
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -88,6 +92,7 @@ Partial.onReady = function() {
             $('.eventID').hide();
             $('.email').hide();
             $('.actionID').show();
+            $('.comments').show();
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
             $('.customerName').show();
             $('.email').hide();
@@ -100,9 +105,11 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.phone').hide();
             $('.actionID').show();
+            $('.comments').show();
         } else if (type == 'RESTORE' || type == 'CEASE' || type == 'SUS' || type == 'SUSPEND') {
             $('.eventID').show();
             $('.activityType').show();
+            $('.comments').show();
             $('.customerName').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
@@ -126,6 +133,7 @@ Partial.onReady = function() {
             $('.reachedCustomer').show();
             $('.phone').show();
             $('.actionID').show();
+            $('.comments').show();
             $('.outcome').hide();
             $('.customerName').hide();
             $('.callDuration').hide();
@@ -140,6 +148,7 @@ Partial.onReady = function() {
             $('.outcome').show();
             $('.blankGrid').show();
             $('.actionID').show();
+            $('.comments').show();
             $('.customerName').hide();
             $('.callDuration').hide();
             $('.eventID').hide();
@@ -158,6 +167,7 @@ Partial.onReady = function() {
             $('.customerName').show();
             $('.callDuration').show();
             $('.blankGrid').show();
+            $('.comments').show();
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -170,6 +180,7 @@ Partial.onReady = function() {
             $('.eventID').hide();
             $('.email').show();
             $('.blankGrid').show();
+            $('.comments').show();
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -182,6 +193,7 @@ Partial.onReady = function() {
             $('.eventID').hide();
             $('.email').hide();
             $('.actionID').show();
+            $('.comments').show();
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
             $('.customerName').show();
             $('.email').hide();
@@ -194,9 +206,11 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.phone').hide();
             $('.actionID').show();
+            $('.comments').show();
         } else if (type == 'RESTORE' || type == 'CEASE' || type == 'SUS' || type == 'SUSPEND') {
             $('.eventID').show();
             $('.activityType').show();
+            $('.comments').show();
             $('.customerName').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
@@ -214,7 +228,7 @@ function populateDataInRowExpansion(row, type) {
     debugger;
     Partial.Widgets.actionID.caption = row.id;
     Partial.Widgets.eventID.caption = row.id;
-
+    Partial.Widgets.comments.caption = row.comment;
     var additionalChars = row.additionalCharacteristics;
     if (additionalChars != undefined) {
         additionalChars.forEach(populateAdditionalCharacteristicsInRowExpansion);

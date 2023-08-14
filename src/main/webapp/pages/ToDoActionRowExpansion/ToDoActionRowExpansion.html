@@ -1,5 +1,5 @@
-<wm-partial>
-    <wm-layoutgrid name="layoutgrid1" columns="1" height="50px">
+<wm-partial name="partial1">
+    <wm-layoutgrid name="layoutgrid1" columns="1" height="110px">
         <wm-gridrow name="gridrow1" style="display: flex;">
             <wm-gridcolumn columnwidth="2" name="gridcolumn1" class="reachedCustomer">
                 <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Reached customer:" color="grey"></wm-label>
@@ -43,8 +43,7 @@
                 <wm-label padding="unset 0.5em 0 unset" name="label3" caption="Email:" color="grey"></wm-label>
                 <wm-label padding="unset 0.5em 0 unset" name="noticeEmail" caption=""></wm-label>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn3" class="blankGrid">
-            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn3" class="blankGrid"></wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn4" class="activityType">
                 <wm-label padding="unset 0.5em 0 unset" name="label3" caption="Activity Type:" color="grey"></wm-label>
                 <wm-label padding="unset 0.5em 0 unset" name="activityType" caption=""></wm-label>
@@ -52,6 +51,15 @@
             <wm-gridcolumn columnwidth="2" name="gridcolumn4" class="description">
                 <wm-label padding="unset 0.5em 0 unset" name="label3" caption="Description:" color="grey"></wm-label>
                 <wm-label padding="unset 0.5em 0 unset" name="description" caption=""></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow3" style="display: flex; width:70% ">
+            <wm-gridcolumn columnwidth="1" name="gridcolumn4" class="comments">
+                <wm-label padding="unset 0.5em 0 unset" name="label4" caption="Comments:" color="grey"></wm-label>
+                <!--<wm-label padding="unset 0.5em 0 unset" name="comments" caption=""></wm-label>-->
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="10" name="gridcolumn4">
+                <wm-label padding="unset 0.5em 0 unset" name="comments" caption=""></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
