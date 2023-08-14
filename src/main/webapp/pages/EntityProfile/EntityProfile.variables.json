@@ -60,6 +60,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onError" : "CollectionDataServiceGetEntityDetailsonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

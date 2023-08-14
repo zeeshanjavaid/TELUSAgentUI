@@ -540,3 +540,12 @@ Page.ActiveEntitySelect = function($event, widget) {
 Page.ActiveEntityLoad = function($event, widget) {
     debugger;
 };
+
+Page.getEntityProfileDetailsonError = function(variable, data, xhrObj){
+	
+};
+
+
+Page.getEntityBanDetailsServiceonError = function(variable, data, xhrObj){
+	
+};

@@ -415,3 +415,7 @@ function messageTimeout() {
 Partial.getEntityDetailsTable1_OnRowexpand = function($event, widget, row, $data) {
     App.showRowExpansionEntityDetails(row, $data);
 };
+
+Partial.CollectionDataServiceGetEntityDetailsonError = function(variable, data, xhrObj){
+	
+};
