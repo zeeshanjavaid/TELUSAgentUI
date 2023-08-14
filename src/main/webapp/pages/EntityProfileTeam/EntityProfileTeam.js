@@ -38,6 +38,25 @@ Partial.onReady = function() {
                 },
                 function(data1) {
                     Partial.Variables.entityOwnerNameVar.dataSet.dataValue = data1;
+
+                    debugger;
+                    var getTeamIdUsingEmpIdVar = Partial.Variables.getTeamIdUsingEmpId;
+
+                    getTeamIdUsingEmpIdVar.invoke({
+                            "inputFields": {
+                                "empId": data.entityDetails.entityOwnerId
+                            },
+                        },
+                        function(data2) {
+                            debugger;
+                            Partial.Variables.entityTeamVar.dataSet.dataValue = data2;
+                        },
+                        function(error2) {
+                            // Error Callback
+                            console.log("error", error);
+                        }
+                    );
+
                 },
                 function(error1) {
                     // Error Callback

@@ -54,6 +54,13 @@ public class CommonUtilityController {
         return commonUtilityService.getNameUsingEmpId(empId);
     }
 
+    @RequestMapping(value = "/teamIdUsingEmpId", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public String getTeamIdUsingEmpId(@RequestParam(value = "empId", required = false) String empId) {
+        return commonUtilityService.getTeamIdUsingEmpId(empId);
+    }
+
     @RequestMapping(value = "/teamListInActionManagement", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")

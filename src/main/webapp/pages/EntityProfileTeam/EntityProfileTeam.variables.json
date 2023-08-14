@@ -13,6 +13,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "entityTeamVar" : {
+    "_id" : "wm-entityTeamVar-wm.Variable-1691996239048",
+    "name" : "entityTeamVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getNameUsingEmpIdVar" : {
     "_id" : "wm-getNameUsingEmpIdVar-wm.ServiceVariable-1691760631633",
     "name" : "getNameUsingEmpIdVar",
@@ -58,5 +72,28 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionData"
+  },
+  "getTeamIdUsingEmpId" : {
+    "_id" : "wm-getTeamIdUsingEmpId-wm.ServiceVariable-1691995642433",
+    "name" : "getTeamIdUsingEmpId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "CommonUtilityService",
+    "operation" : "getTeamIdUsingEmpId",
+    "operationId" : "CommonUtilityController_getTeamIdUsingEmpId",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
   }
 }

@@ -4252,8 +4252,8 @@
     "name" : "getTeamNameByEmplId",
     "description" : "getTeamNameByEmplId",
     "version" : "V2",
-    "queryString" : "select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId",
-    "countQueryString" : "select count(*) from (select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId) wmTempTable",
+    "queryString" : "select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId order by ts.updatedOn desc",
+    "countQueryString" : "select count(*) from (select distinct t.teamId from USER u join TEAM_USER ts on u.id=ts.userId join TEAM t on ts.teamId = t.id where emplId=:emplId order by ts.updatedOn desc) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -4264,7 +4264,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "t591",
+      "testValue" : "888888",
       "required" : true
     } ],
     "request" : {

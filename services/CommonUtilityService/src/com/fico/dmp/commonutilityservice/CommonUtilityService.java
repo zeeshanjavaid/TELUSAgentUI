@@ -24,6 +24,7 @@ import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.fico.dmp.telusagentuidb.Team;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.User;
+import com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse;
 import com.fico.dmp.telusagentuidb.models.query.GetUserListByTeamIdResponse;
 import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorService;
 import com.fico.dmp.telusagentuidb.service.TeamService;
@@ -205,6 +206,16 @@ public class CommonUtilityService {
     	return firstAndLastNameCombined;
     }
     
+   
+    public String getTeamIdUsingEmpId(String empId) {
+    	Pageable pageable = PageRequest.of(0, 1);
+    	Page<GetTeamNameByEmplIdResponse> pageableGetTeamNameByEmplIdResponse = telusAgentUIDBQueryExecutorService.executeGetTeamNameByEmplId(empId, pageable);
+        String teamId = null;
+        if(pageableGetTeamNameByEmplIdResponse.hasContent()) {
+        	teamId = pageableGetTeamNameByEmplIdResponse.getContent().get(0).getTeamId();
+        }
+    	return teamId;
+    }
     
 
 }
