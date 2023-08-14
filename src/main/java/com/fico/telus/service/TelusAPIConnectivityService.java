@@ -35,6 +35,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fico.dmp.context.DMPContext;
 import com.fico.pscomponent.util.PropertiesUtil;
 import com.hazelcast.map.IMap;
 import com.wavemaker.runtime.hazelcast.FawbAppHazelcastInstance;
@@ -75,6 +76,8 @@ public class TelusAPIConnectivityService {
 	
 	@Autowired
 	private PropertiesUtil propertiesUtil;
+	
+
 	
 	/**
 	 * This method gets the Telus token for emitting the outbound event
@@ -173,6 +176,8 @@ public class TelusAPIConnectivityService {
 	 */
 	public String executeTelusAPI(String requestPayload, String endpointURL, String httpMethod, String scope) throws Exception {
         StringEntity entity=null;
+        String dmpEnvironment = DMPContext.getDmpEnvironment();
+        logger.info("-------------dmpEnvironment----------------"+dmpEnvironment);
 		String bearerToken = getTelusToken(scope);
 		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
         if(requestPayload != null){
