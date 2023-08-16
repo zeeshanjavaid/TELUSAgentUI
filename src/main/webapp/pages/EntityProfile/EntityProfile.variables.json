@@ -498,29 +498,5 @@
     "filterExpressions" : { },
     "inputFields" : { },
     "package" : "com.fico.dmp.telusagentuidb.EntityNotes"
-  },
-  "TELUSAgentUIDBExecuteGetLatestNotes" : {
-    "_id" : "wm-TELUSAgentUIDBExecuteGetLatestNotes-wm.ServiceVariable-1682404802295",
-    "name" : "TELUSAgentUIDBExecuteGetLatestNotes",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetLatestNotesResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetLatestNotes",
-    "operationId" : "QueryExecutionController_executeGetLatestNotes",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 3,
-    "startUpdate" : true,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "isDefault" : true,
-    "controller" : "QueryExecution"
   }
 }
