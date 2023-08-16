@@ -1350,34 +1350,6 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
-  "getmanagerForUpdateuser" : {
-    "_id" : "wm-getmanagerForUpdateuser-wm.ServiceVariable-1678094539868",
-    "name" : "getmanagerForUpdateuser",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "teamId",
-      "value" : "bind:Widgets.updateUserForm1.formWidgets.UserDTO_teamId.datavalue",
-      "type" : "string"
-    } ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerBasedOnTeamIdResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetManagerBasedOnTeamId",
-    "operationId" : "QueryExecutionController_executeGetManagerBasedOnTeamId",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 20,
-    "onSuccess" : "getmanagerForUpdateuseronSuccess(variable, data, options)",
-    "startUpdate" : true,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
-  },
   "getTeam" : {
     "_id" : "wm-getTeam-wm.LiveVariable-1676986941345",
     "name" : "getTeam",
