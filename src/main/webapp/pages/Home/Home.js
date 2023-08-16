@@ -12,6 +12,9 @@
 /* perform any action on widgets/variables within this block */
 
 var workCategoryDataArray = [];
+var portfolioDataArray = [];
+var billingSystemDataArray = [];
+var collStatusDataArray = [];
 Page.onReady = function() {
     debugger;
     /*
@@ -322,20 +325,51 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         data.forEach(workCategoryData);
     }
 
+    if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
+        Page.Variables.portfolioEntityView_home.dataSet.forEach(portfolioData);
+    }
+
+    if (Page.Variables.billingSystemEntityView_home.dataSet != undefined) {
+        Page.Variables.billingSystemEntityView_home.dataSet.forEach(billingSystemData);
+    }
+
+    if (Page.Variables.CollStatus_home.dataSet != undefined) {
+        Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
+    }
+
     if (workCategoryDataArray.length > 1) {
         var finalWCentityview = workCategoryDataArray.join("|");
     } else {
         var finalWCentityview = workCategoryDataArray;
     }
 
+    if (portfolioDataArray.length > 1) {
+        var portfolioview = portfolioDataArray;
+    }
+
+    if (billingSystemDataArray.length >= 1) {
+        var billingSystemview = billingSystemDataArray;
+    }
+
+    if (collStatusDataArray.length > 1) {
+        var collStatusDataview = collStatusDataArray;
+    }
+
+
+
+
+
+
     // api call to display data in table for entity view
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCentityview,
-        'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
-        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
-
+        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
+        'portfolio': portfolioview,
+        'billingSystem': billingSystemview,
+        'collectionStatus': collStatusDataview
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
 };
@@ -348,10 +382,34 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
         data.forEach(workCategoryData);
     }
 
+    if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
+        Page.Variables.portfolioEntityView_home.dataSet.forEach(portfolioData);
+    }
+
+    if (Page.Variables.billingSystemEntityView_home.dataSet != undefined) {
+        Page.Variables.billingSystemEntityView_home.dataSet.forEach(billingSystemData);
+    }
+
+    if (Page.Variables.CollStatus_home.dataSet != undefined) {
+        Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
+    }
+
     if (workCategoryDataArray.length > 1) {
         var finalWCbanview = workCategoryDataArray.join("|");
     } else {
         var finalWCbanview = workCategoryDataArray;
+    }
+
+    if (portfolioDataArray.length > 1) {
+        var portfolioview = portfolioDataArray;
+    }
+
+    if (billingSystemDataArray.length >= 1) {
+        var billingSystemview = billingSystemDataArray;
+    }
+
+    if (collStatusDataArray.length > 1) {
+        var collStatusDataview = collStatusDataArray;
     }
 
 
@@ -359,9 +417,12 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCbanview,
-        'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
-        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue
+        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
+        'portfolio': portfolioview,
+        'billingSystem': billingSystemview,
+        'collectionStatus': collStatusDataview
 
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
@@ -370,6 +431,21 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
 function workCategoryData(item, index) {
     var item = item;
     workCategoryDataArray.push(item.code);
+};
+
+function portfolioData(item, index) {
+    var item = item;
+    portfolioDataArray.push(item.code);
+};
+
+function billingSystemData(item, index) {
+    var item = item;
+    billingSystemDataArray.push(item.code);
+};
+
+function collStatusData(item, index) {
+    var item = item;
+    collStatusDataArray.push(item.code);
 };
 
 
