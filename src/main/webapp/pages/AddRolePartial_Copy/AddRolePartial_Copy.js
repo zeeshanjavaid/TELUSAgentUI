@@ -112,6 +112,7 @@ Partial.SaveButtonClick = function($event, widget) {
                     'updatedOn': new Date()
                 });
                 Partial.Variables.createRole.invoke();
+                App.Variables.getAllRoles.invoke();
             }
 
         } else {
@@ -314,6 +315,8 @@ Partial.deleteRolePermissiononSuccess = function(variable, data) {
         Partial.Variables.deleteRole.invoke();
     }
 
+    App.Variables.getAllRoles.invoke();
+
 };
 
 Partial.deleteRoleConfirmOkClick = function($event, widget) {
@@ -332,6 +335,7 @@ Partial.deleteRoleConfirmOkClick = function($event, widget) {
         'roleId': Partial.pageParams.roleId
     });
     Partial.Variables.executeDeleteUserRole.invoke();
+    App.Variables.getAllRoles.invoke();
 };
 
 Partial.deleteRoleonSuccess = function(variable, data) {
@@ -341,7 +345,7 @@ Partial.deleteRoleonSuccess = function(variable, data) {
     Partial.Variables.rolesSuccessMessage.dataSet.dataValue = Partial.appLocale.ROLE_DELETED_SUCCESSFULLY;
 
     cache_utils.removeFromCache("SessionStorage", "Permissions", "APP_PERMISSIONS", App.Variables.PermissionsForLoggedInUserId);
-
+    App.Variables.getAllRoles.invoke();
     App.refreshAllRoles();
 };
 

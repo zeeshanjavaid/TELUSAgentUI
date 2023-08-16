@@ -632,7 +632,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
     });
     if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-        updateStatus = "Request Assigned";
+        updateStatus = "Order Assigned";
     } else {
         updateStatus = Partial.Widgets.Status_Sent.caption;
     }

@@ -147,6 +147,7 @@ Partial.createButtonClick = function($event, widget) {
 
                                     });
                                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
+                                    App.refreshLatestNotes();
 
 
                                 },
@@ -224,6 +225,7 @@ Partial.createButtonClick = function($event, widget) {
 
                     });
                     Partial.Variables.getLatestNotesBy_EntityId.invoke();
+                    App.refreshLatestNotes();
 
 
                 },
@@ -289,3 +291,9 @@ const download = async(url, filename) => {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
 }
+
+App.refreshLatestNotesAndDoc = function() {
+
+    Partial.Variables.getLatestNotesBy_EntityId.invoke();
+
+};

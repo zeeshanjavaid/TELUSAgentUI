@@ -868,6 +868,7 @@ Partial.applyFilter = function($event, widget) {
     debugger;
 
     var typeCode = '';
+    var typeCodeForCompleted = '';
     var createdBy = '';
     var assignedAgentId = '';
 
@@ -884,8 +885,10 @@ Partial.applyFilter = function($event, widget) {
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
         typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+        typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND,PARR Update,PARR Status,Dispute Update,Dispute Comment, Dispute Status';
     } else {
         typeCode = Partial.Widgets.typeSelect.datavalue;
+        typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
 
     }
 
@@ -910,7 +913,7 @@ Partial.applyFilter = function($event, widget) {
         debugger;
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
-            'relatedBusinessEntitySubType': typeCode,
+            'relatedBusinessEntitySubType': typeCodeForCompleted,
             'relatedBusinessEntityType': '',
             'relatedBusinessEntityStatus': Partial.Widgets.statusSelect.datavalue,
             'relatedBusinessEntityCreatedDate': Partial.Widgets.creationDate.datavalue,

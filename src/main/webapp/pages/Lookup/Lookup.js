@@ -526,26 +526,13 @@ Page.BansTravelHistoryDialogOpened = function($event, widget) {
     });
     Page.Variables.entityBanTravelHistoryVar.invoke();
 };
-Page.ActiveEntitySelect = function($event, widget) {
-    debugger;
 
-    $('#tabId').tabs('load', 0);
 
-    App.Variables.errorMsg.dataSet.dataValue = "";
-    App.Variables.successMessage.dataSet.dataValue = "";
-    Page.Variables.EntityProfilePageName.dataSet.dataValue = 'EntityProfile';
-
+Page.getEntityProfileDetailsonError = function(variable, data, xhrObj) {
 
 };
-Page.ActiveEntityLoad = function($event, widget) {
-    debugger;
-};
-
-Page.getEntityProfileDetailsonError = function(variable, data, xhrObj){
-	
-};
 
 
-Page.getEntityBanDetailsServiceonError = function(variable, data, xhrObj){
-	
+Page.getEntityBanDetailsServiceonError = function(variable, data, xhrObj) {
+
 };

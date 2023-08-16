@@ -6,12 +6,12 @@
                     <wm-layoutgrid name="layoutgrid3" width="100%">
                         <wm-gridrow name="gridrow10_1">
                             <wm-gridcolumn columnwidth="6" name="gridcolumn13_1">
-                                <wm-label padding="unset 0.3em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId ? &quot;Edit Role&quot; : &quot;Create Role&quot;" class="h3 add-role-lebel text-clip" margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName"
-                                    height="25" width="50%"></wm-label>
+                                <wm-label padding="unset 0.3em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Role&quot;:  pageParams.roleId ? &quot;Edit Role&quot; : &quot;Create Role&quot;" class="h3 add-role-lebel text-clip"
+                                    margin="1em unset" hint="bind:pageParams.roleId == undefined ? &quot;Add Role&quot; : pageParams.roleName" height="25" width="50%"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="6" name="gridcolumn14_1">
                                 <wm-container name="container14_1" horizontalalign="right" margin="5% unset unset unset" width="98%">
-                                    <wm-button class="btn-default" caption="Delete" type="button" margin="unset 0.5em" name="DeleteButton" show="bind:Variables.readOnlyMode.dataSet.dataValue" on-click="DeleteButtonClick($event, widget);Widgets.deleteRoleDialog.open()"></wm-button>
+                                    <wm-button class="btn-default" caption="Delete" type="button" margin="unset 0.5em" name="DeleteButton" show="bind:Variables.readOnlyMode.dataSet.dataValue" on-click="DeleteButtonClick($event, widget);Widgets.deleteRoleDialog.open();Variables.getAllRoles.listRecords()"></wm-button>
                                     <wm-button class="btn-default" caption="Edit" type="button" margin="unset 0.5em" name="EditRoleButton" show="bind:Variables.readOnlyMode.dataSet.dataValue" on-click="EditRoleButtonClick($event, widget)"></wm-button>
                                 </wm-container>
                             </wm-gridcolumn>
@@ -41,7 +41,8 @@
                         </wm-container>
                         <wm-composite name="composite4_1">
                             <wm-container class="col-md-9 queue-name" name="container10">
-                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;" height="35"></wm-text>
+                                <wm-text name="NameText" placeholder="" datavalue="bind:Variables.roleData.dataSet.RoleName" required="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" class="role-name" maxchars="80" regexp="bind:&quot;^[a-zA-Z0-9-( )]+$&quot;"
+                                    height="35"></wm-text>
                             </wm-container>
                         </wm-composite>
                     </wm-composite>
@@ -80,7 +81,7 @@
                     <wm-container name="QueueAction" margin="10px unset 50px 10px" class="queue-action">
                         <wm-button class="btn-default Deletebutton" caption="Delete" type="button" margin="1.5em 0.5em unset 0.5em" name="Deletebutton" show="false" backgroundcolor="#d0012d" color="#ffffff" on-click="DeletebuttonClick($event, widget)"></wm-button>
                         <wm-button caption="Cancel" id="roleCancel" type="button" margin="1.5em 0.5em unset 0.5em" name="Cancelbutton" on-click="CancelbuttonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue" class="secondaryButton"></wm-button>
-                        <wm-button class="primaryButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget)" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
+                        <wm-button class="primaryButton" caption="Save" type="button" margin="1.5em 0.5em unset 0.5em" name="SaveButton" on-click="SaveButtonClick($event, widget);Variables.getAllRoles.listRecords()" show="bind:!Variables.readOnlyMode.dataSet.dataValue"></wm-button>
                     </wm-container>
                 </wm-container>
             </wm-gridcolumn>

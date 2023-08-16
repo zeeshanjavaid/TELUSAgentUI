@@ -170,7 +170,8 @@ Partial.button3Click1 = function($event, widget) {
 
                                     });
                                     Partial.Variables.getLatestNotesByEntityId.invoke();
-                                    //  App.reload();
+
+                                    App.refreshLatestNotesAndDoc();
 
                                 },
                                 function(error) {
@@ -247,7 +248,7 @@ Partial.button3Click1 = function($event, widget) {
 
                     });
                     Partial.Variables.getLatestNotesByEntityId.invoke();
-                    //  App.reload();
+                    App.refreshLatestNotesAndDoc();
 
                 },
                 function(error) {
@@ -416,6 +417,12 @@ Partial.getEntityDetailsTable1_OnRowexpand = function($event, widget, row, $data
     App.showRowExpansionEntityDetails(row, $data);
 };
 
-Partial.CollectionDataServiceGetEntityDetailsonError = function(variable, data, xhrObj){
-	
+Partial.CollectionDataServiceGetEntityDetailsonError = function(variable, data, xhrObj) {
+
+};
+
+App.refreshLatestNotes = function() {
+
+    Partial.Variables.getLatestNotesByEntityId.invoke();
+
 };
