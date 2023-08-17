@@ -328,12 +328,18 @@ public class CollectionEntityService {
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
     public List<CollectionPaymentArrangement> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
     	
+	  String statusStr = null;
+		if(status != null) {
+			statusStr = "eq:"+status;
+		}
+		
+		
          UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
               .queryParam("fields", fields)
                .queryParam("agentId", agentId)
                 .queryParam("entityRisk", entityRisk)
                  .queryParam("evaluation", evaluation)
-                  .queryParam("status", status)
+                 .queryParamIfPresent("status",Optional.ofNullable(statusStr))
                    .queryParam("createdBy", createdBy)
                     .queryParam("createdFrom", createdFrom)
                      .queryParam("createdTo", createdTo)

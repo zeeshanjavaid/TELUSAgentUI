@@ -69,6 +69,20 @@
     "isDefault" : true,
     "controller" : "CollectionData"
   },
+  "displayParrSummary" : {
+    "_id" : "wm-displayParrSummary-wm.Variable-1692272761515",
+    "name" : "displayParrSummary",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "DmpS3FileServiceUploadFile" : {
     "_id" : "wm-DmpS3FileServiceUploadFile-wm.ServiceVariable-1682070168763",
     "name" : "DmpS3FileServiceUploadFile",
@@ -241,6 +255,29 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
+  },
+  "getPaymentArrangementsForEntityProfile" : {
+    "_id" : "wm-getPaymentArrangementsForEntityProfile-wm.ServiceVariable-1692268059359",
+    "name" : "getPaymentArrangementsForEntityProfile",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "service" : "CollectionEntityService",
+    "operation" : "getPaymentArrangements",
+    "operationId" : "CollectionEntityController_getPaymentArrangements",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   },
   "isAssociatedBanClicked" : {
     "_id" : "wm-isAssociatedBanClicked-wm.Variable-1682314099154",
