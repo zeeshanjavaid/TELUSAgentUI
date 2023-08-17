@@ -153,7 +153,7 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1" accessroles="Authenticated" defaultpaneindex="0">
-                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet[$i].entityDetails.entityCollectionStatus==&quot;Cancel&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus==&quot;C&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
                         show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)">
                         <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                     </wm-tabpane>
