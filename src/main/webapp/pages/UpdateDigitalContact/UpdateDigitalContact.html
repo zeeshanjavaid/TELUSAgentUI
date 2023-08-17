@@ -94,8 +94,7 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"
-                            on-keydown="workNoKeydown($event, widget)"></wm-text>
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber" on-keydown="workNoKeydown($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -163,14 +162,13 @@
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid name="layoutgrid3_1" margin="-15px 0 20px 95px">
+    <wm-layoutgrid name="layoutgrid3_1">
         <wm-gridrow name="gridrow7">
-            <wm-gridcolumn columnwidth="11" name="gridcolumn26" style="text-align:right;">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn26" style="text-align:right;" padding="unset 1em 1.5em unset">
                 <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button1" on-click="CancelClick($event, widget)"></wm-button>
                 <wm-button class="primaryButton" caption="Update" type="button" margin="unset 0.5em" name="button2" on-click="updateContact($event, widget)" disabled="bind:Variables.isContactExpired.dataSet.dataValue"></wm-button>
                 <wm-button class="primaryButton" id="expireId" caption="Expire" type="button" margin="unset 0.5em" name="Expire" on-click="ExpireClick($event, widget)" disabled="bind:Variables.isContactExpired.dataSet.dataValue"></wm-button>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn27"></wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
 </wm-partial>
