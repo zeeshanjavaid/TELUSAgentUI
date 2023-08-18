@@ -171,7 +171,8 @@ public class CollectionDataService {
                      .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
-                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
+                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
+                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
              
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
             

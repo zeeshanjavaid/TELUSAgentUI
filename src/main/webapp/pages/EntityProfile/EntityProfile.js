@@ -53,15 +53,21 @@ Partial.onReady = function() {
         function(data) {
             debugger;
             if (data.length > 0) {
-                Partial.Widgets.parrSummaryId.caption = data[0].id;
                 Partial.Widgets.parrSummaryId.show = true;
+                Partial.Widgets.parrSummaryId.caption = data[0].id;
                 Partial.Widgets.totalAmtParrSummary.caption = '$' + data[0].amount;
+                Partial.Widgets.parrSumStatus.caption = 'Active';
                 Partial.Widgets.cummPaymentExp.caption = '$' + data[0].expectedPaymentAmountToDate;
                 Partial.Widgets.cummPmtRvcd.caption = '$' + data[0].receivedPaymentAmountToDate;
                 Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
                 Partial.Widgets.evaluationResultParrSum.caption = data[0].evaluationResult;
                 var installmentLength = data[0].installments.length;
                 Partial.Widgets.NoOfInstallmentParrSum.caption = data[0].installments[installmentLength - 1].sequenceId;
+                if (data[0].receivedPaymentAmountToDate != 0.0) {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = ((data[0].expectedPaymentAmountToDate / data[0].receivedPaymentAmountToDate) * 100);
+                } else {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = 0.0;
+                }
             } else {
                 Partial.Widgets.parrSummaryId.show = false;
             }
