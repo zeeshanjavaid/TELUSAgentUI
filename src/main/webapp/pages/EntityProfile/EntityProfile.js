@@ -70,6 +70,20 @@ Partial.onReady = function() {
                 }
             } else {
                 Partial.Widgets.parrSummaryId.show = false;
+                Partial.Widgets.recurrenceParrSummaryLabel.show = false;
+                Partial.Widgets.recurrenceParrSummary.show = false;
+                Partial.Widgets.NoOfInstallmentParrSumLabel.show = false;
+                Partial.Widgets.NoOfInstallmentParrSum.show = false;
+                Partial.Widgets.percPymtVsExpRcvd.show = false;
+                Partial.Widgets.percPymtVsExpRcvdLabel.show = false;
+                Partial.Widgets.cummPmtRvcd.show = false;
+                Partial.Widgets.cummPmtRvcdLabel.show = false;
+                Partial.Widgets.cummPaymentExp.show = false;
+                Partial.Widgets.cummPaymentExpLabel.show = false;
+                Partial.Widgets.totalAmtParrSummary.show = false;
+                Partial.Widgets.totalAmtParrSummaryLabel.show = false;
+                Partial.Widgets.installmentAmtParrSumLabel.show = false;
+                Partial.Widgets.installmentAmtParrSum.show = false;
             }
 
         },
