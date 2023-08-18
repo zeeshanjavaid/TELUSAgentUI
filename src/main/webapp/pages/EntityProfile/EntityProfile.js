@@ -68,8 +68,24 @@ Partial.onReady = function() {
                 } else {
                     Partial.Widgets.percPymtVsExpRcvd.caption = 0.0;
                 }
+
+                var totalInstallmentIntermediateAmt = 0;
+                data[0].installments.forEach(function(d) {
+                    totalInstallmentIntermediateAmt = parseFloat(totalInstallmentIntermediateAmt) + parseFloat(d.amount);
+                });
+
+                var totalInstallmentAmount = Math.round((totalInstallmentIntermediateAmt) * 100) / 100;
+
+                Partial.Widgets.installmentAmtParrSum.caption = '$' + totalInstallmentAmount;
+
+
             } else {
                 Partial.Widgets.parrSummaryId.show = false;
+                Partial.Widgets.parrSummaryIdLabel.show = false;
+                Partial.Widgets.parrSumStatusLabel.show = false;
+                Partial.Widgets.parrSumStatus.show = false;
+                Partial.Widgets.evaluationResultParrSumLabel.show = false;
+                Partial.Widgets.evaluationResultParrSum.show = false;
                 Partial.Widgets.recurrenceParrSummaryLabel.show = false;
                 Partial.Widgets.recurrenceParrSummary.show = false;
                 Partial.Widgets.NoOfInstallmentParrSumLabel.show = false;
