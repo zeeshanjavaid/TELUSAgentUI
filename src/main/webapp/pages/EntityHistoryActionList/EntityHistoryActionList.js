@@ -833,30 +833,56 @@ Partial.openFilterGrid = function($event, widget) {
 // function added to clear all the fields in the filter
 Partial.clearFilterFields = function($event, widget) {
     debugger;
-    Partial.Widgets.toDoCategorySelect.datavalue = "COLL_TRTMT_STEP";
-    Partial.Widgets.completedCategorySelect.datavalue = "All";
-    Partial.Widgets.typeSelect.datavalue = "";
-    Partial.Widgets.creationDate.datavalue = "";
-    Partial.Widgets.completionDate.datavalue = "";
-    Partial.Widgets.statusSelect.datavalue = "";
-    Partial.Widgets.createdBySelect.datavalue = "";
-    Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
-    Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+    if (toDoTable == true) {
+        Partial.Widgets.toDoCategorySelect.datavalue = 'COLL_TRTMT_STEP';
+        Partial.Widgets.completedCategorySelect.datavalue = "All";
+        Partial.Widgets.typeSelect.datavalue = "";
+        Partial.Widgets.creationDate.datavalue = "";
+        Partial.Widgets.completionDate.datavalue = "";
+        Partial.Widgets.statusSelect.datavalue = "";
+        Partial.Widgets.createdBySelect.datavalue = "";
+        Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
+        Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
 
-    Partial.Variables.getCollectionTreatmentStep_1.setInput({
-        'IsOdManagement': false,
-        'collectionEntityId': Partial.pageParams.entityId,
-        'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND',
-        'createdBy': '',
-        'status': '',
-        'assignedAgentId': '',
-        'assignedTeam': '',
-        'createdDate': ''
+        Partial.Variables.getCollectionTreatmentStep_1.setInput({
+            'IsOdManagement': false,
+            'collectionEntityId': Partial.pageParams.entityId,
+            'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND',
+            'createdBy': '',
+            'status': '',
+            'assignedAgentId': '',
+            'assignedTeam': '',
+            'createdDate': ''
 
 
-    });
+        });
 
-    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        Partial.Variables.getCollectionTreatmentStep_1.invoke();
+    } else if (completedTable == true) {
+        Partial.Widgets.toDoCategorySelect.datavalue = "All";
+        Partial.Widgets.completedCategorySelect.datavalue = "All";
+        Partial.Widgets.typeSelect.datavalue = "";
+        Partial.Widgets.creationDate.datavalue = "";
+        Partial.Widgets.completionDate.datavalue = "";
+        Partial.Widgets.statusSelect.datavalue = "";
+        Partial.Widgets.createdBySelect.datavalue = "";
+        Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
+        Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+
+        Partial.Variables.GetCollectionActivityLogList.setInput({
+            'collectionEntityId': Partial.pageParams.entityId,
+            'relatedBusinessEntitySubType': '',
+            'relatedBusinessEntityType': '',
+            'relatedBusinessEntityStatus': '',
+            'relatedBusinessEntityCreatedDate': '',
+            'relatedBusinessEntityCreatedBy': '',
+            'relatedBusinessEntityAssignedTo': '',
+            'relatedBusinessEntityAssignedTeam': ''
+        });
+
+        Partial.Variables.GetCollectionActivityLogList.invoke();
+
+    }
 
 
 
@@ -871,6 +897,7 @@ Partial.applyFilter = function($event, widget) {
     var typeCodeForCompleted = '';
     var createdBy = '';
     var assignedAgentId = '';
+    var categroyForCompleted = '';
 
     if (Partial.Widgets.createdBySelect.datavalue != '') {
         createdBy = Partial.Widgets.createdBySelect.datavalue.emplId;
@@ -885,10 +912,9 @@ Partial.applyFilter = function($event, widget) {
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
         typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
-        typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND,PARR Update,PARR Status,Dispute Update,Dispute Comment, Dispute Status';
+
     } else {
         typeCode = Partial.Widgets.typeSelect.datavalue;
-        typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
 
     }
 
@@ -911,24 +937,45 @@ Partial.applyFilter = function($event, widget) {
 
     } else if (completedTable == true) {
         debugger;
+        if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_TRTMT_STEP") {
+            categroyForCompleted = 'CollectionTreatmentStep';
+            if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
+                typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+            } else {
+                typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
+            }
+        } else if (Partial.Widgets.completedCategorySelect.displayValue == "PYMT_ARRNGMT") {
+            categroyForCompleted = 'CollectionPaymentArrangement';
+
+            if (Partial.Widgets.completedCategorySelect.displayValue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
+                typeCodeForCompleted = 'PARR updates,PARR status';
+            } else {
+                typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
+            }
+
+        } else if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_DISPUTE") {
+            categroyForCompleted = 'CollectionDispute';
+
+            if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
+                typeCodeForCompleted = 'Dispute Update,Dispute comment,Dispute status';
+            } else {
+                typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
+            }
+
+        } else {
+            categroyForCompleted = '';
+            typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
+
+        }
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
-            'relatedBusinessEntityType': '',
+            'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': Partial.Widgets.statusSelect.datavalue,
             'relatedBusinessEntityCreatedDate': Partial.Widgets.creationDate.datavalue,
             'relatedBusinessEntityCreatedBy': createdBy,
             'relatedBusinessEntityAssignedTo': assignedAgentId,
             'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
-            // 'category': Partial.Widgets.toDoCategorySelect.datavalue,
-            // 'type': typeCode,
-            // 'createdDate': Partial.Widgets.creationDate.datavalue,
-            // 'completionDate': Partial.Widgets.completionDate.datavalue,
-            // 'status': Partial.Widgets.statusSelect.datavalue,
-            // 'createdBy': createdBy,
-            // 'assignedTo': assignedAgentId,
-            // 'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
-
         });
 
         Partial.Variables.GetCollectionActivityLogList.invoke();
@@ -963,6 +1010,7 @@ Partial.toDoButtonClick = function($event, widget) {
 };
 
 Partial.completedButtonClick = function($event, widget) {
+    debugger;
     completedTable = true;
     toDoTable = false;
 

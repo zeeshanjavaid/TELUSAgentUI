@@ -430,10 +430,10 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
 
 
-    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-        updateStatus = "Request Assigned";
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select" || Partial.Widgets.assignedPersonSelect.datavalue == null) {
+        updateStatus = "Request Created";
     } else {
-        updateStatus = Partial.Widgets.Status_NotSent.datavalue;
+        updateStatus = "Request Assigned";
     }
     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
 
@@ -522,7 +522,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     debugger;
     Partial.Variables.newlyAssignedPerson.dataset = '';
-
+    var updateStatus = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -540,13 +540,19 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     });
 
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select" || Partial.Widgets.assignedPersonSelect.datavalue == null) {
+        updateStatus = "Order Created";
+    } else {
+        updateStatus = "Order Assigned";
+    }
+
     if (originalAgentId != selectedAgentId) {
 
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
 
 
         Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Created';
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
 
         Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
         Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
@@ -579,7 +585,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
-                    'status': 'Order Created',
+                    'status': updateStatus,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
                     'comment': Partial.Widgets.AddComment.datavalue,
                     'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -614,6 +620,7 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
+    debugger;
     var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
@@ -631,17 +638,17 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
     });
-    if (!Partial.Widgets.assignedPersonSelect.datavalue == "" || !Partial.Widgets.assignedPersonSelect.datavalue == "Select") {
-        updateStatus = "Order Assigned";
+    if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == "Select" || Partial.Widgets.assignedPersonSelect.datavalue == null) {
+        updateStatus = "Order Created";
     } else {
-        updateStatus = Partial.Widgets.Status_Sent.caption;
+        updateStatus = "Order Assigned";
     }
 
 
     if (originalAgentId != selectedAgentId) {
         Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
         Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = "Order Assigned";
+        Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
         Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
         Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
         Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
@@ -789,6 +796,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
 }
 Partial.getCollectionTreatmentStep_orderMngt_customRow2Action = function($event, row) {
 
