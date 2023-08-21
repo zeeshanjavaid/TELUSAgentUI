@@ -24,6 +24,7 @@ import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fico.dmp.collectionentityservice.CollectionEntityService;
+import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
 import com.fico.telus.model.BanTravelHistoryModel;
 import com.wavemaker.runtime.security.SecurityService;
@@ -52,6 +53,9 @@ public class EntityBanTravelHistoryService {
     
     @Autowired
     private CollectionEntityService collectionEntityService;
+    
+    @Autowired
+    private CommonUtilityService commonUtilityService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -133,7 +137,7 @@ public class EntityBanTravelHistoryService {
     						banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
     				}
     				banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
-    				banTravelHistoryModel.setLastUpdatedBy(collectionBillingAccountRef.getAuditInfo().getLastUpdatedBy());
+    				banTravelHistoryModel.setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionBillingAccountRef.getAuditInfo().getLastUpdatedBy()));
     			});
 				
 			}
