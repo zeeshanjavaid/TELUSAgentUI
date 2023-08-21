@@ -82,6 +82,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "getCollectionHistoryViewParronSuccess(variable, data, options)",
     "onError" : "getCollectionHistoryViewParronError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : true,

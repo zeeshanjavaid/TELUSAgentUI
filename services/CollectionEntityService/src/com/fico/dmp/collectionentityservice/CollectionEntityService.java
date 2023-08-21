@@ -333,6 +333,11 @@ public class CollectionEntityService {
 			statusStr = "eq:"+status;
 		}
 		
+		String entityIdStr = null;
+		if(entityId != null) {
+			entityIdStr = "eq:"+entityId;
+		}
+		
 		
          UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
               .queryParam("fields", fields)
@@ -343,7 +348,7 @@ public class CollectionEntityService {
                    .queryParam("createdBy", createdBy)
                     .queryParam("createdFrom", createdFrom)
                      .queryParam("createdTo", createdTo)
-                     .queryParam("entityId","eq:" + entityId)
+                     .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
                      .queryParam("limit",limit);
               // .queryParam("entityRisk",entityRisk);
     	return parrService.getPaymentArrangements(entityId,builder.toUriString());

@@ -39,75 +39,8 @@ Partial.onReady = function() {
     });
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
+    App.refreshParrSummary();
 
-    Partial.Variables.getPaymentArrangementsForEntityProfile;
-
-    var getPaymentArrangementsForEntityProfileVar = Partial.Variables.getPaymentArrangementsForEntityProfile;
-
-    getPaymentArrangementsForEntityProfileVar.invoke({
-            "inputFields": {
-                "entityId": Partial.pageParams.entityId,
-                "status": 'Open'
-            },
-        },
-        function(data) {
-            debugger;
-            if (data.length > 0) {
-                Partial.Widgets.parrSummaryId.show = true;
-                Partial.Widgets.parrSummaryId.caption = data[0].id;
-                Partial.Widgets.totalAmtParrSummary.caption = '$' + data[0].amount;
-                Partial.Widgets.parrSumStatus.caption = 'Active';
-                Partial.Widgets.cummPaymentExp.caption = '$' + data[0].expectedPaymentAmountToDate;
-                Partial.Widgets.cummPmtRvcd.caption = '$' + data[0].receivedPaymentAmountToDate;
-                Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
-                Partial.Widgets.evaluationResultParrSum.caption = data[0].evaluationResult;
-                var installmentLength = data[0].installments.length;
-                Partial.Widgets.NoOfInstallmentParrSum.caption = data[0].installments[installmentLength - 1].sequenceId;
-                if (data[0].receivedPaymentAmountToDate != 0.0) {
-                    Partial.Widgets.percPymtVsExpRcvd.caption = ((data[0].expectedPaymentAmountToDate / data[0].receivedPaymentAmountToDate) * 100);
-                } else {
-                    Partial.Widgets.percPymtVsExpRcvd.caption = 0.0;
-                }
-
-                var totalInstallmentIntermediateAmt = 0;
-                data[0].installments.forEach(function(d) {
-                    totalInstallmentIntermediateAmt = parseFloat(totalInstallmentIntermediateAmt) + parseFloat(d.amount);
-                });
-
-                var totalInstallmentAmount = Math.round((totalInstallmentIntermediateAmt) * 100) / 100;
-
-                Partial.Widgets.installmentAmtParrSum.caption = '$' + totalInstallmentAmount;
-
-
-            } else {
-                Partial.Widgets.parrSummaryId.show = false;
-                Partial.Widgets.parrSummaryIdLabel.show = false;
-                Partial.Widgets.parrSumStatusLabel.show = false;
-                Partial.Widgets.parrSumStatus.show = false;
-                Partial.Widgets.evaluationResultParrSumLabel.show = false;
-                Partial.Widgets.evaluationResultParrSum.show = false;
-                Partial.Widgets.recurrenceParrSummaryLabel.show = false;
-                Partial.Widgets.recurrenceParrSummary.show = false;
-                Partial.Widgets.NoOfInstallmentParrSumLabel.show = false;
-                Partial.Widgets.NoOfInstallmentParrSum.show = false;
-                Partial.Widgets.percPymtVsExpRcvd.show = false;
-                Partial.Widgets.percPymtVsExpRcvdLabel.show = false;
-                Partial.Widgets.cummPmtRvcd.show = false;
-                Partial.Widgets.cummPmtRvcdLabel.show = false;
-                Partial.Widgets.cummPaymentExp.show = false;
-                Partial.Widgets.cummPaymentExpLabel.show = false;
-                Partial.Widgets.totalAmtParrSummary.show = false;
-                Partial.Widgets.totalAmtParrSummaryLabel.show = false;
-                Partial.Widgets.installmentAmtParrSumLabel.show = false;
-                Partial.Widgets.installmentAmtParrSum.show = false;
-            }
-
-        },
-        function(error) {
-            // Error Callback
-            console.log("error", error);
-        }
-    );
 
 
 };
@@ -498,3 +431,97 @@ App.refreshLatestNotes = function() {
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
 };
+
+App.refreshParrSummary = function() {
+    Partial.Variables.getPaymentArrangementsForEntityProfile;
+
+    var getPaymentArrangementsForEntityProfileVar = Partial.Variables.getPaymentArrangementsForEntityProfile;
+
+    getPaymentArrangementsForEntityProfileVar.invoke({
+            "inputFields": {
+                "entityId": Partial.pageParams.entityId,
+                "status": 'Open'
+            },
+        },
+        function(data) {
+            debugger;
+            if (data.length > 0) {
+                Partial.Widgets.parrSummaryId.caption = data[0].id;
+                Partial.Widgets.totalAmtParrSummary.caption = '$' + data[0].amount;
+                Partial.Widgets.parrSumStatus.caption = 'Active';
+                Partial.Widgets.cummPaymentExp.caption = '$' + data[0].expectedPaymentAmountToDate;
+                Partial.Widgets.cummPmtRvcd.caption = '$' + data[0].receivedPaymentAmountToDate;
+                Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
+                Partial.Widgets.evaluationResultParrSum.caption = data[0].evaluationResult;
+                var installmentLength = data[0].installments.length;
+                Partial.Widgets.NoOfInstallmentParrSum.caption = data[0].installments[installmentLength - 1].sequenceId;
+                if (data[0].receivedPaymentAmountToDate != 0.0) {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = ((data[0].expectedPaymentAmountToDate / data[0].receivedPaymentAmountToDate) * 100);
+                } else {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = 0.0;
+                }
+
+                var totalInstallmentIntermediateAmt = 0;
+                data[0].installments.forEach(function(d) {
+                    totalInstallmentIntermediateAmt = parseFloat(totalInstallmentIntermediateAmt) + parseFloat(d.amount);
+                });
+
+                var totalInstallmentAmount = Math.round((totalInstallmentIntermediateAmt) * 100) / 100;
+
+                Partial.Widgets.installmentAmtParrSum.caption = '$' + totalInstallmentAmount;
+
+                Partial.Widgets.parrSummaryId.show = true;
+                Partial.Widgets.parrSummaryIdLabel.show = true;
+                Partial.Widgets.parrSumStatusLabel.show = true;
+                Partial.Widgets.parrSumStatus.show = true;
+                Partial.Widgets.evaluationResultParrSumLabel.show = true;
+                Partial.Widgets.evaluationResultParrSum.show = true;
+                Partial.Widgets.recurrenceParrSummaryLabel.show = true;
+                Partial.Widgets.recurrenceParrSummary.show = true;
+                Partial.Widgets.NoOfInstallmentParrSumLabel.show = true;
+                Partial.Widgets.NoOfInstallmentParrSum.show = true;
+                Partial.Widgets.percPymtVsExpRcvd.show = true;
+                Partial.Widgets.percPymtVsExpRcvdLabel.show = true;
+                Partial.Widgets.cummPmtRvcd.show = true;
+                Partial.Widgets.cummPmtRvcdLabel.show = true;
+                Partial.Widgets.cummPaymentExp.show = true;
+                Partial.Widgets.cummPaymentExpLabel.show = true;
+                Partial.Widgets.totalAmtParrSummary.show = true;
+                Partial.Widgets.totalAmtParrSummaryLabel.show = true;
+                Partial.Widgets.installmentAmtParrSumLabel.show = true;
+                Partial.Widgets.installmentAmtParrSum.show = true;
+                Partial.Widgets.ParrSummaryNotActive.show = false;
+                Partial.Widgets.createParrInEntityProfile.show = false;
+
+            } else {
+                Partial.Widgets.parrSummaryId.show = false;
+                Partial.Widgets.parrSummaryIdLabel.show = false;
+                Partial.Widgets.parrSumStatusLabel.show = false;
+                Partial.Widgets.parrSumStatus.show = false;
+                Partial.Widgets.evaluationResultParrSumLabel.show = false;
+                Partial.Widgets.evaluationResultParrSum.show = false;
+                Partial.Widgets.recurrenceParrSummaryLabel.show = false;
+                Partial.Widgets.recurrenceParrSummary.show = false;
+                Partial.Widgets.NoOfInstallmentParrSumLabel.show = false;
+                Partial.Widgets.NoOfInstallmentParrSum.show = false;
+                Partial.Widgets.percPymtVsExpRcvd.show = false;
+                Partial.Widgets.percPymtVsExpRcvdLabel.show = false;
+                Partial.Widgets.cummPmtRvcd.show = false;
+                Partial.Widgets.cummPmtRvcdLabel.show = false;
+                Partial.Widgets.cummPaymentExp.show = false;
+                Partial.Widgets.cummPaymentExpLabel.show = false;
+                Partial.Widgets.totalAmtParrSummary.show = false;
+                Partial.Widgets.totalAmtParrSummaryLabel.show = false;
+                Partial.Widgets.installmentAmtParrSumLabel.show = false;
+                Partial.Widgets.installmentAmtParrSum.show = false;
+                Partial.Widgets.ParrSummaryNotActive.show = true;
+                Partial.Widgets.createParrInEntityProfile.show = true;
+            }
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+}

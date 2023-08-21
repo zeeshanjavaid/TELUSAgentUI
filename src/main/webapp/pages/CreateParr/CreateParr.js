@@ -326,6 +326,7 @@ Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
     Partial.Clear();
     App.refreshParrList();
+    App.refreshParrSummary();
     setTimeout(messageTimeout, 5000);
 };
 

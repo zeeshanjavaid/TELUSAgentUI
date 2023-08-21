@@ -328,6 +328,13 @@ Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
         }
     );
 
+
+
     setTimeout(messageTimeout, 5000);
 
+};
+
+Partial.getCollectionHistoryViewParronSuccess = function(variable, data) {
+
+    App.refreshParrSummary();
 };
