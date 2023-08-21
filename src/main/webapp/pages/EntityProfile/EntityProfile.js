@@ -525,3 +525,11 @@ App.refreshParrSummary = function() {
         }
     );
 }
+Partial.createParrInEntityProfileClick = function($event, widget) {
+    debugger;
+    App;
+    App.Widgets.ActiveEntity.isActive = false;
+    App.Widgets.Parr.isActive = true;
+    App.Widgets.Parr.show = true;
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
+};

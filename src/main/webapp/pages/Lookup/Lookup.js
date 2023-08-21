@@ -106,6 +106,7 @@ Page.DisputeSelect = function($event, widget) {
     debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+    App.Widgets.Parr.isActive = false;
     Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
 };
 Page.DisputeDeselect = function($event, widget) {
@@ -286,6 +287,7 @@ Page.BansTravelHistoryClick = function($event, widget) {
 Page.ParrSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+    App.Widgets.Parr.isActive = true;
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
 };
 Page.ParrDeselect = function($event, widget) {
@@ -296,6 +298,7 @@ Page.ParrDeselect = function($event, widget) {
 Page.ContactSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
+    App.Widgets.Parr.isActive = false;
     Page.Variables.ContactPageName.dataSet.dataValue = 'Contact';
 };
 Page.ContactDeselect = function($event, widget) {
@@ -535,4 +538,18 @@ Page.getEntityProfileDetailsonError = function(variable, data, xhrObj) {
 
 Page.getEntityBanDetailsServiceonError = function(variable, data, xhrObj) {
 
+};
+Page.ActiveEntitySelect = function($event, widget) {
+
+    App.Widgets.Parr.isActive = false;
+    App.Widgets.ActiveEntity.isActive = true;
+};
+Page.OrderManagementSelect = function($event, widget) {
+    App.Widgets.Parr.isActive = false;
+};
+Page.UserNotesSelect = function($event, widget) {
+    App.Widgets.Parr.isActive = false;
+};
+Page.HistoryActionsSelect = function($event, widget) {
+    App.Widgets.Parr.isActive = false;
 };
