@@ -2,7 +2,7 @@
     <wm-gridcolumn class="entityProfileGrid" name="gridcolumn1">
         <h3><b>Entity BANs</b></h3>
         <wm-table margin="10px 10px 16px 17px" width="98%" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false"
-            navigationalign="right">
+            navigationalign="right" pagesize="10">
             <wm-table-column binding="banId" caption="BAN #" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
