@@ -97,7 +97,7 @@ App.refreshEntProfCancelParrSummary = function() {
                 Partial.Widgets.installAmtEntProfCancParrSumLbl.show = true;
                 Partial.Widgets.installAmtEntProfCancParrSum.show = true;
                 Partial.Widgets.ParrSummaryNotActive.show = false;
-                Partial.Widgets.createParrInEntityProfile.show = false;
+                Partial.Widgets.createParrInEntityProfileCancel.show = false;
 
             } else {
                 Partial.Widgets.parrSummaryEntProfCancId.show = false;
@@ -121,7 +121,7 @@ App.refreshEntProfCancelParrSummary = function() {
                 Partial.Widgets.installAmtEntProfCancParrSumLbl.show = false;
                 Partial.Widgets.installAmtEntProfCancParrSum.show = false;
                 Partial.Widgets.ParrSummaryNotActive.show = true;
-                Partial.Widgets.createParrInEntityProfile.show = true;
+                Partial.Widgets.createParrInEntityProfileCancel.show = true;
             }
 
         },
@@ -131,3 +131,10 @@ App.refreshEntProfCancelParrSummary = function() {
         }
     );
 }
+Partial.createParrInEntityProfileCancelClick = function($event, widget) {
+    App.Widgets.ActiveEntity.isActive = false;
+    App.Widgets.Parr.isActive = true;
+    App.Widgets.Parr.show = true;
+    Partial.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
+
+};

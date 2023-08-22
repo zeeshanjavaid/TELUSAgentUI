@@ -327,6 +327,7 @@ Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
     Partial.Clear();
     App.refreshParrList();
     App.refreshParrSummary();
+    App.refreshEntProfCancelParrSummary();
     setTimeout(messageTimeout, 5000);
 };
 

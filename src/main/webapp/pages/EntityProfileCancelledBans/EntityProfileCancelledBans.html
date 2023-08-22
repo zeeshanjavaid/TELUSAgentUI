@@ -11,9 +11,9 @@
             <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctType" caption="Account Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctSubType" caption="Account Subtype" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="closingDate" caption="Canceled Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="closingCycle" caption="Closing Cycle" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalAr" caption="TOTAL AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="closingDate" caption="Canceled Date Year" type="string" show="true" readonly="undefined"></wm-table-column>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
@@ -119,6 +119,16 @@
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn16">
                             <wm-label padding="unset 0.5em" name="recurEntProfCancParrSumm" color="#000" caption="Monthly"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow90_1" padding="unset 0.5em 1em 0.5em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn300" class="parrSumLabel" horizontalalign="center">
+                            <wm-label name="ParrSummaryNotActive" caption="No active PARR"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow91_1" padding="unset 0.5em 1em 0.5em">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn301" class="parrSumLabel" horizontalalign="center">
+                            <wm-button class="primaryButton" caption="Create PARR" type="button" margin="unset 0.5em" name="createParrInEntityProfileCancel" on-click="createParrInEntityProfileCancelClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
