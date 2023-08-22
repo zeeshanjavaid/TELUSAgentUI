@@ -11,13 +11,18 @@
 
 /* perform any action on widgets/variables within this block */
 Page.onReady = function() {
+    debugger;
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
     // var ex1 = document.getElementById('name');
     // // var ex2 = document.getElementById('numID');
     App.Variables.errorMsg.dataSet.dataValue = null;
-    Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
-
+    Page.Variables.number_IdCriteria.dataSet = [];
+    if (Page.Variables.entityLevelTypeVal.dataSet.length > 0) {
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
+    } else {
+        Page.Variables.entityLevelTypeVal.invoke();
+    }
     // ex1.onclick = handle1;
     // ex2.onclick = handle2;
 
@@ -373,6 +378,7 @@ Page.searchEntityonError = function(variable, data) {
 };*/
 
 Page.select1Change = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
     } else if (Page.Widgets.select1.datavalue == 'Entity' || Page.Widgets.select1.datavalue == 'BAN') {
