@@ -188,21 +188,21 @@ Page.button2Click = function($event, widget) {
 
 
     const message = document.getElementById("p01");
-    // const message2 = document.getElementById("p03");
-    // const message3 = document.getElementById("p04");
+    const message2 = document.getElementById("p02");
+    const message3 = document.getElementById("p03");
     // const message4 = document.getElementById("p05");
 
     Page.Widgets.select1.datavalue = 'Entity';
-    Page.Widgets.select3.datavalue = 'Exact match';
-    Page.Widgets.select4.datavalue = 'Exact match';
+    Page.Widgets.select3.datavalue = 'exactMatch';
+    Page.Widgets.select4.datavalue = 'exactMatch';
     //Page.Widgets.select5.datavalue = 'Select';
     Page.Widgets.text3._datavalue = '';
     Page.Widgets.text4._datavalue = '';
     Page.Widgets.text5._datavalue = '';
 
     message.innerHTML = "";
-    // message3.innerHTML = "";
-    // message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
     // message4.innerHTML = "";
     Page.Widgets.text5.disabled = true;
     Page.Widgets.text4.disabled = true;

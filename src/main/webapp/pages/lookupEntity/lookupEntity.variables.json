@@ -30,7 +30,7 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Exact match"
+      "dataValue" : "exactMatch"
     } ],
     "type" : "string",
     "isList" : true,
@@ -98,11 +98,11 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Exact match"
+      "dataValue" : "exactMatch"
     }, {
-      "dataValue" : "Begins with"
+      "dataValue" : "beginWith"
     }, {
-      "dataValue" : "Ends with"
+      "dataValue" : "endWIth"
     } ],
     "type" : "string",
     "isList" : true,
@@ -143,7 +143,7 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Exact match"
+      "dataValue" : "exactMatch"
     }, {
       "dataValue" : "Contains"
     } ],
@@ -159,11 +159,11 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : "Exact match"
+      "dataValue" : "exactMatch"
     }, {
-      "dataValue" : "Begins with"
+      "dataValue" : "beginWIth"
     }, {
-      "dataValue" : "Ends with"
+      "dataValue" : "endWIth"
     } ],
     "type" : "string",
     "isList" : true,
