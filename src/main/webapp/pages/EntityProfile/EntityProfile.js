@@ -433,8 +433,6 @@ App.refreshLatestNotes = function() {
 };
 
 App.refreshParrSummary = function() {
-    Partial.Variables.getPaymentArrangementsForEntityProfile;
-
     var getPaymentArrangementsForEntityProfileVar = Partial.Variables.getPaymentArrangementsForEntityProfile;
 
     getPaymentArrangementsForEntityProfileVar.invoke({
