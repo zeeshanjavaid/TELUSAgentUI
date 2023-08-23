@@ -15,6 +15,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onError" : "getEntityDetailsARonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

@@ -27,3 +27,7 @@ Partial.onReady = function() {
 
     Partial.Variables.getEntityDetailsAR.invoke();
 };
+
+Partial.getEntityDetailsARonError = function(variable, data, xhrObj){
+	
+};

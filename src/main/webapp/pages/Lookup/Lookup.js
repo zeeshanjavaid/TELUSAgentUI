@@ -562,3 +562,11 @@ Page.UserNotesSelect = function($event, widget) {
 Page.HistoryActionsSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;
 };
+
+Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
+
+};
+
+Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {
+
+};

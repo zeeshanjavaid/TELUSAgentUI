@@ -379,9 +379,9 @@ Page.searchEntityonError = function(variable, data) {
 
 Page.select1Change = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
+    if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID' || Page.Widgets.select1.datavalue == 'BAN') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
-    } else if (Page.Widgets.select1.datavalue == 'Entity' || Page.Widgets.select1.datavalue == 'BAN') {
+    } else if (Page.Widgets.select1.datavalue == 'Entity') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
     }
 };
