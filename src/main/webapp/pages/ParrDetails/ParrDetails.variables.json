@@ -85,7 +85,7 @@
     "onSuccess" : "getCollectionHistoryViewParronSuccess(variable, data, options)",
     "onError" : "getCollectionHistoryViewParronError(variable, data, xhrObj)",
     "startUpdate" : false,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

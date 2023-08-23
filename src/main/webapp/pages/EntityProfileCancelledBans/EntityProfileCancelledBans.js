@@ -149,7 +149,6 @@ Partial.createParrInEntityProfileCancelClick = function($event, widget) {
 
 };
 
-
 Partial.notes1_buttonClick = function($event, widget) {
 
     var docId = Partial.Variables.getLatestNotes_ByEntityId.dataSet[0].docId;
@@ -171,6 +170,7 @@ Partial.notes1_buttonClick = function($event, widget) {
 
         });
 };
+
 Partial.notes2_buttonClick = function($event, widget) {
 
     var docId = Partial.Variables.getLatestNotes_ByEntityId.dataSet[1].docId;
@@ -190,6 +190,7 @@ Partial.notes2_buttonClick = function($event, widget) {
 
         });
 };
+
 Partial.notes3_buttonClick = function($event, widget) {
 
     var docId = Partial.Variables.getLatestNotes_ByEntityId.dataSet[2].docId;
@@ -236,10 +237,6 @@ const download = async(url, filename) => {
     document.body.removeChild(link)
 }
 
-Partial.getBanDetailsFor_NotesonError = function(variable, data, xhrObj) {
-
-};
-
 Partial.associateBAN_anchorClick = function($event, widget) {
 
     Partial.Variables.getBanDetailsForEntityCancel.setInput({
@@ -250,206 +247,4 @@ Partial.associateBAN_anchorClick = function($event, widget) {
     Partial.Variables.getBanDetailsForEntityCancel.invoke();
     document.getElementById("associateBanLink").style.color = 'gray';
     Partial.Variables.BanList_Show.dataSet.dataValue = false;
-};
-
-Partial.clear_BananchorClick = function($event, widget) {
-
-    Partial.Widgets.getEntityDetailsTable1_1.selecteditem = false;
-};
-
-Partial.cancle_BanbuttonClick = function($event, widget) {
-
-    Partial.Variables.errorMsg.dataSet.dataValue = "";
-    Partial.Variables.BanList_Show.dataSet.dataValue = true;
-};
-Partial.create_BanbuttonClick = function($event, widget) {
-
-    documentId = "";
-    const message = document.getElementById("p01");
-    message.innerHTML = "";
-
-
-    if (Partial.Widgets.fileupload.selectedFiles != undefined) {
-        var entityId = Partial.pageParams.entityId;
-
-        var docName = Partial.Widgets.fileupload.selectedFiles[0].name;
-
-        var docSize = Partial.Widgets.fileupload.selectedFiles[0].size;
-
-        if (Partial.Widgets.textarea1.datavalue != undefined) {
-            //Restricting it to 500KB
-            if (docSize <= 512000) {
-
-                Partial.Variables.save_Document.setInput({
-                    'documentName': docName,
-                    'document': Partial.Widgets.fileupload.selectedFiles[0]
-                });
-
-
-
-                Partial.Variables.save_Document.invoke({},
-                    function(data) {
-                        // Success Callback
-                        debugger;
-                        console.log("success", data);
-                        documentId = data.id;
-
-                        //for note save
-                        const message = document.getElementById("p01");
-                        message.innerHTML = "";
-
-                        if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-                            try {
-                                isError = true;
-                                Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
-                            } catch (err) {
-                                message.innerHTML = err;
-                            }
-                        } else {
-                            var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
-                            var note = Partial.Widgets.textarea1.datavalue;
-                            var entityId = Partial.pageParams.entityId;
-
-                            Partial.Variables.save_Notes.setInput({
-
-                                'entityId': entityId,
-                                'banId': banId,
-                                'notes': note,
-                                'docId': documentId,
-                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
-
-
-                            });
-
-
-
-                            Partial.Variables.save_Notes.invoke({},
-                                function(data) {
-                                    // Success Callback
-                                    debugger;
-                                    console.log("success", data);
-                                    documentId = "";
-                                    // App.pageRefresh();
-                                    Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
-                                    Partial.Variables.errorMsg.dataSet.dataValue = "";
-                                    setTimeout(function() {
-                                        Partial.Widgets.CreateUserNotesdialog1.close();
-
-                                    }, 1000);
-                                    // window.location.reload();
-                                    //  Partial.Variables.getLatestNotesByEntityId.invoke();
-                                    Partial.Variables.getLatestNotes_ByEntityId.setInput({
-
-                                        'entityId': Partial.pageParams.entityId;
-
-                                    });
-                                    Partial.Variables.getLatestNotes_ByEntityId.invoke();
-
-                                    App.refreshLatestNotesAndDoc();
-
-                                },
-                                function(error) {
-                                    // Error Callback
-                                    console.log("error", error)
-
-                                });
-
-                        }
-
-
-
-                    },
-                    function(error) {
-                        // Error Callback
-                        console.log("error", error)
-
-                    });
-
-            } else {
-                Partial.Variables.errorMsg.dataSet.dataValue = "Attached file is greater than the specified limit.";
-            }
-        } else {
-            Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
-        }
-    } else {
-
-
-        //for note save
-        const message = document.getElementById("p01");
-        message.innerHTML = "";
-
-        if (Partial.Widgets.textarea1.datavalue == undefined || Partial.Widgets.textarea1.datavalue == "") {
-            Partial.Variables.errorMsg.dataSet.dataValue = "Please enter the note";
-
-        } else {
-            var banId = Partial.Widgets.getEntityDetailsTable1_1.selecteditem.banId;
-            var note = Partial.Widgets.textarea1.datavalue;
-            var entityId = Partial.pageParams.entityId;
-
-            Partial.Variables.save_Notes.setInput({
-
-                'entityId': entityId,
-                'banId': banId,
-                'notes': note,
-                'docId': documentId,
-                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
-
-
-            });
-
-
-
-            Partial.Variables.save_Notes.invoke({},
-                function(data) {
-                    // Success Callback
-                    debugger;
-                    console.log("success", data);
-                    documentId = "";
-                    // App.pageRefresh();
-                    Partial.Variables.errorMsg.dataSet.dataValue = "";
-                    Partial.Variables.successMessage.dataSet.dataValue = "Note created successfully";
-
-                    setTimeout(function() {
-                        Partial.Widgets.CreateUserNotesdialog1.close();
-
-                    }, 1300);
-
-
-                    // window.location.reload();
-                    Partial.Variables.getLatestNotes_ByEntityId.setInput({
-
-                        'entityId': Partial.pageParams.entityId;
-                    });
-                    Partial.Variables.getLatestNotes_ByEntityId.invoke();
-                    App.refreshLatestNotesAndDoc();
-
-                },
-                function(error) {
-                    // Error Callback
-                    console.log("error", error)
-
-                });
-
-        }
-
-        //   }
-    }
-    setTimeout(messageTimeout, 1500);
-
-};
-};
-
-
-Partial.getBanDetailsForEntityCancelonError = function(variable, data, xhrObj) {
-
-};
-
-function messageTimeout() {
-    Partial.Variables.successMessage.dataSet.dataValue = null;
-}
-
-App.refreshLatestNotes = function() {
-
-    Partial.Variables.getLatestNotes_ByEntityId.invoke();
-
 };

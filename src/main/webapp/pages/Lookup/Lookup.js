@@ -146,6 +146,14 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     debugger;
 
     Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.entityToTransferBanDropdown.displayValue;
+    var banStatus = [];
+    var banCollectionStatus = [];
+    Page.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+        banStatus.push(d.banStatus);
+        banCollectionStatus.push(d.banCollectionStatus);
+    });
+
+    debugger;
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
@@ -311,6 +319,7 @@ Page.popover4Show = function($event, widget) {
 
 };
 Page.getEntityBanDetailsTable1Datarender = function(widget, $data) {
+    debugger;
     $('#getEntityBanDetailsTable1ID th input[type=checkbox]').hide();
 };
 
