@@ -156,56 +156,61 @@
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
-                <wm-layoutgrid name="layoutgrid8">
-                    <wm-gridrow name="gridrow15" padding="1.5em unset unset 1em">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn30">
-                            <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="mm/dd/yy:"></wm-label>
+                <wm-layoutgrid name="layoutgrid8" margin="0 0 3em 0">
+                    <!-- <wm-gridrow name="gridrow15" padding="1.5em unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn30"><wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="mm/dd/yy:"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow17" padding="unset unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%"><wm-composite name="composite4"><wm-container class="col-md-9" name="container4"><wm-text name="text1"></wm-text></wm-container></wm-composite></wm-gridcolumn></wm-gridrow>-->
+                    <wm-gridrow margin="20px 0 0 0" name="gridrow17_1">
+                        <wm-gridcolumn columnwidth="10" style="display: flex; flex-direction: column;" margin="0 0 0 13px" name="gridcolumn32">
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" name="label26" color="grey" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].createdOn | toDate: 'MM/dd/yy'"></wm-label>
+                            </wm-container>
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" name="label28" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].notes"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn33">
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px"
+                                on-click="notes1_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn34" height="10%">
-                            <wm-composite name="composite4">
-                                <wm-container class="col-md-9" name="container4">
-                                    <wm-text name="text1"></wm-text>
-                                </wm-container>
-                            </wm-composite>
+                    <wm-gridrow margin="15px 0 0 0" name="gridrow18">
+                        <wm-gridcolumn columnwidth="10" style="display: flex; flex-direction: column;" margin="0 0 0 13px" name="gridcolumn34">
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" name="label27" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[1].createdOn | toDate: 'MM/dd/yy'" bordercolor="grey" color="gray"></wm-label>
+                            </wm-container>
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" name="label32" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[1].notes"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn35">
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="notes2_button" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[1].docId!=null" style="left: -13px" on-click="notes2_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow17_1" padding="0.7em unset unset 1em">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn32">
-                            <wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy:" bordercolor="grey" color="gray"></wm-label>
+                    <wm-gridrow margin="15px 0 0 0" name="gridrow19">
+                        <wm-gridcolumn columnwidth="10" style="display: flex; flex-direction: column;" margin="0 0 0 13px" name="gridcolumn36_1">
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" color="grey" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[2].createdOn | toDate: 'MM/dd/yy'" name="label25"></wm-label>
+                            </wm-container>
+                            <wm-container class="col-md-11" name="container6_1">
+                                <wm-label padding="unset 0.5em unset unset" name="label31" caption="bind:Variables.getLatestNotes_ByEntityId.dataSet[2].notes"></wm-label>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn37">
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="notes3_button" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[2].docId!=null" style="left: -13px" on-click="notes3_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
-                    <wm-gridrow name="gridrow18" padding="unset unset unset 1em">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn33">
-                            <wm-composite name="composite4_1">
-                                <wm-container class="col-md-9" name="container4_1">
-                                    <wm-text name="text2"></wm-text>
-                                </wm-container>
-                            </wm-composite>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-gridrow name="gridrow19" padding="0.7em unset unset 1em">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn34_1">
-                            <wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy:" name="label25"></wm-label>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-gridrow name="gridrow20" padding="unset unset unset 1em" margin="0 0 0 0">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn35">
-                            <wm-composite name="composite5">
-                                <wm-container class="col-md-9" name="container5">
-                                    <wm-text name="text3"></wm-text>
-                                </wm-container>
-                            </wm-composite>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                </wm-layoutgrid>
+                    <!--<wm-gridrow name="gridrow17_1" padding="0.7em unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn32"><wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy:" bordercolor="grey" color="gray"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow18" padding="unset unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn33"><wm-composite name="composite4_1"><wm-container class="col-md-9" name="container4_1"><wm-text name="text2"></wm-text></wm-container></wm-composite></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow19" padding="0.7em unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn34_1"><wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy:" name="label25"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow20" padding="unset unset unset 1em" margin="0 0 0 0"><wm-gridcolumn columnwidth="12" name="gridcolumn35"><wm-composite name="composite5"><wm-container class="col-md-9" name="container5"><wm-text name="text3"></wm-text></wm-container></wm-composite></wm-gridcolumn></wm-gridrow>--></wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create User Notes" iconclass="" name="CreateUserNotesdialog1" width="50%" class="CreateUserNotesdialog1">
         <wm-container name="container19_1" class="cancelLine-19_1con"></wm-container>
         <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow20">
+                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow21">
+                <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true"></wm-message>
+            </wm-gridrow>
             <wm-gridrow name="gridrow17" padding="unset unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36" class="enter_NoteLine" padding="1em unset unset unset">
                     <wm-label padding="unset unset 0.5em unset" caption="Enter Note *" name="label36"></wm-label>
@@ -216,30 +221,31 @@
             <wm-gridrow name="gridrow5_1" padding="1em unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn4">
                     <wm-composite name="composite1">
-                        <wm-container class="col-md-9" name="container2" width="80%">
-                            <wm-textarea name="textarea1" class="textAreaRadius"></wm-textarea>
+                        <wm-container class="col-md-9" name="container2" width="89%">
+                            <wm-textarea name="textarea1" class="textAreaRadius" required="false" placeholder="" resize="none" maxchars="255"></wm-textarea>
                         </wm-container>
+                        <p id="p01" style="color:red;"></p>
                     </wm-composite>
                     <wm-layoutgrid name="layoutgrid5">
                         <wm-gridrow name="gridrow8">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn7_1">
-                                <wm-panel autoclose="outsideClick" title="Associate with BAN" name="AssociatewithBAN" collapsible="true" show="true" on-expand="AssociatewithBANExpand($event, widget)" on-collapse="AssociatewithBANCollapse($event, widget)">
-                                    <wm-layoutgrid name="layoutgrid25">
-                                        <wm-gridrow name="gridrow39">
-                                            <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
-                                                <wm-container name="container21" margin="0 0 0 0">
-                                                    <wm-table name="AssociatedwithBanTable1" title="" dataset="bind:Variables.AssociatedwithBan.dataSet" navigation="None">
-                                                        <wm-table-column binding="BAN#" caption="Ban#" show="true" readonly="undefined"></wm-table-column>
-                                                        <wm-table-column binding="BANName" caption="Ban Name" mobiledisplay="false" show="true" readonly="undefined"></wm-table-column>
-                                                        <wm-table-column binding="Total AR" caption="Total Ar" show="true" readonly="undefined"></wm-table-column>
-                                                        <wm-table-column binding="Total OD" caption="Total Od" show="true" readonly="undefined"></wm-table-column>
-                                                        <wm-table-column binding="IS Dispute" caption="Is Dispute" show="true" readonly="undefined"></wm-table-column>
-                                                    </wm-table>
-                                                </wm-container>
-                                            </wm-gridcolumn>
-                                        </wm-gridrow>
-                                    </wm-layoutgrid>
-                                </wm-panel>
+                                <wm-layoutgrid name="layoutgrid25">
+                                    <wm-gridrow name="gridrow39">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
+                                            <wm-container name="container21" margin="0 0 0 0" width="89%">
+                                                <wm-anchor id="associateBanLink" margin="0.5em 0 1.5em 0" name="associateBAN_anchor" caption="Associate with BAN" on-click="associateBAN_anchorClick($event, widget)"></wm-anchor>
+                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.getBanDetailsFor_Notes.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.BanList_Show.dataSet.dataValue==false">
+                                                    <wm-table-column binding="banId" caption="BAN #" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" width="145px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                </wm-table>
+                                                <wm-anchor style="float: right;" name="clear_Bananchor" caption="Clear" on-click="clear_BananchorClick($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
+                                            </wm-container>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
                             </wm-gridcolumn>
                         </wm-gridrow>
                     </wm-layoutgrid>
@@ -247,18 +253,19 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" padding="unset unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn6" padding="2em unset 0.5em unset" class="addAttachmentLine">
-                    <wm-label name="label3_1" caption="Add Attachment to Note"></wm-label>
+                    <wm-label name="label3_1" caption="Add Attachment to Note (File size should not exceed 500KB)"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7" padding="unset unset unset 1em">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn7" padding="1em unset 3em unset">
-                    <wm-button class="btn-default" caption="Attach" type="button" margin="unset 0.5em unset unset" name="button4_1"></wm-button>
+                    <p id="p02" style="color:red;"></p>
+                    <wm-fileupload name="fileupload" iconclass="" caption="Attach" maxfilesize="20" contenttype=".pdf .doc .docx .xls .xlsx"></wm-fileupload>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1" padding="1em unset 1em unset">
-            <wm-button class="primaryButton" caption="Create" type="button" margin="1em 0.5em" name="button3" style="float:right;"></wm-button>
-            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog()" name="button4" style="float:right;" margin="1em unset"></wm-button>
+            <wm-button class="primaryButton" caption="Create" type="button" margin="1em 0.5em" name="create_Banbutton" style="float:right;" on-click="create_BanbuttonClick($event, widget)"></wm-button>
+            <wm-button class="secondaryButton" caption="Cancel" on-click="closeDialog();cancle_BanbuttonClick($event, widget)" name="cancle_Banbutton" style="float:right;" margin="1em unset"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
 </wm-partial>
