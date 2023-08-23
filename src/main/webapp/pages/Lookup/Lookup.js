@@ -153,7 +153,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         banCollectionStatus.push(d.banCollectionStatus);
     });
 
-    debugger;
+
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
@@ -163,6 +163,8 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
     } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
+    } else if (banCollectionStatus.includes('CEASE') || banCollectionStatus.includes('SUSPEND') || banCollectionStatus.includes('INARRG')) {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in either CEASE / SUSPEND / INARGG status.";
     } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
