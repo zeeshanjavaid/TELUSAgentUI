@@ -234,14 +234,14 @@
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn87" horizontalalign="left">
                                             <wm-container name="container21" margin="0 0 0 0" width="89%">
                                                 <wm-anchor id="associateBanLink" margin="0.5em 0 1.5em 0" name="associateBAN_anchor" caption="Associate with BAN" on-click="associateBAN_anchorClick($event, widget)"></wm-anchor>
-                                                <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.getBanDetailsFor_Notes.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.BanList_Show.dataSet.dataValue==false">
+                                                <wm-table name="getEntityDetailsTable1_3" title="" dataset="bind:Variables.getBanDetailsFor_Notes.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.BanList_Show.dataSet.dataValue==false">
                                                     <wm-table-column binding="banId" caption="BAN #" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="disputeFlag" caption="In Dispute" width="145px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                 </wm-table>
-                                                <wm-anchor style="float: right;" name="clear_Bananchor" caption="Clear" on-click="clear_BananchorClick($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
+                                                <wm-anchor style="float: right;" name="clear_Bananchor" caption="Clear" on-click="clear_BananchorClick($event, widget)" show="bind:Variables.BanList_Show.dataSet.dataValue==false"></wm-anchor>
                                             </wm-container>
                                         </wm-gridcolumn>
                                     </wm-gridrow>

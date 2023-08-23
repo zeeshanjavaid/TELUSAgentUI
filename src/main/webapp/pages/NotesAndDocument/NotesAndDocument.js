@@ -37,6 +37,7 @@ Partial.createUserNotebuttonClick = function($event, widget) {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.CreateUserNotes_dialog.open();
+    Partial.Variables.banList_Show.dataSet.dataValue = true;
 
 }
 Partial.BananchorClick = function($event, widget) {
