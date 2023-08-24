@@ -7,10 +7,10 @@
                 <wm-label caption="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="Coll. St" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" type="string" show="true" readonly="undefined"></wm-table-column>
             <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="disputeAmount" caption="Dispute Amt" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -304,7 +304,9 @@
                                                     <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" width="145px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="145px" edit-widget-type="text" type="string" show="true" readonly="false">
+                                                        <wm-label caption="bind:row.getProperty('disputeFlag')?'Y':'N'" class="" conditionalclass=""></wm-label>
+                                                    </wm-table-column>
                                                 </wm-table>
                                                 <wm-anchor style="float: right;" name="anchor1" caption="Clear" on-click="anchor1Click($event, widget)" show="bind: Variables.banListShow.dataSet.dataValue==false"></wm-anchor>
                                             </wm-container>

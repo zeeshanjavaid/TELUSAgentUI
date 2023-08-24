@@ -7,12 +7,13 @@
                 <wm-icon caption="bind:row.getProperty('banId')" iconclass="fico-icon-flag-solid" iconposition="left" iconcolor="red" class="" conditionalclass=""></wm-icon>
             </wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="Coll. St" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctType" caption="Account Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctSubType" caption="Account Subtype" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="closingDate" caption="Canceled Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="closingCycle" caption="Closing Cycle" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalAr" caption="TOTAL AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="closingDate" caption="Canceled Date Year" type="string" show="true" readonly="undefined"></wm-table-column>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
@@ -167,7 +168,8 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn33">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px" on-click="notes1_buttonClick($event, widget)"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px"
+                                on-click="notes1_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow18">
@@ -237,7 +239,9 @@
                                                     <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" width="145px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="145px" edit-widget-type="text" type="string" show="true" readonly="false">
+                                                        <wm-label caption="bind:row.getProperty('disputeFlag')?'Y':'N'" class="" conditionalclass=""></wm-label>
+                                                    </wm-table-column>
                                                 </wm-table>
                                                 <wm-anchor style="float: right;" name="clear_Bananchor" caption="Clear" on-click="clear_BananchorClick($event, widget)" show="bind:Variables.BanList_Show.dataSet.dataValue==false"></wm-anchor>
                                             </wm-container>
