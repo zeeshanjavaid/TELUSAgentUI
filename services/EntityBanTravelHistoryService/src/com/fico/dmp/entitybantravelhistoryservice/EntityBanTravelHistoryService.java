@@ -111,6 +111,7 @@ public class EntityBanTravelHistoryService {
 	        		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
 	        		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
 	        		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
+	        		banTravelHistoryModel.setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionEntity.getAuditInfo().getLastUpdatedBy()));
 	        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null)
 	        		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
 	        		billingAcctRefIds.add(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
@@ -137,7 +138,7 @@ public class EntityBanTravelHistoryService {
     						banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
     				}
     				banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
-    				banTravelHistoryModel.setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionBillingAccountRef.getAuditInfo().getLastUpdatedBy()));
+    				
     			});
 				
 			}
