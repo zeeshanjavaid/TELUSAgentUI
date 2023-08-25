@@ -339,3 +339,7 @@ Partial.getCollectionHistoryViewParronSuccess = function(variable, data) {
     App.refreshParrSummary();
     App.refreshEntProfCancelParrSummary();
 };
+
+Partial.getCollectionHistoryViewParronError = function(variable, data) {
+
+};

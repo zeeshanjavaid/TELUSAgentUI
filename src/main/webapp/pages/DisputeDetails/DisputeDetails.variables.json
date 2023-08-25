@@ -249,6 +249,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onError" : "getCollectionHistoryViewDisputeonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

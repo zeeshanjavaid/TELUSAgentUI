@@ -287,3 +287,7 @@ Partial.disputeHistoryCollapse = function($event, widget) {
     }
     Partial.Variables.disputeIsExpand.dataSet.dataValue = !Partial.Variables.disputeIsExpand.dataSet.dataValue;
 };
+
+Partial.getCollectionHistoryViewDisputeonError = function(variable, data, xhrObj) {
+
+};
