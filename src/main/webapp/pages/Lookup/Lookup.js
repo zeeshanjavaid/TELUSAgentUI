@@ -155,6 +155,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
 
 
+
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else if (Page.Widgets.getEntityBanDetailsTable1.dataset.length == 1) {
@@ -165,6 +166,8 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
     } else if (banCollectionStatus.includes('CEASE') || banCollectionStatus.includes('SUSPEND') || banCollectionStatus.includes('INARRG')) {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in either CEASE / SUSPEND / INARGG status.";
+    } else if (banStatus.includes('C')) {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in cancelled status";
     } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
@@ -334,10 +337,26 @@ Page.TransferBanToNewEntityTableDeselect = function($event, widget, row) {
 };
 Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
     debugger;
+
+    var banStatus = [];
+    var banCollectionStatus = [];
+    Page.Widgets.TransferBanToNewEntityTable.selectedItems.forEach(function(d) {
+        banStatus.push(d.banStatus);
+        banCollectionStatus.push(d.banCollectionStatus);
+    });
+
+    var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
+
     if (Page.Widgets.TransferBanToNewEntityTable.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else if (Page.Widgets.TransferBanToNewEntityTable.dataset.length == 1) {
         App.Variables.errorMsg.dataSet.dataValue = "BAN not eligible for transfer as only one BAN exists for the Entity";
+    } else if (banCollectionStatus.includes('CEASE') || banCollectionStatus.includes('SUSPEND') || banCollectionStatus.includes('INARRG')) {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in either CEASE / SUSPEND / INARGG status.";
+    } else if (banStatus.includes('C')) {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in cancelled status";
+    } else if (cancelledEntityVar == 'C') {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Cancelled Entity";
     } else {
 
         let todaysDateJsonFormat = new Date().toJSON();
