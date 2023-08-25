@@ -1104,7 +1104,7 @@ Partial.closeButtonClick = function($event, widget) {
             });
             characteristicList.push({
                 name: 'Outcome',
-                value: Partial.Widgets.actionOutcomeSelect.datavalue.dataValue
+                value: Partial.Widgets.actionOutcomeSelect.datavalue
 
             });
         }

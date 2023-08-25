@@ -1193,3 +1193,15 @@ App.refreshCollOrderMgmtList = function() {
 
 
 };
+
+Partial.getOrderdMgmtHistoryonError = function(variable, data, xhrObj) {
+
+};
+Partial.EditNotSentdialogClose = function($event, widget) {
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
+};
+Partial.EditAndFulfillSentdialogClose = function($event, widget) {
+
+    Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
+
+};

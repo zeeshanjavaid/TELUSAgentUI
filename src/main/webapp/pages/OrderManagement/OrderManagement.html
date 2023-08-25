@@ -352,7 +352,7 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditNotSentdialog" width="48%" on-opened="EditNotSentdialogOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditNotSentdialog" width="48%" on-opened="EditNotSentdialogOpened($event, widget)" on-close="EditNotSentdialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid4">
             <wm-message name="errormessage" type="error" show="bind:Variables.popUperrorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.popUperrorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
@@ -486,7 +486,7 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditAndFulfillSentdialog" width="48%" on-opened="EditAndFulfillSentdialogOpened($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditAndFulfillSentdialog" width="48%" on-opened="EditAndFulfillSentdialogOpened($event, widget)" on-close="EditAndFulfillSentdialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid4">
             <wm-message name="errormessage" type="error" show="bind:Variables.popUperrorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.popUperrorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
