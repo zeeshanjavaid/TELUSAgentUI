@@ -154,6 +154,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     });
 
 
+    var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
 
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
@@ -164,10 +165,14 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
     } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
+    } else if (Page.Variables.selectedEntityToTransferStr.dataSet.dataValue == 'C') {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed to the canceled entity";
     } else if (banCollectionStatus.includes('CEASE') || banCollectionStatus.includes('SUSPEND') || banCollectionStatus.includes('INARRG')) {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in either CEASE / SUSPEND / INARGG status.";
     } else if (banStatus.includes('C')) {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in cancelled status";
+    } else if (cancelledEntityVar == 'C') {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Cancelled Entity";
     } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
@@ -589,5 +594,25 @@ Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
 };
 
 Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {
+
+};
+Page.entityToTransferBanDropdownChange = function($event, widget, newVal, oldVal) {
+
+    var getEntityDetailsForCancelledEntitiesVar = Page.Variables.getEntityDetailsForCancelledEntities;
+    getEntityDetailsForCancelledEntitiesVar.invoke({
+            "inputFields": {
+                "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
+            },
+        },
+
+        function(data) {
+            Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+
+    );
 
 };

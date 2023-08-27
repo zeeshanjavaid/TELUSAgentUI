@@ -211,6 +211,29 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionData"
   },
+  "getEntityDetailsForCancelledEntities" : {
+    "_id" : "wm-getEntityDetailsForCancelledEntities-wm.ServiceVariable-1692964771565",
+    "name" : "getEntityDetailsForCancelledEntities",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeAll",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  },
   "getEntityProfileDetails" : {
     "_id" : "wm-getEntityProfileDetails-wm.ServiceVariable-1681112443333",
     "name" : "getEntityProfileDetails",
@@ -353,6 +376,20 @@
       "dataValue" : 0
     },
     "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "selectedEntityToTransferStr" : {
+    "_id" : "wm-selectedEntityToTransferStr-wm.Variable-1692973394103",
+    "name" : "selectedEntityToTransferStr",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
     "isList" : false,
     "saveInPhonegap" : false
   },
