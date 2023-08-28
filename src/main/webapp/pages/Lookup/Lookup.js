@@ -101,6 +101,7 @@ Page.onReady = function() {
 
 function messageTimeout() {
     Page.Variables.successMessageEntManagementVar.dataSet.dataValue = null;
+    App.Variables.errorMsg.dataSet.dataValue = null;
 }
 
 Page.CreateClick = function($event, widget) {
@@ -297,6 +298,8 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
 
     }
+
+    setTimeout(messageTimeout, 8000);
 };
 
 
@@ -539,6 +542,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         );
 
     }
+    setTimeout(messageTimeout, 8000);
 };
 Page.TransferBanToNewEntityTableDatarender = function(widget, $data) {
     $('#TransferBanToNewEntityTableID th input[type=checkbox]').hide();
@@ -617,22 +621,40 @@ Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {
 
 };
 Page.entityToTransferBanDropdownChange = function($event, widget, newVal, oldVal) {
-
-    var getEntityDetailsForCancelledEntitiesVar = Page.Variables.getEntityDetailsForCancelledEntities;
-    getEntityDetailsForCancelledEntitiesVar.invoke({
-            "inputFields": {
-                "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
+    debugger;
+    if (Page.Widgets.entityToTransferBanDropdown.datavalue != undefined && Page.Widgets.entityToTransferBanDropdown.datavalue != '') {
+        var getEntityDetailsForCancelledEntitiesVar = Page.Variables.getEntityDetailsForCancelledEntities;
+        getEntityDetailsForCancelledEntitiesVar.invoke({
+                "inputFields": {
+                    "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
+                },
             },
-        },
 
-        function(data) {
-            Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
-        },
-        function(error) {
-            // Error Callback
-            console.log("error", error);
-        }
+            function(data) {
+                Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
 
-    );
+        );
+    }
 
+};
+Page.CancelTransToExistBanBtnClick = function($event, widget) {
+    Page.Widgets.TransferBanToExistEntDialog.close();
+    App.Variables.errorMsg.dataSet.dataValue = null;
+};
+Page.TransferBanToExistEntDialogClose = function($event, widget) {
+    Page.Widgets.TransferBanToExistEntDialog.close();
+    App.Variables.errorMsg.dataSet.dataValue = null;
+};
+Page.button4_1Click = function($event, widget) {
+    Page.Widgets.TransferBanToNewEntDialog.close();
+    App.Variables.errorMsg.dataSet.dataValue = null;
+};
+Page.TransferBanToNewEntDialogClose = function($event, widget) {
+    Page.Widgets.TransferBanToNewEntDialog.close();
+    App.Variables.errorMsg.dataSet.dataValue = null;
 };
