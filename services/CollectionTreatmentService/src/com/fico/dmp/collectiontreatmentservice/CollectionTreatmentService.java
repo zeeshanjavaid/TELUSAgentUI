@@ -354,7 +354,7 @@ public class CollectionTreatmentService {
                 orderMgmtHistoryResponse.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
 
                 orderMgmtHistoryResponse.setUpdatedOn(collectionActivityLog.getCollectionActivityTimestamp().toString());
-               if(relatedBusinessEntityType.equalsIgnoreCase("COLL_TRTMT_STEP")) {
+               if(relatedBusinessEntityType.equalsIgnoreCase("CollectionTreatmentStep")) {
                       orderMgmtHistoryResponse.setDueDate(collectionActivityLog.getRelatedBusinessEntityDueDate().toString());
                 }
                   orderMgmtHistoryResponse.setComment(collectionActivityLog.getComment());
