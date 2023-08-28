@@ -155,7 +155,9 @@
                 <wm-table-column binding="ar90DaysPlus" caption="90D+ AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="disputeFlag" caption="In Dispute" type="boolean" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                    <wm-label caption="bind:row.getProperty('disputeFlag')?'Y':'N'" class="" conditionalclass=""></wm-label>
+                </wm-table-column>
                 <wm-table-column binding="odRemaining" caption="OD REM Calc" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="portfolioCategory" caption="Portfolio" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="openActionDate" caption="Open Action" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
