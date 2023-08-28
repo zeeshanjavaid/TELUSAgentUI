@@ -156,11 +156,16 @@ public class CollectionEntityService {
   			if(id != null) {
   				idStr = "in:"+id;
  			}
+ 			
+ 			String banStr = null;
+  			if(ban != null) {
+  				banStr = "eq:"+ban;
+ 			}
   			
   			
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_BILLING_ACCOUNT_REF)
             		 .queryParamIfPresent("fields", Optional.ofNullable(fields))
-                     .queryParamIfPresent("ban", Optional.ofNullable(ban))
+                     .queryParamIfPresent("ban", Optional.ofNullable(banStr))
                      .queryParamIfPresent("entityId",Optional.ofNullable(entityId))
                      .queryParamIfPresent("id",Optional.ofNullable(idStr));
                      
