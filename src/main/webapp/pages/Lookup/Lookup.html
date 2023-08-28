@@ -208,17 +208,11 @@
                         </wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="Contacts" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)" accessroles="Contacts" padding="unset unset unset 5pt" tabindex="6">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
                         <!--<wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="true"></wm-panel><wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="true"></wm-panel>--></wm-tabpane>
                 </wm-tabs>
             </wm-container>
@@ -269,16 +263,16 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45_1" class="dialogTable">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="getEntityBanDetailsTable1ID" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10"
                         on-select="getEntityBanDetailsTable1Select($event, widget, row)" on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)">
-                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
+                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="40px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                             <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>
-                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" type="string" show="true" readonly="undefined"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Status" type="string" show="true" readonly="undefined"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                        <wm-table-column binding="banId" caption="BAN #" width="99px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" width="143px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" width="61px" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" width="59px" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" width="87px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Status" width="66px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="80px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                     </wm-table>

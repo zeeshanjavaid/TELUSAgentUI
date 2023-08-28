@@ -31,7 +31,7 @@ h3 {
 
 .rrr{
     border: 0.1px solid #ddd;
-    padding: 0 10px 20px 10px;
+    padding: 0 23px 20px 0px;
 }
 @media (max-width: 1024px) and (min-width: 768px) {
 
