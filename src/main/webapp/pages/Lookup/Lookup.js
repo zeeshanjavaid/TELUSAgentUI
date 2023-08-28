@@ -45,6 +45,7 @@ Page.onReady = function() {
                 },
             },
             function(data) {
+                debugger;
                 var ar180DaysPlus = parseFloat(data.entityDetails.ar180DaysPlus);
                 var ar180Days = parseFloat(data.entityDetails.ar180Days);
                 var ar150Days = parseFloat(data.entityDetails.ar150Days);
@@ -67,6 +68,25 @@ Page.onReady = function() {
                     Page.Widgets.deliqCycle.caption = ar60Days;
                 } else if (ar30Days > 0) {
                     Page.Widgets.deliqCycle.caption = ar30Days;
+                }
+
+                if (data.banDetails[0].acctStatus == 'C') {
+                    var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
+                    getBillingAccountRefProfileDetailsVar.invoke({
+                            "inputFields": {
+                                "ban": data.banDetails[0].banId
+                            },
+                        },
+                        function(data1) {
+                            debugger;
+                            Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
+
+                        },
+                        function(error1) {
+                            // Error Callback
+                            console.log("error", error);
+                        }
+                    );
                 }
 
             },
