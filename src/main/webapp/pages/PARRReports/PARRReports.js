@@ -52,6 +52,26 @@ Page.button2Click = function($event, widget) {
     var fromDate = Page.Widgets.creationDate.bsDataValue;
     var toDate = Page.Widgets.completionDate.bsDataValue;
 
+    //ToCalculate Timezone
+    if (Page.Widgets.completionDate.bsDataValue != undefined && Page.Widgets.completionDate.bsDataValue != '') {
+        var timezoneOffset = Page.Widgets.completionDate.bsDataValue.getTimezoneOffset();
+        var absTimezoneOffset = Math.abs(timezoneOffset);
+        var currentTimeZone = (timezoneOffset < 0 ? "+" : "-") + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
+
+        var hours = ("00" + Page.Widgets.completionDate.bsDataValue.getHours()).slice(-2);
+        var minutes = ("00" + Page.Widgets.completionDate.bsDataValue.getMinutes()).slice(-2);
+        var seconds = ("00" + Page.Widgets.completionDate.bsDataValue.getSeconds()).slice(-2);
+        var datePart = Page.Widgets.completionDate.datavalue;
+
+        var completionDateTime = datePart + "T" + hours + ":" + minutes + ":" + seconds + ".000" + currentTimeZone;
+
+        alert(completionDateTime);
+
+
+    }
+
+
+
     var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
     var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth();
 
