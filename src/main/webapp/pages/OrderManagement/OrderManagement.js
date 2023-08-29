@@ -408,7 +408,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     debugger;
     var stepTypeCode;
     var updateStatus = '';
-    var isAlreadySusOrRes = false;
+    var isAlreadySusOrRes = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
@@ -429,7 +429,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus == "RESTORE") {
+        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
 
             isAlreadySusOrRes = stepTypeCode;
         } else {
@@ -548,7 +548,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var updateStatus = '';
-    var isAlreadySusOrRes = false;
+    var isAlreadySusOrRes = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -575,7 +575,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus == "RESTORE") {
+        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
 
             isAlreadySusOrRes = stepTypeCode;
         } else {
@@ -697,7 +697,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
     var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
-    var isAlreadySusOrRes = false;
+    var isAlreadySusOrRes = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.BanListRefIds.dataSet = [];
@@ -716,7 +716,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus == "RESTORE") {
+        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
 
             isAlreadySusOrRes = stepTypeCode;
         } else {
@@ -823,7 +823,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     debugger;
 
 
-    var isAlreadySusOrRes = false;
+    var isAlreadySusOrRes = '';
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -875,7 +875,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus == "RESTORE") {
+        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
 
             isAlreadySusOrRes = stepTypeCode;
         } else {
