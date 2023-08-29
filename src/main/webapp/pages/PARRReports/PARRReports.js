@@ -65,8 +65,6 @@ Page.button2Click = function($event, widget) {
 
         var completionDateTime = datePart + "T" + hours + ":" + minutes + ":" + seconds + ".000" + currentTimeZone;
 
-        alert(completionDateTime);
-
 
     }
 
