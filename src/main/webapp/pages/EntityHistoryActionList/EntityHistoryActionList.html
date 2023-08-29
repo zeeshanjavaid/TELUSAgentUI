@@ -271,11 +271,11 @@
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table pagesize="10" name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.getCollectionTreatmentStep_1.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
                     <wm-table-column binding="stepTypeCode" caption="Type" width="84px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" width="88px" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" width="88px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="auditInfo.createdBy" caption="Created By" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedAgentId" caption="Agent ID" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="assignedTeam" caption="Assigned Team" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="stepDate" caption="Due DT" width="90px" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="stepDate" caption="Due DT" width="90px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" width="65px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" width="220px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
@@ -298,13 +298,13 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table pagesize="10" name="getCollectionActivityLog_1Table3" title="" dataset="bind:Variables.GetCollectionActivityLogList.dataSet" navigation="Classic" navigationalign="right" showrecordcount="true">
-                    <wm-table-column binding="relatedBusinessEntitySubType" caption="Type" type="string" show="true" readonly="undefined"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntitySubType" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityType" caption="Category" width="224px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" width="94px" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" width="94px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" width="242px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Agent ID" width="135px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" width="121px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" width="111px" edit-widget-type="text" type="string" datepattern="MM-dd-yy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" width="111px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCompletedBy" caption="Completed By" width="167px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" width="170px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionActivityLog_1Table3_OnRowexpand($event, widget, row, $data)"
