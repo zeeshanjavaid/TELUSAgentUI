@@ -1,1 +1,25 @@
-{ }
+{
+  "getEntityDetailsForWorkCategory" : {
+    "_id" : "wm-getEntityDetailsForWorkCategory-wm.ServiceVariable-1693241669052",
+    "name" : "getEntityDetailsForWorkCategory",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  }
+}

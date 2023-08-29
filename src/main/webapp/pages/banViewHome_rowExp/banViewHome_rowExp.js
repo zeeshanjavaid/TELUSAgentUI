@@ -37,5 +37,21 @@ Partial.onReady = function() {
         Partial.Widgets.collStatus.caption = row.banCollectionStatus;
         Partial.Widgets.entType.caption = row.entityType;
         Partial.Widgets.FTNP.caption = row.FTNP;
+
+
+        var getEntityDetailsForWorkCategoryVar = Partial.Variables.getEntityDetailsForWorkCategory;
+        getEntityDetailsForWorkCategoryVar.invoke({
+                "inputFields": {
+                    "entityId": row.entityId
+                },
+            },
+            function(data) {
+                Partial.Widgets.workCategory.caption = data.entityDetails.primeWorkCategory;
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
+        );
     }
 };
