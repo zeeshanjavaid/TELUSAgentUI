@@ -658,3 +658,8 @@ Page.TransferBanToNewEntDialogClose = function($event, widget) {
     Page.Widgets.TransferBanToNewEntDialog.close();
     App.Variables.errorMsg.dataSet.dataValue = null;
 };
+Page.previousEntValClick = function($event, widget) {
+
+    window.location.href = "#/Lookup?entityId=" + 1;
+    window.location.reload(true);
+};
