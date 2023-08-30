@@ -659,7 +659,73 @@ Page.TransferBanToNewEntDialogClose = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = null;
 };
 Page.previousEntValClick = function($event, widget) {
+    debugger;
+    //Page.pageParams.entityId = widget.caption;
 
-    window.location.href = "#/Lookup?entityId=" + 1;
-    window.location.reload(true);
+    var getEntityProfileDetailsVar = Page.Variables.getEntityProfileDetails;
+
+    getEntityProfileDetailsVar.invoke({
+            "inputFields": {
+                "entityId": widget.caption
+            },
+        },
+        function(data) {
+            debugger;
+            var ar180DaysPlus = parseFloat(data.entityDetails.ar180DaysPlus);
+            var ar180Days = parseFloat(data.entityDetails.ar180Days);
+            var ar150Days = parseFloat(data.entityDetails.ar150Days);
+            var ar120Days = parseFloat(data.entityDetails.ar120Days);
+            var ar90Days = parseFloat(data.entityDetails.ar90Days);
+            var ar60Days = parseFloat(data.entityDetails.ar60Days);
+            var ar30Days = parseFloat(data.entityDetails.ar30Days);
+            Page.Widgets.deliqCycle.caption = 0;
+            if (ar180DaysPlus > 0) {
+                Page.Widgets.deliqCycle.caption = ar180DaysPlus;
+            } else if (ar180Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar180Days;
+            } else if (ar150Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar150Days;
+            } else if (ar120Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar120Days;
+            } else if (ar90Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar90Days;
+            } else if (ar60Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar60Days;
+            } else if (ar30Days > 0) {
+                Page.Widgets.deliqCycle.caption = ar30Days;
+            }
+
+            if (data.banDetails[0].acctStatus == 'C') {
+                var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
+                getBillingAccountRefProfileDetailsVar.invoke({
+                        "inputFields": {
+                            "ban": data.banDetails[0].banId
+                        },
+                    },
+                    function(data1) {
+                        debugger;
+                        Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
+
+                    },
+                    function(error1) {
+                        // Error Callback
+                        console.log("error", error);
+                    }
+                );
+            }
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
+    Page.Actions.goToPage_Lookup.setData({
+        "entityId": widget.caption
+    })
+    Page.Actions.goToPage_Lookup.navigate();
+    Page.Actions.goToPage_Lookup.invoke();
+
+
 };

@@ -182,7 +182,6 @@ Page.goToEnityPage = function(row) {
     // window.location.href = "#/Lookup?entityId=" + 1;
     window.location.reload(true);
 };
-}
 
 Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {
     App.showRowExpansionEntityViewHome(row, $data);
