@@ -172,7 +172,7 @@ Page.button1Click = function($event, widget) {
         }
     }
     if (!isError) {
-        Page.Variables.searchEntity.setInput({
+        Page.Variables.getEntitySearch.setInput({
 
             'inputType': intputType,
             'inputValue': inputValue,
@@ -182,7 +182,7 @@ Page.button1Click = function($event, widget) {
 
         });
 
-        Page.Variables.searchEntity.invoke();
+        Page.Variables.getEntitySearch.invoke();
     }
 
 
@@ -220,7 +220,7 @@ Page.button2Click = function($event, widget) {
 
     // console.clear();
 
-    Page.Variables.searchEntity.setInput({
+    Page.Variables.getEntitySearch.setInput({
 
         'inputType': "",
         'inputValue': "",
@@ -230,7 +230,7 @@ Page.button2Click = function($event, widget) {
 
     });
 
-    Page.Variables.searchEntity.invoke();
+    Page.Variables.getEntitySearch.invoke();
 
 
 
@@ -311,7 +311,7 @@ $(function() {
 });
 
 
-Page.searchEntityonError = function(variable, data) {
+Page.getEntitySearchonError = function(variable, data) {
 
     // App.Variables.errorMsg.dataSet.dataValue = "No data found";
 

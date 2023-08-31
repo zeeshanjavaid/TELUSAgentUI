@@ -91,21 +91,21 @@
             </wm-layoutgrid>
             <wm-container name="container3_1" show="true" class="rrr">
                 <h3><b>Lookup Results</b></h3>
-                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.searchEntity.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false" showrecordcount="true" pagesize="10"
-                    navigationalign="right">
-                    <wm-table-column binding="entityId" caption="Entity ID" widget-type="anchor" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.getEntitySearch.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false" showrecordcount="true"
+                    pagesize="10" navigationalign="right">
+                    <wm-table-column binding="entityId" caption="Entity ID" widget-type="anchor" edit-widget-type="text" type="string" show="true" readonly="false">
                         <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
                     </wm-table-column>
-                    <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="customField" caption="Entity Team" edit-widget-type="text" type="string" mobiledisplay="false" placeholder="" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="dntlFlag" caption="DNTL" widget-type="label" edit-widget-type="text" type="string" mobiledisplay="false" searchable="false" show="true" readonly="false">
+                    <wm-table-column binding="entityName" caption="Entity Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="entityType" caption="Entity Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cbucId" caption="CBUCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="billingSystem" caption="Billing System" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="teamName" caption="Entity  Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="dntlFlag" caption="DNTL" widget-type="label" edit-widget-type="text" type="string" show="true" readonly="false">
                         <wm-label caption="bind:row.getProperty('dntlFlag') ? 'Y' : ''" class="" conditionalclass=""></wm-label>
                     </wm-table-column>
                 </wm-table>
