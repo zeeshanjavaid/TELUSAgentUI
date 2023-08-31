@@ -69,6 +69,7 @@ Partial.onReady = function() {
             $('.callDuration').show();
             $('.blankGrid').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Call Inbound';
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -82,6 +83,7 @@ Partial.onReady = function() {
             $('.email').show();
             $('.blankGrid').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Email Inbound';
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -95,7 +97,18 @@ Partial.onReady = function() {
             $('.email').hide();
             $('.actionID').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Follow-up';
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
+
+            if (type == 'NOTC1-PMTR') {
+                Partial.Widgets.description.caption = 'Payment Reminder';
+            } else if (type == 'NOTC2-OD') {
+                Partial.Widgets.description.caption = 'Overdue Notice';
+            } else if (type == 'NOTC3-DIST') {
+                Partial.Widgets.description.caption = 'Disconnect Notice';
+            } else if (type == 'NOTC4-CANL') {
+                Partial.Widgets.description.caption = 'Cancellation Notice';
+            }
             $('.customerName').show();
             $('.email').hide();
             $('.noticeEmail').show();
@@ -126,7 +139,9 @@ Partial.onReady = function() {
     }
 
     App.showRowExpansionCompleted = function(row, data) {
-        var type = row.collectionActivityType;
+
+        debugger;
+        var type = row.relatedBusinessEntitySubType;
         Partial.Widgets.status.caption = row.relatedBusinessEntityStatus;
         Partial.Widgets.activityType.caption = row.collectionActivityType;
         populateDataInRowExpansion(row, type);
@@ -144,6 +159,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
+            Partial.Widgets.description.caption = 'Call Outbound  - Reached';
         } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
@@ -157,6 +173,7 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
+            Partial.Widgets.description.caption = 'Call Outbound  - Not Reached';
         } else if (type == 'CALL-IB') {
             $('.phone').show();
             $('.actionID').show();
@@ -170,6 +187,7 @@ Partial.onReady = function() {
             $('.callDuration').show();
             $('.blankGrid').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Call Inbound';
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -183,6 +201,7 @@ Partial.onReady = function() {
             $('.email').show();
             $('.blankGrid').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Email Inbound';
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
             $('.outcome').hide();
@@ -196,7 +215,18 @@ Partial.onReady = function() {
             $('.email').hide();
             $('.actionID').show();
             $('.comments').show();
+            Partial.Widgets.description.caption = 'Follow-up';
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
+
+            if (type == 'NOTC1-PMTR') {
+                Partial.Widgets.description.caption = 'Payment Reminder';
+            } else if (type == 'NOTC2-OD') {
+                Partial.Widgets.description.caption = 'Overdue Notice';
+            } else if (type == 'NOTC3-DIST') {
+                Partial.Widgets.description.caption = 'Disconnect Notice';
+            } else if (type == 'NOTC4-CANL') {
+                Partial.Widgets.description.caption = 'Cancellation Notice';
+            }
             $('.customerName').show();
             $('.email').hide();
             $('.noticeEmail').show();
