@@ -346,7 +346,8 @@ public class CollectionTreatmentService {
                     banRefIds = billingAccountRef.stream().map(a -> a.getId()).collect(Collectors.toList());
 
                 }
-                orderMgmtHistoryResponse.setActionId(collectionActivityLog.getId());
+
+                orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
                 orderMgmtHistoryResponse.setStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
                 orderMgmtHistoryResponse.setAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
                 orderMgmtHistoryResponse.setGetAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
