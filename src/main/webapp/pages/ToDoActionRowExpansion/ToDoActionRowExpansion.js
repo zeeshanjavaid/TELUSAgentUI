@@ -41,6 +41,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
+            Partial.Widgets.description.caption = 'Call Outbound  - Reached';
         } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
             $('.phone').show();
@@ -54,6 +55,7 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
+            Partial.Widgets.description.caption = 'Call Outbound  - Not Reached';
         } else if (type == 'CALL-IB') {
             $('.phone').show();
             $('.actionID').show();

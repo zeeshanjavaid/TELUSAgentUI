@@ -61,6 +61,12 @@ import java.net.URLDecoder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fico.dmp.commonutilityservice.CommonUtilityService;
+import com.fico.telus.model.LookUpResponseWithTeamName;
+import io.swagger.client.model.*;
+
+
+
 
 
 
@@ -77,6 +83,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
  */
 @ExposeToClient
 public class CollectionDataService {
+
+	@Autowired
+	private CommonUtilityService commonUtilityService;
 
 
     @Autowired
@@ -128,11 +137,15 @@ public class CollectionDataService {
     
     ///searchEntity
     @RequestMapping(value = "/entitySearch", method = {RequestMethod.GET})
-    public EntitySearchResponseArray getEntitySearch(@RequestParam(required = true)String inputType, @RequestParam(required = true)String inputValue, @RequestParam(required = true)String level, @RequestParam(required = true)String searchMatchCriteria, @RequestParam(required = true)String billingSystem, Integer offset, Integer limit) throws Exception  {
+    public List<LookUpResponseWithTeamName> getEntitySearch(@RequestParam(required = true)String inputType, @RequestParam(required = true)String inputValue, @RequestParam(required = true)String level, @RequestParam(required = true)String searchMatchCriteria, @RequestParam(required = true)String billingSystem, Integer offset, Integer limit) throws Exception  {
 
         if (isStubEnabled) {
+            			EntitySearchResponseArray entitySearchResponseArray=new EntitySearchResponseArray();
 
-                return objectMapper.readValue("[{\"banId\": 224434,\"banName\": \"Air Canada Toronto\",\"billingSystem\": \"CES\",\"rcId\": 323223,\"cbucId\": 1323232,\"entityId\": 67666,\"entityName\": \"Air Canada Ontario\",\"entityType\": \"RCID\",\"entityOwner\": \"Agent123\",\"dntlFlag\": true},{\"banId\": 24343,\"banName\": \"Rexdale Pharmacy\",\"billingSystem\": \"CES\",\"rcId\": 224232,\"cbucId\": 3232232,\"entityId\": 676667,\"entityName\": \"Rexdale\",\"entityType\": \"RCID\",\"entityOwner\": \"Agent345\",\"dntlFlag\": false},    {\"banId\": 44343,\"banName\": \"first Shop\",\"billingSystem\": \"CES\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 676689,\"entityName\": \"first\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Abc xyz\",\"dntlFlag\": true},{\"banId\": 44353,\"banName\": \"Rexdale here\",\"billingSystem\": \"CES\",\"rcId\": 23456,\"cbucId\": 323211,\"entityId\": 57609,\"entityName\": \"Rexdale\",\"entityType\": \"BAN\",\"entityOwner\": \"Agent345\",\"dntlFlag\": true},{\"banId\": 44343,\"banName\": \"first Shop\",\"billingSystem\": \"CESE\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 676689,\"entityName\": \"first\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Abc xyz\",\"dntlFlag\": true},{\"banId\": 84303,\"banName\": \"Titan 235\",\"billingSystem\": \"CESE\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 67666,\"entityName\": \"Ent\",\"entityType\": \"RCID\",\"entityOwner\": \"Tom Bill\",\"dntlFlag\": true},{\"banId\": 74345,\"banName\": \"Number character\",\"billingSystem\": \"CES\",\"rcId\": 2224890,\"cbucId\": 3230933,\"entityId\": 6787866,\"entityName\": \"Num\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Venus Bill\",\"dntlFlag\": false},{\"banId\": 56581,\"banName\": \"Sixth entity\",\"billingSystem\": \"CES\",\"rcId\": 222780,\"cbucId\": 3290933,\"entityId\": 670966,\"entityName\": \"Number\",\"entityType\": \"BAN\",\"entityOwner\": \"Harry Jack\",\"dntlFlag\": false},{\"banId\": 73581,\"banName\": \"Raven Bay\",\"billingSystem\": \"CES\",\"rcId\": 222780,\"cbucId\": 3290933,\"entityId\": 670966,\"entityName\": \"Number\",\"entityType\": \"BAN\",\"entityOwner\": \"Ham 345\",\"dntlFlag\": false},{\"banId\": 534781,\"banName\": \"This is ban Name for the banID 55781, CES\",\"billingSystem\": \"CES\",\"rcId\": 0,\"cbucId\": 32586,\"entityId\": 1209066,\"entityName\": \"letter\",\"entityType\": \"RCID\",\"entityOwner\": \"Veronica Shell\",\"dntlFlag\": false},{\"banId\": 55581,\"banName\": \"Shelly890\",\"billingSystem\": \"CES\",\"rcId\": 90900,\"cbucId\": 322343,\"entityId\": 27654,\"entityName\": \"Shell78\",\"entityType\": \"BAN\",\"entityOwner\": \"Owner\",\"dntlFlag\": true},{\"banId\": 557821,\"banName\": \"Raven bay\",\"billingSystem\": \"CES\",\"rcId\": 9056910,\"cbucId\": 32443,\"entityId\": 27854,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 5781,\"banName\": \"Shril 890\",\"billingSystem\": \"CES\",\"rcId\": 90890,\"cbucId\": 3243,\"entityId\": 2234,\"entityName\": \"Vero Roll\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Shri\",\"dntlFlag\": true},{\"banId\": 576881,\"banName\": \"Raven bay\",\"billingSystem\": \"CES CES\",\"rcId\": 908340,\"cbucId\": 31243,\"entityId\": 22254,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 98765,\"banName\": \"Raven bay\",\"billingSystem\": \"CES CES\",\"rcId\": 72390,\"cbucId\": 329943,\"entityId\": 27054,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": false},{\"banId\": 8796,\"banName\": \"Testing 123 Lookup\",\"billingSystem\": \"CES\",\"rcId\": 91090,\"cbucId\": 32783,\"entityId\": 290,\"entityName\": \"search66\",\"entityType\": \"RCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": false},{\"banId\": 87096,\"banName\": \"John Kay\",\"billingSystem\": \"CES\",\"rcId\": 91120,\"cbucId\": 56797,\"entityId\": 555,\"entityName\": \"Faly341\",\"entityType\": \"Account Group\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 16096,\"banName\": \"Johny Brown kay\",\"billingSystem\": \"CES\",\"rcId\": 89020,\"cbucId\": 56,\"entityId\": 6605,\"entityName\": \"Dalerex\",\"entityType\": \"RCID\",\"entityOwner\": \"Entity#89\",\"dntlFlag\": true},{\"banId\": 906,\"banName\": \"US Entity\",\"billingSystem\": \"CES\",\"rcId\": 8820,\"cbucId\": 906,\"entityId\": 898989,\"entityName\": \"US\",\"entityType\": \"CBUCID\",\"entityOwner\": \"JoyBill45\",\"dntlFlag\": true},{\"banId\": 16096,\"banName\": \"Sheron product\",\"billingSystem\": \"CES\",\"rcId\": 9090020,\"cbucId\": 126,\"entityId\": 1,\"entityName\": \"Shron\",\"entityType\": \"RCID\",\"entityOwner\": \"Entity Owning\",\"dntlFlag\": true},{\"banId\": 16,\"banName\": \"Sheron product\",\"billingSystem\": \"CES\",\"rcId\": 50020,\"cbucId\": 126,\"entityId\": 1,\"entityName\": \"Shron\",\"entityType\": \"Account Group\",\"entityOwner\": \"Katie78\",\"dntlFlag\": false},{\"banId\": 1906,\"banName\": \"Zeb xuv\",\"billingSystem\": \"CES\",\"rcId\": 47834,\"cbucId\": 196,\"entityId\": 100,\"entityName\": \"Zeby\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Shaolin@678\",\"dntlFlag\": false},{\"banId\": 896,\"banName\": \"Quera Desire\",\"billingSystem\": \"CES\",\"rcId\": 378,\"cbucId\": 8996,\"entityId\": 90900,\"entityName\": \"Query\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Eric Shellon\",\"dntlFlag\": false},{\"banId\": 9006,\"banName\": \"Swift BAN name\",\"billingSystem\": \"CES\",\"rcId\": 674,\"cbucId\": 7096,\"entityId\": 45677,\"entityName\": \"Swery Elik\",\"entityType\": \"BAN\",\"entityOwner\": \"Navon Sam713\",\"dntlFlag\": false},{\"banId\": 834906,\"banName\": \"Marian banname\",\"billingSystem\": \"CES\",\"rcId\": 7834,\"cbucId\": 566,\"entityId\": 10956,\"entityName\": \"Marry ghf\",\"entityType\": \"Account Group\",\"entityOwner\": \"Marina Fred\",\"dntlFlag\": true}]", EntitySearchResponseArray.class);
+
+                entitySearchResponseArray= objectMapper.readValue("[{\"banId\": 224434,\"banName\": \"Air Canada Toronto\",\"billingSystem\": \"CES\",\"rcId\": 323223,\"cbucId\": 1323232,\"entityId\": 67666,\"entityName\": \"Air Canada Ontario\",\"entityType\": \"RCID\",\"entityOwner\": \"Agent123\",\"dntlFlag\": true},{\"banId\": 24343,\"banName\": \"Rexdale Pharmacy\",\"billingSystem\": \"CES\",\"rcId\": 224232,\"cbucId\": 3232232,\"entityId\": 676667,\"entityName\": \"Rexdale\",\"entityType\": \"RCID\",\"entityOwner\": \"Agent345\",\"dntlFlag\": false},    {\"banId\": 44343,\"banName\": \"first Shop\",\"billingSystem\": \"CES\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 676689,\"entityName\": \"first\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Abc xyz\",\"dntlFlag\": true},{\"banId\": 44353,\"banName\": \"Rexdale here\",\"billingSystem\": \"CES\",\"rcId\": 23456,\"cbucId\": 323211,\"entityId\": 57609,\"entityName\": \"Rexdale\",\"entityType\": \"BAN\",\"entityOwner\": \"Agent345\",\"dntlFlag\": true},{\"banId\": 44343,\"banName\": \"first Shop\",\"billingSystem\": \"CESE\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 676689,\"entityName\": \"first\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Abc xyz\",\"dntlFlag\": true},{\"banId\": 84303,\"banName\": \"Titan 235\",\"billingSystem\": \"CESE\",\"rcId\": 222456,\"cbucId\": 3232233,\"entityId\": 67666,\"entityName\": \"Ent\",\"entityType\": \"RCID\",\"entityOwner\": \"Tom Bill\",\"dntlFlag\": true},{\"banId\": 74345,\"banName\": \"Number character\",\"billingSystem\": \"CES\",\"rcId\": 2224890,\"cbucId\": 3230933,\"entityId\": 6787866,\"entityName\": \"Num\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Venus Bill\",\"dntlFlag\": false},{\"banId\": 56581,\"banName\": \"Sixth entity\",\"billingSystem\": \"CES\",\"rcId\": 222780,\"cbucId\": 3290933,\"entityId\": 670966,\"entityName\": \"Number\",\"entityType\": \"BAN\",\"entityOwner\": \"Harry Jack\",\"dntlFlag\": false},{\"banId\": 73581,\"banName\": \"Raven Bay\",\"billingSystem\": \"CES\",\"rcId\": 222780,\"cbucId\": 3290933,\"entityId\": 670966,\"entityName\": \"Number\",\"entityType\": \"BAN\",\"entityOwner\": \"Ham 345\",\"dntlFlag\": false},{\"banId\": 534781,\"banName\": \"This is ban Name for the banID 55781, CES\",\"billingSystem\": \"CES\",\"rcId\": 0,\"cbucId\": 32586,\"entityId\": 1209066,\"entityName\": \"letter\",\"entityType\": \"RCID\",\"entityOwner\": \"Veronica Shell\",\"dntlFlag\": false},{\"banId\": 55581,\"banName\": \"Shelly890\",\"billingSystem\": \"CES\",\"rcId\": 90900,\"cbucId\": 322343,\"entityId\": 27654,\"entityName\": \"Shell78\",\"entityType\": \"BAN\",\"entityOwner\": \"Owner\",\"dntlFlag\": true},{\"banId\": 557821,\"banName\": \"Raven bay\",\"billingSystem\": \"CES\",\"rcId\": 9056910,\"cbucId\": 32443,\"entityId\": 27854,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 5781,\"banName\": \"Shril 890\",\"billingSystem\": \"CES\",\"rcId\": 90890,\"cbucId\": 3243,\"entityId\": 2234,\"entityName\": \"Vero Roll\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Shri\",\"dntlFlag\": true},{\"banId\": 576881,\"banName\": \"Raven bay\",\"billingSystem\": \"CES CES\",\"rcId\": 908340,\"cbucId\": 31243,\"entityId\": 22254,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 98765,\"banName\": \"Raven bay\",\"billingSystem\": \"CES CES\",\"rcId\": 72390,\"cbucId\": 329943,\"entityId\": 27054,\"entityName\": \"ent name\",\"entityType\": \"CBUCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": false},{\"banId\": 8796,\"banName\": \"Testing 123 Lookup\",\"billingSystem\": \"CES\",\"rcId\": 91090,\"cbucId\": 32783,\"entityId\": 290,\"entityName\": \"search66\",\"entityType\": \"RCID\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": false},{\"banId\": 87096,\"banName\": \"John Kay\",\"billingSystem\": \"CES\",\"rcId\": 91120,\"cbucId\": 56797,\"entityId\": 555,\"entityName\": \"Faly341\",\"entityType\": \"Account Group\",\"entityOwner\": \"EMt Owner\",\"dntlFlag\": true},{\"banId\": 16096,\"banName\": \"Johny Brown kay\",\"billingSystem\": \"CES\",\"rcId\": 89020,\"cbucId\": 56,\"entityId\": 6605,\"entityName\": \"Dalerex\",\"entityType\": \"RCID\",\"entityOwner\": \"Entity#89\",\"dntlFlag\": true},{\"banId\": 906,\"banName\": \"US Entity\",\"billingSystem\": \"CES\",\"rcId\": 8820,\"cbucId\": 906,\"entityId\": 898989,\"entityName\": \"US\",\"entityType\": \"CBUCID\",\"entityOwner\": \"JoyBill45\",\"dntlFlag\": true},{\"banId\": 16096,\"banName\": \"Sheron product\",\"billingSystem\": \"CES\",\"rcId\": 9090020,\"cbucId\": 126,\"entityId\": 1,\"entityName\": \"Shron\",\"entityType\": \"RCID\",\"entityOwner\": \"Entity Owning\",\"dntlFlag\": true},{\"banId\": 16,\"banName\": \"Sheron product\",\"billingSystem\": \"CES\",\"rcId\": 50020,\"cbucId\": 126,\"entityId\": 1,\"entityName\": \"Shron\",\"entityType\": \"Account Group\",\"entityOwner\": \"Katie78\",\"dntlFlag\": false},{\"banId\": 1906,\"banName\": \"Zeb xuv\",\"billingSystem\": \"CES\",\"rcId\": 47834,\"cbucId\": 196,\"entityId\": 100,\"entityName\": \"Zeby\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Shaolin@678\",\"dntlFlag\": false},{\"banId\": 896,\"banName\": \"Quera Desire\",\"billingSystem\": \"CES\",\"rcId\": 378,\"cbucId\": 8996,\"entityId\": 90900,\"entityName\": \"Query\",\"entityType\": \"CBUCID\",\"entityOwner\": \"Eric Shellon\",\"dntlFlag\": false},{\"banId\": 9006,\"banName\": \"Swift BAN name\",\"billingSystem\": \"CES\",\"rcId\": 674,\"cbucId\": 7096,\"entityId\": 45677,\"entityName\": \"Swery Elik\",\"entityType\": \"BAN\",\"entityOwner\": \"Navon Sam713\",\"dntlFlag\": false},{\"banId\": 834906,\"banName\": \"Marian banname\",\"billingSystem\": \"CES\",\"rcId\": 7834,\"cbucId\": 566,\"entityId\": 10956,\"entityName\": \"Marry ghf\",\"entityType\": \"Account Group\",\"entityOwner\": \"Marina Fred\",\"dntlFlag\": true}]", EntitySearchResponseArray.class);
+                
+                return  setTeamNameBasedOnEmplId(entitySearchResponseArray);
 
             }else{
 
@@ -148,7 +161,9 @@ public class CollectionDataService {
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
             logger.info("::::::::Entity data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
-           return objectMapper.readValue(responseStr,EntitySearchResponseArray.class);
+       //    return objectMapper.readValue(responseStr,EntitySearchResponseArray.class);
+           		 return  setTeamNameBasedOnEmplId(objectMapper.readValue(responseStr,EntitySearchResponseArray.class));
+
 
         }
     }
@@ -408,4 +423,41 @@ public class CollectionDataService {
     		 return teamsActionViewResponseList;
     }
     }
+    
+    
+    
+    
+   private List<LookUpResponseWithTeamName> setTeamNameBasedOnEmplId(EntitySearchResponseArray entitySearchResponseArray)
+     	{
+ 
+	    	List<LookUpResponseWithTeamName> lookUpResponseWithTeamNamesList=new ArrayList<>();
+	    	if(!entitySearchResponseArray.isEmpty())
+	    	{
+		    	for(EntitySearchResponse entitySearchResponse:entitySearchResponseArray)
+		    	{
+
+			    	LookUpResponseWithTeamName lookUpResponseWithTeamName=new LookUpResponseWithTeamName();
+				    lookUpResponseWithTeamName.setEntityId(entitySearchResponse.getEntityId());
+				    lookUpResponseWithTeamName.setEntityName(entitySearchResponse.getEntityName());
+				    lookUpResponseWithTeamName.setEntityType(entitySearchResponse.getEntityType());
+				    lookUpResponseWithTeamName.setCbucId(entitySearchResponse.getCbucId());
+				    lookUpResponseWithTeamName.setRcId(entitySearchResponse.getRcId());
+				    lookUpResponseWithTeamName.setBanId(entitySearchResponse.getBanId());
+				    lookUpResponseWithTeamName.setBanName(entitySearchResponse.getBanName());
+				    lookUpResponseWithTeamName.setBillingSystem(entitySearchResponse.getBillingSystem());
+
+    				if(entitySearchResponse.getEntityOwner()!=null)
+	    			{
+		    			lookUpResponseWithTeamName.setTeamName(commonUtilityService.getTeamIdUsingEmpId(entitySearchResponse.getEntityOwner()));
+			    	}
+
+				    lookUpResponseWithTeamName.setEntityOwner(entitySearchResponse.getEntityOwner());
+				    lookUpResponseWithTeamName.setDntlFlag(entitySearchResponse.isDntlFlag());
+
+				    lookUpResponseWithTeamNamesList.add(lookUpResponseWithTeamName);    
+			}
+		}
+
+		return lookUpResponseWithTeamNamesList;
+	}
 }

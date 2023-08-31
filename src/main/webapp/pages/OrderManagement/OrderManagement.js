@@ -892,10 +892,14 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
     } else if (isAlreadySusOrRes == "RESTORE") {
-        Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+
+    } else if (originalAgentId == null && selectedAgentId == null || selectedAgentId == "") {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person must be selected to Fulfill Order";
+
     } else {
 
 

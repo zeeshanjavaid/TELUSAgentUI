@@ -14,7 +14,7 @@ import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import io.swagger.client.model.EntityBanDetailsResponse;
 import io.swagger.client.model.EntityContactsResponse;
 import io.swagger.client.model.EntityDetailsResponse;
-import io.swagger.client.model.EntitySearchResponseArray;
+import com.fico.telus.model.LookUpResponseWithTeamName;
 import com.fico.telus.model.AssignedEntitiesInClassicModel;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -70,7 +70,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/entitySearch", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public EntitySearchResponseArray getEntitySearch(@RequestParam(value = "inputType", required = false) String inputType, @RequestParam(value = "inputValue", required = false) String inputValue, @RequestParam(value = "level", required = false) String level, @RequestParam(value = "searchMatchCriteria", required = false) String searchMatchCriteria, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<LookUpResponseWithTeamName> getEntitySearch(@RequestParam(value = "inputType", required = false) String inputType, @RequestParam(value = "inputValue", required = false) String inputValue, @RequestParam(value = "level", required = false) String level, @RequestParam(value = "searchMatchCriteria", required = false) String searchMatchCriteria, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getEntitySearch(inputType, inputValue, level, searchMatchCriteria, billingSystem, offset, limit);
     }
 
