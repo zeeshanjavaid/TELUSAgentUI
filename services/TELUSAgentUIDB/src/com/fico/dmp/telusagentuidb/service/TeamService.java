@@ -23,6 +23,7 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.fico.dmp.telusagentuidb.Team;
+import com.fico.dmp.telusagentuidb.TeamManager;
 import com.fico.dmp.telusagentuidb.TeamUser;
 
 /**
@@ -205,5 +206,17 @@ public interface TeamService {
      * @see Page
      */
     Page<TeamUser> findAssociatedTeamUsers(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated teamManagers for given Team id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated TeamManager instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<TeamManager> findAssociatedTeamManagers(Integer id, Pageable pageable);
 
 }

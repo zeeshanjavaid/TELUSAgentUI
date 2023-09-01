@@ -36,7 +36,7 @@ public class EntityNotes implements Serializable {
 
     private Timestamp createdOn;
 
-    private String createdBy;
+    private Integer createdBy;
 
     private String createdByEmplId;
 
@@ -69,7 +69,7 @@ public class EntityNotes implements Serializable {
         this.banId = banId;
     }
 
-    @Column(name = "`notes`", nullable = true, length = 256)
+    @Column(name = "`notes`", nullable = true, length = 255)
     public String getNotes() {
         return this.notes;
     }
@@ -96,12 +96,12 @@ public class EntityNotes implements Serializable {
         this.createdOn = createdOn;
     }
 
-    @Column(name = "`createdBy`", nullable = true, length = 255)
-    public String getCreatedBy() {
+    @Column(name = "`createdBy`", nullable = true, scale = 0, precision = 10)
+    public Integer getCreatedBy() {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
 

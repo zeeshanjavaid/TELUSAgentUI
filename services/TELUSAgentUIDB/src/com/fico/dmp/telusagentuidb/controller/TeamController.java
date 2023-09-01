@@ -40,6 +40,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 import com.fico.dmp.telusagentuidb.Team;
+import com.fico.dmp.telusagentuidb.TeamManager;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.service.TeamService;
 
@@ -196,6 +197,15 @@ public class TeamController {
 
         LOGGER.debug("Fetching all associated teamUsers");
         return teamService.findAssociatedTeamUsers(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/teamManagers", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the teamManagers instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<TeamManager> findAssociatedTeamManagers(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated teamManagers");
+        return teamService.findAssociatedTeamManagers(id, pageable);
     }
 
     /**

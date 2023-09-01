@@ -64,10 +64,6 @@ public class Document implements Serializable {
 
     private String externalId;
 
-    private Party party;
-
-    private DomainValue domainValueByDocumentLabel;
-
     private Application application;
 
     private User userByCreatedBy;
@@ -75,6 +71,10 @@ public class Document implements Serializable {
     private DomainValue domainValueByType;
 
     private User userByUpdatedBy;
+
+    private Party party;
+
+    private DomainValue domainValueByDocumentLabel;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -196,36 +196,6 @@ public class Document implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`partyId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_PARTY_par1bs57`"))
-    @Fetch(FetchMode.JOIN)
-    public Party getParty() {
-        return this.party;
-    }
-
-    public void setParty(Party party) {
-        if(party != null) {
-            this.partyId = party.getId();
-        }
-
-        this.party = party;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`documentLabel`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_DomainVal5lrkI`"))
-    @Fetch(FetchMode.JOIN)
-    public DomainValue getDomainValueByDocumentLabel() {
-        return this.domainValueByDocumentLabel;
-    }
-
-    public void setDomainValueByDocumentLabel(DomainValue domainValueByDocumentLabel) {
-        if(domainValueByDocumentLabel != null) {
-            this.documentLabel = domainValueByDocumentLabel.getId();
-        }
-
-        this.domainValueByDocumentLabel = domainValueByDocumentLabel;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`applicationId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_APPLICATIGwesA`"))
     @Fetch(FetchMode.JOIN)
     public Application getApplication() {
@@ -283,6 +253,36 @@ public class Document implements Serializable {
         }
 
         this.userByUpdatedBy = userByUpdatedBy;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`partyId`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_PARTY_par1bs57`"))
+    @Fetch(FetchMode.JOIN)
+    public Party getParty() {
+        return this.party;
+    }
+
+    public void setParty(Party party) {
+        if(party != null) {
+            this.partyId = party.getId();
+        }
+
+        this.party = party;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`documentLabel`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_DOCUMENT_TO_DomainVal5lrkI`"))
+    @Fetch(FetchMode.JOIN)
+    public DomainValue getDomainValueByDocumentLabel() {
+        return this.domainValueByDocumentLabel;
+    }
+
+    public void setDomainValueByDocumentLabel(DomainValue domainValueByDocumentLabel) {
+        if(domainValueByDocumentLabel != null) {
+            this.documentLabel = domainValueByDocumentLabel.getId();
+        }
+
+        this.domainValueByDocumentLabel = domainValueByDocumentLabel;
     }
 
 

@@ -205,6 +205,18 @@ public interface RoleService {
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
+     * Returns the associated userRoles for given Role id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated UserRole instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable);
+
+    /*
      * Returns the associated rolePermissions for given Role id.
      *
      * @param id value of id; value cannot be null
@@ -227,17 +239,5 @@ public interface RoleService {
      * @see Page
      */
     Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated userRoles for given Role id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated UserRole instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<UserRole> findAssociatedUserRoles(Integer id, Pageable pageable);
 
 }

@@ -22,46 +22,43 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.fico.dmp.telusagentuidb.Group;
-import com.fico.dmp.telusagentuidb.GroupRole;
-import com.fico.dmp.telusagentuidb.QueueGroup;
-import com.fico.dmp.telusagentuidb.UserGroup;
+import com.fico.dmp.telusagentuidb.TeamManager;
 
 /**
- * Service object for domain model class {@link Group}.
+ * Service object for domain model class {@link TeamManager}.
  */
-public interface GroupService {
+public interface TeamManagerService {
 
     /**
-     * Creates a new Group. It does cascade insert for all the children in a single transaction.
+     * Creates a new TeamManager. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on Group if any.
+     * This method overrides the input field values using Server side or database managed properties defined on TeamManager if any.
      *
-     * @param _group Details of the Group to be created; value cannot be null.
-     * @return The newly created Group.
+     * @param teamManager Details of the TeamManager to be created; value cannot be null.
+     * @return The newly created TeamManager.
      */
-    Group create(@Valid Group _group);
+    TeamManager create(@Valid TeamManager teamManager);
 
 
 	/**
-     * Returns Group by given id if exists.
+     * Returns TeamManager by given id if exists.
      *
-     * @param groupId The id of the Group to get; value cannot be null.
-     * @return Group associated with the given groupId.
-	 * @throws EntityNotFoundException If no Group is found.
+     * @param teammanagerId The id of the TeamManager to get; value cannot be null.
+     * @return TeamManager associated with the given teammanagerId.
+	 * @throws EntityNotFoundException If no TeamManager is found.
      */
-    Group getById(Integer groupId);
+    TeamManager getById(Integer teammanagerId);
 
     /**
-     * Find and return the Group by given id if exists, returns null otherwise.
+     * Find and return the TeamManager by given id if exists, returns null otherwise.
      *
-     * @param groupId The id of the Group to get; value cannot be null.
-     * @return Group associated with the given groupId.
+     * @param teammanagerId The id of the TeamManager to get; value cannot be null.
+     * @return TeamManager associated with the given teammanagerId.
      */
-    Group findById(Integer groupId);
+    TeamManager findById(Integer teammanagerId);
 
 	/**
-     * Find and return the list of Groups by given id's.
+     * Find and return the list of TeamManagers by given id's.
      *
      * If orderedReturn true, the return List is ordered and positional relative to the incoming ids.
      *
@@ -70,50 +67,42 @@ public interface GroupService {
      * If enabled, A null is inserted into the List at the proper position(s).
      * If disabled, the nulls are not put into the return List.
      *
-     * @param groupIds The id's of the Group to get; value cannot be null.
+     * @param teammanagerIds The id's of the TeamManager to get; value cannot be null.
      * @param orderedReturn Should the return List be ordered and positional in relation to the incoming ids?
-     * @return Groups associated with the given groupIds.
+     * @return TeamManagers associated with the given teammanagerIds.
      */
-    List<Group> findByMultipleIds(List<Integer> groupIds, boolean orderedReturn);
+    List<TeamManager> findByMultipleIds(List<Integer> teammanagerIds, boolean orderedReturn);
+
 
     /**
-     * Find and return the Group for given name  if exists.
+     * Updates the details of an existing TeamManager. It replaces all fields of the existing TeamManager with the given teamManager.
      *
-     * @param name value of name; value cannot be null.
-     * @return Group associated with the given inputs.
-     * @throws EntityNotFoundException if no matching Group found.
+     * This method overrides the input field values using Server side or database managed properties defined on TeamManager if any.
+     *
+     * @param teamManager The details of the TeamManager to be updated; value cannot be null.
+     * @return The updated TeamManager.
+     * @throws EntityNotFoundException if no TeamManager is found with given input.
      */
-    Group getByName(String name);
+    TeamManager update(@Valid TeamManager teamManager);
 
     /**
-     * Updates the details of an existing Group. It replaces all fields of the existing Group with the given _group.
+     * Deletes an existing TeamManager with the given id.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on Group if any.
-     *
-     * @param _group The details of the Group to be updated; value cannot be null.
-     * @return The updated Group.
-     * @throws EntityNotFoundException if no Group is found with given input.
+     * @param teammanagerId The id of the TeamManager to be deleted; value cannot be null.
+     * @return The deleted TeamManager.
+     * @throws EntityNotFoundException if no TeamManager found with the given id.
      */
-    Group update(@Valid Group _group);
+    TeamManager delete(Integer teammanagerId);
 
     /**
-     * Deletes an existing Group with the given id.
+     * Deletes an existing TeamManager with the given object.
      *
-     * @param groupId The id of the Group to be deleted; value cannot be null.
-     * @return The deleted Group.
-     * @throws EntityNotFoundException if no Group found with the given id.
+     * @param teamManager The instance of the TeamManager to be deleted; value cannot be null.
      */
-    Group delete(Integer groupId);
+    void delete(TeamManager teamManager);
 
     /**
-     * Deletes an existing Group with the given object.
-     *
-     * @param _group The instance of the Group to be deleted; value cannot be null.
-     */
-    void delete(Group _group);
-
-    /**
-     * Find all Groups matching the given QueryFilter(s).
+     * Find all TeamManagers matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
      *
@@ -121,30 +110,30 @@ public interface GroupService {
      *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Groups.
+     * @return Paginated list of matching TeamManagers.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
      */
     @Deprecated
-    Page<Group> findAll(QueryFilter[] queryFilters, Pageable pageable);
+    Page<TeamManager> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-     * Find all Groups matching the given input query. This method returns Paginated results.
+     * Find all TeamManagers matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Groups.
+     * @return Paginated list of matching TeamManagers.
      *
      * @see Pageable
      * @see Page
      */
-    Page<Group> findAll(String query, Pageable pageable);
+    Page<TeamManager> findAll(String query, Pageable pageable);
 
     /**
-     * Exports all Groups matching the given input query to the given exportType format.
+     * Exports all TeamManagers matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -159,7 +148,7 @@ public interface GroupService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
     /**
-     * Exports all Groups matching the given input query to the given exportType format.
+     * Exports all TeamManagers matching the given input query to the given exportType format.
      *
      * @param options The export options provided by the user; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null exports all matching records.
@@ -172,7 +161,7 @@ public interface GroupService {
     void export(DataExportOptions options, Pageable pageable, OutputStream outputStream);
 
     /**
-     * Imports all Groups from the csv into the table.
+     * Imports all TeamManagers from the csv into the table.
      *
      * @param options The export options provided by the user; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null exports all matching records.
@@ -183,11 +172,11 @@ public interface GroupService {
     void importData(MultipartFile file);
 
     /**
-     * Retrieve the count of the Groups in the repository with matching query.
+     * Retrieve the count of the TeamManagers in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-     * @return The count of the Group.
+     * @return The count of the TeamManager.
      */
     long count(String query);
 
@@ -204,40 +193,5 @@ public interface GroupService {
 	 */
     Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
-    /*
-     * Returns the associated userGroups for given Group id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated UserGroup instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<UserGroup> findAssociatedUserGroups(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated queueGroups for given Group id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated QueueGroup instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<QueueGroup> findAssociatedQueueGroups(Integer id, Pageable pageable);
-
-    /*
-     * Returns the associated groupRoles for given Group id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated GroupRole instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<GroupRole> findAssociatedGroupRoles(Integer id, Pageable pageable);
 
 }

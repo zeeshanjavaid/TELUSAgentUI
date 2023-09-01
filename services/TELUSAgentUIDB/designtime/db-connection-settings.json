@@ -149,6 +149,9 @@
   }, {
     "table" : "ACTIVITY_PAYLOAD",
     "schema" : null
+  }, {
+    "table" : "TEAM_MANAGER",
+    "schema" : null
   } ],
   "schemaFilter" : [ ],
   "impersonateUser" : false,

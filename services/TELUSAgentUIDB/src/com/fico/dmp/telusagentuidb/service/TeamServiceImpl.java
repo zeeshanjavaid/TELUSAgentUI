@@ -31,6 +31,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import com.fico.dmp.telusagentuidb.Team;
+import com.fico.dmp.telusagentuidb.TeamManager;
 import com.fico.dmp.telusagentuidb.TeamUser;
 
 
@@ -44,6 +45,11 @@ import com.fico.dmp.telusagentuidb.TeamUser;
 public class TeamServiceImpl implements TeamService {
 
     private static final Logger LOGGER =  FAWBStaticLoggerBinder.getSingleton().getLoggerFactory().getLogger(TeamServiceImpl.class.getName());
+
+    @Lazy
+    @Autowired
+    @Qualifier("TELUSAgentUIDB.TeamManagerService")
+    private TeamManagerService teamManagerService;
 
     @Lazy
     @Autowired
@@ -183,6 +189,26 @@ public class TeamServiceImpl implements TeamService {
         queryBuilder.append("team.id = '" + id + "'");
 
         return teamUserService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "TELUSAgentUIDBTransactionManager")
+    @Override
+    public Page<TeamManager> findAssociatedTeamManagers(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated teamManagers");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("team.id = '" + id + "'");
+
+        return teamManagerService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    /**
+     * This setter method should only be used by unit tests
+     *
+     * @param service TeamManagerService instance
+     */
+    protected void setTeamManagerService(TeamManagerService service) {
+        this.teamManagerService = service;
     }
 
     /**

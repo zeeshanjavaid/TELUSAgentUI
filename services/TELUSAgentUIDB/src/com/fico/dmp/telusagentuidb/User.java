@@ -73,9 +73,9 @@ public class User implements Serializable {
 
     private Integer managerId;
 
-    private User userByUpdatedBy;
-
     private User userByCreatedBy;
+
+    private User userByUpdatedBy;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -233,24 +233,7 @@ public class User implements Serializable {
     }
 
     // ignoring self relation properties to avoid circular loops & unwanted fields from the related entity.
-    @JsonIgnoreProperties({"userByUpdatedBy", "userByCreatedBy", "usersForUpdatedBy", "usersForCreatedBy"})
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKi8inswykfga8w2neygvcmh6nh`"))
-    @Fetch(FetchMode.JOIN)
-    public User getUserByUpdatedBy() {
-        return this.userByUpdatedBy;
-    }
-
-    public void setUserByUpdatedBy(User userByUpdatedBy) {
-        if(userByUpdatedBy != null) {
-            this.updatedBy = userByUpdatedBy.getId();
-        }
-
-        this.userByUpdatedBy = userByUpdatedBy;
-    }
-
-    // ignoring self relation properties to avoid circular loops & unwanted fields from the related entity.
-    @JsonIgnoreProperties({"userByUpdatedBy", "userByCreatedBy", "usersForUpdatedBy", "usersForCreatedBy"})
+    @JsonIgnoreProperties({"userByCreatedBy", "userByUpdatedBy", "usersForCreatedBy", "usersForUpdatedBy"})
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`createdBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK6cupwxorr5rb6bx06ppvim5n0`"))
     @Fetch(FetchMode.JOIN)
@@ -264,6 +247,23 @@ public class User implements Serializable {
         }
 
         this.userByCreatedBy = userByCreatedBy;
+    }
+
+    // ignoring self relation properties to avoid circular loops & unwanted fields from the related entity.
+    @JsonIgnoreProperties({"userByCreatedBy", "userByUpdatedBy", "usersForCreatedBy", "usersForUpdatedBy"})
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`updatedBy`", referencedColumnName = "`id`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FKi8inswykfga8w2neygvcmh6nh`"))
+    @Fetch(FetchMode.JOIN)
+    public User getUserByUpdatedBy() {
+        return this.userByUpdatedBy;
+    }
+
+    public void setUserByUpdatedBy(User userByUpdatedBy) {
+        if(userByUpdatedBy != null) {
+            this.updatedBy = userByUpdatedBy.getId();
+        }
+
+        this.userByUpdatedBy = userByUpdatedBy;
     }
 
 
