@@ -304,7 +304,9 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setCbu(assignedEntitiesInClassicViewResponse.getCbu());
 				assignedEntitiesInClassicModel.setCbucidName(assignedEntitiesInClassicViewResponse.getCbucidName());
 				assignedEntitiesInClassicModel.setRcidName(assignedEntitiesInClassicViewResponse.getRcidName());
-				assignedEntitiesInClassicModel.setSubPortfolio(assignedEntitiesInClassicViewResponse.getSubPortfolio());
+				//assignedEntitiesInClassicModel.setSubPortfolio(assignedEntitiesInClassicViewResponse.getSubPortfolio());
+				assignedEntitiesInClassicModel.setPortfolioCategory(assignedEntitiesInClassicViewResponse.getPortfolioCategory());
+				assignedEntitiesInClassicModel.setPortfolioSubCategory(assignedEntitiesInClassicViewResponse.getPortfolioSubCategory());
 				assignedEntitiesInClassicModel.setEntityId(assignedEntitiesInClassicViewResponse.getEntityId());
 				assignedEntitiesInClassicModel.setEntityStatus(assignedEntitiesInClassicViewResponse.getEntityCollectionStatus());
 				assignedEntitiesInClassicModel.setEntityType(assignedEntitiesInClassicViewResponse.getEntityType());

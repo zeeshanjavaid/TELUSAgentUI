@@ -34,7 +34,8 @@ public class AssignedEntitiesInClassicModel {
 	private String cbu = null;
 	private String cbucidName = null;
 	private String rcidName = null;
-	private String subPortfolio = null;
+	private String portfolioCategory = null;
+	private String portfolioSubCategory = null;
 	private Integer entityId = null;
 	private String entityStatus = null;
 	private String entityType = null;
@@ -226,11 +227,18 @@ public class AssignedEntitiesInClassicModel {
 	public void setRcidName(String rcidName) {
 		this.rcidName = rcidName;
 	}
-	public String getSubPortfolio() {
-		return subPortfolio;
+
+	public String getPortfolioCategory() {
+		return portfolioCategory;
 	}
-	public void setSubPortfolio(String subPortfolio) {
-		this.subPortfolio = subPortfolio;
+	public void setPortfolioCategory(String portfolioCategory) {
+		this.portfolioCategory = portfolioCategory;
+	}
+	public String getPortfolioSubCategory() {
+		return portfolioSubCategory;
+	}
+	public void setPortfolioSubCategory(String portfolioSubCategory) {
+		this.portfolioSubCategory = portfolioSubCategory;
 	}
 	public Integer getEntityId() {
 		return entityId;
