@@ -133,11 +133,14 @@
     <wm-container name="container9" show="bind:Variables.isCreateScheduleClicked.dataSet.datavalue=='true'" margin="unset unset unset 2.5em">
         <wm-container name="container9_2" class="installmentScheduleLine-9_2con"></wm-container>
         <!--<wm-label padding="1em 0.5em 2em unset" name="label7" caption="Installment Schedule"></wm-label>-->
+        <wm-message name="errormessageInstallmentSchedule" type="error" show="bind:Variables.errormessageInstallmentSchedule.dataSet.dataValue? true : false" caption="bind:Variables.errormessageInstallmentSchedule.dataSet.dataValue" class="errormessage"
+            deferload="false" hideclose="true" width="41%"></wm-message>
         <h4 style="font-size: 19px; font-weight: bold; margin-bottom: 18px;"><b>Installment Schedule</b></h4>
         <wm-layoutgrid name="layoutgrid5">
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="5" name="gridcolumn17_1" horizontalalign="right">
-                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Classic" on-rowupdate="installmentScheduleTableRowupdate($event, widget, row)" navigationalign="right">
+                    <wm-table editmode="inline" name="installmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Classic" on-rowupdate="installmentScheduleTableRowupdate($event, widget, row)" navigationalign="right"
+                        on-beforerowinsert="installmentScheduleTableBeforerowinsert($event, widget, row, options)">
                         <wm-table-column binding="sequenceId" caption="Installment ID" widget-type="label" edit-widget-type="text" type="string" readonly="true" show="true">
                             <wm-label caption="bind:row.getProperty('sequenceId')" class="" conditionalclass=""></wm-label>
                         </wm-table-column>

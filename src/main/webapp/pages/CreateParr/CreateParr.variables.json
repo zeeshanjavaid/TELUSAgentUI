@@ -178,6 +178,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "errormessageInstallmentSchedule" : {
+    "_id" : "wm-errormessageInstallmentSchedule-wm.Variable-1693826898879",
+    "name" : "errormessageInstallmentSchedule",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getEntityBanDetailsForParr" : {
     "_id" : "wm-getEntityBanDetailsForParr-wm.ServiceVariable-1689761508440",
     "name" : "getEntityBanDetailsForParr",

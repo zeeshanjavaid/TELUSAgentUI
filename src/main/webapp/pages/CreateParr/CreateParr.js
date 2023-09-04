@@ -309,6 +309,7 @@ Partial.button2_1Click = function($event, widget) {
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Variables.errormessageInstallmentSchedule.dataSet.dataValue = null;
 }
 
 Partial.CreatePaymentArrangementonError = function(variable, data, xhrObj) {
@@ -336,6 +337,17 @@ Partial.getEntityBanDetailsForParronError = function(variable, data, xhrObj) {
 };
 Partial.installmentScheduleTable_dateOnChange = function($event, widget, row) {
     debugger;
-
+    var widgetDateValue = widget.datavalue;
+    var widgetDate = new Date(widgetDateValue);
+    widgetDate.setHours(0, 0, 0, 0);
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (widgetDate < currentDate) {
+        Partial.Variables.errormessageInstallmentSchedule.dataSet.dataValue = "Installment date cannot be less then current date";
+        $(".cancel.row-action-button.btn.app-button.btn-danger.cancel-edit-row-button.btn-xs").click();
+        setTimeout(messageTimeout, 6000);
+    } else {
+        Partial.Variables.errormessageInstallmentSchedule.dataSet.dataValue = null;
+    }
 
 };
