@@ -37,6 +37,7 @@ Page.panel82Actionsclick = function($event, action, widget) {
 };
 Page.NameClick = function($event, widget, item, currentItemWidgets) {
 
+    debugger;
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Variables.errorMsg.dataSet.dataValue = "";
 

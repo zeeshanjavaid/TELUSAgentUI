@@ -17,6 +17,9 @@ public class GetTeamManagerNameResponse implements Serializable {
     @ColumnAlias("firstName")
     private String firstName;
 
+    @ColumnAlias("userId")
+    private Long userId;
+
     public String getFirstName() {
         return this.firstName;
     }
@@ -25,16 +28,26 @@ public class GetTeamManagerNameResponse implements Serializable {
         this.firstName = firstName;
     }
 
+    public Long getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof GetTeamManagerNameResponse)) return false;
         final GetTeamManagerNameResponse getTeamManagerNameResponse = (GetTeamManagerNameResponse) o;
-        return Objects.equals(getFirstName(), getTeamManagerNameResponse.getFirstName());
+        return Objects.equals(getFirstName(), getTeamManagerNameResponse.getFirstName()) &&
+                Objects.equals(getUserId(), getTeamManagerNameResponse.getUserId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName());
+        return Objects.hash(getFirstName(),
+                getUserId());
     }
 }

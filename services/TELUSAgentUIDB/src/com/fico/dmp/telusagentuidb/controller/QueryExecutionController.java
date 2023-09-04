@@ -1350,6 +1350,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getManagerByTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getManagerByTeamId")
+    public Page<GetManagerByTeamIdResponse> executeGetManagerByTeamId(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getManagerByTeamId");
+        Page<GetManagerByTeamIdResponse> _result = queryService.executeGetManagerByTeamId(teamId, pageable);
+        LOGGER.debug("got the result for named query: getManagerByTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getManagerByTeamId")
+    @RequestMapping(value = "/queries/getManagerByTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetManagerByTeamId(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getManagerByTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getManagerByTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetManagerByTeamId(teamId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_GetDVByCodeAndTypeCodeWithActiveFlag", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_GetDVByCodeAndTypeCodeWithActiveFlag")

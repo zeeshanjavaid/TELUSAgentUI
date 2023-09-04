@@ -154,6 +154,33 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "executeGetTeamManagerName" : {
+    "_id" : "wm-executeGetTeamManagerName-wm.ServiceVariable-1693807129882",
+    "name" : "executeGetTeamManagerName",
+    "owner" : "App",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "roles",
+      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamManagerName",
+    "operationId" : "QueryExecutionController_executeGetTeamManagerName",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getAllRoles" : {
     "_id" : "wm-getAllRoles1-wm.LiveVariable-1674562097966",
     "name" : "getAllRoles",

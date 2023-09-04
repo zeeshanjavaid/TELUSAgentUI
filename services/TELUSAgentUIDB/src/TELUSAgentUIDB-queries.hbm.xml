@@ -988,14 +988,14 @@ where USER.emplId = :emplId and USER.active = true) wmTempTable
 
     <sql-query name="getTeamManagerName">
         <![CDATA[
-        select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)
+        select CONCAT(u.firstName,' ', u.lastName) as firstName,u.id as userId from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)
         ]]>
     <query-param name="roles" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getTeamManagerName__count">
         <![CDATA[
-        select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable
+        select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as firstName,u.id as userId from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable
         ]]>
     <query-param name="roles" type="java.lang.String"/>
     </sql-query>
@@ -1305,6 +1305,20 @@ END ASC) wmTempTable
         select count(*) from (select COUNT(*) from `GROUP` where Id IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId) UNION  select COUNT(*) from ROLE where id IN(select GROUP_ROLE.roleId from `GROUP_ROLE` where `GroupId` IN(select USER_GROUP.groupId from USER_GROUP left join USER on USER_GROUP.userId = USER.id where USER_GROUP.userId = :UserId))) wmTempTable
         ]]>
     <query-param name="UserId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerByTeamId">
+        <![CDATA[
+        select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerByTeamId__count">
+        <![CDATA[
+        select count(*) from (select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="Query_GetDVByCodeAndTypeCodeWithActiveFlag">

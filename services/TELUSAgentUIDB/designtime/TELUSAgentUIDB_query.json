@@ -3098,6 +3098,66 @@
       } ]
     }
   },
+  "getManagerByTeamId" : {
+    "name" : "getManagerByTeamId",
+    "description" : "getManagerByTeamId",
+    "version" : "V2",
+    "queryString" : "select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId",
+    "countQueryString" : "select count(*) from (select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "35",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "TEAM_MANAGER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "managerName",
+        "fieldName" : "managerName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getManagerByTeamName" : {
     "name" : "getManagerByTeamName",
     "description" : "getManagerByTeamName",
@@ -3936,8 +3996,8 @@
     "name" : "getTeamManagerName",
     "description" : "getTeamManagerName",
     "version" : "V2",
-    "queryString" : "select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)",
-    "countQueryString" : "select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as firstName from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable",
+    "queryString" : "select CONCAT(u.firstName,' ', u.lastName) as firstName,u.id as userId from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)",
+    "countQueryString" : "select count(*) from (select CONCAT(u.firstName,' ', u.lastName) as firstName,u.id as userId from ROLE r join USER_ROLE ur on r.id=ur.roleId left join USER u on u.Id = ur.UserId WHERE FIND_IN_SET (r.role,:roles)) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -3972,6 +4032,20 @@
         },
         "tableName" : "",
         "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "userId",
+        "fieldName" : "userId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false
         }

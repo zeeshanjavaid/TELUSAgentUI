@@ -20,6 +20,38 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+    Partial.Variables.executeGetManagerByTeamId.setInput({
+        "teamId": Partial.pageParams.id
+    })
+
+    Partial.Variables.executeGetManagerByTeamId.invoke();
+
+
+
+    // For multi Select manager
+
+    // Partial.statusData = [];
+
+    // Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
+    //     Partial.statusData.push({
+    //         // id: item.code.replace(/\s/g, ''),
+    //         id: item.userId,
+    //         title: item.firstName
+    //     });
+    // });
+
+    // subComboBox = $('#teamManagerMutliSel').comboTree({
+
+    //     source: Partial.statusData,
+
+    //     isMultiple: true
+
+    // });
+
+
+
+
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.canceledClicked = false;
@@ -57,7 +89,8 @@ App.addTeams = function() {
 
 
 Partial.SaveButtonClick = function($event, widget) {
-    /*debugger;*/
+    debugger;
+
     Partial.isDeleteTeam = false;
     Partial.teamExists = false;
     Partial.teamIdExists = false;
@@ -65,6 +98,15 @@ Partial.SaveButtonClick = function($event, widget) {
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     let pattern = Partial.Widgets.TeamNameText.regexp;
+
+    if (Partial.Widgets.select1.datavalue != undefined) {
+
+        Partial.Variables.getTeamManagerNameByRole.dataSet.forEach(function(item) {
+            if (item.firstName == Partial.Widgets.select1.datavalue) {
+                Partial.Variables.managerId.dataSet = item.userId
+            }
+        });
+    }
 
     App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
     if (Partial.Widgets.TeamIdText.datavalue == undefined || Partial.Widgets.TeamIdText.datavalue == "") {
@@ -227,6 +269,7 @@ Partial.getTeamUseronSuccess = function(variable, data) {
         "TeamId": Partial.Variables.teamData.dataSet.TeamId,
         "TeamName": Partial.Variables.teamData.dataSet.TeamName,
         "TeamDescription": Partial.Variables.teamData.dataSet.TeamDescription
+
     }
     Partial.TeamAssignUser.forEach(function(sp) {
         sp.fullName = App.htmlEncode(sp.userId);
@@ -279,6 +322,18 @@ Partial.createTeamonSuccess = function(variable, data) {
             Partial.Variables.CreateTeamUser.invoke();
         })
     }
+    if (Partial.Variables.managerId.dataSet.dataValue != 0) {
+        Partial.Variables.CreateTeamManager.setInput({
+            'teamId': data.id,
+            'managerUserId': Partial.Variables.managerId.dataSet,
+            'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+            'createdOn': new Date(),
+            'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+            'updatedOn': new Date()
+        });
+        Partial.Variables.CreateTeamManager.invoke();
+    }
+
     if (Partial.Widgets.DualListUsers_TD.rightdataset == null || Partial.Widgets.DualListUsers_TD.rightdataset.length == 0) {
         Partial.Variables.readOnlyMode.dataSet.dataValue = true;
         App.refreshAllTeams();
@@ -304,22 +359,76 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
 
 Partial.updateTeamonSuccess = function(variable, data) {
 
+    debugger;
+
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
     });
     Partial.Variables.executeDeleteTeamUser.invoke();
+
+    if (Partial.Variables.managerId.dataSet.dataValue == 0) {
+
+        Partial.Variables.deleteTeamManager.setInput({
+            'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
+        });
+        Partial.Variables.deleteTeamManager.invoke();
+
+    } else if (Partial.Variables.managerId.dataSet.dataValue == undefined) {
+
+        Partial.Variables.CreateTeamManager.setInput({
+            'teamId': data.id,
+            'managerUserId': Partial.Variables.managerId.dataSet,
+            'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+            'createdOn': new Date(),
+            'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+            'updatedOn': new Date()
+        });
+        Partial.Variables.CreateTeamManager.invoke();
+
+    } else {
+
+        if (Partial.Variables.managerId.dataSet.dataValue != 0) {
+            Partial.Variables.updateTeammanager.setInput({
+                "id": Partial.Variables.executeGetManagerByTeamId.dataSet[0].id,
+                'teamId': data.id,
+                'managerUserId': Partial.Variables.managerId.dataSet,
+                'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+                'createdOn': new Date(),
+                'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
+                'updatedOn': new Date()
+            });
+            Partial.Variables.updateTeammanager.invoke();
+        }
+    }
 
 };
 
 Partial.deleteTeamConfirmOkClick = function($event, widget) {
 
+    debugger;
+
     Partial.isDeleteTeam = true;
 
     Partial.Widgets.deleteTeamDialog.close();
+
+    //Del team manager
+
+    if (Partial.Variables.executeGetManagerByTeamId.dataSet.length > 0) {
+        Partial.Variables.deleteTeamManager.setInput({
+            'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
+        });
+        Partial.Variables.deleteTeamManager.invoke();
+    }
+
+    // Del team user
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
     });
     Partial.Variables.executeDeleteTeamUser.invoke();
+
+
+
+
 
 
 };
@@ -371,5 +480,18 @@ Partial.DeleteButtonClick = function($event, widget) {
 };
 Partial.deleteTeamConfirmNoClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+
+};
+
+Partial.CreateTeamManageronSuccess = function(variable, data) {
+
+    debugger;
+
+    Partial.Variables.executeGetManagerByTeamId.setInput({
+        "teamId": data.teamId
+    })
+
+    Partial.Variables.executeGetManagerByTeamId.invoke();
+
 
 };
