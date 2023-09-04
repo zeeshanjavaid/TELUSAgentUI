@@ -343,7 +343,11 @@ public class CollectionTreatmentService {
                     banIds = collectionActivityLog.getBillingAccountIdRefs().stream().map(a -> a.getId().toString()).collect(Collectors.toList());
 
                     List<CollectionBillingAccountRef> billingAccountRef = collectionEntityService.getBillingAccountRef(null, null, null, null, null, String.join(",", banIds));
-                    banRefIds = billingAccountRef.stream().map(a -> a.getId()).collect(Collectors.toList());
+                  //  banRefIds = billingAccountRef.stream().map(a -> a.getId()).collect(Collectors.toList());
+                    List<BillingAccount> billingAccountRefIds = billingAccountRef.stream().map(a -> a.getBillingAccount()).collect(Collectors.toList());
+                    banRefIds =billingAccountRefIds.stream().map(a->Integer.valueOf(a.getId())).collect(Collectors.toList());
+
+
 
                 }
 

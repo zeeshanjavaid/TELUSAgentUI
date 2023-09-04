@@ -1638,6 +1638,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "UpdateODManagemntVaronSuccess(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

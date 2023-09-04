@@ -1209,3 +1209,12 @@ Partial.EditAndFulfillSentdialogClose = function($event, widget) {
     Partial.Variables.popUperrorMsg.dataSet.dataValue = "";
 
 };
+
+Partial.UpdateODManagemntVaronSuccess = function(variable, data) {
+
+    Partial.Widgets.assigned_closeActionDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
