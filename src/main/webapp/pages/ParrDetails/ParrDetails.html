@@ -146,6 +146,8 @@
     </wm-panel>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Renegotiate PARR" iconclass="" name="renegotiatePARRdialog" width="50%" height="100%" closable="true" on-opened="renegotiatePARRdialogOpened($event, widget)">
         <wm-layoutgrid name="layoutgrid6_1">
+            <wm-message name="errormessageInstallmentSchedule" type="error" show="bind:Variables.errMsgRenegotiateInstallment.dataSet.dataValue? true : false" caption="bind:Variables.errMsgRenegotiateInstallment.dataSet.dataValue" class="errormessage" deferload="false"
+                hideclose="true" width="90%"></wm-message>
             <wm-gridrow name="gridrow29">
                 <wm-gridcolumn columnwidth="2" name="gridcolumn74" class="parrIDLabelGrid">
                     <wm-label padding="0.5em 0.5em unset 0.5em" caption="PARR ID:" name="label5" color="grey" class="viewPARRLabel"></wm-label>
@@ -207,8 +209,8 @@
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Classic" class="getInstallment-reneTable" on-rowupdate="getInstallmentScheduleTableRowupdate($event, widget, row)"
                             showrowindex="false" on-rowinsert="getInstallmentScheduleTableRowinsert($event, widget, row)" navigationalign="right">
                             <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-                            <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="MM/dd/yyyy" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true"
-                                editdatepattern="MM/dd/yyyy" readonly="false"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true"
+                                showdropdownon="button" dataentrymode="picker" editdatepattern="yyyy-MM-dd" readonly="false" on-change="getInstallmentScheduleTable_dateOnChange($event, widget, row)"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                             <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>

@@ -43,6 +43,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "errMsgRenegotiateInstallment" : {
+    "_id" : "wm-errMsgRenegotiateInstallment-wm.Variable-1693934467994",
+    "name" : "errMsgRenegotiateInstallment",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getBillingAccountNameIdVar" : {
     "_id" : "wm-getBillingAccountNameIdVar-wm.ServiceVariable-1689084553579",
     "name" : "getBillingAccountNameIdVar",

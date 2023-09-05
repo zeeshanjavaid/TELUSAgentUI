@@ -259,7 +259,8 @@ Partial.CancelParrClick = function($event, widget) {
 
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
-    App.Variables.errorMsg.dataSet.dataValue = null
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = null;
 }
 
 Partial.updatePaymentArrangementonError = function(variable, data, xhrObj) {
@@ -341,5 +342,21 @@ Partial.getCollectionHistoryViewParronSuccess = function(variable, data) {
 };
 
 Partial.getCollectionHistoryViewParronError = function(variable, data) {
+
+};
+Partial.getInstallmentScheduleTable_dateOnChange = function($event, widget, row) {
+    debugger;
+    var widgetDateValue = widget.datavalue;
+    var widgetDate = new Date(widgetDateValue);
+    widgetDate.setHours(0, 0, 0, 0);
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    if (widgetDate < currentDate) {
+        Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = "Installment date cannot be less then current date";
+        $(".cancel.row-action-button.btn.app-button.btn-danger.cancel-edit-row-button.btn-xs").click();
+        setTimeout(messageTimeout, 6000);
+    } else {
+        Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = null;
+    }
 
 };
