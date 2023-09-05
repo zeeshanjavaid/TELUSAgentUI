@@ -266,31 +266,46 @@ Partial.CancelInstallmentScheduleClick = function($event, widget) {
 
 Partial.CreatePARRClick = function($event, widget) {
 
+    debugger;
 
-    Partial.Variables.CreatePaymentArrangement.setInput({
-        "CollectionPaymentArrangementCreate": {
-            'collectionEntity': {
-                'id': Partial.pageParams.entityId
-            },
-            'amount': Partial.Widgets.ParrTotal.datavalue,
-            'billingAccountRefs': Partial.Variables.SelectedBans.dataSet,
-            'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
-            'recurrence': Partial.Widgets.RecurrenceDropdown.datavalue,
-            'comment': Partial.Widgets.Comments.datavalue,
-            "channel": {
-                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
-                "originatorAppId": "FAWBTELUSAGENT"
+    var installmentLength = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
+    var installmentScheduleDataSet = Partial.Variables.ParrInstallmentSchedule.dataSet;
+    var breakCheck1 = false;
+    for (i = 0; i < installmentLength; i++) {
+        for (k = i + 1; k < installmentLength; k++) {
+            if (installmentScheduleDataSet[i].date == installmentScheduleDataSet[k].date) {
+                breakCheck1 = true;
+                break;
             }
         }
-    });
-    //Invoke POST createDispute service
-    Partial.Variables.CreatePaymentArrangement.invoke();
-    // App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
-    // Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
-    // Partial.Clear();
-    //  App.refreshParrList();
-    // setTimeout(messageTimeout, 5000);
+        if (breakCheck1) break;
+    }
 
+    if (breakCheck1) {
+        Partial.Variables.errormessageInstallmentSchedule.dataSet.dataValue = "Installment dates cannot be same. Please provide different installment dates";
+        setTimeout(messageTimeout, 6000);
+    } else {
+        Partial.Variables.errormessageInstallmentSchedule.dataSet.dataValue = null;
+        Partial.Variables.CreatePaymentArrangement.setInput({
+            "CollectionPaymentArrangementCreate": {
+                'collectionEntity': {
+                    'id': Partial.pageParams.entityId
+                },
+                'amount': Partial.Widgets.ParrTotal.datavalue,
+                'billingAccountRefs': Partial.Variables.SelectedBans.dataSet,
+                'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
+                'recurrence': Partial.Widgets.RecurrenceDropdown.datavalue,
+                'comment': Partial.Widgets.Comments.datavalue,
+                "channel": {
+                    "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                    "originatorAppId": "FAWBTELUSAGENT"
+                }
+            }
+        });
+
+        //Invoke POST createDispute service
+        Partial.Variables.CreatePaymentArrangement.invoke();
+    }
 
 };
 Partial.button2_1Click = function($event, widget) {
