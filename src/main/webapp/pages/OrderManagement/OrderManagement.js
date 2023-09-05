@@ -165,7 +165,7 @@ Partial.createbuttonClick = function($event, widget) {
     } else {
         // API Call will come here
 
-        Partial.Variables.createOrderManagment.setInput({
+        Partial.Variables.createOrderManagmentForSuspension.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "SUSPEND",
                 'reasonCode': Partial.Widgets.susReasonCode.datavalue.dataValue,
@@ -187,16 +187,7 @@ Partial.createbuttonClick = function($event, widget) {
                 },
             },
         });
-        Partial.Variables.createOrderManagment.invoke();
-
-        Partial.Widgets.CreateSuspensionRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
-
-        setTimeout(messageTimeout, 4000);
-
-        setTimeout(function() {
-            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-        }, 1000);
+        Partial.Variables.createOrderManagmentForSuspension.invoke();
 
 
     }
@@ -253,7 +244,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     } else {
         // API Call will come here
 
-        Partial.Variables.createOrderManagment.setInput({
+        Partial.Variables.createOrderManagmentForRestoral.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "RESTORE",
                 'reasonCode': Partial.Widgets.restoralReasonCode.datavalue.dataValue,
@@ -276,16 +267,9 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
-        Partial.Variables.createOrderManagment.invoke();
+        Partial.Variables.createOrderManagmentForRestoral.invoke();
 
-        Partial.Widgets.CreateRestoralRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Restored successfully.";
 
-        setTimeout(messageTimeout, 4000);
-
-        setTimeout(function() {
-            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-        }, 1000);
 
     }
 
@@ -328,7 +312,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     } else {
         // API Call will come here
 
-        Partial.Variables.createOrderManagment.setInput({
+        Partial.Variables.createOrderManagmentForCease.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CEASE",
                 'reasonCode': Partial.Widgets.ceaseReasonCode.datavalue.dataValue,
@@ -351,15 +335,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
-        Partial.Variables.createOrderManagment.invoke();
-        Partial.Widgets.CreateCeaseRequestdialog.close();
-        App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
-
-        setTimeout(messageTimeout, 4000);
-
-        setTimeout(function() {
-            Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-        }, 1000);
+        Partial.Variables.createOrderManagmentForCease.invoke();
 
     }
 
@@ -452,26 +428,6 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     }
     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
 
-    // if (originalAgentId != selectedAgentId) {
-
-    //     Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-
-    //     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-    //     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
-    //     Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
-    //     Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
-    //     Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
-    //     Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
-
-
-
-    //     Partial.Widgets.EditNotSentdialog.close();
-
-    //     Partial.Widgets.update_ActionDialog.open();
-
-    // } else {
-
-    // var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
 
     if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
@@ -502,7 +458,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
         } else {
 
-            Partial.Variables.UpdateODManagemntVar.setInput({
+            Partial.Variables.UpdateODManagemntAndDonotSend.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
@@ -523,13 +479,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             });
 
             //Invoke POST createDispute service
-            Partial.Variables.UpdateODManagemntVar.invoke();
-            Partial.Widgets.EditNotSentdialog.close();
-
-            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
-            setTimeout(messageTimeout, 5000);
-            App.refreshCollOrderMgmtList();
-
+            Partial.Variables.UpdateODManagemntAndDonotSend.invoke();
 
         }
     }
@@ -596,34 +546,6 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         updateStatus = "Order Assigned";
     }
 
-    // if (originalAgentId != selectedAgentId) {
-
-    //     Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-
-
-    //     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-    //     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
-
-    //     Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
-    //     Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
-    //     Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
-    //     Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
-
-    //     Partial.Widgets.EditNotSentdialog.close();
-
-    //     Partial.Widgets.update_ActionDialog.open();
-
-
-    // } else {
-    // var stepTypeCode;
-    // if (Partial.Widgets.EditNotSentdialog.title == "Edit Suspension Request") {
-    //     stepTypeCode = "SUSPEND";
-    // } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Restoral Request") {
-    //     stepTypeCode = "RESTORE";
-    // } else if (Partial.Widgets.EditNotSentdialog.title == "Edit Cease Request") {
-    //     stepTypeCode = "CEASE";
-    // }
-
 
     if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
@@ -654,7 +576,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
 
         } else {
-            Partial.Variables.UpdateODManagemntVar.setInput({
+            Partial.Variables.UpdateODManagemntAndSend.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
@@ -675,13 +597,9 @@ Partial.updateandsendbuttonClick = function($event, widget) {
             });
 
             //Invoke POST createDispute service
-            Partial.Variables.UpdateODManagemntVar.invoke();
+            Partial.Variables.UpdateODManagemntAndSend.invoke();
 
-            Partial.Widgets.EditNotSentdialog.close();
 
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
-            setTimeout(messageTimeout, 5000);
-            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -735,32 +653,6 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         updateStatus = "Order Assigned";
     }
 
-
-    // if (originalAgentId != selectedAgentId) {
-    //     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-    //     Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-    //     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
-    //     Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
-    //     Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
-    //     Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
-    //     Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
-
-
-    //     Partial.Widgets.EditAndFulfillSentdialog.close();
-    //     Partial.Widgets.update_ActionDialog.open();
-
-    // } else {
-    // var stepTypeCode;
-    // if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
-    //     stepTypeCode = "SUSPEND";
-    // } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Restoration") {
-    //     stepTypeCode = "RESTORE";
-    // } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
-    //     stepTypeCode = "CEASE";
-    // }
-
-
-
     if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
     } else if (isAlreadySusOrRes == "RESTORE") {
@@ -785,7 +677,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             Partial.Widgets.update_ActionDialog.open();
 
         } else {
-            Partial.Variables.UpdateODManagemntVar.setInput({
+            Partial.Variables.UpdateODManagemntAndDonotFullfill.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
@@ -806,13 +698,8 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             });
 
             //Invoke POST createDispute service
-            Partial.Variables.UpdateODManagemntVar.invoke();
+            Partial.Variables.UpdateODManagemntAndDonotFullfill.invoke();
 
-            Partial.Widgets.EditAndFulfillSentdialog.close();
-
-            App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
-            setTimeout(messageTimeout, 5000);
-            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -835,37 +722,6 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
         stepTypeCode = "CEASE";
     }
-
-    // if (originalAgentId != selectedAgentId) {
-
-
-    //     Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-
-
-    //     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-
-    //     Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
-    //     Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
-
-    //     Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
-    //     Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
-    //     Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
-
-
-    //     Partial.Widgets.EditAndFulfillSentdialog.close();
-
-    //     Partial.Widgets.update_ActionDialog.open();
-
-    // } else {
-
-    // var stepTypeCode;
-    // if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
-    //     stepTypeCode = "SUSPEND";
-    // } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Restoration") {
-    //     stepTypeCode = "RESTORE";
-    // } else if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Cease") {
-    //     stepTypeCode = "CEASE";
-    // }
 
     Partial.Variables.BanListRefIds.dataSet = [];
 
@@ -924,7 +780,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             Partial.Widgets.update_ActionDialog.open();
 
         } else {
-            Partial.Variables.UpdateODManagemntVar.setInput({
+            Partial.Variables.UpdateODManagemntAndFullfill.setInput({
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
@@ -945,13 +801,8 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             });
 
             //Invoke POST createDispute service
-            Partial.Variables.UpdateODManagemntVar.invoke();
+            Partial.Variables.UpdateODManagemntAndFullfill.invoke();
 
-            Partial.Widgets.EditAndFulfillSentdialog.close();
-
-            App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
-            setTimeout(messageTimeout, 5000);
-            App.refreshCollOrderMgmtList();
         }
     }
 };
@@ -999,7 +850,7 @@ Partial.closeAction_NoClick = function($event, widget) {
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
     debugger;
-    Partial.Variables.UpdateODManagemntVar.setInput({
+    Partial.Variables.UpdateODManagemntAndCloseAction.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
@@ -1014,18 +865,15 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
     });
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateODManagemntVar.invoke();
-    Partial.Widgets.assigned_closeActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
-    setTimeout(messageTimeout, 5000);
-    App.refreshCollOrderMgmtList();
+    Partial.Variables.UpdateODManagemntAndCloseAction.invoke();
+
 };
 
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
 
 
-    Partial.Variables.UpdateODManagemntVar.setInput({
+    Partial.Variables.UpdateODManagemntAndCancelledActiion.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
@@ -1041,12 +889,8 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
     });
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateODManagemntVar.invoke();
+    Partial.Variables.UpdateODManagemntAndCancelledActiion.invoke();
 
-    Partial.Widgets.assigned_cancleActionDialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
-    setTimeout(messageTimeout, 5000);
-    App.refreshCollOrderMgmtList();
 };
 Partial.assigned_cancleNoBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
@@ -1057,7 +901,7 @@ Partial.update_YesBtnClick = function($event, widget) {
     debugger;
     //  Partial.Widgets.EditNotSentdialog.close();
 
-    Partial.Variables.UpdateODManagemntVar.setInput({
+    Partial.Variables.UpdateODManagemntWhenAssignChange.setInput({
         'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
         'partitionKey': getCurrentDate(),
         'collectionEntityId': Partial.pageParams.entityId,
@@ -1080,18 +924,7 @@ Partial.update_YesBtnClick = function($event, widget) {
     });
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateODManagemntVar.invoke();
-
-    Partial.Widgets.update_ActionDialog.close();
-
-    //Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-    // Partial.Widgets.EditNotSentdialog.close();
-    App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
-    setTimeout(messageTimeout, 5000);
-    App.refreshCollOrderMgmtList();
-
-
-
+    Partial.Variables.UpdateODManagemntWhenAssignChange.invoke();
 
 };
 
@@ -1210,10 +1043,105 @@ Partial.EditAndFulfillSentdialogClose = function($event, widget) {
 
 };
 
-Partial.UpdateODManagemntVaronSuccess = function(variable, data) {
 
+Partial.createOrderManagmentForSuspensiononSuccess = function(variable, data) {
+
+    Partial.Widgets.CreateSuspensionRequestdialog.close();
+    App.Variables.successMessage.dataSet.dataValue = "Action Suspended successfully.";
+
+    setTimeout(messageTimeout, 4000);
+
+    setTimeout(function() {
+        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    }, 1000);
+
+
+
+};
+
+Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
+
+    Partial.Widgets.CreateRestoralRequestdialog.close();
+    App.Variables.successMessage.dataSet.dataValue = "Action Restored successfully.";
+
+    setTimeout(messageTimeout, 4000);
+
+    setTimeout(function() {
+        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    }, 1000);
+
+};
+
+Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
+
+    Partial.Widgets.CreateCeaseRequestdialog.close();
+    App.Variables.successMessage.dataSet.dataValue = "Action Ceased successfully.";
+
+    setTimeout(messageTimeout, 4000);
+
+    setTimeout(function() {
+        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+    }, 1000);
+
+
+};
+
+Partial.UpdateODManagemntAndDonotSendonSuccess = function(variable, data) {
+
+    Partial.Widgets.EditNotSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent To Fulfillment successfully.";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntAndSendonSuccess = function(variable, data) {
+    Partial.Widgets.EditNotSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+};
+
+Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
+    Partial.Widgets.EditAndFulfillSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+};
+
+Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
+
+    Partial.Widgets.EditAndFulfillSentdialog.close();
+
+    App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
     Partial.Widgets.assigned_closeActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+};
+
+Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data) {
+
+    Partial.Widgets.assigned_cancleActionDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = " Action Cancelled successfully";
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
+
+    Partial.Widgets.update_ActionDialog.close();
+    App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
