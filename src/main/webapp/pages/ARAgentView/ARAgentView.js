@@ -54,6 +54,7 @@ Page.applyFilter = function($event, widget) {
         'status': Page.Widgets.StatusSelect.datavalue,
         'fromDueDate': Page.Widgets.creationDate.datavalue,
         'toDueDate': Page.Widgets.completionDate.datavalue,
+        'viewType ': '1'
     });
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 };
@@ -145,4 +146,8 @@ Page.getAllActiveUserList_ARAgentView_forALLonSuccess = function(variable, data)
         Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet[0].empId;
         Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet[0].empId;
     }
+};
+
+Page.CollectionDataServiceGetActionViewByTeamonError = function(variable, data, xhrObj) {
+
 };

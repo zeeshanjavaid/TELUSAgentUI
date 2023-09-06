@@ -80,7 +80,7 @@
         <wm-layoutgrid name="layoutgrid4_1" padding="2em 2em 2em 2em" style="border: 1px solid #ddd;" width="96%" margin="2em 2em 2em 2em">
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
-                    <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic" pagesize="50" showrecordcount="true" navigationalign="right">
+                    <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic" pagesize="20" showrecordcount="true" navigationalign="right">
                         <wm-table-column binding="actionId" caption="Action ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityId" caption="ENT. ID" width="70px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>

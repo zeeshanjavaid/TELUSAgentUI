@@ -55,7 +55,23 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "entityOwner",
+      "value" : "ALL",
+      "type" : "string"
+    }, {
+      "target" : "workCategory",
+      "value" : "ALL",
+      "type" : "string"
+    }, {
+      "target" : "viewType",
+      "value" : "1",
+      "type" : "string"
+    }, {
+      "target" : "limit",
+      "value" : "2000",
+      "type" : "integer"
+    } ],
     "type" : "io.swagger.client.model.TeamsActionViewResponse",
     "service" : "CollectionDataService",
     "operation" : "getActionViewByTeam",
@@ -65,8 +81,9 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onError" : "CollectionDataServiceGetActionViewByTeamonError(variable, data, xhrObj)",
     "startUpdate" : true,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
