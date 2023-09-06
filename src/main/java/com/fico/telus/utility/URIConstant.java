@@ -24,6 +24,7 @@ public class URIConstant {
         public static final String ENTITY_BAN_DETAILS = "/entityBanDetails";
         public static final String ASSIGNED_ENTITIES_IN_ENTITY_VIEW = "/assignedEntitiesInEntityView";
         public static final String ASSIGNED_ENTITIES_IN_CLASSIC_VIEW = "/assignedEntitiesInClassicView";
+        public static final String ACTION_VIEW_BY_TEAM = "/actionViewByTeam";
 
 
     }
