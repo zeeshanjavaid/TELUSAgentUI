@@ -27,7 +27,7 @@
                 <wm-button class="btn-default" id="toDoBtn" caption="To Do" type="button" margin="unset 0.5em" name="button5_1" on-click="toDoButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn14" style="display: flex;flex-direction: column;width: 11%;class=" class="borderGrid">
-                <wm-button class="btn-default" id="completedBtn" caption="Completed" type="button" margin="unset 1.3em unset 0.5em" name="button5_1" on-click="completedButtonClick($event, widget)"></wm-button>
+                <wm-button class="btn-default" id="completedBtn" caption="History" type="button" margin="unset 1.3em unset 0.5em" name="button5_1" on-click="completedButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn15" style="display: flex;flex-direction: column;width: 7.5%;" horizontalalign="left" padding="unset unset unset 1em">
                 <wm-icon name="icon1" iconclass="fico-icon-filter fa-" iconsize="1.5em" on-click="openFilterGrid()" class="filterIcon"></wm-icon>
@@ -48,7 +48,11 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn9_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Type" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="typeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionFilter.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="typeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionFilter.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue" on-change="typeSelectChange($event, widget, newVal, oldVal)"></wm-select>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" id="eventTypeColl" name="gridcolumn99_1">
+                <wm-label padding="unset 0.5em unset unset" caption="Event Type" name="label4" color="gray" class="filterLabel"></wm-label>
+                <wm-select width="85%" name="EventTypeSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.eventTypeForHistory.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" id="creationDateGrid" name="gridcolumn10_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Creation Date" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -62,7 +66,7 @@
         <wm-gridrow name="gridrow4_1" margin="0 0 20px 0">
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn12_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Status" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="statusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="Select" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
+                <wm-select width="85%" name="statusSelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.actionStatus.dataSet" datafield="dataValue" placeholder="All" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn13_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Created By" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -305,7 +309,7 @@
                     <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" width="242px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Agent ID" width="135px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" width="121px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="collectionActivityTimestamp" caption="Completed DT" width="111px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
+                    <wm-table-column binding="collectionActivityTimestamp" caption="Event DT" width="111px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
                         readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCompletedBy" caption="Completed By" width="167px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" width="170px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

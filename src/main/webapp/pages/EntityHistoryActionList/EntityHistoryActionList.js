@@ -818,6 +818,7 @@ Partial.openFilterGrid = function($event, widget) {
         $('.categorySelectToDo').show();
         $('.categorySelectCompleted').hide();
         $('#completionDateGrid').hide();
+        $('#eventTypeColl').hide();
     } else if (toDoTable.style.display === "none") { // completed table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
@@ -825,6 +826,7 @@ Partial.openFilterGrid = function($event, widget) {
         $('.categorySelectToDo').hide();
         $('.categorySelectCompleted').show();
         $('#completionDateGrid').show();
+
     }
 
     //Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
@@ -1001,6 +1003,7 @@ Partial.toDoButtonClick = function($event, widget) {
 
     $('.categorySelectToDo').show();
     $('.categorySelectCompleted').hide();
+    $('#eventTypeColl').hide();
 
     // display TO-DO table and hide Completed table
     $('#toDoTableGrid').show();
@@ -1032,6 +1035,7 @@ Partial.completedButtonClick = function($event, widget) {
     $('#completedTableGrid').show();
     $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
+    $('#eventTypeColl').show();
 
 };
 
@@ -1314,12 +1318,15 @@ Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
 }
 
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Partial.Widgets.completedCategorySelect.datavalue == "PYMT_ARRNGMT") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypePaymentArr.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
     }
@@ -1473,5 +1480,19 @@ App.refreshCollActionList = function() {
 
 };
 Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row) {
+
+};
+Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
+        Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
+        if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
+
+        } else {
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
+        }
+
+    }
 
 };

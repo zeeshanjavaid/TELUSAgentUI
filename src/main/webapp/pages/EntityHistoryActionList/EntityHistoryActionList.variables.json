@@ -351,6 +351,26 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "eventTypeForHistory" : {
+    "_id" : "wm-eventTypeForHistory-wm.Variable-1693999500676",
+    "name" : "eventTypeForHistory",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Creation"
+    }, {
+      "dataValue" : "Status"
+    }, {
+      "dataValue" : "Comment"
+    }, {
+      "dataValue" : "Update"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "getAllActiveUserList" : {
     "_id" : "wm-getAllActiveUserList-wm.LiveVariable-1683291597317",
     "name" : "getAllActiveUserList",
@@ -1662,6 +1682,64 @@
       "dataValue" : "Order Assigned"
     }, {
       "dataValue" : "Order Fulfilled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statusWhenActionTypeCallOb_CallIb_And_Dispute" : {
+    "_id" : "wm-statusWhenActionTypeCallOb_CallIb_etc-wm.Variable-1693997285239",
+    "name" : "statusWhenActionTypeCallOb_CallIb_And_Dispute",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Closed"
+    }, {
+      "dataValue" : "Cancelled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statusWhenTypeIsSus_Res_Cease" : {
+    "_id" : "wm-statusWhenTypeIsSus_Res_Cease-wm.Variable-1693997174330",
+    "name" : "statusWhenTypeIsSus_Res_Cease",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    }, {
+      "dataValue" : "Order Fullfilled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statusWhenTypePaymentArr" : {
+    "_id" : "wm-statusWhenTypePaymentArr-wm.Variable-1693997408737",
+    "name" : "statusWhenTypePaymentArr",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Closed"
+    }, {
+      "dataValue" : "Renegotiated"
     } ],
     "type" : "string",
     "isList" : true,

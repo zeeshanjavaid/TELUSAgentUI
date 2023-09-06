@@ -1826,6 +1826,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 50,
+    "onError" : "getWorkCatByEmplIdForMultiSelectonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
