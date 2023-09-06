@@ -27,6 +27,39 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
+    //      For multi Select manager
+
+    Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+    Page.statusData = [];
+
+    Page.Variables.getWorkCatByEmplIdForMultiSelect.dataSet.forEach(function(item) {
+        Page.statusData.push({
+            // id: item.code.replace(/\s/g, ''),
+            id: item.code,
+            title: item.code
+        });
+    });
+
+    subComboBox = $('#WorkCategoryMutliSel').comboTree({
+        source: Page.statusData,
+        isMultiple: true,
+        // selected: false,
+
+        // cascadeSelect: true,
+        // collapse: true
+    });
+
+
+
+    subComboBox1 = $('#WorkCategoryMutliSelForBanView').comboTree({
+        source: Page.statusData,
+        isMultiple: true,
+        // selected: false,
+
+        // cascadeSelect: true,
+        // collapse: true
+    });
+
     Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
@@ -101,6 +134,8 @@ Page.banViewButtonClick = function($event, widget) {
 
 // function added to clear all the fields in the filter for Entity View
 Page.clearFilterFieldsEntityView = function($event, widget) {
+
+    debugger;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
     Page.Widgets.portfolioSelectEV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectEV.datavalue = "Y";
@@ -109,24 +144,41 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
     Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
     Page.Widgets.collStatusSelectEV.datavalue = "ALL";
+
+    subComboBox.clearSelection();
+    checkedItem = $("input:checked")
+    checkedItem.prop('checked', false)
+
+
+
+
+
 }
 
 // function added to clear all the fields in the filter for Ban View
 Page.clearFilterFieldsBanView = function($event, widget) {
+    debugger;
     Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
     Page.Widgets.portfolioSelectBV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectBV.datavalue = "Y";
     Page.Widgets.entityOwnerSelectBV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
     /* Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";*/
-    Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
+    // Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
     Page.Widgets.collStatusSelectBV.datavalue = "ALL";
+    subComboBox1.clearSelection();
+    checkedItem = $("input:checked")
+    checkedItem.prop('checked', false)
 }
 
 // function added to display table based on the filters for entity view
 Page.applyFiltersEntityView = function($event, widget) {
     debugger;
-    var workCategoriesEV = Page.Widgets.workCategorySelectEV.datavalue;
+    var workCategoriesEV = subComboBox.getSelectedIds();
+
+    // var workCategoriesEV = subComboBox._selectedItems.map(({
+    //     id
+    // }) => id);
     if (workCategoriesEV == '' || workCategoriesEV == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 10000);
@@ -153,7 +205,7 @@ Page.applyFiltersEntityView = function($event, widget) {
 // function added to display table based on the filters for ban view
 Page.applyFiltersBanView = function($event, widget) {
     debugger;
-    var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+    var workCategoriesBV = subComboBox1.getSelectedIds();
     if (workCategoriesBV == '' || workCategoriesBV == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 10000);

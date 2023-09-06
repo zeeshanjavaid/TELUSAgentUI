@@ -62,22 +62,25 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid" style="display: flex; flex-direction: column;">
-                    <wm-label caption="Work Category*" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
-                    <wm-label caption="(multi-select)" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
+                    <wm-container name="container1">
+                        <wm-label caption="Work Category*" color="grey" class="HomeFilterLabel" textalign="right" name="label18"></wm-label>
+                    </wm-container>
+                    <wm-container name="container2">
+                        <wm-label caption="(multi-select)" color="grey" class="HomeFilterLabel" textalign="right" name="label19"></wm-label>
+                    </wm-container>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <!--<wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
                         on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)"></wm-select>-->
                     <wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
-                        on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)"></wm-select>
-                </wm-gridcolumn>
+                        on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)" show="false"></wm-select><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <wm-select name="collStatusSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.CollStatus_home.dataSet" placeholder="" datafield="code" displayfield="code" datavalue="bind:Variables.CollStatus_home.dataSet[0].dataValue"></wm-select>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="entityViewFilterButtons" width="47.7%">
+                <wm-gridcolumn columnwidth="5" name="gridcolumn56" class="entityViewFilterButtons" width="47.7%">
                     <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFieldsEntityView()" name="button1" margin="0 10px 0 0"></wm-button>
                     <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFiltersEntityView($event, widget)" name="button3"></wm-button>
                 </wm-gridcolumn>
@@ -127,10 +130,7 @@
                     <wm-label caption="Work Category*" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                     <wm-label caption="(multi-select)" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="workCategorySelectBV" id="workCategorySelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeBV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
-                        on-change="workCategorySelectBVChange($event, widget, newVal, oldVal)"></wm-select>
-                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSelForBanView" placeholder="Select"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>

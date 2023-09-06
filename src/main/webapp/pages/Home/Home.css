@@ -51,3 +51,34 @@
 p.alert.app-message.alert-danger.errormessage {
     width: 98% !important;
 }
+
+.comboTreeArrowBtn {
+    border-radius: unset;
+   
+    background: none;
+    border-left: 0;
+    border-color: #4B286D;
+    border-top: 1px solid #4B286D !important;
+    border-right: 1px solid #4B286D !important;
+    border-bottom: 1px solid #4B286D !important;
+}
+
+input#WorkCategoryMutliSel {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}
+
+.mutli-select {
+    margin-top: -3px;
+}
+
+.comboTreeDropDownContainer{
+    height: 120px;
+}
+
+input#WorkCategoryMutliSelForBanView {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}

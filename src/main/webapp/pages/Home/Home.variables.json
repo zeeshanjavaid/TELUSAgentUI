@@ -1802,7 +1802,7 @@
     "isList" : true,
     "maxResults" : 50,
     "onSuccess" : "workCategoryValues_HomeEVonSuccess(variable, data, options)",
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

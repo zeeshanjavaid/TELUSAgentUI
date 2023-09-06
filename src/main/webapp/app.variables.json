@@ -1806,6 +1806,33 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
+  "getWorkCatByEmplIdForMultiSelect" : {
+    "_id" : "wm-getWorkCatByEmplIdForMultiSelect-wm.ServiceVariable-1693911337055",
+    "name" : "getWorkCatByEmplIdForMultiSelect",
+    "owner" : "App",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "emplId",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoriesByEmpIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetWorkCategoriesByEmpId",
+    "operationId" : "QueryExecutionController_executeGetWorkCategoriesByEmpId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 50,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getWorkCategoriesByCode" : {
     "_id" : "wm-getWorkCategoriesByCode-wm.ServiceVariable-1675149210998",
     "name" : "getWorkCategoriesByCode",
