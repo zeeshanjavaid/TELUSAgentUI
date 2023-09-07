@@ -143,7 +143,7 @@ Partial.onReady = function() {
         debugger;
         var type = row.relatedBusinessEntitySubType;
         Partial.Widgets.status.caption = row.relatedBusinessEntityStatus;
-        Partial.Widgets.activityType.caption = row.collectionActivityType;
+        Partial.Widgets.activityType.caption = row.relatedBusinessEntitySubType;
         populateDataInRowExpansion(row, type);
 
         if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
@@ -252,6 +252,19 @@ Partial.onReady = function() {
             $('.callDuration').hide();
             $('.actionID').hide();
             $('.phone').hide();
+        } else {
+            $('.eventID').show();
+            $('.activityType').hide();
+            $('.comments').show();
+            $('.customerName').hide();
+            $('.email').hide();
+            $('.noticeEmail').hide();
+            $('.reachedCustomer').hide();
+            $('.outcome').hide();
+            $('.blankGrid').hide();
+            $('.callDuration').hide();
+            $('.actionID').hide();
+            $('.phone').hide();
         }
     }
 };
@@ -269,7 +282,7 @@ function populateDataInRowExpansion(row, type) {
     if (type == 'SUSPEND' || type == 'SUS') {
         Partial.Widgets.description.caption = 'Suspension';
     } else if (type == 'RESTORE') {
-        Partial.Widgets.description.caption = 'Restorel';
+        Partial.Widgets.description.caption = 'Restore';
     } else if (type == 'CEASE') {
         Partial.Widgets.description.caption = 'Cease';
     } else {

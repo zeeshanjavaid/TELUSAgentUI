@@ -29,10 +29,17 @@ Page.onReady = function() {
 
     //      For multi Select manager
 
+    Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+
     Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
     Page.statusData = [];
 
-    Page.Variables.getWorkCatByEmplIdForMultiSelect.dataSet.forEach(function(item) {
+    //App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet
+
+    Page.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet.forEach(function(item) {
         Page.statusData.push({
             // id: item.code.replace(/\s/g, ''),
             id: item.code,

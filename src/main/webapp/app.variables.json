@@ -1826,6 +1826,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 50,
+    "onSuccess" : "getWorkCatByEmplIdForMultiSelectonSuccess(variable, data, options)",
     "onError" : "getWorkCatByEmplIdForMultiSelectonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : true,
@@ -1833,6 +1834,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
+  },
+  "getWorkCatByEmplIdForMultiSelectList" : {
+    "_id" : "wm-getWorkCatByEmplIdForMultiSelectList-wm.Variable-1694066389312",
+    "name" : "getWorkCatByEmplIdForMultiSelectList",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "getWorkCategoriesByCode" : {
     "_id" : "wm-getWorkCategoriesByCode-wm.ServiceVariable-1675149210998",

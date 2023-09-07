@@ -1392,6 +1392,14 @@ App.getLoggedInUserDetailsonSuccess = function(variable, data) {
 
 }
 
-App.getWorkCatByEmplIdForMultiSelectonError = function(variable, data, xhrObj){
-	
+App.getWorkCatByEmplIdForMultiSelectonError = function(variable, data, xhrObj) {
+
+};
+
+
+App.getWorkCatByEmplIdForMultiSelectonSuccess = function(variable, data) {
+
+
+    App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet = data;
+
 };

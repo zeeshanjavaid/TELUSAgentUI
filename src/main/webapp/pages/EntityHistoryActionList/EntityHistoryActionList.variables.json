@@ -214,6 +214,36 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "allStatusForHistory" : {
+    "_id" : "wm-allStatusForHistory-wm.Variable-1694082457608",
+    "name" : "allStatusForHistory",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    }, {
+      "dataValue" : "Order Fullfilled"
+    }, {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Closed"
+    }, {
+      "dataValue" : "Cancelled"
+    }, {
+      "dataValue" : "Renegotiated"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "categoryFilter" : {
     "_id" : "wm-categoryFilter-wm.Variable-1685602406288",
     "name" : "categoryFilter",
