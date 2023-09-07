@@ -165,16 +165,6 @@
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
-    }, {
-      "dataValue" : "PARR Update"
-    }, {
-      "dataValue" : "PARR Status"
-    }, {
-      "dataValue" : "Dispute Update"
-    }, {
-      "dataValue" : "Dispute Comment"
-    }, {
-      "dataValue" : "Dispute Status"
     } ],
     "type" : "string",
     "isList" : true,

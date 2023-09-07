@@ -821,8 +821,10 @@ Partial.openFilterGrid = function($event, widget) {
         $('#eventTypeColl').hide();
     } else if (toDoTable.style.display === "none") { // completed table
         Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
+        // Partial.Variables.actionFilter.dataSet = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
-        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectCompleted.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+        //  Partial.Variables.actionStatus.dataSet = "";
         $('.categorySelectToDo').hide();
         $('.categorySelectCompleted').show();
         $('#completionDateGrid').show();
@@ -1092,6 +1094,7 @@ Partial.completedButtonClick = function($event, widget) {
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
     Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
     Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+    // Partial.Variables.actionStatus.dataSet = "";
 
     $('.categorySelectToDo').hide();
     $('.categorySelectCompleted').show();
@@ -1385,7 +1388,7 @@ Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (Partial.Widgets.completedCategorySelect.datavalue == "PYMT_ARRNGMT") {
-        // Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
+        //  Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
         Partial.Variables.actionFilter.dataSet = "";
 
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypePaymentArr.dataSet;
@@ -1397,9 +1400,11 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+        // Partial.Variables.actionFilter.dataSet = "";
 
         if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == "" || Partial.Widgets.statusSelect.datavalue == "All") {
             Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+            // Partial.Variables.actionStatus.dataSet = "";
 
         }
     }
