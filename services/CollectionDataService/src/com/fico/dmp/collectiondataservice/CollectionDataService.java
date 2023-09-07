@@ -258,7 +258,8 @@ public class CollectionDataService {
                      .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
-                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus));
+                     .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
+                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
 
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
              
@@ -312,10 +313,11 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setEntityType(assignedEntitiesInClassicViewResponse.getEntityType());
 				assignedEntitiesInClassicModel.setEntityRisk(assignedEntitiesInClassicViewResponse.getEntityRisk());
 				assignedEntitiesInClassicModel.setEntityValue(assignedEntitiesInClassicViewResponse.getEntityValue());
-				assignedEntitiesInClassicModel.setEntityOwnerId(assignedEntitiesInClassicViewResponse.getEntityOwnerId());
+				assignedEntitiesInClassicModel.setEntityOwnerId(commonUtilityService.getNameUsingEmpId(assignedEntitiesInClassicViewResponse.getEntityOwnerId()));
 				assignedEntitiesInClassicModel.setBanCollectionStatus(assignedEntitiesInClassicViewResponse.getBanCollectionStatus());
 				assignedEntitiesInClassicModel.setClosingDate(assignedEntitiesInClassicViewResponse.getClosingDate());
 				assignedEntitiesInClassicModel.setClosingCycle(assignedEntitiesInClassicViewResponse.getClosingCycle());
+				assignedEntitiesInClassicModel.setAssignedTeam(commonUtilityService.getTeamIdUsingEmpId(assignedEntitiesInClassicViewResponse.getEntityOwnerId()));
 				assignedEntitiesInClassicModelList.add(assignedEntitiesInClassicModel);
 			}
              

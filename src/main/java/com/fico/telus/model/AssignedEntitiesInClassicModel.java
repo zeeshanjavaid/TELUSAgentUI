@@ -45,6 +45,7 @@ public class AssignedEntitiesInClassicModel {
 	private String banCollectionStatus = null;
 	private LocalDate closingDate = null;
 	private Integer closingCycle = null;
+	private String assignedTeam = null;
 	
 	
 	public String getBanId() {
@@ -293,6 +294,12 @@ public class AssignedEntitiesInClassicModel {
 	}
 	public void setClosingCycle(Integer closingCycle) {
 		this.closingCycle = closingCycle;
+	}
+	public String getAssignedTeam() {
+		return assignedTeam;
+	}
+	public void setAssignedTeam(String assignedTeam) {
+		this.assignedTeam = assignedTeam;
 	}
 
 }
