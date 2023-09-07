@@ -227,7 +227,7 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setTotalAr(assignedEntitiesInEntityViewResponse.getTotalAr());
             	 assignedEntitiesInEntityModel.setTotalOverDue(assignedEntitiesInEntityViewResponse.getTotalOverDue());
             	 assignedEntitiesInEntityModel.setOdRemaining(assignedEntitiesInEntityViewResponse.getOdRemaining());
-            	 assignedEntitiesInEntityModel.setEntityOwnerId(assignedEntitiesInEntityViewResponse.getEntityOwnerId());
+            	 assignedEntitiesInEntityModel.setEntityOwnerId(commonUtilityService.getNameUsingEmpId(assignedEntitiesInEntityViewResponse.getEntityOwnerId()));
             	 assignedEntitiesInEntityModel.setPrimeWorkCategory(assignedEntitiesInEntityViewResponse.getPrimeWorkCategory());
             	 assignedEntitiesInEntityModel.setPortfolioCategory(assignedEntitiesInEntityViewResponse.getPortfolioCategory());
             	 assignedEntitiesInEntityModel.setPortfolioSubCategory(assignedEntitiesInEntityViewResponse.getPortfolioSubCategory());
