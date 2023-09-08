@@ -149,7 +149,7 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
     /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
-    Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
+    // Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
     Page.Widgets.collStatusSelectEV.datavalue = "ALL";
 
     subComboBox.clearSelection();

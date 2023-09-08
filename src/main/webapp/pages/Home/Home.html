@@ -73,7 +73,10 @@
                         on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)"></wm-select>-->
                     <!--<wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"-->
                     <!--    on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)" show="false"></wm-select>-->
-                    <input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-gridcolumn>
+                    <wm-container name="container2_1">
+                        <wm-composite name="composite4_1" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-composite>
+                    </wm-container>
+                </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
@@ -130,7 +133,19 @@
                     <wm-label caption="Work Category*" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                     <wm-label caption="(multi-select)" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="2" name="gridcolumn50"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSelForBanView" placeholder="Select"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50_Ban">
+
+
+
+                    <wm-container name="container2_2">
+                        <wm-composite name="composite4_2" width="70%">
+
+                            <input type="text" name="checkAndUncheck" id="WorkCategoryMutliSelForBanView" placeholder="Select">
+
+                        </wm-composite>
+                    </wm-container>
+
+                </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
