@@ -174,8 +174,29 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         banCollectionStatus.push(d.banCollectionStatus);
     });
 
-
+    //To see whether the entity is a cancelled or not.
     var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
+
+    //To Get the entity level collection status
+    var entityLevelCollectionStatus = Page.Variables.getCollectionEntityById.dataSet.collectionStatus;
+
+    var entityCollectionStatusForTransferredEntity;
+    var getCollectionEntityIdForTransferredEntityVar = Page.Variables.getCollectionEntityIdForTransferredEntity;
+    getCollectionEntityIdForTransferredEntityVar.invoke({
+            "inputFields": {
+                "id": Page.Widgets.entityToTransferBanDropdown.datavalue
+            },
+        },
+        function(data) {
+            entityCollectionStatusForTransferredEntity = data.collectionStatus;
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
+
 
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
@@ -188,12 +209,16 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
     } else if (Page.Variables.selectedEntityToTransferStr.dataSet.dataValue == 'C') {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed to the canceled entity";
+    } else if (entityLevelCollectionStatus == 'INARRG' || entityLevelCollectionStatus == 'CEASE' || entityLevelCollectionStatus == 'SUSPEND') {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the entity should not be in INARRG / CEASE / SUSPEND collection status";
     } else if (banCollectionStatus.includes('CEASE') || banCollectionStatus.includes('SUSPEND') || banCollectionStatus.includes('INARRG')) {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in either CEASE / SUSPEND / INARGG status.";
     } else if (banStatus.includes('C')) {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the BAN's selected should not be in cancelled status";
     } else if (cancelledEntityVar == 'C') {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Cancelled Entity";
+    } else if (entityCollectionStatusForTransferredEntity == 'CEASE' || entityCollectionStatusForTransferredEntity == 'SUSPEND') {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed into the entity " + Page.Widgets.entityToTransferBanDropdown.displayValue + " because its in SUSPEND / CEASE status";
     } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
