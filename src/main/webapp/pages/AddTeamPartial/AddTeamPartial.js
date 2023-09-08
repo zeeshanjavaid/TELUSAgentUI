@@ -31,23 +31,23 @@ Partial.onReady = function() {
 
     // For multi Select manager
 
-    // Partial.statusData = [];
+    Partial.statusData = [];
 
-    // Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
-    //     Partial.statusData.push({
-    //         // id: item.code.replace(/\s/g, ''),
-    //         id: item.userId,
-    //         title: item.firstName
-    //     });
-    // });
+    Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
+        Partial.statusData.push({
+            // id: item.code.replace(/\s/g, ''),
+            id: item.userId,
+            title: item.firstName
+        });
+    });
 
-    // subComboBox = $('#teamManagerMutliSel').comboTree({
+    subComboBox = $('#teamManagerMutliSel').comboTree({
 
-    //     source: Partial.statusData,
+        source: Partial.statusData,
 
-    //     isMultiple: true
+        isMultiple: true
 
-    // });
+    });
 
 
 

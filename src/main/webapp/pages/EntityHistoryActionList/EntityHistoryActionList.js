@@ -947,9 +947,7 @@ Partial.applyFilter = function($event, widget) {
         if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_TRTMT_STEP") {
             categroyForCompleted = 'CollectionTreatmentStep';
             if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
-                //  typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
                 typeCodeForCompleted = '';
-                //  statusForHistory = '';
             } else {
                 typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             }
@@ -957,9 +955,7 @@ Partial.applyFilter = function($event, widget) {
 
             if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
                 statusForHistory = '';
-                //typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             } else {
-                //  typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
 
                 if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
                     if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
@@ -985,52 +981,32 @@ Partial.applyFilter = function($event, widget) {
 
         } else if (Partial.Widgets.completedCategorySelect.displayValue == "PYMT_ARRNGMT") {
             categroyForCompleted = 'CollectionPaymentArrangement';
-            //  statusForHistory = ""
 
             if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
-                //  typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
                 typeCodeForCompleted = '';
-                //  statusForHistory = '';
             } else {
                 typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             }
             if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
                 statusForHistory = '';
-                //typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             } else {
                 statusForHistory = Partial.Widgets.statusSelect.datavalue;
             }
 
-            // if (Partial.Widgets.completedCategorySelect.displayValue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
-            //     typeCodeForCompleted = 'PARR updates,PARR status';
-            //     statusForHistory = "";
-            // } else {
-            //     typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
-            // }
 
         } else if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_DISPUTE") {
             categroyForCompleted = 'CollectionDispute';
 
             if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
-                //  typeCodeForCompleted = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
                 typeCodeForCompleted = '';
-                //  statusForHistory = '';
             } else {
                 typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             }
             if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
                 statusForHistory = '';
-                //typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             } else {
                 statusForHistory = Partial.Widgets.statusSelect.datavalue;
             }
-
-
-            // if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
-            //     typeCodeForCompleted = 'Dispute Update,Dispute comment,Dispute status';
-            // } else {
-            //     typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
-            // }
 
         } else {
             categroyForCompleted = '';
@@ -1391,9 +1367,7 @@ Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
 Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (Partial.Widgets.completedCategorySelect.datavalue == "PYMT_ARRNGMT") {
-        //  Partial.Variables.actionFilter.dataSet = Partial.Variables.pmtArrgntCtgValues.dataSet;
         Partial.Variables.actionFilter.dataSet = "";
-
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypePaymentArr.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
         Partial.Widgets.typeSelect.datavalue = "";
@@ -1401,7 +1375,6 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
         Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_DISPUTE") {
-        // Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
         Partial.Variables.actionFilter.dataSet = "";
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
@@ -1409,13 +1382,7 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
         Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
         Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
-        // Partial.Variables.actionFilter.dataSet = "";
 
-        // if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == "" || Partial.Widgets.statusSelect.datavalue == "All") {
-        //     Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
-        //     // Partial.Variables.actionStatus.dataSet = "";
-
-        // }
     }
 }
 
@@ -1571,8 +1538,6 @@ Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row)
 };
 Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
-    // if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
-    //  Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
     if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
         Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
@@ -1582,6 +1547,6 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     }
 
-    // }
+
 
 };

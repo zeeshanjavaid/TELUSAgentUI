@@ -216,3 +216,28 @@ button.btn.app-button.btn-default.btn-listctrl {
     margin:3px;
 
 }
+
+.comboTreeArrowBtn {
+    border-radius: unset;
+   
+    background: none;
+    border-left: 0;
+    border-color: #4B286D;
+    border-top: 1px solid #4B286D !important;
+    border-right: 1px solid #4B286D !important;
+    border-bottom: 1px solid #4B286D !important;
+}
+
+input#teamManagerMutliSel {
+    height: 28px;
+    border-radius: unset;
+    border-color: #4B286D !important;
+}
+
+.mutli-select {
+    margin-top: -3px;
+}
+
+.comboTreeDropDownContainer{
+    height: 120px;
+}
