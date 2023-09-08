@@ -1393,20 +1393,26 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
 
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypePaymentArr.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
+        Partial.Widgets.typeSelect.datavalue = "";
+        Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_DISPUTE") {
         // Partial.Variables.actionFilter.dataSet = Partial.Variables.collDisputeCtgValues.dataSet;
         Partial.Variables.actionFilter.dataSet = "";
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
+        Partial.Widgets.typeSelect.datavalue = "";
+        Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
         // Partial.Variables.actionFilter.dataSet = "";
 
-        if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == "" || Partial.Widgets.statusSelect.datavalue == "All") {
-            Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
-            // Partial.Variables.actionStatus.dataSet = "";
+        // if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == "" || Partial.Widgets.statusSelect.datavalue == "All") {
+        //     Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+        //     // Partial.Variables.actionStatus.dataSet = "";
 
-        }
+        // }
     }
 }
 
@@ -1562,15 +1568,17 @@ Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row)
 };
 Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
-        Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
-        if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
-            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
+    // if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_TRTMT_STEP") {
+    //  Partial.Variables.actionFilter.dataSet = Partial.Variables.collTrtmtStpCtgValues.dataSet;
+    if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
+        Partial.Widgets.statusSelect.datavalue = "";
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
 
-        } else {
-            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
-        }
-
+    } else {
+        Partial.Widgets.statusSelect.datavalue = "";
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
     }
+
+    // }
 
 };
