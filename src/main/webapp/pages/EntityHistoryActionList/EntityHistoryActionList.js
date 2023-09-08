@@ -872,9 +872,11 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Widgets.createdBySelect.datavalue = "";
         Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
         Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+        Partial.Widgets.EventTypeSelect.datavalue = "";
 
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
+            'businessEntityEventType': '',
             'relatedBusinessEntitySubType': '',
             'relatedBusinessEntityType': '',
             'relatedBusinessEntityStatus': '',
@@ -1038,6 +1040,7 @@ Partial.applyFilter = function($event, widget) {
         }
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
+            'businessEntityEventType': Partial.Widgets.EventTypeSelect.datavalue,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
             'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': statusForHistory,
