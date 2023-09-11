@@ -402,6 +402,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "selectedEntCollStatusOfTrans" : {
+    "_id" : "wm-selectedEntCollStatusOfTrans-wm.Variable-1694430752182",
+    "name" : "selectedEntCollStatusOfTrans",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "selectedEntityToTransferStr" : {
     "_id" : "wm-selectedEntityToTransferStr-wm.Variable-1692973394103",
     "name" : "selectedEntityToTransferStr",
