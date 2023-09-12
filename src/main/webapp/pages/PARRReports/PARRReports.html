@@ -20,7 +20,7 @@
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
-            <wm-layoutgrid id="parrfilterGrid" name="layoutgrid4" margin="10px 0 10px 3px" style="border: 1px solid #ddd;">
+            <wm-layoutgrid id="parrfilterGrid" name="layoutgrid4" margin="10px 0 10px 3px" style="border: 1px solid #ddd;" width="99.8%">
                 <wm-gridrow name="gridrow1">
                     <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
                 </wm-gridrow>
@@ -60,7 +60,7 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">
-                        <wm-label padding="10px 20px 2px 32px" caption="Created Team" name="label4" color="gray" class="createdteamLLabel"></wm-label>
+                        <wm-label padding="10px 20px 2px 5px" caption="Created Team" name="label4" color="gray" class="createdteamLLabel"></wm-label>
                         <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeamPARRreport.dataSet" datafield="teamId" placeholder="Select" displayfield="teamName" on-change="createdTeamSelect($event, widget, newVal, oldVal)"></wm-select>
                     </wm-gridcolumn>
                 </wm-gridrow>

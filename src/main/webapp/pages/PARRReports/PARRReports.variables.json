@@ -54,10 +54,10 @@
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
-        "fieldName" : "userByUpdatedBy",
+        "fieldName" : "userByCreatedBy",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
-        "columnName" : "updatedBy",
+        "columnName" : "createdBy",
         "isPrimaryKey" : false,
         "notNull" : false,
         "length" : 0,
@@ -66,28 +66,12 @@
         "isRelated" : true,
         "relatedTableName" : "USER",
         "relatedEntityName" : "User",
-        "relatedColumnName" : "updatedBy",
-        "relatedFieldName" : "userByUpdatedBy.id",
+        "relatedColumnName" : "createdBy",
+        "relatedFieldName" : "userByCreatedBy.id",
         "isList" : false,
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
-          "type" : "integer",
-          "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
-          "isPrimaryKey" : false,
-          "notNull" : false,
-          "length" : 0,
-          "precision" : 10,
-          "generator" : "assigned",
-          "isRelated" : true,
-          "relatedTableName" : "USER",
-          "relatedEntityName" : "User",
-          "relatedColumnName" : "updatedBy",
-          "targetTable" : "USER",
-          "scale" : 0
-        }, {
           "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
@@ -101,6 +85,22 @@
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
           "relatedColumnName" : "createdBy",
+          "targetTable" : "USER",
+          "scale" : 0
+        }, {
+          "fieldName" : "userByUpdatedBy",
+          "type" : "integer",
+          "fullyQualifiedType" : "integer",
+          "columnName" : "updatedBy",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 10,
+          "generator" : "assigned",
+          "isRelated" : true,
+          "relatedTableName" : "USER",
+          "relatedEntityName" : "User",
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -287,10 +287,10 @@
           "scale" : 0
         } ]
       }, {
-        "fieldName" : "userByCreatedBy",
+        "fieldName" : "userByUpdatedBy",
         "type" : "integer",
         "fullyQualifiedType" : "integer",
-        "columnName" : "createdBy",
+        "columnName" : "updatedBy",
         "isPrimaryKey" : false,
         "notNull" : false,
         "length" : 0,
@@ -299,16 +299,16 @@
         "isRelated" : true,
         "relatedTableName" : "USER",
         "relatedEntityName" : "User",
-        "relatedColumnName" : "createdBy",
-        "relatedFieldName" : "userByCreatedBy.id",
+        "relatedColumnName" : "updatedBy",
+        "relatedFieldName" : "userByUpdatedBy.id",
         "isList" : false,
         "targetTable" : "USER",
         "scale" : 0,
         "columns" : [ {
-          "fieldName" : "userByUpdatedBy",
+          "fieldName" : "userByCreatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
-          "columnName" : "updatedBy",
+          "columnName" : "createdBy",
           "isPrimaryKey" : false,
           "notNull" : false,
           "length" : 0,
@@ -317,28 +317,12 @@
           "isRelated" : true,
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
-          "relatedColumnName" : "updatedBy",
-          "relatedFieldName" : "userByUpdatedBy.id",
+          "relatedColumnName" : "createdBy",
+          "relatedFieldName" : "userByCreatedBy.id",
           "isList" : false,
           "targetTable" : "USER",
           "scale" : 0,
           "columns" : [ {
-            "fieldName" : "userByUpdatedBy",
-            "type" : "integer",
-            "fullyQualifiedType" : "integer",
-            "columnName" : "updatedBy",
-            "isPrimaryKey" : false,
-            "notNull" : false,
-            "length" : 0,
-            "precision" : 10,
-            "generator" : "assigned",
-            "isRelated" : true,
-            "relatedTableName" : "USER",
-            "relatedEntityName" : "User",
-            "relatedColumnName" : "updatedBy",
-            "targetTable" : "USER",
-            "scale" : 0
-          }, {
             "fieldName" : "userByCreatedBy",
             "type" : "integer",
             "fullyQualifiedType" : "integer",
@@ -352,6 +336,22 @@
             "relatedTableName" : "USER",
             "relatedEntityName" : "User",
             "relatedColumnName" : "createdBy",
+            "targetTable" : "USER",
+            "scale" : 0
+          }, {
+            "fieldName" : "userByUpdatedBy",
+            "type" : "integer",
+            "fullyQualifiedType" : "integer",
+            "columnName" : "updatedBy",
+            "isPrimaryKey" : false,
+            "notNull" : false,
+            "length" : 0,
+            "precision" : 10,
+            "generator" : "assigned",
+            "isRelated" : true,
+            "relatedTableName" : "USER",
+            "relatedEntityName" : "User",
+            "relatedColumnName" : "updatedBy",
             "targetTable" : "USER",
             "scale" : 0
           }, {
@@ -538,10 +538,10 @@
             "scale" : 0
           } ]
         }, {
-          "fieldName" : "userByCreatedBy",
+          "fieldName" : "userByUpdatedBy",
           "type" : "integer",
           "fullyQualifiedType" : "integer",
-          "columnName" : "createdBy",
+          "columnName" : "updatedBy",
           "isPrimaryKey" : false,
           "notNull" : false,
           "length" : 0,
@@ -550,7 +550,7 @@
           "isRelated" : true,
           "relatedTableName" : "USER",
           "relatedEntityName" : "User",
-          "relatedColumnName" : "createdBy",
+          "relatedColumnName" : "updatedBy",
           "targetTable" : "USER",
           "scale" : 0
         }, {
@@ -926,16 +926,16 @@
     },
     "tableName" : "USER",
     "tableType" : "TABLE",
-    "properties" : [ "userByUpdatedBy", "userByCreatedBy" ],
+    "properties" : [ "userByCreatedBy", "userByUpdatedBy" ],
     "relatedTables" : [ {
-      "columnName" : "userByUpdatedBy",
-      "relationName" : "userByUpdatedBy",
+      "columnName" : "userByCreatedBy",
+      "relationName" : "userByCreatedBy",
       "type" : "User",
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"
     }, {
-      "columnName" : "userByCreatedBy",
-      "relationName" : "userByCreatedBy",
+      "columnName" : "userByUpdatedBy",
+      "relationName" : "userByUpdatedBy",
       "type" : "User",
       "watchOn" : "TELUSAgentUIDBUserData",
       "package" : "com.fico.dmp.telusagentuidb.User"

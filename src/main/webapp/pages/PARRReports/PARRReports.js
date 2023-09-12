@@ -68,8 +68,6 @@ Page.button2Click = function($event, widget) {
 
     }
 
-
-
     var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
     var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth();
 
@@ -85,8 +83,18 @@ Page.button2Click = function($event, widget) {
             Page.Variables.errorMsg.dataSet.dataValue = "Completion date can not be less than Creation date";
         }
     }
-
     setTimeout(messageTimeout, 10000);
+
+    Page.Variables.ParrReportServiceGetParrReport.setInput({
+        'entityRisk': Page.Widgets.entityRiskSelect.datavalue,
+        'evaluation': Page.Widgets.evalSelect.datavalue,
+        'status': Page.Widgets.parrStatusSelect.datavalue,
+        'createdFrom': Page.Widgets.creationDate.datavalue,
+        'createdTo': Page.Widgets.completionDate.datavalue,
+        'createdBy': Page.Widgets.createdBySelect.datavalue,
+
+
+    });
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
