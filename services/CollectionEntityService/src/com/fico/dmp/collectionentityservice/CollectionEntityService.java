@@ -363,16 +363,52 @@ public class CollectionEntityService {
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
   public List<CollectionPaymentArrangement> getPaymentArrangementsForParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
   	
+	  String statusStr = null;
+		if(status != null) {
+			statusStr = "eq:"+status;
+		}
+		
+		String entityIdStr = null;
+		if(entityId != null) {
+			entityIdStr = "eq:"+entityId;
+		}
+		
+		String entityRiskStr = null;
+		if(entityRisk != null) {
+			entityRiskStr = "eq:"+entityRisk;
+		}
+		
+		String evaluationStr = null;
+		if(evaluation != null) {
+			evaluationStr = "eq:"+evaluation;
+		}
+		
+		String createdByStr = null;
+		if(createdBy != null) {
+			createdByStr = "eq:"+createdBy;
+		}
+		
+		String createdFromStr = null;
+		if(createdFrom != null) {
+			createdFromStr = "eq:"+createdFrom;
+		}
+		
+		String createdToStr = null;
+		if(createdTo != null) {
+			createdToStr = "eq:"+createdTo;
+		}
+	  
        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
-            .queryParam("fields", fields)
-             .queryParam("agentId", agentId)
-              .queryParam("entityRisk", entityRisk)
-               .queryParam("evaluation", evaluation)
-                .queryParam("status", status)
-                 .queryParam("createdBy", createdBy)
-                  .queryParam("createdFrom", createdFrom)
-                  .queryParam("limit", limit)
-                   .queryParam("createdTo", createdTo);
+            .queryParamIfPresent("fields", Optional.ofNullable(fields))
+             .queryParamIfPresent("agentId", Optional.ofNullable(agentId))
+              .queryParamIfPresent("entityRisk", Optional.ofNullable(entityRiskStr))
+               .queryParamIfPresent("evaluation", Optional.ofNullable(evaluationStr))
+                .queryParamIfPresent("status", Optional.ofNullable(statusStr))
+                 .queryParamIfPresent("createdBy", Optional.ofNullable(createdByStr))
+                  .queryParamIfPresent("createdFrom", Optional.ofNullable(createdFromStr))
+                  .queryParamIfPresent("limit", Optional.ofNullable(limit))
+                  .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
+                   .queryParamIfPresent("createdTo", Optional.ofNullable(createdToStr));
   	return parrService.getPaymentArrangements(entityId,builder.toUriString());
   }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
