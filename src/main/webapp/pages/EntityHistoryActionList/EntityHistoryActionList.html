@@ -302,8 +302,9 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table pagesize="10" name="getCollectionActivityLog_1Table3" title="" dataset="bind:Variables.GetCollectionActivityLogList.dataSet" navigation="Classic" navigationalign="right" showrecordcount="true">
-                    <wm-table-column binding="relatedBusinessEntitySubType" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityType" caption="Category" width="224px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntitySubType" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="businessEntityEventType" caption="Event Type" type="string" show="true" readonly="undefined"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" width="94px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
                         readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" width="242px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
