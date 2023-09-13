@@ -10,6 +10,7 @@ import java.lang.String;
 import com.fico.telus.model.BillingAccountModel;
 import java.lang.Integer;
 import com.fico.telus.model.AssignedTeamModel;
+import java.util.Date;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,12 @@ public class CommonUtilityController {
     @ApiOperation(value = "")
     public List<AssignedUserModel> getUserListByTeamId(@RequestParam(value = "teamId", required = false) String teamId) {
         return commonUtilityService.getUserListByTeamId(teamId);
+    }
+
+    @RequestMapping(value = "/saveManagerOnTeamCreate", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public String saveManagerOnTeamCreate(@RequestParam(value = "teamId", required = false) Integer teamId, @RequestParam(value = "managerIdListString", required = false) String managerIdListString, @RequestParam(value = "createdBy", required = false) Integer createdBy, @RequestParam(value = "updatedBy", required = false) Integer updatedBy, @RequestParam(value = "createdOn", required = false) Date createdOn, @RequestParam(value = "updatedOn", required = false) Date updatedOn) {
+        return commonUtilityService.saveManagerOnTeamCreate(teamId, managerIdListString, createdBy, updatedBy, createdOn, updatedOn);
     }
 }

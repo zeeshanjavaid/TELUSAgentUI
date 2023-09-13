@@ -733,6 +733,17 @@ Partial.createUserForm1_saveAction = function($event) {
         'emplid': Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId
     });
 
+
+    Partial.Variables.executeSelectedGetManagerByTeamId.setInput({
+        'teamId': Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId
+    });
+
+
+    Partial.Variables.executeSelectedGetManagerByTeamId.invoke();
+
+
+
+
     Partial.Variables.checkUserByEmplId.invoke({},
         function(data) {
             debugger;

@@ -5,6 +5,9 @@ package com.fico.dmp.commonutilityservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+import java.util.Date;
+
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +39,10 @@ import com.fico.telus.model.BillingAccountModel;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
+import com.fico.dmp.telusagentuidb.TeamManager;
+import com.fico.dmp.telusagentuidb.service.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 //import com.fico.dmp.commonutilityservice.model.*;
 
@@ -72,6 +79,9 @@ public class CommonUtilityService {
     
 	@Autowired
 	TELUSAgentUIDBQueryExecutorService telusAgentUIDBQueryExecutorService;
+	
+	 @Autowired
+    private TeamManagerService teamManagerService;
 
     /**
      * This is sample java operation that accepts an input from the caller and responds with "Hello".
@@ -216,6 +226,42 @@ public class CommonUtilityService {
         }
     	return teamId;
     }
+    
+    
+        public String saveManagerOnTeamCreate(Integer teamId, String managerIdListString, Integer createdBy, Integer updatedBy, Date createdOn, Date updatedOn)
+    {
+        
+         logger.info("managerListString", managerIdListString);
+                List<Integer> managerIdList =Arrays.asList(managerIdListString.split(",")).stream().map(Integer::parseInt).collect(Collectors.toList());
+                
+                logger.info("managerListint", managerIdList);
+
+        if(!managerIdList.isEmpty())
+        {
+            for(Integer managerId:managerIdList)
+            {
+
+                TeamManager teamManager=new TeamManager();
+                teamManager.setTeam(teamService.getById(teamId));
+                teamManager.setManagerUserId(managerId);
+                teamManager.setCreatedBy(createdBy);
+                teamManager.setUpdatedBy(updatedBy);
+                teamManager.setCreatedOn(convertDateToTimesStamp(createdOn));
+                teamManager.setUpdatedOn(convertDateToTimesStamp(updatedOn));
+                teamManagerService.create(teamManager);
+            }
+        }
+
+        return "Created team Manager successfully";
+    }
+    
+    
+    private Timestamp convertDateToTimesStamp(Date date) {
+
+
+    // getting the object of the Timestamp class
+    return new Timestamp(date.getTime());
+}
     
 
 }

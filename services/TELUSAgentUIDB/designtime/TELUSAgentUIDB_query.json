@@ -2342,6 +2342,37 @@
       "responseType" : "SINGLE"
     }
   },
+  "deleteTeamManager" : {
+    "name" : "deleteTeamManager",
+    "description" : "deleteTeamManager",
+    "version" : "V2",
+    "queryString" : "delete from TEAM_MANAGER where teamId=:teamId",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "DELETE",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "48",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "DELETE"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "java.lang.Integer",
+      "returns" : "ENTITY",
+      "responseType" : "SINGLE"
+    }
+  },
   "deleteTeamUser" : {
     "name" : "deleteTeamUser",
     "description" : "deleteTeamUser",
@@ -3232,6 +3263,66 @@
       } ]
     }
   },
+  "getManagerNameByTeamId" : {
+    "name" : "getManagerNameByTeamId",
+    "description" : "getManagerNameByTeamId",
+    "version" : "V2",
+    "queryString" : "select u.id,CONCAT(u.firstName,' ', u.lastName) managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where tm.teamId=:teamId",
+    "countQueryString" : "select count(*) from (select u.id,CONCAT(u.firstName,' ', u.lastName) managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where tm.teamId=:teamId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "52",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetManagerNameByTeamIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "managerName",
+        "fieldName" : "managerName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "",
+        "databaseName" : "",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getPermissionByRoleId" : {
     "name" : "getPermissionByRoleId",
     "description" : "getPermissionByRoleId",
@@ -3715,6 +3806,98 @@
           "list" : false
         },
         "tableName" : "ROLE_PERMISSION",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getSelectedTeamid" : {
+    "name" : "getSelectedTeamid",
+    "description" : "getSelectedTeamid",
+    "version" : "V2",
+    "queryString" : "select t.TeamID from TEAM_MANAGER tm join TEAM t on tm.teamId=t.id where tm.teamId=:teamId",
+    "countQueryString" : "select count(*) from (select t.TeamID from TEAM_MANAGER tm join TEAM t on tm.teamId=t.id where tm.teamId=:teamId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "50",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetSelectedTeamidResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "TeamID",
+        "fieldName" : "teamId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "TEAM",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
+  "getTeaMnagerIdOnTeamId" : {
+    "name" : "getTeaMnagerIdOnTeamId",
+    "description" : "getTeaMnagerIdOnTeamId",
+    "version" : "V2",
+    "queryString" : "select id from TEAM_MANAGER where teamId=:teamId",
+    "countQueryString" : "select count(*) from (select id from TEAM_MANAGER where teamId=:teamId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "teamId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "48",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetTeaMnagerIdOnTeamIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "TEAM_MANAGER",
         "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false

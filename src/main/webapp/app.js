@@ -1403,3 +1403,16 @@ App.getWorkCatByEmplIdForMultiSelectonSuccess = function(variable, data) {
     App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet = data;
 
 };
+
+App.executeGetTeamManagerNameonSuccess = function(variable, data) {
+
+    debugger;
+
+};
+
+App.getManagerNameByTeamIdonSuccess = function(variable, data) {
+
+    debugger;
+
+    //  App.Variables.getSelectedManagerName.dataSet = data;
+};

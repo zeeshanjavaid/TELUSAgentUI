@@ -21,21 +21,41 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
+    debugger;
+
+    // Partial.Variables.getManagerNameByTeamId.setInput({
+    //     "teamId": Partial.pageParams.id
+    // })
+
+    // Partial.Variables.getManagerNameByTeamId.invoke();
+
     Partial.Variables.executeGetManagerByTeamId.setInput({
         "teamId": Partial.pageParams.id
     })
 
     Partial.Variables.executeGetManagerByTeamId.invoke();
 
+    debugger;
 
+    var ar = Partial.Variables.getSelectedManagerName.dataSet;
+
+
+
+    // var selectedTM = [];
+    // if (Partial.Variables.getSelectedManagerName.dataSet.length > 0) {
+    //     for (let i = 0; i <= ar.length; i++) {
+    //         selectedTM[i] = ar[i].id;
+    //     }
+    // }
 
     // For multi Select manager
-
     Partial.statusData = [];
+
+    //  var selectedTM = [9]
 
     Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
         Partial.statusData.push({
-            // id: item.code.replace(/\s/g, ''),
+
             id: item.userId,
             title: item.firstName
         });
@@ -45,7 +65,11 @@ Partial.onReady = function() {
 
         source: Partial.statusData,
 
-        isMultiple: true
+        isMultiple: true,
+        cascadeSelect: true,
+        collapse: true
+        // selected: selectedTM
+
 
     });
 
@@ -99,14 +123,14 @@ Partial.SaveButtonClick = function($event, widget) {
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     let pattern = Partial.Widgets.TeamNameText.regexp;
 
-    if (Partial.Widgets.select1.datavalue != undefined) {
+    // if (Partial.Widgets.select1.datavalue != undefined) {
 
-        Partial.Variables.getTeamManagerNameByRole.dataSet.forEach(function(item) {
-            if (item.firstName == Partial.Widgets.select1.datavalue) {
-                Partial.Variables.managerId.dataSet = item.userId
-            }
-        });
-    }
+    //     Partial.Variables.getTeamManagerNameByRole.dataSet.forEach(function(item) {
+    //         if (item.firstName == Partial.Widgets.select1.datavalue) {
+    //             Partial.Variables.managerId.dataSet = item.userId
+    //         }
+    //     });
+    // }
 
     App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
     if (Partial.Widgets.TeamIdText.datavalue == undefined || Partial.Widgets.TeamIdText.datavalue == "") {
@@ -322,16 +346,27 @@ Partial.createTeamonSuccess = function(variable, data) {
             Partial.Variables.CreateTeamUser.invoke();
         })
     }
-    if (Partial.Variables.managerId.dataSet.dataValue != 0) {
-        Partial.Variables.CreateTeamManager.setInput({
+
+    if (subComboBox.getSelectedIds() != null) {
+        // var managerId = subComboBox.getSelectedIds();
+
+        //  for (let i = 0; i <= subComboBox.getSelectedIds().length; i++) {
+
+
+
+        Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,
-            'managerUserId': Partial.Variables.managerId.dataSet,
+            'managerIdListString': subComboBox.getSelectedIds().toString(),
             'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-            'createdOn': new Date(),
+            'createdOn': getCurrentDate(),
             'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-            'updatedOn': new Date()
+            'updatedOn': getCurrentDate()
         });
-        Partial.Variables.CreateTeamManager.invoke();
+        Partial.Variables.saveManagerOnTeamCreateVar.invoke();
+
+        //     }
+
+
     }
 
     if (Partial.Widgets.DualListUsers_TD.rightdataset == null || Partial.Widgets.DualListUsers_TD.rightdataset.length == 0) {
@@ -368,37 +403,31 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     if (Partial.Variables.managerId.dataSet.dataValue == 0) {
 
-        Partial.Variables.deleteTeamManager.setInput({
-            'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
+        // Partial.Variables.deleteTeamManager.setInput({
+        //     'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
+        // });
+        // Partial.Variables.deleteTeamManager.invoke();
+
+        Partial.Variables.deleteTeamManagerByTeamId.setInput({
+            'teamId': Partial.pageParams.id
         });
-        Partial.Variables.deleteTeamManager.invoke();
+        Partial.Variables.deleteTeamManagerByTeamId.invoke();
 
-    } else if (Partial.Variables.managerId.dataSet.dataValue == undefined) {
+    }
+    if (subComboBox.getSelectedIds() != null) {
 
-        Partial.Variables.CreateTeamManager.setInput({
+        Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,
-            'managerUserId': Partial.Variables.managerId.dataSet,
+            'managerIdListString': subComboBox.getSelectedIds().toString(),
             'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-            'createdOn': new Date(),
+            'createdOn': getCurrentDate(),
             'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-            'updatedOn': new Date()
+            'updatedOn': getCurrentDate()
         });
-        Partial.Variables.CreateTeamManager.invoke();
+        Partial.Variables.saveManagerOnTeamCreateVar.invoke();
 
-    } else {
 
-        if (Partial.Variables.managerId.dataSet.dataValue != 0) {
-            Partial.Variables.updateTeammanager.setInput({
-                "id": Partial.Variables.executeGetManagerByTeamId.dataSet[0].id,
-                'teamId': data.id,
-                'managerUserId': Partial.Variables.managerId.dataSet,
-                'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-                'createdOn': new Date(),
-                'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
-                'updatedOn': new Date()
-            });
-            Partial.Variables.updateTeammanager.invoke();
-        }
+
     }
 
 };
@@ -411,14 +440,14 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 
     Partial.Widgets.deleteTeamDialog.close();
 
-    //Del team manager
 
-    if (Partial.Variables.executeGetManagerByTeamId.dataSet.length > 0) {
-        Partial.Variables.deleteTeamManager.setInput({
-            'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
-        });
-        Partial.Variables.deleteTeamManager.invoke();
-    }
+    //Del Team Manager
+    Partial.Variables.deleteTeamManagerByTeamId.setInput({
+        'teamId': Partial.pageParams.id
+    });
+    Partial.Variables.deleteTeamManagerByTeamId.invoke();
+
+
 
     // Del team user
     Partial.Variables.executeDeleteTeamUser.setInput({
@@ -445,6 +474,7 @@ Partial.deleteTeamonSuccess = function(variable, data) {
 
 Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
+    debugger;
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     if (Partial.isDeleteTeam !== true) {
@@ -494,4 +524,40 @@ Partial.CreateTeamManageronSuccess = function(variable, data) {
     Partial.Variables.executeGetManagerByTeamId.invoke();
 
 
+};
+
+function getCurrentDate() {
+    var currentDate = new Date().toJSON().slice(0, 10);
+    return currentDate;
+}
+
+Partial.executeGetManagerByTeamIdonSuccess = function(variable, data) {
+    debugger;
+
+    Partial.Variables.getManagerNameByTeamId.setInput({
+        "teamId": Partial.pageParams.id
+    })
+
+    Partial.Variables.getManagerNameByTeamId.invoke();
+
+    Partial.Variables.getSelectedManagerName.dataSet = data;
+
+    // var selectedTM = [];
+    // for (let i = 0; i <= data.length; i++) {
+    //     selectedTM[i] = data[i].id;
+    // }
+    // subComboBox = $('#teamManagerMutliSel').comboTree({
+
+    //     source: Partial.statusData,
+
+    //     isMultiple: true,
+    //     cascadeSelect: true,
+    //     collapse: true,
+    //     selected: selectedTM
+
+    // });
+};
+
+Partial.getManagerNameByTeamIdonSuccess = function(variable, data) {
+    debugger;
 };

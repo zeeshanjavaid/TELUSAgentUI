@@ -464,6 +464,16 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/deleteTeamManager", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "deleteTeamManager")
+    public IntegerWrapper executeDeleteTeamManager(@RequestParam(value = "teamId") String teamId, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: deleteTeamManager");
+        Integer _result = queryService.executeDeleteTeamManager(teamId);
+        LOGGER.debug("got the result for named query: deleteTeamManager, result:{}", _result);
+        return new IntegerWrapper(_result);
+    }
+
     @JsonView(BlobAsUrlView.class)
     @RequestMapping(value = "/queries/getDocumentByDocId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -661,6 +671,35 @@ public class QueryExecutionController {
         return new StringWrapper(exportedUrl);
     }
 
+    @RequestMapping(value = "/queries/getTeaMnagerIdOnTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeaMnagerIdOnTeamId")
+    public Page<GetTeaMnagerIdOnTeamIdResponse> executeGetTeaMnagerIdOnTeamId(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeaMnagerIdOnTeamId");
+        Page<GetTeaMnagerIdOnTeamIdResponse> _result = queryService.executeGetTeaMnagerIdOnTeamId(teamId, pageable);
+        LOGGER.debug("got the result for named query: getTeaMnagerIdOnTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeaMnagerIdOnTeamId")
+    @RequestMapping(value = "/queries/getTeaMnagerIdOnTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeaMnagerIdOnTeamId(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeaMnagerIdOnTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeaMnagerIdOnTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeaMnagerIdOnTeamId(teamId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/DVSearchByCodeAndDescription", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "DVSearchByCodeAndDescription")
@@ -715,6 +754,35 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportQuery_GetAllDVsByDVTypeWithActiveFlag(selectedLocale, domainValueTypeCode, showAll, isActiveFlag,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getManagerNameByTeamId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getManagerNameByTeamId")
+    public Page<GetManagerNameByTeamIdResponse> executeGetManagerNameByTeamId(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getManagerNameByTeamId");
+        Page<GetManagerNameByTeamIdResponse> _result = queryService.executeGetManagerNameByTeamId(teamId, pageable);
+        LOGGER.debug("got the result for named query: getManagerNameByTeamId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getManagerNameByTeamId")
+    @RequestMapping(value = "/queries/getManagerNameByTeamId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetManagerNameByTeamId(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getManagerNameByTeamId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getManagerNameByTeamId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetManagerNameByTeamId(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }
@@ -1317,6 +1385,35 @@ public class QueryExecutionController {
 
         String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
                         outputStream -> queryService.exportGetPermissionGroupByRoleId(roleId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
+    @RequestMapping(value = "/queries/getSelectedTeamid", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getSelectedTeamid")
+    public Page<GetSelectedTeamidResponse> executeGetSelectedTeamid(@RequestParam(value = "teamId") String teamId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getSelectedTeamid");
+        Page<GetSelectedTeamidResponse> _result = queryService.executeGetSelectedTeamid(teamId, pageable);
+        LOGGER.debug("got the result for named query: getSelectedTeamid, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getSelectedTeamid")
+    @RequestMapping(value = "/queries/getSelectedTeamid/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetSelectedTeamid(@RequestParam(value = "teamId") String teamId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getSelectedTeamid");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getSelectedTeamid";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetSelectedTeamid(teamId,  exportOptions, pageable, outputStream));
 
         return new StringWrapper(exportedUrl);
     }

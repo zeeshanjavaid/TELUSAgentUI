@@ -77,6 +77,8 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetAllRolePermission(ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Integer executeDeleteTeamManager(String teamId);
+
     Page<GetDocumentByDocIdResponse> executeGetDocumentByDocId(Integer docId, Pageable pageable);
 
     InputStream getDocumentContentForGetDocumentByDocId(Long id, Integer docId) throws EntityNotFoundException;
@@ -103,6 +105,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     void exportGetTeamsAndAssociatedUsers(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
+    Page<GetTeaMnagerIdOnTeamIdResponse> executeGetTeaMnagerIdOnTeamId(String teamId, Pageable pageable);
+
+    void exportGetTeaMnagerIdOnTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<DvsearchByCodeAndDescriptionResponse> executeDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, Pageable pageable);
 
     void exportDVSearchByCodeAndDescription(String defaultLocale, String domainValueTypeId, Boolean showAll, Boolean isActiveFlag, String searchValue, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
@@ -110,6 +116,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<QueryGetAllDvsByDvtypeWithActiveFlagResponse> executeQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, Pageable pageable);
 
     void exportQuery_GetAllDVsByDVTypeWithActiveFlag(String selectedLocale, String domainValueTypeCode, Boolean showAll, Boolean isActiveFlag, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetManagerNameByTeamIdResponse> executeGetManagerNameByTeamId(String teamId, Pageable pageable);
+
+    void exportGetManagerNameByTeamId(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<GetManagerByTeamNameResponse> executeGetManagerByTeamName(String teamId, Pageable pageable);
 
@@ -198,6 +208,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
     Page<GetPermissionGroupByRoleIdResponse> executeGetPermissionGroupByRoleId(String roleId, Pageable pageable);
 
     void exportGetPermissionGroupByRoleId(String roleId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
+    Page<GetSelectedTeamidResponse> executeGetSelectedTeamid(String teamId, Pageable pageable);
+
+    void exportGetSelectedTeamid(String teamId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
 
     Page<GetGroupsRolesByUserIdResponse> executeGetGroupsRolesByUserId(String userId, Pageable pageable);
 

@@ -452,6 +452,13 @@ END ASC) wmTempTable
         ]]>
     </sql-query>
 
+    <sql-query name="deleteTeamManager">
+        <![CDATA[
+        delete from TEAM_MANAGER where teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="getDocumentByDocId">
         <![CDATA[
         select ID,document, documentName from ENTITY_DOCUMENTS where ID =:docId
@@ -658,6 +665,20 @@ select t.id as tid, t.TeamID, tu.userid, t.TeamName from TEAM t left outer join 
     <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getTeaMnagerIdOnTeamId">
+        <![CDATA[
+        select id from TEAM_MANAGER where teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getTeaMnagerIdOnTeamId__count">
+        <![CDATA[
+        select count(*) from (select id from TEAM_MANAGER where teamId=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="DVSearchByCodeAndDescription">
         <![CDATA[
         SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVQuery.DomainValueType, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder, concat(CreatedByUser.firstName,' ',CreatedByUser.lastName) AS createdBy, ParentDVQuery.createdOn, concat(UpdatedByUser.firstName,' ',UpdatedByUser.lastName) AS updatedBy, ParentDVQuery.updatedOn 
@@ -778,6 +799,20 @@ END ASC) wmTempTable
     <query-param name="domainValueTypeCode" type="java.lang.String"/>
     <query-param name="showAll" type="java.lang.Boolean"/>
     <query-param name="isActiveFlag" type="java.lang.Boolean"/>
+    </sql-query>
+
+    <sql-query name="getManagerNameByTeamId">
+        <![CDATA[
+        select u.id,CONCAT(u.firstName,' ', u.lastName) managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where tm.teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getManagerNameByTeamId__count">
+        <![CDATA[
+        select count(*) from (select u.id,CONCAT(u.firstName,' ', u.lastName) managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where tm.teamId=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getManagerByTeamName">
@@ -1291,6 +1326,20 @@ END ASC) wmTempTable
         select count(*) from (select COUNT(*) from PERMISSION where id IN(select ROLE_PERMISSION.PermissionId from ROLE_PERMISSION where ROLE_PERMISSION.RoleId = :RoleId) UNION select COUNT(*) from `GROUP_ROLE`where RoleId =24) wmTempTable
         ]]>
     <query-param name="RoleId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getSelectedTeamid">
+        <![CDATA[
+        select t.TeamID from TEAM_MANAGER tm join TEAM t on tm.teamId=t.id where tm.teamId=:teamId
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getSelectedTeamid__count">
+        <![CDATA[
+        select count(*) from (select t.TeamID from TEAM_MANAGER tm join TEAM t on tm.teamId=t.id where tm.teamId=:teamId) wmTempTable
+        ]]>
+    <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getGroupsRolesByUserId">
