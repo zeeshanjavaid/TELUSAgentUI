@@ -38,6 +38,7 @@ Partial.onReady = function() {
     debugger;
 
     var ar = Partial.Variables.getSelectedManagerName.dataSet;
+    $('#teamManagerMutliSel').prop('disabled', true);
 
 
 
@@ -50,6 +51,7 @@ Partial.onReady = function() {
 
     // For multi Select manager
     Partial.statusData = [];
+
 
     //  var selectedTM = [9]
 
@@ -109,6 +111,7 @@ App.addTeams = function() {
     Partial.pageParams.id = undefined;
     Partial.Variables.getTeam.invoke();
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    $('#teamManagerMutliSel').prop('disabled', false);
 };
 
 
@@ -210,6 +213,7 @@ Partial.SaveButtonClick = function($event, widget) {
 Partial.CancelbuttonClick = function($event, widget) {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    $('#teamManagerMutliSel').prop('disabled', true);
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
@@ -504,6 +508,7 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 };
 Partial.EditTeamButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
+    $('#teamManagerMutliSel').prop('disabled', false);
 };
 Partial.DeleteButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;

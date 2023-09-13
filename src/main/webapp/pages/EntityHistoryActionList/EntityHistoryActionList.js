@@ -3,7 +3,7 @@
  * 'Utils' for Utility service
  * 'DialogService' for Dialog service
  * 'i18nService' for i18n service
- * 'SpinnerService' for Spinner service
+ * 'SpinnerService' for Spinner service 
  * 'ToasterService' for Toaster service
  * 'HttpService' for Http service
  * example: var utils = App.getDependency('Utils');

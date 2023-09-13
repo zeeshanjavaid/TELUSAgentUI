@@ -219,7 +219,6 @@ button.btn.app-button.btn-default.btn-listctrl {
 
 .comboTreeArrowBtn {
     border-radius: unset;
-   
     background: none;
     border-left: 0;
     border-color: #4B286D;
@@ -229,9 +228,11 @@ button.btn.app-button.btn-default.btn-listctrl {
 }
 
 input#teamManagerMutliSel {
-    height: 28px;
+    height: 34px;
     border-radius: unset;
     border-color: #4B286D !important;
+
+    
 }
 
 .mutli-select {
