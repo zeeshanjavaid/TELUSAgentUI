@@ -228,6 +228,13 @@ public class CommonUtilityService {
     }
     
     
+     public String deleteTeamManagerOnUpdate(String teamId)
+    {
+        telusAgentUIDBQueryExecutorService.executeDeleteTeamManager(teamId);
+
+        return "Team manager deleted successfully";
+    }
+    
         public String saveManagerOnTeamCreate(Integer teamId, String managerIdListString, Integer createdBy, Integer updatedBy, Date createdOn, Date updatedOn)
     {
         

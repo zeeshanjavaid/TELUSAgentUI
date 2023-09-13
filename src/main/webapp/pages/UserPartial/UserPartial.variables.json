@@ -177,6 +177,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "executeGetManagerByTeamIdVar" : {
+    "_id" : "wm-executeGetManagerByTeamIdVar-wm.ServiceVariable-1694600665467",
+    "name" : "executeGetManagerByTeamIdVar",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "teamId",
+      "value" : "bind:Widgets.createUserForm1.formWidgets.UserDTO_teamId.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetManagerByTeamId",
+    "operationId" : "QueryExecutionController_executeGetManagerByTeamId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "executeGetPermissionByRoleId" : {
     "_id" : "wm-executeGetPermissionByRoleId1-wm.ServiceVariable-1674565529250",
     "name" : "executeGetPermissionByRoleId",

@@ -1051,3 +1051,15 @@ Partial.updateUserClose = function($event, widget) {
 Partial.updateUserForm1Error = function($event, widget, $data) {
 
 };
+Partial.UserDTO_teamManagerClick = function($event, widget) {
+    debugger;
+};
+Partial.UserDTO_teamIdChange = function($event, widget, newVal, oldVal) {
+    debugger;
+
+    Partial.Variables.executeGetManagerByTeamIdVar.setInput({
+        'teamId': newVal
+    });
+    Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+
+};

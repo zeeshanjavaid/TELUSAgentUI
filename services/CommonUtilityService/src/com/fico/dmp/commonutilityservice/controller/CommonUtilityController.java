@@ -4,9 +4,9 @@
 package com.fico.dmp.commonutilityservice.controller;
 
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
+import java.lang.String;
 import com.fico.telus.model.AssignedUserModel;
 import java.util.List;
-import java.lang.String;
 import com.fico.telus.model.BillingAccountModel;
 import java.lang.Integer;
 import com.fico.telus.model.AssignedTeamModel;
@@ -26,6 +26,11 @@ public class CommonUtilityController {
 
     @Autowired
     private CommonUtilityService commonUtilityService;
+
+    @RequestMapping(value = "/teamManagerOnUpdate", produces = "application/json", method = RequestMethod.DELETE)
+    public String deleteTeamManagerOnUpdate(@RequestParam(value = "teamId", required = false) String teamId) {
+        return commonUtilityService.deleteTeamManagerOnUpdate(teamId);
+    }
 
     @RequestMapping(value = "/assignedPersonInactionManagement", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)

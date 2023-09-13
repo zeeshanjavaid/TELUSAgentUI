@@ -399,35 +399,39 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
 Partial.updateTeamonSuccess = function(variable, data) {
 
     debugger;
+    var selectedManagerName = subComboBox.getSelectedIds();
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
     });
     Partial.Variables.executeDeleteTeamUser.invoke();
 
-    if (Partial.Variables.managerId.dataSet.dataValue == 0) {
+    // if (selectedManagerName != null) {
 
-        // Partial.Variables.deleteTeamManager.setInput({
-        //     'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
-        // });
-        // Partial.Variables.deleteTeamManager.invoke();
+    // Partial.Variables.deleteTeamManager.setInput({
+    //     'id': Partial.Variables.executeGetManagerByTeamId.dataSet[0].id
+    // });
+    // Partial.Variables.deleteTeamManager.invoke();
 
-        Partial.Variables.deleteTeamManagerByTeamId.setInput({
-            'teamId': Partial.pageParams.id
-        });
-        Partial.Variables.deleteTeamManagerByTeamId.invoke();
+    Partial.Variables.deleteTeamManagerOnUpdateVar.setInput({
+        'teamId': Partial.pageParams.id
+    });
 
-    }
-    if (subComboBox.getSelectedIds() != null) {
+    Partial.Variables.deleteTeamManagerOnUpdateVar.invoke();
+
+
+    //   }
+    if (selectedManagerName != null) {
 
         Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,
-            'managerIdListString': subComboBox.getSelectedIds().toString(),
+            'managerIdListString': selectedManagerName.toString(),
             'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
             'createdOn': getCurrentDate(),
             'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
             'updatedOn': getCurrentDate()
         });
+
         Partial.Variables.saveManagerOnTeamCreateVar.invoke();
 
 
