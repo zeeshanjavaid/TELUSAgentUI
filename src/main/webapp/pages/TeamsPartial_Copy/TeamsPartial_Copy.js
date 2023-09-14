@@ -38,6 +38,8 @@ App.getTeamIndex = function(teamId) {
 
 Partial.container5Click = function($event, widget, item, currentItemWidgets) {
 
+    debugger;
+
     // Partial.Variables.roleId.dataSet.dataValue = item.id;
     //App.getRolePermission(item.id);
 };
@@ -57,6 +59,7 @@ App.navigateToPageNo = function(selectedItemIndex, pageSize) {
 
 App.clickListItemByIndex = function(listName, itemIndex) {
 
+    debugger;
     console.log("List " + listName + " click item: " + itemIndex);
     Partial.Widgets.TeamList.selectItem(itemIndex);
     $('li[listitemindex="' + itemIndex + '"]').click();
@@ -82,10 +85,20 @@ Partial.teamSearchTextKeyup = function($event, widget) {
 
 App.refreshAllTeams = function() {
 
+    debugger;
+
     Partial.Variables.getTeamsAssociatedUsers.invoke();
 }
 
 Partial.TeamListClick = function(widget, $data) {
+
+    debugger;
+
+    Partial.Variables.getManagerNameByTeamId.setInput({
+        'teamId': widget.selecteditem.id
+    });
+
+    Partial.Variables.getManagerNameByTeamId.invoke();
 
     App.Variables.TeamPageCommunication.currentPageSize = widget.pagesize;
     console.log("Team List clicked !! " + App.Variables.TeamPageCommunication.currentPageSize);
@@ -110,4 +123,18 @@ Partial.getTeamsAssociatedUsersonSuccess = function(variable, data) {
         App.navigateToPageNo(selectedItem, pageSize);
         App.clickListItemByIndex('TeamList', (selectedItem) % pageSize);
     }
+};
+
+Partial.getManagerNameByTeamIdonSuccess = function(variable, data) {
+
+    App.Variables.getManagerSelected.datsSet = data;
+
+
+
+};
+Partial.container4Load = function(widget, item, currentItemWidgets) {
+    debugger;
+};
+Partial.containerTeamsLoad = function(widget, item, currentItemWidgets) {
+    debugger;
 };

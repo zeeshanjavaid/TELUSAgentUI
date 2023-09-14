@@ -1331,30 +1331,6 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
-  "executeGetManagerByTeamId" : {
-    "_id" : "wm-executeGetManagerByTeamId-wm.ServiceVariable-1693817335441",
-    "name" : "executeGetManagerByTeamId",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamIdResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetManagerByTeamId",
-    "operationId" : "QueryExecutionController_executeGetManagerByTeamId",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 20,
-    "onSuccess" : "executeGetManagerByTeamIdonSuccess(variable, data, options)",
-    "startUpdate" : true,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeAll",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
-  },
   "getAllTeams" : {
     "_id" : "wm-getAllTeams-wm.LiveVariable-1680682825550",
     "name" : "getAllTeams",
@@ -3187,6 +3163,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
+  },
+  "selectedManagerName" : {
+    "_id" : "wm-selectedManagerName-wm.Variable-1694617614143",
+    "name" : "selectedManagerName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "selectedUsers" : {
     "_id" : "wm-selectedUsers-wm.Variable-1662623733111",

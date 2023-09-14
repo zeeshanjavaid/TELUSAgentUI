@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+
 Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
@@ -23,37 +24,24 @@ Partial.onReady = function() {
 
     debugger;
 
-    // Partial.Variables.getManagerNameByTeamId.setInput({
-    //     "teamId": Partial.pageParams.id
-    // })
+    if (Partial.pageParams.id != undefined) {
 
-    // Partial.Variables.getManagerNameByTeamId.invoke();
+    }
 
-    Partial.Variables.executeGetManagerByTeamId.setInput({
-        "teamId": Partial.pageParams.id
-    })
 
-    Partial.Variables.executeGetManagerByTeamId.invoke();
+    var selectedTM = []
 
-    debugger;
+    if (App.Variables.getManagerSelected.datsSet != undefined) {
 
-    var ar = Partial.Variables.getSelectedManagerName.dataSet;
+        for (let i = 0; i < App.Variables.getManagerSelected.datsSet.length; i++) {
+            selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
+        }
+    }
+
     $('#teamManagerMutliSel').prop('disabled', true);
-
-
-
-    // var selectedTM = [];
-    // if (Partial.Variables.getSelectedManagerName.dataSet.length > 0) {
-    //     for (let i = 0; i <= ar.length; i++) {
-    //         selectedTM[i] = ar[i].id;
-    //     }
-    // }
-
     // For multi Select manager
     Partial.statusData = [];
 
-
-    //  var selectedTM = [9]
 
     Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
         Partial.statusData.push({
@@ -69,10 +57,8 @@ Partial.onReady = function() {
 
         isMultiple: true,
         cascadeSelect: true,
-        collapse: true
-        // selected: selectedTM
-
-
+        collapse: true,
+        selected: selectedTM
     });
 
 
@@ -522,51 +508,7 @@ Partial.deleteTeamConfirmNoClick = function($event, widget) {
 
 };
 
-Partial.CreateTeamManageronSuccess = function(variable, data) {
-
-    debugger;
-
-    Partial.Variables.executeGetManagerByTeamId.setInput({
-        "teamId": data.teamId
-    })
-
-    Partial.Variables.executeGetManagerByTeamId.invoke();
-
-
-};
-
 function getCurrentDate() {
     var currentDate = new Date().toJSON().slice(0, 10);
     return currentDate;
 }
-
-Partial.executeGetManagerByTeamIdonSuccess = function(variable, data) {
-    debugger;
-
-    Partial.Variables.getManagerNameByTeamId.setInput({
-        "teamId": Partial.pageParams.id
-    })
-
-    Partial.Variables.getManagerNameByTeamId.invoke();
-
-    Partial.Variables.getSelectedManagerName.dataSet = data;
-
-    // var selectedTM = [];
-    // for (let i = 0; i <= data.length; i++) {
-    //     selectedTM[i] = data[i].id;
-    // }
-    // subComboBox = $('#teamManagerMutliSel').comboTree({
-
-    //     source: Partial.statusData,
-
-    //     isMultiple: true,
-    //     cascadeSelect: true,
-    //     collapse: true,
-    //     selected: selectedTM
-
-    // });
-};
-
-Partial.getManagerNameByTeamIdonSuccess = function(variable, data) {
-    debugger;
-};

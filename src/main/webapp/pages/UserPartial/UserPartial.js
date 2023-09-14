@@ -938,6 +938,13 @@ Partial.updateUserForm1_saveAction = function($event) {
 Partial.getTeamonSuccess = function(variable, data) {
     Partial.Variables.dataTeam.dataSet = data;
     debugger;
+
+    Partial.Variables.getManagerNameByTeamId.setInput({
+        'teamId': data[data.length - 1].id
+    });
+
+    Partial.Variables.getManagerNameByTeamId.invoke();
+
 };
 Partial.createUserForm1Error = function($event, widget, $data) {
     debugger;

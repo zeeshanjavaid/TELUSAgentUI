@@ -18,10 +18,10 @@
                 dataset="bind:Variables.getTeamsAssociatedUsers.dataSet" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" loadingdatamsg="bind:appLocale.MESSAGE_LOADING" pagesize="5" on-click="TeamListClick(widget, $data)" on-setrecord="TeamListSetrecord(widget, $data)"
                 navigationalign="right" orderby="id:desc">
                 <wm-listtemplate layout="inline" name="listtemplate2">
-                    <wm-container class="media-left" name="container4">
+                    <wm-container class="media-left" name="container4" on-load="container4Load(widget, item, currentItemWidgets)">
                         <wm-picture width="1pt" height="1pt" name="Picture" shape="circle" class="media-object" show="false"></wm-picture>
                     </wm-container>
-                    <wm-container class="media-body" padding="unset unset unset " name="containerTeams">
+                    <wm-container class="media-body" padding="unset unset unset " name="containerTeams" on-load="containerTeamsLoad(widget, item, currentItemWidgets)">
                         <wm-label name="TeamCode" class="p media-heading rolename text-clip" caption="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamId" fontsize="1.143" fontunit="em" hint="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamId"></wm-label>
                         <wm-label class="p media-heading text-clip module line-clamp" caption="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamName" fontsize="1" fontunit="em" name="TeamName" color="#626b73" hint="bind:Variables.getTeamsAssociatedUsers.dataSet[$i].teamName"></wm-label>
                         <wm-container name="container5_1">

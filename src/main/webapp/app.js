@@ -1414,5 +1414,5 @@ App.getManagerNameByTeamIdonSuccess = function(variable, data) {
 
     debugger;
 
-    //  App.Variables.getSelectedManagerName.dataSet = data;
+    App.Variables.getManagerSelected.datsSet = data;
 };
