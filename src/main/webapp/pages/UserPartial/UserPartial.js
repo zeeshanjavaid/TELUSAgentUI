@@ -1071,3 +1071,27 @@ Partial.UserDTO_teamIdChange = function($event, widget, newVal, oldVal) {
     Partial.Variables.executeGetManagerByTeamIdVar.invoke();
 
 };
+
+
+Partial.userCriteriaKeypress = function($event, widget) {
+
+    if ($event.keyCode == 13) {
+        if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
+            debugger;
+
+            Partial.Variables.searchUsers.setInput({
+                'role': Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue,
+                'userCriteria': Partial.Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue,
+                'work_category': Partial.Widgets.executeSearchUsersForm1.formWidgets.work_category.datavalue,
+                'managerId': Partial.Widgets.executeSearchUsersForm1.formWidgets.TeamManager.datavalue,
+                'teamID': Partial.Widgets.executeSearchUsersForm1.formWidgets.TeamID.datavalue
+            });
+            Partial.Variables.searchUsers.invoke();
+            App.Variables.errorMsg.dataSet.dataValue = "";
+        } else {
+            debugger;
+            App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
+        }
+    }
+
+};

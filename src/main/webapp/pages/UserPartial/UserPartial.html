@@ -135,7 +135,7 @@
                         mobile-display="false" dataset="bind:Variables.getCodeFromDomainValueAsWorkCategory.dataSet" datafield="code" displayfield="code" placeholder="Select"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn3" columnwidth="4">
-                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="First Name, Last Name, Email, Empl ID" class="search "></wm-form-field>
+                    <wm-form-field name="userCriteria" key="userCriteria" type="string" widget="text" show="true" mobile-display="false" inputtype="text" placeholder="First Name, Last Name, Email, Empl ID" class="search " on-keypress="userCriteriaKeypress($event, widget)"></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow2" class="pl-20">
