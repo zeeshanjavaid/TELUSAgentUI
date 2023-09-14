@@ -35,8 +35,8 @@ function messageTimeout() {
 
 Partial.SubmitDisputeBanClick = function($event, widget) {
     debugger;
-    Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
-    Partial.Widgets.selectedDisputeBan.datavalue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banRefId;
+    Partial.Variables.selectedDisputeBanVar.dataSet.dataValue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banRefId;
+    Partial.Widgets.selectedDisputeBan.datavalue = Partial.Widgets.selectBanDisputeTable1.selecteditem.banId;
     Partial.Widgets.SelectDisputeBanDialog.close();
 };
 Partial.CancelDisputeClick = function($event, widget) {
@@ -88,7 +88,8 @@ Partial.CreateDisputeClick = function($event, widget) {
 
 
         App.Variables.errorMsg.dataSet.dataValue = "";
-        var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
+        //var selectedBanInt = parseInt(Partial.Widgets.selectedDisputeBan.datavalue);
+        var selectedBanInt = parseInt(Partial.Variables.selectedDisputeBanVar.dataSet.dataValue);
 
         Partial.Variables.CreateDisputeService.setInput({
             "CollectionDisputeCreate": {
