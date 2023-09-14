@@ -893,12 +893,13 @@ Partial.updateUserForm1_saveAction = function($event) {
     if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
         Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.TestTeamId.teamId)
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
-    } else {
-        Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId
-
-        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
     }
+    // else {
+    //     Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId
+
+    //     Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
+    // }
 
 
     var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId

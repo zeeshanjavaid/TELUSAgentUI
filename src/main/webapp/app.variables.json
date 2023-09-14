@@ -1840,7 +1840,11 @@
     "owner" : "App",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "teamId",
+      "value" : "bind:Widgets.createUserForm1.formWidgets.UserDTO_teamId.datavalue",
+      "type" : "string"
+    } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamIdResponse",
     "service" : "TELUSAgentUIDB",
     "operation" : "executeGetManagerByTeamId",
@@ -1850,7 +1854,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

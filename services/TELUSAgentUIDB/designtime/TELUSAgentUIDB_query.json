@@ -3133,8 +3133,8 @@
     "name" : "getManagerByTeamId",
     "description" : "getManagerByTeamId",
     "version" : "V2",
-    "queryString" : "select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId",
-    "countQueryString" : "select count(*) from (select  tm.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable",
+    "queryString" : "select  u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId",
+    "countQueryString" : "select count(*) from (select  u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -3145,7 +3145,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "35",
+      "testValue" : "58",
       "required" : true
     } ],
     "request" : {
@@ -3167,7 +3167,7 @@
           "typeRef" : "java.lang.Long",
           "list" : false
         },
-        "tableName" : "TEAM_MANAGER",
+        "tableName" : "USER",
         "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false
