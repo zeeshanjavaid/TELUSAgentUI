@@ -234,7 +234,7 @@
     "controller" : "CommonUtility"
   },
   "getCollectionHistoryViewDispute" : {
-    "_id" : "wm-getCollectionHistoryViewDispute-wm.ServiceVariable-1690457132039",
+    "_id" : "wm-getCollectionHistoryViewDispute1-wm.ServiceVariable-1694715212456",
     "name" : "getCollectionHistoryViewDispute",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
@@ -242,8 +242,8 @@
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
     "service" : "CollectionTreatmentService",
-    "operation" : "getCollectionHistoryView",
-    "operationId" : "CollectionTreatmentController_getCollectionHistoryView",
+    "operation" : "getDisputeHistoryView",
+    "operationId" : "CollectionTreatmentController_getDisputeHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -251,7 +251,7 @@
     "maxResults" : 20,
     "onError" : "getCollectionHistoryViewDisputeonError(variable, data, xhrObj)",
     "startUpdate" : false,
-    "autoUpdate" : false,
+    "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

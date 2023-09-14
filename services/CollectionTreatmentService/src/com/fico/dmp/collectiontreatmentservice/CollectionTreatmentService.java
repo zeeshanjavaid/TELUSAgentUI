@@ -375,5 +375,68 @@ public class CollectionTreatmentService {
         return orderMgmtHistoryResponseList;
     }
     
+    
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public List<OrderMgmtHistoryResponse> getDisputeHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
+                logger.info("Entering in getDisputeHistory");
+
+        List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
+  
+       // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
+        
+       List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+
+
+       if (!collectionActivityLogList.isEmpty()) {
+            for (CollectionActivityLog collectionActivityLog : collectionActivityLogList) {
+                OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
+                
+                orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
+                orderMgmtHistoryResponse.setStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
+                orderMgmtHistoryResponse.setAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
+                orderMgmtHistoryResponse.setGetAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
+                orderMgmtHistoryResponse.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
+                orderMgmtHistoryResponse.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
+                orderMgmtHistoryResponse.setUpdatedOn(collectionActivityLog.getCollectionActivityTimestamp().toString());
+                orderMgmtHistoryResponse.setComment(collectionActivityLog.getComment());
+                orderMgmtHistoryResponse.setEventType(collectionActivityLog.getBusinessEntityEventType());
+                orderMgmtHistoryResponseList.add(orderMgmtHistoryResponse);
+            }
+       }
+
+        return orderMgmtHistoryResponseList;
+    }
+    
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public List<OrderMgmtHistoryResponse> getParrHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
+                logger.info("Entering in getParrHistoryView");
+
+        List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
+  
+       // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
+        
+       List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+
+
+       if (!collectionActivityLogList.isEmpty()) {
+            for (CollectionActivityLog collectionActivityLog : collectionActivityLogList) {
+                OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
+                
+                orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
+                orderMgmtHistoryResponse.setStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
+                orderMgmtHistoryResponse.setAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
+                orderMgmtHistoryResponse.setGetAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
+                orderMgmtHistoryResponse.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
+                orderMgmtHistoryResponse.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
+                orderMgmtHistoryResponse.setUpdatedOn(collectionActivityLog.getCollectionActivityTimestamp().toString());
+                orderMgmtHistoryResponse.setComment(collectionActivityLog.getComment());
+                orderMgmtHistoryResponse.setEventType(collectionActivityLog.getBusinessEntityEventType());
+                orderMgmtHistoryResponseList.add(orderMgmtHistoryResponse);
+            }
+       }
+
+        return orderMgmtHistoryResponseList;
+    }
+    
 
 }

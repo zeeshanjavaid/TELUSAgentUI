@@ -98,6 +98,7 @@ public class DisputeService {
         		for (DisputeModel disputeModel : disputeModelList) {
         			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(disputeModel.getBan()))).forEach(collectionBillingAccountRef -> {
         				disputeModel.setBanName(collectionBillingAccountRef.getBillingAccount().getName());
+        				disputeModel.setBan(collectionBillingAccountRef.getBillingAccount().getId());
         				disputeModel.setBillingSystem(collectionBillingAccountRef.getBillingSystemName());
         			});
 				}

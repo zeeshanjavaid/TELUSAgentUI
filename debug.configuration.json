@@ -435,6 +435,22 @@
         "variables" : null
       }, {
         "info" : null,
+        "line" : 381,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getDisputeHistoryView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 412,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getParrHistoryView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
         "line" : 198,
         "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
         "name" : "lambda$0",
@@ -1376,48 +1392,6 @@
       } ]
     } ]
   }, {
-    "serviceId" : "DisputeService",
-    "type" : "JAVA_SERVICE",
-    "url" : null,
-    "phases" : [ {
-      "id" : "com.fico.dmp.disputeservice.DisputeService",
-      "description" : "com.fico.dmp.disputeservice.DisputeService",
-      "name" : "com.fico.dmp.disputeservice.DisputeService",
-      "breakPoints" : [ {
-        "info" : null,
-        "line" : 67,
-        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
-        "name" : "getAllDisputes",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 74,
-        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 99,
-        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
-        "name" : "lambda$1",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 100,
-        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
-        "name" : "lambda$2",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      } ]
-    } ]
-  }, {
     "serviceId" : "CollectionEntityService",
     "type" : "JAVA_SERVICE",
     "url" : null,
@@ -1614,6 +1588,48 @@
         "line" : 127,
         "path" : "/services/CollectionEntityService/src/com/fico/dmp/collectionentityservice/CollectionEntityService.java",
         "name" : "init",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      } ]
+    } ]
+  }, {
+    "serviceId" : "DisputeService",
+    "type" : "JAVA_SERVICE",
+    "url" : null,
+    "phases" : [ {
+      "id" : "com.fico.dmp.disputeservice.DisputeService",
+      "description" : "com.fico.dmp.disputeservice.DisputeService",
+      "name" : "com.fico.dmp.disputeservice.DisputeService",
+      "breakPoints" : [ {
+        "info" : null,
+        "line" : 67,
+        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
+        "name" : "getAllDisputes",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 74,
+        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 99,
+        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 100,
+        "path" : "/services/DisputeService/src/com/fico/dmp/disputeservice/DisputeService.java",
+        "name" : "lambda$2",
         "phaseSequence" : 0,
         "condition" : null,
         "variables" : null
