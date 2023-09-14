@@ -55,15 +55,34 @@ Page.button2Click = function($event, widget) {
     //ToCalculate Timezone
     if (Page.Widgets.completionDate.bsDataValue != undefined && Page.Widgets.completionDate.bsDataValue != '') {
         var timezoneOffset = Page.Widgets.completionDate.bsDataValue.getTimezoneOffset();
+
         var absTimezoneOffset = Math.abs(timezoneOffset);
-        var currentTimeZone = (timezoneOffset < 0 ? "+" : "-") + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
 
-        var hours = ("00" + Page.Widgets.completionDate.bsDataValue.getHours()).slice(-2);
-        var minutes = ("00" + Page.Widgets.completionDate.bsDataValue.getMinutes()).slice(-2);
-        var seconds = ("00" + Page.Widgets.completionDate.bsDataValue.getSeconds()).slice(-2);
-        var datePart = Page.Widgets.completionDate.datavalue;
+        if (timezoneOffset < 0) {
+            var currentTimeZone = 'Z';
+            var datePart = Page.Widgets.completionDate.datavalue;
+            var completionDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        } else {
+            var currentTimeZone = "-" + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
+            var datePart = Page.Widgets.completionDate.datavalue;
+            var completionDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        }
 
-        var completionDateTime = datePart + "T" + hours + ":" + minutes + ":" + seconds + ".000" + currentTimeZone;
+    }
+
+    if (Page.Widgets.creationDate.bsDataValue != undefined && Page.Widgets.creationDate.bsDataValue != '') {
+        var timezoneOffset = Page.Widgets.creationDate.bsDataValue.getTimezoneOffset();
+        var absTimezoneOffset = Math.abs(timezoneOffset);
+
+        if (timezoneOffset < 0) {
+            var currentTimeZone = 'Z';
+            var datePart = Page.Widgets.creationDate.datavalue;
+            var creationDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        } else {
+            var currentTimeZone = "-" + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
+            var datePart = Page.Widgets.creationDate.datavalue;
+            var creationDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        }
 
 
     }
@@ -89,11 +108,9 @@ Page.button2Click = function($event, widget) {
         'entityRisk': Page.Widgets.entityRiskSelect.datavalue,
         'evaluation': Page.Widgets.evalSelect.datavalue,
         'status': Page.Widgets.parrStatusSelect.datavalue,
-        'createdFrom': Page.Widgets.creationDate.datavalue,
-        'createdTo': Page.Widgets.completionDate.datavalue,
-        'createdBy': Page.Widgets.createdBySelect.datavalue,
-
-
+        'createdFrom': creationDateTime,
+        'createdTo': completionDateTime,
+        'createdBy': Page.Widgets.createdBySelect.datavalue
     });
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 

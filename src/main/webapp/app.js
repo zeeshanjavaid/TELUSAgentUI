@@ -41,7 +41,12 @@ App.onSessionTimeout = function() {
  * $activePageEl  : page jQuery element
  */
 App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
+    debugger;
     App.Variables.getLoggedInUserDetails.invoke();
+    App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+    if (activePageName == 'Main') {
+        App.Actions.goToPage_Home.navigate();
+    }
 };
 
 /*

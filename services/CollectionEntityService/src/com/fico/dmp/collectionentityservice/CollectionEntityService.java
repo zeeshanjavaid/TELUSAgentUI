@@ -3,6 +3,7 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.collectionentityservice;
 import com.fico.telus.utility.URIConstant;
+import com.sun.xml.bind.v2.runtime.output.Encoded;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -392,13 +393,14 @@ public class CollectionEntityService {
 		if(createdFrom != null) {
 			createdFromStr = "eq:"+createdFrom;
 		}
-		
+
 		String createdToStr = null;
 		if(createdTo != null) {
 			createdToStr = "eq:"+createdTo;
 		}
+		
 	  
-       UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+URIConstant.ApiMapping.GET_PARR)
             .queryParamIfPresent("fields", Optional.ofNullable(fields))
              .queryParamIfPresent("agentId", Optional.ofNullable(agentId))
               .queryParamIfPresent("entityRisk", Optional.ofNullable(entityRiskStr))
@@ -409,6 +411,8 @@ public class CollectionEntityService {
                   .queryParamIfPresent("limit", Optional.ofNullable(limit))
                   .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
                    .queryParamIfPresent("createdTo", Optional.ofNullable(createdToStr));
+       
+      // logger.info("endPointString---"+endPointString);
   	return parrService.getPaymentArrangements(entityId,builder.toUriString());
   }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
