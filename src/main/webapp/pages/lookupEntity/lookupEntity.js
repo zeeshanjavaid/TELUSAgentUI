@@ -392,6 +392,7 @@ Page.select1Change = function($event, widget, newVal, oldVal) {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
     } else if (Page.Widgets.select1.datavalue == 'Entity') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
+        Page.Widgets.text3._datavalue = '';
     }
 };
 
