@@ -29,7 +29,7 @@ Partial.onReady = function() {
         Partial.Widgets.ar120D.caption = row.ar120Days;
         Partial.Widgets.ar150D.caption = row.ar150Days;
         Partial.Widgets.ar180D.caption = row.ar180Days;
-        Partial.Widgets.ar180Dplus.caption = row.ar180Days;
+        Partial.Widgets.ar180Dplus.caption = row.ar180DaysPlus;
         Partial.Widgets.lastPaymentDate.caption = row.lastPaymentDate;
 
     }
