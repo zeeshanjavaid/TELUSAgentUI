@@ -23,7 +23,7 @@ Partial.onReady = function() {
     App.showRowExpansionBanViewHome = function(row, data) {
         debugger;
         Partial.Widgets.acctStatus.caption = row.acctStatus;
-        Partial.Widgets.statusDT.caption = row.accStatusDate;
+        Partial.Widgets.statusDT.caption = row.acctStatusDate;
         Partial.Widgets.language.caption = row.language;
         Partial.Widgets.workCategory.caption = row.workCategory;
         Partial.Widgets.subPortfolio.caption = row.subPortfolio;
