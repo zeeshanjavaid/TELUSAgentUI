@@ -1091,6 +1091,9 @@ Partial.userCriteriaKeypress = function($event, widget) {
         } else {
             debugger;
             App.Variables.errorMsg.dataSet.dataValue = "Role is mandatory";
+            $event.preventDefault();
+
+
         }
     }
 
