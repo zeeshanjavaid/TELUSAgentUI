@@ -74,7 +74,7 @@ Partial.onReady = function() {
                         data.forEach(function(d) {
 
                             Partial.billingAccountRefIdAndNameArr = {
-                                "billingAccountId": data.billingAccountId,
+                                "billingAccountId": d.billingAccountId,
                                 "billingAccountName": d.billingAccountName
                             }
 
