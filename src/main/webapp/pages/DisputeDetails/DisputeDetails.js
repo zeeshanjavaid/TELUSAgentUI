@@ -32,10 +32,59 @@ Partial.onReady = function() {
 
     if (Partial.pageParams.DisputeId) {
 
-        Partial.Variables.getDisputeDetails.setInput({
-            "id": Partial.pageParams.DisputeId
-        });
-        Partial.Variables.getDisputeDetails.invoke();
+        /*  Partial.Variables.getDisputeDetails.setInput({
+              "id": Partial.pageParams.DisputeId
+          });
+          Partial.Variables.getDisputeDetails.invoke(); */
+        var getDisputeDetailsVar = Partial.Variables.getDisputeDetails;
+
+        getDisputeDetailsVar.invoke({
+                "inputFields": {
+                    "id": Partial.pageParams.DisputeId
+                },
+            },
+            function(data) {
+
+                var billingAccountRefId = data.billingAccountRef.id;
+                var billingAccountRefIdArray = [];
+                billingAccountRefIdArray.push(billingAccountRefId);
+
+                billingAccountRefIdArray.join(",");
+
+                var getBillingAccountNameIdVariable = Partial.Variables.getBillingAccountNameIdVar;
+                getBillingAccountNameIdVariable.invoke({
+                        "inputFields": {
+                            "billingAccountRefIds": billingAccountRefIdArray
+                        }
+                    },
+                    function(data) {
+                        // billingAccountIdNameListVar
+                        Partial.Variables.billingAccountIdNameDisputeListVar.dataSet = [];
+
+                        data.forEach(function(d) {
+
+                            Partial.billingAccountRefIdAndNameArr = {
+                                "billingAccountId": d.billingAccountId,
+                                "billingAccountName": d.billingAccountName
+                            }
+
+
+                            Partial.Variables.billingAccountIdNameDisputeListVar.dataSet.push(Partial.billingAccountRefIdAndNameArr);
+                        });
+                    },
+                    function(error) {
+                        // Error Callback
+                        console.log("error", error);
+                    });
+
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
+            }
+        );
+
     }
 
 };
