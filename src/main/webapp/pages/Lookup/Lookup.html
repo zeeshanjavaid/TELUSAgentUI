@@ -76,7 +76,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75">
-                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet.entityDetails.totalAr" contentsource="partial"
+                        <wm-popover popoverwidth="650" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.totalAr | toCurrency: '$'" contentsource="partial"
                             content="EntityArDelinqueCycel" popoverplacement="bottom">
                             <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                         </wm-popover>
@@ -115,7 +115,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total OD:" name="label8" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label16" fontsize="12" caption="bind:&quot;$&quot;+''+Variables.getEntityProfileDetails.dataSet.entityDetails.totalOverDue"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label16" fontsize="12" caption="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.totalOverDue | toCurrency: '$'"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn49" class="manualCollLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label18" caption="Manual Coll:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
