@@ -30,6 +30,7 @@ function messageTimeout() {
 
 Page.button1Click = function($event, widget) {
 
+    debugger;
 
     Page.Widgets.entityRiskSelect.datavalue = "";
 
@@ -44,6 +45,15 @@ Page.button1Click = function($event, widget) {
 
     Page.Widgets.completionDate.bsDataValue = "";
 
+    Page.Variables.ParrReportServiceGetParrReport.setInput({
+        'entityRisk': '',
+        'evaluation': '',
+        'status': '',
+        'createdFrom': '',
+        'createdTo': '',
+        'createdBy': ''
+    });
+
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
 };
@@ -51,6 +61,8 @@ Page.button2Click = function($event, widget) {
     debugger;
     var fromDate = Page.Widgets.creationDate.bsDataValue;
     var toDate = Page.Widgets.completionDate.bsDataValue;
+
+    var createdBy;
 
     //ToCalculate Timezone
     if (Page.Widgets.completionDate.bsDataValue != undefined && Page.Widgets.completionDate.bsDataValue != '') {
@@ -87,6 +99,10 @@ Page.button2Click = function($event, widget) {
 
     }
 
+    if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
+        createdBy = Page.Widgets.createdBySelect.datavalue.emplId;
+    }
+
     var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
     var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth();
 
@@ -110,7 +126,7 @@ Page.button2Click = function($event, widget) {
         'status': Page.Widgets.parrStatusSelect.datavalue,
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
-        'createdBy': Page.Widgets.createdBySelect.datavalue
+        'createdBy': createdBy
     });
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
