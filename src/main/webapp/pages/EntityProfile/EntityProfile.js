@@ -446,7 +446,7 @@ App.refreshParrSummary = function() {
             if (data.length > 0) {
                 Partial.Widgets.parrSummaryId.caption = data[0].id;
                 Partial.Widgets.totalAmtParrSummary.caption = '$' + data[0].amount;
-                Partial.Widgets.parrSumStatus.caption = 'Active';
+                Partial.Widgets.parrSumStatus.caption = 'Open';
                 Partial.Widgets.cummPaymentExp.caption = '$' + data[0].expectedPaymentAmountToDate;
                 Partial.Widgets.cummPmtRvcd.caption = '$' + data[0].receivedPaymentAmountToDate;
                 Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
