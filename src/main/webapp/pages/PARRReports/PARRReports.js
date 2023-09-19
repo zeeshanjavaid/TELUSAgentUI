@@ -62,7 +62,8 @@ Page.button2Click = function($event, widget) {
     var fromDate = Page.Widgets.creationDate.bsDataValue;
     var toDate = Page.Widgets.completionDate.bsDataValue;
 
-    var createdBy;
+    var createdByReq;
+    var evaluationReq;
 
     //ToCalculate Timezone
     if (Page.Widgets.completionDate.bsDataValue != undefined && Page.Widgets.completionDate.bsDataValue != '') {
@@ -100,7 +101,13 @@ Page.button2Click = function($event, widget) {
     }
 
     if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
-        createdBy = Page.Widgets.createdBySelect.datavalue.emplId;
+        createdByReq = Page.Widgets.createdBySelect.datavalue.emplId;
+    }
+
+    if (Page.Widgets.evalSelect.datavalue == 'All') {
+        evaluationReq = '';
+    } else {
+        evaluationReq = Page.Widgets.evalSelect.datavalue;
     }
 
     var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
@@ -122,11 +129,11 @@ Page.button2Click = function($event, widget) {
 
     Page.Variables.ParrReportServiceGetParrReport.setInput({
         'entityRisk': Page.Widgets.entityRiskSelect.datavalue,
-        'evaluation': Page.Widgets.evalSelect.datavalue,
+        'evaluation': evaluationReq,
         'status': Page.Widgets.parrStatusSelect.datavalue,
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
-        'createdBy': createdBy
+        'createdBy': createdByReq
     });
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
