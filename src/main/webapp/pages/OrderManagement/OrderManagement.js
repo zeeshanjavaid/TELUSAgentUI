@@ -1055,6 +1055,9 @@ Partial.createOrderManagmentForSuspensiononSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 
 
 };
@@ -1070,6 +1073,9 @@ Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 };
 
 Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
@@ -1083,6 +1089,9 @@ Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 
 };
 
@@ -1094,6 +1103,9 @@ Partial.UpdateODManagemntAndDonotSendonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntAndSendonSuccess = function(variable, data) {
@@ -1102,6 +1114,9 @@ Partial.UpdateODManagemntAndSendonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = " Updated And Sent successfully.";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
+
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
@@ -1110,6 +1125,9 @@ Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Updated Without Sent to Fulfilment successfully.";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
+
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
@@ -1120,6 +1138,9 @@ Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
@@ -1127,6 +1148,9 @@ Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = " Action Closed successfully";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
+
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data) {
@@ -1136,6 +1160,9 @@ Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data)
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
+    App.refreshCollActionList();
+    App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
@@ -1144,5 +1171,9 @@ Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
+
+    App.refreshCollActionList();
+
+    App.refreshHistoryActionList();
 
 };

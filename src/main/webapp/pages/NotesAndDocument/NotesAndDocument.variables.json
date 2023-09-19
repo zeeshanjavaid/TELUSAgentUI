@@ -261,7 +261,7 @@
         "columnName" : "notes",
         "isPrimaryKey" : false,
         "notNull" : false,
-        "length" : 256,
+        "length" : 255,
         "precision" : 0,
         "generator" : "assigned",
         "isRelated" : false,
@@ -295,13 +295,13 @@
         "scale" : 0
       }, {
         "fieldName" : "createdBy",
-        "type" : "string",
-        "fullyQualifiedType" : "string",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
         "columnName" : "createdBy",
         "isPrimaryKey" : false,
         "notNull" : false,
-        "length" : 255,
-        "precision" : 0,
+        "length" : 0,
+        "precision" : 10,
         "generator" : "assigned",
         "isRelated" : false,
         "scale" : 0

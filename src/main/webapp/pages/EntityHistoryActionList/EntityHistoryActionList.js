@@ -27,7 +27,7 @@ Partial.onReady = function() {
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
         'IsOdManagement': false,
         'collectionEntityId': Partial.pageParams.entityId,
-        'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPND'
+        'type': 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND'
 
     });
 
@@ -1548,5 +1548,11 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     }
 
 
+
+};
+
+App.refreshHistoryActionList = function() {
+
+    Partial.Variables.GetCollectionActivityLogList.invoke();
 
 };
