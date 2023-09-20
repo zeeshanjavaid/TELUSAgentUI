@@ -89,7 +89,10 @@ Page.onReady = function() {
     });
     Page.Variables.workcategoriesByEmpId_homeEV.invoke();
 
-    loadtDataForEntityView();
+    Page.Variables.workcategoriesByEmpId_homeBV.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+    });
+    Page.Variables.workcategoriesByEmpId_homeBV.invoke();
 
 };
 
@@ -419,11 +422,6 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         var collStatusDataview = collStatusDataArray;
     }
 
-
-
-
-
-
     // api call to display data in table for entity view
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
@@ -431,11 +429,13 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
         'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': 'All', // portfolioview,
+        'portfolio': 'ALL', // portfolioview,
         'billingSystem': 'CES9', //billingSystemview,
-        'collectionStatus': 'All' //collStatusDataview
+        'collectionStatus': 'ALL' //collStatusDataview
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+
+
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
@@ -476,7 +476,6 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
         var collStatusDataview = collStatusDataArray;
     }
 
-
     // api call to display data in table for ban view
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
@@ -484,12 +483,13 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
         'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': portfolioview,
-        'billingSystem': billingSystemview,
-        'collectionStatus': collStatusDataview
+        'portfolio': 'ALL', //portfolioview,
+        'billingSystem': 'CES9', //billingSystemview,
+        'collectionStatus': 'ALL' //collStatusDataview
 
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+
 };
 
 function workCategoryData(item, index) {
@@ -537,34 +537,6 @@ Page.getAllActiveUserList_HomeBV_forALLonSuccess = function(variable, data) {
     }
 };
 
-
-function loadtDataForEntityView() {
-    debugger;
-
-    var workCategoriesEV = subComboBox.getSelectedIds();
-
-    // var workCategoriesEV = subComboBox._selectedItems.map(({
-    //     id
-    // }) => id);
-    if (workCategoriesEV == '' || workCategoriesEV == undefined) {
-        //  Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
-        setTimeout(messageTimeout, 10000);
-    } else {
-        if (workCategoriesEV.length > 1) {
-            var finalWorkCategoriesEV = workCategoriesEV.join("|");
-        } else {
-            var finalWorkCategoriesEV = workCategoriesEV;
-        }
-        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-            'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
-            'workCategory': finalWorkCategoriesEV,
-            'portfolio': 'All',
-            'billingSystem': 'CES9',
-            'collectionStatus': 'All'
-
-        });
-        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
-    }
-
+Page.CollectionDataServiceGetassignedEntitiesInClassicView2onError = function(variable, data, xhrObj) {
 
 };
