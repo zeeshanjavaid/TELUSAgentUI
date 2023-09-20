@@ -89,6 +89,8 @@ Page.onReady = function() {
     });
     Page.Variables.workcategoriesByEmpId_homeEV.invoke();
 
+    loadtDataForEntityView();
+
 };
 
 function messageTimeout() {
@@ -429,9 +431,9 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
         'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': portfolioview,
-        'billingSystem': billingSystemview,
-        'collectionStatus': collStatusDataview
+        'portfolio': 'All', // portfolioview,
+        'billingSystem': 'CES9', //billingSystemview,
+        'collectionStatus': 'All' //collStatusDataview
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
 };
@@ -533,4 +535,36 @@ Page.getAllActiveUserList_HomeBV_forALLonSuccess = function(variable, data) {
         Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
         Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV_forALL.dataSet[0].empId;
     }
+};
+
+
+function loadtDataForEntityView() {
+    debugger;
+
+    var workCategoriesEV = subComboBox.getSelectedIds();
+
+    // var workCategoriesEV = subComboBox._selectedItems.map(({
+    //     id
+    // }) => id);
+    if (workCategoriesEV == '' || workCategoriesEV == undefined) {
+        //  Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+        setTimeout(messageTimeout, 10000);
+    } else {
+        if (workCategoriesEV.length > 1) {
+            var finalWorkCategoriesEV = workCategoriesEV.join("|");
+        } else {
+            var finalWorkCategoriesEV = workCategoriesEV;
+        }
+        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+            'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+            'workCategory': finalWorkCategoriesEV,
+            'portfolio': 'All',
+            'billingSystem': 'CES9',
+            'collectionStatus': 'All'
+
+        });
+        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+    }
+
+
 };

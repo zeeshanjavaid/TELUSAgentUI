@@ -22,6 +22,11 @@ Partial.onReady = function() {
     //Partial.Variables.getWorkCategoriesByCode.dataSet;
 
     // loadAppMetadata();
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
     Partial.Variables.storeworkCategoryForMultiSelect = Partial.Variables.getWorkCategoriesByCode.dataSet;
 
 };
@@ -236,5 +241,8 @@ Partial.getSitePropertyByNameonSuccess = function(variable, data) {
     } else {
         Page.Variables.mv_MaxSelectedOffers.dataSet.dataValue = data.value;
     }
+
+};
+Partial.anchor1Click = function($event, widget) {
 
 };
