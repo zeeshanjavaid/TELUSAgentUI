@@ -161,6 +161,21 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     checkedItem = $("input:checked")
     checkedItem.prop('checked', false)
 
+    if (workCategoryDataArray.length > 1) {
+        var finalWorkCategoriesBV = workCategoryDataArray.join("|");
+    } else {
+        var finalWorkCategoriesBV = workCategoryDataArray;
+    }
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWorkCategoriesBV,
+        'portfolio': 'ALL',
+        'billingSystem': 'CES9',
+        'collectionStatus': 'ALL'
+
+    });
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+
 
 
 
@@ -181,6 +196,23 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     subComboBox1.clearSelection();
     checkedItem = $("input:checked")
     checkedItem.prop('checked', false)
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWorkCategoriesBV = workCategoryDataArray.join("|");
+    } else {
+        var finalWorkCategoriesBV = workCategoryDataArray;
+    }
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWorkCategoriesBV,
+        'portfolio': 'ALL',
+        'billingSystem': 'CES9',
+        'collectionStatus': 'ALL'
+
+    });
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+
+
 }
 
 // function added to display table based on the filters for entity view
