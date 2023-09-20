@@ -22,9 +22,14 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
     debugger;
+
+
+
     Page.Variables.UserLoggedInVar_ARAgent.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
     Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
+    Page.Widgets.ActionTypeSelect.datavalue = "ALL";
+    Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_ARAgent.invoke();
 };
 
@@ -45,18 +50,30 @@ Page.clearFilterFields = function($event, widget) {
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
-        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
-        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
-        'workCategory': Page.Widgets.WorkCategorySelect.datavalue,
-        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
-        'status': Page.Widgets.StatusSelect.datavalue,
-        'fromDueDate': Page.Widgets.creationDate.datavalue,
-        'toDueDate': Page.Widgets.completionDate.datavalue,
-        'viewType ': '1'
-    });
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+    var workCategoriesAR = Page.Widgets.WorkCategorySelect.datavalue;
+    if (workCategoriesAR == '' || workCategoriesAR == undefined) {
+        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+        setTimeout(messageTimeout, 10000);
+    } else {
+        if (workCategoriesAR.length > 1) {
+            var finalWorkCategoriesAR = workCategoriesAR.join("|");
+        } else {
+            var finalWorkCategoriesAR = workCategoriesAR;
+        }
+
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+            'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+            'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+            'entityOwner': 10, //Page.Widgets.EntityOwnerSelect.datavalue,
+            'workCategory': finalWorkCategoriesAR,
+            'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+            'status': Page.Widgets.StatusSelect.datavalue,
+            'fromDueDate': Page.Widgets.creationDate.datavalue,
+            'toDueDate': Page.Widgets.completionDate.datavalue,
+            'viewType ': '1'
+        });
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+    }
 };
 
 Page.goToEnityPage = function(row) {
@@ -64,6 +81,7 @@ Page.goToEnityPage = function(row) {
 }
 
 // assigned Team on Change
+debugger;
 Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
@@ -79,6 +97,7 @@ Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
 
 // adding all in Assigned Team
 Page.getAllTeamList_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllTeamList_ARAgentView.dataSet.length > 1) {
         Page.Variables.getAllTeamList_ARAgentView.dataSet.unshift({
             id: 0,
@@ -133,9 +152,11 @@ Page.workCategorySelect_ARAgentViewonSuccess = function(variable, data) {
 Page.workCategoryValues_ARAgentonSuccess = function(variable, data) {
     Page.Variables.workCategoryValues_ARAgent.dataSet = [];
     Page.Variables.workCategoryValues_ARAgent.dataSet = data;
+
 };
 
 Page.getAllActiveUserList_ARAgentView_forALLonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet.length > 1) {
         Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet.unshift({
             empId: 'ALL',
@@ -150,4 +171,30 @@ Page.getAllActiveUserList_ARAgentView_forALLonSuccess = function(variable, data)
 
 Page.CollectionDataServiceGetActionViewByTeamonError = function(variable, data, xhrObj) {
 
+};
+
+
+// adding 'All' in the dropdown list for actiontype dropdown
+Page.actionTypeSelect_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
+    if (Page.Variables.actionTypeSelect_ARAgentView.dataSet.length > 1) {
+        Page.Variables.actionTypeSelect_ARAgentView.dataSet.unshift({
+            id: 0,
+            code: 'ALL',
+
+        });
+        Page.Variables.actionTypeSelect_ARAgentView.dataSet = Page.Variables.actionTypeSelect_ARAgentView.dataSet;
+    }
+};
+
+
+// adding 'All' in the dropdown list for selectstatus dropdown
+Page.statusSelect_ARAgentViewonSuccess = function(variable, data) {
+    if (Page.Variables.statusSelect_ARAgentView.dataSet.length > 1) {
+        Page.Variables.statusSelect_ARAgentView.dataSet.unshift({
+            id: 0,
+            code: 'ALL',
+        });
+        Page.Variables.statusSelect_ARAgentView.dataSet = Page.Variables.statusSelect_ARAgentView.dataSet;
+    }
 };
