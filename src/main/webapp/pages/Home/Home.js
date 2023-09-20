@@ -444,6 +444,11 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
 
     if (data != undefined) {
         data.forEach(workCategoryData);
+        workCategoryDataArray = [];
+        data.forEach(function(item) {
+            workCategoryDataArray.push(item.code)
+
+        });
     }
 
     if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {

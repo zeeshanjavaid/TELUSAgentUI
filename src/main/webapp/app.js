@@ -42,11 +42,16 @@ App.onSessionTimeout = function() {
  */
 App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
     debugger;
-    App.Variables.getLoggedInUserDetails.invoke();
-    App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
-    if (activePageName == 'Main') {
+    if (activePageName == 'Main' || activePageName == 'Common') {
         App.Actions.goToPage_Home.navigate();
     }
+    App.Variables.getLoggedInUserDetails.invoke();
+    App.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+
 };
 
 /*

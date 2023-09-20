@@ -23,7 +23,7 @@ Partial.onReady = function() {
 
     // loadAppMetadata();
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
-        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+        'emplId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
 
     });
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();

@@ -18,6 +18,12 @@ Page.onReady = function() {
 
     debugger;
 
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+
     Page.Variables.storeworkCategoryForMultiSelect = Page.Variables.getWorkCategoriesByCode.dataSet;
 
     /*
