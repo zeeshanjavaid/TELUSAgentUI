@@ -141,6 +141,17 @@ Page.button2Click = function($event, widget) {
 
 Page.openPARRdetailsDailog = function($event, widget, row) {
     debugger;
+    Page.Variables.getParrHistoryViewForParrReport.setInput({
+        'collectionEntityId': row.entityId,
+        'relatedBusinessEntityId': row.parrId,
+        'relatedBusinessEntityType': 'CollectionPaymentArrangement'
+
+    });
+
+    Page.Variables.getParrHistoryViewForParrReport.invoke();
+
+
+
     Page.Variables.getPaymentArrangement_parrReports.setInput({
         "id": row.parrId
     });

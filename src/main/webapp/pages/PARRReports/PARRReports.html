@@ -200,11 +200,12 @@
             <wm-gridrow name="gridrow13">
                 <wm-gridcolumn columnwidth="10" name="gridcolumn30">
                     <wm-container name="container25_1">
-                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.parrHistoryVar_parrReports.dataSet" width="98%" navigationalign="right" pagesize="3">
-                            <wm-table-column binding="date" caption="Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="user" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="event" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="comments" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table name="DIsputeHistoryTable" title="" navigation="Classic" dataset="bind:Variables.getParrHistoryViewForParrReport.dataSet" width="98%" navigationalign="right" pagesize="3">
+                            <wm-table-column binding="updatedOn" caption="Date" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="updatedBy" caption="User" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="eventType" caption="Event" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="comment" caption="Comments" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
                     </wm-container>
                 </wm-gridcolumn>
