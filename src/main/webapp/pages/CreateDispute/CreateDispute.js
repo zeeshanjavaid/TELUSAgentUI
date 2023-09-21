@@ -138,6 +138,7 @@ Partial.CreateDisputeServiceonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Dispute created successfully"
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
     App.refreshDisputeList();
+    App.refreshHistoryActionList();
     setTimeout(messageTimeout, 10000);
 
 };

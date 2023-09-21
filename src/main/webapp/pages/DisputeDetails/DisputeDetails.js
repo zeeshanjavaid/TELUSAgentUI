@@ -243,6 +243,7 @@ Partial.CloseDisputeServiceVaronSuccess = function(variable, data) {
             console.log("error", error);
         }
     );
+    App.refreshHistoryActionList();
     setTimeout(messageTimeout, 8000);
 
 };
@@ -274,7 +275,7 @@ Partial.CancelDisputeServiceVaronSuccess = function(variable, data) {
         }
     );
 
-
+    App.refreshHistoryActionList();
     setTimeout(messageTimeout, 8000);
 
 };
@@ -309,6 +310,8 @@ Partial.updateDisputeServiceonSuccess = function(variable, data) {
             console.log("error", error);
         }
     );
+
+    App.refreshHistoryActionList();
     setTimeout(messageTimeout, 8000);
 
 };
