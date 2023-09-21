@@ -27,7 +27,7 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
-    //      For multi Select manager
+    //      For multi Select work category
 
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
         'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId

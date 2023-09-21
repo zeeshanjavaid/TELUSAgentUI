@@ -42,15 +42,12 @@ App.onSessionTimeout = function() {
  */
 App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
     debugger;
+
+    App.Variables.getLoggedInUserDetails.invoke();
+
     if (activePageName == 'Main' || activePageName == 'Common') {
         App.Actions.goToPage_Home.navigate();
     }
-    App.Variables.getLoggedInUserDetails.invoke();
-    App.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
-        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-
-    });
-    App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
 };
 
@@ -1394,9 +1391,16 @@ App.getLoggedInUserDetailsonError = function(variable, data) {
 };
 
 App.getLoggedInUserDetailsonSuccess = function(variable, data) {
+    debugger;
     console.log("getLoggedInUserDetailsonSuccess - Logged in user security details :" + JSON.stringify(data));
     if (data) {
         console.log("Provisioning user record ..")
+
+        App.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+            'emplId': data.emplId
+
+        });
+        App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
     };
 
