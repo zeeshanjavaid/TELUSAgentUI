@@ -64,7 +64,7 @@ Page.applyFilter = function($event, widget) {
         Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
             'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
             'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
-            'entityOwner': 10, //Page.Widgets.EntityOwnerSelect.datavalue,
+            'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
             'workCategory': finalWorkCategoriesAR,
             'actionType': Page.Widgets.ActionTypeSelect.datavalue,
             'status': Page.Widgets.StatusSelect.datavalue,

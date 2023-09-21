@@ -424,7 +424,9 @@ public class CollectionDataService {
     			                          .queryParamIfPresent("offset", Optional.ofNullable(offset))
     			                          .queryParamIfPresent("limit", Optional.ofNullable(limit));
     		
-    		String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+    		String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
+    		
+    		String responseStr = telusAPIConnectivityService.executeTelusAPI(null, endPointString, HttpMethod.GET, entitySvcAuthScope);
     		 logger.info("::::::::TeamsActionViewResponse endpoint call Success ::::::::");
     		 logger.info("Response payload for getActionViewByTeam---"+ responseStr);
     		 List<TeamsActionViewResponse> teamsActionViewResponseList = new ArrayList<TeamsActionViewResponse>();
