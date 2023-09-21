@@ -24,6 +24,8 @@ Page.onReady = function() {
     Page.Variables.UserLoggedInVar_OrderDesk.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
     Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
+    Page.Widgets.ActionTypeSelect.datavalue = "ALL";
+    Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_OrderDesk.invoke();
 };
 
@@ -43,18 +45,30 @@ Page.clearFilterFields = function($event, widget) {
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
-        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
-        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
-        'workCategory': Page.Widgets.WorkCategorySelect.datavalue,
-        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
-        'status': Page.Widgets.StatusSelect.datavalue,
-        'fromDueDate': Page.Widgets.creationDate.datavalue,
-        'toDueDate': Page.Widgets.completionDate.datavalue,
-        'viewType ': '2'
-    });
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+    var workCategoriesOD = Page.Widgets.WorkCategorySelect.datavalue;
+    if (workCategoriesOD == '' || workCategoriesOD == undefined) {
+        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+        setTimeout(messageTimeout, 10000);
+    } else {
+        if (workCategoriesAR.length > 1) {
+            var finalWorkCategoriesOD = workCategoriesOD.join("|");
+        } else {
+            var finalWorkCategoriesOD = workCategoriesOD;
+        }
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+            'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+            'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+            'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
+            'workCategory': finalWorkCategoriesOD,
+            'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+            'status': Page.Widgets.StatusSelect.datavalue,
+            'fromDueDate': Page.Widgets.creationDate.datavalue,
+            'toDueDate': Page.Widgets.completionDate.datavalue,
+            'viewType ': '2'
+        });
+
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+    }
 };
 
 Page.goToEnityPage = function(row) {
@@ -146,4 +160,27 @@ Page.getAllActiveUserList_OrderDesk_forALLonSuccess = function(variable, data) {
 
 Page.CollectionDataServiceGetActionViewByTeamonError = function(variable, data, xhrObj) {
 
+};
+
+Page.actionTypeSelect_orderDeskViewonSuccess = function(variable, data) {
+    if (Page.Variables.actionTypeSelect_orderDeskView.dataSet.length > 1) {
+        Page.Variables.actionTypeSelect_orderDeskView.dataSet.unshift({
+            id: 0,
+            code: 'ALL',
+
+        });
+        Page.Variables.actionTypeSelect_orderDeskView.dataSet = Page.Variables.actionTypeSelect_orderDeskView.dataSet;
+    }
+};
+
+
+Page.statusSelect_orderDeskViewonSuccess = function(variable, data) {
+    if (Page.Variables.statusSelect_orderDeskView.dataSet.length > 1) {
+        Page.Variables.statusSelect_orderDeskView.dataSet.unshift({
+            id: 0,
+            code: 'ALL',
+
+        });
+        Page.Variables.statusSelect_orderDeskView.dataSet = Page.Variables.statusSelect_orderDeskView.dataSet;
+    }
 };
