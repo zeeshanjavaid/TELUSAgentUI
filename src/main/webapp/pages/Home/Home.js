@@ -82,12 +82,14 @@ Page.onReady = function() {
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
     Page.Variables.workCategoryValues_HomeEV.invoke();
+    setTimeout(messageTimeout, 10000);
     Page.Variables.workCategoryValues_HomeBV.invoke();
 
     Page.Variables.workcategoriesByEmpId_homeEV.setInput({
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
     });
     Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+    setTimeout(messageTimeout, 10000);
 
     Page.Variables.workcategoriesByEmpId_homeBV.setInput({
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
