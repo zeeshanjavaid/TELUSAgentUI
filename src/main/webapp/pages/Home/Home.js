@@ -85,16 +85,17 @@ Page.onReady = function() {
     setTimeout(messageTimeout, 10000);
     Page.Variables.workCategoryValues_HomeBV.invoke();
 
-    Page.Variables.workcategoriesByEmpId_homeEV.setInput({
-        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-    });
-    Page.Variables.workcategoriesByEmpId_homeEV.invoke();
-    setTimeout(messageTimeout, 10000);
-
     Page.Variables.workcategoriesByEmpId_homeBV.setInput({
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
     });
     Page.Variables.workcategoriesByEmpId_homeBV.invoke();
+
+    Page.Variables.workcategoriesByEmpId_homeEV.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+    });
+    Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+
+
 
 };
 
@@ -457,6 +458,8 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     }
 
     // api call to display data in table for entity view
+
+
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCentityview,
@@ -468,8 +471,6 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         'collectionStatus': 'ALL' //collStatusDataview
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
-
-
 };
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {

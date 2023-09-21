@@ -142,7 +142,7 @@
     "onSuccess" : "CollectionDataServiceGetAssignedEntitiesInEntityView3onSuccess(variable, data, options)",
     "onError" : "CollectionDataServiceGetAssignedEntitiesInEntityView3onError(variable, data, xhrObj)",
     "startUpdate" : false,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
