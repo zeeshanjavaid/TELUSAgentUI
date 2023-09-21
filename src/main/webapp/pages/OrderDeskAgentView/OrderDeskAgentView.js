@@ -50,7 +50,7 @@ Page.applyFilter = function($event, widget) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 10000);
     } else {
-        if (workCategoriesAR.length > 1) {
+        if (workCategoriesOD.length > 1) {
             var finalWorkCategoriesOD = workCategoriesOD.join("|");
         } else {
             var finalWorkCategoriesOD = workCategoriesOD;
