@@ -8,7 +8,7 @@
             <wm-layoutgrid name="layoutgrid2" columns="7">
                 <wm-gridrow name="gridrow28">
                     <wm-gridcolumn columnwidth="1" name="gridcolumn61" width="3%">
-                        <wm-anchor margin="10px 0 0 20px" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="Actions.goToPage_lookupEntity.invoke()"></wm-anchor>
+                        <wm-anchor margin="10px 0 0 20px" name="anchor3" iconclass="fico-icon-arrow-left" caption="" on-click="anchor3Click($event, widget)"></wm-anchor>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn62">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label1" caption="Entity Name:" height="45px" width="1000px" color="grey" class="lookupLabel" textalign="left"></wm-label>
@@ -208,17 +208,11 @@
                         </wm-panel>
                     </wm-tabpane>
                     <wm-tabpane name="Contacts" title="Contacts" width="99.8%" on-select="ContactSelect($event, widget)" on-deselect="ContactDeselect($event, widget)" accessroles="Contacts" padding="unset unset unset 5pt" tabindex="6">
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
-                            <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
-                        </wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'"
+                            deferload="true" margin="0.5em unset unset unset"></wm-panel>
                         <!--<wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="true"></wm-panel><wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="true"></wm-panel>--></wm-tabpane>
                 </wm-tabs>
             </wm-container>

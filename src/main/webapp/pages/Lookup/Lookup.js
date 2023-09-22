@@ -685,3 +685,15 @@ Page.previousEntValClick = function($event, widget) {
 
 
 };
+Page.anchor3Click = function($event, widget) {
+    debugger;
+
+    Page.Actions.goToPage_lookupEntity.setData({
+        "entityId": Page.pageParams.entityId,
+        "inputlevel": Page.pageParams.inputlevel,
+        "inputType": Page.pageParams.inputType,
+        "searchMatchCriteria": Page.pageParams.searchMatchCriteria,
+        "billingSystem": Page.pageParams.billingSystem
+    })
+    Page.Actions.goToPage_lookupEntity.navigate();
+};

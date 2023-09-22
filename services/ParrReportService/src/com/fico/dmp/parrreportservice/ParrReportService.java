@@ -88,13 +88,17 @@ public class ParrReportService {
 
         if(!CollectionUtils.isEmpty(parrReportList))
         {
-            entityIds= parrReportList.stream().map(a->a.getCollectionEntity().getId().toString()).collect(Collectors.toList());
+          //  entityIds= parrReportList.stream().map(a->a.getCollectionEntity().getId().toString()).collect(Collectors.toList());
 
             for(CollectionPaymentArrangement cpa:parrReportList)
             {
+                
+                                CollectionEntity collectionEntity  = collectionEntityService.getCollectionEntityById(Integer.valueOf(cpa.getCollectionEntity().getId()),null);
+
                 ParrReports parrReports=new ParrReports();
                 parrReports.setParrId(cpa.getId());
-                parrReports.setEntityId(Long.valueOf(cpa.getCollectionEntity().getId()));
+                parrReports.setEntityId(cpa.getCollectionEntity().getId());
+                 entityIds.add(cpa.getCollectionEntity().getId());
                 parrReports.setParrStatus(cpa.getStatus());
                // parrReports.setParrStatus(cpa.getStatus());
                 parrReports.setCreatedTeam(getTeamName(cpa.getAuditInfo().getCreatedBy()));
@@ -117,7 +121,13 @@ public class ParrReportService {
                 	}else {
                 		parrReports.setPerOfAmtRecieved_Exp(0+"%");
                 	}
-                }      
+                }  
+                
+                 if(collectionEntity!=null)
+              {
+                  parrReports.setEntityName(collectionEntity.getName());
+                  parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+              }
               
             parrReports.setCreatedBy(commonUtilityService.getNameUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
 
@@ -125,25 +135,32 @@ public class ParrReportService {
             }
 
 
-         String entityIdsAsString= entityIds.stream().collect(Collectors.joining(","));
+        //  String entityIdsAsString= entityIds.stream().collect(Collectors.joining(","));
 
 
-            List<CollectionEntity> collectionEntityList=   collectionEntityService.getCollectionEntity(null,0,0,null,null,null,entityIdsAsString,null,null,null);
+        //     List<CollectionEntity> collectionEntityList=   collectionEntityService.getCollectionEntity(null,0,0,null,null,null,entityIdsAsString,null,null,null);
 
-            if(!CollectionUtils.isEmpty(collectionEntityList))
-            {
-                for(ParrReports parrReports:parrReportsList)
-                {
-                    
+        //     if(!CollectionUtils.isEmpty(collectionEntityList))
+        //     {
+        //         for(ParrReports parrReports:parrReportsList)
+        //         {
+        //              for(CollectionEntity collectionEntity:collectionEntityList)
+        //             {
+        //                 if(collectionEntity.getId().equals(parrReports.getParrId()))
+        //                 {
+        //                     parrReports.setEntityName(collectionEntity.getName());
+        //                     parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+        //                 }
+        //             }
                
-                    collectionEntityList.stream().filter(cel->cel.getId().equals(parrReports.getParrId())).forEach(collectionEntity -> {
+        //             // collectionEntityList.stream().filter(cel->cel.getId().equals(parrReports.getParrId())).forEach(collectionEntity -> {
 
-                        parrReports.setEntityName(collectionEntity.getName());
-                        parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
+        //             //     parrReports.setEntityName(collectionEntity.getName());
+        //             //     parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
 
-                    });
-                }
-            }
+        //             // });
+        //         }
+        //     }
 
         }
 

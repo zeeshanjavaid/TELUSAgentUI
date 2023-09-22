@@ -904,7 +904,7 @@ Partial.updateUserForm1_saveAction = function($event) {
 
     var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
 
-    if (type == 'string') {
+    if (type == 'string' || type == "undefined") {
 
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
     }

@@ -28,6 +28,20 @@ Page.onReady = function() {
 
     handleBanPhoneNumber();
 
+    Page.Variables.getEntitySearch.setInput({
+
+        'inputType': Page.pageParams.inputType,
+        'inputValue': Page.pageParams.entityId,
+        'level': Page.pageParams.inputlevel,
+        'billingSystem': Page.pageParams.billingSystem,
+        'searchMatchCriteria': Page.pageParams.searchMatchCriteria
+
+    });
+
+    Page.Variables.getEntitySearch.invoke();
+
+
+
 }
 
 
@@ -257,7 +271,11 @@ Page.goToEnityPage = function(row) {
             Page.Widgets.inactivateUserDialog.open();
         } else {
             Page.Actions.goToPage_Lookup.setData({
-                "entityId": row.entityId
+                "entityId": row.entityId,
+                "inputlevel": Page.Variables.getEntitySearch.dataBinding.level,
+                "inputType": Page.Variables.getEntitySearch.dataBinding.inputType,
+                "searchMatchCriteria": Page.Variables.getEntitySearch.dataBinding.searchMatchCriteria,
+                "billingSystem": Page.Variables.getEntitySearch.dataBinding.billingSystem
             })
             Page.Actions.goToPage_Lookup.navigate();
             //window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);
@@ -265,7 +283,11 @@ Page.goToEnityPage = function(row) {
 
     } else {
         Page.Actions.goToPage_Lookup.setData({
-            "entityId": row.entityId
+            "entityId": row.entityId,
+            "inputlevel": Page.Variables.getEntitySearch.dataBinding.level,
+            "inputType": Page.Variables.getEntitySearch.dataBinding.inputType,
+            "searchMatchCriteria": Page.Variables.getEntitySearch.dataBinding.searchMatchCriteria,
+            "billingSystem": Page.Variables.getEntitySearch.dataBinding.billingSystem
         })
         Page.Actions.goToPage_Lookup.navigate();
         //window.location.href = "#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId);

@@ -272,6 +272,18 @@
   "params" : [ {
     "name" : "entityId",
     "type" : "string"
+  }, {
+    "name" : "inputlevel",
+    "type" : "string"
+  }, {
+    "name" : "inputType",
+    "type" : "string"
+  }, {
+    "name" : "searchMatchCriteria",
+    "type" : "string"
+  }, {
+    "name" : "billingSystem",
+    "type" : "string"
   } ]
 }, {
   "name" : "LookupFileCreateEdit",
@@ -517,6 +529,18 @@
   "type" : "PAGE",
   "params" : [ {
     "name" : "entityId",
+    "type" : "string"
+  }, {
+    "name" : "inputlevel",
+    "type" : "string"
+  }, {
+    "name" : "inputType",
+    "type" : "string"
+  }, {
+    "name" : "searchMatchCriteria",
+    "type" : "string"
+  }, {
+    "name" : "billingSystem",
     "type" : "string"
   } ]
 }, {

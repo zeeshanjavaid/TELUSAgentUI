@@ -5,7 +5,7 @@ package com.fico.telus.model;
 public class ParrReports {
 
     private Integer parrId;
-    private Long entityId;
+    private String entityId;
     private String entityName;
     private String entityRisk;
     private String parrStatus;
@@ -26,11 +26,11 @@ public class ParrReports {
         this.parrId = parrId;
     }
 
-    public Long getEntityId() {
+   public String getEntityId() {
         return entityId;
     }
 
-    public void setEntityId(Long entityId) {
+    public void setEntityId(String entityId) {
         this.entityId = entityId;
     }
 
