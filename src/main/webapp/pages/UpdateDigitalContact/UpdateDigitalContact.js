@@ -26,43 +26,78 @@ Partial.onReady = function() {
 
 App.rowDataValues = function(row) {
     debugger;
-    var GetContactDetailsByIdVar = Partial.Variables.GetContactDetailsById;
-    GetContactDetailsByIdVar.invoke({
-            "inputFields": {
-                "id": row.contactId
-            }
-        },
-        function(data) {
-            Partial.Widgets.TELUSContactsSelect.datavalue = data.telusContactIndicator;
-            Partial.Widgets.TITLESelect.datavalue = data.title;
-            Partial.Widgets.firstName.datavalue = data.firstName;
-            Partial.Widgets.lastName.datavalue = data.lastName;
-            Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
-            Partial.Widgets.emailText.datavalue = data.email;
-            Partial.Widgets.cellPhone.datavalue = data.mobilePhoneNumber.length == 10 ? '(' + data.mobilePhoneNumber.substring(0, 3) + ')' + data.mobilePhoneNumber.substring(3, 6) + '-' + data.mobilePhoneNumber.substring(6, 10) : data.mobilePhoneNumber;
-            Partial.Widgets.workNo.datavalue = data.workPhoneNumber.length == 10 ? '(' + data.workPhoneNumber.substring(0, 3) + ')' + data.workPhoneNumber.substring(3, 6) + '-' + data.workPhoneNumber.substring(6, 10) : data.workPhoneNumber;
-            Partial.Widgets.ext.datavalue = data.workPhoneNumberExtension;
-            Partial.Widgets.fax.datavalue = data.faxNumber.length == 10 ? '(' + data.faxNumber.substring(0, 3) + ')' + data.faxNumber.substring(3, 6) + '-' + data.faxNumber.substring(6, 10) : data.faxNumber;
-            Partial.Widgets.comments.datavalue = data.comment;
-            Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
-            Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
-            Partial.Widgets.createdOn.caption = data.auditInfo.createdDateTime;
-            Partial.Widgets.createdBy.caption = data.auditInfo.createdBy;
 
-            var endDateTime = data.validFor.endDateTime;
-            if (endDateTime == null || endDateTime == undefined) {
-                Partial.Variables.isContactExpired.dataSet.dataValue = false;
-            } else {
-                Partial.Variables.isContactExpired.dataSet.dataValue = true;
+    //Added condition to check for CES9 datasource contacts
+    if (row.contactId != null && row.sourceOfContact == 'TCM') {
+        Partial.Widgets.contactIDLabel.caption = row.contactId;
+        var GetContactDetailsByIdVar = Partial.Variables.GetContactDetailsById;
+        GetContactDetailsByIdVar.invoke({
+                "inputFields": {
+                    "id": row.contactId
+                }
+            },
+            function(data) {
+                Partial.Widgets.TELUSContactsSelect.datavalue = data.telusContactIndicator;
+                Partial.Widgets.TITLESelect.datavalue = data.title;
+                Partial.Widgets.firstName.datavalue = data.firstName;
+                Partial.Widgets.lastName.datavalue = data.lastName;
+                Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
+                Partial.Widgets.emailText.datavalue = data.email;
+                if (data.mobilePhoneNumber != null) {
+                    Partial.Widgets.cellPhone.datavalue = data.mobilePhoneNumber.length == 10 ? '(' + data.mobilePhoneNumber.substring(0, 3) + ')' + data.mobilePhoneNumber.substring(3, 6) + '-' + data.mobilePhoneNumber.substring(6, 10) : data.mobilePhoneNumber;
+                }
+                if (data.workPhoneNumber != null) {
+                    Partial.Widgets.workNo.datavalue = data.workPhoneNumber.length == 10 ? '(' + data.workPhoneNumber.substring(0, 3) + ')' + data.workPhoneNumber.substring(3, 6) + '-' + data.workPhoneNumber.substring(6, 10) : data.workPhoneNumber;
+                }
+                Partial.Widgets.ext.datavalue = data.workPhoneNumberExtension;
+                if (data.faxNumber != null) {
+                    Partial.Widgets.fax.datavalue = data.faxNumber.length == 10 ? '(' + data.faxNumber.substring(0, 3) + ')' + data.faxNumber.substring(3, 6) + '-' + data.faxNumber.substring(6, 10) : data.faxNumber;
+                }
+                Partial.Widgets.comments.datavalue = data.comment;
+                Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
+                Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
+                Partial.Widgets.createdOn.caption = data.auditInfo.createdDateTime;
+                Partial.Widgets.createdBy.caption = data.auditInfo.createdBy;
+
+                var endDateTime = data.validFor.endDateTime;
+                if (endDateTime == null || endDateTime == undefined) {
+                    Partial.Variables.isContactExpired.dataSet.dataValue = false;
+                } else {
+                    Partial.Variables.isContactExpired.dataSet.dataValue = true;
+                }
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
             }
-        },
-        function(error) {
-            // Error Callback
-            console.log("error", error);
+
+        );
+    } else {
+        if (row.contactId != null) {
+            Partial.Widgets.contactIDLabel.caption = row.contactId;
         }
-
-    );
-
+        Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+        Partial.Widgets.TITLESelect.datavalue = row.title;
+        Partial.Widgets.firstName.datavalue = row.firstName;
+        Partial.Widgets.lastName.datavalue = row.lastName;
+        Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
+        Partial.Widgets.emailText.datavalue = row.email;
+        if (row.mobileNumber != null) {
+            Partial.Widgets.cellPhone.datavalue = row.mobileNumber.length == 10 ? '(' + row.mobileNumber.substring(0, 3) + ')' + row.mobileNumber.substring(3, 6) + '-' + row.mobileNumber.substring(6, 10) : row.mobileNumber;
+        }
+        if (row.workNumber != null) {
+            Partial.Widgets.workNo.datavalue = row.workNumber.length == 10 ? '(' + row.workNumber.substring(0, 3) + ')' + row.workNumber.substring(3, 6) + '-' + row.workNumber.substring(6, 10) : row.workNumber;
+        }
+        Partial.Widgets.ext.datavalue = row.workPhoneExt;
+        if (row.faxNumber != null) {
+            Partial.Widgets.fax.datavalue = row.faxNumber.length == 10 ? '(' + row.faxNumber.substring(0, 3) + ')' + row.faxNumber.substring(3, 6) + '-' + row.faxNumber.substring(6, 10) : row.faxNumber;
+        }
+        //Partial.Widgets.comments.datavalue = row.comment;
+        //Partial.Widgets.lastUpdatedOn.caption = row.auditInfo.lastUpdatedDateTime;
+        //Partial.Widgets.lastUpdatedBy.caption = row.auditInfo.lastUpdatedBy;
+        //Partial.Widgets.createdOn.caption = row.auditInfo.createdDateTime;
+        //Partial.Widgets.createdBy.caption = row.auditInfo.createdBy;
+    }
 
 
     if (!(row.sourceOfContact == 'TCM')) {
