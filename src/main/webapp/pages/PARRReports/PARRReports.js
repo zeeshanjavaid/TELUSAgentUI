@@ -152,10 +152,10 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
 
 
 
-    Page.Variables.getPaymentArrangement_parrReports.setInput({
-        "id": row.parrId
-    });
-    Page.Variables.getPaymentArrangement_parrReports.invoke();
+    /*  Page.Variables.getPaymentArrangement_parrReports.setInput({
+          "id": row.parrId
+      });
+      Page.Variables.getPaymentArrangement_parrReports.invoke(); */
     //Page.Variables.getPaymentArrangement_parrReports.dataSet;
 
 
@@ -190,12 +190,13 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
                 },
                 function(data) {
                     // billingAccountIdNameListVar
+                    debugger;
                     Page.Variables.billingAccountIdNameListVar_parrReports.dataSet = [];
 
                     data.forEach(function(d) {
 
                         Page.billingAccountRefIdAndNameArr = {
-                            "billingAccountId": data.billingAccountId,
+                            "billingAccountId": d.billingAccountId,
                             "billingAccountName": d.billingAccountName
                         }
 

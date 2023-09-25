@@ -168,7 +168,7 @@
                                 <wm-layoutgrid name="layoutgrid3" width="70%">
                                     <wm-gridrow name="gridrow7_1">
                                         <wm-gridcolumn columnwidth="12" name="gridcolumn17_2">
-                                            <wm-label name="banValue" caption="bind:Variables.billingAccountIdNameListVar_parrReports.dataSet[$i].billingAccountName" class="p text-muted" color="#000"></wm-label>
+                                            <wm-label name="banValue" caption="bind:Variables.billingAccountIdNameListVar_parrReports.dataSet[$i].billingAccountId" class="p text-muted" color="#000"></wm-label>
                                         </wm-gridcolumn>
                                     </wm-gridrow>
                                     <wm-gridrow name="gridrow8"></wm-gridrow>
@@ -186,7 +186,7 @@
                     <wm-container name="container24_1">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.getPaymentArrangement_parrReports.dataSet.installments" navigation="Classic" navigationalign="right" pagesize="3">
                             <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="auditInfo.createdDateTime" caption="Date" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" searchable="false" show="true" readonly="undefined"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="date" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
