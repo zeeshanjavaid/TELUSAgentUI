@@ -1014,13 +1014,16 @@ Partial.applyFilter = function($event, widget) {
             statusForHistory = Partial.Widgets.statusSelect.datavalue;
 
         }
+
+        var completionDateTime = Partial.Widgets.creationDate.datavalue + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + "-08:00";
+
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': Partial.Widgets.EventTypeSelect.datavalue,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
             'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': statusForHistory,
-            'relatedBusinessEntityCreatedDate': Partial.Widgets.creationDate.datavalue,
+            'relatedBusinessEntityCreatedDate': completionDateTime,
             'relatedBusinessEntityCreatedBy': createdBy,
             'relatedBusinessEntityAssignedTo': assignedAgentId,
             'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue

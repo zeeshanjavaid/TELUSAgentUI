@@ -62,7 +62,7 @@ App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
  */
 App.onServiceError = function(source, errorMsg, xhrObj) {
 
-
+    debugger
     if (source.name === 'UserManagementServiceCreateUser') {
         App.Variables.createUserErrormsg.dataSet.dataValue = xhrObj.error;
     }

@@ -940,6 +940,7 @@ Partial.getTeamonSuccess = function(variable, data) {
     Partial.Variables.dataTeam.dataSet = data;
     debugger;
 
+
     Partial.Variables.getManagerNameByTeamId.setInput({
         'teamId': data[data.length - 1].id
     });
@@ -1096,5 +1097,11 @@ Partial.userCriteriaKeypress = function($event, widget) {
 
         }
     }
+
+};
+
+Partial.UserManagementServiceUpdateUseronSuccess = function(variable, data) {
+    debugger;
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
 };

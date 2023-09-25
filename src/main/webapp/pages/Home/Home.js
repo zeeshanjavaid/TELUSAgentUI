@@ -29,15 +29,10 @@ Page.onReady = function() {
 
     //      For multi Select work category
 
-    Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
-        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
 
-    });
-
-    Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
     Page.statusData = [];
 
-    //App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet
+    App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet
 
     Page.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet.forEach(function(item) {
         Page.statusData.push({
