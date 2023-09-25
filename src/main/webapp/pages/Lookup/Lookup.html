@@ -127,7 +127,7 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label22" caption="Coll Start DT:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn44">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="collStartDate" fontsize="12" caption="bind:Variables.getCollectionEntityById.dataSet.collectionEpisodes[$i].validFor.startDateTime"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" name="collStartDate" fontsize="12" caption="bind:Variables.getCollectionEntityById.dataSet.collectionEpisodes[$i].validFor.startDateTime != null ? Variables.getCollectionEntityById.dataSet.collectionEpisodes[$i].validFor.startDateTime.substr(0,10)+&quot; Z&quot; : &quot;N/A&quot;"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn52" class="custValueLabelGrid">
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Customer Value:" name="label9" color="grey" fontsize="12" class="lookupLabel"></wm-label>
