@@ -276,7 +276,7 @@ Page.goToEnityPage = function(row) {
     // event.preventDefault();
     setTimeout(messageTimeout, 10000);
 
-    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
+    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId) + "&inputlevel=''&inputType=''&searchMatchCriteria=''&billingSystem=''", "_blank");
     event.preventDefault();
 
 
@@ -465,7 +465,7 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
 
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': 10, //App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCentityview,
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
@@ -522,7 +522,7 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
 
     // api call to display data in table for ban view
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': 10, // App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCbanview,
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
