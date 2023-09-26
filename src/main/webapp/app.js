@@ -45,10 +45,9 @@ App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
 
     App.Variables.getLoggedInUserDetails.invoke();
 
-    if (activePageName == 'Main' || activePageName == 'Common') {
+    if (activePageName == 'Main') {
         App.Actions.goToPage_Home.navigate();
     }
-
 };
 
 /*
