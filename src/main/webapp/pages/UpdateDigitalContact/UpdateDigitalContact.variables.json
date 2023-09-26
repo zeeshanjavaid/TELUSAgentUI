@@ -1,4 +1,28 @@
 {
+  "AddContactForCES9" : {
+    "_id" : "wm-AddContactForCES9-wm.ServiceVariable-1695712087580",
+    "name" : "AddContactForCES9",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "io.swagger.client.model.CollectionContactCreate",
+    "service" : "CollectionEntityService",
+    "operation" : "addContact",
+    "operationId" : "CollectionEntityController_addContact",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "AddContactForCES9onSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  },
   "expireDigitalContact" : {
     "_id" : "wm-expireDigitalContact-wm.ServiceVariable-1689589964047",
     "name" : "expireDigitalContact",

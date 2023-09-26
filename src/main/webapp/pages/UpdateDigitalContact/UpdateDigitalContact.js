@@ -75,6 +75,8 @@ App.rowDataValues = function(row) {
     } else {
         if (row.contactId != null) {
             Partial.Widgets.contactIDLabel.caption = row.contactId;
+        } else {
+            Partial.Widgets.contactIDLabel.caption = null;
         }
         Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
         Partial.Widgets.TITLESelect.datavalue = row.title;
@@ -154,57 +156,91 @@ Partial.CancelClick = function($event, widget) {
 
 Partial.updateContact = function($event, widget) {
     debugger;
-    if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
-    } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
-    } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
-        App.Variables.errorMsg.dataSet.dataValue = "Last Name is mandatory";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && (Partial.Widgets.emailText.datavalue == "" || Partial.Widgets.emailText.datavalue == undefined)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
-    } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-    } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
-        App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
-    } else if (Partial.Widgets.fax.datavalue && Partial.Widgets.fax.datavalue.length <= 10 && isNaN(Partial.Widgets.fax.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for FAX";
-    } else if (Partial.Widgets.workNo.datavalue && Partial.Widgets.workNo.datavalue.length <= 10 && isNaN(Partial.Widgets.workNo.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Work No";
-    } else if (Partial.Widgets.cellPhone.datavalue && Partial.Widgets.cellPhone.datavalue.length <= 10 && isNaN(Partial.Widgets.cellPhone.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Cell Phone";
-    } else if (Partial.Widgets.ext.datavalue && Partial.Widgets.ext.datavalue.length <= 10 && isNaN(Partial.Widgets.ext.datavalue)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Work Ext.";
-    } else {
-        // API Call will come here
+    if ((Partial.Widgets.contactIDLabel.caption != null) && (Partial.Widgets.dataSource.caption == 'TCM')) {
+        if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
+        } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
+        } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
+        } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Last Name is mandatory";
+        } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && (Partial.Widgets.emailText.datavalue == "" || Partial.Widgets.emailText.datavalue == undefined)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Email";
+        } else if (Partial.Widgets.EmailForNoticesSelect.datavalue && Partial.Widgets.emailText.datavalue !== "" && !isEmail(Partial.Widgets.emailText.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+        } else if (Partial.Widgets.ext.datavalue != null && Partial.Widgets.ext.datavalue != "" && ((Partial.Widgets.workNo.datavalue == undefined) || (Partial.Widgets.workNo.datavalue == ""))) {
+            App.Variables.errorMsg.dataSet.dataValue = "Please provide the Work Phone number";
+        } else if (Partial.Widgets.fax.datavalue && Partial.Widgets.fax.datavalue.length <= 10 && isNaN(Partial.Widgets.fax.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for FAX";
+        } else if (Partial.Widgets.workNo.datavalue && Partial.Widgets.workNo.datavalue.length <= 10 && isNaN(Partial.Widgets.workNo.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Work No";
+        } else if (Partial.Widgets.cellPhone.datavalue && Partial.Widgets.cellPhone.datavalue.length <= 10 && isNaN(Partial.Widgets.cellPhone.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Cell Phone";
+        } else if (Partial.Widgets.ext.datavalue && Partial.Widgets.ext.datavalue.length <= 10 && isNaN(Partial.Widgets.ext.datavalue)) {
+            App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Work Ext.";
+        } else {
+            // API Call will come here
 
-        Partial.Variables.updateDigitalContact.setInput({
-            "id": Partial.Widgets.contactIDLabel.caption,
-            "CollectionContactUpdate": {
-                'id': Partial.Widgets.contactIDLabel.caption,
-                'firstName': Partial.Widgets.firstName.datavalue,
-                'lastName': Partial.Widgets.lastName.datavalue,
-                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
+            Partial.Variables.updateDigitalContact.setInput({
+                "id": Partial.Widgets.contactIDLabel.caption,
+                "CollectionContactUpdate": {
+                    'id': Partial.Widgets.contactIDLabel.caption,
+                    'firstName': Partial.Widgets.firstName.datavalue,
+                    'lastName': Partial.Widgets.lastName.datavalue,
+                    'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
+                    'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                    'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                    'title': Partial.Widgets.TITLESelect.datavalue,
+                    'workPhoneNumber': Partial.Widgets.workNo.datavalue ? Partial.Widgets.workNo.datavalue.replace(/\D/g, '') : Partial.Widgets.workNo.datavalue,
+                    'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
+                    'comment': Partial.Widgets.comments.datavalue,
+                    'email': Partial.Widgets.emailText.datavalue,
+                    'faxNumber': Partial.Widgets.fax.datavalue ? Partial.Widgets.fax.datavalue.replace(/\D/g, '') : Partial.Widgets.fax.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    }
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.updateDigitalContact.invoke();
+        }
+    } else if ((Partial.Widgets.contactIDLabel.caption != null) && (Partial.Widgets.dataSource.caption == 'CES9')) {
+        if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
+        } else {
+            Partial.Variables.updateDigitalContact.setInput({
+                "id": Partial.Widgets.contactIDLabel.caption,
+                "CollectionContactUpdate": {
+                    'id': Partial.Widgets.contactIDLabel.caption,
+                    'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "CES9",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    }
+                }
+            });
+            Partial.Variables.updateDigitalContact.invoke();
+        }
+    } else {
+        Partial.Variables.AddContactForCES9.setInput({
+            "CollectionContactCreate": {
                 'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
-                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
-                'title': Partial.Widgets.TITLESelect.datavalue,
-                'workPhoneNumber': Partial.Widgets.workNo.datavalue ? Partial.Widgets.workNo.datavalue.replace(/\D/g, '') : Partial.Widgets.workNo.datavalue,
-                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
-                'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
-                'faxNumber': Partial.Widgets.fax.datavalue ? Partial.Widgets.fax.datavalue.replace(/\D/g, '') : Partial.Widgets.fax.datavalue,
                 'channel': {
-                    'originatorAppId': "FAWBTELUSAGENT",
+                    'originatorAppId': "CES9",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+                'collectionEntity': {
+                    'id': Partial.pageParams.entityId
                 }
             }
         });
 
-        //Invoke POST createDispute service
-        Partial.Variables.updateDigitalContact.invoke();
+        Partial.Variables.AddContactForCES9.invoke();
     }
-
 
 };
 
@@ -367,4 +403,13 @@ Partial.faxKeydown = function($event, widget) {
     if (value === 'Backspace') {
         Partial.Widgets.fax.datavalue = "";
     }
+};
+
+Partial.AddContactForCES9onSuccess = function(variable, data) {
+    App.Variables.successMessage.dataSet.dataValue = "Digital Contact updated successfully.";
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    Partial.Clear();
+    Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    App.refreshContactList();
+    setTimeout(messageTimeout, 10000);
 };

@@ -104,7 +104,7 @@ Partial.createContact = function($event, widget) {
             }
         });
 
-        //Invoke POST createDispute service
+        //Invoke POST createContact service
         Partial.Variables.CreateContactServiceVar.invoke();
 
     }
