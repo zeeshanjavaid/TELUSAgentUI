@@ -146,7 +146,7 @@ text-align: right
         width: 15% !important;
     }
     .parrlabel2 {
-        width: 15% !important;
+        width: 11% !important;
     }
     .statusValueLabel {
         width: 15% !important;
@@ -164,7 +164,7 @@ text-align: right
         width: 15% !important;
     }
     .parrlabel5 {
-        width: 15% !important;
+        width: 11% !important;
     }
     .parrValueLabel5 {
         width: 15% !important;
@@ -179,7 +179,7 @@ text-align: right
         width: 15% !important;
     }
     .parrlabel8 {
-        width: 15% !important;
+        width: 11% !important;
     }
     .parrValuelabel8 {
         width: 15% !important;
@@ -215,7 +215,7 @@ text-align: right
 /*view PARR large res*/
 @media only screen and (min-width: 1918px) {
     .parrValuelabel8 {
-        width: 6% !important;
+        width: 11% !important;
     }
     
     .viewParrLabelsGrid {
@@ -364,7 +364,7 @@ button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-
 }
 
 .viewPARRLabel {
-    float: right;
+    float: left;
 }
 
 .wm-app input.form-control.app-textbox.app-number-input {

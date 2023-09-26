@@ -29,7 +29,7 @@ wm-select#mySelection {
     
 }
 
-@media only screen and (min-width: 1250px) and (max-width: 1500px) {
+@media only screen and (min-width: 1250px) and (max-width: 1600px) {
     .blankGrid {
         width: 4% !important;
     }
@@ -65,7 +65,7 @@ wm-select#mySelection {
 }
 
 .viewPARRLabel {
-    float: right;
+    float: left;
 }
 
 .subHeading_dialog {

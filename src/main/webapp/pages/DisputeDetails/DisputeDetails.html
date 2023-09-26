@@ -16,7 +16,8 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="6" name="gridcolumn37">
                 <wm-container name="container4" horizontalalign="right" margin="8px unset unset unset">
-                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="CloseDispute" on-click="CloseDisputeClick($event, widget)" show="true" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
+                    <wm-button class="btn-default" caption="Close Dispute" type="button" margin="unset 0.5em unset 1em" name="CloseDispute" on-click="CloseDisputeClick($event, widget)" show="true" disabled="bind:(Var
+                    iables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
                     <wm-button class="btn-default" caption="Cancel Dispute" type="button" margin="unset 0.5em" name="CancelDispute" on-click="CancelDisputeClick($event, widget)" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
                     <wm-button class="btn-default" caption="Update Dispute" type="button" margin="unset 0.5em" name="UpdateDispute" textalign="right" on-click="UpdateDisputeClick($event, widget)" disabled="bind:(Variables.getDisputeDetails.dataSet.status == 'Closed' || Variables.getDisputeDetails.dataSet.status == 'Cancelled') ? true : false"></wm-button>
                 </wm-container>
@@ -34,7 +35,7 @@
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn8">
-                    <wm-gridcolumn name="gridcolumn19" class="labelGrid">
+                    <wm-gridcolumn name="gridcolumn19" class="labelGrid" style="display: flex;flex-direction: column;width: 31%;">
                         <wm-label padding="unset 0.5em" name="label4_1" caption="Status:" class="disputeDetailsLabel" color="#6e6d6a"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn20" class="labelValue">
@@ -50,7 +51,7 @@
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn14">
-                    <wm-gridcolumn name="gridcolumn32" class="labelGrid">
+                    <wm-gridcolumn name="gridcolumn32" style="display: flex;flex-direction: column;width: 31%;">
                         <wm-label padding="unset 0.5em" name="label7" caption="Exclusion:" color="#6e6d6a" class="disputeDetailsLabel" whitespace="nowrap"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn33" class="labelValue">
@@ -68,7 +69,7 @@
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn20_1">
-                    <wm-gridcolumn name="gridcolumn51" class="labelGrid">
+                    <wm-gridcolumn name="gridcolumn51" class="labelGrid" style="display: flex;flex-direction: column;width: 31%;">
                         <wm-label padding="unset 0.5em" name="label11" caption="Charge Type:" class="disputeDetailsLabel" color="#6e6d6a" whitespace="nowrap"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn52" class="labelValue">
@@ -84,7 +85,7 @@
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn26_1">
-                    <wm-gridcolumn name="gridcolumn60" class="labelGrid">
+                    <wm-gridcolumn name="gridcolumn60" style="display: flex;flex-direction: column;width: 31%;">
                         <wm-label padding="unset 0.5em" name="label15" caption="Product &amp; Srv:" whitespace="nowrap" class="disputeDetailsLabel" color="#6e6d6a"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn61" class="labelValue">
@@ -102,7 +103,7 @@
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn32_1">
-                    <wm-gridcolumn name="gridcolumn75" class="labelGrid">
+                    <wm-gridcolumn name="gridcolumn75" class="labelGrid" style="display: flex;flex-direction: column;width: 31%;">
                         <wm-label padding="unset 0.5em" name="label19" caption="Customer Email:" class="disputeDetailsLabel" color="#6e6d6a" whitespace="nowrap"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn76" class="labelValue">
@@ -221,7 +222,7 @@
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow43">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn95">
+                <wm-gridcolumn columnwidth="3" name="gridcolumn95" style="display: flex;flex-direction: column;width: 15%;">
                     <wm-label padding="unset 0.5em" margin="0 24px 0 0" class="updateDisputeLabel" name="label43_1" caption="Exclusion*" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn96">
@@ -286,7 +287,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow32" padding="0.5em unset unset unset">
                 <wm-gridcolumn columnwidth="3" name="gridcolumn72_1">
-                    <wm-label padding="unset 0.5em" margin="0 71px 0 0" caption="Product &amp; Srv*" name="label45" whitespace="nowrap" class="col-md-3 control-label updateDisputeLabel" color="grey"></wm-label>
+                    <wm-label padding="unset 0.5em" margin="0 71px 0 0" caption="Product &amp; Srv*" name="label45" whitespace="nowrap" class="col-md-3 control-label updateDisputeLabel_1" color="grey"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="9" name="gridcolumn73">
                     <wm-composite name="composite12" width="60%">
@@ -344,8 +345,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
-    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-iconDIS2&quot;></i><i  class=&quot;fico-icon-chevron-down show-iconDIS2&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" collapsible="true"
-        expanded="true" on-expand="disputeHistoryExpand($event, widget)" name="disputeHistory" on-collapse="disputeHistoryCollapse($event, widget)">
+    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-iconDIS2&quot;></i><i  class=&quot;fico-icon-chevron-down show-iconDIS2&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" collapsible="true" expanded="true"
+        on-expand="disputeHistoryExpand($event, widget)" name="disputeHistory" on-collapse="disputeHistoryCollapse($event, widget)">
         <!-- <wm-panel subheading="<h4 class=panelSubHeading><i  class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Installment Schedule</h4>" autoclose="outsideClick" title="" collapsible="true"
         expanded="true" on-expand="installmentScheduleExpand($event, widget)" name="installmentSchedule" on-collapse="installmentScheduleCollapse($event, widget)">-->
         <wm-layoutgrid name="layoutgrid25">

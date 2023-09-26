@@ -30,8 +30,12 @@
     float: left;
 }
 
+.labelGrid_1{
+  width: 30%;  
+}
+
 .labelGrid {
-    width: 40%;
+    width: 42%;
 }
 
 .labelValue {
@@ -114,3 +118,13 @@ i.fico-icon-chevron-right.hide-iconDIS2 {
     padding-bottom: 22px;
     border-bottom: 1px solid #ddd; 
 }
+
+/*@media only screen and (min-width: 1204px) and (max-width: 1280px) {
+    .labelGrid_1{
+     width: 33%;  
+    }
+
+    .labelGrid {
+     width: 42%;
+    }
+}*/

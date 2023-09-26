@@ -3,17 +3,17 @@
         <h3><b>BAN List for Active Entity</b></h3>
         <wm-table margin="10px 10px 16px 17px" width="98%" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top"
             enablecolumnselection="false" navigationalign="right" pagesize="10">
-            <wm-table-column binding="banId" caption="BAN #" widget-type="label" width="102px" edit-widget-type="text" type="string" show="true" readonly="false">
+            <wm-table-column binding="banId" caption="BAN #" widget-type="label" width="116px" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" width="352px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banCollectionStatus" caption="Coll. St" width="114px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="cbucId" caption="CBUCID" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="rcId" caption="RCID" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="billingSystem" caption="Billing System" width="114px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="totalAr" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="COLL. Status" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="cbucId" caption="CBUCID" width="115px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="rcId" caption="RCID" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="billingSystem" caption="BILL SYS" width="102px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="totalAr" caption="Total AR" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="totalOverDue" caption="Total OD" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="200px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="120px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
             <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
                 show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>

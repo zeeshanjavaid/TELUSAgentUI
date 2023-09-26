@@ -35,14 +35,15 @@
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder=""
-                        displayfield="dataValue" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId" datavalue="bind:Variables.UserLoggedInVar_ARAgent.dataSet.empId"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
+                        placeholder="" displayfield="dataValue" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId" datavalue="bind:Variables.UserLoggedInVar_ARAgent.dataSet.empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="ARAgentLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_ARAgent.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;" on-change="WorkCategorySelectChange($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="WorkCategorySelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_ARAgent.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
+                        on-change="WorkCategorySelectChange($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow7">
@@ -80,13 +81,13 @@
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic" pagesize="20" showrecordcount="true" navigationalign="right">
-                        <wm-table-column binding="actionId" caption="Action ID" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT. ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
+                        <wm-table-column binding="actionId" caption="Action ID" width="77px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="62px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
                         </wm-table-column>
-                        <wm-table-column binding="entityName" caption="ENT. Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="collectionStatus" caption="Coll Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityOwner" caption="Entity Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityName" caption="ENT Name" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="collectionStatus" caption="COLL Status" width="94px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityOwner" caption="ENT Owner" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="workCategory" caption="Work Category" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
