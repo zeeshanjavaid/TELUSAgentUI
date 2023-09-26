@@ -276,7 +276,7 @@ Page.goToEnityPage = function(row) {
     // event.preventDefault();
     setTimeout(messageTimeout, 10000);
 
-    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId) + "&inputlevel=''&inputType=''&searchMatchCriteria=''&billingSystem=''", "_blank");
+    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId) + "&inputlevel=''&inputType=''&searchMatchCriteria=''&billingSystem=''", "_blank", '');
     event.preventDefault();
 
 
