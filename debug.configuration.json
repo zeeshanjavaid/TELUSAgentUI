@@ -769,159 +769,7 @@
       "name" : "com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 114,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 149,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 153,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 159,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionTreatment",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 165,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 208,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionTreatmentStepById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 212,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 229,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionTreatmentStep",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 270,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 313,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionActivityLogById",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 317,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "addCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 323,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "updateCollectionActivityLog",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 329,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getCollectionHistoryView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 103,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "propertyValueFrom",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 381,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getDisputeHistoryView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 412,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "getParrHistoryView",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 198,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "lambda$0",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 343,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "lambda$1",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 347,
-        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
-        "name" : "lambda$2",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 348,
+        "line" : 357,
         "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
         "name" : "lambda$3",
         "phaseSequence" : 0,
@@ -929,7 +777,159 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 96,
+        "line" : 150,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 154,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 160,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 166,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 217,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatmentStepById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 221,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 238,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionTreatmentStep",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 279,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 322,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionActivityLogById",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 326,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "addCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 332,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "updateCollectionActivityLog",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 338,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionHistoryView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 390,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getDisputeHistoryView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 421,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getParrHistoryView",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 104,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 115,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "getCollectionTreatment",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 207,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "lambda$0",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 352,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "lambda$1",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 356,
+        "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
+        "name" : "lambda$2",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 97,
         "path" : "/services/CollectionTreatmentService/src/com/fico/dmp/collectiontreatmentservice/CollectionTreatmentService.java",
         "name" : "init",
         "phaseSequence" : 0,
