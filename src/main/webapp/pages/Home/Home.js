@@ -271,10 +271,19 @@ Page.applyFiltersBanView = function($event, widget) {
 }
 
 Page.goToEnityPage = function(row) {
-    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 
-    // window.location.href = "#/Lookup?entityId=" + 1;
-    window.location.reload(true);
+    debugger;
+    // event.preventDefault();
+    setTimeout(messageTimeout, 10000);
+
+    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
+    event.preventDefault();
+
+
+
+
+
+    // window.location.reload(true);
 };
 
 Page.entityViewTable_OnRowexpand = function($event, widget, row, $data) {

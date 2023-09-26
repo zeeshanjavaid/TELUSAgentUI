@@ -1296,6 +1296,20 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "getCurrentManager" : {
+    "_id" : "wm-getCurrentManager-wm.Variable-1695640521200",
+    "name" : "getCurrentManager",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getManagerBasedOnTeamId" : {
     "_id" : "wm-getManagerBasedOnTeamId-wm.ServiceVariable-1677575586384",
     "name" : "getManagerBasedOnTeamId",
@@ -3147,6 +3161,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
+    "onSuccess" : "TELUSAgentUIDBGetUseronSuccess(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

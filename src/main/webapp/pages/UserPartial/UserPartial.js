@@ -846,8 +846,28 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
     //  Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 
     Partial.Widgets.updateUser.open();
+
+
+    if (row.teamManager != null) {
+
+        Partial.Variables.TELUSAgentUIDBGetUser.setInput({
+            'id': row.id
+        });
+        Partial.Variables.TELUSAgentUIDBGetUser.invoke();
+    } else {
+        Partial.Variables.getCurrentManager.dataSet = null;
+    }
+
     Partial.TestTeamId = row;
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
+
+    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == row.teamId)
+    var teamId = Partial.TestTeamIdFinal[0].id;
+
+    Partial.Variables.executeGetManagerByTeamIdVar.setInput({
+        'teamId': teamId
+    });
+    Partial.Variables.executeGetManagerByTeamIdVar.invoke();
 
     // Partial.Variables.dialogUserId.dataSet.workCategory.split(",");
 
@@ -890,10 +910,11 @@ Partial.updateUserForm1_saveAction = function($event) {
     } else {
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
     }
-    if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
-        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.TestTeamId.teamId)
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
-    }
+    //  if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
+    // if (Partial.TestTeamId.teamId != null) {
+    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
+    Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
+    //   }
     // else {
     //     Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId
 
@@ -904,10 +925,20 @@ Partial.updateUserForm1_saveAction = function($event) {
 
     var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
 
-    if (type == 'string' || type == "undefined") {
+    // if (type == 'string' || type == "undefined") {
 
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
+    // }
+
+    if (type == "undefined") {
+
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.getCurrentManager.dataSet;
     }
+
+
+    // else {
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = parseInt(Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId);
+    // }
     //dataBinding
     if (!validateEmail(Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email)) {
         debugger;
@@ -1066,8 +1097,11 @@ Partial.UserDTO_teamManagerClick = function($event, widget) {
 Partial.UserDTO_teamIdChange = function($event, widget, newVal, oldVal) {
     debugger;
 
+    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == newVal)
+    var teamId = Partial.TestTeamIdFinal[0].id;
+
     Partial.Variables.executeGetManagerByTeamIdVar.setInput({
-        'teamId': newVal
+        'teamId': teamId
     });
     Partial.Variables.executeGetManagerByTeamIdVar.invoke();
 
@@ -1103,5 +1137,15 @@ Partial.userCriteriaKeypress = function($event, widget) {
 Partial.UserManagementServiceUpdateUseronSuccess = function(variable, data) {
     debugger;
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+    Partial.Variables.getCurrentManager.dataSet = null;
+
+
+};
+
+Partial.TELUSAgentUIDBGetUseronSuccess = function(variable, data) {
+
+    Partial.Variables.getCurrentManager.dataSet = data.managerId
+
+    debugger;
 
 };
