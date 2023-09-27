@@ -17,6 +17,7 @@ var billingSystemDataArray = [];
 var collStatusDataArray = [];
 Page.onReady = function() {
     debugger;
+    // callwhileload();
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -30,37 +31,37 @@ Page.onReady = function() {
     //      For multi Select work category
 
 
-    Page.statusData = [];
+    // Page.statusData = [];
 
-    App.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet
+    // Page.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet
 
-    Page.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet.forEach(function(item) {
-        Page.statusData.push({
-            // id: item.code.replace(/\s/g, ''),
-            id: item.code,
-            title: item.code
-        });
-    });
+    // Page.Variables.getWorkCatByEmplIdForMultiSelectList.dataSet.forEach(function(item) {
+    //     Page.statusData.push({
+    //         // id: item.code.replace(/\s/g, ''),
+    //         id: item.code,
+    //         title: item.code
+    //     });
+    // });
 
-    subComboBox = $('#WorkCategoryMutliSel').comboTree({
-        source: Page.statusData,
-        isMultiple: true,
-        // selected: false,
+    // subComboBox = $('#WorkCategoryMutliSel').comboTree({
+    //     source: Page.statusData,
+    //     isMultiple: true,
+    //     // selected: false,
 
-        // cascadeSelect: true,
-        // collapse: true
-    });
+    //     // cascadeSelect: true,
+    //     // collapse: true
+    // });
 
 
 
-    subComboBox1 = $('#WorkCategoryMutliSelForBanView').comboTree({
-        source: Page.statusData,
-        isMultiple: true,
-        // selected: false,
+    // subComboBox1 = $('#WorkCategoryMutliSelForBanView').comboTree({
+    //     source: Page.statusData,
+    //     isMultiple: true,
+    //     // selected: false,
 
-        // cascadeSelect: true,
-        // collapse: true
-    });
+    //     // cascadeSelect: true,
+    //     // collapse: true
+    // });
 
     Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
@@ -77,14 +78,11 @@ Page.onReady = function() {
     $("#entityViewBtn").css("background-color", "#4B286D");
     $("#entityViewBtn").css("color", "white");
     Page.Variables.workCategoryValues_HomeEV.invoke();
-    setTimeout(messageTimeout, 10000);
     Page.Variables.workCategoryValues_HomeBV.invoke();
-
     Page.Variables.workcategoriesByEmpId_homeBV.setInput({
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
     });
     Page.Variables.workcategoriesByEmpId_homeBV.invoke();
-
     Page.Variables.workcategoriesByEmpId_homeEV.setInput({
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
     });
@@ -154,10 +152,11 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
     // Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
     Page.Widgets.collStatusSelectEV.datavalue = "ALL";
+    Page.Widgets.workCategorySelectEVNew.deselectAll();
 
-    subComboBox.clearSelection();
-    checkedItem = $("input:checked")
-    checkedItem.prop('checked', false)
+    //  subComboBox.clearSelection();
+    // checkedItem = $("input:checked")
+    // checkedItem.prop('checked', false)
 
     if (workCategoryDataArray.length > 1) {
         var finalWorkCategoriesBV = workCategoryDataArray.join("|");
@@ -191,9 +190,10 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     /* Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";*/
     // Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
     Page.Widgets.collStatusSelectBV.datavalue = "ALL";
-    subComboBox1.clearSelection();
-    checkedItem = $("input:checked")
-    checkedItem.prop('checked', false)
+    Page.Widgets.workCategorySelectBV.deselectAll();
+    //  subComboBox1.clearSelection();
+    //  checkedItem = $("input:checked")
+    // checkedItem.prop('checked', false)
 
     if (workCategoryDataArray.length > 1) {
         var finalWorkCategoriesBV = workCategoryDataArray.join("|");
@@ -216,11 +216,13 @@ Page.clearFilterFieldsBanView = function($event, widget) {
 // function added to display table based on the filters for entity view
 Page.applyFiltersEntityView = function($event, widget) {
     debugger;
-    var workCategoriesEV = subComboBox.getSelectedIds();
+    //  var workCategoriesEV = subComboBox.getSelectedIds();
 
     // var workCategoriesEV = subComboBox._selectedItems.map(({
     //     id
     // }) => id);
+
+    var workCategoriesEV = Page.Widgets.workCategorySelectEVNew.datavalue;
     if (workCategoriesEV == '' || workCategoriesEV == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 10000);
@@ -247,7 +249,10 @@ Page.applyFiltersEntityView = function($event, widget) {
 // function added to display table based on the filters for ban view
 Page.applyFiltersBanView = function($event, widget) {
     debugger;
-    var workCategoriesBV = subComboBox1.getSelectedIds();
+    //  var workCategoriesBV = subComboBox1.getSelectedIds();
+
+    var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+
     if (workCategoriesBV == '' || workCategoriesBV == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 10000);
@@ -424,6 +429,11 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
     if (data != undefined) {
         data.forEach(workCategoryData);
+        workCategoryDataArray = [];
+        data.forEach(function(item) {
+            workCategoryDataArray.push(item.code)
+
+        });
     }
 
     if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
@@ -460,7 +470,7 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
 
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-        'entityOwner': 10, //App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCentityview,
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
@@ -517,7 +527,7 @@ Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
 
     // api call to display data in table for ban view
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-        'entityOwner': 10, //App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCbanview,
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
@@ -579,3 +589,12 @@ Page.getAllActiveUserList_HomeBV_forALLonSuccess = function(variable, data) {
 Page.CollectionDataServiceGetassignedEntitiesInClassicView2onError = function(variable, data, xhrObj) {
 
 };
+
+// async function callwhileload() {
+
+//     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+//         'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+
+//     });
+//     await Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+//}

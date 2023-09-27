@@ -1937,7 +1937,7 @@
     "onError" : "getWorkCatByEmplIdForMultiSelectonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
+    "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"

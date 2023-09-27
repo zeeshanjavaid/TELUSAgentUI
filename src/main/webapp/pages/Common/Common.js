@@ -10,7 +10,9 @@
  */
 
 /* perform any action on widgets/variables within this block */
-Partial.onReady = function () {
+Partial.onReady = function() {
+
+    debugger;
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,4 +22,13 @@ Partial.onReady = function () {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+
+
+
 };

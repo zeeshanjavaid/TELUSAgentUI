@@ -1655,7 +1655,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "emplId",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoriesByEmpIdResponse",
     "service" : "TELUSAgentUIDB",
     "operation" : "executeGetWorkCategoriesByEmpId",
@@ -1679,7 +1683,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "emplId",
+      "value" : "bind:Variables.getLoggedInUserId.dataSet.data[$i].emplId",
+      "type" : "string"
+    } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetWorkCategoriesByEmpIdResponse",
     "service" : "TELUSAgentUIDB",
     "operation" : "executeGetWorkCategoriesByEmpId",
@@ -1690,7 +1698,7 @@
     "isList" : true,
     "maxResults" : 20,
     "onSuccess" : "workcategoriesByEmpId_homeEVonSuccess(variable, data, options)",
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

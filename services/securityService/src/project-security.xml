@@ -218,87 +218,87 @@
             <map key-type="java.lang.String" value-type="com.wavemaker.commons.model.security.RoleConfig">
                 <entry key="component_approver">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="component_deployer">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="component_configurer">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="component_admin">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="everyone">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Home - My Assignments">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Entity Profile (View and Manage)">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Dispute Management">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="PARR Management">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="System Administration">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="DNTL">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Reports">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Contacts">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Order Management">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Notes and Document">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Action Management">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
                 <entry key="Entity Actions">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
+                        <property name="landingPage" value="Home"/>
                     </bean>
                 </entry>
             </map>

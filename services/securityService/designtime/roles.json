@@ -2,102 +2,102 @@
   "name" : "component_approver",
   "description" : "Component Approver",
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "component_deployer",
   "description" : "Component Deployer",
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "component_configurer",
   "description" : "Component Configurer",
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "component_admin",
   "description" : "Component Administrator",
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "everyone",
   "description" : "Access for everyone",
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Home - My Assignments",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Entity Profile (View and Manage)",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Dispute Management",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "PARR Management",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "System Administration",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "DNTL",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Reports",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Contacts",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Order Management",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Notes and Document",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Action Management",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 }, {
   "name" : "Entity Actions",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "Main"
+    "landingPage" : "Home"
   }
 } ]

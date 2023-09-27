@@ -21,6 +21,8 @@ App.onAppVariablesReady = function() {
      * variables can be accessed through 'App.Variables' property here
      * e.g. App.Variables.staticVariable1.getData()
      */
+    App.Variables.getLoggedInUserDetails.invoke();
+
 };
 
 /* perform any action on session timeout here, e.g clearing some data, etc */
@@ -42,6 +44,14 @@ App.onSessionTimeout = function() {
  */
 App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
     debugger;
+
+
+    App.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+
 
     App.Variables.getLoggedInUserDetails.invoke();
 

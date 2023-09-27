@@ -49,10 +49,10 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId
-" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
-                    <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId"
-                        datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>--></wm-gridcolumn>
+                        datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"-->
+                    <!--    datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>-->
+                </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
                     <wm-label caption="Billing System*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
@@ -70,13 +70,13 @@
                     </wm-container>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <!--<wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategorySelect_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
-                        on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)"></wm-select>-->
-                    <!--<wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"-->
-                    <!--    on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)" show="false"></wm-select>-->
-                    <wm-container name="container2_1" id="WorkCategoryMutliSelId">
-                        <wm-composite name="composite4_1" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-composite>
-                    </wm-container>
+                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
+                        on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true"
+                        style="display: block; width: 145%;" on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)" show="false"></wm-select>
+                    <!--<wm-container name="container2_1" id="WorkCategoryMutliSelId">-->
+                    <!--    <wm-composite name="composite4_1" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-composite>-->
+                    <!--</wm-container>-->
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -134,11 +134,15 @@
                     <wm-label caption="Work Category*" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                     <wm-label caption="(multi-select)" name="label8" color="grey" class="HomeFilterLabel" textalign="right"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="2" name="gridcolumn50_Ban">
-                    <wm-container name="container2_2">
-                        <wm-composite name="composite4_2" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSelForBanView" placeholder="Select"></wm-composite>
-                    </wm-container>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                    <wm-select name="workCategorySelectBV" id="workCategorySelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCategoriesByCode.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"
+                        on-change="workCategorySelectBVChange($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
+                <!--<wm-gridcolumn columnwidth="2" name="gridcolumn50_Ban">-->
+                <!--    <wm-container name="container2_2">-->
+                <!--        <wm-composite name="composite4_2" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSelForBanView" placeholder="Select"></wm-composite>-->
+                <!--    </wm-container>-->
+                <!--</wm-gridcolumn>-->
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
