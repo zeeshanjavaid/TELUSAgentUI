@@ -295,7 +295,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn49_1">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container5">
-                            <wm-select name="entityToTransferBanDropdown" placeholder="Select" width="60%" dataset="bind:Variables.getCollectionEntityService.dataSet" datafield="id" displayexpression="bind:$[name]+&quot; (&quot;+$[id]+&quot;)&quot;" on-change="entityToTransferBanDropdownChange($event, widget, newVal, oldVal)"></wm-select>
+                            <wm-select name="entityToTransferBanDropdown" placeholder="Select" width="60%" dataset="bind:Variables.getCollectionEntityService.dataSet" datafield="id" displayexpression="bind:$[name]+&quot; (&quot;+$[id]+&quot;)&quot;" on-change="entityToTransferBanDropdownChange($event, widget, newVal, oldVal);entityToTransferBanDropdownChange1($event, widget, newVal, oldVal)"></wm-select>
                         </wm-container>
                     </wm-composite>
                 </wm-gridcolumn>

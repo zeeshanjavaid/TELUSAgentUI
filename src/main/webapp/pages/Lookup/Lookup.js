@@ -588,41 +588,17 @@ Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {
 Page.entityToTransferBanDropdownChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (Page.Widgets.entityToTransferBanDropdown.datavalue != undefined && Page.Widgets.entityToTransferBanDropdown.datavalue != '') {
-        var getEntityDetailsForCancelledEntitiesVar = Page.Variables.getEntityDetailsForCancelledEntities;
-        getEntityDetailsForCancelledEntitiesVar.invoke({
-                "inputFields": {
-                    "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
-                },
-            },
+        Page.Variables.getCollectionEntityIdForTransferredEntity.setInput({
+            "id": Page.Widgets.entityToTransferBanDropdown.datavalue
+        });
 
-            function(data) {
-                Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
-                var getCollectionEntityIdForTransferredEntityVar = Page.Variables.getCollectionEntityIdForTransferredEntity;
-                getCollectionEntityIdForTransferredEntityVar.invoke({
-                        "inputFields": {
-                            "id": Page.Widgets.entityToTransferBanDropdown.datavalue
-                        },
-                    },
-                    function(data1) {
-                        Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue = data1.collectionStatus;
-                    },
-                    function(error1) {
-                        // Error Callback
-                        console.log("error", error1);
-                    }
-                );
-            },
-            function(error) {
-                // Error Callback
-                console.log("error", error);
-            }
-
-        );
+        Page.Variables.getCollectionEntityIdForTransferredEntity.invoke();
 
 
     }
 
 };
+
 Page.CancelTransToExistBanBtnClick = function($event, widget) {
     Page.Widgets.TransferBanToExistEntDialog.close();
     App.Variables.errorMsg.dataSet.dataValue = null;
@@ -696,4 +672,24 @@ Page.anchor3Click = function($event, widget) {
         "billingSystem": Page.pageParams.billingSystem
     })
     Page.Actions.goToPage_lookupEntity.navigate();
+};
+
+
+Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, data) {
+    Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue = data.collectionStatus;
+};
+
+Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
+    Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
+};
+Page.entityToTransferBanDropdownChange1 = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.entityToTransferBanDropdown.datavalue != undefined && Page.Widgets.entityToTransferBanDropdown.datavalue != '') {
+        Page.Variables.getEntityDetailsForCancelledEntities.setInput({
+            "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
+        });
+
+        Page.Variables.getEntityDetailsForCancelledEntities.invoke();
+
+
+    }
 };
