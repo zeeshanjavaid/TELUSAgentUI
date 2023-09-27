@@ -168,7 +168,8 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
         'workCategory': finalWorkCategoriesBV,
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
-        'collectionStatus': 'ALL'
+        'collectionStatus': 'ALL',
+
 
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
@@ -205,7 +206,8 @@ Page.clearFilterFieldsBanView = function($event, widget) {
         'workCategory': finalWorkCategoriesBV,
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
-        'collectionStatus': 'ALL'
+        'collectionStatus': 'ALL',
+
 
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
@@ -237,7 +239,8 @@ Page.applyFiltersEntityView = function($event, widget) {
             'workCategory': finalWorkCategoriesEV,
             'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
             'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
-            'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue
+            'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
+            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue
 
         });
         Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
@@ -267,7 +270,8 @@ Page.applyFiltersBanView = function($event, widget) {
             'workCategory': finalWorkCategoriesBV,
             'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
             'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
-            'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue
+            'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
+            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue
 
         });
         Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();

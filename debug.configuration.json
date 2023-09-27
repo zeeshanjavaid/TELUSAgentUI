@@ -1531,7 +1531,15 @@
       "name" : "com.fico.dmp.collectiondataservice.CollectionDataService",
       "breakPoints" : [ {
         "info" : null,
-        "line" : 409,
+        "line" : 127,
+        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
+        "name" : "propertyValueFrom",
+        "phaseSequence" : 0,
+        "condition" : null,
+        "variables" : null
+      }, {
+        "info" : null,
+        "line" : 411,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getActionViewByTeam",
         "phaseSequence" : 0,
@@ -1547,7 +1555,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 358,
+        "line" : 360,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityBanDetails",
         "phaseSequence" : 0,
@@ -1555,7 +1563,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 332,
+        "line" : 334,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityContacts",
         "phaseSequence" : 0,
@@ -1563,7 +1571,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 381,
+        "line" : 383,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getEntityDetails",
         "phaseSequence" : 0,
@@ -1579,7 +1587,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 249,
+        "line" : 250,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "getassignedEntitiesInClassicView",
         "phaseSequence" : 0,
@@ -1587,15 +1595,7 @@
         "variables" : null
       }, {
         "info" : null,
-        "line" : 127,
-        "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
-        "name" : "propertyValueFrom",
-        "phaseSequence" : 0,
-        "condition" : null,
-        "variables" : null
-      }, {
-        "info" : null,
-        "line" : 447,
+        "line" : 449,
         "path" : "/services/CollectionDataService/src/com/fico/dmp/collectiondataservice/CollectionDataService.java",
         "name" : "setTeamNameBasedOnEmplId",
         "phaseSequence" : 0,
