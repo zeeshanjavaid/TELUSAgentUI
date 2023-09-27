@@ -127,8 +127,18 @@ Page.button2Click = function($event, widget) {
     }
     setTimeout(messageTimeout, 10000);
 
+    var entityRiskReq;
+
+    if (Page.Widgets.entityRiskSelect.datavalue == 'High') {
+        entityRiskReq = 'H';
+    } else if (Page.Widgets.entityRiskSelect.datavalue == 'Medium') {
+        entityRiskReq = 'M';
+    } else if (Page.Widgets.entityRiskSelect.datavalue == 'Low') {
+        entityRiskReq = 'L';
+    }
+
     Page.Variables.ParrReportServiceGetParrReport.setInput({
-        'entityRisk': Page.Widgets.entityRiskSelect.datavalue,
+        'entityRisk': entityRiskReq,
         'evaluation': evaluationReq,
         'status': Page.Widgets.parrStatusSelect.datavalue,
         'createdFrom': creationDateTime,
@@ -220,3 +230,15 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
 
     Page.Widgets.PARRdetailsDailog.open();
 }
+Page.createdTeamSelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
+
+    if (Page.Widgets.createdTeamSelect.datavalue) {
+
+        Page.Variables.getUserListByTeamId_Report.setInput({
+            'teamid': Page.Widgets.createdTeamSelect.datavalue,
+        });
+        Page.Variables.getUserListByTeamId_Report.invoke();
+
+    }
+};

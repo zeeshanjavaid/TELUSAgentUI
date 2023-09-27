@@ -40,11 +40,11 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" id="fromGrid" name="gridcolumn10_1">
                         <wm-label padding="10px 20px 2px 15px" caption="From" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-date name="creationDate" id="creationDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                        <wm-date name="creationDate" id="creationDate" placeholder="" margin="5px unset unset unset" datepattern="yyyy-MM-dd"></wm-date>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" id="toGrid" name="gridcolumn11_1">
                         <wm-label padding="10px 20px 2px 5px" caption="To" name="label4" color="gray" class="filterLabel"></wm-label>
-                        <wm-date name="completionDate" id="completionDate" placeholder="" margin="5px unset unset unset"></wm-date>
+                        <wm-date name="completionDate" id="completionDate" placeholder="" margin="5px unset unset unset" datepattern="yyyy-MM-dd"></wm-date>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow4_1" margin="20px 0px 20px 20px">
@@ -61,7 +61,7 @@
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="Created Team" name="label4" color="gray" class="createdteamLLabel"></wm-label>
-                        <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeamPARRreport.dataSet" datafield="teamId" placeholder="Select" displayfield="teamName" on-change="createdTeamSelect($event, widget, newVal, oldVal)"></wm-select>
+                        <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeamPARRreport.dataSet" datafield="teamId" placeholder="Select" displayfield="teamName" on-change="createdTeamSelectChange($event, widget, newVal, oldVal)"></wm-select>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow5" margin="20px 0px 20px -35px" style="text-align: right;">
