@@ -25,7 +25,11 @@ Partial.onReady = function() {
     debugger;
 
     if (Partial.pageParams.id != undefined) {
+        Partial.Variables.getManagerNameByTeamId.setInput({
+            'teamId': Partial.pageParams.id
+        });
 
+        Partial.Variables.getManagerNameByTeamId.invoke();
     }
 
 
