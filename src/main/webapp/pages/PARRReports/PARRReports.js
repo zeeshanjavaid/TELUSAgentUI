@@ -45,6 +45,9 @@ Page.button1Click = function($event, widget) {
 
     Page.Widgets.completionDate.bsDataValue = "";
 
+    Page.Widgets.createdBySelect.disabled = false;
+    Page.Widgets.createdTeamSelect.disabled = false;
+
     Page.Variables.ParrReportServiceGetParrReport.setInput({
         'entityRisk': '',
         'evaluation': '',
@@ -64,6 +67,11 @@ Page.button2Click = function($event, widget) {
 
     var createdByReq;
     var evaluationReq;
+
+
+
+
+
 
     //ToCalculate Timezone
     if (Page.Widgets.completionDate.bsDataValue != undefined && Page.Widgets.completionDate.bsDataValue != '') {
@@ -100,14 +108,15 @@ Page.button2Click = function($event, widget) {
 
     }
 
+    /*var createdBy = Page.Widgets.createdTeamSelect.datavalue;*/
     if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
         createdByReq = Page.Widgets.createdBySelect.datavalue.emplId;
+    } else if (Page.Widgets.createdTeamSelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
+        /* createdByReq = Page.Variables.managerListByTeamId.dataSet;*/
+
     }
 
-    /*var createdBy = Page.Widgets.createdTeamSelect.datavalue;
-    if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
-        createdByReq = Page.Widgets.createdBySelect.datavalue.emplId.split(', ');
-    }*/
+
 
 
 
@@ -241,6 +250,14 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
 Page.createdTeamSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
 
+
+
+    if (newVal != "") {
+        Page.Widgets.createdBySelect.disabled = true;
+    } else {
+        Page.Widgets.createdBySelect.disabled = false;
+    }
+
     if (Page.Widgets.createdTeamSelect.datavalue) {
 
         Page.Variables.getUserListByTeamId_Report.setInput({
@@ -248,5 +265,17 @@ Page.createdTeamSelectChange = function($event, widget, newVal, oldVal) {
         });
         Page.Variables.getUserListByTeamId_Report.invoke();
 
+    }
+};
+
+
+
+Page.createdBySelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
+
+    if (newVal != "") {
+        Page.Widgets.createdTeamSelect.disabled = true;
+    } else {
+        Page.Widgets.createdTeamSelect.disabled = false;
     }
 };

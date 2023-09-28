@@ -1358,14 +1358,14 @@ END ASC) wmTempTable
 
     <sql-query name="getManagerByTeamId">
         <![CDATA[
-        select  u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId
+        select  u.emplId,u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId
         ]]>
     <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getManagerByTeamId__count">
         <![CDATA[
-        select count(*) from (select  u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable
+        select count(*) from (select  u.emplId,u.id as id,CONCAT(u.firstName,' ', u.lastName) as managerName from TEAM_MANAGER tm join USER u on tm.managerUserId=u.id where teamId=:teamId) wmTempTable
         ]]>
     <query-param name="teamId" type="java.lang.String"/>
     </sql-query>

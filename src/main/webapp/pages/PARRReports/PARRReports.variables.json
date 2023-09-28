@@ -1181,6 +1181,30 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "executeGetManagerByTeamId" : {
+    "_id" : "wm-executeGetManagerByTeamId-wm.ServiceVariable-1695899570146",
+    "name" : "executeGetManagerByTeamId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerByTeamIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetManagerByTeamId",
+    "operationId" : "QueryExecutionController_executeGetManagerByTeamId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "executeGetManagerByTeamIdonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getBillingAccountNameIdVar_parrReports" : {
     "_id" : "wm-getBillingAccountNameIdVar_parrReports-wm.ServiceVariable-1689854038225",
     "name" : "getBillingAccountNameIdVar_parrReports",
@@ -1276,6 +1300,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
+  },
+  "managerListByTeamId" : {
+    "_id" : "wm-managerListByTeamId-wm.Variable-1695899860486",
+    "name" : "managerListByTeamId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "parrHistoryVar_parrReports" : {
     "_id" : "wm-parrHistoryVar_parrReports-wm.Variable-1689837416059",
