@@ -403,7 +403,7 @@ Partial.anchor2Click = function($event, widget) {
 
     Partial.Variables.getBanDetailsForNotes.setInput({
 
-        'entityId': window.location.href.toString().split("=")[1]
+        'entityId': Partial.pageParams.entityId
 
     });
     Partial.Variables.getBanDetailsForNotes.invoke();

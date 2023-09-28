@@ -242,7 +242,7 @@ Partial.associateBAN_anchorClick = function($event, widget) {
 
     Partial.Variables.getBanDetailsForEntityCancel.setInput({
 
-        'entityId': window.location.href.toString().split("=")[1]
+        'entityId': Partial.pageParams.entityId
 
     });
     Partial.Variables.getBanDetailsForEntityCancel.invoke();
