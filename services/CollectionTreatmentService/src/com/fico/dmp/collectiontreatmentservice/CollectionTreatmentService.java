@@ -286,6 +286,14 @@ public class CollectionTreatmentService {
             List<CollectionActivityLog> collectionActivityLogRes= new ArrayList<>();
             
             if(collectionEntityId!=null){
+                
+                String encodeAssignedTeam=null;
+            if(relatedBusinessEntityAssignedTeam!=null)
+            {
+                 encodeAssignedTeam = URLEncoder.encode(relatedBusinessEntityAssignedTeam, "UTF-8");
+            }else{
+                encodeAssignedTeam=relatedBusinessEntityAssignedTeam;
+            }
 
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
@@ -298,6 +306,7 @@ public class CollectionTreatmentService {
                     .queryParam("relatedBusinessEntityCreatedDate", relatedBusinessEntityCreatedDate)
                     .queryParam("relatedBusinessEntityCreatedBy", relatedBusinessEntityCreatedBy)
                     .queryParam("relatedBusinessEntityAssignedTo", relatedBusinessEntityAssignedTo)
+                    .queryParam("relatedBusinessEntityAssignedTeam", encodeAssignedTeam)
                     .queryParam("relatedBusinessEntityId", relatedBusinessEntityId)
                     .queryParam("fields", fields)
                     .queryParam("offset", offset)

@@ -5089,7 +5089,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "Widgets.createUserPage.close();Variables.getAllUsers.listRecords()",
+    "onSuccess" : "UserManagementServiceCreateUseronSuccess(variable, data, options)",
     "onError" : "UserManagementServiceCreateUseronError(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : false,

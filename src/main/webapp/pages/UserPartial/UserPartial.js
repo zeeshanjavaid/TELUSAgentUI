@@ -763,22 +763,25 @@ Partial.createUserForm1_saveAction = function($event) {
                 App.Variables.createUserErrormsg.dataSet.dataValue = "Empl ID already exists";
             } else if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
                 Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
+                Partial.Variables.UserManagementServiceCreateUser.invoke()
+                Partial.Variables.searchUsers.invoke();
+                setTimeout(messageTimeout, 4000);
+                Partial.Widgets.createUserPage.close();
+
+                // Partial.Variables.UserManagementServiceCreateUser.invoke({},
+                //     function(data) {
+                //         Partial.Variables.successMessage.dataSet.dataValue = "User created successfully";
+                //         Partial.Widgets.updateUser.close();
+                //         App.Variables.errorMsg.dataSet.dataValue = "";
+                //         App.Variables.createUserErrormsg.dataSet.dataValue = "";
+                //         console.log("success", data);
+                //     },
+                //     function(error) {
+
+                //         console.log("success", error);
 
 
-
-                Partial.Variables.UserManagementServiceCreateUser.invoke({},
-                    function(data) {
-
-                        App.Variables.errorMsg.dataSet.dataValue = "";
-                        App.Variables.createUserErrormsg.dataSet.dataValue = "";
-                        console.log("success", data);
-                    },
-                    function(error) {
-
-                        console.log("success", error);
-
-
-                    });
+                //     });
             }
 
         },
@@ -814,6 +817,7 @@ Partial.createUserForm1_saveAction = function($event) {
     // }
 
 };
+
 
 Partial.searchUsersFinal = function($event) {
     debugger;
@@ -952,6 +956,7 @@ Partial.updateUserForm1_saveAction = function($event) {
             'size': 10
         });
         Partial.Variables.searchUsers.invoke();
+        setTimeout(messageTimeout, 4000);
         Partial.Widgets.updateUser.close();
 
         // Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
@@ -1138,6 +1143,7 @@ Partial.UserManagementServiceUpdateUseronSuccess = function(variable, data) {
     debugger;
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
     Partial.Variables.getCurrentManager.dataSet = null;
+    Partial.Variables.successMessage.dataSet.dataValue = "User updated successfully";
 
 
 };
@@ -1149,3 +1155,15 @@ Partial.TELUSAgentUIDBGetUseronSuccess = function(variable, data) {
     debugger;
 
 };
+
+Partial.UserManagementServiceCreateUseronSuccess = function(variable, data) {
+
+    Partial.Variables.successMessage.dataSet.dataValue = "User created successfully";
+
+
+
+};
+
+function messageTimeout() {
+    App.Variables.successMessage.dataSet.dataValue = null;
+}

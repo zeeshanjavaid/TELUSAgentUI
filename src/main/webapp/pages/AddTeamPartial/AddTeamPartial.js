@@ -85,6 +85,12 @@ function messageTimeout() {
 
 App.addTeams = function() {
 
+    debugger;
+
+    subComboBox.clearSelection();
+    checkedItem = $("input:checked")
+    checkedItem.prop('checked', false)
+
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.Variables.leftUserList.dataSet = [];
@@ -512,3 +518,15 @@ function getCurrentDate() {
     var currentDate = new Date().toJSON().slice(0, 10);
     return currentDate;
 }
+
+Partial.saveManagerOnTeamCreateVaronSuccess = function(variable, data) {
+
+    Partial.Variables.getManagerNameByTeamId.setInput({
+        'teamId': variable.dataBinding.teamId
+    });
+
+    Partial.Variables.getManagerNameByTeamId.invoke();
+
+
+
+};
