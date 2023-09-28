@@ -386,7 +386,7 @@ public class CollectionEntityService {
 		
 		String createdByStr = null;
 		if(createdBy != null) {
-			createdByStr = "eq:"+createdBy;
+			createdByStr = "in:"+createdBy;
 		}
 		
 		String createdFromStr = null;

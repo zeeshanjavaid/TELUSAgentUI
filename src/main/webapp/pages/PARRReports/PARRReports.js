@@ -104,6 +104,14 @@ Page.button2Click = function($event, widget) {
         createdByReq = Page.Widgets.createdBySelect.datavalue.emplId;
     }
 
+    /*var createdBy = Page.Widgets.createdTeamSelect.datavalue;
+    if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
+        createdByReq = Page.Widgets.createdBySelect.datavalue.emplId.split(', ');
+    }*/
+
+
+
+
     if (Page.Widgets.evalSelect.datavalue == 'All') {
         evaluationReq = '';
     } else {
