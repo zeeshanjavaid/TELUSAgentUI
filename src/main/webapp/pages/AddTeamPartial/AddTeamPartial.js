@@ -377,7 +377,7 @@ Partial.createTeamonSuccess = function(variable, data) {
 };
 
 Partial.CreateTeamUseronSuccess = function(variable, data) {
-
+    debugger;
     if (Partial.pageParams.id && Partial.pageParams.id > 0 && Partial.Variables.teamsSuccessMessage.dataSet.dataValue == null || Partial.Variables.teamsSuccessMessage.dataSet.dataValue == "") {
 
         Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_UPDATED_SUCCESSFULLY;
@@ -396,6 +396,8 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     debugger;
     var selectedManagerName = subComboBox.getSelectedIds();
+
+    $('#teamManagerMutliSel').prop('disabled', false);
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -495,6 +497,9 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
         // Updating the team List
         App.refreshAllTeams();
+        Partial.scrollToTop();
+        Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+        $('#teamManagerMutliSel').prop('disabled', true);
 
     } else {
 
