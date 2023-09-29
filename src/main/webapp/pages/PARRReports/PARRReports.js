@@ -110,9 +110,9 @@ Page.button2Click = function($event, widget) {
 
     /*var createdBy = Page.Widgets.createdTeamSelect.datavalue;*/
     if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
-        createdByReq = Page.Widgets.createdBySelect.datavalue.emplId;
+        createdByReq = Page.Widgets.createdBySelect.datavalue;
     } else if (Page.Widgets.createdTeamSelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
-        /* createdByReq = Page.Variables.managerListByTeamId.dataSet;*/
+        createdByReq = Page.Variables.getUserListByTeamId_Report.dataSet;
 
     }
 
@@ -261,7 +261,7 @@ Page.createdTeamSelectChange = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.createdTeamSelect.datavalue) {
 
         Page.Variables.getUserListByTeamId_Report.setInput({
-            'teamid': Page.Widgets.createdTeamSelect.datavalue,
+            'teamId': Page.Widgets.createdTeamSelect.datavalue
         });
         Page.Variables.getUserListByTeamId_Report.invoke();
 
