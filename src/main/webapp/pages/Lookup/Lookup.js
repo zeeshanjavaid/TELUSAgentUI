@@ -473,19 +473,9 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                         'engagedCustomerParty': {
                             'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbucid,
                             'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuCode,
-                            'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuName,
-                            'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.organizationType,
-                            'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcid,
-                            'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.rcName,
-                            'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioCategory,
-                            'portfolioSubCategory': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.portfolioSubCategory,
-                            'subMarketSegment': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.subMarketSegment
+                            'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbuName
                         },
                         'engagedRegionalCustomerParty': {
-                            'cbucid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbucid,
-                            'cbuCode': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuCode,
-                            'cbuName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.cbuName,
-                            'organizationType': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.organizationType,
                             'rcid': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcid,
                             'rcName': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.rcName,
                             'portfolioCategory': Page.Variables.getCollectionEntityById.dataSet.engagedRegionalCustomerParty.portfolioCategory,
