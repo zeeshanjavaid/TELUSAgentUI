@@ -65,7 +65,7 @@ Page.button2Click = function($event, widget) {
     var fromDate = Page.Widgets.creationDate.bsDataValue;
     var toDate = Page.Widgets.completionDate.bsDataValue;
 
-    var createdByReq;
+    var createdByReq = null;
     var evaluationReq;
 
 
@@ -111,14 +111,14 @@ Page.button2Click = function($event, widget) {
     /*var createdBy = Page.Widgets.createdTeamSelect.datavalue;*/
     if (Page.Widgets.createdBySelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
         createdByReq = Page.Widgets.createdBySelect.datavalue;
-    } else if (Page.Widgets.createdTeamSelect.datavalue != '' && Page.Widgets.createdBySelect.datavalue != undefined) {
-        createdByReq = Page.Variables.getUserListByTeamId_Report.dataSet;
+    } else if (Page.Widgets.createdTeamSelect.datavalue != '' && Page.Widgets.createdTeamSelect.datavalue != undefined) {
+        var arrEmpId = [];
+        Page.Variables.getUserListByTeamId_Report.dataSet.forEach(function(d) {
+            arrEmpId.push(d.empId)
+        });
 
+        createdByReq = arrEmpId.toString();
     }
-
-
-
-
 
 
     if (Page.Widgets.evalSelect.datavalue == 'All') {
@@ -177,21 +177,7 @@ Page.openPARRdetailsDailog = function($event, widget, row) {
 
     Page.Variables.getParrHistoryViewForParrReport.invoke();
 
-
-
-    /*  Page.Variables.getPaymentArrangement_parrReports.setInput({
-          "id": row.parrId
-      });
-      Page.Variables.getPaymentArrangement_parrReports.invoke(); */
-    //Page.Variables.getPaymentArrangement_parrReports.dataSet;
-
-
     var getPaymentArrangementVar = Page.Variables.getPaymentArrangement_parrReports;
-
-    /* Partial.Variables.getPaymentArrangement.setInput({
-         "id": Partial.pageParams.ParrId
-     });
-     Partial.Variables.getPaymentArrangement.invoke(); */
 
     getPaymentArrangementVar.invoke({
             "inputFields": {
