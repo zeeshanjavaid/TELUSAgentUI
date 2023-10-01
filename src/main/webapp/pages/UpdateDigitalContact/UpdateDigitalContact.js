@@ -28,7 +28,7 @@ App.rowDataValues = function(row) {
     debugger;
 
     //Added condition to check for CES9 datasource contacts
-    if (row.contactId != null && row.sourceOfContact == 'TCM') {
+    if (row.contactId != null && row.sourceOfContact == 'Internal') {
         Partial.Widgets.contactIDLabel.caption = row.contactId;
         var GetContactDetailsByIdVar = Partial.Variables.GetContactDetailsById;
         GetContactDetailsByIdVar.invoke({
@@ -102,7 +102,7 @@ App.rowDataValues = function(row) {
     }
 
 
-    if (!(row.sourceOfContact == 'TCM')) {
+    if (!(row.sourceOfContact == 'Internal')) {
         Partial.Widgets.TELUSContactsSelect.disabled = true;
         Partial.Widgets.TITLESelect.disabled = true;
         Partial.Widgets.firstName.disabled = true;
@@ -156,7 +156,7 @@ Partial.CancelClick = function($event, widget) {
 
 Partial.updateContact = function($event, widget) {
     debugger;
-    if ((Partial.Widgets.contactIDLabel.caption != null) && (Partial.Widgets.dataSource.caption == 'TCM')) {
+    if ((Partial.Widgets.contactIDLabel.caption != null) && (Partial.Widgets.dataSource.caption == 'Internal')) {
         if (Partial.Widgets.TELUSContactsSelect.datavalue === "" || Partial.Widgets.TELUSContactsSelect.datavalue == undefined) {
             App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
         } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
