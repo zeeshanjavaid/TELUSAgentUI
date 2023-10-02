@@ -467,7 +467,7 @@ public class CollectionDataService {
 		    			lookUpResponseWithTeamName.setTeamName(commonUtilityService.getTeamIdUsingEmpId(entitySearchResponse.getEntityOwner()));
 			    	}
 
-				    lookUpResponseWithTeamName.setEntityOwner(entitySearchResponse.getEntityOwner());
+				    lookUpResponseWithTeamName.setEntityOwner(commonUtilityService.getNameUsingEmpId(entitySearchResponse.getEntityOwner()));
 				    lookUpResponseWithTeamName.setDntlFlag(entitySearchResponse.isDntlFlag());
 
 				    lookUpResponseWithTeamNamesList.add(lookUpResponseWithTeamName);    
