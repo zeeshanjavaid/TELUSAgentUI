@@ -63,6 +63,12 @@ Page.onReady = function() {
     //     // collapse: true
     // });
 
+    Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
+        'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+
     Page.Variables.errorMsg.dataSet.dataValue = '';
     Page.Variables.UserLoggedInVar_home.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";

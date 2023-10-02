@@ -495,8 +495,6 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
         })
 
-
-
     } else {
 
         Partial.Variables.deleteTeam.setInput({
