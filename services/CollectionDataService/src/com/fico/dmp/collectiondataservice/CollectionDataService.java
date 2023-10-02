@@ -436,7 +436,12 @@ public class CollectionDataService {
     			 teamsActionViewResponseList = objectMapper.readValue(responseStr,
       				objectMapper.getTypeFactory().constructCollectionType(List.class, TeamsActionViewResponse.class));
     		 }
-    		 return teamsActionViewResponseList;
+    		 
+    		 	// 			teamsActionViewResponseList.stream().forEach(agentView->agentView.setEntityOwner(commonUtilityService.getNameUsingEmpId(agentView.getEntityOwner())));
+
+				teamsActionViewResponseList.stream().forEach(agentView->agentView.setAssignedAgent(commonUtilityService.getNameUsingEmpId(agentView.getAssignedAgent())));
+
+    		 return setEntOwnerAndAssignedIdOfActionView(teamsActionViewResponseList);
     }
     }
     
@@ -475,5 +480,19 @@ public class CollectionDataService {
 		}
 
 		return lookUpResponseWithTeamNamesList;
+	}
+	
+	
+	
+	private List<TeamsActionViewResponse> setEntOwnerAndAssignedIdOfActionView(List<TeamsActionViewResponse> teamsActionViewResponseList)
+	{
+		for(TeamsActionViewResponse teamsActionViewResponse:teamsActionViewResponseList)
+		{
+			teamsActionViewResponse.setEntityOwner(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getEntityOwner()));
+			teamsActionViewResponse.setAssignedAgent(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getAssignedAgent()));
+
+		}
+
+		return teamsActionViewResponseList;
 	}
 }
