@@ -495,11 +495,7 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
         })
 
-        // Updating the team List
-        App.refreshAllTeams();
-        Partial.scrollToTop();
-        Partial.Variables.readOnlyMode.dataSet.dataValue = true;
-        $('#teamManagerMutliSel').prop('disabled', true);
+
 
     } else {
 
@@ -509,6 +505,12 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
         Partial.Variables.deleteTeam.invoke();
     }
+
+    // Updating the team List
+    App.refreshAllTeams();
+    Partial.scrollToTop();
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    $('#teamManagerMutliSel').prop('disabled', true);
 
 };
 Partial.EditTeamButtonClick = function($event, widget) {
