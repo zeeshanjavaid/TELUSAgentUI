@@ -55,9 +55,9 @@ App.rowDataValues = function(row) {
                 }
                 Partial.Widgets.comments.datavalue = data.comment;
                 Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
-                Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
+                //Partial.Widgets.lastUpdatedBy.caption = data.auditInfo.lastUpdatedBy;
                 Partial.Widgets.createdOn.caption = data.auditInfo.createdDateTime;
-                Partial.Widgets.createdBy.caption = data.auditInfo.createdBy;
+                // Partial.Widgets.createdBy.caption = data.auditInfo.createdBy;
 
                 var endDateTime = data.validFor.endDateTime;
                 if (endDateTime == null || endDateTime == undefined) {
@@ -65,6 +65,37 @@ App.rowDataValues = function(row) {
                 } else {
                     Partial.Variables.isContactExpired.dataSet.dataValue = true;
                 }
+
+                var GetCreatedByNameUsingAgentIdVar = Partial.Variables.GetCreatedByNameUsingAgentId;
+                GetCreatedByNameUsingAgentIdVar.invoke({
+                        "inputFields": {
+                            "empId": data.auditInfo.createdBy
+                        }
+                    },
+                    function(data1) {
+                        Partial.Widgets.createdBy.caption = data1;
+                        var GetUpdatedByNameUsingAgentIdVar = Partial.Variables.GetUpdatedByNameUsingAgentId;
+                        GetUpdatedByNameUsingAgentIdVar.invoke({
+                                "inputFields": {
+                                    "empId": data.auditInfo.lastUpdatedBy
+                                }
+                            },
+                            function(data2) {
+                                Partial.Widgets.lastUpdatedBy.caption = data2;
+                            },
+                            function(error2) {
+                                // Error Callback
+                                console.log("error", error2);
+                            }
+
+                        );
+                    },
+                    function(error1) {
+                        // Error Callback
+                        console.log("error", error1);
+                    }
+
+                );
             },
             function(error) {
                 // Error Callback

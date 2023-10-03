@@ -94,7 +94,8 @@
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" minvalue="-9007199254741020"></wm-number>-->
-                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber" on-keydown="workNoKeydown($event, widget)"></wm-text>
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" regexp="^[0-9].*$" maxchars="10" on-keypress="workNoKeypress($event, widget)" datavalue="bind:Variables.GetContactDetailsById.dataSet.workPhoneNumber"
+                            on-keydown="workNoKeydown($event, widget)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
@@ -144,7 +145,7 @@
                 <wm-label padding="unset 0.5em" caption="Last Updated by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="lastUpdatedBy" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.lastUpdatedBy" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="lastUpdatedBy" caption="" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow6" margin="10px 0px 20px 20px">
@@ -158,7 +159,7 @@
                 <wm-label padding="unset 0.5em" caption="Created by" name="label8" color="grey" class="UpdateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-label padding="unset 0.5em 0 0" name="createdBy" caption="bind:Variables.GetContactDetailsById.dataSet.auditInfo.createdBy" color="#000" text-align="right"></wm-label>
+                <wm-label padding="unset 0.5em 0 0" name="createdBy" caption="" color="#000" text-align="right"></wm-label>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
