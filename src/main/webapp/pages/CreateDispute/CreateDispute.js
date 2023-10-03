@@ -139,6 +139,7 @@ Partial.CreateDisputeServiceonSuccess = function(variable, data) {
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
     App.refreshDisputeList();
     App.refreshHistoryActionList();
+    App.refreshEntityBanDetails();
     setTimeout(messageTimeout, 10000);
 
 };

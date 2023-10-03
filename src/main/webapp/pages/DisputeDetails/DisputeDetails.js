@@ -244,6 +244,7 @@ Partial.CloseDisputeServiceVaronSuccess = function(variable, data) {
         }
     );
     App.refreshHistoryActionList();
+    App.refreshEntityBanDetails();
     setTimeout(messageTimeout, 8000);
 
 };
@@ -276,6 +277,7 @@ Partial.CancelDisputeServiceVaronSuccess = function(variable, data) {
     );
 
     App.refreshHistoryActionList();
+    App.refreshEntityBanDetails();
     setTimeout(messageTimeout, 8000);
 
 };
@@ -312,6 +314,7 @@ Partial.updateDisputeServiceonSuccess = function(variable, data) {
     );
 
     App.refreshHistoryActionList();
+    App.refreshEntityBanDetails();
     setTimeout(messageTimeout, 8000);
 
 };

@@ -529,3 +529,9 @@ Partial.createParrInEntityProfileClick = function($event, widget) {
     App.Widgets.Parr.show = true;
     Partial.Variables.ParrPageName.dataSet.dataValue = 'CreateParr';
 };
+
+App.refreshEntityBanDetails = function() {
+
+    Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
+
+};
