@@ -24,6 +24,8 @@ import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import io.swagger.client.model.EntityRef;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import com.fico.dmp.commonutilityservice.CommonUtilityService;
+
 
 
 
@@ -44,6 +46,10 @@ public class PARRService {
 
 	@Autowired
 	private CollectionCommonService collectionCommonService;
+	
+		@Autowired
+	private CommonUtilityService commonUtilityService;
+
 
 	private boolean isParrStubEnabled;
 
@@ -126,7 +132,7 @@ public class PARRService {
 		return collectionPaymentArrangement;
 	}
 
-	public CollectionPaymentArrangement updatePaymentArrangement(
+public CollectionPaymentArrangement updatePaymentArrangement(
 			CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate, Integer id) throws Exception {
 
 		if (isParrStubEnabled) {
@@ -152,7 +158,7 @@ public class PARRService {
 		}
 	}
 
-	public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId, String parrEndPointUrl) throws Exception {
+public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId, String parrEndPointUrl) throws Exception {
 
 		List<CollectionPaymentArrangement> collectionPaymentArrangements = new ArrayList<CollectionPaymentArrangement>();
 		if (isParrStubEnabled) {
@@ -174,10 +180,11 @@ public class PARRService {
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
 		   //  }
 		}
-		return collectionPaymentArrangements;
-	}
+	//	return collectionPaymentArrangements;
+  return	setCreatedAndUpdatedBy(collectionPaymentArrangements);
+}
 
-		public CollectionPaymentArrangement getPaymentArrangement(Integer parrId, Boolean history) throws Exception {
+public CollectionPaymentArrangement getPaymentArrangement(Integer parrId, Boolean history) throws Exception {
 
 		CollectionPaymentArrangement collectionPaymentArrangement = null;
 		if (isParrStubEnabled) {
@@ -192,6 +199,19 @@ public class PARRService {
 			collectionPaymentArrangement = mapper.readValue(responseStr,CollectionPaymentArrangement.class);
 		}
 		return collectionPaymentArrangement;
+}
+	
+	
+private List<CollectionPaymentArrangement> setCreatedAndUpdatedBy(List<CollectionPaymentArrangement> collectionPaymentArrangements) {
+
+		for(CollectionPaymentArrangement collectionPaymentArrangement:collectionPaymentArrangements)
+		{
+			collectionPaymentArrangement.getAuditInfo().setCreatedBy(commonUtilityService.getTeamIdUsingEmpId(collectionPaymentArrangement.getAuditInfo().getCreatedBy()));
+			collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(commonUtilityService.getTeamIdUsingEmpId(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy()));
+
+		}
+
+		return collectionPaymentArrangements;
 	}
 
 }

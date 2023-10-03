@@ -199,7 +199,10 @@ public class CollectionTreatmentService {
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
              collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
-           
+             collectionTreatmentStepList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
+             collectionTreatmentStepList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+
+
             if(IsOdManagement)
             {
                             logger.info("Order management data");
@@ -321,6 +324,9 @@ public class CollectionTreatmentService {
 
            });
             }
+        collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityCreatedBy())));
+        collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityAssignedTo())));
+
             return collectionActivityLogRes;
         }
     }
