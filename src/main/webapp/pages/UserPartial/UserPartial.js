@@ -933,11 +933,17 @@ Partial.updateUserForm1_saveAction = function($event) {
 
     //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
     // }
+    // if (Partial.Variables.getCurrentManager.dataSet != null) {
 
-    if (type == "undefined") {
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
+    // } else 
 
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.getCurrentManager.dataSet;
+    if (type == "string") {
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
+
     }
+
+
 
 
     // else {
