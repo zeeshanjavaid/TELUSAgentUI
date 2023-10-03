@@ -82,3 +82,9 @@ input#WorkCategoryMutliSelForBanView {
     border-radius: unset;
     border-color: #4B286D !important;
 }
+
+.Table-Font{
+    
+    font-size: 12px;
+    overflow: auto;
+}

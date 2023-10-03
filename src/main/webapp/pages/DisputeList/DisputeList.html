@@ -7,21 +7,21 @@
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputesList.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%" pagesize="10">
-                <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" width="66px" edit-widget-type="text" type="string" show="true" readonly="false">
+                <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" width="70px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="ban" caption="BAN" width="83px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="banName" caption="BAN Name" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="billingSystem" caption="BILL SYS" width="93px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="103px" edit-widget-type="text" type="string" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="collectionExclusion" caption="COLL EXCL" widget-type="label" width="73px" edit-widget-type="text" type="string" show="true" readonly="false">
+                <wm-table-column binding="ban" caption="BAN" width="93px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="banName" caption="BAN Name" width="308px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="billingSystem" caption="BILL SYS" width="104px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="99px" edit-widget-type="text" type="string" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="collectionExclusion" caption="COLL EXCL" widget-type="label" width="61px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('collectionExclusion')?'Y':'N'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="status" caption="Status" width="103px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="createdBy" caption="Created By" width="185px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="createdDateTime" caption="Created Date" width="100px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="updatedBy" caption="Updated By" width="185px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="updatedDateTime" caption="Updated Date" width="102px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="createdBy" caption="Created By" width="165px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="createdDateTime" caption="Created Date" width="88px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="updatedBy" caption="Updated By" width="165px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="updatedDateTime" caption="Updated Date" width="97px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-gridcolumn>
     </wm-container>

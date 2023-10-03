@@ -61,8 +61,7 @@
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">
                         <wm-label padding="10px 20px 2px 5px" caption="Created Team" name="label4" color="gray" class="createdteamLLabel"></wm-label>
-                        <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeamPARRreport.dataSet" datafield="teamId" placeholder="Select" displayfield="teamId" on-change="createdTeamSelectChange($event, widget, newVal, oldVal)"
-                            on-click="createdTeamSelectClick($event, widget)"></wm-select>
+                        <wm-select name="createdTeamSelect" id="createdTeamSelection" margin="5px unset unset unset" dataset="bind:Variables.createdTeamPARRreport.dataSet" datafield="teamId" placeholder="Select" displayfield="teamId" on-change="createdTeamSelectChange($event, widget, newVal, oldVal)"></wm-select>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow5" margin="20px 0px 20px -35px" style="text-align: right;">
@@ -74,7 +73,7 @@
             </wm-layoutgrid>
             <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;" class="reportTableBorder">
                 <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
-                    <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic" navigationalign="right" pagesize="20">
+                    <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic" navigationalign="right" pagesize="20" on-beforedatarender="getParrReportTable1Beforedatarender(widget, $data, $columns)">
                         <wm-table-column binding="parrId" caption="PARR ID" width="79px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('parrId')" hyperlink="" class="" on-click="openPARRdetailsDailog($event, widget, row)" conditionalclass=""></wm-anchor>
                         </wm-table-column>
