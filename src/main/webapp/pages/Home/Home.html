@@ -48,8 +48,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId"
+                        datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                     <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"-->
                     <!--    datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>-->
                 </wm-gridcolumn>
@@ -70,13 +70,7 @@
                     </wm-container>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true"
-                        style="display: block; width: 145%;"></wm-select>
-                    <wm-select name="workCategorySelectEV" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.workCategoryValues_HomeEV.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true"
-                        style="display: block; width: 145%;" on-change="workCategorySelectEVChange($event, widget, newVal, oldVal)" show="false"></wm-select>
-                    <!--<wm-container name="container2_1" id="WorkCategoryMutliSelId">-->
-                    <!--    <wm-composite name="composite4_1" width="70%"><input type="text" name="checkAndUncheck" id="WorkCategoryMutliSel" placeholder="Select"></wm-composite>-->
-                    <!--</wm-container>-->
+                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -119,8 +113,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId" datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerBVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId"
+                        datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerBVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
                     <wm-label caption="Billing System*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -176,8 +170,8 @@
                 <wm-table-column binding="totalDelinquentBans" caption="Dlq BANs" width="65px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityType" caption="ENT Type" width="75px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId" caption="ENT Owner" width="98px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="entityViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="entityViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
         <wm-layoutgrid id="banViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid5" show="bind:Variables.hideBanTableGrid.dataValue">
@@ -203,8 +197,8 @@
                 <wm-table-column binding="openActionDate" caption="Open Action DT" width="66px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId" caption="ENT Owner" width="69px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="assignedTeam" caption="Assigned Team" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" height="120px" on-rowexpand="banViewTable_OnRowexpand($event, widget, row, $data)"
-                    widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" height="120px" on-rowexpand="banViewTable_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true"
+                    disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
     </wm-content>
