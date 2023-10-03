@@ -1747,6 +1747,30 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "statusWhenTypeIsSusForTodo" : {
+    "_id" : "wm-statusWhenTypeIsSusForTodo-wm.Variable-1696315147127",
+    "name" : "statusWhenTypeIsSusForTodo",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "Open"
+    }, {
+      "dataValue" : "Request Created"
+    }, {
+      "dataValue" : "Request Assigned"
+    }, {
+      "dataValue" : "Order Created"
+    }, {
+      "dataValue" : "Order Assigned"
+    }, {
+      "dataValue" : "Order Fullfilled"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "statusWhenTypePaymentArr" : {
     "_id" : "wm-statusWhenTypePaymentArr-wm.Variable-1693997408737",
     "name" : "statusWhenTypePaymentArr",

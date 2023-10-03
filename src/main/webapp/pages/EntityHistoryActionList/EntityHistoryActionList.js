@@ -1541,13 +1541,19 @@ Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row)
 };
 Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
-        Partial.Widgets.statusSelect.datavalue = "";
-        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
+    if (toDoTable) {
 
-    } else {
         Partial.Widgets.statusSelect.datavalue = "";
-        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
+        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSusForTodo.dataSet;
+    } else {
+        if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
+
+        } else {
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
+        }
     }
 
 
