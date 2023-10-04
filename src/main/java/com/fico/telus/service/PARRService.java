@@ -206,8 +206,8 @@ private List<CollectionPaymentArrangement> setCreatedAndUpdatedBy(List<Collectio
 
 		for(CollectionPaymentArrangement collectionPaymentArrangement:collectionPaymentArrangements)
 		{
-			collectionPaymentArrangement.getAuditInfo().setCreatedBy(commonUtilityService.getTeamIdUsingEmpId(collectionPaymentArrangement.getAuditInfo().getCreatedBy()));
-			collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(commonUtilityService.getTeamIdUsingEmpId(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy()));
+			collectionPaymentArrangement.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionPaymentArrangement.getAuditInfo().getCreatedBy()));
+			collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy()));
 
 		}
 
