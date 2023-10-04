@@ -93,7 +93,7 @@ public class ParrReportService {
             for(CollectionPaymentArrangement cpa:parrReportList)
             {
                 
-                                CollectionEntity collectionEntity  = collectionEntityService.getCollectionEntityById(Integer.valueOf(cpa.getCollectionEntity().getId()),null);
+                CollectionEntity collectionEntity  = collectionEntityService.getCollectionEntityById(Integer.valueOf(cpa.getCollectionEntity().getId()),null);
 
                 ParrReports parrReports=new ParrReports();
                 parrReports.setParrId(cpa.getId());
@@ -101,7 +101,7 @@ public class ParrReportService {
                  entityIds.add(cpa.getCollectionEntity().getId());
                 parrReports.setParrStatus(cpa.getStatus());
                // parrReports.setParrStatus(cpa.getStatus());
-                parrReports.setCreatedTeam(getTeamName(cpa.getAuditInfo().getCreatedBy()));
+                parrReports.setCreatedTeam(cpa.getAuditInfo().getCreatedBy());
 
                 parrReports.setEvaluation(cpa.getEvaluationResult());
                 parrReports.setParrAmt("$"+cpa.getAmount());
@@ -129,7 +129,7 @@ public class ParrReportService {
                   parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
               }
               
-            parrReports.setCreatedBy(commonUtilityService.getNameUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
+                parrReports.setCreatedBy(cpa.getAuditInfo().getCreatedBy());
 
                 parrReportsList.add(parrReports);
             }
