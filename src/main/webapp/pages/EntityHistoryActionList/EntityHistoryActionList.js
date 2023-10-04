@@ -1036,6 +1036,7 @@ Partial.applyFilter = function($event, widget) {
 }
 
 Partial.toDoButtonClick = function($event, widget) {
+    debugger;
     toDoTable = true;
     completedTable = false;
 
@@ -1044,6 +1045,15 @@ Partial.toDoButtonClick = function($event, widget) {
     $("#toDoBtn").css("color", "white");
     $("#completedBtn").css("background-color", "white");
     $("#completedBtn").css("color", "#4B286D");
+    Partial.Widgets.toDoCategorySelect.datavalue = 'COLL_TRTMT_STEP';
+    Partial.Widgets.completedCategorySelect.datavalue = "All";
+    Partial.Widgets.typeSelect.datavalue = "";
+    Partial.Widgets.creationDate.datavalue = "";
+    Partial.Widgets.completionDate.datavalue = "";
+    Partial.Widgets.statusSelect.datavalue = "";
+    Partial.Widgets.createdBySelect.datavalue = "";
+    Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
+    Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
@@ -1071,6 +1081,16 @@ Partial.completedButtonClick = function($event, widget) {
     $("#completedBtn").css("color", "white");
     $("#toDoBtn").css("background-color", "white");
     $("#toDoBtn").css("color", "#4B286D");
+    Partial.Widgets.toDoCategorySelect.datavalue = "All";
+    Partial.Widgets.completedCategorySelect.datavalue = "All";
+    Partial.Widgets.typeSelect.datavalue = "";
+    Partial.Widgets.creationDate.datavalue = "";
+    Partial.Widgets.completionDate.datavalue = "";
+    Partial.Widgets.statusSelect.datavalue = "";
+    Partial.Widgets.createdBySelect.datavalue = "";
+    Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
+    Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+    Partial.Widgets.EventTypeSelect.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
@@ -1543,12 +1563,17 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (toDoTable) {
 
-        Partial.Widgets.statusSelect.datavalue = "";
-        Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSusForTodo.dataSet;
+        if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
+        } else {
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSusForTodo.dataSet;
+        }
     } else {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
             Partial.Widgets.statusSelect.datavalue = "";
-            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;;
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
 
         } else {
             Partial.Widgets.statusSelect.datavalue = "";

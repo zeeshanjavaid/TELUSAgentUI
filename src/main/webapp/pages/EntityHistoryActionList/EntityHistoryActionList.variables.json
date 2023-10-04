@@ -1756,16 +1756,6 @@
     "dataBinding" : [ ],
     "dataSet" : [ {
       "dataValue" : "Open"
-    }, {
-      "dataValue" : "Request Created"
-    }, {
-      "dataValue" : "Request Assigned"
-    }, {
-      "dataValue" : "Order Created"
-    }, {
-      "dataValue" : "Order Assigned"
-    }, {
-      "dataValue" : "Order Fullfilled"
     } ],
     "type" : "string",
     "isList" : true,
