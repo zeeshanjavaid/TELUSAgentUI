@@ -439,7 +439,7 @@ public class CollectionDataService {
     		 
     		 	// 			teamsActionViewResponseList.stream().forEach(agentView->agentView.setEntityOwner(commonUtilityService.getNameUsingEmpId(agentView.getEntityOwner())));
 
-				teamsActionViewResponseList.stream().forEach(agentView->agentView.setAssignedAgent(commonUtilityService.getNameUsingEmpId(agentView.getAssignedAgent())));
+				//teamsActionViewResponseList.stream().forEach(agentView->agentView.setAssignedAgent(commonUtilityService.getNameUsingEmpId(agentView.getAssignedAgent())));
 
     		 return setEntOwnerAndAssignedIdOfActionView(teamsActionViewResponseList);
     }

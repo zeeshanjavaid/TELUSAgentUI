@@ -10,8 +10,10 @@
  */
 
 /* perform any action on widgets/variables within this block */
-
+var workCategoriesOD;
+var finalWorkCategoriesOD;
 Page.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Page.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -29,6 +31,10 @@ Page.onReady = function() {
     Page.Variables.workCategoryValues_OrderDesk.invoke();
 };
 
+function messageTimeout() {
+    Page.Variables.errorMsg.dataSet.dataValue = null;
+}
+
 // function added to clear all the fields in the filter grid
 Page.clearFilterFields = function($event, widget) {
     debugger;
@@ -40,6 +46,27 @@ Page.clearFilterFields = function($event, widget) {
     Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
+
+    /*    if (workCategoriesOD.length > 1) {
+            finalWorkCategoriesOD = workCategoriesOD.join("|");
+        } else {
+            finalWorkCategoriesOD = workCategoriesOD;
+        }
+
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+            'assignedTeam': '',
+            'assignedAgent': '',
+            'entityOwner': 'ALL',
+            'workCategory': 'ALL',
+            'actionType': '',
+            'status': '',
+            'fromDueDate': '',
+            'toDueDate': '',
+            'viewType ': '2'
+        });
+        Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();*/
+
+
 };
 
 // function added to display table based on the filters applied
@@ -48,7 +75,7 @@ Page.applyFilter = function($event, widget) {
     var workCategoriesOD = Page.Widgets.WorkCategorySelect.datavalue;
     if (workCategoriesOD == '' || workCategoriesOD == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
-        setTimeout(messageTimeout, 10000);
+        setTimeout(messageTimeout, 4000);
     } else {
         if (workCategoriesOD.length > 1) {
             var finalWorkCategoriesOD = workCategoriesOD.join("|");
@@ -77,6 +104,7 @@ Page.goToEnityPage = function(row) {
 
 // Assigned Team on change
 Page.AssignedTeamSelecton_Change = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_OrderDesk_forALL.invoke();
     } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
@@ -91,6 +119,7 @@ Page.AssignedTeamSelecton_Change = function($event, widget, newVal, oldVal) {
 
 // adding all in Assigned Team
 Page.getAllTeamList_OrderDeskViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllTeamList_OrderDeskView.dataSet.length > 1) {
         Page.Variables.getAllTeamList_OrderDeskView.dataSet.unshift({
             id: 0,
@@ -130,20 +159,25 @@ Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
     }
 };
 
-Page.workCategoryValues_OrderDeskonSuccess = function(variable, data) {
-    Page.Variables.workCategoryValues_OrderDesk.dataSet = [];
+Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
 };
 
 Page.workCategorySelect_OrderDeskViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
         Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
     }
 };
 
-Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
+Page.workCategoryValues_OrderDeskonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.workCategoryValues_OrderDesk.dataSet = [];
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
 };
+
+
 
 Page.getAllActiveUserList_OrderDesk_forALLonSuccess = function(variable, data) {
     if (Page.Variables.getAllActiveUserList_OrderDesk_forALL.dataSet.length > 1) {
@@ -163,6 +197,7 @@ Page.CollectionDataServiceGetActionViewByTeamonError = function(variable, data, 
 };
 
 Page.actionTypeSelect_orderDeskViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.actionTypeSelect_orderDeskView.dataSet.length > 1) {
         Page.Variables.actionTypeSelect_orderDeskView.dataSet.unshift({
             id: 0,

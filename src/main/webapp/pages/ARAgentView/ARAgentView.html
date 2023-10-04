@@ -10,6 +10,9 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid2">
+            <wm-gridrow name="gridrow3">
+                <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
+            </wm-gridrow>
             <wm-gridrow name="gridrow6">
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="filterCriteriaGrid">
                     <wm-label caption="Filter Criteria" name="label8" color="#000" textdecoration="underline" style="font-size: 16px;"></wm-label>
@@ -82,16 +85,16 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
                     <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="Classic" pagesize="20" showrecordcount="true" navigationalign="right">
                         <wm-table-column binding="actionId" caption="Action ID" width="77px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="62px" edit-widget-type="number" type="integer" show="true" readonly="false">
+                        <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="64px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
                         </wm-table-column>
                         <wm-table-column binding="entityName" caption="ENT Name" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="collectionStatus" caption="COLL Status" width="94px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="collectionStatus" caption="COLL Status" width="96px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityOwner" caption="ENT Owner" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="workCategory" caption="Work Category" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="totalAr" caption="Total AR" width="90px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="totalOverDue" caption="Total OD" width="90px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="actionType" caption="Action Type" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="totalAr" caption="Total AR" width="96px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="totalOverDue" caption="Total OD" width="96px" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="actionType" caption="Action Type" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="dueDate" caption="Due Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="status" caption="Status" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="assignedTeam" caption="Assigned Team" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

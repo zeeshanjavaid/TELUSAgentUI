@@ -86,5 +86,15 @@ input#WorkCategoryMutliSelForBanView {
 .Table-Font{
     
     font-size: 12px;
-    overflow: auto;
+    
 }
+
+/*.app-datagrid {
+    width: 104em;
+    overflow: auto;
+}*/
+/*.app-grid .app-datagrid .app-grid-content{
+    overflow-x:auto;
+        width: 100%;
+        height: 100%;
+}*/

@@ -10,7 +10,8 @@
  */
 
 /* perform any action on widgets/variables within this block */
-
+var workCategoriesAR;
+var finalWorkCategoriesAR;
 Page.onReady = function() {
     /*
      * variables can be accessed through 'Page.Variables' property here
@@ -33,6 +34,9 @@ Page.onReady = function() {
     Page.Variables.workCategoryValues_ARAgent.invoke();
 };
 
+function messageTimeout() {
+    Page.Variables.errorMsg.dataSet.dataValue = null;
+}
 
 // function added to clear all the fields in the filter grid
 Page.clearFilterFields = function($event, widget) {
@@ -45,15 +49,36 @@ Page.clearFilterFields = function($event, widget) {
     Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
+
+    if (workCategoriesAR.length > 1) {
+        finalWorkCategoriesAR = workCategoriesAR.join("|");
+    } else {
+        finalWorkCategoriesAR = workCategoriesAR;
+    }
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': '',
+        'assignedAgent': '',
+        'entityOwner': 'ALL',
+        'workCategory': 'ALL',
+        'actionType': '',
+        'status': '',
+        'fromDueDate': '',
+        'toDueDate': '',
+        'viewType ': '1'
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+
+
 };
 
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
-    var workCategoriesAR = Page.Widgets.WorkCategorySelect.datavalue;
+    workCategoriesAR = Page.Widgets.WorkCategorySelect.datavalue;
     if (workCategoriesAR == '' || workCategoriesAR == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
-        setTimeout(messageTimeout, 10000);
+        setTimeout(messageTimeout, 4000);
     } else {
         if (workCategoriesAR.length > 1) {
             var finalWorkCategoriesAR = workCategoriesAR.join("|");
@@ -110,6 +135,7 @@ Page.getAllTeamList_ARAgentViewonSuccess = function(variable, data) {
 
 // adding 'All' in the dropdown list for entityOwner dropdown 
 Page.getAllActiveUserList_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllActiveUserList_ARAgentView.dataSet.length > 1) {
         Page.Variables.getAllActiveUserList_ARAgentView.dataSet.unshift({
             empId: 'ALL',
@@ -121,6 +147,7 @@ Page.getAllActiveUserList_ARAgentViewonSuccess = function(variable, data) {
 };
 
 Page.getUserListByTeamId_ARAgentVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.getAllActiveUserList_ARAgentView.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
@@ -139,17 +166,20 @@ Page.getUserListByTeamId_ARAgentVonSuccess = function(variable, data) {
 };
 
 Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.workCategoryValues_ARAgent.dataSet = data;
 
 };
 
 Page.workCategorySelect_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Widgets.EntityOwnerSelect.datavalue == 'ALL') {
         Page.Variables.workCategoryValues_ARAgent.dataSet = data;
     }
 };
 
 Page.workCategoryValues_ARAgentonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.workCategoryValues_ARAgent.dataSet = [];
     Page.Variables.workCategoryValues_ARAgent.dataSet = data;
 
@@ -190,6 +220,7 @@ Page.actionTypeSelect_ARAgentViewonSuccess = function(variable, data) {
 
 // adding 'All' in the dropdown list for selectstatus dropdown
 Page.statusSelect_ARAgentViewonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.statusSelect_ARAgentView.dataSet.length > 1) {
         Page.Variables.statusSelect_ARAgentView.dataSet.unshift({
             id: 0,
