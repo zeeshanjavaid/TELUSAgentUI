@@ -76,6 +76,10 @@ import org.springframework.stereotype.Service;
 import com.fico.pscomponent.util.PropertiesUtil;
 import com.fico.telus.service.TelusAPIConnectivityService;
 import org.springframework.web.util.UriComponentsBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+
 
 
 /**
@@ -119,6 +123,10 @@ public class CollectionEntityService {
 	private String parrEndPointUrl;
 	
 	private String entitySvcAuthScope;
+	
+	@Autowired
+	@Qualifier("customObjectMapper")
+	private ObjectMapper mapper;
 
 
 	@PostConstruct
@@ -411,9 +419,18 @@ public class CollectionEntityService {
                   .queryParamIfPresent("limit", Optional.ofNullable(limit))
                   .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
                    .queryParamIfPresent("createdTo", Optional.ofNullable(createdToStr));
+                   
+                   logger.info("Htting telus API for Parr Report :::::::::::::::::::::::");
+	  logger.info("parrEndPointUrl--------"+builder.toUriString());
+	  //    if(entityId != null) {
+	  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
+			  builder.toUriString(), "GET","3161");
+	  logger.info("PARR TELUS RESPONSE:: " + responseStr);
+	   return mapper.readValue(responseStr,
+			  mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
        
       // logger.info("endPointString---"+endPointString);
-  	return parrService.getPaymentArrangements(entityId,builder.toUriString());
+  //	return parrService.getPaymentArrangements(entityId,builder.toUriString());
   }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
         @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
