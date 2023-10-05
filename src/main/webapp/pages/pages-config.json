@@ -343,6 +343,13 @@
     "type" : "integer"
   } ]
 }, {
+  "name" : "PARRReports_Copy",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "ParrId",
+    "type" : "integer"
+  } ]
+}, {
   "name" : "ParrDetails",
   "type" : "PARTIAL",
   "params" : [ {

@@ -1,0 +1,16 @@
+{
+  "messages" : {
+    "LABEL_DISPLAYING" : "Affichage",
+    "LABEL_PAGE" : "La page",
+    "LABEL_OF" : "de"
+  },
+  "formats" : {
+    "date" : "d MMM yyyy",
+    "time" : "HH:mm:ss"
+  },
+  "files" : {
+    "angular" : "fr",
+    "fullCalendar" : "fr",
+    "moment" : "fr"
+  }
+}

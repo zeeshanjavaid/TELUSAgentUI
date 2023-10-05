@@ -417,7 +417,8 @@ public class CollectionEntityService {
                  .queryParamIfPresent("createdBy", Optional.ofNullable(createdByStr))
                   .queryParamIfPresent("createdFrom", Optional.ofNullable(createdFromStr))
                   .queryParamIfPresent("limit", Optional.ofNullable(limit))
-                  .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
+                  .queryParamIfPresent("offset",Optional.ofNullable(offset))
+                   .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
                    .queryParamIfPresent("createdTo", Optional.ofNullable(createdToStr));
                    
                    logger.info("Htting telus API for Parr Report :::::::::::::::::::::::");

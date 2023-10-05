@@ -1,0 +1,65 @@
+{
+  "displayName" : "OMPaginaton",
+  "group" : "",
+  "iconUrl" : "/resources/images/imagelists/prefab-icon.png",
+  "resources" : {
+    "styles" : [ "/pages/Main/Main.css", "/resources/pagination.min.css" ],
+    "scripts" : [ "/resources/pagination.min.js" ]
+  },
+  "properties" : {
+    "totalrecords" : {
+      "type" : "number",
+      "displayName" : "Total Records",
+      "description" : "Total number of records",
+      "bindable" : "in-bound",
+      "value" : 100,
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "pagesize" : {
+      "type" : "number",
+      "displayName" : "Page Size",
+      "description" : "Page size",
+      "bindable" : "in-bound",
+      "value" : 10,
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "paginationname" : {
+      "type" : "string",
+      "displayName" : "Pagination name",
+      "description" : "This Pagination name should be unique in entire page",
+      "bindable" : "in-bound",
+      "value" : "containerPagination",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    },
+    "langcode" : {
+      "type" : "string",
+      "displayName" : "Langcode",
+      "description" : "get selected locale",
+      "bindable" : "in-bound",
+      "value" : "bind:\"en\"",
+      "widget" : "string",
+      "show" : true,
+      "disabled" : false
+    }
+  },
+  "events" : {
+    "onPagechange" : {
+      "description" : "Callback action which will be triggered when current page is changed.",
+      "eventData" : ""
+    }
+  },
+  "methods" : {
+    "refreshPagination" : {
+      "description" : "Refresh the pagination widget after activation or deactivation of the entity.",
+      "parameters" : [ ],
+      "returnType" : "void",
+      "example" : ""
+    }
+  }
+}
