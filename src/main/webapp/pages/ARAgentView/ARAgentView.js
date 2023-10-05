@@ -10,7 +10,10 @@
  */
 
 /* perform any action on widgets/variables within this block */
-var workCategoriesAR;
+
+var workCategoryDataArray = [];
+var actionTypeDataArray = [];
+var statusTypeDataArray = [];
 var finalWorkCategoriesAR;
 Page.onReady = function() {
     /*
@@ -32,6 +35,13 @@ Page.onReady = function() {
     Page.Widgets.ActionTypeSelect.datavalue = "ALL";
     Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_ARAgent.invoke();
+    Page.Variables.workcategoriesByEmpId_ARAgentView.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+    });
+    Page.Variables.workcategoriesByEmpId_ARAgentView.invoke();
+
+
+
 };
 
 function messageTimeout() {
@@ -50,17 +60,17 @@ Page.clearFilterFields = function($event, widget) {
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
 
-    if (workCategoriesAR.length > 1) {
-        finalWorkCategoriesAR = workCategoriesAR.join("|");
+    if (workCategoryDataArray.length > 1) {
+        finalWorkCategoriesAR = workCategoryDataArray.join("|");
     } else {
-        finalWorkCategoriesAR = workCategoriesAR;
+        finalWorkCategoriesAR = workCategoryDataArray;
     }
 
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
         'assignedTeam': '',
         'assignedAgent': '',
-        'entityOwner': 'ALL',
-        'workCategory': 'ALL',
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWorkCategoriesAR,
         'actionType': '',
         'status': '',
         'fromDueDate': '',
@@ -75,15 +85,15 @@ Page.clearFilterFields = function($event, widget) {
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
-    workCategoriesAR = Page.Widgets.WorkCategorySelect.datavalue;
-    if (workCategoriesAR == '' || workCategoriesAR == undefined) {
+    workCategoryDataArray = Page.Widgets.WorkCategorySelect.datavalue;
+    if (workCategoryDataArray == '' || workCategoryDataArray == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 4000);
     } else {
-        if (workCategoriesAR.length > 1) {
-            var finalWorkCategoriesAR = workCategoriesAR.join("|");
+        if (workCategoryDataArray.length > 1) {
+            var finalWorkCategoriesAR = workCategoryDataArray.join("|");
         } else {
-            var finalWorkCategoriesAR = workCategoriesAR;
+            var finalWorkCategoriesAR = workCategoryDataArray;
         }
 
         Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
@@ -168,8 +178,63 @@ Page.getUserListByTeamId_ARAgentVonSuccess = function(variable, data) {
 Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_ARAgent.dataSet = data;
+    if (data != undefined) {
+        data.forEach(workCategoryData);
+        workCategoryDataArray = [];
+        data.forEach(function(item) {
+            workCategoryDataArray.push(item.code)
+
+        });
+    }
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWCARview = workCategoryDataArray.join("|");
+    } else {
+        var finalWCARview = workCategoryDataArray;
+    }
+
+    if (Page.Variables.actionTypeSelect_ARAgentView.dataSet != undefined) {
+        Page.Variables.actionTypeSelect_ARAgentView.dataSet.forEach(actionTypeData);
+    }
+
+    if (Page.Variables.statusSelect_ARAgentView.dataSet != undefined) {
+        Page.Variables.statusSelect_ARAgentView.dataSet.forEach(statusTypeData);
+    }
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': 'ALL',
+        'assignedAgent': 'ALL',
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWCARview,
+        'actionType': 'ALL',
+        'status': 'ALL',
+        'fromDueDate': '',
+        'toDueDate': '',
+        'viewType ': '1'
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+
+
 
 };
+
+function workCategoryData(item, index) {
+    var item = item;
+    workCategoryDataArray.push(item.code);
+};
+
+function actionTypeData(item, index) {
+    var item = item;
+    actionTypeDataArray.push(item.code);
+};
+
+
+function statusTypeData(item, index) {
+    var item = item;
+    statusTypeDataArray.push(item.code);
+};
+
+
 
 Page.workCategorySelect_ARAgentViewonSuccess = function(variable, data) {
     debugger;

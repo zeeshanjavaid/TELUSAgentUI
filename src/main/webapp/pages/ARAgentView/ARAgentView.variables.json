@@ -58,11 +58,11 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityOwner",
-      "value" : "ALL",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
       "type" : "string"
     }, {
       "target" : "workCategory",
-      "value" : "ALL",
+      "value" : "bind:Variables.workCategoryValues_ARAgent.dataSet[$i].code",
       "type" : "string"
     }, {
       "target" : "viewType",
@@ -83,7 +83,7 @@
     "isList" : true,
     "maxResults" : 20,
     "onError" : "CollectionDataServiceGetActionViewByTeamonError(variable, data, xhrObj)",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
