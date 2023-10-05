@@ -23,13 +23,18 @@ Partial.onReady = function() {
 
 
     App.showRowExpansionEntityDetails = function(row, data) {
-        Partial.Widgets.ar30D.caption = row.ar30Days;
-        Partial.Widgets.ar60D.caption = row.ar60Days;
-        Partial.Widgets.ar90D.caption = row.ar90Days;
-        Partial.Widgets.ar120D.caption = row.ar120Days;
-        Partial.Widgets.ar150D.caption = row.ar150Days;
-        Partial.Widgets.ar180D.caption = row.ar180Days;
-        Partial.Widgets.ar180Dplus.caption = row.ar180DaysPlus;
+
+        // const formatter = new Intl.NumberFormat('en-US', {
+        //     style: 'currency',
+
+        // });
+        Partial.Widgets.ar30D.caption = row.ar30Days.toLocaleString('en-US');
+        Partial.Widgets.ar60D.caption = row.ar60Days.toLocaleString('en-US');
+        Partial.Widgets.ar90D.caption = row.ar90Days.toLocaleString('en-US');
+        Partial.Widgets.ar120D.caption = row.ar120Days.toLocaleString('en-US');
+        Partial.Widgets.ar150D.caption = row.ar150Days.toLocaleString('en-US');
+        Partial.Widgets.ar180D.caption = row.ar180Days.toLocaleString('en-US');
+        Partial.Widgets.ar180Dplus.caption = row.ar180DaysPlus.toLocaleString('en-US');
         Partial.Widgets.lastPaymentDate.caption = row.lastPaymentDate;
 
     }

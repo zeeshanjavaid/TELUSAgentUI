@@ -65,7 +65,7 @@
                         <wm-label padding="unset 0.5em" name="label9" caption="Dispute Amount:" color="#6e6d6a" class="disputeDetailsLabel" whitespace="nowrap"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn name="gridcolumn48" class="labelValue">
-                        <wm-label padding="unset 0.5em" name="disputeAmt" caption="bind:Variables.getDisputeDetails.dataSet.amount"></wm-label>
+                        <wm-label padding="unset 0.5em" name="disputeAmt" caption="bind:Variables.getDisputeDetails.dataSet.amount | toCurrency: ''"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridcolumn>
                 <wm-gridcolumn style="display: flex;" name="gridcolumn20_1">
@@ -345,8 +345,8 @@
             </wm-gridrow>
         </wm-layoutgrid>
     </wm-dialog>
-    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-iconDIS2&quot;></i><i  class=&quot;fico-icon-chevron-down show-iconDIS2&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" collapsible="true" expanded="true"
-        on-expand="disputeHistoryExpand($event, widget)" name="disputeHistory" on-collapse="disputeHistoryCollapse($event, widget)">
+    <wm-panel subheading="<h4 class=panelSubHeading><i class=&quot;fico-icon-chevron-right hide-iconDIS2&quot;></i><i  class=&quot;fico-icon-chevron-down show-iconDIS2&quot;></i>Dispute History</h4>" autoclose="outsideClick" title="" collapsible="true"
+        expanded="true" on-expand="disputeHistoryExpand($event, widget)" name="disputeHistory" on-collapse="disputeHistoryCollapse($event, widget)">
         <!-- <wm-panel subheading="<h4 class=panelSubHeading><i  class=&quot;fico-icon-chevron-right hide-icon1&quot;></i><i  class=&quot;fico-icon-chevron-down show-icon1&quot;></i>Installment Schedule</h4>" autoclose="outsideClick" title="" collapsible="true"
         expanded="true" on-expand="installmentScheduleExpand($event, widget)" name="installmentSchedule" on-collapse="installmentScheduleCollapse($event, widget)">-->
         <wm-layoutgrid name="layoutgrid25">
