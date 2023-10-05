@@ -58,11 +58,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "entityOwner",
-      "value" : "ALL",
-      "type" : "string"
-    }, {
-      "target" : "workCategory",
-      "value" : "ALL",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
       "type" : "string"
     }, {
       "target" : "limit",
@@ -83,7 +79,7 @@
     "isList" : true,
     "maxResults" : 20,
     "onError" : "CollectionDataServiceGetActionViewByTeamonError(variable, data, xhrObj)",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

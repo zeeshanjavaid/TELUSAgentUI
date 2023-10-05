@@ -202,20 +202,11 @@ Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
     }
 
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'assignedTeam': 'ALL',
-        'assignedAgent': 'ALL',
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCARview,
-        'actionType': 'ALL',
-        'status': 'ALL',
-        'fromDueDate': '',
-        'toDueDate': '',
-        'viewType ': '1'
+        'viewType ': '1',
     });
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
-
-
-
 };
 
 function workCategoryData(item, index) {

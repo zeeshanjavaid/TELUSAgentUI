@@ -10,7 +10,10 @@
  */
 
 /* perform any action on widgets/variables within this block */
-var workCategoriesOD;
+
+var workCategoryDataArray = [];
+var actionTypeDataArray = [];
+var statusTypeDataArray = [];
 var finalWorkCategoriesOD;
 Page.onReady = function() {
     debugger;
@@ -29,6 +32,10 @@ Page.onReady = function() {
     Page.Widgets.ActionTypeSelect.datavalue = "ALL";
     Page.Widgets.StatusSelect.datavalue = "ALL";
     Page.Variables.workCategoryValues_OrderDesk.invoke();
+    Page.Variables.workcategoriesByEmpId_OrderDesk.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+    });
+    Page.Variables.workcategoriesByEmpId_OrderDesk.invoke();
 };
 
 function messageTimeout() {
@@ -47,24 +54,24 @@ Page.clearFilterFields = function($event, widget) {
     Page.Widgets.creationDate.datavalue = "";
     Page.Widgets.completionDate.datavalue = "";
 
-    /*    if (workCategoriesOD.length > 1) {
-            finalWorkCategoriesOD = workCategoriesOD.join("|");
-        } else {
-            finalWorkCategoriesOD = workCategoriesOD;
-        }
+    if (workCategoryDataArray.length > 1) {
+        finalWorkCategoriesOD = workCategoryDataArray.join("|");
+    } else {
+        finalWorkCategoriesOD = workCategoryDataArray;
+    }
 
-        Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-            'assignedTeam': '',
-            'assignedAgent': '',
-            'entityOwner': 'ALL',
-            'workCategory': 'ALL',
-            'actionType': '',
-            'status': '',
-            'fromDueDate': '',
-            'toDueDate': '',
-            'viewType ': '2'
-        });
-        Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();*/
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': '',
+        'assignedAgent': '',
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWorkCategoriesOD,
+        'actionType': '',
+        'status': '',
+        'fromDueDate': '',
+        'toDueDate': '',
+        'viewType ': '2'
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 
 
 };
@@ -77,10 +84,10 @@ Page.applyFilter = function($event, widget) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 4000);
     } else {
-        if (workCategoriesOD.length > 1) {
-            var finalWorkCategoriesOD = workCategoriesOD.join("|");
+        if (workCategoryDataArray.length > 1) {
+            var finalWorkCategoriesOD = workCategoryDataArray.join("|");
         } else {
-            var finalWorkCategoriesOD = workCategoriesOD;
+            var finalWorkCategoriesOD = workCategoryDataArray;
         }
         Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
             'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
@@ -162,7 +169,54 @@ Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
 Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
     debugger;
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
+    if (data != undefined) {
+        data.forEach(workCategoryData);
+        workCategoryDataArray = [];
+        data.forEach(function(item) {
+            workCategoryDataArray.push(item.code)
+
+        });
+    }
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWCODview = workCategoryDataArray.join("|");
+    } else {
+        var finalWCODview = workCategoryDataArray;
+    }
+
+    if (Page.Variables.actionTypeSelect_orderDeskView.dataSet != undefined) {
+        Page.Variables.actionTypeSelect_orderDeskView.dataSet.forEach(actionTypeData);
+    }
+
+    if (Page.Variables.statusSelect_orderDeskView.dataSet != undefined) {
+        Page.Variables.statusSelect_orderDeskView.dataSet.forEach(statusTypeData);
+    }
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'workCategory': finalWCODview,
+        'viewType ': '2',
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+
 };
+
+function workCategoryData(item, index) {
+    var item = item;
+    workCategoryDataArray.push(item.code);
+};
+
+function actionTypeData(item, index) {
+    var item = item;
+    actionTypeDataArray.push(item.code);
+};
+
+
+function statusTypeData(item, index) {
+    var item = item;
+    statusTypeDataArray.push(item.code);
+};
+
 
 Page.workCategorySelect_OrderDeskViewonSuccess = function(variable, data) {
     debugger;
