@@ -63,6 +63,8 @@ Page.onReady = function() {
     //     // collapse: true
     // });
 
+
+
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
         'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
 
