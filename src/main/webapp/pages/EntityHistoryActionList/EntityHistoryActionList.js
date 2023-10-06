@@ -1015,7 +1015,12 @@ Partial.applyFilter = function($event, widget) {
 
         }
 
-        var completionDateTime = Partial.Widgets.creationDate.datavalue + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + "-08:00";
+        var completionDateTime
+
+        if (Partial.Widgets.creationDate.datavalue != "") {
+
+            completionDateTime = Partial.Widgets.creationDate.datavalue + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + "-08:00";
+        }
 
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,

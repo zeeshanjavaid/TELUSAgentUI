@@ -304,12 +304,21 @@ public class CollectionTreatmentService {
             if(collectionEntityId!=null){
                 
                 String encodeAssignedTeam=null;
+                String encodedStatus=null;
             if(relatedBusinessEntityAssignedTeam!=null)
             {
                  encodeAssignedTeam = URLEncoder.encode(relatedBusinessEntityAssignedTeam, "UTF-8");
             }else{
                 encodeAssignedTeam=relatedBusinessEntityAssignedTeam;
             }
+            
+            if(relatedBusinessEntityStatus!=null)
+            {
+                 encodedStatus = URLEncoder.encode(relatedBusinessEntityStatus, "UTF-8");
+            }else{
+                encodedStatus=relatedBusinessEntityStatus;
+            }
+
 
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
@@ -318,7 +327,7 @@ public class CollectionTreatmentService {
                     .queryParam("relatedBusinessEntitySubType", relatedBusinessEntitySubType)
                     .queryParam("relatedBusinessEntityId", relatedBusinessEntityId)
                     .queryParam("relatedBusinessEntityType", relatedBusinessEntityType)
-                    .queryParam("relatedBusinessEntityStatus", relatedBusinessEntityStatus)
+                    .queryParam("relatedBusinessEntityStatus", encodedStatus)
                     .queryParam("relatedBusinessEntityCreatedDate", relatedBusinessEntityCreatedDate)
                     .queryParam("relatedBusinessEntityCreatedBy", relatedBusinessEntityCreatedBy)
                     .queryParam("relatedBusinessEntityAssignedTo", relatedBusinessEntityAssignedTo)

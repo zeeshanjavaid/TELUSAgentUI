@@ -865,13 +865,16 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
     Partial.TestTeamId = row;
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
 
-    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == row.teamId)
-    var teamId = Partial.TestTeamIdFinal[0].id;
+    if (row.teamId != null) {
 
-    Partial.Variables.executeGetManagerByTeamIdVar.setInput({
-        'teamId': teamId
-    });
-    Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == row.teamId)
+        var teamId = Partial.TestTeamIdFinal[0].id;
+
+        Partial.Variables.executeGetManagerByTeamIdVar.setInput({
+            'teamId': teamId
+        });
+        Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+    }
 
     // Partial.Variables.dialogUserId.dataSet.workCategory.split(",");
 

@@ -238,8 +238,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamId" datavalue="bind:Variables.getODTeam.dataSet.data[0].teamId
-"></wm-select>
+                    <wm-select width="45%" name="assignedTeamSelect" margin="5px unset unset unset" datafield="teamId" placeholder="Select" dataset="bind:Variables.getAllTeamList.dataSet" displayfield="teamId" datavalue="bind:Variables.getLoggedInUserTeamIdVar.dataSet.value"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
