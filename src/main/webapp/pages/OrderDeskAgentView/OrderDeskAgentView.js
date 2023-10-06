@@ -79,8 +79,8 @@ Page.clearFilterFields = function($event, widget) {
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
-    var workCategoriesOD = Page.Widgets.WorkCategorySelect.datavalue;
-    if (workCategoriesOD == '' || workCategoriesOD == undefined) {
+    var workCategoryDataArray = Page.Widgets.WorkCategorySelect.datavalue;
+    if (workCategoryDataArray == '' || workCategoryDataArray == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
         setTimeout(messageTimeout, 4000);
     } else {
