@@ -6,7 +6,7 @@
     "sessionTimeout" : {
       "type" : "PAGE",
       "pageName" : null,
-      "timeoutValue" : 15
+      "timeoutValue" : 30
     }
   },
   "rememberMeConfig" : {
