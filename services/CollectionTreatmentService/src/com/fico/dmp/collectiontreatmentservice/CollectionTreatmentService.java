@@ -173,11 +173,18 @@ public class CollectionTreatmentService {
     }else{
         
           String encodeAssignedTeam=null;
+          String encodedStatus=null;
             if(assignedTeam!=null)
             {
                  encodeAssignedTeam = URLEncoder.encode(assignedTeam, "UTF-8");
             }else{
                 encodeAssignedTeam=assignedTeam;
+            }
+            if(status!=null)
+            {
+                 encodedStatus = URLEncoder.encode(status, "UTF-8");
+            }else{
+                encodedStatus=status;
             }
 
             logger.info("::::::::Calling Get Coll Treatment step data endpoint call ::::::::");
@@ -187,7 +194,7 @@ public class CollectionTreatmentService {
                     .queryParam("type",type)
                     .queryParam("createdDate",createdDate)
                     .queryParam("createdBy",createdBy)
-                    .queryParam("status",status)
+                    .queryParam("status",encodedStatus)
                     .queryParam("assignedAgentId",assignedAgentId)
                     .queryParam("assignedTeam",encodeAssignedTeam)
                     .queryParam("offset",offset)
@@ -199,8 +206,13 @@ public class CollectionTreatmentService {
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
              collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
+             
              collectionTreatmentStepList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
              collectionTreatmentStepList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+           if(!IsOdManagement)
+            {
+            collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
+            }
 
 
             if(IsOdManagement)
@@ -208,8 +220,9 @@ public class CollectionTreatmentService {
                             logger.info("Order management data");
 
                      collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
-                     }
-                    return collectionTreatmentStepList;
+             }
+             
+            return collectionTreatmentStepList;
         }
 
     }
