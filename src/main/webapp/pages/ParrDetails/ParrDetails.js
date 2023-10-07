@@ -207,14 +207,6 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
 
 Partial.SubmitButtonClick = function($event, widget) {
     debugger;
-    //Adding Kept to evaluationResult
-    /*  Partial.Variables.ParrInstallmentSchedule.dataSet.forEach(function(data) {
-          data.evaluationResult = "Kept";
-
-      }); */
-    //Hardcoding evaluation result in the backend.
-
-
     var installmentLength = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var installmentScheduleDataSet = Partial.Variables.ParrInstallmentSchedule.dataSet;
     var breakCheck1 = false;
@@ -241,7 +233,6 @@ Partial.SubmitButtonClick = function($event, widget) {
                 'comment': Partial.Widgets.Comments.datavalue,
                 'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence,
                 'status': 'Renegotiated',
-                'evaluationResult': 'Kept',
                 'channel': {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId,
                     'originatorAppId': "FAWBTELUSAGENT"
