@@ -1111,15 +1111,28 @@ Partial.UserDTO_teamManagerClick = function($event, widget) {
 Partial.UserDTO_teamIdChange = function($event, widget, newVal, oldVal) {
     debugger;
 
-    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == newVal)
-    var teamId = Partial.TestTeamIdFinal[0].id;
+    if (typeof(newVal) == "number") {
+        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.id == newVal);
+        var teamId = Partial.TestTeamIdFinal[0].id;
 
-    Partial.Variables.executeGetManagerByTeamIdVar.setInput({
-        'teamId': teamId
-    });
-    Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+        Partial.Variables.executeGetManagerByTeamIdVar.setInput({
+            'teamId': teamId
+        });
+        Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+    } else {
 
-};
+
+        Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == newVal);
+        var teamId = Partial.TestTeamIdFinal[0].id;
+
+        Partial.Variables.executeGetManagerByTeamIdVar.setInput({
+            'teamId': teamId
+        });
+        Partial.Variables.executeGetManagerByTeamIdVar.invoke();
+
+
+    }
+}
 
 
 Partial.userCriteriaKeypress = function($event, widget) {
