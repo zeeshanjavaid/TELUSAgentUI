@@ -165,8 +165,8 @@ Page.button2Click = function($event, widget) {
         evaluationReq = Page.Widgets.evalSelect.datavalue;
     }
 
-    var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth();
-    var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth();
+    var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth() + 1;
+    var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth() + 1;
 
     var fromDate = new Date(Page.Widgets.creationDate.bsDataValue).getDate();
     var toDate = new Date(Page.Widgets.completionDate.bsDataValue).getDate();
@@ -300,4 +300,13 @@ Page.createdBySelectChange = function($event, widget, newVal, oldVal) {
     } else {
         Page.Widgets.createdTeamSelect.disabled = false;
     }
+
+    /*if (Page.Widgets.createdBySelect.datavalue) {
+
+        Page.Variables.getUserListByTeamId_Report.setInput({
+            'teamId': Page.Widgets.createdBySelect.datavalue
+        });
+        Page.Variables.getUserListByTeamId_Report.invoke();
+
+    }*/
 };
