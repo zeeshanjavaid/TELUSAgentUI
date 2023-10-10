@@ -32,6 +32,8 @@ import com.fico.telus.model.ParrReports;
 import com.fico.qb.query.builder.support.utils.spring.CollectionUtils;
 import java.util.stream.Collectors;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
+import com.fico.telus.model.ParrResWithHeader;
+
 
 
 
@@ -84,18 +86,20 @@ public class ParrReportService {
 
         List<ParrReports> parrReportsList=new ArrayList<>();
 
-        List<CollectionPaymentArrangement> parrReportList= collectionEntityService.getPaymentArrangementsForParrReport(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
+             ParrResWithHeader parrReportList=collectionEntityService.getPaymentArrangementsForParrReport(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
 
-        if(!CollectionUtils.isEmpty(parrReportList))
+
+        if(!CollectionUtils.isEmpty(parrReportList.getResponseObjectList()))
         {
           //  entityIds= parrReportList.stream().map(a->a.getCollectionEntity().getId().toString()).collect(Collectors.toList());
 
-            for(CollectionPaymentArrangement cpa:parrReportList)
+            for(CollectionPaymentArrangement cpa:parrReportList.getResponseObjectList())
             {
                 
                 CollectionEntity collectionEntity  = collectionEntityService.getCollectionEntityById(Integer.valueOf(cpa.getCollectionEntity().getId()),null);
 
                 ParrReports parrReports=new ParrReports();
+                parrReports.setTotalNumberOfElement(parrReportList.getTotalNumberOfElement());
                 parrReports.setParrId(cpa.getId());
                 parrReports.setEntityId(cpa.getCollectionEntity().getId());
                  entityIds.add(cpa.getCollectionEntity().getId());

@@ -241,7 +241,8 @@ Partial.groupSearchTextKeyup = function($event, widget) {
         Object.assign(Partial.Variables.allGroupsUI.dataSet, Partial.allGroupUITemp);
     }
 
-};
+}
+
 
 Partial.containerGroupsClick = function($event, widget, item, currentItemWidgets) {};
 
@@ -326,6 +327,8 @@ Partial.getAllTeamsonSuccess = async function(variable, data) {
 
 };
 Partial.teamSearchTextKeyup = function($event, widget) {
+
+    debugger;
 
     if (widget.datavalue) {
         let results = Partial.allTeamUITemp.filter((item) => {

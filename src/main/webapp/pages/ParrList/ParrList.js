@@ -47,3 +47,9 @@ App.refreshParrList = function() {
 /*Partial.CollectionEntityGetPaymentArrangementonError = function(variable, data, xhrObj){
 	
 };*/
+
+Partial.CollectionEntityGetPaymentArrangementonSuccess = function(variable, data) {
+
+    debugger;
+
+};

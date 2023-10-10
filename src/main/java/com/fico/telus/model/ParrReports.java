@@ -16,6 +16,7 @@ public class ParrReports {
     private String perOfAmtRecieved_Exp;
     private String createdTeam;
     private String createdBy;
+    private Integer totalNumberOfElement;
 
 
     public Integer getParrId() {
@@ -113,5 +114,12 @@ public class ParrReports {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+     public Integer getTotalNumberOfElement() {
+        return totalNumberOfElement;
+    }
+
+    public void setTotalNumberOfElement(Integer totalNumberOfElement) {
+        this.totalNumberOfElement = totalNumberOfElement;
     }
 }

@@ -397,7 +397,7 @@ Partial.updateTeamonSuccess = function(variable, data) {
     debugger;
     var selectedManagerName = subComboBox.getSelectedIds();
 
-    $('#teamManagerMutliSel').prop('disabled', false);
+    //  $('#teamManagerMutliSel').prop('disabled', false);
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -436,6 +436,8 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     }
 
+
+
 };
 
 Partial.deleteTeamConfirmOkClick = function($event, widget) {
@@ -469,6 +471,8 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 };
 
 Partial.deleteTeamonSuccess = function(variable, data) {
+
+    debugger;
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
@@ -505,15 +509,19 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
     }
 
     // Updating the team List
-    App.refreshAllTeams();
-    Partial.scrollToTop();
+    // App.refreshAllTeams();
+    // Partial.scrollToTop();
+    // Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    // $('#teamManagerMutliSel').prop('disabled', true);
+
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
-    $('#teamManagerMutliSel').prop('disabled', true);
+    App.refreshAllTeams();
 
 };
 Partial.EditTeamButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     $('#teamManagerMutliSel').prop('disabled', false);
+    Partial.Variables.getTeam.invoke();
 };
 Partial.DeleteButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;

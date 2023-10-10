@@ -23,6 +23,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "CollectionEntityGetPaymentArrangementonSuccess(variable, data, options)",
     "onError" : "CollectionEntityGetPaymentArrangementonError(variable, data, xhrObj)",
     "startUpdate" : true,
     "autoUpdate" : false,

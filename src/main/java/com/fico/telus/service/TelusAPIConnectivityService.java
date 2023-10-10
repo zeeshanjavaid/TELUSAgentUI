@@ -236,6 +236,8 @@ public class TelusAPIConnectivityService {
 		if (responseEntity != null) {
 			// Read the response
 			result = responseEntity.getBody();
+			logger.info("::::::::Telus outbound API For Header ::::::::::::::::" + responseEntity.getHeaders());
+
 			if (statusCode == 200 || statusCode == 201 ) {
 				logger.info("::::::::Telus outbound API response statusCode ::::::::::::::::" + statusCode);
 				return result;
@@ -324,4 +326,57 @@ public class TelusAPIConnectivityService {
 		IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_AUTH_TOKEN);
 		map.tryPut(TELUS_AUTH_TOKEN, token, expiresInSec, TimeUnit.SECONDS);
 	}
+	
+	
+	public ResponseEntity<String> executeTelusAPIAndGetResponseWithHeader(String requestPayload, String endpointURL, String httpMethod, String scope) throws Exception {
+		StringEntity entity=null;
+		String dmpEnvironment = DMPContext.getDmpEnvironment();
+		String bearerToken = getTelusToken(scope);
+		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
+		if(requestPayload != null){
+			entity = new StringEntity(requestPayload, ContentType.APPLICATION_JSON);
+		}
+		logger.info("::::::::::::::::::::: Telus telusEndpointURL:::::::::::::::::::::" + endpointURL);
+		HttpResponse response = null;
+		Integer statusCode = null;
+		String result = null;
+		ResponseEntity<String> responseEntity=null;
+		HttpHeaders headers=null;
+		headers = new HttpHeaders();
+		if(dmpEnvironment != null) {
+			if (dmpEnvironment.toLowerCase().equals("staging")) {
+				headers.add("env", "it01");
+			}
+		}
+		headers.add("Authorization", "Bearer " + bearerToken);
+		headers.add("Content-Type", "application/json");
+		responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
+		HttpStatus httpStatus = responseEntity.getStatusCode();
+		statusCode=httpStatus.value();
+
+		// Read the response
+		//	result = responseEntity.getBody();
+// 			HttpHeaders headers1=responseEntity.getHeaders();
+// 					String li=headers1.getFirst("x-total-count");
+					
+// 				result = "{\"totalNumberOfElement\":"+Integer.parseInt(li)+",\"responseObjectList\":"+responseEntity.getBody()+"}";
+
+// 					logger.info("::::::::Telus outbound API For  Parr Reports response ::::::::::::::::" +result);
+
+			logger.info("::::::::Telus outbound API For  Parr Reports Header ::::::::::::::::" + responseEntity.getHeaders());
+			if (statusCode == 200 || statusCode == 201 ) {
+				logger.info("::::::::Telus outbound API response statusCode ::::::::::::::::" + statusCode);
+				return responseEntity;
+			} else {
+				logger.error(
+						"::::::::Telus outbound API failed response statusCode ::::######::::::::::::" + statusCode);
+
+				throw new Exception("Telus API failed with statusCode : " + statusCode);
+
+		}
+	//	return responseEntity;
+	}
+	
+	
+	
 }

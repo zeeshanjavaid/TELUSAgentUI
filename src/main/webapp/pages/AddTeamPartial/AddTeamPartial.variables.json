@@ -873,7 +873,7 @@
     "saveInPhonegap" : false,
     "maxResults" : 20,
     "designMaxResults" : 10,
-    "onSuccess" : "deleteTeamonSuccess(variable, data, options)",
+    "onSuccess" : "deleteTeamonSuccess(variable, data, options);Variables.getAllTeams.listRecords()",
     "inFlightBehavior" : "executeAll",
     "startUpdate" : false,
     "autoUpdate" : false,

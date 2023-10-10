@@ -18,6 +18,7 @@ import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionContact;
+import com.fico.telus.model.ParrResWithHeader;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionEntityUpdate;
@@ -124,7 +125,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/paymentArrangementsForparrReport", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionPaymentArrangement> getPaymentArrangementsForParrReport(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "entityRisk", required = false) String entityRisk, @RequestParam(value = "evaluation", required = false) String evaluation, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "createdFrom", required = false) String createdFrom, @RequestParam(value = "createdTo", required = false) String createdTo) throws Exception {
+    public ParrResWithHeader getPaymentArrangementsForParrReport(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "entityRisk", required = false) String entityRisk, @RequestParam(value = "evaluation", required = false) String evaluation, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "createdFrom", required = false) String createdFrom, @RequestParam(value = "createdTo", required = false) String createdTo) throws Exception {
         return collectionEntityService.getPaymentArrangementsForParrReport(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
     }
 

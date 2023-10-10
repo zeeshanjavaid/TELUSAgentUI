@@ -13,6 +13,7 @@ import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fico.telus.model.ParrResWithHeader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.annotation.*;
@@ -21,6 +22,11 @@ import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import com.fico.telus.model.DisputeResWithHeader;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
+
 
 
 import com.wavemaker.runtime.security.SecurityService;
@@ -370,7 +376,7 @@ public class CollectionEntityService {
   
   
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
-  public List<CollectionPaymentArrangement> getPaymentArrangementsForParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
+  public ParrResWithHeader getPaymentArrangementsForParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
   	
 	  String statusStr = null;
 		if(status != null) {
@@ -423,12 +429,30 @@ public class CollectionEntityService {
                    
                    logger.info("Htting telus API for Parr Report :::::::::::::::::::::::");
 	  logger.info("parrEndPointUrl--------"+builder.toUriString());
+	  
+	  
+	  ParrResWithHeader parrResWithHeader=new ParrResWithHeader();
+
+	  List<CollectionPaymentArrangement> responseObjectLis;
+	  ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", entitySvcAuthScope);
+	  String result=responseFromTelus.getBody();
+	  HttpHeaders headers1=responseFromTelus.getHeaders();
+	  String totalNoOfElement=headers1.getFirst("x-total-count");
+	 responseObjectLis= objectMapper.readValue(result, objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
+     parrResWithHeader.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
+	 parrResWithHeader.setResponseObjectList(responseObjectLis);
+	  return parrResWithHeader;
 	  //    if(entityId != null) {
-	  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-			  builder.toUriString(), "GET","3161");
-	  logger.info("PARR TELUS RESPONSE:: " + responseStr);
-	   return mapper.readValue(responseStr,
-			  mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
+	  
+	  
+	  
+// 	  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
+// 			  builder.toUriString(), "GET","3161");
+// 	  logger.info("PARR TELUS RESPONSE:: " + responseStr);
+// 	  	return objectMapper.readValue(responseStr, ParrResWithHeader.class);
+
+	   //return mapper.readValue(responseStr,
+			 // mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
        
       // logger.info("endPointString---"+endPointString);
   //	return parrService.getPaymentArrangements(entityId,builder.toUriString());
