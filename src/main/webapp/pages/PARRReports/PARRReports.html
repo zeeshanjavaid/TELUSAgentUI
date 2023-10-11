@@ -73,7 +73,8 @@
             </wm-layoutgrid>
             <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;" class="reportTableBorder">
                 <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
-                    <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="Classic" navigationalign="right" pagesize="20" on-beforedatarender="getParrReportTable1Beforedatarender(widget, $data, $columns)">
+                    <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="None" navigationalign="right" on-beforedatarender="getParrReportTable1Beforedatarender(widget, $data, $columns)"
+                        pagesize="20">
                         <wm-table-column binding="parrId" caption="PARR ID" width="79px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('parrId')" hyperlink="" class="" on-click="openPARRdetailsDailog($event, widget, row)" conditionalclass=""></wm-anchor>
                         </wm-table-column>
@@ -90,6 +91,8 @@
                         <wm-table-column binding="createdBy" caption="Created By" width="155px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
+                <wm-container name="containerPagination1"></wm-container>
+                <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination1" show="true" name="Telus_Paginaton" pagesize="20" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.ParrReportServiceGetParrReport.dataSet[0].totalNumberOfElement"></wm-prefab>
             </wm-container>
         </wm-page-content>
     </wm-content>

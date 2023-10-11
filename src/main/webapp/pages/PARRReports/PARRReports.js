@@ -60,7 +60,9 @@ Page.onReady = function() {
         'status': '',
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
-        'createdBy': ''
+        'createdBy': '',
+        'limit': 20,
+        'offset': 0
     });
 
     Page.Variables.ParrReportServiceGetParrReport.invoke();
@@ -98,7 +100,9 @@ Page.button1Click = function($event, widget) {
         'status': '',
         'createdFrom': '',
         'createdTo': '',
-        'createdBy': ''
+        'createdBy': '',
+        'limit': 20,
+        'offset': 0
     });
 
     Page.Variables.ParrReportServiceGetParrReport.invoke();
@@ -198,7 +202,9 @@ Page.button2Click = function($event, widget) {
         'status': Page.Widgets.parrStatusSelect.datavalue,
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
-        'createdBy': createdByReq
+        'createdBy': createdByReq,
+        'limit': 20,
+        'offset': 0
     });
     Page.Variables.ParrReportServiceGetParrReport.invoke();
 
@@ -310,3 +316,22 @@ Page.createdBySelectChange = function($event, widget, newVal, oldVal) {
 
     }*/
 };
+
+Page.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Page.size = $event.pageSize
+    Page.page = $event.pageNumber
+    Page.RefreshData();
+
+};
+
+Page.RefreshData = function() {
+    debugger;
+    var offset = Page.size * (Page.page - 1);
+    Page.Variables.ParrReportServiceGetParrReport.setInput({
+        'limit': Page.size,
+        'offset': offset
+    });
+    Page.Variables.ParrReportServiceGetParrReport.invoke();
+
+}

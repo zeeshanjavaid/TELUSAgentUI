@@ -55,8 +55,8 @@
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn11_2"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="createdByGrid">
                         <wm-label padding="10px 20px 2px 15px" caption="Created By" name="label4" color="gray" class="createdByLabel"></wm-label>
-                        <wm-select name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.createdByPARRreport.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
-                            displayfield="dataValue" on-change="createdBySelectChange($event, widget, newVal, oldVal)" datafield="emplId"></wm-select>
+                        <wm-select name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.createdByPARRreport.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select" displayfield="dataValue"
+                            on-change="createdBySelectChange($event, widget, newVal, oldVal)" datafield="emplId"></wm-select>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">
@@ -91,8 +91,7 @@
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-container name="containerPagination1"></wm-container>
-                <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination1" show="bind:Variables.ParrReportServiceGetParrReport.dataSet.length>19" name="Telus_Paginaton" pagesize="20" on-pagechange="Telus_PaginatonPagechange($event, $data)"
-                    totalrecords="500"></wm-prefab>
+                <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination1" show="true" name="Telus_Paginaton" pagesize="20" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.ParrReportServiceGetParrReport.dataSet[0].totalNumberOfElement"></wm-prefab>
             </wm-container>
         </wm-page-content>
     </wm-content>

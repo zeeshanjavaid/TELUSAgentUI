@@ -74,7 +74,7 @@ Prefab.setupPagination = function() {
             showPageNumbers: false,
             showNavigator: true,
             showTotalPage: true,
-            formatNavigator: App.appLocale.LABEL_DISPLAYING + ' <%= rangeStart %>-<%= rangeEnd %> ',
+            formatNavigator: App.appLocale.LABEL_DISPLAYING + ' <%= rangeStart %> - <%= rangeEnd %> ' + App.appLocale.LABEL_OF + ' <%= totalNumber %>',
             pageLink: 'javascript:void(0)',
             // fico ul pagination class
             ulClassName: 'pagination',

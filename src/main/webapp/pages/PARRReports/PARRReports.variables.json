@@ -1355,7 +1355,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "limit",
-      "value" : "100",
+      "value" : "20",
       "type" : "integer"
     } ],
     "type" : "com.fico.telus.model.ParrReports",
