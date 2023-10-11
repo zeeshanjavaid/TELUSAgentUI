@@ -115,10 +115,12 @@ Partial.AddTeamButtonClick = function($event, widget) {
 };
 
 Partial.getTeamsAssociatedUsersonSuccess = function(variable, data) {
+
+    debugger;
     if (App.Variables.TeamPageCommunication.currentTeamInFocusId) {
 
         let selectedItem = App.getTeamIndex(App.Variables.TeamPageCommunication.currentTeamInFocusId);
-        let pageSize = App.Variables.TeamPageCommunication.currentPageSize;
+        let pageSize = App.Variables.TeamPageCommunication.dataSet.currentPageSize; //App.Variables.TeamPageCommunication.currentPageSize;
         console.log("Selected item index:" + selectedItem + " pageSize :" + pageSize);
         App.navigateToPageNo(selectedItem, pageSize);
         App.clickListItemByIndex('TeamList', (selectedItem) % pageSize);

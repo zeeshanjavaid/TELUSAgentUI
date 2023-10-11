@@ -254,7 +254,7 @@ App.refreshAllGroups = function() {
 }
 
 App.refreshAllTeams = function() {
-
+    debugger;
     Partial.Variables.getAllTeams.invoke();
 }
 

@@ -99,11 +99,3 @@ input#WorkCategoryMutliSelForBanView {
         height: 100%;
 }*/
 
-.dtHorizontalExampleWrapper {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-#dtHorizontalExample th, td {
-  white-space: nowrap;
-}

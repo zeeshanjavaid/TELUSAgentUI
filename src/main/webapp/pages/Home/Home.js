@@ -610,3 +610,12 @@ Page.CollectionDataServiceGetassignedEntitiesInClassicView2onError = function(va
 //     });
 //     await Page.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 //}
+
+
+Page.table1_OnRowexpand = function($event, widget, row, $data) {
+    App.showRowExpansionEntityViewHome(row, $data);
+};
+
+Page.table2_OnRowexpand = function($event, widget, row, $data) {
+    App.showRowExpansionBanViewHome(row, $data);
+};

@@ -258,7 +258,7 @@ Partial.scrollToTop = function() {
 };
 
 Partial.getTeamonSuccess = function(variable, data) {
-
+    debugger;
     if (!Partial.pageParams.id)
         data = [];
 
@@ -277,7 +277,7 @@ Partial.getTeamonSuccess = function(variable, data) {
 };
 
 Partial.getTeamUseronSuccess = function(variable, data) {
-
+    debugger;
     Partial.TeamAssignUser = [];
 
     if (!Partial.pageParams.id) {
@@ -395,6 +395,7 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
 Partial.updateTeamonSuccess = function(variable, data) {
 
     debugger;
+    Partial.scrollToTop();
     var selectedManagerName = subComboBox.getSelectedIds();
 
     //  $('#teamManagerMutliSel').prop('disabled', false);

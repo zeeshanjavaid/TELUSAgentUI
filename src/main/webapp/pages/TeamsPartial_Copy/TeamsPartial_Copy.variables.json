@@ -19,6 +19,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 5,
+    "onSuccess" : "getTeamsAssociatedUsersonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",
