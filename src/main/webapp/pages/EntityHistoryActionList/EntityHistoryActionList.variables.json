@@ -260,9 +260,9 @@
     }, {
       "dataValue" : "COLL_TRTMT_STEP"
     }, {
-      "dataValue" : "PYMT_ARRNGMT"
-    }, {
       "dataValue" : "COLL_DISPUTE"
+    }, {
+      "dataValue" : "PYMT_ARRNGMT"
     } ],
     "type" : "string",
     "isList" : true,
@@ -379,11 +379,13 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
+      "dataValue" : "ALL"
+    }, {
+      "dataValue" : "Comment"
+    }, {
       "dataValue" : "Creation"
     }, {
       "dataValue" : "Status"
-    }, {
-      "dataValue" : "Comment"
     }, {
       "dataValue" : "Update"
     } ],

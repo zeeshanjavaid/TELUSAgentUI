@@ -2,13 +2,14 @@
     <wm-gridcolumn class="entityProfileCancelledGrid" padding="unset unset unset 0.5em" name="gridcolumn1">
         <h3><b> BANs List for Cancelled   </b></h3>
         <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
-        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10">
+        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10"
+            navigationalign="right">
             <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                 <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
             </wm-table-column>
             <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banCollectionStatus" caption="Coll. St" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="COLL Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctType" caption="Account Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="acctSubType" caption="Account Subtype" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -147,7 +148,7 @@
                                         <wm-layoutgrid name="layoutgrid3">
                                             <wm-gridrow name="gridrow5">
                                                 <wm-gridcolumn columnwidth="12" name="gridcolumn9" padding="0.5em unset">
-                                                    <wm-button class="btn-default" caption="Create User Notes" type="button" margin="unset 0.5em" name="button1" on-click="button1Click($event, widget)"></wm-button>
+                                                    <wm-button class="btn-default" caption="Create User Note" type="button" margin="unset 0.5em" name="button1" on-click="button1Click($event, widget)"></wm-button>
                                                 </wm-gridcolumn>
                                             </wm-gridrow>
                                         </wm-layoutgrid>

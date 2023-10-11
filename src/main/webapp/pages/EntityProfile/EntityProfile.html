@@ -3,14 +3,14 @@
         <h3><b>BAN List for Active Entity</b></h3>
         <wm-table margin="10px 10px 16px 17px" width="98%" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top"
             enablecolumnselection="false" navigationalign="right" pagesize="10">
-            <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" type="boolean" sortable="false" show="true" readonly="undefined">
+            <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                 <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
             </wm-table-column>
             <wm-table-column binding="banId" caption="BAN #" widget-type="label" width="116px" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('banId')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" width="352px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banCollectionStatus" caption="COLL. Status" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="COLL Status" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="cbucId" caption="CBUCID" width="115px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="rcId" caption="RCID" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="billingSystem" caption="BILL SYS" width="102px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

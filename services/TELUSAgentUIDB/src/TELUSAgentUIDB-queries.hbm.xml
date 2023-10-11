@@ -1037,14 +1037,14 @@ where USER.emplId = :emplId and USER.active = true) wmTempTable
 
     <sql-query name="getWorkCtegoryByCode">
         <![CDATA[
-        select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory
+        select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory ORDER BY dv.Code ASC
         ]]>
     <query-param name="workCategory" type="java.lang.String"/>
     </sql-query>
 
     <sql-query name="getWorkCtegoryByCode__count">
         <![CDATA[
-        select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory) wmTempTable
+        select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory ORDER BY dv.Code ASC) wmTempTable
         ]]>
     <query-param name="workCategory" type="java.lang.String"/>
     </sql-query>

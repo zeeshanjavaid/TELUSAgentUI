@@ -5093,8 +5093,8 @@
     "name" : "getWorkCtegoryByCode",
     "description" : "Sql query to get code from DomainValue as Work Category",
     "version" : "V2",
-    "queryString" : "select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory",
-    "countQueryString" : "select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory) wmTempTable",
+    "queryString" : "select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory ORDER BY dv.Code ASC",
+    "countQueryString" : "select count(*) from (select  dv.Code from DomainValueType dvt  join DomainValue dv on dvt.ID = dv.`DomainValueType` where dv.IsActive=true and dvt.Code = :workCategory ORDER BY dv.Code ASC) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -5105,7 +5105,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "WORKCATEGORY",
+      "testValue" : "PARR_REPORT_STATUS",
       "required" : true
     } ],
     "request" : {
