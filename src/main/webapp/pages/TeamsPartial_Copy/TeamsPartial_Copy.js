@@ -25,6 +25,7 @@ Partial.onReady = function() {
 };
 
 App.getTeamIndex = function(teamId) {
+    debugger;
     let QIndex = 0;
 
     if (teamId && Partial.Widgets.TeamList.dataset) {
@@ -46,6 +47,7 @@ Partial.container5Click = function($event, widget, item, currentItemWidgets) {
 
 App.navigateToPageNo = function(selectedItemIndex, pageSize) {
 
+    debugger;
     let pageNo = Math.ceil((selectedItemIndex + 1) / pageSize);
 
 
@@ -68,6 +70,8 @@ App.clickListItemByIndex = function(listName, itemIndex) {
 };
 
 Partial.teamSearchTextKeyup = function($event, widget) {
+
+    debugger;
 
     if (widget.datavalue) {
         let results = Partial.allTeamUITemp.filter((item) => {
@@ -106,6 +110,8 @@ Partial.TeamListClick = function(widget, $data) {
 };
 Partial.TeamListSetrecord = function(widget, $data) {
 
+    debugger;
+
     App.Variables.TeamPageCommunication.currentPageSize = widget.pagesize;
 
 };
@@ -120,7 +126,7 @@ Partial.getTeamsAssociatedUsersonSuccess = function(variable, data) {
     if (App.Variables.TeamPageCommunication.currentTeamInFocusId) {
 
         let selectedItem = App.getTeamIndex(App.Variables.TeamPageCommunication.currentTeamInFocusId);
-        let pageSize = App.Variables.TeamPageCommunication.dataSet.currentPageSize; //App.Variables.TeamPageCommunication.currentPageSize;
+        let pageSize = App.Variables.TeamPageCommunication.currentPageSize;
         console.log("Selected item index:" + selectedItem + " pageSize :" + pageSize);
         App.navigateToPageNo(selectedItem, pageSize);
         App.clickListItemByIndex('TeamList', (selectedItem) % pageSize);

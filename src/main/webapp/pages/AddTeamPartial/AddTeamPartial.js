@@ -131,7 +131,7 @@ Partial.SaveButtonClick = function($event, widget) {
     //     });
     // }
 
-    App.Variables.TeamPageCommunication.currentTeamInFocusId = Partial.pageParams.id;
+    App.Variables.TeamPageCommunication.currentTeamInFocusId = undefined; //Partial.pageParams.id;
     if (Partial.Widgets.TeamIdText.datavalue == undefined || Partial.Widgets.TeamIdText.datavalue == "") {
         Partial.Variables.teamsErrorMsg.dataSet.dataValue = "Team ID is mandatory";
         Partial.scrollToTop();
@@ -237,13 +237,13 @@ Partial.getAllUsersonError = function(variable, data) {
 
 };
 Partial.getAllUsersonSuccess = function(variable, data) {
-    /*
 
-        Partial.Variables.leftUserList.dataSet = data;
-        data.forEach(function(u) {
-            u.fullName = App.htmlEncode(u.userId);
-        });
-    */
+
+    Partial.Variables.leftUserList.dataSet = data;
+    data.forEach(function(u) {
+        u.fullName = App.htmlEncode(u.userId);
+    });
+
 };
 
 Partial.scrollToTop = function() {
@@ -395,7 +395,7 @@ Partial.CreateTeamUseronSuccess = function(variable, data) {
 Partial.updateTeamonSuccess = function(variable, data) {
 
     debugger;
-    Partial.scrollToTop();
+
     var selectedManagerName = subComboBox.getSelectedIds();
 
     //  $('#teamManagerMutliSel').prop('disabled', false);
@@ -437,6 +437,10 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     }
 
+    Partial.scrollToTop();
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    App.refreshAllTeams();
+
 
 
 };
@@ -466,6 +470,8 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 
 
 
+    Partial.Variables.readOnlyMode.dataSet.dataValue = true;
+    App.refreshAllTeams();
 
 
 
@@ -538,7 +544,7 @@ function getCurrentDate() {
 }
 
 Partial.saveManagerOnTeamCreateVaronSuccess = function(variable, data) {
-
+    debugger;
     Partial.Variables.getManagerNameByTeamId.setInput({
         'teamId': variable.dataBinding.teamId
     });

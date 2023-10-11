@@ -280,6 +280,8 @@ Partial.GroupListSetrecord = function(widget, $data) {
 };
 
 Partial.getAllTeamsonSuccess = async function(variable, data) {
+
+    debugger;
     Partial.allTeamUITemp = [];
     Partial.Variables.allTeamsUI.dataSet = [];
     Partial.Variables.teamCopy.dataSet = [];

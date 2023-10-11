@@ -941,9 +941,13 @@ Partial.updateUserForm1_saveAction = function($event) {
     //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
     // } else 
 
-    if (type == "string") {
+    if (type == "string" && Partial.Variables.executeGetManagerByTeamIdVar.dataSet.length > 0) {
+
+
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
 
+    } else {
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
     }
 
 
