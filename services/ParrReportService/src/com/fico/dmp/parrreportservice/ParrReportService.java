@@ -135,7 +135,7 @@ public class ParrReportService {
               
             parrReports.setCreatedBy(commonUtilityService.getNameUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
             
-              if(createdTeam==null){
+              if(createdTeam==null || createdTeam=="" ){
                   parrReportsList.add(parrReports);
               }else{
 
@@ -145,7 +145,7 @@ public class ParrReportService {
                   }
               }
 
-               // parrReportsList.add(parrReports);
+           //    parrReportsList.add(parrReports);
             }
 
 
