@@ -306,6 +306,7 @@ Page.ParrDeselect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    App.refreshParrList();
 };
 Page.ContactSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
