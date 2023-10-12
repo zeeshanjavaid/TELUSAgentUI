@@ -1,21 +1,21 @@
 <wm-partial name="partial1">
     <wm-gridcolumn class="entityProfileCancelledGrid" padding="unset unset unset 0.5em" name="gridcolumn1">
-        <h3><b> BANs List for Cancelled   </b></h3>
+        <h3><b> BAN List for Cancelled   </b></h3>
         <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
         <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10"
             navigationalign="right">
-            <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
+            <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="30px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                 <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
             </wm-table-column>
-            <wm-table-column binding="banId" caption="BAN #" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banCollectionStatus" caption="COLL Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="acctType" caption="Account Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="acctSubType" caption="Account Subtype" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="closingDate" caption="Canceled Date" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="closingCycle" caption="Closing Cycle" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="totalAr" caption="TOTAL AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banId" caption="BAN #" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banName" caption="BAN Name" width="350px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banCollectionStatus" caption="COLL Status" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="rcId" caption="RCID" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="acctType" caption="Account Type" width="130px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="acctSubType" caption="Account Subtype" width="190px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="closingDate" caption="Canceled Date" width="119px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="closingCycle" caption="Closing Cycle" width="158px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="totalAr" caption="TOTAL AR" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
