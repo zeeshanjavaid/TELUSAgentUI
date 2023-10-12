@@ -24,6 +24,10 @@ Partial.onReady = function() {
 
     debugger;
 
+    if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
+        App.Variables.getManagerSelected.datsSet = undefined;
+    }
+
     if (Partial.pageParams.id != undefined) {
         Partial.Variables.getManagerNameByTeamId.setInput({
             'teamId': Partial.pageParams.id
@@ -54,6 +58,8 @@ Partial.onReady = function() {
             title: item.firstName
         });
     });
+
+    debugger;
 
     subComboBox = $('#teamManagerMutliSel').comboTree({
 
