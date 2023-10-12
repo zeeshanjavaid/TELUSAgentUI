@@ -24,9 +24,9 @@ Partial.onReady = function() {
 
     debugger;
 
-    if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
-        App.Variables.getManagerSelected.datsSet = undefined;
-    }
+    // if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
+    //     App.Variables.getManagerSelected.datsSet = undefined;
+    // }
 
     if (Partial.pageParams.id != undefined) {
         Partial.Variables.getManagerNameByTeamId.setInput({

@@ -61,6 +61,7 @@ Page.onReady = function() {
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
         'createdBy': '',
+        'createdTeam': '',
         'limit': 20,
         'offset': 0
     });
@@ -101,6 +102,7 @@ Page.button1Click = function($event, widget) {
         'createdFrom': '',
         'createdTo': '',
         'createdBy': '',
+        'createdTeam': '',
         'limit': 20,
         'offset': 0
     });
