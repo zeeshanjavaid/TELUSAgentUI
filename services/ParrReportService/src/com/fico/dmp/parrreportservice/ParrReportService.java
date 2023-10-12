@@ -80,7 +80,7 @@ public class ParrReportService {
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */   
    
- public List<ParrReports> getParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String status, String createdFrom, String createdTo, String evaluation, String createdBy)throws Exception {
+ public List<ParrReports> getParrReport(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String status, String createdFrom, String createdTo, String evaluation, String createdBy, String createdTeam)throws Exception {
 
         List<String> entityIds=new ArrayList<>();
 
@@ -134,8 +134,18 @@ public class ParrReportService {
               }
               
             parrReports.setCreatedBy(commonUtilityService.getNameUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
+            
+              if(createdTeam==null){
+                  parrReportsList.add(parrReports);
+              }else{
 
-                parrReportsList.add(parrReports);
+                  if(parrReports.getCreatedTeam()!=null && parrReports.getCreatedTeam().equalsIgnoreCase(createdTeam))
+                  {
+                      parrReportsList.add(parrReports);
+                  }
+              }
+
+               // parrReportsList.add(parrReports);
             }
 
 

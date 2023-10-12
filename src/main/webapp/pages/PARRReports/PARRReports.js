@@ -196,6 +196,7 @@ Page.button2Click = function($event, widget) {
         entityRiskReq = 'L';
     }
 
+
     Page.Variables.ParrReportServiceGetParrReport.setInput({
         'entityRisk': entityRiskReq,
         'evaluation': evaluationReq,
@@ -203,6 +204,7 @@ Page.button2Click = function($event, widget) {
         'createdFrom': creationDateTime,
         'createdTo': completionDateTime,
         'createdBy': createdByReq,
+        'createdTeam': Page.Widgets.createdTeamSelect.datavalue,
         'limit': 20,
         'offset': 0
     });
