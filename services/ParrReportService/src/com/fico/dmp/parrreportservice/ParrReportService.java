@@ -145,36 +145,8 @@ public class ParrReportService {
                   }
               }
 
-           //    parrReportsList.add(parrReports);
+            //  parrReportsList.add(parrReports);
             }
-
-
-        //  String entityIdsAsString= entityIds.stream().collect(Collectors.joining(","));
-
-
-        //     List<CollectionEntity> collectionEntityList=   collectionEntityService.getCollectionEntity(null,0,0,null,null,null,entityIdsAsString,null,null,null);
-
-        //     if(!CollectionUtils.isEmpty(collectionEntityList))
-        //     {
-        //         for(ParrReports parrReports:parrReportsList)
-        //         {
-        //              for(CollectionEntity collectionEntity:collectionEntityList)
-        //             {
-        //                 if(collectionEntity.getId().equals(parrReports.getParrId()))
-        //                 {
-        //                     parrReports.setEntityName(collectionEntity.getName());
-        //                     parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
-        //                 }
-        //             }
-               
-        //             // collectionEntityList.stream().filter(cel->cel.getId().equals(parrReports.getParrId())).forEach(collectionEntity -> {
-
-        //             //     parrReports.setEntityName(collectionEntity.getName());
-        //             //     parrReports.setEntityRisk(collectionEntity.getCustomerRisk());
-
-        //             // });
-        //         }
-        //     }
 
         }
 
@@ -182,26 +154,7 @@ public class ParrReportService {
     }
     
     
-//  private String getTeamName(String emplId)
-//     {
-//          List<GetTeamNameByEmplIdResponse> getTeamNameByEmplIdResponseList=new ArrayList<>();
-//       String teamName=null;
-//         Pageable pageable = PageRequest.of(0, 1000);
 
-//         Page<GetTeamNameByEmplIdResponse> getTeamNameByEmplIdResponsePage = telusAgentUIDBQueryExecutorService.executeGetTeamNameByEmplId(emplId, pageable);
-
-//         if(getTeamNameByEmplIdResponsePage.hasContent()) {
-//              getTeamNameByEmplIdResponseList =getTeamNameByEmplIdResponsePage.getContent();
-
-//             if(!getTeamNameByEmplIdResponseList.isEmpty())
-//             {
-//                 teamName=  getTeamNameByEmplIdResponseList.get(0).getTeamId();
-//             }
-//         }
-//         return teamName;
-
-
-//     }
 
 
 }
