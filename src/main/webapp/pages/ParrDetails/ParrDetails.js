@@ -360,11 +360,13 @@ Partial.getInstallmentScheduleTable_dateOnChange = function($event, widget, row)
     debugger;
     var widgetDateValue = widget.datavalue;
     var widgetDate = new Date(widgetDateValue);
-    widgetDate.setHours(0, 0, 0, 0);
+    //widgetDate.setHours(0, 0, 0, 0);
     var currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
-    if (widgetDate < currentDate) {
-        Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = "Installment date cannot be less then current date";
+    widgetDate = new Date(widgetDate.toDateString());
+    currentDate = new Date(currentDate.toDateString());
+    //currentDate.setHours(0, 0, 0, 0);
+    if (widgetDate.valueOf() < currentDate.valueOf()) {
+        Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = "Installment date cannot be less than current date";
         $(".cancel.row-action-button.btn.app-button.btn-danger.cancel-edit-row-button.btn-xs").click();
         setTimeout(messageTimeout, 6000);
     } else {
