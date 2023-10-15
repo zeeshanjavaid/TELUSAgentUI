@@ -1743,7 +1743,7 @@
     }, {
       "dataValue" : "Order Assigned"
     }, {
-      "dataValue" : "Order Fullfilled"
+      "dataValue" : "Order Fulfilled"
     } ],
     "type" : "string",
     "isList" : true,
