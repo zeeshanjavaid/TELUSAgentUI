@@ -112,7 +112,7 @@ public class CommonUtilityService {
     
     public List<AssignedUserModel> getAssignedPersonInActionManagement(){
     	Pageable pageable = PageRequest.of(0, 10000);
-        Page<User> userPageList = userService.findAll("active = true", pageable);
+        Page<User> userPageList = userService.findAll("active = true ORDER BY firstName asc", pageable);
         List<AssignedUserModel> assignedUserModelList = new ArrayList<AssignedUserModel>();
         AssignedUserModel assignedUser = new AssignedUserModel();
         assignedUser.setFirstName("NULL");
@@ -129,6 +129,8 @@ public class CommonUtilityService {
         });
         }
     	return assignedUserModelList;
+    	   // 	return assignedUserModelList.stream().sorted((o1, o2) -> (o1.getFirstName().compareTo(o2.getFirstName()))).collect(Collectors.toList());
+
     }
     
     

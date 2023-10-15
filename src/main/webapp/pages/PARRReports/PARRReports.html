@@ -56,7 +56,7 @@
                     <wm-gridcolumn columnwidth="2" style="display: flex;" name="gridcolumn8_1" class="createdByGrid">
                         <wm-label padding="10px 20px 2px 15px" caption="Created By" name="label4" color="gray" class="createdByLabel"></wm-label>
                         <wm-select name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.createdByPARRreport.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" placeholder="Select"
-                            displayfield="dataValue" on-change="createdBySelectChange($event, widget, newVal, oldVal)" datafield="emplId"></wm-select>
+                            displayfield="dataValue" on-change="createdBySelectChange($event, widget, newVal, oldVal)" datafield="emplId" orderby="firstName:asc"></wm-select>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn13"></wm-gridcolumn>
                     <wm-gridcolumn columnwidth="3" style="display: flex;" name="gridcolumn8_1" class="createdTeamGrid">

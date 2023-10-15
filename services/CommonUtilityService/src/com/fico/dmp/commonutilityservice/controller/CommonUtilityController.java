@@ -28,6 +28,8 @@ public class CommonUtilityController {
     private CommonUtilityService commonUtilityService;
 
     @RequestMapping(value = "/teamManagerOnUpdate", produces = "application/json", method = RequestMethod.DELETE)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String deleteTeamManagerOnUpdate(@RequestParam(value = "teamId", required = false) String teamId) {
         return commonUtilityService.deleteTeamManagerOnUpdate(teamId);
     }
