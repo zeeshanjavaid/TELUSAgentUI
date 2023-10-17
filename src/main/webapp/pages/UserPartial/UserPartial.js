@@ -413,7 +413,7 @@ exportToExcelFile = function() {
     App.Variables.successMessage.dataSet.dataValue = null;
 
     const linkElement = document.createElement('a');
-    const pageURL = window.location.href.split("#/")[0];
+    const pageURL = window.location.href.split("/")[0];
     linkElement.setAttribute('href', pageURL + "services/fileRelatedBS/downloadUsers");
     linkElement.setAttribute('target', '_blank');
 

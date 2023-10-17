@@ -33,6 +33,11 @@ public class SchemaController {
     @Autowired
     private SchemaService schemaservice;
 
+    @RequestMapping(value = "/cleanDB", method = RequestMethod.GET)
+    public void cleanDB(@RequestParam(value = "db", required = false) String db) {
+        schemaservice.cleanDB(db);
+    }
+
     @RequestMapping(value = "/entry", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")

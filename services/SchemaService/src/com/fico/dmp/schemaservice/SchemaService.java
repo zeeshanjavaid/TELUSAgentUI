@@ -167,12 +167,12 @@ public class SchemaService {
         jdbcTemplate.update("delete from schema_version where version_rank = ? and success = 0", rankVersion);
     }
 
-//    public void cleanDB(String db){
+    public void cleanDB(String db){
 //        logger.info("Executing cleanDB for " + db);
 //        final Flyway flyway = new Flyway();
 //        flyway.setDataSource(getDataSource(db));
 //        flyway.clean();
-//    }
+    }
 
     public List<DBTableVO> listTables(String db){
         final String query = "select * from information_schema.tables " +
@@ -291,9 +291,9 @@ public class SchemaService {
     }
 
     public void repairDB(String db){
-//        logger.info("Executing repairDB for " + db + " by " + securityService.getUserId());
+   /*    logger.info("Executing repairDB for " + db + " by " + securityService.getUserId());
         String projectName = environment.getProperty("microServiceName"); //got from user-web.xml
-//        logger.info("Project name {}", projectName);
+       logger.info("Project name {}", projectName);
         if(StringUtils.isEmpty(projectName)){
             projectName = "TD_MBNA_FAWB_PROJECT"; //TODO: get from somewhere else
         }
@@ -318,7 +318,7 @@ public class SchemaService {
 
         flyway.validate();
         if(logger.isWarnEnabled())
-        	logger.warn("UI Flyway Validation complete on - " + db);
+        	logger.warn("UI Flyway Validation complete on - " + db);  */
     }
 
     public String info(){

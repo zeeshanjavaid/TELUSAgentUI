@@ -35,7 +35,7 @@ function initPage() {
             console.log('Permissions loaded...');
 
             if (!App.IsUserHasAccess('Security_Roles')) {
-                window.location.href = "#/ErrorLanding";
+                window.location.href = "/ErrorLanding";
             } else {
                 document.getElementsByTagName("html")[0].style.visibility = "visible";
 
@@ -52,8 +52,8 @@ function initPage() {
                 clearInterval(intervalId);
 
                 //if the active page is not 'ErrorLanding'
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+                if (window.location.hash !== '/ErrorLanding')
+                    window.location.href = '/ErrorLanding';
             }
         }
     }, 10);

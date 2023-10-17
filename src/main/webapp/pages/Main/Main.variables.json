@@ -9,22 +9,22 @@
     "dataSet" : [ {
       "name" : "Setup",
       "description" : "Manage application processing parameters, credit bureaus, and more.",
-      "path" : "#/SetupLanding",
+      "path" : "/SetupLanding",
       "imageLocation" : "fico-icon-cog fa-3x"
     }, {
       "name" : "Users",
       "description" : "Create or manage users of the system.",
-      "path" : "#/Users",
+      "path" : "/Users",
       "imageLocation" : "fico-icon-user fa-3x"
     }, {
       "name" : "Groups",
       "description" : "Create or manage groups of the user in the system.",
-      "path" : "#/Groups",
+      "path" : "/Groups",
       "imageLocation" : "fico-icon-users fa-3x"
     }, {
       "name" : "Roles",
       "description" : "Manage user roles and their permissions around different application features.",
-      "path" : "#/Roles",
+      "path" : "/Roles",
       "imageLocation" : "fico-icon-tasks fa-3x"
     } ],
     "type" : "entry",

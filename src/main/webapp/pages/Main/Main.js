@@ -61,8 +61,8 @@ Page.dashboardMenuItemClick = function($event, widget, item, currentItemWidgets)
     if (item.path) {
         // We need to force a reload if sub menu keeps the user on same page
         // E.g. Queue sub menu, just has query param change, so this does not force a page refresh
-        var goToPage = item.path.split('#/')[1].split('?')[0];
-        var currentPage = window.location.href.split('#/')[1].split('?')[0];
+        var goToPage = item.path.split('/')[1].split('?')[0];
+        var currentPage = window.location.href.split('/')[1].split('?')[0];
         if (goToPage === currentPage) {
             // window.location.replace(item.path);
             // window.location.reload(true);

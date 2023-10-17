@@ -275,5 +275,7 @@
   "screenshots" : [ {
     "url" : "image/screenshot.png",
     "description" : "Screenshot Information"
-  } ]
+  } ],
+  "release.version" : "${project.release.version}",
+  "release.commitId" : "${project.release.commitId}"
 }

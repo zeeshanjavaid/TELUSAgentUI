@@ -36,7 +36,7 @@ function initPage() {
             console.log('Permissions loaded...');
 
             if (!App.IsUserHasAccess('Access_ApplicationHistory')) {
-                window.location.href = "#/ErrorLanding"
+                window.location.href = "/ErrorLanding"
             } else {
                 document.getElementsByTagName("html")[0].style.visibility = "visible";
                 // console.log("on Ready is called");
@@ -91,8 +91,8 @@ function initPage() {
                 console.log('Waiting to load permissions...');
             else {
                 clearInterval(intervalId);
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+                if (window.location.hash !== '/ErrorLanding')
+                    window.location.href = '/ErrorLanding';
             }
         }
     }, 10);

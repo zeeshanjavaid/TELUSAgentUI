@@ -21,7 +21,7 @@ spec:
     matchLabels: {app: 'fawb-app-{{instanceId}}'}
   template:
     metadata:
-      annotations: {sidecar.istio.io/inject: '${istio.param}', traffic.sidecar.istio.io/excludeInboundPorts: "5701"}
+      annotations: {sidecar.istio.io/inject: '${istio.param}', traffic.sidecar.istio.io/excludeInboundPorts: '5701'}
       labels: {app: 'fawb-app-{{instanceId}}', com.fico.dmp/enable-opa: 'true'}
     spec:
       containers:
@@ -105,6 +105,7 @@ metadata:
   name: fawb-app-{{instanceId}}
   labels: {app: 'fawb-app-{{instanceId}}', fico.application.owner: '${project.build.finalName}',
     fico.application.version: '${project.version}'}
+  annotations: {nginx.ingress.kubernetes.io/rewrite-target: /$2}
 spec:
   rules:
   - host: fawb-app-{{instanceId}}.{{deploymentZone}}

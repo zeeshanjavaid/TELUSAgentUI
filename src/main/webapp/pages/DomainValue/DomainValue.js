@@ -146,7 +146,7 @@ Page.displayPageInfo = function() {
 Page.navigateURLBuilder = function(domainValueId) {
 
 
-    let URI = "#/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId + "&pageName=" + 'View';
+    let URI = "/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId + "&pageName=" + 'View';
     return URI;
 };
 

@@ -98,7 +98,7 @@ Partial.getApplicationIdByApplicationNumberonSuccess = function(variable, data) 
     //         'applicationId': data.value
     //     }
     // });
-    window.location.href = "#/ApplicationBroker?applicationId=" + data.value;
+    window.location.href = "/ApplicationBroker?applicationId=" + data.value;
     document.location.reload(true);
 };
 

@@ -102,6 +102,7 @@ public class ActivityLogService {
 			if(logger.isErrorEnabled())
 				logger.error("Unexpected error occurred while fetching Activity log information", e);
     	}
+    	
 
     	return searchResponse;
     }

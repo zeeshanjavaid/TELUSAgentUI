@@ -88,8 +88,8 @@ function initPage() {
                 clearInterval(intervalId);
 
                 //if the active page is not 'ErrorLanding'
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+                if (window.location.hash !== '/ErrorLanding')
+                    window.location.href = '/ErrorLanding';
             }
         }
     }, 10);
@@ -127,7 +127,7 @@ Page.displayPageInfo = function() {
 };
 
 Page.navigateURLBuilder = function(lookupFileIdentifier, lookupFileName, lookupFileDesc) {
-    let URI = "#/LookupFileCreateEdit?lookupFileIdentifier=" + lookupFileIdentifier + "&lookupFileName=" + lookupFileName + "&lookupFileDesc=" + lookupFileDesc;
+    let URI = "/LookupFileCreateEdit?lookupFileIdentifier=" + lookupFileIdentifier + "&lookupFileName=" + lookupFileName + "&lookupFileDesc=" + lookupFileDesc;
     console.log("navigate URL:" + URI);
     return URI;
 };

@@ -921,23 +921,23 @@ CREATE TABLE IF NOT EXISTS  `USER_SESSION` (
 --DROP TABLE IF EXISTS `schema_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS  `schema_version` (
-  `version_rank` int(11) NOT NULL,
-  `installed_rank` int(11) NOT NULL,
-  `version` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `script` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `checksum` int(11) DEFAULT NULL,
-  `installed_by` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `installed_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `execution_time` int(11) NOT NULL,
-  `success` tinyint(1) NOT NULL,
-  PRIMARY KEY (`version`),
-  KEY `schema_version_vr_idx` (`version_rank`),
-  KEY `schema_version_ir_idx` (`installed_rank`),
-  KEY `schema_version_s_idx` (`success`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--CREATE TABLE IF NOT EXISTS  `schema_version` (
+--  `version_rank` int(11) NOT NULL,
+--  `installed_rank` int(11) NOT NULL,
+--  `version` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+--  `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+--  `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+--  `script` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+--  `checksum` int(11) DEFAULT NULL,
+--  `installed_by` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+--  `installed_on` timestamp NOT NULL DEFAULT current_timestamp(),
+--  `execution_time` int(11) NOT NULL,
+--  `success` tinyint(1) NOT NULL,
+--  PRIMARY KEY (`version`),
+--  KEY `schema_version_vr_idx` (`version_rank`),
+--  KEY `schema_version_ir_idx` (`installed_rank`),
+--  KEY `schema_version_s_idx` (`success`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 

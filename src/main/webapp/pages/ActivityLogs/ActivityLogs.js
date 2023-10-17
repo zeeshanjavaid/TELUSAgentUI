@@ -41,7 +41,7 @@ function initPage() {
             console.log('Permissions loaded...');
 
             if (!App.IsUserHasAccess('Access_ActivityLog')) {
-                window.location.href = "#/ErrorLanding"
+                window.location.href = "/ErrorLanding"
             } else {
                 document.getElementsByTagName("html")[0].style.visibility = "visible";
                 Page.Variables.mv_fileServiceStatus.setData({
@@ -117,8 +117,8 @@ function initPage() {
                 console.log('Waiting to load permissions...');
             else {
                 clearInterval(intervalId);
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+                if (window.location.hash !== '/ErrorLanding')
+                    window.location.href = '/ErrorLanding';
             }
         }
     }, 10);

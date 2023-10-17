@@ -228,8 +228,8 @@ function loadSetupMenus() {
                 clearInterval(intervalId);
 
                 //if the active page is not 'ErrorLanding'
-                if (window.location.hash !== '#/ErrorLanding')
-                    window.location.href = '#/ErrorLanding';
+                if (window.location.hash !== '/ErrorLanding')
+                    window.location.href = '/ErrorLanding';
             }
         }
     }, 10);
