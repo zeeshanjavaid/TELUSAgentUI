@@ -28,6 +28,7 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+    Page.baseURL = window.location.href;
     initPage();
 };
 
@@ -146,7 +147,8 @@ Page.displayPageInfo = function() {
 Page.navigateURLBuilder = function(domainValueId) {
 
 
-    let URI = "/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId + "&pageName=" + 'View';
+    //  let URI = "/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId + "&pageName=" + 'View';
+    let URI = Page.baseURL.substring(0, window.location.href.lastIndexOf("/")) + "/DomainValueCreateEdit?domainValueTypeId=" + Page.pageParams.domainValueTypeId + "&domainValueId=" + domainValueId;
     return URI;
 };
 
