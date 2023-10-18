@@ -167,7 +167,7 @@ function toggleFileUploadDisplay(isToShow, elemRef) {
 
 Page.navigateToDVPage = function(domainValueTypeId) {
     debugger;
-    return "#/DomainValue?domainValueTypeId=" + (!domainValueTypeId ? 0 : domainValueTypeId);
+    return "DomainValue?domainValueTypeId=" + (!domainValueTypeId ? 0 : domainValueTypeId);
 }
 
 Page.dvTypeUploadSelect = function($event, widget, selectedFiles) {
