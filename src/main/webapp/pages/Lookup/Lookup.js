@@ -104,6 +104,7 @@ Page.DisputeSelect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Widgets.Parr.isActive = false;
     Page.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
+    App.refreshDisputeList();
 };
 Page.DisputeDeselect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
@@ -301,12 +302,13 @@ Page.ParrSelect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Widgets.Parr.isActive = true;
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    App.refreshParrList();
 };
 Page.ParrDeselect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Page.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
-    App.refreshParrList();
+    //App.refreshParrList();
 };
 Page.ContactSelect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
