@@ -43,7 +43,8 @@ wm-select#mySelection {
         width: 50% !important;
     }
     input.form-control.app-textbox.app-dateinput.display-input {
-        width: 45% !important;
+        width: 70% !important;
+        height: 2.15em;
     }
     .evaluationGrid {
         width: 20% !important;

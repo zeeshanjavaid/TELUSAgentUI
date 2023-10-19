@@ -2421,6 +2421,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_test_scroll" : {
+    "_id" : "wm-goToPage_test_scroll-wm.NavigationVariable-1697533595727",
+    "name" : "goToPage_test_scroll",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "test_scroll",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_TimerSetting" : {
     "_id" : "wm-goToPage_TimerSetting-wm.NavigationVariable-1652466782732",
     "name" : "goToPage_TimerSetting",

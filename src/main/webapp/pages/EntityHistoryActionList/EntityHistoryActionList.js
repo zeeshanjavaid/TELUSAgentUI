@@ -1405,7 +1405,7 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
     } else if (Partial.Widgets.completedCategorySelect.datavalue == "COLL_DISPUTE") {
         Partial.Variables.actionFilter.dataSet = "";
         Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
-    } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "All") {
+    } else if (Partial.Widgets.completedCategorySelect.datavalue == "" || Partial.Widgets.completedCategorySelect.datavalue == "ALL") {
         Partial.Widgets.typeSelect.datavalue = "";
         Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;

@@ -8,7 +8,8 @@
 }
 
 input.form-control.app-textbox.app-dateinput.display-input {
-    width: 49%;
+    width: 65%;
+    height: 2.15em;
 }
 
 input#workCategorySelectValues {
@@ -37,13 +38,13 @@ input#workCategorySelectValues {
 
 @media only screen and (min-width: 1780px) and (max-width: 1930px) {
     input.form-control.app-textbox.app-dateinput.display-input {
-        width: 67% !important;
+        width: 75% !important;
     }
 }
 
 @media only screen and (min-width: 1270px) and (max-width: 1500px) {
     input.form-control.app-textbox.app-dateinput.display-input {
-        width: 38% !important;
+        width: 60% !important;
     }
     
     .assignedTeamGrid {

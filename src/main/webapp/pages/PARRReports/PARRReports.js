@@ -24,6 +24,8 @@ Page.onReady = function() {
      * 'Page.Widgets.username.datavalue'
      */
 
+    Page.Widgets.evalSelect.datavalue = "ALL";
+
     const date = new Date();
     var currentDate = DateCalc(date); //created to
     var prvDateMonth = new Date(new Date().getFullYear(), new Date().getMonth() - 3, new Date().getDate());
@@ -82,7 +84,7 @@ Page.button1Click = function($event, widget) {
     Page.Widgets.entityRiskSelect.datavalue = "";
 
     Page.Widgets.parrStatusSelect.datavalue = "";
-    Page.Widgets.evalSelect.datavalue = "";
+    Page.Widgets.evalSelect.datavalue = "ALL";
 
     Page.Widgets.createdBySelect.datavalue = "";
 
@@ -165,7 +167,7 @@ Page.button2Click = function($event, widget) {
     }
 
 
-    if (Page.Widgets.evalSelect.datavalue == 'All') {
+    if (Page.Widgets.evalSelect.datavalue == 'ALL') {
         evaluationReq = '';
     } else {
         evaluationReq = Page.Widgets.evalSelect.datavalue;
