@@ -1193,3 +1193,9 @@ Partial.UserManagementServiceCreateUseronSuccess = function(variable, data) {
 function messageTimeout() {
     App.Variables.successMessage.dataSet.dataValue = null;
 }
+
+App.refreshTeamsOnAdminPage = function() {
+
+    Partial.Variables.getTeam.invoke();
+
+};

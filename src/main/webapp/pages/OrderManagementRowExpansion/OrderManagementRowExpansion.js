@@ -22,6 +22,7 @@ Partial.onReady = function() {
      */
 
     App.showRowExpansionOrderManagement = function(row, data) {
+        debugger;
         Partial.Variables.assignedPerson_orderMngt.setInput({
             'empId': row.assignedAgentId
         });
@@ -69,7 +70,7 @@ Partial.onReady = function() {
         debugger;
         Partial.Variables.BanListRefIds.dataSet;
 
-
+        Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
         Partial.Widgets.type.caption = type;
         Partial.Widgets.DueDate.caption = row.stepDate;
         //Partial.Widgets.assignedPerson.caption = row.assignedAgentId;
@@ -84,6 +85,7 @@ Partial.onReady = function() {
 
 function populateBANIds(items) {
 
+    debugger;
     var bansLength = items.length;
     var banId1 = items[0];
     var banId2 = items[1];
@@ -131,5 +133,6 @@ Partial.getBanIdforODonSuccess = function(variable, data) {
 };
 
 Partial.assignedPerson_orderMngtonSuccess = function(variable, data) {
-    Partial.Widgets.assignedPerson.caption = data.value;
+    debugger;
+    //  Partial.Widgets.assignedPerson.caption = data.value;
 };

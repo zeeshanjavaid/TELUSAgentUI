@@ -343,6 +343,7 @@ Partial.createTeamonSuccess = function(variable, data) {
     /*Partial.Variables.teamsSuccessMessage.dataSet.dataValue = "TEAM CREATED SUCCESSFULLY";*/
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = Partial.appLocale.TEAM_CREATED_SUCCESSFULLY;
     setTimeout(messageTimeout, 5000);
+    App.refreshTeamsOnAdminPage();
     Partial.scrollToTop();
 
     if (Partial.Widgets.DualListUsers_TD.rightdataset.length > 0) {
@@ -405,6 +406,7 @@ Partial.updateTeamonSuccess = function(variable, data) {
     debugger;
 
     var selectedManagerName = subComboBox.getSelectedIds();
+    App.refreshTeamsOnAdminPage();
 
     $('#teamManagerMutliSel').prop('disabled', true);
 
