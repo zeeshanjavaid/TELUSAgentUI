@@ -48,11 +48,11 @@ Page.onReady = function() {
 
     if (timezoneOffset < 0) {
         var currentTimeZone = 'Z';
-        completionDateTime = currentDate + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        completionDateTime = currentDate + "T" + "23" + ":" + "59" + ":" + "59" + ".00000" + currentTimeZone;
         creationDateTime = previousDate + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
     } else {
         var currentTimeZone = "-" + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
-        completionDateTime = currentDate + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+        completionDateTime = currentDate + "T" + "23" + ":" + "59" + ":" + "59" + ".00000" + currentTimeZone;
         creationDateTime = previousDate + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
     }
 
@@ -128,11 +128,11 @@ Page.button2Click = function($event, widget) {
         if (timezoneOffset < 0) {
             var currentTimeZone = 'Z';
             var datePart = Page.Widgets.completionDate.datavalue;
-            var completionDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+            var completionDateTime = datePart + "T" + "23" + ":" + "59" + ":" + "59" + ".00000" + currentTimeZone;
         } else {
             var currentTimeZone = "-" + ("00" + Math.floor(absTimezoneOffset / 60)).slice(-2) + ":" + ("00" + (absTimezoneOffset % 60)).slice(-2);
             var datePart = Page.Widgets.completionDate.datavalue;
-            var completionDateTime = datePart + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + currentTimeZone;
+            var completionDateTime = datePart + "T" + "23" + ":" + "59" + ":" + "59" + ".00000" + currentTimeZone;
         }
 
     }
