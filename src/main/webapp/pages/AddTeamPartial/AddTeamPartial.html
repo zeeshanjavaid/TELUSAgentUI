@@ -5,8 +5,8 @@
                 <wm-layoutgrid name="layoutgrid3">
                     <wm-gridrow name="gridrow10_1">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn15_2">
-                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.id ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip" margin="4% unset unset unset"
-                                height="25"></wm-label>
+                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.id ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip"
+                                margin="4% unset unset unset" height="25"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn16_2" horizontalalign="right">
                             <wm-container name="container14" margin="20px 12px unset unset">
@@ -54,15 +54,14 @@
         <wm-gridrow name="gridrow2" class="rolename-row">
             <wm-gridcolumn columnwidth="2" name="gridcolumn3" horizontalalign="left">
                 <wm-container name="container15_2">
-                    <wm-label caption="Team  Managers" margin="12px 12px 2px 0px" style="float: right;" color="#6e6c6a" textalign="left" name="label9"></wm-label>
+                    <wm-label caption="Team  Manager(s)" margin="12px 12px 2px 0px" style="float: right;" color="#6e6c6a" textalign="left" name="label9"></wm-label>
                 </wm-container>
                 <wm-label name="label6_1" caption="Team  Manager" margin="12px 12px 2px 0px" style="float: right;" color="#6e6c6a" textalign="left" show="false"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="10" name="gridcolumn4" horizontalalign="left">
                 <wm-container name="container5" id="comboTreeButton">
                     <wm-composite name="composite4_1" width="39%" deferload="false" required="false" color="#000">
-                        <wm-container class="col-md-9 queue-name" name="container10" height="35" margin="-35px unset unset unset" show="true"></wm-container>
-                        <input type="text" id="teamManagerMutliSel" placeholder="Select" width="47%" autocomplete="off">
+                        <wm-container class="col-md-9 queue-name" name="container10" height="35" margin="-35px unset unset unset" show="true"></wm-container><input type="text" id="teamManagerMutliSel" placeholder="Select" width="47%" autocomplete="off">
                         <!--For multiSelect -->
                         <!-- <wm-gridcolumn columnwidth="10" name="gridcolumn41">-->
                         <!--<input type="text" id="teamManagerMutliSel" placeholder="Select" width="50%">--></wm-composite>
@@ -91,8 +90,8 @@
                         <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
                             <!--<wm-prefab prefabname="DualList_TD" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
                                 resetleftdataset="false" displayfield="bind:&quot;fullName&quot;" identifier="bind:userId"></wm-prefab>-->
-                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;" new="bind:pageParams.id === undefined"
-                                isreadonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-prefab>
+                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;"
+                                new="bind:pageParams.id === undefined" isreadonly="bind:Variables.readOnlyMode.dataSet.dataValue"></wm-prefab>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
