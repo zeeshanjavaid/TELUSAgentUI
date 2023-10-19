@@ -145,6 +145,7 @@ Partial.CreateDisputeServiceonSuccess = function(variable, data) {
 };
 
 Partial.CreateDisputeServiceonError = function(variable, data, xhrObj) {
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = "Dispute creation failed as multiple disputes are not allowed."
     Partial.Variables.DisputePageName.dataSet.dataValue = 'DisputeList';
     setTimeout(messageTimeout, 10000);

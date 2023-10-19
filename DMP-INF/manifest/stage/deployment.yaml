@@ -105,10 +105,9 @@ metadata:
   name: fawb-app-{{instanceId}}
   labels: {app: 'fawb-app-{{instanceId}}', fico.application.owner: '${project.build.finalName}',
     fico.application.version: '${project.version}'}
-  annotations: {nginx.ingress.kubernetes.io/rewrite-target: /$2}
 spec:
   rules:
-  - host: app.{{deploymentZone}}
+  - host: fawb-app-{{instanceId}}.{{deploymentZone}}
     http:
       paths:
       - backend:
@@ -116,9 +115,6 @@ spec:
             name: fawb-app-{{instanceId}}
             port: {number: 8080}
         pathType: ImplementationSpecific
-        path: /{{instanceId}}(/|$)(.*)
-  tls:
-  - hosts: ['app.{{deploymentZone}}']
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
