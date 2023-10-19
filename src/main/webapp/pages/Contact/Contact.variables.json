@@ -19,7 +19,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,

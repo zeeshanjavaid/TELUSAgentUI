@@ -315,6 +315,7 @@ Page.ContactSelect = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Widgets.Parr.isActive = false;
     Page.Variables.ContactPageName.dataSet.dataValue = 'Contact';
+    App.refreshContactList();
 };
 Page.ContactDeselect = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
