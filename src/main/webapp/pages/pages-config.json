@@ -59,6 +59,9 @@
   }, {
     "name" : "teamId",
     "type" : "string"
+  }, {
+    "name" : "isDeletedTeam",
+    "type" : "boolean"
   } ]
 }, {
   "name" : "AddTeamPartial_Copy",

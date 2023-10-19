@@ -123,6 +123,13 @@ Partial.AddTeamButtonClick = function($event, widget) {
 Partial.getTeamsAssociatedUsersonSuccess = function(variable, data) {
 
     debugger;
+
+
+    Partial.Variables.getManagerNameByTeamId.setInput({
+        'teamId': data[0].id
+    });
+
+    Partial.Variables.getManagerNameByTeamId.invoke();
     if (App.Variables.TeamPageCommunication.currentTeamInFocusId) {
 
         let selectedItem = App.getTeamIndex(App.Variables.TeamPageCommunication.currentTeamInFocusId);

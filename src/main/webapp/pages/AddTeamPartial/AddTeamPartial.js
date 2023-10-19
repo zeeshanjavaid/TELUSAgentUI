@@ -47,6 +47,7 @@ Partial.onReady = function() {
     }
 
     $('#teamManagerMutliSel').prop('disabled', true);
+
     // For multi Select manager
     Partial.statusData = [];
 
@@ -81,6 +82,7 @@ Partial.onReady = function() {
     Partial.teamIdExists = false;
     Partial.isDeleteTeam = false;
     Partial.Variables.leftUserList.dataSet = [];
+    Partial.pageParams.isDeletedTeam = false;
 
     if (Partial.pageParams.id === undefined) {
         Partial.Variables.readOnlyMode.dataSet.dataValue = false;
@@ -404,7 +406,7 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     var selectedManagerName = subComboBox.getSelectedIds();
 
-    //  $('#teamManagerMutliSel').prop('disabled', false);
+    $('#teamManagerMutliSel').prop('disabled', true);
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -457,6 +459,8 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 
     Partial.isDeleteTeam = true;
 
+    Partial.pageParams.isDeletedTeam = true;
+
     Partial.Widgets.deleteTeamDialog.close();
 
 
@@ -486,6 +490,14 @@ Partial.deleteTeamConfirmOkClick = function($event, widget) {
 Partial.deleteTeamonSuccess = function(variable, data) {
 
     debugger;
+
+    // if (Partial.pageParams.isDeletedTeam) {
+    //     Partial.Variables.getManagerNameByTeamId.setInput({
+    //         'teamId': Partial.Variables.getAllTeams.dataSet[Partial.Variables.getAllTeams.dataSet.length - 2].id
+    //     });
+
+    //     Partial.Variables.getManagerNameByTeamId.invoke();
+    // }
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;

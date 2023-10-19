@@ -348,6 +348,8 @@ public class CollectionTreatmentService {
             }
         collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityCreatedBy())));
         collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityAssignedTo())));
+                   collectionActivityLogRes.stream().forEach(a->a.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(a.getCollectionActivityPerformedBy())));
+
 
             return collectionActivityLogRes;
         }

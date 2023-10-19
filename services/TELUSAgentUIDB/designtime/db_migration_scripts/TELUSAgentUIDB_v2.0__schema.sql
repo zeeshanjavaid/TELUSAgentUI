@@ -918,10 +918,10 @@ CREATE TABLE IF NOT EXISTS  `USER_SESSION` (
 -- Table structure for table `schema_version`
 --
 
--- DROP TABLE IF EXISTS `schema_version`;
+--DROP TABLE IF EXISTS `schema_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
--- CREATE TABLE IF NOT EXISTS  `schema_version` (
+--CREATE TABLE IF NOT EXISTS  `schema_version` (
 --  `version_rank` int(11) NOT NULL,
 --  `installed_rank` int(11) NOT NULL,
 --  `version` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -937,7 +937,7 @@ CREATE TABLE IF NOT EXISTS  `USER_SESSION` (
 --  KEY `schema_version_vr_idx` (`version_rank`),
 --  KEY `schema_version_ir_idx` (`installed_rank`),
 --  KEY `schema_version_s_idx` (`success`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
