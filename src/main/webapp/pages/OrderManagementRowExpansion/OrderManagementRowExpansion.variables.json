@@ -61,6 +61,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "showMoreLabel" : {
+    "_id" : "wm-showMoreLabel-wm.Variable-1697783198449",
+    "name" : "showMoreLabel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "TestBanList" : {
     "_id" : "wm-TestBanList-wm.Variable-1688115867917",
     "name" : "TestBanList",

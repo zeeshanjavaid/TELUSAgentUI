@@ -20,6 +20,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    $('#moreLabel').hide();
 
     App.showRowExpansionOrderManagement = function(row, data) {
         debugger;
@@ -97,7 +98,7 @@ function populateBANIds(items) {
 
     if (bansLength > 3) {
 
-        document.getElementById("moreLabel").style.display = "initial";
+        $('#moreLabel').show();
     }
 
 
