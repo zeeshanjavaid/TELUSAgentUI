@@ -359,11 +359,11 @@ Partial.getCollectionHistoryViewParronError = function(variable, data) {
 };
 Partial.getInstallmentScheduleTable_dateOnChange = function($event, widget, row) {
     debugger;
-    var widgetDateValue = widget.datavalue;
-    var widgetDate = new Date(widgetDateValue);
+    var widgetDateValue = widget.bsDataValue;
+    // var widgetDate = new Date(widgetDateValue);
     //widgetDate.setHours(0, 0, 0, 0);
     var currentDate = new Date();
-    widgetDate = new Date(widgetDate.toDateString());
+    widgetDate = new Date(widgetDateValue.toDateString());
     currentDate = new Date(currentDate.toDateString());
     //currentDate.setHours(0, 0, 0, 0);
     if (widgetDate.valueOf() < currentDate.valueOf()) {
