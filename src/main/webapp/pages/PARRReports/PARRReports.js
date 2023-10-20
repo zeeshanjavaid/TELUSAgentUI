@@ -173,22 +173,22 @@ Page.button2Click = function($event, widget) {
         evaluationReq = Page.Widgets.evalSelect.datavalue;
     }
 
-    var fromDateMonth = new Date(Page.Widgets.creationDate.bsDataValue).getMonth() + 1;
-    var toDateMonth = new Date(Page.Widgets.completionDate.bsDataValue).getMonth() + 1;
-
-    var fromDate = new Date(Page.Widgets.creationDate.bsDataValue).getDate();
-    var toDate = new Date(Page.Widgets.completionDate.bsDataValue).getDate();
 
 
-    if (toDateMonth < fromDateMonth) {
-        Page.Variables.errorMsg.dataSet.dataValue = "Completion date can not be less than Creation date";
-    } else if (fromDateMonth >= toDateMonth) {
-        debugger;
-        if (toDate < fromDate) {
-            Page.Variables.errorMsg.dataSet.dataValue = "Completion date can not be less than Creation date";
+    // Your code when both creationDate and completionDate have valid values.
+    if (Page.Widgets.creationDate.datavalue !== '' && Page.Widgets.creationDate.datavalue !== undefined &&
+        Page.Widgets.completionDate.datavalue !== '' && Page.Widgets.completionDate.datavalue !== undefined) {
+
+        var creationDateValue = new Date(Page.Widgets.creationDate.bsDataValue.toDateString());
+        var completionDateValue = new Date(Page.Widgets.completionDate.bsDataValue.toDateString());
+
+        if (completionDateValue.valueOf() < creationDateValue.valueOf()) {
+
+            Page.Variables.errorMsg.dataSet.dataValue = "Created To Date Can Not Be less Than Created From Date";
+            setTimeout(messageTimeout, 4000);
         }
+
     }
-    setTimeout(messageTimeout, 10000);
 
     var entityRiskReq;
 

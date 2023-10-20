@@ -46,15 +46,20 @@ textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
     border-radius: 0.3em;
 }
 
-@media only screen and (min-width: 1260px) and (max-width: 1404px) {
+/*@media only screen and (min-width: 1260px) and (max-width: 1404px)*/
+
+@media only screen and (min-width: 1080px) and (max-width: 1404px) {
     .wm-app .app-date.input-group .form-control.app-dateinput {
         width: 46% !important;
+        
+        height:2.15em ;
     }
 }
 
-@media only screen and (min-width: 1404px) and (max-width: 1550px) {
+@media only screen and (min-width: 1404px) and (max-width: 1980px) {
     .wm-app .app-date.input-group .form-control.app-dateinput {
-        width: 75% !important; /*earlier it was 60%*/
+      width: 75% !important; 
+       /* width:7.7em !important;*/
         height:2.15em ;
     }
 }

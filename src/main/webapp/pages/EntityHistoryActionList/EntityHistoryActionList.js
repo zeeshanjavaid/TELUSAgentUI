@@ -1095,7 +1095,7 @@ Partial.completedButtonClick = function($event, widget) {
     Partial.Widgets.createdBySelect.datavalue = "";
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
-    Partial.Widgets.EventTypeSelect.datavalue = "";
+    Partial.Widgets.EventTypeSelect.datavalue = "ALL";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;

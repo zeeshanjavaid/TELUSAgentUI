@@ -79,6 +79,23 @@ Page.clearFilterFields = function($event, widget) {
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
+    // Your code when both creationDate and completionDate have valid values.
+    if (Page.Widgets.creationDate.datavalue !== '' && Page.Widgets.creationDate.datavalue !== undefined &&
+        Page.Widgets.completionDate.datavalue !== '' && Page.Widgets.completionDate.datavalue !== undefined) {
+
+        var creationDateValue = new Date(Page.Widgets.creationDate.bsDataValue.toDateString());
+        var completionDateValue = new Date(Page.Widgets.completionDate.bsDataValue.toDateString());
+
+        if (completionDateValue.valueOf() < creationDateValue.valueOf()) {
+
+            Page.Variables.errorMsg.dataSet.dataValue = "Created To Due Date Can Not Be Less Than Created From Due Date";
+            setTimeout(messageTimeout, 4000);
+        }
+
+    }
+
+
+
     var workCategoryDataArray = Page.Widgets.WorkCategorySelect.datavalue;
     if (workCategoryDataArray == '' || workCategoryDataArray == undefined) {
         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
