@@ -81,6 +81,7 @@ Partial.onReady = function() {
 
                             Partial.Variables.billingAccountIdNameListVar.dataSet.push(Partial.billingAccountRefIdAndNameArr);
                         });
+
                     },
                     function(error) {
                         // Error Callback
