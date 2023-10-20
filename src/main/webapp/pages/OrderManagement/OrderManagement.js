@@ -1177,3 +1177,22 @@ Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
     App.refreshHistoryActionList();
 
 };
+
+Partial.getOrderdMgmtHistoryonSuccess = function(variable, data) {
+    debugger;
+};
+
+Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
+    debugger;
+
+
+    // data[0].banList.toString.match(/[^,]+,[^,]+,[^,]+/g);
+
+
+
+
+};
+
+Partial.getOrderdMgmtHistoryonBeforeUpdate = function(variable, inputData, options){
+	
+};
