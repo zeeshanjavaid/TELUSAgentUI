@@ -330,14 +330,18 @@ function messageTimeout() {
 Partial.CreatePaymentArrangementonError = function(variable, data, xhrObj) {
     debugger;
     //var errorObj = xhrObj.error;
-
-    App.Variables.errorMsg.dataSet.dataValue = "PARR creation failed as Multiple Payment arrangements are not allowed"
-    Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
-    Partial.Clear();
+    var reasonIndex = xhrObj.error.replaceAll('\\', '').indexOf("reason") + 9;
+    var codeIndex = xhrObj.error.replaceAll('\\', '').lastIndexOf("code") - 3;
+    var errorMessage = xhrObj.error.replaceAll('\\', '').substring(reasonIndex, codeIndex);
+    // App.Variables.errorMsg.dataSet.dataValue = "PARR creation failed as Multiple Payment arrangements are not allowed"
+    App.Variables.errorMsg.dataSet.dataValue = errorMessage;
+    // Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
+    //    Partial.Clear();
     setTimeout(messageTimeout, 5000);
 };
 
 Partial.CreatePaymentArrangementonSuccess = function(variable, data) {
+    debugger;
     App.Variables.successMessage.dataSet.dataValue = "PARR created successfully"
     Partial.Variables.ParrPageName.dataSet.dataValue = 'ParrList';
     Partial.Clear();

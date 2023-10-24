@@ -12,12 +12,12 @@ import io.swagger.client.model.CollectionContactCreate;
 import io.swagger.client.model.CollectionDisputeCreate;
 import io.swagger.client.model.CollectionPaymentArrangementCreate;
 import java.lang.String;
-import io.swagger.client.model.CollectionPaymentArrangement;
 import java.lang.Integer;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionContact;
+import io.swagger.client.model.CollectionPaymentArrangement;
 import com.fico.telus.model.ParrResWithHeader;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
@@ -62,7 +62,7 @@ public class CollectionEntityController {
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.POST)
-    public CollectionPaymentArrangement addPaymentArrangement(@RequestBody CollectionPaymentArrangementCreate collectionPaymentArrangementCreate, @RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+    public CollectionPaymentArrangementCreate addPaymentArrangement(@RequestBody CollectionPaymentArrangementCreate collectionPaymentArrangementCreate, @RequestParam(value = "entityId", required = false) String entityId) throws Exception {
         return collectionEntityService.addPaymentArrangement(collectionPaymentArrangementCreate, entityId);
     }
 

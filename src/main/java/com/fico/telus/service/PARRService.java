@@ -80,7 +80,7 @@ public class PARRService {
 		return propertyValue;
 	}
 
-	public CollectionPaymentArrangement createPaymentArrangement(
+	public CollectionPaymentArrangementCreate createPaymentArrangement(
 			CollectionPaymentArrangementCreate collectionPaymentArrangementCreate, String entityId) throws Exception {
 
     
@@ -94,7 +94,7 @@ public class PARRService {
 			}
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
             logger.info(":::::::In stub collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
-			return new CollectionPaymentArrangement();
+			return new CollectionPaymentArrangementCreate();
 		} else {
 
 			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
@@ -110,8 +110,7 @@ public class PARRService {
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
 					"POST","3161");
 						logger.info("::::::::Response from Success Telus  API- CREATE PARR:::::\n::::::: {}",responseStr);
-			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
-					CollectionPaymentArrangement.class);
+			CollectionPaymentArrangementCreate collectionPaymentArrangement = mapper.readValue(responseStr,CollectionPaymentArrangementCreate.class);
 			return collectionPaymentArrangement;
 			
 		

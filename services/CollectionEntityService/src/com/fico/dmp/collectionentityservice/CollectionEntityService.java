@@ -466,9 +466,9 @@ public class CollectionEntityService {
         	// return new Object(); 
     }    
         
-    public CollectionPaymentArrangement addPaymentArrangement(CollectionPaymentArrangementCreate  collectionPaymentArrangementCreate, String entityId) throws Exception  {
+    public CollectionPaymentArrangementCreate addPaymentArrangement(CollectionPaymentArrangementCreate  collectionPaymentArrangementCreate, String entityId) throws Exception  {
     
-        CollectionPaymentArrangement collectionPaymentArrangement = parrService.createPaymentArrangement(collectionPaymentArrangementCreate, entityId);
+        CollectionPaymentArrangementCreate collectionPaymentArrangement = parrService.createPaymentArrangement(collectionPaymentArrangementCreate, entityId);
         return collectionPaymentArrangement;
         
     }
