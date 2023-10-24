@@ -117,7 +117,7 @@ public class PARRService {
 		}
 	}
 	
-	public CollectionPaymentArrangement updateParrStatus(Integer parrId, String status, String comments) throws Exception {
+	public CollectionPaymentArrangementUpdate updateParrStatus(Integer parrId, String status, String comments) throws Exception {
 		
 	//	CollectionPaymentArrangementStatus parrStatus = new CollectionPaymentArrangementStatus();
 	//	List<CollectionPaymentArrangementStatus> statuses = new ArrayList<CollectionPaymentArrangementStatus>();
@@ -127,18 +127,18 @@ public class PARRService {
 		CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate = new CollectionPaymentArrangementUpdate();
 	//	collectionPaymentArrangementUpdate.setStatuses(statuses);
 		collectionPaymentArrangementUpdate.setId(parrId);
-		CollectionPaymentArrangement collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate,parrId);
+		CollectionPaymentArrangementUpdate collectionPaymentArrangement = updatePaymentArrangement(collectionPaymentArrangementUpdate,parrId);
 		return collectionPaymentArrangement;
 	}
 
-public CollectionPaymentArrangement updatePaymentArrangement(
+public CollectionPaymentArrangementUpdate updatePaymentArrangement(
 			CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate, Integer id) throws Exception {
 
 		if (isParrStubEnabled) {
 			
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementUpdate);
             logger.info(":::::::In stub collectionPaymentArrangementUpdate requestPayload :::::\n::::::: {}", requestPayload);
-			return new CollectionPaymentArrangement();
+			return new CollectionPaymentArrangementUpdate();
 		} else {
 
 			// collectionCommonService.setAuditinfo(collectionPaymentArrangement.getAuditInfo(),
@@ -151,9 +151,8 @@ public CollectionPaymentArrangement updatePaymentArrangement(
 					"PATCH","3161");
 				logger.info("::::::::Response from Success Telus  API UPDATE PARR:::::\n::::::: {}",responseStr);
 
-// 			CollectionPaymentArrangement collectionPaymentArrangement = mapper.readValue(responseStr,
-// 					CollectionPaymentArrangement.class);
-			return new CollectionPaymentArrangement();
+				CollectionPaymentArrangementUpdate collectionPaymentArrangement = mapper.readValue(responseStr,CollectionPaymentArrangementUpdate.class);
+			return collectionPaymentArrangement;
 		}
 	}
 

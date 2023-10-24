@@ -475,15 +475,15 @@ public class CollectionEntityService {
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionPaymentArrangement updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception  {
+    public CollectionPaymentArrangementUpdate updatePaymentArrangement(@PathVariable("id") Integer id,CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception  {
         
-        CollectionPaymentArrangement collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangementUpdate,id);
+    	CollectionPaymentArrangementUpdate collectionPaymentArrangement = parrService.updatePaymentArrangement(collectionPaymentArrangementUpdate,id);
         return collectionPaymentArrangement;        
     }
     
-    public CollectionPaymentArrangement updateParrStatus(Integer parrId, String status, String comments) throws Exception {
+    public CollectionPaymentArrangementUpdate updateParrStatus(Integer parrId, String status, String comments) throws Exception {
         
-        CollectionPaymentArrangement collectionPaymentArrangement = parrService.updateParrStatus(parrId, status, comments);
+    	CollectionPaymentArrangementUpdate collectionPaymentArrangement = parrService.updateParrStatus(parrId, status, comments);
         return collectionPaymentArrangement;
     }
     

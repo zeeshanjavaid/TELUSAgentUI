@@ -173,12 +173,12 @@ public class CollectionEntityController {
     @RequestMapping(value = "/parrStatus", method = RequestMethod.PUT)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public CollectionPaymentArrangement updateParrStatus(@RequestParam(value = "parrId", required = false) Integer parrId, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "comments", required = false) String comments) throws Exception {
+    public CollectionPaymentArrangementUpdate updateParrStatus(@RequestParam(value = "parrId", required = false) Integer parrId, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "comments", required = false) String comments) throws Exception {
         return collectionEntityService.updateParrStatus(parrId, status, comments);
     }
 
     @RequestMapping(value = "/paymentArrangement", method = RequestMethod.PUT)
-    public CollectionPaymentArrangement updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception {
+    public CollectionPaymentArrangementUpdate updatePaymentArrangement(@RequestParam(value = "id", required = false) Integer id, @RequestBody CollectionPaymentArrangementUpdate collectionPaymentArrangementUpdate) throws Exception {
         return collectionEntityService.updatePaymentArrangement(id, collectionPaymentArrangementUpdate);
     }
 }

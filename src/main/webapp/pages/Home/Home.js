@@ -292,7 +292,7 @@ Page.goToEnityPage = function(row) {
     debugger;
     // event.preventDefault();
 
-    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank", 'noopener, noreferrer');
+    window.open("Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank", 'noopener, noreferrer');
 
 
     // window.location.reload(true);

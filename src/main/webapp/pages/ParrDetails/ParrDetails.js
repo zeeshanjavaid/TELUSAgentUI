@@ -277,13 +277,18 @@ function messageTimeout() {
 }
 
 Partial.updatePaymentArrangementonError = function(variable, data, xhrObj) {
-
-    App.Variables.errorMsg.dataSet.dataValue = "PARR renegotiation failed as it can be renegotiated only once."
+    debugger;
+    var reasonIndex = xhrObj.error.replaceAll('\\', '').indexOf("reason") + 9;
+    var codeIndex = xhrObj.error.replaceAll('\\', '').lastIndexOf("code") - 3;
+    var errorMessage = xhrObj.error.replaceAll('\\', '').substring(reasonIndex, codeIndex);
+    //App.Variables.errorMsg.dataSet.dataValue = "PARR renegotiation failed as it can be renegotiated only once."
+    App.Variables.errorMsg.dataSet.dataValue = errorMessage;
     setTimeout(messageTimeout, 5000);
 };
 
 
 Partial.updatePaymentArrangementonSuccess = function(variable, data) {
+    debugger;
     App.Variables.successMessage.dataSet.dataValue = "PARR renegotiated successfully."
     var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
 
@@ -312,7 +317,10 @@ Partial.updatePaymentArrangementonSuccess = function(variable, data) {
 };
 
 Partial.CancelPaymentArrangementonError = function(variable, data, xhrObj) {
-    App.Variables.errorMsg.dataSet.dataValue = "PARR Cancellation failed as it can be Cancelled only once."
+    var reasonIndex = xhrObj.error.replaceAll('\\', '').indexOf("reason") + 9;
+    var codeIndex = xhrObj.error.replaceAll('\\', '').lastIndexOf("code") - 3;
+    var errorMessage = xhrObj.error.replaceAll('\\', '').substring(reasonIndex, codeIndex);
+    App.Variables.errorMsg.dataSet.dataValue = errorMessage;
     setTimeout(messageTimeout, 5000);
 };
 
