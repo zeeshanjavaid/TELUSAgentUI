@@ -765,23 +765,9 @@ Partial.createUserForm1_saveAction = function($event) {
                 Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
                 Partial.Variables.UserManagementServiceCreateUser.invoke()
                 Partial.Variables.searchUsers.invoke();
-                setTimeout(messageTimeout, 4000);
-                Partial.Widgets.createUserPage.close();
+                //  setTimeout(messageTimeout, 4000);
+                // Partial.Widgets.createUserPage.close();
 
-                // Partial.Variables.UserManagementServiceCreateUser.invoke({},
-                //     function(data) {
-                //         Partial.Variables.successMessage.dataSet.dataValue = "User created successfully";
-                //         Partial.Widgets.updateUser.close();
-                //         App.Variables.errorMsg.dataSet.dataValue = "";
-                //         App.Variables.createUserErrormsg.dataSet.dataValue = "";
-                //         console.log("success", data);
-                //     },
-                //     function(error) {
-
-                //         console.log("success", error);
-
-
-                //     });
             }
 
         },
@@ -789,32 +775,6 @@ Partial.createUserForm1_saveAction = function($event) {
             return false;
 
         });
-    // Partial.Widgets.createUserForm1.dataoutput.UserDTO;
-    // Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
-    // debugger;
-    // if (!validateEmail(Partial.Widgets.createUserForm1.dataoutput.UserDTO.email)) {
-    //     App.Variables.createUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
-    // } else if (checkForDublicateEmplId(Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId)) {
-    //     App.Variables.createUserErrormsg.dataSet.dataValue = "EmplId already exists";
-    // } else if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
-    //     Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
-
-
-
-    //     Partial.Variables.UserManagementServiceCreateUser.invoke({},
-    //         function(data) {
-
-    //             App.Variables.errorMsg.dataSet.dataValue = "";
-    //             App.Variables.createUserErrormsg.dataSet.dataValue = "";
-    //             console.log("success", data);
-    //         },
-    //         function(error) {
-
-    //             console.log("success", error);
-
-
-    //         });
-    // }
 
 };
 
@@ -917,31 +877,15 @@ Partial.updateUserForm1_saveAction = function($event) {
     } else {
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
     }
-    //  if (Partial.TestTeamId.teamId != null && Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId == null) {
-    // if (Partial.TestTeamId.teamId != null) {
+
     Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
-    //   }
-    // else {
-    //     Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId
-
-    //     Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
-    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
-    // }
-
 
     var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
 
-    // if (type == 'string' || type == "undefined") {
-
-    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
-    // }
-    // if (Partial.Variables.getCurrentManager.dataSet != null) {
-
-    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
-    // } else 
-
-    if (type == "string" && Partial.Variables.executeGetManagerByTeamIdVar.dataSet.length > 0) {
+    if (Partial.Widgets.UserDTO_teamManager_formWidget.displayValue === undefined) {
+        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
+    } else if (type == "string" && Partial.Variables.executeGetManagerByTeamIdVar.dataSet.length > 0) {
 
 
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
@@ -950,13 +894,6 @@ Partial.updateUserForm1_saveAction = function($event) {
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
     }
 
-
-
-
-    // else {
-    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = parseInt(Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId);
-    // }
-    //dataBinding
     if (!validateEmail(Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email)) {
         debugger;
         App.Variables.updateUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
@@ -972,14 +909,6 @@ Partial.updateUserForm1_saveAction = function($event) {
         setTimeout(messageTimeout, 4000);
         Partial.Widgets.updateUser.close();
 
-        // Partial.Variables.UserManagementServiceUpdateUser.invoke({}, function(data) {
-        //     // Success Callback
-        //     console.log("success", data);
-        // }, function(error) {
-        //     // Error Callback
-        //     console.log("error", error)
-
-        // });
     }
 };
 
@@ -1027,12 +956,7 @@ Partial.panel1Collapse = function($event, widget) {
 };
 
 Partial.executeSearchUsersForm1_saveAction = function($event) {
-    /*alert("HI");
-    alert(Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue);*/
-    /* debugger;
-     if (!validateEmail(Partial.Widgets.executeSearchUsersForm1.formWidgets.userCriteria.datavalue)) {
-         debugger;
-         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";*/
+
     if (Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != undefined && Partial.Widgets.executeSearchUsersForm1.formWidgets.role.datavalue != "") {
         debugger;
 
@@ -1055,6 +979,8 @@ Partial.executeSearchUsersForm1_saveAction = function($event) {
 
 Partial.UserManagementServiceCreateUseronError = function(variable, data) {
     debugger;
+    //  setTimeout(messageTimeout, 4000);
+    //  Partial.Widgets.createUserPage.close();
 
 };
 Partial.createUserForm1_resetAction = function($event) {
@@ -1184,7 +1110,10 @@ Partial.TELUSAgentUIDBGetUseronSuccess = function(variable, data) {
 
 Partial.UserManagementServiceCreateUseronSuccess = function(variable, data) {
 
+    setTimeout(messageTimeout, 4000);
+    Partial.Widgets.createUserPage.close();
     Partial.Variables.successMessage.dataSet.dataValue = "User created successfully";
+
 
 
 

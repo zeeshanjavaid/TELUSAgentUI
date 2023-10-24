@@ -343,6 +343,8 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
 
+    debugger;
+
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
@@ -1193,6 +1195,44 @@ Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
 
 };
 
-Partial.getOrderdMgmtHistoryonBeforeUpdate = function(variable, inputData, options){
-	
+Partial.getOrderdMgmtHistoryonBeforeUpdate = function(variable, inputData, options) {
+
+};
+Partial.getEntityBanDetailsTable1Beforeformrender = function($event, widget, row, $operation) {
+    debugger;
+};
+Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+};
+Partial.getEntityBanDetailsTable1Formrender = function($event, widget, formWidgets, $operation) {
+    debugger;
+};
+Partial.getEntityBanDetailsTable1Beforerowinsert = function($event, widget, row, options) {
+    debugger;
+};
+Partial.getEntityBanDetailsTable1Datarender = function(widget, $data) {
+    debugger;
+    document.getElementById('banTableList')
+        .addEventListener('click', function(item) {
+
+            // To get tr tag  
+            // In the row where we click 
+            var row = item.path[1];
+
+            var row_value = "";
+
+            for (var j = 0; j < row.cells.length; j++) {
+
+                row_value += row.cells[j].innerHTML;
+                row_value += " | ";
+            }
+
+            alert(row_value);
+
+            // Toggle the highlight 
+            if (row.classList.contains('highlight'))
+                row.classList.remove('highlight');
+            else
+                row.classList.add('highlight');
+        });
 };
