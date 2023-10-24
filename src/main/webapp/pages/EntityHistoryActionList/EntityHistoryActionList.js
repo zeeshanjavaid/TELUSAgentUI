@@ -1161,8 +1161,8 @@ Partial.closeButtonClick = function($event, widget) {
 
         App.Variables.errorMsg.dataSet.dataValue = "Invalid Phone number.";
         isError = true;
-    } else if (phnumber > 10) {
-        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater than 10 digit.";
+    } else if (phnumber != 10) {
+        App.Variables.errorMsg.dataSet.dataValue = "Phone number should not be greater or less than 10 digit.";
         isError = true;
     } else {
         characteristicList.push({

@@ -24,6 +24,7 @@ public class LookUpResponseWithTeamName {
     private Boolean dntlFlag ;
 
     private String teamName;
+     private Integer totalNumberOfElement;
 
     public LookUpResponseWithTeamName() {
     }
@@ -114,5 +115,13 @@ public class LookUpResponseWithTeamName {
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;
+    }
+    
+     public Integer getTotalNumberOfElement() {
+        return totalNumberOfElement;
+    }
+
+    public void setTotalNumberOfElement(Integer totalNumberOfElement) {
+        this.totalNumberOfElement = totalNumberOfElement;
     }
 }
