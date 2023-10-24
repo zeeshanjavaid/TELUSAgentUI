@@ -106,30 +106,93 @@ App.rowDataValues = function(row) {
     } else {
         if (row.contactId != null) {
             Partial.Widgets.contactIDLabel.caption = row.contactId;
+            Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+            Partial.Widgets.TITLESelect.datavalue = row.title;
+            Partial.Widgets.firstName.datavalue = row.firstName;
+            Partial.Widgets.lastName.datavalue = row.lastName;
+            if (row.mobileNumber != null) {
+                Partial.Widgets.cellPhone.datavalue = row.mobileNumber.length == 10 ? '(' + row.mobileNumber.substring(0, 3) + ')' + row.mobileNumber.substring(3, 6) + '-' + row.mobileNumber.substring(6, 10) : row.mobileNumber;
+            }
+            if (row.workNumber != null) {
+                Partial.Widgets.workNo.datavalue = row.workNumber.length == 10 ? '(' + row.workNumber.substring(0, 3) + ')' + row.workNumber.substring(3, 6) + '-' + row.workNumber.substring(6, 10) : row.workNumber;
+            }
+            Partial.Widgets.ext.datavalue = row.workPhoneExt;
+            if (row.faxNumber != null) {
+                Partial.Widgets.fax.datavalue = row.faxNumber.length == 10 ? '(' + row.faxNumber.substring(0, 3) + ')' + row.faxNumber.substring(3, 6) + '-' + row.faxNumber.substring(6, 10) : row.faxNumber;
+            }
+            var GetContactDetailsByIdVar = Partial.Variables.GetContactDetailsById;
+            GetContactDetailsByIdVar.invoke({
+                    "inputFields": {
+                        "id": row.contactId
+                    }
+                },
+                function(data) {
+                    Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
+                    Partial.Widgets.emailText.datavalue = data.email;
+
+                    Partial.Widgets.comments.datavalue = data.comment;
+                    Partial.Widgets.lastUpdatedOn.caption = data.auditInfo.lastUpdatedDateTime;
+                    Partial.Widgets.createdOn.caption = data.auditInfo.createdDateTime;
+
+                    var GetCreatedByNameUsingAgentIdVar = Partial.Variables.GetCreatedByNameUsingAgentId;
+                    GetCreatedByNameUsingAgentIdVar.invoke({
+                            "inputFields": {
+                                "empId": data.auditInfo.createdBy
+                            }
+                        },
+                        function(data1) {
+                            Partial.Widgets.createdBy.caption = data1;
+                            var GetUpdatedByNameUsingAgentIdVar = Partial.Variables.GetUpdatedByNameUsingAgentId;
+                            GetUpdatedByNameUsingAgentIdVar.invoke({
+                                    "inputFields": {
+                                        "empId": data.auditInfo.lastUpdatedBy
+                                    }
+                                },
+                                function(data2) {
+                                    Partial.Widgets.lastUpdatedBy.caption = data2;
+                                },
+                                function(error2) {
+                                    // Error Callback
+                                    console.log("error", error2);
+                                }
+
+                            );
+                        },
+                        function(error1) {
+                            // Error Callback
+                            console.log("error", error1);
+                        }
+
+                    );
+                },
+                function(error) {
+                    // Error Callback
+                    console.log("error", error);
+                }
+
+            );
+
         } else {
             Partial.Widgets.contactIDLabel.caption = null;
+            Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+            Partial.Widgets.TITLESelect.datavalue = row.title;
+            Partial.Widgets.firstName.datavalue = row.firstName;
+            Partial.Widgets.lastName.datavalue = row.lastName;
+            Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
+            Partial.Widgets.emailText.datavalue = row.email;
+            if (row.mobileNumber != null) {
+                Partial.Widgets.cellPhone.datavalue = row.mobileNumber.length == 10 ? '(' + row.mobileNumber.substring(0, 3) + ')' + row.mobileNumber.substring(3, 6) + '-' + row.mobileNumber.substring(6, 10) : row.mobileNumber;
+            }
+            if (row.workNumber != null) {
+                Partial.Widgets.workNo.datavalue = row.workNumber.length == 10 ? '(' + row.workNumber.substring(0, 3) + ')' + row.workNumber.substring(3, 6) + '-' + row.workNumber.substring(6, 10) : row.workNumber;
+            }
+            Partial.Widgets.ext.datavalue = row.workPhoneExt;
+            if (row.faxNumber != null) {
+                Partial.Widgets.fax.datavalue = row.faxNumber.length == 10 ? '(' + row.faxNumber.substring(0, 3) + ')' + row.faxNumber.substring(3, 6) + '-' + row.faxNumber.substring(6, 10) : row.faxNumber;
+            }
         }
-        Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
-        Partial.Widgets.TITLESelect.datavalue = row.title;
-        Partial.Widgets.firstName.datavalue = row.firstName;
-        Partial.Widgets.lastName.datavalue = row.lastName;
-        Partial.Widgets.EmailForNoticesSelect.datavalue = row.contactForNotices;
-        Partial.Widgets.emailText.datavalue = row.email;
-        if (row.mobileNumber != null) {
-            Partial.Widgets.cellPhone.datavalue = row.mobileNumber.length == 10 ? '(' + row.mobileNumber.substring(0, 3) + ')' + row.mobileNumber.substring(3, 6) + '-' + row.mobileNumber.substring(6, 10) : row.mobileNumber;
-        }
-        if (row.workNumber != null) {
-            Partial.Widgets.workNo.datavalue = row.workNumber.length == 10 ? '(' + row.workNumber.substring(0, 3) + ')' + row.workNumber.substring(3, 6) + '-' + row.workNumber.substring(6, 10) : row.workNumber;
-        }
-        Partial.Widgets.ext.datavalue = row.workPhoneExt;
-        if (row.faxNumber != null) {
-            Partial.Widgets.fax.datavalue = row.faxNumber.length == 10 ? '(' + row.faxNumber.substring(0, 3) + ')' + row.faxNumber.substring(3, 6) + '-' + row.faxNumber.substring(6, 10) : row.faxNumber;
-        }
-        //Partial.Widgets.comments.datavalue = row.comment;
-        //Partial.Widgets.lastUpdatedOn.caption = row.auditInfo.lastUpdatedDateTime;
-        //Partial.Widgets.lastUpdatedBy.caption = row.auditInfo.lastUpdatedBy;
-        //Partial.Widgets.createdOn.caption = row.auditInfo.createdDateTime;
-        //Partial.Widgets.createdBy.caption = row.auditInfo.createdBy;
+
+
     }
 
 
@@ -392,6 +455,10 @@ Partial.Clear = function() {
     Partial.Widgets.ext.datavalue = "";
     Partial.Widgets.fax.datavalue = "";
     Partial.Widgets.comments.datavalue = "";
+    Partial.Widgets.lastUpdatedOn.datavalue = "";
+    Partial.Widgets.createdOn.datavalue = "";
+    Partial.Widgets.lastUpdatedBy.datavalue = "";
+    Partial.Widgets.createdBy.datavalue = "";
 };
 
 
