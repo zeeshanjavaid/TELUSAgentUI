@@ -108,7 +108,7 @@ public class ParrReportService {
                 parrReports.setCreatedTeam(commonUtilityService.getTeamIdUsingEmpId(cpa.getAuditInfo().getCreatedBy()));
 
                 parrReports.setEvaluation(cpa.getEvaluationResult());
-                parrReports.setParrAmt("$"+cpa.getAmount());
+                parrReports.setParrAmt(cpa.getAmount());
                 parrReports.setStart(cpa.getInstallments().get(0).getDate().toString());
                 if(cpa.getInstallments().size()==0) {
                     parrReports.setExpiry(cpa.getInstallments().get(0).getDate().toString());

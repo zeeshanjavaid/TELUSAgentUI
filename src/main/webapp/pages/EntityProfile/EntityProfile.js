@@ -445,10 +445,10 @@ App.refreshParrSummary = function() {
             debugger;
             if (data.length > 0) {
                 Partial.Widgets.parrSummaryId.caption = data[0].id;
-                Partial.Widgets.totalAmtParrSummary.caption = '$' + data[0].amount;
+                Partial.Widgets.totalAmtParrSummary.caption = data[0].amount.toLocaleString('en-US');;
                 Partial.Widgets.parrSumStatus.caption = 'Open';
-                Partial.Widgets.cummPaymentExp.caption = '$' + data[0].expectedPaymentAmountToDate;
-                Partial.Widgets.cummPmtRvcd.caption = '$' + data[0].receivedPaymentAmountToDate;
+                Partial.Widgets.cummPaymentExp.caption = data[0].expectedPaymentAmountToDate.toLocaleString('en-US');;
+                Partial.Widgets.cummPmtRvcd.caption = data[0].receivedPaymentAmountToDate.toLocaleString('en-US');;
                 Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
                 Partial.Widgets.evaluationResultParrSum.caption = data[0].evaluationResult;
                 var installmentLength = data[0].installments.length;
@@ -466,7 +466,7 @@ App.refreshParrSummary = function() {
 
                 var totalInstallmentAmount = Math.round((totalInstallmentIntermediateAmt) * 100) / 100;
 
-                Partial.Widgets.installmentAmtParrSum.caption = '$' + totalInstallmentAmount;
+                Partial.Widgets.installmentAmtParrSum.caption = totalInstallmentAmount.toLocaleString('en-US');;
 
                 Partial.Widgets.parrSummaryId.show = true;
                 Partial.Widgets.parrSummaryIdLabel.show = true;

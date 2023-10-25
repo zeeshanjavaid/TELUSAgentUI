@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.Date;
 import java.lang.Integer;
 import java.lang.Exception;
-import io.swagger.client.model.TeamsActionViewResponse;
+import com.fico.telus.model.TeamsActionViewResponseWIthTotalCount;
 import java.util.List;
 import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import io.swagger.client.model.EntityBanDetailsResponse;
@@ -35,7 +35,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/actionViewByTeam", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<TeamsActionViewResponse> getActionViewByTeam(@RequestParam(value = "assignedAgent", required = false) String assignedAgent, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "fromDueDate", required = false) Date fromDueDate, @RequestParam(value = "toDueDate", required = false) Date toDueDate, @RequestParam(value = "actionType", required = false) String actionType, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "viewType", required = false) String viewType, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<TeamsActionViewResponseWIthTotalCount> getActionViewByTeam(@RequestParam(value = "assignedAgent", required = false) String assignedAgent, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "fromDueDate", required = false) Date fromDueDate, @RequestParam(value = "toDueDate", required = false) Date toDueDate, @RequestParam(value = "actionType", required = false) String actionType, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "viewType", required = false) String viewType, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionDataService.getActionViewByTeam(assignedAgent, assignedTeam, entityOwner, fromDueDate, toDueDate, actionType, status, workCategory, viewType, offset, limit);
     }
 

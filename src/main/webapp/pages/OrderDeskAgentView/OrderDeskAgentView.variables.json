@@ -69,7 +69,7 @@
       "value" : "2",
       "type" : "string"
     } ],
-    "type" : "io.swagger.client.model.TeamsActionViewResponse",
+    "type" : "com.fico.telus.model.TeamsActionViewResponseWIthTotalCount",
     "service" : "CollectionDataService",
     "operation" : "getActionViewByTeam",
     "operationId" : "CollectionDataController_getActionViewByTeam",
