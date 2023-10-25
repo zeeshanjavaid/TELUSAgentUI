@@ -348,7 +348,7 @@ public class CollectionTreatmentService {
             }
         collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityCreatedBy())));
         collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityAssignedTo())));
-                   collectionActivityLogRes.stream().forEach(a->a.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(a.getCollectionActivityPerformedBy())));
+        collectionActivityLogRes.stream().forEach(a->a.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(a.getCollectionActivityPerformedBy())));
 
 
             return collectionActivityLogRes;
@@ -441,10 +441,10 @@ public class CollectionTreatmentService {
                 
                 orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
                 orderMgmtHistoryResponse.setStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
-                orderMgmtHistoryResponse.setAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
+                orderMgmtHistoryResponse.setAssignedTo(collectionActivityLog.getRelatedBusinessEntityAssignedTo());
                 orderMgmtHistoryResponse.setGetAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
-                orderMgmtHistoryResponse.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
-                orderMgmtHistoryResponse.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
+                orderMgmtHistoryResponse.setUpdatedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+                orderMgmtHistoryResponse.setCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
                 orderMgmtHistoryResponse.setUpdatedOn(collectionActivityLog.getCollectionActivityTimestamp().toString());
                 orderMgmtHistoryResponse.setComment(collectionActivityLog.getComment());
                 orderMgmtHistoryResponse.setEventType(collectionActivityLog.getBusinessEntityEventType());
@@ -472,10 +472,10 @@ public class CollectionTreatmentService {
                 
                 orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
                 orderMgmtHistoryResponse.setStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
-                orderMgmtHistoryResponse.setAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
+                orderMgmtHistoryResponse.setAssignedTo(collectionActivityLog.getRelatedBusinessEntityAssignedTo());
                 orderMgmtHistoryResponse.setGetAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
-                orderMgmtHistoryResponse.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
-                orderMgmtHistoryResponse.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
+                orderMgmtHistoryResponse.setUpdatedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+                orderMgmtHistoryResponse.setCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
                 orderMgmtHistoryResponse.setUpdatedOn(collectionActivityLog.getCollectionActivityTimestamp().toString());
                 orderMgmtHistoryResponse.setComment(collectionActivityLog.getComment());
                 orderMgmtHistoryResponse.setEventType(collectionActivityLog.getBusinessEntityEventType());
