@@ -34,7 +34,9 @@ Page.onReady = function() {
         'inputValue': Page.pageParams.entityId,
         'level': Page.pageParams.inputlevel,
         'billingSystem': Page.pageParams.billingSystem,
-        'searchMatchCriteria': Page.pageParams.searchMatchCriteria
+        'searchMatchCriteria': Page.pageParams.searchMatchCriteria,
+        'limit': 10,
+        'offset': 0
 
     });
 
@@ -192,7 +194,9 @@ Page.button1Click = function($event, widget) {
             'inputValue': inputValue,
             'level': Page.Widgets.select1.datavalue,
             'billingSystem': Page.Widgets.select5.datavalue,
-            'searchMatchCriteria': searchCriteria
+            'searchMatchCriteria': searchCriteria,
+            'limit': 10,
+            'offset': 0
 
         });
 
@@ -464,3 +468,22 @@ Page.text3Blur = function($event, widget) {
     // });
 
 };
+
+Page.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Page.size = $event.pageSize
+    Page.page = $event.pageNumber
+    Page.RefreshData();
+
+};
+
+Page.RefreshData = function() {
+    debugger;
+    var offset = Page.size * (Page.page - 1);
+    Page.Variables.getEntitySearch.setInput({
+        'limit': Page.size,
+        'offset': offset
+    });
+    Page.Variables.getEntitySearch.invoke();
+
+}

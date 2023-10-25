@@ -91,8 +91,8 @@
             </wm-layoutgrid>
             <wm-container name="container3_1" show="true" class="rrr">
                 <h3><b>Lookup Results</b></h3>
-                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.getEntitySearch.dataSet" navigation="Classic" enablesort="true" enablecolumnselection="false" showrecordcount="true"
-                    pagesize="10" navigationalign="right">
+                <wm-table name="getEntitySearchTable1" title="" margin="0 0 0 10px" dataset="bind:Variables.getEntitySearch.dataSet" navigation="None" enablesort="true" enablecolumnselection="false" showrecordcount="true" pagesize="10"
+                    navigationalign="right">
                     <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="80px" edit-widget-type="text" type="string" show="true" readonly="false">
                         <wm-anchor caption="bind:row.getProperty('entityId')" on-click="goToEnityPage(row)" class="desc" conditionalclass=""></wm-anchor>
                     </wm-table-column>
@@ -109,7 +109,9 @@
                         <wm-label caption="bind:row.getProperty('dntlFlag') ? 'Y' : ''" class="" conditionalclass=""></wm-label>
                     </wm-table-column>
                 </wm-table>
-                <wm-message name="message1" caption="bind:Variables.errorMsg.dataSet.dataValue" type="error" width="100%" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false"></wm-message>
+                <!-- <wm-message name="message1" caption="bind:Variables.errorMsg.dataSet.dataValue" type="error" width="100%" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false"></wm-message> -->
+                <wm-container name="containerPagination2"></wm-container>
+                <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.getEntitySearch.dataSet[0].totalNumberOfElement"></wm-prefab>
             </wm-container>
         </wm-page-content>
     </wm-content>

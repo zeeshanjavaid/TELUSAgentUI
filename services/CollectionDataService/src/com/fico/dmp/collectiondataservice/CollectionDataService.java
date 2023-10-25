@@ -159,7 +159,9 @@ public class CollectionDataService {
                     .queryParam("inputValue", URLEncoder.encode(inputValue,"UTF-8"))
                     .queryParam("level",level)
                     .queryParam("searchMatchCriteria",searchMatchCriteria)
-                    .queryParam("billingSystem",billingSystem);
+                    .queryParam("billingSystem",billingSystem)
+                    .queryParam("offset",offset)
+                    .queryParam("limit",limit);
                     
 
             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
