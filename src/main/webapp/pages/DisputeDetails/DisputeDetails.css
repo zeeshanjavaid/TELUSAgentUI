@@ -1,7 +1,7 @@
 .disputeDeatailsLine{
     border-bottom: 1px solid #ddd;
     width:400% !important;
-}
+}  
 .grid-col40-size{
     width:190% !important;
 }
@@ -127,4 +127,8 @@ i.fico-icon-chevron-right.hide-iconDIS2 {
     .labelGrid {
      width: 42%;
     }
+}*/
+
+/*@media only screen and (min-width: 1024px) and (max-width: 1404px){
+    
 }*/
