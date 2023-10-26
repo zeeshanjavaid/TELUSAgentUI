@@ -254,7 +254,11 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                             "originatorAppId": "FAWBTELUSAGENT",
                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
                         },
-                        billingAccountRefMaps
+                        billingAccountRefMaps,
+                        "relatedEntity": {
+                            "id": null,
+                            "role": "BG"
+                        },
                     }
                 });
                 Page.Variables.PatchInCollectionEntity.invoke();
@@ -466,10 +470,9 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                         'exclusionIndicatorInteger': Page.Variables.getCollectionEntityById.dataSet.exclusionIndicatorInteger,
                         'manualTreatmentIndicator': Page.Variables.getCollectionEntityById.dataSet.manualTreatmentIndicator,
                         'notTouchListIndicator': Page.Variables.getCollectionEntityById.dataSet.notTouchListIndicator,
-
                         'relatedEntity': {
-                            'id': relatedEntityId,
-                            'role': roleType
+                            'id': null,
+                            'role': "BG"
                         },
                         'validFor': {
                             'startDateTime': todaysDateJsonFormat

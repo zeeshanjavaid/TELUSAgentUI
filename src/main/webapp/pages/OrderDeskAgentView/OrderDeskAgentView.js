@@ -123,7 +123,7 @@ Page.applyFilter = function($event, widget) {
 };
 
 Page.goToEnityPage = function(row) {
-    window.open("#/Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
+    window.open("Lookup?entityId=" + (!row.entityId ? 0 : row.entityId), "_blank");
 }
 
 // Assigned Team on change

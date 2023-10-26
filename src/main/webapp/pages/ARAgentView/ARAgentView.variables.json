@@ -68,12 +68,8 @@
       "target" : "viewType",
       "value" : "1",
       "type" : "string"
-    }, {
-      "target" : "limit",
-      "value" : "2000",
-      "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.TeamsActionViewResponse",
+    "type" : "com.fico.telus.model.TeamsActionViewResponseWIthTotalCount",
     "service" : "CollectionDataService",
     "operation" : "getActionViewByTeam",
     "operationId" : "CollectionDataController_getActionViewByTeam",
