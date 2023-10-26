@@ -13,9 +13,8 @@
                 <wm-table-column binding="ban" caption="BAN" width="93px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="banName" caption="BAN Name" width="308px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="billingSystem" caption="BILL SYS" width="104px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="99px" edit-widget-type="text" type="string" show="true" readonly="false">
+                <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="99px" col-class="dispute_Amt" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
-
                 </wm-table-column>
                 <wm-table-column binding="collectionExclusion" caption="COLL EXCL" widget-type="label" width="61px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('collectionExclusion')?'Y':'N'" class="" conditionalclass=""></wm-label>

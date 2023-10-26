@@ -92,10 +92,10 @@
                         <wm-table-column binding="collectionStatus" caption="COLL Status" width="96px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityOwner" caption="ENT Owner" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="workCategory" caption="Work Category" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="totalAr" caption="Total AR" width="97px" edit-widget-type="number" type="double" show="true" readonly="false">
+                        <wm-table-column binding="totalAr" caption="Total AR" width="97px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="totalOverDue" caption="Total OD" width="96px" edit-widget-type="number" type="double" show="true" readonly="false">
+                        <wm-table-column binding="totalOverDue" caption="Total OD" width="96px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                         <wm-table-column binding="actionType" caption="Action Type" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

@@ -14,13 +14,13 @@
             <wm-table-column binding="cbucId" caption="CBUCID" width="115px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="rcId" caption="RCID" width="125px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="billingSystem" caption="BILL SYS" width="102px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="totalAr" caption="Total AR" width="120px" edit-widget-type="text" type="string" show="true" readonly="false">
+            <wm-table-column binding="totalAr" caption="Total AR" width="120px" col-class="total_AR" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
             </wm-table-column>
-            <wm-table-column binding="totalOverDue" caption="Total OD" width="120px" edit-widget-type="text" type="string" show="true" readonly="false">
+            <wm-table-column binding="totalOverDue" caption="Total OD" width="120px" col-class="total_OD" edit-widget-type="text" type="string" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
             </wm-table-column>
-            <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="120px" edit-widget-type="number" type="double" show="true" readonly="false">
+            <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="120px" col-class="dispute_Amt" edit-widget-type="number" type="double" show="true" readonly="false">
                 <wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
@@ -311,8 +311,8 @@
                                                 <wm-table name="getEntityDetailsTable1_1" title="" dataset="bind:Variables.getBanDetailsForNotes.dataSet" navigation="Classic" multiselect="false" radioselect="false" show="bind:Variables.banListShow.dataSet.dataValue==false">
                                                     <wm-table-column binding="banId" caption="BAN #" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="banName" caption="BAN Name" width="163px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="banArAmount" caption="Total AR" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                                                    <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banArAmount" caption="Total AR" width="110px" col-class="total_AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                                    <wm-table-column binding="banOverdueAmount" caption="Total OD" width="122px" col-class="total_OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                                     <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="145px" edit-widget-type="text" type="string" show="true" readonly="false">
                                                         <wm-label caption="bind:row.getProperty('disputeFlag')?'Y':'N'" class="" conditionalclass=""></wm-label>
                                                     </wm-table-column>

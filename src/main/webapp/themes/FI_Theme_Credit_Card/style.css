@@ -14749,3 +14749,18 @@ button.wm-app .close {
 .wm-app .btn.app-button.btn-default.dropdown-toggle {
     pointer-events: none;
 }
+
+
+/*currency field right aligned*/
+
+td.app-datagrid-cell.total_AR {
+    text-align: right !important;
+}
+
+td.app-datagrid-cell.total_OD {
+    text-align: right !important;
+}
+
+td.app-datagrid-cell.dispute_Amt {
+    text-align: right !important;
+}
