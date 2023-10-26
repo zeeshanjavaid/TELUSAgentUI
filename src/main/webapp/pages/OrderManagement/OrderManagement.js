@@ -1212,27 +1212,5 @@ Partial.getEntityBanDetailsTable1Beforerowinsert = function($event, widget, row,
 };
 Partial.getEntityBanDetailsTable1Datarender = function(widget, $data) {
     debugger;
-    document.getElementById('banTableList')
-        .addEventListener('click', function(item) {
 
-            // To get tr tag  
-            // In the row where we click 
-            var row = item.path[1];
-
-            var row_value = "";
-
-            for (var j = 0; j < row.cells.length; j++) {
-
-                row_value += row.cells[j].innerHTML;
-                row_value += " | ";
-            }
-
-            alert(row_value);
-
-            // Toggle the highlight 
-            if (row.classList.contains('highlight'))
-                row.classList.remove('highlight');
-            else
-                row.classList.add('highlight');
-        });
 };

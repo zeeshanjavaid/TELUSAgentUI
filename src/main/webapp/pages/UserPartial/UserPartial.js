@@ -755,7 +755,11 @@ Partial.createUserForm1_saveAction = function($event) {
             }
 
             Partial.Widgets.createUserForm1.dataoutput.UserDTO;
-            Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId = Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.slice(1);
+
+
+            if (Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toUpperCase() && Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 'X' || Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 'T') {
+                Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId = Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.slice(1);
+            }
 
             Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
             debugger;
