@@ -452,7 +452,7 @@ public class CollectionDataService {
 
     		 logger.info("::::::::TeamsActionViewResponse endpoint call Success ::::::::");
 
-logger.info("Response payload for getActionViewByTeam---"+ result);
+             logger.info("Response payload for getActionViewByTeam---"+ result);
 
 
     		 if(!StringUtils.isEmpty(result)) {
@@ -464,7 +464,7 @@ logger.info("Response payload for getActionViewByTeam---"+ result);
 
 				//teamsActionViewResponseList.stream().forEach(agentView->agentView.setAssignedAgent(commonUtilityService.getNameUsingEmpId(agentView.getAssignedAgent())));
 		
-    		 return setEntOwnerAndAssignedIdOfActionView(teamsActionViewResponseList,Integer.parseInt(totalNoOfElement));
+    		 return setEntOwnerAndAssignedIdOfActionView(teamsActionViewResponseList,Integer.parseInt(totalNoOfElement),assignedTeam);
     }
     }
     
@@ -508,16 +508,11 @@ logger.info("Response payload for getActionViewByTeam---"+ result);
 	
 	
 	
-private List<TeamsActionViewResponseWIthTotalCount> setEntOwnerAndAssignedIdOfActionView(List<TeamsActionViewResponse> teamsActionViewResponseList,Integer totalNoOfElement)
+private List<TeamsActionViewResponseWIthTotalCount> setEntOwnerAndAssignedIdOfActionView(List<TeamsActionViewResponse> teamsActionViewResponseList,Integer totalNoOfElement,String assignedTeam)
 	{
-// 		for(TeamsActionViewResponse teamsActionViewResponse:teamsActionViewResponseList)
-// 		{
-// 			teamsActionViewResponse.setEntityOwner(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getEntityOwner()));
-// 			teamsActionViewResponse.setAssignedAgent(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getAssignedAgent()));
+	    
+	     logger.info("Asigend Team Name---"+ assignedTeam);
 
-// 		}
-
-// 		return teamsActionViewResponseList;
 List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCounts=new ArrayList<>();
 		for(TeamsActionViewResponse teamsActionViewResponse:teamsActionViewResponseList)
 		{
@@ -538,8 +533,18 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setTotalAr(teamsActionViewResponse.getTotalAr());
 			teamsActionViewResponseWIthTotalCount.setTotalOverDue(teamsActionViewResponse.getTotalOverDue());
 			teamsActionViewResponseWIthTotalCount.setTotalNumberOfElement(totalNoOfElement);
+			
+			if(assignedTeam.equalsIgnoreCase("ALL")){
+				teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
+			}else{
 
-			teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
+				if(teamsActionViewResponse.getAssignedTeam()!=null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam))
+				{
+					teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
+
+				}
+			}
+
 
 		}
 

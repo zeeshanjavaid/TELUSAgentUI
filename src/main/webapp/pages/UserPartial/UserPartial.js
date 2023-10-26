@@ -728,9 +728,9 @@ Partial.createUserForm1_saveAction = function($event) {
     debugger;
 
     var isEmplIdExists;
-    //checkForDublicateEmplId(Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId);
+    // validateFirstLetterOfEmplId(Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId);
     Partial.Variables.checkUserByEmplId.setInput({
-        'emplid': Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId
+        'emplid': Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId.slice(1)
     });
 
 
@@ -755,6 +755,8 @@ Partial.createUserForm1_saveAction = function($event) {
             }
 
             Partial.Widgets.createUserForm1.dataoutput.UserDTO;
+            Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId = Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.slice(1);
+
             Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.workCategory = subComboBox.getSelectedIds();
             debugger;
             if (!validateEmail(Partial.Widgets.createUserForm1.dataoutput.UserDTO.email)) {
@@ -1004,31 +1006,6 @@ function validateEmail(email) {
 };
 
 
-function checkForDublicateEmplId(emplId) {
-
-    Partial.Variables.checkUserByEmplId.setInput({
-        'emplid': emplId
-    });
-
-    Partial.Variables.checkUserByEmplId.invoke({},
-        function(data) {
-            debugger;
-            if (data.content == '') {
-                return true;
-
-            }
-
-        },
-        function(error) {
-            return false;
-
-        });
-
-
-
-
-
-}
 Partial.updateUserClose = function($event, widget) {
     App.Variables.updateUserErrormsg.dataSet.dataValue = "";
 };
