@@ -64,3 +64,7 @@ button.btn.app-button.row-action.row-action-button.undefined.edit.edit-row-butto
 .wm-app .app-datagrid {
     margin-bottom: 10px;
 }
+
+input.form-control.app-textbox.app-dateinput.display-input {
+    height: 2.15em !important;
+}

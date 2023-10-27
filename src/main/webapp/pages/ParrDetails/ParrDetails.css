@@ -140,7 +140,7 @@ text-align: right
         margin: -12px 0px 15px -3px !important;
     }
     .parrlabel1 {
-        width: 15% !important;
+        width: 17% !important; /*earlier it was 15%*/
     }
     .parrIDvalueLabel {
         width: 15% !important;
@@ -158,7 +158,7 @@ text-align: right
         width: 15% !important;
     }
     .parrlabel4 {
-        width: 15% !important;
+        width: 17% !important;  /*earlier it was 15%*/
     }
     .parrValueLabel4 {
         width: 15% !important;
@@ -173,7 +173,7 @@ text-align: right
         width: 15% !important;
     }
     .parrlabel7 {
-        width: 15% !important;
+        width: 17% !important; /*earlier it was 15%*/
     }
     .parrValueLabel7 {
         width: 15% !important;
@@ -215,7 +215,7 @@ text-align: right
 /*view PARR large res*/
 @media only screen and (min-width: 1918px) {
     .parrValuelabel8 {
-        width: 11% !important;
+        width: 8.4% !important; /*earlier it was 11%*/
     }
     
     .recurrenceLableGrid{
@@ -381,4 +381,41 @@ button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-
 .wm-app input.form-control.app-textbox.app-number-input {
     margin-top: -14px;
     margin-left: 4px;
+}
+
+@media only screen and (min-width: 1630px){
+    
+    .parrlabel1{
+        width: auto;
+    }
+    
+    .parrlabel4{
+       width: auto; 
+    }
+    
+    .parrlabel5{
+      width: auto;   
+    }
+    
+    .parrlabel6{
+        width:auto !important;
+    }
+    
+    .parrlabel7{
+        width:auto;
+    }
+    
+    .parrValueLabel5{
+        width:6% !important;
+    }
+    .parrValueLabel7{
+        width:7.3% !important;   
+    }
+    
+    .parrValuelabel8{
+        width: 8.4% !important;
+    }
+   .parrIDvalueLabel{
+    padding-left: 1.3em;
+   }
 }

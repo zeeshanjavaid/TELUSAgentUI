@@ -14764,3 +14764,7 @@ td.app-datagrid-cell.total_OD {
 td.app-datagrid-cell.dispute_Amt {
     text-align: right !important;
 }
+
+td.app-datagrid-cell.parr_Amt {
+    text-align: right !important;
+}

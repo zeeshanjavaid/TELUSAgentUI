@@ -372,3 +372,15 @@ Partial.installmentScheduleTable_dateOnChange = function($event, widget, row) {
     }
 
 };
+
+App.Clear = function() {
+    debugger;
+    Partial.Widgets.ParrTotal.datavalue = Partial.pageParams.parrTotal;
+    Partial.Variables.isCreateScheduleClicked.dataSet.datavalue = false;
+    Partial.Widgets.noOfInstlmnt.datavalue = 0;
+    Partial.Widgets.amountPerInstlmnt.datavalue = 0;
+    Partial.Widgets.RecurrenceDropdown.datavalue = '';
+    Partial.Variables.installmentBANCreateParr.dataSet = [];
+    Partial.Widgets.InstallmentOptionRadio.datavalue = '';
+    Partial.Widgets.Comments.datavalue = '';
+};
