@@ -872,7 +872,7 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Widgets.createdBySelect.datavalue = "";
         Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
         Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
-        Partial.Widgets.EventTypeSelect.datavalue = "";
+        Partial.Widgets.EventTypeSelect.datavalue = "ALL";
 
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
@@ -905,6 +905,7 @@ Partial.applyFilter = function($event, widget) {
     var assignedAgentId = '';
     var categroyForCompleted = '';
     var statusForHistory = '';
+    var eventTypeSelect = '';
 
     if (Partial.Widgets.createdBySelect.datavalue != '') {
         createdBy = Partial.Widgets.createdBySelect.datavalue.emplId;
@@ -918,7 +919,8 @@ Partial.applyFilter = function($event, widget) {
 
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
-        typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+        //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+        typeCode = '';
 
     } else {
         typeCode = Partial.Widgets.typeSelect.datavalue;
@@ -1015,6 +1017,14 @@ Partial.applyFilter = function($event, widget) {
 
         }
 
+
+
+        if (Partial.Widgets.EventTypeSelect.datavalue === 'ALL') {
+            eventTypeSelect = '';
+        } else {
+            eventTypeSelect = Partial.Widgets.EventTypeSelect.datavalue;
+        }
+
         var completionDateTime
 
         if (Partial.Widgets.creationDate.datavalue != "") {
@@ -1024,7 +1034,7 @@ Partial.applyFilter = function($event, widget) {
 
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
-            'businessEntityEventType': Partial.Widgets.EventTypeSelect.datavalue,
+            'businessEntityEventType': eventTypeSelect,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
             'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': statusForHistory,
