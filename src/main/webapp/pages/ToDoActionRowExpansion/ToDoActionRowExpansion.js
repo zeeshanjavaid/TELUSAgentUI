@@ -41,6 +41,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
+            $('.referenceId').hide();
             Partial.Widgets.description.caption = 'Call Outbound  - Reached';
         } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
@@ -55,6 +56,7 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
+            $('.referenceId').hide();
             Partial.Widgets.description.caption = 'Call Outbound  - Not Reached';
         } else if (type == 'CALL-IB') {
             $('.phone').show();
@@ -69,6 +71,7 @@ Partial.onReady = function() {
             $('.callDuration').show();
             $('.blankGrid').show();
             $('.comments').show();
+            $('.referenceId').hide();
             Partial.Widgets.description.caption = 'Call Inbound';
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
@@ -83,6 +86,7 @@ Partial.onReady = function() {
             $('.email').show();
             $('.blankGrid').show();
             $('.comments').show();
+            $('.referenceId').hide();
             Partial.Widgets.description.caption = 'Email Inbound';
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
@@ -97,6 +101,7 @@ Partial.onReady = function() {
             $('.email').hide();
             $('.actionID').show();
             $('.comments').show();
+            $('.referenceId').hide();
             Partial.Widgets.description.caption = 'Follow-up';
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
 
@@ -121,6 +126,7 @@ Partial.onReady = function() {
             $('.phone').hide();
             $('.actionID').show();
             $('.comments').show();
+            $('.referenceId').hide();
         } else if (type == 'RESTORE' || type == 'CEASE' || type == 'SUS' || type == 'SUSPEND') {
             $('.eventID').show();
             $('.activityType').show();
@@ -134,6 +140,7 @@ Partial.onReady = function() {
             $('.callDuration').hide();
             $('.actionID').hide();
             $('.phone').hide();
+            $('.referenceId').hide();
         }
 
     }
@@ -144,6 +151,7 @@ Partial.onReady = function() {
         var type = row.relatedBusinessEntitySubType;
         Partial.Widgets.status.caption = row.relatedBusinessEntityStatus;
         Partial.Widgets.activityType.caption = row.relatedBusinessEntitySubType;
+        Partial.Widgets.referenceId.caption = row.relatedBusinessEntityId;
         populateDataInRowExpansion(row, type);
 
         if (type == 'CALL-OB' && reachedCustomer == 'Y') { // reached outbound call
@@ -159,6 +167,7 @@ Partial.onReady = function() {
             $('.blankGrid').hide();
             $('.activityType').hide();
             $('.noticeEmail').hide();
+            $('.referenceId').show();
             Partial.Widgets.description.caption = 'Call Outbound  - Reached';
         } else if (type == 'CALL-OB' && (reachedCustomer == 'N' || reachedCustomer == undefined)) { // notReached outbound call
             $('.reachedCustomer').show();
@@ -173,6 +182,7 @@ Partial.onReady = function() {
             $('.activityType').hide();
             $('.email').hide();
             $('.noticeEmail').hide();
+            $('.referenceId').show();
             Partial.Widgets.description.caption = 'Call Outbound  - Not Reached';
         } else if (type == 'CALL-IB') {
             $('.phone').show();
@@ -187,6 +197,7 @@ Partial.onReady = function() {
             $('.callDuration').show();
             $('.blankGrid').show();
             $('.comments').show();
+            $('.referenceId').show();
             Partial.Widgets.description.caption = 'Call Inbound';
         } else if (type == 'EM-IN') {
             $('.reachedCustomer').hide();
@@ -201,6 +212,7 @@ Partial.onReady = function() {
             $('.email').show();
             $('.blankGrid').show();
             $('.comments').show();
+            $('.referenceId').show();
             Partial.Widgets.description.caption = 'Email Inbound';
         } else if (type == 'FOLLOWUP') {
             $('.reachedCustomer').hide();
@@ -215,6 +227,7 @@ Partial.onReady = function() {
             $('.email').hide();
             $('.actionID').show();
             $('.comments').show();
+            $('.referenceId').show();
             Partial.Widgets.description.caption = 'Follow-up';
         } else if (type == 'NOTC1-PMTR' || type == 'NOTC2-OD' || type == 'NOTC3-DIST' || type == 'NOTC4-CANL') {
 
@@ -239,6 +252,7 @@ Partial.onReady = function() {
             $('.phone').hide();
             $('.actionID').show();
             $('.comments').show();
+            $('.referenceId').show();
         } else if (type == 'RESTORE' || type == 'CEASE' || type == 'SUS' || type == 'SUSPEND') {
             $('.eventID').show();
             $('.activityType').show();
@@ -252,6 +266,7 @@ Partial.onReady = function() {
             $('.callDuration').hide();
             $('.actionID').hide();
             $('.phone').hide();
+            $('.referenceId').show();
         } else {
             $('.eventID').show();
             $('.activityType').hide();
@@ -265,6 +280,7 @@ Partial.onReady = function() {
             $('.callDuration').hide();
             $('.actionID').hide();
             $('.phone').hide();
+            $('.referenceId').show();
         }
     }
 };
