@@ -728,6 +728,7 @@ Partial.createUserForm1_saveAction = function($event) {
     debugger;
 
     var isEmplIdExists;
+    var isError = false;
     // validateFirstLetterOfEmplId(Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId);
     Partial.Variables.checkUserByEmplId.setInput({
         'emplid': Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId.slice(1)
@@ -759,19 +760,26 @@ Partial.createUserForm1_saveAction = function($event) {
 
             if (Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toUpperCase() && Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 'X' || Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 'T') {
                 Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId = Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toLowerCase() + Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.slice(1);
-            } else {
+            } else if (Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0).toLowerCase() && !(Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 'x' || Partial.Variables.UserManagementServiceCreateUser.dataBinding.UserDTO.emplId.charAt(0) === 't')) {
+
+                App.Variables.createUserErrormsg.dataSet.dataValue = "Empl Id should start with letter x ot t.";
+                isError = true;
 
             }
 
 
             if (!validateEmail(Partial.Widgets.createUserForm1.dataoutput.UserDTO.email)) {
                 App.Variables.createUserErrormsg.dataSet.dataValue = "Please enter valid Email Address";
+                isError = true;
             } else if (isEmplIdExists) {
                 App.Variables.createUserErrormsg.dataSet.dataValue = "Empl ID already exists";
+                isError = true;
             } else if (Partial.Widgets.createUserForm1.dataoutput.UserDTO.firstName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.lastName != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.emplId != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.email != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.role != undefined && Partial.Widgets.createUserForm1.dataoutput.UserDTO.teamId != undefined &&
                 Partial.Widgets.createUserForm1.dataoutput.UserDTO.userId != undefined) {
-                Partial.Variables.UserManagementServiceCreateUser.invoke()
-                Partial.Variables.searchUsers.invoke();
+                if (!isError) {
+                    Partial.Variables.UserManagementServiceCreateUser.invoke();
+                    Partial.Variables.searchUsers.invoke();
+                }
                 //  setTimeout(messageTimeout, 4000);
                 // Partial.Widgets.createUserPage.close();
 
