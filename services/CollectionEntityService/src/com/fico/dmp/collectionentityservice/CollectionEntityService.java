@@ -443,19 +443,7 @@ public class CollectionEntityService {
 	 parrResWithHeader.setResponseObjectList(responseObjectLis);
 	  return parrResWithHeader;
 	  //    if(entityId != null) {
-	  
-	  
-	  
-// 	  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-// 			  builder.toUriString(), "GET","3161");
-// 	  logger.info("PARR TELUS RESPONSE:: " + responseStr);
-// 	  	return objectMapper.readValue(responseStr, ParrResWithHeader.class);
 
-	   //return mapper.readValue(responseStr,
-			 // mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
-       
-      // logger.info("endPointString---"+endPointString);
-  //	return parrService.getPaymentArrangements(entityId,builder.toUriString());
   }
         // @ApiOperation(value = "Returns the AccessLog instance associated with the given id.")
         @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
