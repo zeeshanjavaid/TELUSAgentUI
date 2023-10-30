@@ -75,7 +75,9 @@ Page.clearFilterFields = function($event, widget) {
         'status': '',
         'fromDueDate': '',
         'toDueDate': '',
-        'viewType ': '1'
+        'viewType ': '1',
+        'limit': 20,
+        'offset': 0
     });
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 
@@ -119,7 +121,9 @@ Page.applyFilter = function($event, widget) {
             'status': Page.Widgets.StatusSelect.datavalue,
             'fromDueDate': Page.Widgets.creationDate.datavalue,
             'toDueDate': Page.Widgets.completionDate.datavalue,
-            'viewType ': '1'
+            'viewType ': '1',
+            'limit': 20,
+            'offset': 0
         });
         Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
     }
@@ -219,6 +223,8 @@ Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCARview,
         'viewType ': '1',
+        'limit': 20,
+        'offset': 0
     });
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 };
@@ -299,3 +305,23 @@ Page.statusSelect_ARAgentViewonSuccess = function(variable, data) {
         Page.Variables.statusSelect_ARAgentView.dataSet = Page.Variables.statusSelect_ARAgentView.dataSet;
     }
 };
+
+
+Page.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Page.size = $event.pageSize
+    Page.page = $event.pageNumber
+    Page.RefreshData();
+
+};
+
+Page.RefreshData = function() {
+    debugger;
+    var offset = Page.size * (Page.page - 1);
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'limit': Page.size,
+        'offset': offset
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+
+}
