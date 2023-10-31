@@ -84,12 +84,8 @@ Partial.CreateDisputeClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please provide valid Assigned prime email id";
     } else if (Partial.Widgets.custEmailText.datavalue !== "" && Partial.Widgets.AssignedDisputePrime.datavalue !== "" && (custEmailText.toLowerCase() === AssignedDisputePrime.toLowerCase())) {
         App.Variables.errorMsg.dataSet.dataValue = "Customer email id and Assigned prime email id should be different";
-    } else if (Partial.Widgets.disputeAmt.datavalue !== "" && Partial.Widgets.disputeAmt.datavalue.toString().length > 10) {
+    } else if (Partial.Widgets.disputeAmt.datavalue.toString().length > 10) {
         App.Variables.errorMsg.dataSet.dataValue = "Dispute Amount cannot be greater than 10 digits";
-    } else if (Partial.Widgets.AdjustmentToDate.datavalue != "" && Partial.Widgets.AdjustmentToDate.datavalue != null) {
-        if (Partial.Widgets.AdjustmentToDate.datavalue.toString().length > 10) {
-            App.Variables.errorMsg.dataSet.dataValue = "Adjustment(s) to Date cannot be greater than 10 digits";
-        }
     } else {
 
 

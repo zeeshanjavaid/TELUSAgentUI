@@ -173,6 +173,8 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Reason is mandatory";
     } else if (!Partial.Widgets.productDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
+    } else if (Partial.Widgets.diputeAmtUpdate.datavalue.toString().length > 10) {
+        App.Variables.errorMsg.dataSet.dataValue = "Dispute Amount cannot be greater than 10 digits";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({
@@ -198,7 +200,6 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
         Partial.Variables.updateDisputeService.invoke();
 
     }
-
 };
 Partial.CloseDisputeClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
