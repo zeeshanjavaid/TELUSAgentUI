@@ -75,7 +75,7 @@ Page.clearFilterFields = function($event, widget) {
         'status': '',
         'fromDueDate': '',
         'toDueDate': '',
-        'viewType ': '1',
+        'viewType': '1',
         'limit': 20,
         'offset': 0
     });
@@ -121,7 +121,7 @@ Page.applyFilter = function($event, widget) {
             'status': Page.Widgets.StatusSelect.datavalue,
             'fromDueDate': Page.Widgets.creationDate.datavalue,
             'toDueDate': Page.Widgets.completionDate.datavalue,
-            'viewType ': '1',
+            'viewType': '1',
             'limit': 20,
             'offset': 0
         });
@@ -222,7 +222,7 @@ Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
         'workCategory': finalWCARview,
-        'viewType ': '1',
+        'viewType': '1',
         'limit': 20,
         'offset': 0
     });
