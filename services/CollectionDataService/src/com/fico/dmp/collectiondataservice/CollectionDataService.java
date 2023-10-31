@@ -533,13 +533,16 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setTotalAr(teamsActionViewResponse.getTotalAr());
 			teamsActionViewResponseWIthTotalCount.setTotalOverDue(teamsActionViewResponse.getTotalOverDue());
 			teamsActionViewResponseWIthTotalCount.setTotalNumberOfElement(totalNoOfElement);
-			
-			if(assignedTeam.equalsIgnoreCase("ALL")){
-				teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
-			}else if(teamsActionViewResponse.getAssignedTeam()!= null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam)){
+			if(assignedTeam != null) {
+				if(assignedTeam.equalsIgnoreCase("ALL")){
 					teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
-
-			}else {
+				}else {
+					if(teamsActionViewResponse.getAssignedTeam()!= null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam)){
+						teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
+				}
+				}
+				}else {
+			     logger.info("In else block");
 				teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
 			}
 
