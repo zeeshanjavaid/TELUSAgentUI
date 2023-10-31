@@ -56,19 +56,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "entityOwner",
-      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
-      "type" : "string"
-    }, {
-      "target" : "workCategory",
-      "value" : "bind:Variables.workCategoryValues_ARAgent.dataSet[$i].code",
-      "type" : "string"
-    }, {
-      "target" : "viewType",
-      "value" : "1",
-      "type" : "string"
-    } ],
+    "dataBinding" : [ ],
     "type" : "com.fico.telus.model.TeamsActionViewResponseWIthTotalCount",
     "service" : "CollectionDataService",
     "operation" : "getActionViewByTeam",

@@ -514,7 +514,7 @@ private List<TeamsActionViewResponseWIthTotalCount> setEntOwnerAndAssignedIdOfAc
 	     logger.info("Asigend Team Name---"+ assignedTeam);
 
 List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCounts=new ArrayList<>();
-		for(TeamsActionViewResponse teamsActionViewResponse:teamsActionViewResponseList)
+	for(TeamsActionViewResponse teamsActionViewResponse:teamsActionViewResponseList)
 		{
 			TeamsActionViewResponseWIthTotalCount teamsActionViewResponseWIthTotalCount=new TeamsActionViewResponseWIthTotalCount();
 			teamsActionViewResponseWIthTotalCount.setActionId(teamsActionViewResponse.getActionId());
@@ -536,15 +536,12 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			
 			if(assignedTeam.equalsIgnoreCase("ALL")){
 				teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
-			}else{
-
-				if(teamsActionViewResponse.getAssignedTeam()!=null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam))
-				{
+			}else if(teamsActionViewResponse.getAssignedTeam()!= null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam)){
 					teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
 
-				}
+			}else {
+				teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
 			}
-
 
 		}
 
