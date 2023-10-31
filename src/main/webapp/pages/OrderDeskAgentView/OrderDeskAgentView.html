@@ -65,13 +65,13 @@
                     <wm-label caption="From Due Date" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-date name="creationDate" id="creationDate" placeholder=""></wm-date>
+                    <wm-date name="creationDate" id="creationDate" placeholder="" datepattern="yyyy-MM-dd"></wm-date>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="toDateGrid">
                     <wm-label caption="To Due Date" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-date name="completionDate" id="creationDate" placeholder=""></wm-date>
+                    <wm-date name="completionDate" id="creationDate" placeholder="" datepattern="yyyy-MM-dd"></wm-date>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" class="blankGrid" name="gridcolumn4_1"></wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="30.7%">
@@ -99,7 +99,7 @@
                             <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                         <wm-table-column binding="actionType" caption="Action Type" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="dueDate" caption="Due Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="MM/dd/yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="dueDate" caption="Due Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="status" caption="Status" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="assignedTeam" caption="Assigned Team" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="assignedAgent" caption="Assigned Person" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>

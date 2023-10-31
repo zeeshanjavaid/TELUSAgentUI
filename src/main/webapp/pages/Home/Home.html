@@ -49,8 +49,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId"
+                        datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                     <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"-->
                     <!--    datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>-->
                 </wm-gridcolumn>
@@ -71,8 +71,7 @@
                     </wm-container>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true"
-                        style="display: block; width: 145%;"></wm-select>
+                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -116,8 +115,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId" datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerBVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId"
+                        datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerBVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
                     <wm-label caption="Billing System*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -157,23 +156,23 @@
                     <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
                 </wm-table-column>
                 <wm-table-column binding="entityName" caption="ENT Name" width="213px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="currentAr" caption="CURR AR" width="82px" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="currentAr" caption="CURR AR" width="82px" col-class="CURR_AR" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('currentAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar30Days" caption="30D AR" widget-type="label" width="82px" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="ar30Days" caption="30D AR" widget-type="label" width="82px" col-class="thirtyD_AR" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('ar30Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar60Days" caption="60D AR" widget-type="label" width="82px" edit-widget-type="number " type="double
+                <wm-table-column binding="ar60Days" caption="60D AR" widget-type="label" width="82px" col-class="sixtyD_AR" edit-widget-type="number " type="double
                         " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('ar60Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR" width="82px" edit-widget-type="number " type="double " show="true " readonly="false">
+                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR" width="82px" col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('ar90DaysPlus') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalOverDue" caption="Total OD " widget-type="label" width="81px" edit-widget-type="number " type="double " show="true " readonly="false">
+                <wm-table-column binding="totalOverDue" caption="Total OD " widget-type="label" width="81px" col-class="total_OD" edit-widget-type="number " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalAr" caption="Total AR " widget-type="label" width="77px" edit-widget-type="number
+                <wm-table-column binding="totalAr" caption="Total AR " widget-type="label" width="77px" col-class="total_AR" edit-widget-type="number
                         " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
@@ -188,8 +187,8 @@
                 <wm-table-column binding="totalDelinquentBans " caption="Dlq BANs " width="65px" edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="entityType " caption="ENT Type " width="75px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId " caption="ENT Owner " width="98px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
-                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
         <wm-layoutgrid id="banViewTableGrid
@@ -210,25 +209,25 @@
                 <wm-table-column binding="billingSystem " caption="BILL SYS " width="75px " edit-widget-type="text " type="string
                         " show="true " readonly="false "></wm-table-column>
                 <wm-table-column binding="currentAr" caption="CURR AR " width="62px " edit-widget-type="number " type="double " show="true " readonly="false
-                        ">
+                        " col-class="CURR_AR">
                     <wm-label caption="bind:row.getProperty('currentAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar30Days" caption="30D AR " width="66px " edit-widget-type="number " type="double " show="true " readonly="false ">
+                <wm-table-column binding="ar30Days" caption="30D AR " width="66px " edit-widget-type="number " type="double " show="true " readonly="false " col-class="thirtyD_AR">
                     <wm-label caption="bind:row.getProperty('ar30Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="ar60Days" caption="60D AR " width="50px " edit-widget-type="number
-                        " type="double " show="true " readonly="false ">
+                        " type="double " show="true " readonly="false " col-class="sixtyD_AR">
                     <wm-label caption="bind:row.getProperty('ar60Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR " width="69px " edit-widget-type="number " type="double " show="true " readonly="false
+                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR " width="69px " col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false
                         ">
                     <wm-label caption="bind:row.getProperty('ar90DaysPlus') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalOverDue" caption="Total OD" width="64px " edit-widget-type="number " type="double " show="true " readonly="false ">
+                <wm-table-column binding="totalOverDue" caption="Total OD" width="64px " edit-widget-type="number " type="double " show="true " readonly="false " col-class="total_OD">
                     <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="totalAr" caption="Total AR" width="68px " edit-widget-type="number
-                        " type="double " show="true " readonly="false ">
+                        " type="double " show="true " readonly="false " col-class="total_AR">
                     <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="disputeAmount" caption="Dispute $ " width="70px " edit-widget-type="number " type="double " show="true " readonly="false
@@ -247,8 +246,8 @@
                 <wm-table-column binding="entityOwnerId " caption="ENT Owner " width="69px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
                 <wm-table-column binding="assignedTeam " caption="Assigned Team " width="80px
                         " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
         </wm-layoutgrid>
     </wm-content>

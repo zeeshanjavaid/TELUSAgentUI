@@ -99,3 +99,19 @@ input#WorkCategoryMutliSelForBanView {
         height: 100%;
 }*/
 
+/* Table data right aigned */
+td.app-datagrid-cell.CURR_AR {
+    text-align: right!important;
+}
+
+td.app-datagrid-cell.thirtyD_AR {
+    text-align: right !important;
+}
+
+td.app-datagrid-cell.sixtyD_AR {
+    text-align: right !important;
+}
+
+td.app-datagrid-cell.ninetyD_AR {
+    text-align: right !important;
+}
