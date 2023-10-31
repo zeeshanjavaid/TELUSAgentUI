@@ -117,7 +117,7 @@
                             <wm-table-column binding="sequenceId" caption="Installment ID" width="130px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="date" caption="Date" width="150px" edit-widget-type="date" type="date" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true" readonly="false"></wm-table-column>
                             <wm-table-column binding="amount" caption="Installment Amt" width="120px" edit-widget-type="text" type="string" show="true" readonly="false">
-                             <wm-label caption="bind:row.getProperty('amount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                                <wm-label caption="bind:row.getProperty('amount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                             </wm-table-column>
                             <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         </wm-table>
@@ -210,12 +210,12 @@
                     <wm-gridcolumn columnwidth="12" name="gridcolumn51">
                         <wm-table name="getInstallmentScheduleTable" title="" dataset="bind:Variables.ParrInstallmentSchedule.dataSet" navigation="Classic" class="getInstallment-reneTable" on-rowupdate="getInstallmentScheduleTableRowupdate($event, widget, row)"
                             showrowindex="false" on-rowinsert="getInstallmentScheduleTableRowinsert($event, widget, row)" navigationalign="right">
-                            <wm-table-column binding="sequenceId" caption="Installment ID" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-                            <wm-table-column binding="date" caption="Date" edit-widget-type="date" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date" show="true"
-                                showdropdownon="button" dataentrymode="picker" editdatepattern="yyyy-MM-dd" readonly="false" on-change="getInstallmentScheduleTable_dateOnChange($event, widget, row)"></wm-table-column>
-                            <wm-table-column binding="amount" caption="Installment Amt" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-                            <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                            <wm-table-column binding="sequenceId" caption="Installment ID" width="122px" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="date" caption="Date" width="164px" col-class="install_Date" edit-widget-type="date" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" defaultvalue="bind:Variables.ParrInstallmentSchedule.dataSet[$i].date"
+                                show="true" showdropdownon="button" dataentrymode="picker" editdatepattern="yyyy-MM-dd" readonly="false" on-change="getInstallmentScheduleTable_dateOnChange($event, widget, row)"></wm-table-column>
+                            <wm-table-column binding="amount" caption="Installment Amt" width="171px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="evaluationResult" caption="Evaluation Result" width="189px" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="rowOperations" caption="Actions" width="90px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                             <wm-table-action key="addNewRow" display-name="Add +" show="true" class="btn-default" iconclass="" title="New" action="addNewRow();getInstallmentScheduleTable_addNewRowAction($event)" shortcutkey="" disabled="false"
                                 widget-type="button" position="header"></wm-table-action>
                             <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>

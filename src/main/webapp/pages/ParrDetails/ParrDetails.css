@@ -419,3 +419,11 @@ button.btn.app-button.row-action.row-action-button.btn-primary.btn-xs.edit.edit-
     padding-left: 1.3em;
    }
 }
+
+input.form-control.app-textbox.app-dateinput.display-input {
+    height: 2.15em;
+}
+
+td.app-datagrid-cell.install_Date.editable-expression.cell-editing.form-group {
+    padding-left: 0.5em !important;
+}
