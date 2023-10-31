@@ -351,7 +351,7 @@
             </wm-gridrow>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="" iconclass="wi wi-file-text" name="EditNotSentdialog" width="65%" on-opened="EditNotSentdialogOpened($event, widget)" on-close="EditNotSentdialogClose($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="" id="EditNotSentdialogPage" iconclass="wi wi-file-text" name="EditNotSentdialog" width="65%" on-opened="EditNotSentdialogOpened($event, widget)" on-close="EditNotSentdialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid4">
             <wm-message name="errormessage" type="error" show="bind:Variables.popUperrorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.popUperrorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
             <wm-gridrow name="gridrow5_1">
@@ -408,7 +408,7 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="98%" navigationalign="right" on-beforeformrender="getEntityBanDetailsTable1Beforeformrender($event, widget, row, $operation)"
                         on-beforedatarender="getEntityBanDetailsTable1Beforedatarender(widget, $data, $columns)" on-formrender="getEntityBanDetailsTable1Formrender($event, widget, formWidgets, $operation)" on-beforerowinsert="getEntityBanDetailsTable1Beforerowinsert($event, widget, row, options)"
-                        on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)">
+                        on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" class="getEntityBanDetailsTableEdit1" id="getEntityBanDetailsTableEdit1ForTest" gridfirstrowselect="false">
                         <wm-table-column binding="banId" caption="BAN#" width="105px" col-class="t" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="315px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="102px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -535,7 +535,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="98%" navigationalign="right">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" selectAll='ture' radioselect="false" width="98%" navigationalign="right" class="getEntityBanDetailsTableEdit2"
+                        id="getEntityBanDetailsTableEdit2ForTest">
                         <wm-table-column binding="banId" caption="BAN#" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="315px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="102px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>

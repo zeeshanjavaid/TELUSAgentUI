@@ -1084,6 +1084,7 @@ Partial.userCriteriaKeypress = function($event, widget) {
 Partial.UserManagementServiceUpdateUseronSuccess = function(variable, data) {
     debugger;
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
+    // App.refreshTeamManager();
     Partial.Variables.getCurrentManager.dataSet = null;
     Partial.Variables.successMessage.dataSet.dataValue = "User updated successfully";
 
@@ -1100,7 +1101,10 @@ Partial.TELUSAgentUIDBGetUseronSuccess = function(variable, data) {
 
 Partial.UserManagementServiceCreateUseronSuccess = function(variable, data) {
 
+
+
     setTimeout(messageTimeout, 4000);
+    //  App.refreshTeamManager();
     Partial.Widgets.createUserPage.close();
     Partial.Variables.successMessage.dataSet.dataValue = "User created successfully";
 

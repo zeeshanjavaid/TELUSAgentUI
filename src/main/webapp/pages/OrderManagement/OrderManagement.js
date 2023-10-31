@@ -345,6 +345,9 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
     debugger;
 
+
+
+    getBanListForAutoSelect(row);
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
@@ -393,6 +396,9 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.BanListRefIds.dataSet = [];
+
+    //get checked bans
+
 
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
     Partial.selectedBanList = [];
@@ -614,7 +620,7 @@ Partial.editSentcancelbuttonClick = function($event, widget) {
     Partial.Widgets.EditAndFulfillSentdialog.close();
 };
 Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
-
+    debugger;
     var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var isAlreadySusOrRes = '';
@@ -967,6 +973,8 @@ function getBanDetails() {
     Partial.Variables.CollectionDataServiceGetEntityBanDetails.invoke();
 
 }
+
+
 Partial.update_ActionDialogOpened = function($event, widget) {
 
     if (Partial.Variables.newlyAssignedPerson.dataset == undefined) {
@@ -1182,35 +1190,106 @@ Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
 
 Partial.getOrderdMgmtHistoryonSuccess = function(variable, data) {
     debugger;
+    //  var bans = Partial.Variables.getOrderdMgmtHistory.dataSet[0].banList;
+
+    // var bans = data[0].banList;
+
+
+
+
+    // if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
+
+    //     var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
+    //     for (let j = 0; j < bans.length; j++) {
+
+    //         for (let i = 0; i < tr.length; i++) {
+    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+    //                 // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
+    //                 tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+
+    //                 //   $(this).parent().parent().addClass("selected")
+    //             }
+    //         }
+    //     }
+
+    // }
+    // if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
+    //     var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
+    //     for (let j = 0; j < bans.length; j++) {
+
+    //         for (let i = 0; i < tr.length; i++) {
+    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+    //                 cb.trigger('click');
+
+    //                 //   $(this).parent().parent().addClass("selected")
+    //             }
+    //         }
+    //     }
+    // }
+
+
+
+
+
 };
+
 
 Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
     debugger;
 
+    var bans = data[0].banList;
 
-    // data[0].banList.toString.match(/[^,]+,[^,]+,[^,]+/g);
 
 
+
+    if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
+
+        var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
+        for (let j = 0; j < bans.length; j++) {
+
+            for (let i = 0; i < tr.length; i++) {
+                if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+                    // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
+                    var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+                    cb.trigger('click');
+                    //   $(this).parent().parent().addClass("selected")
+                }
+            }
+        }
+
+    }
+    if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
+        var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
+        for (let j = 0; j < bans.length; j++) {
+
+            for (let i = 0; i < tr.length; i++) {
+                if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+                    var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+                    cb.trigger('click');
+
+                    //   $(this).parent().parent().addClass("selected")
+                }
+            }
+        }
+    }
 
 
 };
 
-Partial.getOrderdMgmtHistoryonBeforeUpdate = function(variable, inputData, options) {
 
-};
-Partial.getEntityBanDetailsTable1Beforeformrender = function($event, widget, row, $operation) {
+function getBanListForAutoSelect(row) {
+
     debugger;
-};
-Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $columns) {
-    debugger;
-};
-Partial.getEntityBanDetailsTable1Formrender = function($event, widget, formWidgets, $operation) {
-    debugger;
-};
-Partial.getEntityBanDetailsTable1Beforerowinsert = function($event, widget, row, options) {
-    debugger;
-};
-Partial.getEntityBanDetailsTable1Datarender = function(widget, $data) {
-    debugger;
 
-};
+
+    Partial.Variables.getOrderdMgmtHistory.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'relatedBusinessEntityId': row.id,
+        'relatedBusinessEntityType': 'CollectionTreatmentStep'
+
+    });
+
+    Partial.Variables.getOrderdMgmtHistory.invoke();
+
+}

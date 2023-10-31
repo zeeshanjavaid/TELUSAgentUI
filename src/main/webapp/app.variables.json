@@ -162,7 +162,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "roles",
-      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
+      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM Manager",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
@@ -1910,6 +1910,21 @@
       "dataValue" : ""
     } ],
     "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "getUserWhoIsManager" : {
+    "_id" : "wm-getUserWhoIsManager-wm.Variable-1698748612781",
+    "name" : "getUserWhoIsManager",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
+    } ],
+    "type" : "entry",
     "isList" : true,
     "saveInPhonegap" : false
   },

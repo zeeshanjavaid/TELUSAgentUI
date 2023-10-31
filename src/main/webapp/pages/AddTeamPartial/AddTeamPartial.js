@@ -52,7 +52,8 @@ Partial.onReady = function() {
     Partial.statusData = [];
 
 
-    Partial.Variables.executeGetTeamManagerName.dataSet.forEach(function(item) {
+
+    Partial.Variables.getUserWhoIsManager.dataSet.forEach(function(item) {
         Partial.statusData.push({
 
             id: item.userId,
@@ -574,3 +575,8 @@ Partial.saveManagerOnTeamCreateVaronSuccess = function(variable, data) {
 
 
 };
+
+App.refreshTeamManager = function() {
+    debugger;
+    Partial.Variables.getUserWithManager.invoke();
+}

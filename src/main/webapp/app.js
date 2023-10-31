@@ -1429,6 +1429,8 @@ App.getWorkCatByEmplIdForMultiSelectonSuccess = function(variable, data) {
 
 App.executeGetTeamManagerNameonSuccess = function(variable, data) {
 
+    App.Variables.getUserWhoIsManager.dataSet = data;
+
     debugger;
 
 };

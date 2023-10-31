@@ -3101,6 +3101,33 @@
     },
     "package" : "com.fico.dmp.telusagentuidb.TeamUser"
   },
+  "getUserWithManager" : {
+    "_id" : "wm-getUserWithManager-wm.ServiceVariable-1698750142911",
+    "name" : "getUserWithManager",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "roles",
+      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM Manager",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamManagerName",
+    "operationId" : "QueryExecutionController_executeGetTeamManagerName",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "leftUserList" : {
     "_id" : "wm-leftUserList-wm.Variable-1662623677018",
     "name" : "leftUserList",
