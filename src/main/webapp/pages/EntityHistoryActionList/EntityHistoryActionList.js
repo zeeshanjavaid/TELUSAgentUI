@@ -400,10 +400,7 @@ function emailInboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
-    }
-
-    // email field is mandatory for email inbound call
-    if (Partial.Widgets.mandatoryEmail._datavalue == "" || Partial.Widgets.mandatoryEmail._datavalue == undefined) {
+    } else if (Partial.Widgets.mandatoryEmail._datavalue == "" || Partial.Widgets.mandatoryEmail._datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
     } else {
         if (validateEmail(Partial.Widgets.mandatoryEmail._datavalue) && !Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {

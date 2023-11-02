@@ -348,6 +348,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
 
 
     getBanListForAutoSelect(row);
+    debugger;
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
@@ -1238,10 +1239,67 @@ Partial.getOrderdMgmtHistoryonSuccess = function(variable, data) {
 Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
     debugger;
 
+    // var bans = data[0].banList;
+
+
+
+
+    // if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
+
+    //     var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
+    //     for (let j = 0; j < bans.length; j++) {
+
+    //         for (let i = 0; i < tr.length; i++) {
+    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+    //                 // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
+    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+    //                 cb.trigger('click');
+    //                 //   $(this).parent().parent().addClass("selected")
+    //             }
+    //         }
+    //     }
+
+    // }
+    // if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
+    //     var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
+    //     for (let j = 0; j < bans.length; j++) {
+
+    //         for (let i = 0; i < tr.length; i++) {
+    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
+    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+    //                 cb.trigger('click');
+
+    //                 //   $(this).parent().parent().addClass("selected")
+    //             }
+    //         }
+    //     }
+    // }
+
+
+};
+
+
+function getBanListForAutoSelect(row) {
+
+    debugger;
+
+
+    Partial.Variables.getBanListFromHisForPreselect.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'relatedBusinessEntityId': row.id,
+        'relatedBusinessEntityType': 'CollectionTreatmentStep'
+
+    });
+
+    Partial.Variables.getBanListFromHisForPreselect.invoke();
+
+}
+
+Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
+
+    debugger;
+
     var bans = data[0].banList;
-
-
-
 
     if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
 
@@ -1274,22 +1332,4 @@ Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
         }
     }
 
-
 };
-
-
-function getBanListForAutoSelect(row) {
-
-    debugger;
-
-
-    Partial.Variables.getOrderdMgmtHistory.setInput({
-        'collectionEntityId': Partial.pageParams.entityId,
-        'relatedBusinessEntityId': row.id,
-        'relatedBusinessEntityType': 'CollectionTreatmentStep'
-
-    });
-
-    Partial.Variables.getOrderdMgmtHistory.invoke();
-
-}

@@ -3503,6 +3503,52 @@
       } ]
     }
   },
+  "getRoleByUserEmplId" : {
+    "name" : "getRoleByUserEmplId",
+    "description" : "getRoleByUserEmplId",
+    "version" : "V2",
+    "queryString" : "select distinct(r.role) from `ROLE` r\nINNER JOIN `USER_ROLE` ur on ur.roleId = r.Id\nINNER JOIN USER u on u.id=ur.userId\nwhere u.active = true\nand u.emplId = :emplId\norder by r.role",
+    "countQueryString" : "select count(*) from (select distinct(r.role) from `ROLE` r\nINNER JOIN `USER_ROLE` ur on ur.roleId = r.Id\nINNER JOIN USER u on u.id=ur.userId\nwhere u.active = true\nand u.emplId = :emplId\norder by r.role) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "emplId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "t32343422",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetRoleByUserEmplIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getRoleByUserId" : {
     "name" : "getRoleByUserId",
     "description" : "getRoleByUserId",

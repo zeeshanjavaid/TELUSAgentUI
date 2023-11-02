@@ -389,6 +389,8 @@ public class CollectionTreatmentService {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
                 if(collectionActivityLog.getBillingAccountIdRefs()!=null) {
                     banIds = collectionActivityLog.getBillingAccountIdRefs().stream().map(a -> a.getId().toString()).collect(Collectors.toList());
+                    
+                    logger.info("Ban IDs for History"+banIds);
 
                     List<CollectionBillingAccountRef> billingAccountRef = collectionEntityService.getBillingAccountRef(null, null, null, null, null, String.join(",", banIds));
                   //  banRefIds = billingAccountRef.stream().map(a -> a.getId()).collect(Collectors.toList());

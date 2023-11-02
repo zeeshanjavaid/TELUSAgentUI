@@ -923,6 +923,35 @@ public class QueryExecutionController {
         return new IntegerWrapper(_result);
     }
 
+    @RequestMapping(value = "/queries/getRoleByUserEmplId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getRoleByUserEmplId")
+    public Page<GetRoleByUserEmplIdResponse> executeGetRoleByUserEmplId(@RequestParam(value = "emplId") String emplId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getRoleByUserEmplId");
+        Page<GetRoleByUserEmplIdResponse> _result = queryService.executeGetRoleByUserEmplId(emplId, pageable);
+        LOGGER.debug("got the result for named query: getRoleByUserEmplId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getRoleByUserEmplId")
+    @RequestMapping(value = "/queries/getRoleByUserEmplId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetRoleByUserEmplId(@RequestParam(value = "emplId") String emplId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getRoleByUserEmplId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getRoleByUserEmplId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetRoleByUserEmplId(emplId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/getUserListByTeamId", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "This query is used to retrieve the user list using Team Id")

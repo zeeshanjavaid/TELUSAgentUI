@@ -887,6 +887,30 @@ ur.userId=u.id  join ROLE r on ur.roleId= r.id where ur.roleId = :roleId and r.r
     <query-param name="GroupId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getRoleByUserEmplId">
+        <![CDATA[
+        select distinct(r.role) from `ROLE` r
+INNER JOIN `USER_ROLE` ur on ur.roleId = r.Id
+INNER JOIN USER u on u.id=ur.userId
+where u.active = true
+and u.emplId = :emplId
+order by r.role
+        ]]>
+    <query-param name="emplId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getRoleByUserEmplId__count">
+        <![CDATA[
+        select count(*) from (select distinct(r.role) from `ROLE` r
+INNER JOIN `USER_ROLE` ur on ur.roleId = r.Id
+INNER JOIN USER u on u.id=ur.userId
+where u.active = true
+and u.emplId = :emplId
+order by r.role) wmTempTable
+        ]]>
+    <query-param name="emplId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="getUserListByTeamId">
         <![CDATA[
         select distinct(USER.emplId) as emplId, USER.firstName as firstName, USER.lastName as lastName from TEAM_USER 

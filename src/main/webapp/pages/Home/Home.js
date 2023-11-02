@@ -62,7 +62,7 @@ Page.onReady = function() {
     //     // cascadeSelect: true,
     //     // collapse: true
     // });
-
+    Page.Variables.getLoggedInUserTeamForBan.invoke();
 
 
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
@@ -145,6 +145,73 @@ Page.banViewButtonClick = function($event, widget) {
     // display filter grid for ban view and hide for entity view
     $('#filterGridBanView').show();
     $('#filterGridEntityView').hide();
+
+    debugger;
+    var entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    // Page.Variables.workCategoryValues_HomeBV.dataSet = data;
+
+    if (Page.Variables.workCategoryValues_HomeBV.dataSet != undefined) {
+        Page.Variables.workCategoryValues_HomeBV.dataSet.forEach(workCategoryData);
+        workCategoryDataArray = [];
+        Page.Variables.workCategoryValues_HomeBV.dataSet.forEach(function(item) {
+            workCategoryDataArray.push(item.code)
+
+        });
+    }
+
+    if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
+        Page.Variables.portfolioEntityView_home.dataSet.forEach(portfolioData);
+    }
+
+    if (Page.Variables.billingSystemEntityView_home.dataSet != undefined) {
+        Page.Variables.billingSystemEntityView_home.dataSet.forEach(billingSystemData);
+    }
+
+    if (Page.Variables.CollStatus_home.dataSet != undefined) {
+        Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
+    }
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWCbanview = workCategoryDataArray.join("|");
+    } else {
+        var finalWCbanview = workCategoryDataArray;
+    }
+
+    if (portfolioDataArray.length > 1) {
+        var portfolioview = portfolioDataArray;
+    }
+
+    if (billingSystemDataArray.length >= 1) {
+        var billingSystemview = billingSystemDataArray;
+    }
+
+    if (collStatusDataArray.length > 1) {
+        var collStatusDataview = collStatusDataArray;
+    }
+
+    var teamName = Page.Variables.getLoggedInUserTeamForBanView.dataSet;
+
+    for (let i = 0; i < teamName.length; i++) {
+        if (teamName[i].teamId === 'TIG AR') {
+            entityOwner = null;
+        }
+    }
+
+
+
+    // api call to display data in table for ban view
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+        'entityOwner': entityOwner,
+        'workCategory': finalWCbanview,
+        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
+        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
+        'portfolio': 'ALL', //portfolioview,
+        'billingSystem': 'CES9', //billingSystemview,
+        'collectionStatus': 'ALL' //collStatusDataview
+
+    });
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
 };
 
@@ -437,6 +504,7 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     debugger;
+    var entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.workCategoryValues_HomeEV.dataSet = data;
 
     if (data != undefined) {
@@ -480,9 +548,17 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
     // api call to display data in table for entity view
 
+    var teamName = Page.Variables.getLoggedInUserTeam.dataSet;
+
+    for (let i = 0; i < teamName.length; i++) {
+        if (teamName[i].teamId === 'TIG AR') {
+            entityOwner = null;
+        }
+    }
+
 
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': entityOwner,
         'workCategory': finalWCentityview,
         /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
         'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
@@ -496,60 +572,76 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
 Page.workcategoriesByEmpId_homeBVonSuccess = function(variable, data) {
     debugger;
+    // var entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.workCategoryValues_HomeBV.dataSet = data;
 
-    if (data != undefined) {
-        data.forEach(workCategoryData);
-        workCategoryDataArray = [];
-        data.forEach(function(item) {
-            workCategoryDataArray.push(item.code)
+    // if (data != undefined) {
+    //     data.forEach(workCategoryData);
+    //     workCategoryDataArray = [];
+    //     data.forEach(function(item) {
+    //         workCategoryDataArray.push(item.code)
 
-        });
-    }
+    //     });
+    // }
 
-    if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
-        Page.Variables.portfolioEntityView_home.dataSet.forEach(portfolioData);
-    }
+    // if (Page.Variables.portfolioEntityView_home.dataSet != undefined) {
+    //     Page.Variables.portfolioEntityView_home.dataSet.forEach(portfolioData);
+    // }
 
-    if (Page.Variables.billingSystemEntityView_home.dataSet != undefined) {
-        Page.Variables.billingSystemEntityView_home.dataSet.forEach(billingSystemData);
-    }
+    // if (Page.Variables.billingSystemEntityView_home.dataSet != undefined) {
+    //     Page.Variables.billingSystemEntityView_home.dataSet.forEach(billingSystemData);
+    // }
 
-    if (Page.Variables.CollStatus_home.dataSet != undefined) {
-        Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
-    }
+    // if (Page.Variables.CollStatus_home.dataSet != undefined) {
+    //     Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
+    // }
 
-    if (workCategoryDataArray.length > 1) {
-        var finalWCbanview = workCategoryDataArray.join("|");
-    } else {
-        var finalWCbanview = workCategoryDataArray;
-    }
+    // if (workCategoryDataArray.length > 1) {
+    //     var finalWCbanview = workCategoryDataArray.join("|");
+    // } else {
+    //     var finalWCbanview = workCategoryDataArray;
+    // }
 
-    if (portfolioDataArray.length > 1) {
-        var portfolioview = portfolioDataArray;
-    }
+    // if (portfolioDataArray.length > 1) {
+    //     var portfolioview = portfolioDataArray;
+    // }
 
-    if (billingSystemDataArray.length >= 1) {
-        var billingSystemview = billingSystemDataArray;
-    }
+    // if (billingSystemDataArray.length >= 1) {
+    //     var billingSystemview = billingSystemDataArray;
+    // }
 
-    if (collStatusDataArray.length > 1) {
-        var collStatusDataview = collStatusDataArray;
-    }
+    // if (collStatusDataArray.length > 1) {
+    //     var collStatusDataview = collStatusDataArray;
+    // }
 
-    // api call to display data in table for ban view
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
-        'workCategory': finalWCbanview,
-        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
-        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
-        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': 'ALL', //portfolioview,
-        'billingSystem': 'CES9', //billingSystemview,
-        'collectionStatus': 'ALL' //collStatusDataview
+    // var teamName = Page.Variables.getLoggedInUserTeam.dataSet;
 
-    });
-    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+    // for (let i = 0; i < teamName.length; i++) {
+    //     if (teamName[i].teamId === 'TIG AR') {
+    //         entityOwner = null;
+    //     }
+    // }
+
+
+    // if (Page.Variables.getLoggedInUserRole.dataSet[0].role === "") {
+    //     entityOwner = null;
+    // } else {
+    //     entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+    // }
+
+    // // api call to display data in table for ban view
+    // Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+    //     'entityOwner': entityOwner,
+    //     'workCategory': finalWCbanview,
+    //     /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
+    //     'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
+    //     'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
+    //     'portfolio': 'ALL', //portfolioview,
+    //     'billingSystem': 'CES9', //billingSystemview,
+    //     'collectionStatus': 'ALL' //collStatusDataview
+
+    // });
+    // Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
 };
 
