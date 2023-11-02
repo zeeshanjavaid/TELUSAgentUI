@@ -205,7 +205,13 @@ private List<CollectionPaymentArrangement> setCreatedAndUpdatedBy(List<Collectio
 		for(CollectionPaymentArrangement collectionPaymentArrangement:collectionPaymentArrangements)
 		{
 			collectionPaymentArrangement.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionPaymentArrangement.getAuditInfo().getCreatedBy()));
-			collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy()));
+			if(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy() != null) {
+				if(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy().equals("tcm-collections-parr-eval-batch")) {
+					collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy());
+				}else {
+					collectionPaymentArrangement.getAuditInfo().setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionPaymentArrangement.getAuditInfo().getLastUpdatedBy()));
+				}
+			}
 
 		}
 
