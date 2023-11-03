@@ -26,6 +26,9 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
+
+    Page.Variables.getLoggedInUserTeamForBanView.invoke();
+
     Page.Variables.UserLoggedInVar_OrderDesk.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.AssignedTeamSelect.datavalue = "ALL";
     Page.Widgets.AssignedPersonSelect.datavalue = "ALL";
@@ -189,6 +192,7 @@ Page.getUserListByTeamId_OrderDeskonSuccess = function(variable, data) {
 
 Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
     debugger;
+    var entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.workCategoryValues_OrderDesk.dataSet = data;
     if (data != undefined) {
         data.forEach(workCategoryData);
@@ -213,8 +217,16 @@ Page.workcategoriesByEmpId_OrderDeskonSuccess = function(variable, data) {
         Page.Variables.statusSelect_orderDeskView.dataSet.forEach(statusTypeData);
     }
 
+    var teamName = Page.Variables.getLoggedInUserTeamForBanView.dataSet;
+
+    for (let i = 0; i < teamName.length; i++) {
+        if (teamName[i].teamId === 'TIG AR') {
+            entityOwner = null;
+        }
+    }
+
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': entityOwner,
         'workCategory': finalWCODview,
         'viewType ': '2',
         'limit': 20,

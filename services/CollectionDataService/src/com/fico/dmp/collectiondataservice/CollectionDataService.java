@@ -441,7 +441,7 @@ public class CollectionDataService {
     		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl + URIConstant.ApiMapping.ACTION_VIEW_BY_TEAM)
     			                          .queryParamIfPresent("assignedAgent", Optional.ofNullable(assignedAgent))
     			                          .queryParamIfPresent("assignedTeam", Optional.ofNullable(assignedTeam))
-    			                          .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
+    			                          .queryParam("entityOwner", entityOwner)
     			                          .queryParamIfPresent("fromDueDate", Optional.ofNullable(fromDueDate))
     			                          .queryParamIfPresent("toDueDate", Optional.ofNullable(toDueDate))
     			                          .queryParamIfPresent("actionType", Optional.ofNullable(actionType))

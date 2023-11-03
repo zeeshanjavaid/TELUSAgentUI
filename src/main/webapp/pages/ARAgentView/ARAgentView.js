@@ -27,6 +27,7 @@ Page.onReady = function() {
      */
     debugger;
 
+    Page.Variables.getLoggedInUserTeamForBanView.invoke();
 
 
     Page.Variables.UserLoggedInVar_ARAgent.dataSet.empId = App.Variables.getLoggedInUserDetails.dataSet.emplId;
@@ -195,6 +196,7 @@ Page.getUserListByTeamId_ARAgentVonSuccess = function(variable, data) {
 
 Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
     debugger;
+    var entityOwner = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Variables.workCategoryValues_ARAgent.dataSet = data;
     if (data != undefined) {
         data.forEach(workCategoryData);
@@ -219,8 +221,16 @@ Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
         Page.Variables.statusSelect_ARAgentView.dataSet.forEach(statusTypeData);
     }
 
+    var teamName = Page.Variables.getLoggedInUserTeamForBanView.dataSet;
+
+    for (let i = 0; i < teamName.length; i++) {
+        if (teamName[i].teamId === 'TIG AR') {
+            entityOwner = null;
+        }
+    }
+
     Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
+        'entityOwner': entityOwner,
         'workCategory': finalWCARview,
         'viewType': '1',
         'limit': 20,
