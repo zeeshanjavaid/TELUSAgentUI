@@ -544,7 +544,7 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setTotalOverDue(teamsActionViewResponse.getTotalOverDue());
 			teamsActionViewResponseWIthTotalCount.setTotalNumberOfElement(totalNoOfElement);
 			if(assignedTeam != null) {
-				if(assignedTeam.equalsIgnoreCase("ALL")){
+				if(assignedTeam.equalsIgnoreCase("ALL") || assignedTeam.equalsIgnoreCase("NULL")){
 					teamsActionViewResponseWIthTotalCounts.add(teamsActionViewResponseWIthTotalCount);
 				}else {
 					if(teamsActionViewResponse.getAssignedTeam()!= null && teamsActionViewResponse.getAssignedTeam().equalsIgnoreCase(assignedTeam)){
