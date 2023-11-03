@@ -62,8 +62,7 @@ Page.onReady = function() {
     //     // cascadeSelect: true,
     //     // collapse: true
     // });
-    Page.Variables.getLoggedInUserTeamForBan.invoke();
-
+    Page.Variables.getLoggedInUserTeamForBanView.invoke();
 
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
         'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
@@ -548,7 +547,7 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
     // api call to display data in table for entity view
 
-    var teamName = Page.Variables.getLoggedInUserTeam.dataSet;
+    var teamName = Page.Variables.getLoggedInUserTeamForBanView.dataSet;
 
     for (let i = 0; i < teamName.length; i++) {
         if (teamName[i].teamId === 'TIG AR') {

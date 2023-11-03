@@ -53,6 +53,13 @@ App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
     App.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
 
+    App.Variables.getLoggedInUserTeamForBan.setInput({
+        'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+
+    });
+    App.Variables.getLoggedInUserTeamForBan.invoke();
+
+
     App.Variables.getLoggedInUserDetails.invoke();
 
     if (activePageName == 'Main') {

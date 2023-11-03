@@ -1836,6 +1836,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "getLoggedInUserTeamForBanView" : {
+    "_id" : "wm-getLoggedInUserTeamForBanView-wm.ServiceVariable-1698927127359",
+    "name" : "getLoggedInUserTeamForBanView",
+    "owner" : "App",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "emplId",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamNameByEmplId",
+    "operationId" : "QueryExecutionController_executeGetTeamNameByEmplId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 50,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getLoggerInUserIdentification" : {
     "_id" : "wm-getLoggerInUserIdentification-wm.ServiceVariable-1665519199837",
     "name" : "getLoggerInUserIdentification",

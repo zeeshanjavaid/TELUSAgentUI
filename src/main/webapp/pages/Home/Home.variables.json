@@ -1183,33 +1183,6 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
-  "getLoggedInUserTeamForBanView" : {
-    "_id" : "wm-getLoggedInUserTeamForBanView-wm.ServiceVariable-1698927127359",
-    "name" : "getLoggedInUserTeamForBanView",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "emplId",
-      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
-      "type" : "string"
-    } ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetTeamNameByEmplId",
-    "operationId" : "QueryExecutionController_executeGetTeamNameByEmplId",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 20,
-    "startUpdate" : true,
-    "autoUpdate" : false,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
-  },
   "getTeamList_HomeBV" : {
     "_id" : "wm-getTeamList_HomeBV-wm.LiveVariable-1688738953690",
     "name" : "getTeamList_HomeBV",

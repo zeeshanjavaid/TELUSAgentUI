@@ -197,14 +197,15 @@ public class CollectionDataService {
     		
     	
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_ENTITY_VIEW)
-                     .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
+                    .queryParam("entityOwner", entityOwner)
                      .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
-                     .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
-                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
-             
+                      .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
+                    .queryParamIfPresent("limit", Optional.ofNullable(limit));
+                     
+
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
             
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
@@ -270,13 +271,22 @@ public class CollectionDataService {
     		
     		 
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ASSIGNED_ENTITIES_IN_CLASSIC_VIEW)
-                     .queryParamIfPresent("entityOwner", Optional.ofNullable(entityOwner))
+                     .queryParam("entityOwner",entityOwner)
                      .queryParamIfPresent("workCategory", Optional.ofNullable(workCategory))
                      .queryParamIfPresent("portfolio", Optional.ofNullable(portfolio))
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
                       .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
-                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
+                    .queryParamIfPresent("limit", Optional.ofNullable(limit));
+                     
+                     
+                    //  .queryParam("entityOwner", entityOwner)
+                    //  .queryParam("workCategory", workCategory)
+                    //  .queryParam("portfolio",portfolio)
+                    //  .queryParam("billingSystem", billingSystem)
+                    //  .queryParam("collectionStatus", collectionStatus)
+                    //  .queryParam("includeCurrentOrCredit",includeCurrentOrCredit)
+                    //  .queryParam("limit", limit);
 
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
              
