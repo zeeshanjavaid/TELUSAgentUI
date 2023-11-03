@@ -183,7 +183,7 @@ function isNotANumber(value) {
     setTimeout(messageTimeout, 10000);
 };
 
-App.Clear = function() {
+App.ClearContacts = function() {
     Partial.Widgets.TITLESelect.datavalue = "";
     Partial.Widgets.TELUSContactsSelect.datavalue = false;
     Partial.Widgets.EmailForNoticesSelect.datavalue = true;
@@ -200,7 +200,7 @@ App.Clear = function() {
 Partial.CreateContactServiceVaronSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
     App.Variables.errorMsg.dataSet.dataValue = null;
-    App.Clear();
+    App.ClearContacts();
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.refreshContactList();
     setTimeout(messageTimeout, 10000);
