@@ -75,22 +75,22 @@
                 <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
                     <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="None" navigationalign="right" on-beforedatarender="getParrReportTable1Beforedatarender(widget, $data, $columns)"
                         pagesize="20">
-                        <wm-table-column binding="parrId" caption="PARR ID" width="79px" edit-widget-type="number" type="integer" show="true" readonly="false">
+                        <wm-table-column binding="parrId" caption="PARR ID" width="79px" col-class="WIDTH_PARRID" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('parrId')" hyperlink="" class="" on-click="openPARRdetailsDailog($event, widget, row)" conditionalclass=""></wm-anchor>
                         </wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT ID" width="76px" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityName" caption="ENT Name" width="230px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="entityRisk" caption="ENT Risk" width="86px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="parrStatus" caption="PARR Status" width="107px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="start" caption="Start" width="93px" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="None" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="expiry" caption="Expiry" width="91px" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="None" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="evaluation" caption="Evaluation" width="96px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="ENT ID" width="76px" col-class="WIDTH_ENTID" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityName" caption="ENT Name" width="230px" col-class="WIDTH_NAME" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityRisk" caption="ENT Risk" width="86px" col-class="WIDTH_RISK" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="parrStatus" caption="PARR Status" width="107px" col-class="WIDTH_STATUS" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="start" caption="Start" width="100px" col-class="WIDTH_START" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="None" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="expiry" caption="Expiry" width="100px" col-class="WIDTH_EXPIRY" edit-widget-type="text" type="string" datepattern="MM/dd/yyyy" formatpattern="None" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="evaluation" caption="Evaluation" width="96px" col-class="WIDTH_EVALUATION" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="parrAmt" caption="PARR AMT" width="134px" col-class="parr_Amt" edit-widget-type="text" type="string" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('parrAmt') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
-                        <wm-table-column binding="perOfAmtRecieved_Exp" caption="% Of PMT RVD/ EXP" width="141px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="createdTeam" caption="Created Team" width="151px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="createdBy" caption="Created By" width="155px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="perOfAmtRecieved_Exp" caption="% Of PMT RVD/ EXP" width="120px" col-class="WIDTH_PMT" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="createdTeam" caption="Created Team" width="120px" col-class="WIDTH_TEAM" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="createdBy" caption="Created By" width="155px" col-class="WIDTH_BY" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     </wm-table>
                 </wm-gridcolumn>
                 <wm-container name="containerPagination1"></wm-container>

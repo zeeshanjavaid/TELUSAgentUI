@@ -6,3 +6,12 @@ section.app-partial.clearfix {
     float: right;
     margin: 8px 18px 4px 0;
 }
+
+
+td.app-datagrid-cell.CUMMPMT_EXP {
+    text-align: right !important;
+}
+
+td.app-datagrid-cell.CUMMPMT_RVCD {
+    text-align: right !important;
+}

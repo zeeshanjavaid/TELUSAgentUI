@@ -224,7 +224,7 @@
             </wm-container>
         </wm-page-content>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" name="TransferBanToExistEntDialog" width="70%" on-opened="TransferBanToExistEntDialogOpened($event, widget)" on-close="TransferBanToExistEntDialogClose($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs to Existing Entity" name="TransferBanToExistEntDialog" width="80%" on-opened="TransferBanToExistEntDialogOpened($event, widget)" on-close="TransferBanToExistEntDialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid13">
             <wm-gridrow name="gridrow18">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn57">
@@ -241,7 +241,7 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid4">
             <wm-gridrow name="gridrow8" columnwidth="12">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn41">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn41">
                     <wm-label caption="Entity ID:" name="entityIdText" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="EntityIdLabel" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
@@ -253,7 +253,7 @@
                     <wm-label caption="Entity Type:" name="entityTypeText" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="EntityTypeLabel" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn name="gridcolumn45_2"></wm-gridcolumn>
+                <wm-gridcolumn name="gridcolumn45_2" columnwidth="NaN"></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid7">
@@ -268,17 +268,21 @@
             <wm-gridrow name="gridrow10_1">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45_1" class="dialogTable">
                     <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="getEntityBanDetailsTable1ID" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10"
-                        on-select="getEntityBanDetailsTable1Select($event, widget, row)" on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)">
-                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="40px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
+                        on-select="getEntityBanDetailsTable1Select($event, widget, row)" on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" navigationalign="right">
+                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="50px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                             <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>
-                        <wm-table-column binding="banId" caption="BAN #" width="99px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="BAN Name" width="143px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banArAmount" caption="Total AR" width="61px" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Total OD" width="59px" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" width="87px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Status" width="66px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="80px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                        <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banName" caption="BAN Name" width="270px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" width="106px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('banArAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" width="110px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('banOverdueAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Status" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="95px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                     </wm-table>
@@ -306,7 +310,7 @@
             <wm-button class="primaryButton" caption="Transfer BANs" type="button" margin="unset 0.5em" name="TransferBansToExistingEntityBtn" on-click="TransferBansToExistingEntityBtnClick($event, widget)"></wm-button>
         </wm-dialogactions>
     </wm-dialog>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" name="TransferBanToNewEntDialog" width="50%" on-opened="TransferBanToNewEntDialogOpened($event, widget)" on-close="TransferBanToNewEntDialogClose($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Transfer BANs To New Entity" name="TransferBanToNewEntDialog" width="80%" on-opened="TransferBanToNewEntDialogOpened($event, widget)" on-close="TransferBanToNewEntDialogClose($event, widget)">
         <wm-layoutgrid name="layoutgrid14">
             <wm-gridrow name="gridrow19">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn58">
@@ -324,7 +328,7 @@
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid10">
             <wm-gridrow name="gridrow15">
-                <wm-gridcolumn columnwidth="3" name="gridcolumn51_1">
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51_1">
                     <wm-label name="label39_1" caption="Entity ID:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label40_1" caption="bind:Variables.entityIdTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
@@ -336,7 +340,7 @@
                     <wm-label name="label43" caption="Entity Type:" color="grey" textalign="right"></wm-label>
                     <wm-label padding="unset 0.5em" name="label44" caption="bind:Variables.entityTypeTextVar.dataSet.dataValue"></wm-label>
                 </wm-gridcolumn>
-                <wm-gridcolumn name="gridcolumn45_2"></wm-gridcolumn>
+                <wm-gridcolumn name="gridcolumn45_2" columnwidth="NaN"></wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid name="layoutgrid11">
@@ -351,17 +355,21 @@
             <wm-gridrow name="gridrow17">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn55" class="dialogTable">
                     <wm-table name="TransferBanToNewEntityTable" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="TransferBanToNewEntityTableID" navigation="Classic" radioselect="false" multiselect="true" pagesize="10" on-select="TransferBanToNewEntityTableSelect($event, widget, row)"
-                        on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)" on-datarender="TransferBanToNewEntityTableDatarender(widget, $data)">
-                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
+                        on-deselect="TransferBanToNewEntityTableDeselect($event, widget, row)" on-datarender="TransferBanToNewEntityTableDatarender(widget, $data)" navigationalign="right">
+                        <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="50px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                             <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>
                         <wm-table-column binding="banId" caption="BAN #" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banName" caption="BAN Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banArAmount" caption="Total AR" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banOverdueAmount" caption="Total OD" edit-widget-type="number" type="double" formatpattern="prefix" prefix="$" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" type="string" show="true" readonly="undefined"></wm-table-column>
-                        <wm-table-column binding="banStatus" caption="Ban Status" type="string" show="true" readonly="undefined"></wm-table-column>
-                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
+                        <wm-table-column binding="banName" caption="BAN Name" width="270px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banArAmount" caption="Total AR" width="106px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('banArAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="banOverdueAmount" caption="Total OD" width="110px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false">
+                            <wm-label caption="bind:row.getProperty('banOverdueAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="banCollectionStatus" caption="Ban Collection Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="banStatus" caption="Ban Status" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="disputeFlag" caption="In Dispute" widget-type="label" width="95px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false">
                             <wm-label caption="bind:row.getProperty('disputeFlag')==true ?'Y':'N'" class="" conditionalclass=""></wm-label>
                         </wm-table-column>
                     </wm-table>

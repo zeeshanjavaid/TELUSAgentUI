@@ -20,10 +20,10 @@
                 <wm-table-column binding="amount" caption="PARR Amt" col-class="parr_Amt" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('amount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" col-class="CUMMPMT_EXP" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="110px" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="110px" col-class="CUMMPMT_RVCD" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">

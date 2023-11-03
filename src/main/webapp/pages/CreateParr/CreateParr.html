@@ -117,13 +117,13 @@
     <!--<wm-container name="container11" margin="unset unset unset 2em">-->
     <wm-layoutgrid name="layoutgrid2"></wm-layoutgrid>
     <!-- </wm-container>-->
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN'(s)" iconclass="wi wi-file-text" name="selectBANdialog" width="75%" height="45%">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Select BAN'(s)" iconclass="wi wi-file-text" name="selectBANdialog" width="80%" height="45%">
         <wm-table name="selectBanParrTable1" title="" dataset="bind:Variables.getEntityBanDetailsForParr.dataSet" navigation="None" radioselect="false" multiselect="true" show="true">
             <wm-table-column binding="banId" caption="BAN" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banName" caption="Ban Name" width="210px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banOverdueAmount" caption="Total OD" width="92px" col-class="total_OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banArAmount" caption="Total AR" width="95px" col-class="total_AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-column binding="banStatus" caption="Status" width="107px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banName" caption="Ban Name" width="275px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banOverdueAmount" caption="Total OD" width="100px" col-class="total_OD" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banArAmount" caption="Total AR" width="102px" col-class="total_AR" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="banStatus" caption="Status" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="suppresionFlag" caption="Suppress Indicator" width="147px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="disputeFlag" caption="Dispute Indicator" width="141px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         </wm-table>

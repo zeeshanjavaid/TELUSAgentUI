@@ -59,6 +59,14 @@ wm-select#mySelection {
         width: 43%;
     }
 }
+
+@media only screen and (min-width: 1601px) {
+    input.form-control.app-textbox.app-dateinput.display-input {
+        /*width: 70% !important;*/
+        height: 2.15em;
+    }
+}
+
 /*resolution styling end*/
 
 .modal-dialog.app-dialog.modal-dialog.PARRdetailsDailog {
@@ -111,3 +119,55 @@ i.wi.wi-file-text {
         width: 85%; 
     }
 }
+
+/*@media only screen and (max-width: 1500px)  {
+    
+    th.app-datagrid-header-cell.WIDTH_PARRID.ui-resizable {
+        width:90px;
+    }
+    
+    th.app-datagrid-header-cell.WIDTH_ENTID.ui-resizable {
+        width:86px;
+    }*/
+    
+   /* th.app-datagrid-header-cell.WIDTH_NAME.ui-resizable {
+        width:110px;
+    }*/
+    
+    /*th.app-datagrid-header-cell.WIDTH_RISK.ui-resizable {
+        width:110px;
+    }*/
+    
+    
+    /*th.app-datagrid-header-cell.WIDTH_STATUS.ui-resizable {
+        width:110px;
+    }*/
+    
+  /*  th.app-datagrid-header-cell.WIDTH_START.ui-resizable {
+        width:115px;
+    }
+    
+    th.app-datagrid-header-cell.WIDTH_EXPIRY.ui-resizable {
+        width:115px;
+    }*/
+    
+   /* th.app-datagrid-header-cell.WIDTH_EVALUATION.ui-resizable {
+        width:110px;
+    }
+    */
+/*    th.app-datagrid-header-cell.parr_Amt.ui-resizable {
+        width:125px;
+    }
+    
+     th.app-datagrid-header-cell.WIDTH_PMT.ui-resizable {
+        width:110px;
+    }
+    
+    th.app-datagrid-header-cell.WIDTH_TEAM.ui-resizable {
+        width:110px;
+    }
+    
+    th.app-datagrid-header-cell.WIDTH_BY.ui-resizable {
+        width:140px;
+    }
+}*/
