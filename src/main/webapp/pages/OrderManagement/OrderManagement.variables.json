@@ -1310,9 +1310,9 @@
     "isList" : true,
     "maxResults" : 20,
     "onError" : "getCollectionTreatMentonError(variable, data, xhrObj)",
-    "startUpdate" : true,
+    "startUpdate" : false,
     "autoUpdate" : false,
-    "inFlightBehavior" : "executeAll",
+    "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
@@ -1325,7 +1325,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "type",
-      "value" : "CALL-OB,CALL-IB,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND",
+      "value" : "bind:ALL",
       "type" : "string"
     }, {
       "target" : "IsOdManagement",
@@ -1346,8 +1346,8 @@
     "isList" : true,
     "maxResults" : 20,
     "onError" : "getCollectionTreatmentStep_orderMngtonError(variable, data, xhrObj)",
-    "startUpdate" : true,
-    "autoUpdate" : true,
+    "startUpdate" : false,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeAll",
     "transformationRequired" : false,
     "saveInPhonegap" : false,

@@ -247,7 +247,7 @@ Partial.createButtonClick = function($event, widget) {
 Partial.downloadDoc = function(row) {
 
     debugger;
-    var docId = Partial.Variables.getLatestNotesBy_EntityId.dataSet[0].docId;
+    var docId = row.docId;
 
     Partial.Variables.getDocumentByDocId.setInput({
 

@@ -33,11 +33,11 @@ Partial.onReady = function() {
 
 
 
-    Partial.Variables.getCollectionTreatmentByCollENtityId.setInput({
-        'collectionEntityId': Partial.pageParams.entityId,
-    });
+    // Partial.Variables.getCollectionTreatmentByCollENtityId.setInput({
+    //     'collectionEntityId': Partial.pageParams.entityId,
+    // });
 
-    Partial.Variables.getCollectionTreatmentByCollENtityId.invoke();
+    // Partial.Variables.getCollectionTreatmentByCollENtityId.invoke();
 
     App.Variables.errorMsg.dataSet.dataValue = '';
     Partial.Variables.popUperrorMsg.dataSet.dataValue = '';
@@ -1035,9 +1035,9 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 };
 
 App.refreshCollOrderMgmtList = function() {
-    setTimeout(function() {
-        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
-    }, 1000);
+
+    Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+
 
 
 };
@@ -1066,8 +1066,8 @@ Partial.createOrderManagmentForSuspensiononSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 
 
 
@@ -1084,8 +1084,8 @@ Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 
 };
 
@@ -1100,8 +1100,8 @@ Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 
 
 };
@@ -1114,8 +1114,8 @@ Partial.UpdateODManagemntAndDonotSendonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 
 };
 
@@ -1126,8 +1126,8 @@ Partial.UpdateODManagemntAndSendonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
@@ -1137,8 +1137,8 @@ Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
@@ -1149,8 +1149,8 @@ Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    // App.refreshCollActionList();
+    //  App.refreshHistoryActionList();
 
 };
 
@@ -1160,8 +1160,8 @@ Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    //  App.refreshCollActionList();
+    // App.refreshHistoryActionList();
 };
 
 Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data) {
@@ -1171,8 +1171,8 @@ Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data)
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
-    App.refreshHistoryActionList();
+    //  App.refreshCollActionList();
+    //  App.refreshHistoryActionList();
 
 };
 
@@ -1183,98 +1183,18 @@ Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    App.refreshCollActionList();
+    // App.refreshCollActionList();
 
-    App.refreshHistoryActionList();
+    //  App.refreshHistoryActionList();
 
 };
 
 Partial.getOrderdMgmtHistoryonSuccess = function(variable, data) {
-    debugger;
-    //  var bans = Partial.Variables.getOrderdMgmtHistory.dataSet[0].banList;
-
-    // var bans = data[0].banList;
-
-
-
-
-    // if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
-
-    //     var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
-    //     for (let j = 0; j < bans.length; j++) {
-
-    //         for (let i = 0; i < tr.length; i++) {
-    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-    //                 // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
-    //                 tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
-
-    //                 //   $(this).parent().parent().addClass("selected")
-    //             }
-    //         }
-    //     }
-
-    // }
-    // if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
-    //     var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
-    //     for (let j = 0; j < bans.length; j++) {
-
-    //         for (let i = 0; i < tr.length; i++) {
-    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
-    //                 cb.trigger('click');
-
-    //                 //   $(this).parent().parent().addClass("selected")
-    //             }
-    //         }
-    //     }
-    // }
-
-
-
-
 
 };
 
 
 Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
-    debugger;
-
-    // var bans = data[0].banList;
-
-
-
-
-    // if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
-
-    //     var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
-    //     for (let j = 0; j < bans.length; j++) {
-
-    //         for (let i = 0; i < tr.length; i++) {
-    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-    //                 // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
-    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
-    //                 cb.trigger('click');
-    //                 //   $(this).parent().parent().addClass("selected")
-    //             }
-    //         }
-    //     }
-
-    // }
-    // if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
-    //     var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
-    //     for (let j = 0; j < bans.length; j++) {
-
-    //         for (let i = 0; i < tr.length; i++) {
-    //             if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-    //                 var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
-    //                 cb.trigger('click');
-
-    //                 //   $(this).parent().parent().addClass("selected")
-    //             }
-    //         }
-    //     }
-    // }
-
 
 };
 

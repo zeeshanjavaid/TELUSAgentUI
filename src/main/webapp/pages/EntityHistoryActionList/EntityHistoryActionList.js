@@ -24,14 +24,14 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    Partial.Variables.getCollectionTreatmentStep_1.setInput({
-        'IsOdManagement': false,
-        'collectionEntityId': Partial.pageParams.entityId,
-        'type': ''
+    // Partial.Variables.getCollectionTreatmentStep_1.setInput({
+    //     'IsOdManagement': false,
+    //     'collectionEntityId': Partial.pageParams.entityId,
+    //     'type': ''
 
-    });
+    // });
 
-    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+    // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 
     Partial.Variables.getCollectionTreatMentByEntId.setInput({
@@ -1119,6 +1119,8 @@ Partial.completedButtonClick = function($event, widget) {
     $('#toDoTableGrid').hide();
     $('#eventTypeColl').show();
 
+    App.refreshHistoryActionList();
+
 };
 
 
@@ -1562,9 +1564,9 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 
 
 App.refreshCollActionList = function() {
-    setTimeout(function() {
-        Partial.Variables.getCollectionTreatmentStep_1.invoke();
-    }, 2000);
+
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
 
 
 };

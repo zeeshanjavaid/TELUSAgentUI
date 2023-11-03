@@ -567,12 +567,15 @@ Page.ActiveEntitySelect = function($event, widget) {
 };
 Page.OrderManagementSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;
+    App.refreshCollOrderMgmtList();
 };
 Page.UserNotesSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;
 };
 Page.HistoryActionsSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;
+    App.refreshCollActionList();
+
 };
 
 Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
