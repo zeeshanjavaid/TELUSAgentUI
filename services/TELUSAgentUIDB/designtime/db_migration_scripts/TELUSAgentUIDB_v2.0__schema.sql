@@ -10,7 +10,7 @@
 -- Host: localhost    Database: TELUSAgentUIDB
 -- ------------------------------------------------------
 -- Server version	10.2.41-MariaDB
---DROP TABLE IF EXISTS `ACCESS_LOG`;
+-- DROP TABLE IF EXISTS `ACCESS_LOG`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `ACCESS_LOG` (
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `ACCESS_LOG` (
 -- Table structure for table `APPLICATION`
 --
 
---DROP TABLE IF EXISTS `APPLICATION`;
+-- DROP TABLE IF EXISTS `APPLICATION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `APPLICATION` (
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS  `APPLICATION` (
 -- Table structure for table `USER`
 --
 
---DROP TABLE IF EXISTS `USER`;
+-- DROP TABLE IF EXISTS `USER`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `USER` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS  `USER` (
 -- Table structure for table `DomainValueType`
 --
 
---DROP TABLE IF EXISTS `DomainValueType`;
+-- DROP TABLE IF EXISTS `DomainValueType`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DomainValueType` (
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS  `DomainValueType` (
 -- Table structure for table `DomainValue`
 --
 
---DROP TABLE IF EXISTS `DomainValue`;
+-- DROP TABLE IF EXISTS `DomainValue`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DomainValue` (
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS  `DomainValue` (
 -- Table structure for table `ACTIVITY`
 --
 
---DROP TABLE IF EXISTS `ACTIVITY`;
+-- DROP TABLE IF EXISTS `ACTIVITY`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `ACTIVITY` (
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS  `ACTIVITY` (
 -- Table structure for table `ACTIVITY_PAYLOAD`
 --
 
---DROP TABLE IF EXISTS `ACTIVITY_PAYLOAD`;
+-- DROP TABLE IF EXISTS `ACTIVITY_PAYLOAD`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `ACTIVITY_PAYLOAD` (
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS  `ACTIVITY_PAYLOAD` (
 -- Table structure for table `AUDIT`
 --
 
---DROP TABLE IF EXISTS `AUDIT`;
+-- DROP TABLE IF EXISTS `AUDIT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `AUDIT` (
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS  `AUDIT` (
 -- Table structure for table `AuditDataChange`
 --
 
---DROP TABLE IF EXISTS `AuditDataChange`;
+-- DROP TABLE IF EXISTS `AuditDataChange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `AuditDataChange` (
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS  `AuditDataChange` (
 -- Table structure for table `AuditSchema`
 --
 
---DROP TABLE IF EXISTS `AuditSchema`;
+-- DROP TABLE IF EXISTS `AuditSchema`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `AuditSchema` (
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS  `AuditSchema` (
 -- Table structure for table `PARTY`
 --
 
---DROP TABLE IF EXISTS `PARTY`;
+-- DROP TABLE IF EXISTS `PARTY`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `PARTY` (
@@ -289,7 +289,7 @@ CREATE TABLE IF NOT EXISTS  `PARTY` (
 -- Table structure for table `DOCUMENT`
 --
 
---DROP TABLE IF EXISTS `DOCUMENT`;
+-- DROP TABLE IF EXISTS `DOCUMENT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DOCUMENT` (
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS  `DOCUMENT` (
 -- Table structure for table `DomainValueDescription`
 --
 
---DROP TABLE IF EXISTS `DomainValueDescription`;
+-- DROP TABLE IF EXISTS `DomainValueDescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DomainValueDescription` (
@@ -346,7 +346,7 @@ CREATE TABLE IF NOT EXISTS  `DomainValueDescription` (
 -- Table structure for table `DomainValueRelation`
 --
 
---DROP TABLE IF EXISTS `DomainValueRelation`;
+-- DROP TABLE IF EXISTS `DomainValueRelation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DomainValueRelation` (
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS  `DomainValueRelation` (
 -- Table structure for table `DomainValueTypeRelationship`
 --
 
---DROP TABLE IF EXISTS `DomainValueTypeRelationship`;
+-- DROP TABLE IF EXISTS `DomainValueTypeRelationship`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `DomainValueTypeRelationship` (
@@ -391,7 +391,7 @@ CREATE TABLE IF NOT EXISTS  `DomainValueTypeRelationship` (
 -- Table structure for table `Error`
 --
 
---DROP TABLE IF EXISTS `Error`;
+-- DROP TABLE IF EXISTS `Error`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `Error` (
@@ -410,7 +410,7 @@ CREATE TABLE IF NOT EXISTS  `Error` (
 -- Table structure for table `FAWB_PROPERTY_SOURCE`
 --
 
---DROP TABLE IF EXISTS `FAWB_PROPERTY_SOURCE`;
+-- DROP TABLE IF EXISTS `FAWB_PROPERTY_SOURCE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `FAWB_PROPERTY_SOURCE` (
@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS  `FAWB_PROPERTY_SOURCE` (
 -- Table structure for table `GROUP`
 --
 
---DROP TABLE IF EXISTS `GROUP`;
+-- DROP TABLE IF EXISTS `GROUP`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `GROUP` (
@@ -462,7 +462,7 @@ CREATE TABLE IF NOT EXISTS  `GROUP` (
 -- Table structure for table `ROLE`
 --
 
---DROP TABLE IF EXISTS `ROLE`;
+-- DROP TABLE IF EXISTS `ROLE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `ROLE` (
@@ -488,7 +488,7 @@ CREATE TABLE IF NOT EXISTS  `ROLE` (
 -- Table structure for table `GROUP_ROLE`
 --
 
---DROP TABLE IF EXISTS `GROUP_ROLE`;
+-- DROP TABLE IF EXISTS `GROUP_ROLE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `GROUP_ROLE` (
@@ -515,7 +515,7 @@ CREATE TABLE IF NOT EXISTS  `GROUP_ROLE` (
 -- Table structure for table `LOCALE`
 --
 
---DROP TABLE IF EXISTS `LOCALE`;
+-- DROP TABLE IF EXISTS `LOCALE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `LOCALE` (
@@ -531,7 +531,7 @@ CREATE TABLE IF NOT EXISTS  `LOCALE` (
 -- Table structure for table `NOTE`
 --
 
---DROP TABLE IF EXISTS `NOTE`;
+-- DROP TABLE IF EXISTS `NOTE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `NOTE` (
@@ -560,7 +560,7 @@ CREATE TABLE IF NOT EXISTS  `NOTE` (
 -- Table structure for table `PERMISSION`
 --
 
---DROP TABLE IF EXISTS `PERMISSION`;
+-- DROP TABLE IF EXISTS `PERMISSION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `PERMISSION` (
@@ -575,7 +575,7 @@ CREATE TABLE IF NOT EXISTS  `PERMISSION` (
 -- Table structure for table `QRTZ_BLOB_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_BLOB_TRIGGERS` (
@@ -591,7 +591,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_BLOB_TRIGGERS` (
 -- Table structure for table `QRTZ_CALENDARS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
+-- DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_CALENDARS` (
@@ -606,7 +606,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_CALENDARS` (
 -- Table structure for table `QRTZ_CRON_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_CRON_TRIGGERS` (
@@ -623,7 +623,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_CRON_TRIGGERS` (
 -- Table structure for table `QRTZ_FIRED_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_FIRED_TRIGGERS` (
@@ -648,7 +648,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_FIRED_TRIGGERS` (
 -- Table structure for table `QRTZ_JOB_DETAILS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
+-- DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_JOB_DETAILS` (
@@ -670,7 +670,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_JOB_DETAILS` (
 -- Table structure for table `QRTZ_LOCKS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_LOCKS`;
+-- DROP TABLE IF EXISTS `QRTZ_LOCKS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_LOCKS` (
@@ -684,7 +684,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_LOCKS` (
 -- Table structure for table `QRTZ_PAUSED_TRIGGER_GRPS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
+-- DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_PAUSED_TRIGGER_GRPS` (
@@ -698,7 +698,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_PAUSED_TRIGGER_GRPS` (
 -- Table structure for table `QRTZ_SCHEDULER_STATE`
 --
 
---DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
+-- DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_SCHEDULER_STATE` (
@@ -714,7 +714,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_SCHEDULER_STATE` (
 -- Table structure for table `QRTZ_SIMPLE_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_SIMPLE_TRIGGERS` (
@@ -732,7 +732,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_SIMPLE_TRIGGERS` (
 -- Table structure for table `QRTZ_SIMPROP_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_SIMPROP_TRIGGERS` (
@@ -758,7 +758,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_SIMPROP_TRIGGERS` (
 -- Table structure for table `QRTZ_TRIGGERS`
 --
 
---DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
+-- DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QRTZ_TRIGGERS` (
@@ -788,7 +788,7 @@ CREATE TABLE IF NOT EXISTS  `QRTZ_TRIGGERS` (
 -- Table structure for table `QUEUE`
 --
 
---DROP TABLE IF EXISTS `QUEUE`;
+-- DROP TABLE IF EXISTS `QUEUE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QUEUE` (
@@ -829,7 +829,7 @@ CREATE TABLE IF NOT EXISTS  `QUEUE` (
 -- Table structure for table `QUEUE_GROUP`
 --
 
---DROP TABLE IF EXISTS `QUEUE_GROUP`;
+-- DROP TABLE IF EXISTS `QUEUE_GROUP`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `QUEUE_GROUP` (
@@ -850,7 +850,7 @@ CREATE TABLE IF NOT EXISTS  `QUEUE_GROUP` (
 -- Table structure for table `ROLE_PERMISSION`
 --
 
---DROP TABLE IF EXISTS `ROLE_PERMISSION`;
+-- DROP TABLE IF EXISTS `ROLE_PERMISSION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `ROLE_PERMISSION` (
@@ -871,7 +871,7 @@ CREATE TABLE IF NOT EXISTS  `ROLE_PERMISSION` (
 -- Table structure for table `USER_GROUP`
 --
 
---DROP TABLE IF EXISTS `USER_GROUP`;
+-- DROP TABLE IF EXISTS `USER_GROUP`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `USER_GROUP` (
@@ -898,7 +898,7 @@ CREATE TABLE IF NOT EXISTS  `USER_GROUP` (
 -- Table structure for table `USER_SESSION`
 --
 
---DROP TABLE IF EXISTS `USER_SESSION`;
+-- DROP TABLE IF EXISTS `USER_SESSION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS  `USER_SESSION` (
