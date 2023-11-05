@@ -225,7 +225,7 @@ Page.workcategoriesByEmpId_ARAgentViewonSuccess = function(variable, data) {
 
     for (let i = 0; i < teamName.length; i++) {
         if (teamName[i].teamId === 'TIG AR') {
-            entityOwner = null;
+            entityOwner = 'NULL';
         }
     }
 
