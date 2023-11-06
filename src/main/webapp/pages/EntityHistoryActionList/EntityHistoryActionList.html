@@ -403,8 +403,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId" dataset="bind:Variables.getAllActiveUserList.dataSet"
-                        displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue"
+                        dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">

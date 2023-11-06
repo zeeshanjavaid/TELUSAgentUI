@@ -14,6 +14,7 @@ import java.lang.String;
 import java.util.List;
 import com.fico.telus.model.OrderMgmtHistoryResponse;
 import java.lang.Boolean;
+import com.fico.telus.model.CollectionTreatmentStepResponse;
 import io.swagger.client.model.CollectionTreatmentStepUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -84,7 +85,7 @@ public class CollectionTreatmentController {
     @RequestMapping(value = "/collectionTreatmentStep", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionTreatmentStep> getCollectionTreatmentStep(@RequestParam(value = "IsOdManagement", required = false) Boolean IsOdManagement, @RequestParam(value = "collectionTreatmentStepId", required = false) Integer collectionTreatmentStepId, @RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedAgentId", required = false) String assignedAgentId, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(@RequestParam(value = "IsOdManagement", required = false) Boolean IsOdManagement, @RequestParam(value = "collectionTreatmentStepId", required = false) Integer collectionTreatmentStepId, @RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedAgentId", required = false) String assignedAgentId, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
         return collectionTreatmentService.getCollectionTreatmentStep(IsOdManagement, collectionTreatmentStepId, collectionEntityId, type, createdDate, createdBy, status, assignedAgentId, assignedTeam, fields, offset, limit);
     }
 

@@ -1797,7 +1797,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "Javascript",
+    "onSuccess" : "UpdateCollectionTreatmentVaronSuccess(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

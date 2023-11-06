@@ -466,7 +466,7 @@
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
                     <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                        datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId"></wm-select>
+                        datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -535,8 +535,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" selectAll='ture' radioselect="false" width="98%" navigationalign="right" class="getEntityBanDetailsTableEdit2"
-                        id="getEntityBanDetailsTableEdit2ForTest">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" selectall="ture" radioselect="false" width="98%" navigationalign="right"
+                        class="getEntityBanDetailsTableEdit2" id="getEntityBanDetailsTableEdit2ForTest">
                         <wm-table-column binding="banId" caption="BAN#" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="315px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="102px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -592,7 +592,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedPersonSelect" margin="5px unset unset unset" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId"
+                    <wm-select width="45%" name="assignedPersonSelect" margin="5px unset unset unset" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue"
                         datafield="emplId"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>

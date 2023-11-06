@@ -40,6 +40,8 @@ import java.util.List;
 import java.util.ArrayList;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fico.telus.model.CollectionTreatmentStepResponse;
+
 
 
 
@@ -161,7 +163,7 @@ public class CollectionTreatmentService {
     }
     
     //@WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionTreatmentStep> getCollectionTreatmentStep(Boolean IsOdManagement, Integer collectionTreatmentStepId, Integer collectionEntityId,String type,String createdDate,String createdBy, String status,String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception  {
+    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(Boolean IsOdManagement, Integer collectionTreatmentStepId, Integer collectionEntityId,String type,String createdDate,String createdBy, String status,String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception  {
         //Commented telus live api 
                             List<CollectionTreatmentStep> collectionTreatmentStepList=new ArrayList<>();
                             
@@ -206,12 +208,15 @@ public class CollectionTreatmentService {
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             logger.info("Resoinse---"+ responseStr);
              collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
-             
-             collectionTreatmentStepList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
-             collectionTreatmentStepList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+                         List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
+
+                         collectionTreatmentStepResponseList=  convertTelusApiResponseToFawbCustomResponseForCollTStep(collectionTreatmentStepList);
+
+             collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
+             collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
            if(!IsOdManagement)
             {
-            collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
+            collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
             }
 
 
@@ -219,10 +224,10 @@ public class CollectionTreatmentService {
             {
                             logger.info("Order management data");
 
-                     collectionTreatmentStepList=   collectionTreatmentStepList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
+                     collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
              }
              
-            return collectionTreatmentStepList;
+            return collectionTreatmentStepResponseList;
         }
 
     }
@@ -503,6 +508,43 @@ public class CollectionTreatmentService {
        }
 
         return orderMgmtHistoryResponseList;
+    }
+    
+    
+    
+ private List<CollectionTreatmentStepResponse> convertTelusApiResponseToFawbCustomResponseForCollTStep(List<CollectionTreatmentStep> collectionTreatmentStepList) {
+        List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
+        for(CollectionTreatmentStep collectionTreatmentStep:collectionTreatmentStepList)
+        {
+            CollectionTreatmentStepResponse collectionTreatmentStepResponse=new CollectionTreatmentStepResponse();
+            collectionTreatmentStepResponse.setAuditInfo(collectionTreatmentStep.getAuditInfo());
+            collectionTreatmentStepResponse.setChannel(collectionTreatmentStep.getChannel());
+            collectionTreatmentStepResponse.setId(collectionTreatmentStep.getId());
+            collectionTreatmentStepResponse.setPartitionKey(collectionTreatmentStep.getPartitionKey());
+            collectionTreatmentStepResponse.setCollectionTreatment(collectionTreatmentStep.getCollectionTreatment());
+            collectionTreatmentStepResponse.setStepDate(collectionTreatmentStep.getStepDate());
+            collectionTreatmentStepResponse.setBillingAccountIdRefs(collectionTreatmentStep.getBillingAccountIdRefs());
+            collectionTreatmentStepResponse.setManualStepIndicator(collectionTreatmentStep.isManualStepIndicator());
+            collectionTreatmentStepResponse.setStatus(collectionTreatmentStep.getStatus());
+            collectionTreatmentStepResponse.setStepTypeCode(collectionTreatmentStep.getStepTypeCode());
+            collectionTreatmentStepResponse.setLanguageCode(collectionTreatmentStep.getLanguageCode());
+            collectionTreatmentStepResponse.setAssignedAgentId(collectionTreatmentStep.getAssignedAgentId());
+            collectionTreatmentStepResponse.setPriority(collectionTreatmentStep.getPriority());
+            collectionTreatmentStepResponse.setReasonCode(collectionTreatmentStep.getReasonCode());
+            collectionTreatmentStepResponse.setAssignedTeam(collectionTreatmentStep.getAssignedTeam());
+            collectionTreatmentStepResponse.setAdditionalCharacteristics(collectionTreatmentStep.getAdditionalCharacteristics());
+            collectionTreatmentStepResponse.setComment(collectionTreatmentStep.getComment());
+            collectionTreatmentStepResponse.setHref(collectionTreatmentStep.getHref());
+            collectionTreatmentStepResponse.setBaseType(collectionTreatmentStep.getBaseType());
+            collectionTreatmentStepResponse.setType(collectionTreatmentStep.getType());
+            collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getSchemaLocation());
+            collectionTreatmentStepResponse.setAssignedPersonForDefaultValue(collectionTreatmentStep.getAssignedAgentId());
+            collectionTreatmentStepResponseList.add(collectionTreatmentStepResponse);
+
+        }
+        
+        return collectionTreatmentStepResponseList;
+
     }
     
 

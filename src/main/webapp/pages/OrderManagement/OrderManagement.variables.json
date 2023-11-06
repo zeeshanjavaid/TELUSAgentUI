@@ -188,6 +188,20 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
   },
+  "dafualtAssignedUser" : {
+    "_id" : "wm-dafualtAssignedUser-wm.Variable-1699195924828",
+    "name" : "dafualtAssignedUser",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "empId" : ""
+    },
+    "type" : "entry",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getAllActiveUserList" : {
     "_id" : "wm-getAllActiveUserList-wm.LiveVariable-1687258358389",
     "name" : "getAllActiveUserList",

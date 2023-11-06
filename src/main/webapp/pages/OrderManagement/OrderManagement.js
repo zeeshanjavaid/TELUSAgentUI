@@ -346,13 +346,13 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
     debugger;
 
 
+    Partial.Variables.dafualtAssignedUser.dataSet.empId = row.assignedPersonForDefaultValue;
 
     getBanListForAutoSelect(row);
     debugger;
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
-
             Partial.Widgets.EditNotSentdialog.title = "Edit Suspension Request";
             Partial.Widgets.EditNotSentdialog.open();
 
@@ -366,17 +366,21 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
     } else if (row.stepTypeCode == 'RESTORE') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit Restoral Request";
+
             Partial.Widgets.EditNotSentdialog.open();
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Service Restoration";
+
             Partial.Widgets.EditAndFulfillSentdialog.open();
         }
     } else if (row.stepTypeCode == 'CEASE') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
             Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
+
             Partial.Widgets.EditNotSentdialog.open();
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
             Partial.Widgets.EditAndFulfillSentdialog.title = "Edit and Fulfill Cease";
+
             Partial.Widgets.EditAndFulfillSentdialog.open();
         }
 

@@ -1610,3 +1610,7 @@ App.refreshHistoryActionList = function() {
     Partial.Variables.GetCollectionActivityLogList.invoke();
 
 };
+
+Partial.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {
+    App.refreshCollActionList();
+};
