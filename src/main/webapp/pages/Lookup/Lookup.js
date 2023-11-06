@@ -199,7 +199,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
             });
 
             billingAccountRef = {
-                "id": billingAccountRefIdUsingEntityId,
+                "id": billingAccountRefIdUsingEntityId.toString(),
                 "validFor": {
                     "endDateTime": todaysDateJsonFormat
                 }
@@ -207,7 +207,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
             billingAccountRef1 = {
                 "billingAccountRef": {
-                    "id": d.banRefId,
+                    "id": d.banRefId.toString(),
                     "name": d.banName
                 },
                 "validFor": {
@@ -388,7 +388,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
             });
 
             billingAccountRef = {
-                "id": billingAccountRefIdUsingEntityId,
+                "id": billingAccountRefIdUsingEntityId.toString(),
                 "validFor": {
                     "endDateTime": todaysDateJsonFormat
                 }
@@ -397,7 +397,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
 
             billingAccountRef1 = {
                 "billingAccountRef": {
-                    "id": d.banRefId,
+                    "id": d.banRefId.toString(),
                     "name": d.banName
                 },
                 "validFor": {
