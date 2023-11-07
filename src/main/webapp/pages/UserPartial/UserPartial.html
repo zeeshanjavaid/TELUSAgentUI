@@ -141,11 +141,12 @@
             <wm-gridrow name="gridrow2" class="pl-20">
                 <wm-gridcolumn name="gridcolumn4" columnwidth="4" style="display: flex;"><label style="width: 25%;" class="app-label control-label formfield-label col-12 text-danger userLabel">Role<span class="asterisk">*</span></label>
                     <wm-form-field name="role" style="width: 75%;" key="role" type="string" widget="select"
-                        show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="ALL"></wm-form-field>
+                        show="true" mobile-display="false" dataset="bind:Variables.getAllRoles.dataSet" datafield="role" displayfield="role" placeholder="ALL" orderby="role:asc"></wm-form-field>
                 </wm-gridcolumn>
                 <wm-gridcolumn name="gridcolumn5" columnwidth="4" style="display: flex;"><label style="width: 25%;" class="app-label control-label formfield-label col-12 text-danger userLabel">Team Manager</label>
                     <wm-form-field name="TeamManager" key="managerId" style="width: 75%;" show="true" type="string" widget="select"
-                        placeholder="ALL" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()" defaultvalue="bind:Variables.getManagerBasedOnTeamId.firstRecord" displayfield="managerName"></wm-form-field>
+                        placeholder="ALL" dataset="bind:Variables.getManagerBasedOnTeamId.dataSet" datafield="firstName" on-click="Variables.getManagerBasedOnTeamId.invoke()" defaultvalue="bind:Variables.getManagerBasedOnTeamId.firstRecord" displayfield="managerName"
+                        orderby="firstName:asc"></wm-form-field>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>

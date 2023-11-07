@@ -152,40 +152,40 @@
         </wm-layoutgrid>
         <wm-layoutgrid id="entityViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid4">
             <wm-table title="" dataset="bind:Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet" navigation="Classic" name="table1" margin="16px 10px 16px 16px" width="98%" navigationalign="right" pagesize="10" class="Table-Font">
-                <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="50px" edit-widget-type="number" type="integer" show="true" readonly="false">
+                <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="entityName" caption="ENT Name" width="213px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="currentAr" caption="CURR AR" width="82px" col-class="CURR_AR" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="entityName" caption="ENT Name" width="260px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="currentAr" caption="CURR AR" col-class="CURR_AR" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('currentAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar30Days" caption="30D AR" widget-type="label" width="82px" col-class="thirtyD_AR" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="ar30Days" caption="30D AR" widget-type="label" col-class="thirtyD_AR" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('ar30Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar60Days" caption="60D AR" widget-type="label" width="82px" col-class="sixtyD_AR" edit-widget-type="number " type="double
+                <wm-table-column binding="ar60Days" caption="60D AR" widget-type="label" col-class="sixtyD_AR" edit-widget-type="number " type="double
                         " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('ar60Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR" width="82px" col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false">
+                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR" col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('ar90DaysPlus') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalOverDue" caption="Total OD " widget-type="label" width="81px" col-class="total_OD" edit-widget-type="number " type="double " show="true " readonly="false">
+                <wm-table-column binding="totalOverDue" caption="Total OD " widget-type="label" col-class="total_OD" edit-widget-type="number " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalAr" caption="Total AR " widget-type="label" width="77px" col-class="total_AR" edit-widget-type="number
+                <wm-table-column binding="totalAr" caption="Total AR " widget-type="label" col-class="total_AR" edit-widget-type="number
                         " type="double " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="disputeFlag " caption="In Dispute " widget-type="label " width="76px" edit-widget-type="checkbox " type="boolean " show="true " readonly="false">
+                <wm-table-column binding="disputeFlag " caption="In Dispute " widget-type="label " edit-widget-type="checkbox " type="boolean " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty( 'disputeFlag')? 'Y': 'N' " class=" " conditionalclass=" "></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="odRemaining " caption="OD REM CALC " width="73px" edit-widget-type="number " type="double
+                <wm-table-column binding="odRemaining " caption="OD REM CALC " width="106px" edit-widget-type="number " type="double
                         " formatpattern="suffix " suffix="% " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="portfolioCategory " caption="Portfolio " width="110px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="openActionDate " caption="Open Action " width="75px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="totalBan " caption="Total BANs " width="65px" edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="totalDelinquentBans " caption="Dlq BANs " width="65px" edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="entityType " caption="ENT Type " width="75px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
+                <wm-table-column binding="portfolioCategory " caption="Portfolio " edit-widget-type="text " type="string " show="true " readonly="false" width="100px"></wm-table-column>
+                <wm-table-column binding="openActionDate " caption="Open Action " width="95px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
+                <wm-table-column binding="totalBan " caption="Total BANs " edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
+                <wm-table-column binding="totalDelinquentBans " caption="Dlq BANs " edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
+                <wm-table-column binding="entityType " caption="ENT Type " edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId " caption="ENT Owner " width="98px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
                     class="btn-transparent" columnwidth="30px"></wm-table-row>
@@ -195,57 +195,55 @@
                         " style="border: 1px solid #ddd; " width="96% " margin="20px 0px 10px 30px " name="layoutgrid5 " show="bind:Variables.hideBanTableGrid.dataValue ">
             <wm-table title=" " class="Table-Font " dataset="bind:Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet
                         " navigation="Classic " name="table2 " margin="16px 10px 16px 16px " width="98% " navigationalign="right " pagesize="10 ">
-                <wm-table-column binding="entityId" caption="ENT ID " widget-type="anchor " width="53px " edit-widget-type="number
+                <wm-table-column binding="entityId" caption="ENT ID " widget-type="anchor " edit-widget-type="number
                         " type="integer " show="true " readonly="false ">
                     <wm-anchor caption="bind:row.getProperty( 'entityId') " hyperlink="bind:row.getProperty( 'entityId') " class=" " conditionalclass=" " on-click="goToEnityPage(row)
                         "></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="cbucId " caption="CBUCID " width="88px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="rcId " caption="RCID " width="91px " edit-widget-type="text " type="string
+                <wm-table-column binding="cbucId " caption="CBUCID " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="rcId " caption="RCID " edit-widget-type="text " type="string
                         " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="banId " caption="BAN # " width="95px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="banId " caption="BAN # " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
                 <wm-table-column binding="banName
-                        " caption="BAN Name " width="180px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="billingSystem " caption="BILL SYS " width="75px " edit-widget-type="text " type="string
+                        " caption="BAN Name " width="260px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="billingSystem " caption="BILL SYS " edit-widget-type="text " type="string
                         " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="currentAr" caption="CURR AR " width="62px " edit-widget-type="number " type="double " show="true " readonly="false
+                <wm-table-column binding="currentAr" caption="CURR AR " edit-widget-type="number " type="double " show="true " readonly="false
                         " col-class="CURR_AR">
                     <wm-label caption="bind:row.getProperty('currentAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar30Days" caption="30D AR " width="66px " edit-widget-type="number " type="double " show="true " readonly="false " col-class="thirtyD_AR">
+                <wm-table-column binding="ar30Days" caption="30D AR " edit-widget-type="number " type="double " show="true " readonly="false " col-class="thirtyD_AR">
                     <wm-label caption="bind:row.getProperty('ar30Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar60Days" caption="60D AR " width="50px " edit-widget-type="number
+                <wm-table-column binding="ar60Days" caption="60D AR " edit-widget-type="number
                         " type="double " show="true " readonly="false " col-class="sixtyD_AR">
                     <wm-label caption="bind:row.getProperty('ar60Days') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR " width="69px " col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false
+                <wm-table-column binding="ar90DaysPlus" caption="90D+ AR " col-class="ninetyD_AR" edit-widget-type="number " type="double " show="true " readonly="false
                         ">
                     <wm-label caption="bind:row.getProperty('ar90DaysPlus') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalOverDue" caption="Total OD" width="64px " edit-widget-type="number " type="double " show="true " readonly="false " col-class="total_OD">
+                <wm-table-column binding="totalOverDue" caption="Total OD" edit-widget-type="number " type="double " show="true " readonly="false " col-class="total_OD">
                     <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="totalAr" caption="Total AR" width="68px " edit-widget-type="number
+                <wm-table-column binding="totalAr" caption="Total AR" edit-widget-type="number
                         " type="double " show="true " readonly="false " col-class="total_AR">
                     <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="disputeAmount" caption="Dispute $ " width="70px " edit-widget-type="number " type="double " show="true " readonly="false
+                <wm-table-column binding="disputeAmount" caption="Dispute $ " width="97px " col-class="dispute_Amt" edit-widget-type="number " type="double " show="true " readonly="false
                         ">
                     <wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="lastPaymentDate" caption="PMT DT " width="70px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="odRemaining" caption="OD REM CALC " width="65px
-                        " edit-widget-type="number " type="double " formatpattern="suffix " suffix="% " show="true " readonly="false ">
+                <wm-table-column binding="lastPaymentDate" caption="PMT DT " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="odRemaining" caption="OD REM CALC " edit-widget-type="number " type="double " formatpattern="suffix " suffix="% " show="true " readonly="false " width="106px">
                     <wm-label caption="bind:row.getProperty('odRemaining') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="portfolioCategory " caption="Portfolio " width="97px " edit-widget-type="text " type="string
+                <wm-table-column binding="portfolioCategory " caption="Portfolio " width="100px " edit-widget-type="text " type="string
                         " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="openActionDate " caption="Open Action DT " width="66px " edit-widget-type="text " type="string " show="true " readonly="false
-                        "></wm-table-column>
-                <wm-table-column binding="entityOwnerId " caption="ENT Owner " width="69px " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="assignedTeam " caption="Assigned Team " width="80px
-                        " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="openActionDate " caption="Open Action DT " edit-widget-type="text " type="string " show="true " readonly="false
+                        " width="110px "></wm-table-column>
+                <wm-table-column binding="entityOwnerId " caption="ENT Owner " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
+                <wm-table-column binding="assignedTeam " caption="Assigned Team " edit-widget-type="text " type="string " show="true " readonly="false" width="110px"></wm-table-column>
                 <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
                     class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>

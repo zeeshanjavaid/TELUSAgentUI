@@ -115,3 +115,8 @@ td.app-datagrid-cell.sixtyD_AR {
 td.app-datagrid-cell.ninetyD_AR {
     text-align: right !important;
 }
+
+.wm-app .table {
+    border: 1px solid #ccc !important;
+    width: fit-content!important;
+}
