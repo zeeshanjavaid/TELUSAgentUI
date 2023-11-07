@@ -1324,7 +1324,7 @@
     "isList" : true,
     "maxResults" : 20,
     "onError" : "getCollectionTreatMentonError(variable, data, xhrObj)",
-    "startUpdate" : false,
+    "startUpdate" : true,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
