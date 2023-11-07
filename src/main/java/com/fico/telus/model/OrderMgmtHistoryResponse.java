@@ -13,7 +13,7 @@ public class OrderMgmtHistoryResponse {
 	private String updatedBy;
 	private String updatedOn;
 	private String dueDate;
-	private List<Integer> banList;
+	private List<String> banList;
 	private String comment;
 	private String eventType;
 
@@ -67,11 +67,11 @@ public class OrderMgmtHistoryResponse {
 		this.dueDate = dueDate;
 	}
 
-	public List<Integer> getBanList() {
+    public List<String> getBanList() {
 		return banList;
 	}
 
-	public void setBanList(List<Integer> banList) {
+	public void setBanList(List<String> banList) {
 		this.banList = banList;
 	}
 

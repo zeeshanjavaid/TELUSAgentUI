@@ -400,7 +400,7 @@ public class CollectionTreatmentService {
 
         List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
         List<String> banIds = new ArrayList<>();
-        List<Integer> banRefIds = new ArrayList<>();
+        List<String> banRefIds = new ArrayList<>();
        // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
         
                 List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
@@ -417,7 +417,7 @@ public class CollectionTreatmentService {
                     List<CollectionBillingAccountRef> billingAccountRef = collectionEntityService.getBillingAccountRef(null, null, null, null, null, String.join(",", banIds));
                   //  banRefIds = billingAccountRef.stream().map(a -> a.getId()).collect(Collectors.toList());
                     List<BillingAccount> billingAccountRefIds = billingAccountRef.stream().map(a -> a.getBillingAccount()).collect(Collectors.toList());
-                    banRefIds =billingAccountRefIds.stream().map(a->Integer.valueOf(a.getId())).collect(Collectors.toList());
+                    banRefIds =billingAccountRefIds.stream().map(a->a.getId()).collect(Collectors.toList());
 
 
 
