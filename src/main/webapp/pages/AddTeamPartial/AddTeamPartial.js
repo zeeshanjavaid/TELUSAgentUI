@@ -22,7 +22,7 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
 
-    debugger;
+
 
     // if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
     //     App.Variables.getManagerSelected.datsSet = undefined;
@@ -45,8 +45,20 @@ Partial.onReady = function() {
             selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
         }
     }
+    debugger;
 
     $('#teamManagerMutliSel').prop('disabled', true);
+    $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
+
+    /*$('#comboTree507078ArrowBtn').prop('disabled', true);*/
+
+
+
+    // $('#teamManagerMutliSel_button').prop('disabled', true);
+
+
+
 
     // For multi Select manager
     Partial.statusData = [];
@@ -117,6 +129,8 @@ App.addTeams = function() {
     Partial.Variables.getTeam.invoke();
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     $('#teamManagerMutliSel').prop('disabled', false);
+    $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 };
 
 
@@ -219,6 +233,8 @@ Partial.CancelbuttonClick = function($event, widget) {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
     $('#teamManagerMutliSel').prop('disabled', true);
+    $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
@@ -410,6 +426,8 @@ Partial.updateTeamonSuccess = function(variable, data) {
     App.refreshTeamsOnAdminPage();
 
     $('#teamManagerMutliSel').prop('disabled', true);
+    $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -549,6 +567,8 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 Partial.EditTeamButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     $('#teamManagerMutliSel').prop('disabled', false);
+    $("#teamManagerMutliSel").css("cursor", "default");
+    $("#teamManagerMutliSel").css("background-color", "#ffffff");
     Partial.Variables.getTeam.invoke();
 };
 Partial.DeleteButtonClick = function($event, widget) {

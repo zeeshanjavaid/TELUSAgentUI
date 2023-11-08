@@ -120,3 +120,7 @@ td.app-datagrid-cell.ninetyD_AR {
     border: 1px solid #ccc !important;
     width: fit-content!important;
 }
+
+button.btn.app-button.btn-default.dropdown-toggle {
+    font-size: 12px;
+}
