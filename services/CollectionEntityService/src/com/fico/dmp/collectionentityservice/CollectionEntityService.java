@@ -110,7 +110,7 @@ public class CollectionEntityService {
 
 	private static final String IS_ENTITYSVC_STUB_ENABLED = "IS_ENTITYSVC_STUB_ENABLED";
 
-	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_BASEURL";
 	
 	private static final String ENTITYSVC_ENDPOINT_SCOPE = "ENTITYSVC_ENDPOINT_SCOPE";
 

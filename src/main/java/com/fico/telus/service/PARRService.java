@@ -36,7 +36,7 @@ public class PARRService {
 
 	private static final String IS_ENTITYSVC_STUB_ENABLED = "IS_ENTITYSVC_STUB_ENABLED";
 
-	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
+	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_BASEURL";
 
 	@Autowired
 	private PropertiesUtil propertiesUtil;
