@@ -34,20 +34,17 @@ public class PARRService {
 
 	private static final Logger logger = LoggerFactory.getLogger(PARRService.class);
 
-	private static final String IS_PARR_STUB_ENABLED = "IS_PARR_STUB_ENABLED";
+	private static final String IS_ENTITYSVC_STUB_ENABLED = "IS_ENTITYSVC_STUB_ENABLED";
 
-	private static final String PARR_ENDPOINT_URL = "PARR_ENDPOINT_URL";
+	private static final String ENTITYSVC_ENDPOINT_URL = "ENTITYSVC_ENDPOINT_URL";
 
 	@Autowired
 	private PropertiesUtil propertiesUtil;
 
 	@Autowired
 	private TelusAPIConnectivityService telusAPIConnectivityService;
-
-	@Autowired
-	private CollectionCommonService collectionCommonService;
 	
-		@Autowired
+	@Autowired
 	private CommonUtilityService commonUtilityService;
 
 
@@ -62,10 +59,8 @@ public class PARRService {
 	@PostConstruct
 	public void init() {
 
-		this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_PARR_STUB_ENABLED, "false"));
-// 		this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/billingAccountRef");
-
-	this.parrEndPointUrl = propertyValueFrom(PARR_ENDPOINT_URL, "https://apigw-public-yul-np-002.cloudapps.telus.com/customer/collectionEntityMgmt/v1/paymentArrangement");
+	this.isParrStubEnabled = Boolean.valueOf(propertyValueFrom(IS_ENTITYSVC_STUB_ENABLED, "false"));
+	this.parrEndPointUrl = propertyValueFrom(ENTITYSVC_ENDPOINT_URL, URIConstant.COLLECTION_ENTITY_SERVICE_URL);
 		
 		
 		
@@ -107,7 +102,7 @@ public class PARRService {
 			String requestPayload = mapper.writeValueAsString(collectionPaymentArrangementCreate);
 			logger.info("::::::::collectionPaymentArrangementCreate requestPayload :::::\n::::::: {}", requestPayload);
 
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl,
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl+URIConstant.ApiMapping.GET_PARR,
 					"POST","3161");
 						logger.info("::::::::Response from Success Telus  API- CREATE PARR:::::\n::::::: {}",responseStr);
 			CollectionPaymentArrangementCreate collectionPaymentArrangement = mapper.readValue(responseStr,CollectionPaymentArrangementCreate.class);
@@ -147,7 +142,7 @@ public CollectionPaymentArrangementUpdate updatePaymentArrangement(
 			logger.info("::::::::collectionPaymentArrangementUpdate requestPayload ::::::::{}", requestPayload);
 	   //  	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(parrEndPointUrl+ URIConstant.ApiMapping.GET_PARR)
 				// 	.queryParam("id", id);
-			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl+"/"+id,
+			String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl+URIConstant.ApiMapping.GET_PARR+"/"+id,
 					"PATCH","3161");
 				logger.info("::::::::Response from Success Telus  API UPDATE PARR:::::\n::::::: {}",responseStr);
 
@@ -156,7 +151,7 @@ public CollectionPaymentArrangementUpdate updatePaymentArrangement(
 		}
 	}
 
-public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId, String parrEndPointUrl) throws Exception {
+public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId, String parrEndPointUrlArg) throws Exception {
 
 		List<CollectionPaymentArrangement> collectionPaymentArrangements = new ArrayList<CollectionPaymentArrangement>();
 		if (isParrStubEnabled) {
@@ -169,10 +164,10 @@ public List<CollectionPaymentArrangement> getPaymentArrangements(String entityId
 		} else {
 		    
 		     logger.info("Htting telus API :::::::::::::::::::::::");
-		     logger.info("parrEndPointUrl--------"+parrEndPointUrl);
+		     logger.info("parrEndPointUrl--------"+parrEndPointUrlArg);
 		 //    if(entityId != null) {
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-					parrEndPointUrl, "GET","3161");
+					parrEndPointUrlArg, "GET","3161");
 					 logger.info("PARR TELUS RESPONSE:: " + responseStr);
 			collectionPaymentArrangements = mapper.readValue(responseStr,
 					mapper.getTypeFactory().constructCollectionType(List.class, CollectionPaymentArrangement.class));
@@ -193,7 +188,7 @@ public CollectionPaymentArrangement getPaymentArrangement(Integer parrId, Boolea
 		} else {
 
 			String responseStr = telusAPIConnectivityService.executeTelusAPI(null,
-					this.parrEndPointUrl + "/" + parrId, "GET","3161");
+					this.parrEndPointUrl + URIConstant.ApiMapping.GET_PARR+ "/" + parrId, "GET","3161");
 			collectionPaymentArrangement = mapper.readValue(responseStr,CollectionPaymentArrangement.class);
 		}
 		return collectionPaymentArrangement;
