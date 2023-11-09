@@ -243,7 +243,13 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setAr90DaysPlus(ar90DayPlus);
             	 assignedEntitiesInEntityModel.setTotalAr(assignedEntitiesInEntityViewResponse.getTotalAr());
             	 assignedEntitiesInEntityModel.setTotalOverDue(assignedEntitiesInEntityViewResponse.getTotalOverDue());
-            	 assignedEntitiesInEntityModel.setOdRemaining(assignedEntitiesInEntityViewResponse.getOdRemaining());
+            	 
+            	 if(Double.isNaN(assignedEntitiesInEntityViewResponse.getOdRemaining())) {
+            		 assignedEntitiesInEntityModel.setOdRemaining("");
+            	 }else {
+            		 assignedEntitiesInEntityModel.setOdRemaining(String.valueOf(assignedEntitiesInEntityViewResponse.getOdRemaining()));
+            	 }
+            	
             	 assignedEntitiesInEntityModel.setEntityOwnerId(commonUtilityService.getNameUsingEmpId(assignedEntitiesInEntityViewResponse.getEntityOwnerId()));
             	 assignedEntitiesInEntityModel.setPrimeWorkCategory(assignedEntitiesInEntityViewResponse.getPrimeWorkCategory());
             	 assignedEntitiesInEntityModel.setPortfolioCategory(assignedEntitiesInEntityViewResponse.getPortfolioCategory());

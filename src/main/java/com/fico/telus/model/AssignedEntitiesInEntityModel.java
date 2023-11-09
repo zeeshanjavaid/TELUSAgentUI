@@ -27,7 +27,7 @@ public class AssignedEntitiesInEntityModel {
 	private Double ar90DaysPlus = null;
 	private Double totalAr = null;
 	private Double totalOverDue = null;
-	private Double odRemaining = null;
+	private String odRemaining = null;
 	private String entityOwnerId = null;
 	private String primeWorkCategory = null;
 	private String portfolioCategory = null;
@@ -175,12 +175,7 @@ public class AssignedEntitiesInEntityModel {
 	public void setTotalOverDue(Double totalOverDue) {
 		this.totalOverDue = totalOverDue;
 	}
-	public Double getOdRemaining() {
-		return odRemaining;
-	}
-	public void setOdRemaining(Double odRemaining) {
-		this.odRemaining = odRemaining;
-	}
+
 	public String getEntityOwnerId() {
 		return entityOwnerId;
 	}
@@ -222,6 +217,12 @@ public class AssignedEntitiesInEntityModel {
 	}
 	public void setOpenActionDate(LocalDate openActionDate) {
 		this.openActionDate = openActionDate;
+	}
+	public String getOdRemaining() {
+		return odRemaining;
+	}
+	public void setOdRemaining(String odRemaining) {
+		this.odRemaining = odRemaining;
 	}
 
 }
