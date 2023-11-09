@@ -2,10 +2,9 @@
     <wm-gridcolumn class="entityProfileCancelledGrid" padding="unset unset unset 0.5em" name="gridcolumn1">
         <h3><b> BAN List for Cancelled   </b></h3>
         <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
-        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10"
-            navigationalign="right">
+        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10" navigationalign="right">
             <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="30px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
-                <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
+                <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" title="suppresion"></wm-icon>
             </wm-table-column>
             <wm-table-column binding="banId" caption="BAN #" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-column binding="banName" caption="BAN Name" width="350px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -170,8 +169,7 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn33">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px"
-                                on-click="notes1_buttonClick($event, widget)"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px" on-click="notes1_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow18">
