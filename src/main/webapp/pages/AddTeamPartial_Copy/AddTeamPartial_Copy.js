@@ -1009,6 +1009,7 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
 };
 Partial.EditTeamButtonClick = function($event, widget) {
+    debugger;
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
 };
 Partial.DeleteButtonClick = function($event, widget) {

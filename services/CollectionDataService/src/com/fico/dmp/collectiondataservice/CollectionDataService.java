@@ -510,6 +510,8 @@ public class CollectionDataService {
     				if(entitySearchResponse.getEntityOwner()!=null)
 	    			{
 		    			lookUpResponseWithTeamName.setTeamName(commonUtilityService.getTeamIdUsingEmpId(entitySearchResponse.getEntityOwner()));
+			    	}else{
+			    	    lookUpResponseWithTeamName.setTeamName("TIG AR");
 			    	}
 
 				    lookUpResponseWithTeamName.setEntityOwner(commonUtilityService.getNameUsingEmpId(entitySearchResponse.getEntityOwner()));

@@ -10,7 +10,8 @@
  */
 
 /* perform any action on widgets/variables within this block */
-
+var selectedTM = []
+var subComboBox;
 Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
@@ -27,7 +28,7 @@ Partial.onReady = function() {
     // if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
     //     App.Variables.getManagerSelected.datsSet = undefined;
     // }
-
+    debugger;
     if (Partial.pageParams.id != undefined) {
         Partial.Variables.getManagerNameByTeamId.setInput({
             'teamId': Partial.pageParams.id
@@ -37,7 +38,7 @@ Partial.onReady = function() {
     }
 
 
-    var selectedTM = []
+
 
     if (App.Variables.getManagerSelected.datsSet != undefined) {
 
@@ -78,7 +79,6 @@ Partial.onReady = function() {
     subComboBox = $('#teamManagerMutliSel').comboTree({
 
         source: Partial.statusData,
-
         isMultiple: true,
         cascadeSelect: true,
         collapse: true,
@@ -565,11 +565,13 @@ Partial.executeDeleteTeamUseronSuccess = function(variable, data) {
 
 };
 Partial.EditTeamButtonClick = function($event, widget) {
+    debugger;
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
     $('#teamManagerMutliSel').prop('disabled', false);
     $("#teamManagerMutliSel").css("cursor", "default");
     $("#teamManagerMutliSel").css("background-color", "#ffffff");
     Partial.Variables.getTeam.invoke();
+    App.refreshTeamManager();
 };
 Partial.DeleteButtonClick = function($event, widget) {
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
@@ -600,3 +602,23 @@ App.refreshTeamManager = function() {
     debugger;
     Partial.Variables.getUserWithManager.invoke();
 }
+
+App.refreshTeam = function() {
+    debugger;
+    Partial.Variables.getTeam.setInput({
+        'teamId': ''
+    });
+    Partial.Variables.getTeam.invoke();
+}
+
+App.refreshTeamUser = function() {
+    Partial.Variables.getAllTeams.invoke();
+}
+
+
+
+Partial.getUserWithManageronSuccess = function(variable, data) {
+    debugger;
+
+    Partial.Variables.getUserWhoIsManager.dataSet = data;
+};

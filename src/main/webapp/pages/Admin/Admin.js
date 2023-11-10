@@ -44,6 +44,8 @@ Page.NameClick = function($event, widget, item, currentItemWidgets) {
     Page.Variables.executeGetTeamManagerName.invoke();
     App.refreshAllTeams();
     App.refreshTeamManager();
+    App.refreshTeam();
+    App.refreshTeamUser();
 
 
 };

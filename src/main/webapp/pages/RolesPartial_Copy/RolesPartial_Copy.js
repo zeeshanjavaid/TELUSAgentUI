@@ -31,7 +31,7 @@ App.getRoleIndex = function(roleId) {
 
 
 Partial.container5Click = function($event, widget, item, currentItemWidgets) {
-
+    debugger;
     App.Variables.errorMsg.dataSet.dataValue = "";
     App.Variables.successMessage.dataSet.dataValue = "";
     Partial.Variables.roleId.dataSet.dataValue = item.roleId;
