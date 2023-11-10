@@ -17,6 +17,12 @@ public class GetActiveAgentListWithWorkCategoryResponse implements Serializable 
     @ColumnAlias("empId")
     private String empId;
 
+    @ColumnAlias("role")
+    private String role;
+
+    @ColumnAlias("teamId")
+    private String teamId;
+
     @ColumnAlias("workCategory")
     private String workCategory;
 
@@ -26,6 +32,22 @@ public class GetActiveAgentListWithWorkCategoryResponse implements Serializable 
 
     public void setEmpId(String empId) {
         this.empId = empId;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getTeamId() {
+        return this.teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 
     public String getWorkCategory() {
@@ -42,12 +64,16 @@ public class GetActiveAgentListWithWorkCategoryResponse implements Serializable 
         if (!(o instanceof GetActiveAgentListWithWorkCategoryResponse)) return false;
         final GetActiveAgentListWithWorkCategoryResponse getActiveAgentListWithWorkCategoryResponse = (GetActiveAgentListWithWorkCategoryResponse) o;
         return Objects.equals(getEmpId(), getActiveAgentListWithWorkCategoryResponse.getEmpId()) &&
+                Objects.equals(getRole(), getActiveAgentListWithWorkCategoryResponse.getRole()) &&
+                Objects.equals(getTeamId(), getActiveAgentListWithWorkCategoryResponse.getTeamId()) &&
                 Objects.equals(getWorkCategory(), getActiveAgentListWithWorkCategoryResponse.getWorkCategory());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getEmpId(),
+                getRole(),
+                getTeamId(),
                 getWorkCategory());
     }
 }

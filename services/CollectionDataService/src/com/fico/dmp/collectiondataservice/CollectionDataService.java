@@ -325,7 +325,13 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setTotalAr(assignedEntitiesInClassicViewResponse.getTotalAr());
 				assignedEntitiesInClassicModel.setTotalOverDue(assignedEntitiesInClassicViewResponse.getTotalOverDue());
 				assignedEntitiesInClassicModel.setLastPaymentDate(assignedEntitiesInClassicViewResponse.getLastPaymentDate());
-				assignedEntitiesInClassicModel.setOdRemaining(assignedEntitiesInClassicViewResponse.getOdRemaining());
+			//	assignedEntitiesInClassicModel.setOdRemaining(assignedEntitiesInClassicViewResponse.getOdRemaining());
+			
+			     if(Double.isNaN(assignedEntitiesInClassicViewResponse.getOdRemaining())) {
+            		 assignedEntitiesInClassicModel.setOdRemaining("");
+            	 }else {
+            		 assignedEntitiesInClassicModel.setOdRemaining(String.valueOf(assignedEntitiesInClassicViewResponse.getOdRemaining()) + "%");
+            	 }
 				assignedEntitiesInClassicModel.setAcctStatus(assignedEntitiesInClassicViewResponse.getAcctStatus());
 				assignedEntitiesInClassicModel.setAcctStatusDate(assignedEntitiesInClassicViewResponse.getAcctStatusDate());
 				assignedEntitiesInClassicModel.setAcctType(assignedEntitiesInClassicViewResponse.getAcctType());

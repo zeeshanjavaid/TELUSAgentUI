@@ -21,7 +21,7 @@ public class AssignedEntitiesInClassicModel {
 	private Double totalAr = null;
 	private Double totalOverDue = null;
 	private LocalDate lastPaymentDate = null;
-	private Double odRemaining = null;
+	private String odRemaining = null;
 	private String acctStatus = null;
 	private LocalDate acctStatusDate = null;
 	private String acctType = null;
@@ -150,10 +150,11 @@ public class AssignedEntitiesInClassicModel {
 	public void setLastPaymentDate(LocalDate lastPaymentDate) {
 		this.lastPaymentDate = lastPaymentDate;
 	}
-	public Double getOdRemaining() {
+
+	public String getOdRemaining() {
 		return odRemaining;
 	}
-	public void setOdRemaining(Double odRemaining) {
+	public void setOdRemaining(String odRemaining) {
 		this.odRemaining = odRemaining;
 	}
 	public String getAcctStatus() {

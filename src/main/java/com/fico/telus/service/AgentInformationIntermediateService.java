@@ -32,7 +32,7 @@ public class AgentInformationIntermediateService {
 	public ResponseEntity<Object> getActiveAgentInformation() {
 		logger.info("inside AgentInformationIntermediateService#getActiveAgentInformation");
 		List<GetActiveAgentListWithWorkCategoryResponse> getActiveAgentsListResponseList = new ArrayList<GetActiveAgentListWithWorkCategoryResponse>();
-		Pageable pageable = PageRequest.of(0, 1000);
+		Pageable pageable = PageRequest.of(0, 10000);
 		List<AgentInfo> agentInfoList = null;
 		try {
 		Page<GetActiveAgentListWithWorkCategoryResponse> activeAgentListPageableResponse = telusAgentUIDBQueryExecutorService.executeGetActiveAgentListWithWorkCategory(pageable);
@@ -51,6 +51,8 @@ public class AgentInformationIntermediateService {
 			}
 			AgentInfo agentInfo = new AgentInfo();
 			agentInfo.setEmpId(getActiveAgentListResponse.getEmpId());
+			agentInfo.setRole(getActiveAgentListResponse.getRole());
+			agentInfo.setTeamId(getActiveAgentListResponse.getTeamId());
 			agentInfo.setWorkCategory(workCategories);
 			agentInfoList.add(agentInfo);
 		}

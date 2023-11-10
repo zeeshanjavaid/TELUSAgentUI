@@ -116,19 +116,33 @@ ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.ro
 
     <sql-query name="getActiveAgentListWithWorkCategory">
         <![CDATA[
-        SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory
-FROM USER
-LEFT JOIN WORKCATEGORY_USER
-ON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId
+        SELECT usr.emplId as empId,
+role as role,
+team.TeamID as teamId,
+group_concat(DISTINCT WORKCATEGORY_USER.work_category separator ',') as workCategory
+FROM USER usr
+join USER_ROLE usrRole on usr.id = usrRole.userId
+join ROLE role on usrRole.roleId = role.id
+join TEAM_USER teamUsr on teamUsr.userId = usr.id
+join TEAM team on team.id = teamUsr.teamId
+left join WORKCATEGORY_USER ON usr.ID = WORKCATEGORY_USER.userId
+where usr.active = true and usr.emplId is not null  group by usr.emplId
         ]]>
     </sql-query>
 
     <sql-query name="getActiveAgentListWithWorkCategory__count">
         <![CDATA[
-        select count(*) from (SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory
-FROM USER
-LEFT JOIN WORKCATEGORY_USER
-ON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId) wmTempTable
+        select count(*) from (SELECT usr.emplId as empId,
+role as role,
+team.TeamID as teamId,
+group_concat(DISTINCT WORKCATEGORY_USER.work_category separator ',') as workCategory
+FROM USER usr
+join USER_ROLE usrRole on usr.id = usrRole.userId
+join ROLE role on usrRole.roleId = role.id
+join TEAM_USER teamUsr on teamUsr.userId = usr.id
+join TEAM team on team.id = teamUsr.teamId
+left join WORKCATEGORY_USER ON usr.ID = WORKCATEGORY_USER.userId
+where usr.active = true and usr.emplId is not null  group by usr.emplId) wmTempTable
         ]]>
     </sql-query>
 

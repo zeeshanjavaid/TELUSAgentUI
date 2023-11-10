@@ -2439,8 +2439,8 @@
     "name" : "getActiveAgentListWithWorkCategory",
     "description" : "This query is used to retrieve the active agent information list along with work categories",
     "version" : "V2",
-    "queryString" : "SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER\r\nLEFT JOIN WORKCATEGORY_USER\r\nON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId",
-    "countQueryString" : "select count(*) from (SELECT USER.emplId as empId, group_concat(WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER\r\nLEFT JOIN WORKCATEGORY_USER\r\nON USER.ID = WORKCATEGORY_USER.userId where USER.active = true and USER.emplId is not null  group by USER.emplId) wmTempTable",
+    "queryString" : "SELECT usr.emplId as empId,\r\nrole as role,\r\nteam.TeamID as teamId,\r\ngroup_concat(DISTINCT WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER usr\r\njoin USER_ROLE usrRole on usr.id = usrRole.userId\r\njoin ROLE role on usrRole.roleId = role.id\r\njoin TEAM_USER teamUsr on teamUsr.userId = usr.id\r\njoin TEAM team on team.id = teamUsr.teamId\r\nleft join WORKCATEGORY_USER ON usr.ID = WORKCATEGORY_USER.userId\r\nwhere usr.active = true and usr.emplId is not null  group by usr.emplId",
+    "countQueryString" : "select count(*) from (SELECT usr.emplId as empId,\r\nrole as role,\r\nteam.TeamID as teamId,\r\ngroup_concat(DISTINCT WORKCATEGORY_USER.work_category separator ',') as workCategory\r\nFROM USER usr\r\njoin USER_ROLE usrRole on usr.id = usrRole.userId\r\njoin ROLE role on usrRole.roleId = role.id\r\njoin TEAM_USER teamUsr on teamUsr.userId = usr.id\r\njoin TEAM team on team.id = teamUsr.teamId\r\nleft join WORKCATEGORY_USER ON usr.ID = WORKCATEGORY_USER.userId\r\nwhere usr.active = true and usr.emplId is not null  group by usr.emplId) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -2465,6 +2465,34 @@
           "list" : false
         },
         "tableName" : "USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "role",
+        "fieldName" : "role",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "ROLE",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      }, {
+        "name" : "teamId",
+        "fieldName" : "teamId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        },
+        "tableName" : "TEAM",
         "databaseName" : "TELUSAgentUIDB",
         "columnMetadataInfo" : {
           "encrypted" : false
