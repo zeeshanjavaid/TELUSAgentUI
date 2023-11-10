@@ -244,10 +244,12 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setTotalAr(assignedEntitiesInEntityViewResponse.getTotalAr());
             	 assignedEntitiesInEntityModel.setTotalOverDue(assignedEntitiesInEntityViewResponse.getTotalOverDue());
             	 
+            	 if(assignedEntitiesInEntityViewResponse.getOdRemaining() != null) {
             	 if(Double.isNaN(assignedEntitiesInEntityViewResponse.getOdRemaining())) {
             		 assignedEntitiesInEntityModel.setOdRemaining("");
             	 }else {
-            		 assignedEntitiesInEntityModel.setOdRemaining(String.valueOf(assignedEntitiesInEntityViewResponse.getOdRemaining()));
+            		 assignedEntitiesInEntityModel.setOdRemaining(String.valueOf(assignedEntitiesInEntityViewResponse.getOdRemaining()) + "%");
+            	 }
             	 }
             	
             	 assignedEntitiesInEntityModel.setEntityOwnerId(commonUtilityService.getNameUsingEmpId(assignedEntitiesInEntityViewResponse.getEntityOwnerId()));
@@ -326,12 +328,13 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setTotalOverDue(assignedEntitiesInClassicViewResponse.getTotalOverDue());
 				assignedEntitiesInClassicModel.setLastPaymentDate(assignedEntitiesInClassicViewResponse.getLastPaymentDate());
 			//	assignedEntitiesInClassicModel.setOdRemaining(assignedEntitiesInClassicViewResponse.getOdRemaining());
-			
+			    if(assignedEntitiesInClassicViewResponse.getOdRemaining() != null) {
 			     if(Double.isNaN(assignedEntitiesInClassicViewResponse.getOdRemaining())) {
             		 assignedEntitiesInClassicModel.setOdRemaining("");
             	 }else {
             		 assignedEntitiesInClassicModel.setOdRemaining(String.valueOf(assignedEntitiesInClassicViewResponse.getOdRemaining()) + "%");
             	 }
+			    }
 				assignedEntitiesInClassicModel.setAcctStatus(assignedEntitiesInClassicViewResponse.getAcctStatus());
 				assignedEntitiesInClassicModel.setAcctStatusDate(assignedEntitiesInClassicViewResponse.getAcctStatusDate());
 				assignedEntitiesInClassicModel.setAcctType(assignedEntitiesInClassicViewResponse.getAcctType());

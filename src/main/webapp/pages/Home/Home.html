@@ -179,7 +179,7 @@
                 <wm-table-column binding="disputeFlag " caption="In Dispute " widget-type="label " edit-widget-type="checkbox " type="boolean " show="true " readonly="false">
                     <wm-label caption="bind:row.getProperty( 'disputeFlag')? 'Y': 'N' " class=" " conditionalclass=" "></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="odRemaining " caption="OD REM CALC " width="106px" edit-widget-type="number " type="double
+                <wm-table-column binding="odRemaining " caption="OD REM CALC " width="106px" edit-widget-type="text " type="string
                         " formatpattern="suffix " suffix="% " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="portfolioCategory " caption="Portfolio " edit-widget-type="text " type="string " show="true " readonly="false" width="100px"></wm-table-column>
                 <wm-table-column binding="openActionDate " caption="Open Action " width="95px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
@@ -235,7 +235,7 @@
                     <wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="lastPaymentDate" caption="PMT DT " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
-                <wm-table-column binding="odRemaining" caption="OD REM CALC " edit-widget-type="number " type="double " formatpattern="suffix " suffix="% " show="true " readonly="false " width="106px">
+                <wm-table-column binding="odRemaining" caption="OD REM CALC " edit-widget-type="text " type="string " formatpattern="suffix " suffix="% " show="true " readonly="false " width="106px">
                     <wm-label caption="bind:row.getProperty('odRemaining') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="portfolioCategory " caption="Portfolio " width="100px " edit-widget-type="text " type="string

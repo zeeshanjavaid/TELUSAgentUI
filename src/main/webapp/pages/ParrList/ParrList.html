@@ -8,32 +8,36 @@
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="getPaymentArrangementTable1" width="98%" title="" margin="5px 5px 0px 17px" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right" pagesize="10">
-                <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" width="80px" edit-widget-type="number" type="integer" show="true" readonly="false">
+                <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" width="90px" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
-                <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="installments[0].date" caption="Start" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="customField1" caption="Expiry" widget-type="label" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                <wm-table-column binding="status" caption="Status" width="104px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="installments[0].date" caption="Start" width="95px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="customField1" caption="Expiry" widget-type="label" width="95px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
                     <wm-label caption="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet[$i].installments[row.getProperty('installments').length-1].date | toDate: 'yyyy-MM-dd'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="evaluationResult" caption="Evaluation" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="amount" caption="PARR Amt" col-class="parr_Amt" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="evaluationResult" caption="Evaluation" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="amount" caption="PARR Amt" width="110px" col-class="parr_Amt" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('amount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" col-class="CUMMPMT_EXP" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="expectedPaymentAmountToDate" caption="CUMM PMT EXP" width="100px" col-class="CUMMPMT_EXP" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="110px" col-class="CUMMPMT_RVCD" edit-widget-type="number" type="double" show="true" readonly="false">
+                <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="100px" col-class="CUMMPMT_RVCD" edit-widget-type="number" type="double" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">
+                <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" width="100px" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') == 0 ? 0 + '%' : row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="auditInfo.createdBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" edit-widget-type="text" type="dateTime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.createdBy" caption="Created By" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" width="95px" edit-widget-type="text" type="dateTime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" width="114px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" width="95px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
+
+
+
+
         </wm-gridcolumn>
     </wm-container>
 </wm-partial>

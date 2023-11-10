@@ -76,10 +76,10 @@
                 <wm-gridcolumn width="100%" name="gridcolumn2" padding="1.5em 0.5em 1.5em 1em">
                     <wm-table name="getParrReportTable1" title="" dataset="bind:Variables.ParrReportServiceGetParrReport.dataSet" navigation="None" navigationalign="right" on-beforedatarender="getParrReportTable1Beforedatarender(widget, $data, $columns)"
                         pagesize="20">
-                        <wm-table-column binding="parrId" caption="PARR ID" width="79px" col-class="WIDTH_PARRID" edit-widget-type="number" type="integer" show="true" readonly="false">
+                        <wm-table-column binding="parrId" caption="PARR ID" width="85px" col-class="WIDTH_PARRID" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('parrId')" hyperlink="" class="" on-click="openPARRdetailsDailog($event, widget, row)" conditionalclass=""></wm-anchor>
                         </wm-table-column>
-                        <wm-table-column binding="entityId" caption="ENT ID" width="76px" col-class="WIDTH_ENTID" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="entityId" caption="ENT ID" width="85px" col-class="WIDTH_ENTID" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityName" caption="ENT Name" width="230px" col-class="WIDTH_NAME" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityRisk" caption="ENT Risk" width="86px" col-class="WIDTH_RISK" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="parrStatus" caption="PARR Status" width="107px" col-class="WIDTH_STATUS" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
