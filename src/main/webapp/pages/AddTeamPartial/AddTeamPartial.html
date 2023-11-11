@@ -5,8 +5,8 @@
                 <wm-layoutgrid name="layoutgrid3">
                     <wm-gridrow name="gridrow10_1">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn15_2">
-                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.id ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip" margin="4% unset unset unset"
-                                height="25"></wm-label>
+                            <wm-label id="title" padding="unset 0.5em unset 0.6em" name="label2" caption="bind:Variables.readOnlyMode.dataSet.dataValue? &quot;View Team&quot;:  pageParams.id ? &quot;Edit Team&quot; : &quot;Create Team&quot;" class="h3 add-role-lebel text-clip"
+                                margin="4% unset unset unset" height="25"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn16_2" horizontalalign="right">
                             <wm-container name="container14" margin="20px 12px unset unset">
@@ -90,8 +90,8 @@
                         <wm-container class="fi-panel" name="container12" padding="20px unset 20px 25px">
                             <!--<wm-prefab prefabname="DualList_TD" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" reducerightdataset="false" class="dualListPadding  dl-width"
                                 resetleftdataset="false" displayfield="bind:&quot;fullName&quot;" identifier="bind:userId"></wm-prefab>-->
-                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;" new="bind:pageParams.id === undefined"
-                                isreadonly="true"></wm-prefab>
+                            <wm-prefab prefabname="DualList" name="DualListUsers_TD" leftdataset="bind:Variables.leftUserList.dataSet" rightdataset="bind:Variables.selectedUsers.dataSet" displayfield="bind:&quot;fullName&quot;" identifier="bind:&quot;id&quot;"
+                                new="bind:pageParams.id === undefined" isreadonly="false"></wm-prefab>
                         </wm-container>
                     </wm-composite>
                 </wm-container>
