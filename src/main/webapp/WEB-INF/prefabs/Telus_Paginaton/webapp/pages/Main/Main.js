@@ -71,7 +71,7 @@ Prefab.setupPagination = function() {
             dataSource: emptyArray,
             pageSize: Prefab.pagesize,
             showSizeChanger: false,
-            showPageNumbers: false,
+            showPageNumbers: true,
             showNavigator: true,
             showTotalPage: true,
             formatNavigator: App.appLocale.LABEL_DISPLAYING + ' <%= rangeStart %> - <%= rangeEnd %> ' + App.appLocale.LABEL_OF + ' <%= totalNumber %>',
