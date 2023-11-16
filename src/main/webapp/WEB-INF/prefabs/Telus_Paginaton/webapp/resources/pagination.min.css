@@ -39,15 +39,15 @@
 }
 
 .paginationjs .paginationjs-pages li>a {
-    min-width: 27pt;
-    height: 27pt;
-    line-height: 30px;
+    min-width: 19pt;
+    height: 20pt;
+    line-height: 24px;
     display: block;
-    font-size: 25px;
-    color: #00609C;
+    font-size: 12px;
+    color: #000000;
     text-decoration: none;
     text-align: center;
-    padding: 3px 7px
+    padding: 0px 0px
 }
 
 .paginationjs .paginationjs-pages li>a:hover {
