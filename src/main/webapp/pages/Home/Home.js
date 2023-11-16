@@ -202,12 +202,11 @@ Page.banViewButtonClick = function($event, widget) {
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': entityOwner,
         'workCategory': finalWCbanview,
-        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
-        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
-        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': 'ALL', //portfolioview,
-        'billingSystem': 'CES9', //billingSystemview,
-        'collectionStatus': 'ALL' //collStatusDataview
+        'portfolio': 'ALL',
+        'billingSystem': 'CES9',
+        'collectionStatus': 'ALL',
+        'limit': 10,
+        'offset': 0
 
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
@@ -243,6 +242,8 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
+        'limit': 10,
+        'offset': 0
 
 
     });
@@ -281,8 +282,8 @@ Page.clearFilterFieldsBanView = function($event, widget) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
-
-
+        'limit': 10,
+        'offset': 0
     });
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
@@ -314,7 +315,9 @@ Page.applyFiltersEntityView = function($event, widget) {
             'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
             'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
             'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
-            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue
+            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
+            'limit': 10,
+            'offset': 0
 
         });
         Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
@@ -345,7 +348,9 @@ Page.applyFiltersBanView = function($event, widget) {
             'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
             'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
             'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
-            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue
+            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue,
+            'limit': 10,
+            'offset': 0
 
         });
         Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
@@ -559,12 +564,11 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': entityOwner,
         'workCategory': finalWCentityview,
-        /*'portfolio': Page.Variables.portfolioEntityView_home.dataSet[0].dataValue,
-        'billingSystem': Page.Variables.billingSystemEntityView_home.dataSet[0].dataValue,
-        'collectionStatus': Page.Variables.CollStatus_home.dataSet[0].dataValue*/
-        'portfolio': 'ALL', // portfolioview,
-        'billingSystem': 'CES9', //billingSystemview,
-        'collectionStatus': 'ALL' //collStatusDataview
+        'portfolio': 'ALL',
+        'billingSystem': 'CES9',
+        'collectionStatus': 'ALL',
+        'limit': 10,
+        'offset': 0
     });
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
 };
@@ -710,3 +714,41 @@ Page.table1_OnRowexpand = function($event, widget, row, $data) {
 Page.table2_OnRowexpand = function($event, widget, row, $data) {
     App.showRowExpansionBanViewHome(row, $data);
 };
+
+Page.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Page.size = $event.pageSize
+    Page.page = $event.pageNumber
+    Page.RefreshData();
+
+};
+
+Page.RefreshData = function() {
+    debugger;
+    var offset = Page.size * (Page.page - 1);
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+        'limit': Page.size,
+        'offset': offset
+    });
+    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+
+}
+
+Page.Telus_PaginatonBanViewPagechange = function($event, $data) {
+    debugger;
+    Page.size = $event.pageSize
+    Page.page = $event.pageNumber
+    Page.RefreshBanViewData();
+
+};
+
+Page.RefreshBanViewData = function() {
+    debugger;
+    var offset = Page.size * (Page.page - 1);
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+        'limit': Page.size,
+        'offset': offset
+    });
+    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+
+}

@@ -151,7 +151,7 @@
             </wm-gridrow>
         </wm-layoutgrid>
         <wm-layoutgrid id="entityViewTableGrid" style="border: 1px solid #ddd;" width="96%" margin="20px 0px 10px 30px" name="layoutgrid4">
-            <wm-table title="" dataset="bind:Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet" navigation="Classic" name="table1" margin="16px 10px 16px 16px" width="98%" navigationalign="right" pagesize="10" class="Table-Font">
+            <wm-table title="" dataset="bind:Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet" navigation="None" name="table1" margin="16px 10px 16px 16px" width="98%" navigationalign="right" pagesize="10" class="Table-Font">
                 <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
                 </wm-table-column>
@@ -181,7 +181,7 @@
                 </wm-table-column>
                 <wm-table-column binding="odRemaining " caption="OD REM CALC " width="106px" edit-widget-type="text " type="string
                         " formatpattern="suffix " suffix="% " show="true " readonly="false"></wm-table-column>
-                <wm-table-column binding="portfolioCategory " caption="Portfolio " edit-widget-type="text " type="string " show="true " readonly="false" width="100px"></wm-table-column>
+                <wm-table-column binding="portfolioCategory " caption="Portfolio " width="100px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="openActionDate " caption="Open Action " width="95px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="totalBan " caption="Total BANs " edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="totalDelinquentBans " caption="Dlq BANs " edit-widget-type="number " type="integer " show="true " readonly="false"></wm-table-column>
@@ -190,6 +190,8 @@
                 <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
                     class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
+            <wm-container name="containerPagination5"></wm-container>
+            <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination5" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet[0].totalNumberOfElement"></wm-prefab>
         </wm-layoutgrid>
         <wm-layoutgrid id="banViewTableGrid
                         " style="border: 1px solid #ddd; " width="96% " margin="20px 0px 10px 30px " name="layoutgrid5 " show="bind:Variables.hideBanTableGrid.dataValue ">
@@ -247,6 +249,8 @@
                 <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
                     class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
+            <wm-container name="containerPagination6"></wm-container>
+            <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination6" show="true" name="Telus_PaginatonBanView" pagesize="10" on-pagechange="Telus_PaginatonBanViewPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet[0].totalNumberOfElement"></wm-prefab>
         </wm-layoutgrid>
     </wm-content>
     <wm-footer content="footer

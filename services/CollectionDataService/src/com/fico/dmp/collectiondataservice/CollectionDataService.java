@@ -203,19 +203,26 @@ public class CollectionDataService {
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
                       .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
+                      .queryParamIfPresent("offset", Optional.ofNullable(offset))
                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
                      
 
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
-            
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
+             ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, endPointString, HttpMethod.GET, entitySvcAuthScope);
+            // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
-             logger.info("Response---"+ responseStr);
+            // logger.info("Response---"+ responseStr);
              
-             List<AssignedEntitiesInEntityViewResponse> AssignedEntitiesInEntityViewResponseList = objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+             String result = responseFromTelus.getBody();
+ 			HttpHeaders headers1=responseFromTelus.getHeaders();
+ 			String totalNoOfElement=headers1.getFirst("x-total-count");
+ 			List<AssignedEntitiesInEntityViewResponse> assignedEntitiesInEntityViewResponseList = new ArrayList<AssignedEntitiesInEntityViewResponse>();
+ 			 if(!StringUtils.isEmpty(result)) {
+ 				 assignedEntitiesInEntityViewResponseList = objectMapper.readValue(result,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInEntityViewResponse.class));
+ 			 }
             
              List<AssignedEntitiesInEntityModel> assignedEntitiesInEntityModelList = new ArrayList<AssignedEntitiesInEntityModel>();
-             for (AssignedEntitiesInEntityViewResponse assignedEntitiesInEntityViewResponse : AssignedEntitiesInEntityViewResponseList) {
+             for (AssignedEntitiesInEntityViewResponse assignedEntitiesInEntityViewResponse : assignedEntitiesInEntityViewResponseList) {
             	 AssignedEntitiesInEntityModel assignedEntitiesInEntityModel = new AssignedEntitiesInEntityModel();
             	 assignedEntitiesInEntityModel.setEntityId(assignedEntitiesInEntityViewResponse.getEntityId());
             	 assignedEntitiesInEntityModel.setEntityType(assignedEntitiesInEntityViewResponse.getEntityType());
@@ -259,6 +266,7 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setFtnp(assignedEntitiesInEntityViewResponse.isFtnp());
             	 assignedEntitiesInEntityModel.setDisputeFlag(assignedEntitiesInEntityViewResponse.isDisputeFlag());
             	 assignedEntitiesInEntityModel.setOpenActionDate(assignedEntitiesInEntityViewResponse.getOpenActionDate());
+            	 assignedEntitiesInEntityModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
             	 assignedEntitiesInEntityModelList.add(assignedEntitiesInEntityModel);
 			}
              
@@ -285,25 +293,24 @@ public class CollectionDataService {
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
                       .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
+                      .queryParamIfPresent("offset", Optional.ofNullable(offset))
                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
                      
-                     
-                    //  .queryParam("entityOwner", entityOwner)
-                    //  .queryParam("workCategory", workCategory)
-                    //  .queryParam("portfolio",portfolio)
-                    //  .queryParam("billingSystem", billingSystem)
-                    //  .queryParam("collectionStatus", collectionStatus)
-                    //  .queryParam("includeCurrentOrCredit",includeCurrentOrCredit)
-                    //  .queryParam("limit", limit);
 
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
              
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
+             ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, endPointString, HttpMethod.GET, entitySvcAuthScope);
+            // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
-             logger.info("Response---"+ responseStr);
+            // logger.info("Response---"+ responseStr);
              
-             List<AssignedEntitiesInClassicViewResponse> assignedEntitiesInClassicViewResList = objectMapper.readValue(responseStr,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
-             
+             String result = responseFromTelus.getBody();
+ 			HttpHeaders headers1=responseFromTelus.getHeaders();
+ 			String totalNoOfElement=headers1.getFirst("x-total-count");
+ 			List<AssignedEntitiesInClassicViewResponse> assignedEntitiesInClassicViewResList = new ArrayList<AssignedEntitiesInClassicViewResponse>();
+ 			if(!StringUtils.isEmpty(result)) {
+ 				assignedEntitiesInClassicViewResList = objectMapper.readValue(result,objectMapper.getTypeFactory().constructCollectionType(List.class, AssignedEntitiesInClassicViewResponse.class));
+ 			}
              List<AssignedEntitiesInClassicModel> assignedEntitiesInClassicModelList = new ArrayList<AssignedEntitiesInClassicModel>();
              for (AssignedEntitiesInClassicViewResponse assignedEntitiesInClassicViewResponse : assignedEntitiesInClassicViewResList) {
 				AssignedEntitiesInClassicModel assignedEntitiesInClassicModel = new AssignedEntitiesInClassicModel();
@@ -360,6 +367,7 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setClosingDate(assignedEntitiesInClassicViewResponse.getClosingDate());
 				assignedEntitiesInClassicModel.setClosingCycle(assignedEntitiesInClassicViewResponse.getClosingCycle());
 				assignedEntitiesInClassicModel.setAssignedTeam(commonUtilityService.getTeamIdUsingEmpId(assignedEntitiesInClassicViewResponse.getEntityOwnerId()));
+				assignedEntitiesInClassicModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
 				assignedEntitiesInClassicModelList.add(assignedEntitiesInClassicModel);
 			}
              

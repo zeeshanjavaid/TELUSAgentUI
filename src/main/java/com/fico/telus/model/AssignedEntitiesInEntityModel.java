@@ -35,6 +35,7 @@ public class AssignedEntitiesInEntityModel {
 	private Boolean ftnp = null;
 	private Boolean disputeFlag = null;
 	private LocalDate openActionDate = null;
+	private Integer totalNumberOfElement;
 	
 	
 	public Integer getEntityId() {
@@ -223,6 +224,12 @@ public class AssignedEntitiesInEntityModel {
 	}
 	public void setOdRemaining(String odRemaining) {
 		this.odRemaining = odRemaining;
+	}
+	public Integer getTotalNumberOfElement() {
+		return totalNumberOfElement;
+	}
+	public void setTotalNumberOfElement(Integer totalNumberOfElement) {
+		this.totalNumberOfElement = totalNumberOfElement;
 	}
 
 }
