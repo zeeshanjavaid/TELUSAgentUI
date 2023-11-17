@@ -236,10 +236,11 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setEntityCollectionStatus(assignedEntitiesInEntityViewResponse.getEntityCollectionStatus());
             	 assignedEntitiesInEntityModel.setManualFlag(assignedEntitiesInEntityViewResponse.isManualFlag());
             	 assignedEntitiesInEntityModel.setLastTreatment(assignedEntitiesInEntityViewResponse.getLastTreatment());
-            	 assignedEntitiesInEntityModel.setCurrentAr(assignedEntitiesInEntityViewResponse.getCurrentAr());
-            	 assignedEntitiesInEntityModel.setAr30Days(assignedEntitiesInEntityViewResponse.getAr30Days());
-            	 assignedEntitiesInEntityModel.setAr60Days(assignedEntitiesInEntityViewResponse.getAr60Days());
-            	 assignedEntitiesInEntityModel.setAr90Days(assignedEntitiesInEntityViewResponse.getAr90Days());
+            	 assignedEntitiesInEntityModel.setCurrentAr(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getCurrentAr()));
+            	// assignedEntitiesInEntityModel.setAr30Days(assignedEntitiesInEntityViewResponse.getAr30Days());
+            	 assignedEntitiesInEntityModel.setAr30Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr30Days()));
+            	 assignedEntitiesInEntityModel.setAr60Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr60Days()));
+            	 assignedEntitiesInEntityModel.setAr90Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr90Days()));
             	 assignedEntitiesInEntityModel.setAr120Days(assignedEntitiesInEntityViewResponse.getAr120Days());
             	 assignedEntitiesInEntityModel.setAr150Days(assignedEntitiesInEntityViewResponse.getAr150Days());
             	 assignedEntitiesInEntityModel.setAr180Days(assignedEntitiesInEntityViewResponse.getAr180Days());
@@ -247,9 +248,9 @@ public class CollectionDataService {
             	 //Added logic to add all Ar which are greater than 90 days.
             	 Double ar90DayPlus = assignedEntitiesInEntityViewResponse.getAr90Days() + assignedEntitiesInEntityViewResponse.getAr120Days() + assignedEntitiesInEntityViewResponse.getAr150Days() 
             	 + assignedEntitiesInEntityViewResponse.getAr180Days() + assignedEntitiesInEntityViewResponse.getAr180DaysPlus();
-            	 assignedEntitiesInEntityModel.setAr90DaysPlus(ar90DayPlus);
-            	 assignedEntitiesInEntityModel.setTotalAr(assignedEntitiesInEntityViewResponse.getTotalAr());
-            	 assignedEntitiesInEntityModel.setTotalOverDue(assignedEntitiesInEntityViewResponse.getTotalOverDue());
+            	 assignedEntitiesInEntityModel.setAr90DaysPlus(String.format("%,.2f", ar90DayPlus));
+            	 assignedEntitiesInEntityModel.setTotalAr(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getTotalAr()));
+            	 assignedEntitiesInEntityModel.setTotalOverDue(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getTotalOverDue()));
             	 
             	 if(assignedEntitiesInEntityViewResponse.getOdRemaining() != null) {
             	 if(Double.isNaN(assignedEntitiesInEntityViewResponse.getOdRemaining())) {

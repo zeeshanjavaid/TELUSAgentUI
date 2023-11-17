@@ -16,17 +16,17 @@ public class AssignedEntitiesInEntityModel {
 	private String entityCollectionStatus = null;
 	private Boolean manualFlag = null;
 	private String lastTreatment = null;
-	private Double currentAr = null;
-	private Double ar30Days = null;
-	private Double ar60Days = null;
-	private Double ar90Days = null;
+	private String currentAr = null;
+	private String ar30Days = null;
+	private String ar60Days = null;
+	private String ar90Days = null;
 	private Double ar120Days = null;
 	private Double ar150Days = null;
 	private Double ar180Days = null;
 	private Double ar180DaysPlus = null;
-	private Double ar90DaysPlus = null;
-	private Double totalAr = null;
-	private Double totalOverDue = null;
+	private String ar90DaysPlus = null;
+	private String totalAr = null;
+	private String totalOverDue = null;
 	private String odRemaining = null;
 	private String entityOwnerId = null;
 	private String primeWorkCategory = null;
@@ -110,30 +110,7 @@ public class AssignedEntitiesInEntityModel {
 	public void setLastTreatment(String lastTreatment) {
 		this.lastTreatment = lastTreatment;
 	}
-	public Double getCurrentAr() {
-		return currentAr;
-	}
-	public void setCurrentAr(Double currentAr) {
-		this.currentAr = currentAr;
-	}
-	public Double getAr30Days() {
-		return ar30Days;
-	}
-	public void setAr30Days(Double ar30Days) {
-		this.ar30Days = ar30Days;
-	}
-	public Double getAr60Days() {
-		return ar60Days;
-	}
-	public void setAr60Days(Double ar60Days) {
-		this.ar60Days = ar60Days;
-	}
-	public Double getAr90Days() {
-		return ar90Days;
-	}
-	public void setAr90Days(Double ar90Days) {
-		this.ar90Days = ar90Days;
-	}
+	
 	public Double getAr120Days() {
 		return ar120Days;
 	}
@@ -158,24 +135,7 @@ public class AssignedEntitiesInEntityModel {
 	public void setAr180DaysPlus(Double ar180DaysPlus) {
 		this.ar180DaysPlus = ar180DaysPlus;
 	}
-	public Double getAr90DaysPlus() {
-		return ar90DaysPlus;
-	}
-	public void setAr90DaysPlus(Double ar90DaysPlus) {
-		this.ar90DaysPlus = ar90DaysPlus;
-	}
-	public Double getTotalAr() {
-		return totalAr;
-	}
-	public void setTotalAr(Double totalAr) {
-		this.totalAr = totalAr;
-	}
-	public Double getTotalOverDue() {
-		return totalOverDue;
-	}
-	public void setTotalOverDue(Double totalOverDue) {
-		this.totalOverDue = totalOverDue;
-	}
+	
 
 	public String getEntityOwnerId() {
 		return entityOwnerId;
@@ -230,6 +190,48 @@ public class AssignedEntitiesInEntityModel {
 	}
 	public void setTotalNumberOfElement(Integer totalNumberOfElement) {
 		this.totalNumberOfElement = totalNumberOfElement;
+	}
+	public String getAr30Days() {
+		return ar30Days;
+	}
+	public void setAr30Days(String ar30Days) {
+		this.ar30Days = ar30Days;
+	}
+	public String getCurrentAr() {
+		return currentAr;
+	}
+	public void setCurrentAr(String currentAr) {
+		this.currentAr = currentAr;
+	}
+	public String getAr60Days() {
+		return ar60Days;
+	}
+	public void setAr60Days(String ar60Days) {
+		this.ar60Days = ar60Days;
+	}
+	public String getAr90Days() {
+		return ar90Days;
+	}
+	public void setAr90Days(String ar90Days) {
+		this.ar90Days = ar90Days;
+	}
+	public String getAr90DaysPlus() {
+		return ar90DaysPlus;
+	}
+	public void setAr90DaysPlus(String ar90DaysPlus) {
+		this.ar90DaysPlus = ar90DaysPlus;
+	}
+	public String getTotalAr() {
+		return totalAr;
+	}
+	public void setTotalAr(String totalAr) {
+		this.totalAr = totalAr;
+	}
+	public String getTotalOverDue() {
+		return totalOverDue;
+	}
+	public void setTotalOverDue(String totalOverDue) {
+		this.totalOverDue = totalOverDue;
 	}
 
 }
