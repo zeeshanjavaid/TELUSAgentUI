@@ -347,7 +347,7 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setAcctStatusDate(assignedEntitiesInClassicViewResponse.getAcctStatusDate());
 				assignedEntitiesInClassicModel.setAcctType(assignedEntitiesInClassicViewResponse.getAcctType());
 				assignedEntitiesInClassicModel.setAcctSubType(assignedEntitiesInClassicViewResponse.getAcctSubType());
-				assignedEntitiesInClassicModel.setDisputeAmount(assignedEntitiesInClassicViewResponse.getDisputeAmount());
+				assignedEntitiesInClassicModel.setDisputeAmount(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getDisputeAmount()));
 				assignedEntitiesInClassicModel.setSuppresionFlag(assignedEntitiesInClassicViewResponse.isSuppresionFlag());
 				assignedEntitiesInClassicModel.setLanguage(assignedEntitiesInClassicViewResponse.getLanguage());
 				assignedEntitiesInClassicModel.setMarketSubSegment(assignedEntitiesInClassicViewResponse.getMarketSubSegment());

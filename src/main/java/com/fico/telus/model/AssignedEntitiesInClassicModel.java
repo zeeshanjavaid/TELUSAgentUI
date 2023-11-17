@@ -26,7 +26,7 @@ public class AssignedEntitiesInClassicModel {
 	private LocalDate acctStatusDate = null;
 	private String acctType = null;
 	private String acctSubType = null;
-	private Double disputeAmount = null;
+	private String disputeAmount = null;
 	private Boolean suppresionFlag = null;
 	private String language = null;
 	private String marketSubSegment = null;
@@ -148,12 +148,7 @@ public class AssignedEntitiesInClassicModel {
 	public void setAcctSubType(String acctSubType) {
 		this.acctSubType = acctSubType;
 	}
-	public Double getDisputeAmount() {
-		return disputeAmount;
-	}
-	public void setDisputeAmount(Double disputeAmount) {
-		this.disputeAmount = disputeAmount;
-	}
+
 	public Boolean getSuppresionFlag() {
 		return suppresionFlag;
 	}
@@ -310,6 +305,12 @@ public class AssignedEntitiesInClassicModel {
 	}
 	public void setTotalOverDue(String totalOverDue) {
 		this.totalOverDue = totalOverDue;
+	}
+	public String getDisputeAmount() {
+		return disputeAmount;
+	}
+	public void setDisputeAmount(String disputeAmount) {
+		this.disputeAmount = disputeAmount;
 	}
 
 }
