@@ -15,6 +15,7 @@ var workCategoryDataArray = [];
 var portfolioDataArray = [];
 var billingSystemDataArray = [];
 var collStatusDataArray = [];
+var includeCurrOrCreDataArray = [];
 Page.onReady = function() {
     debugger;
     // callwhileload();
@@ -63,7 +64,7 @@ Page.onReady = function() {
     //     // collapse: true
     // });
     Page.Variables.getLoggedInUserTeamForBanView.invoke();
-
+    // Page.Variables.includeCurrentCredit_homeEV.invoke();
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
         'emplId': Page.Variables.getLoggedInUserDetails.dataSet.emplId
 
@@ -80,6 +81,9 @@ Page.onReady = function() {
     Page.Widgets.collStatusSelectBV.datavalue = "ALL";
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
     Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
+    Page.Widgets.includeCurrentCreditSelectEV.datavalue = "N";
+    Page.Widgets.includeCurrentCreditSelectBV.datavalue = "N";
+
     $('#banViewTableGrid').hide();
     $('#filterGridBanView').hide();
     $("#entityViewBtn").css("background-color", "#4B286D");
@@ -94,6 +98,7 @@ Page.onReady = function() {
         'emplId': App.Variables.getLoggedInUserDetails.dataSet.emplId
     });
     Page.Variables.workcategoriesByEmpId_homeEV.invoke();
+
 
 
 
@@ -170,6 +175,11 @@ Page.banViewButtonClick = function($event, widget) {
         Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
     }
 
+
+    if (Page.Variables.includeCurrentCredit_homeBV.dataSet != undefined) {
+        Page.Variables.includeCurrentCredit_homeBV.dataSet.forEach(includeCurrOrCreData);
+    }
+
     if (workCategoryDataArray.length > 1) {
         var finalWCbanview = workCategoryDataArray.join("|");
     } else {
@@ -186,6 +196,10 @@ Page.banViewButtonClick = function($event, widget) {
 
     if (collStatusDataArray.length > 1) {
         var collStatusDataview = collStatusDataArray;
+    }
+
+    if (includeCurrOrCreDataArray.length > 1) {
+        var includeCurrOrCreDataview = includeCurrOrCreDataArray;
     }
 
     var teamName = Page.Variables.getLoggedInUserTeamForBanView.dataSet;
@@ -205,6 +219,7 @@ Page.banViewButtonClick = function($event, widget) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
+        'includeCurrentOrCredit': 'N',
         'limit': 10,
         'offset': 0
 
@@ -219,7 +234,7 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
     debugger;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
     Page.Widgets.portfolioSelectEV.datavalue = "ALL";
-    Page.Widgets.includeCurrentCreditSelectEV.datavalue = "Y";
+    Page.Widgets.includeCurrentCreditSelectEV.datavalue = "N";
     Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
     /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
@@ -242,6 +257,7 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
+        'includeCurrentOrCredit': 'N',
         'limit': 10,
         'offset': 0
 
@@ -260,7 +276,7 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     debugger;
     Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
     Page.Widgets.portfolioSelectBV.datavalue = "ALL";
-    Page.Widgets.includeCurrentCreditSelectBV.datavalue = "Y";
+    Page.Widgets.includeCurrentCreditSelectBV.datavalue = "N";
     Page.Widgets.entityOwnerSelectBV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectBV.datavalue = "CES9";
     /* Page.Widgets.ARExcludedInternalSelectBV.datavalue = "Y";*/
@@ -282,6 +298,7 @@ Page.clearFilterFieldsBanView = function($event, widget) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
+        'includeCurrentOrCredit': 'N',
         'limit': 10,
         'offset': 0
     });
@@ -532,6 +549,10 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         Page.Variables.CollStatus_home.dataSet.forEach(collStatusData);
     }
 
+    if (Page.Variables.includeCurrentCredit_homeEV.dataSet != undefined) {
+        Page.Variables.includeCurrentCredit_homeEV.dataSet.forEach(includeCurrOrCreData);
+    }
+
     if (workCategoryDataArray.length > 1) {
         var finalWCentityview = workCategoryDataArray.join("|");
     } else {
@@ -548,6 +569,10 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
 
     if (collStatusDataArray.length > 1) {
         var collStatusDataview = collStatusDataArray;
+    }
+
+    if (includeCurrOrCreDataArray.length > 1) {
+        var includeCurrOrCreDataview = includeCurrOrCreDataArray;
     }
 
     // api call to display data in table for entity view
@@ -567,6 +592,7 @@ Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
+        'includeCurrentOrCredit': 'N',
         'limit': 10,
         'offset': 0
     });
@@ -664,10 +690,17 @@ function billingSystemData(item, index) {
 };
 
 function collStatusData(item, index) {
+    debugger;
     var item = item;
     collStatusDataArray.push(item.code);
 };
 
+function includeCurrOrCreData(item, index) {
+    debugger;
+    var item = item;
+    includeCurrOrCreDataArray.push(item.code)
+
+}
 
 Page.getAllActiveUserList_HomeEV_forALLonSuccess = function(variable, data) {
     if (Page.Variables.getAllActiveUserList_HomeEV_forALL.dataSet.length > 1) {

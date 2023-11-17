@@ -28,6 +28,8 @@ Partial.onReady = function() {
         //     style: 'currency',
 
         // });
+
+        Partial.Widgets.CURR.caption = row.currentAr.toLocaleString('en-US');
         Partial.Widgets.ar30D.caption = row.ar30Days.toLocaleString('en-US');
         Partial.Widgets.ar60D.caption = row.ar60Days.toLocaleString('en-US');
         Partial.Widgets.ar90D.caption = row.ar90Days.toLocaleString('en-US');
