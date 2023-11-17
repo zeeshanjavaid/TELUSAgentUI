@@ -320,9 +320,9 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setCbucId(assignedEntitiesInClassicViewResponse.getCbucId());
 				assignedEntitiesInClassicModel.setRcId(assignedEntitiesInClassicViewResponse.getRcId());
 				assignedEntitiesInClassicModel.setBillingSystem(assignedEntitiesInClassicViewResponse.getBillingSystem());
-				assignedEntitiesInClassicModel.setCurrentAr(assignedEntitiesInClassicViewResponse.getCurrentAr());
-				assignedEntitiesInClassicModel.setAr30Days(assignedEntitiesInClassicViewResponse.getAr30Days());
-				assignedEntitiesInClassicModel.setAr60Days(assignedEntitiesInClassicViewResponse.getAr60Days());
+				assignedEntitiesInClassicModel.setCurrentAr(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getCurrentAr()));
+				assignedEntitiesInClassicModel.setAr30Days(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getAr30Days()));
+				assignedEntitiesInClassicModel.setAr60Days(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getAr60Days()));
 				assignedEntitiesInClassicModel.setAr90Days(assignedEntitiesInClassicViewResponse.getAr90Days());
 				assignedEntitiesInClassicModel.setAr120Days(assignedEntitiesInClassicViewResponse.getAr120Days());
 				assignedEntitiesInClassicModel.setAr150Days(assignedEntitiesInClassicViewResponse.getAr150Days());
@@ -331,9 +331,9 @@ public class CollectionDataService {
 				Double ar90DaysPlus = assignedEntitiesInClassicViewResponse.getAr90Days() + assignedEntitiesInClassicViewResponse.getAr120Days() +
 						assignedEntitiesInClassicViewResponse.getAr150Days() + assignedEntitiesInClassicViewResponse.getAr180Days() + assignedEntitiesInClassicViewResponse.getAr180DaysPlus();
 				
-				assignedEntitiesInClassicModel.setAr90DaysPlus(ar90DaysPlus);
-				assignedEntitiesInClassicModel.setTotalAr(assignedEntitiesInClassicViewResponse.getTotalAr());
-				assignedEntitiesInClassicModel.setTotalOverDue(assignedEntitiesInClassicViewResponse.getTotalOverDue());
+				assignedEntitiesInClassicModel.setAr90DaysPlus(String.format("%,.2f",ar90DaysPlus));
+				assignedEntitiesInClassicModel.setTotalAr(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getTotalAr()));
+				assignedEntitiesInClassicModel.setTotalOverDue(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getTotalOverDue()));
 				assignedEntitiesInClassicModel.setLastPaymentDate(assignedEntitiesInClassicViewResponse.getLastPaymentDate());
 			//	assignedEntitiesInClassicModel.setOdRemaining(assignedEntitiesInClassicViewResponse.getOdRemaining());
 			    if(assignedEntitiesInClassicViewResponse.getOdRemaining() != null) {
