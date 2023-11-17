@@ -347,7 +347,11 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setAcctStatusDate(assignedEntitiesInClassicViewResponse.getAcctStatusDate());
 				assignedEntitiesInClassicModel.setAcctType(assignedEntitiesInClassicViewResponse.getAcctType());
 				assignedEntitiesInClassicModel.setAcctSubType(assignedEntitiesInClassicViewResponse.getAcctSubType());
+				if(assignedEntitiesInClassicViewResponse.getDisputeAmount() != null) {
 				assignedEntitiesInClassicModel.setDisputeAmount(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getDisputeAmount()));
+				}else {
+					assignedEntitiesInClassicModel.setDisputeAmount("");
+				}
 				assignedEntitiesInClassicModel.setSuppresionFlag(assignedEntitiesInClassicViewResponse.isSuppresionFlag());
 				assignedEntitiesInClassicModel.setLanguage(assignedEntitiesInClassicViewResponse.getLanguage());
 				assignedEntitiesInClassicModel.setMarketSubSegment(assignedEntitiesInClassicViewResponse.getMarketSubSegment());

@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
@@ -122,8 +123,8 @@ public class CommonUtilityService {
         if(userPageList.hasContent()) {
         userPageList.stream().forEach( user -> {
         	AssignedUserModel assignedUserModel = new AssignedUserModel();
-        	assignedUserModel.setFirstName(user.getFirstName());
-        	assignedUserModel.setLastName(user.getLastName());
+        	assignedUserModel.setFirstName(StringEscapeUtils.unescapeHtml4(user.getFirstName()));
+        	assignedUserModel.setLastName(StringEscapeUtils.unescapeHtml4(user.getLastName()));
         	assignedUserModel.setEmpId(user.getEmplId());
         	assignedUserModelList.add(assignedUserModel);
         });
