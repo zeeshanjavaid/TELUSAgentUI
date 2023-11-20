@@ -273,5 +273,23 @@ public class CommonUtilityService {
     return new Timestamp(date.getTime());
 }
     
+    public List<AssignedUserModel> getActiveUserList(){
+    	Pageable pageable = PageRequest.of(0, 10000);
+        Page<User> userPageList = userService.findAll("active = true ORDER BY firstName asc", pageable);
+        List<AssignedUserModel> assignedUserModelList = new ArrayList<AssignedUserModel>();
+        if(userPageList.hasContent()) {
+        userPageList.stream().forEach( user -> {
+        	AssignedUserModel assignedUserModel = new AssignedUserModel();
+        	assignedUserModel.setFirstName(StringEscapeUtils.unescapeHtml4(user.getFirstName()));
+        	assignedUserModel.setLastName(StringEscapeUtils.unescapeHtml4(user.getLastName()));
+        	assignedUserModel.setEmpId(user.getEmplId());
+        	assignedUserModelList.add(assignedUserModel);
+        });
+        }
+    	return assignedUserModelList;
+    	   // 	return assignedUserModelList.stream().sorted((o1, o2) -> (o1.getFirstName().compareTo(o2.getFirstName()))).collect(Collectors.toList());
+
+    }
+    
 
 }

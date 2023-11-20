@@ -34,6 +34,11 @@ public class CommonUtilityController {
         return commonUtilityService.deleteTeamManagerOnUpdate(teamId);
     }
 
+    @RequestMapping(value = "/activeUserList", method = RequestMethod.GET)
+    public List<AssignedUserModel> getActiveUserList() {
+        return commonUtilityService.getActiveUserList();
+    }
+
     @RequestMapping(value = "/assignedPersonInactionManagement", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
