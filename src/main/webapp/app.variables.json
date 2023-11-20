@@ -173,7 +173,7 @@
     "serviceType" : "DataService",
     "dataSet" : [ ],
     "isList" : true,
-    "maxResults" : 20,
+    "maxResults" : 10000,
     "onSuccess" : "executeGetTeamManagerNameonSuccess(variable, data, options)",
     "startUpdate" : true,
     "autoUpdate" : false,
