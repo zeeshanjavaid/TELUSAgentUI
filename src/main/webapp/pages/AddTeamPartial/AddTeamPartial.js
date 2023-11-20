@@ -10,8 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
-var selectedTM = []
-var subComboBox;
+
 Partial.onReady = function() {
     /*
      * variables can be accessed through 'Partial.Variables' property here
@@ -29,6 +28,8 @@ Partial.onReady = function() {
     //     App.Variables.getManagerSelected.datsSet = undefined;
     // }
     debugger;
+    App.selectedTM = [];
+
     if (Partial.pageParams.id != undefined) {
         Partial.Variables.getManagerNameByTeamId.setInput({
             'teamId': Partial.pageParams.id
@@ -37,20 +38,21 @@ Partial.onReady = function() {
         Partial.Variables.getManagerNameByTeamId.invoke();
     }
 
-
+    Partial.Variables.executeGetTeamManagerName.invoke();
 
 
     if (App.Variables.getManagerSelected.datsSet != undefined) {
 
         for (let i = 0; i < App.Variables.getManagerSelected.datsSet.length; i++) {
-            selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
+            App.selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
         }
     }
+
     debugger;
 
-    $('#teamManagerMutliSel').prop('disabled', true);
-    $("#teamManagerMutliSel").css("cursor", "not-allowed");
-    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
+    // $('#teamManagerMutliSel').prop('disabled', true);
+    // $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    // $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 
     /*$('#comboTree507078ArrowBtn').prop('disabled', true);*/
 
@@ -62,28 +64,28 @@ Partial.onReady = function() {
 
 
     // For multi Select manager
-    Partial.statusData = [];
+    // Partial.statusData = [];
 
 
 
-    Partial.Variables.getUserWhoIsManager.dataSet.forEach(function(item) {
-        Partial.statusData.push({
+    // Partial.Variables.getUserWhoIsManager.dataSet.forEach(function(item) {
+    //     Partial.statusData.push({
 
-            id: item.userId,
-            title: item.firstName
-        });
-    });
+    //         id: item.userId,
+    //         title: item.firstName
+    //     });
+    // });
 
-    debugger;
+    // debugger;
 
-    subComboBox = $('#teamManagerMutliSel').comboTree({
+    // subComboBox = $('#teamManagerMutliSel').comboTree({
 
-        source: Partial.statusData,
-        isMultiple: true,
-        cascadeSelect: true,
-        collapse: true,
-        selected: selectedTM
-    });
+    //     source: Partial.statusData,
+    //     isMultiple: true,
+    //     cascadeSelect: true,
+    //     collapse: true,
+    //     selected: selectedTM
+    // });
 
 
 
@@ -112,9 +114,9 @@ App.addTeams = function() {
 
     debugger;
 
-    subComboBox.clearSelection();
-    checkedItem = $("input:checked")
-    checkedItem.prop('checked', false)
+    // subComboBox.clearSelection();
+    // checkedItem = $("input:checked")
+    // checkedItem.prop('checked', false)
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
@@ -373,7 +375,7 @@ Partial.createTeamonSuccess = function(variable, data) {
         })
     }
 
-    if (subComboBox.getSelectedIds() != null) {
+    if (Partial.Widgets.TeamManagerMultiSelect.datavalue != undefined) {
         // var managerId = subComboBox.getSelectedIds();
 
         //  for (let i = 0; i <= subComboBox.getSelectedIds().length; i++) {
@@ -382,7 +384,7 @@ Partial.createTeamonSuccess = function(variable, data) {
 
         Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,
-            'managerIdListString': subComboBox.getSelectedIds().toString(),
+            'managerIdListString': Partial.Widgets.TeamManagerMultiSelect.datavalue.toString(),
             'createdBy': App.Variables.getLoggedInUserId.dataSet[0].id,
             'createdOn': getCurrentDate(),
             'updatedBy': App.Variables.getLoggedInUserId.dataSet[0].id,
@@ -422,12 +424,12 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     debugger;
 
-    var selectedManagerName = subComboBox.getSelectedIds();
+    var selectedManagerName = Partial.Widgets.TeamManagerMultiSelect.datavalue;
     App.refreshTeamsOnAdminPage();
 
-    $('#teamManagerMutliSel').prop('disabled', true);
-    $("#teamManagerMutliSel").css("cursor", "not-allowed");
-    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
+    // $('#teamManagerMutliSel').prop('disabled', true);
+    // $("#teamManagerMutliSel").css("cursor", "not-allowed");
+    // $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -449,7 +451,7 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
 
     //   }
-    if (selectedManagerName != null) {
+    if (selectedManagerName != undefined) {
 
         Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,

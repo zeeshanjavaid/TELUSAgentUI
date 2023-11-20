@@ -87,7 +87,7 @@ END ASC) wmTempTable
     <sql-query name="getTeamManagersByTeamId">
         <![CDATA[
         select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on
-ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')
+ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore','Support')
         ]]>
     <query-param name="teamId" type="java.lang.String"/>
     </sql-query>
@@ -95,7 +95,7 @@ ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.ro
     <sql-query name="getTeamManagersByTeamId__count">
         <![CDATA[
         select count(*) from (select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on
-ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')) wmTempTable
+ur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore','Support')) wmTempTable
         ]]>
     <query-param name="teamId" type="java.lang.String"/>
     </sql-query>

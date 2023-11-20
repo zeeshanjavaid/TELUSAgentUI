@@ -23,8 +23,8 @@ Page.onReady = function() {
      */
 };
 Page.LeftNavAdminMenuListList1Click = function(widget, $data) {
-
-
+    debugger;
+    Page.Variables.executeGetTeamManagerName.invoke();
     //alert(Partial.Variables.LeftNavAdminMenuList.dataSet)
 };
 
@@ -42,10 +42,15 @@ Page.NameClick = function($event, widget, item, currentItemWidgets) {
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Variables.errorMsg.dataSet.dataValue = "";
     Page.Variables.executeGetTeamManagerName.invoke();
-    App.refreshAllTeams();
-    App.refreshTeamManager();
-    App.refreshTeam();
-    App.refreshTeamUser();
+    // App.refreshAllTeams();
+    // App.refreshTeamManager();
+    // App.refreshTeam();
+    // App.refreshTeamUser();
 
+
+};
+Page.container2Click = function($event, widget, item, currentItemWidgets) {
+
+    debugger;
 
 };

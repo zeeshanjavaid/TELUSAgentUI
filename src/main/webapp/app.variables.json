@@ -162,7 +162,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "roles",
-      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM Manager",
+      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
       "type" : "string"
     } ],
     "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
@@ -1947,9 +1947,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "dataSet" : [ {
-      "dataValue" : ""
+      "dataValue" : 0
     } ],
-    "type" : "string",
+    "type" : "number",
     "isList" : true,
     "saveInPhonegap" : false
   },

@@ -4279,7 +4279,7 @@
       "encrypted" : false,
       "variableType" : "PROMPT",
       "variableName" : "",
-      "testValue" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
+      "testValue" : "OD TM,AR TM Onshore,AR TM Offshore,Support",
       "required" : true
     } ],
     "request" : {
@@ -4327,8 +4327,8 @@
     "name" : "getTeamManagersByTeamId",
     "description" : "getTeamManagersByTeamId",
     "version" : "V2",
-    "queryString" : "select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on\nur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')",
-    "countQueryString" : "select count(*) from (select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on\nur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore')) wmTempTable",
+    "queryString" : "select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on\nur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore','Support')",
+    "countQueryString" : "select count(*) from (select u.* from TEAM_USER tu join USER u on u.id=tu.userId join USER_ROLE ur on\nur.userId=u.id join ROLE r on ur.roleId= r.id where tu.teamId = :teamId and r.role in ('OD TM','AR TM Onshore','AR TM Offshore','Support')) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
