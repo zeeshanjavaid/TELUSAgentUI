@@ -821,6 +821,37 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
 
     debugger;
     Partial.Variables.dialogUserId.dataSet = {};
+
+    var decodeFirstNameVar = Partial.Variables.decodeFirstName;
+    decodeFirstNameVar.invoke({
+            "inputFields": {
+                "name": row.firstName
+            },
+        },
+        function(data) {
+            row.firstName = data;
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
+    var decodeLastNameVar = Partial.Variables.decodeLastName;
+    decodeLastNameVar.invoke({
+            "inputFields": {
+                "name": row.lastName
+            },
+        },
+        function(data) {
+            row.lastName = data;
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+
     Partial.Variables.dialogUserId.dataSet = row;
     //  Object.assign(Partial.Variables.dialogUserId.dataSet, row);
 

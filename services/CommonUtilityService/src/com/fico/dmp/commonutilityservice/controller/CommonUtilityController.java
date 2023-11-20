@@ -27,6 +27,11 @@ public class CommonUtilityController {
     @Autowired
     private CommonUtilityService commonUtilityService;
 
+    @RequestMapping(value = "/decodeAccentedCharacters", produces = "application/json", method = RequestMethod.GET)
+    public String decodeAccentedCharacters(@RequestParam(value = "name", required = false) String name) {
+        return commonUtilityService.decodeAccentedCharacters(name);
+    }
+
     @RequestMapping(value = "/teamManagerOnUpdate", produces = "application/json", method = RequestMethod.DELETE)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
@@ -35,6 +40,8 @@ public class CommonUtilityController {
     }
 
     @RequestMapping(value = "/activeUserList", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<AssignedUserModel> getActiveUserList() {
         return commonUtilityService.getActiveUserList();
     }

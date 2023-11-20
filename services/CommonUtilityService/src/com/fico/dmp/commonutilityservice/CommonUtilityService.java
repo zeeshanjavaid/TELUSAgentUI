@@ -291,5 +291,10 @@ public class CommonUtilityService {
 
     }
     
+    public String decodeAccentedCharacters(String name){
+    	String decodedStr = StringEscapeUtils.unescapeHtml4(name);
+    	return decodedStr;
+    }
+    
 
 }
