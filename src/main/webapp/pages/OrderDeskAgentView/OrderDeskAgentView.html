@@ -32,15 +32,15 @@
                     <wm-label caption="Assigned Person" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="AssignedPersonSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDesk.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        placeholder="" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
+                    <wm-select name="AssignedPersonSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDesk.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" placeholder=""
+                        on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="entityOwnerGrid">
                     <wm-label caption="Entity Owner" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn50">
-                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDesk.dataSet" placeholder="" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId"
-                        datavalue="bind:Variables.UserLoggedInVar_OrderDesk.dataSet.empId" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"></wm-select>
+                    <wm-select name="EntityOwnerSelect" width="100%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_OrderDesk.dataSet" placeholder="" on-change="EntityOwnerSelectChange($event, widget, newVal, oldVal)" datafield="empId" datavalue="bind:Variables.UserLoggedInVar_OrderDesk.dataSet.empId"
+                        displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="workCategoryGrid">
                     <wm-label caption="Work Category" name="label8" color="grey" class="OrderDeskLabel"></wm-label>
@@ -93,11 +93,9 @@
                         <wm-table-column binding="collectionStatus" caption="COLL Status" width="96px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityOwner" caption="ENT Owner" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="workCategory" caption="Work Category" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="totalAr" caption="Total AR" width="97px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false">
-                            <wm-label caption="bind:row.getProperty('totalAr') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        <wm-table-column binding="totalAr" caption="Total AR" width="97px" col-class="total_AR" edit-widget-type="text" type="string" show="true" readonly="false">
                         </wm-table-column>
-                        <wm-table-column binding="totalOverDue" caption="Total OD" width="96px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false">
-                            <wm-label caption="bind:row.getProperty('totalOverDue') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                        <wm-table-column binding="totalOverDue" caption="Total OD" width="96px" col-class="total_OD" edit-widget-type="text" type="string" show="true" readonly="false">
                         </wm-table-column>
                         <wm-table-column binding="actionType" caption="Action Type" width="92px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="dueDate" caption="Due Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>

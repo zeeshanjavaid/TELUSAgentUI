@@ -30,9 +30,9 @@ public class TeamsActionViewResponseWIthTotalCount {
 
     private String workCategory = null;
 
-    private Double totalAr = null;
+    private String totalAr = null;
 
-    private Double totalOverDue = null;
+    private String totalOverDue = null;
 
     private Integer totalNumberOfElement;
 
@@ -140,21 +140,7 @@ public class TeamsActionViewResponseWIthTotalCount {
         this.workCategory = workCategory;
     }
 
-    public Double getTotalAr() {
-        return totalAr;
-    }
 
-    public void setTotalAr(Double totalAr) {
-        this.totalAr = totalAr;
-    }
-
-    public Double getTotalOverDue() {
-        return totalOverDue;
-    }
-
-    public void setTotalOverDue(Double totalOverDue) {
-        this.totalOverDue = totalOverDue;
-    }
 
     public Integer getTotalNumberOfElement() {
         return totalNumberOfElement;
@@ -163,4 +149,20 @@ public class TeamsActionViewResponseWIthTotalCount {
     public void setTotalNumberOfElement(Integer totalNumberOfElement) {
         this.totalNumberOfElement = totalNumberOfElement;
     }
+
+	public String getTotalAr() {
+		return totalAr;
+	}
+
+	public void setTotalAr(String totalAr) {
+		this.totalAr = totalAr;
+	}
+
+	public String getTotalOverDue() {
+		return totalOverDue;
+	}
+
+	public void setTotalOverDue(String totalOverDue) {
+		this.totalOverDue = totalOverDue;
+	}
 }

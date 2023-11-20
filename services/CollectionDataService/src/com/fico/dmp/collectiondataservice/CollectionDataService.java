@@ -570,8 +570,8 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setAssignedTeam(teamsActionViewResponse.getAssignedTeam());
 			teamsActionViewResponseWIthTotalCount.setAssignedAgent(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getAssignedAgent()));
 			teamsActionViewResponseWIthTotalCount.setWorkCategory(teamsActionViewResponse.getWorkCategory());
-			teamsActionViewResponseWIthTotalCount.setTotalAr(teamsActionViewResponse.getTotalAr());
-			teamsActionViewResponseWIthTotalCount.setTotalOverDue(teamsActionViewResponse.getTotalOverDue());
+			teamsActionViewResponseWIthTotalCount.setTotalAr(String.format("%,.2f",teamsActionViewResponse.getTotalAr()));
+			teamsActionViewResponseWIthTotalCount.setTotalOverDue(String.format("%,.2f",teamsActionViewResponse.getTotalOverDue()));
 			teamsActionViewResponseWIthTotalCount.setTotalNumberOfElement(totalNoOfElement);
 			if(assignedTeam != null) {
 				if(assignedTeam.equalsIgnoreCase("ALL") || assignedTeam.equalsIgnoreCase("NULL")){
