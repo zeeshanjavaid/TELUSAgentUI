@@ -414,8 +414,10 @@ Page.getEntitySearchonError = function(variable, data) {
 
 Page.select1Change = function($event, widget, newVal, oldVal) {
     debugger;
-    if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID' || Page.Widgets.select1.datavalue == 'BAN') {
+    if (Page.Widgets.select1.datavalue == 'CBUCID' || Page.Widgets.select1.datavalue == 'RCID') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.levelTypeValue.dataSet;
+    } else if (Page.Widgets.select1.datavalue == 'BAN') {
+        Page.Variables.number_IdCriteria.dataSet = Page.Variables.BanslevelTypeValue.dataSet;
     } else if (Page.Widgets.select1.datavalue == 'Entity') {
         Page.Variables.number_IdCriteria.dataSet = Page.Variables.entityLevelTypeVal.dataSet;
         Page.Widgets.text3._datavalue = '';

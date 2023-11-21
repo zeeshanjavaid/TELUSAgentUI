@@ -1,4 +1,20 @@
 {
+  "BanslevelTypeValue" : {
+    "_id" : "wm-BanslevelTypeValue-wm.Variable-1700549316811",
+    "name" : "BanslevelTypeValue",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "code" : "exactMatch"
+    }, {
+      "code" : "endWith"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "CollectionDataServiceGetEntitySearch" : {
     "_id" : "wm-CollectionDataServiceGetEntitySearch-wm.ServiceVariable-1679381977409",
     "name" : "CollectionDataServiceGetEntitySearch",
@@ -147,7 +163,7 @@
     "dataSet" : [ {
       "code" : "exactMatch"
     }, {
-      "code" : "beginWith"
+      "code" : "contains"
     }, {
       "code" : "endWith"
     } ],
