@@ -154,34 +154,6 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "executeGetTeamManagerName" : {
-    "_id" : "wm-executeGetTeamManagerName-wm.ServiceVariable-1693807129882",
-    "name" : "executeGetTeamManagerName",
-    "owner" : "App",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "roles",
-      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
-      "type" : "string"
-    } ],
-    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse",
-    "service" : "TELUSAgentUIDB",
-    "operation" : "executeGetTeamManagerName",
-    "operationId" : "QueryExecutionController_executeGetTeamManagerName",
-    "operationType" : "get",
-    "serviceType" : "DataService",
-    "dataSet" : [ ],
-    "isList" : true,
-    "maxResults" : 10000,
-    "onSuccess" : "executeGetTeamManagerNameonSuccess(variable, data, options)",
-    "startUpdate" : true,
-    "autoUpdate" : false,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "QueryExecution"
-  },
   "executeSelectedGetManagerByTeamId" : {
     "_id" : "wm-executeSelectedGetManagerByTeamId-wm.ServiceVariable-1694590478440",
     "name" : "executeSelectedGetManagerByTeamId",

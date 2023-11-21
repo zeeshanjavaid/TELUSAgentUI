@@ -1331,6 +1331,33 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "executeGetTeamManagerName" : {
+    "_id" : "wm-executeGetTeamManagerName1-wm.ServiceVariable-1700559692200",
+    "name" : "executeGetTeamManagerName",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "roles",
+      "value" : "AR TM Offshore,AR TM Onshore,Support,OD TM",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.telus.model.TeamManagerNameAndUserId",
+    "service" : "CommonUtilityService",
+    "operation" : "getTeamManagerNames",
+    "operationId" : "CommonUtilityController_getTeamManagerNames",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
+  },
   "getAllTeams" : {
     "_id" : "wm-getAllTeams-wm.LiveVariable-1680682825550",
     "name" : "getAllTeams",

@@ -10,6 +10,7 @@ import java.util.List;
 import com.fico.telus.model.BillingAccountModel;
 import java.lang.Integer;
 import com.fico.telus.model.AssignedTeamModel;
+import com.fico.telus.model.TeamManagerNameAndUserId;
 import java.util.Date;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
@@ -28,6 +29,8 @@ public class CommonUtilityController {
     private CommonUtilityService commonUtilityService;
 
     @RequestMapping(value = "/decodeAccentedCharacters", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String decodeAccentedCharacters(@RequestParam(value = "name", required = false) String name) {
         return commonUtilityService.decodeAccentedCharacters(name);
     }
@@ -86,6 +89,11 @@ public class CommonUtilityController {
     @ApiOperation(value = "")
     public List<AssignedTeamModel> getTeamListInActionManagement() {
         return commonUtilityService.getTeamListInActionManagement();
+    }
+
+    @RequestMapping(value = "/teamManagerNames", method = RequestMethod.GET)
+    public List<TeamManagerNameAndUserId> getTeamManagerNames(@RequestParam(value = "roles", required = false) String roles) {
+        return commonUtilityService.getTeamManagerNames(roles);
     }
 
     @RequestMapping(value = "/userListByTeamId", method = RequestMethod.GET)

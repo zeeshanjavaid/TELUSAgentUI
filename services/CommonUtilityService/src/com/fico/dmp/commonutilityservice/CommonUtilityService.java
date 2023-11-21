@@ -28,6 +28,7 @@ import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.fico.dmp.telusagentuidb.Team;
 import com.fico.dmp.telusagentuidb.TeamUser;
 import com.fico.dmp.telusagentuidb.User;
+import com.fico.dmp.telusagentuidb.models.query.GetTeamManagerNameResponse;
 import com.fico.dmp.telusagentuidb.models.query.GetTeamNameByEmplIdResponse;
 import com.fico.dmp.telusagentuidb.models.query.GetUserListByTeamIdResponse;
 import com.fico.dmp.telusagentuidb.service.TELUSAgentUIDBQueryExecutorService;
@@ -37,6 +38,7 @@ import com.fico.dmp.telusagentuidb.service.UserService;
 import com.fico.telus.model.AssignedTeamModel;
 import com.fico.telus.model.AssignedUserModel;
 import com.fico.telus.model.BillingAccountModel;
+import com.fico.telus.model.TeamManagerNameAndUserId;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -294,6 +296,21 @@ public class CommonUtilityService {
     public String decodeAccentedCharacters(String name){
     	String decodedStr = StringEscapeUtils.unescapeHtml4(name);
     	return decodedStr;
+    }
+    
+    public List<TeamManagerNameAndUserId> getTeamManagerNames(String roles) {
+    	Pageable pageable = PageRequest.of(0, 1000);
+    	 Page<GetTeamManagerNameResponse> pageableGetTeamManagerNameResponse = telusAgentUIDBQueryExecutorService.executeGetTeamManagerName(roles, pageable);
+    	 List<TeamManagerNameAndUserId> teamManagerNameAndUserIdList = new ArrayList<TeamManagerNameAndUserId>();
+        if(pageableGetTeamManagerNameResponse.hasContent()) {
+        	pageableGetTeamManagerNameResponse.stream().forEach(user -> {
+        		TeamManagerNameAndUserId teamManagerNameAndUserId = new TeamManagerNameAndUserId();
+        		teamManagerNameAndUserId.setFirstName(StringEscapeUtils.unescapeHtml4(user.getFirstName()));
+        		teamManagerNameAndUserId.setUserId(user.getUserId());
+        		teamManagerNameAndUserIdList.add(teamManagerNameAndUserId);
+        	});
+        }
+    	return teamManagerNameAndUserIdList;
     }
     
 
