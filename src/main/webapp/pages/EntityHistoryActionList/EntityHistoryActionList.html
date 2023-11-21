@@ -70,13 +70,13 @@
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn13_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Created By" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue"
-                    placeholder="ALL" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" orderby="firstName:asc"></wm-select>
+                <wm-select width="85%" name="createdBySelect" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+ $[lastName]" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue"
+                    placeholder="ALL" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" orderby="firstName:asc" datafield="empId"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn14_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label4" color="gray" class="filterLabel"></wm-label>
-                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]"
-                    placeholder="ALL" displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" orderby="firstName:asc"></wm-select>
+                <wm-select width="85%" name="assignedPersonSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]" placeholder="ALL"
+                    displayfield="dataValue" on-change="actionStatusSelect($event, widget, newVal, oldVal)" orderby="firstName:asc" datafield="empId"></wm-select>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" style="display: flex; flex-direction: column;" width="12%" name="gridcolumn15_1">
                 <wm-label padding="unset 0.5em unset unset" caption="Assigned Team" name="label4" color="gray" class="filterLabel"></wm-label>
@@ -244,8 +244,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" on-change="prioritySelect($event, widget, newVal, oldVal)" dataset="bind:Variables.getAllActiveUserList.dataSet"
-                        displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue" orderby="firstName:asc"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" on-change="prioritySelect($event, widget, newVal, oldVal)" dataset="bind:Variables.getAllActiveUserList.dataSet"
+                        displayexpression="bind:$[firstName] + ' '+$[lastName]" datavalue="bind:Variables.UserLoggedInVar.dataSet.dataValue" orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -404,8 +404,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="emplId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue"
-                        dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[data[$i].firstName]+' '+$[data[$i].lastName]" orderby="firstName:asc"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue"
+                        dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]" orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
