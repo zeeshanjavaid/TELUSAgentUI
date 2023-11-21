@@ -398,7 +398,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     Partial.Variables.newlyAssignedPerson.dataset = '';
     App.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.popUperrorMsg.dataSet.dataValue = null;
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.BanListRefIds.dataSet = [];
 
@@ -462,8 +462,31 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+            Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
 
+            Partial.Variables.UpdateODManagemntAndDonotSendIfAssignedChanged.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': getCurrentDate(),
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': updateStatus,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.AddComment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
 
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntAndDonotSendIfAssignedChanged.invoke();
 
             Partial.Widgets.EditNotSentdialog.close();
 
@@ -512,7 +535,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var updateStatus = '';
     var isAlreadySusOrRes = '';
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.BanListRefIds.dataSet = [];
@@ -573,15 +596,37 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         if (originalAgentId != selectedAgentId) {
 
             Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-
-
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
-
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+            Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
+
+            Partial.Variables.UpdateODManagemntAndSendIfAssigendChanged.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': getCurrentDate(),
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': updateStatus,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.AddComment.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+
+            Partial.Variables.UpdateODManagemntAndSendIfAssigendChanged.invoke();
 
             Partial.Widgets.EditNotSentdialog.close();
 
@@ -609,7 +654,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
+
             Partial.Variables.UpdateODManagemntAndSend.invoke();
 
 
@@ -629,7 +674,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     var updateStatus = '';
     Partial.Variables.newlyAssignedPerson.dataset = '';
     var isAlreadySusOrRes = '';
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.BanListRefIds.dataSet = [];
 
@@ -684,6 +729,31 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+            Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
+
+            Partial.Variables.UpdateODManagemntAndDonotFullfillIfAssignedChange.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': getCurrentDate(),
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': updateStatus,
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.AddComment2.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+
+            Partial.Variables.UpdateODManagemntAndDonotFullfillIfAssignedChange.invoke();
 
 
             Partial.Widgets.EditAndFulfillSentdialog.close();
@@ -724,7 +794,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
 
     var isAlreadySusOrRes = '';
-    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+    var originalAgentId = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue;
     var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
     Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
     var stepTypeCode;
@@ -776,16 +846,37 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
 
 
             Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
-
-
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
-
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
+            Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
+
+            Partial.Variables.UpdateODManagemntAndFullfillIfAssignedChange.setInput({
+                'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+                'partitionKey': getCurrentDate(),
+                "CollectionTreatmentStepUpdate": {
+                    'stepTypeCode': stepTypeCode,
+                    'status': 'Order Fulfilled',
+                    'priority': Partial.Widgets.prioritySelect.datavalue,
+                    'comment': Partial.Widgets.AddComment2.datavalue,
+                    'stepDate': Partial.Widgets.dueDate.datavalue,
+                    'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                    'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
+                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.UpdateODManagemntAndFullfillIfAssignedChange.invoke();
 
 
             Partial.Widgets.EditAndFulfillSentdialog.close();
@@ -915,11 +1006,11 @@ Partial.update_YesBtnClick = function($event, widget) {
     //  Partial.Widgets.EditNotSentdialog.close();
 
     Partial.Variables.UpdateODManagemntWhenAssignChange.setInput({
-        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+        'id': Partial.Variables.selectedOrderMgmtId.dataset,
         'partitionKey': getCurrentDate(),
         'collectionEntityId': Partial.pageParams.entityId,
         "CollectionTreatmentStepUpdate": {
-            'stepTypeCode': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode,
+            'stepTypeCode': Partial.Variables.stepTypeCodeForOrderMgmt.dataset,
             'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,
             'priority': Partial.Variables.updatePriority.dataset,
             'comment': Partial.Widgets.Comment.datavalue,
@@ -1255,5 +1346,69 @@ Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
             }
         }
     }
+
+};
+
+Partial.UpdateODManagemntAndDonotFullfillonError = function(variable, data, xhrObj) {
+    debugger;
+    if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
+
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
+    }
+
+    setTimeout(messageTimeout, 8000);
+
+
+};
+
+Partial.UpdateODManagemntAndSendonError = function(variable, data, xhrObj) {
+    debugger;
+    if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
+
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
+
+    }
+
+    setTimeout(messageTimeout, 8000);
+
+};
+
+Partial.UpdateODManagemntAndDonotSendonError = function(variable, data, xhrObj) {
+    debugger;
+    if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
+
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
+    }
+
+    setTimeout(messageTimeout, 8000);
+
+};
+
+Partial.UpdateODManagemntAndDonotSendIfAssignedChangedonSuccess = function(variable, data) {
+    Partial.Widgets.EditNotSentdialog.close();
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntAndSendIfAssigendChangedonSuccess = function(variable, data) {
+    Partial.Widgets.EditNotSentdialog.close();
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntAndDonotFullfillIfAssignedChangeonSuccess = function(variable, data) {
+
+    Partial.Widgets.EditAndFulfillSentdialog.close();
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
+
+};
+
+Partial.UpdateODManagemntAndFullfillIfAssignedChangeonSuccess = function(variable, data) {
+    Partial.Widgets.EditAndFulfillSentdialog.close();
+    setTimeout(messageTimeout, 5000);
+    App.refreshCollOrderMgmtList();
 
 };
