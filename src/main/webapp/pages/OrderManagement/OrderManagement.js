@@ -22,22 +22,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    //  Partial.Variables.UserLoggedInVar.dataSet.dataValue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
 
-
-    // Partial.Variables.getLoggedInUserTeamIdVar.setInput({
-    //     'userId': App.Variables.getLoggedInUserId.dataSet[0].id
-    // });
-    // Partial.Variables.getLoggedInUserTeamIdVar.invoke();
-
-
-
-
-    // Partial.Variables.getCollectionTreatmentByCollENtityId.setInput({
-    //     'collectionEntityId': Partial.pageParams.entityId,
-    // });
-
-    // Partial.Variables.getCollectionTreatmentByCollENtityId.invoke();
 
     App.Variables.errorMsg.dataSet.dataValue = '';
     Partial.Variables.popUperrorMsg.dataSet.dataValue = '';
@@ -58,13 +43,7 @@ function getCurrentDate() {
 Partial.CreateSuspentionRequestClick = function($event, widget) {
 
     debugger;
-    // Partial.Variables.getCollectionTreatMent.setInput({
-    //     'collectionEntityId': Partial.pageParams.entityId
 
-
-    // });
-
-    // Partial.Variables.getCollectionTreatMent.invoke();
     if (Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
         setTimeout(messageTimeout, 5000);
@@ -145,8 +124,6 @@ Partial.closeCreateCeaseActionDialogClick = function($event, widget) {
 Partial.createbuttonClick = function($event, widget) {
 
 
-    debugger;
-
     var isAssignedPerson = '';
 
     if (Partial.Widgets.assignedPersonSelect.datavalue == "" || Partial.Widgets.assignedPersonSelect.datavalue == undefined) {
@@ -157,10 +134,8 @@ Partial.createbuttonClick = function($event, widget) {
 
 
     if (Partial.Widgets.susReasonCode.datavalue == "" || Partial.Widgets.susReasonCode.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         // API Call will come here
@@ -193,7 +168,6 @@ Partial.createbuttonClick = function($event, widget) {
     }
 
 
-    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
 };
@@ -237,7 +211,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     if (isAlreadyRestored) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.restoralReasonCode.datavalue == "" || Partial.Widgets.restoralReasonCode.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -273,13 +247,12 @@ Partial.createbuttonRestoralClick = function($event, widget) {
 
     }
 
-    // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
 };
 Partial.createbuttonCeaseClick = function($event, widget) {
 
-    debugger;
+
 
     var isAssignedPerson = '';
 
@@ -305,7 +278,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
     });
 
     if (Partial.Widgets.ceaseReasonCode.datavalue == "" || Partial.Widgets.ceaseReasonCode.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Reason code is mandatory";
+
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
@@ -343,13 +316,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
 };
 Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event, row) {
 
-    debugger;
-
-
     Partial.Variables.dafualtAssignedUser.dataSet.empId = row.assignedPersonForDefaultValue;
-
-    getBanListForAutoSelect(row);
-    debugger;
     getBanDetails();
     if (row.stepTypeCode == 'SUSPEND') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
@@ -385,6 +352,12 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         }
 
     }
+
+
+    setTimeout(function() {
+        getBanListForAutoSelect(row);
+    }, 999);
+
 };
 
 // Edit Suspension/Restore/Cease- Not Sent button 
@@ -447,7 +420,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
     } else if (isAlreadySusOrRes == "RESTORE") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
 
@@ -485,7 +458,6 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
             Partial.Variables.UpdateODManagemntAndDonotSendIfAssignedChanged.invoke();
 
             Partial.Widgets.EditNotSentdialog.close();
@@ -514,7 +486,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
+
             Partial.Variables.UpdateODManagemntAndDonotSend.invoke();
 
         }
@@ -553,11 +525,6 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
 
-        // Partial.selectedBanList = {
-        //     "id": d.banRefId,
-
-        // }
-        // Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
 
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
@@ -716,7 +683,6 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
     } else if (isAlreadySusOrRes == "RESTORE") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
 
@@ -780,7 +746,6 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
             Partial.Variables.UpdateODManagemntAndDonotFullfill.invoke();
 
         }
@@ -833,7 +798,6 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     } else if (isAlreadySusOrRes == "RESTORE") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
-        //App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
 
     } else if (originalAgentId == null && selectedAgentId == null || selectedAgentId == "") {
@@ -875,7 +839,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
+
             Partial.Variables.UpdateODManagemntAndFullfillIfAssignedChange.invoke();
 
 
@@ -904,7 +868,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                 }
             });
 
-            //Invoke POST createDispute service
+
             Partial.Variables.UpdateODManagemntAndFullfill.invoke();
 
         }
@@ -968,7 +932,7 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
         }
     });
 
-    //Invoke POST createDispute service
+
     Partial.Variables.UpdateODManagemntAndCloseAction.invoke();
 
 };
@@ -992,7 +956,6 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
         }
     });
 
-    //Invoke POST createDispute service
     Partial.Variables.UpdateODManagemntAndCancelledActiion.invoke();
 
 };
@@ -1000,10 +963,8 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
 };
 
-// for Update 
+
 Partial.update_YesBtnClick = function($event, widget) {
-    debugger;
-    //  Partial.Widgets.EditNotSentdialog.close();
 
     Partial.Variables.UpdateODManagemntWhenAssignChange.setInput({
         'id': Partial.Variables.selectedOrderMgmtId.dataset,
@@ -1104,7 +1065,6 @@ Partial.getCollectionTreatmentStep_orderMngt_customRowAction = function($event, 
 
 Partial.EditAndFulfillSentdialogOpened = function($event, widget) {
 
-
     if (Partial.Widgets.EditAndFulfillSentdialog.title == "Edit Suspension Request" || Partial.Widgets.EditAndFulfillSentdialog.title == "Edit and Fulfill Service Suspension") {
 
         document.getElementById("myHeader2").innerHTML = "BANs to Suspend";
@@ -1161,11 +1121,6 @@ Partial.createOrderManagmentForSuspensiononSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
-
-
-
 };
 
 Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
@@ -1179,8 +1134,7 @@ Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
+
 
 };
 
@@ -1195,8 +1149,7 @@ Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
         Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
     }, 1000);
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
+
 
 
 };
@@ -1209,8 +1162,6 @@ Partial.UpdateODManagemntAndDonotSendonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
 
 };
 
@@ -1221,8 +1172,7 @@ Partial.UpdateODManagemntAndSendonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
@@ -1232,8 +1182,7 @@ Partial.UpdateODManagemntAndDonotFullfillonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    // App.refreshCollActionList();
-    // App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
@@ -1244,8 +1193,7 @@ Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    // App.refreshCollActionList();
-    //  App.refreshHistoryActionList();
+
 
 };
 
@@ -1255,8 +1203,7 @@ Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    //  App.refreshCollActionList();
-    // App.refreshHistoryActionList();
+
 };
 
 Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data) {
@@ -1266,8 +1213,7 @@ Partial.UpdateODManagemntAndCancelledActiiononSuccess = function(variable, data)
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
 
-    //  App.refreshCollActionList();
-    //  App.refreshHistoryActionList();
+
 
 };
 
@@ -1277,10 +1223,6 @@ Partial.UpdateODManagemntWhenAssignChangeonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = " Action Updated Successfully";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
-
-    // App.refreshCollActionList();
-
-    //  App.refreshHistoryActionList();
 
 };
 
@@ -1296,9 +1238,6 @@ Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {
 
 function getBanListForAutoSelect(row) {
 
-    debugger;
-
-
     Partial.Variables.getBanListFromHisForPreselect.setInput({
         'collectionEntityId': Partial.pageParams.entityId,
         'relatedBusinessEntityId': row.id,
@@ -1312,36 +1251,28 @@ function getBanListForAutoSelect(row) {
 
 Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
 
-    debugger;
-
     var bans = data[0].banList;
-
-    if (Partial.Widgets.EditNotSentdialog.name == 'EditNotSentdialog') {
-
-        var tr = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
+    if (data[0].banList.length > 0) {
+        var banList1 = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
         for (let j = 0; j < bans.length; j++) {
 
-            for (let i = 0; i < tr.length; i++) {
-                if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-                    // tr.find("input[type='checkbox']").eq(i).prop('checked', true)
-                    var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+            for (let i = 0; i < banList1.length; i++) {
+                if (bans[j].toString() === banList1[i].cells[1].innerHTML) {
+                    var cb = banList1.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
                     cb.trigger('click');
-                    //   $(this).parent().parent().addClass("selected")
                 }
             }
         }
 
     }
-    if (Partial.Widgets.EditAndFulfillSentdialog.name === 'EditAndFulfillSentdialog') {
-        var tr = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
+    if (data[0].banList.length > 0) {
+        var banList2 = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
         for (let j = 0; j < bans.length; j++) {
 
-            for (let i = 0; i < tr.length; i++) {
-                if (bans[j].toString() === tr[i].cells[1].innerHTML) {
-                    var cb = tr.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+            for (let i = 0; i < banList2.length; i++) {
+                if (bans[j].toString() === banList2[i].cells[1].innerHTML) {
+                    var cb = banList2.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
                     cb.trigger('click');
-
-                    //   $(this).parent().parent().addClass("selected")
                 }
             }
         }
@@ -1350,7 +1281,7 @@ Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
 };
 
 Partial.UpdateODManagemntAndDonotFullfillonError = function(variable, data, xhrObj) {
-    debugger;
+
     if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
 
         Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
@@ -1362,7 +1293,7 @@ Partial.UpdateODManagemntAndDonotFullfillonError = function(variable, data, xhrO
 };
 
 Partial.UpdateODManagemntAndSendonError = function(variable, data, xhrObj) {
-    debugger;
+
     if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
 
         Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
@@ -1374,7 +1305,7 @@ Partial.UpdateODManagemntAndSendonError = function(variable, data, xhrObj) {
 };
 
 Partial.UpdateODManagemntAndDonotSendonError = function(variable, data, xhrObj) {
-    debugger;
+
     if (data === 'Unexpected error 400 Bad Request: "{"Error":"At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required."}",please check server logs for more information') {
 
         Partial.Variables.popUperrorMsg.dataSet.dataValue = 'At least one valid field with changed values, excluding the mandatory fields (id, collectionTreatment, and channel), is required.';
