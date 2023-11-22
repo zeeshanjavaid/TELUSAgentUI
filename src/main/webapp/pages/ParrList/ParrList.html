@@ -24,20 +24,16 @@
                     <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="receivedPaymentAmountToDate" caption="CUMM PMT RVCD" width="100px" col-class="CUMMPMT_RVCD" edit-widget-type="number" type="double" show="true" readonly="false">
-                    <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                    <wm-label caption="bind:row.getProperty('receivedPaymentAmountToDate') | toCurrency: ''" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="customField" caption="% PMT RVD/EXP" widget-type="label" width="100px" edit-widget-type="number" type="float" searchable="false" show="true" readonly="false">
-                    <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') == 0 ? 0 + '%' : row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate') + '%'" class="" conditionalclass=""></wm-label>
+                    <wm-label caption="bind:row.getProperty('expectedPaymentAmountToDate') == 0 ? 0 + '%' : ((row.getProperty('receivedPaymentAmountToDate')/row.getProperty('expectedPaymentAmountToDate'))*100).toFixed(2) + '%'" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="auditInfo.createdBy" caption="Created By" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.createdDateTime" caption="Created DT" width="95px" edit-widget-type="text" type="dateTime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedBy" caption="Updated By" width="114px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" width="95px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
-
-
-
-
         </wm-gridcolumn>
     </wm-container>
 </wm-partial>
