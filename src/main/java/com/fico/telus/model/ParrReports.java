@@ -12,7 +12,7 @@ public class ParrReports {
     private String start;
     private String expiry;
     private String evaluation;
-    private Double parrAmt;
+    private String parrAmt;
     private String perOfAmtRecieved_Exp;
     private String createdTeam;
     private String createdBy;
@@ -83,13 +83,6 @@ public class ParrReports {
         this.evaluation = evaluation;
     }
 
-    public Double getParrAmt() {
-        return parrAmt;
-    }
-
-    public void setParrAmt(Double parrAmt) {
-        this.parrAmt = parrAmt;
-    }
 
     public String getPerOfAmtRecieved_Exp() {
         return perOfAmtRecieved_Exp;
@@ -121,4 +114,12 @@ public class ParrReports {
     public void setTotalNumberOfElement(Integer totalNumberOfElement) {
         this.totalNumberOfElement = totalNumberOfElement;
     }
+
+	public String getParrAmt() {
+		return parrAmt;
+	}
+
+	public void setParrAmt(String parrAmt) {
+		this.parrAmt = parrAmt;
+	}
 }

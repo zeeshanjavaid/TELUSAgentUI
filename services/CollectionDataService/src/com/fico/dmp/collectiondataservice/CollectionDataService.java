@@ -236,11 +236,27 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setEntityCollectionStatus(assignedEntitiesInEntityViewResponse.getEntityCollectionStatus());
             	 assignedEntitiesInEntityModel.setManualFlag(assignedEntitiesInEntityViewResponse.isManualFlag());
             	 assignedEntitiesInEntityModel.setLastTreatment(assignedEntitiesInEntityViewResponse.getLastTreatment());
+                 if(assignedEntitiesInEntityViewResponse.getCurrentAr() != null) {
             	 assignedEntitiesInEntityModel.setCurrentAr(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getCurrentAr()));
+                 }else {
+                	 assignedEntitiesInEntityModel.setCurrentAr("") ;
+                 }
             	// assignedEntitiesInEntityModel.setAr30Days(assignedEntitiesInEntityViewResponse.getAr30Days());
+                 if(assignedEntitiesInEntityViewResponse.getAr30Days() !=null) {
             	 assignedEntitiesInEntityModel.setAr30Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr30Days()));
+                 }else {
+                	 assignedEntitiesInEntityModel.setAr30Days("");
+                 }
+                 if(assignedEntitiesInEntityViewResponse.getAr60Days() !=null) {
             	 assignedEntitiesInEntityModel.setAr60Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr60Days()));
+                 }else {
+                	 assignedEntitiesInEntityModel.setAr60Days("");
+                 }
+                 if(assignedEntitiesInEntityViewResponse.getAr90Days() !=null) {
             	 assignedEntitiesInEntityModel.setAr90Days(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr90Days()));
+                 }else {
+                	 assignedEntitiesInEntityModel.setAr90Days(""); 
+                 }
             	 assignedEntitiesInEntityModel.setAr120Days(assignedEntitiesInEntityViewResponse.getAr120Days());
             	 assignedEntitiesInEntityModel.setAr150Days(assignedEntitiesInEntityViewResponse.getAr150Days());
             	 assignedEntitiesInEntityModel.setAr180Days(assignedEntitiesInEntityViewResponse.getAr180Days());
@@ -248,9 +264,21 @@ public class CollectionDataService {
             	 //Added logic to add all Ar which are greater than 90 days.
             	 Double ar90DayPlus = assignedEntitiesInEntityViewResponse.getAr90Days() + assignedEntitiesInEntityViewResponse.getAr120Days() + assignedEntitiesInEntityViewResponse.getAr150Days() 
             	 + assignedEntitiesInEntityViewResponse.getAr180Days() + assignedEntitiesInEntityViewResponse.getAr180DaysPlus();
+            	 if(ar90DayPlus != null) {
             	 assignedEntitiesInEntityModel.setAr90DaysPlus(String.format("%,.2f", ar90DayPlus));
+            	 }else {
+            		 assignedEntitiesInEntityModel.setAr90DaysPlus(""); 
+            	 }
+            	 if(assignedEntitiesInEntityViewResponse.getTotalAr() !=null) {
             	 assignedEntitiesInEntityModel.setTotalAr(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getTotalAr()));
+            	 }else {
+            		 assignedEntitiesInEntityModel.setTotalAr("");
+            	 }
+            	 if(assignedEntitiesInEntityViewResponse.getTotalOverDue() !=null) {
             	 assignedEntitiesInEntityModel.setTotalOverDue(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getTotalOverDue()));
+            	 }else {
+            		 assignedEntitiesInEntityModel.setTotalOverDue("");
+            	 }
             	 
             	 if(assignedEntitiesInEntityViewResponse.getOdRemaining() != null) {
             	 if(Double.isNaN(assignedEntitiesInEntityViewResponse.getOdRemaining())) {
@@ -320,9 +348,21 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setCbucId(assignedEntitiesInClassicViewResponse.getCbucId());
 				assignedEntitiesInClassicModel.setRcId(assignedEntitiesInClassicViewResponse.getRcId());
 				assignedEntitiesInClassicModel.setBillingSystem(assignedEntitiesInClassicViewResponse.getBillingSystem());
+				if(assignedEntitiesInClassicViewResponse.getCurrentAr() != null) {
 				assignedEntitiesInClassicModel.setCurrentAr(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getCurrentAr()));
+				}else {
+					assignedEntitiesInClassicModel.setCurrentAr("");
+				}
+				if(assignedEntitiesInClassicViewResponse.getAr30Days() != null) {	
 				assignedEntitiesInClassicModel.setAr30Days(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getAr30Days()));
+				}else {
+					assignedEntitiesInClassicModel.setAr30Days("");
+				}
+				if(assignedEntitiesInClassicViewResponse.getAr60Days() != null) {
 				assignedEntitiesInClassicModel.setAr60Days(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getAr60Days()));
+				}else {
+					assignedEntitiesInClassicModel.setAr60Days("");
+				}
 				assignedEntitiesInClassicModel.setAr90Days(assignedEntitiesInClassicViewResponse.getAr90Days());
 				assignedEntitiesInClassicModel.setAr120Days(assignedEntitiesInClassicViewResponse.getAr120Days());
 				assignedEntitiesInClassicModel.setAr150Days(assignedEntitiesInClassicViewResponse.getAr150Days());
@@ -330,10 +370,21 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setAr180DaysPlus(assignedEntitiesInClassicViewResponse.getAr180DaysPlus());
 				Double ar90DaysPlus = assignedEntitiesInClassicViewResponse.getAr90Days() + assignedEntitiesInClassicViewResponse.getAr120Days() +
 						assignedEntitiesInClassicViewResponse.getAr150Days() + assignedEntitiesInClassicViewResponse.getAr180Days() + assignedEntitiesInClassicViewResponse.getAr180DaysPlus();
-				
+				if(ar90DaysPlus != null) {
 				assignedEntitiesInClassicModel.setAr90DaysPlus(String.format("%,.2f",ar90DaysPlus));
+				}else {
+					assignedEntitiesInClassicModel.setAr90DaysPlus("");
+				}
+				if(assignedEntitiesInClassicViewResponse.getTotalAr() != null) {
 				assignedEntitiesInClassicModel.setTotalAr(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getTotalAr()));
+				}else {
+					assignedEntitiesInClassicModel.setTotalAr("");	
+				}
+				if(assignedEntitiesInClassicViewResponse.getTotalOverDue() != null) {
 				assignedEntitiesInClassicModel.setTotalOverDue(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getTotalOverDue()));
+				}else {
+					assignedEntitiesInClassicModel.setTotalOverDue("");
+				}
 				assignedEntitiesInClassicModel.setLastPaymentDate(assignedEntitiesInClassicViewResponse.getLastPaymentDate());
 			//	assignedEntitiesInClassicModel.setOdRemaining(assignedEntitiesInClassicViewResponse.getOdRemaining());
 			    if(assignedEntitiesInClassicViewResponse.getOdRemaining() != null) {
@@ -570,8 +621,16 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setAssignedTeam(teamsActionViewResponse.getAssignedTeam());
 			teamsActionViewResponseWIthTotalCount.setAssignedAgent(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getAssignedAgent()));
 			teamsActionViewResponseWIthTotalCount.setWorkCategory(teamsActionViewResponse.getWorkCategory());
+			if(teamsActionViewResponse.getTotalAr() !=null) {
 			teamsActionViewResponseWIthTotalCount.setTotalAr(String.format("%,.2f",teamsActionViewResponse.getTotalAr()));
+			}else {
+				teamsActionViewResponseWIthTotalCount.setTotalAr("");
+			}
+			if(teamsActionViewResponse.getTotalOverDue() !=null) {
 			teamsActionViewResponseWIthTotalCount.setTotalOverDue(String.format("%,.2f",teamsActionViewResponse.getTotalOverDue()));
+			}else {
+				teamsActionViewResponseWIthTotalCount.setTotalOverDue("");
+			}
 			teamsActionViewResponseWIthTotalCount.setTotalNumberOfElement(totalNoOfElement);
 			if(assignedTeam != null) {
 				if(assignedTeam.equalsIgnoreCase("ALL") || assignedTeam.equalsIgnoreCase("NULL")){
