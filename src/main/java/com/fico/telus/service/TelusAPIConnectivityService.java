@@ -31,6 +31,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import java.net.URI;
 
 
 
@@ -377,6 +378,54 @@ public class TelusAPIConnectivityService {
 	//	return responseEntity;
 	}
 	
+public ResponseEntity<String> executeTelusAPIAndGetResponseWithHeaderForLookUp(String requestPayload, URI uri, String httpMethod, String scope) throws Exception {
+	
+		StringEntity entity=null;
+		String dmpEnvironment = DMPContext.getDmpEnvironment();
+		String bearerToken = getTelusToken(scope);
+		logger.info("::::::::requestPayload before calling Telus API:::::::::::::::::" + requestPayload);
+		if(requestPayload != null){
+			entity = new StringEntity(requestPayload, ContentType.APPLICATION_JSON);
+		}
+		logger.info("::::::::::::::::::::: Telus telusEndpointURL:::::::::::::::::::::" + uri.toString());
+		HttpResponse response = null;
+		Integer statusCode = null;
+		String result = null;
+		
+		ResponseEntity<String> responseEntity=null;
+		HttpHeaders headers=null;
+		headers = new HttpHeaders();
+		
+		if(dmpEnvironment != null) {
+			if (dmpEnvironment.toLowerCase().equals("staging")) {
+				headers.add("env", "it01");
+			}
+		}
+		
+		headers.add("Authorization", "Bearer " + bearerToken);
+		headers.add("Content-Type", "application/json");
+		
+	//	responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
+		logger.info(":::::::::::Before calling Telus API get execute method ::::::::::::::::::::");
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<String> requestEntity = new HttpEntity<String>(null, headers);
+		responseEntity= restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+		HttpStatus httpStatus = responseEntity.getStatusCode();
+		statusCode=httpStatus.value();
+
+		logger.info("::::::::Telus outbound API For  Parr Reports Header ::::::::::::::::" + responseEntity.getHeaders());
+		if (statusCode == 200 || statusCode == 201 ) {
+			logger.info("::::::::Telus outbound API response statusCode ::::::::::::::::" + statusCode);
+			return responseEntity;
+		} else {
+			logger.error(
+					"::::::::Telus outbound API failed response statusCode ::::######::::::::::::" + statusCode);
+
+			throw new Exception("Telus API failed with statusCode : " + statusCode);
+
+		}
+		//	return responseEntity;
+	}
 	
 	
 }

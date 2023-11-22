@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.HttpMethod;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URI;
 
 
 import com.fico.pscomponent.util.PropertiesUtil;
@@ -72,6 +73,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fico.telus.model.LookUpResponseWithTeamName;
 import io.swagger.client.model.*;
+import java.nio.charset.StandardCharsets;
+
 
 
 
@@ -160,16 +163,18 @@ public class CollectionDataService {
             logger.info("::::::::Calling  entity data endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_SEARCH)
                     .queryParam("inputType", inputType)
-                    .queryParam("inputValue", URLEncoder.encode(inputValue,"UTF-8"))
+                    // .queryParam("inputValue", inputValue).encode(StandardCharsets.UTF_8)
+                    .queryParam("inputValue", inputValue)
                     .queryParam("level",level)
                     .queryParam("searchMatchCriteria",searchMatchCriteria)
                     .queryParam("billingSystem",billingSystem)
                     .queryParam("offset",offset)
                     .queryParam("limit",limit);
+                    URI uri = builder.build(false).toUri();
                     
-
-          //  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
-            ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+            // ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null,builder.build(true).toUriString(), HttpMethod.GET, entitySvcAuthScope);
+            
+                ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForLookUp(null,uri, HttpMethod.GET, entitySvcAuthScope);
             String result=responseFromTelus.getBody();
 			HttpHeaders headers1=responseFromTelus.getHeaders();
 			String totalNoOfElement=headers1.getFirst("x-total-count");
