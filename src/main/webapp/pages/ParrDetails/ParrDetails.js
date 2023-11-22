@@ -358,8 +358,8 @@ Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
 
 Partial.getCollectionHistoryViewParronSuccess = function(variable, data) {
 
-    App.refreshParrSummary();
-    App.refreshEntProfCancelParrSummary();
+    // App.refreshParrSummary();
+    // App.refreshEntProfCancelParrSummary();
 };
 
 Partial.getCollectionHistoryViewParronError = function(variable, data) {

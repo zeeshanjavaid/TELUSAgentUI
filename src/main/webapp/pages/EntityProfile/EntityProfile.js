@@ -446,7 +446,79 @@ App.refreshParrSummary = function() {
             if (data.length > 0) {
                 Partial.Widgets.parrSummaryId.caption = data[0].id;
                 Partial.Widgets.totalAmtParrSummary.caption = data[0].amount.toLocaleString('en-US');;
-                Partial.Widgets.parrSumStatus.caption = 'Open';
+                Partial.Widgets.parrSumStatus.caption = data[0].status;
+                Partial.Widgets.cummPaymentExp.caption = data[0].expectedPaymentAmountToDate.toLocaleString('en-US');;
+                Partial.Widgets.cummPmtRvcd.caption = data[0].receivedPaymentAmountToDate.toLocaleString('en-US');;
+                Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;
+                Partial.Widgets.evaluationResultParrSum.caption = data[0].evaluationResult;
+                var installmentLength = data[0].installments.length;
+                Partial.Widgets.NoOfInstallmentParrSum.caption = data[0].installments[installmentLength - 1].sequenceId;
+                if (data[0].receivedPaymentAmountToDate != 0.0) {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = ((data[0].expectedPaymentAmountToDate / data[0].receivedPaymentAmountToDate) * 100);
+                } else {
+                    Partial.Widgets.percPymtVsExpRcvd.caption = 0.0;
+                }
+
+                var totalInstallmentIntermediateAmt = 0;
+                data[0].installments.forEach(function(d) {
+                    totalInstallmentIntermediateAmt = parseFloat(totalInstallmentIntermediateAmt) + parseFloat(d.amount);
+                });
+
+                var totalInstallmentAmount = Math.round((totalInstallmentIntermediateAmt) * 100) / 100;
+
+                Partial.Widgets.installmentAmtParrSum.caption = totalInstallmentAmount.toLocaleString('en-US');;
+
+                Partial.Widgets.parrSummaryId.show = true;
+                Partial.Widgets.parrSummaryIdLabel.show = true;
+                Partial.Widgets.parrSumStatusLabel.show = true;
+                Partial.Widgets.parrSumStatus.show = true;
+                Partial.Widgets.evaluationResultParrSumLabel.show = true;
+                Partial.Widgets.evaluationResultParrSum.show = true;
+                Partial.Widgets.recurrenceParrSummaryLabel.show = true;
+                Partial.Widgets.recurrenceParrSummary.show = true;
+                Partial.Widgets.NoOfInstallmentParrSumLabel.show = true;
+                Partial.Widgets.NoOfInstallmentParrSum.show = true;
+                Partial.Widgets.percPymtVsExpRcvd.show = true;
+                Partial.Widgets.percPymtVsExpRcvdLabel.show = true;
+                Partial.Widgets.cummPmtRvcd.show = true;
+                Partial.Widgets.cummPmtRvcdLabel.show = true;
+                Partial.Widgets.cummPaymentExp.show = true;
+                Partial.Widgets.cummPaymentExpLabel.show = true;
+                Partial.Widgets.totalAmtParrSummary.show = true;
+                Partial.Widgets.totalAmtParrSummaryLabel.show = true;
+                Partial.Widgets.installmentAmtParrSumLabel.show = true;
+                Partial.Widgets.installmentAmtParrSum.show = true;
+                Partial.Widgets.ParrSummaryNotActive.show = false;
+                Partial.Widgets.createParrInEntityProfile.show = false;
+
+            } else {
+                //check for Renegotiated status
+                App.refreshParrSummaryForRenegotiated();
+            }
+
+        },
+        function(error) {
+            // Error Callback
+            console.log("error", error);
+        }
+    );
+}
+
+App.refreshParrSummaryForRenegotiated = function() {
+    var getPaymentArrangementsForEntityProfileVar = Partial.Variables.getPaymentArrangementsForEntityProfile;
+
+    getPaymentArrangementsForEntityProfileVar.invoke({
+            "inputFields": {
+                "entityId": Partial.pageParams.entityId,
+                "status": 'Renegotiated'
+            },
+        },
+        function(data) {
+            debugger;
+            if (data.length > 0) {
+                Partial.Widgets.parrSummaryId.caption = data[0].id;
+                Partial.Widgets.totalAmtParrSummary.caption = data[0].amount.toLocaleString('en-US');;
+                Partial.Widgets.parrSumStatus.caption = data[0].status;
                 Partial.Widgets.cummPaymentExp.caption = data[0].expectedPaymentAmountToDate.toLocaleString('en-US');;
                 Partial.Widgets.cummPmtRvcd.caption = data[0].receivedPaymentAmountToDate.toLocaleString('en-US');;
                 Partial.Widgets.recurrenceParrSummary.caption = data[0].recurrence;

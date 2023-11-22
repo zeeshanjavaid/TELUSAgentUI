@@ -564,6 +564,8 @@ Page.ActiveEntitySelect = function($event, widget) {
 
     App.Widgets.Parr.isActive = false;
     App.Widgets.ActiveEntity.isActive = true;
+    App.refreshParrSummary();
+    App.refreshEntProfCancelParrSummary();
 };
 Page.OrderManagementSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;

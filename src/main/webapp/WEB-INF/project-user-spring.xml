@@ -35,5 +35,7 @@ and is an ideal location for end-users to put any code they need.
         <property name="username" value="${TELUSAgentUIDB.username}"/>
         <property name="password" value="${TELUSAgentUIDB.password}"/>
     </bean>
+    
+    <bean id="xSSEncodeSanitizer" class="com.wavemaker.runtime.security.xss.sanitizer.XSSEncodeSanitizerImpl" />
 
 </beans>
