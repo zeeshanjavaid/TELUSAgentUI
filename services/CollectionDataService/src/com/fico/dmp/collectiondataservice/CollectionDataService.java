@@ -163,8 +163,7 @@ public class CollectionDataService {
             logger.info("::::::::Calling  entity data endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_SEARCH)
                     .queryParam("inputType", inputType)
-                    // .queryParam("inputValue", inputValue).encode(StandardCharsets.UTF_8)
-                    .queryParam("inputValue", inputValue)
+                     .queryParam("inputValue", inputValue).encode(StandardCharsets.UTF_8)
                     .queryParam("level",level)
                     .queryParam("searchMatchCriteria",searchMatchCriteria)
                     .queryParam("billingSystem",billingSystem)
