@@ -62,6 +62,8 @@ Page.onReady = function() {
                             console.log("error", error);
                         }
                     );
+                } else {
+                    Page.Widgets.previousEntVal.caption = "Previous Entity not found";
                 }
 
             },
@@ -620,48 +622,51 @@ Page.TransferBanToNewEntDialogClose = function($event, widget) {
 Page.previousEntValClick = function($event, widget) {
     debugger;
     //Page.pageParams.entityId = widget.caption;
+    if (widget.caption == 'Previous Entity not found') {
+        $event.defaultPrevented = true;
+    } else {
+        $event.defaultPrevented = false;
+        var getEntityProfileDetailsVar = Page.Variables.getEntityProfileDetails;
 
-    var getEntityProfileDetailsVar = Page.Variables.getEntityProfileDetails;
-
-    getEntityProfileDetailsVar.invoke({
-            "inputFields": {
-                "entityId": widget.caption
+        getEntityProfileDetailsVar.invoke({
+                "inputFields": {
+                    "entityId": widget.caption
+                },
             },
-        },
-        function(data) {
-            if (data.banDetails[0].acctStatus == 'C') {
-                var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
-                getBillingAccountRefProfileDetailsVar.invoke({
-                        "inputFields": {
-                            "ban": data.banDetails[0].banId
+            function(data) {
+                if (data.banDetails[0].acctStatus == 'C') {
+                    var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
+                    getBillingAccountRefProfileDetailsVar.invoke({
+                            "inputFields": {
+                                "ban": data.banDetails[0].banId
+                            },
                         },
-                    },
-                    function(data1) {
-                        debugger;
-                        Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
+                        function(data1) {
+                            debugger;
+                            Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
 
-                    },
-                    function(error1) {
-                        // Error Callback
-                        console.log("error", error);
-                    }
-                );
+                        },
+                        function(error1) {
+                            // Error Callback
+                            console.log("error", error);
+                        }
+                    );
+                }
+
+            },
+            function(error) {
+                // Error Callback
+                console.log("error", error);
             }
+        );
 
-        },
-        function(error) {
-            // Error Callback
-            console.log("error", error);
-        }
-    );
+        Page.Actions.goToPage_Lookup.setData({
+            "entityId": widget.caption
+        })
+        Page.Actions.goToPage_Lookup.navigate();
+        Page.Actions.goToPage_Lookup.invoke();
 
-    Page.Actions.goToPage_Lookup.setData({
-        "entityId": widget.caption
-    })
-    Page.Actions.goToPage_Lookup.navigate();
-    Page.Actions.goToPage_Lookup.invoke();
-
-
+    }
 };
 Page.anchor3Click = function($event, widget) {
     debugger;
