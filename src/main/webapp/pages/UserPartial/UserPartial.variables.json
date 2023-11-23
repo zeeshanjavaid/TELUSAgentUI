@@ -1590,6 +1590,44 @@
     },
     "package" : "com.fico.dmp.telusagentuidb.Team"
   },
+  "getTeamForDefault" : {
+    "_id" : "wm-getTeamForDefault-wm.Variable-1700723948237",
+    "name" : "getTeamForDefault",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "getTeamIdByUserId" : {
+    "_id" : "wm-getTeamIdByUserId-wm.ServiceVariable-1700723780044",
+    "name" : "getTeamIdByUserId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetTeamByUserIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetTeamByUserId",
+    "operationId" : "QueryExecutionController_executeGetTeamByUserId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "getTeamIdByUserIdonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getTeamManagerByRoleId1" : {
     "_id" : "wm-getTeamManagerByRoleId1-wm.ServiceVariable-1677734350531",
     "name" : "getTeamManagerByRoleId1",
@@ -4159,7 +4197,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 1,
+    "bindCount" : 2,
     "tableName" : "USER",
     "tableType" : "TABLE",
     "properties" : [ "userByCreatedBy", "userByUpdatedBy" ],

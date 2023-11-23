@@ -868,6 +868,13 @@ Partial.userMVTable1_customRow1Action = function($event, row) {
         Partial.Variables.getCurrentManager.dataSet = null;
     }
 
+
+    Partial.Variables.getTeamIdByUserId.setInput({
+        'userId': row.id
+    });
+
+    Partial.Variables.getTeamIdByUserId.invoke();
+
     Partial.TestTeamId = row;
     Partial.Variables.getCodeFromDomainValueAsWorkCategory.dataSet;
 
@@ -924,21 +931,21 @@ Partial.updateUserForm1_saveAction = function($event) {
         Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.workCategory = subComboBox1.getSelectedIds();
     }
 
-    Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
-    Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
+    // Partial.TestTeamIdFinal = Partial.Variables.dataTeam.dataSet.filter(value => value.teamId == Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamId)
+    // Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamId = Partial.TestTeamIdFinal[0].id;
 
-    var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
+    // var type = typeof Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId
 
-    if (Partial.Widgets.UserDTO_teamManager_formWidget.displayValue === undefined) {
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
-    } else if (type == "string" && Partial.Variables.executeGetManagerByTeamIdVar.dataSet.length > 0) {
+    // if (Partial.Widgets.UserDTO_teamManager_formWidget.displayValue === undefined) {
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
+    // } else if (type == "string" && Partial.Variables.executeGetManagerByTeamIdVar.dataSet.length > 0) {
 
 
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = Partial.Variables.executeGetManagerByTeamIdVar.dataSet.filter(a => a.managerName === Partial.Widgets.updateUserForm1.dataoutput.UserDTO.teamManagerId)[0].id;
 
-    } else {
-        Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
-    }
+    // } else {
+    //     Partial.Variables.UserManagementServiceUpdateUser.dataBinding.UserDTO.teamManagerId = null;
+    // }
 
     if (!validateEmail(Partial.Widgets.updateUserForm1.dataoutput.UserDTO.email)) {
         debugger;
@@ -1147,5 +1154,16 @@ function messageTimeout() {
 App.refreshTeamsOnAdminPage = function() {
 
     Partial.Variables.getTeam.invoke();
+
+};
+
+Partial.getTeamIdByUserIdonSuccess = function(variable, data) {
+
+    debugger;
+    if (data.content.length > 0) {
+        Partial.Variables.getTeamForDefault.dataSet = data[0].teamId
+    } else {
+        Partial.Variables.getTeamForDefault.dataSet = null;
+    }
 
 };

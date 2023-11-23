@@ -1009,6 +1009,28 @@ public class TELUSAgentUIDBQueryExecutorServiceImpl implements TELUSAgentUIDBQue
 
     @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
     @Override
+    public Page<GetTeamByUserIdResponse> executeGetTeamByUserId(String userId, Pageable pageable) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        return queryExecutor.executeNamedQuery("getTeamByUserId", params, GetTeamByUserIdResponse.class, pageable);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", timeout = 300, readOnly = true)
+    @Override
+    public void exportGetTeamByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream) {
+        Map<String, Object> params = new HashMap<>(1);
+
+        params.put("userId", userId);
+
+        QueryProcedureInput<GetTeamByUserIdResponse> queryInput = new QueryProcedureInput<>("getTeamByUserId", params, GetTeamByUserIdResponse.class);
+
+        queryExecutor.exportNamedQueryData(queryInput, exportOptions, pageable, outputStream);
+    }
+
+    @Transactional(value = "TELUSAgentUIDBTransactionManager", readOnly = true)
+    @Override
     public Page<QueryGetDomainValueByIdResponse> executeQuery_GetDomainValueById(String selectedLocale, Integer domainValueId, Pageable pageable) {
         Map<String, Object> params = new HashMap<>(2);
 

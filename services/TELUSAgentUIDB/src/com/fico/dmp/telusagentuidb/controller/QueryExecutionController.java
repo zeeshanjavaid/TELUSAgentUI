@@ -1234,6 +1234,35 @@ public class QueryExecutionController {
         return new IntegerWrapper(_result);
     }
 
+    @RequestMapping(value = "/queries/getTeamByUserId", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "getTeamByUserId")
+    public Page<GetTeamByUserIdResponse> executeGetTeamByUserId(@RequestParam(value = "userId") String userId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: getTeamByUserId");
+        Page<GetTeamByUserIdResponse> _result = queryService.executeGetTeamByUserId(userId, pageable);
+        LOGGER.debug("got the result for named query: getTeamByUserId, result:{}", _result);
+        return _result;
+    }
+
+    @ApiOperation(value = "Returns downloadable file url for query getTeamByUserId")
+    @RequestMapping(value = "/queries/getTeamByUserId/export", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @XssDisable
+    public StringWrapper exportGetTeamByUserId(@RequestParam(value = "userId") String userId, @RequestBody ExportOptions exportOptions, Pageable pageable) {
+        LOGGER.debug("Exporting named query: getTeamByUserId");
+
+        String exportedFileName = exportOptions.getFileName();
+        if(exportedFileName == null || exportedFileName.isEmpty()) {
+            exportedFileName = "getTeamByUserId";
+        }
+        exportedFileName += exportOptions.getExportType().getExtension();
+
+        String exportedUrl = exportedFileManager.registerAndGetURL(exportedFileName,
+                        outputStream -> queryService.exportGetTeamByUserId(userId,  exportOptions, pageable, outputStream));
+
+        return new StringWrapper(exportedUrl);
+    }
+
     @RequestMapping(value = "/queries/Query_GetDomainValueById", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "Query_GetDomainValueById")

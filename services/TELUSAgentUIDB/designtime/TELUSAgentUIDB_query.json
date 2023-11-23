@@ -3993,6 +3993,52 @@
       } ]
     }
   },
+  "getTeamByUserId" : {
+    "name" : "getTeamByUserId",
+    "description" : "getTeamByUserId",
+    "version" : "V2",
+    "queryString" : "select tu.teamId from TEAM_USER tu where tu.userId=:userId",
+    "countQueryString" : "select count(*) from (select tu.teamId from TEAM_USER tu where tu.userId=:userId) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "string",
+      "list" : false,
+      "encrypted" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "16",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.fico.dmp.telusagentuidb.models.query.GetTeamByUserIdResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "teamId",
+        "fieldName" : "teamId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        },
+        "tableName" : "TEAM_USER",
+        "databaseName" : "TELUSAgentUIDB",
+        "columnMetadataInfo" : {
+          "encrypted" : false
+        }
+      } ]
+    }
+  },
   "getTeamManagerByRoleId" : {
     "name" : "getTeamManagerByRoleId",
     "description" : "getTeamManagerByRoleId",

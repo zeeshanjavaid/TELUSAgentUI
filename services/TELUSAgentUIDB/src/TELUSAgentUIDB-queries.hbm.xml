@@ -1140,6 +1140,20 @@ ORDER BY WKUSER.work_category ASC) wmTempTable
     <query-param name="RoleId" type="java.lang.String"/>
     </sql-query>
 
+    <sql-query name="getTeamByUserId">
+        <![CDATA[
+        select tu.teamId from TEAM_USER tu where tu.userId=:userId
+        ]]>
+    <query-param name="userId" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="getTeamByUserId__count">
+        <![CDATA[
+        select count(*) from (select tu.teamId from TEAM_USER tu where tu.userId=:userId) wmTempTable
+        ]]>
+    <query-param name="userId" type="java.lang.String"/>
+    </sql-query>
+
     <sql-query name="Query_GetDomainValueById">
         <![CDATA[
         SELECT ParentDVQuery.Id, ParentDVQuery.Code, ParentDVDescQuery.Description, ParentDVQuery.IsActive, ParentDVQuery.IsDefault, ParentDVQuery.RankOrder AS RankOrder, false AS IsSelected FROM DomainValue AS ParentDVQuery INNER JOIN DomainValueType ON ParentDVQuery.DomainValueType = DomainValueType.id LEFT JOIN DomainValueDescription AS ParentDVDescQuery ON ParentDVQuery.id = ParentDVDescQuery.DomainValueId

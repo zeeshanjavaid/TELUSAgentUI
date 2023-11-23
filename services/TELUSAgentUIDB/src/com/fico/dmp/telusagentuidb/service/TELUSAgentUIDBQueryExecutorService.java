@@ -187,6 +187,10 @@ public interface TELUSAgentUIDBQueryExecutorService {
 
     Integer executeDeleteGroupRoleByRoleId(String roleId);
 
+    Page<GetTeamByUserIdResponse> executeGetTeamByUserId(String userId, Pageable pageable);
+
+    void exportGetTeamByUserId(String userId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
+
     Page<QueryGetDomainValueByIdResponse> executeQuery_GetDomainValueById(String selectedLocale, Integer domainValueId, Pageable pageable);
 
     void exportQuery_GetDomainValueById(String selectedLocale, Integer domainValueId, ExportOptions exportOptions, Pageable pageable, OutputStream outputStream);
