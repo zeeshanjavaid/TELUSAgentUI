@@ -266,10 +266,10 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setAr180Days(assignedEntitiesInEntityViewResponse.getAr180Days());
             	 assignedEntitiesInEntityModel.setAr180DaysPlus(assignedEntitiesInEntityViewResponse.getAr180DaysPlus());
             	 //Added logic to add all Ar which are greater than 90 days.
-            	 Double ar90DayPlus = assignedEntitiesInEntityViewResponse.getAr90Days() + assignedEntitiesInEntityViewResponse.getAr120Days() + assignedEntitiesInEntityViewResponse.getAr150Days() 
-            	 + assignedEntitiesInEntityViewResponse.getAr180Days() + assignedEntitiesInEntityViewResponse.getAr180DaysPlus();
-            	 if(ar90DayPlus != null) {
-            	 assignedEntitiesInEntityModel.setAr90DaysPlus(String.format("%,.2f", ar90DayPlus));
+            	 //Double ar90DayPlus = assignedEntitiesInEntityViewResponse.getAr90Days() + assignedEntitiesInEntityViewResponse.getAr120Days() + assignedEntitiesInEntityViewResponse.getAr150Days() 
+            	 //+ assignedEntitiesInEntityViewResponse.getAr180Days() + assignedEntitiesInEntityViewResponse.getAr180DaysPlus();
+            	 if(assignedEntitiesInEntityViewResponse.getAr90PlusDays() != null) {
+            	 assignedEntitiesInEntityModel.setAr90DaysPlus(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getAr90PlusDays()));
             	 }else {
             		 assignedEntitiesInEntityModel.setAr90DaysPlus(""); 
             	 }
@@ -372,10 +372,10 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setAr150Days(assignedEntitiesInClassicViewResponse.getAr150Days());
 				assignedEntitiesInClassicModel.setAr180Days(assignedEntitiesInClassicViewResponse.getAr180Days());
 				assignedEntitiesInClassicModel.setAr180DaysPlus(assignedEntitiesInClassicViewResponse.getAr180DaysPlus());
-				Double ar90DaysPlus = assignedEntitiesInClassicViewResponse.getAr90Days() + assignedEntitiesInClassicViewResponse.getAr120Days() +
-						assignedEntitiesInClassicViewResponse.getAr150Days() + assignedEntitiesInClassicViewResponse.getAr180Days() + assignedEntitiesInClassicViewResponse.getAr180DaysPlus();
-				if(ar90DaysPlus != null) {
-				assignedEntitiesInClassicModel.setAr90DaysPlus(String.format("%,.2f",ar90DaysPlus));
+				//Double ar90DaysPlus = assignedEntitiesInClassicViewResponse.getAr90Days() + assignedEntitiesInClassicViewResponse.getAr120Days() +
+				//		assignedEntitiesInClassicViewResponse.getAr150Days() + assignedEntitiesInClassicViewResponse.getAr180Days() + assignedEntitiesInClassicViewResponse.getAr180DaysPlus();
+				if(assignedEntitiesInClassicViewResponse.getAr90PlusDays() != null) {
+				assignedEntitiesInClassicModel.setAr90DaysPlus(String.format("%,.2f",assignedEntitiesInClassicViewResponse.getAr90PlusDays()));
 				}else {
 					assignedEntitiesInClassicModel.setAr90DaysPlus("");
 				}
