@@ -477,10 +477,12 @@ Partial.permissionSearchTextKeyup = function($event, widget) {
 };
 
 Partial.panel1Expand = function($event, widget) {
+    debugger;
     Partial.Variables.isExpandedGroup.dataSet.dataValue = true;
 };
 
 Partial.panel1Collapse = function($event, widget) {
+    debugger;
     Partial.Variables.isExpandedGroup.dataSet.dataValue = false;
 };
 Partial.panelPermissionExpand = function($event, widget) {

@@ -904,3 +904,12 @@ button.btn.app-button.row-action.row-action-button.inactiveUser:hover {
 .wm-panel [subheading] {
     font-size: 20px;
 }
+
+
+i.wi-minus {
+    display: none;
+}
+
+i.wi-plus {
+    display: none;
+}

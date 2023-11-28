@@ -63,6 +63,8 @@ Page.onReady = function() {
     //     // cascadeSelect: true,
     //     // collapse: true
     // });
+
+    Page.isClear = false;
     Page.Variables.getLoggedInUserTeamForBanView.invoke();
     // Page.Variables.includeCurrentCredit_homeEV.invoke();
     Page.Variables.getWorkCatByEmplIdForMultiSelect.setInput({
@@ -209,9 +211,6 @@ Page.banViewButtonClick = function($event, widget) {
             entityOwner = 'NULL';
         }
     }
-
-
-
     // api call to display data in table for ban view
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
         'entityOwner': entityOwner,
@@ -231,29 +230,35 @@ Page.banViewButtonClick = function($event, widget) {
 // function added to clear all the fields in the filter for Entity View
 Page.clearFilterFieldsEntityView = function($event, widget) {
 
+
     debugger;
+    Page.Variables.getAllActiveUserList_HomeEV_forALL.invoke();
+    Page.isClear = true;
     Page.Widgets.AssignedTeamSelectEV.datavalue = "ALL";
     Page.Widgets.portfolioSelectEV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectEV.datavalue = "N";
     Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
     Page.Widgets.billingSystemSelectEV.datavalue = "CES9";
     /*Page.Widgets.ARExcludedInternalSelectEV.datavalue = "Y";*/
-    // Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();
+    /*Page.Widgets.workCategorySelectEV.datavalue = Page.Variables.workCategoryValues_HomeEV.invoke();*/
     Page.Widgets.collStatusSelectEV.datavalue = "ALL";
     Page.Widgets.workCategorySelectEVNew.deselectAll();
 
-    //  subComboBox.clearSelection();
-    // checkedItem = $("input:checked")
-    // checkedItem.prop('checked', false)
+    Page.Widgets.AssignedTeamSelectEV.disabled = false;
+    Page.Widgets.entityOwnerSelectEV.disabled = false;
+
+    /*subComboBox.clearSelection();
+    checkedItem = $("input:checked")
+    checkedItem.prop('checked', false)*/
 
     if (workCategoryDataArray.length > 1) {
-        var finalWorkCategoriesBV = workCategoryDataArray.join("|");
+        var finalWorkCategoriesEV = workCategoryDataArray.join("|");
     } else {
-        var finalWorkCategoriesBV = workCategoryDataArray;
+        var finalWorkCategoriesEV = workCategoryDataArray;
     }
     Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
         'entityOwner': App.Variables.getLoggedInUserDetails.dataSet.emplId,
-        'workCategory': finalWorkCategoriesBV,
+        'workCategory': finalWorkCategoriesEV,
         'portfolio': 'ALL',
         'billingSystem': 'CES9',
         'collectionStatus': 'ALL',
@@ -274,6 +279,9 @@ Page.clearFilterFieldsEntityView = function($event, widget) {
 // function added to clear all the fields in the filter for Ban View
 Page.clearFilterFieldsBanView = function($event, widget) {
     debugger;
+
+    Page.Variables.getAllActiveUserList_HomeBV_forALL.invoke();
+    Page.isClear = true;
     Page.Widgets.AssignedTeamSelectBV.datavalue = "ALL";
     Page.Widgets.portfolioSelectBV.datavalue = "ALL";
     Page.Widgets.includeCurrentCreditSelectBV.datavalue = "N";
@@ -283,6 +291,10 @@ Page.clearFilterFieldsBanView = function($event, widget) {
     // Page.Widgets.workCategorySelectBV.datavalue = Page.Variables.workCategoryValues_HomeBV.invoke();
     Page.Widgets.collStatusSelectBV.datavalue = "ALL";
     Page.Widgets.workCategorySelectBV.deselectAll();
+
+    Page.Widgets.AssignedTeamSelectBV.disabled = false;
+    Page.Widgets.entityOwnerSelectBV.disabled = false;
+
     //  subComboBox1.clearSelection();
     //  checkedItem = $("input:checked")
     // checkedItem.prop('checked', false)
@@ -316,29 +328,114 @@ Page.applyFiltersEntityView = function($event, widget) {
     //     id
     // }) => id);
 
-    var workCategoriesEV = Page.Widgets.workCategorySelectEVNew.datavalue;
-    if (workCategoriesEV == '' || workCategoriesEV == undefined) {
-        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
-        setTimeout(messageTimeout, 10000);
-    } else {
-        if (workCategoriesEV.length > 1) {
-            var finalWorkCategoriesEV = workCategoriesEV.join("|");
-        } else {
-            var finalWorkCategoriesEV = workCategoriesEV;
-        }
-        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-            'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
-            'workCategory': finalWorkCategoriesEV,
-            'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
-            'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
-            'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
-            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
-            'limit': 10,
-            'offset': 0
 
+    // var assignedTeamEV = Page.Widgets.AssignedTeamSelectEV.datavalue;
+    // if (assignedTeamEV != '' && assignedTeamEV != undefined) {
+    //     var assignedTeamEVarrEmpId = [];
+    //     Page.Variables.getAllActiveUserList_HomeEV.dataSet.forEach(function(e) {
+    //         assignedTeamEVarrEmpId.push(e.empId)
+    //     });
+
+    //     assignedTeamEV = assignedTeamEVarrEmpId.join("|");
+    // }
+
+    if (Page.Widgets.AssignedTeamSelectEV.datavalue == 'ALL') {
+        var workCategoriesEV = Page.Widgets.workCategorySelectEVNew.datavalue;
+        if (workCategoriesEV == '' || workCategoriesEV == undefined) {
+            Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+            setTimeout(messageTimeout, 10000);
+        } else {
+            if (workCategoriesEV.length > 1) {
+                var finalWorkCategoriesEV = workCategoriesEV.join("|");
+            } else {
+                var finalWorkCategoriesEV = workCategoriesEV;
+            }
+            Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+                'entityOwner': 'ALL',
+                'workCategory': finalWorkCategoriesEV,
+                'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
+                'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
+                'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
+                'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
+                'limit': 10,
+                'offset': 0
+
+            });
+            Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+        }
+    } else {
+        Page.Variables.getUserListByTeamId_homeEV.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
         });
-        Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+        Page.Variables.getUserListByTeamId_homeEV.invoke({},
+            function(data) {
+                var assignedTeamEV = '';
+                if (data.length == 0) {
+                    assignedTeamEV = 'NULL';
+                } else {
+                    var assignedTeamEVarrEmpId = [];
+                    debugger; // Success Callback
+                    console.log("success", data);
+                    data.forEach(function(e) {
+                        assignedTeamEVarrEmpId.push(e.empId)
+                    });
+                    assignedTeamEV = assignedTeamEVarrEmpId.join("|");
+                }
+                var workCategoriesEV = Page.Widgets.workCategorySelectEVNew.datavalue;
+                if (workCategoriesEV == '' || workCategoriesEV == undefined) {
+                    Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+                    setTimeout(messageTimeout, 10000);
+                } else {
+                    if (workCategoriesEV.length > 1) {
+                        var finalWorkCategoriesEV = workCategoriesEV.join("|");
+                    } else {
+                        var finalWorkCategoriesEV = workCategoriesEV;
+                    }
+                    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+                        'entityOwner': assignedTeamEV,
+                        'workCategory': finalWorkCategoriesEV,
+                        'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
+                        'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
+                        'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
+                        'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
+                        'limit': 10,
+                        'offset': 0
+
+                    });
+                    Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+                }
+            },
+            function(error) {
+                debugger; // Error Callback
+                console.log("success", error);
+
+            });
+
     }
+
+    /* var workCategoriesEV = Page.Widgets.workCategorySelectEVNew.datavalue;
+     if (workCategoriesEV == '' || workCategoriesEV == undefined) {
+         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+         setTimeout(messageTimeout, 10000);
+     } else {
+         if (workCategoriesEV.length > 1) {
+             var finalWorkCategoriesEV = workCategoriesEV.join("|");
+         } else {
+             var finalWorkCategoriesEV = workCategoriesEV;
+         }
+         Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
+             'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
+             'workCategory': finalWorkCategoriesEV,
+             'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
+             'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
+             'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
+             'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
+             'limit': 10,
+             'offset': 0
+
+         });
+         Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.invoke();
+     }*/
 
 
 }
@@ -348,30 +445,105 @@ Page.applyFiltersBanView = function($event, widget) {
     debugger;
     //  var workCategoriesBV = subComboBox1.getSelectedIds();
 
-    var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
-
-    if (workCategoriesBV == '' || workCategoriesBV == undefined) {
-        Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
-        setTimeout(messageTimeout, 10000);
-    } else {
-        if (workCategoriesBV.length > 1) {
-            var finalWorkCategoriesBV = workCategoriesBV.join("|");
+    if (Page.Widgets.AssignedTeamSelectBV.datavalue == 'ALL') {
+        var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+        if (workCategoriesBV == '' || workCategoriesBV == undefined) {
+            Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+            setTimeout(messageTimeout, 10000);
         } else {
-            var finalWorkCategoriesBV = workCategoriesBV;
-        }
-        Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-            'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
-            'workCategory': finalWorkCategoriesBV,
-            'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
-            'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
-            'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
-            'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue,
-            'limit': 10,
-            'offset': 0
+            if (workCategoriesBV.length > 1) {
+                var finalWorkCategoriesBV = workCategoriesBV.join("|");
+            } else {
+                var finalWorkCategoriesBV = workCategoriesBV;
+            }
+            Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+                'entityOwner': 'ALL',
+                'workCategory': finalWorkCategoriesBV,
+                'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
+                'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
+                'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
+                'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue,
+                'limit': 10,
+                'offset': 0
 
+            });
+            Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+        }
+    } else {
+        Page.Variables.getUserListByTeamId_homeBV.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
         });
-        Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+        Page.Variables.getUserListByTeamId_homeBV.invoke({},
+            function(data) {
+                var assignedTeamBV = '';
+                if (data.length == 0) {
+                    assignedTeamBV = 'NULL';
+                } else {
+                    var assignedTeamBVarrEmpId = [];
+                    debugger; // Success Callback
+                    console.log("success", data);
+                    data.forEach(function(e) {
+                        assignedTeamBVarrEmpId.push(e.empId)
+                    });
+                    var assignedTeamBV = assignedTeamBVarrEmpId.join("|");;
+                }
+                var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+                if (workCategoriesBV == '' || workCategoriesBV == undefined) {
+                    Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+                    setTimeout(messageTimeout, 10000);
+                } else {
+                    if (workCategoriesBV.length > 1) {
+                        var finalWorkCategoriesBV = workCategoriesBV.join("|");
+                    } else {
+                        var finalWorkCategoriesBV = workCategoriesBV;
+                    }
+                    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+                        'entityOwner': assignedTeamBV,
+                        'workCategory': finalWorkCategoriesBV,
+                        'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
+                        'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
+                        'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
+                        'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue,
+                        'limit': 10,
+                        'offset': 0
+
+                    });
+                    Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+                }
+            },
+            function(error) {
+                debugger; // Error Callback
+                console.log("success", error);
+
+            });
     }
+
+
+
+
+    /* var workCategoriesBV = Page.Widgets.workCategorySelectBV.datavalue;
+     if (workCategoriesBV == '' || workCategoriesBV == undefined) {
+         Page.Variables.errorMsg.dataSet.dataValue = 'Work Category is mandatory';
+         setTimeout(messageTimeout, 10000);
+     } else {
+         if (workCategoriesBV.length > 1) {
+             var finalWorkCategoriesBV = workCategoriesBV.join("|");
+         } else {
+             var finalWorkCategoriesBV = workCategoriesBV;
+         }
+         Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
+             'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
+             'workCategory': finalWorkCategoriesBV,
+             'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
+             'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
+             'collectionStatus': Page.Widgets.collStatusSelectBV.datavalue,
+             'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectBV.datavalue,
+             'limit': 10,
+             'offset': 0
+
+         });
+         Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
+     }*/
 
 }
 
@@ -396,9 +568,12 @@ Page.banViewTable_OnRowexpand = function($event, widget, row, $data) {
 
 // assigned team Onchange for EV
 Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.AssignedTeamSelectEV.datavalue == 'ALL') {
+        Page.Widgets.entityOwnerSelectEV.disabled = false;
         Page.Variables.getAllActiveUserList_HomeEV_forALL.invoke();
     } else {
+        Page.Widgets.entityOwnerSelectEV.disabled = true;
         Page.Variables.getUserListByTeamId_homeEV.setInput({
             'teamId': Page.Widgets.AssignedTeamSelectEV.datavalue
         });
@@ -409,13 +584,17 @@ Page.assignedTeamSelectEV_onChange = function($event, widget, newVal, oldVal) {
 // assigned team Onchange for BV
 Page.assignedTeamSelectBV_onChange = function($event, widget, newVal, oldVal) {
     if (Page.Widgets.AssignedTeamSelectBV.datavalue == 'ALL') {
+        Page.Widgets.entityOwnerSelectBV.disabled = false;
         Page.Variables.getAllActiveUserList_HomeBV_forALL.invoke();
     } else {
+        Page.Widgets.entityOwnerSelectBV.disabled = true;
         Page.Variables.getUserListByTeamId_homeBV.setInput({
             'teamId': Page.Widgets.AssignedTeamSelectBV.datavalue
         });
         Page.Variables.getUserListByTeamId_homeBV.invoke();
     }
+
+
 };
 
 // adding 'All' in the dropdown list for assignedTeam dropdown for ENTITY VIEW
@@ -479,6 +658,7 @@ Page.workCategoryValues_HomeBVonSuccess = function(variable, data) {
 };
 
 Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
+    debugger;
     Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
     if (data.length > 0) {
         if (data.length > 1) {
@@ -493,13 +673,13 @@ Page.getUserListByTeamId_homeEVonSuccess = function(variable, data) {
                 firstName: 'ALL',
                 lastName: ''
             });
-
-
             Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
         }
         Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV.dataSet[0].empId;
     }
+
 };
+
 
 Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
     Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
@@ -521,6 +701,8 @@ Page.getUserListByTeamId_homeBVonSuccess = function(variable, data) {
         }
         Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV.dataSet[0].empId;
     }
+
+
 };
 
 Page.workcategoriesByEmpId_homeEVonSuccess = function(variable, data) {
@@ -703,6 +885,7 @@ function includeCurrOrCreData(item, index) {
 }
 
 Page.getAllActiveUserList_HomeEV_forALLonSuccess = function(variable, data) {
+    debugger;
     if (Page.Variables.getAllActiveUserList_HomeEV_forALL.dataSet.length > 1) {
         Page.Variables.getAllActiveUserList_HomeEV_forALL.dataSet.unshift({
             empId: 'ALL',
@@ -710,7 +893,12 @@ Page.getAllActiveUserList_HomeEV_forALLonSuccess = function(variable, data) {
             lastName: ''
         });
         Page.Variables.getAllActiveUserList_HomeEV.dataSet = data;
-        Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV_forALL.dataSet[0].empId;
+        if (Page.isClear == false) {
+            Page.Widgets.entityOwnerSelectEV.datavalue = Page.Variables.getAllActiveUserList_HomeEV_forALL.dataSet[0].empId;
+        } else {
+            Page.isClear = false;
+            Page.Widgets.entityOwnerSelectEV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        }
     }
 };
 
@@ -722,7 +910,12 @@ Page.getAllActiveUserList_HomeBV_forALLonSuccess = function(variable, data) {
             lastName: ''
         });
         Page.Variables.getAllActiveUserList_HomeBV.dataSet = data;
-        Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV_forALL.dataSet[0].empId;
+        if (Page.isClear == false) {
+            Page.Widgets.entityOwnerSelectBV.datavalue = Page.Variables.getAllActiveUserList_HomeBV_forALL.dataSet[0].empId;
+        } else {
+            Page.isClear = false;
+            Page.Widgets.entityOwnerSelectBV.datavalue = App.Variables.getLoggedInUserDetails.dataSet.emplId;
+        }
     }
 };
 
@@ -785,3 +978,19 @@ Page.RefreshBanViewData = function() {
     Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.invoke();
 
 }
+
+Page.entityOwnerSelectEVChange = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.entityOwnerSelectEV.datavalue != "" && Page.Widgets.entityOwnerSelectEV.datavalue != 'ALL') {
+        Page.Widgets.AssignedTeamSelectEV.disabled = true;
+    } else {
+        Page.Widgets.AssignedTeamSelectEV.disabled = false;
+    }
+
+};
+Page.entityOwnerSelectBVChange = function($event, widget, newVal, oldVal) {
+    if (Page.Widgets.entityOwnerSelectBV.datavalue != "" && Page.Widgets.entityOwnerSelectBV.datavalue != 'ALL') {
+        Page.Widgets.AssignedTeamSelectBV.disabled = true;
+    } else {
+        Page.Widgets.AssignedTeamSelectBV.disabled = false;
+    }
+};
