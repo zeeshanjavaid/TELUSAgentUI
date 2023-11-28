@@ -93,7 +93,7 @@ public class UserManagementHandler {
 
 	private static final String USERID = "UserId=";
 
-	public ResponseEntity<String> createUser(UserDTO userDTO)  {
+public ResponseEntity<String> createUser(UserDTO userDTO)  {
 		try {
 		    //logger.info("In handler createUser :::::::::::::::::::::");
 		userValidatorService.validateUserBody(userDTO);
@@ -101,7 +101,7 @@ public class UserManagementHandler {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 
-	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
+     	 logger.info("In handler before create userrole Check Work Category Below :::::::::::::::::::::");
 
 		// Check if user id and email id already exists
 		try {
@@ -182,7 +182,7 @@ public class UserManagementHandler {
 		}
 	}
 
-	public ResponseEntity<String> updateUser(UserDTO userDTO) {
+public ResponseEntity<String> updateUser(UserDTO userDTO) {
 		try {
 			userValidatorService.validateUserBody(userDTO);
 		} catch (ConstraintViolationException e) {
@@ -212,14 +212,6 @@ public class UserManagementHandler {
 					dbUser.setEmail(userDTO.getEmail());
 				}
 			}
-
-// 				if (!userDTO.getStatus().equals(dbUser.getStatus())) {
-// 				dbUser.setStatus(userDTO.getStatus());
-// 			}
-			
-			
-// 			dbUser.setUpdatedOn(new Timestamp(System.currentTimeMillis()));
-// 			dbUser.setUpdatedBy(securityService.getUserName());
 
 
             dbUser.setActive(userDTO.isActive());
@@ -281,68 +273,7 @@ public class UserManagementHandler {
 				
 
 			}
-//               List<String> existingWorkCat = workCategoryUserList.stream()
-//                         .map(WorkcategoryUser::getWorkCategory)
-//                         .collect(Collectors.toList());
 
-            
-//             if(!CollectionUtils.isEmpty(workCategory))
-//             {
-                
-                
-
-                
-//                 if(workCategory!=null){
-                
-//                  if (existingWorkCat.size() > workCategory.size()) {
-//                     for (WorkcategoryUser workCar : workCategoryUserList) {
-//                         logger.info("In handler before update workcategory user :::::::::::::::::::::");
-//                         if (!workCategory.contains(workCar.getWorkCategory())) {
-//                             workcategoryUserService.delete(workCar);
-//                             logger.info("Updated workcategory for user :::::::::::::::::::::");
-
-
-//                         }
-//                     }
-//                 }
-
-//              logger.info("Size of existingwork================== "+ workCategoryUserList.size());
-
-
-//                  for (String workCar : workCategory) {
-//                     logger.info("In handler before update workcategory user :::::::::::::::::::::");
-//                     if (!existingWorkCat.contains(workCar.trim())   ) {
-//                         WorkcategoryUser workcategoryUser = new WorkcategoryUser();
-//                         workcategoryUser.setUser(dbUser);
-//                         workcategoryUser.setWorkCategory(workCar);
-//                         workcategoryUserService.create(workcategoryUser);
-//                         logger.info("Added new work categroy workcategory for user :::::::::::::::::::::  "+workCar);
-
-
-//                     }
-//                 }
-
-
-
-//             }else if (userDTO.getWorkCategory()!=null && userDTO.getWorkCategory().size() > 0) {
-
-//                 for (String workCar : userDTO.getWorkCategory()) {
-//                     WorkcategoryUser workcategoryUser = new WorkcategoryUser();
-//                     workcategoryUser.setUser(dbUser);
-//                     workcategoryUser.setWorkCategory(workCar);
-//                     workcategoryUserService.create(workcategoryUser);
-//                 }
-//             }
-//             }else{
-// 				if (existingWorkCat.size() > 0) {
-// 					for (WorkcategoryUser workCar : workCategoryUserList) {
-// 						logger.info("In handler before update workcategory user :::::::::::::::::::::");
-
-// 							workcategoryUserService.delete(workCar);
-// 							logger.info("Updated workcategory for user :::::::::::::::::::::");
-// 					}
-// 				}
-// 			}
             
             logger.info("In handler before update team user :::::::::::::::::::::");
 
@@ -357,9 +288,7 @@ public class UserManagementHandler {
 
 
             Team team = teamService.getById(Integer.valueOf(userDTO.getTeamId()));
-           // TeamUser teamUser = teamUserService.findById(dbUser.getId());
-           
-           
+
            if(teamUser==null){
                 teamUser=new TeamUser();
                 teamUser.setUser(dbUser);
@@ -371,10 +300,6 @@ public class UserManagementHandler {
                 teamUserService.update(teamUser);
             }
 
-           
-            // teamUser.setUser(dbUser);
-            // teamUser.setTeam(team);
-            // teamUserService.update(teamUser);
         logger.info("Updated team user for user :::::::::::::::::::::");
 
 
@@ -385,7 +310,7 @@ public class UserManagementHandler {
 		return new ResponseEntity<String>("User updated successfully ", HttpStatus.OK);
 	}
 
-	private boolean isAllowedToUpgradeToSuperUser(String role) {
+private boolean isAllowedToUpgradeToSuperUser(String role) {
 		if (role.equals(PSComponentConstants.SUPERUSER)) {
 			List<String> loggedInUserRoles = getLoggedInUserRoles();
 			// IsEmpty check added to allow user update option from end point
@@ -396,7 +321,7 @@ public class UserManagementHandler {
 		return true;
 	}
 
-	private boolean isUserAllowedToDeleteSuperUser(String userId) {
+private boolean isUserAllowedToDeleteSuperUser(String userId) {
 		List<String> loggedInUserRoles = getLoggedInUserRoles();
 		List<String> roleList = getUserRolesByUserId(userId);
 		// IsEmpty check added to allow user update option from end point
@@ -407,7 +332,7 @@ public class UserManagementHandler {
 		return true;
 	}
 
-	public ResponseEntity<String> deleteUser(String emailId) {
+public ResponseEntity<String> deleteUser(String emailId) {
 		try {
             User dbUser = userService.getByEmail(emailId);
 
@@ -448,7 +373,7 @@ public class UserManagementHandler {
 		return new ResponseEntity<String>("User deleted successfully", HttpStatus.OK);
 	}
 
-	public List<String> getLoggedInUserRoles() {
+public List<String> getLoggedInUserRoles() {
 		List<String> roles = new ArrayList<String>();
 		try {
 			String userId = securityService.getUserName();
@@ -459,7 +384,7 @@ public class UserManagementHandler {
 		return roles;
 	}
 
-	public List<String> getUserRolesByUserId(String userId) {
+public List<String> getUserRolesByUserId(String userId) {
 		List<String> roles = new ArrayList<String>();
 		try {
 			User user = userService.getByUserId(userId);
@@ -470,13 +395,13 @@ public class UserManagementHandler {
 		return roles;
 	}
 	
-	public String getLoggedInUserSecurityId()
+public String getLoggedInUserSecurityId()
 	{
 		
 		return securityService.getUserId();
 	}
 
-	public User getLoggedInUser() {
+public User getLoggedInUser() {
 		// Get the current logged in user
 		String loggedInUser = securityService.getUserId();
 
@@ -488,11 +413,11 @@ public class UserManagementHandler {
 		}
 	}
 
-	public String getLoggedInUserName() {
+public String getLoggedInUserName() {
 		return securityService.getUserName();
 	}
 	
-	public List<UserDTO> getAllUsers() throws Exception {
+public List<UserDTO> getAllUsers() throws Exception {
 		logger.info("----Inside method 'getAllUsers'");
 		List<UserDTO> userDTOs = new ArrayList<UserDTO>();
 	    List<User> usersList = userService.findAll("" , PageRequest.of(0, Integer.MAX_VALUE)).toList();
@@ -538,7 +463,7 @@ public class UserManagementHandler {
 	 * @param userJSONList
 	 * @throws Exception
 	 */
-	public void activateDeactivateUsers(String userJSONList) throws Exception {
+public void activateDeactivateUsers(String userJSONList) throws Exception {
 		//logger.info("-----Inside method 'activateDeactivateUsers'");
 		
 		if(userJSONList == null || userJSONList.isEmpty());
@@ -567,7 +492,7 @@ public class UserManagementHandler {
 	 * The <b>Base-64</b> encoded uploaded JSON file contents
 	 * @throws Exception
 	 */
-	public void importUsers(String importFileContents) throws Exception {
+public void importUsers(String importFileContents) throws Exception {
 		//logger.info("-----Inside method 'importFileContents'");
 		
 		if(importFileContents != null && !importFileContents.isEmpty()) {

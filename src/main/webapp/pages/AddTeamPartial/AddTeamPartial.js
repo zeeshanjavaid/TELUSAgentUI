@@ -27,26 +27,29 @@ Partial.onReady = function() {
     // if (Partial.pageParams.id != Partial.Variables.getManagerNameByTeamId.dataBinding.teamId) {
     //     App.Variables.getManagerSelected.datsSet = undefined;
     // }
-    debugger;
-    App.selectedTM = [];
+    // debugger;
+    // App.selectedTM = [];
 
-    if (Partial.pageParams.id != undefined) {
-        Partial.Variables.getManagerNameByTeamId.setInput({
-            'teamId': Partial.pageParams.id
-        });
+    // if (Partial.pageParams.id != undefined) {
+    //     //     // Partial.Variables.getManagerNameByTeamId.setInput({
+    //     //     //     'teamId': Partial.pageParams.id
+    //     //     // });
 
-        Partial.Variables.getManagerNameByTeamId.invoke();
-    }
+    //     //     // Partial.Variables.getManagerNameByTeamId.invoke();
+    // }
 
-    Partial.Variables.executeGetTeamManagerName.invoke();
+    // Partial.Variables.executeGetTeamManagerName.invoke();
 
 
-    if (App.Variables.getManagerSelected.datsSet != undefined) {
+    // if (App.Variables.getManagerSelected.datsSet != undefined) {
 
-        for (let i = 0; i < App.Variables.getManagerSelected.datsSet.length; i++) {
-            App.selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
-        }
-    }
+    //     for (let i = 0; i < App.Variables.getManagerSelected.datsSet.length; i++) {
+    //         App.selectedTM[i] = App.Variables.getManagerSelected.datsSet[i].id;
+    //     }
+    // } else {
+    //     App.selectedTM = null;
+
+    // }
 
     debugger;
 
@@ -118,6 +121,7 @@ App.addTeams = function() {
     // checkedItem = $("input:checked")
     // checkedItem.prop('checked', false)
 
+    Partial.Widgets.TeamManagerMultiSelect.deselectAll()
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     Partial.Variables.leftUserList.dataSet = [];
@@ -130,9 +134,7 @@ App.addTeams = function() {
     Partial.pageParams.id = undefined;
     Partial.Variables.getTeam.invoke();
     Partial.Variables.readOnlyMode.dataSet.dataValue = false;
-    $('#teamManagerMutliSel').prop('disabled', false);
-    $("#teamManagerMutliSel").css("cursor", "not-allowed");
-    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
+
 };
 
 
@@ -147,16 +149,7 @@ Partial.SaveButtonClick = function($event, widget) {
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;
     let pattern = Partial.Widgets.TeamNameText.regexp;
 
-    // if (Partial.Widgets.select1.datavalue != undefined) {
-
-    //     Partial.Variables.getTeamManagerNameByRole.dataSet.forEach(function(item) {
-    //         if (item.firstName == Partial.Widgets.select1.datavalue) {
-    //             Partial.Variables.managerId.dataSet = item.userId
-    //         }
-    //     });
-    // }
-
-    App.Variables.TeamPageCommunication.currentTeamInFocusId = undefined; //Partial.pageParams.id;
+    App.Variables.TeamPageCommunication.currentTeamInFocusId = undefined;
     if (Partial.Widgets.TeamIdText.datavalue == undefined || Partial.Widgets.TeamIdText.datavalue == "") {
         Partial.Variables.teamsErrorMsg.dataSet.dataValue = "Team ID is mandatory";
         Partial.scrollToTop();
@@ -274,6 +267,7 @@ Partial.getAllUsersonSuccess = function(variable, data) {
 };
 
 Partial.scrollToTop = function() {
+    debugger;
     const element = document.getElementById("title");
     if (element != null) {
         element.scrollIntoView({
@@ -375,7 +369,7 @@ Partial.createTeamonSuccess = function(variable, data) {
         })
     }
 
-    if (Partial.Widgets.TeamManagerMultiSelect.datavalue != undefined) {
+    if (Partial.Widgets.TeamManagerMultiSelect.datavalue.length > 0) {
         // var managerId = subComboBox.getSelectedIds();
 
         //  for (let i = 0; i <= subComboBox.getSelectedIds().length; i++) {
@@ -425,11 +419,11 @@ Partial.updateTeamonSuccess = function(variable, data) {
     debugger;
 
     var selectedManagerName = Partial.Widgets.TeamManagerMultiSelect.datavalue;
+    setTimeout(messageTimeout, 5000);
     App.refreshTeamsOnAdminPage();
+    App.refreshAllTeams();
+    Partial.scrollToTop();
 
-    // $('#teamManagerMutliSel').prop('disabled', true);
-    // $("#teamManagerMutliSel").css("cursor", "not-allowed");
-    // $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
 
     Partial.Variables.executeDeleteTeamUser.setInput({
         'teamId': Partial.pageParams.id
@@ -449,9 +443,7 @@ Partial.updateTeamonSuccess = function(variable, data) {
 
     Partial.Variables.deleteTeamManagerOnUpdateVar.invoke();
 
-
-    //   }
-    if (selectedManagerName != undefined) {
+    if (selectedManagerName.length > 0) {
 
         Partial.Variables.saveManagerOnTeamCreateVar.setInput({
             'teamId': data.id,
@@ -463,8 +455,6 @@ Partial.updateTeamonSuccess = function(variable, data) {
         });
 
         Partial.Variables.saveManagerOnTeamCreateVar.invoke();
-
-
 
     }
 
@@ -596,7 +586,7 @@ Partial.saveManagerOnTeamCreateVaronSuccess = function(variable, data) {
 
     Partial.Variables.getManagerNameByTeamId.invoke();
 
-
+    App.refreshAllTeams();
 
 };
 

@@ -163,6 +163,8 @@ Partial.CloseDisputeSubmitClick = function($event, widget) {
 };
 Partial.UpdateDisputeSubmitClick = function($event, widget) {
     debugger;
+    var custEmailText = Partial.Widgets.customerEmailUpdate.datavalue;
+    var AssignedDisputePrime = Partial.Widgets.AssignedDisputePrime.datavalue;
     if (!Partial.Widgets.updateDisputeExclusionDropdown.datavalue && !Partial.Widgets.diputeAmtUpdate.datavalue && !Partial.Widgets.chargeTypeDropdownUpdate.datavalue && !Partial.Widgets.reasonDropdownUpdate.datavalue && !Partial.Widgets.productDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please enter mandatory fields";
     } else if (!Partial.Widgets.diputeAmtUpdate.datavalue) {
@@ -175,6 +177,8 @@ Partial.UpdateDisputeSubmitClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Product & Services is mandatory";
     } else if (Partial.Widgets.diputeAmtUpdate.datavalue.toString().length > 10) {
         App.Variables.errorMsg.dataSet.dataValue = "Dispute Amount cannot be greater than 10 digits";
+    } else if (Partial.Widgets.customerEmailValue.datavalue !== "" && Partial.Widgets.disputePrimeEmailValue.datavalue !== "" && (custEmailText.toLowerCase() === AssignedDisputePrime.toLowerCase())) {
+        App.Variables.errorMsg.dataSet.dataValue = "Customer email id and Assigned prime email id should be different";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Variables.updateDisputeService.setInput({

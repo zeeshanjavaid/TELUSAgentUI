@@ -97,6 +97,7 @@ App.refreshAllTeams = function() {
 Partial.TeamListClick = function(widget, $data) {
 
     debugger;
+    Partial.Variables.getManagerNameByTeamId.dataSet = null;
 
     Partial.Variables.getManagerNameByTeamId.setInput({
         'teamId': widget.selecteditem.id
@@ -141,10 +142,16 @@ Partial.getTeamsAssociatedUsersonSuccess = function(variable, data) {
 };
 
 Partial.getManagerNameByTeamIdonSuccess = function(variable, data) {
+    debugger;
+    App.Variables.getManagerSelected.dataSet = [];
+    if (data.content.length > 0) {
 
-    App.Variables.getManagerSelected.datsSet = data;
+        for (let i = 0; i < data.length; i++) {
+            App.Variables.getManagerSelected.dataSet[i] = data[i].id;
+        }
 
-
+        //  App.Variables.getManagerSelected.datsSet = data;
+    }
 
 };
 Partial.container4Load = function(widget, item, currentItemWidgets) {

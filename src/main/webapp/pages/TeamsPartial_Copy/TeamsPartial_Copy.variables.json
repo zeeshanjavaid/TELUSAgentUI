@@ -1,4 +1,28 @@
 {
+  "getManagerNameByTeamId" : {
+    "_id" : "wm-getManagerNameByTeamId-wm.ServiceVariable-1694535696808",
+    "name" : "getManagerNameByTeamId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetManagerNameByTeamIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetManagerNameByTeamId",
+    "operationId" : "QueryExecutionController_executeGetManagerNameByTeamId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "getManagerNameByTeamIdonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getTeamsAssociatedUsers" : {
     "_id" : "wm-getTeamsAssociatedUsers-wm.ServiceVariable-1680641024005",
     "name" : "getTeamsAssociatedUsers",

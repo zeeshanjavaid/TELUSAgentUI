@@ -1445,5 +1445,11 @@ App.executeGetTeamManagerNameonSuccess = function(variable, data) {
 App.getManagerNameByTeamIdonSuccess = function(variable, data) {
 
     debugger;
-    App.Variables.getManagerSelected.datsSet = data;
+    if (data.content.length > 0) {
+
+        App.Variables.getManagerSelected.datsSet = data;
+    } else {
+        App.Variables.getManagerSelected.datsSet = null;
+    }
+
 };

@@ -70,7 +70,7 @@
             <!--</wm-gridcolumn>-->
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-select name="TeamManagerMultiSelect" id="workCategorySelectEV" width="100%" padding="unset 0.5em" dataset="bind:Variables.executeGetTeamManagerName.dataSet" datafield="userId" placeholder="" multiple="true" style="display: block; width: 145%;"
-                    displayfield="firstName" autofocus="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" datavalue="bind:App.selectedTM"></wm-select>
+                    displayfield="firstName" autofocus="false" disabled="bind:Variables.readOnlyMode.dataSet.dataValue" datavalue="bind:Variables.getManagerSelected.dataSet"></wm-select>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow100" class="rolename-row">
