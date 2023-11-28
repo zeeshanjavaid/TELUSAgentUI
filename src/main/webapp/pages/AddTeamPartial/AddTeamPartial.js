@@ -227,9 +227,7 @@ Partial.SaveButtonClick = function($event, widget) {
 Partial.CancelbuttonClick = function($event, widget) {
 
     Partial.Variables.readOnlyMode.dataSet.dataValue = true;
-    $('#teamManagerMutliSel').prop('disabled', true);
-    $("#teamManagerMutliSel").css("cursor", "not-allowed");
-    $("#teamManagerMutliSel").css("background-color", "#F2F2F2");
+
 
     Partial.Variables.teamsErrorMsg.dataSet.dataValue = null;
     Partial.Variables.teamsSuccessMessage.dataSet.dataValue = null;

@@ -108,6 +108,8 @@ Partial.TeamListClick = function(widget, $data) {
     App.Variables.TeamPageCommunication.currentPageSize = widget.pagesize;
     console.log("Team List clicked !! " + App.Variables.TeamPageCommunication.currentPageSize);
 
+
+
 };
 Partial.TeamListSetrecord = function(widget, $data) {
 
