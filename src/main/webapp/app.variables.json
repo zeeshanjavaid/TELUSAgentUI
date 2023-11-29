@@ -1915,6 +1915,33 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "getUserDetailsByEmplId" : {
+    "_id" : "wm-getUserDetailsByEmplId-wm.ServiceVariable-1701239723124",
+    "name" : "getUserDetailsByEmplId",
+    "owner" : "App",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "emplid",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetUserByEmplIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetUserByEmplId",
+    "operationId" : "QueryExecutionController_executeGetUserByEmplId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "getUserWhoIsManager" : {
     "_id" : "wm-getUserWhoIsManager-wm.Variable-1698748612781",
     "name" : "getUserWhoIsManager",

@@ -30,6 +30,8 @@ Partial.onReady = function() {
      */
     //  alert(Partial.pageParams.entityId);
 
+    App.Variables.getUserDetailsByEmplId.invoke();
+
     Partial.Variables.entityIdForNotes.dataSet = Partial.pageParams.entityId;
 
     Partial.Variables.getLatestNotesByEntityId.setInput({
@@ -147,7 +149,7 @@ Partial.button3Click1 = function($event, widget) {
                                 'banId': banId,
                                 'notes': note,
                                 'docId': documentId,
-                                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
+                                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
 
 
                             });
@@ -223,7 +225,7 @@ Partial.button3Click1 = function($event, widget) {
                 'banId': banId,
                 'notes': note,
                 'docId': documentId,
-                'createdByEmplId': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName)
+                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
 
 
             });
