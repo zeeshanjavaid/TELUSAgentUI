@@ -105,6 +105,8 @@ App.rowDataValues = function(row) {
         );
     } else {
         if (row.contactId != null) {
+            Partial.Widgets.lastUpdatedBy.caption = null;
+            Partial.Widgets.createdBy.caption = null;
             Partial.Widgets.contactIDLabel.caption = row.contactId;
             Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
             Partial.Widgets.TITLESelect.datavalue = row.title;
@@ -141,7 +143,8 @@ App.rowDataValues = function(row) {
                             }
                         },
                         function(data1) {
-                            Partial.Widgets.createdBy.caption = data1;
+                            // Partial.Widgets.createdBy.caption = data1;
+                            //Partial.Widgets.createdBy.caption = null;
                             var GetUpdatedByNameUsingAgentIdVar = Partial.Variables.GetUpdatedByNameUsingAgentId;
                             GetUpdatedByNameUsingAgentIdVar.invoke({
                                     "inputFields": {
@@ -149,7 +152,8 @@ App.rowDataValues = function(row) {
                                     }
                                 },
                                 function(data2) {
-                                    Partial.Widgets.lastUpdatedBy.caption = data2;
+                                    //  Partial.Widgets.lastUpdatedBy.caption = data2;
+                                    // Partial.Widgets.lastUpdatedBy.caption = null;
                                 },
                                 function(error2) {
                                     // Error Callback
