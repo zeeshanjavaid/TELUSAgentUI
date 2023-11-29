@@ -124,11 +124,13 @@ public class ParrReportService {
                 }
               if(cpa.getReceivedPaymentAmountToDate()==null ||cpa.getExpectedPaymentAmountToDate()==null )
                 {
-                    parrReports.setPerOfAmtRecieved_Exp("0");
+                    parrReports.setPerOfAmtRecieved_Exp("0%");
 
                 }else {
                 	if(cpa.getExpectedPaymentAmountToDate() != 0) {
-                    parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate() / cpa.getExpectedPaymentAmountToDate() * 100 + "%");
+                   // parrReports.setPerOfAmtRecieved_Exp(cpa.getReceivedPaymentAmountToDate() / cpa.getExpectedPaymentAmountToDate() * 100 + "%");
+                
+                      parrReports.setPerOfAmtRecieved_Exp(String.format("%,.2f",cpa.getReceivedPaymentAmountToDate() / cpa.getExpectedPaymentAmountToDate() * 100) + "%" );
                 	}else {
                 		parrReports.setPerOfAmtRecieved_Exp(0+"%");
                 	}
