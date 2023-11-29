@@ -1126,6 +1126,10 @@ Partial.UserManagementServiceUpdateUseronSuccess = function(variable, data) {
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
     Partial.Variables.getCurrentManager.dataSet = null;
     Partial.Variables.successMessage.dataSet.dataValue = "User updated successfully";
+    App.refreshAllTeams();
+    App.refreshTeam();
+
+
 
 
 };
