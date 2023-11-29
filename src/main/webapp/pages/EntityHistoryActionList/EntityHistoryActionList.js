@@ -905,11 +905,11 @@ Partial.applyFilter = function($event, widget) {
     var eventTypeSelect = '';
 
     if (Partial.Widgets.createdBySelect.datavalue != '') {
-        createdBy = Partial.Widgets.createdBySelect.datavalue.emplId;
+        createdBy = Partial.Widgets.createdBySelect.datavalue;
     }
 
     if (Partial.Widgets.assignedPersonSelectfilter.datavalue != '' && Partial.Widgets.assignedPersonSelectfilter.datavalue != undefined) {
-        assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue.emplId;
+        assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
     }
 
 
