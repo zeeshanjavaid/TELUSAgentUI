@@ -575,6 +575,7 @@ Page.OrderManagementSelect = function($event, widget) {
 };
 Page.UserNotesSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;
+    App.refreshLatestNotesAndDoc();
 };
 Page.HistoryActionsSelect = function($event, widget) {
     App.Widgets.Parr.isActive = false;

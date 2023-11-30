@@ -297,6 +297,12 @@ function messageTimeout() {
 
 App.refreshLatestNotesAndDoc = function() {
 
+    Partial.Variables.getLatestNotesBy_EntityId.setInput({
+
+        'entityId': Partial.pageParams.entityId
+
+    });
+
     Partial.Variables.getLatestNotesBy_EntityId.invoke();
 
 };

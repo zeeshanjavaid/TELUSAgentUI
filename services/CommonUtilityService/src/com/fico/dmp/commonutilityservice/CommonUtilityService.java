@@ -23,6 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import com.fico.dmp.telusagentuidb.models.query.GetLatestNotesResponse;
+
 
 import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.fico.dmp.telusagentuidb.Team;
@@ -311,6 +313,20 @@ public class CommonUtilityService {
         	});
         }
     	return teamManagerNameAndUserIdList;
+    }
+    
+public  List<GetLatestNotesResponse> getLatestNotesByEntityId(String entityId)
+    {
+        Pageable pageable = PageRequest.of(0, 1000);
+        Page<GetLatestNotesResponse> getLatestNotesResponsePage = telusAgentUIDBQueryExecutorService.executeGetLatestNotes(entityId, pageable);
+        List<GetLatestNotesResponse> latestNotesResponses=new ArrayList<>();
+        if(getLatestNotesResponsePage.hasContent()) {
+            latestNotesResponses= getLatestNotesResponsePage.getContent();
+            latestNotesResponses.stream().forEach(notes->notes.setCreatedByEmplId(StringEscapeUtils.unescapeHtml4(notes.getCreatedByEmplId())));
+
+
+        }
+        return latestNotesResponses;
     }
     
 

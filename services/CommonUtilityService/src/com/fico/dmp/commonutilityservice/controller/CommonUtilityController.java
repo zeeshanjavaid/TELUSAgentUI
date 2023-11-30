@@ -8,6 +8,7 @@ import java.lang.String;
 import com.fico.telus.model.AssignedUserModel;
 import java.util.List;
 import com.fico.telus.model.BillingAccountModel;
+import com.fico.dmp.telusagentuidb.models.query.GetLatestNotesResponse;
 import java.lang.Integer;
 import com.fico.telus.model.AssignedTeamModel;
 import com.fico.telus.model.TeamManagerNameAndUserId;
@@ -63,6 +64,11 @@ public class CommonUtilityController {
         return commonUtilityService.getBillingAccountUsingBillingAccountReferenceIds(billingAccountRefIds);
     }
 
+    @RequestMapping(value = "/latestNotesByEntityId", method = RequestMethod.GET)
+    public List<GetLatestNotesResponse> getLatestNotesByEntityId(@RequestParam(value = "entityId", required = false) String entityId) {
+        return commonUtilityService.getLatestNotesByEntityId(entityId);
+    }
+
     @RequestMapping(value = "/loggedInUserTeamId", produces = "application/json", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
@@ -92,6 +98,8 @@ public class CommonUtilityController {
     }
 
     @RequestMapping(value = "/teamManagerNames", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<TeamManagerNameAndUserId> getTeamManagerNames(@RequestParam(value = "roles", required = false) String roles) {
         return commonUtilityService.getTeamManagerNames(roles);
     }
