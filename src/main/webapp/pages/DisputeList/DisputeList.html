@@ -6,15 +6,15 @@
             <wm-button class="btn-default createDisputeBtn" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
-            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputesList.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%" pagesize="10">
+            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputesList.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%" pagesize="10" on-beforedatarender="getdisputeTable1Beforedatarender(widget, $data, $columns)">
                 <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" width="70px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
                 <wm-table-column binding="ban" caption="BAN" width="93px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="banName" caption="BAN Name" width="308px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                 <wm-table-column binding="billingSystem" caption="BILL SYS" width="104px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-column binding="disputeAmount" caption="Dispute Amt" width="99px" col-class="dispute_Amt" edit-widget-type="text" type="string" show="true" readonly="false">
-                    <wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>
+                <wm-table-column binding="disputeAmount" caption="Dispute Amt" widget-type="label" width="99px" col-class="dispute_Amt" edit-widget-type="text" type="string" show="true" readonly="false">
+                    <wm-label caption="bind:row.getProperty('disputeAmount')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="collectionExclusion" caption="COLL EXCL" widget-type="label" width="61px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-label caption="bind:row.getProperty('collectionExclusion')?'Y':'N'" class="" conditionalclass=""></wm-label>

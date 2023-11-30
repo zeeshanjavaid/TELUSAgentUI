@@ -11,6 +11,7 @@
 
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -52,4 +53,15 @@ App.refreshDisputeList = function() {
         "entityId": Partial.pageParams.entityId
     });
     Partial.Variables.getAllDisputesList.invoke();
+};
+Partial.getdisputeTable1Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+    var dis_amount;
+    $data.forEach(function(e) {
+        if (e.disputeAmount != null)
+            dis_amount = (e.disputeAmount).toFixed(2);
+        var formattedString = dis_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        e.disputeAmount = formattedString;
+    });
+
 };

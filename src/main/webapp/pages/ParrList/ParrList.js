@@ -55,3 +55,13 @@ Partial.CollectionEntityGetPaymentArrangementonSuccess = function(variable, data
     debugger;
 
 };
+Partial.getPaymentArrangementTable1Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+    var parr_amount;
+    $data.forEach(function(e) {
+        if (e.amount != null)
+            parr_amount = (e.amount).toFixed(2);
+        var formattedString = parr_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        e.amount = formattedString;
+    });
+};

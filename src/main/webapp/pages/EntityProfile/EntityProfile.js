@@ -609,3 +609,36 @@ App.refreshEntityBanDetails = function() {
     Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
 
 };
+
+
+Partial.getEntityDetailsTable1Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+
+    $data.forEach(function(e) {
+        var TO_AR;
+        if (e.totalAr != null) {
+            TO_AR = (e.totalAr).toFixed(2);
+            var formattedString = TO_AR.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            e.totalAr = formattedString;
+        }
+    });
+
+    $data.forEach(function(e) {
+        var TO_OD;
+        if (e.totalOverDue != null) {
+            TO_OD = (e.totalOverDue).toFixed(2);
+            var formattedString = TO_OD.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            e.totalOverDue = formattedString;
+        }
+    });
+
+    $data.forEach(function(e) {
+        var dis_amount;
+
+        if (e.disputeAmount != null) {
+            dis_amount = (e.disputeAmount).toFixed(2);
+            var formattedString = dis_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            e.disputeAmount = formattedString;
+        }
+    });
+};
