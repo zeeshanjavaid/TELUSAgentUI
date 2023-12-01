@@ -70,6 +70,8 @@ public class DomainValueRelatedBSController {
     }
 
     @RequestMapping(value = "/allDomainValuesByTypeCode", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public List<QueryGetAllDomainValuesByDvTypeCodeResponse> getAllDomainValuesByTypeCode(@RequestParam(value = "domainValueTypeCode", required = false) String domainValueTypeCode, @RequestParam(value = "userLocale", required = false) String userLocale, @RequestParam(value = "isAlphaSort", required = false) boolean isAlphaSort) {
         return domainValueRelatedBS.getAllDomainValuesByTypeCode(domainValueTypeCode, userLocale, isAlphaSort);
     }

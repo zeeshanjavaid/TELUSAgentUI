@@ -37,6 +37,7 @@ import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
 import org.apache.commons.text.StringEscapeUtils;
 
+
 //import com.fico.dmp.domainvaluerelatedbs.model.*;
 
 /**
@@ -165,6 +166,8 @@ public class DomainValueRelatedBS {
     		
     		List<DvsearchByCodeAndDescriptionResponse> modifiedList = domainValueList.toList();
     		modifiedList = commonUtils.setNullToEmptyForStringProperties(DvsearchByCodeAndDescriptionResponse.class, modifiedList);
+    		modifiedList.stream().forEach(dmCreatedBy->dmCreatedBy.setCreatedBy(StringEscapeUtils.unescapeHtml4(dmCreatedBy.getCreatedBy())));
+
     		customPageDataWrapper.setPageContent(modifiedList); 
     	}
     	catch (Exception e) {
