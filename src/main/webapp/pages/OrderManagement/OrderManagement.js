@@ -918,45 +918,49 @@ Partial.closeAction_NoClick = function($event, widget) {
 };
 Partial.assigned_closeYesBtnClick = function($event, widget) {
     debugger;
-    Partial.Variables.UpdateODManagemntAndCloseAction.setInput({
-        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-        'partitionKey': getCurrentDate(),
-        "CollectionTreatmentStepUpdate": {
-            'status': 'Closed',
-            'comment': Partial.Widgets.closeComment.datavalue,
-            'channel': {
-                'originatorAppId': "FAWBTELUSAGENT",
-                'channelOrgId': "FAWBTELUSAGENT",
-                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-            },
-        }
-    });
-
-
-    Partial.Variables.UpdateODManagemntAndCloseAction.invoke();
-
+    if (Partial.Widgets.closeComment.datavalue == "" || Partial.Widgets.closeComment.datavalue == undefined) {
+        Partial.Widgets.assigned_closeActionDialog.close();
+    } else {
+        Partial.Variables.UpdateODManagemntAndCloseAction.setInput({
+            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+            'partitionKey': getCurrentDate(),
+            "CollectionTreatmentStepUpdate": {
+                'status': 'Closed',
+                'comment': Partial.Widgets.closeComment.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
+            }
+        });
+        Partial.Variables.UpdateODManagemntAndCloseAction.invoke();
+    }
 };
 
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
 
+    if (Partial.Widgets.cancelComment.datavalue == "" || PPartial.Widgets.cancelComment.datavalue == undefined) {
+        Partial.Widgets.assigned_cancleActionDialog.close();
+    } else {
+        Partial.Variables.UpdateODManagemntAndCancelledActiion.setInput({
+            'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
+            'partitionKey': getCurrentDate(),
+            "CollectionTreatmentStepUpdate": {
+                'status': 'Cancelled',
+                'comment': Partial.Widgets.cancelComment.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
 
-    Partial.Variables.UpdateODManagemntAndCancelledActiion.setInput({
-        'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-        'partitionKey': getCurrentDate(),
-        "CollectionTreatmentStepUpdate": {
-            'status': 'Cancelled',
-            'comment': Partial.Widgets.cancelComment.datavalue,
-            'channel': {
-                'originatorAppId': "FAWBTELUSAGENT",
-                'channelOrgId': "FAWBTELUSAGENT",
-                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-            },
+            }
+        });
 
-        }
-    });
-
-    Partial.Variables.UpdateODManagemntAndCancelledActiion.invoke();
+        Partial.Variables.UpdateODManagemntAndCancelledActiion.invoke();
+    }
 
 };
 Partial.assigned_cancleNoBtnClick = function($event, widget) {
@@ -965,31 +969,35 @@ Partial.assigned_cancleNoBtnClick = function($event, widget) {
 
 
 Partial.update_YesBtnClick = function($event, widget) {
+    debugger;
+    if (Partial.Widgets.Comment.datavalue == "" || Partial.Widgets.Comment.datavalue == undefined) {
+        Partial.Widgets.update_ActionDialog.close();
+    } else {
+        Partial.Variables.UpdateODManagemntWhenAssignChange.setInput({
+            'id': Partial.Variables.selectedOrderMgmtId.dataset,
+            'partitionKey': getCurrentDate(),
+            'collectionEntityId': Partial.pageParams.entityId,
+            "CollectionTreatmentStepUpdate": {
+                'stepTypeCode': Partial.Variables.stepTypeCodeForOrderMgmt.dataset,
+                'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,
+                'priority': Partial.Variables.updatePriority.dataset,
+                'comment': Partial.Widgets.Comment.datavalue,
+                'stepDate': Partial.Variables.updateDueDateOrStepDate.dataset,
+                'assignedAgentId': Partial.Variables.updatedAssignedPerson.dataset,
+                'assignedTeam': Partial.Variables.updateAssignedTeam.dataset,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                },
 
-    Partial.Variables.UpdateODManagemntWhenAssignChange.setInput({
-        'id': Partial.Variables.selectedOrderMgmtId.dataset,
-        'partitionKey': getCurrentDate(),
-        'collectionEntityId': Partial.pageParams.entityId,
-        "CollectionTreatmentStepUpdate": {
-            'stepTypeCode': Partial.Variables.stepTypeCodeForOrderMgmt.dataset,
-            'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,
-            'priority': Partial.Variables.updatePriority.dataset,
-            'comment': Partial.Widgets.Comment.datavalue,
-            'stepDate': Partial.Variables.updateDueDateOrStepDate.dataset,
-            'assignedAgentId': Partial.Variables.updatedAssignedPerson.dataset,
-            'assignedTeam': Partial.Variables.updateAssignedTeam.dataset,
-            'channel': {
-                'originatorAppId': "FAWBTELUSAGENT",
-                'channelOrgId': "FAWBTELUSAGENT",
-                'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-            },
+                'billingAccountIdRefs': Partial.Variables.updateSelectedBans.dataset,
+            }
+        });
 
-            'billingAccountIdRefs': Partial.Variables.updateSelectedBans.dataset,
-        }
-    });
-
-    //Invoke POST createDispute service
-    Partial.Variables.UpdateODManagemntWhenAssignChange.invoke();
+        //Invoke POST createDispute service
+        Partial.Variables.UpdateODManagemntWhenAssignChange.invoke();
+    }
 
 };
 
