@@ -941,7 +941,7 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
 // cancle assigned person
 Partial.assigned_cancleYesBtnClick = function($event, widget) {
 
-    if (Partial.Widgets.cancelComment.datavalue == "" || PPartial.Widgets.cancelComment.datavalue == undefined) {
+    if (Partial.Widgets.cancelComment.datavalue == "" || Partial.Widgets.cancelComment.datavalue == undefined) {
         Partial.Widgets.assigned_cancleActionDialog.close();
     } else {
         Partial.Variables.UpdateODManagemntAndCancelledActiion.setInput({
