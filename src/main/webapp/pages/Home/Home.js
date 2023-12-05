@@ -351,7 +351,7 @@ Page.applyFiltersEntityView = function($event, widget) {
                 var finalWorkCategoriesEV = workCategoriesEV;
             }
             Page.Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.setInput({
-                'entityOwner': 'ALL',
+                'entityOwner': Page.Widgets.entityOwnerSelectEV.datavalue,
                 'workCategory': finalWorkCategoriesEV,
                 'portfolio': Page.Widgets.portfolioSelectEV.datavalue,
                 'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
@@ -457,7 +457,7 @@ Page.applyFiltersBanView = function($event, widget) {
                 var finalWorkCategoriesBV = workCategoriesBV;
             }
             Page.Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.setInput({
-                'entityOwner': 'ALL',
+                'entityOwner': Page.Widgets.entityOwnerSelectBV.datavalue,
                 'workCategory': finalWorkCategoriesBV,
                 'portfolio': Page.Widgets.portfolioSelectBV.datavalue,
                 'billingSystem': Page.Widgets.billingSystemSelectBV.datavalue,
