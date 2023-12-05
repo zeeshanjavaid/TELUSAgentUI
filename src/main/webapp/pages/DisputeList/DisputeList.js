@@ -68,7 +68,7 @@ Partial.getdisputeTable1Beforedatarender = function(widget, $data, $columns) {
 
 };
 
-Partial.Telus_PaginatonPagechange = function($event, $data) {
+Partial.Telus_PaginatonPagechangeForDisputeList = function($event, $data) {
     debugger;
     Partial.size = $event.pageSize
     Partial.page = $event.pageNumber

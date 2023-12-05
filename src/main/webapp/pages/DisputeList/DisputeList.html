@@ -26,7 +26,7 @@
                 <wm-table-column binding="updatedDateTime" caption="Updated Date" width="97px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-gridcolumn>
-        <wm-container name="containerPagination2"></wm-container>
-        <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.getAllDisputesList.dataSet[0].totalNumberOfElement"></wm-prefab>
+        <wm-container name="containerPagination3"></wm-container>
+        <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination3" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechangeForDisputeList($event, $data)" totalrecords="bind:Variables.getAllDisputesList.dataSet[0].totalNumberOfElement"></wm-prefab>
     </wm-container>
 </wm-partial>

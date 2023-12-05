@@ -33,7 +33,7 @@
     <wm-layoutgrid name="layoutgrid11" margin="20px 0 0 15px" width="98%" id="orderManagament">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="None" showrecordcount="true" navigationalign="right">
+                <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
                     <wm-table-column binding="id" caption="Action ID" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -42,8 +42,8 @@
                     <wm-table-column binding="stepDate" caption="Due DT" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                        show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                    <wm-table-row content="OrderManagementRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionTreatmentStep_orderMngt_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                     <wm-table-row-action key="customRow1" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Order Fulfilled&quot;
 " class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="getCollectionTreatmentStep_orderMngt_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                     <wm-table-row-action key="customRow2" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot;
@@ -51,12 +51,12 @@
                     <wm-table-row-action key="customRow3" display-name="" show="bind:Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Closed&quot; &amp;&amp; Widgets.getCollectionTreatmentStep_orderMngt.currentItem.status!=&quot;Cancelled&quot;
 
 " class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Cancel" action="getCollectionTreatmentStep_orderMngt_customRow3Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
-                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                    <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)"
+                        disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
-            <wm-container name="containerPagination2"></wm-container>
-            <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechangeForOD($event, $data)" totalrecords="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[0].totalNumberOfElement"></wm-prefab>
-        </wm-gridrow>
+            <!--<wm-container name="containerPagination2"></wm-container>-->
+            <!--<wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechangeForOD($event, $data)" totalrecords="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet[0].totalNumberOfElement"></wm-prefab>--></wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Suspension Request" iconclass="wi wi-file-text" name="CreateSuspensionRequestdialog">
         <wm-layoutgrid name="layoutgrid4">
@@ -127,7 +127,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName]+' '+$[lastName]" orderby="firstName:asc"></wm-select>
+                    <wm-select width="70%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName]+' '+$[lastName]"
+                        orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -231,7 +232,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName]+' '+$[lastName]" orderby="firstName:asc"></wm-select>
+                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName]+' '+$[lastName]"
+                        orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -335,7 +337,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]" orderby="firstName:asc"></wm-select>
+                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]"
+                        orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -472,8 +475,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow14">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
-                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]" datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue"
-                        orderby="firstName:asc"></wm-select>
+                    <wm-select width="45%" name="assignedPersonSelect" id="mySelection" margin="5px unset unset unset" datafield="empId" placeholder="Select" dataset="bind:Variables.getAllActiveUserList.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]"
+                        datavalue="bind:Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue" orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
@@ -543,8 +546,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" selectall="ture" radioselect="false" width="98%" navigationalign="right" class="getEntityBanDetailsTableEdit2"
-                        id="getEntityBanDetailsTableEdit2ForTest">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" selectall="ture" radioselect="false" width="98%" navigationalign="right"
+                        class="getEntityBanDetailsTableEdit2" id="getEntityBanDetailsTableEdit2ForTest">
                         <wm-table-column binding="banId" caption="BAN#" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="300px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="110px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
@@ -629,7 +632,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to close the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
@@ -656,7 +660,8 @@
         <wm-layoutgrid name="layoutgrid11_1">
             <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn36">
-                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'" name="label36"></wm-label>
+                    <wm-label caption="bind:'Are you sure you want to cancel the action ' + Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + ' ' +&quot;(&quot;+ Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id +&quot;)&quot;+ '?'"
+                        name="label36"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
         </wm-layoutgrid>
