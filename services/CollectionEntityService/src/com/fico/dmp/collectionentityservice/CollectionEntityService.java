@@ -4,8 +4,11 @@
 package com.fico.dmp.collectionentityservice;
 import com.fico.telus.utility.URIConstant;
 import com.sun.xml.bind.v2.runtime.output.Encoded;
+import com.fico.telus.model.CollectionPaymentArrangementResponse;
+import com.fico.telus.model.DisputeResWithHeader;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -346,7 +349,7 @@ public class CollectionEntityService {
     }
     //PAAR
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
-    public List<CollectionPaymentArrangement> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
+    public List<CollectionPaymentArrangementResponse> getPaymentArrangements(String fields, Integer offset, Integer limit, String agentId, String entityId, String entityRisk, String evaluation, String status, String createdBy, String createdFrom, String createdTo) throws Exception  {
     	
 	  String statusStr = null;
 		if(status != null) {
@@ -369,10 +372,51 @@ public class CollectionEntityService {
                     .queryParam("createdFrom", createdFrom)
                      .queryParam("createdTo", createdTo)
                      .queryParamIfPresent("entityId",Optional.ofNullable(entityIdStr))
+                      .queryParam("offset",offset)
                      .queryParam("limit",limit);
               // .queryParam("entityRisk",entityRisk);
-    	return parrService.getPaymentArrangements(entityId,builder.toUriString());
+    //	return parrService.getPaymentArrangements(entityId,builder.toUriString());
+    		  ParrResWithHeader paymentArrangements = parrService.getPaymentArrangements(entityId, builder.toUriString());
+    		  	  return convertTelusResponseToFawbResponse(paymentArrangements);
+
+
     }
+    
+    
+    
+private List<CollectionPaymentArrangementResponse> convertTelusResponseToFawbResponse(ParrResWithHeader paymentArrangements) {
+
+		List<CollectionPaymentArrangementResponse> collectionPaymentArrangementResponseList = new ArrayList<>();
+		if (!paymentArrangements.getResponseObjectList().isEmpty()){
+			for (CollectionPaymentArrangement collectionPaymentArrangement : paymentArrangements.getResponseObjectList()) {
+				CollectionPaymentArrangementResponse collectionPaymentArrangementResponse = new CollectionPaymentArrangementResponse();
+				collectionPaymentArrangementResponse.setId(collectionPaymentArrangement.getId());
+				collectionPaymentArrangementResponse.setHref(collectionPaymentArrangement.getHref());
+				collectionPaymentArrangementResponse.setAllBillingAccountIncludedIndicator(collectionPaymentArrangement.isAllBillingAccountIncludedIndicator());
+				collectionPaymentArrangementResponse.setAmount(collectionPaymentArrangement.getAmount());
+				collectionPaymentArrangementResponse.setAuditInfo(collectionPaymentArrangement.getAuditInfo());
+				collectionPaymentArrangementResponse.setBillingAccountRefs(collectionPaymentArrangement.getBillingAccountRefs());
+				collectionPaymentArrangementResponse.setCollectionEntity(collectionPaymentArrangement.getCollectionEntity());
+				collectionPaymentArrangementResponse.setComment(collectionPaymentArrangement.getComment());
+				collectionPaymentArrangementResponse.setEvaluationResult(collectionPaymentArrangement.getEvaluationResult());
+				collectionPaymentArrangementResponse.setExpectedPaymentAmountToDate(collectionPaymentArrangement.getExpectedPaymentAmountToDate());
+				collectionPaymentArrangementResponse.setInstallments(collectionPaymentArrangement.getInstallments());
+				collectionPaymentArrangementResponse.setReceivedPaymentAmountToDate(collectionPaymentArrangement.getReceivedPaymentAmountToDate());
+				collectionPaymentArrangementResponse.setRecurrence(collectionPaymentArrangement.getRecurrence());
+				collectionPaymentArrangementResponse.setStatus(collectionPaymentArrangement.getStatus());
+				collectionPaymentArrangementResponse.setStatusDateTime(collectionPaymentArrangement.getStatusDateTime());
+				collectionPaymentArrangementResponse.setStatusReason(collectionPaymentArrangement.getStatusReason());
+				collectionPaymentArrangementResponse.setBaseType(collectionPaymentArrangement.getBaseType());
+				collectionPaymentArrangementResponse.setSchemaLocation(collectionPaymentArrangement.getSchemaLocation());
+				collectionPaymentArrangementResponse.setType(collectionPaymentArrangement.getType());
+				collectionPaymentArrangementResponse.setTotalNumberOfElement(paymentArrangements.getTotalNumberOfElement());
+				collectionPaymentArrangementResponseList.add(collectionPaymentArrangementResponse);
+			}
+	}
+
+		return collectionPaymentArrangementResponseList;
+
+	}
   
   
   @RequestMapping(value = URIConstant.ApiMapping.GET_PARR, method = {RequestMethod.GET})
@@ -478,7 +522,7 @@ public class CollectionEntityService {
 //dispute
 
     @RequestMapping(value = "/dispute", method = {RequestMethod.GET})
-    public List<CollectionDispute> getdispute(String fields,Integer offset, Integer limit, String baRefId, String entityId) throws Exception  {
+    public DisputeResWithHeader getdispute(String fields,Integer offset, Integer limit, String baRefId, String entityId) throws Exception  {
     	if (isStubEnabled) {
         return objectMapper.readValue("[{\"id\":1,\"href\":\"BASE_URL/dispute/1\",\"amount\":100.0,\"auditInfo\":{\"createdBy\":\"t123456\",\"createdDateTime\":\"2023-01-01T09:00:00.00Z\",\"dataSource\":\"fico-app-123\",\"lastUpdatedBy\":\"t123456\",\"lastUpdatedDateTime\":\"2023-01-01T09:00:00.00Z\",\"@type\":\"AuditInfo\"},\"billingAccountRef\":{\"id\":1,\"href\":\"BASE_URL/billingAccountRef/1\",\"@referredType\":\"CollectionBillingAccountRef\",\"@type\":\"EntityRef\"},\"billingAdjustmentRequestId\":\"string\",\"chargeType\":\"One-time charge\",\"comment\":\"Collection dispute comment 1\",\"customerEmail\":\"John.Snow@telus.com\",\"collectionExclusionIndicator\":false,\"disputePrime\":\"string\",\"disputeReason\":\"BILLED CHARGES (DEEMED) INCORRECT\",\"product\":\"Business Connect\",\"status\":\"OPEN\",\"statusDateTime\":\"2023-01-01T09:00:00.00Z\",\"statusReason\":\"string\",\"@type\":\"CollectionDispute\"}]",
         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
@@ -486,15 +530,28 @@ public class CollectionEntityService {
  			logger.info("::::::::Calling  entity endpoint call ::::::::");
  			
  			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_DISPUTE)
-                    .queryParam("entityId","eq:"+entityId);
+                    .queryParam("entityId","eq:"+entityId)
+                     .queryParam("offset",offset)
+                     .queryParam("limit",limit);
  			if(entityId != null) {
-            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
-            	logger.info("::::::::Entity endpoint call success ::::::::");
-            	logger.info("Resoinse---"+ responseStr);
-            	List<CollectionDispute> collectionDisputeList = objectMapper.readValue(responseStr,
-				objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
-							logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
-            return collectionDisputeList;
+    //         String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
+    //         	logger.info("::::::::Entity endpoint call success ::::::::");
+    //         	logger.info("Resoinse---"+ responseStr);
+    //         	List<CollectionDispute> collectionDisputeList = objectMapper.readValue(responseStr,
+				// objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
+				// 			logger.info(":::::::: Completed Calling  entity endpoint call ::::::::");
+    //         return collectionDisputeList;
+         DisputeResWithHeader disputeResWithHeader=new DisputeResWithHeader();
+
+				List<CollectionDispute> responseObjectLis;
+				ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", entitySvcAuthScope);
+				String result=responseFromTelus.getBody();
+				HttpHeaders headers1=responseFromTelus.getHeaders();
+				String totalNoOfElement=headers1.getFirst("x-total-count");
+				responseObjectLis= objectMapper.readValue(result, objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionDispute.class));
+				disputeResWithHeader.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
+				disputeResWithHeader.setResponseObjectList(responseObjectLis);
+				return disputeResWithHeader;
     	}
     }
          return null; 

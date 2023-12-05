@@ -41,7 +41,9 @@ App.refreshParrList = function() {
 
     Partial.Variables.CollectionEntityGetPaymentArrangement.setInput({
 
-        "entityId": Partial.pageParams.entityId
+        "entityId": Partial.pageParams.entityId,
+        'limit': 10,
+        'offset': 0
     });
     Partial.Variables.CollectionEntityGetPaymentArrangement.invoke();
 };
@@ -65,3 +67,22 @@ Partial.getPaymentArrangementTable1Beforedatarender = function(widget, $data, $c
         e.amount = formattedString;
     });
 };
+
+Partial.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshData();
+
+};
+
+Partial.RefreshData = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.CollectionEntityGetPaymentArrangement.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.CollectionEntityGetPaymentArrangement.invoke();
+
+}

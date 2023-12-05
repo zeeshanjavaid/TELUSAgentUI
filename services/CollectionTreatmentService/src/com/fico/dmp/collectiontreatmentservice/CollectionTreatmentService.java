@@ -41,6 +41,9 @@ import java.util.ArrayList;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fico.telus.model.CollectionTreatmentStepResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
+
 
 
 
@@ -204,13 +207,23 @@ public class CollectionTreatmentService {
                     .queryParam("fields",fields);
                    // .queryParam("limit",20);
                    logger.info("Calling Url---"+ builder.toUriString());
-            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+           // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+             ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", collTreatmentSvcAuthScope);
+            String result=responseFromTelus.getBody();
+            HttpHeaders headers1=responseFromTelus.getHeaders();
+            String totalNoOfElement=headers1.getFirst("x-total-count");
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
-            logger.info("Resoinse---"+ responseStr);
-             collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
+            logger.info("Response---"+ result);
+             collectionTreatmentStepList= objectMapper.readValue(result, new TypeReference<List<CollectionTreatmentStep>>(){});
                          List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
+                         collectionTreatmentStepResponseList=  convertTelusApiResponseToFawbCustomResponseForCollTStep(collectionTreatmentStepList,Integer.parseInt(totalNoOfElement));
 
-                         collectionTreatmentStepResponseList=  convertTelusApiResponseToFawbCustomResponseForCollTStep(collectionTreatmentStepList);
+            logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
+            
+            //  collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
+            //              List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
+
+            //              collectionTreatmentStepResponseList=  convertTelusApiResponseToFawbCustomResponseForCollTStep(collectionTreatmentStepList);
 
              collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
              collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
@@ -512,7 +525,7 @@ public class CollectionTreatmentService {
     
     
     
- private List<CollectionTreatmentStepResponse> convertTelusApiResponseToFawbCustomResponseForCollTStep(List<CollectionTreatmentStep> collectionTreatmentStepList) {
+ private List<CollectionTreatmentStepResponse> convertTelusApiResponseToFawbCustomResponseForCollTStep(List<CollectionTreatmentStep> collectionTreatmentStepList,Integer totalNoOfElement) {
         List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
         for(CollectionTreatmentStep collectionTreatmentStep:collectionTreatmentStepList)
         {
@@ -539,6 +552,8 @@ public class CollectionTreatmentService {
             collectionTreatmentStepResponse.setType(collectionTreatmentStep.getType());
             collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getSchemaLocation());
             collectionTreatmentStepResponse.setAssignedPersonForDefaultValue(collectionTreatmentStep.getAssignedAgentId());
+            collectionTreatmentStepResponse.setTotalNumberOfElement(totalNoOfElement);
+
             collectionTreatmentStepResponseList.add(collectionTreatmentStepResponse);
 
         }

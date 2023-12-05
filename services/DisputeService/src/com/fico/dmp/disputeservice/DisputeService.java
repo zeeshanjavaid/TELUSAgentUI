@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.fico.telus.model.DisputeResWithHeader;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,17 +64,17 @@ public class DisputeService {
      * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
      * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
      */
-    public List<DisputeModel> getAllDisputes(String entityId) {
+    public List<DisputeModel> getAllDisputes(String fields,Integer offset, Integer limit, String baRefId,String entityId) {
         logger.info("Inside retrieveAllDisputes method");
         List<DisputeModel> disputeModelList = new ArrayList<DisputeModel>();
         try {
-        	List<CollectionDispute> collectionDisputeList = collectionEntityService.getdispute(null, null, null, null, entityId);
+        DisputeResWithHeader collectionDisputeList = collectionEntityService.getdispute(fields, offset, limit, baRefId, entityId);
         	
         	List<String> billingAcctRefIds = new ArrayList<String>();
-        	if(!CollectionUtils.isEmpty(collectionDisputeList)) {
-        		billingAcctRefIds = collectionDisputeList.stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
+        	if(!CollectionUtils.isEmpty(collectionDisputeList.getResponseObjectList())) {
+        		billingAcctRefIds = collectionDisputeList.getResponseObjectList().stream().map(t -> t.getBillingAccountRef().getId()).collect(Collectors.toList());
         		
-        		for (CollectionDispute collectionDispute : collectionDisputeList) {
+        		for (CollectionDispute collectionDispute : collectionDisputeList.getResponseObjectList()) {
         			DisputeModel disputeModel = new DisputeModel();
         			disputeModel.setId(collectionDispute.getId());
         			disputeModel.setBan(collectionDispute.getBillingAccountRef().getId());
@@ -84,6 +85,7 @@ public class DisputeService {
         			disputeModel.setCreatedDateTime(Date.from(collectionDispute.getAuditInfo().getCreatedDateTime().toInstant()));
         			disputeModel.setUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionDispute.getAuditInfo().getLastUpdatedBy()));
         			disputeModel.setUpdatedDateTime(Date.from(collectionDispute.getAuditInfo().getLastUpdatedDateTime().toInstant()));
+					disputeModel.setTotalNumberOfElement(collectionDisputeList.getTotalNumberOfElement());
         			disputeModelList.add(disputeModel);
 				}
         		
@@ -91,9 +93,9 @@ public class DisputeService {
         	
         	String billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
         	logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
-        	String fields = "id,billingAccount.id,billingAccount.name,billingSystemName";
+        	String fieldsForBillAcc = "id,billingAccount.id,billingAccount.name,billingSystemName";
         	//String idInQuery = billingAcctRefIdsInListAsString;
-        	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fields, null, null, null, null, billingAcctRefIdsInListAsString);
+        	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(fieldsForBillAcc, null, null, null, null, billingAcctRefIdsInListAsString);
         	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
         		for (DisputeModel disputeModel : disputeModelList) {
         			collectionBillingAccountRefList.stream().filter(cel -> cel.getId().equals(Integer.valueOf(disputeModel.getBan()))).forEach(collectionBillingAccountRef -> {

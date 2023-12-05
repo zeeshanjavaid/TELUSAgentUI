@@ -18,7 +18,15 @@ public class DisputeModel {
 	private Date createdDateTime;
 	private String updatedBy;
 	private Date updatedDateTime;
-	
+	private Integer totalNumberOfElement;
+
+	public Integer getTotalNumberOfElement() {
+		return totalNumberOfElement;
+	}
+
+	public void setTotalNumberOfElement(Integer totalNumberOfElement) {
+		this.totalNumberOfElement = totalNumberOfElement;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1098,7 +1098,10 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 };
 
 App.refreshCollOrderMgmtList = function() {
-
+    Partial.Variables.getCollectionTreatmentStep_orderMngt.setInput({
+        'limit': 10,
+        'offset': 0
+    });
     Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 
@@ -1126,7 +1129,8 @@ Partial.createOrderManagmentForSuspensiononSuccess = function(variable, data) {
     setTimeout(messageTimeout, 4000);
 
     setTimeout(function() {
-        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        // Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        App.refreshCollOrderMgmtList();
     }, 1000);
 
 };
@@ -1139,7 +1143,8 @@ Partial.createOrderManagmentForRestoralonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 4000);
 
     setTimeout(function() {
-        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        //   Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        App.refreshCollOrderMgmtList();
     }, 1000);
 
 
@@ -1154,7 +1159,8 @@ Partial.createOrderManagmentForCeaseonSuccess = function(variable, data) {
     setTimeout(messageTimeout, 4000);
 
     setTimeout(function() {
-        Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        //   Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+        App.refreshCollOrderMgmtList();
     }, 1000);
 
 
@@ -1351,3 +1357,22 @@ Partial.UpdateODManagemntAndFullfillIfAssignedChangeonSuccess = function(variabl
     App.refreshCollOrderMgmtList();
 
 };
+
+Partial.Telus_PaginatonPagechangeForOD = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshData();
+
+};
+
+Partial.RefreshData = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.getCollectionTreatmentStep_orderMngt.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
+
+}

@@ -54,6 +54,16 @@ public class CollectionTreatmentStepResponse {
     private String schemaLocation = null;
 
     private String assignedPersonForDefaultValue;
+    
+    private Integer totalNumberOfElement;
+
+    public Integer getTotalNumberOfElement() {
+        return totalNumberOfElement;
+    }
+
+    public void setTotalNumberOfElement(Integer totalNumberOfElement) {
+        this.totalNumberOfElement = totalNumberOfElement;
+    }
 
     public CollectionTreatmentAuditInfo getAuditInfo() {
         return auditInfo;

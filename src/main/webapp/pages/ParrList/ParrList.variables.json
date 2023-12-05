@@ -9,12 +9,8 @@
       "target" : "entityId",
       "value" : "bind:pageParams.entityId",
       "type" : "string"
-    }, {
-      "target" : "limit",
-      "value" : "1000",
-      "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "com.fico.telus.model.CollectionPaymentArrangementResponse",
     "service" : "CollectionEntityService",
     "operation" : "getPaymentArrangements",
     "operationId" : "CollectionEntityController_getPaymentArrangements",

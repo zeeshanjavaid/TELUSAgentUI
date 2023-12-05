@@ -50,7 +50,9 @@ Partial.getdisputeTable1_idOnClick = function($event, widget, row) {
 
 App.refreshDisputeList = function() {
     Partial.Variables.getAllDisputesList.setInput({
-        "entityId": Partial.pageParams.entityId
+        "entityId": Partial.pageParams.entityId,
+        'limit': 10,
+        'offset': 0
     });
     Partial.Variables.getAllDisputesList.invoke();
 };
@@ -65,3 +67,22 @@ Partial.getdisputeTable1Beforedatarender = function(widget, $data, $columns) {
     });
 
 };
+
+Partial.Telus_PaginatonPagechange = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshData();
+
+};
+
+Partial.RefreshData = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.getAllDisputesList.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.getAllDisputesList.invoke();
+
+}

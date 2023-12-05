@@ -7,7 +7,7 @@
             <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="80%"></wm-message>
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
-            <wm-table name="getPaymentArrangementTable1" width="98%" title="" margin="5px 5px 0px 17px" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right" pagesize="10" on-beforedatarender="getPaymentArrangementTable1Beforedatarender(widget, $data, $columns)">
+            <wm-table name="getPaymentArrangementTable1" width="98%" title="" margin="5px 5px 0px 17px" dataset="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet" navigation="None" showrecordcount="true" navigationalign="right" pagesize="10" on-beforedatarender="getPaymentArrangementTable1Beforedatarender(widget, $data, $columns)">
                 <wm-table-column binding="id" caption="PARR ID" widget-type="anchor" width="90px" edit-widget-type="number" type="integer" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="" class="" on-click="getPaymentArrangementTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
@@ -35,5 +35,7 @@
                 <wm-table-column binding="auditInfo.lastUpdatedDateTime" caption="Updated DT" width="95px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-gridcolumn>
+        <wm-container name="containerPagination2"></wm-container>
+        <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.CollectionEntityGetPaymentArrangement.dataSet[0].totalNumberOfElement"></wm-prefab>
     </wm-container>
 </wm-partial>

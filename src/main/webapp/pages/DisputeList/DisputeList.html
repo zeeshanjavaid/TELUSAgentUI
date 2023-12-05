@@ -6,7 +6,7 @@
             <wm-button class="btn-default createDisputeBtn" caption="Create Dispute" type="button" name="CreateDispute" iconposition="left" textalign="center" on-click="CreateDisputeClick($event, widget)" show="bind:Variables.DisputePageName.dataSet.dataValue=='DisputeList'"></wm-button>
         </wm-gridcolumn>
         <wm-gridcolumn width="100%" name="gridcolumn2">
-            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputesList.dataSet" navigation="Classic" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%" pagesize="10" on-beforedatarender="getdisputeTable1Beforedatarender(widget, $data, $columns)">
+            <wm-table name="getdisputeTable1" title="" dataset="bind:Variables.getAllDisputesList.dataSet" navigation="None" margin="5px 5px 0 18px" showrecordcount="true" navigationalign="right" style="padding:5px;" width="98%" pagesize="10" on-beforedatarender="getdisputeTable1Beforedatarender(widget, $data, $columns)">
                 <wm-table-column binding="id" caption="Dispute ID" widget-type="anchor" width="70px" edit-widget-type="text" type="string" show="true" readonly="false">
                     <wm-anchor caption="bind:row.getProperty('id')" hyperlink="bind:row.getProperty('id')" class="" on-click="getdisputeTable1_idOnClick($event, widget, row)" conditionalclass=""></wm-anchor>
                 </wm-table-column>
@@ -26,5 +26,7 @@
                 <wm-table-column binding="updatedDateTime" caption="Updated Date" width="97px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
             </wm-table>
         </wm-gridcolumn>
+        <wm-container name="containerPagination2"></wm-container>
+        <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination2" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.getAllDisputesList.dataSet[0].totalNumberOfElement"></wm-prefab>
     </wm-container>
 </wm-partial>

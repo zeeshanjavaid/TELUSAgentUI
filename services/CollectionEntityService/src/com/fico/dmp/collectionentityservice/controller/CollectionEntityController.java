@@ -18,7 +18,9 @@ import java.util.List;
 import java.lang.Boolean;
 import io.swagger.client.model.CollectionContact;
 import io.swagger.client.model.CollectionPaymentArrangement;
+import com.fico.telus.model.CollectionPaymentArrangementResponse;
 import com.fico.telus.model.ParrResWithHeader;
+import com.fico.telus.model.DisputeResWithHeader;
 import io.swagger.client.model.CollectionDispute;
 import io.swagger.client.model.CollectionBillingAccountRefUpdate;
 import io.swagger.client.model.CollectionEntityUpdate;
@@ -118,7 +120,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/paymentArrangements", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionPaymentArrangement> getPaymentArrangements(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "entityRisk", required = false) String entityRisk, @RequestParam(value = "evaluation", required = false) String evaluation, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "createdFrom", required = false) String createdFrom, @RequestParam(value = "createdTo", required = false) String createdTo) throws Exception {
+    public List<CollectionPaymentArrangementResponse> getPaymentArrangements(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "agentId", required = false) String agentId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "entityRisk", required = false) String entityRisk, @RequestParam(value = "evaluation", required = false) String evaluation, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "createdFrom", required = false) String createdFrom, @RequestParam(value = "createdTo", required = false) String createdTo) throws Exception {
         return collectionEntityService.getPaymentArrangements(fields, offset, limit, agentId, entityId, entityRisk, evaluation, status, createdBy, createdFrom, createdTo);
     }
 
@@ -132,7 +134,7 @@ public class CollectionEntityController {
     @RequestMapping(value = "/dispute", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionDispute> getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "baRefId", required = false) String baRefId, @RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+    public DisputeResWithHeader getdispute(@RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "baRefId", required = false) String baRefId, @RequestParam(value = "entityId", required = false) String entityId) throws Exception {
         return collectionEntityService.getdispute(fields, offset, limit, baRefId, entityId);
     }
 
