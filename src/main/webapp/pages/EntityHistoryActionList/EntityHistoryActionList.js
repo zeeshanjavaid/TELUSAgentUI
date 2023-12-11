@@ -853,7 +853,9 @@ Partial.clearFilterFields = function($event, widget) {
             'status': '',
             'assignedAgentId': '',
             'assignedTeam': '',
-            'createdDate': ''
+            'createdDate': '',
+            'limit': 10,
+            'offset': 0
 
 
         });
@@ -880,7 +882,9 @@ Partial.clearFilterFields = function($event, widget) {
             'relatedBusinessEntityCreatedDate': '',
             'relatedBusinessEntityCreatedBy': '',
             'relatedBusinessEntityAssignedTo': '',
-            'relatedBusinessEntityAssignedTeam': ''
+            'relatedBusinessEntityAssignedTeam': '',
+            'limit': 10,
+            'offset': 0
         });
 
         Partial.Variables.GetCollectionActivityLogList.invoke();
@@ -936,6 +940,8 @@ Partial.applyFilter = function($event, widget) {
             'createdBy': createdBy,
             'assignedAgentId': assignedAgentId,
             'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+            'limit': 10,
+            'offset': 0
 
         });
 
@@ -1565,6 +1571,15 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 
 App.refreshCollActionList = function() {
 
+
+
+    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+
+        "collectionEntityId": Partial.pageParams.entityId,
+        'limit': 10,
+        'offset': 0
+    });
+
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
 
@@ -1607,6 +1622,13 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
 
 App.refreshHistoryActionList = function() {
 
+
+    Partial.Variables.GetCollectionActivityLogList.setInput({
+        'collectionEntityId': Partial.pageParams.entityId,
+        'limit': 10,
+        'offset': 0
+    });
+
     Partial.Variables.GetCollectionActivityLogList.invoke();
 
 };
@@ -1614,3 +1636,42 @@ App.refreshHistoryActionList = function() {
 Partial.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {
     App.refreshCollActionList();
 };
+
+Partial.Telus_PaginatonPagechangeForHsitoryToDo = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshData();
+
+};
+
+Partial.RefreshData = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.getCollectionTreatmentStep_1.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
+}
+
+
+Partial.Telus_PaginatonPagechangeForHsitoryHisrtory = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshDataForHistory();
+
+};
+
+Partial.RefreshDataForHistory = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.GetCollectionActivityLogList.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.GetCollectionActivityLogList.invoke();
+
+}

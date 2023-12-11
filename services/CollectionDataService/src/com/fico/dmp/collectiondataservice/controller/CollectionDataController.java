@@ -12,7 +12,7 @@ import com.fico.telus.model.TeamsActionViewResponseWIthTotalCount;
 import java.util.List;
 import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import io.swagger.client.model.EntityBanDetailsResponse;
-import io.swagger.client.model.EntityContactsResponse;
+import com.fico.telus.model.EntityContactsResponseForFawb;
 import io.swagger.client.model.EntityDetailsResponse;
 import com.fico.telus.model.LookUpResponseWithTeamName;
 import com.fico.telus.model.AssignedEntitiesInClassicModel;
@@ -56,7 +56,7 @@ public class CollectionDataController {
     @RequestMapping(value = "/entityContacts", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public EntityContactsResponse getEntityContacts(@RequestParam(value = "entityId", required = false) Integer entityId) throws Exception {
+    public EntityContactsResponseForFawb getEntityContacts(@RequestParam(value = "entityId", required = false) Integer entityId) throws Exception {
         return collectionDataService.getEntityContacts(entityId);
     }
 

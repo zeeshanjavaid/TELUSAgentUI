@@ -30,7 +30,7 @@ Partial.onReady = function() {
     });
     Partial.Variables.getLatestNotesBy_EntityId.invoke();
 
-    App.Variables.getUserDetailsByEmplId.invoke();
+    Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.invoke();
 
 };
 
@@ -123,7 +123,7 @@ Partial.createButtonClick = function($event, widget) {
                                 'notes': note,
                                 'docId': documentId,
                                 // 'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
-                                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
+                                'createdByEmplId': Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.dataSet[0].firstName.concat(" " + Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.dataSet[0].lastName)
 
                             });
 
@@ -199,7 +199,7 @@ Partial.createButtonClick = function($event, widget) {
                 'notes': note,
                 'docId': documentId,
                 // 'createdBy': App.Variables.getLoggedInUserDetails.dataSet.firstName.concat(" " + App.Variables.getLoggedInUserDetails.dataSet.lastName),
-                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
+                'createdByEmplId': Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.dataSet[0].firstName.concat(" " + Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.dataSet[0].lastName)
 
             });
 
@@ -304,5 +304,10 @@ App.refreshLatestNotesAndDoc = function() {
     });
 
     Partial.Variables.getLatestNotesBy_EntityId.invoke();
+
+};
+Partial.createNoteButtonpopoverShow = function($event, widget) {
+    debugger;
+    Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.invoke();
 
 };

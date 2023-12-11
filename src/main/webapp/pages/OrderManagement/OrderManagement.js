@@ -1098,10 +1098,10 @@ Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 };
 
 App.refreshCollOrderMgmtList = function() {
-    // Partial.Variables.getCollectionTreatmentStep_orderMngt.setInput({
-    //     'limit': 10,
-    //     'offset': 0
-    // });
+    Partial.Variables.getCollectionTreatmentStep_orderMngt.setInput({
+        'limit': 10,
+        'offset': 0
+    });
     Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.HttpMethod;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
+import com.fico.telus.model.*;
+
 
 
 import com.fico.pscomponent.util.PropertiesUtil;
@@ -438,9 +440,14 @@ public class CollectionDataService {
 
 //entityContacts
     @RequestMapping(value = "/entityContacts", method = {RequestMethod.GET})
-    public EntityContactsResponse getEntityContacts(@RequestParam(required = true) Integer entityId) throws Exception  {
+    public EntityContactsResponseForFawb getEntityContacts(@RequestParam(required = true) Integer entityId) throws Exception  {
+    EntityContactsResponseForFawb  entityContactsResponseForFawb=new EntityContactsResponseForFawb();
+		EntityContactsResponse entityContactsResponse=new EntityContactsResponse();
     	 if (isStubEnabled) {
-        return objectMapper.readValue("{\"mailingContacts\":[{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"unitNumber\":\"Unit Number\",\"streetNumber\":\"111\",\"streetNumberSuffix\":\"streetSuffix\",\"streetName\":\"Britannia Ave\",\"streetType\":\"streetType\",\"streetDirection\":\"stDirection\",\"city\":\"Oshawa\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"},{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"streetDirection\":\"stDirection\",\"poBox\":\"P O Box 123\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"}],\"digitalContacts\":[{\"contactId\":1,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John1\",\"lastName\":\"Doe1\",\"email\":\"john1.doe1@telus.com\",\"workNumber\":\"9059974001\",\"mobileNumber\":\"5149979001\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"511\"},{\"contactId\":2,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John2\",\"lastName\":\"Doe2\",\"email\":\"john2.doe2@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"311\"},{\"contactId\":3,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"FAWB\",\"contactForNotices\":true,\"telusContacts\":true,\"title\":\"Mr.\",\"firstName\":\"Kevin\",\"lastName\":\"Smith\",\"email\":\"Kevin.Smith@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"211\"}]}",EntityContactsResponse.class);
+         entityContactsResponseForFawb= objectMapper.readValue("{\"mailingContacts\":[{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"unitNumber\":\"Unit Number\",\"streetNumber\":\"111\",\"streetNumberSuffix\":\"streetSuffix\",\"streetName\":\"Britannia Ave\",\"streetType\":\"streetType\",\"streetDirection\":\"stDirection\",\"city\":\"Oshawa\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"},{\"entityId\":1,\"banId\":\"1\",\"banName\":\"BACCT1\",\"billingSystem\":\"CES9\",\"careOf\":\"CareOf\",\"streetDirection\":\"stDirection\",\"poBox\":\"P O Box 123\",\"postalCode\":\"L1L 0B4\",\"province\":\"ON\"}],\"digitalContacts\":[{\"contactId\":1,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John1\",\"lastName\":\"Doe1\",\"email\":\"john1.doe1@telus.com\",\"workNumber\":\"9059974001\",\"mobileNumber\":\"5149979001\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"511\"},{\"contactId\":2,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"TCM\",\"contactForNotices\":false,\"telusContacts\":false,\"title\":\"Mr.\",\"firstName\":\"John2\",\"lastName\":\"Doe2\",\"email\":\"john2.doe2@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"311\"},{\"contactId\":3,\"entityId\":1,\"rcId\":\"rc-name-12345\",\"sourceOfContact\":\"FAWB\",\"contactForNotices\":true,\"telusContacts\":true,\"title\":\"Mr.\",\"firstName\":\"Kevin\",\"lastName\":\"Smith\",\"email\":\"Kevin.Smith@telus.com\",\"workNumber\":\"9059974002\",\"mobileNumber\":\"5149979002\",\"faxNumber\":\"9059974008\",\"workPhoneExt\":\"211\"}]}",EntityContactsResponseForFawb.class);
+    //	entityContactsResponseForFawb.setMailingContacts(entityContactsResponse.getMailingContacts());
+		//	entityContactsResponseForFawb.setDigitalContacts(entityContactsResponse.getDigitalContacts());
+			return entityContactsResponseForFawb;
     	 }
     	 else{
 
@@ -448,12 +455,25 @@ public class CollectionDataService {
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl+URIConstant.ApiMapping.ENTITY_CONTACTS)
                      .queryParam("entityId", entityId);
              if(entityId != null) {
-	             String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+	           //  String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+	           //  logger.info("::::::::Entity data endpoint call success ::::::::");
+	           //  logger.info("Resoinse---"+ responseStr);
+	           //   entityContactsResponse = objectMapper.readValue(responseStr,EntityContactsResponse.class);
+	           //  return entityContactsResponse;
+	           ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+				 String result=responseFromTelus.getBody();
+				 HttpHeaders headers1=responseFromTelus.getHeaders();
+				 String totalNoOfElement=headers1.getFirst("x-total-count");
 	             logger.info("::::::::Entity data endpoint call success ::::::::");
-	             logger.info("Resoinse---"+ responseStr);
-	             EntityContactsResponse entityContactsResponse = objectMapper.readValue(responseStr,EntityContactsResponse.class);
-	             return entityContactsResponse;
-             }
+	             logger.info("Resoinse---"+ result);
+	              entityContactsResponseForFawb = objectMapper.readValue(result,EntityContactsResponseForFawb.class);
+			//	 entityContactsResponseForFawb.setMailingContacts(entityContactsResponse.getMailingContacts());
+				// entityContactsResponseForFawb.setDigitalContacts(entityContactsResponse.getDigitalContacts());
+				// entityContactsResponseForFawb.setTotalNoOfElement(Integer.parseInt(totalNoOfElement));
+				// entityContactsResponseForFawb.setTotalNoOfElement(Integer.parseInt(totalNoOfElement));
+
+	             return entityContactsResponseForFawb;
+            }
 
          }
 		return null;

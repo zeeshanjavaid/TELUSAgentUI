@@ -30,7 +30,7 @@ Partial.onReady = function() {
      */
     //  alert(Partial.pageParams.entityId);
 
-    App.Variables.getUserDetailsByEmplId.invoke();
+    Partial.Variables.getUserDetailsByEmplId.invoke();
 
     Partial.Variables.entityIdForNotes.dataSet = Partial.pageParams.entityId;
 
@@ -149,7 +149,7 @@ Partial.button3Click1 = function($event, widget) {
                                 'banId': banId,
                                 'notes': note,
                                 'docId': documentId,
-                                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
+                                'createdByEmplId': Partial.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + Partial.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
 
 
                             });
@@ -225,7 +225,7 @@ Partial.button3Click1 = function($event, widget) {
                 'banId': banId,
                 'notes': note,
                 'docId': documentId,
-                'createdByEmplId': App.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + App.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
+                'createdByEmplId': Partial.Variables.getUserDetailsByEmplId.dataSet[0].firstName.concat(" " + Partial.Variables.getUserDetailsByEmplId.dataSet[0].lastName)
 
 
             });
@@ -641,4 +641,9 @@ Partial.getEntityDetailsTable1Beforedatarender = function(widget, $data, $column
             e.disputeAmount = formattedString;
         }
     });
+};
+Partial.createNoteButtonShow = function($event, widget) {
+
+    Partial.Variables.getUserDetailsByEmplId.invoke();
+
 };

@@ -43,6 +43,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fico.telus.model.CollectionTreatmentStepResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
+import com.fico.telus.model.CollectionActivityLogRes;
+
 
 
 
@@ -309,7 +311,7 @@ public class CollectionTreatmentService {
     
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionActivityLog> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception  {
+    public List<CollectionActivityLogRes> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception  {
        if (isStubEnabled) {
 
         return objectMapper.readValue("[{\"id\":678532,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"SUSPEND\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678533,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"CALL-IB\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"John\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"PhoneNumber\",\"value\":\"678912\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"CallDuration\",\"value\":\"2\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678544,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"NOTC2-OD\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"John\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"EmailAddress\",\"value\":\"john@telus.com\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"CallDuration\",\"value\":\"2\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678573,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"NOTC1-PMTR\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"John\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Email\",\"value\":\"john@telus.com\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"CallDuration\",\"value\":\"2\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678533,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"CALL-OB\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"ReachedCustomer\",\"value\":\"Y\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"PhoneNumber\",\"value\":\"345267\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678533,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"CALL-OB\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"ReachedCustomer\",\"value\":\"N\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Outcome\",\"value\":\"left voicemail\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"PhoneNumber\",\"value\":\"54672\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678533,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"EM-IN\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"EmailAddress\",\"value\":\"john@telus.com\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":678533,\"collectionEntity\":{\"id\":666,\"name\":\"Air Canada\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"collectionActivityTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityId\":\"32465656\",\"relatedBusinessEntityType\":\"COLL\",\"relatedBusinessEntityStatus\":\"WIP\",\"relatedBusinessEntityCreatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"relatedBusinessEntityCreatedBy\":\"SYSTEM\",\"relatedBusinessEntityAssignedTo\":\"SOMEONE\",\"relatedBusinessEntityAssignedTeam\":\"COLLTEAM\",\"billingAccountIdRefs\":[{\"id\":\"72907342\",\"href\":\"{BASE_URL}/billingAccountId/72907342\",\"name\":\"Air Canada Toronto office\",\"@baseType\":\"billingAccountId\",\"@referredType\":\"billingAccountId\",\"@schemaLocation\":\"{BASE_URL}/schema/BillingAccount.swagger.json\",\"@type\":\"billingAccountId\"}],\"collectionActivityType\":\"FOLLOWUP\",\"activityReason\":\"Haven’t got the payment for 1 month\",\"additionalCharacteristics\":[{\"name\":\"Dry run\",\"value\":\"Yes\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"},{\"name\":\"Region\",\"value\":\"GTA\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@schemaLocation\":\"Schema\"}],\"comment\":\"This has to be collected\",\"href\":\"{BASE_URL}/CollectionActivityLog/678532\",\"@baseType\":\"CollectionActivityLog\",\"@type\":\"CollectionActivityLog\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}]",
@@ -318,6 +320,7 @@ public class CollectionTreatmentService {
         } else {
             
             List<CollectionActivityLog> collectionActivityLogRes= new ArrayList<>();
+           String  totalNoOfElement=null;
             
             if(collectionEntityId!=null){
                 
@@ -356,11 +359,15 @@ public class CollectionTreatmentService {
                     .queryParam("limit",limit);
                    
 
-            String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+            // String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+            ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
+                String result = responseFromTelus.getBody();
+                HttpHeaders headers1 = responseFromTelus.getHeaders();
+                totalNoOfElement = headers1.getFirst("x-total-count");
             logger.info("::::::::Coll Activity log endpoint call success ::::::::");
-            logger.info("Coll Activity log Resoinse---" + responseStr);
+            logger.info("Coll Activity log Resoinse---" + result);
             //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
-           collectionActivityLogRes= objectMapper.readValue(responseStr, new TypeReference<List<CollectionActivityLog>>() {
+           collectionActivityLogRes= objectMapper.readValue(result, new TypeReference<List<CollectionActivityLog>>() {
 
            });
             }
@@ -385,8 +392,8 @@ public class CollectionTreatmentService {
        // collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityAssignedTo())));
         //collectionActivityLogRes.stream().forEach(a->a.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(a.getCollectionActivityPerformedBy())));
 
-
-            return collectionActivityLogRes;
+            return convertTelusResToFawb(collectionActivityLogRes,Integer.parseInt(totalNoOfElement));
+           // return collectionActivityLogRes;
         }
     }
     
@@ -416,11 +423,11 @@ public class CollectionTreatmentService {
         List<String> banRefIds = new ArrayList<>();
        // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
         
-                List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+                List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
 
 
        if (!collectionActivityLogList.isEmpty()) {
-            for (CollectionActivityLog collectionActivityLog : collectionActivityLogList) {
+            for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
                 if(collectionActivityLog.getBillingAccountIdRefs()!=null) {
                     banIds = collectionActivityLog.getBillingAccountIdRefs().stream().map(a -> a.getId().toString()).collect(Collectors.toList());
@@ -469,11 +476,11 @@ public class CollectionTreatmentService {
   
        // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
         
-       List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+       List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
 
 
        if (!collectionActivityLogList.isEmpty()) {
-            for (CollectionActivityLog collectionActivityLog : collectionActivityLogList) {
+            for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
                 
                 orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
@@ -500,11 +507,11 @@ public class CollectionTreatmentService {
   
        // List<CollectionTreatmentStep> collectionTreatmentStep = getCollectionTreatmentStep(false, id, null, null, null, null, null, null, null, null, null, null);
         
-       List<CollectionActivityLog> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+       List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
 
 
        if (!collectionActivityLogList.isEmpty()) {
-            for (CollectionActivityLog collectionActivityLog : collectionActivityLogList) {
+            for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
                 
                 orderMgmtHistoryResponse.setActionId(collectionActivityLog.getRelatedBusinessEntityId());
@@ -560,6 +567,46 @@ public class CollectionTreatmentService {
         
         return collectionTreatmentStepResponseList;
 
+    }
+    
+    
+    
+private List<CollectionActivityLogRes> convertTelusResToFawb(List<CollectionActivityLog> collectionActivityLogRes, int totalNoOfElement) {
+
+        List<CollectionActivityLogRes> collectionActivityLogResList=new ArrayList<>();
+        for(CollectionActivityLog collectionActivityLog:collectionActivityLogRes)
+        {
+            CollectionActivityLogRes collectionActivityLogRes1=new CollectionActivityLogRes();
+            collectionActivityLogRes1.setId(collectionActivityLog.getId());
+            collectionActivityLogRes1.setCollectionEntity(collectionActivityLog.getCollectionEntity());
+            collectionActivityLogRes1.setCollectionActivityTimestamp(collectionActivityLog.getCollectionActivityTimestamp());
+            collectionActivityLogRes1.setRelatedBusinessEntityId(collectionActivityLog.getRelatedBusinessEntityId());
+            collectionActivityLogRes1.setRelatedBusinessEntityType(collectionActivityLog.getRelatedBusinessEntityType());
+            collectionActivityLogRes1.setRelatedBusinessEntityStatus(collectionActivityLog.getRelatedBusinessEntityStatus());
+            collectionActivityLogRes1.setRelatedBusinessEntityCreatedTimestamp(collectionActivityLog.getRelatedBusinessEntityCreatedTimestamp());
+            collectionActivityLogRes1.setRelatedBusinessEntityCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
+            collectionActivityLogRes1.setRelatedBusinessEntityAssignedTo(collectionActivityLog.getRelatedBusinessEntityAssignedTo());
+            collectionActivityLogRes1.setRelatedBusinessEntityAssignedTeam(collectionActivityLog.getRelatedBusinessEntityAssignedTeam());
+            collectionActivityLogRes1.setRelatedBusinessEntityDueDate(collectionActivityLog.getRelatedBusinessEntityDueDate());
+            collectionActivityLogRes1.setCollectionActivityPerformedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+            collectionActivityLogRes1.setBillingAccountIdRefs(collectionActivityLog.getBillingAccountIdRefs());
+            collectionActivityLogRes1.setBusinessEntityEventType(collectionActivityLog.getBusinessEntityEventType());
+            collectionActivityLogRes1.setRelatedBusinessEntitySubType(collectionActivityLog.getRelatedBusinessEntitySubType());
+            collectionActivityLogRes1.setActivityReason(collectionActivityLog.getActivityReason());
+            collectionActivityLogRes1.setAdditionalCharacteristics(collectionActivityLog.getAdditionalCharacteristics());
+            collectionActivityLogRes1.setComment(collectionActivityLog.getComment());
+            collectionActivityLogRes1.setPartitionKey(collectionActivityLog.getPartitionKey());
+            collectionActivityLogRes1.setDataSourceId(collectionActivityLog.getDataSourceId());
+            collectionActivityLogRes1.setHref(collectionActivityLog.getHref());
+            collectionActivityLogRes1.setBaseType(collectionActivityLog.getBaseType());
+            collectionActivityLogRes1.setType(collectionActivityLog.getType());
+            collectionActivityLogRes1.setSchemaLocation(collectionActivityLog.getSchemaLocation());
+            collectionActivityLogRes1.setTotalNoOfElement(totalNoOfElement);
+            collectionActivityLogResList.add(collectionActivityLogRes1);
+
+        }
+
+        return collectionActivityLogResList;
     }
     
 

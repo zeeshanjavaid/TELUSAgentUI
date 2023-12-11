@@ -110,6 +110,33 @@
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
   },
+  "getUserDetailsByEmplIdForNotesAndDoc" : {
+    "_id" : "wm-getUserDetailsByEmplIdForNotesAndDoc-wm.ServiceVariable-1702279066499",
+    "name" : "getUserDetailsByEmplIdForNotesAndDoc",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "emplid",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetUserByEmplIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetUserByEmplId",
+    "operationId" : "QueryExecutionController_executeGetUserByEmplId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 1,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "SaveDocument" : {
     "_id" : "wm-saveDocument-wm.LiveVariable-1690891392893",
     "name" : "SaveDocument",

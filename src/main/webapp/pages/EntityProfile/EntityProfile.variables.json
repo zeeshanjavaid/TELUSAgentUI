@@ -279,6 +279,33 @@
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
   },
+  "getUserDetailsByEmplId" : {
+    "_id" : "wm-getUserDetailsByEmplId-wm.ServiceVariable-1701239723124",
+    "name" : "getUserDetailsByEmplId",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "emplid",
+      "value" : "bind:Variables.getLoggedInUserDetails.dataSet.emplId",
+      "type" : "string"
+    } ],
+    "type" : "com.fico.dmp.telusagentuidb.models.query.GetUserByEmplIdResponse",
+    "service" : "TELUSAgentUIDB",
+    "operation" : "executeGetUserByEmplId",
+    "operationId" : "QueryExecutionController_executeGetUserByEmplId",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 1,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
   "isAssociatedBanClicked" : {
     "_id" : "wm-isAssociatedBanClicked-wm.Variable-1682314099154",
     "name" : "isAssociatedBanClicked",
