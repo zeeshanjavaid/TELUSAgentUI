@@ -438,7 +438,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "type",
-      "value" : "bind:ALL",
+      "value" : "bind:\"RESTORE,CEASE,SUSPEND\"",
       "type" : "string"
     }, {
       "target" : "IsOdManagement",
@@ -449,7 +449,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionTreatmentStep",
+    "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",
     "service" : "CollectionTreatmentService",
     "operation" : "getCollectionTreatmentStep",
     "operationId" : "CollectionTreatmentController_getCollectionTreatmentStep",

@@ -33,6 +33,7 @@ App.onSessionTimeout = function() {
      * if the same user logs in(through login dialog), app will retain its state
      * if a different user logs in, app will be reloaded and user is redirected to respective landing page configured in Security.
      */
+
 };
 
 /*
