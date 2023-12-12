@@ -853,9 +853,9 @@ Partial.clearFilterFields = function($event, widget) {
             'status': '',
             'assignedAgentId': '',
             'assignedTeam': '',
-            'createdDate': '',
-            'limit': 10,
-            'offset': 0
+            'createdDate': ''
+            // 'limit': 10,
+            // 'offset': 0
 
 
         });
@@ -939,9 +939,9 @@ Partial.applyFilter = function($event, widget) {
             'status': Partial.Widgets.statusSelect.datavalue,
             'createdBy': createdBy,
             'assignedAgentId': assignedAgentId,
-            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
-            'limit': 10,
-            'offset': 0
+            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
+            // 'limit': 10,
+            // 'offset': 0
 
         });
 
@@ -1582,9 +1582,9 @@ App.refreshCollActionList = function() {
 
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
 
-        "collectionEntityId": Partial.pageParams.entityId,
-        'limit': 10,
-        'offset': 0
+        "collectionEntityId": Partial.pageParams.entityId
+        // 'limit': 10,
+        // 'offset': 0
     });
 
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
