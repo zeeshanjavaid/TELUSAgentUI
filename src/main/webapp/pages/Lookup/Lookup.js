@@ -233,7 +233,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                     "id": parseInt(Page.pageParams.entityId),
                     "CollectionEntityUpdate": {
                         "id": parseInt(Page.pageParams.entityId),
-                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
                         "channel": {
                             "originatorAppId": "FAWBTELUSAGENT",
                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
@@ -251,7 +251,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                     "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
                     "CollectionEntityUpdate": {
                         "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
-                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
                         "channel": {
                             "originatorAppId": "FAWBTELUSAGENT",
                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
@@ -423,7 +423,7 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
                     "id": parseInt(Page.pageParams.entityId),
                     "CollectionEntityUpdate": {
                         "id": parseInt(Page.pageParams.entityId),
-                        "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId,
+                        // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, //need to remove
                         "channel": {
                             "originatorAppId": "FAWBTELUSAGENT",
                             "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
