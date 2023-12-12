@@ -2450,6 +2450,18 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_TimeOut" : {
+    "_id" : "wm-goToPage_TimeOut-wm.NavigationVariable-1701952320341",
+    "name" : "goToPage_TimeOut",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "TimeOut",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_TimerSetting" : {
     "_id" : "wm-goToPage_TimerSetting-wm.NavigationVariable-1652466782732",
     "name" : "goToPage_TimerSetting",

@@ -35,7 +35,8 @@ Partial.onReady = function() {
 };
 
 Partial.createUserNotebuttonClick = function($event, widget) {
-    Partial.Widgets.createNoteButtonpopover.hidePopover();
+    /*Partial.Widgets.createNoteButtonpopover.hidePopover();*/
+    Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.invoke();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.CreateUserNotes_dialog.open();
@@ -306,8 +307,8 @@ App.refreshLatestNotesAndDoc = function() {
     Partial.Variables.getLatestNotesBy_EntityId.invoke();
 
 };
-Partial.createNoteButtonpopoverShow = function($event, widget) {
+/*Partial.createNoteButtonpopoverShow = function($event, widget) {
     debugger;
     Partial.Variables.getUserDetailsByEmplIdForNotesAndDoc.invoke();
 
-};
+};*/

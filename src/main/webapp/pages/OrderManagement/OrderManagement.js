@@ -1384,3 +1384,6 @@ Partial.RefreshData = function() {
     Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 
 }
+Partial.createRequest_ButtonClick = function($event, widget) {
+    Partial.Widgets.OrderPopOver.showPopover();
+};

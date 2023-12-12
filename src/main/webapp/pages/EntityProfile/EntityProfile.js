@@ -47,7 +47,8 @@ Partial.onReady = function() {
 
 };
 Partial.button1Click = function($event, widget) {
-    Partial.Widgets.createNoteButton.hidePopover();
+    /*Partial.Widgets.createNoteButton.hidePopover();*/
+    Partial.Variables.getUserDetailsByEmplId.invoke();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.CreateUserNotesdialog1.open();
@@ -642,8 +643,8 @@ Partial.getEntityDetailsTable1Beforedatarender = function(widget, $data, $column
         }
     });
 };
-Partial.createNoteButtonShow = function($event, widget) {
+/*Partial.createNoteButtonShow = function($event, widget) {
 
     Partial.Variables.getUserDetailsByEmplId.invoke();
 
-};
+};*/

@@ -7,8 +7,8 @@
         <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true"></wm-message>
         <wm-gridrow name="gridrow1">
             <wm-gridcolumn columnwidth="6" name="gridcolumn2"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="6" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0 2em 0 0">
-                <wm-popover popoverwidth="200" popoverheight="100" margin="unset 3em" name="OrderPopOver" caption="..." contentsource="inline" show="true" popoverarrow="false">
+            <wm-gridcolumn columnwidth="6" name="gridcolumn3" horizontalalign="right" text-align="end" padding="1em 1em 0 0">
+                <wm-popover popoverwidth="200" popoverheight="100" margin="unset 3em" name="OrderPopOver" caption="" contentsource="inline" show="true" popoverarrow="false">
                     <wm-layoutgrid name="layoutgrid1000">
                         <wm-gridrow name="gridrow1000">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn1000">
@@ -27,10 +27,11 @@
                         </wm-gridrow>
                     </wm-layoutgrid>
                 </wm-popover>
+                <wm-button class="btn-default" caption="Create Request" type="button" margin="unset 0.5em" name="createRequest_Button" on-click="createRequest_ButtonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
-    <wm-layoutgrid name="layoutgrid11" margin="20px 0 0 15px" width="98%" id="orderManagament">
+    <wm-layoutgrid name="layoutgrid11" margin="12px 0 0 15px" width="98%" id="orderManagament">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="None" showrecordcount="true" navigationalign="right">
@@ -54,7 +55,6 @@
                     <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-history" title="View History" action="getCollectionTreatmentStep_orderMngt_customRowAction($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
                 </wm-table>
             </wm-gridcolumn>
-
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Create Suspension Request" iconclass="wi wi-file-text" name="CreateSuspensionRequestdialog">

@@ -10,6 +10,7 @@
  */
 
 /* perform any action on widgets/variables within this block */
+debugger;
 Partial.onReady = function() {
 
     /*
@@ -22,19 +23,21 @@ Partial.onReady = function() {
      * 'Partial.Widgets.username.datavalue'
      */
     //alert("ParrId: " + Partial.Variables.getPaymentArrangement.dataSet.id);
-    debugger;
+
 
     // var entityIdStr = Partial.pageParams.entityId
     // var entityIdInt = parseInt(entityIdStr);
     // var parrIdStr = Partial.pageParams.ParrId
     // var parrIdInt = parseInt(parrIdStr);
+    debugger;
     Partial.Variables.getCollectionHistoryViewParr.setInput({
+
         'collectionEntityId': Partial.pageParams.entityId,
         'relatedBusinessEntityId': Partial.pageParams.ParrId,
         'relatedBusinessEntityType': 'CollectionPaymentArrangement'
 
     });
-
+    debugger;
     Partial.Variables.getCollectionHistoryViewParr.invoke();
     if (Partial.pageParams.ParrId) {
 
@@ -170,6 +173,7 @@ Partial.YesCancelButtonClick = function($event, widget) {
 };
 
 Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
+    debugger;
     Partial.Variables.getPaymentArrangement.dataSet.amount = newVal;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
@@ -182,6 +186,7 @@ Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
 };
 
 Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
+    debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
@@ -192,7 +197,7 @@ Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
 };
 
 Partial.renegotiatePARRdialogOpened = function($event, widget) {
-
+    debugger;
     Partial.Variables.successMessage.dataSet.dataValue = null;
     Partial.Variables.errorMsg.dataSet.dataValue = null;
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
@@ -247,6 +252,7 @@ Partial.SubmitButtonClick = function($event, widget) {
 
 };
 Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
+    debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
@@ -298,6 +304,7 @@ Partial.updatePaymentArrangementonSuccess = function(variable, data) {
             },
         },
         function(data) {
+            debugger;
             Partial.Variables.getCollectionHistoryViewParr.setInput({
                 'collectionEntityId': Partial.pageParams.entityId,
                 'relatedBusinessEntityId': Partial.pageParams.ParrId,
@@ -317,6 +324,7 @@ Partial.updatePaymentArrangementonSuccess = function(variable, data) {
 };
 
 Partial.CancelPaymentArrangementonError = function(variable, data, xhrObj) {
+    debugger;
     var reasonIndex = xhrObj.error.replaceAll('\\', '').indexOf("reason") + 9;
     var codeIndex = xhrObj.error.replaceAll('\\', '').lastIndexOf("code") - 3;
     var errorMessage = xhrObj.error.replaceAll('\\', '').substring(reasonIndex, codeIndex);
@@ -326,6 +334,7 @@ Partial.CancelPaymentArrangementonError = function(variable, data, xhrObj) {
 
 
 Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
+    debugger;
     App.Variables.successMessage.dataSet.dataValue = "PARR cancelled successfully."
     var getPaymentArrangementVar = Partial.Variables.getPaymentArrangement;
 
@@ -335,6 +344,8 @@ Partial.CancelPaymentArrangementonSuccess = function(variable, data) {
             },
         },
         function(data) {
+            debugger;
+
             Partial.Variables.getCollectionHistoryViewParr.setInput({
                 'collectionEntityId': Partial.pageParams.entityId,
                 'relatedBusinessEntityId': Partial.pageParams.ParrId,

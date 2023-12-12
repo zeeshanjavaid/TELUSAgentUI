@@ -8,8 +8,8 @@
                 <h3 class="actionlabel" margin="5px 0 15px 9px">Actions</h3>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="4" name="gridcolumn2"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0 2em 0 0">
-                <wm-popover popoverwidth="100" popoverheight="50" margin="unset 0.5em" name="CreateActionPopOver" caption="..." contentsource="inline" show="true">
+            <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0.5em 2em 0 0">
+                <!--                <wm-popover popoverwidth="100" popoverheight="50" margin="unset 0.5em" name="CreateActionPopOver" caption="..." contentsource="inline" show="true">
                     <wm-layoutgrid name="layoutgrid1000">
                         <wm-gridrow name="gridrow1000">
                             <wm-gridcolumn columnwidth="12" name="gridcolumn1000">
@@ -17,7 +17,8 @@
                             </wm-gridcolumn>
                         </wm-gridrow>
                     </wm-layoutgrid>
-                </wm-popover>
+                </wm-popover>-->
+                <wm-button class="btn-default" caption="Create Action" type="button" margin="unset 0.5em" name="CreateActionbutton" on-click="CreateActionbuttonClick($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>

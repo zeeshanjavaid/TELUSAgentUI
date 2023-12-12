@@ -60,12 +60,12 @@ function getCurrentDate() {
     return currentDate;
 }
 
-Partial.CreateActionLinkClick = function($event, widget) {
+/*Partial.CreateActionLinkClick = function($event, widget) {
 
     Partial.Widgets.CreateActionPopOver.hidePopover();
     Partial.Widgets.SelectActionDialog.open();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
-};
+};*/
 
 
 Partial.nextButtonClick = function($event, widget) {
@@ -1682,3 +1682,8 @@ Partial.RefreshDataForHistory = function() {
     Partial.Variables.GetCollectionActivityLogList.invoke();
 
 }
+Partial.CreateActionbuttonClick = function($event, widget) {
+    Partial.Widgets.SelectActionDialog.open();
+    Partial.Variables.errorMsg.dataSet.dataValue = "";
+
+};
