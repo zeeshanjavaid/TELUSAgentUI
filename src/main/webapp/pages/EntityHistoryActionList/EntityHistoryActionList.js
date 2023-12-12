@@ -1447,7 +1447,7 @@ Partial.UpdateActionClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = null;
-        var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId;
+        var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue
         var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
         if (originalAgentId != selectedAgentId) {
             debugger;
@@ -1457,6 +1457,13 @@ Partial.UpdateActionClick = function($event, widget) {
             $("#EditActionButtonId").hide();
             $("#updateActionDialogId").show();
             $("#UpdateActionButtonId").show();
+            if (Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId == null) {
+                Partial.Widgets.label43.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + " (" + Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has not been assigned to a person.'
+            } else {
+                Partial.Widgets.label43.caption = 'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue + ')' + ' who may be working on it.'
+            }
+
+
         } else {
             Partial.Variables.UpdateCollectionTreatmentVar.setInput({
                 'id': Partial.Widgets.EditActionIdText.caption,

@@ -427,7 +427,9 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
 
         if (originalAgentId != selectedAgentId) {
 
-            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+
 
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
@@ -562,7 +564,9 @@ Partial.updateandsendbuttonClick = function($event, widget) {
 
         if (originalAgentId != selectedAgentId) {
 
-            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId;
+
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
@@ -689,7 +693,9 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
 
         if (originalAgentId != selectedAgentId) {
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
-            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId
+
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = updateStatus;
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
@@ -809,7 +815,9 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         if (originalAgentId != selectedAgentId) {
 
 
-            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
+            Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId
+
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
@@ -1041,14 +1049,14 @@ function getBanDetails() {
 
 
 Partial.update_ActionDialogOpened = function($event, widget) {
-
+    debugger;
     if (Partial.Variables.newlyAssignedPerson.dataset == undefined) {
         Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + " (" + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ')' + ' has not been assigned to a person.'
     } else {
 
 
 
-        Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + " (" + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ')' + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + "  (" + Partial.Widgets.assignedPersonSelect.datavalue + ')' + ' who may be working on it.'
+        Partial.Widgets.label61.caption = 'This action ' + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.stepTypeCode + " (" + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id + ')' + ' has been assigned to ' + Partial.Variables.newlyAssignedPerson.dataset + "  (" + Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedPersonForDefaultValue + ')' + ' who may be working on it.'
     }
 };
 
