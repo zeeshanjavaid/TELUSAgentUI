@@ -428,7 +428,11 @@ public class CollectionDataService {
 				assignedEntitiesInClassicModel.setBanCollectionStatus(assignedEntitiesInClassicViewResponse.getBanCollectionStatus());
 				assignedEntitiesInClassicModel.setClosingDate(assignedEntitiesInClassicViewResponse.getClosingDate());
 				assignedEntitiesInClassicModel.setClosingCycle(assignedEntitiesInClassicViewResponse.getClosingCycle());
-				assignedEntitiesInClassicModel.setAssignedTeam(commonUtilityService.getTeamIdUsingEmpId(assignedEntitiesInClassicViewResponse.getEntityOwnerId()));
+				if(assignedEntitiesInClassicViewResponse.getEntityOwnerId() != null) {
+					assignedEntitiesInClassicModel.setAssignedTeam(commonUtilityService.getTeamIdUsingEmpId(assignedEntitiesInClassicViewResponse.getEntityOwnerId()));
+				}else {
+					assignedEntitiesInClassicModel.setAssignedTeam("TIG AR");
+				}
 				assignedEntitiesInClassicModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
 				assignedEntitiesInClassicModelList.add(assignedEntitiesInClassicModel);
 			}
