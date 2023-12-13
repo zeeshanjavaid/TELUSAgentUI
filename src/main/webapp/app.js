@@ -27,12 +27,15 @@ App.onAppVariablesReady = function() {
 
 /* perform any action on session timeout here, e.g clearing some data, etc */
 App.onSessionTimeout = function() {
+    debugger;
     /*
      * NOTE:
      * On re-login after session timeout:
      * if the same user logs in(through login dialog), app will retain its state
      * if a different user logs in, app will be reloaded and user is redirected to respective landing page configured in Security.
      */
+
+
 
 };
 
@@ -66,7 +69,9 @@ App.onPageReady = function(activePageName, activePageScope, $activePageEl) {
     if (activePageName == 'Main') {
         App.Actions.goToPage_Home.navigate();
     }
+    /* App.Actions.goToPage_TimeOut.navigate();*/
 };
+
 
 /*
  * This application level callback function will be invoked after a Variable receives an error from the target service.

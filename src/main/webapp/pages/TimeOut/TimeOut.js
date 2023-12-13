@@ -20,10 +20,12 @@ Page.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Page.Widgets.username.datavalue'
      */
-    alert("This is an alert message!")
+    alert("This is an alert message!");
     Page.Widgets.SessionTimeoutdialog.open();
+
+
 };
-Page.LogInbuttonClick = function($event, widget) {
-    debugger;
-    /*var masterPageContainer = document.getElementById('Login');*/
-};
+/*
+    App.onSessionTimeout = function() {
+        Page.Widgets.SessionTimeoutdialog.open();
+    };*/
