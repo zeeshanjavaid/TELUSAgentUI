@@ -850,17 +850,15 @@ Partial.clearFilterFields = function($event, widget) {
             'collectionEntityId': Partial.pageParams.entityId,
             'type': '',
             'createdBy': '',
-            'status': '',
+            'status': 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled',
             'assignedAgentId': '',
             'assignedTeam': '',
-            'createdDate': ''
-            // 'limit': 10,
-            // 'offset': 0
-
-
+            'createdDate': '',
+            'limit': 10,
+            'offset': 0
         });
-
         Partial.Variables.getCollectionTreatmentStep_1.invoke();
+
     } else if (completedTable == true) {
         Partial.Widgets.toDoCategorySelect.datavalue = "All";
         Partial.Widgets.completedCategorySelect.datavalue = "All";
@@ -907,6 +905,8 @@ Partial.applyFilter = function($event, widget) {
     var categroyForCompleted = '';
     var statusForHistory = '';
     var eventTypeSelect = '';
+    var statusForTodo = '';
+
 
     if (Partial.Widgets.createdBySelect.datavalue != '') {
         createdBy = Partial.Widgets.createdBySelect.datavalue;
@@ -928,6 +928,16 @@ Partial.applyFilter = function($event, widget) {
 
     }
 
+
+    if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
+
+        statusForTodo = 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
+
+    } else {
+        statusForTodo = Partial.Widgets.statusSelect.datavalue;
+
+    }
+
     if (toDoTable == true) {
         debugger;
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
@@ -936,12 +946,12 @@ Partial.applyFilter = function($event, widget) {
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
             'type': typeCode,
             'createdDate': Partial.Widgets.creationDate.datavalue,
-            'status': Partial.Widgets.statusSelect.datavalue,
+            'status': statusForTodo,
             'createdBy': createdBy,
             'assignedAgentId': assignedAgentId,
-            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
-            // 'limit': 10,
-            // 'offset': 0
+            'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+            'limit': 10,
+            'offset': 0
 
         });
 
@@ -1582,9 +1592,9 @@ App.refreshCollActionList = function() {
 
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
 
-        "collectionEntityId": Partial.pageParams.entityId
-        // 'limit': 10,
-        // 'offset': 0
+        "collectionEntityId": Partial.pageParams.entityId,
+        'limit': 10,
+        'offset': 0
     });
 
     Partial.Variables.getCollectionTreatmentStep_1.invoke();

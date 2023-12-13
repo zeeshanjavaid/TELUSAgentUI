@@ -3,6 +3,7 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.collectiontreatmentservice;
 import java.nio.charset.StandardCharsets;
+import java.net.URI;
 
 import java.net.URLEncoder;
 import java.util.List;
@@ -193,6 +194,8 @@ public class CollectionTreatmentService {
             }else{
                 encodedStatus=status;
             }
+            
+             logger.info("::::::::Status ::::::::"+encodedStatus);
 
             logger.info("::::::::Calling Get Coll Treatment step data endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP)
@@ -207,10 +210,13 @@ public class CollectionTreatmentService {
                     .queryParam("offset",offset)
                     .queryParam("limit",limit)
                     .queryParam("fields",fields);
+                     URI uri = builder.build(false).toUri();
                    // .queryParam("limit",20);
                    logger.info("Calling Url---"+ builder.toUriString());
            // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
-             ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", collTreatmentSvcAuthScope);
+           //  ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", collTreatmentSvcAuthScope);
+                       ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForLookUp(null,uri, HttpMethod.GET, collTreatmentSvcAuthScope);
+
             String result=responseFromTelus.getBody();
             HttpHeaders headers1=responseFromTelus.getHeaders();
             String totalNoOfElement=headers1.getFirst("x-total-count");
@@ -229,18 +235,18 @@ public class CollectionTreatmentService {
 
              collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
              collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
-           if(!IsOdManagement)
-            {
-            collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
-            }
+        //   if(!IsOdManagement)
+        //     {
+        //     collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
+        //     }
 
 
-            if(IsOdManagement)
-            {
-                            logger.info("Order management data");
+        //     if(IsOdManagement)
+        //     {
+        //                     logger.info("Order management data");
 
-                     collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
-             }
+        //              collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
+        //      }
              
             return collectionTreatmentStepResponseList;
         }
@@ -375,6 +381,9 @@ public class CollectionTreatmentService {
             for (CollectionActivityLog collectionActivityLog : collectionActivityLogRes) {
             	if(collectionActivityLog.getCollectionActivityPerformedBy().equals("tcm-collections-parr-eval-batch")) {
             		collectionActivityLog.setCollectionActivityPerformedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+            	}else if(collectionActivityLog.getCollectionActivityPerformedBy().equals("system")){
+            	  collectionActivityLog.setCollectionActivityPerformedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+
             	}
             	else {
             		collectionActivityLog.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
@@ -382,7 +391,11 @@ public class CollectionTreatmentService {
             	
             	if(collectionActivityLog.getRelatedBusinessEntityCreatedBy().equals("tcm-collections-parr-eval-batch")) {
             		collectionActivityLog.setRelatedBusinessEntityCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
-            	}else {
+            	}else if(collectionActivityLog.getRelatedBusinessEntityCreatedBy().equals("system")){
+            	   collectionActivityLog.setRelatedBusinessEntityCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
+
+            	}
+            	else {
             		collectionActivityLog.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
             	}
             	

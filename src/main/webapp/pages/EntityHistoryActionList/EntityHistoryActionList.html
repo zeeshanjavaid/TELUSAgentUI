@@ -267,7 +267,7 @@
     <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%" id="toDoTableGrid">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table pagesize="10" name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.getCollectionTreatmentStep_1.dataSet" navigation="Classic" showrecordcount="true" navigationalign="right">
+                <wm-table pagesize="10" name="getCollectionTreatmentStepTable2" title="" dataset="bind:Variables.getCollectionTreatmentStep_1.dataSet" navigation="None" showrecordcount="true" navigationalign="right">
                     <wm-table-column binding="stepTypeCode" caption="Type" width="84px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="auditInfo.createdTimestamp" caption="Created DT" width="88px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="auditInfo.createdBy" caption="Created By" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
@@ -291,8 +291,8 @@
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>
-        <!--<wm-container name="containerPagination6"></wm-container>-->
-        <!--<wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination6" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechangeForHsitoryToDo($event, $data)" totalrecords="bind:Variables.getCollectionTreatmentStep_1.dataSet[0].totalNumberOfElement"></wm-prefab>-->
+        <wm-container name="containerPagination6"></wm-container>
+        <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination6" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechangeForHsitoryToDo($event, $data)" totalrecords="bind:Variables.getCollectionTreatmentStep_1.dataSet[0].totalNumberOfElement"></wm-prefab>
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid12" margin="0 0 0 15px" width="98%" id="completedTableGrid">
         <wm-gridrow name="gridrow36">
