@@ -244,7 +244,9 @@ public class CollectionEntityService {
          			
                     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY)
                             .queryParamIfPresent("id", Optional.ofNullable(entityStr))
-                            .queryParamIfPresent("cbucid", Optional.ofNullable(cbucidStr));
+                            .queryParamIfPresent("cbucid", Optional.ofNullable(cbucidStr))
+                            .queryParamIfPresent("offset", Optional.ofNullable(offset))
+                            .queryParamIfPresent("limit", Optional.ofNullable(limit));
 
                 String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), "GET", entitySvcAuthScope);
                 	logger.info("::::::::Entity endpoint call success ::::::::");
