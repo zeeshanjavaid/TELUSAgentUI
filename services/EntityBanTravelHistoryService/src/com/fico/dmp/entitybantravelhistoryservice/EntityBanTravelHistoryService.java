@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
+import io.swagger.client.model.BillingAccount.StateEnum;
 import io.swagger.client.model.CollectionBillingAccountRef;
 import io.swagger.client.model.CollectionEntity;
 import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
@@ -137,7 +138,14 @@ public class EntityBanTravelHistoryService {
     				if(collectionBillingAccountRef.getBillingAccount().getStateDate() != null) {
     						banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
     				}
-    				banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
+    				
+    				if(collectionBillingAccountRef.getBillingAccount().getState() == StateEnum.O) {
+    					banTravelHistoryModel.setClosingCycle(null);
+    				}else {
+    					banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
+    				}
+
+    				
     				
     			});
 				
