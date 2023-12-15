@@ -108,16 +108,16 @@ public class EntityBanTravelHistoryService {
             		eligibleForTransferBanHistory = true;
             	}
             	
-        		if(eligibleForTransferBanHistory || collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null) {
+
 	        		BanTravelHistoryModel banTravelHistoryModel = new BanTravelHistoryModel();
 	        		banTravelHistoryModel.setBillingAccountRefId(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
 	        		banTravelHistoryModel.setTransferInDT(collectionEntityBillingAccountRefMap.getValidFor().getStartDateTime().toString());
 	        		banTravelHistoryModel.setLastUpdatedBy(commonUtilityService.getNameUsingEmpId(collectionEntity.getAuditInfo().getLastUpdatedBy()));
 	        		if(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime() != null)
-	        		banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
+	        			banTravelHistoryModel.setTransferOutDT(collectionEntityBillingAccountRefMap.getValidFor().getEndDateTime().toString());
 	        		billingAcctRefIds.add(collectionEntityBillingAccountRefMap.getBillingAccountRef().getId());
 	        		banTravelHistoryModelList.add(banTravelHistoryModel);
-        		}
+        		
 			}
     	}
     	
@@ -139,10 +139,14 @@ public class EntityBanTravelHistoryService {
     						banTravelHistoryModel.setBanStatusDT(collectionBillingAccountRef.getBillingAccount().getStateDate().toString());
     				}
     				
-    				if(collectionBillingAccountRef.getBillingAccount().getState() == StateEnum.O) {
-    					banTravelHistoryModel.setClosingCycle(null);
+    				if(collectionBillingAccountRef.getClosingCycle() != null) {
+    					if(collectionBillingAccountRef.getBillingAccount().getState() == StateEnum.O && collectionBillingAccountRef.getClosingCycle() == 0) {
+    						banTravelHistoryModel.setClosingCycle(null);
+    					}else {
+    						banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
+    					}
     				}else {
-    					banTravelHistoryModel.setClosingCycle(collectionBillingAccountRef.getClosingCycle());
+    					banTravelHistoryModel.setClosingCycle(null);
     				}
 
     				
