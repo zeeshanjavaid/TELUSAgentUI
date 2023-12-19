@@ -29,6 +29,6 @@ Partial.onReady = function() {
     });
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
-
+    /*Partial.Widgets.SessionTimeoutdialog.open()*/
 
 };

@@ -4,8 +4,8 @@
     "type" : "PAGE",
     "pageName" : "Login",
     "sessionTimeout" : {
-      "type" : "PAGE",
-      "pageName" : null,
+      "type" : "DIALOG",
+      "pageName" : "",
       "timeoutValue" : 30
     }
   },

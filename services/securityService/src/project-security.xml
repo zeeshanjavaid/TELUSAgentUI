@@ -202,7 +202,7 @@
                 <property name="pageName" value=""/>
                 <property name="timeoutValue" value="${general.session.timeout}"/>
                 <property name="type">
-                    <value type="com.wavemaker.commons.model.security.LoginType">PAGE</value>
+                    <value type="com.wavemaker.commons.model.security.LoginType">DIALOG</value>
                 </property>
             </bean>
         </property>
