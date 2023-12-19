@@ -290,7 +290,8 @@ public class CollectionDataService {
             	 if(Double.isNaN(assignedEntitiesInEntityViewResponse.getOdRemaining())) {
             		 assignedEntitiesInEntityModel.setOdRemaining("");
             	 }else {
-            		 assignedEntitiesInEntityModel.setOdRemaining(String.valueOf(assignedEntitiesInEntityViewResponse.getOdRemaining()) + "%");
+            	      assignedEntitiesInEntityModel.setOdRemaining(String.format("%.2f", assignedEntitiesInEntityViewResponse.getOdRemaining()) + '%');
+            		// assignedEntitiesInEntityModel.setOdRemaining(String.valueOf(assignedEntitiesInEntityViewResponse.getOdRemaining()) + "%");
             	 }
             	 }
             	
@@ -397,7 +398,8 @@ public class CollectionDataService {
 			     if(Double.isNaN(assignedEntitiesInClassicViewResponse.getOdRemaining())) {
             		 assignedEntitiesInClassicModel.setOdRemaining("");
             	 }else {
-            		 assignedEntitiesInClassicModel.setOdRemaining(String.valueOf(assignedEntitiesInClassicViewResponse.getOdRemaining()) + "%");
+            	     assignedEntitiesInClassicModel.setOdRemaining(String.format("%.2f", assignedEntitiesInClassicViewResponse.getOdRemaining()) + '%');
+            		 //assignedEntitiesInClassicModel.setOdRemaining(String.valueOf(assignedEntitiesInClassicViewResponse.getOdRemaining()) + "%");
             	 }
 			    }
 				assignedEntitiesInClassicModel.setAcctStatus(assignedEntitiesInClassicViewResponse.getAcctStatus());
