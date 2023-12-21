@@ -32,3 +32,7 @@ Partial.onReady = function() {
     /*Partial.Widgets.SessionTimeoutdialog.open()*/
 
 };
+Partial.Login_buttonClick = function($event, widget) {
+    debugger;
+    location.reload();
+};

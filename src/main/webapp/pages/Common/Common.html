@@ -16,7 +16,7 @@
             </wm-layoutgrid>
         </wm-form>
         <wm-dialogactions name="dialogactions2" style="text-align: right;">
-            <wm-button class="btn-default" caption="Log in" data-role="loginbutton" on-click="doLogin()" name="button1"></wm-button>
+            <wm-button class="btn-default" caption="Log in" data-role="loginbutton" on-click="Login_buttonClick($event, widget)" name="Login_button"></wm-button>
             <wm-button class="primaryButton" caption="Close" data-role="loginbutton" on-click="Widgets.CommonLoginDialog.close()" name="button2"></wm-button>
         </wm-dialogactions>
     </wm-logindialog>
