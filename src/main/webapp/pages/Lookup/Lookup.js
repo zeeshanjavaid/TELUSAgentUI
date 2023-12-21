@@ -520,7 +520,7 @@ Page.TransferBanToExistEntDialogOpened = function($event, widget) {
 
     Page.Variables.getCollectionEntityService.setInput({
         "cbucid": Page.Variables.getCollectionEntityById.dataSet.engagedCustomerParty.cbucid,
-        "offset": 0,
+        "offset": 100,
         "limit": 100
     });
     Page.Variables.getCollectionEntityService.invoke();
