@@ -118,7 +118,7 @@
                     <wm-label padding="0.5em 0.5em unset 0.5em" name="label17" caption="% of PMT RCVD/EXP:" color="grey" class="viewPARRLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn77" class="parrValueLabel6" style="display: flex;flex-direction: column;width: 6%; margin-left: 1.5px;">
-                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate==0.0? 0.0:(Variables.getPaymentArrangement_parrReports.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate) * 100 "></wm-label>
+                    <wm-label padding="0.5em 0.5em unset 0.5em" name="label19" caption="bind:Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate==0.0? 0+'%':((Variables.getPaymentArrangement_parrReports.dataSet.receivedPaymentAmountToDate/Variables.getPaymentArrangement_parrReports.dataSet.expectedPaymentAmountToDate) * 100).toFixed(2)  + '%'"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow8">
