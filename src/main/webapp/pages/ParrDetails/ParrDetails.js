@@ -213,6 +213,8 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
 
 Partial.SubmitButtonClick = function($event, widget) {
     debugger;
+    var originalInstallmentScheduleDataset = Partial.Variables.getPaymentArrangement.dataSet.installments;
+    var originalInstallmentScheduleLength = Partial.Variables.getPaymentArrangement.dataSet.installments.length;
     var installmentLength = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
     var installmentScheduleDataSet = Partial.Variables.ParrInstallmentSchedule.dataSet;
     var breakCheck1 = false;
@@ -230,11 +232,86 @@ Partial.SubmitButtonClick = function($event, widget) {
         Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = "Installment dates cannot be same. Please provide different installment dates";
         setTimeout(messageTimeout, 6000);
     } else {
+        var installmentsArr = [];
+
+
+        for (i = 0; i < originalInstallmentScheduleLength; i++) {
+            var installments = {};
+            var renegotiateInstallmentId = installmentScheduleDataSet[i].id;
+            var originalInstallmentId = originalInstallmentScheduleDataset[i].id;
+
+            var renegotiateInstallmentDate = installmentScheduleDataSet[i].date;
+
+            renegotiateInstallmentDate = new Date(renegotiateInstallmentDate);
+            renegotiateInstallmentDate = new Date(renegotiateInstallmentDate.toDateString());
+
+            var renegotiateInstallmentAmount = installmentScheduleDataSet[i].amount * 1;
+
+            var currentDate = new Date();
+            currentDate = new Date(currentDate.toDateString());
+
+            if (renegotiateInstallmentDate >= currentDate) {
+                if (renegotiateInstallmentId == originalInstallmentId) {
+
+                    if (installmentScheduleDataSet[i].date != originalInstallmentScheduleDataset[i].date && renegotiateInstallmentAmount != originalInstallmentScheduleDataset[i].amount) {
+                        installments = {
+                            "id": renegotiateInstallmentId,
+                            "date": installmentScheduleDataSet[i].date,
+                            "amount": renegotiateInstallmentAmount
+                        }
+
+                    } else if (installmentScheduleDataSet[i].date != originalInstallmentScheduleDataset[i].date) {
+                        installments = {
+                            "id": renegotiateInstallmentId,
+                            "date": installmentScheduleDataSet[i].date
+                        }
+
+                    } else if (renegotiateInstallmentAmount != originalInstallmentScheduleDataset[i].amount) {
+                        installments = {
+                            "id": renegotiateInstallmentId,
+                            "amount": renegotiateInstallmentAmount
+                        }
+
+                    } else {
+
+                        installments = {
+                            "id": renegotiateInstallmentId
+                        }
+                    }
+                }
+            } else {
+                installments = {
+                    "id": renegotiateInstallmentId
+                }
+            }
+
+            installmentsArr.push(installments);
+        }
+
+        if (installmentLength != originalInstallmentScheduleLength) {
+            var installments = {};
+            for (i = originalInstallmentScheduleLength; i < installmentLength; i++) {
+                var renegotiateInstallmentAmount2 = installmentScheduleDataSet[i].amount * 1;
+                installments = {
+                    "sequenceId": installmentScheduleDataSet[i].sequenceId,
+                    "date": installmentScheduleDataSet[i].date,
+                    "amount": renegotiateInstallmentAmount2
+                }
+
+                installmentsArr.push(installments);
+            }
+        }
+
+
+        debugger;
+        installmentsArr;
+
+
         Partial.Variables.errMsgRenegotiateInstallment.dataSet.dataValue = null;
         Partial.Variables.updatePaymentArrangement.setInput({
             "CollectionPaymentArrangementUpdate": {
                 'amount': Partial.Variables.getPaymentArrangement.dataSet.amount,
-                'installments': Partial.Variables.ParrInstallmentSchedule.dataSet,
+                'installments': installmentsArr,
                 'id': Partial.pageParams.ParrId,
                 'comment': Partial.Widgets.Comments.datavalue,
                 'recurrence': Partial.Variables.getPaymentArrangement.dataSet.recurrence,
