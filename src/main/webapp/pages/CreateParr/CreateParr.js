@@ -36,7 +36,7 @@ Partial.createInstalmntScheduleClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Recurrence is mandatory";
     } else if (Partial.Variables.installmentBANCreateParr.dataSet.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Installment Ban is mandatory";
-    } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined) {
+    } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == undefined || Partial.Widgets.InstallmentOptionRadio.datavalue == "") {
         App.Variables.errorMsg.dataSet.dataValue = "Installment type is mandatory";
     } else if (Partial.Widgets.InstallmentOptionRadio.datavalue == 'NoOfInstallments' && Partial.Variables.NoOfInstallments.dataSet.dataValue <= 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Number of Installments is mandatory";
