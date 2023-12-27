@@ -34,7 +34,8 @@ Partial.onReady = function() {
 };
 Partial.Login_buttonClick = function($event, widget) {
     debugger;
-    App.Actions.goToPage_Home.navigate();
-    // location.reload(true);
+    App.Actions.goToPage_Home.invoke();
+    /*location.reload();*/
+
 
 };
