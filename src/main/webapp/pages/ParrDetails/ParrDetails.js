@@ -179,7 +179,7 @@ Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
     Partial.AmtOverUnder = parseFloat(newVal) - totalInstallmentAmt;
@@ -191,7 +191,7 @@ Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
     }
     Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
 };
@@ -206,7 +206,7 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
     }
     Partial.AmtOverUnder = parseFloat(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
 };
@@ -334,7 +334,7 @@ Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
     var totalInstallmentAmt = 0;
     for (var i = 0; i < size; i++) {
 
-        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
     Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
