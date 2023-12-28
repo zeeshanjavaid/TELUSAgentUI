@@ -34,8 +34,10 @@ Partial.onReady = function() {
 };
 Partial.Login_buttonClick = function($event, widget) {
     debugger;
-    App.Actions.goToPage_Home.invoke();
+    /*App.Actions.goToPage_Home.invoke();*/
     /*location.reload();*/
-
+    const currentUrl = window.location.href;
+    const modifiedUrl = currentUrl.replace(/\/[^/]+$/, "/Home");
+    window.location.href = modifiedUrl;
 
 };
