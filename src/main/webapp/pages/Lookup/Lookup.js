@@ -144,6 +144,11 @@ Page.getEntityBanDetailsTable1Deselect = function($event, widget, row) {
 Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     debugger;
 
+    if (Page.Widgets.getEntityBanDetailsTable1.dataset.length == 0) {
+        App.Variables.errorMsg.dataSet.dataValue = "BAN's not available to transfer";
+        return;
+    }
+
     Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.entityToTransferBanDropdown.displayValue;
 
     //To see whether the entity is a cancelled or not.
@@ -154,8 +159,6 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
-    } else if (Page.Widgets.getEntityBanDetailsTable1.dataset.length == 1) {
-        App.Variables.errorMsg.dataSet.dataValue = "BAN not eligible for transfer as only one BAN exists for the Entity";
     } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
     } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
@@ -356,6 +359,8 @@ Page.CreateEntityAndTransBansButtonClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
     } else if (Page.Widgets.TransferBanToNewEntityTable.dataset.length == 1) {
         App.Variables.errorMsg.dataSet.dataValue = "BAN not eligible for transfer as only one BAN exists for the Entity";
+    } else if (Page.Widgets.TransferBanToNewEntityTable.selectedItems.length == Page.Widgets.TransferBanToNewEntityTable.dataset.length) {
+        App.Variables.errorMsg.dataSet.dataValue = "Cannot select all the BAN's that needs to be transferred.";
     } else if (entityLevelCollectionStatus == 'INARRG' || entityLevelCollectionStatus == 'CEASE' || entityLevelCollectionStatus == 'SUSPEND') {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the entity should not be in INARRG / CEASE / SUSPEND collection status";
     } else if (cancelledEntityVar == 'C') {
