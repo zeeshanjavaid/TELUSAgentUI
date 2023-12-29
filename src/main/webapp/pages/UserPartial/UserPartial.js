@@ -1174,26 +1174,26 @@ Partial.getTeamIdByUserIdonSuccess = function(variable, data) {
 
 };
 
-Partial.Telus_PaginatonPagechangeForUser = function($event, $data) {
-    debugger;
-    Partial.size = $event.pageSize
-    Partial.page = $event.pageNumber
-    Partial.Variables.searchUsers.setInput({
-        'page': Partial.page,
-        'size': Partial.size
-    });
-    Partial.Variables.searchUsers.invoke();
-    //  Partial.RefreshUser();
+// Partial.Telus_PaginatonPagechangeForUser = function($event, $data) {
+//     debugger;
+//     Partial.size = $event.pageSize
+//     Partial.page = $event.pageNumber
+//     Partial.Variables.searchUsers.setInput({
+//         'page': Partial.page,
+//         'size': Partial.size
+//     });
+//     Partial.Variables.searchUsers.invoke();
+//     //  Partial.RefreshUser();
 
-};
+// };
 
-Partial.RefreshUser = function() {
-    debugger;
-    var offset = Partial.size * (Partial.page - 1);
-    Partial.Variables.searchUsers.setInput({
-        'page': Partial.size,
-        'size': offset
-    });
-    Partial.Variables.searchUsers.invoke();
+// Partial.RefreshUser = function() {
+//     debugger;
+//     var offset = Partial.size * (Partial.page - 1);
+//     Partial.Variables.searchUsers.setInput({
+//         'page': Partial.size,
+//         'size': offset
+//     });
+//     Partial.Variables.searchUsers.invoke();
 
-}
+// }
