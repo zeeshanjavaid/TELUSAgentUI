@@ -246,3 +246,6 @@ Partial.getSitePropertyByNameonSuccess = function(variable, data) {
 Partial.anchor1Click = function($event, widget) {
 
 };
+Partial.anchor4Select = function($event, widget, $item) {
+    debugger;
+};

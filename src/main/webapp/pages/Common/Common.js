@@ -29,7 +29,10 @@ Partial.onReady = function() {
     });
     Partial.Variables.getWorkCatByEmplIdForMultiSelect.invoke();
 
-    /*Partial.Widgets.SessionTimeoutdialog.open()*/
+    Partial.Widgets.SessionTimeoutdialog.open()
+
+};
+Partial.button1Click = function($event, widget) {
 
 };
 Partial.Login_buttonClick = function($event, widget) {

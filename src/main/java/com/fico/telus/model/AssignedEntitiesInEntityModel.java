@@ -35,6 +35,7 @@ public class AssignedEntitiesInEntityModel {
 	private Boolean ftnp = null;
 	private Boolean disputeFlag = null;
 	private LocalDate openActionDate = null;
+	private String assignedTeam = null;
 	private Integer totalNumberOfElement;
 	
 	
@@ -232,6 +233,13 @@ public class AssignedEntitiesInEntityModel {
 	}
 	public void setTotalOverDue(String totalOverDue) {
 		this.totalOverDue = totalOverDue;
+	}
+	public String getAssignedTeam() {
+		return assignedTeam;
+	}
+
+	public void setAssignedTeam(String assignedTeam) {
+		this.assignedTeam = assignedTeam;
 	}
 
 }

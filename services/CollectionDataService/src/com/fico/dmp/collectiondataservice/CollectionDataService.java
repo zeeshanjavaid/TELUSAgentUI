@@ -303,6 +303,11 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setDisputeFlag(assignedEntitiesInEntityViewResponse.isDisputeFlag());
             	 assignedEntitiesInEntityModel.setOpenActionDate(assignedEntitiesInEntityViewResponse.getOpenActionDate());
             	 assignedEntitiesInEntityModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
+            	 if(assignedEntitiesInEntityViewResponse.getEntityOwnerId() != null) {
+					 assignedEntitiesInEntityModel.setAssignedTeam(commonUtilityService.getTeamIdUsingEmpId(assignedEntitiesInEntityViewResponse.getEntityOwnerId()));
+				 }else {
+					 assignedEntitiesInEntityModel.setAssignedTeam("TIG AR");
+				 }
             	 assignedEntitiesInEntityModelList.add(assignedEntitiesInEntityModel);
 			}
              
