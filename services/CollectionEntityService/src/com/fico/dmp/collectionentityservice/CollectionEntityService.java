@@ -166,7 +166,7 @@ public class CollectionEntityService {
     	 }
     	 else {
     	    // System.out.println(id);
-    	              	logger.info("Checking id value "+id);
+    	     logger.info("Checking id value "+id);
 
   			logger.info("::::::::Calling  getBillingAccountRef method ::::::::");
 
@@ -185,7 +185,9 @@ public class CollectionEntityService {
             		 .queryParamIfPresent("fields", Optional.ofNullable(fields))
                      .queryParamIfPresent("ban", Optional.ofNullable(banStr))
                      .queryParamIfPresent("entityId",Optional.ofNullable(entityId))
-                     .queryParamIfPresent("id",Optional.ofNullable(idStr));
+                     .queryParamIfPresent("id",Optional.ofNullable(idStr))
+                     .queryParamIfPresent("offset",Optional.ofNullable(offset))
+                     .queryParamIfPresent("limit",Optional.ofNullable(limit));
                      
                      	logger.info("::::::::Billing Account Reference endpoint call success ::::::::",builder.toUriString());
 

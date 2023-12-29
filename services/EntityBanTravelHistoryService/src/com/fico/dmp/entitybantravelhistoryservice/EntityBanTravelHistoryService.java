@@ -126,7 +126,7 @@ public class EntityBanTravelHistoryService {
     		 billingAcctRefIdsInListAsString = billingAcctRefIds.stream().map(String::valueOf).collect(Collectors.joining(","));
     		logger.info("billingAcctRefIdsInList----"+billingAcctRefIdsInListAsString);
     	}
-    	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(null, null, null, null, null, billingAcctRefIdsInListAsString);
+    	List<CollectionBillingAccountRef> collectionBillingAccountRefList =  collectionEntityService.getBillingAccountRef(null, 0, 100, null, null, billingAcctRefIdsInListAsString);
     	
     	if(!CollectionUtils.isEmpty(collectionBillingAccountRefList)) {
     		
