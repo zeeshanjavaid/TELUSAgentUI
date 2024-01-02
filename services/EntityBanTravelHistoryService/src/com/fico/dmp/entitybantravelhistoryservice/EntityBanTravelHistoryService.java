@@ -80,7 +80,7 @@ public class EntityBanTravelHistoryService {
     	int entityDateTimeHour = entityStartOffsetDateTime.getHour();
     	int entityDateTimeMin = entityStartOffsetDateTime.getMinute();
     	
-    	logger.info("Entity level--"+entityDateTimeYear+""+entityDateTimeMonth+""+entityDateTimeDay+""+entityDateTimeHour+""+entityDateTimeMin);
+    	logger.info("Entity levels--"+entityDateTimeYear+""+entityDateTimeMonth+""+entityDateTimeDay+""+entityDateTimeHour+""+entityDateTimeMin);
     	
     	
     	List<BanTravelHistoryModel> banTravelHistoryModelList = new ArrayList<BanTravelHistoryModel>();
