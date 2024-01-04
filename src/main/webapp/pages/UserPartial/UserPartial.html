@@ -153,7 +153,7 @@
         <wm-form-action key="reset" display-name="Clear" show="true" class="btn-default" iconclass="" title="Clear" action="executeSearchUsersForm1_resetAction($event)" disabled="false" widget-type="button" type="reset" update-mode="true"></wm-form-action>
         <wm-form-action key="save" display-name="Search" show="true" class="btn-default" iconclass="" title="Search" action="executeSearchUsersForm1_saveAction($event)" disabled="false" widget-type="button" type="button" update-mode="true"></wm-form-action>
     </wm-form>
-    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Classic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
+    <wm-table name="userMVTable1" title="" dataset="bind:Variables.searchUsers.dataSet" navigation="Basic" showheader="true" multiselect="false" radioselect="false" enablecolumnselection="false" gridfirstrowselect="false" showrowindex="false" enablesort="true"
         gridclass="table-striped table-hover" showrecordcount="true" on-click="userMVTable1Click($event, widget, row)" nodatamessage="bind:appLocale.MESSAGE_NO_DATA" pagesize="10" on-tap="userMVTable1Tap($event, $data)" spacing="normal" navigationalign="right"
         on-rowupdate="Widgets.userMVTable1.refreshData()">
         <!-- <wm-table-row-action key="customRow" display-name="" show="true" class="inactiveUser" iconclass="fico-icon-close" title="Inactivate" action="userMVTable1_customRowAction($event, row)" disabled="bind:!Widgets.userMVTable1.currentItem.active" widget-type="button"></wm-table-row-action>-->

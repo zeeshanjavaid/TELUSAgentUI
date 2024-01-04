@@ -173,9 +173,8 @@ public class CollectionDataService {
                     .queryParam("limit",limit);
                     URI uri = builder.build(false).toUri();
                     
-            // ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null,builder.build(true).toUriString(), HttpMethod.GET, entitySvcAuthScope);
-            
-                ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForLookUp(null,uri, HttpMethod.GET, entitySvcAuthScope);
+                ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForSpecialChar(null,uri, HttpMethod.GET, entitySvcAuthScope);
+                
             String result=responseFromTelus.getBody();
 			HttpHeaders headers1=responseFromTelus.getHeaders();
 			String totalNoOfElement=headers1.getFirst("x-total-count");

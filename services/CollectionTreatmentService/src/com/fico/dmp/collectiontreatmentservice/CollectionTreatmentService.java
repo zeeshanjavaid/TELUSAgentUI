@@ -211,12 +211,13 @@ public class CollectionTreatmentService {
                     .queryParam("limit",limit)
                     .queryParam("fields",fields);
                      URI uri = builder.build(false).toUri();
-                   // .queryParam("limit",20);
+                  
                    logger.info("Calling Url---"+ builder.toUriString());
-           // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
-           //  ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), "GET", collTreatmentSvcAuthScope);
-                       ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForLookUp(null,uri, HttpMethod.GET, collTreatmentSvcAuthScope);
-
+        
+         
+                  ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForSpecialChar(null,uri, HttpMethod.GET, collTreatmentSvcAuthScope);
+                       
+                       
             String result=responseFromTelus.getBody();
             HttpHeaders headers1=responseFromTelus.getHeaders();
             String totalNoOfElement=headers1.getFirst("x-total-count");
@@ -228,26 +229,9 @@ public class CollectionTreatmentService {
 
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             
-            //  collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatmentStep>>(){});
-            //              List<CollectionTreatmentStepResponse> collectionTreatmentStepResponseList=new ArrayList<>();
-
-            //              collectionTreatmentStepResponseList=  convertTelusApiResponseToFawbCustomResponseForCollTStep(collectionTreatmentStepList);
-
              collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
              collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
-        //   if(!IsOdManagement)
-        //     {
-        //     collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> !a.getStatus().equalsIgnoreCase("Closed") &&  !a.getStatus().equalsIgnoreCase("Cancelled")).collect(Collectors.toList());
-        //     }
-
-
-        //     if(IsOdManagement)
-        //     {
-        //                     logger.info("Order management data");
-
-        //              collectionTreatmentStepResponseList=   collectionTreatmentStepResponseList.stream().filter(a -> a.getStepTypeCode().equalsIgnoreCase("SUSPEND") || a.getStepTypeCode().equalsIgnoreCase("RESTORE") || a.getStepTypeCode().equalsIgnoreCase("CEASE")).collect(Collectors.toList());
-        //      }
-             
+       
             return collectionTreatmentStepResponseList;
         }
 

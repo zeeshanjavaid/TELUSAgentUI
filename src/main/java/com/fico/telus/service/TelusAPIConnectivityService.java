@@ -378,7 +378,7 @@ public class TelusAPIConnectivityService {
 	//	return responseEntity;
 	}
 	
-public ResponseEntity<String> executeTelusAPIAndGetResponseWithHeaderForLookUp(String requestPayload, URI uri, String httpMethod, String scope) throws Exception {
+public ResponseEntity<String> executeTelusAPIAndGetResponseWithHeaderForSpecialChar(String requestPayload, URI uri, String httpMethod, String scope) throws Exception {
 	
 		StringEntity entity=null;
 		String dmpEnvironment = DMPContext.getDmpEnvironment();
