@@ -261,7 +261,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                         },
                         billingAccountRefMaps,
                         "relatedEntity": {
-                            "id": null,
+                            "id": "NULL",
                             "role": "BG"
                         },
                     }
