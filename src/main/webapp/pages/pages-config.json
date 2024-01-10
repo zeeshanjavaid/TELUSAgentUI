@@ -209,10 +209,6 @@
     "type" : "string"
   } ]
 }, {
-  "name" : "EntityNameEllipsisPartial",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "EntityProfile",
   "type" : "PARTIAL",
   "params" : [ {
