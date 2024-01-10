@@ -2378,18 +2378,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_sample" : {
-    "_id" : "wm-goToPage_sample-wm.NavigationVariable-1675337577714",
-    "name" : "goToPage_sample",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "sample",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_SetupLanding" : {
     "_id" : "wm-goToPage_SetupLanding-wm.NavigationVariable-1653461243896",
     "name" : "goToPage_SetupLanding",

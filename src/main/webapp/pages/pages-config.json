@@ -359,41 +359,6 @@
     "type" : "string"
   } ]
 }, {
-  "name" : "Partial_Conditions",
-  "type" : "PARTIAL",
-  "params" : [ {
-    "name" : "applicationId",
-    "type" : "integer"
-  }, {
-    "name" : "parentContainerName",
-    "type" : "string"
-  }, {
-    "name" : "applicationStatusCode",
-    "type" : "string"
-  }, {
-    "name" : "docsParentContainerName",
-    "type" : "string"
-  }, {
-    "name" : "Role_ManageDocumentsandStipulations",
-    "type" : "boolean"
-  } ]
-}, {
-  "name" : "Partial_Documents",
-  "type" : "PARTIAL",
-  "params" : [ {
-    "name" : "applicationId",
-    "type" : "integer"
-  }, {
-    "name" : "parentContainerName",
-    "type" : "string"
-  }, {
-    "name" : "applicationStatusCode",
-    "type" : "string"
-  }, {
-    "name" : "Role_ManageDocumentsandStipulations",
-    "type" : "boolean"
-  } ]
-}, {
   "name" : "Partial_Pagination",
   "type" : "PARTIAL",
   "params" : [ {
@@ -549,14 +514,6 @@
     "name" : "entityId",
     "type" : "string"
   } ]
-}, {
-  "name" : "partial_searchentity",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
-  "name" : "sample",
-  "type" : "PAGE",
-  "params" : [ ]
 }, {
   "name" : "topMessageSection",
   "type" : "PARTIAL",
