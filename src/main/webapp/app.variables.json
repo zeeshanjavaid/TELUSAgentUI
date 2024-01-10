@@ -2202,18 +2202,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_layoutgridtest" : {
-    "_id" : "wm-goToPage_layoutgridtest-wm.NavigationVariable-1661157251698",
-    "name" : "goToPage_layoutgridtest",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "layoutgridtest",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_LogConfiguration" : {
     "_id" : "wm-goToPage_LogConfiguration-wm.NavigationVariable-1652466719609",
     "name" : "goToPage_LogConfiguration",

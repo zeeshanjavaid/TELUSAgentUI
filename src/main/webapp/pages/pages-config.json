@@ -477,10 +477,6 @@
   "type" : "HEADER",
   "params" : [ ]
 }, {
-  "name" : "layoutgridtest",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "leftnav",
   "type" : "LEFTNAV",
   "params" : [ ]
