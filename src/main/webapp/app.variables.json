@@ -2318,18 +2318,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_PARRReports_Copy" : {
-    "_id" : "wm-goToPage_PARRReports_Copy-wm.NavigationVariable-1696341784731",
-    "name" : "goToPage_PARRReports_Copy",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "PARRReports_Copy",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_PayloadExtract" : {
     "_id" : "wm-goToPage_PayloadExtract-wm.NavigationVariable-1657547841285",
     "name" : "goToPage_PayloadExtract",

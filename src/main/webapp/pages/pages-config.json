@@ -137,10 +137,6 @@
     "type" : "string"
   } ]
 }, {
-  "name" : "CreateHistoryAction",
-  "type" : "PARTIAL",
-  "params" : [ ]
-}, {
   "name" : "CreateParr",
   "type" : "PARTIAL",
   "params" : [ {
@@ -346,13 +342,6 @@
     "type" : "integer"
   } ]
 }, {
-  "name" : "PARRReports_Copy",
-  "type" : "PAGE",
-  "params" : [ {
-    "name" : "ParrId",
-    "type" : "integer"
-  } ]
-}, {
   "name" : "ParrDetails",
   "type" : "PARTIAL",
   "params" : [ {
@@ -474,10 +463,6 @@
 }, {
   "name" : "TeamsPartial_Copy",
   "type" : "PARTIAL",
-  "params" : [ ]
-}, {
-  "name" : "TimeOut",
-  "type" : "PAGE",
   "params" : [ ]
 }, {
   "name" : "TimerSetting",
