@@ -372,10 +372,6 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
-  "name" : "PayloadExtract",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "QueuePartial",
   "type" : "PARTIAL",
   "params" : [ ]

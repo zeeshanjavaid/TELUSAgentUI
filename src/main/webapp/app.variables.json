@@ -2306,18 +2306,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_PayloadExtract" : {
-    "_id" : "wm-goToPage_PayloadExtract-wm.NavigationVariable-1657547841285",
-    "name" : "goToPage_PayloadExtract",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "PayloadExtract",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_Queues" : {
     "_id" : "wm-goToPage_Queues-wm.NavigationVariable-1661322463365",
     "name" : "goToPage_Queues",
