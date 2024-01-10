@@ -2414,30 +2414,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_UserManagement" : {
-    "_id" : "wm-goToPage_UserManagement-wm.NavigationVariable-1652466810124",
-    "name" : "goToPage_UserManagement",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "UserManagement",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
-  "goToPage_Users" : {
-    "_id" : "wm-goToPage_Users-wm.NavigationVariable-1662613740581",
-    "name" : "goToPage_Users",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "Users",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_XmlUpload" : {
     "_id" : "wm-goToPage_XmlUpload-wm.NavigationVariable-1656327847651",
     "name" : "goToPage_XmlUpload",

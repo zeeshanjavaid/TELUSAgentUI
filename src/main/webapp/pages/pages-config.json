@@ -441,16 +441,8 @@
     "type" : "string"
   } ]
 }, {
-  "name" : "UserManagement",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "UserPartial",
   "type" : "PARTIAL",
-  "params" : [ ]
-}, {
-  "name" : "Users",
-  "type" : "PAGE",
   "params" : [ ]
 }, {
   "name" : "WorkCategory",
