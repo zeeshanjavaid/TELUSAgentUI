@@ -41,7 +41,7 @@ Partial.onReady = function() {
 Partial.button1Click = function($event, widget) {
     debugger;
 
-    Partial.Widgets.createNoteButton.hidePopover();
+    /*Partial.Widgets.createNoteButton.hidePopover();*/
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Variables.successMessage.dataSet.dataValue = "";
     Partial.Widgets.CreateUserNotesdialog1.open();
@@ -335,7 +335,7 @@ Partial.cancle_BanbuttonClick = function($event, widget) {
 };
 
 Partial.create_BanbuttonClick = function($event, widget) {
-
+    debugger;
 
     documentId = "";
     const message = document.getElementById("p01");
@@ -508,7 +508,7 @@ Partial.create_BanbuttonClick = function($event, widget) {
 
 
     }
-    setTimeout(messageTimeout, 1700);
+    setTimeout(messageTimeout, 2000);
 
 };
 

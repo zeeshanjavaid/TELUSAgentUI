@@ -269,7 +269,7 @@ Partial.button3Click1 = function($event, widget) {
 
         //   }
     }
-    setTimeout(messageTimeout, 1500);
+    setTimeout(messageTimeout, 2000);
 
 };
 
