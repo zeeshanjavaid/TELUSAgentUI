@@ -246,10 +246,6 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "LogConfiguration",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "Login",
   "type" : "PAGE",
   "params" : [ ]

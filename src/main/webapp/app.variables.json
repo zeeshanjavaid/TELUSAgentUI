@@ -2202,18 +2202,6 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
-  "goToPage_LogConfiguration" : {
-    "_id" : "wm-goToPage_LogConfiguration-wm.NavigationVariable-1652466719609",
-    "name" : "goToPage_LogConfiguration",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "LogConfiguration",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_Logout" : {
     "_id" : "wm-goToPage_Logout-wm.NavigationVariable-1662047349780",
     "name" : "goToPage_Logout",
