@@ -147,13 +147,6 @@
     "type" : "integer"
   } ]
 }, {
-  "name" : "CreateTeamsPartial",
-  "type" : "PARTIAL",
-  "params" : [ {
-    "name" : "teamId",
-    "type" : "string"
-  } ]
-}, {
   "name" : "DisputeDetails",
   "type" : "PARTIAL",
   "params" : [ {
