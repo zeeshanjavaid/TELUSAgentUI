@@ -1374,6 +1374,50 @@ Partial.Telus_PaginatonPagechangeForOD = function($event, $data) {
 
 };
 
+Partial.getCollectionTreatmentStep_orderMngtTable1Beforedatarender = function(widget, $data, $columns) {
+    var sortColumn;
+    var sortDirection;
+    try {
+        sortColumn = widget.sortInfo.field; // Get the currently sorted column
+        sortDirection = widget.sortInfo.direction; // Get the sort direction (ascending or descending)
+    } catch (error) {
+        sortColumn = 'id';
+        sortDirection = 'desc'
+    }
+    // Sort the data based on the sortColumn and sortDirection
+    if (sortColumn === null) {
+        // Sort by "id" column when the page loads for the first time
+        $data.sort((a, b) => a.id - b.id);
+    } else {
+        // Sort based on the clicked column
+        $data.sort(function(a, b) {
+            var valueA = a[sortColumn];
+            var valueB = b[sortColumn];
+
+            // Handle null or empty values
+            if (valueA === null || valueA === '') {
+                if (valueB === null || valueB === '') {
+                    return 0; // Both values are null or empty, no change in order
+                }
+                return sortDirection === 'asc' ? -1 : 1; // Move null or empty values to the beginning or end based on sortDirection
+            }
+            if (valueB === null || valueB === '') {
+                return sortDirection === 'asc' ? 1 : -1; // Move null or empty values to the beginning or end based on sortDirection
+            }
+            if (sortDirection === 'asc') {
+                if (valueA < valueB) return -1;
+                if (valueA > valueB) return 1;
+            } else {
+                if (valueA > valueB) return -1;
+                if (valueA < valueB) return 1;
+            }
+
+            return 0;
+        });
+    }
+    //$data.sort((a, b) => b.id - a.id); // Sort the data based on the id property
+};
+
 Partial.RefreshData = function() {
     debugger;
     var offset = Partial.size * (Partial.page - 1);

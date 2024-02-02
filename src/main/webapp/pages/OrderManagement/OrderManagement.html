@@ -34,7 +34,7 @@
     <wm-layoutgrid name="layoutgrid11" margin="12px 0 0 15px" width="98%" id="orderManagament">
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="None" showrecordcount="true" navigationalign="right">
+                <wm-table pagesize="10" name="getCollectionTreatmentStep_orderMngt" title="" dataset="bind:Variables.getCollectionTreatmentStep_orderMngt.dataSet" navigation="None" showrecordcount="true" navigationalign="right" on-beforedatarender="getCollectionTreatmentStep_orderMngtTable1Beforedatarender(widget, $data, $columns)">
                     <wm-table-column binding="id" caption="Action ID" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="stepTypeCode" caption="Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="status" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
