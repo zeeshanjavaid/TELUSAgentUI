@@ -808,6 +808,13 @@
             <systemPath>${project.lib.directory}/fawb-data-transformer.jar</systemPath>
         </dependency>
         <dependency>
+            <groupId>model-0.0.1-SNAPSHOT</groupId>
+            <artifactId>model-0.0.1-SNAPSHOT</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/model-0.0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>modelmapper-3.1.0</groupId>
             <artifactId>modelmapper-3.1.0</artifactId>
             <version>1.0</version>
