@@ -25,7 +25,7 @@
       "value" : "bind:pageParams.DisputeId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeUpdate",
     "service" : "CollectionEntityService",
     "operation" : "updateDispute",
     "operationId" : "CollectionEntityController_updateDispute",
@@ -107,7 +107,7 @@
       "value" : "bind:pageParams.DisputeId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeUpdate",
     "service" : "CollectionEntityService",
     "operation" : "updateDispute",
     "operationId" : "CollectionEntityController_updateDispute",
@@ -268,7 +268,7 @@
       "value" : "bind:pageParams.DisputeId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionDispute",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDispute",
     "service" : "CollectionEntityService",
     "operation" : "getdisputeById",
     "operationId" : "CollectionEntityController_getdisputeById",
@@ -349,7 +349,7 @@
       "value" : "bind:pageParams.DisputeId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionDisputeUpdate",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeUpdate",
     "service" : "CollectionEntityService",
     "operation" : "updateDispute",
     "operationId" : "CollectionEntityController_updateDispute",

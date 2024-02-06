@@ -4,7 +4,8 @@
 package com.fico.dmp.paymentarrangement.controller;
 
 import com.fico.dmp.paymentarrangement.PaymentArrangement;
-import io.swagger.client.model.CollectionPaymentArrangement;
+// import io.swagger.client.model.CollectionPaymentArrangement;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.String;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +25,15 @@ public class PaymentArrangementController {
     private PaymentArrangement paymentArrangement;
 
     @RequestMapping(value = "/paymentArrangement", produces = "application/json", method = RequestMethod.POST)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String createPaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
         return paymentArrangement.createPaymentArrangement(collectionPaymentArrangement, request);
     }
 
     @RequestMapping(value = "/paymentArrangement", produces = "application/json", method = RequestMethod.PUT)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
     public String updatePaymentArrangement(@RequestBody CollectionPaymentArrangement collectionPaymentArrangement, HttpServletRequest request) {
         return paymentArrangement.updatePaymentArrangement(collectionPaymentArrangement, request);
     }

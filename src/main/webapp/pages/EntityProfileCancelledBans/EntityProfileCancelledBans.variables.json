@@ -155,7 +155,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "getPaymentArrangements",
     "operationId" : "CollectionEntityController_getPaymentArrangements",

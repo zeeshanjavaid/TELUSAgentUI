@@ -17,7 +17,8 @@ import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
 
 import java.util.List;
-import io.swagger.client.model.CollectionPaymentArrangement;
+//import io.swagger.client.model.CollectionPaymentArrangement;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement;
 
 //import com.fico.dmp.paymentarrangement.model.*;
 

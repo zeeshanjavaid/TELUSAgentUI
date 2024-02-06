@@ -6,7 +6,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionContactCreate",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionContactCreate",
     "service" : "CollectionEntityService",
     "operation" : "addContact",
     "operationId" : "CollectionEntityController_addContact",

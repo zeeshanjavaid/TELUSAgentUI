@@ -64,7 +64,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionDisputeCreate",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeCreate",
     "service" : "CollectionEntityService",
     "operation" : "addDispute",
     "operationId" : "CollectionEntityController_addDispute",

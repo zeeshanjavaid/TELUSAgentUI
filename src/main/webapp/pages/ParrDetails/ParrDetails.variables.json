@@ -25,7 +25,7 @@
       "value" : "bind:pageParams.ParrId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "updatePaymentArrangement",
     "operationId" : "CollectionEntityController_updatePaymentArrangement",
@@ -120,7 +120,7 @@
       "value" : true,
       "type" : "boolean"
     } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "getPaymentArrangementById",
     "operationId" : "CollectionEntityController_getPaymentArrangementById",
@@ -215,7 +215,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "updateParrStatus",
     "operationId" : "CollectionEntityController_updateParrStatus",
@@ -243,7 +243,7 @@
       "value" : "bind:pageParams.ParrId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "updatePaymentArrangement",
     "operationId" : "CollectionEntityController_updatePaymentArrangement",

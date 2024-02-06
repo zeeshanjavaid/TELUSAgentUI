@@ -361,7 +361,7 @@
       "value" : true,
       "type" : "boolean"
     } ],
-    "type" : "io.swagger.client.model.CollectionPaymentArrangement",
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement",
     "service" : "CollectionEntityService",
     "operation" : "getPaymentArrangementById",
     "operationId" : "CollectionEntityController_getPaymentArrangementById",
