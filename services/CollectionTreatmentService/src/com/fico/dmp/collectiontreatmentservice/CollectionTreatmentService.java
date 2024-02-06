@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fico.pscomponent.util.PropertiesUtil;
 import com.fico.telus.service.TelusAPIConnectivityService;
 import com.fico.telus.utility.URIConstant;
-import io.swagger.client.model.*;
+//import io.swagger.client.model.*;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,13 +46,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
 import com.fico.telus.model.CollectionActivityLogRes;
 
-
-
-
-
-
-
-
+import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.BillingAccount;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStep;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepCreate;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepUpdate;
 
 
 /**
@@ -259,7 +259,7 @@ public class CollectionTreatmentService {
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey,String collectionEntityId, CollectionTreatmentStepUpdate  collectionTreatmentStepUpdate) throws Exception {
+    public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey,String collectionEntityId, CollectionTreatmentStepUpdate collectionTreatmentStepUpdate) throws Exception {
         
         List<CollectionTreatmentStep> collectionTreatmentStepList = new ArrayList();
         
@@ -279,7 +279,7 @@ public class CollectionTreatmentService {
         {
              collectionTreatmentStep = collectionTreatmentStepList.get(0);
         }
-        collectionTreatmentStepUpdate.setId(BigDecimal.valueOf(Long.parseLong(id)));
+        collectionTreatmentStepUpdate.setId(Long.parseLong(id));
            
            
           
@@ -541,7 +541,7 @@ public class CollectionTreatmentService {
             collectionTreatmentStepResponse.setCollectionTreatment(collectionTreatmentStep.getCollectionTreatment());
             collectionTreatmentStepResponse.setStepDate(collectionTreatmentStep.getStepDate());
             collectionTreatmentStepResponse.setBillingAccountIdRefs(collectionTreatmentStep.getBillingAccountIdRefs());
-            collectionTreatmentStepResponse.setManualStepIndicator(collectionTreatmentStep.isManualStepIndicator());
+            collectionTreatmentStepResponse.setManualStepIndicator(collectionTreatmentStep.getManualStepIndicator());
             collectionTreatmentStepResponse.setStatus(collectionTreatmentStep.getStatus());
             collectionTreatmentStepResponse.setStepTypeCode(collectionTreatmentStep.getStepTypeCode());
             collectionTreatmentStepResponse.setLanguageCode(collectionTreatmentStep.getLanguageCode());
@@ -552,9 +552,9 @@ public class CollectionTreatmentService {
             collectionTreatmentStepResponse.setAdditionalCharacteristics(collectionTreatmentStep.getAdditionalCharacteristics());
             collectionTreatmentStepResponse.setComment(collectionTreatmentStep.getComment());
             collectionTreatmentStepResponse.setHref(collectionTreatmentStep.getHref());
-            collectionTreatmentStepResponse.setBaseType(collectionTreatmentStep.getBaseType());
-            collectionTreatmentStepResponse.setType(collectionTreatmentStep.getType());
-            collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getSchemaLocation());
+            collectionTreatmentStepResponse.setBaseType(collectionTreatmentStep.getAtBaseType());
+            collectionTreatmentStepResponse.setType(collectionTreatmentStep.getAtType());
+            collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getAtSchemaLocation());
             collectionTreatmentStepResponse.setAssignedPersonForDefaultValue(collectionTreatmentStep.getAssignedAgentId());
             collectionTreatmentStepResponse.setTotalNumberOfElement(totalNoOfElement);
 
@@ -595,9 +595,9 @@ private List<CollectionActivityLogRes> convertTelusResToFawb(List<CollectionActi
             collectionActivityLogRes1.setPartitionKey(collectionActivityLog.getPartitionKey());
             collectionActivityLogRes1.setDataSourceId(collectionActivityLog.getDataSourceId());
             collectionActivityLogRes1.setHref(collectionActivityLog.getHref());
-            collectionActivityLogRes1.setBaseType(collectionActivityLog.getBaseType());
-            collectionActivityLogRes1.setType(collectionActivityLog.getType());
-            collectionActivityLogRes1.setSchemaLocation(collectionActivityLog.getSchemaLocation());
+            collectionActivityLogRes1.setBaseType(collectionActivityLog.getAtBaseType());
+            collectionActivityLogRes1.setType(collectionActivityLog.getAtType());
+            collectionActivityLogRes1.setSchemaLocation(collectionActivityLog.getAtSchemaLocation());
             collectionActivityLogRes1.setTotalNoOfElement(totalNoOfElement);
             collectionActivityLogResList.add(collectionActivityLogRes1);
 

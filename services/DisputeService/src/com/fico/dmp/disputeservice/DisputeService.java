@@ -16,8 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
-import io.swagger.client.model.CollectionBillingAccountRef;
-import io.swagger.client.model.CollectionDispute;
+//import io.swagger.client.model.CollectionBillingAccountRef;
+//import io.swagger.client.model.CollectionDispute;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDispute;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -79,7 +81,7 @@ public class DisputeService {
         			disputeModel.setId(collectionDispute.getId());
         			disputeModel.setBan(collectionDispute.getBillingAccountRef().getId());
         			disputeModel.setDisputeAmount(collectionDispute.getAmount());
-        			disputeModel.setCollectionExclusion(collectionDispute.isCollectionExclusionIndicator());
+        			disputeModel.setCollectionExclusion(collectionDispute.getCollectionExclusionIndicator());
         			disputeModel.setStatus(collectionDispute.getStatus());
         			disputeModel.setCreatedBy(commonUtilityService.getNameUsingEmpId(collectionDispute.getAuditInfo().getCreatedBy()));
         			disputeModel.setCreatedDateTime(Date.from(collectionDispute.getAuditInfo().getCreatedDateTime().toInstant()));

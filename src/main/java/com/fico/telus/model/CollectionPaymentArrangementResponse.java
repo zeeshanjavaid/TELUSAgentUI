@@ -1,9 +1,14 @@
 package com.fico.telus.model;
 
-import io.swagger.client.model.AuditInfo;
-import io.swagger.client.model.CollectionPaymentInstallment;
-import io.swagger.client.model.EntityRef;
+//import io.swagger.client.model.AuditInfo;
+//import io.swagger.client.model.CollectionPaymentInstallment;
+//import io.swagger.client.model.EntityRef;
 
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.AuditInfo;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentInstallment;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.EntityRef;
+
+import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +18,7 @@ public class CollectionPaymentArrangementResponse {
 
     private Integer id = null;
 
-    private String href = null;
+    private URI href = null;
 
     private Boolean allBillingAccountIncludedIndicator = null;
 
@@ -45,7 +50,7 @@ public class CollectionPaymentArrangementResponse {
 
     private String baseType = null;
 
-    private String schemaLocation = null;
+    private URI schemaLocation = null;
 
     private String type = null;
 
@@ -59,11 +64,11 @@ public class CollectionPaymentArrangementResponse {
         this.id = id;
     }
 
-    public String getHref() {
+    public URI getHref() {
         return href;
     }
 
-    public void setHref(String href) {
+    public void setHref(URI href) {
         this.href = href;
     }
 
@@ -187,11 +192,11 @@ public class CollectionPaymentArrangementResponse {
         this.baseType = baseType;
     }
 
-    public String getSchemaLocation() {
+    public URI getSchemaLocation() {
         return schemaLocation;
     }
 
-    public void setSchemaLocation(String schemaLocation) {
+    public void setSchemaLocation(URI schemaLocation) {
         this.schemaLocation = schemaLocation;
     }
 

@@ -154,7 +154,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.CollectionTreatment",
+    "type" : "telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment",
     "service" : "CollectionTreatmentService",
     "operation" : "getCollectionTreatment",
     "operationId" : "CollectionTreatmentController_getCollectionTreatment",

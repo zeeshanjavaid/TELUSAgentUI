@@ -4,29 +4,29 @@
 package com.fico.dmp.collectionentityservice.controller;
 
 import com.fico.dmp.collectionentityservice.CollectionEntityService;
-import io.swagger.client.model.CollectionBillingAccountRefCreate;
+//import io.swagger.client.model.CollectionBillingAccountRefCreate;
 import java.lang.Exception;
-import io.swagger.client.model.CollectionEntityCreate;
-import io.swagger.client.model.CollectionEntity;
-import io.swagger.client.model.CollectionContactCreate;
-import io.swagger.client.model.CollectionDisputeCreate;
-import io.swagger.client.model.CollectionPaymentArrangementCreate;
+//import io.swagger.client.model.CollectionEntityCreate;
+//import io.swagger.client.model.CollectionEntity;
+//import io.swagger.client.model.CollectionContactCreate;
+//import io.swagger.client.model.CollectionDisputeCreate;
+//import io.swagger.client.model.CollectionPaymentArrangementCreate;
 import java.lang.String;
 import java.lang.Integer;
-import io.swagger.client.model.CollectionBillingAccountRef;
+//import io.swagger.client.model.CollectionBillingAccountRef;
 import java.util.List;
 import java.lang.Boolean;
-import io.swagger.client.model.CollectionContact;
-import io.swagger.client.model.CollectionPaymentArrangement;
+//import io.swagger.client.model.CollectionContact;
+//import io.swagger.client.model.CollectionPaymentArrangement;
 import com.fico.telus.model.CollectionPaymentArrangementResponse;
 import com.fico.telus.model.ParrResWithHeader;
 import com.fico.telus.model.DisputeResWithHeader;
-import io.swagger.client.model.CollectionDispute;
-import io.swagger.client.model.CollectionBillingAccountRefUpdate;
-import io.swagger.client.model.CollectionEntityUpdate;
-import io.swagger.client.model.CollectionContactUpdate;
-import io.swagger.client.model.CollectionDisputeUpdate;
-import io.swagger.client.model.CollectionPaymentArrangementUpdate;
+//import io.swagger.client.model.CollectionDispute;
+//import io.swagger.client.model.CollectionBillingAccountRefUpdate;
+//import io.swagger.client.model.CollectionEntityUpdate;
+//import io.swagger.client.model.CollectionContactUpdate;
+//import io.swagger.client.model.CollectionDisputeUpdate;
+//import io.swagger.client.model.CollectionPaymentArrangementUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,23 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wavemaker.tools.api.core.annotations.WMAccessVisibility;
 import com.wavemaker.tools.api.core.models.AccessSpecifier;
+
+
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRefCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRefUpdate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionContact;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionContactCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionContactUpdate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDispute;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDisputeUpdate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntity;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntityCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntityUpdate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangementCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangementUpdate;
 
 @RestController
 @RequestMapping(value = "/collectionEntity")

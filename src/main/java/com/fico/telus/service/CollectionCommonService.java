@@ -14,7 +14,8 @@ import com.fico.dmp.telusagentuidb.User;
 import com.fico.dmp.telusagentuidb.service.UserService;
 import com.wavemaker.runtime.security.SecurityService;
 
-import io.swagger.client.model.CollectionTreatmentAuditInfo;
+//import io.swagger.client.model.CollectionTreatmentAuditInfo;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.AuditInfo;
 import java.time.OffsetDateTime;
 //import org.threeten.bp.OffsetDateTime;
 
@@ -31,7 +32,7 @@ public class CollectionCommonService {
 	@Autowired
 	private UserService userService;
 	
-	public CollectionTreatmentAuditInfo UpdateAuditInfo(CollectionTreatmentAuditInfo auditInfo, boolean isCreate) {
+	public AuditInfo UpdateAuditInfo(AuditInfo auditInfo, boolean isCreate) {
 		
 		User user = getUser();
 		String empId = "";

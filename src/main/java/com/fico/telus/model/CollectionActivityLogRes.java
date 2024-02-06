@@ -1,9 +1,13 @@
 package com.fico.telus.model;
 
-import io.swagger.client.model.Characteristic;
-import io.swagger.client.model.CollectionTreatmentEntityRef;
+//import io.swagger.client.model.Characteristic;
+//import io.swagger.client.model.CollectionTreatmentEntityRef;
+
+import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.Characteristic;
+import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.EntityRef;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -11,13 +15,13 @@ import java.util.List;
 public class CollectionActivityLogRes {
 
 
-    private BigDecimal id = null;
+    private Long id = null;
 
-    private CollectionTreatmentEntityRef collectionEntity = null;
+    private EntityRef collectionEntity = null;
 
     private OffsetDateTime collectionActivityTimestamp = null;
 
-    private BigDecimal relatedBusinessEntityId = null;
+    private Long relatedBusinessEntityId = null;
 
     private String relatedBusinessEntityType = null;
 
@@ -35,7 +39,7 @@ public class CollectionActivityLogRes {
 
     private String collectionActivityPerformedBy = null;
 
-    private List<CollectionTreatmentEntityRef> billingAccountIdRefs = null;
+    private List<EntityRef> billingAccountIdRefs = null;
 
     private String businessEntityEventType = null;
 
@@ -51,29 +55,29 @@ public class CollectionActivityLogRes {
 
     private String dataSourceId = null;
 
-    private String href = null;
+    private URI href = null;
 
     private String baseType = null;
 
     private String type = null;
 
-    private String schemaLocation = null;
+    private URI schemaLocation = null;
 
     private Integer totalNoOfElement;
 
-    public BigDecimal getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public CollectionTreatmentEntityRef getCollectionEntity() {
+    public EntityRef getCollectionEntity() {
         return collectionEntity;
     }
 
-    public void setCollectionEntity(CollectionTreatmentEntityRef collectionEntity) {
+    public void setCollectionEntity(EntityRef collectionEntity) {
         this.collectionEntity = collectionEntity;
     }
 
@@ -85,11 +89,11 @@ public class CollectionActivityLogRes {
         this.collectionActivityTimestamp = collectionActivityTimestamp;
     }
 
-    public BigDecimal getRelatedBusinessEntityId() {
+    public Long getRelatedBusinessEntityId() {
         return relatedBusinessEntityId;
     }
 
-    public void setRelatedBusinessEntityId(BigDecimal relatedBusinessEntityId) {
+    public void setRelatedBusinessEntityId(Long relatedBusinessEntityId) {
         this.relatedBusinessEntityId = relatedBusinessEntityId;
     }
 
@@ -157,11 +161,11 @@ public class CollectionActivityLogRes {
         this.collectionActivityPerformedBy = collectionActivityPerformedBy;
     }
 
-    public List<CollectionTreatmentEntityRef> getBillingAccountIdRefs() {
+    public List<EntityRef> getBillingAccountIdRefs() {
         return billingAccountIdRefs;
     }
 
-    public void setBillingAccountIdRefs(List<CollectionTreatmentEntityRef> billingAccountIdRefs) {
+    public void setBillingAccountIdRefs(List<EntityRef> billingAccountIdRefs) {
         this.billingAccountIdRefs = billingAccountIdRefs;
     }
 
@@ -221,11 +225,11 @@ public class CollectionActivityLogRes {
         this.dataSourceId = dataSourceId;
     }
 
-    public String getHref() {
+    public URI getHref() {
         return href;
     }
 
-    public void setHref(String href) {
+    public void setHref(URI href) {
         this.href = href;
     }
 
@@ -245,11 +249,11 @@ public class CollectionActivityLogRes {
         this.type = type;
     }
 
-    public String getSchemaLocation() {
+    public URI getSchemaLocation() {
         return schemaLocation;
     }
 
-    public void setSchemaLocation(String schemaLocation) {
+    public void setSchemaLocation(URI schemaLocation) {
         this.schemaLocation = schemaLocation;
     }
 

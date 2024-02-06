@@ -5,7 +5,7 @@ import java.util.List;
 
 public class OrderMgmtHistoryResponse {
 
-	private BigDecimal actionId;
+	private Long actionId;
 	private String status;
 	private String createdBy;
 	private String assignedTo;
@@ -99,11 +99,11 @@ public class OrderMgmtHistoryResponse {
 		this.createdBy = createdBy;
 	}
 
-	public BigDecimal getActionId() {
+	public Long getActionId() {
 		return actionId;
 	}
 
-	public void setActionId(BigDecimal actionId) {
+	public void setActionId(Long actionId) {
 		this.actionId = actionId;
 	}
 

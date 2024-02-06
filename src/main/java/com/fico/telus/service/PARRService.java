@@ -19,12 +19,18 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fico.pscomponent.util.PropertiesUtil;
 
-import io.swagger.client.model.AuditInfo;
-import io.swagger.client.model.CollectionPaymentArrangement;
-import io.swagger.client.model.CollectionPaymentArrangementCreate;
-//import io.swagger.client.model.CollectionPaymentArrangementStatus;
-import io.swagger.client.model.CollectionPaymentArrangementUpdate;
-import io.swagger.client.model.EntityRef;
+//import io.swagger.client.model.AuditInfo;
+//import io.swagger.client.model.CollectionPaymentArrangement;
+//import io.swagger.client.model.CollectionPaymentArrangementCreate;
+////import io.swagger.client.model.CollectionPaymentArrangementStatus;
+//import io.swagger.client.model.CollectionPaymentArrangementUpdate;
+//import io.swagger.client.model.EntityRef;
+
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangement;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangementCreate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionPaymentArrangementUpdate;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.EntityRef;
+
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;

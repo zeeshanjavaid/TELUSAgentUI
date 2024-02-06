@@ -1,29 +1,35 @@
 package com.fico.telus.model;
 
-import io.swagger.client.model.Characteristic;
-import io.swagger.client.model.CollectionTreatmentAuditInfo;
-import io.swagger.client.model.CollectionTreatmentEntityRef;
-import io.swagger.client.model.TelusChannel;
+//import io.swagger.client.model.Characteristic;
+//import io.swagger.client.model.CollectionTreatmentAuditInfo;
+//import io.swagger.client.model.CollectionTreatmentEntityRef;
+//import io.swagger.client.model.TelusChannel;
+
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.AuditInfo;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.Characteristic;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.EntityRef;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.TelusChannel;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
 public class CollectionTreatmentStepResponse {
 
-    private CollectionTreatmentAuditInfo auditInfo = null;
+    private AuditInfo auditInfo = null;
 
     private TelusChannel channel = null;
 
-    private BigDecimal id = null;
+    private Long id = null;
 
     private LocalDate partitionKey = null;
 
-    private CollectionTreatmentEntityRef collectionTreatment = null;
+    private EntityRef collectionTreatment = null;
 
     private LocalDate stepDate = null;
 
-    private List<CollectionTreatmentEntityRef> billingAccountIdRefs = null;
+    private List<EntityRef> billingAccountIdRefs = null;
 
     private Boolean manualStepIndicator = null;
 
@@ -45,13 +51,13 @@ public class CollectionTreatmentStepResponse {
 
     private String comment = null;
 
-    private String href = null;
+    private URI href = null;
 
     private String baseType = null;
 
     private String type = null;
 
-    private String schemaLocation = null;
+    private URI schemaLocation = null;
 
     private String assignedPersonForDefaultValue;
     
@@ -65,11 +71,11 @@ public class CollectionTreatmentStepResponse {
         this.totalNumberOfElement = totalNumberOfElement;
     }
 
-    public CollectionTreatmentAuditInfo getAuditInfo() {
+    public AuditInfo getAuditInfo() {
         return auditInfo;
     }
 
-    public void setAuditInfo(CollectionTreatmentAuditInfo auditInfo) {
+    public void setAuditInfo(AuditInfo auditInfo) {
         this.auditInfo = auditInfo;
     }
 
@@ -81,11 +87,11 @@ public class CollectionTreatmentStepResponse {
         this.channel = channel;
     }
 
-    public BigDecimal getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigDecimal id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -97,11 +103,11 @@ public class CollectionTreatmentStepResponse {
         this.partitionKey = partitionKey;
     }
 
-    public CollectionTreatmentEntityRef getCollectionTreatment() {
+    public EntityRef getCollectionTreatment() {
         return collectionTreatment;
     }
 
-    public void setCollectionTreatment(CollectionTreatmentEntityRef collectionTreatment) {
+    public void setCollectionTreatment(EntityRef collectionTreatment) {
         this.collectionTreatment = collectionTreatment;
     }
 
@@ -113,11 +119,11 @@ public class CollectionTreatmentStepResponse {
         this.stepDate = stepDate;
     }
 
-    public List<CollectionTreatmentEntityRef> getBillingAccountIdRefs() {
+    public List<EntityRef> getBillingAccountIdRefs() {
         return billingAccountIdRefs;
     }
 
-    public void setBillingAccountIdRefs(List<CollectionTreatmentEntityRef> billingAccountIdRefs) {
+    public void setBillingAccountIdRefs(List<EntityRef> billingAccountIdRefs) {
         this.billingAccountIdRefs = billingAccountIdRefs;
     }
 
@@ -201,11 +207,11 @@ public class CollectionTreatmentStepResponse {
         this.comment = comment;
     }
 
-    public String getHref() {
+    public URI getHref() {
         return href;
     }
 
-    public void setHref(String href) {
+    public void setHref(URI href) {
         this.href = href;
     }
 
@@ -225,11 +231,11 @@ public class CollectionTreatmentStepResponse {
         this.type = type;
     }
 
-    public String getSchemaLocation() {
+    public URI getSchemaLocation() {
         return schemaLocation;
     }
 
-    public void setSchemaLocation(String schemaLocation) {
+    public void setSchemaLocation(URI schemaLocation) {
         this.schemaLocation = schemaLocation;
     }
 

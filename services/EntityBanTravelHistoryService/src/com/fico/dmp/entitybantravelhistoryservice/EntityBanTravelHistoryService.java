@@ -17,10 +17,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
-import io.swagger.client.model.BillingAccount.StateEnum;
-import io.swagger.client.model.CollectionBillingAccountRef;
-import io.swagger.client.model.CollectionEntity;
-import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
+//import io.swagger.client.model.BillingAccount.StateEnum;
+//import io.swagger.client.model.CollectionBillingAccountRef;
+//import io.swagger.client.model.CollectionEntity;
+//import io.swagger.client.model.CollectionEntityBillingAccountRefMap;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.BillingAccount.StateEnum;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntity;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntityBillingAccountRefMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,7 +1,9 @@
 package com.fico.telus.model;
 
-import io.swagger.client.model.CollectionDispute;
-import io.swagger.client.model.CollectionPaymentArrangement;
+//import io.swagger.client.model.CollectionDispute;
+//import io.swagger.client.model.CollectionPaymentArrangement;
+
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionDispute;
 
 import java.util.List;
 

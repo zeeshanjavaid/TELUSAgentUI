@@ -17,7 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.wavemaker.runtime.util.logging.FAWBStaticLoggerBinder;
 
-import io.swagger.client.model.CollectionBillingAccountRef;
+//import io.swagger.client.model.CollectionBillingAccountRef;
+import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
