@@ -47,7 +47,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.EntityBanDetailsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityBanDetails",
     "operationId" : "CollectionDataController_getEntityBanDetails",

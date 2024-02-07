@@ -10,7 +10,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.EntityContactsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityContactsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityContacts",
     "operationId" : "CollectionDataController_getEntityContacts",

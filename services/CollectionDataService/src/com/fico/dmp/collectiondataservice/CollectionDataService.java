@@ -41,17 +41,17 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.swagger.client.model.EntityBanDetailsResponse;
-import io.swagger.client.model.EntitySearchResponseArray;
-import io.swagger.client.model.TeamsActionViewResponse;
-import io.swagger.client.model.AssignedEntitiesInEntityViewResponseArray;
-import io.swagger.client.model.AssignedEntitiesInClassicViewResponse;
-import io.swagger.client.model.AssignedEntitiesInClassicViewResponseArray;
-//import io.swagger.client.model.AssignedActionsResponseArray;
-import io.swagger.client.model.AssignedEntitiesInEntityViewResponse;
-import io.swagger.client.model.EntityContactsResponse;
-import io.swagger.client.model.EntityDetailsResponse;
-import io.swagger.client.model.EntityBanDetailsResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntitySearchResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntitySearchResponseArray;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.TeamsActionViewResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInEntityViewResponseArray;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInClassicViewResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInClassicViewResponseArray;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInEntityViewResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityContactsResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
@@ -73,7 +73,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fico.telus.model.LookUpResponseWithTeamName;
-import io.swagger.client.model.*;
 import java.nio.charset.StandardCharsets;
 
 
@@ -238,7 +237,7 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setRisk(assignedEntitiesInEntityViewResponse.getRisk());
             	 assignedEntitiesInEntityModel.setEntityValue(assignedEntitiesInEntityViewResponse.getEntityValue());
             	 assignedEntitiesInEntityModel.setEntityCollectionStatus(assignedEntitiesInEntityViewResponse.getEntityCollectionStatus());
-            	 assignedEntitiesInEntityModel.setManualFlag(assignedEntitiesInEntityViewResponse.isManualFlag());
+            	 assignedEntitiesInEntityModel.setManualFlag(assignedEntitiesInEntityViewResponse.getManualFlag());
             	 assignedEntitiesInEntityModel.setLastTreatment(assignedEntitiesInEntityViewResponse.getLastTreatment());
                  if(assignedEntitiesInEntityViewResponse.getCurrentAr() != null) {
             	 assignedEntitiesInEntityModel.setCurrentAr(String.format("%,.2f", assignedEntitiesInEntityViewResponse.getCurrentAr()));
@@ -297,8 +296,8 @@ public class CollectionDataService {
             	 assignedEntitiesInEntityModel.setPrimeWorkCategory(assignedEntitiesInEntityViewResponse.getPrimeWorkCategory());
             	 assignedEntitiesInEntityModel.setPortfolioCategory(assignedEntitiesInEntityViewResponse.getPortfolioCategory());
             	 assignedEntitiesInEntityModel.setPortfolioSubCategory(assignedEntitiesInEntityViewResponse.getPortfolioSubCategory());
-            	 assignedEntitiesInEntityModel.setFtnp(assignedEntitiesInEntityViewResponse.isFtnp());
-            	 assignedEntitiesInEntityModel.setDisputeFlag(assignedEntitiesInEntityViewResponse.isDisputeFlag());
+            	 assignedEntitiesInEntityModel.setFtnp(assignedEntitiesInEntityViewResponse.getFtnp());
+            	 assignedEntitiesInEntityModel.setDisputeFlag(assignedEntitiesInEntityViewResponse.getDisputeFlag());
             	 assignedEntitiesInEntityModel.setOpenActionDate(assignedEntitiesInEntityViewResponse.getOpenActionDate());
             	 assignedEntitiesInEntityModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
             	 if(assignedEntitiesInEntityViewResponse.getEntityOwnerId() != null) {
@@ -414,7 +413,7 @@ public class CollectionDataService {
 				}else {
 					assignedEntitiesInClassicModel.setDisputeAmount("");
 				}
-				assignedEntitiesInClassicModel.setSuppresionFlag(assignedEntitiesInClassicViewResponse.isSuppresionFlag());
+				assignedEntitiesInClassicModel.setSuppresionFlag(assignedEntitiesInClassicViewResponse.getSuppresionFlag());
 				assignedEntitiesInClassicModel.setLanguage(assignedEntitiesInClassicViewResponse.getLanguage());
 				assignedEntitiesInClassicModel.setMarketSubSegment(assignedEntitiesInClassicViewResponse.getMarketSubSegment());
 				assignedEntitiesInClassicModel.setProvince(assignedEntitiesInClassicViewResponse.getProvince());
@@ -621,7 +620,7 @@ public class CollectionDataService {
 			    	}
 
 				    lookUpResponseWithTeamName.setEntityOwner(commonUtilityService.getNameUsingEmpId(entitySearchResponse.getEntityOwner()));
-				    lookUpResponseWithTeamName.setDntlFlag(entitySearchResponse.isDntlFlag());
+				    lookUpResponseWithTeamName.setDntlFlag(entitySearchResponse.getDntlFlag());
 
 				    lookUpResponseWithTeamNamesList.add(lookUpResponseWithTeamName);    
 			}

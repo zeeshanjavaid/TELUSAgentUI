@@ -1,7 +1,7 @@
 package com.fico.telus.model;
 
-import io.swagger.client.model.EntityDigitalContact;
-import io.swagger.client.model.EntityMailingContact;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDigitalContact;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityMailingContact;
 
 import java.util.List;
 

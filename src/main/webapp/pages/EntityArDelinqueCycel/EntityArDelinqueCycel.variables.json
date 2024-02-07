@@ -6,7 +6,7 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ ],
-    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityDetails",
     "operationId" : "CollectionDataController_getEntityDetails",

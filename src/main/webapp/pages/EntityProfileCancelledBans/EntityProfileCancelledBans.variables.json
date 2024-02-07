@@ -24,7 +24,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "string"
     } ],
-    "type" : "io.swagger.client.model.EntityDetailsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityDetails",
     "operationId" : "CollectionDataController_getEntityDetails",
@@ -53,7 +53,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.EntityBanDetailsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityBanDetails",
     "operationId" : "CollectionDataController_getEntityBanDetails",
@@ -81,7 +81,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "io.swagger.client.model.EntityBanDetailsResponse",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityBanDetails",
     "operationId" : "CollectionDataController_getEntityBanDetails",
