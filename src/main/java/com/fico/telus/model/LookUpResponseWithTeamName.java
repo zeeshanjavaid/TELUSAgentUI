@@ -23,6 +23,8 @@ public class LookUpResponseWithTeamName {
 
     private Boolean dntlFlag ;
 
+    private Boolean currentEntityForBan ;
+
     private String teamName;
      private Integer totalNumberOfElement;
 
@@ -107,6 +109,14 @@ public class LookUpResponseWithTeamName {
 
     public void setDntlFlag(Boolean dntlFlag) {
         this.dntlFlag = dntlFlag;
+    }
+
+    public Boolean getCurrentEntityForBan() {
+        return currentEntityForBan;
+    }
+
+    public void setCurrentEntityForBan(Boolean currentEntityForBan) {
+        this.currentEntityForBan = currentEntityForBan;
     }
 
     public String getTeamName() {
