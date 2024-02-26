@@ -149,7 +149,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         return;
     }
 
-    Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.entityToTransferBanDropdown.displayValue;
+    Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.table4.selectedItems[0].id
 
     //To see whether the entity is a cancelled or not.
     var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
@@ -159,9 +159,9 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
     if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANs to transfer from Current Entity";
-    } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && !Page.Widgets.entityToTransferBanDropdown.datavalue) {
+    } else if (Page.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0 && Page.Widgets.table4.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select required BANS and the Entity that needs to transferred";
-    } else if (!Page.Widgets.entityToTransferBanDropdown.datavalue) {
+    } else if (Page.Widgets.table4.selectedItems.length == 0) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select an Entity to transfer the BAN";
     } else if (entityLevelCollectionStatus == 'INARRG' || entityLevelCollectionStatus == 'CEASE' || entityLevelCollectionStatus == 'SUSPEND') {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Entity as the entity should not be in INARRG / CEASE / SUSPEND collection status";
@@ -170,8 +170,8 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     } else if (cancelledEntityVar == 'C') {
         App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed from Cancelled Entity";
     } else if (Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue == 'CEASE' || Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue == 'SUSPEND') {
-        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed into the entity " + Page.Widgets.entityToTransferBanDropdown.displayValue + " because its in " + Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue + " status";
-    } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.entityToTransferBanDropdown.datavalue) {
+        App.Variables.errorMsg.dataSet.dataValue = "Transfer not allowed into the entity " + Page.Widgets.table4.selectedItems[0].id + " because its in " + Page.Variables.selectedEntCollStatusOfTrans.dataSet.dataValue + " status";
+    } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.table4.selectedItems[0].id) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = null;
@@ -251,9 +251,9 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                 billingAccountRefMaps = billingAccountRefMaps1;
 
                 Page.Variables.PatchInCollectionEntity.setInput({
-                    "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                    "id": Page.Widgets.table4.selectedItems[0].id,
                     "CollectionEntityUpdate": {
-                        "id": Page.Widgets.entityToTransferBanDropdown.datavalue,
+                        "id": Page.Widgets.table4.selectedItems[0].id,
                         // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
                         "channel": {
                             "originatorAppId": "FAWBTELUSAGENT",
@@ -597,19 +597,6 @@ Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
 Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {
 
 };
-Page.entityToTransferBanDropdownChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    if (Page.Widgets.entityToTransferBanDropdown.datavalue != undefined && Page.Widgets.entityToTransferBanDropdown.datavalue != '') {
-        Page.Variables.getCollectionEntityIdForTransferredEntity.setInput({
-            "id": Page.Widgets.entityToTransferBanDropdown.datavalue
-        });
-
-        Page.Variables.getCollectionEntityIdForTransferredEntity.invoke();
-
-
-    }
-
-};
 
 Page.CancelTransToExistBanBtnClick = function($event, widget) {
     Page.Widgets.TransferBanToExistEntDialog.close();
@@ -696,15 +683,4 @@ Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, dat
 
 Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
     Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
-};
-Page.entityToTransferBanDropdownChange1 = function($event, widget, newVal, oldVal) {
-    if (Page.Widgets.entityToTransferBanDropdown.datavalue != undefined && Page.Widgets.entityToTransferBanDropdown.datavalue != '') {
-        Page.Variables.getEntityDetailsForCancelledEntities.setInput({
-            "entityId": Page.Widgets.entityToTransferBanDropdown.datavalue
-        });
-
-        Page.Variables.getEntityDetailsForCancelledEntities.invoke();
-
-
-    }
 };
