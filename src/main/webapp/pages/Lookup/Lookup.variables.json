@@ -203,6 +203,7 @@
     "dataSet" : [ ],
     "isList" : true,
     "maxResults" : 20,
+    "onSuccess" : "getCollectionEntityServiceonSuccess(variable, data, options)",
     "onError" : "getCollectionEntityServiceonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
@@ -210,6 +211,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "getCollectionEntityServiceFiltered" : {
+    "_id" : "wm-getCollectionEntityServiceFiltered-wm.Variable-1709008970446",
+    "name" : "getCollectionEntityServiceFiltered",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "getEntityBanDetailsService" : {
     "_id" : "wm-getEntityBanDetailsService-wm.ServiceVariable-1681366179440",

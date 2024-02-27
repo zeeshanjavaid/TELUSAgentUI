@@ -124,7 +124,6 @@ Page.openARbyDelinqCycle = function() {
 
 
 Page.TransferBanToExistingEntityClick = function($event, widget) {
-    debugger;
     Page.Widgets.entityNamePopOver.hidePopover();
     Page.Widgets.TransferBanToExistEntDialog.open();
     App.Variables.errorMsg.dataSet.dataValue = null;
@@ -337,7 +336,21 @@ Page.popover4Show = function($event, widget) {
 };
 Page.getEntityBanDetailsTable1Datarender = function(widget, $data) {
     debugger;
-    $('#getEntityBanDetailsTable1ID th input[type=checkbox]').hide();
+};
+
+Page.table4Datarender = function(widget, $data) {
+    debugger;
+    // Filter the data
+    var filteredData = $data.filter(function(item) {
+        return item.collectionStatus !== "CEASE";
+    });
+
+    //Set the filtered data to the table
+    widget.dataset = filteredData;
+    //Update the record count
+    widget.length = filteredData.length;
+    widget.totalRecords = filteredData.length;
+    widget.filteredRecords = filteredData.length;
 };
 
 Page.TransferBanToNewEntityTableSelect = function($event, widget, row) {
@@ -529,8 +542,9 @@ Page.TransferBanToExistEntDialogOpened = function($event, widget) {
         "limit": 100
     });
     Page.Variables.getCollectionEntityService.invoke();
-
 };
+
+
 Page.TransferBanToNewEntDialogOpened = function($event, widget) {
     Page.Variables.getEntityBanDetailsService.setInput({
         "entityId": parseInt(Page.pageParams.entityId)
@@ -592,6 +606,16 @@ Page.HistoryActionsSelect = function($event, widget) {
 
 Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
 
+};
+
+Page.getCollectionEntityServiceonSuccess = function(variable, data, xhrObj) {
+    data.sort((a, b) => a.id - b.id);
+    // Filter the data
+    // var filteredData = data.filter(function(item) {
+    //   return item.collectionStatus !== "CEASE";
+    //});
+
+    //Page.Variables.getCollectionEntityService.dataSet = filteredData;
 };
 
 Page.getCollectionEntityByIdonError = function(variable, data, xhrObj) {

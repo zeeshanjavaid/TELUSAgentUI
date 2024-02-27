@@ -293,10 +293,10 @@
                 <wm-gridcolumn columnwidth="12" name="gridcolumn49_1">
                     <wm-composite name="composite1">
                         <wm-container class="col-md-9" name="container5">
-                            <wm-table title="" dataset="bind:Variables.getCollectionEntityService.dataSet" id="getEntityBanDetailsTable1ID" navigation="Classic" radioselect="true" multiselect="false" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
-                                on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" navigationalign="right" name="table4">
+                            <wm-table title="" dataset="bind:Variables.getCollectionEntityService.dataSet" id="table4" navigation="Classic" radioselect="true" multiselect="false" showrecordcount="true" pagesize="10" navigationalign="right" name="table4" filtermode="search">
                                 <wm-table-column binding="id" caption="Entity ID" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                                 <wm-table-column binding="name" caption="Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="collectionStatus" caption="Collection Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                             </wm-table>
                         </wm-container>
                     </wm-composite>
