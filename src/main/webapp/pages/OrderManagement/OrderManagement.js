@@ -153,7 +153,8 @@ Partial.createbuttonClick = function($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -231,7 +232,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -298,7 +300,8 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",

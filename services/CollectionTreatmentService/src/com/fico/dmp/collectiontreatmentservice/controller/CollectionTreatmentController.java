@@ -4,11 +4,11 @@
 package com.fico.dmp.collectiontreatmentservice.controller;
 
 import com.fico.dmp.collectiontreatmentservice.CollectionTreatmentService;
-//import io.swagger.client.model.CollectionActivityLog;
+import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog;
 import java.lang.Exception;
-//import io.swagger.client.model.CollectionTreatment;
-//import io.swagger.client.model.CollectionTreatmentStepCreate;
-//import io.swagger.client.model.CollectionTreatmentStep;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepCreate;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStep;
 import java.lang.Integer;
 import java.lang.String;
 import com.fico.telus.model.CollectionActivityLogRes;
@@ -16,7 +16,7 @@ import java.util.List;
 import com.fico.telus.model.OrderMgmtHistoryResponse;
 import java.lang.Boolean;
 import com.fico.telus.model.CollectionTreatmentStepResponse;
-//import io.swagger.client.model.CollectionTreatmentStepUpdate;
+import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepUpdate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +25,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wavemaker.tools.api.core.annotations.WMAccessVisibility;
 import com.wavemaker.tools.api.core.models.AccessSpecifier;
-
-import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog;
-import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment;
-import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStep;
-import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepCreate;
-import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStepUpdate;
 
 @RestController
 @RequestMapping(value = "/collectionTreatment")

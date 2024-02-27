@@ -303,7 +303,8 @@ function callOutboundAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -371,7 +372,8 @@ function callInboundAction($event, widget) {
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -425,7 +427,8 @@ function emailInboundAction($event, widget) {
                     'additionalCharacteristics': characteristicList,
                     'collectionTreatment': {
                         'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                        'partitionKey': getCurrentDate(),
+                        // 'partitionKey': getCurrentDate(),
+                        'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                     },
                     'channel': {
                         'originatorAppId': "FAWBTELUSAGENT",
@@ -470,7 +473,8 @@ function generalFollowUpAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -535,7 +539,8 @@ function overdueNoticeAction($event, widget) {
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -594,7 +599,8 @@ function paymentReminderNoticeAction($event, widget) {
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -653,7 +659,8 @@ function disconnectNoticeAction($event, widget) {
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
@@ -713,7 +720,8 @@ function cancellationNoticeAction($event, widget) {
                 'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    'partitionKey': getCurrentDate()
+                    // 'partitionKey': getCurrentDate()
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",

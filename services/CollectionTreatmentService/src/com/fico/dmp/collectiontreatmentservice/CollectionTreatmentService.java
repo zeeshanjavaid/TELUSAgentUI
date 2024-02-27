@@ -184,13 +184,15 @@ public class CollectionTreatmentService {
           String encodedStatus=null;
             if(assignedTeam!=null)
             {
-                 encodeAssignedTeam = URLEncoder.encode(assignedTeam, "UTF-8");
+                 // encodeAssignedTeam = URLEncoder.encode(assignedTeam, "UTF-8");
+                 encodeAssignedTeam=assignedTeam;
             }else{
                 encodeAssignedTeam=assignedTeam;
             }
             if(status!=null)
             {
-                 encodedStatus = URLEncoder.encode(status, "UTF-8");
+                 // encodedStatus = URLEncoder.encode(status, "UTF-8");
+                 encodedStatus=status;
             }else{
                 encodedStatus=status;
             }
@@ -318,14 +320,16 @@ public class CollectionTreatmentService {
                 String encodedStatus=null;
             if(relatedBusinessEntityAssignedTeam!=null)
             {
-                 encodeAssignedTeam = URLEncoder.encode(relatedBusinessEntityAssignedTeam, "UTF-8");
+                 // encodeAssignedTeam = URLEncoder.encode(relatedBusinessEntityAssignedTeam, "UTF-8");
+                 encodeAssignedTeam=relatedBusinessEntityAssignedTeam;
             }else{
                 encodeAssignedTeam=relatedBusinessEntityAssignedTeam;
             }
             
             if(relatedBusinessEntityStatus!=null)
             {
-                 encodedStatus = URLEncoder.encode(relatedBusinessEntityStatus, "UTF-8");
+                 // encodedStatus = URLEncoder.encode(relatedBusinessEntityStatus, "UTF-8");
+                 encodedStatus=relatedBusinessEntityStatus;
             }else{
                 encodedStatus=relatedBusinessEntityStatus;
             }
@@ -535,7 +539,7 @@ public class CollectionTreatmentService {
         {
             CollectionTreatmentStepResponse collectionTreatmentStepResponse=new CollectionTreatmentStepResponse();
             collectionTreatmentStepResponse.setAuditInfo(collectionTreatmentStep.getAuditInfo());
-            collectionTreatmentStepResponse.setChannel(collectionTreatmentStep.getChannel());
+            // collectionTreatmentStepResponse.setChannel(collectionTreatmentStep.getChannel());
             collectionTreatmentStepResponse.setId(collectionTreatmentStep.getId());
             collectionTreatmentStepResponse.setPartitionKey(collectionTreatmentStep.getPartitionKey());
             collectionTreatmentStepResponse.setCollectionTreatment(collectionTreatmentStep.getCollectionTreatment());
