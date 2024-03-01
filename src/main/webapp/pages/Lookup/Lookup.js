@@ -610,6 +610,9 @@ Page.getCollectionEntityServiceonError = function(variable, data, xhrObj) {
 
 Page.getCollectionEntityServiceonSuccess = function(variable, data, xhrObj) {
     data.sort((a, b) => a.id - b.id);
+    data = data.filter(item => item.id !== parseInt(Page.pageParams.entityId));
+    Page.Variables.getCollectionEntityService.dataSet = data;
+    //Page.pageParams.entityId
     // Filter the data
     // var filteredData = data.filter(function(item) {
     //   return item.collectionStatus !== "CEASE";
