@@ -84,7 +84,7 @@
         <wm-layoutgrid name="layoutgrid4_1" padding="2em 2em 2em 2em" style="border: 1px solid #ddd;" width="96%" margin="2em 2em 2em 2em">
             <wm-gridrow name="gridrow5">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn20">
-                    <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="None" pagesize="20" showrecordcount="true" navigationalign="right">
+                    <wm-table name="getActionViewByTeamTable1" title="" dataset="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet" navigation="None" pagesize="20" showrecordcount="true" navigationalign="right" radioselect="false" multiselect="true">
                         <wm-table-column binding="actionId" caption="Action ID" width="77px" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="entityId" caption="ENT ID" widget-type="anchor" width="64px" edit-widget-type="number" type="integer" show="true" readonly="false">
                             <wm-anchor caption="bind:row.getProperty('entityId')" hyperlink="bind:row.getProperty('entityId')" class="" conditionalclass="" on-click="goToEnityPage(row)"></wm-anchor>
@@ -103,8 +103,34 @@
                     </wm-table>
                 </wm-gridcolumn>
             </wm-gridrow>
-            <wm-container name="containerPagination1"></wm-container>
+            <wm-container name="containerPagination1">
+                <wm-button class="primaryButton" caption="Assign To" type="button" margin="unset 0.5em" name="assignActions" on-click="Widgets.assignActionsDialog.open()"></wm-button>
+            </wm-container>
             <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination1" show="true" name="Telus_Paginaton" pagesize="20" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet[0].totalNumberOfElement"></wm-prefab>
         </wm-layoutgrid>
     </wm-content>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Assign Actions" iconclass="wi wi-file-text" name="assignActionsDialog">
+        <wm-layoutgrid name="layoutgrid5">
+            <wm-gridrow name="gridrow7_1">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn21">
+                    <wm-label padding="unset 0.5em" caption="Name" name="label10"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn22">
+                    <wm-label padding="unset 0.5em" caption="Eric" name="label11"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow8">
+                <wm-gridcolumn columnwidth="6" name="gridcolumn23">
+                    <wm-label padding="unset 0.5em" caption="Title" name="label12"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="6" name="gridcolumn24">
+                    <wm-label padding="unset 0.5em" caption="Engineer" name="label13"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-dialogactions name="dialogactions1">
+            <wm-button class="btn-primary" caption="Confirm" on-click="closeDialog()" name="assignActionsButtonConfirm"></wm-button>
+            <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="assignActionsButtonCamcel"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-page>

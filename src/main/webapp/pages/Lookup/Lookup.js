@@ -148,7 +148,11 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         return;
     }
 
-    Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.table4.selectedItems[0].id
+    if (Page.Widgets.table4.selectedItems.length > 0) {
+        Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = Page.Widgets.table4.selectedItems[0].id;
+    } else {
+        Page.Variables.TransferToExistEntSucessMessageVar.dataSet.dataValue = "unknown";
+    }
 
     //To see whether the entity is a cancelled or not.
     var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
