@@ -110,27 +110,33 @@
         </wm-layoutgrid>
     </wm-content>
     <wm-dialog dialogtype="design-dialog" modal="true" title="Assign Actions" iconclass="wi wi-file-text" name="assignActionsDialog">
-        <wm-layoutgrid name="layoutgrid5">
-            <wm-gridrow name="gridrow7_1">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn21">
-                    <wm-label padding="unset 0.5em" caption="Name" name="label10"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn22">
-                    <wm-label padding="unset 0.5em" caption="Eric" name="label11"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-            <wm-gridrow name="gridrow8">
-                <wm-gridcolumn columnwidth="6" name="gridcolumn23">
-                    <wm-label padding="unset 0.5em" caption="Title" name="label12"></wm-label>
-                </wm-gridcolumn>
-                <wm-gridcolumn columnwidth="6" name="gridcolumn24">
-                    <wm-label padding="unset 0.5em" caption="Engineer" name="label13"></wm-label>
-                </wm-gridcolumn>
-            </wm-gridrow>
-        </wm-layoutgrid>
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Confirm" on-click="closeDialog()" name="assignActionsButtonConfirm"></wm-button>
-            <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="assignActionsButtonCamcel"></wm-button>
+            <wm-button class="btn-primary" caption="Cancel" on-click="closeDialog()" name="assignActionsButtonCancel"></wm-button>
         </wm-dialogactions>
+        <wm-composite name="composite1">
+            <wm-container class="col-md-9" name="container2">
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn16">
+                        <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
+                        <wm-select width="90%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
+                            placeholder="" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId" name="select11" orderby="firstName:desc"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                        <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19" padding="unset 0.5em 0.5em unset"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-select width="90%" padding="unset 0.5em" dataset="bind:Variables.getAllTeamList_ARAgentView.dataSet" datafield="teamId" placeholder="" displayfield="teamId" on-change="AssignedTeamSelectChange($event, widget, newVal, oldVal)" orderby="teamId:asc"
+                    name="assignTeamSelect"></wm-select>
+            </wm-container>
+        </wm-composite>
     </wm-dialog>
 </wm-page>
