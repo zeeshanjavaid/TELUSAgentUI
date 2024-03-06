@@ -118,7 +118,7 @@
             <wm-container class="col-md-9" name="container2">
                 <wm-gridrow name="gridrow13">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn16">
-                        <wm-label padding="unset 0.5em unset unset" caption="Assigned Person" name="label5" color="gray"></wm-label>
+                        <wm-label padding="unset 0.5em unset unset" caption="Select Person" name="label5" color="gray"></wm-label>
                         <wm-select width="90%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_ARAgentView.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
                             placeholder="" on-change="actionStatusSelect($event, widget, newVal, oldVal)" datafield="empId" name="select11" orderby="firstName:desc"></wm-select>
                     </wm-gridcolumn>
@@ -128,7 +128,7 @@
                 </wm-gridrow>
                 <wm-gridrow name="gridrow15">
                     <wm-gridcolumn columnwidth="12" name="gridcolumn18">
-                        <wm-label padding="0.5em 0.5em unset unset" caption="Assigned Team" name="label5" color="gray"></wm-label>
+                        <wm-label padding="0.5em 0.5em unset unset" caption="Select Team" name="label5" color="gray"></wm-label>
                     </wm-gridcolumn>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow16">

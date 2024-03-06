@@ -531,3 +531,12 @@
     right: 11px;
     width: unset;
 }
+
+.wm-app app-page-lookup #table4 .form-inline .input-group {
+    display: inline-table;
+    vertical-align: top;
+}
+
+.wm-app app-page-lookup #table4 .form-inline .input-group>.form-control {
+    width: 70%;
+}
