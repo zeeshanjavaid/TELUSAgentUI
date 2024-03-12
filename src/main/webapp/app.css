@@ -538,5 +538,9 @@
 }
 
 .wm-app app-page-lookup #table4 .form-inline .input-group>.form-control {
-    width: 70%;
+    width: 75%;
+}
+
+.wm-app app-page-lookup #table4 .form-inline .form-control {
+    width: 85%;
 }

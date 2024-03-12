@@ -85,6 +85,16 @@ Page.clearFilterFields = function($event, widget) {
 
 };
 
+Page.assignActionsButtonClick = function($event, widget) {
+    debugger;
+    if (Page.Widgets.getActionViewByTeamTable1.selectedItems.length > 0) {
+        Page.Widgets.assignActionsDialog.open();
+    } else {
+        // Display an error message in a popup
+        alert("Please select at least one item.");
+    }
+
+};
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
@@ -135,8 +145,23 @@ Page.goToEnityPage = function(row) {
 }
 
 // assigned Team on Change
-debugger;
 Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
+    debugger;
+    if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
+        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
+    } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
+        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
+    } else {
+        Page.Variables.getUserListByTeamId_ARAgentV.setInput({
+            'teamId': Page.Widgets.AssignedTeamSelect.datavalue
+        });
+        Page.Variables.getUserListByTeamId_ARAgentV.invoke();
+    }
+};
+
+// assigned Team on Change
+Page.AssignedTeamSelectChangeForDialog = function($event, widget, newVal, oldVal) {
+    debugger;
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
     } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
@@ -282,6 +307,19 @@ Page.getAllActiveUserList_ARAgentView_forALLonSuccess = function(variable, data)
         Page.Variables.getAllActiveUserList_ARAgentView.dataSet = data;
         Page.Widgets.EntityOwnerSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet[0].empId;
         Page.Widgets.AssignedPersonSelect.datavalue = Page.Variables.getAllActiveUserList_ARAgentView_forALL.dataSet[0].empId;
+    }
+};
+
+Page.getAllActiveUserList_ARAgentViewDialog_forALLonSuccess = function(variable, data) {
+    debugger;
+    if (Page.Variables.getAllActiveUserList_ARAgentViewDialog_forALL.dataSet.length > 1) {
+        Page.Variables.getAllActiveUserList_ARAgentViewDialog_forALL.dataSet.unshift({
+            empId: 'ALL',
+            firstName: 'ALL',
+            lastName: ''
+        });
+        Page.Variables.getAllActiveUserList_ARAgentViewDialog.dataSet = data;
+        Page.Widgets.AssignedPersonSelectDialog.datavalue = Page.Variables.getAllActiveUserList_ARAgentViewDialog_forALL.dataSet[0].empId;
     }
 };
 
