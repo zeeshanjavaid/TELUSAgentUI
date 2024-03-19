@@ -29,7 +29,7 @@ public class CollectionTreatmentStepResponse {
 
     private LocalDate stepDate = null;
 
-    private List<EntityRef> billingAccountIdRefs = null;
+    private List<EntityRef> billingAccountRefs = null;
 
     private Boolean manualStepIndicator = null;
 
@@ -119,12 +119,12 @@ public class CollectionTreatmentStepResponse {
         this.stepDate = stepDate;
     }
 
-    public List<EntityRef> getBillingAccountIdRefs() {
-        return billingAccountIdRefs;
+    public List<EntityRef> getBillingAccountRefs() {
+        return billingAccountRefs;
     }
 
-    public void setBillingAccountIdRefs(List<EntityRef> billingAccountIdRefs) {
-        this.billingAccountIdRefs = billingAccountIdRefs;
+    public void setBillingAccountRefs(List<EntityRef> billingAccountRefs) {
+        this.billingAccountRefs = billingAccountRefs;
     }
 
     public Boolean getManualStepIndicator() {

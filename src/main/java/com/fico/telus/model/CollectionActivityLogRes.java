@@ -39,7 +39,7 @@ public class CollectionActivityLogRes {
 
     private String collectionActivityPerformedBy = null;
 
-    private List<EntityRef> billingAccountIdRefs = null;
+    private List<EntityRef> billingAccountRefs = null;
 
     private String businessEntityEventType = null;
 
@@ -161,12 +161,12 @@ public class CollectionActivityLogRes {
         this.collectionActivityPerformedBy = collectionActivityPerformedBy;
     }
 
-    public List<EntityRef> getBillingAccountIdRefs() {
-        return billingAccountIdRefs;
+    public List<EntityRef> getBillingAccountRefs() {
+        return billingAccountRefs;
     }
 
-    public void setBillingAccountIdRefs(List<EntityRef> billingAccountIdRefs) {
-        this.billingAccountIdRefs = billingAccountIdRefs;
+    public void setBillingAccountRefs(List<EntityRef> billingAccountRefs) {
+        this.billingAccountRefs = billingAccountRefs;
     }
 
     public String getBusinessEntityEventType() {

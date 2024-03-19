@@ -29,7 +29,7 @@ Partial.onReady = function() {
         });
         Partial.Variables.assignedPerson_orderMngt.invoke();
 
-        var billingAccountIdRefs1 = [];
+        var billingAccountRefs1 = [];
         var type = row.stepTypeCode;
         if (type == 'SUSPEND') {
             Partial.Widgets.BansLabel.caption = 'BANs to Suspend:';
@@ -48,8 +48,8 @@ Partial.onReady = function() {
         Partial.selectedBanList = [];
         Partial.Variables.BanListRefIds.dataSet = [];
 
-        if (row.billingAccountIdRefs != null) {
-            row.billingAccountIdRefs.forEach(function(d) {
+        if (row.billingAccountRefs != null) {
+            row.billingAccountRefs.forEach(function(d) {
                 Partial.selectedBanList = {
                     "id": d.id,
                     //   Partial.Variables.BanListRefIds.dataSet.push(d.id);

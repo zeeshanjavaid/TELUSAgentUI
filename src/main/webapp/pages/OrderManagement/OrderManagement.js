@@ -240,7 +240,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
                     'channelOrgId': "FAWBTELUSAGENT",
                     'userId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
         Partial.Variables.createOrderManagmentForRestoral.invoke();
@@ -308,7 +308,7 @@ Partial.createbuttonCeaseClick = function($event, widget) {
                     'channelOrgId': "FAWBTELUSAGENT",
                     'userId': Partial.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
-                'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
             },
         });
         Partial.Variables.createOrderManagmentForCease.invoke();
@@ -459,7 +459,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -487,7 +487,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -595,7 +595,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -624,7 +624,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -723,7 +723,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -751,7 +751,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -846,7 +846,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -875,7 +875,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                         'channelOrgId': "FAWBTELUSAGENT",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
-                    'billingAccountIdRefs': Partial.Variables.BanListRefIds.dataSet,
+                    'billingAccountRefs': Partial.Variables.BanListRefIds.dataSet,
                 }
             });
 
@@ -1002,7 +1002,7 @@ Partial.update_YesBtnClick = function($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
 
-                'billingAccountIdRefs': Partial.Variables.updateSelectedBans.dataset,
+                'billingAccountRefs': Partial.Variables.updateSelectedBans.dataset,
             }
         });
 
