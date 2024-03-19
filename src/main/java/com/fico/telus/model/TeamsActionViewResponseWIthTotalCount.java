@@ -34,7 +34,18 @@ public class TeamsActionViewResponseWIthTotalCount {
 
     private String totalOverDue = null;
 
+    private LocalDate partitionKey = null;
+
     private Integer totalNumberOfElement;
+    
+    public LocalDate getPartitionKey() {
+        return partitionKey;
+    }
+
+    public void setPartitionKey(LocalDate partitionKey) {
+        this.partitionKey = partitionKey;
+    }
+
 
     public Integer getActionId() {
         return actionId;

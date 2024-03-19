@@ -654,6 +654,9 @@ List<TeamsActionViewResponseWIthTotalCount> teamsActionViewResponseWIthTotalCoun
 			teamsActionViewResponseWIthTotalCount.setAssignedTeam(teamsActionViewResponse.getAssignedTeam());
 			teamsActionViewResponseWIthTotalCount.setAssignedAgent(commonUtilityService.getNameUsingEmpId(teamsActionViewResponse.getAssignedAgent()));
 			teamsActionViewResponseWIthTotalCount.setWorkCategory(teamsActionViewResponse.getWorkCategory());
+						teamsActionViewResponseWIthTotalCount.setPartitionKey(teamsActionViewResponse.getPartitionKey());
+
+			
 			if(teamsActionViewResponse.getTotalAr() !=null) {
 			teamsActionViewResponseWIthTotalCount.setTotalAr(String.format("%,.2f",teamsActionViewResponse.getTotalAr()));
 			}else {

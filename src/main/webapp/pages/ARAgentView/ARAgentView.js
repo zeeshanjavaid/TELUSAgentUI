@@ -85,16 +85,125 @@ Page.clearFilterFields = function($event, widget) {
 
 };
 
-Page.assignActionsButtonClick = function($event, widget) {
+App.refreshCollActionList = function() {
     debugger;
-    if (Page.Widgets.getActionViewByTeamTable1.selectedItems.length > 0) {
-        Page.Widgets.assignActionsDialog.open();
+
+    if (workCategoryDataArray.length > 1) {
+        var finalWorkCategoriesAR = workCategoryDataArray.join("|");
     } else {
-        // Display an error message in a popup
-        alert("Please select at least one item.");
+        var finalWorkCategoriesAR = workCategoryDataArray;
     }
 
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
+        'workCategory': finalWorkCategoriesAR,
+        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+        'status': Page.Widgets.StatusSelect.datavalue,
+        'fromDueDate': Page.Widgets.creationDate.datavalue,
+        'toDueDate': Page.Widgets.completionDate.datavalue,
+        'viewType': '1',
+        'limit': 20,
+        'offset': 0
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+
+
+
 };
+
+
+Page.assignActionsButtonClick = function($event, widget) {
+    debugger;
+    Page.Widgets.assignActionsDialog.open();
+};
+
+Page.assignActionsButtonClick1 = function($event, widget) {
+    debugger;
+    Page.Variables.dialogErrorMsg.dataSet.dataValue = null;
+    if (Page.Widgets.getActionViewByTeamTable1.selectedItems.length > 0) {
+
+        var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+        var firstAssignedTeam = selectedItems[0].assignedTeam;
+        var allSameAssignedTeam = selectedItems.every(function(item) {
+            return item.assignedTeam === firstAssignedTeam;
+        });
+
+        var closedStatusSelected = selectedItems.some(function(item) {
+            return item.status.toLowerCase() == "closed";
+        });
+
+        if (!allSameAssignedTeam) {
+            Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select actions belonging to same Team";
+        } else if (closedStatusSelected) {
+            Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select actions whose status is not CLOSED";
+        } else {
+            Page.Variables.selectedTeamId = selectedItems[0].assignedTeam;
+        }
+    } else {
+        // Display an error message in a popup
+        Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select an Action for Assignment";
+        //        alert("Please select at least one item.");
+    }
+    //Page.Widgets.assignActionsDialog.open();
+    Page.Variables.assignedActionsDialogOpened = true;
+};
+
+function getCurrentDate() {
+    var currentDate = new Date().toJSON().slice(0, 10);
+    return currentDate;
+}
+
+
+Page.dialogConfirmButtonClick = function($event, widget) {
+    debugger;
+    var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+    for (var i = 0; i < selectedItems.length; i++) {
+        var selectedItem = selectedItems[i];
+
+        try {
+            Page.Variables.UpdateCollectionTreatmentVar.setInput({
+                'id': selectedItem.actionId,
+                'partitionKey': getCurrentDate(),
+                "CollectionTreatmentStepUpdate": {
+                    'assignedAgentId': Page.Widgets.AssignedPersonSelectDialog.datavalue,
+                    'assignedTeam': Page.Widgets.AssignedTeamSelectDialog.datavalue,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'channelOrgId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    }
+                }
+            });
+
+            setTimeout(function() {
+                // Invoke POST coll treatment service
+                Page.Variables.UpdateCollectionTreatmentVar.invoke();
+            }, 100); // Delay in milliseconds (100 milliseconds)
+        } catch (error) {
+            console.error("Error invoking service for actionId:", selectedItem.actionId, error);
+            // Handle the error as needed
+        }
+    }
+    setTimeout(updateUI, 4000);
+};
+
+function updateUI() {
+    App.refreshCollActionList();
+    Page.Widgets.assignActionsDialog.close();
+    Page.Variables.assignedActionsDialogOpened = false;
+}
+
+
+Page.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {};
+
+Page.dialogCancelButtonClick = function($event, widget) {
+    debugger;
+    Page.Widgets.assignActionsDialog.close();
+    Page.Variables.assignedActionsDialogOpened = false;
+};
+
 // function added to display table based on the filters applied
 Page.applyFilter = function($event, widget) {
     debugger;
@@ -146,21 +255,6 @@ Page.goToEnityPage = function(row) {
 
 // assigned Team on Change
 Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
-        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
-    } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
-        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
-    } else {
-        Page.Variables.getUserListByTeamId_ARAgentV.setInput({
-            'teamId': Page.Widgets.AssignedTeamSelect.datavalue
-        });
-        Page.Variables.getUserListByTeamId_ARAgentV.invoke();
-    }
-};
-
-// assigned Team on Change
-Page.AssignedTeamSelectChangeForDialog = function($event, widget, newVal, oldVal) {
     debugger;
     if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
         Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
