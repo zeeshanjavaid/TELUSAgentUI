@@ -41,6 +41,8 @@ import java.util.List;
 import java.util.ArrayList;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fico.telus.model.CollectionTreatmentStepResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
@@ -231,9 +233,15 @@ public class CollectionTreatmentService {
 
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             
-             collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
-             collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
-       
+            collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
+//             collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+            collectionTreatmentStepResponseList.stream().forEach(a -> {
+                if (commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()) == null) {
+                    a.getAuditInfo().setCreatedBy("UNKNOWN");
+                } else {
+                    a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()));
+                }
+            });
             return collectionTreatmentStepResponseList;
         }
 
@@ -262,7 +270,8 @@ public class CollectionTreatmentService {
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionTreatmentStep updateCollectionTreatmentStep(@PathVariable("id") String id, String partitionKey,String collectionEntityId, CollectionTreatmentStepUpdate collectionTreatmentStepUpdate) throws Exception {
-        
+        logger.info(":::::Start Updating Step ID ::: " + id);
+
         List<CollectionTreatmentStep> collectionTreatmentStepList = new ArrayList();
         
         //GET Api call to get existing Collection treatment oblject
@@ -272,11 +281,18 @@ public class CollectionTreatmentService {
                     logger.info("Calling Url---"+ builder1.toUriString());
             String responseStr1 = telusAPIConnectivityService.executeTelusAPI(null,builder1.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
-            logger.info("Resoinse---"+ responseStr1);
+            logger.info("Response---"+ responseStr1);
              collectionTreatmentStepList= objectMapper.readValue(responseStr1, new TypeReference<List<CollectionTreatmentStep>>(){});
-           
+           //JsonNode node = objectMapper.readTree(responseStr1);
+             //          logger.info("Node---"+ node);
 
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
+
+/*            if(node instanceof ArrayNode){
+                ArrayNode arrayNode = (ArrayNode) node;
+                JsonNode stepNode = arrayNode.get(0);
+                collectionTreatmentStep = objectMapper.convertValue(stepNode, CollectionTreatmentStep.class);
+            }*/
         if(!collectionTreatmentStepList.isEmpty())
         {
              collectionTreatmentStep = collectionTreatmentStepList.get(0);
@@ -288,18 +304,48 @@ public class CollectionTreatmentService {
            //Patch Api call to get update Collection treatment oblject
            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP+"/"+id)
                 .queryParam("partitionKey",collectionTreatmentStep.getPartitionKey().toString());
+                logger.info(":::::PartitionKey = " + collectionTreatmentStep.getPartitionKey().toString());
         String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepUpdate);
-        logger.info(":::::Before calling Update coll treatment step- RequestPayload :::",requestPayload);
+        logger.info(":::::Before calling Update coll treatment step- RequestPayload ::: "+requestPayload);
         String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, builder.toUriString(),
                 "PATCH",collTreatmentSvcAuthScope);
-        logger.info("::::::::Response from Success Telus  API- Update coll treatment step:::::\n::::::: {}",responseStr);
+        logger.info("::::::::ResponsePayload from Success Telus  API- Update coll treatment step:::::\n::::::: {} "+responseStr);
          collectionTreatmentStep = objectMapper.readValue(responseStr,
                  CollectionTreatmentStep.class);
-        
+                logger.info(":::::End Updating Step ID ::: "+id);
+
         return collectionTreatmentStep;
     }
     
-
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public int updateCollectionTreatmentStepInBulk(List<String> ids, List<String> partitionKeys, CollectionTreatmentStepUpdate collectionTreatmentStepUpdate) throws Exception {
+        logger.info(":::::Start Bulk Update :::");
+        logger.info("Bulk Update Steps List is : ", ids);
+        int failed = 0;
+        for (int i = 0; i < ids.size(); i++) {
+            String id = ids.get(i);
+            logger.info(":::::Start Updating Step ID :::",id);
+            try{
+                collectionTreatmentStepUpdate.setId(Long.parseLong(id));
+                           //Patch Api call to get update Collection treatment oblject
+           UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP+"/"+id)
+                .queryParam("partitionKey",partitionKeys.get(i));
+        String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepUpdate);
+        logger.info(":::::Before calling Update coll treatment step- RequestPayload ::: "+requestPayload);
+        String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, builder.toUriString(),
+                "PATCH",collTreatmentSvcAuthScope);
+        logger.info("::::::::ResponsePayload from Success Telus  API- Update coll treatment step:::::\n::::::: {} "+responseStr);
+                logger.info(":::::End Updating Step ID ::: "+id);
+            } catch (Exception e){
+            logger.info(":::::Error Updating Step ID :::",id);
+                logger.info(e.getMessage());
+                failed++;
+            }
+        }
+        logger.info(":::::End Bulk Update :::");
+        return failed;
+    }
     
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)

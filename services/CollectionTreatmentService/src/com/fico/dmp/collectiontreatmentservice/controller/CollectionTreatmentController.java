@@ -132,4 +132,9 @@ public class CollectionTreatmentController {
     public CollectionTreatmentStep updateCollectionTreatmentStep(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "partitionKey", required = false) String partitionKey, @RequestParam(value = "collectionEntityId", required = false) String collectionEntityId, @RequestBody CollectionTreatmentStepUpdate collectionTreatmentStepUpdate) throws Exception {
         return collectionTreatmentService.updateCollectionTreatmentStep(id, partitionKey, collectionEntityId, collectionTreatmentStepUpdate);
     }
+
+    @RequestMapping(value = "/collectionTreatmentStepInBulk", method = RequestMethod.PUT, consumes = "multipart/form-data")
+    public int updateCollectionTreatmentStepInBulk(@RequestPart(value = "ids") List ids, @RequestPart(value = "partitionKeys") List partitionKeys, @RequestPart(value = "collectionTreatmentStepUpdate") CollectionTreatmentStepUpdate collectionTreatmentStepUpdate) throws Exception {
+        return collectionTreatmentService.updateCollectionTreatmentStepInBulk(ids, partitionKeys, collectionTreatmentStepUpdate);
+    }
 }

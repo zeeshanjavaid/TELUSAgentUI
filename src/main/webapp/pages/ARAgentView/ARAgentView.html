@@ -109,24 +109,39 @@
             <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination1" show="true" name="Telus_Paginaton" pagesize="20" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetActionViewByTeam.dataSet[0].totalNumberOfElement"></wm-prefab>
         </wm-layoutgrid>
     </wm-content>
-    <wm-dialog dialogtype="design-dialog" modal="true" title="Assign Actions" iconclass="wi wi-file-text" name="assignActionsDialog" on-opened="assignActionsButtonClick1($event, widget)">
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Assign Actions" iconclass="wi wi-file-text" name="assignActionsDialog" on-opened="assignActionsButtonClick1($event, widget)" showheader="false">
         <wm-dialogactions name="dialogactions1">
             <wm-button class="btn-primary" caption="Confirm" on-click="dialogConfirmButtonClick($event, widget)" name="assignActionsButtonConfirm" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"></wm-button>
             <wm-button class="btn-primary" caption="Cancel" on-click="dialogCancelButtonClick($event, widget)" name="assignActionsButtonCancel" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"></wm-button>
-            <wm-button class="btn-primary" caption="OK" on-click="dialogCancelButtonClick($event, widget)" name="assignActionsButtonOk" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? true : false"></wm-button>
+            <wm-button class="btn-primary" caption="OK" on-click="dialogOkButtonClick($event, widget)" name="assignActionsButtonOk" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? true : false"></wm-button>
         </wm-dialogactions>
         <wm-layoutgrid name="layoutgrid44">
             <wm-gridrow name="gridrow13">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn16">
-                    <wm-message type="error" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.dialogErrorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%" name="dialogErrorMessage"></wm-message>
+                    <wm-label padding="0.5em 0.5em unset unset" name="label12" caption="Assign Actions" fontweight="bold" fontsize="24" textdecoration="underline"></wm-label>
                 </wm-gridcolumn>
             </wm-gridrow>
+            <wm-gridrow name="gridrow17">
+                <wm-label padding="unset 0.5em" name="label121" caption="" fontweight="bold" fontsize="24" textdecoration="underline"></wm-label>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow18">
+                <wm-label padding="unset 0.5em" name="label121" caption="" fontweight="bold" fontsize="24" textdecoration="underline"></wm-label>
+            </wm-gridrow>
             <wm-gridrow name="gridrow14">
-                <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset"></wm-gridcolumn>
+                <wm-gridcolumn columnwidth="12" name="gridcolumn17" padding="unset 0.5em 0.5em unset">
+                    <wm-message type="info" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.dialogErrorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%" name="dialogErrorMessage"></wm-message>
+                </wm-gridcolumn>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow19">
+                <wm-label padding="unset 0.5em" name="label121" caption="" fontweight="bold" fontsize="24" textdecoration="underline"></wm-label>
+            </wm-gridrow>
+            <wm-gridrow name="gridrow20">
+                <wm-label padding="unset 0.5em" name="label121" caption="" fontweight="bold" fontsize="24" textdecoration="underline"></wm-label>
             </wm-gridrow>
             <wm-gridrow name="gridrow15">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn18">
                     <wm-label padding="0.5em 0.5em unset unset" caption="Select Team" name="label5" color="gray" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"></wm-label>
+                    <wm-spinner show="bind:Variables.showSpinner" name="spinner1" animation="spin" caption="Processing..."></wm-spinner>
                     <wm-select name="AssignedTeamSelectDialog" width="60%" padding="unset 0.5em" datafield="teamId" placeholder="Select" displayfield="teamId" on-change="AssignedTeamSelectChange($event, widget, newVal, oldVal)" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"
                         datavalue="bind:Variables.selectedTeamId" dataset="bind:Variables.getAllTeamListForAssignment.dataSet" orderby="teamId:desc"></wm-select>
                     <wm-label padding="unset 0.5em unset unset" caption="Select Person" name="label5" color="gray" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"></wm-label>

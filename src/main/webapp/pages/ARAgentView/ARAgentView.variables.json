@@ -64,6 +64,45 @@
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
   },
+  "asssignedFailedCount" : {
+    "_id" : "wm-asssignedFailedCount-wm.Variable-1710904065860",
+    "name" : "asssignedFailedCount",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "bulkStepsUpdate" : {
+    "_id" : "wm-bulkStepsUpdate-wm.ServiceVariable-1710955713674",
+    "name" : "bulkStepsUpdate",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "integer",
+    "service" : "CollectionTreatmentService",
+    "operation" : "updateCollectionTreatmentStepInBulk",
+    "operationId" : "CollectionTreatmentController_updateCollectionTreatmentStepInBulk",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "bulkStepsUpdateonSuccess(variable, data, options)",
+    "onError" : "bulkStepsUpdateonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
+  },
   "CollectionDataServiceGetActionViewByTeam" : {
     "_id" : "wm-CollectionDataServiceGetActionViewByTeam-wm.ServiceVariable-1687418317751",
     "name" : "CollectionDataServiceGetActionViewByTeam",
@@ -438,6 +477,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "showSpinner" : {
+    "_id" : "wm-showSpinner-wm.Variable-1711057999006",
+    "name" : "showSpinner",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "statusSelect_ARAgentView" : {
     "_id" : "wm-statusSelect_ARAgentView_1-wm.ServiceVariable-1690185436233",
     "name" : "statusSelect_ARAgentView",
@@ -465,30 +518,6 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
-  },
-  "UpdateCollectionTreatmentVar" : {
-    "_id" : "wm-UpdateCollectionTreatmentVar-wm.ServiceVariable-1710388880796",
-    "name" : "UpdateCollectionTreatmentVar",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatmentStep",
-    "service" : "CollectionTreatmentService",
-    "operation" : "updateCollectionTreatmentStep",
-    "operationId" : "CollectionTreatmentController_updateCollectionTreatmentStep",
-    "operationType" : "put",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "onSuccess" : "UpdateCollectionTreatmentVaronSuccess(variable, data, options)",
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "CollectionTreatment"
   },
   "UserLoggedInVar_ARAgent" : {
     "_id" : "wm-UserLoggedInVar_ARAgent-wm.Variable-1690193906518",

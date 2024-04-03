@@ -85,35 +85,6 @@ Page.clearFilterFields = function($event, widget) {
 
 };
 
-App.refreshCollActionList = function() {
-    debugger;
-
-    if (workCategoryDataArray.length > 1) {
-        var finalWorkCategoriesAR = workCategoryDataArray.join("|");
-    } else {
-        var finalWorkCategoriesAR = workCategoryDataArray;
-    }
-
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
-        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
-        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
-        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
-        'workCategory': finalWorkCategoriesAR,
-        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
-        'status': Page.Widgets.StatusSelect.datavalue,
-        'fromDueDate': Page.Widgets.creationDate.datavalue,
-        'toDueDate': Page.Widgets.completionDate.datavalue,
-        'viewType': '1',
-        'limit': 20,
-        'offset': 0
-    });
-    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
-
-
-
-};
-
-
 Page.assignActionsButtonClick = function($event, widget) {
     debugger;
     Page.Widgets.assignActionsDialog.open();
@@ -150,53 +121,90 @@ Page.assignActionsButtonClick1 = function($event, widget) {
     Page.Variables.assignedActionsDialogOpened = true;
 };
 
-function getCurrentDate() {
-    var currentDate = new Date().toJSON().slice(0, 10);
-    return currentDate;
-}
-
-
 Page.dialogConfirmButtonClick = function($event, widget) {
+    // Show the spinner before the for loop starts
     debugger;
+    Page.Variables.showSpinner = true;
     var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
-    for (var i = 0; i < selectedItems.length; i++) {
-        var selectedItem = selectedItems[i];
-
-        try {
-            Page.Variables.UpdateCollectionTreatmentVar.setInput({
-                'id': selectedItem.actionId,
-                'partitionKey': getCurrentDate(),
-                "CollectionTreatmentStepUpdate": {
-                    'assignedAgentId': Page.Widgets.AssignedPersonSelectDialog.datavalue,
-                    'assignedTeam': Page.Widgets.AssignedTeamSelectDialog.datavalue,
-                    'channel': {
-                        'originatorAppId': "FAWBTELUSAGENT",
-                        'channelOrgId': "FAWBTELUSAGENT",
-                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
-                    }
+    // Extracting IDs using map function
+    var selectedIds = selectedItems.map(item => "" + item.actionId);
+    var partitionKeys = selectedItems.map(item => "" + item.partitionKey);
+    try {
+        Page.Variables.bulkStepsUpdate.setInput({
+            'ids': selectedIds,
+            'partitionKeys': partitionKeys,
+            "collectionTreatmentStepUpdate": {
+                'assignedAgentId': Page.Widgets.AssignedPersonSelectDialog.datavalue,
+                'assignedTeam': Page.Widgets.AssignedTeamSelectDialog.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
-            });
-
-            setTimeout(function() {
-                // Invoke POST coll treatment service
-                Page.Variables.UpdateCollectionTreatmentVar.invoke();
-            }, 100); // Delay in milliseconds (100 milliseconds)
-        } catch (error) {
-            console.error("Error invoking service for actionId:", selectedItem.actionId, error);
-            // Handle the error as needed
-        }
+            }
+        });
+        // Invoke POST coll treatment service
+        Page.Variables.bulkStepsUpdate.invoke();
+    } catch (error) {
+        debugger;
+        console.error("Error invoking service for actionId:", selectedItem.actionId, error);
+        // Handle the error as needed
     }
-    setTimeout(updateUI, 4000);
+    debugger;
 };
 
-function updateUI() {
-    App.refreshCollActionList();
+Page.bulkStepsUpdateonError = function(variable, data, xhrObj) {
+    debugger;
+};
+
+Page.bulkStepsUpdateonSuccess = function(variable, data) {
+    debugger;
+    var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+    var totalActions = selectedItems.length;
+    var failedCount = parseInt(data.value);
+    var successCount = totalActions - failedCount;
+    if (failedCount > 0) {
+        Page.Widgets.dialogErrorMessage.type = 'error';
+    } else {
+        Page.Widgets.dialogErrorMessage.type = 'success';
+    }
+    Page.Variables.dialogErrorMsg.dataSet.dataValue = "Total Actions = " + totalActions + "<br>Success = " + successCount + "<br>Failed = " + failedCount;
+    //Page.Variables.dialogErrorMsg.dataSet.dataValue = "Total Actions = " + totalActions + "\nSuccess = " + successCount + "\nFailed = " + failedCount;
+    // Hide the spinner after the for loop completes
+    setTimeout(App.refreshCollActionList, 1000);
+    Page.Variables.showSpinner = false;
+};
+
+Page.dialogOkButtonClick = function($event, widget) {
+    debugger;
     Page.Widgets.assignActionsDialog.close();
+    //Page.Variables.assignedActionsDialogOpened = false;
+};
+
+App.refreshCollActionList = function() {
+    debugger;
     Page.Variables.assignedActionsDialogOpened = false;
-}
+    if (workCategoryDataArray.length > 1) {
+        var finalWorkCategoriesAR = workCategoryDataArray.join("|");
+    } else {
+        var finalWorkCategoriesAR = workCategoryDataArray;
+    }
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
+        'workCategory': finalWorkCategoriesAR,
+        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+        'status': Page.Widgets.StatusSelect.datavalue,
+        'fromDueDate': Page.Widgets.creationDate.datavalue,
+        'toDueDate': Page.Widgets.completionDate.datavalue,
+        'viewType': '1',
+        'limit': 20,
+        'offset': 0
+    });
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+};
 
-
-Page.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {};
 
 Page.dialogCancelButtonClick = function($event, widget) {
     debugger;
@@ -255,17 +263,17 @@ Page.goToEnityPage = function(row) {
 
 // assigned Team on Change
 Page.AssignedTeamSelectChange = function($event, widget, newVal, oldVal) {
-    debugger;
-    if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
-        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
-    } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
-        Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
-    } else {
-        Page.Variables.getUserListByTeamId_ARAgentV.setInput({
-            'teamId': Page.Widgets.AssignedTeamSelect.datavalue
-        });
-        Page.Variables.getUserListByTeamId_ARAgentV.invoke();
-    }
+    /*    debugger;
+        if (Page.Widgets.AssignedTeamSelect.datavalue == 'ALL') {
+            Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
+        } else if (Page.Widgets.AssignedTeamSelect.datavalue == 'NULL') {
+            Page.Variables.getAllActiveUserList_ARAgentView_forALL.invoke();
+        } else {
+            Page.Variables.getUserListByTeamId_ARAgentV.setInput({
+                'teamId': Page.Widgets.AssignedTeamSelect.datavalue
+            });
+            Page.Variables.getUserListByTeamId_ARAgentV.invoke();
+        }*/
 };
 
 // adding all in Assigned Team
