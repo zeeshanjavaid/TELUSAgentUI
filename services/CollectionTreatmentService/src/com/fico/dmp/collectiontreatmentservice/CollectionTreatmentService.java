@@ -234,10 +234,10 @@ public class CollectionTreatmentService {
             logger.info("::::::::Get Coll Treatment step data endpoint call success ::::::::");
             
             collectionTreatmentStepResponseList.stream().forEach(a->a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
-//             collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+            //collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
             collectionTreatmentStepResponseList.stream().forEach(a -> {
-                if (commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()) == null) {
-                    a.getAuditInfo().setCreatedBy("UNKNOWN");
+                if (a.getAuditInfo().getCreatedBy().equalsIgnoreCase("SAS Batch Job")) {
+                    a.getAuditInfo().setCreatedBy(a.getAuditInfo().getCreatedBy());
                 } else {
                     a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()));
                 }
