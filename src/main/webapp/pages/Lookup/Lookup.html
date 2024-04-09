@@ -122,6 +122,11 @@
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn48">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label20" fontsize="12" caption="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag? 'Y' : 'N'"></wm-label>
+                        <wm-composite name="composite2">
+                            <wm-container class="col-md-9" name="container6">
+                                <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag? 'Y' : 'N'" checkedvalue="Y" uncheckedvalue="N" show="false"></wm-checkbox>
+                            </wm-container>
+                        </wm-composite>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn47">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label22" caption="Coll Start DT:" color="grey" fontsize="12" class="lookupLabel"></wm-label>

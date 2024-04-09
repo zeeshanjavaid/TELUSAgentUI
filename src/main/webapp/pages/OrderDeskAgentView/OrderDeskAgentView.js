@@ -327,3 +327,134 @@ Page.RefreshData = function() {
     Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
 
 }
+
+Page.bulkStepsUpdateonError = function(variable, data, xhrObj) {
+    debugger;
+};
+Page.bulkStepsUpdateonSuccess = function(variable, data) {
+    debugger;
+    var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+    var totalActions = selectedItems.length;
+    var failedCount = parseInt(data.value);
+    var successCount = totalActions - failedCount;
+    if (failedCount > 0) {
+        Page.Widgets.dialogErrorMessage.type = 'error';
+    } else {
+        Page.Widgets.dialogErrorMessage.type = 'success';
+    }
+    Page.Variables.dialogErrorMsg.dataSet.dataValue = "Total Actions = " + totalActions + "<br>Success = " + successCount + "<br>Failed = " + failedCount;
+    //Page.Variables.dialogErrorMsg.dataSet.dataValue = "Total Actions = " + totalActions + "\nSuccess = " + successCount + "\nFailed = " + failedCount;
+    // Hide the spinner after the for loop completes
+    setTimeout(App.refreshCollActionList, 1000);
+    Page.Variables.showSpinner = false;
+};
+
+Page.dialogOkButtonClick = function($event, widget) {
+    debugger;
+    Page.Widgets.assignActionsDialog.close();
+    //Page.Variables.assignedActionsDialogOpened = false;
+};
+
+App.refreshCollActionList = function() {
+    debugger;
+    Page.Variables.assignedActionsDialogOpened = false;
+
+    var workCategoryDataArray = Page.Widgets.WorkCategorySelect.datavalue;
+    if (workCategoryDataArray.length > 1) {
+        var finalWorkCategoriesOD = workCategoryDataArray.join("|");
+    } else {
+        var finalWorkCategoriesOD = workCategoryDataArray;
+    }
+
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.setInput({
+        'assignedTeam': Page.Widgets.AssignedTeamSelect.datavalue,
+        'assignedAgent': Page.Widgets.AssignedPersonSelect.datavalue,
+        'entityOwner': Page.Widgets.EntityOwnerSelect.datavalue,
+        'workCategory': finalWorkCategoriesOD,
+        'actionType': Page.Widgets.ActionTypeSelect.datavalue,
+        'status': Page.Widgets.StatusSelect.datavalue,
+        'fromDueDate': Page.Widgets.creationDate.datavalue,
+        'toDueDate': Page.Widgets.completionDate.datavalue,
+        'viewType ': '2',
+        'limit': 20,
+        'offset': 0
+    });
+
+    Page.Variables.CollectionDataServiceGetActionViewByTeam.invoke();
+};
+
+
+Page.dialogCancelButtonClick = function($event, widget) {
+    debugger;
+    Page.Widgets.assignActionsDialog.close();
+    Page.Variables.assignedActionsDialogOpened = false;
+};
+
+Page.assignActionsButtonClick = function($event, widget) {
+    debugger;
+    Page.Widgets.assignActionsDialog.open();
+};
+
+Page.assignActionsButtonClick1 = function($event, widget) {
+    debugger;
+    Page.Variables.dialogErrorMsg.dataSet.dataValue = null;
+    if (Page.Widgets.getActionViewByTeamTable1.selectedItems.length > 0) {
+
+        var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+        var firstAssignedTeam = selectedItems[0].assignedTeam;
+        var allSameAssignedTeam = selectedItems.every(function(item) {
+            return item.assignedTeam === firstAssignedTeam;
+        });
+
+        var closedStatusSelected = selectedItems.some(function(item) {
+            return item.status.toLowerCase() == "closed";
+        });
+
+        if (!allSameAssignedTeam) {
+            Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select actions belonging to same Team";
+        } else if (closedStatusSelected) {
+            Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select actions whose status is not CLOSED";
+        } else {
+            Page.Variables.selectedTeamId = selectedItems[0].assignedTeam;
+        }
+    } else {
+        // Display an error message in a popup
+        Page.Variables.dialogErrorMsg.dataSet.dataValue = "Please select an Action for Assignment";
+        //        alert("Please select at least one item.");
+    }
+    //Page.Widgets.assignActionsDialog.open();
+    Page.Variables.assignedActionsDialogOpened = true;
+};
+
+Page.dialogConfirmButtonClick = function($event, widget) {
+    // Show the spinner before the for loop starts
+    debugger;
+    Page.Variables.showSpinner = true;
+    var selectedItems = Page.Widgets.getActionViewByTeamTable1.selectedItems;
+    // Extracting IDs using map function
+    var selectedIds = selectedItems.map(item => "" + item.actionId);
+    var partitionKeys = selectedItems.map(item => "" + item.partitionKey);
+    try {
+        Page.Variables.bulkStepsUpdate.setInput({
+            'ids': selectedIds,
+            'partitionKeys': partitionKeys,
+            "collectionTreatmentStepUpdate": {
+                'assignedAgentId': Page.Widgets.AssignedPersonSelectDialog.datavalue,
+                'assignedTeam': Page.Widgets.AssignedTeamSelectDialog.datavalue,
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
+        });
+        // Invoke POST coll treatment service
+        Page.Variables.bulkStepsUpdate.invoke();
+    } catch (error) {
+        debugger;
+        console.error("Error invoking service for actionId:", selectedItem.actionId, error);
+        // Handle the error as needed
+    }
+    debugger;
+};

@@ -27,6 +27,20 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "assignedActionsDialogOpened" : {
+    "_id" : "wm-assignedActionsDialogOpened-wm.Variable-1712263936352",
+    "name" : "assignedActionsDialogOpened",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "AssignedPersonList" : {
     "_id" : "wm-AssignedPersonList-wm.ServiceVariable-1690359750332",
     "name" : "AssignedPersonList",
@@ -49,6 +63,45 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
+  },
+  "asssignedFailedCount" : {
+    "_id" : "wm-asssignedFailedCount-wm.Variable-1712263951155",
+    "name" : "asssignedFailedCount",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 0
+    },
+    "type" : "number",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "bulkStepsUpdate" : {
+    "_id" : "wm-bulkStepsUpdate-wm.ServiceVariable-1712263346598",
+    "name" : "bulkStepsUpdate",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "integer",
+    "service" : "CollectionTreatmentService",
+    "operation" : "updateCollectionTreatmentStepInBulk",
+    "operationId" : "CollectionTreatmentController_updateCollectionTreatmentStepInBulk",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "bulkStepsUpdateonSuccess(variable, data, options)",
+    "onError" : "bulkStepsUpdateonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionTreatment"
   },
   "CollectionDataServiceGetActionViewByTeam" : {
     "_id" : "wm-CollectionDataServiceGetActionViewByTeam-wm.ServiceVariable-1687431975944",
@@ -86,6 +139,20 @@
     "saveInPhonegap" : false,
     "isDefault" : true,
     "controller" : "CollectionData"
+  },
+  "dialogErrorMsg" : {
+    "_id" : "wm-dialogErrorMsg-wm.Variable-1712263898964",
+    "name" : "dialogErrorMsg",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "getAllActiveUserList_OrderDesk" : {
     "_id" : "wm-getAllActiveUserList_OrderDesk-wm.ServiceVariable-1690267873364",
@@ -159,6 +226,170 @@
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
   },
+  "getAllTeamListForAssignment" : {
+    "_id" : "wm-getAllTeamListForAssignment-wm.LiveVariable-1712264113546",
+    "name" : "getAllTeamListForAssignment",
+    "owner" : "Page",
+    "category" : "wm.LiveVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "operation" : "read",
+    "dataSet" : [ ],
+    "type" : "Team",
+    "isList" : false,
+    "saveInPhonegap" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "inFlightBehavior" : "executeLast",
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "transformationRequired" : false,
+    "liveSource" : "TELUSAgentUIDB",
+    "ignoreCase" : true,
+    "matchMode" : "startignorecase",
+    "orderBy" : "id asc",
+    "propertiesMap" : {
+      "columns" : [ {
+        "fieldName" : "id",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "ID",
+        "isPrimaryKey" : true,
+        "notNull" : true,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "identity",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "teamId",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "TeamID",
+        "isPrimaryKey" : false,
+        "notNull" : true,
+        "length" : 255,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "teamName",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "TeamName",
+        "isPrimaryKey" : false,
+        "notNull" : true,
+        "length" : 255,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "description",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "Description",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 255,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "createdOn",
+        "type" : "timestamp",
+        "fullyQualifiedType" : "timestamp",
+        "columnName" : "createdOn",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "updatedOn",
+        "type" : "timestamp",
+        "fullyQualifiedType" : "timestamp",
+        "columnName" : "updatedOn",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "createdBy",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "createdBy",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "updatedBy",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "updatedBy",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      } ],
+      "entityName" : "Team",
+      "fullyQualifiedName" : "com.fico.dmp.telusagentuidb.Team",
+      "tableType" : "TABLE",
+      "primaryFields" : [ "id" ]
+    },
+    "tableName" : "TEAM",
+    "tableType" : "TABLE",
+    "properties" : [ ],
+    "relatedTables" : [ ],
+    "filterFields" : { },
+    "filterExpressions" : { },
+    "package" : "com.fico.dmp.telusagentuidb.Team"
+  },
+  "getAllUserListForAssignment" : {
+    "_id" : "wm-getAllUserListForAssignment-wm.ServiceVariable-1712264163057",
+    "name" : "getAllUserListForAssignment",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "com.fico.telus.model.AssignedUserModel",
+    "service" : "CommonUtilityService",
+    "operation" : "getActiveUserList",
+    "operationId" : "CommonUtilityController_getActiveUserList",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CommonUtility"
+  },
   "getCollectionTreatment_orderDeskView" : {
     "_id" : "wm-getCollectionTreatment_orderDeskView-wm.ServiceVariable-1686900530347",
     "name" : "getCollectionTreatment_orderDeskView",
@@ -205,6 +436,34 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CommonUtility"
+  },
+  "selectedTeamId" : {
+    "_id" : "wm-selectedTeamId-wm.Variable-1712263974988",
+    "name" : "selectedTeamId",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "showSpinner" : {
+    "_id" : "wm-showSpinner-wm.Variable-1712263987860",
+    "name" : "showSpinner",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "statusSelect_orderDeskView" : {
     "_id" : "wm-statusSelect_orderDeskView_1-wm.ServiceVariable-1690191099794",
