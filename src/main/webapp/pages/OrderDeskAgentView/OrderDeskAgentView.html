@@ -147,7 +147,7 @@
                         datavalue="bind:Variables.selectedTeamId" dataset="bind:Variables.getAllTeamListForAssignment.dataSet" orderby="teamId:desc"></wm-select>
                     <wm-label padding="unset 0.5em unset unset" caption="Select Person" name="label5" color="gray" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true"></wm-label>
                     <wm-select width="60%" padding="unset 0.5em" dataset="bind:Variables.getAllUserListForAssignment.dataSet" displayexpression="bind:$[firstName] + ' '+$[lastName]" placeholder="" on-change="actionStatusSelect($event, widget, newVal, oldVal)"
-                        datafield="empId" name="AssignedPersonSelectDialog" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true" orderby="firstName:desc"></wm-select>
+                        datafield="empId" name="AssignedPersonSelectDialog" show="bind:Variables.dialogErrorMsg.dataSet.dataValue ? false : true" orderby="firstName:asc"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow16">
