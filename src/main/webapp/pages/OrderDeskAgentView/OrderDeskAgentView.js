@@ -458,3 +458,17 @@ Page.dialogConfirmButtonClick = function($event, widget) {
     }
     debugger;
 };
+Page.getActionViewByTeamTable1Select = function($event, widget, row) {
+    if (widget.selectedItems.length <= 0) {
+        Page.Widgets.assignActions.disabled = true;
+    } else {
+        Page.Widgets.assignActions.disabled = false;
+    }
+};
+Page.getActionViewByTeamTable1Deselect = function($event, widget, row) {
+    if (widget.selectedItems.length <= 0) {
+        Page.Widgets.assignActions.disabled = true;
+    } else {
+        Page.Widgets.assignActions.disabled = false;
+    }
+};
