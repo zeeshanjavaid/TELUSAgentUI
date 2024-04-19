@@ -1465,6 +1465,7 @@ Partial.UpdateActionClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = null;
+        var originalStepDate = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate;
         var originalAgentId = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue
         var selectedAgentId = Partial.Widgets.assignedPersonSelect.datavalue;
         if (originalAgentId != selectedAgentId) {
@@ -1480,16 +1481,13 @@ Partial.UpdateActionClick = function($event, widget) {
             } else {
                 Partial.Widgets.label43.caption = 'This action ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.id + ')' + ' has been assigned to ' + Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId + ' (' + Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedPersonForDefaultValue + ')' + ' who may be working on it.'
             }
-
-
         } else {
-            Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+            var payload = {
                 'id': Partial.Widgets.EditActionIdText.caption,
                 'partitionKey': getCurrentDate(),
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
-                    'stepDate': Partial.Widgets.dueDate.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                     'channel': {
@@ -1498,7 +1496,13 @@ Partial.UpdateActionClick = function($event, widget) {
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     }
                 }
-            });
+            };
+            if (originalStepDate != Partial.Widgets.dueDate.datavalue) {
+                payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
+                    stepDate: Partial.Widgets.dueDate.datavalue
+                };
+            }
+            Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
 
             //Invoke POST coll treatment service
             Partial.Variables.UpdateCollectionTreatmentVar.invoke();
@@ -1506,18 +1510,15 @@ Partial.UpdateActionClick = function($event, widget) {
             Partial.Widgets.EditActionDialog.close();
             setTimeout(messageTimeout, 3000);
             App.refreshCollActionList();
-
-
-
         }
-
     };
 }
 
 Partial.EditUpdateYesButtonClick = function($event, widget) {
     debugger;
+    var originalStepDate = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate;
     var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+    var payload = {
         'id': Partial.Widgets.EditActionIdText.caption,
         'partitionKey': getCurrentDate(),
         'collectionEntityId': Partial.pageParams.entityId,
@@ -1526,7 +1527,6 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
             'status': Partial.Widgets.EditStatusLabel.caption,
             'priority': Partial.Widgets.prioritySelect.datavalue,
             'comment': Partial.Widgets.UpdateActionComment.datavalue,
-            'stepDate': Partial.Widgets.dueDate.datavalue,
             'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
             'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
             'channel': {
@@ -1535,7 +1535,13 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
             }
         }
-    });
+    };
+    if (originalStepDate != Partial.Widgets.dueDate.datavalue) {
+        payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
+            stepDate: Partial.Widgets.dueDate.datavalue
+        };
+    }
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
 
     //Invoke POST createDispute service
     Partial.Variables.UpdateCollectionTreatmentVar.invoke();

@@ -797,6 +797,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "treatmentStepOriginalStepDate" : {
+    "_id" : "wm-treatmentStepOriginalStepDate-wm.Variable-1713474352768",
+    "name" : "treatmentStepOriginalStepDate",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "updateAssignedTeam" : {
     "_id" : "wm-updateAssignedTeam-wm.Variable-1692012482007",
     "name" : "updateAssignedTeam",
