@@ -79,6 +79,8 @@ Partial.createContact = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Cell Phone";
     } else if (Partial.Widgets.ext.datavalue && Partial.Widgets.ext.datavalue.length <= 10 && isNaN(Partial.Widgets.ext.datavalue)) {
         App.Variables.errorMsg.dataSet.dataValue = "Value must be numeric for Work Ext.";
+    } else if (Partial.Widgets.prefLangValue.datavalue === "" || Partial.Widgets.prefLangValue.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Preferred Language is mandatory";
     } else {
         debugger;
         Partial.Variables.CreateContactServiceVar.setInput({
@@ -94,6 +96,7 @@ Partial.createContact = function($event, widget) {
                 'comment': Partial.Widgets.comments.datavalue,
                 'email': Partial.Widgets.emailText.datavalue,
                 'faxNumber': Partial.Widgets.fax.datavalue ? Partial.Widgets.fax.datavalue.replace(/\D/g, '') : Partial.Widgets.fax.datavalue,
+                'preferredLanguage': Partial.Widgets.prefLangValue.datavalue,
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId

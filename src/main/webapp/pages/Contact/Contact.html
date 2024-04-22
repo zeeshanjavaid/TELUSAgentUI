@@ -41,6 +41,7 @@
                         <wm-label caption="bind:row.getProperty('faxNumber').length == 10 ? '(' + row.getProperty('faxNumber').substring(0, 3) + ')' + row.getProperty('faxNumber').substring(3, 6) + '-' + row.getProperty('faxNumber').substring(6, 10) : row.getProperty('faxNumber')"
                             class="" conditionalclass=""></wm-label>
                     </wm-table-column>
+                    <wm-table-column binding="prefLang" caption="Pref. Language" width="70px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Actions" width="60px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="getEntityContactsTable1_customRowAction($event, row)"
                         disabled="false" widget-type="button"></wm-table-row-action>
