@@ -37,7 +37,9 @@ App.rowDataValues = function(row) {
                 }
             },
             function(data) {
+                debugger;
                 Partial.Widgets.TELUSContactsSelect.datavalue = data.telusContactIndicator;
+                Partial.Widgets.langPrefList.datavalue = data.preferredLanguage;
                 Partial.Widgets.TITLESelect.datavalue = data.title;
                 Partial.Widgets.firstName.datavalue = data.firstName;
                 Partial.Widgets.lastName.datavalue = data.lastName;
@@ -107,8 +109,10 @@ App.rowDataValues = function(row) {
         if (row.contactId != null) {
             // Partial.Widgets.lastUpdatedBy.caption = null;
             //Partial.Widgets.createdBy.caption = null;
+            debugger;
             Partial.Widgets.contactIDLabel.caption = row.contactId;
             Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+            Partial.Widgets.langPrefList.datavalue = row.prefLang;
             Partial.Widgets.TITLESelect.datavalue = row.title;
             Partial.Widgets.firstName.datavalue = row.firstName;
             Partial.Widgets.lastName.datavalue = row.lastName;
@@ -129,6 +133,7 @@ App.rowDataValues = function(row) {
                     }
                 },
                 function(data) {
+                    debugger;
                     Partial.Widgets.EmailForNoticesSelect.datavalue = data.notificationIndicator;
                     Partial.Widgets.emailText.datavalue = data.email;
 
@@ -179,6 +184,7 @@ App.rowDataValues = function(row) {
         } else {
             Partial.Widgets.contactIDLabel.caption = null;
             Partial.Widgets.TELUSContactsSelect.datavalue = row.telusContacts;
+            Partial.Widgets.langPrefList.datavalue = row.prefLang;
             Partial.Widgets.TITLESelect.datavalue = row.title;
             Partial.Widgets.firstName.datavalue = row.firstName;
             Partial.Widgets.lastName.datavalue = row.lastName;
