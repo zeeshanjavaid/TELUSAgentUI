@@ -212,6 +212,7 @@ App.rowDataValues = function(row) {
         Partial.Widgets.fax.disabled = true;
         Partial.Widgets.comments.disabled = true;
         Partial.Widgets.Expire.show = false;
+        Partial.Widgets.langPrefList.disabled = true;
     } else {
         Partial.Widgets.TELUSContactsSelect.disabled = false;
         Partial.Widgets.TITLESelect.disabled = false;
@@ -224,6 +225,7 @@ App.rowDataValues = function(row) {
         Partial.Widgets.fax.disabled = false;
         Partial.Widgets.comments.disabled = false;
         Partial.Widgets.Expire.show = true;
+        Partial.Widgets.langPrefList.disabled = false;
     }
 
     Partial.Widgets.dataSource.caption = row.sourceOfContact;
@@ -259,6 +261,8 @@ Partial.updateContact = function($event, widget) {
             App.Variables.errorMsg.dataSet.dataValue = "Telus Contact is mandatory";
         } else if (Partial.Widgets.EmailForNoticesSelect.datavalue === "" || Partial.Widgets.EmailForNoticesSelect.datavalue == undefined) {
             App.Variables.errorMsg.dataSet.dataValue = "Email for Notices is mandatory";
+        } else if (Partial.Widgets.langPrefList.datavalue === "" || Partial.Widgets.langPrefList.datavalue == undefined) {
+            App.Variables.errorMsg.dataSet.dataValue = "Language Preference is mandatory";
         } else if (Partial.Widgets.firstName.datavalue == "" || Partial.Widgets.firstName.datavalue == undefined) {
             App.Variables.errorMsg.dataSet.dataValue = "First Name is mandatory";
         } else if (Partial.Widgets.lastName.datavalue == "" || Partial.Widgets.lastName.datavalue == undefined) {
@@ -289,6 +293,7 @@ Partial.updateContact = function($event, widget) {
                     'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
                     'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
                     'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                    'preferredLanguage': Partial.Widgets.langPrefList.datavalue,
                     'title': Partial.Widgets.TITLESelect.datavalue,
                     'workPhoneNumber': Partial.Widgets.workNo.datavalue ? Partial.Widgets.workNo.datavalue.replace(/\D/g, '') : Partial.Widgets.workNo.datavalue,
                     'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,

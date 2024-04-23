@@ -2507,6 +2507,24 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
+  "langList" : {
+    "_id" : "wm-langList-wm.Variable-1713549431046",
+    "name" : "langList",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "English",
+      "dataValue" : "EN"
+    }, {
+      "name" : "French",
+      "dataValue" : "FR"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "LeftNavAdminMenuList" : {
     "_id" : "wm-LeftNavAdminMenuList-wm.Variable-1675331239446",
     "name" : "LeftNavAdminMenuList",
