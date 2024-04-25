@@ -34,6 +34,10 @@ function getCurrentDate() {
     return currentDate;
 }
 
+function isAssignmentValid(assignedAgentId, assignedTeam) {
+    return (assignedAgentId && assignedAgentId != "Select") || (assignedTeam && assignedTeam != "Select");
+}
+
 Partial.CreateSuspentionRequestClick = function($event, widget) {
     debugger;
     if (Partial.Variables.getCollectionTreatmentByCollENtityId.dataSet.length == 0) {
@@ -117,6 +121,8 @@ Partial.createbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else {
         // API Call will come here
         Partial.Variables.createOrderManagmentForSuspension.setInput({
@@ -176,6 +182,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else {
         // API Call will come here
         Partial.Variables.createOrderManagmentForRestoral.setInput({
@@ -228,6 +236,8 @@ Partial.createbuttonCeaseClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Reason code is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else {
         // API Call will come here
         Partial.Variables.createOrderManagmentForCease.setInput({
@@ -343,6 +353,10 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId && (!Partial.Widgets.assignedPersonSelect.datavalue || Partial.Widgets.assignedPersonSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign person";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam && (!Partial.Widgets.assignedTeamSelect.datavalue || Partial.Widgets.assignedTeamSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign team";
     } else {
         if (originalAgentId != selectedAgentId) {
             //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
@@ -474,6 +488,10 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId && (!Partial.Widgets.assignedPersonSelect.datavalue || Partial.Widgets.assignedPersonSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign person";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam && (!Partial.Widgets.assignedTeamSelect.datavalue || Partial.Widgets.assignedTeamSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign team";
     } else {
         if (originalAgentId != selectedAgentId) {
             //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
@@ -603,6 +621,10 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId && (!Partial.Widgets.assignedPersonSelect.datavalue || Partial.Widgets.assignedPersonSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign person";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam && (!Partial.Widgets.assignedTeamSelect.datavalue || Partial.Widgets.assignedTeamSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign team";
     } else {
         if (originalAgentId != selectedAgentId) {
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -718,6 +740,10 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId && (!Partial.Widgets.assignedPersonSelect.datavalue || Partial.Widgets.assignedPersonSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign person";
+    } else if (Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedTeam && (!Partial.Widgets.assignedTeamSelect.datavalue || Partial.Widgets.assignedTeamSelect.datavalue == "Select")) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Cannot unassign team";
     } else if (originalAgentId == null && selectedAgentId == null || selectedAgentId == "") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person must be selected to Fulfill Order";
     } else {

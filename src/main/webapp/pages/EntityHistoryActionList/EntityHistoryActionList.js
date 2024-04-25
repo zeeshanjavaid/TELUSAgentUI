@@ -274,23 +274,24 @@ function createDueDate() {
 };
 
 function validateEmail(email) {
-
     return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 };
 
+function isAssignmentValid(assignedAgentId, assignedTeam) {
+    return (assignedAgentId && assignedAgentId != "Select") || (assignedTeam && assignedTeam != "Select");
+}
+
 function callOutboundAction($event, widget) {
     // Status and Priority fields are mandatory
-
     debugger;
-
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-
-
         Partial.Variables.createEntityHistoryAction.setInput({
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CALL-OB",
@@ -303,7 +304,6 @@ function callOutboundAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -323,7 +323,6 @@ function callOutboundAction($event, widget) {
         }, 1000);
 
     }
-
 };
 
 function callInboundAction($event, widget) {
@@ -341,25 +340,31 @@ function callInboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.phnNumber.datavalue) {
+            characteristicList.push({
+                name: 'PhoneNumber',
+                value: Partial.Widgets.phnNumber.datavalue
+            });
+        }
+        if (Partial.Widgets.callduration.datavalue) {
+            characteristicList.push({
+                name: 'CallDuration',
+                value: Partial.Widgets.callduration.datavalue
+            });
+        }
 
-        characteristicList.push({
-            name: 'CustomerName',
-            value: Partial.Widgets.custName.datavalue
-        });
-        characteristicList.push({
-            name: 'PhoneNumber',
-            value: Partial.Widgets.phnNumber.datavalue
-        });
-        characteristicList.push({
-            name: 'CallDuration',
-            value: Partial.Widgets.callduration.datavalue
-        });
-
-
-        Partial.Variables.createEntityHistoryAction.setInput({
+        var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "CALL-IB",
                 'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -369,10 +374,8 @@ function callInboundAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
-                'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -381,7 +384,12 @@ function callInboundAction($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
             }
-        });
+        };
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
@@ -402,6 +410,8 @@ function emailInboundAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (Partial.Widgets.mandatoryEmail._datavalue == "" || Partial.Widgets.mandatoryEmail._datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Email Address is mandatory";
     } else {
@@ -409,12 +419,14 @@ function emailInboundAction($event, widget) {
             App.Variables.errorMsg.dataSet.dataValue = "";
             // API Call will come here
             var characteristicList = [];
+            if (Partial.Widgets.mandatoryEmail.datavalue) {
+                characteristicList.push({
+                    name: 'EmailAddress',
+                    value: Partial.Widgets.mandatoryEmail.datavalue
+                });
+            }
 
-            characteristicList.push({
-                name: 'EmailAddress',
-                value: Partial.Widgets.mandatoryEmail.datavalue
-            });
-            Partial.Variables.createEntityHistoryAction.setInput({
+            var payload = {
                 "CollectionTreatmentStepCreate": {
                     'stepTypeCode': "EM-IN",
                     'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -424,10 +436,8 @@ function emailInboundAction($event, widget) {
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                     'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                     'partitionKey': getCurrentDate(),
-                    'additionalCharacteristics': characteristicList,
                     'collectionTreatment': {
                         'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                        // 'partitionKey': getCurrentDate(),
                         'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                     },
                     'channel': {
@@ -436,7 +446,12 @@ function emailInboundAction($event, widget) {
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     }
                 }
-            });
+            };
+            if (characteristicList.length > 0) {
+                payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+            }
+
+            Partial.Variables.createEntityHistoryAction.setInput(payload);
             Partial.Variables.createEntityHistoryAction.invoke();
 
             App.Variables.successMessage.dataSet.dataValue = "Email Inbound Action created successfully.";
@@ -459,6 +474,8 @@ function generalFollowUpAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         Partial.Variables.createEntityHistoryAction.setInput({
@@ -485,7 +502,6 @@ function generalFollowUpAction($event, widget) {
         });
         Partial.Variables.createEntityHistoryAction.invoke();
 
-
         App.Variables.successMessage.dataSet.dataValue = "General Follow-up Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
@@ -499,34 +515,33 @@ function generalFollowUpAction($event, widget) {
 
 function overdueNoticeAction($event, widget) {
     // Status and Priority fields are mandatory
-
     debugger;
     if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
         // } else if (!validateEmail(Partial.Widgets.nonMandatoryEmail.datavalue)) {
-
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
-
-
-
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
 
-        characteristicList.push({
-            name: 'CustomerName',
-            value: Partial.Widgets.custName.datavalue
-        });
-        characteristicList.push({
-            name: 'EmailAddress',
-            value: Partial.Widgets.nonMandatoryEmail.datavalue
-        });
-
-        Partial.Variables.createEntityHistoryAction.setInput({
+        var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC2-OD",
                 'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -536,10 +551,8 @@ function overdueNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
-                'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -548,7 +561,12 @@ function overdueNoticeAction($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
             }
-        });
+        };
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
 
 
@@ -569,24 +587,27 @@ function paymentReminderNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
-
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
 
-        characteristicList.push({
-            name: 'CustomerName',
-            value: Partial.Widgets.custName.datavalue
-        });
-        characteristicList.push({
-            name: 'EmailAddress',
-            value: Partial.Widgets.nonMandatoryEmail.datavalue
-        });
-
-        Partial.Variables.createEntityHistoryAction.setInput({
+        var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC1-PMTR",
                 'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -596,10 +617,8 @@ function paymentReminderNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
-                'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -608,9 +627,13 @@ function paymentReminderNoticeAction($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
             }
-        });
-        Partial.Variables.createEntityHistoryAction.invoke();
+        }
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
 
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
+        Partial.Variables.createEntityHistoryAction.invoke();
 
         App.Variables.successMessage.dataSet.dataValue = "Payment Reminder Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
@@ -629,24 +652,27 @@ function disconnectNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
-
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
         var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
 
-        characteristicList.push({
-            name: 'CustomerName',
-            value: Partial.Widgets.custName.datavalue
-        });
-        characteristicList.push({
-            name: 'EmailAddress',
-            value: Partial.Widgets.nonMandatoryEmail.datavalue
-        });
-
-        Partial.Variables.createEntityHistoryAction.setInput({
+        var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC3-DIST",
                 'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -656,10 +682,8 @@ function disconnectNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
-                'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -668,9 +692,13 @@ function disconnectNoticeAction($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
             }
-        });
-        Partial.Variables.createEntityHistoryAction.invoke();
+        };
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
 
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
+        Partial.Variables.createEntityHistoryAction.invoke();
 
         App.Variables.successMessage.dataSet.dataValue = "Disconnect Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
@@ -680,7 +708,6 @@ function disconnectNoticeAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
-
 };
 
 function cancellationNoticeAction($event, widget) {
@@ -689,25 +716,27 @@ function cancellationNoticeAction($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
     } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
     } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
-
         App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
-
     } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
         // API Call will come here
-        // API Call will come here
         var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
 
-        characteristicList.push({
-            name: 'CustomerName',
-            value: Partial.Widgets.custName.datavalue
-        });
-        characteristicList.push({
-            name: 'EmailAddress',
-            value: Partial.Widgets.nonMandatoryEmail.datavalue
-        });
-
-        Partial.Variables.createEntityHistoryAction.setInput({
+        var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTC4-CANL",
                 'stepDate': Partial.Widgets.dueDate.datavalue,
@@ -717,10 +746,8 @@ function cancellationNoticeAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
-                'additionalCharacteristics': characteristicList,
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -729,7 +756,12 @@ function cancellationNoticeAction($event, widget) {
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 }
             }
-        });
+        };
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Cancellation Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
@@ -1168,6 +1200,7 @@ Partial.yesButtonClick = function($event, widget) {
     $('#Outcome').hide();
     $('#actionOutcomeSelect').hide();
 };
+
 Partial.noButtonClick = function($event, widget) {
     isClicked = true;
     isReachedClickedYes = false;
@@ -1179,6 +1212,7 @@ Partial.noButtonClick = function($event, widget) {
     $('#Outcome').show();
     $('#actionOutcomeSelect').show();
 };
+
 Partial.closeButtonClick = function($event, widget) {
     debugger;
 
@@ -1191,7 +1225,6 @@ Partial.closeButtonClick = function($event, widget) {
     var phnumber = Math.floor(Math.log10(Partial.Widgets.phnNumber.datavalue)) + 1;
 
     if (Partial.Widgets.phnNumber.datavalue === undefined || Partial.Widgets.phnNumber.datavalue == null) {
-
         App.Variables.errorMsg.dataSet.dataValue = "Invalid Phone number.";
         isError = true;
     } else if (phnumber != 10) {
@@ -1204,11 +1237,9 @@ Partial.closeButtonClick = function($event, widget) {
         });
     }
     if (isClicked) {
-
         if (Partial.Widgets.actionOutcomeSelect.datavalue === undefined || Partial.Widgets.actionOutcomeSelect.datavalue == '') {
             isError = true;
             App.Variables.errorMsg.dataSet.dataValue = "Outcome option is not selected.";
-
         } else {
             characteristicList.push({
                 name: 'ReachedCustomer',
@@ -1217,10 +1248,8 @@ Partial.closeButtonClick = function($event, widget) {
             characteristicList.push({
                 name: 'Outcome',
                 value: Partial.Widgets.actionOutcomeSelect.datavalue
-
             });
         }
-
     }
 
     if (isReachedClickedYes) {
@@ -1230,8 +1259,7 @@ Partial.closeButtonClick = function($event, widget) {
         });
     }
 
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput({
-
+    var payload = {
         'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
         'partitionKey': getCurrentDate(),
         "CollectionTreatmentStepUpdate": {
@@ -1239,14 +1267,18 @@ Partial.closeButtonClick = function($event, widget) {
             'status': 'Closed',
             'comment': Partial.Widgets.Comment.datavalue,
             'assignedAgentId': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId,
-            'additionalCharacteristics': characteristicList,
             'channel': {
                 'originatorAppId': "FAWBTELUSAGENT",
                 'channelOrgId': "FAWBTELUSAGENT",
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
             }
         }
-    });
+    };
+    if (characteristicList.length > 0) {
+        payload.CollectionTreatmentStepUpdate.additionalCharacteristics = characteristicList;
+    }
+
+    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
 
     if (!isError) {
         debugger;
@@ -1258,7 +1290,6 @@ Partial.closeButtonClick = function($event, widget) {
         App.refreshCollActionList();
 
     }
-
 };
 
 Partial.cancleButtonClick = function($event, widget) {
@@ -1463,6 +1494,10 @@ Partial.UpdateActionClick = function($event, widget) {
 
     if (!Partial.Widgets.prioritySelect.datavalue) {
         App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedAgentId && (!Partial.Widgets.assignedPersonSelect.datavalue || Partial.Widgets.assignedPersonSelect.datavalue == "Select")) {
+        App.Variables.errorMsg.dataSet.dataValue = "Cannot unassign person";
+    } else if (Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.assignedTeam && (!Partial.Widgets.assignedTeamSelect.datavalue || Partial.Widgets.assignedTeamSelect.datavalue == "Select")) {
+        App.Variables.errorMsg.dataSet.dataValue = "Cannot unassign team";
     } else {
         App.Variables.errorMsg.dataSet.dataValue = null;
         var originalStepDate = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate;
