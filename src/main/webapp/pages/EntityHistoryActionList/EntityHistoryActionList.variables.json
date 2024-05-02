@@ -165,6 +165,10 @@
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "NOTC5-ACTMGR"
+    }, {
+      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -199,6 +203,10 @@
       "dataValue" : "CEASE"
     }, {
       "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "NOTC5-ACTMGR"
+    }, {
+      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -329,6 +337,10 @@
       "dataValue" : "NOTC2-OD"
     }, {
       "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "NOTC5-ACTMGR"
+    }, {
+      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -356,6 +368,20 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionTreatment"
+  },
+  "customerNameLabel" : {
+    "_id" : "wm-customerNameLabel-wm.Variable-1714585885142",
+    "name" : "customerNameLabel",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
   },
   "dialogNameBool" : {
     "_id" : "wm-dialogNameBool-wm.Variable-1686046800285",
@@ -632,7 +658,7 @@
     "subCategory" : "None",
     "dataBinding" : [ {
       "target" : "type",
-      "value" : "CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND",
+      "value" : "CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND",
       "type" : "string"
     }, {
       "target" : "IsOdManagement",

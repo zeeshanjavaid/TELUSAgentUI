@@ -33,22 +33,16 @@ Partial.onReady = function() {
 
     // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
-
     Partial.Variables.getCollectionTreatMentByEntId.setInput({
         'collectionEntityId': Partial.pageParams.entityId
     });
     Partial.Variables.getCollectionTreatMentByEntId.invoke();
-
-
 
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
-
-
-
 };
 
 function messageTimeout() {
@@ -69,16 +63,10 @@ function getCurrentDate() {
 
 
 Partial.nextButtonClick = function($event, widget) {
-
     debugger;
-
     if (Partial.Variables.getCollectionTreatMentByEntId.dataSet.length == 0) {
-
         App.Variables.errorMsg.dataSet.dataValue = "You cannot create an action for this entity. Entity is not yet in collection treatment.";
-
     } else {
-
-
         if (Partial.Widgets.select1.datavalue == "" || Partial.Widgets.select1.datavalue == undefined) {
             Partial.Variables.errorMsg.dataSet.dataValue = "Action is mandatory";
         } else {
@@ -88,6 +76,7 @@ Partial.nextButtonClick = function($event, widget) {
         // Call Outbound Action 
         if (Partial.Widgets.select1.datavalue == 'Call Outbound') {
             Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.customerNameLabel.dataValue = 'Customer Name';
             Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
             Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'High';
             Partial.Widgets.dueDate.datavalue = createDueDate();
@@ -112,10 +101,10 @@ Partial.nextButtonClick = function($event, widget) {
             Partial.Widgets.dueDate.datavalue = '';
         }
 
-
         // Call Inbound Action
         if (Partial.Widgets.select1.datavalue == 'Call Inbound') {
             Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.customerNameLabel.dataValue = 'Customer Name';
             Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
             Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
             Partial.Widgets.dueDate.datavalue = new Date();
@@ -148,6 +137,7 @@ Partial.nextButtonClick = function($event, widget) {
         // Email Inbound Action 
         if (Partial.Widgets.select1.datavalue == 'Email Inbound') {
             Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.customerNameLabel.dataValue = 'Customer Name';
             Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
             Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
             Partial.Widgets.dueDate.datavalue = new Date();
@@ -177,6 +167,7 @@ Partial.nextButtonClick = function($event, widget) {
         // General Follow-up Action 
         if (Partial.Widgets.select1.datavalue == 'General Follow-up') {
             Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.customerNameLabel.dataValue = 'Customer Name';
             Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Open';
             Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Low';
             Partial.Widgets.dueDate.datavalue = createDueDate();
@@ -201,10 +192,15 @@ Partial.nextButtonClick = function($event, widget) {
             Partial.Widgets.dueDate.datavalue = '';
         }
 
-
         //  Notice Actions
-        if (Partial.Widgets.select1.datavalue == 'Overdue Notice' || Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' || Partial.Widgets.select1.datavalue == 'Disconnect Notice' || Partial.Widgets.select1.datavalue == 'Cancellation Notice') {
+        if (Partial.Widgets.select1.datavalue == 'Account Manager Notice' ||
+            Partial.Widgets.select1.datavalue == 'Cancellation Notice' ||
+            Partial.Widgets.select1.datavalue == 'Disconnect Notice' ||
+            Partial.Widgets.select1.datavalue == 'Overdue Notice' ||
+            Partial.Widgets.select1.datavalue == 'Payment Reminder Notice' ||
+            Partial.Widgets.select1.datavalue == 'Referral Notice') {
             Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Variables.customerNameLabel.dataValue = Partial.Widgets.select1.datavalue == 'Account Manager Notice' ? 'Account Manager Name' : 'Customer Name';
             Partial.Variables.actionStatusDefaultVar.dataSet.dataValue = 'Closed';
             Partial.Variables.actionPriorityDefaultVar.dataSet.dataValue = 'Medium';
             Partial.Widgets.dueDate.datavalue = new Date();
@@ -281,6 +277,70 @@ function isAssignmentValid(assignedAgentId, assignedTeam) {
     return (assignedAgentId && assignedAgentId != "Select") || (assignedTeam && assignedTeam != "Select");
 }
 
+function accountManagerNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'AccountManagerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
+
+        var payload = {
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC5-ACTMGR",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
+                'collectionTreatment': {
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
+                },
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
+        }
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
+        Partial.Variables.createEntityHistoryAction.invoke();
+
+        App.Variables.successMessage.dataSet.dataValue = "Account Manager Notice Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
+    }
+};
+
 function callOutboundAction($event, widget) {
     // Status and Priority fields are mandatory
     debugger;
@@ -328,7 +388,6 @@ function callOutboundAction($event, widget) {
 function callInboundAction($event, widget) {
     // Status and Priority fields are mandatory
     debugger;
-
     var phnumber;
     if (!Partial.Widgets.phnNumber.datavalue == "" || !Partial.Widgets.phnNumber.datavalue == undefined) {
         phnumber = Math.floor(Math.log10(Partial.Widgets.phnNumber.datavalue)) + 1;
@@ -400,7 +459,6 @@ function callInboundAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
-
 };
 
 function emailInboundAction($event, widget) {
@@ -465,7 +523,6 @@ function emailInboundAction($event, widget) {
             App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
         }
     }
-
 };
 
 function generalFollowUpAction($event, widget) {
@@ -510,7 +567,6 @@ function generalFollowUpAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
-
 };
 
 function overdueNoticeAction($event, widget) {
@@ -569,7 +625,6 @@ function overdueNoticeAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
 
-
         App.Variables.successMessage.dataSet.dataValue = "Overdue Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
@@ -578,7 +633,6 @@ function overdueNoticeAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
-
 };
 
 function paymentReminderNoticeAction($event, widget) {
@@ -643,7 +697,6 @@ function paymentReminderNoticeAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
-
 };
 
 function disconnectNoticeAction($event, widget) {
@@ -771,53 +824,114 @@ function cancellationNoticeAction($event, widget) {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
     }
+};
 
+function referralNoticeAction($event, widget) {
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.actionStatusSelect.datavalue == "" || Partial.Widgets.actionStatusSelect.datavalue == undefined || Partial.Widgets.actionStatusSelect.datavalue == "Select") {
+        App.Variables.errorMsg.dataSet.dataValue = "Status is mandatory";
+    } else if (Partial.Widgets.prioritySelect.datavalue == "" || Partial.Widgets.prioritySelect.datavalue == undefined || Partial.Widgets.prioritySelect.datavalue == "Select") {
+        App.Variables.errorMsg.dataSet.dataValue = "Priority is mandatory";
+    } else if (!isAssignmentValid(Partial.Widgets.assignedPersonSelect.datavalue, Partial.Widgets.assignedTeamSelect.datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Assigned Person or Assigned Team is mandatory";
+    } else if (Partial.Widgets.nonMandatoryEmail._datavalue != "" && Partial.Widgets.nonMandatoryEmail._datavalue != undefined && !validateEmail(Partial.Widgets.nonMandatoryEmail._datavalue)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
+    } else if (!Partial.Widgets.actionStatusSelect.datavalue == "" && !Partial.Widgets.prioritySelect.datavalue == "") {
+        // API Call will come here
+        var characteristicList = [];
+        if (Partial.Widgets.custName.datavalue) {
+            characteristicList.push({
+                name: 'CustomerName',
+                value: Partial.Widgets.custName.datavalue
+            });
+        }
+        if (Partial.Widgets.nonMandatoryEmail.datavalue) {
+            characteristicList.push({
+                name: 'EmailAddress',
+                value: Partial.Widgets.nonMandatoryEmail.datavalue
+            });
+        }
+
+        var payload = {
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTC6-REFERRAL",
+                'stepDate': Partial.Widgets.dueDate.datavalue,
+                'comment': Partial.Widgets.Comment.datavalue,
+                'status': Partial.Widgets.actionStatusSelect.datavalue,
+                'priority': Partial.Widgets.prioritySelect.datavalue,
+                'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
+                'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
+                'partitionKey': getCurrentDate(),
+                'collectionTreatment': {
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
+                },
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
+        }
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
+        Partial.Variables.createEntityHistoryAction.invoke();
+
+        App.Variables.successMessage.dataSet.dataValue = "Referral Notice Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
+    }
 };
 
 Partial.createButtonClick = function($event, widget) {
-
     var actionName = Partial.Variables.actionName.dataValue;
     switch (actionName) {
+        case 'Account Manager Notice':
+            accountManagerNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            break;
         case 'Call Outbound':
             callOutboundAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'Call Inbound':
             callInboundAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
-
             break;
         case 'Email Inbound':
             emailInboundAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'General Follow-up':
             generalFollowUpAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'Overdue Notice':
             overdueNoticeAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'Payment Reminder Notice':
             paymentReminderNoticeAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'Disconnect Notice':
             disconnectNoticeAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
             break;
         case 'Cancellation Notice':
             cancellationNoticeAction($event, widget);
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
+            break;
+        case 'Referral Notice':
+            referralNoticeAction($event, widget);
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         default:
             App.Variables.errorMsg.dataSet.dataValue = "Not a valid action.";
@@ -867,7 +981,6 @@ Partial.openFilterGrid = function($event, widget) {
         $('#completionDateGrid').show();
 
     }
-
     //Partial.Variables.CollectionTreatmentServiceGetCollectionTreatmentStep.dataSet;
 };
 
@@ -898,7 +1011,6 @@ Partial.clearFilterFields = function($event, widget) {
             'offset': 0
         });
         Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
     } else if (completedTable == true) {
         Partial.Widgets.toDoCategorySelect.datavalue = "All";
         Partial.Widgets.completedCategorySelect.datavalue = "All";
@@ -926,12 +1038,7 @@ Partial.clearFilterFields = function($event, widget) {
         });
 
         Partial.Variables.GetCollectionActivityLogList.invoke();
-
     }
-
-
-
-
 }
 
 // function added to apply filter to the table
@@ -947,7 +1054,6 @@ Partial.applyFilter = function($event, widget) {
     var eventTypeSelect = '';
     var statusForTodo = '';
 
-
     if (Partial.Widgets.createdBySelect.datavalue != '') {
         createdBy = Partial.Widgets.createdBySelect.datavalue;
     }
@@ -955,8 +1061,6 @@ Partial.applyFilter = function($event, widget) {
     if (Partial.Widgets.assignedPersonSelectfilter.datavalue != '' && Partial.Widgets.assignedPersonSelectfilter.datavalue != undefined) {
         assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
     }
-
-
 
     if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
         // typeCode = 'ALL';
@@ -968,14 +1072,10 @@ Partial.applyFilter = function($event, widget) {
 
     }
 
-
     if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
-
         statusForTodo = 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
-
     } else {
         statusForTodo = Partial.Widgets.statusSelect.datavalue;
-
     }
 
     if (toDoTable == true) {
@@ -992,11 +1092,8 @@ Partial.applyFilter = function($event, widget) {
             'assignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
             'limit': 10,
             'offset': 0
-
         });
-
         Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
     } else if (completedTable == true) {
         debugger;
         if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_TRTMT_STEP") {
@@ -1006,37 +1103,25 @@ Partial.applyFilter = function($event, widget) {
             } else {
                 typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             }
-
-
             if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
                 statusForHistory = '';
             } else {
-
                 if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
                     if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
-
-
                         statusForHistory = "Request Created,Request Assigned,Order Created,Order Assigned,Order Fullfilled";
                     } else {
                         statusForHistory = Partial.Widgets.statusSelect.datavalue;
                     }
                 } else {
-
                     if (Partial.Widgets.statusSelect.datavalue == '' || Partial.Widgets.statusSelect.datavalue == undefined) {
-
-
                         statusForHistory = "Open,Closed,Cancelled";
                     } else {
-
                         statusForHistory = Partial.Widgets.statusSelect.datavalue;
                     }
                 }
             }
-
-
         } else if (Partial.Widgets.completedCategorySelect.displayValue == "PYMT_ARRNGMT") {
             categroyForCompleted = 'CollectionPaymentArrangement';
-
             if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
                 typeCodeForCompleted = '';
             } else {
@@ -1047,11 +1132,8 @@ Partial.applyFilter = function($event, widget) {
             } else {
                 statusForHistory = Partial.Widgets.statusSelect.datavalue;
             }
-
-
         } else if (Partial.Widgets.completedCategorySelect.displayValue == "COLL_DISPUTE") {
             categroyForCompleted = 'CollectionDispute';
-
             if (Partial.Widgets.typeSelect.datavalue == '' || Partial.Widgets.typeSelect.datavalue == undefined) {
                 typeCodeForCompleted = '';
             } else {
@@ -1062,15 +1144,11 @@ Partial.applyFilter = function($event, widget) {
             } else {
                 statusForHistory = Partial.Widgets.statusSelect.datavalue;
             }
-
         } else {
             categroyForCompleted = '';
             typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             statusForHistory = Partial.Widgets.statusSelect.datavalue;
-
         }
-
-
 
         if (Partial.Widgets.EventTypeSelect.datavalue === 'ALL') {
             eventTypeSelect = '';
@@ -1081,7 +1159,6 @@ Partial.applyFilter = function($event, widget) {
         var completionDateTime
 
         if (Partial.Widgets.creationDate.datavalue != "") {
-
             completionDateTime = Partial.Widgets.creationDate.datavalue + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + "-08:00";
         }
 
@@ -1098,9 +1175,7 @@ Partial.applyFilter = function($event, widget) {
         });
 
         Partial.Variables.GetCollectionActivityLogList.invoke();
-
     }
-
 }
 
 Partial.toDoButtonClick = function($event, widget) {
@@ -1136,7 +1211,6 @@ Partial.toDoButtonClick = function($event, widget) {
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
     $('#completionDateGrid').hide();
-
 };
 
 Partial.completedButtonClick = function($event, widget) {
@@ -1176,9 +1250,7 @@ Partial.completedButtonClick = function($event, widget) {
     $('#eventTypeColl').show();
 
     App.refreshHistoryActionList();
-
 };
-
 
 // display the close action Dailog
 Partial.CloseActionDialogOpened = function($event, widget) {
@@ -1187,6 +1259,7 @@ Partial.CloseActionDialogOpened = function($event, widget) {
     $('#Outcome').hide();
     $('#actionOutcomeSelect').hide();
 };
+
 Partial.yesButtonClick = function($event, widget) {
     // to make buttons selected
     isClicked = false;
@@ -1215,10 +1288,8 @@ Partial.noButtonClick = function($event, widget) {
 
 Partial.closeButtonClick = function($event, widget) {
     debugger;
-
     var isError = false;
     // if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
-
     //  if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '') {
     var characteristicList = [];
 
@@ -1288,15 +1359,14 @@ Partial.closeButtonClick = function($event, widget) {
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
         setTimeout(messageTimeout, 3000);
         App.refreshCollActionList();
-
     }
 };
 
 Partial.cancleButtonClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Widgets.CloseActionDialog.close();
-
 };
+
 Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row) {
     debugger;
     if (row.status != 'Closed' && row.status != 'Cancelled') {
@@ -1304,9 +1374,8 @@ Partial.getCollectionTreatmentStepTable2_customRow1Action = function($event, row
         Partial.Variables.dialogNameBool.dataSet.dataValue = false;
         Partial.Widgets.EditActionDialog.open();
     }
-
-
 };
+
 Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row) {
     debugger;
     if (row.status != 'Closed' && row.status != 'Cancelled') {
@@ -1318,36 +1387,23 @@ Partial.getCollectionTreatmentStepTable2_customRow2Action = function($event, row
             Partial.Widgets.assigned_closeActionDialog.open();
         }
     }
-
 };
+
 Partial.button15_1Click = function($event, widget) {
-
-
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
-
         Partial.Widgets.notAssigned_closeActionDialog.close();
-
-
     } else {
         Partial.Widgets.assigned_closeActionDialog.close();
     }
-
-
 };
 
 Partial.button15Click = function($event, widget) {
-
     debugger;
-
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
-
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Widgets.notAssigned_closeActionDialog.open();
-
-
     } else {
         Partial.Variables.UpdateCollectionTreatmentVar.setInput({
-
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
             'partitionKey': getCurrentDate(),
             "CollectionTreatmentStepUpdate": {
@@ -1366,42 +1422,30 @@ Partial.button15Click = function($event, widget) {
 
         Partial.Variables.UpdateCollectionTreatmentVar.invoke();
 
-
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
         setTimeout(messageTimeout, 3000);
         App.refreshCollActionList();
-
     }
-
-
 };
-Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row) {
 
+Partial.getCollectionTreatmentStepTable2_customRow3Action = function($event, row) {
     debugger;
     if (row.status != 'Closed' && row.status != 'Cancelled') {
         if (row.assignedAgentId == '' || row.assignedAgentId == null) {
             Partial.Widgets.notAssigned_cancleActionDialog.open();
-
         } else {
-
             Partial.Widgets.assigned_cancleActionDialog.open();
         }
     }
-
 };
+
 Partial.button16_1Click = function($event, widget) {
-
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
-
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Widgets.notAssigned_cancleActionDialog.open();
-
-
     } else {
-
         Partial.Variables.UpdateCollectionTreatmentVar.setInput({
-
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
             'partitionKey': getCurrentDate(),
             "CollectionTreatmentStepUpdate": {
@@ -1424,31 +1468,25 @@ Partial.button16_1Click = function($event, widget) {
         setTimeout(messageTimeout, 3000);
         App.refreshCollActionList();
     }
-
-
 };
-Partial.button17_1Click = function($event, widget) {
 
+Partial.button17_1Click = function($event, widget) {
     debugger;
     if (Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == '' || Partial.Widgets.getCollectionTreatmentStepTable2.selectedItems[0].assignedAgentId == null) {
-
         Partial.Widgets.notAssigned_cancleActionDialog.close();
-
     } else {
         Partial.Widgets.assigned_cancleActionDialog.close();
     }
-
 };
 
 
 Partial.button14_2Click = function($event, widget) {
     Partial.Widgets.assigned_cancleActionDialog.close();
 };
+
 Partial.closeActionClick = function($event, widget) {
     Partial.Widgets.assigned_closeActionDialog.close();
-
 };
-
 
 Partial.categorySelectToDoOnChange = function($event, widget, newVal, oldVal) {
     if (Partial.Widgets.toDoCategorySelect.datavalue == "") {
@@ -1481,10 +1519,9 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
 function messageTimeout() {
     Partial.Variables.successMessage.dataSet.dataValue = null;
 }
+
 Partial.CloseActionDialogClose = function($event, widget) {
-
     App.Variables.errorMsg.dataSet.dataValue = null;
-
 };
 
 Partial.UpdateActionClick = function($event, widget) {
@@ -1584,7 +1621,6 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
     setTimeout(messageTimeout, 3000);
     App.refreshCollActionList();
-
 };
 
 Partial.EditUpdateNoButtonClick = function($event, widget) {
@@ -1593,7 +1629,6 @@ Partial.EditUpdateNoButtonClick = function($event, widget) {
     $("#UpdateActionButtonId").hide();
     $("#layoutgrid5id").show();
     $("#EditActionButtonId").show();
-
 };
 
 Partial.updateActionDialogClose = function($event, widget) {
@@ -1626,34 +1661,21 @@ Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
 
 };
 
-
 Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
 
 };
 
-
-
-
-
 App.refreshCollActionList = function() {
-
-
-
     Partial.Variables.getCollectionTreatmentStep_1.setInput({
-
         "collectionEntityId": Partial.pageParams.entityId,
         'limit': 10,
         'offset': 0
     });
-
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
-
-
 };
-Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row) {
 
-};
+Partial.getCollectionTreatmentStepTable2_customRowAction = function($event, row) {};
+
 Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
     debugger;
     if (toDoTable) {
@@ -1681,22 +1703,15 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
         }
     }
-
-
-
 };
 
 App.refreshHistoryActionList = function() {
-
-
     Partial.Variables.GetCollectionActivityLogList.setInput({
         'collectionEntityId': Partial.pageParams.entityId,
         'limit': 10,
         'offset': 0
     });
-
     Partial.Variables.GetCollectionActivityLogList.invoke();
-
 };
 
 Partial.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {
@@ -1708,7 +1723,6 @@ Partial.Telus_PaginatonPagechangeForHsitoryToDo = function($event, $data) {
     Partial.size = $event.pageSize
     Partial.page = $event.pageNumber
     Partial.RefreshData();
-
 };
 
 Partial.RefreshData = function() {
@@ -1719,16 +1733,13 @@ Partial.RefreshData = function() {
         'offset': offset
     });
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
-
 }
-
 
 Partial.Telus_PaginatonPagechangeForHsitoryHisrtory = function($event, $data) {
     debugger;
     Partial.size = $event.pageSize
     Partial.page = $event.pageNumber
     Partial.RefreshDataForHistory();
-
 };
 
 Partial.RefreshDataForHistory = function() {
@@ -1739,8 +1750,8 @@ Partial.RefreshDataForHistory = function() {
         'offset': offset
     });
     Partial.Variables.GetCollectionActivityLogList.invoke();
-
 }
+
 Partial.CreateActionbuttonClick = function($event, widget) {
     Partial.Widgets.SelectActionDialog.open();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
