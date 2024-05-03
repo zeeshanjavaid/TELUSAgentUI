@@ -12,6 +12,7 @@ var isClicked = false;
 var isReachedClickedYes = true;
 var toDoTable = true;
 var completedTable = false;
+
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
     /*
@@ -61,6 +62,67 @@ function getCurrentDate() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
 };*/
 
+var getTreatmentStepIntervalObj = null;
+
+function intervalGetTreatmentStep(interval, timeout) {
+    function setIntervalObj() {
+        const currentTime = new Date().getTime();
+        const intervalId = setInterval(() => {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, interval);
+        getTreatmentStepIntervalObj = {
+            id: intervalId,
+            timestamp: currentTime
+        };
+        const timeoutId = setTimeout(() => {
+            clearInterval(getTreatmentStepIntervalObj.id);
+            getTreatmentStepIntervalObj = null;
+        }, timeout);
+        getTreatmentStepIntervalObj.timeoutId = timeoutId;
+    }
+    if (!getTreatmentStepIntervalObj) {
+        setIntervalObj();
+    } else {
+        const currentTime = new Date().getTime();
+        const diff = currentTime - getTreatmentStepIntervalObj.timestamp;
+        if (diff > (timeout / 2)) {
+            clearTimeout(getTreatmentStepIntervalObj.timeoutId);
+            clearInterval(getTreatmentStepIntervalObj.id);
+            setIntervalObj();
+        }
+    }
+}
+
+var getHistoricalActionIntervalObj = null;
+
+function interverlGetHistoricalAction(interval, timeout) {
+    function setIntervalObj() {
+        const currentTime = new Date().getTime();
+        const intervalId = setInterval(() => {
+            Partial.Variables.GetCollectionActivityLogList.invoke();
+        }, interval);
+        getHistoricalActionIntervalObj = {
+            id: intervalId,
+            timestamp: currentTime
+        };
+        const timeoutId = setTimeout(() => {
+            clearInterval(getHistoricalActionIntervalObj.id);
+            getHistoricalActionIntervalObj = null;
+        }, timeout);
+        getHistoricalActionIntervalObj.timeoutId = timeoutId;
+    }
+    if (!getHistoricalActionIntervalObj) {
+        setIntervalObj();
+    } else {
+        const currentTime = new Date().getTime();
+        const diff = currentTime - getHistoricalActionIntervalObj.timestamp;
+        if (diff > (timeout / 2)) {
+            clearTimeout(getHistoricalActionIntervalObj.timeoutId);
+            clearInterval(getHistoricalActionIntervalObj.id);
+            setIntervalObj();
+        }
+    }
+}
 
 Partial.nextButtonClick = function($event, widget) {
     debugger;
@@ -330,14 +392,13 @@ function accountManagerNoticeAction($event, widget) {
 
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Account Manager Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -377,11 +438,10 @@ function callOutboundAction($event, widget) {
         App.Variables.successMessage.dataSet.dataValue = "Call Outbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
-
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -452,12 +512,11 @@ function callInboundAction($event, widget) {
         Partial.Variables.createEntityHistoryAction.invoke();
         App.Variables.successMessage.dataSet.dataValue = "Call Inbound Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
-
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -511,14 +570,13 @@ function emailInboundAction($event, widget) {
 
             Partial.Variables.createEntityHistoryAction.setInput(payload);
             Partial.Variables.createEntityHistoryAction.invoke();
-
             App.Variables.successMessage.dataSet.dataValue = "Email Inbound Action created successfully.";
             Partial.Widgets.SelectActionDialog.close();
             setTimeout(messageTimeout, 4000);
-
             setTimeout(function() {
                 Partial.Variables.getCollectionTreatmentStep_1.invoke();
             }, 1000);
+            interverlGetHistoricalAction();
         } else if (!validateEmail(Partial.Widgets.mandatoryEmail._datavalue)) {
             App.Variables.errorMsg.dataSet.dataValue = "Please enter valid Email Address";
         }
@@ -547,7 +605,6 @@ function generalFollowUpAction($event, widget) {
                 'partitionKey': getCurrentDate(),
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
-                    // 'partitionKey': getCurrentDate()
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
                 },
                 'channel': {
@@ -558,14 +615,13 @@ function generalFollowUpAction($event, widget) {
             }
         });
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "General Follow-up Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -624,14 +680,13 @@ function overdueNoticeAction($event, widget) {
 
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Overdue Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -688,14 +743,13 @@ function paymentReminderNoticeAction($event, widget) {
 
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Payment Reminder Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -752,14 +806,13 @@ function disconnectNoticeAction($event, widget) {
 
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Disconnect Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -819,10 +872,10 @@ function cancellationNoticeAction($event, widget) {
         App.Variables.successMessage.dataSet.dataValue = "Cancellation Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -879,14 +932,13 @@ function referralNoticeAction($event, widget) {
 
         Partial.Variables.createEntityHistoryAction.setInput(payload);
         Partial.Variables.createEntityHistoryAction.invoke();
-
         App.Variables.successMessage.dataSet.dataValue = "Referral Notice Action created successfully.";
         Partial.Widgets.SelectActionDialog.close();
         setTimeout(messageTimeout, 4000);
-
         setTimeout(function() {
             Partial.Variables.getCollectionTreatmentStep_1.invoke();
         }, 1000);
+        interverlGetHistoricalAction(5000, 15000);
     }
 };
 
@@ -895,48 +947,47 @@ Partial.createButtonClick = function($event, widget) {
     switch (actionName) {
         case 'Account Manager Notice':
             accountManagerNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Call Outbound':
             callOutboundAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Call Inbound':
             callInboundAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Email Inbound':
             emailInboundAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'General Follow-up':
             generalFollowUpAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Overdue Notice':
             overdueNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Payment Reminder Notice':
             paymentReminderNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Disconnect Notice':
             disconnectNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Cancellation Notice':
             cancellationNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         case 'Referral Notice':
             referralNoticeAction($event, widget);
-            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
         default:
             App.Variables.errorMsg.dataSet.dataValue = "Not a valid action.";
     }
-
     setTimeout(messageTimeout, 10000);
 };
 
@@ -1022,7 +1073,6 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
         Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
         Partial.Widgets.EventTypeSelect.datavalue = "ALL";
-
         Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': '',
@@ -1036,7 +1086,6 @@ Partial.clearFilterFields = function($event, widget) {
             'limit': 10,
             'offset': 0
         });
-
         Partial.Variables.GetCollectionActivityLogList.invoke();
     }
 }
@@ -1044,7 +1093,6 @@ Partial.clearFilterFields = function($event, widget) {
 // function added to apply filter to the table
 Partial.applyFilter = function($event, widget) {
     debugger;
-
     var typeCode = '';
     var typeCodeForCompleted = '';
     var createdBy = '';
@@ -1173,7 +1221,6 @@ Partial.applyFilter = function($event, widget) {
             'relatedBusinessEntityAssignedTo': assignedAgentId,
             'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
         });
-
         Partial.Variables.GetCollectionActivityLogList.invoke();
     }
 }
@@ -1512,7 +1559,6 @@ Partial.categorySelectCompletedOnChange = function($event, widget, newVal, oldVa
         Partial.Widgets.statusSelect.datavalue = "";
         Partial.Variables.actionFilter.dataSet = Partial.Variables.actionTypeFilterCompleted.dataSet;
         Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
-
     }
 }
 
@@ -1582,6 +1628,8 @@ Partial.UpdateActionClick = function($event, widget) {
             Partial.Widgets.EditActionDialog.close();
             setTimeout(messageTimeout, 3000);
             App.refreshCollActionList();
+            intervalGetTreatmentStep(5000, 15000);
+            interverlGetHistoricalAction(5000, 15000);
         }
     };
 }
@@ -1621,6 +1669,8 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
     setTimeout(messageTimeout, 3000);
     App.refreshCollActionList();
+    intervalGetTreatmentStep(5000, 15000);
+    interverlGetHistoricalAction(5000, 15000);
 };
 
 Partial.EditUpdateNoButtonClick = function($event, widget) {

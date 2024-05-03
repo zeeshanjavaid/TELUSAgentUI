@@ -945,6 +945,9 @@ Partial.update_YesBtnClick = function($event, widget) {
         Partial.Variables.UpdateODManagemntWhenAssignChange.setInput(payload);
         //Invoke POST createDispute service
         Partial.Variables.UpdateODManagemntWhenAssignChange.invoke();
+        if (payload.CollectionTreatmentStepUpdate.status == 'Order Fulfilled') {
+            intervalRefreshCollOrderMgmtList(5000, 15000);
+        }
     }
 };
 
@@ -1019,6 +1022,37 @@ App.refreshCollOrderMgmtList = function() {
     Partial.Variables.getCollectionTreatmentStep_orderMngt.invoke();
 };
 
+var getOrderMgmtIntervalObj = null;
+
+function intervalRefreshCollOrderMgmtList(interval, timeout) {
+    function setIntervalObj() {
+        const currentTime = new Date().getTime();
+        const intervalId = setInterval(() => {
+            App.refreshCollOrderMgmtList();
+        }, interval);
+        getOrderMgmtIntervalObj = {
+            id: intervalId,
+            timestamp: currentTime
+        };
+        const timeoutId = setTimeout(() => {
+            clearInterval(getOrderMgmtIntervalObj.id);
+            getOrderMgmtIntervalObj = null;
+        }, timeout);
+        getOrderMgmtIntervalObj.timeoutId = timeoutId;
+    }
+    if (!getOrderMgmtIntervalObj) {
+        setIntervalObj();
+    } else {
+        const currentTime = new Date().getTime();
+        const diff = currentTime - getOrderMgmtIntervalObj.timestamp;
+        if (diff > (timeout / 2)) {
+            clearTimeout(getOrderMgmtIntervalObj.timeoutId);
+            clearInterval(getOrderMgmtIntervalObj.id);
+            setIntervalObj();
+        }
+    }
+}
+
 Partial.getOrderdMgmtHistoryonError = function(variable, data, xhrObj) {};
 
 Partial.EditNotSentdialogClose = function($event, widget) {
@@ -1085,6 +1119,7 @@ Partial.UpdateODManagemntAndFullfillonSuccess = function(variable, data) {
     App.Variables.successMessage.dataSet.dataValue = " Updated And Fullfill successfully";
     setTimeout(messageTimeout, 5000);
     App.refreshCollOrderMgmtList();
+    intervalRefreshCollOrderMgmtList(5000, 15000);
 };
 
 Partial.UpdateODManagemntAndCloseActiononSuccess = function(variable, data) {
