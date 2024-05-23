@@ -219,19 +219,18 @@ Partial.ClearScheduleClick = function($event, widget) {
 
     Partial.Widgets.dialog1.close();
 };*/
-Partial.SubmitBanClick = function($event, widget) {
 
+Partial.SubmitBanClick = function($event, widget) {
     Partial.Variables.installmentBANCreateParr.dataSet = [];
     var selectedBans = new Array();
-    var parrTotal = 0;
+    var parrTotal = "0.00";
     Partial.Variables.installmentBANCreateParr.dataSet.push(...Partial.Widgets.selectBanParrTable1.selectedItems);
     Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
-
         var entityRef = {};
         var banRefIdInt = selectedBan.banRefId
         entityRef.id = banRefIdInt.toString();
         entityRef.name = selectedBan.banName;
-        parrTotal = parrTotal + selectedBan.banArAmount;
+        parrTotal = (parseFloat(parrTotal).toFixed(2) * 1 + parseFloat(selectedBan.banArAmount).toFixed(2) * 1).toFixed(2);
         selectedBans.push(entityRef);
     });
     Partial.Variables.SelectedBans.dataSet.splice(0, Partial.Variables.SelectedBans.dataSet.length);
