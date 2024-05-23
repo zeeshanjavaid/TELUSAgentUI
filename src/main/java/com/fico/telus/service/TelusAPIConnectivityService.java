@@ -193,7 +193,7 @@ public class TelusAPIConnectivityService {
 				headers.add("env", "it01");
 			}
 		}
-		headers.add("env", "it01");
+
 		switch (httpMethod) {
 
 			case "POST":
@@ -350,7 +350,6 @@ public class TelusAPIConnectivityService {
 				headers.add("env", "it01");
 			}
 		}
-		headers.add("env", "it01");
 		headers.add("Authorization", "Bearer " + bearerToken);
 		headers.add("Content-Type", "application/json");
 		responseEntity= invokeTelusGetAPIWithRestTemp(headers,endpointURL);
@@ -403,7 +402,6 @@ public ResponseEntity<String> executeTelusAPIAndGetResponseWithHeaderForSpecialC
 				headers.add("env", "it01");
 			}
 		}
-		headers.add("env", "it01");
 		headers.add("Authorization", "Bearer " + bearerToken);
 		headers.add("Content-Type", "application/json");
 		
