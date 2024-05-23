@@ -176,24 +176,22 @@ Partial.RenegotiateParrAmountChange = function($event, widget, newVal, oldVal) {
     debugger;
     Partial.Variables.getPaymentArrangement.dataSet.amount = newVal;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
-    var totalInstallmentAmt = 0;
+    var totalInstallmentAmt = "0.00";
     for (var i = 0; i < size; i++) {
-
-        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
+        totalInstallmentAmt = ((parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100).toFixed(2);
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
-    Partial.AmtOverUnder = parseFloat(newVal) - totalInstallmentAmt;
+    Partial.AmtOverUnder = (parseFloat(newVal) - parseFloat(totalInstallmentAmt)).toFixed(2) * 1;
 };
 
 Partial.getInstallmentScheduleTableRowupdate = function($event, widget, row) {
     debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
-    var totalInstallmentAmt = 0;
+    var totalInstallmentAmt = "0.00";
     for (var i = 0; i < size; i++) {
-
-        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
+        totalInstallmentAmt = ((parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100).toFixed(2);
     }
-    Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
+    Partial.AmtOverUnder = (parseFloat(Partial.Widgets.ParrAmount.datavalue) - parseFloat(totalInstallmentAmt)).toFixed(2) * 1;
 };
 
 Partial.renegotiatePARRdialogOpened = function($event, widget) {
@@ -203,12 +201,11 @@ Partial.renegotiatePARRdialogOpened = function($event, widget) {
     Partial.Variables.ParrInstallmentSchedule.dataSet.splice(0, Partial.Variables.ParrInstallmentSchedule.dataSet.length);
     Partial.Variables.ParrInstallmentSchedule.dataSet.push(...Partial.Variables.getPaymentArrangement.dataSet.installments);
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
-    var totalInstallmentAmt = 0;
+    var totalInstallmentAmt = "0.00";
     for (var i = 0; i < size; i++) {
-
-        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
+        totalInstallmentAmt = ((parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100).toFixed(2);
     }
-    Partial.AmtOverUnder = parseFloat(Partial.Variables.getPaymentArrangement.dataSet.amount) - totalInstallmentAmt;
+    Partial.AmtOverUnder = (parseFloat(Partial.Variables.getPaymentArrangement.dataSet.amount) - parseFloat(totalInstallmentAmt)).toFixed(2) * 1;
 };
 
 Partial.SubmitButtonClick = function($event, widget) {
@@ -331,13 +328,12 @@ Partial.SubmitButtonClick = function($event, widget) {
 Partial.getInstallmentScheduleTableRowinsert = function($event, widget, row) {
     debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
-    var totalInstallmentAmt = 0;
+    var totalInstallmentAmt = "0.00";
     for (var i = 0; i < size; i++) {
-
-        totalInstallmentAmt = (parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100;
+        totalInstallmentAmt = ((parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100).toFixed(2);
     }
     Partial.Variables.ParrInstallmentSchedule.dataSet[size - 1].sequenceId = size;
-    Partial.AmtOverUnder = parseFloat(Partial.Widgets.ParrAmount.datavalue) - totalInstallmentAmt;
+    Partial.AmtOverUnder = (parseFloat(Partial.Widgets.ParrAmount.datavalue) - parseFloat(totalInstallmentAmt)).toFixed(2) * 1;
 };
 
 Partial.BackLinkClick = function($event, widget) {

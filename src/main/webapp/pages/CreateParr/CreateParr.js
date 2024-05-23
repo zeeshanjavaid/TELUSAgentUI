@@ -239,16 +239,15 @@ Partial.SubmitBanClick = function($event, widget) {
     Partial.Widgets.ParrTotal.datavalue = parrTotal;
     Partial.Widgets.selectBANdialog.close();
 };
+
 Partial.installmentScheduleTableRowupdate = function($event, widget, row) {
     debugger;
     var size = Partial.Variables.ParrInstallmentSchedule.dataSet.length;
-    var totalInstallmentAmt = 0;
+    var totalInstallmentAmt = "0.00";
     for (var i = 0; i < size; i++) {
-
-        totalInstallmentAmt = parseFloat(totalInstallmentAmt) + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount);
+        totalInstallmentAmt = ((parseFloat(totalInstallmentAmt).toFixed(2) * 100 + parseFloat(Partial.Variables.ParrInstallmentSchedule.dataSet[i].amount).toFixed(2) * 100) / 100).toFixed(2);
     }
-    Partial.Variables.AmtOverUnder.dataSet.dataValue = Math.round((parseFloat(Partial.Widgets.ParrTotal.datavalue) - totalInstallmentAmt) * 100) / 100;
-
+    Partial.Variables.AmtOverUnder.dataSet.dataValue = Math.round((parseFloat(Partial.Widgets.ParrTotal.datavalue) - parseFloat(totalInstallmentAmt)) * 100) / 100;
 };
 
 Partial.CancelInstallmentScheduleClick = function($event, widget) {
