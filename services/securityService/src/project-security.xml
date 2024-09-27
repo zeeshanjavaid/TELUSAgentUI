@@ -88,7 +88,6 @@
     <security:http pattern="/login.html" security="none"/>
     <security:http pattern="/favicon.ico" security="none"/>
     <security:http pattern="/print.css" security="none"/>
-    <security:http pattern="/wmProperties.js" security="none"/>
     <security:http pattern="/cordova.js" security="none"/>
     <security:http pattern="/config.json" security="none"/>
     <security:http pattern="/types.js" security="none"/>
@@ -99,7 +98,7 @@
     <security:http pattern="/**/wmapp/**" security="none"/>
     <security:http pattern="/**/wmmobile/**" security="none"/>
     <security:http pattern="/app/prefabs/**" security="none"/>
-    <security:http pattern="/services/application/wmProperties.js" security="none"/>
+    <security:http pattern="/services/application/wmProperties" security="none"/>
     <security:http auto-config="false" use-expressions="true" security-context-repository-ref="securityContextRepository" entry-point-ref="appAuthenticationEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager">
         <security:intercept-url pattern="/j_spring_security_logout" access="permitAll"/>
         <security:intercept-url pattern="/pages/DomainValueTypes/**" access="isAuthenticated()"/>

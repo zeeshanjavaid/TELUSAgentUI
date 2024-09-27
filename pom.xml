@@ -855,14 +855,14 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <wavemaker.studio.version>4.1.1</wavemaker.studio.version>
-        <spring.security.version>5.7.10</spring.security.version>
+        <wavemaker.studio.version>4.2.2</wavemaker.studio.version>
+        <spring.security.version>5.7.12</spring.security.version>
         <profile.props.file>development.properties</profile.props.file>
         <DMP_DATA_DIR>/app-root/runtime/data</DMP_DATA_DIR>
         <fawb.host.prefix>fawb</fawb.host.prefix>
         <project.lib.directory>${basedir}/lib</project.lib.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <JWS_HOME>/opt/webserver</JWS_HOME>
-        <spring.version>5.3.29</spring.version>
+        <spring.version>5.3.34</spring.version>
     </properties>
 </project>
