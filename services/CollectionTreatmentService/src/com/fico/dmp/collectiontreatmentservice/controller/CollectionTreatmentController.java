@@ -70,10 +70,8 @@ public class CollectionTreatmentController {
     }
 
     @RequestMapping(value = "/collectionTreatment", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public List<CollectionTreatment> getCollectionTreatment(@RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
-        return collectionTreatmentService.getCollectionTreatment(collectionEntityId, fields, offset, limit, history);
+    public List<CollectionTreatment> getCollectionTreatment(@RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "active", required = false) Boolean active, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit, @RequestParam(value = "history", required = false) Boolean history) throws Exception {
+        return collectionTreatmentService.getCollectionTreatment(entityId, active, fields, offset, limit, history);
     }
 
     @RequestMapping(value = "/collectionTreatmentById", method = RequestMethod.GET)
@@ -86,8 +84,8 @@ public class CollectionTreatmentController {
     @RequestMapping(value = "/collectionTreatmentStep", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(@RequestParam(value = "IsOdManagement", required = false) Boolean IsOdManagement, @RequestParam(value = "collectionTreatmentStepId", required = false) Integer collectionTreatmentStepId, @RequestParam(value = "collectionEntityId", required = false) Integer collectionEntityId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedAgentId", required = false) String assignedAgentId, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
-        return collectionTreatmentService.getCollectionTreatmentStep(IsOdManagement, collectionTreatmentStepId, collectionEntityId, type, createdDate, createdBy, status, assignedAgentId, assignedTeam, fields, offset, limit);
+    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(@RequestParam(value = "IsOdManagement", required = false) Boolean IsOdManagement, @RequestParam(value = "collectionTreatmentStepId", required = false) String collectionTreatmentStepId, @RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "typeCode", required = false) String typeCode, @RequestParam(value = "createdDate", required = false) String createdDate, @RequestParam(value = "createdBy", required = false) String createdBy, @RequestParam(value = "status", required = false) String status, @RequestParam(value = "assignedAgentId", required = false) String assignedAgentId, @RequestParam(value = "assignedTeam", required = false) String assignedTeam, @RequestParam(value = "fields", required = false) String fields, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionTreatmentService.getCollectionTreatmentStep(IsOdManagement, collectionTreatmentStepId, entityId, typeCode, createdDate, createdBy, status, assignedAgentId, assignedTeam, fields, offset, limit);
     }
 
     @RequestMapping(value = "/collectionTreatmentStepById", method = RequestMethod.GET)

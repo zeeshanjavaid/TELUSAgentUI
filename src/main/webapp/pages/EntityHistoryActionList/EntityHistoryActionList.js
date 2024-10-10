@@ -35,7 +35,8 @@ Partial.onReady = function() {
     // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
     Partial.Variables.getCollectionTreatMentByEntId.setInput({
-        'collectionEntityId': Partial.pageParams.entityId
+        'entityId': 'eq:' + Partial.pageParams.entityId,
+        'active': true
     });
     Partial.Variables.getCollectionTreatMentByEntId.invoke();
 

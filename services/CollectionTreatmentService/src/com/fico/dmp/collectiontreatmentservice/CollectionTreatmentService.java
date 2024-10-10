@@ -120,7 +120,7 @@ public class CollectionTreatmentService {
     }
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionTreatment> getCollectionTreatment(Integer collectionEntityId,String fields,Integer offset, Integer limit, Boolean history) throws Exception  {
+    public List<CollectionTreatment> getCollectionTreatment(String entityId, Boolean active, String fields, Integer offset, Integer limit, Boolean history) throws Exception  {
         
         if (isStubEnabled) {
     	return objectMapper.readValue("[{\"id\":1889,\"collectionEntity\":{\"id\":666,\"name\":\"Food Basics\",\"href\":\"{BASE_URL}/entity/666\",\"@baseType\":\"CollectionEntity\",\"@type\":\"CollectionEntity\",\"@referredType\":\"CollectionEntity\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionEntity.swagger.json\"},\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"https\"},\"nextStepDueDate\":\"2023-12-31\",\"collectionTreatmentSteps\":[{\"id\":68891,\"name\":\"Step 68891\",\"href\":\"{BASE_URL}/collectionTreatmentStep/68891\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@referredType\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"id\":68892,\"name\":\"Step 68892\",\"href\":\"{BASE_URL}/collectionTreatmentStep/68892\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@referredType\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}],\"cureThreshold\":3,\"dmPathID\":\"A DM Path ID example\",\"lastAssessmentProcessType\":\"BILLCALL\",\"lastCollectionAssessmentId\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"scenarioId\":\"Scenario information 2234753222\",\"additionalCharacteristics\":[{\"name\":\"source\",\"value\":\"head office\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"},{\"name\":\"assigned agent\",\"value\":\"offshore\",\"@baseType\":\"CollectionTreatmentStep\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"{BASE_URL}/schema/CollectionTreatment.swagger.json\"}]}]",
@@ -128,26 +128,38 @@ public class CollectionTreatmentService {
         }else{
 
            List<CollectionTreatment> collectionTreatmentStepList=new ArrayList<>();
-           if(collectionEntityId!=null){
-            logger.info("::::::::Calling  entity data endpoint call ::::::::");
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT)
-                    .queryParam("collectionEntityId",collectionEntityId )
-                     .queryParam("fields",fields )
-                      .queryParam("offset",offset )
-                      .queryParam("limit",limit )
-                    .queryParam("history",history);
-                   // .queryParam("limit",20);
-            String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
-            logger.info("::::::::Entity data endpoint call success ::::::::");
+           if(entityId!=null){
+            logger.info(":::::::: Searching collection treatment ::::::::");
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT);
+            if(entityId != null) {
+                builder = builder.queryParam("entityId", entityId);
+            }
+            if(active != null) {
+                builder = builder.queryParam("active", active);
+            }
+            if(fields != null) {
+                builder = builder.queryParam("fields", fields);
+            }
+            if(offset != null) {
+                builder = builder.queryParam("offset", offset);
+            }
+            if(limit != null) {
+                builder = builder.queryParam("limit", limit);
+            }
+            if(history != null) {
+                builder = builder.queryParam("history", history);
+            }
+            String uriStr = builder.toUriString();
+            logger.info("Calling Url: "+ uriStr);
+            String responseStr = telusAPIConnectivityService.executeTelusAPI(null, uriStr, HttpMethod.GET, collTreatmentSvcAuthScope);
+            logger.info("::::::::Searching collection treatment success ::::::::");
             logger.info("Resoinse---"+ responseStr);
           //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
              collectionTreatmentStepList= objectMapper.readValue(responseStr, new TypeReference<List<CollectionTreatment>>(){});
 
         }
         
-        
         return collectionTreatmentStepList;
-        
     }
         
        
@@ -171,17 +183,15 @@ public class CollectionTreatmentService {
     }
     
     //@WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(Boolean IsOdManagement, Integer collectionTreatmentStepId, Integer collectionEntityId,String type,String createdDate,String createdBy, String status,String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception  {
+    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(Boolean IsOdManagement, String collectionTreatmentStepId, String entityId, String typeCode, String createdDate, String createdBy, String status, String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception  {
         //Commented telus live api 
-                            List<CollectionTreatmentStep> collectionTreatmentStepList=new ArrayList<>();
-                            
-                            logger.info("::::::::In getCollTeatmentStep call :::::::: ",IsOdManagement);
+        List<CollectionTreatmentStep> collectionTreatmentStepList=new ArrayList<>();
+        logger.info("::::::::In getCollTeatmentStep call :::::::: ",IsOdManagement);
 
     	if (isStubEnabled) {
     	return objectMapper.readValue("[{\"id\":300102,\"stepDate\":\"2023-03-02\",\"billingAccountRefs\":[{\"id\":72907342,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/72907342\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":14384583,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/14384583\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":282424,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/282424\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"SUS\",\"languageCode\":\"en\",\"assignedAgentId\":\"48154\",\"priority\":\"Low\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300102\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300102\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":300103,\"stepDate\":\"2023-03-03\",\"billingAccountRefs\":[{\"id\":193,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/193\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"John\"},{\"name\":\"PhoneNumber\",\"value\":\"884585\"},{\"name\":\"CallDuration\",\"value\":\"5\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"CALL-IB\",\"languageCode\":\"en\",\"assignedAgentId\":\"48154\",\"priority\":\"Medium\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300103\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300103\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":300104,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"CALL-OB\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"ReachedCustomer\",\"value\":\"Y\"},{\"name\":\"Phone\",\"value\":\"124545\"}]},{\"id\":300112,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"CALL-OB\",\"languageCode\":\"en\",\"assignedAgentId\":\"\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"ReachedCustomer\",\"value\":\"N\"},{\"name\":\"Phone\",\"value\":\"124545\"},{\"name\":\"Outcome\",\"value\":\"Left voicemail\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":300113,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"NOTC1-PMTR\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"Kiran\"},{\"name\":\"EmailAddress\",\"value\":\"john.cena@telus.com\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":3001456,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"NOTC2-OD\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"John\"},{\"name\":\"EmailAddress\",\"value\":\"john.cena@telus.com\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":300153,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"NOTC3-DIST\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"Kiran\"},{\"name\":\"EmailAddress\",\"value\":\"john.cena@telus.com\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":300223,\"stepDate\":\"2023-03-04\",\"status\":\"PENDING\",\"stepTypeCode\":\"NOTC4-CANL\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"High\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 300104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/300104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"additionalCharacteristics\":[{\"name\":\"CustomerName\",\"value\":\"Kiran\"},{\"name\":\"EmailAddress\",\"value\":\"john.cena@telus.com\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":400102,\"stepDate\":\"2023-04-02\",\"billingAccountRefs\":[{\"id\":4,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/4\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":58,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/58\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":6434,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/6434\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":432,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/432\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"additionalCharacteristics\":[{\"name\":\"EmailAddress\",\"value\":\"Kevin.snow@telus.com\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"EM-IN\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"Low\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 400102\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/400102\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":400213,\"stepDate\":\"2023-04-02\",\"billingAccountRefs\":[{\"id\":4,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/4\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":58,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/58\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":6434,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/6434\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":432,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/432\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"FOLLOWUP\",\"languageCode\":\"en\",\"assignedAgentId\":\"13\",\"priority\":\"Low\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"TD OM CHECK 45\",\"comment\":\"comment 400102\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/400102\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":400103,\"stepDate\":\"2023-04-03\",\"status\":\"PENDING\",\"stepTypeCode\":\"SUS\",\"languageCode\":\"en\",\"assignedAgentId\":\"parry.sound\",\"priority\":\"TOP\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"weq\",\"comment\":\"comment 400103\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/400103\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\",\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"}},{\"id\":400104,\"stepDate\":\"2023-04-04\",\"billingAccountRefs\":[{\"id\":7,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/7\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":9,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/9\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":6,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/6\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"SUS\",\"languageCode\":\"en\",\"assignedAgentId\":\"parry.sound\",\"priority\":\"TOP\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"jhmmn\",\"comment\":\"comment 400104\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/400104\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"},{\"id\":400105,\"stepDate\":\"2023-04-05\",\"billingAccountRefs\":[{\"id\":13434,\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collEntityMgmt/v1/billingAccountRef/13434\",\"@baseType\":\"EntityRef\",\"@type\":\"EntityRef\",\"@referredType\":\"EntityRef\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}],\"auditInfo\":{\"createdBy\":\"Agent98782\",\"createdTimestamp\":\"2023-01-13T09:00:00.00Z\",\"dataSource\":\"FICO\",\"lastUpdatedBy\":\"Agent86293\",\"lastUpdatedTimestamp\":\"2023-03-30T09:00:00.00Z\",\"@baseType\":\"AuditInfo\",\"@type\":\"AuditInfo\",\"@schemaLocation\":\"Schema\"},\"status\":\"PENDING\",\"stepTypeCode\":\"SUS\",\"languageCode\":\"en\",\"assignedAgentId\":\"parry.sound\",\"priority\":\"TOP\",\"reasonCode\":\"Need to collect\",\"assignedTeam\":\"fddfcb\",\"comment\":\"comment 400105\",\"href\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/collectionTreatmentStep/400105\",\"@baseType\":\"CollectionTreatment\",\"@type\":\"CollectionTreatmentStep\",\"@schemaLocation\":\"https://apigw-public-yul-np-002.cloudapps.telus.com/collTreatmentMgmt/v1/postman/schemas/CollectionTreatment.swagger.json\"}]",
     	         objectMapper.getTypeFactory().constructCollectionType(List.class, CollectionTreatmentStep.class));
-    }else{
-        
+    } else {
           String encodeAssignedTeam=null;
           String encodedStatus=null;
             if(assignedTeam!=null)
@@ -199,28 +209,49 @@ public class CollectionTreatmentService {
                 encodedStatus=status;
             }
             
-             logger.info("::::::::Status ::::::::"+encodedStatus);
+            logger.info("::::::::Status ::::::::" + encodedStatus);
 
             logger.info("::::::::Calling Get Coll Treatment step data endpoint call ::::::::");
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP)
-                    .queryParam("collectionTreatmentStepId", collectionTreatmentStepId)
-                    .queryParam("collectionEntityId",collectionEntityId )
-                    .queryParam("type",type)
-                    .queryParam("createdDate",createdDate)
-                    .queryParam("createdBy",createdBy)
-                    .queryParam("status",encodedStatus)
-                    .queryParam("assignedAgentId",assignedAgentId)
-                    .queryParam("assignedTeam",encodeAssignedTeam)
-                    .queryParam("offset",offset)
-                    .queryParam("limit",limit)
-                    .queryParam("fields",fields);
-                     URI uri = builder.build(false).toUri();
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collectionTreatmentEndPointUrl+URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP);
+            if(collectionTreatmentStepId != null) {
+                builder = builder.queryParam("id", collectionTreatmentStepId);
+            }
+            if(entityId != null) {
+                builder = builder.queryParam("entityId", entityId);
+            }
+            if(typeCode != null) {
+                builder = builder.queryParam("typeCode", typeCode);
+            }
+            if(createdDate != null) {
+                builder = builder.queryParam("createdDate", createdDate);
+            }
+            if(createdBy != null) {
+                builder = builder.queryParam("createdBy", createdBy);
+            }
+            if(encodedStatus != null) {
+                builder = builder.queryParam("status", encodedStatus);
+            }
+            if(assignedAgentId != null) {
+                builder = builder.queryParam("assignedAgentId", assignedAgentId);
+            }
+            if(encodeAssignedTeam != null) {
+                builder = builder.queryParam("assignedTeam", encodeAssignedTeam);
+            }
+            if(offset != null) {
+                builder = builder.queryParam("offset", offset);
+            }
+            if(limit != null) {
+                builder = builder.queryParam("limit", limit);
+            }
+            if(fields != null) {
+                builder = builder.queryParam("fields", fields);
+            }
+
+            URI uri = builder.build(false).toUri();
                   
-                   logger.info("Calling Url---"+ builder.toUriString());
+            logger.info("Calling Url---"+ builder.toUriString());
         
-         
-                  ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForSpecialChar(null,uri, HttpMethod.GET, collTreatmentSvcAuthScope);
-                       
+            ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeaderForSpecialChar(null,uri, HttpMethod.GET, collTreatmentSvcAuthScope);
                        
             String result=responseFromTelus.getBody();
             HttpHeaders headers1=responseFromTelus.getHeaders();
@@ -244,7 +275,6 @@ public class CollectionTreatmentService {
             });
             return collectionTreatmentStepResponseList;
         }
-
     }
     
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
@@ -584,36 +614,39 @@ public class CollectionTreatmentService {
         for(CollectionTreatmentStep collectionTreatmentStep:collectionTreatmentStepList)
         {
             CollectionTreatmentStepResponse collectionTreatmentStepResponse=new CollectionTreatmentStepResponse();
-            collectionTreatmentStepResponse.setAuditInfo(collectionTreatmentStep.getAuditInfo());
             // collectionTreatmentStepResponse.setChannel(collectionTreatmentStep.getChannel());
             collectionTreatmentStepResponse.setId(collectionTreatmentStep.getId());
             collectionTreatmentStepResponse.setPartitionKey(collectionTreatmentStep.getPartitionKey());
-            collectionTreatmentStepResponse.setCollectionTreatment(collectionTreatmentStep.getCollectionTreatment());
-            collectionTreatmentStepResponse.setStepDate(collectionTreatmentStep.getStepDate());
-            collectionTreatmentStepResponse.setBillingAccountRefs(collectionTreatmentStep.getBillingAccountRefs());
-            collectionTreatmentStepResponse.setManualStepIndicator(collectionTreatmentStep.getManualStepIndicator());
-            collectionTreatmentStepResponse.setStatus(collectionTreatmentStep.getStatus());
-            collectionTreatmentStepResponse.setStepTypeCode(collectionTreatmentStep.getStepTypeCode());
-            collectionTreatmentStepResponse.setLanguageCode(collectionTreatmentStep.getLanguageCode());
-            collectionTreatmentStepResponse.setAssignedAgentId(collectionTreatmentStep.getAssignedAgentId());
-            collectionTreatmentStepResponse.setPriority(collectionTreatmentStep.getPriority());
-            collectionTreatmentStepResponse.setReasonCode(collectionTreatmentStep.getReasonCode());
-            collectionTreatmentStepResponse.setAssignedTeam(collectionTreatmentStep.getAssignedTeam());
-            collectionTreatmentStepResponse.setAdditionalCharacteristics(collectionTreatmentStep.getAdditionalCharacteristics());
-            collectionTreatmentStepResponse.setComment(collectionTreatmentStep.getComment());
             collectionTreatmentStepResponse.setHref(collectionTreatmentStep.getHref());
+            collectionTreatmentStepResponse.setAdditionalCharacteristics(collectionTreatmentStep.getAdditionalCharacteristics());
+            collectionTreatmentStepResponse.setAssignedAgentId(collectionTreatmentStep.getAssignedAgentId());
+            collectionTreatmentStepResponse.setAssignedTeam(collectionTreatmentStep.getAssignedTeam());
+            collectionTreatmentStepResponse.setAuditInfo(collectionTreatmentStep.getAuditInfo());
+            collectionTreatmentStepResponse.setBillingAccountRefs(collectionTreatmentStep.getBillingAccountRefs());
+            collectionTreatmentStepResponse.setCollectionTreatment(collectionTreatmentStep.getCollectionTreatment());
+            collectionTreatmentStepResponse.setCollectionTreatmentPath(collectionTreatmentStep.getCollectionTreatmentPath());
+            collectionTreatmentStepResponse.setComment(collectionTreatmentStep.getComment());
+            collectionTreatmentStepResponse.setContentTypeCode(collectionTreatmentStep.getContentTypeCode());
+            collectionTreatmentStepResponse.setDeliverSystemName(collectionTreatmentStep.getDeliverSystemName());
+            collectionTreatmentStepResponse.setDeliverSystemObjectId(collectionTreatmentStep.getDeliverSystemObjectId());
+            collectionTreatmentStepResponse.setDeliverSystemObjectType(collectionTreatmentStep.getDeliverSystemObjectType());
+            collectionTreatmentStepResponse.setPriority(collectionTreatmentStep.getPriority());
+            collectionTreatmentStepResponse.setQueueId(collectionTreatmentStep.getQueueId());
+            collectionTreatmentStepResponse.setReasonCode(collectionTreatmentStep.getReasonCode());
+            collectionTreatmentStepResponse.setStatus(collectionTreatmentStep.getStatus());
+            collectionTreatmentStepResponse.setStatusDateTime(collectionTreatmentStep.getStatusDateTime());
+            collectionTreatmentStepResponse.setStepCreationMethod(collectionTreatmentStep.getStepCreationMethod());
+            collectionTreatmentStepResponse.setStepDate(collectionTreatmentStep.getStepDate());
+            collectionTreatmentStepResponse.setStepSequenceNumber(collectionTreatmentStep.getStepSequenceNumber());
+            collectionTreatmentStepResponse.setStepTypeCode(collectionTreatmentStep.getStepTypeCode());
             collectionTreatmentStepResponse.setBaseType(collectionTreatmentStep.getAtBaseType());
             collectionTreatmentStepResponse.setType(collectionTreatmentStep.getAtType());
             collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getAtSchemaLocation());
             collectionTreatmentStepResponse.setAssignedPersonForDefaultValue(collectionTreatmentStep.getAssignedAgentId());
             collectionTreatmentStepResponse.setTotalNumberOfElement(totalNoOfElement);
-
             collectionTreatmentStepResponseList.add(collectionTreatmentStepResponse);
-
         }
-        
         return collectionTreatmentStepResponseList;
-
     }
     
     

@@ -629,9 +629,13 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
-      "target" : "collectionEntityId",
-      "value" : "bind:pageParams.entityId",
-      "type" : "integer"
+      "target" : "active",
+      "value" : true,
+      "type" : "boolean"
+    }, {
+      "target" : "entityId",
+      "value" : "bind:'eq:' + pageParams.entityId",
+      "type" : "string"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment",
     "service" : "CollectionTreatmentService",
@@ -657,20 +661,20 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
-      "target" : "type",
-      "value" : "CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND",
-      "type" : "string"
-    }, {
       "target" : "IsOdManagement",
       "value" : false,
       "type" : "boolean"
     }, {
-      "target" : "collectionEntityId",
-      "value" : "bind:pageParams.entityId",
-      "type" : "integer"
-    }, {
       "target" : "status",
-      "value" : "Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled",
+      "value" : "bind:'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled'",
+      "type" : "string"
+    }, {
+      "target" : "entityId",
+      "value" : "bind:'eq:' + pageParams.entityId",
+      "type" : "string"
+    }, {
+      "target" : "typeCode",
+      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND'",
       "type" : "string"
     } ],
     "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",
