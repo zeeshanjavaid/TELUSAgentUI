@@ -386,9 +386,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionTreatmentService",
+    "service" : "CollectionActivityLogtService",
     "operation" : "getCollectionHistoryView",
-    "operationId" : "CollectionTreatmentController_getCollectionHistoryView",
+    "operationId" : "CollectionActivityLogController_getCollectionHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -400,7 +400,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionTreatment"
+    "controller" : "CollectionActivityLog"
   },
   "getCollectionTreatmentByCollENtityId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689059576521",
@@ -676,9 +676,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionTreatmentService",
+    "service" : "CollectionActivityLogService",
     "operation" : "getCollectionHistoryView",
-    "operationId" : "CollectionTreatmentController_getCollectionHistoryView",
+    "operationId" : "CollectionActivityLogController_getCollectionHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -693,7 +693,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionTreatment"
+    "controller" : "CollectionActivityLog"
   },
   "getStatusIfAssignedPersonChanged" : {
     "_id" : "wm-getStatusIfAssignedPersonChanged-wm.Variable-1691494642648",

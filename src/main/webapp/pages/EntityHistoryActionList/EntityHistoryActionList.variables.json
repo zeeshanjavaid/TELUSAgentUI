@@ -606,9 +606,9 @@
       "type" : "integer"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog",
-    "service" : "CollectionTreatmentService",
+    "service" : "CollectionActivityLogService",
     "operation" : "getCollectionActivityLog",
-    "operationId" : "CollectionTreatmentController_getCollectionActivityLog",
+    "operationId" : "CollectionActivityLogController_getCollectionActivityLog",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -620,7 +620,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionTreatment"
+    "controller" : "CollectionActivityLog"
   },
   "getCollectionTreatMentByEntId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689084256156",
