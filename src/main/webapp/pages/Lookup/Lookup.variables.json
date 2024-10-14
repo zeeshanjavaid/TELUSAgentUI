@@ -497,5 +497,29 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "updateManualFlag" : {
+    "_id" : "wm-updateManualFlag-wm.ServiceVariable-1728711785621",
+    "name" : "updateManualFlag",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntityUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateCollectionEntity",
+    "operationId" : "CollectionEntityController_updateCollectionEntity",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "updateManualFlagonSuccess(variable, data, options)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
   }
 }

@@ -122,6 +122,34 @@ Page.openARbyDelinqCycle = function() {
 
 }
 
+Page.updateManualFlag = function(newValue) {
+    // Update the underlying data model
+    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (newValue === 'Y');
+
+    // If you need to perform any additional actions or validations, you can add them here
+    console.log("Manual flag updated to: " + newValue);
+
+    // If you need to trigger any other updates or refreshes, you can do so here
+    debugger;
+
+
+
+    Page.Variables.updateManualFlag.setInput({
+        "id": parseInt(Page.pageParams.entityId),
+        "CollectionEntityUpdate": {
+            "id": parseInt(Page.pageParams.entityId),
+            // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
+            "channel": {
+                "originatorAppId": "FAWBTELUSAGENT",
+                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+            },
+            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag
+        }
+    });
+
+    //Invoke POST createContact service
+    Page.Variables.updateManualFlag.invoke();
+};
 
 Page.TransferBanToExistingEntityClick = function($event, widget) {
     Page.Widgets.entityNamePopOver.hidePopover();
@@ -714,4 +742,9 @@ Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, dat
 
 Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
     Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
+};
+
+Page.updateManualFlagonSuccess = function(variable, data) {
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
+    setTimeout(messageTimeout, 10000);
 };
