@@ -78,6 +78,7 @@ Page.onReady = function() {
 
 function messageTimeout() {
     Page.Variables.successMessageEntManagementVar.dataSet.dataValue = null;
+    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = null;
     App.Variables.errorMsg.dataSet.dataValue = null;
 }
 
@@ -123,7 +124,11 @@ Page.openARbyDelinqCycle = function() {
 }
 
 Page.updateManualFlag = function(newValue) {
-    // Update the underlying data model
+
+    // Store the original value before updating
+    Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
+
+    // Temporarily update the underlying data model
     Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (newValue === 'Y');
 
     // If you need to perform any additional actions or validations, you can add them here
@@ -149,6 +154,20 @@ Page.updateManualFlag = function(newValue) {
 
     //Invoke POST createContact service
     Page.Variables.updateManualFlag.invoke();
+};
+
+Page.updateManualFlagonSuccess = function(variable, data) {
+    debugger;
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
+    setTimeout(messageTimeout, 5000);
+};
+
+Page.updateManualFlagonError = function(variable, data, xhrObj) {
+    debugger;
+    Page.Widgets.toggle1.datavalue = Page.originalValue ? 'Y' : 'N'; // Update the toggle widget
+    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = Page.originalValue;
+    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Failed.";
+    setTimeout(messageTimeout, 5000);
 };
 
 Page.TransferBanToExistingEntityClick = function($event, widget) {
@@ -742,9 +761,4 @@ Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, dat
 
 Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
     Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
-};
-
-Page.updateManualFlagonSuccess = function(variable, data) {
-    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
-    setTimeout(messageTimeout, 10000);
 };

@@ -112,6 +112,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "failMessageEntManagementVar" : {
+    "_id" : "wm-failMessageEntManagementVar-wm.Variable-1728944668173",
+    "name" : "failMessageEntManagementVar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getBillingAccountRefProfileDetails" : {
     "_id" : "wm-getBillingAccountRefProfileDetails-wm.ServiceVariable-1692948255043",
     "name" : "getBillingAccountRefProfileDetails",
@@ -515,6 +529,7 @@
     "isList" : false,
     "maxResults" : 20,
     "onSuccess" : "updateManualFlagonSuccess(variable, data, options)",
+    "onError" : "updateManualFlagonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

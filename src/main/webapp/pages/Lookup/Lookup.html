@@ -121,12 +121,10 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label18" caption="Manual Coll:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn48">
-                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label20" fontsize="12" caption="bind:Widgets.toggle1.datavalue">
-                        </wm-label>
+                        <wm-label padding="0.5em 0.5em unset 0.5em" name="label20" fontsize="12" caption="bind:Widgets.toggle1.datavalue"></wm-label>
                         <wm-composite name="composite2">
                             <wm-container class="col-md-9" name="container6">
-                                <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag? 'Y' : 'N'" checkedvalue="Y" uncheckedvalue="N" on-change="updateManualFlag(Widgets.toggle1.datavalue)">
-                                </wm-checkbox>
+                                <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag? 'Y' : 'N'" checkedvalue="Y" uncheckedvalue="N" on-change="updateManualFlag(Widgets.toggle1.datavalue)"></wm-checkbox>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
@@ -155,7 +153,8 @@
                     <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow102">
-                    <!--  <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" hideclose="true" style="margin:5px;"></wm-message>--></wm-gridrow>
+                    <wm-message name="failedMessage" show="bind:Variables.failMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.failMessageEntManagementVar.dataSet.dataValue" hideclose="true" style="margin:5px;" type="error"></wm-message>
+                </wm-gridrow>
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1" accessroles="Authenticated" defaultpaneindex="0">
