@@ -84,40 +84,38 @@ public class TelusAPIConnectivityService {
      * @return String
      * @throws Exception
      */
-    public String getTelusToken (String scope) throws Exception {
-        String token = getToken(scope);
-        if (!Objects.isNull(token)) {
-            return token;
+    public synchronized String getTelusToken(String scope) throws Exception {
+        String token = null;
+        if (tokenCacheMap.containsKey(scope)) {
+            return tokenCacheMap.get(scope);
         } else {
-            logger.info("::::::::::::::::::::: TOKEN CACHE NULL :::::::::::::::::::::");
-        }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-        map.add("client_id", this.telusApiClientId);
-        map.add("client_secret", this.telusApiClientSecret);
-        map.add("grant_type", "client_credentials");
-        map.add("scope", scope);
-        logger.debug("::::::::::::::::::::: Before calling Telus token URL :::::::::::::::::::::");
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-        RestTemplate restTemplate = new RestTemplate();
-        String url = this.telusTokenURL;
-        logger.debug("::::::::::::::::::::: Telus token URL ::::::::::::::::::::: ", url);
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-        String result = "";
-        logger.debug("::::::::::::::::::::: Telus token API response ::::::::::::::::::::: ", response);
-        if (response != null) {
-            HttpStatus statusCode = response.getStatusCode();
-            //TODO: Uncomment and create the object TelusTokenResponse object according to TelUs token response
-            if (statusCode == HttpStatus.OK) {
-                result = response.getBody();
-                TelusTokenResponse telusTokenResponse = mapper.readValue(result, com.fico.telus.model.TelusTokenResponse.class);
-                token = telusTokenResponse.getAccess_token();
-                this.cacheExpireInSec = Integer.parseInt(telusTokenResponse.getExpires_in());
-                registerToken(scope, token, cacheExpireInSec);
-                logger.debug("::::::::::::::::::::: Telus token ::::::::::::::::::::: ", token);
-            } else {
-                logger.error("::::::::::::::::::::: Telus token API response status code ::::::::::::::::::::: ", statusCode);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+            map.add("client_id", this.telusApiClientId);
+            map.add("client_secret", this.telusApiClientSecret);
+            map.add("grant_type", "client_credentials");
+            map.add("scope", scope);
+            logger.debug("::::::::::::::::::::: Before calling Telus token URL :::::::::::::::::::::");
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+            RestTemplate restTemplate = new RestTemplate();
+            String url = this.telusTokenURL;
+            logger.debug("::::::::::::::::::::: Telus token URL ::::::::::::::::::::: ", url);
+            ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+            String result = "";
+            logger.debug("::::::::::::::::::::: Telus token API response ::::::::::::::::::::: ", response);
+            if (response != null) {
+                HttpStatus statusCode = response.getStatusCode();
+                if (statusCode == HttpStatus.OK) {
+                    result = response.getBody();
+                    TelusTokenResponse telusTokenResponse = mapper.readValue(result, com.fico.telus.model.TelusTokenResponse.class);
+                    token = telusTokenResponse.getAccessToken();
+                    // this.cacheExpireInSec = Integer.parseInt(telusTokenResponse.getExpiresIn());
+                    tokenCacheMap.set(scope, token, cacheExpireInSec, TimeUnit.SECONDS);
+                    logger.debug("::::::::::::::::::::: Telus token ::::::::::::::::::::: ", token);
+                } else {
+                    logger.error("::::::::::::::::::::: Telus token API response status code ::::::::::::::::::::: ", statusCode);
+                }
             }
         }
         return token;
@@ -127,22 +125,12 @@ public class TelusAPIConnectivityService {
         return telusTokenURL;
     }
 
-    private void registerToken(String scope, String token, Integer expiresInSec) {
-        tokenCacheMap.tryPut(scope, token, expiresInSec, TimeUnit.SECONDS);
-    }
     // private void registerToken(String token, Integer expiresInSec) {
     //     logger.debug("INVOKED: registerToken()");
     //     IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_AUTH_TOKEN);
     //     map.tryPut(TELUS_AUTH_TOKEN, token, expiresInSec, TimeUnit.SECONDS);
     // }
 
-    private String getToken(String scope) {
-        if (tokenCacheMap.containsKey(scope)) {
-            String token = tokenCacheMap.get(scope);
-            return token;
-        }
-        return null;
-    }
     // private String getToken() {
     //     IMap<String, String> map = fawbAppHazelcastInstance.getMap(TELUS_AUTH_TOKEN_CACHE_MAP);
     //     if (map.containsKey(TELUS_AUTH_TOKEN)) {
