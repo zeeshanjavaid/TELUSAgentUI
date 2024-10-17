@@ -1053,9 +1053,9 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
             'IsOdManagement': false,
             'collectionEntityId': Partial.pageParams.entityId,
-            'type': '',
+            'typeCode': '',
             'createdBy': '',
-            'status': 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled',
+            'status': 'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled',
             'assignedAgentId': '',
             'assignedTeam': '',
             'createdDate': '',
@@ -1111,30 +1111,30 @@ Partial.applyFilter = function($event, widget) {
         assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
     }
 
-    if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
-        // typeCode = 'ALL';
-        //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
-        typeCode = '';
-
-    } else {
-        typeCode = Partial.Widgets.typeSelect.datavalue;
-
-    }
-
-    if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
-        statusForTodo = 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
-    } else {
-        statusForTodo = Partial.Widgets.statusSelect.datavalue;
-    }
-
     if (toDoTable == true) {
         debugger;
+        if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
+            // typeCode = 'ALL';
+            //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+            typeCode = '';
+        } else {
+            typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
+        }
+
+        if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
+            statusForTodo = 'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
+        } else {
+            statusForTodo = 'eq:' + Partial.Widgets.statusSelect.datavalue;
+        }
+        var createdDate = Partial.Widgets.creationDate.datavalue != null && Partial.Widgets.creationDate.datavalue != '' ?
+            new Date(Partial.Widgets.creationDate.datavalue).toISOString() :
+            Partial.Widgets.creationDate.datavalue
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
             'IsOdManagement': false,
             'collectionEntityId': Partial.pageParams.entityId,
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
-            'type': typeCode,
-            'createdDate': Partial.Widgets.creationDate.datavalue,
+            'typeCode': typeCode,
+            'createdDate': createdDate,
             'status': statusForTodo,
             'createdBy': createdBy,
             'assignedAgentId': assignedAgentId,
