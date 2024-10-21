@@ -45,26 +45,26 @@ Page.onReady = function() {
                 },
             },
             function(data) {
-                if (data.banDetails[0].acctStatus == 'C') {
-                    var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
-                    getBillingAccountRefProfileDetailsVar.invoke({
-                            "inputFields": {
-                                "ban": data.banDetails[0].banId
-                            },
-                        },
-                        function(data1) {
-                            debugger;
-                            Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
+                // if (data.banDetails[0].acctStatus == 'C') {
+                //     var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
+                //     getBillingAccountRefProfileDetailsVar.invoke({
+                //             "inputFields": {
+                //                 "ban": data.banDetails[0].banId
+                //             },
+                //         },
+                //         function(data1) {
+                //             debugger;
+                //             Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
 
-                        },
-                        function(error1) {
-                            // Error Callback
-                            console.log("error", error);
-                        }
-                    );
-                } else {
-                    Page.Widgets.previousEntVal.caption = "Previous Entity not found";
-                }
+                //         },
+                //         function(error1) {
+                //             // Error Callback
+                //             console.log("error", error);
+                //         }
+                //     );
+                // } else {
+                //     Page.Widgets.previousEntVal.caption = "Previous Entity not found";
+                // }
 
             },
             function(error) {
@@ -692,6 +692,8 @@ Page.TransferBanToNewEntDialogClose = function($event, widget) {
     Page.Widgets.TransferBanToNewEntDialog.close();
     App.Variables.errorMsg.dataSet.dataValue = null;
 };
+
+// Deprecated. TODO: remove this in the next version
 Page.previousEntValClick = function($event, widget) {
     debugger;
     //Page.pageParams.entityId = widget.caption;
@@ -741,6 +743,7 @@ Page.previousEntValClick = function($event, widget) {
 
     }
 };
+
 Page.anchor3Click = function($event, widget) {
     debugger;
 
