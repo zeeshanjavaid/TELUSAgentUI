@@ -76,7 +76,11 @@
                 <wm-select width="85%" name="assignedTeamSelectfilter" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.getAllTeamList.dataSet" datafield="teamId" placeholder="ALL" displayfield="teamId" on-change="actionStatusSelect($event, widget, newVal, oldVal)"
                     orderby="teamId:asc"></wm-select>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="5" name="gridcolumn16_1"></wm-gridcolumn>
+            <wm-gridcolumn columnwidth="5" name="gridcolumn16_1">
+                <wm-label padding="unset 0.5em unset unset" caption="Content Id" color="gray" class="filterLabel" name="contentIdLabel"></wm-label>
+                <wm-select width="30%" id="mySelection" margin="5px unset unset unset" dataset="bind:Variables.contentTypeFilterTODO.dataSet" datafield="dataValue" placeholder="ALL" displayfield="dataValue" on-change="typeSelectChange($event, widget, newVal, oldVal)"
+                    name="contentIdSelectionList"></wm-select>
+            </wm-gridcolumn>
             <wm-gridcolumn columnwidth="1" name="gridcolumn56" class="filterButtons" width="10%" padding="1.5em 0 0 0">
                 <wm-button class="secondaryButton" caption="Clear" on-click="clearFilterFields()" name="button1" margin="0 10px 0 0"></wm-button>
                 <wm-button class="primaryButton" id="createBtn" caption="Filter" on-click="applyFilter($event, widget)" name="button3"></wm-button>
@@ -276,6 +280,7 @@
                     <wm-table-column binding="stepDate" caption="Due DT" width="90px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="priority" caption="Priority" width="65px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="comment" caption="Comments" width="220px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="contentTypeCode" caption="Content Type" width="84px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                     <wm-table-row content="ToDoActionRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-beforerowexpand="getCollectionTreatmentStepTable2_OnBeforerowexpand($event, widget, row, $data)" on-rowexpand="getCollectionTreatmentStepTable2_OnRowexpand($event, widget, row, $data)"
                         widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
@@ -375,7 +380,7 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate" datepattern="yyyy-MM-dd"></wm-date>
+                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate" datepattern="yyyy-MM-dd" readonly="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.auditInfo.createdBy===&quot;SAS Batch Job&quot;"></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">

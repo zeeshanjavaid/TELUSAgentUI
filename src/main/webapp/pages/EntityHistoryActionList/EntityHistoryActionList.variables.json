@@ -190,23 +190,13 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
-      "dataValue" : "NOTC1-PMTR"
-    }, {
-      "dataValue" : "NOTC2-OD"
-    }, {
-      "dataValue" : "NOTC3-DIST"
-    }, {
-      "dataValue" : "NOTC4-CANL"
+      "dataValue" : "NOTC"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
     }, {
       "dataValue" : "SUSPEND"
-    }, {
-      "dataValue" : "NOTC5-ACTMGR"
-    }, {
-      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -341,6 +331,34 @@
       "dataValue" : "NOTC5-ACTMGR"
     }, {
       "dataValue" : "NOTC6-REFERRAL"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "contentTypeFilterTODO" : {
+    "_id" : "wm-contentTypeFilterTODO-wm.Variable-1729574498619",
+    "name" : "contentTypeFilterTODO",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "NTCFRREM"
+    }, {
+      "dataValue" : "NTCOD"
+    }, {
+      "dataValue" : "NTCSUSP"
+    }, {
+      "dataValue" : "NTCCEASE"
+    }, {
+      "dataValue" : "NTCAGENCY"
+    }, {
+      "dataValue" : "NTCPARR"
+    }, {
+      "dataValue" : "NTCBRARRG"
+    }, {
+      "dataValue" : "NTCACCTMGR"
     } ],
     "type" : "string",
     "isList" : true,
@@ -674,7 +692,7 @@
       "type" : "string"
     }, {
       "target" : "typeCode",
-      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND'",
+      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC'",
       "type" : "string"
     } ],
     "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",

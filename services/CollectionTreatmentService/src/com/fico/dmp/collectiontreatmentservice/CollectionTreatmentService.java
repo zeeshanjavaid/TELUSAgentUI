@@ -39,6 +39,7 @@ import com.fico.dmp.collectionentityservice.CollectionEntityService;
 import com.fico.telus.model.OrderMgmtHistoryResponse;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import com.fico.dmp.commonutilityservice.CommonUtilityService;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -208,7 +209,7 @@ public class CollectionTreatmentService {
             }else{
                 encodedStatus=status;
             }
-            
+            String[] notcTypeCodes = {"NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL"};
             logger.info("::::::::Status ::::::::" + encodedStatus);
 
             logger.info("::::::::Calling Get Coll Treatment step data endpoint call ::::::::");
@@ -220,6 +221,9 @@ public class CollectionTreatmentService {
                 builder = builder.queryParam("entityId", entityId);
             }
             if(typeCode != null) {
+                if(typeCode.equalsIgnoreCase("NOTC")){
+                    typeCode = "in:" + String.join(",", notcTypeCodes);
+                }
                 builder = builder.queryParam("typeCode", typeCode);
             }
             if(createdDate != null) {
@@ -271,6 +275,13 @@ public class CollectionTreatmentService {
                     a.getAuditInfo().setCreatedBy(a.getAuditInfo().getCreatedBy());
                 } else {
                     a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()));
+                }
+            });
+            collectionTreatmentStepResponseList.stream().forEach(a -> {
+                
+                if (Arrays.stream(notcTypeCodes)
+                              .anyMatch(s -> s.equalsIgnoreCase(a.getStepTypeCode()))) {
+                    a.setStepTypeCode("NOTC");
                 }
             });
             return collectionTreatmentStepResponseList;
@@ -412,6 +423,7 @@ public class CollectionTreatmentService {
             collectionTreatmentStepResponse.setSchemaLocation(collectionTreatmentStep.getAtSchemaLocation());
             collectionTreatmentStepResponse.setAssignedPersonForDefaultValue(collectionTreatmentStep.getAssignedAgentId());
             collectionTreatmentStepResponse.setTotalNumberOfElement(totalNoOfElement);
+            collectionTreatmentStepResponse.setContentTypeCode(collectionTreatmentStep.getContentTypeCode());
             collectionTreatmentStepResponseList.add(collectionTreatmentStepResponse);
         }
         return collectionTreatmentStepResponseList;

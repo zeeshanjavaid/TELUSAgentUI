@@ -1117,6 +1117,8 @@ Partial.applyFilter = function($event, widget) {
             // typeCode = 'ALL';
             //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
             typeCode = '';
+        } else if (Partial.Widgets.typeSelect.datavalue == 'NOTC') {
+            typeCode = 'NOTC';
         } else {
             typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
         }
