@@ -22,7 +22,8 @@ Partial.onReady = function() {
      */
 
     Partial.Variables.moreDetailsGetEntityDetails.setInput({
-        'entityId': Partial.pageParams.entityId
+        'entityId': Partial.pageParams.entityId,
+        'accountStatus': 'ALL'
     });
 
     Partial.Variables.moreDetailsGetEntityDetails.invoke();

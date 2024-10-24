@@ -42,7 +42,7 @@ Page.onReady = function() {
         getEntityProfileDetailsVar.invoke({
                 "inputFields": {
                     "entityId": Page.pageParams.entityId,
-                    "accountStatus": "O"
+                    "accountStatus": "ALL"
                 },
             },
             function(data) {
@@ -707,7 +707,7 @@ Page.previousEntValClick = function($event, widget) {
         getEntityProfileDetailsVar.invoke({
                 "inputFields": {
                     "entityId": widget.caption,
-                    "accountStatus": "O"
+                    "accountStatus": "ALL"
                 },
             },
             function(data) {
