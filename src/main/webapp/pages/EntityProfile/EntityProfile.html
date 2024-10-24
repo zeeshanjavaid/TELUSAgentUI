@@ -1,6 +1,6 @@
 <wm-partial name="partial1" style="overflow: auto">
     <wm-gridcolumn class="entityProfileGrid" name="gridcolumn1">
-        <h3><b>BAN List for Active Entity</b></h3>
+        <h3><b>BAN List</b></h3>
         <wm-composite name="composite2">
             <wm-label class="col-md-3 control-label" name="label32_1" caption="BAN Status" textalign="center" padding="10px unset unset unset" fontweight="bold"></wm-label>
             <wm-container class="col-md-9" name="container11">
@@ -32,8 +32,8 @@
                 <!--<wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>-->
                 <wm-label caption="bind:row.getProperty('disputeAmount')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
-            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true"
+                disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
@@ -191,8 +191,7 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn35">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)"
-                                style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)" style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow19">
@@ -205,8 +204,7 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn37">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)"
-                                style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)" style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
