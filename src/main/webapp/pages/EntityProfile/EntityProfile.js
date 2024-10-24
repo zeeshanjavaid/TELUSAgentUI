@@ -651,11 +651,9 @@ Partial.banStatusSelectionChange = function($event, widget, newVal, oldVal) {
     var status;
     if (newVal == 'Active') {
         status = 'O'
-    }
-    if (newVal == 'Cancelled') {
+    } else if (newVal == 'Cancelled') {
         status = 'C'
-    }
-    if (newVal == 'All') {
+    } else {
         status = 'ALL'
     }
     Partial.Variables.CollectionDataServiceGetEntityDetails.setInput({

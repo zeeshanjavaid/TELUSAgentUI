@@ -52,7 +52,7 @@
       "type" : "string"
     }, {
       "target" : "accountStatus",
-      "value" : "O",
+      "value" : "ALL",
       "type" : "string"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
