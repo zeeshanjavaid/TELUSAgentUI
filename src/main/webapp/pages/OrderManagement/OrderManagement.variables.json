@@ -787,6 +787,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "selectedOrderMgmtPartitionKey" : {
+    "_id" : "wm-selectedOrderMgmtPartitionKey-wm.Variable-1729795345384",
+    "name" : "selectedOrderMgmtPartitionKey",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "stepTypeCodeForOrderMgmt" : {
     "_id" : "wm-stepTypeCodeForOrderMgmt-wm.Variable-1700555929243",
     "name" : "stepTypeCodeForOrderMgmt",

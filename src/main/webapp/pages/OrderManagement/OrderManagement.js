@@ -368,11 +368,12 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
             Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.selectedOrderMgmtPartitionKey.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey;
             Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
 
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -404,7 +405,7 @@ Partial.updateDONotSentbuttonClick = function($event, widget) {
         } else {
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -503,11 +504,12 @@ Partial.updateandsendbuttonClick = function($event, widget) {
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
             Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.selectedOrderMgmtPartitionKey.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey;
             Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
 
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -539,7 +541,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
         } else {
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -636,10 +638,11 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
             Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.selectedOrderMgmtPartitionKey.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey;
             Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -671,7 +674,7 @@ Partial.updateAndDoNotFulfillbuttonClick = function($event, widget) {
         } else {
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': updateStatus,
@@ -757,10 +760,11 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
             Partial.Variables.updateDueDateOrStepDate.dataset = Partial.Widgets.dueDate.datavalue;
             Partial.Variables.selectedOrderMgmtId.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id;
+            Partial.Variables.selectedOrderMgmtPartitionKey.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey;
             Partial.Variables.stepTypeCodeForOrderMgmt.dataset = stepTypeCode;
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     //'status': 'Order Fulfilled',
@@ -792,7 +796,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         } else {
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-                'partitionKey': getCurrentDate(),
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
                     'status': 'Order Fulfilled',
@@ -867,7 +871,7 @@ Partial.assigned_closeYesBtnClick = function($event, widget) {
     } else {
         Partial.Variables.UpdateODManagemntAndCloseAction.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'status': 'Closed',
                 'comment': Partial.Widgets.closeComment.datavalue,
@@ -889,7 +893,7 @@ Partial.assigned_cancleYesBtnClick = function($event, widget) {
     } else {
         Partial.Variables.UpdateODManagemntAndCancelledActiion.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'status': 'Cancelled',
                 'comment': Partial.Widgets.cancelComment.datavalue,
@@ -916,8 +920,7 @@ Partial.update_YesBtnClick = function($event, widget) {
     } else {
         var payload = {
             'id': Partial.Variables.selectedOrderMgmtId.dataset,
-            'partitionKey': getCurrentDate(),
-            'collectionEntityId': Partial.pageParams.entityId,
+            'partitionKey': Partial.Variables.selectedOrderMgmtPartitionKey.dataset,
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Variables.stepTypeCodeForOrderMgmt.dataset,
                 'status': Partial.Variables.getStatusIfAssignedPersonChanged.dataset,

@@ -1382,7 +1382,7 @@ Partial.closeButtonClick = function($event, widget) {
 
     var payload = {
         'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-        'partitionKey': getCurrentDate(),
+        'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
             'status': 'Closed',
@@ -1399,11 +1399,11 @@ Partial.closeButtonClick = function($event, widget) {
         payload.CollectionTreatmentStepUpdate.additionalCharacteristics = characteristicList;
     }
 
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+    Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
     if (!isError) {
         debugger;
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Widgets.CloseActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
@@ -1453,9 +1453,9 @@ Partial.button15Click = function($event, widget) {
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Widgets.notAssigned_closeActionDialog.open();
     } else {
-        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        Partial.Variables.UpdateCollectionTreatmentStepVar.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
                 'status': 'Closed',
@@ -1470,7 +1470,7 @@ Partial.button15Click = function($event, widget) {
             }
         });
 
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
 
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
@@ -1495,9 +1495,9 @@ Partial.button16_1Click = function($event, widget) {
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Widgets.notAssigned_cancleActionDialog.open();
     } else {
-        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        Partial.Variables.UpdateCollectionTreatmentStepVar.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
                 'status': 'Cancelled',
@@ -1511,7 +1511,7 @@ Partial.button16_1Click = function($event, widget) {
             }
         });
 
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
 
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was cancelled."
@@ -1604,8 +1604,9 @@ Partial.UpdateActionClick = function($event, widget) {
             }
         } else {
             var payload = {
-                'id': Partial.Widgets.EditActionIdText.caption,
-                'partitionKey': getCurrentDate(),
+                // 'id': Partial.Widgets.EditActionIdText.caption,
+                'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
@@ -1623,10 +1624,10 @@ Partial.UpdateActionClick = function($event, widget) {
                     stepDate: Partial.Widgets.dueDate.datavalue
                 };
             }
-            Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+            Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
             //Invoke POST coll treatment service
-            Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+            Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
             App.Variables.successMessage.dataSet.dataValue = "Action ID (" + Partial.Widgets.EditActionIdText.caption + ") edited successfully."
             Partial.Widgets.EditActionDialog.close();
             setTimeout(messageTimeout, 3000);
@@ -1642,8 +1643,9 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     var originalStepDate = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate;
     var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
     var payload = {
-        'id': Partial.Widgets.EditActionIdText.caption,
-        'partitionKey': getCurrentDate(),
+        // 'id': Partial.Widgets.EditActionIdText.caption,
+        'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+        'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
         'collectionEntityId': Partial.pageParams.entityId,
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
@@ -1664,10 +1666,10 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
             stepDate: Partial.Widgets.dueDate.datavalue
         };
     }
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+    Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+    Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
     Partial.Widgets.EditActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
     setTimeout(messageTimeout, 3000);
@@ -1778,7 +1780,7 @@ App.refreshHistoryActionList = function() {
     Partial.Variables.GetCollectionActivityLogList.invoke();
 };
 
-Partial.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {
+Partial.UpdateCollectionTreatmentStepVarOnSuccess = function(variable, data) {
     App.refreshCollActionList();
 };
 
