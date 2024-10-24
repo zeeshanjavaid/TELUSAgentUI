@@ -1,8 +1,14 @@
 <wm-partial name="partial1" style="overflow: auto">
     <wm-gridcolumn class="entityProfileGrid" name="gridcolumn1">
         <h3><b>BAN List for Active Entity</b></h3>
-        <wm-table margin="10px 10px 16px 17px" width="98%" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top"
-            enablecolumnselection="false" navigationalign="right" pagesize="10" on-beforedatarender="getEntityDetailsTable1Beforedatarender(widget, $data, $columns)">
+        <wm-composite name="composite2">
+            <wm-label class="col-md-3 control-label" name="label32_1" caption="BAN Status" textalign="center" padding="10px unset unset unset" fontweight="bold"></wm-label>
+            <wm-container class="col-md-9" name="container11">
+                <wm-radioset height="auto" name="banStatusSelection" dataset="Active, Cancelled, All" datavalue="Active" usekeys="false" on-change="banStatusSelectionChange($event, widget, newVal, oldVal)"></wm-radioset>
+            </wm-container>
+        </wm-composite>
+        <wm-table margin="10px 10px 16px 17px" width="98%" name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" navigationalign="right"
+            pagesize="10" on-beforedatarender="getEntityDetailsTable1Beforedatarender(widget, $data, $columns)">
             <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="5px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                 <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" title="suppression"></wm-icon>
             </wm-table-column>

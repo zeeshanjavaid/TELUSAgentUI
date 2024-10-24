@@ -1736,12 +1736,23 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+            debugger;
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = false;
         } else if (Partial.Widgets.typeSelect.datavalue == "") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         } else {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSusForTodo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         }
     } else {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {

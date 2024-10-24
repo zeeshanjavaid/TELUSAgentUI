@@ -61,10 +61,8 @@ public class CollectionDataController {
     }
 
     @RequestMapping(value = "/entityDetails", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public EntityDetailsResponse getEntityDetails(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
-        return collectionDataService.getEntityDetails(entityId);
+    public EntityDetailsResponse getEntityDetails(@RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "accountStatus", required = false) String accountStatus) throws Exception {
+        return collectionDataService.getEntityDetails(entityId, accountStatus);
     }
 
     @RequestMapping(value = "/entitySearch", method = RequestMethod.GET)

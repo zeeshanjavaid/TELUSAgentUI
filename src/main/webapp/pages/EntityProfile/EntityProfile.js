@@ -606,9 +606,7 @@ Partial.createParrInEntityProfileClick = function($event, widget) {
 };
 
 App.refreshEntityBanDetails = function() {
-
     Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
-
 };
 
 
@@ -648,3 +646,23 @@ Partial.getEntityDetailsTable1Beforedatarender = function(widget, $data, $column
     Partial.Variables.getUserDetailsByEmplId.invoke();
 
 };*/
+Partial.banStatusSelectionChange = function($event, widget, newVal, oldVal) {
+    console.log("Old Val : " + oldVal + " New Val : " + newVal);
+    var status;
+    if (newVal == 'Active') {
+        status = 'O'
+    }
+    if (newVal == 'Cancelled') {
+        status = 'C'
+    }
+    if (newVal == 'All') {
+        status = 'ALL'
+    }
+    Partial.Variables.CollectionDataServiceGetEntityDetails.setInput({
+
+        'entityId': Partial.pageParams.entityId,
+        'accountStatus': status
+
+    });
+    Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
+};
