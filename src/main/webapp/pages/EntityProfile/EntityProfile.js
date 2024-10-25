@@ -426,7 +426,9 @@ Partial.getEntityDetailsTable1_OnRowexpand = function($event, widget, row, $data
 };
 
 Partial.CollectionDataServiceGetEntityDetailsonError = function(variable, data, xhrObj) {
-
+    debugger;
+    Partial.Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails = [];
+    //Page.Widgets.getEntityDetailsTable1.refresh();
 };
 
 App.refreshLatestNotes = function() {
