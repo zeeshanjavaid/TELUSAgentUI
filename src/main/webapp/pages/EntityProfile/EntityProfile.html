@@ -36,6 +36,7 @@
                 <!--<wm-label caption="bind:row.getProperty('disputeAmount') | toCurrency: ''" class="" conditionalclass=""></wm-label>-->
                 <wm-label caption="bind:row.getProperty('disputeAmount')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
+            <wm-table-column binding="acctStatus" caption="BAN Status" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
             <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
                 show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>
