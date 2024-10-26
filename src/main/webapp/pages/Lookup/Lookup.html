@@ -76,8 +76,8 @@
                         <wm-label padding="0.5em 0.5em unset 0.5em" caption="Total AR:" name="label5" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="1" name="gridcolumn75" style="display: flex;flex-direction: column;width: 8.2%;">
-                        <wm-popover popoverwidth="880" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.totalAr | toCurrency: ''" contentsource="partial"
-                            content="EntityArDelinqueCycel" popoverplacement="bottom">
+                        <wm-popover popoverwidth="880" popoverheight="110" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.totalAr | toCurrency: ''" contentsource="partial" content="EntityArDelinqueCycel"
+                            popoverplacement="bottom">
                             <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                         </wm-popover>
                     </wm-gridcolumn>
@@ -124,12 +124,10 @@
                         <wm-composite name="composite2" style="display: flex; align-items: center;">
                             <wm-label padding="0.5em 0.5em unset 0.5em" name="label20" fontsize="12" caption="bind:Widgets.toggle1.datavalue"></wm-label>
                             <wm-container class="col-md-9" name="container6">
-                                <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag ? 'Y' : 'N'" checkedvalue="Y" uncheckedvalue="N" on-change="updateManualFlag(Widgets.toggle1.datavalue)">
-                                </wm-checkbox>
+                                <wm-checkbox caption="Toggle" type="toggle" name="toggle1" datavalue="bind:Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag ? 'Y' : 'N'" checkedvalue="Y" uncheckedvalue="N" on-change="updateManualFlag(Widgets.toggle1.datavalue)"></wm-checkbox>
                             </wm-container>
                         </wm-composite>
                     </wm-gridcolumn>
-
                     <wm-gridcolumn columnwidth="1" name="gridcolumn47">
                         <wm-label padding="0.5em 0.5em unset 0.5em" name="label22" caption="Coll Start DT:" color="grey" fontsize="12" class="lookupLabel"></wm-label>
                     </wm-gridcolumn>
@@ -152,8 +150,7 @@
             </wm-layoutgrid>
             <wm-layoutgrid name="layoutgrid100">
                 <wm-gridrow name="gridrow101">
-                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true"
-                        style="margin:5px;"></wm-message>
+                    <wm-message name="successmessageEntityProfile" show="bind:Variables.successMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.successMessageEntManagementVar.dataSet.dataValue" class="successmessage" hideclose="true" style="margin:5px;"></wm-message>
                 </wm-gridrow>
                 <wm-gridrow name="gridrow102">
                     <wm-message name="failedMessage" show="bind:Variables.failMessageEntManagementVar.dataSet.dataValue ? true : false" caption="bind:Variables.failMessageEntManagementVar.dataSet.dataValue" hideclose="true" style="margin:5px;" type="error"></wm-message>
@@ -161,8 +158,7 @@
             </wm-layoutgrid>
             <wm-container name="container1">
                 <wm-tabs name="tabs1" accessroles="Authenticated" defaultpaneindex="0">
-                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus==&quot;C&quot; ? &quot;EntityProfileCancelledBans&quot; : &quot;EntityProfile&quot;"
-                        show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)" on-select="ActiveEntitySelect($event, widget)">
+                    <wm-tabpane title="Entity Profile" margin="0 5px 0 0" width="99%" name="ActiveEntity" content="bind:Variables.uiValue.dataSet.dataValue" show="true" deferload="true" badgetype="primary" accessroles="Entity Profile (View and Manage)" on-select="ActiveEntitySelect($event, widget)">
                         <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                     </wm-tabpane>
                     <!--<wm-panel iconclass="" autoclose="outsideClick" title="Entity Profile" name="panel4" content="EntityProfileCancelledBans" show="true" class="panel4" deferload="true"></wm-panel>-->
@@ -219,12 +215,10 @@
                         <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel1" badgetype="default" width="99%" content="Contact" show="bind:Variables.ContactPageName.dataSet.dataValue=='Contact'" deferload="true" margin="0.5em unset unset unset">
                             <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                         </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel2" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset">
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel2" badgetype="default" width="99%" content="CreateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='CreateDigitalContact'" deferload="true" margin="0.5em unset unset unset">
                             <wm-param name="entityId" value="bind:pageParams.entityId" type="string"></wm-param>
                         </wm-panel>
-                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel3" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true"
-                            margin="0.5em unset unset unset"></wm-panel>
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="Contactpanel3" badgetype="default" width="99%" content="UpdateDigitalContact" show="bind:Variables.ContactPageName.dataSet.dataValue=='UpdateDigitalContact'" deferload="true" margin="0.5em unset unset unset"></wm-panel>
                         <!--<wm-panel iconclass="" autoclose="outsideClick" title="" name="CreateDigitalContactPanel" content="CreateDigitalContact" show="true"></wm-panel><wm-panel iconclass="" autoclose="outsideClick" title="" name="UpdateDigitalContactPanel" content="UpdateDigitalContact" show="true"></wm-panel>--></wm-tabpane>
                 </wm-tabs>
             </wm-container>
@@ -273,8 +267,8 @@
         <wm-layoutgrid name="layoutgrid6">
             <wm-gridrow name="gridrow10_1">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn45_1" class="dialogTable">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="getEntityBanDetailsTable1ID" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10"
-                        on-select="getEntityBanDetailsTable1Select($event, widget, row)" on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" navigationalign="right">
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.getEntityBanDetailsService.dataSet" id="getEntityBanDetailsTable1ID" navigation="Classic" radioselect="false" multiselect="true" showrecordcount="true" pagesize="10" on-select="getEntityBanDetailsTable1Select($event, widget, row)"
+                        on-deselect="getEntityBanDetailsTable1Deselect($event, widget, row)" on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" navigationalign="right">
                         <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="50px" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                             <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}"></wm-icon>
                         </wm-table-column>

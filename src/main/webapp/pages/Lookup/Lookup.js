@@ -66,7 +66,12 @@ Page.onReady = function() {
                 // } else {
                 //     Page.Widgets.previousEntVal.caption = "Previous Entity not found";
                 // }
-
+                if (data.banDetails.length > 0) {
+                    Page.Variables.uiValue.dataSet.dataValue = data.banDetails.every(item => item.acctStatus === "C") ? "EntityProfileCancelledBans" : "EntityProfile";
+                } else {
+                    Page.Variables.uiValue.dataSet.dataValue = "EntityProfile";
+                }
+                console.log(Page.Variables.uiValue.dataSet.dataValue);
             },
             function(error) {
                 // Error Callback
