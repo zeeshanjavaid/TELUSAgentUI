@@ -42,7 +42,8 @@ Partial.onReady = function() {
         var getEntityDetailsForWorkCategoryVar = Partial.Variables.getEntityDetailsForWorkCategory;
         getEntityDetailsForWorkCategoryVar.invoke({
                 "inputFields": {
-                    "entityId": row.entityId
+                    "entityId": row.entityId,
+                    "accountStatus": "ALL"
                 },
             },
             function(data) {
