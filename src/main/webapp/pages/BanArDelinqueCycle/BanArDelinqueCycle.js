@@ -28,7 +28,7 @@ Partial.onReady = function() {
         //     style: 'currency',
 
         // });
-
+        debugger;
         Partial.Widgets.CURR.caption = row.currentAr.toLocaleString('en-US');
         Partial.Widgets.ar30D.caption = row.ar30Days.toLocaleString('en-US');
         Partial.Widgets.ar60D.caption = row.ar60Days.toLocaleString('en-US');
@@ -44,5 +44,6 @@ Partial.onReady = function() {
         Partial.Widgets.closingCycleValue.caption = row.closingCycle;
         Partial.Widgets.accountTypeValue.caption = row.acctType;
         Partial.Widgets.accountSubTypeValue.caption = row.acctSubType;
+        Partial.Widgets.inValCeaseFlagCheckBox.datavalue = row.involCeaseFlag;
     }
 };

@@ -62,6 +62,9 @@
                 <wm-label padding="1em 0.5em 1em unset" name="accountSubTypeLabel" caption="Account Type: " color="gray"></wm-label>
                 <wm-label padding="1em 0.5em 1em unset" name="accountSubTypeValue" caption="" color="gray"></wm-label>
             </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn13">
+                <wm-checkbox padding="1em 0.5em 1em unset" caption="InVol Cancellation" color="gray" class="col-md-push-3 col-md-9" name="inValCeaseFlagCheckBox" datavalue="bind:row.involCeaseFlag" readonly="true"></wm-checkbox>
+            </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
 </wm-partial>

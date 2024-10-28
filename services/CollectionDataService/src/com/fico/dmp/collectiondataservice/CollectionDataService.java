@@ -439,6 +439,8 @@ public class CollectionDataService {
 				}
 				assignedEntitiesInClassicModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
 				assignedEntitiesInClassicModelList.add(assignedEntitiesInClassicModel);
+				assignedEntitiesInClassicModel.setInVolCeaseFlag(assignedEntitiesInClassicViewResponse.getInvolCeaseFlag());
+
 			}
              
             return assignedEntitiesInClassicModelList;
