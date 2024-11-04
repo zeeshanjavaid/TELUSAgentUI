@@ -52,6 +52,7 @@ import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInEntityViewRes
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityContactsResponse;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityNextTreatmentResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
@@ -490,6 +491,24 @@ public class CollectionDataService {
     	 
     	 }
 
+    @RequestMapping(value = "/entityNextTreatment", method = {RequestMethod.GET})
+    public EntityNextTreatmentResponse getEntityNextTreatment(String entityId) throws Exception  {
+
+
+             logger.info("::::::::Calling  entity next treatment endpoint call ::::::::");
+             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl + URIConstant.ApiMapping.ENTITY_NEXT_TREATMENT)
+            		 .queryParam("entityId", entityId);
+
+             String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
+             logger.info("::::::::Entity next treatment endpoint call success ::::::::");
+            logger.info("Response---" + responseStr);
+            
+            if(!StringUtils.isEmpty(responseStr)) {
+                 return objectMapper.readValue(responseStr,  EntityNextTreatmentResponse.class);
+             }else{
+                return null;
+             }
+    }
     
     
 //entityBanDetails

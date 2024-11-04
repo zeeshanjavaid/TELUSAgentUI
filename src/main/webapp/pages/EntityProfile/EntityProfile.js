@@ -42,6 +42,7 @@ Partial.onReady = function() {
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
     App.refreshParrSummary();
+    App.refreshNextTreatment();
 
 
 
@@ -435,6 +436,26 @@ App.refreshLatestNotes = function() {
 
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
+};
+App.refreshNextTreatment = function() {
+    debugger;
+    Partial.Variables.getUpcomingTreatmentForEntity.setInput({
+
+        'entityId': Partial.pageParams.entityId
+
+    });
+    Partial.Variables.getUpcomingTreatmentForEntity.invoke();
+}
+
+Partial.getUpcomingTreatmentForEntityonError = function(variable, data, xhrObj) {
+    debugger;
+    console.log("Error upcoming treatment");
+};
+Partial.getUpcomingTreatmentForEntityonSuccess = function(variable, data) {
+    debugger;
+    console.log("Success upcoming treatment");
+    Partial.Widgets.stepDate.caption = data.stepDate;
+    Partial.Widgets.stepDesc.caption = data.stepCode;
 };
 
 App.refreshParrSummary = function() {

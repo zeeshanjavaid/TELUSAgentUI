@@ -37,8 +37,8 @@
                 <wm-label caption="bind:row.getProperty('disputeAmount')" class="" conditionalclass=""></wm-label>
             </wm-table-column>
             <wm-table-column binding="acctStatus" caption="BAN Status" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true"
-                disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+            <wm-table-row content="BanArDelinqueCycle" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getEntityDetailsTable1_OnRowexpand($event, widget, row, $data)" widget-type="button"
+                show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
         </wm-table>
     </wm-gridcolumn>
     <wm-layoutgrid name="layoutgrid1">
@@ -47,7 +47,7 @@
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em unset unset unset">
                         <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
-                            <wm-label padding="unset 0.5em" name="label1" caption="PARR Summary"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label1" caption="PARR Summary" fontweight="bold"></wm-label>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
@@ -162,7 +162,7 @@
                 <wm-layoutgrid name="layoutgrid2">
                     <wm-gridrow name="gridrow2" padding="1em 0.5em unset unset">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
-                            <wm-label padding="unset 0.5em" name="label1" caption="Latest User Notes"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label1" caption="Latest User Notes" fontweight="bold"></wm-label>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
                             <!--<wm-popover popoverwidth="40" popoverheight="20" margin="-0.5em 1.5em unset unset" name="createNoteButton" caption="..." popoverarrow="false" popoverautoclose="true" contentsource="inline" title="" on-show="createNoteButtonShow($event, widget)"><wm-gridrow name="gridrow1"><wm-gridcolumn columnwidth="12" name="gridcolumn1"><wm-layoutgrid name="layoutgrid3"><wm-gridrow name="gridrow5"><wm-gridcolumn columnwidth="12" name="gridcolumn9" padding="0.5em unset">-->
@@ -196,7 +196,8 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn35">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)" style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button5" show="bind:Variables.getLatestNotesByEntityId.dataSet[1].docId!=null" on-click="button5Click($event, widget)"
+                                style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow19">
@@ -209,11 +210,37 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn37">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)" style="left: -13px"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em" iconclass="fico-icon-file" name="button6" show="bind:Variables.getLatestNotesByEntityId.dataSet[2].docId!=null" on-click="button6Click($event, widget)"
+                                style="left: -13px"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
                 <wm-container name="container10" accessroles="Entity Profile (View and Manage)"></wm-container>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="6" class="latest_User" name="gridcolumnfortrmt" style="margin: 20px; width: 25%; display: flex; flex-direction: column;">
+                <wm-layoutgrid name="layoutgrid2">
+                    <wm-gridrow name="gridrow2" padding="1em unset unset unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Upcoming Treatment" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="daterow" padding="1em 0.5em unset unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Date"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
+                            <wm-label padding="unset 0.5em" name="stepDate" caption="N/A"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="trmtrow" padding="1em 0.5em 1em unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
+                            <wm-label padding="unset 0.5em" name="label1" caption="Description"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
+                            <wm-label padding="unset 0.5em" name="stepDesc" caption="N/A"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
