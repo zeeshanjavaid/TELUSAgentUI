@@ -450,12 +450,16 @@ App.refreshNextTreatment = function() {
 Partial.getUpcomingTreatmentForEntityonError = function(variable, data, xhrObj) {
     debugger;
     console.log("Error upcoming treatment");
+    Partial.Widgets.daterow.show = false;
+    Partial.Widgets.trmtrow.show = false;
+    Partial.Widgets.notreatmentrow.show = true;
 };
 Partial.getUpcomingTreatmentForEntityonSuccess = function(variable, data) {
     debugger;
     console.log("Success upcoming treatment");
     Partial.Widgets.stepDate.caption = data.stepDate;
     Partial.Widgets.stepDesc.caption = data.stepCode;
+    Partial.Widgets.notreatmentrow.show = false;
 };
 
 App.refreshParrSummary = function() {

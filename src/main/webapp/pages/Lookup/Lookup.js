@@ -133,7 +133,7 @@ Page.updateManualFlag = function(newValue) {
 
     // Store the original value before updating
     Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
-
+    Page.orginalTextValue = Page.originalValue ? 'Y' : 'N';
     // Temporarily update the underlying data model
     Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (newValue === 'Y');
 
@@ -154,7 +154,8 @@ Page.updateManualFlag = function(newValue) {
                 "originatorAppId": "FAWBTELUSAGENT",
                 "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
             },
-            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag
+            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag,
+            "comment": "Manual flag changed from " + Page.orginalTextValue + " to " + newValue
         }
     });
 
