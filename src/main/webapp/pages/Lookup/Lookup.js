@@ -128,55 +128,6 @@ Page.openARbyDelinqCycle = function() {
 
 
 }
-
-Page.updateManualFlag = function(newValue) {
-
-    // Store the original value before updating
-    Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
-    Page.orginalTextValue = Page.originalValue ? 'Y' : 'N';
-    // Temporarily update the underlying data model
-    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (newValue === 'Y');
-
-    // If you need to perform any additional actions or validations, you can add them here
-    console.log("Manual flag updated to: " + newValue);
-
-    // If you need to trigger any other updates or refreshes, you can do so here
-    debugger;
-
-
-
-    Page.Variables.updateManualFlag.setInput({
-        "id": parseInt(Page.pageParams.entityId),
-        "CollectionEntityUpdate": {
-            "id": parseInt(Page.pageParams.entityId),
-            // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
-            "channel": {
-                "originatorAppId": "FAWBTELUSAGENT",
-                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-            },
-            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag,
-            "comment": "Manual flag changed from " + Page.orginalTextValue + " to " + newValue
-        }
-    });
-
-    //Invoke POST createContact service
-    Page.Variables.updateManualFlag.invoke();
-};
-
-Page.updateManualFlagonSuccess = function(variable, data) {
-    debugger;
-    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
-    setTimeout(messageTimeout, 5000);
-};
-
-Page.updateManualFlagonError = function(variable, data, xhrObj) {
-    debugger;
-    Page.Widgets.toggle1.datavalue = Page.originalValue ? 'Y' : 'N'; // Update the toggle widget
-    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = Page.originalValue;
-    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Failed.";
-    setTimeout(messageTimeout, 5000);
-};
-
 Page.TransferBanToExistingEntityClick = function($event, widget) {
     Page.Widgets.entityNamePopOver.hidePopover();
     Page.Widgets.TransferBanToExistEntDialog.open();
@@ -772,4 +723,65 @@ Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, dat
 
 Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
     Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
+};
+Page.toggle1Click = function($event, widget) {
+    debugger;
+    // Store the current value of the toggle in a temporary variable
+    Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
+
+    // Revert the toggle back to its initial value immediately after opening the dialog
+    setTimeout(() => {
+        widget.datavalue = Page.originalValue ? 'Y' : 'N';
+    });
+    Page.Widgets.manualFlagDialog.open();
+};
+
+Page.updateManualFlagonSuccess = function(variable, data) {
+    debugger;
+    Page.Widgets.toggle1.datavalue = Page.newTextValue;
+    Page.Widgets.manualFlagDialog.close();
+    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
+    setTimeout(messageTimeout, 5000);
+};
+
+Page.updateManualFlagonError = function(variable, data, xhrObj) {
+    debugger;
+    Page.Widgets.manualFlagDialog.close();
+    Page.Widgets.toggle1.datavalue = Page.originalValue ? 'Y' : 'N'; // Update the toggle widget
+    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = Page.originalValue;
+    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Failed.";
+    setTimeout(messageTimeout, 5000);
+};
+Page.button6Click = function($event, widget) {
+    debugger;
+    // Store the original value before updating
+    Page.originalTextValue = Page.originalValue ? 'Y' : 'N';
+    Page.newValue = !Page.originalValue;
+    Page.newTextValue = Page.newValue ? 'Y' : 'N';
+    // Temporarily update the underlying data model
+    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (Page.newTextValue === 'Y');
+
+    // If you need to perform any additional actions or validations, you can add them here
+    console.log("Manual flag updated to: " + Page.newValue);
+
+    // If you need to trigger any other updates or refreshes, you can do so here
+    debugger;
+
+
+
+    Page.Variables.updateManualFlag.setInput({
+        "id": parseInt(Page.pageParams.entityId),
+        "CollectionEntityUpdate": {
+            "id": parseInt(Page.pageParams.entityId),
+            // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
+            "channel": {
+                "originatorAppId": "FAWBTELUSAGENT",
+                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
+            },
+            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag,
+            "comment": "Manual Collection Flag changed from " + Page.originalTextValue + " to " + Page.newTextValue
+        }
+    });
+    //Invoke POST createContact service
+    Page.Variables.updateManualFlag.invoke();
 };
