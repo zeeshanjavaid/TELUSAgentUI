@@ -524,7 +524,7 @@ public class CollectionDataService {
                      .queryParam("entityId", entityId);
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity Ban details endpoint call success ::::::::");
-             logger.info("Response payload for Ban Details---"+ responseStr);
+             logger.info("Response payload for Entity Ban Details---"+ responseStr);
              if(responseStr!=null){
               entityBanDetailsResponseList = objectMapper.readValue(responseStr,
      				objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
@@ -542,14 +542,14 @@ public class CollectionDataService {
         EntityDetailsResponse.class);
     
      } else {
-             logger.info("::::::::Calling  entity details endpoint call ::::::::");
+             logger.info("::::::::Calling  entityDetails endpoint call ::::::::");
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl + URIConstant.ApiMapping.ENTITY_DETAILS)
             		 .queryParam("entityId", entityId)
             		 .queryParam("accountStatus", accountStatus);
 
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity details endpoint call success ::::::::");
-            logger.info("Resoinse---" + responseStr);
+            logger.info("Response for entityDetails ---" + responseStr);
             
             if(!StringUtils.isEmpty(responseStr)) {
                  return objectMapper.readValue(responseStr,  EntityDetailsResponse.class);
