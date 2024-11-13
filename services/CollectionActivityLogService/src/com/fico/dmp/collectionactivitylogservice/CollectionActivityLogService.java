@@ -3,6 +3,8 @@
  with the terms of the source code license agreement you entered into with fico.com*/
 package com.fico.dmp.collectionactivitylogservice;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog;
+import telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.Characteristic;
 import telus.cdo.cnc.collmgmt.collentitymgmt.model.BillingAccount;
 import telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionBillingAccountRef;
 import telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment;
@@ -217,6 +220,7 @@ public class CollectionActivityLogService {
         {
             CollectionActivityLogRes collectionActivityLogRes1=new CollectionActivityLogRes();
             collectionActivityLogRes1.setId(collectionActivityLog.getId());
+            collectionActivityLogRes1.setContentTypeCode(getCharacteristicValueByName(collectionActivityLog.getAdditionalCharacteristics(),"contentTypeCode"));
             collectionActivityLogRes1.setCollectionEntity(collectionActivityLog.getCollectionEntity());
             collectionActivityLogRes1.setCollectionActivityTimestamp(collectionActivityLog.getCollectionActivityTimestamp());
             collectionActivityLogRes1.setRelatedBusinessEntityId(collectionActivityLog.getRelatedBusinessEntityId());
@@ -241,6 +245,8 @@ public class CollectionActivityLogService {
             collectionActivityLogRes1.setType(collectionActivityLog.getAtType());
             collectionActivityLogRes1.setSchemaLocation(collectionActivityLog.getAtSchemaLocation());
             collectionActivityLogRes1.setTotalNoOfElement(totalNoOfElement);
+            collectionActivityLogRes1.setContentTypeCode(getCharacteristicValueByName(collectionActivityLog.getAdditionalCharacteristics(),"contentTypeCode"));
+        logger.info("Content Type Code : " + collectionActivityLogRes1.getContentTypeCode());
             collectionActivityLogResList.add(collectionActivityLogRes1);
         }
         return collectionActivityLogResList;
@@ -350,5 +356,21 @@ public class CollectionActivityLogService {
        }
         return orderMgmtHistoryResponseList;
     }
+
+
+private String getCharacteristicValueByName(List<Characteristic> characteristics, String name) {
+    // Check if characteristics list is null or empty, return empty string if true
+    if (characteristics == null || characteristics.isEmpty()) {
+        return "";
+    }
+
+    // Use Stream API to search for the characteristic with the given name
+    return characteristics.stream()
+            .filter(characteristic -> name.equals(characteristic.getName()) && characteristic.getValue() != null)
+            .map(characteristic -> (String) characteristic.getValue())  // Cast to String
+            .findFirst()
+            .orElse("");  // Return empty string if not found
+}
+
 
 }

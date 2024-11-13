@@ -162,7 +162,7 @@ public class CollectionTreatmentService {
     }
 
     // @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(Boolean IsOdManagement, String collectionTreatmentStepId, String entityId, String typeCode, String createdDate, String createdBy, String status, String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception {
+    public List<CollectionTreatmentStepResponse> getCollectionTreatmentStep(Boolean IsOdManagement, String collectionTreatmentStepId, String entityId, String typeCode, String contentTypeCode, String createdDate, String createdBy, String status, String assignedAgentId, String assignedTeam, String fields, Integer offset, Integer limit) throws Exception {
         // Commented telus live api
         List<CollectionTreatmentStep> collectionTreatmentStepList = new ArrayList<>();
         logger.info("::::::::In getCollTeatmentStep call :::::::: ", IsOdManagement);
@@ -200,6 +200,9 @@ public class CollectionTreatmentService {
                     typeCode = "in:" + String.join(",", notcTypeCodes);
                 }
                 builder = builder.queryParam("typeCode", typeCode);
+            }
+            if (contentTypeCode != null) {
+                builder = builder.queryParam("contentTypeCode", contentTypeCode);
             }
             if (createdDate != null) {
                 builder = builder.queryParam("createdDate", createdDate);

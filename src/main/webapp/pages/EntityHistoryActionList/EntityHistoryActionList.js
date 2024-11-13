@@ -304,7 +304,6 @@ Partial.cancelClick = function() {
     $('#callInBoundActionForm').hide();
 };
 
-
 Partial.closeSelectActionDialog = function() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
     Partial.Widgets.SelectActionDialog.close();
@@ -1095,6 +1094,7 @@ Partial.clearFilterFields = function($event, widget) {
 Partial.applyFilter = function($event, widget) {
     debugger;
     var typeCode = '';
+    var contentTypeCode = '';
     var typeCodeForCompleted = '';
     var createdBy = '';
     var assignedAgentId = '';
@@ -1119,6 +1119,10 @@ Partial.applyFilter = function($event, widget) {
             typeCode = '';
         } else if (Partial.Widgets.typeSelect.datavalue == 'NOTC') {
             typeCode = 'NOTC';
+            if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
+                contentTypeCode = 'eq:' + Partial.Widgets.contentIdSelectionList.datavalue;
+            }
+
         } else {
             typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
         }
@@ -1136,6 +1140,7 @@ Partial.applyFilter = function($event, widget) {
             'collectionEntityId': Partial.pageParams.entityId,
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
             'typeCode': typeCode,
+            'contentTypeCode': contentTypeCode,
             'createdDate': createdDate,
             'status': statusForTodo,
             'createdBy': createdBy,
@@ -1247,6 +1252,8 @@ Partial.toDoButtonClick = function($event, widget) {
     Partial.Widgets.createdBySelect.datavalue = "";
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+    Partial.Widgets.contentIdSelectionList.disabled = true;
+    Partial.Widgets.contentIdSelectionList.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
@@ -1283,6 +1290,8 @@ Partial.completedButtonClick = function($event, widget) {
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
     Partial.Widgets.EventTypeSelect.datavalue = "ALL";
+    Partial.Widgets.contentIdSelectionList.disabled = true;
+    Partial.Widgets.contentIdSelectionList.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
@@ -1760,13 +1769,23 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
-
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+            debugger;
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = false;
         } else if (Partial.Widgets.typeSelect.datavalue == "") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         } else {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         }
     }
 };

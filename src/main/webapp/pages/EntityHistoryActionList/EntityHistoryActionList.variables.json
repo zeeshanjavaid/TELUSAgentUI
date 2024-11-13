@@ -152,23 +152,13 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
-      "dataValue" : "NOTC1-PMTR"
-    }, {
-      "dataValue" : "NOTC2-OD"
-    }, {
-      "dataValue" : "NOTC3-DIST"
-    }, {
-      "dataValue" : "NOTC4-CANL"
+      "dataValue" : "NOTC"
     }, {
       "dataValue" : "SUSPEND"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
-    }, {
-      "dataValue" : "NOTC5-ACTMGR"
-    }, {
-      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
