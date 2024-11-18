@@ -1204,6 +1204,9 @@ Partial.applyFilter = function($event, widget) {
             categroyForCompleted = '';
             typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             statusForHistory = Partial.Widgets.statusSelect.datavalue;
+            if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
+                contentTypeCode = Partial.Widgets.contentIdSelectionList.datavalue;
+            }
         }
 
         if (Partial.Widgets.EventTypeSelect.datavalue === 'ALL') {
@@ -1222,6 +1225,7 @@ Partial.applyFilter = function($event, widget) {
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': eventTypeSelect,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
+            'relatedBusinessEntityContentId': contentTypeCode,
             'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': statusForHistory,
             'relatedBusinessEntityCreatedDate': completionDateTime,

@@ -127,7 +127,7 @@ public class CollectionActivityLogService {
     }
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionActivityLogRes> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception  {
+    public List<CollectionActivityLogRes> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityContentId, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception  {
 
         List<CollectionActivityLog> collectionActivityLogRes= new ArrayList<>();
         String totalNoOfElement=null;
@@ -151,12 +151,19 @@ public class CollectionActivityLogService {
             }else{
                 encodedStatus=relatedBusinessEntityStatus;
             }
+            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL" };
+            if (relatedBusinessEntitySubType != null) {
+                if (relatedBusinessEntitySubType.equalsIgnoreCase("NOTC")) {
+                    relatedBusinessEntitySubType = String.join(",", notcTypeCodes);
+                }
+            }
 
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collActivityLogEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
                    .queryParam("collectionEntityId", collectionEntityId)
                     .queryParam("businessEntityEventType", businessEntityEventType)
                     .queryParam("relatedBusinessEntitySubType", relatedBusinessEntitySubType)
+                    .queryParam("relatedBusinessEntityContentId", relatedBusinessEntityContentId)
                     .queryParam("relatedBusinessEntityId", relatedBusinessEntityId)
                     .queryParam("relatedBusinessEntityType", relatedBusinessEntityType)
                     .queryParam("relatedBusinessEntityStatus", encodedStatus)
@@ -169,6 +176,7 @@ public class CollectionActivityLogService {
                     .queryParam("offset", offset)
                     .queryParam("limit",limit);
                    
+            logger.info("Calling Url---" + builder.toUriString());
 
             // String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, collTreatmentSvcAuthScope);
             ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, builder.toUriString(), HttpMethod.GET, collActivityLogSvcAuthScope);
@@ -176,7 +184,7 @@ public class CollectionActivityLogService {
                 HttpHeaders headers1 = responseFromTelus.getHeaders();
                 totalNoOfElement = headers1.getFirst("x-total-count");
             logger.info("::::::::Coll Activity log endpoint call success ::::::::");
-            logger.info("Coll Activity log Resoinse---" + result);
+            logger.info("Coll Activity log Response---" + result);
             //  return objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
            collectionActivityLogRes= objectMapper.readValue(result, new TypeReference<List<CollectionActivityLog>>() {
 
@@ -276,7 +284,7 @@ public class CollectionActivityLogService {
         List<String> banIds = new ArrayList<>();
         List<String> banRefIds = new ArrayList<>();
         
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
 
 
        if (!collectionActivityLogList.isEmpty()) {
@@ -315,7 +323,7 @@ public class CollectionActivityLogService {
     public List<OrderMgmtHistoryResponse> getDisputeHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
         logger.info("Entering in getDisputeHistory");
         List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType, null, relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType, null, null, relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
        if (!collectionActivityLogList.isEmpty()) {
             for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
@@ -338,7 +346,7 @@ public class CollectionActivityLogService {
     public List<OrderMgmtHistoryResponse> getParrHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
         logger.info("Entering in getParrHistoryView");
         List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
        if (!collectionActivityLogList.isEmpty()) {
             for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
