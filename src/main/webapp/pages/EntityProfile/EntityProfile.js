@@ -452,6 +452,7 @@ Partial.getUpcomingTreatmentForEntityonError = function(variable, data, xhrObj) 
     console.log("Error upcoming treatment");
     Partial.Widgets.daterow.show = false;
     Partial.Widgets.trmtrow.show = false;
+    Partial.Widgets.contentTyperow.show = false;
     Partial.Widgets.notreatmentrow.show = true;
 };
 Partial.getUpcomingTreatmentForEntityonSuccess = function(variable, data) {
@@ -459,6 +460,12 @@ Partial.getUpcomingTreatmentForEntityonSuccess = function(variable, data) {
     console.log("Success upcoming treatment");
     Partial.Widgets.stepDate.caption = data.stepDate;
     Partial.Widgets.stepDesc.caption = data.stepCode;
+    if (data.stepCode == 'NOTICE') {
+        Partial.Widgets.contentType.caption = data.contentType;
+        Partial.Widgets.contentTyperow.show = true;
+    } else {
+        Partial.Widgets.contentTyperow.show = false;
+    }
     Partial.Widgets.notreatmentrow.show = false;
 };
 
