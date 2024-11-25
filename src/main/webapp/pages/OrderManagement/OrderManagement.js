@@ -289,6 +289,7 @@ Partial.getCollectionTreatmentStep_orderMngt_customRow1Action = function($event,
         }
     } else if (row.stepTypeCode == 'CEASE') {
         if (row.status == 'Request Assigned' || row.status == 'Request Created') {
+            debugger;
             Partial.Widgets.EditNotSentdialog.title = "Edit Cease Request";
             Partial.Widgets.EditNotSentdialog.open();
         } else if (row.status == 'Order Assigned' || row.status == 'Order Created') {
