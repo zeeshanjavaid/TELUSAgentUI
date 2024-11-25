@@ -386,7 +386,7 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionActivityLogtService",
+    "service" : "CollectionActivityLogService",
     "operation" : "getCollectionHistoryView",
     "operationId" : "CollectionActivityLogController_getCollectionHistoryView",
     "operationType" : "get",
