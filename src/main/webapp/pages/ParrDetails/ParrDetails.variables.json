@@ -88,9 +88,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionTreatmentService",
+    "service" : "CollectionActivityLogService",
     "operation" : "getParrHistoryView",
-    "operationId" : "CollectionTreatmentController_getParrHistoryView",
+    "operationId" : "CollectionActivityLogController_getParrHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -103,7 +103,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionTreatment"
+    "controller" : "CollectionActivityLog"
   },
   "getPaymentArrangement" : {
     "_id" : "wm-getPaymentArrangement1-wm.ServiceVariable-1685893381663",

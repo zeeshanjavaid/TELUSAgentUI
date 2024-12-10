@@ -5,7 +5,11 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "accountStatus",
+      "value" : "ALL",
+      "type" : "string"
+    } ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityDetails",

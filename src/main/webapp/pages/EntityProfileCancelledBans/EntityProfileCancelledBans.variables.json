@@ -23,6 +23,10 @@
       "target" : "entityId",
       "value" : "bind:pageParams.entityId",
       "type" : "string"
+    }, {
+      "target" : "accountStatus",
+      "value" : "ALL",
+      "type" : "string"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
