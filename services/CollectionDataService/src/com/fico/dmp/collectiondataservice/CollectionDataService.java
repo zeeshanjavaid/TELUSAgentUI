@@ -52,7 +52,6 @@ import telus.cdo.cnc.collmgmt.colldatamgmt.model.AssignedEntitiesInEntityViewRes
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityContactsResponse;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse;
-import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityNextTreatmentResponse;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
@@ -440,8 +439,6 @@ public class CollectionDataService {
 				}
 				assignedEntitiesInClassicModel.setTotalNumberOfElement(Integer.parseInt(totalNoOfElement));
 				assignedEntitiesInClassicModelList.add(assignedEntitiesInClassicModel);
-				assignedEntitiesInClassicModel.setInVolCeaseFlag(assignedEntitiesInClassicViewResponse.getInvolCeaseFlag());
-
 			}
              
             return assignedEntitiesInClassicModelList;
@@ -491,24 +488,6 @@ public class CollectionDataService {
     	 
     	 }
 
-    @RequestMapping(value = "/entityNextTreatment", method = {RequestMethod.GET})
-    public EntityNextTreatmentResponse getEntityNextTreatment(String entityId) throws Exception  {
-
-
-             logger.info("::::::::Calling  entity next treatment endpoint call ::::::::");
-             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl + URIConstant.ApiMapping.ENTITY_NEXT_TREATMENT)
-            		 .queryParam("entityId", entityId);
-
-             String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
-             logger.info("::::::::Entity next treatment endpoint call success ::::::::");
-            logger.info("Response---" + responseStr);
-            
-            if(!StringUtils.isEmpty(responseStr)) {
-                 return objectMapper.readValue(responseStr,  EntityNextTreatmentResponse.class);
-             }else{
-                return null;
-             }
-    }
     
     
 //entityBanDetails
@@ -524,7 +503,7 @@ public class CollectionDataService {
                      .queryParam("entityId", entityId);
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null,builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity Ban details endpoint call success ::::::::");
-             logger.info("Response payload for Entity Ban Details---"+ responseStr);
+             logger.info("Response payload for Ban Details---"+ responseStr);
              if(responseStr!=null){
               entityBanDetailsResponseList = objectMapper.readValue(responseStr,
      				objectMapper.getTypeFactory().constructCollectionType(List.class, EntityBanDetailsResponse.class));
@@ -535,21 +514,20 @@ public class CollectionDataService {
     
 //entityDetails
     @RequestMapping(value = "/entityDetails", method = {RequestMethod.GET})
-    public EntityDetailsResponse getEntityDetails(String entityId, String accountStatus) throws Exception  {
+    public EntityDetailsResponse getEntityDetails(String entityId) throws Exception  {
 
  if (isStubEnabled) {
         return objectMapper.readValue("{\"entityDetails\":{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":\"224343\",\"cbucId\":\"123\",\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true},\"banDetails\":[{\"banId\":256645999,\"banName\":\"NORTHLAND PROPERTIES CORPORATION\",\"cbucId\":\"761846\",\"rcId\":\"392931\",\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"lastPaymentDate\":\"2022-08-29\",\"paymentMethod\":\"Card\",\"odRemaining\":2344390.88,\"acctStatus\":\"O\",\"acctStatusDate\":\"2022-08-29\",\"acctType\":\"B\",\"acctSubType\":\"I\",\"dispute\":2344390.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\",\"banCollectionStatus\":\"In-Collection\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false},{\"banId\":\"256645900\",\"banName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"cbucId\":\"761846\",\"rcId\":\"392931\",\"billingSystem\":\"CES\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"lastPaymentDate\":\"2022-08-29\",\"paymentMethod\":\"Card\",\"odRemaining\":390,\"acctStatus\":\"O\",\"acctStatusDate\":\"2022-08-29\",\"acctType\":\"B\",\"acctSubType\":\"I\",\"dispute\":90.88,\"language\":\"EN\",\"marketSubSegment\":\"CBU\",\"province\":\"BC\",\"cbu\":\"BC\",\"cbucidName\":\"Air Canada\",\"rcidName\":\"NORTHLAND PROPERTIES CORPORATION2\",\"subPortfolio\":\"RO-ACCOUNT\",\"entityId\":6766677,\"entityStatus\":\"In Collection\",\"entityType\":\"CBUCID\",\"entityRisk\":\"Low\",\"entityValue\":\"5\",\"entityOwnerId\":\"John123\",\"banCollectionStatus\":\"In-Collection\",\"closingDate\":\"2022-12-12\",\"closingCycle\":6,\"suppresionFlag\":false}]}",
         EntityDetailsResponse.class);
     
      } else {
-             logger.info("::::::::Calling  entityDetails endpoint call ::::::::");
+             logger.info("::::::::Calling  entity details endpoint call ::::::::");
              UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(entityDataEndPointUrl + URIConstant.ApiMapping.ENTITY_DETAILS)
-            		 .queryParam("entityId", entityId)
-            		 .queryParam("accountStatus", accountStatus);
+            		 .queryParam("entityId", entityId);
 
              String responseStr = telusAPIConnectivityService.executeTelusAPI(null, builder.toUriString(), HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity details endpoint call success ::::::::");
-            logger.info("Response for entityDetails ---" + responseStr);
+            logger.info("Resoinse---" + responseStr);
             
             if(!StringUtils.isEmpty(responseStr)) {
                  return objectMapper.readValue(responseStr,  EntityDetailsResponse.class);

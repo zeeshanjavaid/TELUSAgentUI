@@ -314,11 +314,10 @@ public class CollectionEntityService {
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PATCH)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     public CollectionEntityUpdate  updateCollectionEntity(@PathVariable("id") Integer id, CollectionEntityUpdate collectionEntityUpdate ) throws Exception {
-    	 logger.info("Inside updateCollectionEntity method for entityId = "+id);
+    	 logger.info("Inside updateCollectionEntity method"+id);
      	String requestPayload = objectMapper.writeValueAsString(collectionEntityUpdate);
      	requestPayload = requestPayload.replace("\"NULL\"", "null");
      	logger.info("::::::::Request payload for Update Collection entity:::::"+requestPayload);
-     	logger.info("URL is : "+this.parrEndPointUrl);
      	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "/" + id, "PATCH", entitySvcAuthScope);
      	logger.info("::::::::Response from Success Telus  API- Update entity:::::\n::::::: {}",responseStr);
      	CollectionEntityUpdate collectionEntityUpdateResponse = objectMapper.readValue(responseStr,CollectionEntityUpdate.class);

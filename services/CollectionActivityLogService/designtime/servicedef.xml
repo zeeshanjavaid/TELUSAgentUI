@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="CollectionActivityLogService" class="com.fico.dmp.collectionactivitylogservice.CollectionActivityLogService" type="JavaService" springFile="CollectionActivityLogService.spring.xml"/>

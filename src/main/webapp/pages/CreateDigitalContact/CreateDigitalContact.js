@@ -85,28 +85,25 @@ Partial.createContact = function($event, widget) {
         debugger;
         Partial.Variables.CreateContactServiceVar.setInput({
             "CollectionContactCreate": {
+                'firstName': Partial.Widgets.firstName.datavalue,
+                'lastName': Partial.Widgets.lastName.datavalue,
+                'mobilePhoneNumber': Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
+                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
+                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
+                'title': Partial.Widgets.TITLESelect.datavalue,
+                'workPhoneNumber': Partial.Widgets.workNo.datavalue ? Partial.Widgets.workNo.datavalue.replace(/\D/g, '') : Partial.Widgets.workNo.datavalue,
+                'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
+                'comment': Partial.Widgets.comments.datavalue,
+                'email': Partial.Widgets.emailText.datavalue,
+                'faxNumber': Partial.Widgets.fax.datavalue ? Partial.Widgets.fax.datavalue.replace(/\D/g, '') : Partial.Widgets.fax.datavalue,
+                'preferredLanguage': Partial.Widgets.prefLangValue.datavalue,
                 'channel': {
                     'originatorAppId': "FAWBTELUSAGENT",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
-                'comment': Partial.Widgets.comments.datavalue,
                 'collectionEntity': {
                     'id': Partial.pageParams.entityId
-                },
-                'contactMediumType': "PHONE",
-                'contactMediumId': Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
-                'contactMediumSubType': "MOBILE",
-                'contactMediumSubId': "Other",
-                'firstName': Partial.Widgets.firstName.datavalue,
-                'lastName': Partial.Widgets.lastName.datavalue,
-                'notificationIndicator': Partial.Widgets.EmailForNoticesSelect.datavalue,
-                'preferredLanguage': Partial.Widgets.prefLangValue.datavalue,
-                'telusContactIndicator': Partial.Widgets.TELUSContactsSelect.datavalue,
-                'title': Partial.Widgets.TITLESelect.datavalue
-                //'workPhoneNumber': Partial.Widgets.workNo.datavalue ? Partial.Widgets.workNo.datavalue.replace(/\D/g, '') : Partial.Widgets.workNo.datavalue,
-                //'workPhoneNumberExtension': Partial.Widgets.ext.datavalue,
-                //'email': Partial.Widgets.emailText.datavalue,
-                //'faxNumber': Partial.Widgets.fax.datavalue ? Partial.Widgets.fax.datavalue.replace(/\D/g, '') : Partial.Widgets.fax.datavalue,
+                }
             }
         });
 

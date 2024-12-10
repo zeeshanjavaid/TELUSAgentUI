@@ -47,15 +47,8 @@ public class AssignedEntitiesInClassicModel {
 	private Integer closingCycle = null;
 	private String assignedTeam = null;
 	private Integer totalNumberOfElement;
-	private Boolean inVolCeaseFlag = null;
 	
 	
-	public Boolean getInVolCeaseFlag() {
-		return inVolCeaseFlag;
-	}
-	public void setInVolCeaseFlag(Boolean inVolCeaseFlag) {
-		this.inVolCeaseFlag = inVolCeaseFlag;
-	}
 	public String getBanId() {
 		return banId;
 	}

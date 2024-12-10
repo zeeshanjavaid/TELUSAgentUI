@@ -5,11 +5,7 @@
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
-    "dataBinding" : [ {
-      "target" : "accountStatus",
-      "value" : "ALL",
-      "type" : "string"
-    } ],
+    "dataBinding" : [ ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityDetails",
@@ -19,7 +15,6 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "getEntityDetailsARonSuccess(variable, data, options)",
     "onError" : "getEntityDetailsARonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,

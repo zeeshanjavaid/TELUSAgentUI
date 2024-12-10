@@ -1,39 +1,36 @@
+
 package com.fico.telus.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class TelusTokenResponse {
-    @JsonProperty("access_token")
-    private String accessToken;
 
-    @JsonProperty("token_type")
-    private String tokenType;
+    private String access_token;
 
-    @JsonProperty("expires_in")
-    private String expiresIn;
-
-    public String getAccessToken() {
-        return this.accessToken;
+    public String getAccess_token() {
+        return this.access_token;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    };
 
-    public String getTokenType() {
-        return this.tokenType;
-    }
+    private String token_type;
 
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
 
-    public String getExpiresIn() {
-        return this.expiresIn;
-    }
 
-    public void setExpiresIn(String expiresIn) {
-        this.expiresIn = expiresIn;
-    }
+    public void setToken_type(String token_type) {
+        this.token_type = token_type;
+    };
+    private String expires_in;
+
+	public String getExpires_in() {
+		return this.expires_in;
+	}
+
+	public void setExpires_in(String expires_in) {
+		this.expires_in = expires_in;
+	}
+;
+
+
 
 }

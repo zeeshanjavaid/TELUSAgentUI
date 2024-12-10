@@ -41,37 +41,31 @@ Page.onReady = function() {
 
         getEntityProfileDetailsVar.invoke({
                 "inputFields": {
-                    "entityId": Page.pageParams.entityId,
-                    "accountStatus": "ALL"
+                    "entityId": Page.pageParams.entityId
                 },
             },
             function(data) {
-                // if (data.banDetails[0].acctStatus == 'C') {
-                //     var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
-                //     getBillingAccountRefProfileDetailsVar.invoke({
-                //             "inputFields": {
-                //                 "ban": data.banDetails[0].banId
-                //             },
-                //         },
-                //         function(data1) {
-                //             debugger;
-                //             Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
+                if (data.banDetails[0].acctStatus == 'C') {
+                    var getBillingAccountRefProfileDetailsVar = Page.Variables.getBillingAccountRefProfileDetails;
+                    getBillingAccountRefProfileDetailsVar.invoke({
+                            "inputFields": {
+                                "ban": data.banDetails[0].banId
+                            },
+                        },
+                        function(data1) {
+                            debugger;
+                            Page.Widgets.previousEntVal.caption = data1[0].previousCollectionEntity.id
 
-                //         },
-                //         function(error1) {
-                //             // Error Callback
-                //             console.log("error", error);
-                //         }
-                //     );
-                // } else {
-                //     Page.Widgets.previousEntVal.caption = "Previous Entity not found";
-                // }
-                if (data.banDetails.length > 0) {
-                    Page.Variables.uiValue.dataSet.dataValue = data.banDetails.every(item => item.acctStatus === "C") ? "EntityProfileCancelledBans" : "EntityProfile";
+                        },
+                        function(error1) {
+                            // Error Callback
+                            console.log("error", error);
+                        }
+                    );
                 } else {
-                    Page.Variables.uiValue.dataSet.dataValue = "EntityProfile";
+                    Page.Widgets.previousEntVal.caption = "Previous Entity not found";
                 }
-                console.log(Page.Variables.uiValue.dataSet.dataValue);
+
             },
             function(error) {
                 // Error Callback
@@ -84,7 +78,6 @@ Page.onReady = function() {
 
 function messageTimeout() {
     Page.Variables.successMessageEntManagementVar.dataSet.dataValue = null;
-    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = null;
     App.Variables.errorMsg.dataSet.dataValue = null;
 }
 
@@ -128,6 +121,8 @@ Page.openARbyDelinqCycle = function() {
 
 
 }
+
+
 Page.TransferBanToExistingEntityClick = function($event, widget) {
     Page.Widgets.entityNamePopOver.hidePopover();
     Page.Widgets.TransferBanToExistEntDialog.open();
@@ -650,8 +645,6 @@ Page.TransferBanToNewEntDialogClose = function($event, widget) {
     Page.Widgets.TransferBanToNewEntDialog.close();
     App.Variables.errorMsg.dataSet.dataValue = null;
 };
-
-// Deprecated. TODO: remove this in the next version
 Page.previousEntValClick = function($event, widget) {
     debugger;
     //Page.pageParams.entityId = widget.caption;
@@ -663,8 +656,7 @@ Page.previousEntValClick = function($event, widget) {
 
         getEntityProfileDetailsVar.invoke({
                 "inputFields": {
-                    "entityId": widget.caption,
-                    "accountStatus": "ALL"
+                    "entityId": widget.caption
                 },
             },
             function(data) {
@@ -702,7 +694,6 @@ Page.previousEntValClick = function($event, widget) {
 
     }
 };
-
 Page.anchor3Click = function($event, widget) {
     debugger;
 
@@ -723,65 +714,4 @@ Page.getCollectionEntityIdForTransferredEntityonSuccess = function(variable, dat
 
 Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
     Page.Variables.selectedEntityToTransferStr.dataSet.dataValue = data.banDetails[0].acctStatus;
-};
-Page.toggle1Click = function($event, widget) {
-    debugger;
-    // Store the current value of the toggle in a temporary variable
-    Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
-
-    // Revert the toggle back to its initial value immediately after opening the dialog
-    setTimeout(() => {
-        widget.datavalue = Page.originalValue ? 'Y' : 'N';
-    });
-    Page.Widgets.manualFlagDialog.open();
-};
-
-Page.updateManualFlagonSuccess = function(variable, data) {
-    debugger;
-    Page.Widgets.toggle1.datavalue = Page.newTextValue;
-    Page.Widgets.manualFlagDialog.close();
-    Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
-    setTimeout(messageTimeout, 5000);
-};
-
-Page.updateManualFlagonError = function(variable, data, xhrObj) {
-    debugger;
-    Page.Widgets.manualFlagDialog.close();
-    Page.Widgets.toggle1.datavalue = Page.originalValue ? 'Y' : 'N'; // Update the toggle widget
-    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = Page.originalValue;
-    Page.Variables.failMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Failed.";
-    setTimeout(messageTimeout, 5000);
-};
-Page.button6Click = function($event, widget) {
-    debugger;
-    // Store the original value before updating
-    Page.originalTextValue = Page.originalValue ? 'Y' : 'N';
-    Page.newValue = !Page.originalValue;
-    Page.newTextValue = Page.newValue ? 'Y' : 'N';
-    // Temporarily update the underlying data model
-    Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag = (Page.newTextValue === 'Y');
-
-    // If you need to perform any additional actions or validations, you can add them here
-    console.log("Manual flag updated to: " + Page.newValue);
-
-    // If you need to trigger any other updates or refreshes, you can do so here
-    debugger;
-
-
-
-    Page.Variables.updateManualFlag.setInput({
-        "id": parseInt(Page.pageParams.entityId),
-        "CollectionEntityUpdate": {
-            "id": parseInt(Page.pageParams.entityId),
-            // "agentId": App.Variables.getLoggedInUserDetails.dataSet.emplId, // need to remove
-            "channel": {
-                "originatorAppId": "FAWBTELUSAGENT",
-                "userId": App.Variables.getLoggedInUserDetails.dataSet.emplId
-            },
-            "manualTreatmentIndicator": Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag,
-            "comment": "Manual Collection Flag changed from " + Page.originalTextValue + " to " + Page.newTextValue
-        }
-    });
-    //Invoke POST createContact service
-    Page.Variables.updateManualFlag.invoke();
 };
