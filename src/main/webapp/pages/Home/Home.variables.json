@@ -1595,6 +1595,24 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "manualFlagDropDownValues" : {
+    "_id" : "wm-manualFlagDropDownValues-wm.Variable-1736199876908",
+    "name" : "manualFlagDropDownValues",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : "ALL"
+    }, {
+      "dataValue" : "Y"
+    }, {
+      "dataValue" : "N"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "portfolioEntityView_home" : {
     "_id" : "wm-portfolioEntityView_home_1-wm.ServiceVariable-1690791277418",
     "name" : "portfolioEntityView_home",

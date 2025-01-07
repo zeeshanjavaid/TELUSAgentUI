@@ -190,7 +190,7 @@ public class CollectionDataService {
     
     ///assignedEntitiesInEntityView
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = {RequestMethod.GET})
-    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus,String includeCurrentOrCredit, Integer offset, Integer limit) throws Exception  {
+    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(required = true) String entityOwner, @RequestParam(required = true) String workCategory,@RequestParam(required = true) String portfolio,@RequestParam(required = true) String billingSystem,@RequestParam(required = true) String collectionStatus,String includeCurrentOrCredit, String manualFlag, Integer offset, Integer limit) throws Exception  {
 
     	 if (isStubEnabled) {
         return objectMapper.readValue("[{\"entityId\":6766677,\"entityType\":\"RCID\",\"rcId\":\"224343\",\"cbucId\":\"7232323\",\"entityName\":\"Air Canada\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"aliqua eu ut\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"},{\"entityId\":6766678,\"entityType\":\"CBUCID\",\"rcId\":\"224344\",\"cbucId\":\"723223\",\"entityName\":\"Air Canada2\",\"totalBan\":10,\"totalDelinquentBans\":5,\"risk\":\"Low\",\"entityValue\":\"Low\",\"entityCollectionStatus\":\"Open\",\"manualFlag\":false,\"lastTreatment\":\"SUSP\",\"currentAr\":10,\"ar30Days\":30,\"ar60Days\":60,\"ar90Days\":90,\"ar120Days\":120,\"ar150Days\":150,\"ar180Days\":1,\"ar180DaysPlus\":2,\"totalAr\":403,\"totalOverDue\":393,\"entityOwnerId\":\"John123\",\"primeWorkCategory\":\"reprehenderit commodo\",\"portfolioCategory\":\"SMB\",\"portfolioSubCategory\":\"PUBLIC LARGE\",\"ftnp\":true,\"disputeFlag\":true,\"odRemaining\":2344390.88,\"openActionDate\":\"2022-08-19\"}]",
@@ -207,17 +207,19 @@ public class CollectionDataService {
                      .queryParamIfPresent("billingSystem", Optional.ofNullable(billingSystem))
                      .queryParamIfPresent("collectionStatus", Optional.ofNullable(collectionStatus))
                       .queryParamIfPresent("includeCurrentOrCredit",Optional.ofNullable(includeCurrentOrCredit))
+                      .queryParamIfPresent("manualFlag",Optional.ofNullable(manualFlag))
                       .queryParamIfPresent("offset", Optional.ofNullable(offset))
                     .queryParamIfPresent("limit", Optional.ofNullable(limit));
                      
 
              String endPointString = builder.toUriString().replace("%7C", "|").replace("%20", " ");
+            logger.info("Request---"+ endPointString);
              ResponseEntity<String> responseFromTelus = telusAPIConnectivityService.executeTelusAPIAndGetResponseWithHeader(null, endPointString, HttpMethod.GET, entitySvcAuthScope);
             // String responseStr = telusAPIConnectivityService.executeTelusAPI(null,endPointString, HttpMethod.GET, entitySvcAuthScope);
              logger.info("::::::::Entity data endpoint call success ::::::::");
-            // logger.info("Response---"+ responseStr);
              
              String result = responseFromTelus.getBody();
+            logger.info("Response---"+ result);
  			HttpHeaders headers1=responseFromTelus.getHeaders();
  			String totalNoOfElement=headers1.getFirst("x-total-count");
  			List<AssignedEntitiesInEntityViewResponse> assignedEntitiesInEntityViewResponseList = new ArrayList<AssignedEntitiesInEntityViewResponse>();

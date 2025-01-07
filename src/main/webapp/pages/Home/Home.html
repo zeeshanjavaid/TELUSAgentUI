@@ -49,8 +49,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerSelectEVChange($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId"
+                        datafield="empId" placeholder="" on-change="entityOwnerSelectEVChange($event, widget, newVal, oldVal)"></wm-select>
                     <!--<wm-select name="entityOwnerSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeEV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"-->
                     <!--    datavalue="bind:Variables.getLoggedInUserDetails.dataSet.emplId" datafield="empId" placeholder="" on-change="entityOwnerEVSelectOn_Change($event, widget, newVal, oldVal)"></wm-select>-->
                 </wm-gridcolumn>
@@ -59,6 +59,12 @@
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                     <wm-select name="billingSystemSelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.billingSystemEntityView_home.dataSet" placeholder="" datafield="code" displayfield="code" datavalue="bind:Variables.billingSystemEntityView_home.dataSet[0].dataValue"></wm-select>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="2" name="gridcolumn51" class="includeCurrentCreditGrid">
+                    <wm-label caption="Manual Flag" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
+                </wm-gridcolumn>
+                <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                    <wm-select name="manualFlagDrop" width="100%" padding="unset 0.5em" dataset="bind:Variables.manualFlagDropDownValues.dataSet" placeholder="" datafield="dataValue" displayfield="dataValue" datavalue="bind:Variables.manualFlagDropDownValues.dataSet[0].dataValue"></wm-select>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow6" margin="10px 0 30px 0" class="gridRow1">
@@ -71,8 +77,7 @@
                     </wm-container>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true"
-                        style="display: block; width: 145%;"></wm-select>
+                    <wm-select name="workCategorySelectEVNew" id="workCategorySelectEV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getWorkCatByEmplIdForMultiSelect.dataSet" datafield="code" displayfield="code" placeholder="" multiple="true" style="display: block; width: 145%;"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="collStatusGrid">
                     <wm-label caption="Coll Status*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -116,8 +121,8 @@
                     <wm-label caption="Entity Owner*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]"
-                        datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId" datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerSelectBVChange($event, widget, newVal, oldVal)"></wm-select>
+                    <wm-select name="entityOwnerSelectBV" width="70%" padding="unset 0.5em" dataset="bind:Variables.getAllActiveUserList_HomeBV.dataSet" displayexpression="bind:$[firstName]==&quot;NULL&quot;? $[firstName] : $[firstName]+&quot; &quot;+$[lastName]" datavalue="bind:Variables.UserLoggedInVar_home.dataSet.empId"
+                        datafield="empId" placeholder="" displayfield="dataValue" on-change="entityOwnerSelectBVChange($event, widget, newVal, oldVal)"></wm-select>
                 </wm-gridcolumn>
                 <wm-gridcolumn columnwidth="1" name="gridcolumn51" class="billingSystemGrid">
                     <wm-label caption="Billing System*" name="label8" color="grey" class="HomeFilterLabel"></wm-label>
@@ -174,8 +179,8 @@
                 <wm-table-column binding="entityType " caption="ENT Type " edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="entityOwnerId " caption="ENT Owner " width="98px" edit-widget-type="text " type="string " show="true " readonly="false"></wm-table-column>
                 <wm-table-column binding="assignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="entityViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table1_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
             <wm-container name="containerPagination5"></wm-container>
             <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination5" show="true" name="Telus_Paginaton" pagesize="10" on-pagechange="Telus_PaginatonPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetAssignedEntitiesInEntityView3.dataSet[0].totalNumberOfElement"></wm-prefab>
@@ -212,8 +217,8 @@
                         " width="110px "></wm-table-column>
                 <wm-table-column binding="entityOwnerId " caption="ENT Owner " edit-widget-type="text " type="string " show="true " readonly="false "></wm-table-column>
                 <wm-table-column binding="assignedTeam " caption="Assigned Team " edit-widget-type="text " type="string " show="true " readonly="false" width="110px"></wm-table-column>
-                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button"
-                    show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                <wm-table-row content="banViewHome_rowExp" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="table2_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true" disabled="false"
+                    class="btn-transparent" columnwidth="30px"></wm-table-row>
             </wm-table>
             <wm-container name="containerPagination6"></wm-container>
             <wm-prefab prefabname="Telus_Paginaton" paginationname="containerPagination6" show="true" name="Telus_PaginatonBanView" pagesize="10" on-pagechange="Telus_PaginatonBanViewPagechange($event, $data)" totalrecords="bind:Variables.CollectionDataServiceGetassignedEntitiesInClassicView2.dataSet[0].totalNumberOfElement"></wm-prefab>
