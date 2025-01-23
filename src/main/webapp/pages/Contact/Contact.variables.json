@@ -39,5 +39,23 @@
     "type" : "boolean",
     "isList" : false,
     "saveInPhonegap" : false
+  },
+  "testdata" : {
+    "_id" : "wm-testdata-wm.Variable-1737174087875",
+    "name" : "testdata",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "John",
+      "dataValue" : "Wang"
+    }, {
+      "name" : "Test",
+      "dataValue" : "Name"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
   }
 }

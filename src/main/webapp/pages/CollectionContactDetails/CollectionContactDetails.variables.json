@@ -1,0 +1,134 @@
+{
+  "testdata" : {
+    "_id" : "wm-testdata-wm.Variable-1737431846369",
+    "name" : "testdata",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : true,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : true,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : true,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "English",
+      "columnE" : "test comments"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

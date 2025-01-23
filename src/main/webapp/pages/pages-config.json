@@ -112,6 +112,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "CollectionContactDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "Common",
   "type" : "PARTIAL",
   "params" : [ ]

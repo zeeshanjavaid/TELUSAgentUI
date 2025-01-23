@@ -2681,6 +2681,36 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
+  "PhoneSubTypeList" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1736988741335",
+    "name" : "PhoneSubTypeList",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "FAX",
+      "dataValue" : "FAX"
+    }, {
+      "name" : "EXTENSION",
+      "dataValue" : "EXTENSION"
+    }, {
+      "name" : "HOME",
+      "dataValue" : "HOME"
+    }, {
+      "name" : "MOBILE",
+      "dataValue" : "MOBILE"
+    }, {
+      "name" : "WORK",
+      "dataValue" : "WORK"
+    }, {
+      "name" : "OTHER",
+      "dataValue" : "OTHER"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "priorityQueuePageNumber" : {
     "_id" : "wm-prirorityQueuePageNumber-wm.Variable-1662732649468",
     "name" : "priorityQueuePageNumber",

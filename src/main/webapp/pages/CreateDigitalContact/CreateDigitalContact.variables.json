@@ -16,6 +16,7 @@
     "isList" : false,
     "maxResults" : 20,
     "onSuccess" : "CreateContactServiceVaronSuccess(variable, data, options)",
+    "onError" : "CreateContactServiceVaronError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
