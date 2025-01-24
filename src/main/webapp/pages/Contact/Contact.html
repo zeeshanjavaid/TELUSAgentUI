@@ -17,13 +17,29 @@
         <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true" margin="0 0 10px 15px" width="98%"></wm-message>
     </wm-gridrow>
     <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%" id="digitalTableGrid">
+        <wm-gridrow name="gridrow360">
+            <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Collection Contacts (Work In Progress)" fontsize="20"></wm-label>
+        </wm-gridrow>
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table name="getCollectionContactsTable" title="" dataset="bind:Variables.testdata.dataSet" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
-                    <wm-table-column binding="name" caption="First Name" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="dataValue" caption="Last Name" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table name="getCollectionContactsTable" title="" dataset="bind:Variables.testContactsdata.dataSet" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
+                    <wm-table-column binding="fName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="lName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-row content="CollectionContactDetails" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" widget-type="button" show="true" disabled="false" class="btn-transparent"
                         columnwidth="30px"></wm-table-row>
+                </wm-table>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow360">
+            <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Customer Contacts" fontsize="20"></wm-label>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow36">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                <wm-table name="getCustomerContactsTable" dataset="bind:Variables.testContactsdata1.dataSet" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
+                    <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-row content="CollectionContactDetails" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCustomerContactsTable_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>

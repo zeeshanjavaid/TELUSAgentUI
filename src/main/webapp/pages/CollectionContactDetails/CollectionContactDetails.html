@@ -1,13 +1,13 @@
 <wm-partial name="partial121">
     <wm-table name="testdataTable1" title="" dataset="bind:Variables.testdata.dataSet" navigation="Classic" pagesize="5" navigationalign="right" gridclass="table-striped table-hover" class="getEntityBanDetailsTableEdit1">
-        <wm-table-column binding="columnA" caption="Email" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-        <wm-table-column binding="columnB" caption="Phone" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-        <wm-table-column binding="columnC" caption="Notify" widget-type="checkbox" edit-widget-type="checkbox" type="string" defaultvalue="bind:Variables.testdata.dataSet[$i].columnC" show="true" readonly="false">
-            <wm-checkbox datavalue="bind:row.getProperty('columnC')" disabled="false" class="" conditionalclass="" on-change="testdataTable1_columnCOnChange($event, widget, row)"></wm-checkbox>
-        </wm-table-column>
-        <wm-table-column binding="columnD" caption="Language" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-        <wm-table-column binding="columnE" caption="Comments" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
-        <wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-        <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="testdataTable1_customRow1Action($event, row)" disabled="true" widget-type="button"></wm-table-row-action>
+        <wm-table-column binding="email" caption="Email" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+        <wm-table-column binding="phoneNumber" caption="Phone" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+        <!--wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" edit-widget-type="checkbox" type="string" show="true" readonly="false">
+            <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="false" class="" conditionalclass="" on-change="testdataTable1_columnCOnChange($event, widget, row)"></wm-checkbox>
+        </wm-table-column-->
+        <wm-table-column binding="rcId" caption="RCID" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+        <wm-table-column binding="banId" caption="BAN ID" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+        <!--wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+        <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="testdataTable1_customRow1Action($event, row)" disabled="true" widget-type="button"></wm-table-row-action-->
     </wm-table>
 </wm-partial>

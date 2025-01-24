@@ -3828,6 +3828,21 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "selectedContactDetails" : {
+    "_id" : "wm-selectedContactDetails-wm.Variable-1737610308864",
+    "name" : "selectedContactDetails",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "name0",
+      "dataValue" : "dataValue0"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "storeworkCategoryForMultiSelect" : {
     "_id" : "wm-storeworkCategoryForMultiSelect-wm.Variable-1687177178116",
     "name" : "storeworkCategoryForMultiSelect",
@@ -3911,6 +3926,54 @@
     },
     "type" : "entry",
     "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "testContactsdata" : {
+    "_id" : "wm-testdata-wm.Variable-1737174087875",
+    "name" : "testContactsdata",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "fName" : "John",
+      "lName" : "Wang",
+      "columnA" : "email@test.com",
+      "columnB" : "",
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "fName" : "John",
+      "lName" : "Wang",
+      "columnA" : "",
+      "columnB" : 4164164160,
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    }, {
+      "fName" : "Test",
+      "lName" : "Name",
+      "columnA" : "test@email.com",
+      "columnB" : "",
+      "columnC" : false,
+      "columnD" : "French",
+      "columnE" : "test comments"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "testContactsdata1" : {
+    "_id" : "wm-testContactsdata1-wm.Variable-1737609521161",
+    "name" : "testContactsdata1",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ { }, { }, { }, { }, { } ],
+    "type" : "entry",
+    "isList" : true,
     "saveInPhonegap" : false
   },
   "updateUserErrormsg" : {

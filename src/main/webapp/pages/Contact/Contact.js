@@ -25,6 +25,25 @@ Partial.onReady = function() {
     $('#mailingTableGrid').hide();
 };
 
+function groupByFullName(data) {
+    const groupedData = {};
+
+    data.forEach(item => {
+        const key = `${item.firstName} ${item.lastName}`;
+        if (!groupedData[key]) {
+            groupedData[key] = {
+                firstName: item.firstName,
+                lastName: item.lastName,
+                details: [] // Store grouped details
+            };
+        }
+        groupedData[key].details.push(item);
+    });
+
+    return Object.values(groupedData); // Convert grouped object to array
+}
+
+
 Partial.digitalContactBtnClick = function($event, widget) {
     // to make buttons selected
     $("#digitalBtn").css("background-color", "#4B286D");
@@ -74,8 +93,51 @@ Partial.getEntityContactsTable1_customRowAction = function($event, row) {
 
 
 App.refreshContactList = function() {
+    debugger;
+    Partial.Widgets.getCustomerContactsTable.spinner.show = true;
     Partial.Variables.getCollectionEntityContacts.setInput({
         "id": Partial.pageParams.entityId
     });
     Partial.Variables.getCollectionEntityContacts.invoke();
 }
+Partial.getCustomerContactsTable_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
+    App.showRowExpansionCustomer(row, $data);
+};
+
+Partial.getCollectionEntityContactsonSuccess = function(variable, data) {
+    const staticData = [{
+            "fName": "John",
+            "lName": "Wang",
+            "columnA": "email@test.com",
+            "columnB": "",
+            "columnC": false,
+            "columnD": "French",
+            "columnE": "test comments"
+        },
+        {
+            "fName": "John",
+            "lName": "Wang",
+            "columnA": "",
+            "columnB": 4164164160,
+            "columnC": false,
+            "columnD": "French",
+            "columnE": "test comments"
+        },
+        {
+            "fName": "Test",
+            "lName": "Name",
+            "columnA": "test@email.com",
+            "columnB": "",
+            "columnC": false,
+            "columnD": "French",
+            "columnE": "test comments"
+        }
+    ];
+    debugger;
+    // Group the data and bind it directly
+    App.Variables.testContactsdata1.dataSet = groupByFullName(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts);
+    Partial.Widgets.getCustomerContactsTable.spinner.show = false;
+
+
+};

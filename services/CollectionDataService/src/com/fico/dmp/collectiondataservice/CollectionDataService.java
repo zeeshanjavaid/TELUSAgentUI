@@ -478,7 +478,7 @@ public class CollectionDataService {
 				 HttpHeaders headers1=responseFromTelus.getHeaders();
 				 String totalNoOfElement=headers1.getFirst("x-total-count");
 	             logger.info("::::::::Entity data endpoint call success ::::::::");
-	             logger.info("Resoinse---"+ result);
+	             logger.info("Response---"+ result);
 	              entityContactsResponseForFawb = objectMapper.readValue(result,EntityContactsResponseForFawb.class);
 			//	 entityContactsResponseForFawb.setMailingContacts(entityContactsResponse.getMailingContacts());
 				// entityContactsResponseForFawb.setDigitalContacts(entityContactsResponse.getDigitalContacts());

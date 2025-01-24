@@ -1,7 +1,9 @@
 package com.fico.telus.model;
 
-import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDigitalContact;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityCustomerContact;
+import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityCollectionContact;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityMailingContact;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -9,8 +11,12 @@ public class EntityContactsResponseForFawb {
 
 
     private List<EntityMailingContact> mailingContacts = null;
-
-    private List<EntityDigitalContact> digitalContacts = null;
+    
+    @JsonProperty("digitalCustomerContacts")
+    private List<EntityCustomerContact> customerContacts = null;
+    
+    @JsonProperty("digitalCollectionContacts")
+    private List<EntityCollectionContact> collectionContacts = null;
     private Integer totalNoOfElement=null;
 
 
@@ -18,18 +24,22 @@ public class EntityContactsResponseForFawb {
         return mailingContacts;
     }
 
+    public List<EntityCollectionContact> getCollectionContacts() {
+        return collectionContacts;
+    }
+    public List<EntityCustomerContact> getCustomerContacts() {
+        return customerContacts;
+    }
     public void setMailingContacts(List<EntityMailingContact> mailingContacts) {
         this.mailingContacts = mailingContacts;
     }
 
-    public List<EntityDigitalContact> getDigitalContacts() {
-        return digitalContacts;
+    public void setCollectionContacts(List<EntityCollectionContact> collectionContacts) {
+        this.collectionContacts = collectionContacts;
     }
-
-    public void setDigitalContacts(List<EntityDigitalContact> digitalContacts) {
-        this.digitalContacts = digitalContacts;
+    public void setCustomerContacts(List<EntityCustomerContact> customerContacts) {
+        this.customerContacts = customerContacts;
     }
-
     public Integer getTotalNoOfElement() {
         return totalNoOfElement;
     }

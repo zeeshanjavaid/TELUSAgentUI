@@ -11,6 +11,7 @@
 
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,6 +21,12 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+    App.showRowExpansionCustomer = function(row, data) {
+        debugger;
+        console.log("Row Details:", row.details); // Log the row details
+        Partial.Variables.testdata.dataSet = row.details; // Assign the data
+        console.log("Assigned DataSet:", Partial.Variables.testdata.dataSet); // Log the updated dataset
+    }
 };
 
 function messageTimeout() {
