@@ -30,6 +30,18 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "collectionContactsdata" : {
+    "_id" : "wm-testdata-wm.Variable-1737174087875",
+    "name" : "collectionContactsdata",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ { } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "ContactPageName" : {
     "_id" : "wm-ConatctPageName-wm.Variable-1686555097582",
     "name" : "ContactPageName",
@@ -92,6 +104,18 @@
     },
     "type" : "number",
     "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "customerContactsdata" : {
+    "_id" : "wm-testContactsdata1-wm.Variable-1737609521161",
+    "name" : "customerContactsdata",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ { }, { }, { }, { }, { } ],
+    "type" : "entry",
+    "isList" : true,
     "saveInPhonegap" : false
   },
   "disputeIdAppVar" : {
@@ -3926,54 +3950,6 @@
     },
     "type" : "entry",
     "isList" : false,
-    "saveInPhonegap" : false
-  },
-  "testContactsdata" : {
-    "_id" : "wm-testdata-wm.Variable-1737174087875",
-    "name" : "testContactsdata",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "fName" : "John",
-      "lName" : "Wang",
-      "columnA" : "email@test.com",
-      "columnB" : "",
-      "columnC" : false,
-      "columnD" : "French",
-      "columnE" : "test comments"
-    }, {
-      "fName" : "John",
-      "lName" : "Wang",
-      "columnA" : "",
-      "columnB" : 4164164160,
-      "columnC" : false,
-      "columnD" : "French",
-      "columnE" : "test comments"
-    }, {
-      "fName" : "Test",
-      "lName" : "Name",
-      "columnA" : "test@email.com",
-      "columnB" : "",
-      "columnC" : false,
-      "columnD" : "French",
-      "columnE" : "test comments"
-    } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
-  "testContactsdata1" : {
-    "_id" : "wm-testContactsdata1-wm.Variable-1737609521161",
-    "name" : "testContactsdata1",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ { }, { }, { }, { }, { } ],
-    "type" : "entry",
-    "isList" : true,
     "saveInPhonegap" : false
   },
   "updateUserErrormsg" : {

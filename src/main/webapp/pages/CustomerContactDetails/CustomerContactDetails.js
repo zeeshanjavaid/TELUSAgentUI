@@ -11,6 +11,7 @@
 
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
+    debugger;
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -20,8 +21,7 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    debugger;
-    App.showRowExpandedCollectionContact = function(row, data) {
+    App.showRowExpansionCustomer = function(row, data) {
         debugger;
         console.log("Row Details:", row.details); // Log the row details
         Partial.Variables.expandedRowData.dataSet = row.details; // Assign the data
@@ -29,8 +29,22 @@ Partial.onReady = function() {
     }
 };
 
-Partial.collectionContactExpansionTable_contactForNoticesOnChange = function($event, widget, row) {
-    debugger;
-    App.Variables.successMessage.dataSet.dataValue = "Updated Successfully";
+function messageTimeout() {
+    App.Variables.successMessage.dataSet.dataValue = null;
     App.Variables.errorMsg.dataSet.dataValue = null;
+}
+
+//Invalidate
+Partial.testdataTable1_customRow1Action = function($event, row) {
+
+};
+
+//notify checkbox change
+Partial.testdataTable1_columnCOnChange = function($event, widget, row) {
+    debugger;
+    setTimeout(messageTimeout, 5000);
+    App.Variables.successMessage.dataSet.dataValue = "Digital Contact created successfully.";
+    App.Variables.errorMsg.dataSet.dataValue = null;
+    //    App.refreshContactList();
+    setTimeout(messageTimeout, 5000);
 };

@@ -20,6 +20,7 @@
     "isList" : false,
     "maxResults" : 20,
     "onSuccess" : "getCollectionEntityContactsonSuccess(variable, data, options)",
+    "onError" : "getCollectionEntityContactsonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

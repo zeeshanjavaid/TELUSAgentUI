@@ -151,6 +151,10 @@
     "type" : "integer"
   } ]
 }, {
+  "name" : "CustomerContactDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "DisputeDetails",
   "type" : "PARTIAL",
   "params" : [ {

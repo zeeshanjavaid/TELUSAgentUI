@@ -43,7 +43,7 @@ Partial.CancelClick = function($event, widget) {
     App.Variables.errorMsg.dataSet.dataValue = null;
 
     // clearing the fields
-    Partial.Widgets.TITLESelect.datavalue = "";
+    Partial.Widgets.salutation.datavalue = "";
     Partial.Widgets.TELUSContactsSelect.datavalue = false;
     Partial.Widgets.EmailForNoticesSelect.datavalue = true;
     Partial.Widgets.firstName.datavalue = "";
@@ -114,8 +114,12 @@ Partial.createContact = function($event, widget) {
         };
 
         // Include title only if it's not null or empty
-        if (Partial.Widgets.TITLESelect.datavalue) {
-            contactPeople.title = Partial.Widgets.TITLESelect.datavalue;
+        if (Partial.Widgets.salutation.datavalue) {
+            contactPeople.salutation = Partial.Widgets.salutation.datavalue;
+        }
+
+        if (Partial.Widgets.jobTitle.datavalue) {
+            contactPeople.jobTitle = Partial.Widgets.jobTitle.datavalue;
         }
 
         Partial.Variables.CreateContactServiceVar.setInput({

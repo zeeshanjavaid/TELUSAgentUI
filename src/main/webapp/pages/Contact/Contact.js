@@ -52,7 +52,7 @@ Partial.digitalContactBtnClick = function($event, widget) {
     $("#mailingBtn").css("color", "#4B286D");
     Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = true;
     // display TO-DO table and hide Completed table
-    App.refreshContactList();
+    //App.refreshContactList();
     $('#digitalTableGrid').show();
     $('#buttonsLayoutGrid').show();
     $('#mailingTableGrid').hide();
@@ -69,7 +69,7 @@ Partial.mailingContactBtnClick = function($event, widget) {
     $("#digitalBtn").css("color", "#4B286D");
     Partial.Variables.ShowHideCreateBtnGrid.dataSet.dataValue = false;
     // display Completed table and hide TO-DO table
-    App.refreshContactList();
+    //App.refreshContactList();
 
     $('#mailingTableGrid').show();
     $('#buttonsLayoutGrid').hide();
@@ -94,50 +94,39 @@ Partial.getEntityContactsTable1_customRowAction = function($event, row) {
 
 App.refreshContactList = function() {
     debugger;
-    Partial.Widgets.getCustomerContactsTable.spinner.show = true;
+    //Partial.Widgets.getCollectionContactsTable.spinner.show = true;
+    //Partial.Widgets.getCustomerContactsTable.spinner.show = true;
     Partial.Variables.getCollectionEntityContacts.setInput({
         "id": Partial.pageParams.entityId
     });
     Partial.Variables.getCollectionEntityContacts.invoke();
 }
+
 Partial.getCustomerContactsTable_OnRowexpand = function($event, widget, row, $data) {
     debugger;
     App.showRowExpansionCustomer(row, $data);
 };
 
 Partial.getCollectionEntityContactsonSuccess = function(variable, data) {
-    const staticData = [{
-            "fName": "John",
-            "lName": "Wang",
-            "columnA": "email@test.com",
-            "columnB": "",
-            "columnC": false,
-            "columnD": "French",
-            "columnE": "test comments"
-        },
-        {
-            "fName": "John",
-            "lName": "Wang",
-            "columnA": "",
-            "columnB": 4164164160,
-            "columnC": false,
-            "columnD": "French",
-            "columnE": "test comments"
-        },
-        {
-            "fName": "Test",
-            "lName": "Name",
-            "columnA": "test@email.com",
-            "columnB": "",
-            "columnC": false,
-            "columnD": "French",
-            "columnE": "test comments"
-        }
-    ];
     debugger;
     // Group the data and bind it directly
-    App.Variables.testContactsdata1.dataSet = groupByFullName(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts);
-    Partial.Widgets.getCustomerContactsTable.spinner.show = false;
+    if (Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts != null && Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts.length > 0) {
+        App.Variables.customerContactsdata.dataSet = groupByFullName(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts);
+        Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts = App.Variables.customerContactsdata.dataSet;
+    }
+    if (Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts != null && Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts.length > 0) {
+        App.Variables.collectionContactsdata.dataSet = groupByFullName(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts);
+        Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts = App.Variables.collectionContactsdata.dataSet;
+    }
+    //Partial.Widgets.getCustomerContactsTable.spinner.show = false;
+    //Partial.Widgets.getCollectionContactsTable.spinner.show = false;
+};
 
-
+Partial.getCollectionEntityContactsonError = function(variable, data, xhrObj) {
+    //Partial.Widgets.getCustomerContactsTable.spinner.show = false;
+    //Partial.Widgets.getCollectionContactsTable.spinner.show = false;
+};
+Partial.getCollectionContactsTable_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
+    App.showRowExpandedCollectionContact(row, $data);
 };
