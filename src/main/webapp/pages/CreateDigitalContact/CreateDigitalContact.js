@@ -39,16 +39,20 @@ function isEmail(email) {
 }
 
 Partial.CancelClick = function($event, widget) {
+    debugger;
     Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     App.Variables.errorMsg.dataSet.dataValue = null;
 
     // clearing the fields
     Partial.Widgets.salutation.datavalue = "";
     Partial.Widgets.TELUSContactsSelect.datavalue = false;
-    Partial.Widgets.EmailForNoticesSelect.datavalue = true;
+    Partial.Widgets.prefLangValue.datavalue = "EN";
     Partial.Widgets.firstName.datavalue = "";
     Partial.Widgets.lastName.datavalue = "";
     Partial.Widgets.comments.datavalue = "";
+    Partial.Widgets.jobTitle.datavalue = "";
+    App.refreshContactList();
+
 };
 
 

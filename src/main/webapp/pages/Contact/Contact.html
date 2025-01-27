@@ -22,8 +22,12 @@
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
                 <wm-table name="getCollectionContactsTable" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
+                    <wm-table-column binding="salutation" caption="Salutation" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                     <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                     <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="prefLang" caption="Language" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="telusContacts" caption="Telus Contacts" type="boolean" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="jobTitle" caption="Job Title" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
                     <wm-table-row content="CollectionContactDetails" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionContactsTable_OnRowexpand($event, widget, row, $data)" widget-type="button" show="true"
                         disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>

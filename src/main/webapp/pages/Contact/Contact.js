@@ -25,6 +25,31 @@ Partial.onReady = function() {
     $('#mailingTableGrid').hide();
 };
 
+function groupByAttributes(data) {
+    const groupedData = {};
+
+    data.forEach(item => {
+        // Create a unique key for grouping using the specified fields
+        const key = `${item.firstName} ${item.jobTitle} ${item.lastName} ${item.prefLang} ${item.salutation} ${item.telusContacts}`;
+
+        if (!groupedData[key]) {
+            groupedData[key] = {
+                firstName: item.firstName,
+                jobTitle: item.jobTitle,
+                lastName: item.lastName,
+                prefLang: item.prefLang,
+                salutation: item.salutation,
+                telusContacts: item.telusContacts,
+                details: [] // Store grouped details
+            };
+        }
+
+        groupedData[key].details.push(item);
+    });
+
+    return Object.values(groupedData); // Convert grouped object to array
+}
+
 function groupByFullName(data) {
     const groupedData = {};
 
@@ -81,7 +106,7 @@ Partial.mailingContactBtnClick = function($event, widget) {
 
 
 Partial.CreateButtonClick = function($event, widget) {
-    App.ClearContacts();
+    //App.ClearContacts();
     Partial.Variables.ContactPageName.dataSet.dataValue = 'CreateDigitalContact';
 
 };
@@ -115,7 +140,7 @@ Partial.getCollectionEntityContactsonSuccess = function(variable, data) {
         Partial.Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts = App.Variables.customerContactsdata.dataSet;
     }
     if (Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts != null && Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts.length > 0) {
-        App.Variables.collectionContactsdata.dataSet = groupByFullName(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts);
+        App.Variables.collectionContactsdata.dataSet = groupByAttributes(Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts);
         Partial.Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts = App.Variables.collectionContactsdata.dataSet;
     }
     //Partial.Widgets.getCustomerContactsTable.spinner.show = false;
