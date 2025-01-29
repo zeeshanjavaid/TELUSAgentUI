@@ -1,15 +1,55 @@
 <wm-partial name="partial122">
-    <wm-table name="collectionContactExpansionTable" title="" dataset="bind:Variables.expandedRowData.dataSet" navigation="Classic" pagesize="5" navigationalign="right" gridclass="table-striped table-hover" class="getEntityBanDetailsTableEdit1">
-        <!--wm-table-column binding="rowOperations" caption="Options" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column><wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="testdataTable1_customRow1Action($event, row)" disabled="true" widget-type="button"></wm-table-row-action-->
-        <wm-table-column binding="contactId" caption="Contact ID" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
-        <wm-table-column binding="entityId" caption="Entity ID" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
-        <wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" edit-widget-type="checkbox" type="string" show="true" readonly="false">
-            <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="false" class="" conditionalclass="" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)"></wm-checkbox>
-        </wm-table-column>
-        <wm-table-column binding="telusContacts" caption="Telus Contacts" type="boolean" readonly="true" searchable="false" show="true"></wm-table-column>
-        <wm-table-column binding="prefLang" caption="Pref Lang" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-        <wm-table-column binding="comments" caption="Comments" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-        <wm-table-column binding="email" caption="Email" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-        <wm-table-column binding="phoneNumber" caption="Phone Number" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-    </wm-table>
+    <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;">
+        <wm-gridcolumn width="100%" name="gridcolumn2">
+            <wm-table name="collectionContactExpansionTable" dataset="bind:Variables.expandedRowData.dataSet" navigation="None" pagesize="5" navigationalign="right" tablewidth="1500px" gridclass="table-hover table-striped">
+                <wm-table-column binding="contactId" caption="Contact ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
+                <wm-table-column binding="entityId" caption="Entity ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
+                <wm-table-column binding="email" caption="Email" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="phoneNumber" caption="Phone Number" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" readonly="true" show="true">
+                    <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
+                </wm-table-column>
+                <wm-table-column binding="dataSource" caption="Data Source" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="comments" caption="Comments" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Successful Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastDeliveryFailureDateTime" caption="Last Failed Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="rowOperations" caption="Options" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="collectionContactExpansionTable_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow2" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="collectionContactExpansionTable_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+            </wm-table>
+        </wm-gridcolumn>
+    </wm-container>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Invalidate Contact" iconclass="" name="invalidateContactDialog" width="30%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Are you sure you want to invalidate this contact?" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11"></wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2"></wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="closeAction_NoClick($event, widget)" name="closeAction_No"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="assigned_closeYesBtn" on-click="assigned_closeYesBtnClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
+    <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Contact" iconclass="" name="editContactDialog" width="30%">
+        <wm-layoutgrid name="layoutgrid11_1">
+            <wm-gridrow name="gridrow17" padding="0.4em unset unset unset">
+                <wm-gridcolumn columnwidth="12" name="gridcolumn36">
+                    <wm-label caption="Are you sure you want to invalidate this contact?" name="label36"></wm-label>
+                </wm-gridcolumn>
+            </wm-gridrow>
+        </wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_11"></wm-layoutgrid>
+        <wm-layoutgrid name="layoutgrid11_2"></wm-layoutgrid>
+        <wm-dialogactions name="dialogactions4" style="text-align: right;">
+            <wm-button class="secondaryButton" caption="No" on-click="closeAction_NoClick($event, widget)" name="closeAction_No"></wm-button>
+            <wm-button class="primaryButton" caption="Yes" type="button" margin="unset 0.5em" name="assigned_closeYesBtn" on-click="assigned_closeYesBtnClick($event, widget)"></wm-button>
+        </wm-dialogactions>
+    </wm-dialog>
 </wm-partial>

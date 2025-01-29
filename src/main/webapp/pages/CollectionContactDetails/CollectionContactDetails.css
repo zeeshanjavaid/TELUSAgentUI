@@ -1,0 +1,25 @@
+div[name="collectionContactExpansionTable"] table thead tr th {
+    background-color: #e3f6d1;
+}
+
+/* Make title bold only for the 'invalidateContactDialog' */
+[name="invalidateContactDialog"] .modal-title {
+    font-weight: bold !important;
+}
+
+[name="editContactDialog"] .modal-title {
+    font-weight: bold !important;
+}
+
+/* Ensure text wraps inside all table columns */
+div[name="collectionContactExpansionTable"] table td {
+    white-space: normal; /* Allow wrapping */
+    word-wrap: break-word; /* Break long words if needed */
+    overflow-wrap: break-word; /* Ensure wrapping in modern browsers */
+    text-align: left; /* Optional: Align text to the left for readability */
+}
+/* Ensure table respects column widths */
+div[name="collectionContactExpansionTable"] table {
+    table-layout: fixed; /* Make sure column widths are consistent */
+    width: 100%; /* Stretch table to full width */
+}

@@ -25,6 +25,11 @@ Partial.onReady = function() {
         debugger;
         console.log("Row Details:", row.details); // Log the row details
         Partial.Variables.expandedRowData.dataSet = row.details; // Assign the data
+        /* Initialize isEditable for each row
+        Partial.Variables.expandedRowData.dataSet.forEach(row => {
+            row.isEditable = false; // Ensure all rows start as read-only
+        });*/
+
         console.log("Assigned DataSet:", Partial.Variables.expandedRowData.dataSet); // Log the updated dataset
     }
 };
@@ -33,4 +38,18 @@ Partial.collectionContactExpansionTable_contactForNoticesOnChange = function($ev
     debugger;
     App.Variables.successMessage.dataSet.dataValue = "Updated Successfully";
     App.Variables.errorMsg.dataSet.dataValue = null;
+};
+Partial.collectionContactExpansionTable_customRow1Action = function($event, row) {
+    debugger;
+    Partial.Widgets.editContactDialog.open();
+};
+Partial.collectionContactExpansionTable_customRow2Action = function($event, row) {
+    debugger;
+    Partial.Widgets.invalidateContactDialog.open();
+};
+
+//close assigned person
+Partial.closeAction_NoClick = function($event, widget) {
+    Partial.Widgets.invalidateContactDialog.close();
+    Partial.Widgets.editContactDialog.close();
 };
