@@ -86,8 +86,9 @@ Partial.createContact = function($event, widget) {
         debugger;
         Partial.Widgets.saveEmailButton.disabled = true;
         var contactMediumType = widget.name === "saveEmailButton" ? "EMAIL" : "PHONE";
-
         let contactMediumId;
+        var contactMediumSubType = null;
+        let contactMediumSubId = null;
         let notificationIndicator;
         if (widget.name === "saveEmailButton") {
             contactMediumId = Partial.Widgets.emailAddressValue.datavalue;
@@ -98,6 +99,9 @@ Partial.createContact = function($event, widget) {
         } else if (widget.name === "workPhoneSaveButton") {
             contactMediumId = Partial.Widgets.workPhoneValue.datavalue;
             notificationIndicator = Partial.Widgets.workPhoneNoticeBox.checkboxEl.nativeElement.checked;
+            if (Partial.Widgets.extPhoneValue.datavalue != null && Partial.Widgets.extPhoneValue.datavalue != "") {
+                contactMediumSubId = Partial.Widgets.extPhoneValue.datavalue;
+            }
         } else if (widget.name === "faxSaveButton") {
             contactMediumId = Partial.Widgets.faxPhoneValue.datavalue;
             notificationIndicator = Partial.Widgets.faxNoticeBox.checkboxEl.nativeElement.checked;
@@ -138,8 +142,8 @@ Partial.createContact = function($event, widget) {
                 },
                 'contactMediumType': contactMediumType,
                 'contactMediumId': contactMediumId, //Partial.Widgets.cellPhone.datavalue ? Partial.Widgets.cellPhone.datavalue.replace(/\D/g, '') : Partial.Widgets.cellPhone.datavalue,
-                'contactMediumSubType': "OTHER",
-                'contactMediumSubId': "OTHER",
+                'contactMediumSubType': contactMediumSubType,
+                'contactMediumSubId': contactMediumSubId,
                 "contactPeople": [contactPeople],
                 'notificationIndicator': notificationIndicator,
                 'preferredLanguage': Partial.Widgets.prefLangValue.datavalue,
@@ -258,6 +262,7 @@ App.ClearContacts = function() {
     Partial.Widgets.emailAddressValue.datavalue = "";
     Partial.Widgets.cellPhoneValue.datavalue = "";
     Partial.Widgets.workPhoneValue.datavalue = "";
+    Partial.Widgets.extPhoneValue.datavalue = "";
     Partial.Widgets.faxPhoneValue.datavalue = "";
     Partial.Widgets.homePhoneValue.datavalue = "";
     Partial.Widgets.othersPhoneValue.datavalue = "";
