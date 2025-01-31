@@ -30,6 +30,7 @@ function groupByAttributes(data) {
 
     data.forEach(item => {
         // Create a unique key for grouping using the specified fields
+        item.entityId = Partial.pageParams.entityId;
         const key = `${item.firstName} ${item.jobTitle} ${item.lastName} ${item.prefLang} ${item.salutation} ${item.telusContacts}`;
 
         if (!groupedData[key]) {

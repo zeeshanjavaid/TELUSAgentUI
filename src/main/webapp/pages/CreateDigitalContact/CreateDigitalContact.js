@@ -171,7 +171,7 @@ Partial.CreateContactServiceVaronSuccess = function(variable, data) {
     App.ClearContacts();
     //Partial.Variables.ContactPageName.dataSet.dataValue = 'Contact';
     //App.refreshContactList();
-    setTimeout(messageTimeout, 10000);
+    setTimeout(messageTimeout, 5000);
 
 };
 
@@ -180,7 +180,7 @@ Partial.CreateContactServiceVaronError = function(variable, data, xhrObj) {
     Partial.Widgets.saveEmailButton.disabled = false;
     App.Variables.successMessage.dataSet.dataValue = "";
     App.Variables.errorMsg.dataSet.dataValue = "Digital Contact creation failed.";
-    setTimeout(messageTimeout, 10000);
+    setTimeout(messageTimeout, 5000);
 };
 
 Partial.workNoKeypress = function($event, widget) {

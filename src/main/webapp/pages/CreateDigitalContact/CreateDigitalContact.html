@@ -107,7 +107,7 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Email for Notifications" name="emailNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Email for Notifications" name="emailNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue" class="custom-checkbox"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Email" type="button" padding="unset 0.5em" name="saveEmailButton" on-click="createContact($event, widget)"></wm-button>
@@ -139,14 +139,13 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="cellPhoneNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="cellPhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Cell Phone" type="button" padding="unset 0.5em" name="cellPhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
-
                         </wm-tabpane>
                         <wm-tabpane title="Work Phone" name="workPhoneTab" width="100%" margin="10px 0">
                             <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
@@ -172,17 +171,14 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="workPhoneNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="workPhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Work Phone" type="button" padding="unset 0.5em" name="workPhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
-
                         </wm-tabpane>
-
-
                         <wm-tabpane title="Fax" name="faxPhoneTab" width="100%" margin="10px 0">
                             <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
                                 <wm-gridrow name="gridrow1">
@@ -207,16 +203,14 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="faxNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="faxNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Fax" type="button" padding="unset 0.5em" name="faxSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
-
                         </wm-tabpane>
-
                         <wm-tabpane title="Home Phone" name="homePhoneTab" width="100%" margin="10px 0">
                             <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
                                 <wm-gridrow name="gridrow1">
@@ -241,14 +235,13 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="homePhoneNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="homePhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Home Phone" type="button" padding="unset 0.5em" name="homePhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
-
                         </wm-tabpane>
                         <wm-tabpane title="Others" name="othersPhoneTab" width="100%" margin="10px 0">
                             <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
@@ -274,17 +267,14 @@
                                         </wm-composite>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="othersNoticeBox"></wm-checkbox>
+                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="othersNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Others" type="button" padding="unset 0.5em" name="othersSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>
                                 </wm-gridrow>
                             </wm-layoutgrid>
-
                         </wm-tabpane>
-
-
                     </wm-tabs>
                 </wm-container>
             </wm-gridcolumn>
