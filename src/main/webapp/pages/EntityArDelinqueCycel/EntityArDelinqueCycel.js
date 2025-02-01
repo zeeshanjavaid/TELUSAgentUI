@@ -20,23 +20,14 @@ Partial.onReady = function() {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
-    console.log("Loading.....................");
-    debugger;
-    Partial.Variables.getEntityDetailsAR.setInput({
-        'entityId': Partial.pageParams.entityId,
-        "accountStatus": "ALL"
 
+    Partial.Variables.getEntityDetailsAR.setInput({
+        'entityId': Partial.pageParams.entityId
     });
 
     Partial.Variables.getEntityDetailsAR.invoke();
 };
 
-Partial.getEntityDetailsARonError = function(variable, data, xhrObj) {
-    console.log("Error.....................");
-    debugger;
-};
-
-Partial.getEntityDetailsARonSuccess = function(variable, data) {
-    console.log("Success.....................");
-    debugger;
+Partial.getEntityDetailsARonError = function(variable, data, xhrObj){
+	
 };

@@ -30,18 +30,6 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
-  "collectionContactsdata" : {
-    "_id" : "wm-testdata-wm.Variable-1737174087875",
-    "name" : "collectionContactsdata",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ { } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
   "ContactPageName" : {
     "_id" : "wm-ConatctPageName-wm.Variable-1686555097582",
     "name" : "ContactPageName",
@@ -104,18 +92,6 @@
     },
     "type" : "number",
     "isList" : false,
-    "saveInPhonegap" : false
-  },
-  "customerContactsdata" : {
-    "_id" : "wm-testContactsdata1-wm.Variable-1737609521161",
-    "name" : "customerContactsdata",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ { }, { }, { }, { }, { } ],
-    "type" : "entry",
-    "isList" : true,
     "saveInPhonegap" : false
   },
   "disputeIdAppVar" : {
@@ -2705,36 +2681,6 @@
     "saveInPhonegap" : false,
     "controller" : "UserManagement"
   },
-  "PhoneSubTypeList" : {
-    "_id" : "wm-staticVariable1-wm.Variable-1736988741335",
-    "name" : "PhoneSubTypeList",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "name" : "FAX",
-      "dataValue" : "FAX"
-    }, {
-      "name" : "EXTENSION",
-      "dataValue" : "EXTENSION"
-    }, {
-      "name" : "HOME",
-      "dataValue" : "HOME"
-    }, {
-      "name" : "MOBILE",
-      "dataValue" : "MOBILE"
-    }, {
-      "name" : "WORK",
-      "dataValue" : "WORK"
-    }, {
-      "name" : "OTHER",
-      "dataValue" : "OTHER"
-    } ],
-    "type" : "entry",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
   "priorityQueuePageNumber" : {
     "_id" : "wm-prirorityQueuePageNumber-wm.Variable-1662732649468",
     "name" : "priorityQueuePageNumber",
@@ -3850,21 +3796,6 @@
     },
     "type" : "string",
     "isList" : false,
-    "saveInPhonegap" : false
-  },
-  "selectedContactDetails" : {
-    "_id" : "wm-selectedContactDetails-wm.Variable-1737610308864",
-    "name" : "selectedContactDetails",
-    "owner" : "App",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "name" : "name0",
-      "dataValue" : "dataValue0"
-    } ],
-    "type" : "entry",
-    "isList" : true,
     "saveInPhonegap" : false
   },
   "storeworkCategoryForMultiSelect" : {

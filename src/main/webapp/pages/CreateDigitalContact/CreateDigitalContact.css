@@ -13,13 +13,3 @@ wm-textarea.ng-valid.app-input-wrapper.ng-touched.ng-dirty {
 textarea.form-control.app-textarea.ng-untouched.ng-valid.ng-dirty {
     resize: none;
 }
-
-/* Style when checkbox is unchecked (red) 
-.custom-checkbox.unchecked {
-    background-color: red !important;
-}
-
-.custom-checkbox:not(.unchecked) {
-    background-color: blue !important;
-}
-*/

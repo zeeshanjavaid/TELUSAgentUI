@@ -112,20 +112,6 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "failMessageEntManagementVar" : {
-    "_id" : "wm-failMessageEntManagementVar-wm.Variable-1728944668173",
-    "name" : "failMessageEntManagementVar",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : {
-      "dataValue" : ""
-    },
-    "type" : "string",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
   "getBillingAccountRefProfileDetails" : {
     "_id" : "wm-getBillingAccountRefProfileDetails-wm.ServiceVariable-1692948255043",
     "name" : "getBillingAccountRefProfileDetails",
@@ -297,10 +283,6 @@
     "dataBinding" : [ {
       "target" : "entityId",
       "value" : "bind:pageParams.entityId",
-      "type" : "string"
-    }, {
-      "target" : "accountStatus",
-      "value" : "ALL",
       "type" : "string"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
@@ -493,20 +475,6 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
-  "uiValue" : {
-    "_id" : "wm-uiValue-wm.Variable-1729920849736",
-    "name" : "uiValue",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : {
-      "dataValue" : ""
-    },
-    "type" : "string",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
   "UpdateCollectionEntityServiceVar" : {
     "_id" : "wm-UpdateCollectionEntityServiceVar-wm.ServiceVariable-1687866722704",
     "name" : "UpdateCollectionEntityServiceVar",
@@ -523,31 +491,6 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "startUpdate" : false,
-    "autoUpdate" : true,
-    "inFlightBehavior" : "executeLast",
-    "transformationRequired" : false,
-    "saveInPhonegap" : false,
-    "controller" : "CollectionEntity"
-  },
-  "updateManualFlag" : {
-    "_id" : "wm-updateManualFlag-wm.ServiceVariable-1728711785621",
-    "name" : "updateManualFlag",
-    "owner" : "Page",
-    "category" : "wm.ServiceVariable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionEntityUpdate",
-    "service" : "CollectionEntityService",
-    "operation" : "updateCollectionEntity",
-    "operationId" : "CollectionEntityController_updateCollectionEntity",
-    "operationType" : "put",
-    "serviceType" : "JavaService",
-    "dataSet" : [ ],
-    "isList" : false,
-    "maxResults" : 20,
-    "onSuccess" : "updateManualFlagonSuccess(variable, data, options)",
-    "onError" : "updateManualFlagonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

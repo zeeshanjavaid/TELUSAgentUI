@@ -241,9 +241,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionActivityLogService",
+    "service" : "CollectionTreatmentService",
     "operation" : "getDisputeHistoryView",
-    "operationId" : "CollectionActivityLogController_getDisputeHistoryView",
+    "operationId" : "CollectionTreatmentController_getDisputeHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -255,7 +255,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionActivityLog"
+    "controller" : "CollectionTreatment"
   },
   "getDisputeDetails" : {
     "_id" : "wm-getDisputeDetails1-wm.ServiceVariable-1685859383961",

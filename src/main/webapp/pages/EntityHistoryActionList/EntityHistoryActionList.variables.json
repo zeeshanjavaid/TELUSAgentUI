@@ -152,13 +152,23 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
-      "dataValue" : "NOTC"
+      "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC2-OD"
+    }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL"
     }, {
       "dataValue" : "SUSPEND"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "NOTC5-ACTMGR"
+    }, {
+      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -180,13 +190,23 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
-      "dataValue" : "NOTC"
+      "dataValue" : "NOTC1-PMTR"
+    }, {
+      "dataValue" : "NOTC2-OD"
+    }, {
+      "dataValue" : "NOTC3-DIST"
+    }, {
+      "dataValue" : "NOTC4-CANL"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
     }, {
       "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "NOTC5-ACTMGR"
+    }, {
+      "dataValue" : "NOTC6-REFERRAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -321,34 +341,6 @@
       "dataValue" : "NOTC5-ACTMGR"
     }, {
       "dataValue" : "NOTC6-REFERRAL"
-    } ],
-    "type" : "string",
-    "isList" : true,
-    "saveInPhonegap" : false
-  },
-  "contentTypeFilterTODO" : {
-    "_id" : "wm-contentTypeFilterTODO-wm.Variable-1729574498619",
-    "name" : "contentTypeFilterTODO",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : [ {
-      "dataValue" : "NTCFRREM"
-    }, {
-      "dataValue" : "NTCOD"
-    }, {
-      "dataValue" : "NTCSUSP"
-    }, {
-      "dataValue" : "NTCCEASE"
-    }, {
-      "dataValue" : "NTCAGENCY"
-    }, {
-      "dataValue" : "NTCPARR"
-    }, {
-      "dataValue" : "NTCBRARRG"
-    }, {
-      "dataValue" : "NTCACCTMGR"
     } ],
     "type" : "string",
     "isList" : true,
@@ -614,9 +606,9 @@
       "type" : "integer"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.collactivitylogmgmt.model.CollectionActivityLog",
-    "service" : "CollectionActivityLogService",
+    "service" : "CollectionTreatmentService",
     "operation" : "getCollectionActivityLog",
-    "operationId" : "CollectionActivityLogController_getCollectionActivityLog",
+    "operationId" : "CollectionTreatmentController_getCollectionActivityLog",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -628,7 +620,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionActivityLog"
+    "controller" : "CollectionTreatment"
   },
   "getCollectionTreatMentByEntId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689084256156",
@@ -637,13 +629,9 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
-      "target" : "active",
-      "value" : true,
-      "type" : "boolean"
-    }, {
-      "target" : "entityId",
-      "value" : "bind:'eq:' + pageParams.entityId",
-      "type" : "string"
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment",
     "service" : "CollectionTreatmentService",
@@ -669,20 +657,20 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
+      "target" : "type",
+      "value" : "CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND",
+      "type" : "string"
+    }, {
       "target" : "IsOdManagement",
       "value" : false,
       "type" : "boolean"
     }, {
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
+    }, {
       "target" : "status",
-      "value" : "bind:'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled'",
-      "type" : "string"
-    }, {
-      "target" : "entityId",
-      "value" : "bind:'eq:' + pageParams.entityId",
-      "type" : "string"
-    }, {
-      "target" : "typeCode",
-      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC'",
+      "value" : "Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled",
       "type" : "string"
     } ],
     "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",
@@ -921,9 +909,9 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
-  "UpdateCollectionTreatmentStepVar" : {
+  "UpdateCollectionTreatmentVar" : {
     "_id" : "wm-UpdateCollectionTreatmentVar-wm.ServiceVariable-1685725848875",
-    "name" : "UpdateCollectionTreatmentStepVar",
+    "name" : "UpdateCollectionTreatmentVar",
     "owner" : "Page",
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
@@ -937,7 +925,7 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "UpdateCollectionTreatmentStepVarOnSuccess(variable, data, options)",
+    "onSuccess" : "UpdateCollectionTreatmentVaronSuccess(variable, data, options)",
     "startUpdate" : false,
     "autoUpdate" : true,
     "inFlightBehavior" : "executeLast",

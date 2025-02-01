@@ -10,7 +10,7 @@
       "value" : "bind:pageParams.entityId",
       "type" : "integer"
     } ],
-    "type" : "com.fico.telus.model.EntityContactsResponseForFawb",
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityContactsResponse",
     "service" : "CollectionDataService",
     "operation" : "getEntityContacts",
     "operationId" : "CollectionDataController_getEntityContacts",
@@ -19,8 +19,6 @@
     "dataSet" : [ ],
     "isList" : false,
     "maxResults" : 20,
-    "onSuccess" : "getCollectionEntityContactsonSuccess(variable, data, options)",
-    "onError" : "getCollectionEntityContactsonError(variable, data, xhrObj)",
     "startUpdate" : false,
     "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",

@@ -386,9 +386,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionActivityLogService",
+    "service" : "CollectionTreatmentService",
     "operation" : "getCollectionHistoryView",
-    "operationId" : "CollectionActivityLogController_getCollectionHistoryView",
+    "operationId" : "CollectionTreatmentController_getCollectionHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -400,7 +400,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionActivityLog"
+    "controller" : "CollectionTreatment"
   },
   "getCollectionTreatmentByCollENtityId" : {
     "_id" : "wm-getCollectionTreatMent-wm.ServiceVariable-1689059576521",
@@ -409,13 +409,9 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
-      "target" : "active",
-      "value" : true,
-      "type" : "boolean"
-    }, {
-      "target" : "entityId",
-      "value" : "bind:'eq:' + pageParams.entityId",
-      "type" : "string"
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colltreatmentmgmt.model.CollectionTreatment",
     "service" : "CollectionTreatmentService",
@@ -441,17 +437,17 @@
     "category" : "wm.ServiceVariable",
     "subCategory" : "None",
     "dataBinding" : [ {
+      "target" : "type",
+      "value" : "bind:\"RESTORE,CEASE,SUSPEND\"",
+      "type" : "string"
+    }, {
       "target" : "IsOdManagement",
       "value" : true,
       "type" : "boolean"
     }, {
-      "target" : "entityId",
-      "value" : "bind:'eq:' + pageParams.entityId",
-      "type" : "string"
-    }, {
-      "target" : "typeCode",
-      "value" : "bind:'in:RESTORE,CEASE,SUSPEND'",
-      "type" : "string"
+      "target" : "collectionEntityId",
+      "value" : "bind:pageParams.entityId",
+      "type" : "integer"
     } ],
     "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",
     "service" : "CollectionTreatmentService",
@@ -676,9 +672,9 @@
     "subCategory" : "None",
     "dataBinding" : [ ],
     "type" : "com.fico.telus.model.OrderMgmtHistoryResponse",
-    "service" : "CollectionActivityLogService",
+    "service" : "CollectionTreatmentService",
     "operation" : "getCollectionHistoryView",
-    "operationId" : "CollectionActivityLogController_getCollectionHistoryView",
+    "operationId" : "CollectionTreatmentController_getCollectionHistoryView",
     "operationType" : "get",
     "serviceType" : "JavaService",
     "dataSet" : [ ],
@@ -693,7 +689,7 @@
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
-    "controller" : "CollectionActivityLog"
+    "controller" : "CollectionTreatment"
   },
   "getStatusIfAssignedPersonChanged" : {
     "_id" : "wm-getStatusIfAssignedPersonChanged-wm.Variable-1691494642648",
@@ -776,20 +772,6 @@
   "selectedOrderMgmtId" : {
     "_id" : "wm-selectedOrderMgmtId-wm.Variable-1700555856177",
     "name" : "selectedOrderMgmtId",
-    "owner" : "Page",
-    "category" : "wm.Variable",
-    "subCategory" : "None",
-    "dataBinding" : [ ],
-    "dataSet" : {
-      "dataValue" : ""
-    },
-    "type" : "string",
-    "isList" : false,
-    "saveInPhonegap" : false
-  },
-  "selectedOrderMgmtPartitionKey" : {
-    "_id" : "wm-selectedOrderMgmtPartitionKey-wm.Variable-1729795345384",
-    "name" : "selectedOrderMgmtPartitionKey",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",

@@ -1,6 +1,5 @@
 <wm-partial name="partial1" style="border: 1px solid #ddd;">
     <wm-layoutgrid name="layoutgrid1">
-        <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true" margin="0 0 10px 15px" width="98%"></wm-message>
         <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" width="100%"></wm-message>
         <wm-gridrow name="gridrow1" margin="10px 0 0 10px">
             <wm-gridcolumn columnwidth="4" name="gridcolumn1">
@@ -9,14 +8,34 @@
         </wm-gridrow>
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid3">
-        <wm-gridrow name="gridrow9" margin="10px 0px 20px 20px">
-            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
-                <wm-label padding="unset 0.5em" caption="Salutation" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+        <wm-gridrow name="gridrow6" margin="10px 0px 30px 20px">
+            <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Data Source" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="salutation" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+                <wm-label padding="unset 0.5em 0 0" name="Datasource" caption="Internal" color="#000"></wm-label>
             </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Telus Contact*" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-select name="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Email for Notices*" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-select name="EmailForNoticesSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-select>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow9" margin="10px 0px 20px 20px">
             <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Title" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-select name="TITLESelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.contactTitleValues.dataSet" datafield="dataValue" displayfield="dataValue"></wm-select>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="First Name*" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
@@ -26,7 +45,7 @@
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Last Name*" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
@@ -38,36 +57,76 @@
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow10" margin="10px 0px 20px 20px">
+            <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Email" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-composite name="composite1">
+                    <wm-container class="col-md-9" name="container1">
+                        <wm-text name="emailText" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn51">
-                <wm-label padding="unset 0.5em" caption="Job Title" color="grey" class="CreateDigitalLabel" name="label13"></wm-label>
+                <wm-label padding="unset 0.5em" caption="FAX" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-composite name="composite1">
+                    <wm-container class="col-md-9" name="container1">
+                        <!--<wm-number name="fax" textalign="left" placeholder="" padding="unset 0.5em" minvalue="2" maxvalue="3"></wm-number>-->
+                        <wm-text name="fax" textalign="left" placeholder="" padding="unset 0.5em" maxchars="10" on-keypress="faxKeypress($event, widget)" on-keydown="faxKeydown($event, widget)" on-change="faxChange($event, widget, newVal, oldVal)"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Cell Phone" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
                         <!--<wm-number name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em"></wm-number>-->
-                        <wm-text textalign="left" placeholder="" padding="unset 0.5em" name="jobTitle"></wm-text>
+                        <wm-text name="cellPhone" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="cellPhoneKeypress($event, widget)" on-keydown="cellPhoneKeydown($event, widget)" maxchars="10" on-change="cellPhoneChange($event, widget, newVal, oldVal)"></wm-text>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow12" margin="15px 0px 20px 20px">
             <wm-gridcolumn columnwidth="1" name="gridcolumn51">
-                <wm-label padding="unset 0.5em" caption="Telus Contact*" name="label8TelusContacts" color="grey" class="CreateDigitalLabel"></wm-label>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                <wm-select name="TELUSContactsSelect" width="75%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.yesNoValues.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.yesNoValues.dataSet[1].dataValue"></wm-select>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="1" name="gridcolumn51">
-                <wm-label padding="unset 0.5em" caption="Pref. Lang*" name="prefLagLabel" color="grey" class="CreateDigitalLabel"></wm-label>
+                <wm-label padding="unset 0.5em" caption="Work No." name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                 <wm-composite name="composite1">
                     <wm-container class="col-md-9" name="container1">
-                        <wm-select padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.langList.dataSet" datafield="dataValue" datavalue="bind:Variables.langList.dataSet[0].dataValue" name="prefLangValue" displayfield="name"></wm-select>
+                        <!--<wm-number name="workNo" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="workNoKeypress($event, widget)" on-keyup="workNoKeyup($event, widget)" on-keydown="workNoKeydown($event, widget)"></wm-number>-->
+                        <wm-text name="workNo" id="workNo" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="workNoKeypress($event, widget)" maxchars="10" on-keydown="workNoKeydown($event, widget)" on-change="workNoChange($event, widget, newVal, oldVal)"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Work Ext." name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-composite name="composite1">
+                    <wm-container class="col-md-9" name="container1">
+                        <!-- <wm-number name="ext" textalign="left" placeholder="" padding="unset 0.5em"></wm-number>-->
+                        <wm-text name="ext" textalign="left" placeholder="" padding="unset 0.5em" maxchars="10" regexp="^[0-9]*$" on-keyup="extKeyup($event, widget)" required="false" on-keypress="extKeypress($event, widget)"></wm-text>
+                    </wm-container>
+                </wm-composite>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                <wm-label padding="unset 0.5em" caption="Pref. Language*" name="prefLagLabel" color="grey" class="CreateDigitalLabel"></wm-label>
+            </wm-gridcolumn>
+            <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                <wm-composite name="composite1">
+                    <wm-container class="col-md-9" name="container1">
+                        <!-- <wm-number name="ext" textalign="left" placeholder="" padding="unset 0.5em"></wm-number>-->
+                        <wm-select width="100%" padding="unset 0.5em" placeholder="Select" dataset="bind:Variables.langList.dataSet" datafield="dataValue" datavalue="bind:Variables.langList.dataSet[0].dataValue" name="prefLangValue" displayfield="name"></wm-select>
                     </wm-container>
                 </wm-composite>
             </wm-gridcolumn>
         </wm-gridrow>
         <wm-gridrow name="gridrow6" margin="10px 0px 20px 20px">
-            <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+            <wm-gridcolumn columnwidth="1" name="gridcolumn51">
                 <wm-label padding="unset 0.5em" caption="Comments" name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
             </wm-gridcolumn>
             <wm-gridcolumn columnwidth="10" name="gridcolumn50">
@@ -78,225 +137,12 @@
                 </wm-composite>
             </wm-gridcolumn>
         </wm-gridrow>
-        <wm-gridrow name="gridrow121" margin="10px 0px 20px 20px">
-            <wm-gridcolumn columnwidth="2" name="gridcolumn51"></wm-gridcolumn>
-            <wm-gridcolumn columnwidth="15" name="gridcolumn550">
-                <wm-container class="col-md-9" name="container10">
-                    <wm-tabs name="tabs1" accessroles="Authenticated" defaultpaneindex="0">
-                        <wm-tabpane title="Email" name="emailTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Email after inputting the email address." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="label8" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Email Address*" name="emailAddressLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="emailAddressValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Email for Notifications" name="emailNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue" class="custom-checkbox"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Email" type="button" padding="unset 0.5em" name="saveEmailButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                        <wm-tabpane title="Cell Phone" name="cellPhoneTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Cell Phone after inputting the number." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="aaa" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Number*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="cellPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="cellPhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Cell Phone" type="button" padding="unset 0.5em" name="cellPhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                        <wm-tabpane title="Work Phone" name="workPhoneTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Work Phone after inputting the number." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="aaa" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Number*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="workPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="workPhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Extension*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="extPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Work Phone" type="button" padding="unset 0.5em" name="workPhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                        <wm-tabpane title="Fax" name="faxPhoneTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Fax after inputting the number." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="aaa" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Number*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="faxPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="faxNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Fax" type="button" padding="unset 0.5em" name="faxSaveButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                        <wm-tabpane title="Home Phone" name="homePhoneTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Home Phone after inputting the number." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="aaa" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Number*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="homePhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="homePhoneNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Home Phone" type="button" padding="unset 0.5em" name="homePhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                        <wm-tabpane title="Others" name="othersPhoneTab" width="100%" margin="10px 0">
-                            <wm-layoutgrid name="layoutgrid3" width="100%" margin="0">
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="8" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Please click on Save Others after inputting the number." name="label8" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1111" margin="30px 0px 0px 0px">
-                                    <wm-gridcolumn columnwidth="1" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption=" " name="aaa" color="grey" class="CreateDigitalLabel"></wm-label>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                                <wm-gridrow name="gridrow1">
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Number*" name="numLabel" color="grey"></wm-label>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
-                                        <wm-composite name="composite1">
-                                            <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="othersPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
-                                            </wm-container>
-                                        </wm-composite>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="3" name="gridcolumn51">
-                                        <wm-checkbox padding="unset 0.5em" caption="Use Phone for Notifications" name="othersNoticeBox" datavalue="bind:Variables.yesNoValues.dataSet[0].dataValue"></wm-checkbox>
-                                    </wm-gridcolumn>
-                                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
-                                        <wm-button class="primaryButton" caption="Save Others" type="button" padding="unset 0.5em" name="othersSaveButton" on-click="createContact($event, widget)"></wm-button>
-                                    </wm-gridcolumn>
-                                </wm-gridrow>
-                            </wm-layoutgrid>
-                        </wm-tabpane>
-                    </wm-tabs>
-                </wm-container>
-            </wm-gridcolumn>
-        </wm-gridrow>
     </wm-layoutgrid>
     <wm-layoutgrid name="layoutgrid3_1">
         <wm-gridrow name="gridrow7">
-            <wm-gridcolumn columnwidth="9" name="gridcolumn26" style="text-align:right;" padding="unset 1em 1.5em unset">
-                <wm-button class="primaryButton" caption="Close" type="button" margin="unset 0.5em" name="button2" on-click="CancelClick($event, widget)"></wm-button>
+            <wm-gridcolumn columnwidth="12" name="gridcolumn26" style="text-align:right;" padding="unset 1em 1.5em unset">
+                <wm-button class="secondaryButton" caption="Cancel" type="button" margin="unset 0.5em" name="button1" on-click="CancelClick($event, widget)"></wm-button>
+                <wm-button class="primaryButton" caption="Create" type="button" margin="unset 0.5em" name="button2" on-click="createContact($event, widget)"></wm-button>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>

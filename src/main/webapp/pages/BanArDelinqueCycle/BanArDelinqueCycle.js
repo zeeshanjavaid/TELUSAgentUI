@@ -28,7 +28,7 @@ Partial.onReady = function() {
         //     style: 'currency',
 
         // });
-        debugger;
+
         Partial.Widgets.CURR.caption = row.currentAr.toLocaleString('en-US');
         Partial.Widgets.ar30D.caption = row.ar30Days.toLocaleString('en-US');
         Partial.Widgets.ar60D.caption = row.ar60Days.toLocaleString('en-US');
@@ -38,12 +38,6 @@ Partial.onReady = function() {
         Partial.Widgets.ar180D.caption = row.ar180Days.toLocaleString('en-US');
         Partial.Widgets.ar180Dplus.caption = row.ar180DaysPlus.toLocaleString('en-US');
         Partial.Widgets.lastPaymentDate.caption = row.lastPaymentDate;
-        //For closed accounts
-        Partial.Widgets.gridrow8.show = row.acctStatus === 'C' ? true : false;
-        Partial.Widgets.closingDateValue.caption = row.closingDate;
-        Partial.Widgets.closingCycleValue.caption = row.closingCycle;
-        Partial.Widgets.accountTypeValue.caption = row.acctType;
-        Partial.Widgets.accountSubTypeValue.caption = row.acctSubType;
-        Partial.Widgets.inValCeaseFlagCheckBox.datavalue = row.involCeaseFlag;
+
     }
 };

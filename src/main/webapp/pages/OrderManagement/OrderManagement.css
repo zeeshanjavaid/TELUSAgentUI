@@ -31,8 +31,3 @@ input.form-control.app-textbox.app-dateinput.display-input {
     top:10px ;
     left: 20px;
 }
-
-div[name="getEntityBanDetailsTable1"] table thead tr th[data-col-id="0"][data-col-field="checkbox"] input {
-    pointer-events: none;
-    display: none;
-}

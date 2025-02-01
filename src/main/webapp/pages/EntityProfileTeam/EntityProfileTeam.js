@@ -25,8 +25,7 @@ Partial.onReady = function() {
 
     getOwerIdFromEntityDetailsVar.invoke({
             "inputFields": {
-                "entityId": Partial.pageParams.entityId,
-                "accountStatus": "ALL"
+                "entityId": Partial.pageParams.entityId
             },
         },
         function(data) {

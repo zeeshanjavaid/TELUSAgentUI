@@ -357,7 +357,6 @@ Page.applyFiltersEntityView = function($event, widget) {
                 'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
                 'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
                 'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
-                'manualFlag': Page.Widgets.manualFlagDrop.datavalue,
                 'limit': 10,
                 'offset': 0
 
@@ -399,7 +398,6 @@ Page.applyFiltersEntityView = function($event, widget) {
                         'billingSystem': Page.Widgets.billingSystemSelectEV.datavalue,
                         'collectionStatus': Page.Widgets.collStatusSelectEV.datavalue,
                         'includeCurrentOrCredit': Page.Widgets.includeCurrentCreditSelectEV.datavalue,
-                        'manualFlag': Page.Widgets.manualFlagDrop.datavalue,
                         'limit': 10,
                         'offset': 0
 

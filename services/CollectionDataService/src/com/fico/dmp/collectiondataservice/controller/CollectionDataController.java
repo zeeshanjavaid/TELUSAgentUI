@@ -14,7 +14,6 @@ import com.fico.telus.model.AssignedEntitiesInEntityModel;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityBanDetailsResponse;
 import com.fico.telus.model.EntityContactsResponseForFawb;
 import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse;
-import telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityNextTreatmentResponse;
 import com.fico.telus.model.LookUpResponseWithTeamName;
 import com.fico.telus.model.AssignedEntitiesInClassicModel;
 import org.springframework.web.bind.annotation.*;
@@ -43,8 +42,8 @@ public class CollectionDataController {
     @RequestMapping(value = "/assignedEntitiesInEntityView", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "includeCurrentOrCredit", required = false) String includeCurrentOrCredit, @RequestParam(value = "manualFlag", required = false) String manualFlag, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
-        return collectionDataService.getAssignedEntitiesInEntityView(entityOwner, workCategory, portfolio, billingSystem, collectionStatus, includeCurrentOrCredit, manualFlag, offset, limit);
+    public List<AssignedEntitiesInEntityModel> getAssignedEntitiesInEntityView(@RequestParam(value = "entityOwner", required = false) String entityOwner, @RequestParam(value = "workCategory", required = false) String workCategory, @RequestParam(value = "portfolio", required = false) String portfolio, @RequestParam(value = "billingSystem", required = false) String billingSystem, @RequestParam(value = "collectionStatus", required = false) String collectionStatus, @RequestParam(value = "includeCurrentOrCredit", required = false) String includeCurrentOrCredit, @RequestParam(value = "offset", required = false) Integer offset, @RequestParam(value = "limit", required = false) Integer limit) throws Exception {
+        return collectionDataService.getAssignedEntitiesInEntityView(entityOwner, workCategory, portfolio, billingSystem, collectionStatus, includeCurrentOrCredit, offset, limit);
     }
 
     @RequestMapping(value = "/entityBanDetails", method = RequestMethod.GET)
@@ -64,15 +63,8 @@ public class CollectionDataController {
     @RequestMapping(value = "/entityDetails", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public EntityDetailsResponse getEntityDetails(@RequestParam(value = "entityId", required = false) String entityId, @RequestParam(value = "accountStatus", required = false) String accountStatus) throws Exception {
-        return collectionDataService.getEntityDetails(entityId, accountStatus);
-    }
-
-    @RequestMapping(value = "/entityNextTreatment", method = RequestMethod.GET)
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    @ApiOperation(value = "")
-    public EntityNextTreatmentResponse getEntityNextTreatment(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
-        return collectionDataService.getEntityNextTreatment(entityId);
+    public EntityDetailsResponse getEntityDetails(@RequestParam(value = "entityId", required = false) String entityId) throws Exception {
+        return collectionDataService.getEntityDetails(entityId);
     }
 
     @RequestMapping(value = "/entitySearch", method = RequestMethod.GET)

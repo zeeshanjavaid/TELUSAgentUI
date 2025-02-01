@@ -2,7 +2,8 @@
     <wm-gridcolumn class="entityProfileCancelledGrid" padding="unset unset unset 0.5em" name="gridcolumn1">
         <h3><b> BAN List for Cancelled   </b></h3>
         <!--<wm-label padding="1em 0.5em unset 0.5em" name="label1" caption="Entity Profile" height="50px" width="150px" fontweight="bold" fontsize="22"></wm-label>-->
-        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10" navigationalign="right">
+        <wm-table name="getEntityDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails" navigation="Classic" formposition="top" enablecolumnselection="false" class="getEntityDetailsTable1" pagesize="10"
+            navigationalign="right">
             <wm-table-column binding="suppresionFlag" caption="" widget-type="icon" width="30px" col-class="total_AR" edit-widget-type="checkbox" type="boolean" sortable="false" show="true" readonly="false">
                 <wm-icon caption="" iconclass="" iconposition="left" class="" conditionalclass="bind:{'fico-icon-flag-solid':row.getProperty('suppresionFlag')==true}" title="suppression"></wm-icon>
             </wm-table-column>
@@ -160,7 +161,8 @@
                             </wm-container>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="1" name="gridcolumn33">
-                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px" on-click="notes1_buttonClick($event, widget)"></wm-button>
+                            <wm-button class="btn-default fileIcon" caption="" type="button" margin="unset 0.5em unset 0.5em" name="notes1_button" iconclass="fico-icon-file" show="bind:Variables.getLatestNotes_ByEntityId.dataSet[0].docId!=null" style="left: -13px"
+                                on-click="notes1_buttonClick($event, widget)"></wm-button>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow margin="15px 0 0 0" name="gridrow18">
@@ -190,46 +192,6 @@
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <!--<wm-gridrow name="gridrow17_1" padding="0.7em unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn32"><wm-label padding="unset 0.5em unset unset" name="label27" caption="mm/dd/yy:" bordercolor="grey" color="gray"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow18" padding="unset unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn33"><wm-composite name="composite4_1"><wm-container class="col-md-9" name="container4_1"><wm-text name="text2"></wm-text></wm-container></wm-composite></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow19" padding="0.7em unset unset 1em"><wm-gridcolumn columnwidth="12" name="gridcolumn34_1"><wm-label padding="unset 0.5em unset unset" color="grey" caption="mm/dd/yy:" name="label25"></wm-label></wm-gridcolumn></wm-gridrow><wm-gridrow name="gridrow20" padding="unset unset unset 1em" margin="0 0 0 0"><wm-gridcolumn columnwidth="12" name="gridcolumn35"><wm-composite name="composite5"><wm-container class="col-md-9" name="container5"><wm-text name="text3"></wm-text></wm-container></wm-composite></wm-gridcolumn></wm-gridrow>--></wm-layoutgrid>
-            </wm-gridcolumn>
-            <wm-gridcolumn columnwidth="6" class="latest_Action" name="gridcolumnfortrmt" style="margin: 20px; width: 25%; display: flex; flex-direction: column;">
-                <wm-layoutgrid name="layoutgrid2">
-                    <wm-gridrow name="gridrow2" padding="1em unset unset unset">
-                        <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset unset unset 0.5em">
-                            <wm-label padding="unset 0.5em" name="label1" caption="Upcoming Treatment" fontweight="bold"></wm-label>
-                        </wm-gridcolumn>
-                    </wm-gridrow>
-                    <wm-layoutgrid name="layoutgrid3">
-                        <wm-gridrow name="daterow" padding="1em 0.5em 1em unset">
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
-                                <wm-label padding="unset 0.5em" name="label1" caption="Date"></wm-label>
-                            </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
-                                <wm-label padding="unset 0.5em" name="stepDate" caption="N/A"></wm-label>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                        <wm-gridrow name="trmtrow" padding="1em 0.5em 1em unset">
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
-                                <wm-label padding="unset 0.5em" name="label1" caption="Type"></wm-label>
-                            </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
-                                <wm-label padding="unset 0.5em" name="stepDesc" caption="N/A"></wm-label>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                        <wm-gridrow name="contentTyperow" padding="1em 0.5em 1em unset">
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset unset unset 0.5em">
-                                <wm-label padding="unset 0.5em" name="label1" caption="Content Type"></wm-label>
-                            </wm-gridcolumn>
-                            <wm-gridcolumn columnwidth="6" name="gridcolumn29" horizontalalign="right" padding="-0.5em 1em unset unset">
-                                <wm-label padding="unset 0.5em" name="contentType" caption="N/A"></wm-label>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                        <wm-gridrow name="notreatmentrow" padding="1em 0.5em 2em 0.5em">
-                            <wm-gridcolumn columnwidth="12" name="gridcolumn3" horizontalalign="center">
-                                <wm-label padding="unset 0.5em" name="notreatmentlabel" caption="No Upcoming Treatment" textalign="center"></wm-label>
-                            </wm-gridcolumn>
-                        </wm-gridrow>
-                    </wm-layoutgrid>
-                </wm-layoutgrid>
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
