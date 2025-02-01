@@ -16,35 +16,37 @@
     <wm-gridrow name="gridrow2">
         <wm-message name="successMessage" caption="bind:Variables.successMessage.dataSet.dataValue" show="bind:Variables.successMessage.dataSet.dataValue ? true : false" hideclose="true" margin="0 0 10px 15px" width="98%"></wm-message>
     </wm-gridrow>
+    <wm-gridrow name="gridrow22">
+        <wm-message name="errormessage" type="error" show="bind:Variables.errorMsg.dataSet.dataValue ? true : false" caption="bind:Variables.errorMsg.dataSet.dataValue" class="errormessage" deferload="false" hideclose="true" margin="0 0 10px 15px" width="98%"></wm-message>
+    </wm-gridrow>
     <wm-layoutgrid name="layoutgrid11" margin="0 0 0 15px" width="98%" id="digitalTableGrid">
+        <wm-gridrow name="gridrow360">
+            <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Collection Contacts" fontsize="20"></wm-label>
+        </wm-gridrow>
         <wm-gridrow name="gridrow36">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table name="getEntityContactsTable1" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.digitalContacts" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="20" navigationalign="right">
-                    <wm-table-column binding="rcId" caption="RCID #" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="banId" caption="BAN #" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="sourceOfContact" caption="Data Source" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="contactForNotices" caption="Email for Notices" width="90px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="telusContacts" caption="TELUS Contacts" width="90px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="title" caption="Title" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="firstName" caption="First Name" width="113px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="lastName" caption="Last Name" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="email" caption="Email" width="300px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="workNumber" caption="Work No." widget-type="label" width="90px" edit-widget-type="text" type="string" show="true" readonly="false">
-                        <wm-label caption="bind:row.getProperty('workNumber').length == 10 ? '(' + row.getProperty('workNumber').substring(0, 3) + ')' + row.getProperty('workNumber').substring(3, 6) + '-' + row.getProperty('workNumber').substring(6, 10) : row.getProperty('workNumber')"
-                            class="" conditionalclass=""></wm-label>
-                    </wm-table-column>
-                    <wm-table-column binding="mobileNumber" caption="Mobile No." width="93px" edit-widget-type="text" type="string" show="true" readonly="false">
-                        <wm-label caption="bind:row.getProperty('mobileNumber').length == 10 ? '(' + row.getProperty('mobileNumber').substring(0, 3) + ')' + row.getProperty('mobileNumber').substring(3, 6) + '-' + row.getProperty('mobileNumber').substring(6, 10) : row.getProperty('mobileNumber')"
-                            class="" conditionalclass=""></wm-label>
-                    </wm-table-column>
-                    <wm-table-column binding="faxNumber" caption="Fax No." width="90px" edit-widget-type="text" type="string" show="true" readonly="false">
-                        <wm-label caption="bind:row.getProperty('faxNumber').length == 10 ? '(' + row.getProperty('faxNumber').substring(0, 3) + ')' + row.getProperty('faxNumber').substring(3, 6) + '-' + row.getProperty('faxNumber').substring(6, 10) : row.getProperty('faxNumber')"
-                            class="" conditionalclass=""></wm-label>
-                    </wm-table-column>
-                    <wm-table-column binding="prefLang" caption="Pref. Language" width="70px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="rowOperations" caption="Actions" width="60px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                    <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-primary btn-xs" iconclass="wi wi-pencil fico fico-icon-pencil" title="Edit" action="getEntityContactsTable1_customRowAction($event, row)"
-                        disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table name="getCollectionContactsTable" title="" dataset="bind:Variables.getCollectionEntityContacts.dataSet.digitalCollectionContacts" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
+                    <wm-table-column binding="salutation" caption="Salutation" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="prefLang" caption="Language" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="telusContacts" caption="Telus Contacts" type="boolean" readonly="true" show="true"></wm-table-column>
+                    <wm-table-column binding="jobTitle" caption="Job Title" edit-widget-type="text" type="string" readonly="true" show="true"></wm-table-column>
+                    <wm-table-row content="CollectionContactDetails" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCollectionContactsTable_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
+                </wm-table>
+            </wm-gridcolumn>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow360">
+            <wm-label padding="unset 0.5em 0 unset" name="label1" caption="Customer Contacts" fontsize="20"></wm-label>
+        </wm-gridrow>
+        <wm-gridrow name="gridrow36">
+            <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                <wm-table name="getCustomerContactsTable" dataset="bind:Variables.getCollectionEntityContacts.dataSet.digitalCustomerContacts" navigation="Classic" multiselect="false" radioselect="false" enablesort="true" pagesize="5" navigationalign="right">
+                    <wm-table-column binding="firstName" caption="First Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="lastName" caption="Last Name" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-row content="CustomerContactDetails" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="getCustomerContactsTable_OnRowexpand($event, widget, row, $data)"
+                        widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="30px"></wm-table-row>
                 </wm-table>
             </wm-gridcolumn>
         </wm-gridrow>

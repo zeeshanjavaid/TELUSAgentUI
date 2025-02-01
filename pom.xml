@@ -48,6 +48,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/CollectionActivityLogService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/CollectionDataService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -345,6 +352,7 @@
                                 <source>services/AuditDataChangeService/src</source>
                                 <source>services/CacheService/src</source>
                                 <source>services/CodeDescriptionLookupService/src</source>
+                                <source>services/CollectionActivityLogService/src</source>
                                 <source>services/CollectionDataService/src</source>
                                 <source>services/CollectionEntityService/src</source>
                                 <source>services/CollectionTreatmentService/src</source>
@@ -771,7 +779,7 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>1.30</version>
+            <version>2.2</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

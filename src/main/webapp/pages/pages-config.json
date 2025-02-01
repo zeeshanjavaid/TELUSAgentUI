@@ -112,6 +112,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "CollectionContactDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "Common",
   "type" : "PARTIAL",
   "params" : [ ]
@@ -146,6 +150,10 @@
     "name" : "parrTotal",
     "type" : "integer"
   } ]
+}, {
+  "name" : "CustomerContactDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
 }, {
   "name" : "DisputeDetails",
   "type" : "PARTIAL",

@@ -50,6 +50,10 @@
       "target" : "entityId",
       "value" : "bind:pageParams.entityId",
       "type" : "string"
+    }, {
+      "target" : "accountStatus",
+      "value" : "ALL",
+      "type" : "string"
     } ],
     "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
     "service" : "CollectionDataService",
@@ -278,6 +282,31 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "CollectionEntity"
+  },
+  "getUpcomingTreatmentForEntity" : {
+    "_id" : "wm-getUpcomingTreatmentForEntity-wm.ServiceVariable-1730755583396",
+    "name" : "getUpcomingTreatmentForEntity",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityNextTreatmentResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityNextTreatment",
+    "operationId" : "CollectionDataController_getEntityNextTreatment",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "getUpcomingTreatmentForEntityonSuccess(variable, data, options)",
+    "onError" : "getUpcomingTreatmentForEntityonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
   },
   "getUserDetailsByEmplId" : {
     "_id" : "wm-getUserDetailsByEmplId-wm.ServiceVariable-1701239723124",

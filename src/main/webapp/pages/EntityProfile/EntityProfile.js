@@ -42,6 +42,7 @@ Partial.onReady = function() {
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
     App.refreshParrSummary();
+    App.refreshNextTreatment();
 
 
 
@@ -426,13 +427,46 @@ Partial.getEntityDetailsTable1_OnRowexpand = function($event, widget, row, $data
 };
 
 Partial.CollectionDataServiceGetEntityDetailsonError = function(variable, data, xhrObj) {
-
+    debugger;
+    Partial.Variables.CollectionDataServiceGetEntityDetails.dataSet.banDetails = [];
+    //Page.Widgets.getEntityDetailsTable1.refresh();
 };
 
 App.refreshLatestNotes = function() {
 
     Partial.Variables.getLatestNotesByEntityId.invoke();
 
+};
+App.refreshNextTreatment = function() {
+    debugger;
+    Partial.Variables.getUpcomingTreatmentForEntity.setInput({
+
+        'entityId': Partial.pageParams.entityId
+
+    });
+    Partial.Variables.getUpcomingTreatmentForEntity.invoke();
+}
+
+Partial.getUpcomingTreatmentForEntityonError = function(variable, data, xhrObj) {
+    debugger;
+    console.log("Error upcoming treatment");
+    Partial.Widgets.daterow.show = false;
+    Partial.Widgets.trmtrow.show = false;
+    Partial.Widgets.contentTyperow.show = false;
+    Partial.Widgets.notreatmentrow.show = true;
+};
+Partial.getUpcomingTreatmentForEntityonSuccess = function(variable, data) {
+    debugger;
+    console.log("Success upcoming treatment");
+    Partial.Widgets.stepDate.caption = data.stepDate;
+    Partial.Widgets.stepDesc.caption = data.stepCode;
+    if (data.stepCode == 'NOTICE') {
+        Partial.Widgets.contentType.caption = data.contentType;
+        Partial.Widgets.contentTyperow.show = true;
+    } else {
+        Partial.Widgets.contentTyperow.show = false;
+    }
+    Partial.Widgets.notreatmentrow.show = false;
 };
 
 App.refreshParrSummary = function() {
@@ -606,9 +640,7 @@ Partial.createParrInEntityProfileClick = function($event, widget) {
 };
 
 App.refreshEntityBanDetails = function() {
-
     Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
-
 };
 
 
@@ -648,3 +680,21 @@ Partial.getEntityDetailsTable1Beforedatarender = function(widget, $data, $column
     Partial.Variables.getUserDetailsByEmplId.invoke();
 
 };*/
+Partial.banStatusSelectionChange = function($event, widget, newVal, oldVal) {
+    console.log("Old Val : " + oldVal + " New Val : " + newVal);
+    var status;
+    if (newVal == 'Active') {
+        status = 'O'
+    } else if (newVal == 'Cancelled') {
+        status = 'C'
+    } else {
+        status = 'ALL'
+    }
+    Partial.Variables.CollectionDataServiceGetEntityDetails.setInput({
+
+        'entityId': Partial.pageParams.entityId,
+        'accountStatus': status
+
+    });
+    Partial.Variables.CollectionDataServiceGetEntityDetails.invoke();
+};

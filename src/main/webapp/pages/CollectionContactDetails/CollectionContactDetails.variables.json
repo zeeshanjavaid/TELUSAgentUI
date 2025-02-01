@@ -1,0 +1,39 @@
+{
+  "expandedRowData" : {
+    "_id" : "wm-expandedRowData-wm.Variable-1737756123350",
+    "name" : "expandedRowData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "updateEntityContact" : {
+    "_id" : "wm-updateEntityContact-wm.ServiceVariable-1738273514015",
+    "name" : "updateEntityContact",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "type" : "telus.cdo.cnc.collmgmt.collentitymgmt.model.CollectionContactUpdate",
+    "service" : "CollectionEntityService",
+    "operation" : "updateContact",
+    "operationId" : "CollectionEntityController_updateContact",
+    "operationType" : "put",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "updateEntityContactonSuccess(variable, data, options)",
+    "onError" : "updateEntityContactonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionEntity"
+  }
+}

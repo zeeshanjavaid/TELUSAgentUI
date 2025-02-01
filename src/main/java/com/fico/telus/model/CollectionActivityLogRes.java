@@ -65,6 +65,16 @@ public class CollectionActivityLogRes {
 
     private Integer totalNoOfElement;
 
+    private String contentTypeCode = null;
+
+    public String getContentTypeCode() {
+        return contentTypeCode;
+    }
+
+    public void setContentTypeCode(String contentTypeCode) {
+        this.contentTypeCode = contentTypeCode;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -264,4 +274,37 @@ public class CollectionActivityLogRes {
     public void setTotalNoOfElement(Integer totalNoOfElement) {
         this.totalNoOfElement = totalNoOfElement;
     }
+    
+    @Override
+    public String toString() {
+        return "CollectionActivityLogRes{" +
+                "id=" + id +
+                ", collectionEntity=" + collectionEntity +
+                ", collectionActivityTimestamp=" + collectionActivityTimestamp +
+                ", relatedBusinessEntityId=" + relatedBusinessEntityId +
+                ", relatedBusinessEntityType='" + relatedBusinessEntityType + '\'' +
+                ", relatedBusinessEntityStatus='" + relatedBusinessEntityStatus + '\'' +
+                ", relatedBusinessEntityCreatedTimestamp=" + relatedBusinessEntityCreatedTimestamp +
+                ", relatedBusinessEntityCreatedBy='" + relatedBusinessEntityCreatedBy + '\'' +
+                ", relatedBusinessEntityAssignedTo='" + relatedBusinessEntityAssignedTo + '\'' +
+                ", relatedBusinessEntityAssignedTeam='" + relatedBusinessEntityAssignedTeam + '\'' +
+                ", relatedBusinessEntityDueDate=" + relatedBusinessEntityDueDate +
+                ", collectionActivityPerformedBy='" + collectionActivityPerformedBy + '\'' +
+                ", billingAccountRefs=" + billingAccountRefs +
+                ", businessEntityEventType='" + businessEntityEventType + '\'' +
+                ", relatedBusinessEntitySubType='" + relatedBusinessEntitySubType + '\'' +
+                ", activityReason='" + activityReason + '\'' +
+                ", additionalCharacteristics=" + additionalCharacteristics +
+                ", comment='" + comment + '\'' +
+                ", partitionKey=" + partitionKey +
+                ", dataSourceId='" + dataSourceId + '\'' +
+                ", href=" + href +
+                ", baseType='" + baseType + '\'' +
+                ", type='" + type + '\'' +
+                ", schemaLocation=" + schemaLocation +
+                ", totalNoOfElement=" + totalNoOfElement +
+                ", contentTypeCode='" + contentTypeCode + '\'' +
+                '}';
+    }
+
 }

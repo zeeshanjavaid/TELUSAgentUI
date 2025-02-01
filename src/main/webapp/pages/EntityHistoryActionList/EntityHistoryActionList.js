@@ -35,7 +35,8 @@ Partial.onReady = function() {
     // Partial.Variables.getCollectionTreatmentStep_1.invoke();
 
     Partial.Variables.getCollectionTreatMentByEntId.setInput({
-        'collectionEntityId': Partial.pageParams.entityId
+        'entityId': 'eq:' + Partial.pageParams.entityId,
+        'active': true
     });
     Partial.Variables.getCollectionTreatMentByEntId.invoke();
 
@@ -302,7 +303,6 @@ Partial.cancelClick = function() {
     // hiding Call Inbound action form
     $('#callInBoundActionForm').hide();
 };
-
 
 Partial.closeSelectActionDialog = function() {
     Partial.Variables.errorMsg.dataSet.dataValue = "";
@@ -1052,9 +1052,9 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
             'IsOdManagement': false,
             'collectionEntityId': Partial.pageParams.entityId,
-            'type': '',
+            'typeCode': '',
             'createdBy': '',
-            'status': 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled',
+            'status': 'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled',
             'assignedAgentId': '',
             'assignedTeam': '',
             'createdDate': '',
@@ -1094,6 +1094,7 @@ Partial.clearFilterFields = function($event, widget) {
 Partial.applyFilter = function($event, widget) {
     debugger;
     var typeCode = '';
+    var contentTypeCode = '';
     var typeCodeForCompleted = '';
     var createdBy = '';
     var assignedAgentId = '';
@@ -1110,30 +1111,37 @@ Partial.applyFilter = function($event, widget) {
         assignedAgentId = Partial.Widgets.assignedPersonSelectfilter.datavalue;
     }
 
-    if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
-        // typeCode = 'ALL';
-        //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
-        typeCode = '';
-
-    } else {
-        typeCode = Partial.Widgets.typeSelect.datavalue;
-
-    }
-
-    if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
-        statusForTodo = 'Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
-    } else {
-        statusForTodo = Partial.Widgets.statusSelect.datavalue;
-    }
-
     if (toDoTable == true) {
         debugger;
+        if (Partial.Widgets.typeSelect.datavalue == undefined || Partial.Widgets.typeSelect.datavalue == '') {
+            // typeCode = 'ALL';
+            //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
+            typeCode = '';
+        } else if (Partial.Widgets.typeSelect.datavalue == 'NOTC') {
+            typeCode = 'NOTC';
+            if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
+                contentTypeCode = 'eq:' + Partial.Widgets.contentIdSelectionList.datavalue;
+            }
+
+        } else {
+            typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
+        }
+
+        if (Partial.Widgets.statusSelect.datavalue == undefined || Partial.Widgets.statusSelect.datavalue == '') {
+            statusForTodo = 'in:Open,Request Created,Request Assigned,Order Created,Order Assigned,Order Fulfilled';
+        } else {
+            statusForTodo = 'eq:' + Partial.Widgets.statusSelect.datavalue;
+        }
+        var createdDate = Partial.Widgets.creationDate.datavalue != null && Partial.Widgets.creationDate.datavalue != '' ?
+            new Date(Partial.Widgets.creationDate.datavalue).toISOString() :
+            Partial.Widgets.creationDate.datavalue
         Partial.Variables.getCollectionTreatmentStep_1.setInput({
             'IsOdManagement': false,
             'collectionEntityId': Partial.pageParams.entityId,
             'category': Partial.Widgets.toDoCategorySelect.datavalue,
-            'type': typeCode,
-            'createdDate': Partial.Widgets.creationDate.datavalue,
+            'typeCode': typeCode,
+            'contentTypeCode': contentTypeCode,
+            'createdDate': createdDate,
             'status': statusForTodo,
             'createdBy': createdBy,
             'assignedAgentId': assignedAgentId,
@@ -1196,6 +1204,9 @@ Partial.applyFilter = function($event, widget) {
             categroyForCompleted = '';
             typeCodeForCompleted = Partial.Widgets.typeSelect.datavalue;
             statusForHistory = Partial.Widgets.statusSelect.datavalue;
+            if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
+                contentTypeCode = Partial.Widgets.contentIdSelectionList.datavalue;
+            }
         }
 
         if (Partial.Widgets.EventTypeSelect.datavalue === 'ALL') {
@@ -1214,6 +1225,7 @@ Partial.applyFilter = function($event, widget) {
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': eventTypeSelect,
             'relatedBusinessEntitySubType': typeCodeForCompleted,
+            'relatedBusinessEntityContentId': contentTypeCode,
             'relatedBusinessEntityType': categroyForCompleted,
             'relatedBusinessEntityStatus': statusForHistory,
             'relatedBusinessEntityCreatedDate': completionDateTime,
@@ -1244,6 +1256,8 @@ Partial.toDoButtonClick = function($event, widget) {
     Partial.Widgets.createdBySelect.datavalue = "";
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
+    Partial.Widgets.contentIdSelectionList.disabled = true;
+    Partial.Widgets.contentIdSelectionList.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectTODOfilter.dataSet;
@@ -1280,6 +1294,8 @@ Partial.completedButtonClick = function($event, widget) {
     Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
     Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
     Partial.Widgets.EventTypeSelect.datavalue = "ALL";
+    Partial.Widgets.contentIdSelectionList.disabled = true;
+    Partial.Widgets.contentIdSelectionList.datavalue = "";
 
     // changing dataset for category dropdown
     Partial.Variables.categoryFilter.dataSet = Partial.Variables.categorySelectCompletedfilter.dataSet;
@@ -1379,7 +1395,7 @@ Partial.closeButtonClick = function($event, widget) {
 
     var payload = {
         'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-        'partitionKey': getCurrentDate(),
+        'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
             'status': 'Closed',
@@ -1396,11 +1412,11 @@ Partial.closeButtonClick = function($event, widget) {
         payload.CollectionTreatmentStepUpdate.additionalCharacteristics = characteristicList;
     }
 
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+    Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
     if (!isError) {
         debugger;
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
         App.Variables.errorMsg.dataSet.dataValue = "";
         Partial.Widgets.CloseActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
@@ -1450,9 +1466,9 @@ Partial.button15Click = function($event, widget) {
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Widgets.notAssigned_closeActionDialog.open();
     } else {
-        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        Partial.Variables.UpdateCollectionTreatmentStepVar.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
                 'status': 'Closed',
@@ -1467,7 +1483,7 @@ Partial.button15Click = function($event, widget) {
             }
         });
 
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
 
         Partial.Widgets.assigned_closeActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was closed."
@@ -1492,9 +1508,9 @@ Partial.button16_1Click = function($event, widget) {
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Widgets.notAssigned_cancleActionDialog.open();
     } else {
-        Partial.Variables.UpdateCollectionTreatmentVar.setInput({
+        Partial.Variables.UpdateCollectionTreatmentStepVar.setInput({
             'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
-            'partitionKey': getCurrentDate(),
+            'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
             "CollectionTreatmentStepUpdate": {
                 'stepTypeCode': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepTypeCode,
                 'status': 'Cancelled',
@@ -1508,7 +1524,7 @@ Partial.button16_1Click = function($event, widget) {
             }
         });
 
-        Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+        Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
 
         Partial.Widgets.assigned_cancleActionDialog.close();
         Partial.Variables.successMessage.dataSet.dataValue = "Action was cancelled."
@@ -1601,8 +1617,9 @@ Partial.UpdateActionClick = function($event, widget) {
             }
         } else {
             var payload = {
-                'id': Partial.Widgets.EditActionIdText.caption,
-                'partitionKey': getCurrentDate(),
+                // 'id': Partial.Widgets.EditActionIdText.caption,
+                'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+                'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
                     'priority': Partial.Widgets.prioritySelect.datavalue,
@@ -1620,10 +1637,10 @@ Partial.UpdateActionClick = function($event, widget) {
                     stepDate: Partial.Widgets.dueDate.datavalue
                 };
             }
-            Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+            Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
             //Invoke POST coll treatment service
-            Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+            Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
             App.Variables.successMessage.dataSet.dataValue = "Action ID (" + Partial.Widgets.EditActionIdText.caption + ") edited successfully."
             Partial.Widgets.EditActionDialog.close();
             setTimeout(messageTimeout, 3000);
@@ -1639,8 +1656,9 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
     var originalStepDate = Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate;
     var actionIdLabel = Partial.Widgets.EditActionIdText.caption;
     var payload = {
-        'id': Partial.Widgets.EditActionIdText.caption,
-        'partitionKey': getCurrentDate(),
+        // 'id': Partial.Widgets.EditActionIdText.caption,
+        'id': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.id,
+        'partitionKey': Partial.Widgets.getCollectionTreatmentStepTable2.selecteditem.partitionKey,
         'collectionEntityId': Partial.pageParams.entityId,
         "CollectionTreatmentStepUpdate": {
             'stepTypeCode': Partial.Widgets.EditActionNameText.caption,
@@ -1661,10 +1679,10 @@ Partial.EditUpdateYesButtonClick = function($event, widget) {
             stepDate: Partial.Widgets.dueDate.datavalue
         };
     }
-    Partial.Variables.UpdateCollectionTreatmentVar.setInput(payload);
+    Partial.Variables.UpdateCollectionTreatmentStepVar.setInput(payload);
 
     //Invoke POST createDispute service
-    Partial.Variables.UpdateCollectionTreatmentVar.invoke();
+    Partial.Variables.UpdateCollectionTreatmentStepVar.invoke();
     Partial.Widgets.EditActionDialog.close();
     App.Variables.successMessage.dataSet.dataValue = "Action ID (" + actionIdLabel + ") edited successfully."
     setTimeout(messageTimeout, 3000);
@@ -1733,24 +1751,45 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+            debugger;
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = false;
         } else if (Partial.Widgets.typeSelect.datavalue == "") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         } else {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSusForTodo.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         }
     } else {
         if (Partial.Widgets.typeSelect.datavalue == "SUSPEND" || Partial.Widgets.typeSelect.datavalue == "RESTORE" || Partial.Widgets.typeSelect.datavalue == "CEASE") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
-
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+            debugger;
+            Partial.Widgets.statusSelect.datavalue = "";
+            Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = false;
         } else if (Partial.Widgets.typeSelect.datavalue == "") {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         } else {
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenActionTypeCallOb_CallIb_And_Dispute.dataSet;
+            Partial.Widgets.contentIdSelectionList.disabled = true;
+            Partial.Widgets.contentIdSelectionList.datavalue = "";
         }
     }
 };
@@ -1764,7 +1803,7 @@ App.refreshHistoryActionList = function() {
     Partial.Variables.GetCollectionActivityLogList.invoke();
 };
 
-Partial.UpdateCollectionTreatmentVaronSuccess = function(variable, data) {
+Partial.UpdateCollectionTreatmentStepVarOnSuccess = function(variable, data) {
     App.refreshCollActionList();
 };
 
