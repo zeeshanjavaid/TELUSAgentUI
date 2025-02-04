@@ -124,3 +124,10 @@ Partial.updateEntityContactonSuccess = function(variable, data) {
         App.refreshContactList();
     }
 };
+Partial.expandedRowDataTable1_commentsOnKeydown = function($event, widget, row) {
+    debugger;
+    if (event.key === "Enter") {
+        event.stopPropagation(); // Prevents triggering the row update
+        return false;
+    }
+};

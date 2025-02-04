@@ -93,24 +93,32 @@ Partial.createContact = function($event, widget) {
         if (widget.name === "saveEmailButton") {
             contactMediumId = Partial.Widgets.emailAddressValue.datavalue;
             notificationIndicator = Partial.Widgets.emailNoticeBox.checkboxEl.nativeElement.checked;
-        } else if (widget.name === "cellPhoneSaveButton") {
-            contactMediumId = Partial.Widgets.cellPhoneValue.datavalue;
-            notificationIndicator = Partial.Widgets.cellPhoneNoticeBox.checkboxEl.nativeElement.checked;
-        } else if (widget.name === "workPhoneSaveButton") {
-            contactMediumId = Partial.Widgets.workPhoneValue.datavalue;
-            notificationIndicator = Partial.Widgets.workPhoneNoticeBox.checkboxEl.nativeElement.checked;
-            if (Partial.Widgets.extPhoneValue.datavalue != null && Partial.Widgets.extPhoneValue.datavalue != "") {
-                contactMediumSubId = Partial.Widgets.extPhoneValue.datavalue;
+        } else {
+            if (widget.name === "cellPhoneSaveButton") {
+                contactMediumId = Partial.Widgets.cellPhoneValue.datavalue;
+                notificationIndicator = Partial.Widgets.cellPhoneNoticeBox.checkboxEl.nativeElement.checked;
+            } else if (widget.name === "workPhoneSaveButton") {
+                contactMediumId = Partial.Widgets.workPhoneValue.datavalue;
+                notificationIndicator = Partial.Widgets.workPhoneNoticeBox.checkboxEl.nativeElement.checked;
+                if (Partial.Widgets.extPhoneValue.datavalue != null && Partial.Widgets.extPhoneValue.datavalue != "") {
+                    contactMediumSubId = Partial.Widgets.extPhoneValue.datavalue;
+                }
+            } else if (widget.name === "faxSaveButton") {
+                contactMediumId = Partial.Widgets.faxPhoneValue.datavalue;
+                notificationIndicator = Partial.Widgets.faxNoticeBox.checkboxEl.nativeElement.checked;
+            } else if (widget.name === "homePhoneSaveButton") {
+                contactMediumId = Partial.Widgets.homePhoneValue.datavalue;
+                notificationIndicator = Partial.Widgets.homePhoneNoticeBox.checkboxEl.nativeElement.checked;
+            } else if (widget.name === "othersSaveButton") {
+                contactMediumId = Partial.Widgets.othersPhoneValue.datavalue;
+                notificationIndicator = Partial.Widgets.othersNoticeBox.checkboxEl.nativeElement.checked;
             }
-        } else if (widget.name === "faxSaveButton") {
-            contactMediumId = Partial.Widgets.faxPhoneValue.datavalue;
-            notificationIndicator = Partial.Widgets.faxNoticeBox.checkboxEl.nativeElement.checked;
-        } else if (widget.name === "homePhoneSaveButton") {
-            contactMediumId = Partial.Widgets.homePhoneValue.datavalue;
-            notificationIndicator = Partial.Widgets.homePhoneNoticeBox.checkboxEl.nativeElement.checked;
-        } else if (widget.name === "othersSaveButton") {
-            contactMediumId = Partial.Widgets.othersPhoneValue.datavalue;
-            notificationIndicator = Partial.Widgets.othersNoticeBox.checkboxEl.nativeElement.checked;
+            if (!contactMediumId || contactMediumId.length <= 10 || !isNaN(contactMediumId)) {
+                App.Variables.errorMsg.dataSet.dataValue = "Number Value must be numeric and 10 digits";
+                setTimeout(messageTimeout, 5000);
+                return;
+            }
+            contactMediumId = Partial.Widgets.cellPhoneValue.datavalue.replace(/\D/g, '');
         }
 
 
@@ -133,7 +141,7 @@ Partial.createContact = function($event, widget) {
         Partial.Variables.CreateContactServiceVar.setInput({
             "CollectionContactCreate": {
                 'channel': {
-                    'originatorAppId': "FAWBTELUSAGENT",
+                    'originatorAppId': "Internal",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
                 'comment': Partial.Widgets.comments.datavalue,
@@ -232,32 +240,6 @@ Partial.faxKeypress = function($event, widget) {
     }
 };
 
-Partial.cellPhoneKeypress = function($event, widget) {
-    var value = $event.key;
-    var KeyID = $event.keyCode;
-    isNotANumber(value);
-    const input = event.target; // Get the input element
-    const inputValue = input.value; // Get the current input value
-    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
-    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
-
-
-    var area_code = fullInputValue.substring(0, 3);
-    var first_three_digits = fullInputValue.substring(3, 6);
-    var last_four_digits = fullInputValue.substring(6, 10);
-
-    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
-        Partial.Widgets.cellPhone.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
-    }
-};
-
-function isNotANumber(value) {
-    if (isNaN(value)) {
-        App.Variables.errorMsg.dataSet.dataValue = "Invalid. Value must be numeric";
-    }
-    setTimeout(messageTimeout, 10000);
-};
-
 App.ClearContacts = function() {
     Partial.Widgets.emailAddressValue.datavalue = "";
     Partial.Widgets.cellPhoneValue.datavalue = "";
@@ -289,10 +271,49 @@ Partial.faxKeydown = function($event, widget) {
     }
 };
 
+Partial.cellPhoneKeypress = function($event, widget) {
+    debugger;
+    var value = $event.key;
+    var KeyID = $event.keyCode;
+    isNotANumber(value);
+    const input = event.target; // Get the input element
+    const inputValue = input.value; // Get the current input value
+    const pressedKey = String.fromCharCode(event.which); // Get the pressed key
+    const fullInputValue = inputValue + pressedKey; // Combine the current value with the pressed key
+
+
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        widget.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+        //        Partial.Widgets.cellPhoneValue.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+};
+
+function isNotANumber(value) {
+    if (isNaN(value)) {
+        App.Variables.errorMsg.dataSet.dataValue = "Invalid. Value must be numeric";
+    }
+    setTimeout(messageTimeout, 10000);
+};
+
+Partial.cellPhoneChange = function($event, widget, newVal, oldVal) {
+    const fullInputValue = newVal
+    var area_code = fullInputValue.substring(0, 3);
+    var first_three_digits = fullInputValue.substring(3, 6);
+    var last_four_digits = fullInputValue.substring(6, 10);
+
+    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
+        widget.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
+    }
+};
+
 Partial.cellPhoneKeydown = function($event, widget) {
     var value = $event.key;
     if (value === 'Backspace') {
-        Partial.Widgets.cellPhone.datavalue = "";
+        widget.datavalue = "";
     }
 };
 Partial.faxChange = function($event, widget, newVal, oldVal) {
@@ -304,16 +325,6 @@ Partial.faxChange = function($event, widget, newVal, oldVal) {
 
     if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
         Partial.Widgets.fax.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
-    }
-};
-Partial.cellPhoneChange = function($event, widget, newVal, oldVal) {
-    const fullInputValue = newVal
-    var area_code = fullInputValue.substring(0, 3);
-    var first_three_digits = fullInputValue.substring(3, 6);
-    var last_four_digits = fullInputValue.substring(6, 10);
-
-    if (fullInputValue.length == 10 && !isNaN(fullInputValue)) {
-        Partial.Widgets.cellPhone.datavalue = "(" + area_code + ")" + first_three_digits + "-" + last_four_digits;
     }
 };
 

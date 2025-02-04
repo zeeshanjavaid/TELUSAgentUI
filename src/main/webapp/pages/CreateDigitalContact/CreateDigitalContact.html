@@ -134,7 +134,7 @@
                                     <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                                         <wm-composite name="composite1">
                                             <wm-container class="col-md-9" name="container1">
-                                                <wm-text name="cellPhoneValue" textalign="left" placeholder="" padding="unset 0.5em"></wm-text>
+                                                <wm-text name="cellPhoneValue" textalign="left" placeholder="" padding="unset 0.5em" on-keypress="cellPhoneKeypress($event, widget)" on-keydown="cellPhoneKeydown($event, widget)" maxchars="10" on-change="cellPhoneChange($event, widget, newVal, oldVal)"></wm-text>
                                             </wm-container>
                                         </wm-composite>
                                     </wm-gridcolumn>
@@ -176,7 +176,7 @@
                                 </wm-gridrow>
                                 <wm-gridrow name="gridrow1">
                                     <wm-gridcolumn columnwidth="2" name="gridcolumn1">
-                                        <wm-label padding="unset 0.5em" caption="Extension*" name="numLabel" color="grey"></wm-label>
+                                        <wm-label padding="unset 0.5em" caption="Extension" name="numLabel" color="grey"></wm-label>
                                     </wm-gridcolumn>
                                     <wm-gridcolumn columnwidth="2" name="gridcolumn50">
                                         <wm-composite name="composite1">
@@ -185,7 +185,6 @@
                                             </wm-container>
                                         </wm-composite>
                                     </wm-gridcolumn>
-
                                     <wm-gridcolumn columnwidth="5" name="gridcolumn50">
                                         <wm-button class="primaryButton" caption="Save Work Phone" type="button" padding="unset 0.5em" name="workPhoneSaveButton" on-click="createContact($event, widget)"></wm-button>
                                     </wm-gridcolumn>

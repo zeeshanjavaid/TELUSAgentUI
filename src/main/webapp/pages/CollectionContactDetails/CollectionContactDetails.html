@@ -9,7 +9,10 @@
                 <wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" readonly="true" show="true">
                     <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
                 </wm-table-column>
-                <wm-table-column binding="dataSource" caption="Data Source" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <!--wm-table-column binding="dataSource" caption="Data Source" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column-->
+                <wm-table-column binding="dataSource" caption="Data Source" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                    <wm-label caption="bind: row.getProperty('dataSource') === 'FAWBTELUSAGENT' ? 'Internal' : row.getProperty('dataSource')"></wm-label>
+                </wm-table-column>
                 <wm-table-column binding="comments" caption="Comments" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Successful Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
@@ -62,13 +65,15 @@
                 <wm-table-column binding="entityId" caption="Entity ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
                 <wm-table-column binding="email" caption="Email" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="phoneNumber" caption="Phone Number" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" show="true" readonly="false">
+                <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" show="true" readonly="false">
                     <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
                 </wm-table-column>
-                <wm-table-column binding="dataSource" caption="Data Source" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="comments" caption="Comments" width="150px" edit-widget-type="textarea" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="dataSource" caption="Data Source" widget-type="label" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                    <wm-label caption="bind:row.getProperty('dataSource')==='FAWBTELUSAGENT' ? 'Internal' : row.getProperty('dataSource')" class="" conditionalclass=""></wm-label>
+                </wm-table-column>
+                <wm-table-column binding="comments" caption="Comments" width="180px" edit-widget-type="textarea" type="string" searchable="false" show="true" readonly="false" on-keydown="expandedRowDataTable1_commentsOnKeydown($event, widget, row)"></wm-table-column>
                 <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Successful Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastDeliveryFailureDateTime" caption="Last Failed Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
