@@ -95,21 +95,26 @@ Partial.createContact = function($event, widget) {
             notificationIndicator = Partial.Widgets.emailNoticeBox.checkboxEl.nativeElement.checked;
         } else {
             if (widget.name === "cellPhoneSaveButton") {
+                contactMediumSubType = "MOBILE";
                 contactMediumId = Partial.Widgets.cellPhoneValue.datavalue;
                 notificationIndicator = Partial.Widgets.cellPhoneNoticeBox.checkboxEl.nativeElement.checked;
             } else if (widget.name === "workPhoneSaveButton") {
+                contactMediumSubType = "WORK";
                 contactMediumId = Partial.Widgets.workPhoneValue.datavalue;
                 notificationIndicator = Partial.Widgets.workPhoneNoticeBox.checkboxEl.nativeElement.checked;
                 if (Partial.Widgets.extPhoneValue.datavalue != null && Partial.Widgets.extPhoneValue.datavalue != "") {
                     contactMediumSubId = Partial.Widgets.extPhoneValue.datavalue;
                 }
             } else if (widget.name === "faxSaveButton") {
+                contactMediumSubType = "FAX";
                 contactMediumId = Partial.Widgets.faxPhoneValue.datavalue;
                 notificationIndicator = Partial.Widgets.faxNoticeBox.checkboxEl.nativeElement.checked;
             } else if (widget.name === "homePhoneSaveButton") {
+                contactMediumSubType = "HOME";
                 contactMediumId = Partial.Widgets.homePhoneValue.datavalue;
                 notificationIndicator = Partial.Widgets.homePhoneNoticeBox.checkboxEl.nativeElement.checked;
             } else if (widget.name === "othersSaveButton") {
+                contactMediumSubType = "OTHER";
                 contactMediumId = Partial.Widgets.othersPhoneValue.datavalue;
                 notificationIndicator = Partial.Widgets.othersNoticeBox.checkboxEl.nativeElement.checked;
             }
@@ -118,7 +123,7 @@ Partial.createContact = function($event, widget) {
                 setTimeout(messageTimeout, 5000);
                 return;
             }
-            contactMediumId = Partial.Widgets.cellPhoneValue.datavalue.replace(/\D/g, '');
+            contactMediumId = contactMediumId.replace(/\D/g, '');
         }
 
 
@@ -249,12 +254,12 @@ App.ClearContacts = function() {
     Partial.Widgets.homePhoneValue.datavalue = "";
     Partial.Widgets.othersPhoneValue.datavalue = "";
 
-    Partial.Widgets.emailNoticeBox.datavalue = false;
-    Partial.Widgets.cellPhoneNoticeBox.datavalue = false;
-    Partial.Widgets.workPhoneNoticeBox.datavalue = false;
-    Partial.Widgets.faxNoticeBox.datavalue = false;
-    Partial.Widgets.homePhoneNoticeBox.datavalue = false;
-    Partial.Widgets.othersNoticeBox.datavalue = false;
+    Partial.Widgets.emailNoticeBox.datavalue = true;
+    Partial.Widgets.cellPhoneNoticeBox.datavalue = true;
+    Partial.Widgets.workPhoneNoticeBox.datavalue = true;
+    Partial.Widgets.faxNoticeBox.datavalue = true;
+    Partial.Widgets.homePhoneNoticeBox.datavalue = true;
+    Partial.Widgets.othersNoticeBox.datavalue = true;
 };
 
 Partial.workNoKeydown = function($event, widget) {

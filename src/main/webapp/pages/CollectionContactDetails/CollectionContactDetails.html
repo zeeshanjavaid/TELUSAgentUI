@@ -62,29 +62,30 @@
             <wm-table editmode="inline" name="expandedRowDataTable1" title="" dataset="bind:Variables.expandedRowData.dataSet" navigation="Classic" on-beforerowupdate="expandedRowDataTable1Beforerowupdate($event, widget, row, options)" pagesize="5" navigationalign="right"
                 tablewidth="1500px" on-rowdelete="expandedRowDataTable1Rowdelete($event, widget, row)">
                 <wm-table-column binding="contactId" caption="Contact ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
-                <wm-table-column binding="entityId" caption="Entity ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
-                <wm-table-column binding="email" caption="Email" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                <wm-table-column binding="email" caption="Email" width="180px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="phoneNumber" caption="Phone Number" widget-type="label" width="120px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
                     <wm-label caption="bind:row.getProperty('phoneNumber')&amp;&amp; row.getProperty('phoneNumber').length === 10 ? 
         '(' + row.getProperty('phoneNumber').substring(0, 3) + ')' + 
         row.getProperty('phoneNumber').substring(3, 6) + '-' + 
         row.getProperty('phoneNumber').substring(6, 10) : row.getProperty('phoneNumber')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" show="true" readonly="false">
+                <wm-table-column binding="phoneExtension" caption="Extension" width="80px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="phoneType" caption="Phone Type" width="80px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" edit-widget-type="checkbox" type="string" show="true" readonly="false">
                     <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
                 </wm-table-column>
-                <wm-table-column binding="dataSource" caption="Data Source" widget-type="label" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                <wm-table-column binding="dataSource" caption="Data Source" widget-type="label" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
                     <wm-label caption="bind:row.getProperty('dataSource')==='FAWBTELUSAGENT' ? 'Internal' : row.getProperty('dataSource')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="comments" caption="Comments" width="180px" edit-widget-type="textarea" type="string" searchable="false" show="true" readonly="false" on-keydown="expandedRowDataTable1_commentsOnKeydown($event, widget, row)"></wm-table-column>
                 <wm-table-column binding="lastUpdatedDateTime" caption="Last Updated" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="smsOptOutIndicator" caption="SMS Opt Out" widget-type="label" width="90px" textalignment="center" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
+                <wm-table-column binding="smsOptOutIndicator" caption="SMS Opt Out" widget-type="label" width="90px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true">
                     <wm-label caption="bind: row.getProperty('smsOptOutIndicator') == null ? '' : (row.getProperty('smsOptOutIndicator') ? 'Y' : 'N')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastDeliveryFailureDateTime" caption="Last Failed Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false"
                     show="true"></wm-table-column>
-                <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
+                <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false"
                     show="true"></wm-table-column>
                 <wm-table-column binding="rowOperations" caption="Options" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
