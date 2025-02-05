@@ -75,10 +75,21 @@ Partial.expandedRowDataTable1Beforerowupdate = function($event, widget, row, opt
             setTimeout(messageTimeout, 5000);
             return;
         } else {
-            App.notify("Updated successfully.", "info");
-            App.Variables.successMessage.dataSet.dataValue = "Updated Successfully";
-            App.Variables.errorMsg.dataSet.dataValue = null;
-            setTimeout(messageTimeout, 5000);
+            Partial.Variables.updateEntityContact.setInput({
+                "id": row.contactId,
+                "CollectionContactUpdate": {
+                    'id': row.contactId,
+                    'channel': {
+                        'originatorAppId': "FAWBTELUSAGENT",
+                        'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                    },
+                    'comment': row.comments,
+                    'notificationIndicator': row.contactForNotices
+                }
+            });
+
+            //Invoke POST createDispute service
+            Partial.Variables.updateEntityContact.invoke();
         }
     }
 };
@@ -105,8 +116,14 @@ Partial.expandedRowDataTable1Rowdelete = function($event, widget, row) {
 
 Partial.updateEntityContactonError = function(variable, data, xhrObj) {
     debugger;
-    App.Variables.errorMsg.dataSet.dataValue = "Contact Update Failed";
-    App.Variables.successMessage.dataSet.dataValue = null;
+    if (data.validFor.endDateTime != null) {
+        App.Variables.successMessage.dataSet.dataValue = null;
+        App.Variables.errorMsg.dataSet.dataValue = "Contact Removal Failed";
+    } else {
+        App.Variables.successMessage.dataSet.dataValue = null;
+        App.Variables.errorMsg.dataSet.dataValue = "Contact Update Failed";
+
+    }
     setTimeout(messageTimeout, 5000);
 };
 Partial.updateEntityContactonSuccess = function(variable, data) {
