@@ -69,7 +69,7 @@
         row.getProperty('phoneNumber').substring(3, 6) + '-' + 
         row.getProperty('phoneNumber').substring(6, 10) : row.getProperty('phoneNumber')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
-                <wm-table-column binding="phoneExtension" caption="Extension" width="80px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="phoneExtension" caption="Extension" width="80px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="phoneType" caption="Phone Type" width="80px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" edit-widget-type="checkbox" type="string" show="true" readonly="false">
                     <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
