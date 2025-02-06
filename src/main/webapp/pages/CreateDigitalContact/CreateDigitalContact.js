@@ -196,7 +196,11 @@ Partial.CreateContactServiceVaronError = function(variable, data, xhrObj) {
     debugger;
     Partial.Widgets.saveEmailButton.disabled = false;
     App.Variables.successMessage.dataSet.dataValue = "";
-    App.Variables.errorMsg.dataSet.dataValue = "Digital Contact creation failed.";
+    if (data.includes('already exists')) {
+        App.Variables.errorMsg.dataSet.dataValue = "Contact email address and/or phones already exists";
+    } else {
+        App.Variables.errorMsg.dataSet.dataValue = "Error creating Digital Contact";
+    }
     setTimeout(messageTimeout, 5000);
 };
 
