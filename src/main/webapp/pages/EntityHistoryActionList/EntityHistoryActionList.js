@@ -1074,7 +1074,7 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
         Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
         Partial.Widgets.EventTypeSelect.datavalue = "ALL";
-        Partial.Variables.GetCollectionActivityLogList.setInput({
+        /*Partial.Variables.GetCollectionActivityLogList.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': '',
             'relatedBusinessEntitySubType': '',
@@ -1087,9 +1087,17 @@ Partial.clearFilterFields = function($event, widget) {
             'limit': 10,
             'offset': 0
         });
-        Partial.Variables.GetCollectionActivityLogList.invoke();
+        Partial.Variables.GetCollectionActivityLogList.invoke();*/
         Partial.Variables.getActionHistoryLogNew.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
+            'businessEntityEventType': '',
+            'relatedBusinessEntitySubType': '',
+            'relatedBusinessEntityType': '',
+            'relatedBusinessEntityStatus': '',
+            'relatedBusinessEntityCreatedDate': '',
+            'relatedBusinessEntityCreatedBy': '',
+            'relatedBusinessEntityAssignedTo': '',
+            'relatedBusinessEntityAssignedTeam': '',
             'groupBy': 'relatedBusinessEntityId',
             'aggFunc': 'max',
             'aggProp': 'collectionActivityTimestamp',
@@ -1097,6 +1105,7 @@ Partial.clearFilterFields = function($event, widget) {
             'offset': 0
         });
         Partial.Variables.getActionHistoryLogNew.invoke();
+
     }
 }
 
