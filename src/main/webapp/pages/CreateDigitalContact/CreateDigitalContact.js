@@ -11,7 +11,6 @@
 
 /* perform any action on widgets/variables within this block */
 Partial.onReady = function() {
-    console.log("TEST");
     /*
      * variables can be accessed through 'Partial.Variables' property here
      * e.g. to get dataSet in a staticVariable named 'loggedInUser' use following script
@@ -146,7 +145,7 @@ Partial.createContact = function($event, widget) {
         Partial.Variables.CreateContactServiceVar.setInput({
             "CollectionContactCreate": {
                 'channel': {
-                    'originatorAppId': "Internal",
+                    'originatorAppId': "FAWB",
                     'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                 },
                 'comment': Partial.Widgets.comments.datavalue,
