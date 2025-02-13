@@ -80,7 +80,7 @@ Partial.expandedRowDataTable1Beforerowupdate = function($event, widget, row, opt
                 "CollectionContactUpdate": {
                     'id': row.contactId,
                     'channel': {
-                        'originatorAppId': "FAWBTELUSAGENT",
+                        'originatorAppId': "Internal",
                         'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
                     },
                     'comment': row.comments,
@@ -101,7 +101,7 @@ Partial.expandedRowDataTable1Rowdelete = function($event, widget, row) {
         "CollectionContactUpdate": {
             'id': row.contactId,
             'channel': {
-                'originatorAppId': "FAWBTELUSAGENT",
+                'originatorAppId': "Internal",
                 'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
             },
             'validFor': {
