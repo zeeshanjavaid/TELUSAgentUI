@@ -1,0 +1,14 @@
+div[name="expandedRowDataTable1"] table thead tr th {
+    background-color: #e3f6d1;
+}
+div[name="expandedRowDataTable1"] table td {
+    white-space: normal; /* Allow wrapping */
+    word-wrap: break-word; /* Break long words if needed */
+    overflow-wrap: break-word; /* Ensure wrapping in modern browsers */
+    text-align: left; /* Optional: Align text to the left for readability */
+}
+/* Ensure table respects column widths */
+div[name="expandedRowDataTable1"] table {
+    table-layout: fixed; /* Make sure column widths are consistent */
+    width: 100%; /* Stretch table to full width */
+}

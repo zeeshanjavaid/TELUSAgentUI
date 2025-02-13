@@ -43,6 +43,7 @@ Partial.onReady = function() {
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
+    $('#completedTableGrid1').hide();
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
 };
@@ -1087,6 +1088,15 @@ Partial.clearFilterFields = function($event, widget) {
             'offset': 0
         });
         Partial.Variables.GetCollectionActivityLogList.invoke();
+        Partial.Variables.getActionHistoryLogNew.setInput({
+            'collectionEntityId': Partial.pageParams.entityId,
+            'groupBy': 'relatedBusinessEntityId',
+            'aggFunc': 'max',
+            'aggProp': 'collectionActivityTimestamp',
+            'limit': 10,
+            'offset': 0
+        });
+        Partial.Variables.getActionHistoryLogNew.invoke();
     }
 }
 
@@ -1234,6 +1244,24 @@ Partial.applyFilter = function($event, widget) {
             'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
         });
         Partial.Variables.GetCollectionActivityLogList.invoke();
+
+        Partial.Variables.getActionHistoryLogNew.setInput({
+            'collectionEntityId': Partial.pageParams.entityId,
+            'businessEntityEventType': eventTypeSelect,
+            'relatedBusinessEntitySubType': typeCodeForCompleted,
+            'relatedBusinessEntityContentId': contentTypeCode,
+            'relatedBusinessEntityType': categroyForCompleted,
+            'relatedBusinessEntityStatus': statusForHistory,
+            'relatedBusinessEntityCreatedDate': completionDateTime,
+            'relatedBusinessEntityCreatedBy': createdBy,
+            'relatedBusinessEntityAssignedTo': assignedAgentId,
+            'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue,
+            'groupBy': 'relatedBusinessEntityId',
+            'aggFunc': 'max',
+            'aggProp': 'collectionActivityTimestamp'
+        });
+        Partial.Variables.getActionHistoryLogNew.invoke();
+
     }
 }
 
@@ -1271,6 +1299,7 @@ Partial.toDoButtonClick = function($event, widget) {
     // display TO-DO table and hide Completed table
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
+    $('#completedTableGrid1').hide();
     $('#completionDateGrid').hide();
 };
 
@@ -1308,6 +1337,7 @@ Partial.completedButtonClick = function($event, widget) {
 
     // display Completed table and hide TO-DO table
     $('#completedTableGrid').show();
+    $('#completedTableGrid1').show();
     $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
     $('#eventTypeColl').show();
@@ -1722,7 +1752,7 @@ Partial.SelectActionDialogClose = function($event, widget) {
 };
 
 Partial.getCollectionTreatmentStep_1onError = function(variable, data, xhrObj) {
-
+    debugger;
 };
 
 Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
@@ -1730,7 +1760,7 @@ Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
 };
 
 Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
-
+    debugger;
 };
 
 App.refreshCollActionList = function() {
@@ -1795,12 +1825,15 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
 };
 
 App.refreshHistoryActionList = function() {
-    Partial.Variables.GetCollectionActivityLogList.setInput({
+    Partial.Variables.getActionHistoryLogNew.setInput({
         'collectionEntityId': Partial.pageParams.entityId,
+        'groupBy': 'relatedBusinessEntityId',
+        'aggFunc': 'max',
+        'aggProp': 'collectionActivityTimestamp',
         'limit': 10,
         'offset': 0
     });
-    Partial.Variables.GetCollectionActivityLogList.invoke();
+    Partial.Variables.getActionHistoryLogNew.invoke();
 };
 
 Partial.UpdateCollectionTreatmentStepVarOnSuccess = function(variable, data) {
@@ -1839,10 +1872,70 @@ Partial.RefreshDataForHistory = function() {
         'offset': offset
     });
     Partial.Variables.GetCollectionActivityLogList.invoke();
+
+}
+
+Partial.Telus_PaginatonPagechangeForHsitoryHisrtoryNew = function($event, $data) {
+    debugger;
+    Partial.size = $event.pageSize
+    Partial.page = $event.pageNumber
+    Partial.RefreshDataForHistoryNew();
+};
+
+Partial.RefreshDataForHistoryNew = function() {
+    debugger;
+    var offset = Partial.size * (Partial.page - 1);
+    Partial.Variables.getActionHistoryLogNew.setInput({
+        'limit': Partial.size,
+        'offset': offset
+    });
+    Partial.Variables.getActionHistoryLogNew.invoke();
+
+}
+
+function groupNoticeActions(data) {
+    const groupedData = {};
+
+    data.forEach(item => {
+        const key = `${item.collectionEntity.id} ${item.relatedBusinessEntityId} ${item.relatedBusinessEntityType} ${item.relatedBusinessEntitySubType}`;
+        if (!groupedData[key]) {
+            groupedData[key] = {
+                entityId: item.collectionEntity.id,
+                referenceId: item.relatedBusinessEntityId,
+                relatedBusinessEntityType: item.relatedBusinessEntityType,
+                relatedBusinessEntitySubType: item.relatedBusinessEntitySubType,
+                details: [] // Store grouped details
+            };
+        }
+        groupedData[key].details.push(item);
+    });
+
+    return Object.values(groupedData); // Convert grouped object to array
 }
 
 Partial.CreateActionbuttonClick = function($event, widget) {
     Partial.Widgets.SelectActionDialog.open();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
 
+};
+
+Partial.GetCollectionActivityLogListonSuccess = function(variable, data) {
+    debugger;
+};
+
+Partial.getActionHistoryLogNewonError = function(variable, data, xhrObj) {
+
+};
+Partial.getActionHistoryLogNewonSuccess = function(variable, data) {
+    debugger;
+    //Partial.Variables.newActionHistory.dataSet = groupNoticeActions(data);
+    console.log(Partial.Variables.getActionHistoryLogNew.dataSet);
+};
+
+Partial.getCollectionTreatMentByEntIdonSuccess = function(variable, data) {
+    debugger;
+};
+Partial.newCollectionActivityLog_Table_OnRowexpand = function($event, widget, row, $data) {
+    debugger;
+    App.showRowExpansionHistory(row, $data);
 };

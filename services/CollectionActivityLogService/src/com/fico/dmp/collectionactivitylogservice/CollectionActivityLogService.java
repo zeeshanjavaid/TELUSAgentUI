@@ -127,7 +127,7 @@ public class CollectionActivityLogService {
     }
     
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public List<CollectionActivityLogRes> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityContentId, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception  {
+    public List<CollectionActivityLogRes> getCollectionActivityLog(Integer collectionEntityId, String businessEntityEventType,String relatedBusinessEntitySubType, String relatedBusinessEntityContentId, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam, String groupBy, String aggFunc, String aggProp, String fields, Integer offset, Integer limit) throws Exception  {
 
         List<CollectionActivityLog> collectionActivityLogRes= new ArrayList<>();
         String totalNoOfElement=null;
@@ -171,7 +171,9 @@ public class CollectionActivityLogService {
                     .queryParam("relatedBusinessEntityCreatedBy", relatedBusinessEntityCreatedBy)
                     .queryParam("relatedBusinessEntityAssignedTo", relatedBusinessEntityAssignedTo)
                     .queryParam("relatedBusinessEntityAssignedTeam", encodeAssignedTeam)
-                    .queryParam("relatedBusinessEntityId", relatedBusinessEntityId)
+                    .queryParam("groupBy", groupBy)
+                    .queryParam("aggFunc", aggFunc)
+                    .queryParam("aggProp", aggProp)
                     .queryParam("fields", fields)
                     .queryParam("offset", offset)
                     .queryParam("limit",limit);
@@ -284,7 +286,7 @@ public class CollectionActivityLogService {
         List<String> banIds = new ArrayList<>();
         List<String> banRefIds = new ArrayList<>();
         
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, "","","", fields, offset, limit);
 
 
        if (!collectionActivityLogList.isEmpty()) {
@@ -323,7 +325,7 @@ public class CollectionActivityLogService {
     public List<OrderMgmtHistoryResponse> getDisputeHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
         logger.info("Entering in getDisputeHistory");
         List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType, null, null, relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType, null, null, relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, "","","", fields, offset, limit);
        if (!collectionActivityLogList.isEmpty()) {
             for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();
@@ -346,7 +348,7 @@ public class CollectionActivityLogService {
     public List<OrderMgmtHistoryResponse> getParrHistoryView(Integer collectionEntityId, String collectionActivityType, String relatedBusinessEntityId,String relatedBusinessEntityType, String relatedBusinessEntityStatus,String relatedBusinessEntityCreatedDate, String relatedBusinessEntityCreatedBy, String relatedBusinessEntityAssignedTo, String relatedBusinessEntityAssignedTeam,String fields, Integer offset, Integer limit) throws Exception {
         logger.info("Entering in getParrHistoryView");
         List<OrderMgmtHistoryResponse> orderMgmtHistoryResponseList = new ArrayList<>();
-        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, fields, offset, limit);
+        List<CollectionActivityLogRes> collectionActivityLogList = getCollectionActivityLog(collectionEntityId, collectionActivityType,null,null,relatedBusinessEntityId, relatedBusinessEntityType, relatedBusinessEntityStatus, relatedBusinessEntityCreatedDate, relatedBusinessEntityCreatedBy, relatedBusinessEntityAssignedTo, relatedBusinessEntityAssignedTeam, "","","", fields, offset, limit);
        if (!collectionActivityLogList.isEmpty()) {
             for (CollectionActivityLogRes collectionActivityLog : collectionActivityLogList) {
                 OrderMgmtHistoryResponse orderMgmtHistoryResponse = new OrderMgmtHistoryResponse();

@@ -255,11 +255,11 @@ public class CollectionTreatmentService {
                     a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()));
                 }
             });
-            collectionTreatmentStepResponseList.stream().forEach(a -> {
-                if (Arrays.stream(notcTypeCodes).anyMatch(s -> s.equalsIgnoreCase(a.getStepTypeCode()))) {
-                    a.setStepTypeCode("NOTC");
-                }
-            });
+            //collectionTreatmentStepResponseList.stream().forEach(a -> {
+              //  if (Arrays.stream(notcTypeCodes).anyMatch(s -> s.equalsIgnoreCase(a.getStepTypeCode()))) {
+                //    a.setStepTypeCode("NOTC");
+                //}
+            //});
             return collectionTreatmentStepResponseList;
         }
     }

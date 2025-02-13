@@ -2,8 +2,6 @@
     <wm-container width="100%" name="container1" style="display: flex; flex-direction: column;">
         <wm-gridcolumn width="100%" name="gridcolumn2">
             <wm-table name="collectionContactExpansionTable" dataset="bind:Variables.expandedRowData.dataSet" navigation="None" pagesize="5" navigationalign="right" tablewidth="1500px" gridclass="table-hover table-striped" show="false">
-                <wm-table-column binding="contactId" caption="Contact ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
-                <wm-table-column binding="entityId" caption="Entity ID" width="100px" edit-widget-type="text" type="string" readonly="true" show="false"></wm-table-column>
                 <wm-table-column binding="email" caption="Email" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="phoneNumber" caption="Phone Number" width="150px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="contactForNotices" caption="Notify" widget-type="checkbox" width="80px" textalignment="center" edit-widget-type="checkbox" type="string" readonly="true" show="true">
@@ -20,10 +18,8 @@
                 <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="200px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="rowOperations" caption="Options" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="collectionContactExpansionTable_customRow1Action($event, row)" disabled="false"
-                    widget-type="button"></wm-table-row-action>
-                <wm-table-row-action key="customRow2" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="collectionContactExpansionTable_customRow2Action($event, row)"
-                    disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow1" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-pencil" title="Edit" action="collectionContactExpansionTable_customRow1Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="customRow2" display-name="" show="true" class="btn-transparent" iconclass="fico-icon-payment-cancel" title="Invalidate" action="collectionContactExpansionTable_customRow2Action($event, row)" disabled="false" widget-type="button"></wm-table-row-action>
             </wm-table>
         </wm-gridcolumn>
     </wm-container>
@@ -83,11 +79,9 @@
                     <wm-label caption="bind: row.getProperty('smsOptOutIndicator') == null ? '' : (row.getProperty('smsOptOutIndicator') ? 'Y' : 'N')" class="" conditionalclass=""></wm-label>
                 </wm-table-column>
                 <wm-table-column binding="lastDeliverySuccessDateTime" caption="Last Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="lastDeliveryFailureDateTime" caption="Last Failed Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false"
-                    show="true"></wm-table-column>
+                <wm-table-column binding="lastDeliveryFailureDateTime" caption="Last Failed Delivery" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="lastResultDescription" caption="Last Customer Response" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false"
-                    show="true"></wm-table-column>
+                <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="rowOperations" caption="Options" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
                 <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-edit" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                 <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>

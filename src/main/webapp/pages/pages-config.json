@@ -7,6 +7,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "ActivityLogRowExpansion",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "ActivityLogs",
   "type" : "PAGE",
   "params" : [ ]
