@@ -35,16 +35,41 @@ Partial.onReady = function() {
 
 Partial.getActivityLogPerRefonSuccess = function(variable, data) {
     debugger;
+    //change data or set values here
 };
 Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns) {
+    //control table column show or hide here
     debugger;
-    console.log(moment);
-
-
-    // Ensure columns exist
+    $data.forEach((item, index) => {
+        console.log(`Index: ${index}, relatedBusinessEntitySubType:`, item.relatedBusinessEntitySubType);
+        if (item.additionalCharacteristics != undefined) {
+            item.additionalCharacteristics.forEach(char => {
+                if (char.name === 'cssRequest') {
+                    debugger;
+                    Object.keys(char.value).forEach(key => {
+                        if (key.startsWith("Contact_") && key.endsWith("_Email")) {
+                            console.log(`${key}:`, char.value[key]);
+                        }
+                    });
+                }
+                if (char.name === 'cssResponse') {
+                    debugger;
+                    console.log("Message:", char.value.message);
+                }
+                if (char.name === 'EmailAddress') {
+                    debugger;
+                    console.log("Email Address:", char.value);
+                    $columns.email.show = true;
+                    item.email = char.value; // + ' ' + index;
+                }
+            });
+        }
+    });
+    debugger;
+    /* Ensure columns exist
     if ($columns) {
         $columns.type.show = !$data.some(row => row.relatedBusinessEntitySubType === 'CALL-OB');
     } else {
         console.error("Columns not found.");
-    }
+    }*/
 };
