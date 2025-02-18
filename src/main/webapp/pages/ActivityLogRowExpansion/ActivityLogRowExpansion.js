@@ -56,11 +56,17 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
                     debugger;
                     console.log("Message:", char.value.message);
                 }
-                if (char.name === 'EmailAddress') {
+                if (item.relatedBusinessEntitySubType === 'EM-IN' && char.name === 'EmailAddress') {
                     debugger;
                     console.log("Email Address:", char.value);
                     $columns.email.show = true;
                     item.email = char.value; // + ' ' + index;
+                }
+                if (item.relatedBusinessEntitySubType === 'CALL-OB' && char.name === 'PhoneNumber') {
+                    debugger;
+                    console.log("Email Address:", char.value);
+                    $columns.phoneNumber.show = true;
+                    item.phoneNumber = char.value; // + ' ' + index;
                 }
             });
         }
