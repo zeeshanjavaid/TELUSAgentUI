@@ -45,18 +45,26 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
         if (item.additionalCharacteristics != undefined) {
             item.additionalCharacteristics.forEach(char => {
                 if (char.name === 'cssRequest') {
+                    const emails = [];
                     debugger;
                     Object.keys(char.value).forEach(key => {
                         if (key.startsWith("Contact_") && key.endsWith("_Email")) {
                             console.log(`${key}:`, char.value[key]);
+                            emails.push(char.value[key]); // Collect emails
                         }
                     });
+                    if (emails.length > 0) {
+                        console.log("Concatenated Emails:\n" + emails.join("\n"));
+                        $columns.email.show = true;
+                        item.email = emails.join("\n");
+                    }
                 }
                 if (char.name === 'cssResponse') {
                     debugger;
                     console.log("Message:", char.value.message);
                 }
-                if (item.relatedBusinessEntitySubType === 'EM-IN' && char.name === 'EmailAddress') {
+                if (char.name === 'EmailAddress') {
+                    //                if (item.relatedBusinessEntitySubType === 'EM-IN' && char.name === 'EmailAddress') {
                     debugger;
                     console.log("Email Address:", char.value);
                     $columns.email.show = true;
@@ -64,7 +72,7 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
                 }
                 if (item.relatedBusinessEntitySubType === 'CALL-OB' && char.name === 'PhoneNumber') {
                     debugger;
-                    console.log("Email Address:", char.value);
+                    console.log("Phone Number:", char.value);
                     $columns.phoneNumber.show = true;
                     item.phoneNumber = char.value; // + ' ' + index;
                 }
