@@ -325,20 +325,22 @@
     <wm-layoutgrid name="layoutgrid123" margin="0 0 0 15px" width="98%" id="completedTableGrid1">
         <wm-gridrow name="gridrow377">
             <wm-gridcolumn columnwidth="12" name="gridcolumn34">
-                <wm-table pagesize="10" name="newCollectionActivityLog_Table" title="" dataset="bind:Variables.getActionHistoryLogNew.dataSet" navigation="None" navigationalign="right" showrecordcount="true">
-                    <wm-table-column binding="relatedBusinessEntityType" caption="Category" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table pagesize="10" name="newCollectionActivityLog_Table" title="" dataset="bind:Variables.getActionHistoryLogNew.dataSet" navigation="None" navigationalign="right" showrecordcount="true" on-beforedatarender="newCollectionActivityLog_TableBeforedatarender(widget, $data, $columns)">
+                    <wm-table-column binding="relatedBusinessEntityType" caption="Category" width="180px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="id" caption="Action ID" width="50px" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
                     <wm-table-column binding="relatedBusinessEntitySubType" caption="Type" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="contentTypeCode" caption="Content Type" width="100px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="businessEntityEventType" caption="Event Type" width="97px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" width="96px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
+                    <wm-table-column binding="contentTypeCode" caption="Content Type" widget-type="label" width="120px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                        <wm-label caption="bind:row.getProperty('contentTypeCode')" class="" conditionalclass=""></wm-label>
+                    </wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityCreatedTimestamp" caption="Created DT" width="110px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
                         readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" width="95px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Latest Assigned Person" width="135px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Latest Assigned Team" width="91px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="collectionActivityTimestamp" caption="Latest Event DT" width="81px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
+                    <wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="collectionActivityTimestamp" caption="Last Event DT" width="110px" edit-widget-type="text" type="string" datepattern="yyyy-MM-dd" formatpattern="toDateTime" show="true" datetimepattern="yyyy-MM-dd HH:mm"
                         readonly="false"></wm-table-column>
-                    <wm-table-column binding="collectionActivityPerformedBy" caption="Latest Completed By" width="135px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                    <wm-table-column binding="comment" caption="Latest Comments" width="360px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="collectionActivityPerformedBy" caption="Last Updated By" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Last Assigned Person" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Last Assigned Team" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="comment" caption="Last Comments" width="250px" col-class="Comments-ellipses" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                     <wm-table-row content="ActivityLogRowExpansion" expandicon="wi wi-expand-more" collapseicon="wi wi-chevron-right" position="0" closeothers="true" on-rowexpand="newCollectionActivityLog_Table_OnRowexpand($event, widget, row, $data)"
                         widget-type="button" show="true" disabled="false" class="btn-transparent" columnwidth="27px"></wm-table-row>
                 </wm-table>

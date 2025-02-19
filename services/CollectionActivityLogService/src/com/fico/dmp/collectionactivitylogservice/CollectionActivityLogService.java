@@ -154,7 +154,7 @@ public class CollectionActivityLogService {
             String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL" };
             if (relatedBusinessEntitySubType != null) {
                 if (relatedBusinessEntitySubType.equalsIgnoreCase("NOTC")) {
-                    relatedBusinessEntitySubType = String.join(",", notcTypeCodes);
+                    relatedBusinessEntitySubType = "NOTC,NOTICE";//String.join(",", notcTypeCodes);
                 }
             }
 

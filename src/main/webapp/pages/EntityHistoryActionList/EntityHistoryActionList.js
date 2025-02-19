@@ -1948,3 +1948,30 @@ Partial.newCollectionActivityLog_Table_OnRowexpand = function($event, widget, ro
     debugger;
     App.showRowExpansionHistory(row, $data);
 };
+
+function getFormattedContentType(contentTypeCode) {
+    console.log("Function called with:", contentTypeCode); // Debugging
+    debugger;
+    const mappings = {
+        'NTCFRREM': 'NTCFRREM (Friendly Reminder Notice)',
+        'NTCOD': 'NTCOD (OverDue Notice)',
+        'NTCSUSP': 'NTCSUSP (Suspension Notice)',
+        'NTCCEASE': 'NTCCEASE (Cancellation Notice)',
+        'NTCAGENCY': 'NTCAGENCY (Agency Notice)',
+        'NTCPARR': 'NTCPARR (PARR Confirmation Notice)',
+        'NTCBRARRG': 'NTCBRARRG (PARR Non-Compliance Notice)',
+        'NTCACCTMGR': 'NTCACCTMGR (Account Manager Notice)'
+    };
+    return mappings[contentTypeCode] || contentTypeCode; // Default to original if not found
+};
+Partial.newCollectionActivityLog_TableBeforedatarender = function(widget, $data, $columns) {
+    debugger;
+    $data.forEach((item) => {
+
+        if (item.contentTypeCode != null) {
+            console.log(item.contentTypeCode);
+            item.contentTypeCode = getFormattedContentType(item.contentTypeCode);
+        }
+
+    });
+};
