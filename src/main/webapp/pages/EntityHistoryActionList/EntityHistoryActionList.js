@@ -101,7 +101,7 @@ function interverlGetHistoricalAction(interval, timeout) {
     function setIntervalObj() {
         const currentTime = new Date().getTime();
         const intervalId = setInterval(() => {
-            Partial.Variables.GetCollectionActivityLogList.invoke();
+            Partial.Variables.getActionHistoryLogNew.invoke();
         }, interval);
         getHistoricalActionIntervalObj = {
             id: intervalId,
@@ -1074,20 +1074,6 @@ Partial.clearFilterFields = function($event, widget) {
         Partial.Widgets.assignedPersonSelectfilter.datavalue = "";
         Partial.Widgets.assignedTeamSelectfilter.datavalue = "";
         Partial.Widgets.EventTypeSelect.datavalue = "ALL";
-        /*Partial.Variables.GetCollectionActivityLogList.setInput({
-            'collectionEntityId': Partial.pageParams.entityId,
-            'businessEntityEventType': '',
-            'relatedBusinessEntitySubType': '',
-            'relatedBusinessEntityType': '',
-            'relatedBusinessEntityStatus': '',
-            'relatedBusinessEntityCreatedDate': '',
-            'relatedBusinessEntityCreatedBy': '',
-            'relatedBusinessEntityAssignedTo': '',
-            'relatedBusinessEntityAssignedTeam': '',
-            'limit': 10,
-            'offset': 0
-        });
-        Partial.Variables.GetCollectionActivityLogList.invoke();*/
         Partial.Variables.getActionHistoryLogNew.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
             'businessEntityEventType': '',
@@ -1239,20 +1225,6 @@ Partial.applyFilter = function($event, widget) {
         if (Partial.Widgets.creationDate.datavalue != "") {
             completionDateTime = Partial.Widgets.creationDate.datavalue + "T" + "00" + ":" + "00" + ":" + "00" + ".00000" + "-08:00";
         }
-
-        Partial.Variables.GetCollectionActivityLogList.setInput({
-            'collectionEntityId': Partial.pageParams.entityId,
-            'businessEntityEventType': eventTypeSelect,
-            'relatedBusinessEntitySubType': typeCodeForCompleted,
-            'relatedBusinessEntityContentId': contentTypeCode,
-            'relatedBusinessEntityType': categroyForCompleted,
-            'relatedBusinessEntityStatus': statusForHistory,
-            'relatedBusinessEntityCreatedDate': completionDateTime,
-            'relatedBusinessEntityCreatedBy': createdBy,
-            'relatedBusinessEntityAssignedTo': assignedAgentId,
-            'relatedBusinessEntityAssignedTeam': Partial.Widgets.assignedTeamSelectfilter.datavalue
-        });
-        Partial.Variables.GetCollectionActivityLogList.invoke();
 
         Partial.Variables.getActionHistoryLogNew.setInput({
             'collectionEntityId': Partial.pageParams.entityId,
@@ -1764,10 +1736,6 @@ Partial.getCollectionTreatmentStep_1onError = function(variable, data, xhrObj) {
     debugger;
 };
 
-Partial.GetCollectionActivityLogListonError = function(variable, data, xhrObj) {
-
-};
-
 Partial.getCollectionTreatMentonError = function(variable, data, xhrObj) {
     debugger;
 };
@@ -1866,24 +1834,6 @@ Partial.RefreshData = function() {
     Partial.Variables.getCollectionTreatmentStep_1.invoke();
 }
 
-Partial.Telus_PaginatonPagechangeForHsitoryHisrtory = function($event, $data) {
-    debugger;
-    Partial.size = $event.pageSize
-    Partial.page = $event.pageNumber
-    Partial.RefreshDataForHistory();
-};
-
-Partial.RefreshDataForHistory = function() {
-    debugger;
-    var offset = Partial.size * (Partial.page - 1);
-    Partial.Variables.GetCollectionActivityLogList.setInput({
-        'limit': Partial.size,
-        'offset': offset
-    });
-    Partial.Variables.GetCollectionActivityLogList.invoke();
-
-}
-
 Partial.Telus_PaginatonPagechangeForHsitoryHisrtoryNew = function($event, $data) {
     debugger;
     Partial.size = $event.pageSize
@@ -1926,10 +1876,6 @@ Partial.CreateActionbuttonClick = function($event, widget) {
     Partial.Widgets.SelectActionDialog.open();
     Partial.Variables.errorMsg.dataSet.dataValue = "";
 
-};
-
-Partial.GetCollectionActivityLogListonSuccess = function(variable, data) {
-    debugger;
 };
 
 Partial.getActionHistoryLogNewonError = function(variable, data, xhrObj) {
