@@ -42,6 +42,9 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
     debugger;
     $data.forEach((item, index) => {
         console.log(`Index: ${index}, relatedBusinessEntitySubType:`, item.relatedBusinessEntitySubType);
+        if (item.relatedBusinessEntitySubType == 'NOTC' || item.relatedBusinessEntitySubType == 'NOTICE') {
+            $columns.type.show = false;
+        }
         if (item.additionalCharacteristics != undefined) {
             item.additionalCharacteristics.forEach(char => {
                 if (char.name === 'cssRequest') {

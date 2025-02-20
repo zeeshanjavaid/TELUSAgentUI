@@ -1,13 +1,15 @@
 <wm-partial name="partial1">
     <wm-table name="expandedRowDataTable1" title="" dataset="bind:Variables.getActivityLogPerRef.dataSet" navigation="Classic" tablewidth="1500px" on-beforedatarender="expandedRowDataTable1Beforedatarender(widget, $data, $columns)" navigationalign="right">
         <!--wm-table-column binding="relatedBusinessEntityCreatedBy" caption="Created By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column><wm-table-column binding="businessEntityEventType" caption="Event Type" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column-->
-        <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Assigned Person" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="collectionActivityPerformedBy" caption="Performed By" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="relatedBusinessEntityStatus" caption="Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="collectionActivityTimestamp" caption="Event Date" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
-        <wm-table-column binding="email" caption="Email Address" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
-        <wm-table-column binding="phoneNumber" caption="Phone Number" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
-        <wm-table-column binding="comment" caption="Comment" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="id" caption="Event ID" width="80px" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="collectionActivityTimestamp" caption="Event Date" width="100px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="type" caption="Event Type" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="relatedBusinessEntityStatus" caption="Status" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="collectionActivityPerformedBy" caption="Updated By" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="relatedBusinessEntityAssignedTo" caption="Assigned Person" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="relatedBusinessEntityAssignedTeam" caption="Assigned Team" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="email" caption="Email Address" width="100px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
+        <wm-table-column binding="phoneNumber" caption="Phone Number" width="100px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
+        <wm-table-column binding="comment" caption="Comment" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
     </wm-table>
 </wm-partial>

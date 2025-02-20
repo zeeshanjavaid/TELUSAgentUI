@@ -154,10 +154,10 @@ public class CollectionActivityLogService {
             String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL" };
             if (relatedBusinessEntitySubType != null) {
                 if (relatedBusinessEntitySubType.equalsIgnoreCase("NOTC")) {
-                    relatedBusinessEntitySubType = "NOTC,NOTICE";//String.join(",", notcTypeCodes);
+                    relatedBusinessEntitySubType = String.join(",", notcTypeCodes);
                 }
             }
-
+            logger.info("relatedBusinessEntitySubType: " + relatedBusinessEntitySubType);
             logger.info("::::::::Calling  Coll Activity log endpoint call ::::::::");
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(collActivityLogEndPointUrl + URIConstant.ApiMapping.GET_COLL_ACTIVITY_LOG)
                    .queryParam("collectionEntityId", collectionEntityId)
@@ -214,7 +214,7 @@ public class CollectionActivityLogService {
             		collectionActivityLog.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
             	}
             	
-            	collectionActivityLog.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
+            	//collectionActivityLog.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
 			}
         //collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityCreatedBy())));
        // collectionActivityLogRes.stream().forEach(a->a.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(a.getRelatedBusinessEntityAssignedTo())));
@@ -230,7 +230,6 @@ public class CollectionActivityLogService {
         {
             CollectionActivityLogRes collectionActivityLogRes1=new CollectionActivityLogRes();
             collectionActivityLogRes1.setId(collectionActivityLog.getId());
-            collectionActivityLogRes1.setContentTypeCode(getCharacteristicValueByName(collectionActivityLog.getAdditionalCharacteristics(),"contentTypeCode"));
             collectionActivityLogRes1.setCollectionEntity(collectionActivityLog.getCollectionEntity());
             collectionActivityLogRes1.setCollectionActivityTimestamp(collectionActivityLog.getCollectionActivityTimestamp());
             collectionActivityLogRes1.setRelatedBusinessEntityId(collectionActivityLog.getRelatedBusinessEntityId());
@@ -256,7 +255,7 @@ public class CollectionActivityLogService {
             collectionActivityLogRes1.setSchemaLocation(collectionActivityLog.getAtSchemaLocation());
             collectionActivityLogRes1.setTotalNoOfElement(totalNoOfElement);
             collectionActivityLogRes1.setContentTypeCode(getCharacteristicValueByName(collectionActivityLog.getAdditionalCharacteristics(),"contentTypeCode"));
-        logger.info("Content Type Code : " + collectionActivityLogRes1.getContentTypeCode());
+            //logger.info("FAWB Object : " + collectionActivityLogRes1.toString());
             collectionActivityLogResList.add(collectionActivityLogRes1);
         }
         return collectionActivityLogResList;
