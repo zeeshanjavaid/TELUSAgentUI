@@ -37,15 +37,141 @@ Partial.getActivityLogPerRefonSuccess = function(variable, data) {
     debugger;
     //change data or set values here
 };
+
+function getFirstAvailableContactMediumType(data) {
+    for (var i = 0; i < data.additionalCharacteristics.length; i++) {
+        var characteristic = data.additionalCharacteristics[i];
+
+        if (characteristic.name === "treatmentTaskApiRequest") {
+            var ccsPackage = characteristic.value.ccsPackage;
+
+            if (ccsPackage && ccsPackage.ccsContactList) {
+                for (var j = 0; j < ccsPackage.ccsContactList.length; j++) {
+                    if (ccsPackage.ccsContactList[j].contactMediumType) {
+                        return ccsPackage.ccsContactList[j].contactMediumType; // Return immediately when found
+                    }
+                }
+            }
+        }
+    }
+    return null; // Return null if no contactMediumType is found
+}
+
+function getAllEmails(data) {
+    let emails = [];
+    for (var i = 0; i < data.additionalCharacteristics.length; i++) {
+        var characteristic = data.additionalCharacteristics[i];
+
+        if (characteristic.name === "cssRequest") {
+            var cssRequest = characteristic.value;
+            var index = 1;
+
+            while (cssRequest[`Contact_${index}_Email`]) {
+                emails.push(cssRequest[`Contact_${index}_Email`]);
+                index++;
+            }
+        }
+    }
+    return emails.join("\n"); // Join emails with newline separator
+}
+
+function getAllAccountDetails(data) {
+    let accounts = [];
+    for (var i = 0; i < data.additionalCharacteristics.length; i++) {
+        var characteristic = data.additionalCharacteristics[i];
+
+        if (characteristic.name === "cssRequest") {
+            var cssRequest = characteristic.value;
+            var index = 1;
+
+            while (cssRequest[`Account_Number_${index}`]) {
+                accounts.push({
+                    BAN: cssRequest[`Account_Number_${index}`],
+                    DUE: cssRequest[`Account_${index}_Amount_Due`],
+                    OD: cssRequest[`Account_${index}_Amount_Overdue`]
+                });
+                index++;
+            }
+        }
+    }
+    return accounts; // Return an array of objects
+}
+
+function extractInfoFromJson(data) {
+    debugger;
+    // Extract contentTypeCode and Data_Time_Stamp
+    const contentTypeCode = data.additionalCharacteristics.find(item => item.name === 'contentTypeCode').value;
+    const dataTimeStamp = data.additionalCharacteristics.find(item => item.name === 'cssRequest').value.Data_Time_Stamp;
+    const totalOD = data.additionalCharacteristics.find(item => item.name === 'cssRequest').value.Current_Balance;
+
+    // Extract BANS, Amount Due, and Amount Overdue
+    const agedTrialBalances = data.additionalCharacteristics.find(item => item.name === 'agedTrialBalances').value;
+    const accountsInfo = agedTrialBalances.map(account => {
+        const accountNumber = account.bacctNum;
+        const amountDue = account.amountDue;
+        const amountOverdue = account.amountOverdue;
+        return `BAN: ${accountNumber} AMT DUE: ${amountDue} AMT OD: ${amountOverdue}`;
+    }).join("\n");
+
+    // Construct the final formatted string
+    const result = `${contentTypeCode} delivered on ${dataTimeStamp}\n${accountsInfo}\nTotal OD: ${totalOD}`;
+
+    return result;
+}
+
+function formatTextWithLineBreaks(text) {
+    return text.replace(/\n/g, '<br/>');
+}
+
+function extractCharacteristics(jsonData) {
+    if (!jsonData || !jsonData.additionalCharacteristics) {
+        return "No characteristics found";
+    }
+
+    return jsonData.additionalCharacteristics.map(char => `${char.name}: ${char.value}`).join('\n');
+}
+
 Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns) {
     //control table column show or hide here
     debugger;
     $data.forEach((item, index) => {
         console.log(`Index: ${index}, relatedBusinessEntitySubType:`, item.relatedBusinessEntitySubType);
-        if (item.relatedBusinessEntitySubType == 'NOTC' || item.relatedBusinessEntitySubType == 'NOTICE') {
-            $columns.type.show = false;
+        console.log(`Index: ${index}, relatedBusinessEntityStatus:`, item.relatedBusinessEntityStatus);
+        console.log(`Index: ${index}, businessEntityEventType:`, item.businessEntityEventType);
+
+        debugger;
+        if (item.relatedBusinessEntitySubType.toUpperCase() == 'NOTC' || item.relatedBusinessEntitySubType.toUpperCase() == 'NOTICE') {
+            debugger;
+            //$columns.type.show = false;
+            $columns.deliveryType.show = true;
+            item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
+            /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
+                debugger;
+                var mediumType = getFirstAvailableContactMediumType(item);
+                item.deliveryType = mediumType;
+
+                var emailAddresses;
+                var accountDetails;
+
+                if (mediumType.toUpperCase() == 'EMAIL') {
+                    console.log(extractInfoFromJson(item));
+                    emailAddresses = getAllEmails(item);
+                    accountDetails = extractInfoFromJson(item);
+                    item.comment = formatTextWithLineBreaks(emailAddresses + "\n" + accountDetails);
+                }
+
+                item.comment = formatTextWithLineBreaks(extractCharacteristics(item)); //remove later
+            } else {
+                item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
+            }*/
+
+            /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
+                item.collectionActivityPerformedBy = item.relatedBusinessEntityCreatedBy;
+            }*/
         }
-        if (item.additionalCharacteristics != undefined) {
+
+
+        /*if (item.additionalCharacteristics != undefined) {
             item.additionalCharacteristics.forEach(char => {
                 if (char.name === 'cssRequest') {
                     const emails = [];
@@ -80,7 +206,7 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
                     item.phoneNumber = char.value; // + ' ' + index;
                 }
             });
-        }
+        }*/
     });
     debugger;
     /* Ensure columns exist

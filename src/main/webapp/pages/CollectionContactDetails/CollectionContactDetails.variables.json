@@ -1,4 +1,18 @@
 {
+  "boxDisabled" : {
+    "_id" : "wm-boxDisabled-wm.Variable-1740162902221",
+    "name" : "boxDisabled",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : true
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "expandedRowData" : {
     "_id" : "wm-expandedRowData-wm.Variable-1737756123350",
     "name" : "expandedRowData",

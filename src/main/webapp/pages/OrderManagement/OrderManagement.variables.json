@@ -452,6 +452,10 @@
       "target" : "typeCode",
       "value" : "bind:'in:RESTORE,CEASE,SUSPEND'",
       "type" : "string"
+    }, {
+      "target" : "status",
+      "value" : "in:Request Assigned,Order Fulfilled,Order Created,Open,Request Created,Failed,Order Assigned,Closed,Cancelled",
+      "type" : "string"
     } ],
     "type" : "com.fico.telus.model.CollectionTreatmentStepResponse",
     "service" : "CollectionTreatmentService",

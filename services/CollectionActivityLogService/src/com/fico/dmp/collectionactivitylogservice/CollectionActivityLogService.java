@@ -6,6 +6,7 @@ package com.fico.dmp.collectionactivitylogservice;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
@@ -151,7 +152,7 @@ public class CollectionActivityLogService {
             }else{
                 encodedStatus=relatedBusinessEntityStatus;
             }
-            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL" };
+            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL", "NOTICE" };
             if (relatedBusinessEntitySubType != null) {
                 if (relatedBusinessEntitySubType.equalsIgnoreCase("NOTC")) {
                     relatedBusinessEntitySubType = String.join(",", notcTypeCodes);
@@ -192,27 +193,23 @@ public class CollectionActivityLogService {
 
            });
             }
-            
+                    List<String> systemIDs = Arrays.asList(
+            "tcm-collections-parr-eval-batch",
+            "SAS Batch Job",
+            "system","collection-event-management","collection-assessment-management","collection-treatment-task-management"
+        );
             for (CollectionActivityLog collectionActivityLog : collectionActivityLogRes) {
-            	if(collectionActivityLog.getCollectionActivityPerformedBy().equals("tcm-collections-parr-eval-batch") || collectionActivityLog.getCollectionActivityPerformedBy().equals("SAS Batch Job")) {
-            		collectionActivityLog.setCollectionActivityPerformedBy(collectionActivityLog.getCollectionActivityPerformedBy());
-            	}else if(collectionActivityLog.getCollectionActivityPerformedBy().equals("system")){
-            	  collectionActivityLog.setCollectionActivityPerformedBy(collectionActivityLog.getCollectionActivityPerformedBy());
+    collectionActivityLog.setCollectionActivityPerformedBy(
+        systemIDs.contains(collectionActivityLog.getCollectionActivityPerformedBy()) 
+        ? collectionActivityLog.getCollectionActivityPerformedBy() 
+        : commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy())
+    );
 
-            	}
-            	else {
-            		collectionActivityLog.setCollectionActivityPerformedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getCollectionActivityPerformedBy()));
-            	}
-            	
-            	if(collectionActivityLog.getRelatedBusinessEntityCreatedBy().equals("tcm-collections-parr-eval-batch") || collectionActivityLog.getRelatedBusinessEntityCreatedBy().equals("SAS Batch Job")) {
-            		collectionActivityLog.setRelatedBusinessEntityCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
-            	}else if(collectionActivityLog.getRelatedBusinessEntityCreatedBy().equals("system")){
-            	   collectionActivityLog.setRelatedBusinessEntityCreatedBy(collectionActivityLog.getRelatedBusinessEntityCreatedBy());
-
-            	}
-            	else {
-            		collectionActivityLog.setRelatedBusinessEntityCreatedBy(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy()));
-            	}
+    collectionActivityLog.setRelatedBusinessEntityCreatedBy(
+        systemIDs.contains(collectionActivityLog.getRelatedBusinessEntityCreatedBy()) 
+        ? collectionActivityLog.getRelatedBusinessEntityCreatedBy() 
+        : commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityCreatedBy())
+    );
             	
             	collectionActivityLog.setRelatedBusinessEntityAssignedTo(commonUtilityService.getNameUsingEmpId(collectionActivityLog.getRelatedBusinessEntityAssignedTo()));
 			}

@@ -148,3 +148,9 @@ Partial.expandedRowDataTable1_commentsOnKeydown = function($event, widget, row) 
         return false;
     }
 };
+Partial.expandedRowDataTable1_updaterowAction = function($event, row) {
+    debugger;
+    if (row.phoneNumber == null) {
+        Partial.Variables.boxDisabled.dataSet.dataValue = false;
+    }
+};
