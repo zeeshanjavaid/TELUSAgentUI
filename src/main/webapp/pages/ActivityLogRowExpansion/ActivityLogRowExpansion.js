@@ -170,7 +170,24 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
             }*/
         }
 
+        if (item.relatedBusinessEntitySubType.toUpperCase() == 'CALL-OB') {
+            $columns.dueDate.show = true;
+            item.dueDate = item.relatedBusinessEntityDueDate;
+            $columns.phoneNumber.show = true;
+            item.phoneNumber = item.additionalCharacteristics.find(item => item.name === 'PhoneNumber').value;
+            $columns.reachedCustomer.show = true;
+            item.reachedCustomer = item.additionalCharacteristics.find(item => item.name === 'ReachedCustomer').value;
+            $columns.relatedBusinessEntityAssignedTo.show = true;
+            $columns.relatedBusinessEntityAssignedTeam.show = true;
+        }
 
+        if (item.relatedBusinessEntitySubType.toUpperCase() == 'CALL-IB' || item.relatedBusinessEntitySubType.toUpperCase() == 'SUSPEND' ||
+            item.relatedBusinessEntitySubType.toUpperCase() == 'RESTORE' || item.relatedBusinessEntitySubType.toUpperCase() == 'CEASE') {
+            $columns.dueDate.show = true;
+            item.dueDate = item.relatedBusinessEntityDueDate;
+            $columns.relatedBusinessEntityAssignedTo.show = true;
+            $columns.relatedBusinessEntityAssignedTeam.show = true;
+        }
         /*if (item.additionalCharacteristics != undefined) {
             item.additionalCharacteristics.forEach(char => {
                 if (char.name === 'cssRequest') {
