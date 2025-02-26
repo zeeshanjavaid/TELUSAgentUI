@@ -82,3 +82,12 @@ div[name="newCollectionActivityLog_Table"] table {
     table-layout: fixed; /* Make sure column widths are consistent */
     width: 100%; /* Stretch table to full width */
 }
+div[name="selectBanParrTable1"] table thead tr th[data-col-id="0"][data-col-field="checkbox"] input {
+    pointer-events: none;
+    display: none;
+}
+/* Apply vertical scrolling only to selectBanParrTable1 */
+div[name="selectBanParrTable1"] .app-datagrid-container {
+    max-height: 400px; /* Set scroll limit */
+    overflow-y: auto;  /* Enable vertical scrolling */
+}

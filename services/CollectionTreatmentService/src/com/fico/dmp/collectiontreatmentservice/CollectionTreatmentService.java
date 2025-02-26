@@ -184,7 +184,7 @@ public class CollectionTreatmentService {
             } else {
                 encodedStatus = status;
             }
-            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL" };
+            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL", "NOTICE" };
             logger.info("::::::::Status ::::::::" + encodedStatus);
 
             logger.info("::::::::Calling Get Coll Treatment step data endpoint call ::::::::");

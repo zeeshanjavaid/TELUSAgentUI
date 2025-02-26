@@ -292,6 +292,20 @@ Partial.nextButtonClick = function($event, widget) {
             Partial.Widgets.custName.datavalue = '';
             Partial.Widgets.nonMandatoryEmail.datavalue = '';
         }
+        if (Partial.Widgets.select1.datavalue == 'Notice') {
+            Partial.Variables.actionName.dataValue = Partial.Widgets.select1.datavalue;
+            Partial.Widgets.deliveryDueDate.datavalue = new Date(Date.now() + 86400000);
+            hideSelectActionForm();
+            // displaying Call Outbound action form
+            $('#newNotice').show();
+            $('#callOutBoundActionForm').hide();
+            $('#customerName').hide();
+            $('#callInBoundActionForm').hide();
+            $('#nonMandatoryEmail').hide();
+            $('#mandatoryEmail').hide();
+            //$('#createActionBtns').hide();
+        }
+
     }
 
 };
@@ -303,6 +317,7 @@ Partial.cancelClick = function() {
     $('#callOutBoundActionForm').hide();
     // hiding Call Inbound action form
     $('#callInBoundActionForm').hide();
+    $('#newNotice').hide();
 };
 
 Partial.closeSelectActionDialog = function() {
@@ -944,6 +959,7 @@ function referralNoticeAction($event, widget) {
 };
 
 Partial.createButtonClick = function($event, widget) {
+    debugger;
     var actionName = Partial.Variables.actionName.dataValue;
     switch (actionName) {
         case 'Account Manager Notice':
@@ -986,6 +1002,10 @@ Partial.createButtonClick = function($event, widget) {
             referralNoticeAction($event, widget);
             // Partial.Variables.getCollectionTreatmentStep_1.invoke();
             break;
+        case 'Notice':
+            noticeAction($event, widget);
+            // Partial.Variables.getCollectionTreatmentStep_1.invoke();
+            break;
         default:
             App.Variables.errorMsg.dataSet.dataValue = "Not a valid action.";
     }
@@ -994,6 +1014,7 @@ Partial.createButtonClick = function($event, widget) {
 
 // On opening of select action dialog, we are hiding the fields present in create action dialog
 Partial.SelectActionDialogOpened = function($event, widget) {
+    $('#newNotice').hide();
     $('#callOutBoundActionForm').hide();
     $('#customerName').hide();
     $('#callInBoundActionForm').hide();
@@ -1920,4 +1941,123 @@ Partial.newCollectionActivityLog_TableBeforedatarender = function(widget, $data,
         }
 
     });
+};
+
+Partial.button2_1Click = function($event, widget) {
+    var entityIdStr = Partial.pageParams.entityId
+    var entityIdInt = parseInt(entityIdStr);
+    Partial.Variables.getEntityBanDetailsForParr.setInput({
+        'entityId': entityIdInt
+    });
+
+    Partial.Variables.getEntityBanDetailsForParr.invoke();
+
+    Partial.Widgets.selectBANdialog.open();
+
+};
+
+
+Partial.contentIdSelectionList1Change = function($event, widget, newVal, oldVal) {
+    debugger;
+    Partial.Widgets.contentIdDescription.caption = getFormattedContentType(newVal);
+    if (newVal == 'NTCSUSP') {
+        Partial.Widgets.schDateLabel.caption = "Scheduled Suspension Date";
+        Partial.Widgets.schDateLabel.show = true;
+        Partial.Widgets.scheduledDate.show = true;
+        Partial.Widgets.scheduledDate.datavalue = new Date(Date.now() + 7 * 86400000);
+    } else if (newVal == 'NTCCEASE') {
+        Partial.Widgets.schDateLabel.caption = "Scheduled Termination Date";
+        Partial.Widgets.schDateLabel.show = true;
+        Partial.Widgets.scheduledDate.show = true;
+        Partial.Widgets.scheduledDate.datavalue = new Date(Date.now() + 7 * 86400000);
+    } else if (newVal == 'NTCAGENCY') {
+        Partial.Widgets.schDateLabel.caption = "Scheduled Referral Date";
+        Partial.Widgets.schDateLabel.show = true;
+        Partial.Widgets.scheduledDate.show = true;
+        Partial.Widgets.scheduledDate.datavalue = new Date(Date.now() + 30 * 86400000);
+    } else {
+        Partial.Widgets.schDateLabel.show = false;
+        Partial.Widgets.scheduledDate.show = false;
+    }
+};
+
+Partial.SubmitBanClick = function($event, widget) {
+    debugger;
+    //Partial.Variables.installmentBANCreateParr.dataSet = [];
+    var selectedBans = new Array();
+    //Partial.Variables.installmentBANCreateParr.dataSet.push(...Partial.Widgets.selectBanParrTable1.selectedItems);
+    Partial.Widgets.selectBanParrTable1.selectedItems.forEach(function(selectedBan) {
+        var entityRef = {};
+        var banRefIdInt = selectedBan.banRefId
+        entityRef.id = banRefIdInt.toString();
+        entityRef.name = selectedBan.banName;
+        selectedBans.push(entityRef);
+    });
+    debugger;
+    //Partial.Variables.SelectedBans.dataSet.splice(0, Partial.Variables.SelectedBans.dataSet.length);
+    //Partial.Variables.SelectedBans.dataSet.push(...selectedBans);
+    Partial.Variables.selectedBANs.dataSet = selectedBans.map(ban => ({
+        id: ban.id,
+        name: ban.name
+    }));
+    Partial.Widgets.selectedBanCount.caption = selectedBans.length + " BANs Selected";
+    Partial.Widgets.selectBANdialog.close();
+};
+Partial.selectBanParrTable1Datarender = function(widget, $data) {
+    debugger;
+    //Partial.Widgets.selectBanParrTable1.selectedItems = Partial.Variables.getEntityBanDetailsForParr.dataSet;
+    //widget.selecteditem = 2;
+    //widget.selecteditem = $data[5];
+};
+
+function noticeAction($event, widget) {
+    debugger;
+    // Status and Priority fields are mandatory
+    if (Partial.Widgets.noticeEmail.datavalue == "" || Partial.Widgets.noticeEmail.datavalue == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Email is mandatory";
+    } else {
+        // API Call will come here
+        var characteristicList = [];
+        characteristicList.push({
+            name: 'emailAddresses',
+            value: Partial.Widgets.noticeEmail.datavalue
+        });
+
+        var payload = {
+            "CollectionTreatmentStepCreate": {
+                'stepTypeCode': "NOTICE",
+                'contentTypeCode': Partial.Widgets.contentIdSelectionList1.datavalue,
+                'stepDate': Partial.Widgets.deliveryDueDate.datavalue,
+                'status': "Open",
+                'comment': Partial.Widgets.Comment.datavalue,
+                'deliverSystemName': "DIGITAL",
+                'partitionKey': getCurrentDate(),
+                'billingAccountRefs': Partial.Variables.selectedBANs.dataSet,
+                'collectionTreatment': {
+                    'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
+                    'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
+                },
+                'channel': {
+                    'originatorAppId': "FAWBTELUSAGENT",
+                    'channelOrgId': "FAWBTELUSAGENT",
+                    'userId': App.Variables.getLoggedInUserDetails.dataSet.emplId
+                }
+            }
+        }
+        if (characteristicList.length > 0) {
+            payload.CollectionTreatmentStepCreate.additionalCharacteristics = characteristicList;
+        }
+
+        Partial.Variables.createEntityHistoryAction.setInput(payload);
+        Partial.Variables.createEntityHistoryAction.invoke();
+        App.Variables.successMessage.dataSet.dataValue = "Notice Action created successfully.";
+        Partial.Widgets.SelectActionDialog.close();
+        setTimeout(messageTimeout, 4000);
+        setTimeout(function() {
+            Partial.Variables.getCollectionTreatmentStep_1.invoke();
+        }, 1000);
+        intervalGetTreatmentStep(5000, 15000);
+
+        interverlGetHistoricalAction(5000, 15000);
+    }
 };
