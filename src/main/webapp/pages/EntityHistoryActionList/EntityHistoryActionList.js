@@ -2012,27 +2012,47 @@ Partial.selectBanParrTable1Datarender = function(widget, $data) {
 
 function noticeAction($event, widget) {
     debugger;
-    // Status and Priority fields are mandatory
-    if (Partial.Widgets.noticeEmail.datavalue == "" || Partial.Widgets.noticeEmail.datavalue == undefined) {
+    var contentTypeCode = Partial.Widgets.contentIdSelectionList1.datavalue;
+    if (contentTypeCode == "" || contentTypeCode == undefined) {
+        App.Variables.errorMsg.dataSet.dataValue = "Content Type is mandatory";
+    } else if (Partial.Widgets.noticeEmail.datavalue == "" || Partial.Widgets.noticeEmail.datavalue == undefined) {
         App.Variables.errorMsg.dataSet.dataValue = "Email is mandatory";
     } else {
-        // API Call will come here
         var characteristicList = [];
         const emailValue = Partial.Widgets.noticeEmail.datavalue;
 
-        // Convert to an array if multiple emails exist, otherwise keep it as a single value
+        // Convert to an array if multiple emails exist, otherwise keep it as a single-element array
         const emailArray = emailValue.includes(';') ?
-            emailValue.split(';').map(email => email.trim()).join(',') :
-            emailValue;
+            emailValue.split(';').map(email => email.trim()) : [emailValue];
+
         characteristicList.push({
             name: 'emailAddresses',
-            value: emailArray
+            value: JSON.stringify(emailArray) // Convert array to a JSON string
         });
+
+        if (contentTypeCode == 'NTCSUSP') {
+            characteristicList.push({
+                name: 'scheduledSuspensionDate',
+                value: Partial.Widgets.scheduledDate.datavalue
+            });
+        } else if (contentTypeCode == 'NTCCEASE') {
+            characteristicList.push({
+                name: 'scheduledTerminationDate',
+                value: Partial.Widgets.scheduledDate.datavalue
+            });
+        } else if (contentTypeCode == 'NTCAGENCY') {
+            characteristicList.push({
+                name: 'scheduledReferralDate',
+                value: Partial.Widgets.scheduledDate.datavalue
+            });
+        }
+
+
 
         var payload = {
             "CollectionTreatmentStepCreate": {
                 'stepTypeCode': "NOTICE",
-                'contentTypeCode': Partial.Widgets.contentIdSelectionList1.datavalue,
+                'contentTypeCode': contentTypeCode,
                 'stepDate': Partial.Widgets.deliveryDueDate.datavalue,
                 'status': "Open",
                 'comment': Partial.Widgets.noticeComment.datavalue,
