@@ -2018,9 +2018,15 @@ function noticeAction($event, widget) {
     } else {
         // API Call will come here
         var characteristicList = [];
+        const emailValue = Partial.Widgets.noticeEmail.datavalue;
+
+        // Convert to an array if multiple emails exist, otherwise keep it as a single value
+        const emailArray = emailValue.includes(';') ?
+            emailValue.split(';').map(email => email.trim()).join(',') :
+            emailValue;
         characteristicList.push({
             name: 'emailAddresses',
-            value: Partial.Widgets.noticeEmail.datavalue
+            value: emailArray
         });
 
         var payload = {
@@ -2029,7 +2035,7 @@ function noticeAction($event, widget) {
                 'contentTypeCode': Partial.Widgets.contentIdSelectionList1.datavalue,
                 'stepDate': Partial.Widgets.deliveryDueDate.datavalue,
                 'status': "Open",
-                'comment': Partial.Widgets.Comment.datavalue,
+                'comment': Partial.Widgets.noticeComment.datavalue,
                 'deliverSystemName': "DIGITAL",
                 'partitionKey': getCurrentDate(),
                 'billingAccountRefs': Partial.Variables.selectedBANs.dataSet,
