@@ -69,7 +69,7 @@
                 </wm-table-column>
                 <wm-table-column binding="phoneExtension" caption="Extension" width="80px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
                 <wm-table-column binding="phoneType" caption="Phone Type" width="80px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
-                <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" edit-widget-type="checkbox" type="string" show="true" readonly="false" disabled="bind:Variables.boxDisabled.dataSet.dataValue">
+                <wm-table-column binding="contactForNotices" caption="Use for Notification" widget-type="checkbox" width="80px" edit-widget-type="checkbox" type="string" show="true" readonly="false">
                     <wm-checkbox datavalue="bind:row.getProperty('contactForNotices')" disabled="true" on-change="collectionContactExpansionTable_contactForNoticesOnChange($event, widget, row)" conditionalclass=""></wm-checkbox>
                 </wm-table-column>
                 <wm-table-column binding="dataSource" caption="Data Source" width="100px" edit-widget-type="text" type="string" readonly="true" searchable="false" show="true"></wm-table-column>
@@ -85,8 +85,7 @@
                 <wm-table-column binding="lastPaymnentActionDateTime" caption="Last Payment Attempt" width="100px" edit-widget-type="text" type="string" readonly="true" datepattern="yyyy-MM-dd" formatpattern="toDate" searchable="false"
                     show="true"></wm-table-column>
                 <wm-table-column binding="rowOperations" caption="Options" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-edit" title="Edit" action="editRow($event);expandedRowDataTable1_updaterowAction($event, row)" disabled="false"
-                    widget-type="button"></wm-table-row-action>
+                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-edit" title="Edit" action="editRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
                 <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash fico fico-icon-trash" title="Delete" action="deleteRow($event)" disabled="false" widget-type="button"></wm-table-row-action>
             </wm-table>
         </wm-gridcolumn>

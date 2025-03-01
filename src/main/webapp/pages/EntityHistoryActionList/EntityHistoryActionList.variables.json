@@ -344,10 +344,6 @@
     }, {
       "dataValue" : "NTCAGENCY"
     }, {
-      "dataValue" : "NTCPARR"
-    }, {
-      "dataValue" : "NTCBRARRG"
-    }, {
       "dataValue" : "NTCACCTMGR"
     } ],
     "type" : "string",
