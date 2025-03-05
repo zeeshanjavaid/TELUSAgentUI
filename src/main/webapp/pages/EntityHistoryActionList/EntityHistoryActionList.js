@@ -2027,7 +2027,7 @@ function noticeAction($event, widget) {
 
         characteristicList.push({
             name: 'emailAddresses',
-            value: JSON.stringify(emailArray) // Convert array to a JSON string
+            value: emailArray //JSON.stringify(emailArray) // Convert array to a JSON string
         });
 
         if (contentTypeCode == 'NTCSUSP') {

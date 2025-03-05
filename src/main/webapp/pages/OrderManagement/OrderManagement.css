@@ -36,3 +36,9 @@ div[name="getEntityBanDetailsTable1"] table thead tr th[data-col-id="0"][data-co
     pointer-events: none;
     display: none;
 }
+
+/* Ensure table respects column widths */
+div[name="getEntityBanDetailsTable1"] table {
+    table-layout: fixed; /* Make sure column widths are consistent */
+    width: 100%; /* Stretch table to full width */
+}

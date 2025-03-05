@@ -725,7 +725,9 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     Partial.Variables.BanListRefIds.dataSet = [];
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
     Partial.selectedBanList = [];
+    Partial.selectedBanListForSuspendForRecord = [];
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+        debugger;
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
         } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
@@ -734,6 +736,15 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             Partial.selectedBanList = {
                 "id": d.banRefId,
             }
+
+            Partial.Widgets.getEntityBanDetailsTable1.dataset.forEach(item => {
+                if (item.banId === d.banId) { // Ensure matching row
+                    if (item.suspendForRecord) {
+                        Partial.selectedBanListForSuspendForRecord.push(d.banRefId);
+                    }
+                }
+            });
+
         }
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
     });
@@ -752,6 +763,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "Assigned Person must be selected to Fulfill Order";
     } else {
         if (originalAgentId != selectedAgentId) {
+            debugger;
             //  Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.displayValue;
             Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
@@ -795,6 +807,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             Partial.Widgets.EditAndFulfillSentdialog.close();
             Partial.Widgets.update_ActionDialog.open();
         } else {
+            debugger;
             var payload = {
                 'id': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.id,
                 'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
@@ -822,6 +835,15 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                     billingAccountRefs: Partial.Variables.BanListRefIds.dataSet
                 };
             }
+
+            if (Partial.selectedBanListForSuspendForRecord.length > 0) {
+                payload.CollectionTreatmentStepUpdate.additionalCharacteristics = [{
+                    name: 'susForRecBillingAccountRefIds',
+                    value: Partial.selectedBanListForSuspendForRecord //.join(",") // Directly use the array and convert to CSV
+                }];
+            }
+
+            debugger;
             Partial.Variables.UpdateODManagemntAndFullfill.setInput(payload);
             Partial.Variables.UpdateODManagemntAndFullfill.invoke();
         }
@@ -1293,4 +1315,27 @@ Partial.RefreshData = function() {
 
 Partial.createRequest_ButtonClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.showPopover();
+};
+Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+    $data.forEach(row => {
+        if (row.banCollectionStatus == 'SUSPForR') {
+            row.suspendForRecord = true;
+        } else {
+            row.suspendForRecord = false;
+        }
+    });
+};
+Partial.getEntityBanDetailsTable1_suspendForRecordOnClick = function($event, widget, row) {
+    debugger;
+    row.suspendForRecord = $event.target.checked;
+    Partial.Widgets.getEntityBanDetailsTable1.dataset.forEach(item => {
+        if (item.banId === row.banId) { // Ensure matching row
+            item.suspendForRecord = $event.target.checked; // Update the dataset
+        }
+    });
+
+    console.log("Updated Selected Items: ", row);
+
+    debugger;
 };
