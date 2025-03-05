@@ -166,7 +166,8 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
     Partial.selectedBanList = [];
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-        if (d.banCollectionStatus != "SUSPEND" || d.banCollectionStatus != "SUSPForR") {
+        debugger;
+        if (d.banCollectionStatus != "SUSPEND" && d.banCollectionStatus != "SUSPForR") {
             isAlreadyRestored = true;
         } else {
             Partial.selectedBanList = {
@@ -466,9 +467,10 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     }
 
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
+        debugger;
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
+        } else if (stepTypeCode == "RESTORE" && (d.banCollectionStatus != "SUSPEND" && d.banCollectionStatus != "SUSPForR")) {
             isAlreadySusOrRes = stepTypeCode;
         } else {
             Partial.selectedBanList = {
@@ -732,7 +734,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         debugger;
         if (stepTypeCode == "SUSPEND" && d.banCollectionStatus == "SUSPEND") {
             isAlreadySusOrRes = stepTypeCode;
-        } else if (stepTypeCode == "RESTORE" && d.banCollectionStatus != "SUSPEND") {
+        } else if (stepTypeCode == "RESTORE" && (d.banCollectionStatus != "SUSPEND" && d.banCollectionStatus != "SUSPForR")) {
             isAlreadySusOrRes = stepTypeCode;
         } else {
             Partial.selectedBanList = {
