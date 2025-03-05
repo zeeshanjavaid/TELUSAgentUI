@@ -166,7 +166,7 @@ Partial.createbuttonRestoralClick = function($event, widget) {
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
     Partial.selectedBanList = [];
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems.forEach(function(d) {
-        if (d.banCollectionStatus != "SUSPEND") {
+        if (d.banCollectionStatus != "SUSPEND" || d.banCollectionStatus != "SUSPForR") {
             isAlreadyRestored = true;
         } else {
             Partial.selectedBanList = {
@@ -483,8 +483,10 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     } else {
         updateStatus = "Order Assigned";
     }
-
-    if (isAlreadySusOrRes == "SUSPEND") {
+    debugger;
+    if (Partial.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Please select at least 1 BAN";
+    } else if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
     } else if (isAlreadySusOrRes == "RESTORE") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN selected is not Suspended in order to be Restored.";
@@ -1174,6 +1176,7 @@ Partial.getOrderdMgmtHistoryonSuccess = function(variable, data) {};
 Partial.getOrderdMgmtHistoryonBeforeDatasetReady = function(variable, data) {};
 
 function getBanListForAutoSelect(row) {
+    debugger;
     Partial.Variables.getBanListFromHisForPreselect.setInput({
         'collectionEntityId': Partial.pageParams.entityId,
         'relatedBusinessEntityId': row.id,
@@ -1183,6 +1186,7 @@ function getBanListForAutoSelect(row) {
 }
 
 Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
+    debugger;
     var bans = data[0].banList;
     if (data[0].banList.length > 0) {
         var banList1 = $('#getEntityBanDetailsTableEdit1ForTest  tbody tr');
@@ -1201,12 +1205,14 @@ Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
         for (let j = 0; j < bans.length; j++) {
             for (let i = 0; i < banList2.length; i++) {
                 if (bans[j].toString() === banList2[i].cells[1].innerHTML) {
-                    var cb = banList2.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
-                    cb.trigger('click');
+                    //var cb = banList2.find("input[type='checkbox']").eq(i).attr('checked', 'checked')
+                    //cb.trigger('click');
+                    Partial.Widgets.getEntityBanDetailsTable1.selectItem(i);
                 }
             }
         }
     }
+
 };
 
 Partial.UpdateODManagemntAndDonotFullfillonError = function(variable, data, xhrObj) {
@@ -1316,7 +1322,7 @@ Partial.RefreshData = function() {
 Partial.createRequest_ButtonClick = function($event, widget) {
     Partial.Widgets.OrderPopOver.showPopover();
 };
-Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $columns) {
+/*Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $columns) {
     debugger;
     $data.forEach(row => {
         if (row.banCollectionStatus == 'SUSPForR') {
@@ -1325,7 +1331,7 @@ Partial.getEntityBanDetailsTable1Beforedatarender = function(widget, $data, $col
             row.suspendForRecord = false;
         }
     });
-};
+};*/
 Partial.getEntityBanDetailsTable1_suspendForRecordOnClick = function($event, widget, row) {
     debugger;
     row.suspendForRecord = $event.target.checked;
