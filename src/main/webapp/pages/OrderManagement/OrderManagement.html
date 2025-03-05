@@ -181,13 +181,14 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" id="banTableList" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" id="tableTest1" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="98%" navigationalign="right">
+                    <wm-table name="getEntityBanDetailsTable1" title="" id="tableTest1" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="None" multiselect="true" radioselect="false" width="98%" navigationalign="right"
+                        height="200px">
                         <wm-table-column binding="banId" caption="BAN #" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="320px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="100px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" width="100px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banCollectionStatus" caption="BAN Coll.Status" width="101px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="suppresionFlag" caption="Suppresion Indicator" type="boolean" show="true" readonly="undefined"></wm-table-column>
+                        <wm-table-column binding="suppresionFlag" caption="Suppresion Indicator" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="Ban Status" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" width="75px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
@@ -286,13 +287,14 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" id="tableTest2" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="98%" navigationalign="right">
+                    <wm-table name="getEntityBanDetailsTable1" title="" id="tableTest2" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="None" multiselect="true" radioselect="false" width="98%" navigationalign="right"
+                        height="200px">
                         <wm-table-column binding="banId" caption="BAN #" width="105px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="315px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="102px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banOverdueAmount" caption="Total OD" width="102px" col-class="total_OD" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banCollectionStatus" caption="BAN Coll.Status" width="101px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="suppresionFlag" caption="Suppresion Indicator" type="boolean" show="true" readonly="undefined"></wm-table-column>
+                        <wm-table-column binding="suppresionFlag" caption="Suppresion Indicator" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="Ban Status" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" width="75px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                     </wm-table>
@@ -415,9 +417,9 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow9">
                 <wm-gridcolumn columnwidth="12" name="gridcolumn12">
-                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="Classic" multiselect="true" radioselect="false" width="98%" navigationalign="right" on-beforeformrender="getEntityBanDetailsTable1Beforeformrender($event, widget, row, $operation)"
+                    <wm-table name="getEntityBanDetailsTable1" title="" dataset="bind:Variables.CollectionDataServiceGetEntityBanDetails.dataSet" navigation="None" multiselect="true" radioselect="false" width="98%" navigationalign="right" on-beforeformrender="getEntityBanDetailsTable1Beforeformrender($event, widget, row, $operation)"
                         on-beforedatarender="getEntityBanDetailsTable1Beforedatarender(widget, $data, $columns)" on-formrender="getEntityBanDetailsTable1Formrender($event, widget, formWidgets, $operation)" on-beforerowinsert="getEntityBanDetailsTable1Beforerowinsert($event, widget, row, options)"
-                        on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" id="getEntityBanDetailsTableEdit1ForTest" gridfirstrowselect="false">
+                        on-datarender="getEntityBanDetailsTable1Datarender(widget, $data)" id="getEntityBanDetailsTableEdit1ForTest" gridfirstrowselect="false" height="200px">
                         <wm-table-column binding="banId" caption="BAN#" width="105px" col-class="t" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banName" caption="BAN Name" width="300px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banArAmount" caption="Total AR" width="110px" col-class="total_AR" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>

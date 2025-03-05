@@ -1200,7 +1200,20 @@ Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
             }
         }
     }
-    if (data[0].banList.length > 0) {
+
+
+    var tableWidget = Partial.Widgets.getEntityBanDetailsTable1; // Get the table widget
+
+    if (bans.length > 0) {
+        var dataset = tableWidget.dataset; // Get the table dataset
+
+        dataset.forEach((row, index) => {
+            if (bans.includes(row.banId.toString())) { // Compare with banId in dataset
+                tableWidget.selectItem(index); // Select the matching row
+            }
+        });
+    }
+    /*if (data[0].banList.length > 0) {
         var banList2 = $('#getEntityBanDetailsTableEdit2ForTest  tbody tr');
         for (let j = 0; j < bans.length; j++) {
             for (let i = 0; i < banList2.length; i++) {
@@ -1211,7 +1224,7 @@ Partial.getBanListFromHisForPreselectonSuccess = function(variable, data) {
                 }
             }
         }
-    }
+    }*/
 
 };
 
@@ -1344,4 +1357,14 @@ Partial.getEntityBanDetailsTable1_suspendForRecordOnClick = function($event, wid
     console.log("Updated Selected Items: ", row);
 
     debugger;
+};
+
+Partial.CollectionDataServiceGetEntityBanDetailsonSuccess = function(variable, data) {
+    if (data && data.length > 0) {
+        data.forEach(item => {
+            if (typeof item.suspendForRecord === "undefined") {
+                item.suspendForRecord = false; // Add default value
+            }
+        });
+    }
 };
