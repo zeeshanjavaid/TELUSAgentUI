@@ -485,7 +485,7 @@ Partial.updateandsendbuttonClick = function($event, widget) {
     }
     debugger;
     if (Partial.Widgets.getEntityBanDetailsTable1.selectedItems.length == 0) {
-        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Please select at least 1 BAN";
+        Partial.Variables.popUperrorMsg.dataSet.dataValue = "Please select BAN(s) for this request";
     } else if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
     } else if (isAlreadySusOrRes == "RESTORE") {
