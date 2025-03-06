@@ -558,7 +558,8 @@
                         <wm-table-column binding="suppresionFlag" caption="Suppresion Indicator" width="90px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="banStatus" caption="BAN Status" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
                         <wm-table-column binding="disputeFlag" caption="In Dispute" width="75px" edit-widget-type="checkbox" type="boolean" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="suspendForRecord" caption="Suspend For Record" widget-type="checkbox" width="70px" edit-widget-type="checkbox" type="boolean" searchable="false" show="true" readonly="false">
+                        <wm-table-column binding="suspendForRecord" caption="Suspend For Record" widget-type="checkbox" width="70px" edit-widget-type="checkbox" type="boolean" searchable="false" show="bind:Widgets.EditAndFulfillSentdialog.title == &quot;Edit and Fulfill Service Suspension&quot;"
+                            readonly="false">
                             <wm-checkbox datavalue="bind:row.getProperty('suspendForRecord')==null?false:row.getProperty('suspendForRecord')" disabled="" class="" conditionalclass="" on-click="getEntityBanDetailsTable1_suspendForRecordOnClick($event, widget, row)"></wm-checkbox>
                         </wm-table-column>
                     </wm-table>

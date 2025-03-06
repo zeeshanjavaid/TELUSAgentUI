@@ -128,7 +128,16 @@ function extractCharacteristics(jsonData) {
         return "No characteristics found";
     }
 
-    return jsonData.additionalCharacteristics.map(char => `${char.name}: ${char.value}`).join('\n');
+    return jsonData.additionalCharacteristics.map(char => {
+        let value = char.value;
+
+        // Convert objects or arrays to JSON strings
+        if (typeof value === 'object') {
+            value = JSON.stringify(value, null, 2); // Pretty-print for readability
+        }
+
+        return `${char.name}: ${value}`;
+    }).join('\n');
 }
 
 Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns) {
