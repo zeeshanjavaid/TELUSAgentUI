@@ -24,11 +24,17 @@ Partial.onReady = function() {
     App.showRowExpansionHistory = function(row, data) {
 
         debugger;
-
-        Partial.Variables.getActivityLogPerRef.setInput({
+        let inputParams = {
             'collectionEntityId': row.collectionEntity.id,
             'relatedBusinessEntityId': row.relatedBusinessEntityId
-        });
+        };
+
+        // Add another attribute if row.id is 1
+        if (row.relatedBusinessEntitySubType == "NOTICE") {
+            inputParams.businessEntityEventType = "CCSResponse";
+        }
+
+        Partial.Variables.getActivityLogPerRef.setInput(inputParams);
         Partial.Variables.getActivityLogPerRef.invoke();
     }
 };
