@@ -1,14 +1,25 @@
+/* Set the width of the parent container to prevent table expansion */
+div[name="expandedRowDataTable1"] {
+    width: 1200px !important;
+    max-width: 1200px;
+    display: inline-block; /* Prevent expansion beyond content */
+}
+
+/* Ensure table respects the defined width */
+div[name="expandedRowDataTable1"] table {
+    table-layout: fixed; /* Maintain consistent column widths */
+    width: 100% !important; /* Make sure the table does not stretch */
+}
+
+/* Style table headers */
 div[name="expandedRowDataTable1"] table thead tr th {
     background-color: #e3f6d1;
 }
+
+/* Style table cells to allow proper text wrapping */
 div[name="expandedRowDataTable1"] table td {
     white-space: normal; /* Allow wrapping */
     word-wrap: break-word; /* Break long words if needed */
     overflow-wrap: break-word; /* Ensure wrapping in modern browsers */
-    text-align: left; /* Optional: Align text to the left for readability */
-}
-/* Ensure table respects column widths */
-div[name="expandedRowDataTable1"] table {
-    table-layout: fixed; /* Make sure column widths are consistent */
-    width: 100%; /* Stretch table to full width */
+    text-align: left; /* Align text to the left for readability */
 }
