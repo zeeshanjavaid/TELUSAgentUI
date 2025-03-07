@@ -439,6 +439,7 @@ function callOutboundAction($event, widget) {
                 'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
                 'assignedTeam': Partial.Widgets.assignedTeamSelect.datavalue,
                 'partitionKey': getCurrentDate(),
+                //'queueId': "",
                 'collectionTreatment': {
                     'id': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].id,
                     'partitionKey': Partial.Variables.getCollectionTreatMentByEntId.dataSet[0].partitionKey
@@ -1935,13 +1936,28 @@ Partial.newCollectionActivityLog_TableBeforedatarender = function(widget, $data,
     debugger;
     $data.forEach((item) => {
 
-        if (item.contentTypeCode != null) {
-            console.log(item.contentTypeCode);
-            item.contentTypeCode = getFormattedContentType(item.contentTypeCode);
+        if (item.relatedBusinessEntitySubType != "NOTICE" && item.additionalCharacteristics != null) {
+            item.contentTypeCode = getQueueIdFromCharacteristics(item);
+        } else {
+            if (item.contentTypeCode != null) {
+                console.log(item.contentTypeCode);
+                item.contentTypeCode = getFormattedContentType(item.contentTypeCode);
+            }
         }
-
+        debugger;
     });
 };
+
+function getQueueIdFromCharacteristics(data) {
+    for (var i = 0; i < data.additionalCharacteristics.length; i++) {
+        var characteristic = data.additionalCharacteristics[i];
+
+        if (characteristic.name === "queueId") {
+            return characteristic.value;
+        }
+    }
+    return null; // Return null if no queueId is found
+}
 
 Partial.button2_1Click = function($event, widget) {
     var entityIdStr = Partial.pageParams.entityId

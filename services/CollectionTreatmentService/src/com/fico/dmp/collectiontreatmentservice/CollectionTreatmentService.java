@@ -273,8 +273,11 @@ public class CollectionTreatmentService {
     public CollectionTreatmentStep addCollectionTreatmentStep(CollectionTreatmentStepCreate collectionTreatmentStepCreate) throws Exception {
         objectMapper.setSerializationInclusion(Include.NON_EMPTY);
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
+        if(!collectionTreatmentStepCreate.getStepTypeCode().equalsIgnoreCase("NOTICE")){
+          collectionTreatmentStepCreate.setQueueId("");
+        }
         String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepCreate);
-        logger.info(":::::Before calling Create coll treatment step- RequestPayload :::", requestPayload);
+        logger.info(":::::Before calling Create coll treatment step- RequestPayload :::" + requestPayload);
         String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, collectionTreatmentEndPointUrl + URIConstant.ApiMapping.GET_COLLECTION_TREATMENT_STEP, "POST", collTreatmentSvcAuthScope);
         logger.info("::::::::Response from Success Telus  API- Create coll treatment step:::::\n::::::: {}", responseStr);
         collectionTreatmentStep = objectMapper.readValue(responseStr, CollectionTreatmentStep.class);
