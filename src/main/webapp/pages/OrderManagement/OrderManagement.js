@@ -727,6 +727,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
     }
 
     Partial.Variables.BanListRefIds.dataSet = [];
+    Partial.Variables.additionalChar.dataSet = [];
     Partial.Widgets.getEntityBanDetailsTable1.selectedItems;
     Partial.selectedBanList = [];
     Partial.selectedBanListForSuspendForRecord = [];
@@ -753,6 +754,14 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
         Partial.Variables.BanListRefIds.dataSet.push(Partial.selectedBanList);
     });
 
+
+    if (Partial.selectedBanListForSuspendForRecord.length > 0) {
+        Partial.Variables.additionalChar.dataSet.push({
+            name: 'susForRecBillingAccountRefIds',
+            value: Partial.selectedBanListForSuspendForRecord // Keeping the array format
+        });
+    }
+
     if (isAlreadySusOrRes == "SUSPEND") {
         Partial.Variables.popUperrorMsg.dataSet.dataValue = "BAN is already Suspended";
     } else if (isAlreadySusOrRes == "RESTORE") {
@@ -772,6 +781,8 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
             Partial.Variables.newlyAssignedPerson.dataset = Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.assignedAgentId
             Partial.Variables.updatedAssignedPerson.dataset = Partial.Widgets.assignedPersonSelect.datavalue;
             Partial.Variables.updateSelectedBans.dataset = Partial.Variables.BanListRefIds.dataSet;
+            Partial.Variables.updateSelectedBansChar.dataset = Partial.Variables.additionalChar.dataSet;
+
             Partial.Variables.getStatusIfAssignedPersonChanged.dataset = 'Order Fulfilled';
             Partial.Variables.updatePriority.dataset = Partial.Widgets.prioritySelect.datavalue;
             Partial.Variables.updateAssignedTeam.dataset = Partial.Widgets.assignedTeamSelect.datavalue;
@@ -784,7 +795,7 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                 'partitionKey': Partial.Widgets.getCollectionTreatmentStep_orderMngt.selecteditem.partitionKey,
                 "CollectionTreatmentStepUpdate": {
                     'stepTypeCode': stepTypeCode,
-                    //'status': 'Order Fulfilled',
+                    'status': 'Order Fulfilled',
                     'priority': Partial.Widgets.prioritySelect.datavalue,
                     'comment': Partial.Widgets.AddComment2.datavalue,
                     'assignedAgentId': Partial.Widgets.assignedPersonSelect.datavalue,
@@ -806,6 +817,12 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                     billingAccountRefs: Partial.Variables.BanListRefIds.dataSet
                 };
             }
+            if (Partial.Variables.additionalChar.dataSet && Partial.Variables.additionalChar.dataSet.length > 0) {
+                payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
+                    additionalCharacteristics: Partial.Variables.additionalChar.dataSet
+                };
+            }
+            debugger;
             Partial.Variables.UpdateODManagemntAndFullfillIfAssignedChange.setInput(payload);
             Partial.Variables.UpdateODManagemntAndFullfillIfAssignedChange.invoke();
             Partial.Widgets.EditAndFulfillSentdialog.close();
@@ -840,11 +857,10 @@ Partial.updateAndFulfilbuttonClick = function($event, widget) {
                 };
             }
 
-            if (Partial.selectedBanListForSuspendForRecord.length > 0) {
-                payload.CollectionTreatmentStepUpdate.additionalCharacteristics = [{
-                    name: 'susForRecBillingAccountRefIds',
-                    value: Partial.selectedBanListForSuspendForRecord //.join(",") // Directly use the array and convert to CSV
-                }];
+            if (Partial.Variables.additionalChar.dataSet && Partial.Variables.additionalChar.dataSet.length > 0) {
+                payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
+                    additionalCharacteristics: Partial.Variables.additionalChar.dataSet
+                };
             }
 
             debugger;
@@ -970,6 +986,11 @@ Partial.update_YesBtnClick = function($event, widget) {
         if (Partial.Variables.updateSelectedBans.dataset && Partial.Variables.updateSelectedBans.dataset.length > 0) {
             payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
                 billingAccountRefs: Partial.Variables.updateSelectedBans.dataset
+            };
+        }
+        if (Partial.Variables.updateSelectedBansChar.dataSet && Partial.Variables.updateSelectedBansChar.dataSet.length > 0) {
+            payload.CollectionTreatmentStepUpdate = { ...payload.CollectionTreatmentStepUpdate,
+                additionalCharacteristics: Partial.Variables.updateSelectedBansChar.dataSet
             };
         }
         Partial.Variables.UpdateODManagemntWhenAssignChange.setInput(payload);

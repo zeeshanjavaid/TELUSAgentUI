@@ -205,6 +205,20 @@
     "saveInPhonegap" : false,
     "controller" : "QueryExecution"
   },
+  "fullComment" : {
+    "_id" : "wm-fullComment-wm.Variable-1741320052979",
+    "name" : "fullComment",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "getAllRoles" : {
     "_id" : "wm-getAllRoles1-wm.LiveVariable-1674562097966",
     "name" : "getAllRoles",

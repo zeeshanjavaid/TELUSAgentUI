@@ -49,6 +49,20 @@
     "isList" : true,
     "saveInPhonegap" : false
   },
+  "additionalChar" : {
+    "_id" : "wm-additionalChar-wm.Variable-1741298716818",
+    "name" : "additionalChar",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "dataValue" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
   "BanListRefIds" : {
     "_id" : "wm-BanListRefIds-wm.Variable-1687857028465",
     "name" : "BanListRefIds",
@@ -1159,6 +1173,20 @@
   "updateSelectedBans" : {
     "_id" : "wm-updateSelectedBans-wm.Variable-1692012279118",
     "name" : "updateSelectedBans",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "updateSelectedBansChar" : {
+    "_id" : "wm-updateSelectedBansChar-wm.Variable-1741297498699",
+    "name" : "updateSelectedBansChar",
     "owner" : "Page",
     "category" : "wm.Variable",
     "subCategory" : "None",

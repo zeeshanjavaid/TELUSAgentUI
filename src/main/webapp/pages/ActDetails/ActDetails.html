@@ -1,0 +1,19 @@
+<wm-partial name="partial1">
+    <wm-layoutgrid name="layoutgrid1" columns="1" width="100%">
+
+        <!-- Fixed Heading Label -->
+        <wm-gridrow name="headerRow">
+            <wm-gridcolumn columnwidth="12" name="headerColumn" padding="10px">
+                <wm-label name="labelHeading" caption="Full Comment Details" color="#4B286D" fontsize="16" fontweight="bold"></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+
+        <!-- Scrollable Content Section -->
+        <wm-gridrow name="contentRow">
+            <wm-gridcolumn columnwidth="12" name="contentColumn" padding="10px" style="height: 300px; overflow-y: auto; border: 1px solid #ccc;">
+                <wm-label name="CURR" caption="" textalign="left"></wm-label>
+            </wm-gridcolumn>
+        </wm-gridrow>
+
+    </wm-layoutgrid>
+</wm-partial>

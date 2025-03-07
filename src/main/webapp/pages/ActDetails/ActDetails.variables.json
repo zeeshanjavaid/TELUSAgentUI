@@ -1,0 +1,31 @@
+{
+  "getEntityDetailsAR" : {
+    "_id" : "wm-getEntityDetailsAR-wm.ServiceVariable-1690803384311",
+    "name" : "getEntityDetailsAR",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "subCategory" : "None",
+    "dataBinding" : [ {
+      "target" : "accountStatus",
+      "value" : "ALL",
+      "type" : "string"
+    } ],
+    "type" : "telus.cdo.cnc.collmgmt.colldatamgmt.model.EntityDetailsResponse",
+    "service" : "CollectionDataService",
+    "operation" : "getEntityDetails",
+    "operationId" : "CollectionDataController_getEntityDetails",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "getEntityDetailsARonSuccess(variable, data, options)",
+    "onError" : "getEntityDetailsARonError(variable, data, xhrObj)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "CollectionData"
+  }
+}

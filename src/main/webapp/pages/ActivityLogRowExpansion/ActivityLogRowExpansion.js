@@ -33,6 +33,12 @@ Partial.onReady = function() {
     }
 };
 
+Partial.popoverClicked = function(comment) {
+    console.log("Popover clicked with comment:", comment);
+    // Add your custom logic here
+    debugger;
+}
+
 Partial.getActivityLogPerRefonSuccess = function(variable, data) {
     debugger;
     //change data or set values here
@@ -241,4 +247,8 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
     } else {
         console.error("Columns not found.");
     }*/
+};
+Partial.expandedRowDataTable1_commentOnClick = function($event, widget, row) {
+    debugger;
+    App.Variables.fullComment.dataSet.dataValue = row.comment;
 };

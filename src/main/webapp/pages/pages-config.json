@@ -3,6 +3,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "ActDetails",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
   "name" : "ActivityLog",
   "type" : "PAGE",
   "params" : [ ]
