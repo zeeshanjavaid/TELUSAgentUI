@@ -160,31 +160,32 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
         console.log(`Index: ${index}, relatedBusinessEntityStatus:`, item.relatedBusinessEntityStatus);
         console.log(`Index: ${index}, businessEntityEventType:`, item.businessEntityEventType);
 
-        debugger;
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'NOTC' || item.relatedBusinessEntitySubType.toUpperCase() == 'NOTICE') {
-            debugger;
             //$columns.type.show = false;
             $columns.deliveryType.show = true;
             item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
+            debugger;
+            $columns.comment.show = true;
+            $columns.commentLabel.show = false;
             /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
-                debugger;
-                var mediumType = getFirstAvailableContactMediumType(item);
-                item.deliveryType = mediumType;
+                            debugger;
+                            var mediumType = getFirstAvailableContactMediumType(item);
+                            item.deliveryType = mediumType;
 
-                var emailAddresses;
-                var accountDetails;
+                            var emailAddresses;
+                            var accountDetails;
 
-                if (mediumType.toUpperCase() == 'EMAIL') {
-                    console.log(extractInfoFromJson(item));
-                    emailAddresses = getAllEmails(item);
-                    accountDetails = extractInfoFromJson(item);
-                    item.comment = formatTextWithLineBreaks(emailAddresses + "\n" + accountDetails);
-                }
+                            if (mediumType.toUpperCase() == 'EMAIL') {
+                                console.log(extractInfoFromJson(item));
+                                emailAddresses = getAllEmails(item);
+                                accountDetails = extractInfoFromJson(item);
+                                item.comment = formatTextWithLineBreaks(emailAddresses + "\n" + accountDetails);
+                            }
 
-                item.comment = formatTextWithLineBreaks(extractCharacteristics(item)); //remove later
-            } else {
-                item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
-            }*/
+                            item.comment = formatTextWithLineBreaks(extractCharacteristics(item)); //remove later
+                        } else {
+                            item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
+                        }*/
 
             /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
                 item.collectionActivityPerformedBy = item.relatedBusinessEntityCreatedBy;

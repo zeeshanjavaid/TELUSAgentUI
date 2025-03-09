@@ -6,9 +6,12 @@
         <wm-table-column binding="collectionActivityTimestamp" caption="Event Date" width="60px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="businessEntityEventType" caption="Event Type" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="deliveryType" caption="Delivery Type" width="50px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
-        <wm-table-column binding="comment" caption="Comment" widget-type="label" width="200px" edit-widget-type="text" type="string" show="true" readonly="false">
-            <wm-popover popoverwidth="400" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="popover1" caption="bind:(row.getProperty('comment').length > 60 ? row.getProperty('comment').substring(0, 60) + '...' : row.getProperty('comment'))" contentsource="partial"
+        <wm-table-column binding="comment" caption="Comment" widget-type="label" width="200px" edit-widget-type="text" type="string" show="false" readonly="false">
+            <wm-popover popoverwidth="400" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="commentPopOver" caption="bind:(row.getProperty('comment').length > 60 ? row.getProperty('comment').substring(0, 60) + '...' : row.getProperty('comment'))" contentsource="partial"
                 content="ActDetails" popoverplacement="right" on-show="expandedRowDataTable1_commentOnClick($event, widget, row)"></wm-popover>
+        </wm-table-column>
+        <wm-table-column binding="commentLabel" caption="Comment" widget-type="label" width="200px" edit-widget-type="text" type="string" show="true" readonly="false">
+            <wm-label name="label1" caption="bind:row.getProperty('comment')" class="" conditionalclass=""></wm-label>
         </wm-table-column>
     </wm-table>
 </wm-partial>
