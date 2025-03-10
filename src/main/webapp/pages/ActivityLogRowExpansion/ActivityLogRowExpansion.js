@@ -152,6 +152,36 @@ function extractCharacteristics(jsonData) {
     }).join('\n');
 }
 
+function getFicoClientCodeDescription(code) {
+    const ficoCollectionsMap = {
+        "ES1": "excluded from contact",
+        "TNS": "text message sent successfully to @SMS_Phone",
+        "TIU": "text message delivery to @SMS_Phone failed",
+        "TST": "inbound text message opted-out - @SMS_Phone",
+        "TCS": "inbound text message - already paid",
+        "TFS": "inbound text message - pay now",
+        "EIS": "email sent @To_Email_Address",
+        "ERS": "email delivery to @To_Email_Address failed",
+        "ERW": "email - no contact window available",
+        "EQ1": "email already paid link clicked",
+        "EQ2": "email pay now link clicked",
+        "C01": "web channel - already paid selected",
+        "C10": "web channel - external link selected",
+        "NNA": "outbound call - no answer",
+        "AVA": "outbound call - left voicemail",
+        "WII": "outbound call answered",
+        "XRS": "outbound call - further assistance selected",
+        "CCP": "outbound call - already paid selected",
+        "XPE": "outbound call - pay now selected",
+        "ERW": "outbound call - no call window available",
+        "IAHU": "inbound call received",
+        "IXRS": "inbound call - further assistance selected",
+        "ICCP": "inbound call - already paid selected",
+        "IXPE": "inbound call - pay now selected"
+    };
+
+    return ficoCollectionsMap[code] || "";
+}
 Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns) {
     //control table column show or hide here
     debugger;
@@ -163,33 +193,12 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'NOTC' || item.relatedBusinessEntitySubType.toUpperCase() == 'NOTICE') {
             //$columns.type.show = false;
             $columns.deliveryType.show = true;
+            item.deliveryType = getFicoClientCodeDescription(item.additionalCharacteristics.find(item => item.name === 'CLIENT_CODE').value);
+
             item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
             debugger;
             $columns.comment.show = true;
             $columns.commentLabel.show = false;
-            /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
-                            debugger;
-                            var mediumType = getFirstAvailableContactMediumType(item);
-                            item.deliveryType = mediumType;
-
-                            var emailAddresses;
-                            var accountDetails;
-
-                            if (mediumType.toUpperCase() == 'EMAIL') {
-                                console.log(extractInfoFromJson(item));
-                                emailAddresses = getAllEmails(item);
-                                accountDetails = extractInfoFromJson(item);
-                                item.comment = formatTextWithLineBreaks(emailAddresses + "\n" + accountDetails);
-                            }
-
-                            item.comment = formatTextWithLineBreaks(extractCharacteristics(item)); //remove later
-                        } else {
-                            item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
-                        }*/
-
-            /*if (item.relatedBusinessEntityStatus.toUpperCase() == "CLOSED" && item.businessEntityEventType.toUpperCase() == "STATUS") {
-                item.collectionActivityPerformedBy = item.relatedBusinessEntityCreatedBy;
-            }*/
         }
 
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'CALL-OB') {
