@@ -84,19 +84,21 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
             //item.dueDate = item.relatedBusinessEntityDueDate;
             $columns.phoneNumber.show = true;
             $columns.reachedCustomer.show = true;
-            var phoneNumberCharacteristic = item.additionalCharacteristics.find(function(char) {
-                return char.name === 'PhoneNumber';
-            });
+            if (item.additionalCharacteristics && Array.isArray(item.additionalCharacteristics)) {
+                var phoneNumberCharacteristic = item.additionalCharacteristics.find(function(char) {
+                    return char.name === 'PhoneNumber';
+                });
 
-            var reachedCustomerCharacteristic = item.additionalCharacteristics.find(function(char) {
-                return char.name === 'ReachedCustomer';
-            });
-            if (phoneNumberCharacteristic && phoneNumberCharacteristic.value) {
-                item.phoneNumber = phoneNumberCharacteristic.value;
-            }
+                var reachedCustomerCharacteristic = item.additionalCharacteristics.find(function(char) {
+                    return char.name === 'ReachedCustomer';
+                });
+                if (phoneNumberCharacteristic && phoneNumberCharacteristic.value) {
+                    item.phoneNumber = phoneNumberCharacteristic.value;
+                }
 
-            if (reachedCustomerCharacteristic && reachedCustomerCharacteristic.value) {
-                item.reachedCustomer = reachedCustomerCharacteristic.value;
+                if (reachedCustomerCharacteristic && reachedCustomerCharacteristic.value) {
+                    item.reachedCustomer = reachedCustomerCharacteristic.value;
+                }
             }
             //$columns.relatedBusinessEntityAssignedTo.show = true;
             //$columns.relatedBusinessEntityAssignedTeam.show = true;
