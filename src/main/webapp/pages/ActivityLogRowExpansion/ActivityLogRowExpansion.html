@@ -8,11 +8,12 @@
         <wm-table-column binding="relatedBusinessEntityStatus" caption="Status" width="30px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
         <wm-table-column binding="deliveryType" caption="Description" width="100px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
         <wm-table-column binding="lang" caption="Language" width="30px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
+        <wm-table-column binding="dueDate" caption="Due Date" width="40px" edit-widget-type="datetime" type="datetime" datepattern="yyyy-MM-dd" formatpattern="toDate" show="false" readonly="false"></wm-table-column>
         <wm-table-column binding="phoneNumber" caption="Phone Number" width="30px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
         <wm-table-column binding="reachedCustomer" caption="Reached Customer" width="30px" edit-widget-type="text" type="string" searchable="false" show="false" readonly="false"></wm-table-column>
         <wm-table-column binding="comment" caption="Event Details" widget-type="label" width="100px" edit-widget-type="text" type="string" show="false" readonly="false">
-            <wm-popover popoverwidth="400" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="commentPopOver" caption="bind:(row.getProperty('comment').length > 60 ? 'Notification Data Details...' : row.getProperty('comment'))" contentsource="partial"
-                content="ActDetails" popoverplacement="right" on-show="expandedRowDataTable1_commentOnClick($event, widget, row)"></wm-popover>
+            <wm-popover popoverwidth="400" padding="0.5em 0.5em unset 0.5em" fontsize="12" name="commentPopOver" caption="bind:(row.getProperty('comment').length > 60 ? 'Notification Data Details...' : row.getProperty('comment'))" contentsource="partial" content="ActDetails"
+                popoverplacement="right" on-show="expandedRowDataTable1_commentOnClick($event, widget, row)"></wm-popover>
         </wm-table-column>
         <wm-table-column binding="commentLabel" caption="Event Details" widget-type="label" width="100px" edit-widget-type="text" type="string" show="true" readonly="false">
             <wm-label name="label1" caption="bind:row.getProperty('comment')" class="" conditionalclass=""></wm-label>

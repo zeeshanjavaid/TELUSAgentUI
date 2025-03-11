@@ -80,8 +80,8 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
 
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'CALL-OB') {
             debugger;
-            //$columns.dueDate.show = true;
-            //item.dueDate = item.relatedBusinessEntityDueDate;
+            $columns.dueDate.show = true;
+            item.dueDate = item.relatedBusinessEntityDueDate;
             $columns.phoneNumber.show = true;
             $columns.reachedCustomer.show = true;
             if (item.additionalCharacteristics && Array.isArray(item.additionalCharacteristics)) {
@@ -108,8 +108,8 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
             item.relatedBusinessEntitySubType.toUpperCase() == 'RESTORE' || item.relatedBusinessEntitySubType.toUpperCase() == 'CEASE') {
             $columns.dueDate.show = true;
             item.dueDate = item.relatedBusinessEntityDueDate;
-            $columns.relatedBusinessEntityAssignedTo.show = true;
-            $columns.relatedBusinessEntityAssignedTeam.show = true;
+            //$columns.relatedBusinessEntityAssignedTo.show = true;
+            //$columns.relatedBusinessEntityAssignedTeam.show = true;
         }
         /*if (item.additionalCharacteristics != undefined) {
             item.additionalCharacteristics.forEach(char => {
