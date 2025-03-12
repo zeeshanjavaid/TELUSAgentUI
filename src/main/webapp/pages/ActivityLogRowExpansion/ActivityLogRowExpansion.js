@@ -46,7 +46,6 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
         console.log(`Index: ${index}, businessEntityEventType:`, item.businessEntityEventType);
 
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'NOTC' || item.relatedBusinessEntitySubType.toUpperCase() == 'NOTICE') {
-            //$columns.type.show = false;
             item.comment = formatTextWithLineBreaks(extractCharacteristics(item));
             if (item.businessEntityEventType && item.businessEntityEventType.toUpperCase() == 'CCSRESPONSE' && item.additionalCharacteristics && Array.isArray(item.additionalCharacteristics)) {
                 //item.deliveryType = getFicoClientCodeDescription(item.additionalCharacteristics.find(item => item.name === 'CLIENT_CODE').value);
@@ -100,61 +99,16 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
                     item.reachedCustomer = reachedCustomerCharacteristic.value;
                 }
             }
-            //$columns.relatedBusinessEntityAssignedTo.show = true;
-            //$columns.relatedBusinessEntityAssignedTeam.show = true;
         }
 
         if (item.relatedBusinessEntitySubType.toUpperCase() == 'CALL-IB' || item.relatedBusinessEntitySubType.toUpperCase() == 'SUSPEND' ||
             item.relatedBusinessEntitySubType.toUpperCase() == 'RESTORE' || item.relatedBusinessEntitySubType.toUpperCase() == 'CEASE') {
             $columns.dueDate.show = true;
             item.dueDate = item.relatedBusinessEntityDueDate;
-            //$columns.relatedBusinessEntityAssignedTo.show = true;
-            //$columns.relatedBusinessEntityAssignedTeam.show = true;
         }
-        /*if (item.additionalCharacteristics != undefined) {
-            item.additionalCharacteristics.forEach(char => {
-                if (char.name === 'cssRequest') {
-                    const emails = [];
-                    debugger;
-                    Object.keys(char.value).forEach(key => {
-                        if (key.startsWith("Contact_") && key.endsWith("_Email")) {
-                            console.log(`${key}:`, char.value[key]);
-                            emails.push(char.value[key]); // Collect emails
-                        }
-                    });
-                    if (emails.length > 0) {
-                        console.log("Concatenated Emails:\n" + emails.join("\n"));
-                        $columns.email.show = true;
-                        item.email = emails.join("\n");
-                    }
-                }
-                if (char.name === 'cssResponse') {
-                    debugger;
-                    console.log("Message:", char.value.message);
-                }
-                if (char.name === 'EmailAddress') {
-                    //                if (item.relatedBusinessEntitySubType === 'EM-IN' && char.name === 'EmailAddress') {
-                    debugger;
-                    console.log("Email Address:", char.value);
-                    $columns.email.show = true;
-                    item.email = char.value; // + ' ' + index;
-                }
-                if (item.relatedBusinessEntitySubType === 'CALL-OB' && char.name === 'PhoneNumber') {
-                    debugger;
-                    console.log("Phone Number:", char.value);
-                    $columns.phoneNumber.show = true;
-                    item.phoneNumber = char.value; // + ' ' + index;
-                }
-            });
-        }*/
     });
+
     debugger;
-    /* Ensure columns exist
-    if ($columns) {
-        $columns.type.show = !$data.some(row => row.relatedBusinessEntitySubType === 'CALL-OB');
-    } else {
-        console.error("Columns not found.");
-    }*/
 };
 
 

@@ -676,7 +676,7 @@
       "type" : "string"
     }, {
       "target" : "typeCode",
-      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC,NOTICE'",
+      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC,NOTICE,AGENCY-INTERNAL'",
       "type" : "string"
     }, {
       "target" : "status",
