@@ -316,7 +316,7 @@ public class CollectionEntityService {
     public CollectionEntityUpdate  updateCollectionEntity(@PathVariable("id") Integer id, CollectionEntityUpdate collectionEntityUpdate ) throws Exception {
     	 logger.info("Inside updateCollectionEntity method for entityId = "+id);
      	String requestPayload = objectMapper.writeValueAsString(collectionEntityUpdate);
-     	requestPayload = requestPayload.replace("\"NULL\"", "null");
+     	//requestPayload = requestPayload.replace("\"NULL\"", "null");
      	logger.info("::::::::Request payload for Update Collection entity:::::"+requestPayload);
      	logger.info("URL is : "+this.parrEndPointUrl);
      	String responseStr = telusAPIConnectivityService.executeTelusAPI(requestPayload, this.parrEndPointUrl + URIConstant.ApiMapping.GET_ENTITY + "/" + id, "PATCH", entitySvcAuthScope);

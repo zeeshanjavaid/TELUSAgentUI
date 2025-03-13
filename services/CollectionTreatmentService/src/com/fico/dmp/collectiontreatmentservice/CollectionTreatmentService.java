@@ -274,7 +274,7 @@ public class CollectionTreatmentService {
         objectMapper.setSerializationInclusion(Include.NON_EMPTY);
         CollectionTreatmentStep collectionTreatmentStep = new CollectionTreatmentStep();
         if(!collectionTreatmentStepCreate.getStepTypeCode().equalsIgnoreCase("NOTICE")){
-          collectionTreatmentStepCreate.setQueueId("");
+          collectionTreatmentStepCreate.setQueueId("MANUAL CREATE");
         }
         String requestPayload = objectMapper.writeValueAsString(collectionTreatmentStepCreate);
         logger.info(":::::Before calling Create coll treatment step- RequestPayload :::" + requestPayload);

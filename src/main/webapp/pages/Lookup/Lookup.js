@@ -182,6 +182,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     } else if (Page.Variables.getCollectionEntityById.dataSet.id == Page.Widgets.table4.selectedItems[0].id) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
+        debugger;
         App.Variables.errorMsg.dataSet.dataValue = null;
         let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
@@ -256,6 +257,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
 
             function(data) {
                 //PATCH for transferring
+                debugger;
                 billingAccountRefMaps = billingAccountRefMaps1;
 
                 Page.Variables.PatchInCollectionEntity.setInput({
@@ -269,7 +271,7 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
                         },
                         billingAccountRefMaps,
                         "relatedEntity": {
-                            "id": "NULL",
+                            "id": null,
                             "role": "BG"
                         },
                     }
