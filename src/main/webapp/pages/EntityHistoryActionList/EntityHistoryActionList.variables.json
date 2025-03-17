@@ -159,6 +159,8 @@
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
+    }, {
+      "dataValue" : "NOTICE"
     } ],
     "type" : "string",
     "isList" : true,
@@ -187,6 +189,8 @@
       "dataValue" : "CEASE"
     }, {
       "dataValue" : "SUSPEND"
+    }, {
+      "dataValue" : "NOTICE"
     } ],
     "type" : "string",
     "isList" : true,
@@ -304,23 +308,15 @@
     }, {
       "dataValue" : "FOLLOWUP"
     }, {
-      "dataValue" : "NOTC1-PMTR"
-    }, {
-      "dataValue" : "NOTC3-DIST"
-    }, {
-      "dataValue" : "NOTC4-CANL"
+      "dataValue" : "NOTC"
     }, {
       "dataValue" : "RESTORE"
     }, {
       "dataValue" : "CEASE"
     }, {
-      "dataValue" : "NOTC2-OD"
-    }, {
       "dataValue" : "SUSPEND"
     }, {
-      "dataValue" : "NOTC5-ACTMGR"
-    }, {
-      "dataValue" : "NOTC6-REFERRAL"
+      "dataValue" : "NOTICE"
     } ],
     "type" : "string",
     "isList" : true,

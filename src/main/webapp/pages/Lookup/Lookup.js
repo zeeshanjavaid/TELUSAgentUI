@@ -787,3 +787,17 @@ Page.button6Click = function($event, widget) {
     //Invoke POST createContact service
     Page.Variables.updateManualFlag.invoke();
 };
+
+Page.PatchOutCollectionEntityonError = function(variable, data, xhrObj) {
+    debugger;
+};
+Page.PatchOutCollectionEntityonSuccess = function(variable, data) {
+    debugger;
+};
+Page.PatchInCollectionEntityonError = function(variable, data, xhrObj) {
+    debugger;
+};
+
+Page.entityBanTravelHistoryVaronSuccess = function(variable, data) {
+    debugger;
+};

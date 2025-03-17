@@ -152,7 +152,7 @@ public class CollectionActivityLogService {
             }else{
                 encodedStatus=relatedBusinessEntityStatus;
             }
-            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL", "NOTICE" };
+            String[] notcTypeCodes = { "NOTC1-PMTR", "NOTC2-OD", "NOTC3-DIST", "NOTC4-CANL", "NOTC5-ACTMGR", "NOTC6-REFERRAL"};
             if (relatedBusinessEntitySubType != null) {
                 if (relatedBusinessEntitySubType.equalsIgnoreCase("NOTC")) {
                     relatedBusinessEntitySubType = String.join(",", notcTypeCodes);

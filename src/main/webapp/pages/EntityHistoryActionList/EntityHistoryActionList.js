@@ -43,7 +43,6 @@ Partial.onReady = function() {
     $('#filterGrid').hide();
     $('#completionDateGrid').hide();
     $('#completedTableGrid').hide();
-    $('#completedTableGrid1').hide();
     $("#toDoBtn").css("background-color", "#4B286D");
     $("#toDoBtn").css("color", "white");
 };
@@ -1026,6 +1025,7 @@ Partial.SelectActionDialogOpened = function($event, widget) {
 
 // function added to toggle between show and hide the filter grid on click of filter icon
 Partial.openFilterGrid = function($event, widget) {
+    debugger;
     var filterGrid = document.getElementById("filterGrid");
     if (filterGrid.style.display === "none") {
         filterGrid.style.display = "block";
@@ -1145,11 +1145,16 @@ Partial.applyFilter = function($event, widget) {
             //   typeCode = 'CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,RESTORE,CEASE,SUSPEND';
             typeCode = '';
         } else if (Partial.Widgets.typeSelect.datavalue == 'NOTC') {
-            typeCode = 'NOTC';
+            typeCode = Partial.Widgets.typeSelect.datavalue;
             if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
                 contentTypeCode = 'eq:' + Partial.Widgets.contentIdSelectionList.datavalue;
             }
 
+        } else if (Partial.Widgets.typeSelect.datavalue == 'NOTICE') {
+            typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
+            if (Partial.Widgets.contentIdSelectionList.datavalue != undefined && Partial.Widgets.contentIdSelectionList.datavalue != '') {
+                contentTypeCode = 'eq:' + Partial.Widgets.contentIdSelectionList.datavalue;
+            }
         } else {
             typeCode = 'eq:' + Partial.Widgets.typeSelect.datavalue;
         }
@@ -1302,8 +1307,6 @@ Partial.toDoButtonClick = function($event, widget) {
     // display TO-DO table and hide Completed table
     $('#toDoTableGrid').show();
     $('#completedTableGrid').hide();
-    $('#completedTableGrid1').hide();
-    $('#completionDateGrid').hide();
 };
 
 Partial.completedButtonClick = function($event, widget) {
@@ -1340,8 +1343,6 @@ Partial.completedButtonClick = function($event, widget) {
 
     // display Completed table and hide TO-DO table
     $('#completedTableGrid').show();
-    $('#completedTableGrid1').show();
-    $('#completionDateGrid').show();
     $('#toDoTableGrid').hide();
     $('#eventTypeColl').show();
 
@@ -1782,7 +1783,7 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
             Partial.Widgets.contentIdSelectionList.disabled = true;
             Partial.Widgets.contentIdSelectionList.datavalue = "";
-        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC" || Partial.Widgets.typeSelect.datavalue == "NOTICE") {
             debugger;
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusSelectToDo.dataSet;
@@ -1804,7 +1805,7 @@ Partial.typeSelectChange = function($event, widget, newVal, oldVal) {
             Partial.Variables.actionStatus.dataSet = Partial.Variables.statusWhenTypeIsSus_Res_Cease.dataSet;
             Partial.Widgets.contentIdSelectionList.disabled = true;
             Partial.Widgets.contentIdSelectionList.datavalue = "";
-        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC") {
+        } else if (Partial.Widgets.typeSelect.datavalue == "NOTC" || Partial.Widgets.typeSelect.datavalue == "NOTICE") {
             debugger;
             Partial.Widgets.statusSelect.datavalue = "";
             Partial.Variables.actionStatus.dataSet = Partial.Variables.allStatusForHistory.dataSet;
