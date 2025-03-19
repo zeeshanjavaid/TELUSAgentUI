@@ -11,6 +11,7 @@
             <wm-gridcolumn columnwidth="4" name="gridcolumn3" horizontalalign="right" text-align="end" padding="0.5em 2em 0 0">
                 <!--                <wm-popover popoverwidth="100" popoverheight="50" margin="unset 0.5em" name="CreateActionPopOver" caption="..." contentsource="inline" show="true"><wm-layoutgrid name="layoutgrid1000"><wm-gridrow name="gridrow1000"><wm-gridcolumn columnwidth="12" name="gridcolumn1000"><wm-anchor margin="0.8em 0.5em 0 0.5em" name="CreateActionLink" caption="Create Action" on-click="CreateActionLinkClick($event, widget)"></wm-anchor></wm-gridcolumn></wm-gridrow></wm-layoutgrid></wm-popover>-->
                 <wm-button class="btn-default" caption="Create Action" type="button" margin="unset 0.5em" name="CreateActionbutton" on-click="CreateActionbuttonClick($event, widget)"></wm-button>
+                <!--wm-button class="btn-default" caption="Create Action" type="button" margin="unset 0.5em" name="CreateActionbutton" on-click="CreateActionbuttonClick($event, widget)" disabled="bind:Variables.entityManualFlag.dataSet.dataValue ? false : true"></wm-button-->
             </wm-gridcolumn>
         </wm-gridrow>
     </wm-layoutgrid>
@@ -460,8 +461,8 @@
             </wm-gridrow>
             <wm-gridrow name="gridrow10">
                 <wm-gridcolumn width="50%" columnwidth="12" name="gridcolumn13" padding="unset 0.5em 0.5em unset">
-                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate" datepattern="yyyy-MM-dd" readonly="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.auditInfo.createdBy===&quot;SAS Batch Job&quot;"
-                        excludedays="0,6" excludedates="2024-10-28, 2024-10-29"></wm-date>
+                    <wm-date name="dueDate" placeholder="" datavalue="bind:Widgets.getCollectionTreatmentStepTable2.selecteditem.stepDate" datepattern="yyyy-MM-dd" readonly="bind:['tcm-collections-parr-eval-batch', 'SAS Batch Job', 'system', 'collection-event-management', 'collection-assessment-management', 'collection-treatment-task-management'].includes(Widgets.getCollectionTreatmentStepTable2.selecteditem.auditInfo.createdBy.toLowerCase())
+" excludedays="0,6" excludedates="2024-10-28, 2024-10-29"></wm-date>
                 </wm-gridcolumn>
             </wm-gridrow>
             <wm-gridrow name="gridrow11">

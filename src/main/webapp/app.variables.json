@@ -150,6 +150,20 @@
     "isList" : false,
     "saveInPhonegap" : false
   },
+  "entityManualFlag" : {
+    "_id" : "wm-entityManualFlag-wm.Variable-1742268739636",
+    "name" : "entityManualFlag",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "subCategory" : "None",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
   "EntityProfilePageName" : {
     "_id" : "wm-EntityProfilePageName-wm.Variable-1690535309966",
     "name" : "EntityProfilePageName",

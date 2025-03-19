@@ -248,8 +248,14 @@ public class CollectionTreatmentService {
 
             collectionTreatmentStepResponseList.stream().forEach(a -> a.setAssignedAgentId(commonUtilityService.getNameUsingEmpId(a.getAssignedAgentId())));
             // collectionTreatmentStepResponseList.stream().forEach(a->a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy())));
+            
+             List<String> systemIDs = Arrays.asList(
+            "tcm-collections-parr-eval-batch",
+            "SAS Batch Job",
+            "system","collection-event-management","collection-assessment-management","collection-treatment-task-management"
+        );
             collectionTreatmentStepResponseList.stream().forEach(a -> {
-                if (a.getAuditInfo().getCreatedBy().equalsIgnoreCase("SAS Batch Job")) {
+                if (systemIDs.contains(a.getAuditInfo().getCreatedBy())) {
                     a.getAuditInfo().setCreatedBy(a.getAuditInfo().getCreatedBy());
                 } else {
                     a.getAuditInfo().setCreatedBy(commonUtilityService.getNameUsingEmpId(a.getAuditInfo().getCreatedBy()));

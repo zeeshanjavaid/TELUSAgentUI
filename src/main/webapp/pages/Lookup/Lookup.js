@@ -183,6 +183,16 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
         App.Variables.errorMsg.dataSet.dataValue = "Please select different Entity to transfer the BAN";
     } else {
         debugger;
+
+        /* Global variable
+    let todaysDateJsonFormat;
+
+    // Fetch and set the accurate time
+    getAccurateJsonDate().then(time => {
+        todaysDateJsonFormat = time;
+        console.log("Time Set:", todaysDateJsonFormat);
+    });
+*/
         App.Variables.errorMsg.dataSet.dataValue = null;
         let todaysDateJsonFormat = new Date().toJSON();
         Page.Variables.BanListForTransferToExistingEntVar.dataSet = [];
@@ -728,6 +738,7 @@ Page.getEntityDetailsForCancelledEntitiesonSuccess = function(variable, data) {
 };
 Page.toggle1Click = function($event, widget) {
     debugger;
+
     // Store the current value of the toggle in a temporary variable
     Page.originalValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
 
@@ -740,6 +751,7 @@ Page.toggle1Click = function($event, widget) {
 
 Page.updateManualFlagonSuccess = function(variable, data) {
     debugger;
+    App.Variables.entityManualFlag.dataSet.dataValue = Page.Variables.getEntityProfileDetails.dataSet.entityDetails.manualFlag;
     Page.Widgets.toggle1.datavalue = Page.newTextValue;
     Page.Widgets.manualFlagDialog.close();
     Page.Variables.successMessageEntManagementVar.dataSet.dataValue = "Manual Flag Updated Successfully.";
@@ -800,4 +812,46 @@ Page.PatchInCollectionEntityonError = function(variable, data, xhrObj) {
 
 Page.entityBanTravelHistoryVaronSuccess = function(variable, data) {
     debugger;
+};
+
+function getAccurateJsonDate() {
+    const ntpApis = [
+        'https://worldtimeapi.org/api/timezone/Etc/UTC',
+        'https://timeapi.io/api/Time/current/zone?timeZone=UTC'
+    ];
+
+    return new Promise((resolve) => {
+        let attempts = 0;
+
+        function tryNextApi() {
+            if (attempts >= ntpApis.length) {
+                console.warn("All NTP APIs failed. Using client system time.");
+                return resolve(new Date().toJSON()); // Fallback to client time
+            }
+
+            let api = ntpApis[attempts++];
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", api, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText);
+                        if (api.includes('worldtimeapi')) resolve(new Date(data.utc_datetime).toJSON());
+                        else if (api.includes('timeapi.io')) resolve(new Date(data.dateTime).toJSON());
+                    } else {
+                        console.warn(`Failed to fetch time from ${api}:`, xhr.statusText);
+                        tryNextApi(); // Try next API
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        tryNextApi();
+    });
+}
+
+Page.getEntityProfileDetailsonSuccess = function(variable, data) {
+    debugger;
+    App.Variables.entityManualFlag.dataSet.dataValue = data.entityDetails.manualFlag;
 };

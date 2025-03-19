@@ -91,3 +91,15 @@ div[name="selectBanParrTable1"] .app-datagrid-container {
     max-height: 400px; /* Set scroll limit */
     overflow-y: auto;  /* Enable vertical scrolling */
 }
+
+div[name="getCollectionTreatmentStepTable2"] table td {
+    white-space: normal; /* Allow wrapping */
+    word-wrap: break-word; /* Break long words if needed */
+    overflow-wrap: break-word; /* Ensure wrapping in modern browsers */
+    text-align: left; /* Optional: Align text to the left for readability */
+}
+/* Ensure table respects column widths */
+div[name="getCollectionTreatmentStepTable2"] table {
+    table-layout: fixed; /* Make sure column widths are consistent */
+    width: 100%; /* Stretch table to full width */
+}
