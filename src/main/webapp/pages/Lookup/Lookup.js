@@ -160,7 +160,8 @@ Page.TransferBansToExistingEntityBtnClick = function($event, widget) {
     }
 
     //To see whether the entity is a cancelled or not.
-    var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
+    //var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails[0].acctStatus;
+    var cancelledEntityVar = Page.Variables.getEntityProfileDetails.dataSet.banDetails.some(ban => ban.acctStatus !== "C") ? "O" : "C";
 
     //To Get the entity level collection status
     var entityLevelCollectionStatus = Page.Variables.getCollectionEntityById.dataSet.collectionStatus;
