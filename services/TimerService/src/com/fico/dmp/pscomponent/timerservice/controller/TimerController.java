@@ -54,6 +54,13 @@ public class TimerController {
         return timerService.getAllJobsInfo();
     }
 
+    @RequestMapping(value = "/currentUtcTime", produces = "application/json", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public String getCurrentUtcTime() {
+        return timerService.getCurrentUtcTime();
+    }
+
     @RequestMapping(value = "/jobInfo", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")

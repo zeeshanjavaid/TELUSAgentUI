@@ -19,6 +19,10 @@ import com.fico.pscomponent.quartz.model.JobResponse;
 import com.fico.pscomponent.quartz.service.JobService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneOffset;
+
 @ExposeToClient
 public class TimerService {
 
@@ -89,5 +93,13 @@ public class TimerService {
     	} else {
     		return new ResponseEntity<String>(jobResponse.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     	}
+    }
+    
+    public String getCurrentUtcTime() {
+        logger.info("Start getCurrentUtcTime.......................");
+        logger.info(Instant.now().atOffset(ZoneOffset.UTC)
+                      .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")) + ".......................");
+        return Instant.now().atOffset(ZoneOffset.UTC)
+                      .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
     }
 }

@@ -863,7 +863,7 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <wavemaker.studio.version>4.2.2.2</wavemaker.studio.version>
+        <wavemaker.studio.version>4.2.2.3</wavemaker.studio.version>
         <spring.security.version>5.7.12</spring.security.version>
         <profile.props.file>development.properties</profile.props.file>
         <DMP_DATA_DIR>/app-root/runtime/data</DMP_DATA_DIR>
