@@ -66,7 +66,7 @@ Partial.expandedRowDataTable1Beforedatarender = function(widget, $data, $columns
                     item.deliveryType = item.deliveryType + deviceUsedCharacteristic.value;
                 }
             }
-            if (item.businessEntityEventType && item.businessEntityEventType.toUpperCase() == 'STATUS' && item.additionalCharacteristics && Array.isArray(item.additionalCharacteristics)) {
+            if (item.businessEntityEventType && item.additionalCharacteristics && Array.isArray(item.additionalCharacteristics)) {
                 debugger;
                 item.lang = getLanguage(item.additionalCharacteristics);
             }

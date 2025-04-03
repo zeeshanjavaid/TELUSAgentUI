@@ -161,6 +161,10 @@
       "dataValue" : "CEASE"
     }, {
       "dataValue" : "NOTICE"
+    }, {
+      "dataValue" : "AGENCY-AUTOREF"
+    }, {
+      "dataValue" : "AGENCY-INTERNAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -191,6 +195,10 @@
       "dataValue" : "SUSPEND"
     }, {
       "dataValue" : "NOTICE"
+    }, {
+      "dataValue" : "AGENCY-AUTOREF"
+    }, {
+      "dataValue" : "AGENCY-INTERNAL"
     } ],
     "type" : "string",
     "isList" : true,
@@ -672,7 +680,7 @@
       "type" : "string"
     }, {
       "target" : "typeCode",
-      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC,NOTICE,AGENCY-INTERNAL'",
+      "value" : "bind:'in:CALL-OB,CALL-IB,EM-IN,FOLLOWUP,NOTC1-PMTR,NOTC2-OD,NOTC3-DIST,NOTC4-CANL,NOTC5-ACTMGR,NOTC6-REFERRAL,RESTORE,CEASE,SUSPEND,NOTC,NOTICE,AGENCY-INTERNAL,AGENCY-AUTOREF'",
       "type" : "string"
     }, {
       "target" : "status",

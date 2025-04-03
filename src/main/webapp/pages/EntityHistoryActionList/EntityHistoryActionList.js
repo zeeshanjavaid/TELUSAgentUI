@@ -2104,3 +2104,19 @@ function noticeAction($event, widget) {
         interverlGetHistoricalAction(5000, 15000);
     }
 };
+Partial.getCollectionTreatmentStepTable2Beforedatarender = function(widget, $data, $columns) {
+    debugger;
+    $data.forEach((item) => {
+        debugger;
+        if (item.stepTypeCode != "NOTICE") {
+            item.contentTypeCode = item.queueId;
+        } else {
+            if (item.contentTypeCode != null) {
+                console.log(item.contentTypeCode);
+                item.contentTypeCode = getFormattedContentType(item.contentTypeCode);
+            }
+        }
+        debugger;
+    });
+
+};
