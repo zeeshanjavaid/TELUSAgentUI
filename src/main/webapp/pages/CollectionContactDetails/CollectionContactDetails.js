@@ -32,6 +32,7 @@ Partial.onReady = function() {
 
         console.log("Assigned DataSet:", Partial.Variables.expandedRowData.dataSet); // Log the updated dataset
     }
+
 };
 
 function messageTimeout() {
@@ -152,5 +153,16 @@ Partial.expandedRowDataTable1_updaterowAction = function($event, row) {
     debugger;
     if (row.phoneNumber == null) {
         Partial.Variables.boxDisabled.dataSet.dataValue = false;
+    }
+};
+Partial.expandedRowDataTable1Datarender = function(widget, $data) {
+    debugger;
+    var th = document.querySelector('div[name="expandedRowDataTable1"] table thead tr th[data-col-id="12"]');
+    if (th) {
+        th.setAttribute('title', 'Customer responds to communication - Pay Now, Already Paid, or further assistance');
+    }
+    var th1 = document.querySelector('div[name="expandedRowDataTable1"] table thead tr th[data-col-id="13"]');
+    if (th1) {
+        th1.setAttribute('title', 'Customer clicks on Already Paid');
     }
 };
